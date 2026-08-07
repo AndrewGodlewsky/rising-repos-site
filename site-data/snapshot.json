@@ -1,0 +1,458 @@
+{
+ "generated_at": "2026-08-07T05:22:45+00:00",
+ "source": "skeleton-collect.py (wayfinder #5) -- throwaway, below spec",
+ "query": "stars:>=200 sort:stars-desc",
+ "matched": 267974,
+ "repos": [
+  {
+   "github_id": 132750724,
+   "name": "codecrafters-io/build-your-own-x",
+   "description": "Master programming by recreating your favorite technologies from scratch.",
+   "stars": 536988,
+   "forks": 50724,
+   "pushed_at": "2026-07-14T19:25:58Z",
+   "language": "Markdown"
+  },
+  {
+   "github_id": 21737465,
+   "name": "sindresorhus/awesome",
+   "description": "\ud83d\ude0e Awesome lists about all kinds of interesting topics",
+   "stars": 493174,
+   "forks": 36306,
+   "pushed_at": "2026-06-30T18:21:16Z",
+   "language": null
+  },
+  {
+   "github_id": 54346799,
+   "name": "public-apis/public-apis",
+   "description": "A collective list of free APIs",
+   "stars": 454796,
+   "forks": 50186,
+   "pushed_at": "2026-08-05T06:58:49Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 28457823,
+   "name": "freeCodeCamp/freeCodeCamp",
+   "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
+   "stars": 453620,
+   "forks": 45891,
+   "pushed_at": "2026-08-06T19:11:02Z",
+   "language": "TypeScript"
+  },
+  {
+   "github_id": 13491895,
+   "name": "EbookFoundation/free-programming-books",
+   "description": ":books: Freely available programming books",
+   "stars": 393896,
+   "forks": 66669,
+   "pushed_at": "2026-08-06T13:01:39Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 1103012935,
+   "name": "openclaw/openclaw",
+   "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. \ud83e\udd9e ",
+   "stars": 385402,
+   "forks": 81018,
+   "pushed_at": "2026-08-07T05:19:02Z",
+   "language": "TypeScript"
+  },
+  {
+   "github_id": 85077558,
+   "name": "nilbuild/developer-roadmap",
+   "description": "Interactive roadmaps, guides and other educational content to help developers grow in their careers.",
+   "stars": 363820,
+   "forks": 44749,
+   "pushed_at": "2026-08-06T16:55:47Z",
+   "language": "TypeScript"
+  },
+  {
+   "github_id": 83222441,
+   "name": "donnemartin/system-design-primer",
+   "description": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards.",
+   "stars": 362091,
+   "forks": 57695,
+   "pushed_at": "2026-03-20T01:52:19Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 60493101,
+   "name": "jwasham/coding-interview-university",
+   "description": "A complete computer science study plan to become a software engineer.",
+   "stars": 358048,
+   "forks": 84533,
+   "pushed_at": "2025-08-28T14:42:47Z",
+   "language": null
+  },
+  {
+   "github_id": 21289110,
+   "name": "vinta/awesome-python",
+   "description": "An opinionated list of Python frameworks, libraries, tools, and resources",
+   "stars": 312601,
+   "forks": 28475,
+   "pushed_at": "2026-08-05T06:11:04Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 36633370,
+   "name": "awesome-selfhosted/awesome-selfhosted",
+   "description": "A list of Free Software network services and web applications which can be hosted on your own servers",
+   "stars": 311089,
+   "forks": 14590,
+   "pushed_at": "2026-08-04T19:13:06Z",
+   "language": null
+  },
+  {
+   "github_id": 88011908,
+   "name": "practical-tutorials/project-based-learning",
+   "description": "Curated list of project-based tutorials",
+   "stars": 277005,
+   "forks": 35676,
+   "pushed_at": "2026-08-03T07:46:08Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 177736533,
+   "name": "996icu/996.ICU",
+   "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
+   "stars": 276568,
+   "forks": 20768,
+   "pushed_at": "2025-08-22T06:01:29Z",
+   "language": null
+  },
+  {
+   "github_id": 1073224795,
+   "name": "obra/superpowers",
+   "description": "An agentic skills framework & software development methodology that works.",
+   "stars": 268234,
+   "forks": 23968,
+   "pushed_at": "2026-08-07T05:20:58Z",
+   "language": "Shell"
+  },
+  {
+   "github_id": 10270250,
+   "name": "react/react",
+   "description": "The library for web and native user interfaces.",
+   "stars": 247079,
+   "forks": 51199,
+   "pushed_at": "2026-08-06T12:44:05Z",
+   "language": "JavaScript"
+  },
+  {
+   "github_id": 2325298,
+   "name": "torvalds/linux",
+   "description": "Linux kernel source tree",
+   "stars": 242033,
+   "forks": 63794,
+   "pushed_at": "2026-08-07T04:07:22Z",
+   "language": "C"
+  },
+  {
+   "github_id": 1136590548,
+   "name": "affaan-m/ECC",
+   "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+   "stars": 238360,
+   "forks": 36200,
+   "pushed_at": "2026-08-06T21:42:23Z",
+   "language": "JavaScript"
+  },
+  {
+   "github_id": 138393139,
+   "name": "trimstray/the-book-of-secret-knowledge",
+   "description": "A collection of inspiring lists, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools and more.",
+   "stars": 237082,
+   "forks": 14047,
+   "pushed_at": "2024-11-19T14:00:38Z",
+   "language": null
+  },
+  {
+   "github_id": 1024554267,
+   "name": "NousResearch/hermes-agent",
+   "description": "The agent that grows with you",
+   "stars": 226700,
+   "forks": 44253,
+   "pushed_at": "2026-08-07T05:19:38Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 63476337,
+   "name": "TheAlgorithms/Python",
+   "description": "All Algorithms implemented in Python",
+   "stars": 223541,
+   "forks": 50936,
+   "pushed_at": "2026-08-03T18:44:56Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 11730342,
+   "name": "vuejs/vue",
+   "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
+   "stars": 210232,
+   "forks": 33779,
+   "pushed_at": "2024-10-10T07:24:15Z",
+   "language": "TypeScript"
+  },
+  {
+   "github_id": 19415064,
+   "name": "ossu/computer-science",
+   "description": "\ud83c\udf93 Path to a free self-taught education in Computer Science!",
+   "stars": 207716,
+   "forks": 25743,
+   "pushed_at": "2026-07-14T05:38:25Z",
+   "language": "HTML"
+  },
+  {
+   "github_id": 1148788086,
+   "name": "mattpocock/skills",
+   "description": "Skills for Real Engineers. Straight from my .agents directory.",
+   "stars": 207470,
+   "forks": 17916,
+   "pushed_at": "2026-08-06T19:49:51Z",
+   "language": "Shell"
+  },
+  {
+   "github_id": 1142983825,
+   "name": "multica-ai/andrej-karpathy-skills",
+   "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+   "stars": 200322,
+   "forks": 20601,
+   "pushed_at": "2026-04-20T10:05:04Z",
+   "language": null
+  },
+  {
+   "github_id": 193215554,
+   "name": "n8n-io/n8n",
+   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+   "stars": 199640,
+   "forks": 59970,
+   "pushed_at": "2026-08-07T05:18:10Z",
+   "language": "TypeScript"
+  },
+  {
+   "github_id": 45717250,
+   "name": "tensorflow/tensorflow",
+   "description": "An Open Source Machine Learning Framework for Everyone",
+   "stars": 196897,
+   "forks": 75902,
+   "pushed_at": "2026-08-07T05:20:12Z",
+   "language": "C++"
+  },
+  {
+   "github_id": 126577260,
+   "name": "trekhleb/javascript-algorithms",
+   "description": "\ud83d\udcdd Algorithms and data structures implemented in JavaScript with explanations and links to further readings",
+   "stars": 196412,
+   "forks": 31038,
+   "pushed_at": "2026-07-26T02:43:08Z",
+   "language": "JavaScript"
+  },
+  {
+   "github_id": 1197021090,
+   "name": "ultraworkers/claw-code",
+   "description": "An agent-managed museum exhibit, built in Rust with Gajae-Code / LazyCodex \u2014 developed and maintained with no human intervention.",
+   "stars": 194998,
+   "forks": 109271,
+   "pushed_at": "2026-08-06T11:18:35Z",
+   "language": "Rust"
+  },
+  {
+   "github_id": 975734319,
+   "name": "anomalyco/opencode",
+   "description": "The open source coding agent.",
+   "stars": 194412,
+   "forks": 24872,
+   "pushed_at": "2026-08-07T05:18:18Z",
+   "language": "TypeScript"
+  },
+  {
+   "github_id": 808144141,
+   "name": "DigitalPlatDev/FreeDomain",
+   "description": "DigitalPlat FreeDomain: Free Domain For Everyone",
+   "stars": 191335,
+   "forks": 4073,
+   "pushed_at": "2026-07-16T15:38:52Z",
+   "language": null
+  },
+  {
+   "github_id": 291137,
+   "name": "ohmyzsh/ohmyzsh",
+   "description": "\ud83d\ude43   A delightful community-driven (with 2,500+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugins (rails, git, macOS, hub, docker, homebrew, node, php, python, etc), 140+ themes to spice up your morning, and an auto-update tool that makes it easy to keep up with the latest updates from the community.",
+   "stars": 189075,
+   "forks": 26581,
+   "pushed_at": "2026-08-06T07:20:54Z",
+   "language": "Shell"
+  },
+  {
+   "github_id": 41881900,
+   "name": "microsoft/vscode",
+   "description": "Visual Studio Code",
+   "stars": 188458,
+   "forks": 41457,
+   "pushed_at": "2026-08-07T05:20:30Z",
+   "language": "TypeScript"
+  },
+  {
+   "github_id": 233472199,
+   "name": "massgravel/Microsoft-Activation-Scripts",
+   "description": "Open-source Windows and Office activator featuring HWID, Ohook, TSforge, and Online KMS activation methods, along with advanced troubleshooting.",
+   "stars": 186212,
+   "forks": 17816,
+   "pushed_at": "2026-07-04T16:54:38Z",
+   "language": "Batchfile"
+  },
+  {
+   "github_id": 614765452,
+   "name": "Significant-Gravitas/AutoGPT",
+   "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
+   "stars": 186093,
+   "forks": 46055,
+   "pushed_at": "2026-08-07T05:22:07Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 121395510,
+   "name": "CyC2018/CS-Notes",
+   "description": ":books: \u6280\u672f\u9762\u8bd5\u5fc5\u5907\u57fa\u7840\u77e5\u8bc6\u3001Leetcode\u3001\u8ba1\u7b97\u673a\u64cd\u4f5c\u7cfb\u7edf\u3001\u8ba1\u7b97\u673a\u7f51\u7edc\u3001\u7cfb\u7edf\u8bbe\u8ba1",
+   "stars": 184969,
+   "forks": 50801,
+   "pushed_at": "2024-08-21T09:40:10Z",
+   "language": null
+  },
+  {
+   "github_id": 123458551,
+   "name": "jackfrued/Python-100-Days",
+   "description": "Python - 100\u5929\u4ece\u65b0\u624b\u5230\u5927\u5e08",
+   "stars": 184936,
+   "forks": 55694,
+   "pushed_at": "2026-07-29T15:18:29Z",
+   "language": "Jupyter Notebook"
+  },
+  {
+   "github_id": 14440270,
+   "name": "getify/You-Dont-Know-JS",
+   "description": "A book series (2 published editions) on the JS language.",
+   "stars": 184643,
+   "forks": 33452,
+   "pushed_at": "2026-02-15T04:36:44Z",
+   "language": null
+  },
+  {
+   "github_id": 307260205,
+   "name": "yt-dlp/yt-dlp",
+   "description": "A feature-rich command-line audio/video downloader",
+   "stars": 182933,
+   "forks": 15727,
+   "pushed_at": "2026-08-04T22:58:34Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 21540759,
+   "name": "avelino/awesome-go",
+   "description": "A curated list of awesome Go frameworks, libraries and software",
+   "stars": 180346,
+   "forks": 13458,
+   "pushed_at": "2026-08-06T23:35:12Z",
+   "language": "Go"
+  },
+  {
+   "github_id": 31792824,
+   "name": "flutter/flutter",
+   "description": "Flutter makes it easy and fast to build beautiful apps for mobile and beyond",
+   "stars": 178256,
+   "forks": 30935,
+   "pushed_at": "2026-08-07T04:14:20Z",
+   "language": "Dart"
+  },
+  {
+   "github_id": 658928958,
+   "name": "ollama/ollama",
+   "description": "Get up and running with Kimi-K2.6, GLM-5.2, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+   "stars": 177957,
+   "forks": 17290,
+   "pushed_at": "2026-08-07T04:56:13Z",
+   "language": "Go"
+  },
+  {
+   "github_id": 1062897,
+   "name": "github/gitignore",
+   "description": "A collection of useful .gitignore templates",
+   "stars": 175173,
+   "forks": 82294,
+   "pushed_at": "2026-07-23T16:06:45Z",
+   "language": null
+  },
+  {
+   "github_id": 2126244,
+   "name": "twbs/bootstrap",
+   "description": "The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web.",
+   "stars": 174565,
+   "forks": 78686,
+   "pushed_at": "2026-08-06T22:48:37Z",
+   "language": "MDX"
+  },
+  {
+   "github_id": 888092115,
+   "name": "microsoft/markitdown",
+   "description": "Python tool for converting files and office documents to Markdown.",
+   "stars": 172049,
+   "forks": 12538,
+   "pushed_at": "2026-07-29T18:18:09Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 58028038,
+   "name": "521xueweihan/HelloGitHub",
+   "description": ":octocat: \u5206\u4eab GitHub \u4e0a\u6709\u8da3\u3001\u5165\u95e8\u7ea7\u7684\u5f00\u6e90\u9879\u76ee\u3002Share interesting, entry-level open source projects on GitHub.",
+   "stars": 169555,
+   "forks": 12544,
+   "pushed_at": "2026-08-02T07:58:25Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 574523116,
+   "name": "f/prompts.chat",
+   "description": "f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source \u2014 self-host for your organization with complete privacy.",
+   "stars": 166825,
+   "forks": 21540,
+   "pushed_at": "2026-08-07T04:00:22Z",
+   "language": "HTML"
+  },
+  {
+   "github_id": 1061953414,
+   "name": "anthropics/skills",
+   "description": "Public repository for Agent Skills",
+   "stars": 166762,
+   "forks": 19859,
+   "pushed_at": "2026-07-24T20:12:36Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 527591471,
+   "name": "AUTOMATIC1111/stable-diffusion-webui",
+   "description": "Stable Diffusion web UI",
+   "stars": 164432,
+   "forks": 30556,
+   "pushed_at": "2026-03-02T07:00:53Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 155220641,
+   "name": "huggingface/transformers",
+   "description": "\ud83e\udd17 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. ",
+   "stars": 163424,
+   "forks": 34136,
+   "pushed_at": "2026-08-07T03:41:33Z",
+   "language": "Python"
+  },
+  {
+   "github_id": 787076358,
+   "name": "firecrawl/firecrawl",
+   "description": "The context API to search, scrape, and interact with the web at scale. \ud83d\udd25",
+   "stars": 162460,
+   "forks": 9153,
+   "pushed_at": "2026-08-07T05:22:09Z",
+   "language": "TypeScript"
+  }
+ ]
+}
