@@ -1,0 +1,21 @@
+# J §5's cache policy. Copied verbatim into dist/ by build.py.
+#
+# `/` is listed separately on purpose: `/*.html` does NOT match the directory
+# index request `/`, measured against the live edge during ticket #3 — the apex
+# fell through to Cloudflare's default. The apex is the most-requested path on
+# the site, so it gets the rule explicitly. Add one line per directory index
+# that ships.
+/
+  Cache-Control: no-cache, must-revalidate
+/*.html
+  Cache-Control: no-cache, must-revalidate
+/site-data/*
+  Cache-Control: no-cache, must-revalidate
+/api/v1/*
+  Cache-Control: no-cache, must-revalidate
+# Immutable is only safe here because every asset filename is content-hashed
+# (I/H13). Nothing under /assets/ ships yet.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+/badge/*
+  Cache-Control: public, max-age=3600

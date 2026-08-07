@@ -1,0 +1,4 @@
+# Rendered output never enters git history — Cloudflare receives it as a direct
+# upload from the Actions runner (J §10: ~33 MB/yr instead of ~3.5 GB/yr).
+dist/
+node_modules/

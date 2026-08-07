@@ -1,0 +1,8 @@
+{
+  "name": "rising-repos-site",
+  "private": true,
+  "description": "Deploy tooling only. wrangler is pinned to the exact version recorded at bootstrap (J §10.1 step 4) and invoked via npx against package-lock.json, so Node churn cannot move it. No caret.",
+  "dependencies": {
+    "wrangler": "4.119.0"
+  }
+}

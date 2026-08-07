@@ -1,0 +1,85 @@
+name: Build and deploy
+
+# J §7. Push-triggered production deploy. The hourly watchdog (J §6) is a
+# separate workflow that ticket #17 adds; it joins the same concurrency group.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site-data/**"
+      - "build.py"
+      - "templates/**"
+      - "static/**"
+      - "requirements.txt"
+      - "package-lock.json"
+      - ".github/workflows/deploy.yml"
+  # J §9: re-run build and deploy in two taps from the GitHub mobile app.
+  workflow_dispatch:
+    inputs:
+      deploy_kind:
+        description: "normal blocks on stale data; watchdog publishes it"
+        type: choice
+        options: [normal, watchdog]
+        default: normal
+
+# J §6 / REVIEW M32. Without this group a late push racing the watchdog can
+# interleave two deploys and leave the older one live. Latest wins.
+concurrency:
+  group: production
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # J §10.1: Actions pinned to commit SHAs. GitHub's own Actions are the
+      # largest measured churn in this design — three majors a year.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13.15"
+
+      - name: Install pinned build deps
+        run: pip install --require-hashes --no-deps -r requirements.txt
+
+      # Runs BEFORE the build so a vacuous verifier can never green-light a
+      # deploy: it proves the link checker fails on a planted broken link
+      # (I §9.3) and that the staleness boundaries are what the spec says.
+      - name: Self-check the verifier
+        run: python build.py --selfcheck
+
+      - name: Build and verify
+        run: python build.py --deploy-kind "${{ inputs.deploy_kind || 'normal' }}"
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+
+      - name: Install wrangler at the pinned version
+        run: npm ci
+
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler pages deploy dist --project-name=risingrepos --branch=main
+
+      # J §8: published — commit, live URL. Outbound only, one channel.
+      - name: Notify Discord
+        if: always()
+        env:
+          WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then
+            msg="**published** — https://risingrepos.com/ · \`${GITHUB_SHA:0:7}\`"
+          else
+            msg="**deploy FAILED** (${{ job.status }}) — \`${GITHUB_SHA:0:7}\` · $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          fi
+          jq -n --arg c "$msg" '{content:$c}' \
+            | curl -sS -X POST -H 'Content-Type: application/json' -d @- "$WEBHOOK"

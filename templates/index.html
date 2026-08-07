@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rising Repos</title>
+<link rel="canonical" href="https://risingrepos.com/">
+{# I §8.1: the staleness island reads exactly these two tags. No island ships in
+   the skeleton, but the contract is baked now so #13 has nothing to retrofit. #}
+<meta name="rr:board-date" content="{{ board_date }}">
+<meta name="rr:build-ts" content="{{ build_ts }}">
+<style>
+  /* I10: warm neutrals, one burnt accent, both schemes. I11: mono for identifiers. */
+  :root {
+    color-scheme: light dark;
+    --bg: #faf7f2; --fg: #211d18; --dim: #6b6156;
+    --rule: #e2dbd0; --accent: #b4531f; --card: #fffdfa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #191614; --fg: #ece5da; --dim: #a1968a;
+      --rule: #322c26; --accent: #e07a3c; --card: #221e1a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 2rem 1.25rem 4rem; background: var(--bg); color: var(--fg);
+    font: 16px/1.55 ui-serif, Georgia, "Times New Roman", serif;
+  }
+  main { max-width: 46rem; margin: 0 auto; }
+  h1 { font-size: 1.9rem; letter-spacing: -0.01em; margin: 0 0 .25rem; }
+  .sub { color: var(--dim); margin: 0 0 2rem; font-size: .9rem; }
+  .skeleton { color: var(--accent); font-size: .8rem; text-transform: uppercase;
+              letter-spacing: .08em; margin: 0 0 1.5rem; }
+  [role="status"] {
+    border-left: 3px solid var(--accent); background: var(--card);
+    padding: .75rem 1rem; margin: 0 0 2rem; font-size: .95rem;
+  }
+  ol { list-style: none; margin: 0; padding: 0; }
+  .repo { border-top: 1px solid var(--rule); padding: 1rem 0; display: grid;
+          grid-template-columns: 2.5rem 1fr; gap: 0 .75rem; }
+  .rank { color: var(--dim); font-variant-numeric: tabular-nums; font-size: .95rem; }
+  .name { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+          font-size: 1rem; color: var(--fg); text-decoration: none;
+          border-bottom: 1px solid var(--rule); }
+  .name:hover { border-bottom-color: var(--accent); color: var(--accent); }
+  .desc { grid-column: 2; margin: .35rem 0 0; color: var(--dim); font-size: .95rem; }
+  .meta { grid-column: 2; margin: .4rem 0 0; padding: 0; color: var(--dim);
+          font-size: .85rem; display: flex; flex-wrap: wrap; gap: 0 1rem; }
+  .meta div { display: inline; }
+  .meta dt { display: inline; }
+  .meta dd { display: inline; margin: 0 0 0 .3rem; }
+  .num { font-variant-numeric: tabular-nums; color: var(--fg); }
+  .lang { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  .repo--index { padding: .55rem 0; }
+  .repo--index .desc, .repo--index .meta { font-size: .8rem; }
+  .index-head { margin: 2.5rem 0 0; font-size: .8rem; text-transform: uppercase;
+                letter-spacing: .08em; color: var(--dim); }
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--rule);
+           color: var(--dim); font-size: .8rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Rising Repos</h1>
+  {# I §8.1: the board date is static text on every board page, always, so it
+     survives with JS disabled — not only when the banner is showing. #}
+  <p class="sub">Board of <time datetime="{{ board_date }}">{{ board_ts }}</time>
+    · <span class="num">{{ "{:,}".format(matched) }}</span> repositories matched</p>
+
+  <p class="skeleton">Walking skeleton — ranked by raw stars, not yet by trend</p>
+
+  {% if state == "banner" %}
+  <p role="status">The newest board is from <strong>{{ board_ts }}</strong>
+    ({{ age_days }} day{{ "" if age_days == 1 else "s" }} old). Tonight's data has
+    not arrived.</p>
+  {% elif state == "dark" %}
+  <p role="status">No board has been published since <strong>{{ board_ts }}</strong>.
+    Rather than show data more than seven days old, this page shows nothing.</p>
+  {% endif %}
+
+  {% if repos %}
+  <ol>
+    {% for r in lead %}
+    <li class="repo">
+      <span class="rank">{{ loop.index }}</span>
+      <a class="name" href="https://github.com/{{ r.name }}">{{ r.name }}</a>
+      {% if r.description %}<p class="desc">{{ r.description }}</p>{% endif %}
+      <dl class="meta">
+        <div><dt>stars</dt><dd class="num">{{ "{:,}".format(r.stars) }}</dd></div>
+        <div><dt>forks</dt><dd class="num">{{ "{:,}".format(r.forks) }}</dd></div>
+        {# language is null for ~1 in 5 rows — the common path, not an edge case #}
+        <div><dt>language</dt><dd class="lang">{{ r.language or "not detected" }}</dd></div>
+      </dl>
+    </li>
+    {% endfor %}
+  </ol>
+
+  {% if rest %}
+  <p class="index-head">The rest</p>
+  <ol start="{{ lead|length + 1 }}">
+    {% for r in rest %}
+    <li class="repo repo--index">
+      <span class="rank">{{ loop.index + lead|length }}</span>
+      <a class="name" href="https://github.com/{{ r.name }}">{{ r.name }}</a>
+      <dl class="meta">
+        <div><dt>stars</dt><dd class="num">{{ "{:,}".format(r.stars) }}</dd></div>
+        <div><dt>language</dt><dd class="lang">{{ r.language or "not detected" }}</dd></div>
+      </dl>
+    </li>
+    {% endfor %}
+  </ol>
+  {% endif %}
+  {% endif %}
+
+  <footer>
+    Built {{ build_ts }} · <a class="name" href="https://github.com/AndrewGodlewsky/rising-repos-site">source</a>
+  </footer>
+</main>
+</body>
+</html>
