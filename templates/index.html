@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rising Repos</title>
 <link rel="canonical" href="https://risingrepos.com/">
-{# I §8.1: the staleness island reads exactly these two tags. No island ships in
-   the skeleton, but the contract is baked now so #13 has nothing to retrofit. #}
+{# I §8.1: the staleness island reads exactly these two tags. #}
 <meta name="rr:board-date" content="{{ board_date }}">
 <meta name="rr:build-ts" content="{{ build_ts }}">
 <style>
@@ -29,13 +28,13 @@
   }
   main { max-width: 46rem; margin: 0 auto; }
   h1 { font-size: 1.9rem; letter-spacing: -0.01em; margin: 0 0 .25rem; }
-  .sub { color: var(--dim); margin: 0 0 2rem; font-size: .9rem; }
-  .skeleton { color: var(--accent); font-size: .8rem; text-transform: uppercase;
-              letter-spacing: .08em; margin: 0 0 1.5rem; }
-  [role="status"] {
+  h2 { font-size: 1.15rem; margin: 2.5rem 0 .5rem; }
+  .sub { color: var(--dim); margin: 0 0 1.5rem; font-size: .9rem; }
+  [role="status"], .disclosure {
     border-left: 3px solid var(--accent); background: var(--card);
-    padding: .75rem 1rem; margin: 0 0 2rem; font-size: .95rem;
+    padding: .75rem 1rem; margin: 0 0 1.5rem; font-size: .95rem;
   }
+  .empty { color: var(--dim); font-style: italic; padding: 1rem 0 0; }
   ol { list-style: none; margin: 0; padding: 0; }
   .repo { border-top: 1px solid var(--rule); padding: 1rem 0; display: grid;
           grid-template-columns: 2.5rem 1fr; gap: 0 .75rem; }
@@ -44,31 +43,41 @@
           font-size: 1rem; color: var(--fg); text-decoration: none;
           border-bottom: 1px solid var(--rule); }
   .name:hover { border-bottom-color: var(--accent); color: var(--accent); }
-  .desc { grid-column: 2; margin: .35rem 0 0; color: var(--dim); font-size: .95rem; }
+  .name--plain { border-bottom: none; }
+  .claim { grid-column: 2; margin: .3rem 0 0; font-size: .95rem; }
   .meta { grid-column: 2; margin: .4rem 0 0; padding: 0; color: var(--dim);
           font-size: .85rem; display: flex; flex-wrap: wrap; gap: 0 1rem; }
   .meta div { display: inline; }
   .meta dt { display: inline; }
   .meta dd { display: inline; margin: 0 0 0 .3rem; }
   .num { font-variant-numeric: tabular-nums; color: var(--fg); }
-  .lang { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-  .repo--index { padding: .55rem 0; }
-  .repo--index .desc, .repo--index .meta { font-size: .8rem; }
-  .index-head { margin: 2.5rem 0 0; font-size: .8rem; text-transform: uppercase;
-                letter-spacing: .08em; color: var(--dim); }
+  .badge { display: inline-block; font-size: .72rem; text-transform: uppercase;
+           letter-spacing: .05em; color: var(--dim); border: 1px solid var(--rule);
+           border-radius: .5rem; padding: 0 .45rem; margin-left: .35rem;
+           vertical-align: 1px; }
   footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--rule);
            color: var(--dim); font-size: .8rem; }
+  /* Band filter — no JS: radios + sibling selectors (G13, band axis only pre-#12) */
+  .bandfilter { font-size: .85rem; color: var(--dim); margin: 0 0 .5rem; }
+  .bandfilter label { margin-right: .8rem; cursor: pointer; }
+  #f-all:checked   ~ main .repo { display: grid; }
+  #f-emerging:checked    ~ main .repo:not(.band-emerging)    { display: none; }
+  #f-growing:checked     ~ main .repo:not(.band-growing)     { display: none; }
+  #f-established:checked ~ main .repo:not(.band-established) { display: none; }
+  .bandfilter input { accent-color: var(--accent); }
 </style>
 </head>
 <body>
+{# radios must precede <main> for the sibling selector to reach board rows #}
+<input type="radio" name="band" id="f-all" hidden checked>
+<input type="radio" name="band" id="f-emerging" hidden>
+<input type="radio" name="band" id="f-growing" hidden>
+<input type="radio" name="band" id="f-established" hidden>
 <main>
   <h1>Rising Repos</h1>
-  {# I §8.1: the board date is static text on every board page, always, so it
-     survives with JS disabled — not only when the banner is showing. #}
-  <p class="sub">Board of <time datetime="{{ board_date }}">{{ board_ts }}</time>
-    · <span class="num">{{ "{:,}".format(matched) }}</span> repositories matched</p>
-
-  <p class="skeleton">Walking skeleton — ranked by raw stars, not yet by trend</p>
+  <p class="sub">Boards of <time datetime="{{ board_date }}">{{ board_ts }}</time>
+    · repositories that departed from their own trajectory
+    · <a class="name" href="https://github.com/AndrewGodlewsky/rising-repos-site">how this works</a></p>
 
   {% if state == "banner" %}
   <p role="status">The newest board is from <strong>{{ board_ts }}</strong>
@@ -79,42 +88,62 @@
     Rather than show data more than seven days old, this page shows nothing.</p>
   {% endif %}
 
-  {% if repos %}
-  <ol>
-    {% for r in lead %}
-    <li class="repo">
-      <span class="rank">{{ loop.index }}</span>
-      <a class="name" href="https://github.com/{{ r.name }}">{{ r.name }}</a>
-      {% if r.description %}<p class="desc">{{ r.description }}</p>{% endif %}
-      <dl class="meta">
-        <div><dt>stars</dt><dd class="num">{{ "{:,}".format(r.stars) }}</dd></div>
-        <div><dt>forks</dt><dd class="num">{{ "{:,}".format(r.forks) }}</dd></div>
-        {# language is null for ~1 in 5 rows — the common path, not an edge case #}
-        <div><dt>language</dt><dd class="lang">{{ r.language or "not detected" }}</dd></div>
-      </dl>
-    </li>
-    {% endfor %}
-  </ol>
+  {% if state != "dark" %}
+  <p class="bandfilter">Filter:
+    <label for="f-all">all</label>
+    <label for="f-emerging">emerging ({{ facet_n.emerging }})</label>
+    <label for="f-growing">growing ({{ facet_n.growing }})</label>
+    <label for="f-established">established ({{ facet_n.established }})</label>
+  </p>
 
-  {% if rest %}
-  <p class="index-head">The rest</p>
-  <ol start="{{ lead|length + 1 }}">
-    {% for r in rest %}
-    <li class="repo repo--index">
-      <span class="rank">{{ loop.index + lead|length }}</span>
-      <a class="name" href="https://github.com/{{ r.name }}">{{ r.name }}</a>
-      <dl class="meta">
-        <div><dt>stars</dt><dd class="num">{{ "{:,}".format(r.stars) }}</dd></div>
-        <div><dt>language</dt><dd class="lang">{{ r.language or "not detected" }}</dd></div>
-      </dl>
-    </li>
-    {% endfor %}
-  </ol>
-  {% endif %}
+  {% for b in boards %}
+  <section id="{{ b.board_type }}">
+    <h2>{{ b.board_type | capitalize }}</h2>
+    {% if b.strata_held %}
+    {# G §9.2: disclosure is load-bearing, not cosmetic #}
+    <p class="disclosure">Tonight's crawl was incomplete for repositories in the
+      {{ b.strata_held | join(", ") }} star range{{ "s" if b.strata_held|length > 1 }} —
+      those repositories are absent from this board, not quiet.
+      {% if b.hold_reason %}<br><small>{{ b.hold_reason }}</small>{% endif %}</p>
+    {% endif %}
+    {% if b.rows %}
+    <ol class="board">
+      {% for r in b.rows %}
+      <li class="repo band-{{ r.band }}">
+        <span class="rank">{{ r.rank }}</span>
+        {% if r.link_suppressed or not r.name %}
+        <span class="name name--plain">{{ r.name or ("repo #" ~ r.repo_id) }}</span>
+        {% else %}
+        <a class="name" href="https://github.com/{{ r.name }}">{{ r.name }}</a>
+        {% endif %}
+        {%- for badge in r.badges if badge not in ("category-withheld", "no-summary") %}
+        <span class="badge">{{ badge }}</span>
+        {%- endfor %}
+        <p class="claim">
+          <span class="num">+{{ "{:,}".format(r.excess_above_trend | round | int) }}</span>
+          above its own trend ·
+          <span class="num">{{ r.pace_multiple }}&times;</span> its usual pace
+        </p>
+        <dl class="meta">
+          <div><dt>score</dt><dd class="num">{{ r.final_display | round(2) }}{{ "+" if r.final_is_capped }}</dd></div>
+          {% if r.stars is not none %}<div><dt>stars</dt><dd class="num">{{ "{:,}".format(r.stars) }}</dd></div>{% endif %}
+          <div><dt>band</dt><dd>{{ r.band }}</dd></div>
+          {% if r.corrections %}<div><dt>note</dt><dd>{{ r.corrections[0].kind }}</dd></div>{% endif %}
+        </dl>
+      </li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <p class="empty">{{ b.empty_reason }}</p>
+    {% endif %}
+  </section>
+  {% endfor %}
   {% endif %}
 
   <footer>
-    Built {{ build_ts }} · <a class="name" href="https://github.com/AndrewGodlewsky/rising-repos-site">source</a>
+    Built {{ build_ts }} · scores are &minus;log&#8321;&#8320; rarity within each
+    repository's own stratum; the publication floor is RS&nbsp;&ge;&nbsp;3
+    · <a class="name" href="https://github.com/AndrewGodlewsky/rising-repos-site">source</a>
   </footer>
 </main>
 </body>
