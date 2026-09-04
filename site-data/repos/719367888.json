@@ -3717,28 +3717,23 @@
   ],
   "since": [
    {
-    "advisory_id": "GHSA-9v2f-6vcg-3hgv",
-    "change": "withdrawn",
-    "changed_at": "2025-10-17 20:26:00",
-    "observed_at": "2026-09-03 22:56:10.910652"
-   },
-   {
     "advisory_id": "GHSA-3f95-mxq2-2f63",
     "change": "withdrawn",
     "changed_at": "2026-02-03 17:39:05",
-    "observed_at": "2026-09-03 22:56:10.910652"
+    "observed_at": "2026-09-03 23:23:02.154942"
    },
    {
     "advisory_id": "PYSEC-2024-115",
     "change": "withdrawn",
     "changed_at": "2026-07-09 16:45:06.281535",
-    "observed_at": "2026-09-03 22:56:10.910652"
+    "observed_at": "2026-09-03 23:23:02.154942"
    }
   ],
-  "since_as_of": "2026-09-03 22:56:10.910652",
+  "since_as_of": "2026-09-03 23:23:02.154942",
   "link_suppressed": false,
+  "provenance": null,
   "suppression": null,
   "card": "432 findings · 1 check pending · 3 checks not applicable",
-  "block": "SECURITY · commit 7f892a8\n\n  Dependency vulnerabilities\n    432 findings                     osv-scanner 2.5.1 · 2026-09-03\n      GHSA-26jh-r8g2-6fpr  gradio@4.4.0\n      CVE-2024-47871  gradio@4.4.0\n      CVE-2026-4372  transformers@4.30.2\n      CVE-2026-4372  transformers@4.48.2\n      CVE-2026-4372  transformers@4.51.0\n      CVE-2026-4372  transformers@4.46.2\n      CVE-2026-4372  transformers@4.41.2\n      CVE-2026-4372  transformers@4.57.5\n      CVE-2026-67325  gitpython@3.1.45\n      CVE-2026-54279  aiohttp@3.12.15\n      CVE-2026-34514  aiohttp@3.12.15\n      CVE-2026-49476  soupsieve@2.7\n      CVE-2025-66471  urllib3@2.5.0\n      CVE-2024-46455  unstructured@0.10.30\n      CVE-2024-34511  gradio@4.4.0\n      CVE-2026-45134  langchain@0.0.292\n      CVE-2026-45134  langsmith@0.0.92\n      CVE-2025-2953  torch@2.6.0\n      CVE-2025-2953  torch@2.3.0\n      CVE-2025-3933  transformers@4.30.2\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-03\n  GHSA-9v2f-6vcg-3hgv was WITHDRAWN upstream on 2025-10-17\n  GHSA-3f95-mxq2-2f63 was WITHDRAWN upstream on 2026-02-03\n  PYSEC-2024-115 was WITHDRAWN upstream on 2026-07-09\n\n→ How we run these scans (/methodology)"
+  "block": "SECURITY · commit 7f892a8\n\n  Dependency vulnerabilities\n    432 findings                     osv-scanner 2.5.1 · 2026-09-03\n      GHSA-26jh-r8g2-6fpr  gradio@4.4.0\n      CVE-2024-47871  gradio@4.4.0\n      CVE-2026-4372  transformers@4.30.2\n      CVE-2026-4372  transformers@4.48.2\n      CVE-2026-4372  transformers@4.51.0\n      CVE-2026-4372  transformers@4.46.2\n      CVE-2026-4372  transformers@4.41.2\n      CVE-2026-4372  transformers@4.57.5\n      CVE-2026-67325  gitpython@3.1.45\n      CVE-2026-54279  aiohttp@3.12.15\n      CVE-2026-34514  aiohttp@3.12.15\n      CVE-2026-49476  soupsieve@2.7\n      CVE-2025-66471  urllib3@2.5.0\n      CVE-2024-46455  unstructured@0.10.30\n      CVE-2024-34511  gradio@4.4.0\n      CVE-2026-45134  langchain@0.0.292\n      CVE-2026-45134  langsmith@0.0.92\n      CVE-2025-2953  torch@2.6.0\n      CVE-2025-2953  torch@2.3.0\n      CVE-2025-3933  transformers@4.30.2\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-03\n  GHSA-3f95-mxq2-2f63 was WITHDRAWN upstream on 2026-02-03\n  PYSEC-2024-115 was WITHDRAWN upstream on 2026-07-09\n\n→ How we run these scans (/methodology)"
  }
 }
