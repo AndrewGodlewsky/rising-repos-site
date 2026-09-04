@@ -1,0 +1,283 @@
+{
+ "security": {
+  "repo_id": 173228436,
+  "commit_sha": "2035b8153afaf7ce2edde24a2c80b62bbcf5127f",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no lockfile or dependency manifest osv-scanner reads",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no lockfile or dependency manifest osv-scanner reads",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 19,
+    "findings": [
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/build-ghidra-multi-platform-artifact.yml",
+      "line": 15,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/build-ghidra-multi-platform-artifact.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/build-ghidra-multi-platform-artifact.yml",
+      "line": 7,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/build-ghidra-multi-platform-artifact.yml",
+      "line": 55,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-ghidra-multi-platform-artifact.yml",
+      "line": 16,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-ghidra-multi-platform-artifact.yml",
+      "line": 23,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-ghidra-multi-platform-artifact.yml",
+      "line": 35,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-ghidra-multi-platform-artifact.yml",
+      "line": 42,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-ghidra-multi-platform-artifact.yml",
+      "line": 49,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-ghidra-multi-platform-artifact.yml",
+      "line": 61,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-ghidra-multi-platform-artifact.yml",
+      "line": 79,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/build-ghidra.yml",
+      "line": 14,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/build-ghidra.yml",
+      "line": 6,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-ghidra.yml",
+      "line": 15,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-ghidra.yml",
+      "line": 21,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/dependency-submission.yml",
+      "line": 15,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/dependency-submission.yml",
+      "line": 16,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/dependency-submission.yml",
+      "line": 22,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/dependency-submission.yml",
+      "line": 31,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "findings",
+    "finding_count": 7,
+    "findings": [
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "Ghidra/Features/BSim/src/main/java/ghidra/features/bsim/query/BSimControlLaunchable.java",
+      "line": 569
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "Ghidra/Test/IntegrationTest/src/test.slow/java/ghidra/server/remote/SSHKeyUtil.java",
+      "line": 182
+     },
+     {
+      "rule": "betterleaks.curl-auth-user",
+      "level": "error",
+      "file": "Ghidra\\Features\\BSim\\src\\main\\help\\help\\topics\\BSim\\DatabaseConfiguration.html",
+      "line": 672
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "Ghidra\\Features\\BSim\\src\\main\\java\\ghidra\\features\\bsim\\query\\BSimControlLaunchable.java",
+      "line": 569
+     },
+     {
+      "rule": "betterleaks.square-access-token",
+      "level": "error",
+      "file": "Ghidra\\Features\\Base\\data\\typeinfo\\win32\\msvcrt\\iids.txt",
+      "line": 13848
+     },
+     {
+      "rule": "betterleaks.square-access-token",
+      "level": "error",
+      "file": "Ghidra\\Features\\Base\\data\\typeinfo\\win32\\msvcrt\\iids.txt",
+      "line": 13849
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "Ghidra\\Test\\IntegrationTest\\src\\test.slow\\java\\ghidra\\server\\remote\\SSHKeyUtil.java",
+      "line": 182
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "26 findings · 1 check pending · 4 checks not applicable",
+  "block": "SECURITY · commit 2035b81\n\n  Dependency vulnerabilities\n    nothing to check — no lockfile or dependency manifest osv-scanner reads\n\n  Known-malicious packages\n    nothing to check — no lockfile or dependency manifest osv-scanner reads\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    19 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/build-ghidra-multi-platform-artifact.yml:15\n      excessive-permissions  .github/workflows/build-ghidra-multi-platform-artifact.yml:1\n      excessive-permissions  .github/workflows/build-ghidra-multi-platform-artifact.yml:7\n      excessive-permissions  .github/workflows/build-ghidra-multi-platform-artifact.yml:55\n      unpinned-uses  .github/workflows/build-ghidra-multi-platform-artifact.yml:16\n      unpinned-uses  .github/workflows/build-ghidra-multi-platform-artifact.yml:23\n      unpinned-uses  .github/workflows/build-ghidra-multi-platform-artifact.yml:35\n      unpinned-uses  .github/workflows/build-ghidra-multi-platform-artifact.yml:42\n      unpinned-uses  .github/workflows/build-ghidra-multi-platform-artifact.yml:49\n      unpinned-uses  .github/workflows/build-ghidra-multi-platform-artifact.yml:61\n      unpinned-uses  .github/workflows/build-ghidra-multi-platform-artifact.yml:79\n      artipacked  .github/workflows/build-ghidra.yml:14\n      excessive-permissions  .github/workflows/build-ghidra.yml:6\n      unpinned-uses  .github/workflows/build-ghidra.yml:15\n      unpinned-uses  .github/workflows/build-ghidra.yml:21\n      artipacked  .github/workflows/dependency-submission.yml:15\n      unpinned-uses  .github/workflows/dependency-submission.yml:16\n      unpinned-uses  .github/workflows/dependency-submission.yml:22\n      unpinned-uses  .github/workflows/dependency-submission.yml:31\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    7 findings                       kingfisher 2.1.0 · 2026-09-03\n      betterleaks.private-key  Ghidra/Features/BSim/src/main/java/ghidra/features/bsim/query/BSimControlLaunchable.java:569\n      betterleaks.private-key  Ghidra/Test/IntegrationTest/src/test.slow/java/ghidra/server/remote/SSHKeyUtil.java:182\n      betterleaks.curl-auth-user  Ghidra\\Features\\BSim\\src\\main\\help\\help\\topics\\BSim\\DatabaseConfiguration.html:672\n      betterleaks.private-key  Ghidra\\Features\\BSim\\src\\main\\java\\ghidra\\features\\bsim\\query\\BSimControlLaunchable.java:569\n      betterleaks.square-access-token  Ghidra\\Features\\Base\\data\\typeinfo\\win32\\msvcrt\\iids.txt:13848\n      betterleaks.square-access-token  Ghidra\\Features\\Base\\data\\typeinfo\\win32\\msvcrt\\iids.txt:13849\n      betterleaks.private-key  Ghidra\\Test\\IntegrationTest\\src\\test.slow\\java\\ghidra\\server\\remote\\SSHKeyUtil.java:182\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

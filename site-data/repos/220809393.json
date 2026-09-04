@@ -1,0 +1,334 @@
+{
+ "security": {
+  "repo_id": 220809393,
+  "commit_sha": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 9,
+    "findings": [
+     {
+      "id": "CVE-2026-4539",
+      "aliases": [],
+      "package": "pygments",
+      "version": "2.19.2",
+      "file": "poetry.lock",
+      "message": "Package 'pygments@2.19.2' is vulnerable to 'CVE-2026-4539' (also known as 'PYSEC-2026-2987', 'GHSA-5239-wwwm-4pmq')."
+     },
+     {
+      "id": "CVE-2026-22702",
+      "aliases": [],
+      "package": "virtualenv",
+      "version": "20.34.0",
+      "file": "poetry.lock",
+      "message": "Package 'virtualenv@20.34.0' is vulnerable to 'CVE-2026-22702' (also known as 'BIT-virtualenv-2026-22702', 'PYSEC-2026-2009', 'GHSA-597g-3phw-6986')."
+     },
+     {
+      "id": "CVE-2025-71176",
+      "aliases": [],
+      "package": "pytest",
+      "version": "7.4.4",
+      "file": "poetry.lock",
+      "message": "Package 'pytest@7.4.4' is vulnerable to 'CVE-2025-71176' (also known as 'PYSEC-2026-1845', 'GHSA-6w46-j5rx-g56g')."
+     },
+     {
+      "id": "CVE-2024-21503",
+      "aliases": [],
+      "package": "black",
+      "version": "22.12.0",
+      "file": "poetry.lock",
+      "message": "Package 'black@22.12.0' is vulnerable to 'CVE-2024-21503' (also known as 'PYSEC-2024-48', 'GHSA-fj7x-q9j7-g6q6')."
+     },
+     {
+      "id": "CVE-2026-22701",
+      "aliases": [],
+      "package": "filelock",
+      "version": "3.16.1",
+      "file": "poetry.lock",
+      "message": "Package 'filelock@3.16.1' is vulnerable to 'CVE-2026-22701' (also known as 'PYSEC-2026-1374', 'GHSA-qmgc-5h2g-mvrw')."
+     },
+     {
+      "id": "CVE-2025-68146",
+      "aliases": [],
+      "package": "filelock",
+      "version": "3.16.1",
+      "file": "poetry.lock",
+      "message": "Package 'filelock@3.16.1' is vulnerable to 'CVE-2025-68146' (also known as 'PYSEC-2026-1375', 'GHSA-w853-jp5j-5j7f')."
+     },
+     {
+      "id": "CVE-2026-31900",
+      "aliases": [],
+      "package": "black",
+      "version": "22.12.0",
+      "file": "poetry.lock",
+      "message": "Package 'black@22.12.0' is vulnerable to 'CVE-2026-31900' (also known as 'PYSEC-2026-2120', 'GHSA-v53h-f6m7-xcgm')."
+     },
+     {
+      "id": "CVE-2026-32274",
+      "aliases": [],
+      "package": "black",
+      "version": "22.12.0",
+      "file": "poetry.lock",
+      "message": "Package 'black@22.12.0' is vulnerable to 'CVE-2026-32274' (also known as 'PYSEC-2026-2121', 'GHSA-3936-cmfr-pm3m')."
+     },
+     {
+      "id": "CVE-2026-7246",
+      "aliases": [],
+      "package": "click",
+      "version": "8.1.8",
+      "file": "poetry.lock",
+      "message": "Package 'click@8.1.8' is vulnerable to 'CVE-2026-7246' (also known as 'PYSEC-2026-2132', 'GHSA-47fr-3ffg-hgmw')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 22,
+    "findings": [
+     {
+      "rule": "dependabot-cooldown",
+      "level": "warning",
+      "file": ".github/dependabot.yml",
+      "line": 8,
+      "message": "insufficient cooldown in Dependabot updates: insufficient implicit default-days (less than 7)"
+     },
+     {
+      "rule": "dependabot-cooldown",
+      "level": "warning",
+      "file": ".github/dependabot.yml",
+      "line": 12,
+      "message": "insufficient cooldown in Dependabot updates: insufficient implicit default-days (less than 7)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/codeql.yml",
+      "line": 31,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/codeql.yml",
+      "line": 32,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/codeql.yml",
+      "line": 36,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/codeql.yml",
+      "line": 50,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/codeql.yml",
+      "line": 63,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/codespell.yml",
+      "line": 7,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/codespell.yml",
+      "line": 4,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/codespell.yml",
+      "line": 7,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/newissue.yml",
+      "line": 11,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/newissue.yml",
+      "line": 11,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/newissue.yml",
+      "line": 22,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/pythonpackage.yml",
+      "line": 19,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pythonpackage.yml",
+      "line": 6,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pythonpackage.yml",
+      "line": 19,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pythonpackage.yml",
+      "line": 21,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pythonpackage.yml",
+      "line": 27,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pythonpackage.yml",
+      "line": 47,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/readmechanged.yml",
+      "line": 14,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/readmechanged.yml",
+      "line": 11,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/readmechanged.yml",
+      "line": 14,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "31 findings · 1 check pending · 1 check not applicable",
+  "block": "SECURITY · commit 9d8f9a3\n\n  Dependency vulnerabilities\n    9 findings                       osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-4539  pygments@2.19.2\n      CVE-2026-22702  virtualenv@20.34.0\n      CVE-2025-71176  pytest@7.4.4\n      CVE-2024-21503  black@22.12.0\n      CVE-2026-22701  filelock@3.16.1\n      CVE-2025-68146  filelock@3.16.1\n      CVE-2026-31900  black@22.12.0\n      CVE-2026-32274  black@22.12.0\n      CVE-2026-7246  click@8.1.8\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    22 findings                      zizmor 1.30.0 · 2026-09-03\n      dependabot-cooldown  .github/dependabot.yml:8\n      dependabot-cooldown  .github/dependabot.yml:12\n      artipacked  .github/workflows/codeql.yml:31\n      unpinned-uses  .github/workflows/codeql.yml:32\n      unpinned-uses  .github/workflows/codeql.yml:36\n      unpinned-uses  .github/workflows/codeql.yml:50\n      unpinned-uses  .github/workflows/codeql.yml:63\n      artipacked  .github/workflows/codespell.yml:7\n      excessive-permissions  .github/workflows/codespell.yml:4\n      unpinned-uses  .github/workflows/codespell.yml:7\n      artipacked  .github/workflows/newissue.yml:11\n      unpinned-uses  .github/workflows/newissue.yml:11\n      unpinned-uses  .github/workflows/newissue.yml:22\n      artipacked  .github/workflows/pythonpackage.yml:19\n      excessive-permissions  .github/workflows/pythonpackage.yml:6\n      unpinned-uses  .github/workflows/pythonpackage.yml:19\n      unpinned-uses  .github/workflows/pythonpackage.yml:21\n      unpinned-uses  .github/workflows/pythonpackage.yml:27\n      unpinned-uses  .github/workflows/pythonpackage.yml:47\n      artipacked  .github/workflows/readmechanged.yml:14\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

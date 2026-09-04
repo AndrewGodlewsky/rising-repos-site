@@ -1,0 +1,1737 @@
+{
+ "security": {
+  "repo_id": 1211139949,
+  "commit_sha": "06dd052602dd9a369e4d034e24faef0917b5a60c",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 4,
+    "findings": [
+     {
+      "id": "CVE-2026-75931",
+      "aliases": [
+       "GHSA-5jgf-p345-68v8"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.5",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.5' is vulnerable to 'CVE-2026-75931' (also known as 'GHSA-5jgf-p345-68v8')."
+     },
+     {
+      "id": "CVE-2026-75975",
+      "aliases": [
+       "GHSA-f65p-4m7j-42xc"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.5",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.5' is vulnerable to 'CVE-2026-75975' (also known as 'GHSA-f65p-4m7j-42xc')."
+     },
+     {
+      "id": "CVE-2026-75899",
+      "aliases": [
+       "GHSA-fph4-wmhf-6fwf"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.5",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.5' is vulnerable to 'CVE-2026-75899' (also known as 'GHSA-fph4-wmhf-6fwf')."
+     },
+     {
+      "id": "CVE-2026-76172",
+      "aliases": [
+       "GHSA-jqff-g426-hqxp"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.5",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.5' is vulnerable to 'CVE-2026-76172' (also known as 'GHSA-jqff-g426-hqxp')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 54,
+    "findings": [
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 15,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 31,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 76,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 91,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 151,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 188,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 9,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 28,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 73,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 88,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 143,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 15,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 16,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 31,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 32,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 37,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 76,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 77,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 91,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 92,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 151,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 152,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 188,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 203,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 206,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 212,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/dsh.yml",
+      "line": 33,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/dsh.yml",
+      "line": 48,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/dsh.yml",
+      "line": 73,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/dsh.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/dsh.yml",
+      "line": 29,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/dsh.yml",
+      "line": 42,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/dsh.yml",
+      "line": 60,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/dsh.yml",
+      "line": 33,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/dsh.yml",
+      "line": 36,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/dsh.yml",
+      "line": 48,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/dsh.yml",
+      "line": 51,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/dsh.yml",
+      "line": 54,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/dsh.yml",
+      "line": 73,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/dsh.yml",
+      "line": 76,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/dsh.yml",
+      "line": 79,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/dsh.yml",
+      "line": 36,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `package-manager-cache` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/dsh.yml",
+      "line": 51,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `package-manager-cache` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/dsh.yml",
+      "line": 76,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `package-manager-cache` enables caching"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/release.yml",
+      "line": 14,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/release.yml",
+      "line": 14,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/release.yml",
+      "line": 18,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/release.yml",
+      "line": 31,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/release.yml",
+      "line": 96,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/release.yml",
+      "line": 18,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `package-manager-cache` enables caching"
+     },
+     {
+      "rule": "superfluous-actions",
+      "level": "note",
+      "file": ".github/workflows/release.yml",
+      "line": 96,
+      "message": "action functionality is already included by the runner: use `gh release` in a script step"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/star-history.yml",
+      "line": 19,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/star-history.yml",
+      "line": 19,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "findings",
+    "finding_count": 110,
+    "findings": [
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.75,
+      "file": ".github/workflows/ci.yml",
+      "line": 42,
+      "message": "Chaining Abuse",
+      "finding": "&& sudo"
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.75,
+      "file": ".github/workflows/release.yml",
+      "line": 36,
+      "message": "Chaining Abuse",
+      "finding": "&& sudo"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "CHANGELOG.md",
+      "line": 269,
+      "message": "Direct Prompt Extraction",
+      "finding": "print rules"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": ".github/ISSUE_TEMPLATE/bug-report.yml",
+      "line": 111,
+      "message": "Credential Access",
+      "finding": "access tokens"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": ".github/ISSUE_TEMPLATE/showcase.yml",
+      "line": 108,
+      "message": "Credential Access",
+      "finding": "access tokens"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "CONTRIBUTING.md",
+      "line": 16,
+      "message": "Credential Access",
+      "finding": "access tokens"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "SECURITY.md",
+      "line": 32,
+      "message": "Credential Access",
+      "finding": "access tokens"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 5104,
+      "message": "Hidden Instructions",
+      "finding": "<!-- =================================================================\n             ARROW EXAMPLES (use .a-* classes and stroke-width on the line)\n             ========================================"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 5246,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Legend -->\n        <g data-legend=\"\" data-legend-bridge=\"\">\n          <text x=\"40\" y=\"704\" class=\"t-primary\" font-size=\"12\" font-weight=\"650\">Legend</text>\n          <g data-legend-semantic-kind="
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 34,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Async font load: a blackholed network must not block first paint.\n       The body font stack falls back to system monospace until it lands. -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 34,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Async font load: a blackholed network must not block first paint.\n       The body font stack falls back to system monospace until it lands. -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 34,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Async font load: a blackholed network must not block first paint.\n       The body font stack falls back to system monospace until it lands. -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 4852,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Toolbar: theme, live visual style, trace motion, presentation stage, and export.\n       Motion appears only for trace-enabled artifacts and has no shortcut;\n       Keyboard: T toggles theme, S cy"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 4852,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Toolbar: theme, live visual style, trace motion, presentation stage, and export.\n       Motion appears only for trace-enabled artifacts and has no shortcut;\n       Keyboard: T toggles theme, S cy"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 4852,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Toolbar: theme, live visual style, trace motion, presentation stage, and export.\n       Motion appears only for trace-enabled artifacts and has no shortcut;\n       Keyboard: T toggles theme, S cy"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/ci.yml",
+      "line": 42,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/release.yml",
+      "line": 36,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "EA4",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Unbounded Resource Access",
+      "confidence": 0.75,
+      "file": "ROADMAP.md",
+      "line": 54,
+      "message": "Unbounded Resource Access",
+      "finding": "loop forever"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 7437,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8111,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8205,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8368,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8373,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8422,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8551,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8716,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8732,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8736,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8741,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8747,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8753,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8759,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/assets/template.html",
+      "line": 8761,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 7548,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8222,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8316,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8479,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8484,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8533,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8662,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8827,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8843,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8847,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8852,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8858,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8864,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8870,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/dataflow-product-analytics.html",
+      "line": 8872,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 7497,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8171,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8265,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8428,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8433,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8482,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8611,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8776,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8792,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8796,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8801,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8807,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8813,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8819,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "archify.zip!/archify/examples/lifecycle-agent-run.html",
+      "line": 8821,
+      "message": "Session Persistence",
+      "finding": "pList"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README.md",
+      "line": 105,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README_EN.md",
+      "line": 105,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README_ZH.md",
+      "line": 100,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "archify/test/cursor-onboarding.test.mjs",
+      "line": 12,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "archify/test/landing.test.mjs",
+      "line": 33,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "archify/test/start-page.test.mjs",
+      "line": 130,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "archify/test/start-page.test.mjs",
+      "line": 131,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/index.html",
+      "line": 791,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/index.html",
+      "line": 797,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/research-cursor-onboarding-2026-07.md",
+      "line": 13,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/research-cursor-onboarding-2026-07.md",
+      "line": 16,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/start.html",
+      "line": 244,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/start.html",
+      "line": 248,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/start.html",
+      "line": 390,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/start.html",
+      "line": 391,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "scripts/start-template.html",
+      "line": 244,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "scripts/start-template.html",
+      "line": 248,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "scripts/start-template.html",
+      "line": 390,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "scripts/start-template.html",
+      "line": 391,
+      "message": "MCP server referenced without pinned version: 'npx -y skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "CHANGELOG.md",
+      "line": 169,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README.md",
+      "line": 31,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README.md",
+      "line": 99,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README.md",
+      "line": 111,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README_EN.md",
+      "line": 31,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README_EN.md",
+      "line": 99,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README_EN.md",
+      "line": 111,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README_ZH.md",
+      "line": 27,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README_ZH.md",
+      "line": 94,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README_ZH.md",
+      "line": 106,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "archify/test/release-identity.test.mjs",
+      "line": 407,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "archify/test/skill-metadata.test.mjs",
+      "line": 59,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/authoring-cookbook.md",
+      "line": 18,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/authoring-cookbook.zh-CN.md",
+      "line": 18,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/index.html",
+      "line": 745,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/index.html",
+      "line": 793,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/index.html",
+      "line": 799,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/index.html",
+      "line": 816,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/index.html",
+      "line": 894,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/index.html",
+      "line": 954,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/research-cursor-onboarding-2026-07.md",
+      "line": 108,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/research/skill-plugin-update-reminder-market-design.md",
+      "line": 46,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/skill-embedded-optional-update-notifier-design.md",
+      "line": 50,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "integrations/deepseek-harness/scripts/distribution-acceptance.mjs",
+      "line": 442,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "integrations/deepseek-harness/test/docs-contract.test.mjs",
+      "line": 59,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "integrations/deepseek-harness/test/docs-contract.test.mjs",
+      "line": 60,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/research-cursor-onboarding-2026-07.md",
+      "line": 115,
+      "message": "MCP server referenced without pinned version: 'npx gitnexus'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "integrations/deepseek-harness/test/resolve-cli.test.mjs",
+      "line": 6,
+      "message": "MCP server referenced without pinned version: 'npx and'.",
+      "finding": ""
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "168 findings · 1 check pending · 1 check not applicable",
+  "block": "SECURITY · commit 06dd052\n\n  Dependency vulnerabilities\n    4 findings                       osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-75931  fast-uri@3.1.5\n      CVE-2026-75975  fast-uri@3.1.5\n      CVE-2026-75899  fast-uri@3.1.5\n      CVE-2026-76172  fast-uri@3.1.5\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    54 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/ci.yml:15\n      artipacked  .github/workflows/ci.yml:31\n      artipacked  .github/workflows/ci.yml:76\n      artipacked  .github/workflows/ci.yml:91\n      artipacked  .github/workflows/ci.yml:151\n      artipacked  .github/workflows/ci.yml:188\n      excessive-permissions  .github/workflows/ci.yml:1\n      excessive-permissions  .github/workflows/ci.yml:9\n      excessive-permissions  .github/workflows/ci.yml:28\n      excessive-permissions  .github/workflows/ci.yml:73\n      excessive-permissions  .github/workflows/ci.yml:88\n      excessive-permissions  .github/workflows/ci.yml:143\n      unpinned-uses  .github/workflows/ci.yml:15\n      unpinned-uses  .github/workflows/ci.yml:16\n      unpinned-uses  .github/workflows/ci.yml:31\n      unpinned-uses  .github/workflows/ci.yml:32\n      unpinned-uses  .github/workflows/ci.yml:37\n      unpinned-uses  .github/workflows/ci.yml:76\n      unpinned-uses  .github/workflows/ci.yml:77\n      unpinned-uses  .github/workflows/ci.yml:91\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    110 findings                     skillspector 2.11.0 · 2026-09-03\n      TM2 HIGH  .github/workflows/ci.yml:42  Chaining Abuse\n      TM2 HIGH  .github/workflows/release.yml:36  Chaining Abuse\n      P6 HIGH  CHANGELOG.md:269  Direct Prompt Extraction\n      PE3 HIGH  .github/ISSUE_TEMPLATE/bug-report.yml:111  Credential Access\n      PE3 HIGH  .github/ISSUE_TEMPLATE/showcase.yml:108  Credential Access\n      PE3 HIGH  CONTRIBUTING.md:16  Credential Access\n      PE3 HIGH  SECURITY.md:32  Credential Access\n      P2 HIGH  archify.zip!/archify/assets/template.html:5104  Hidden Instructions\n      P2 HIGH  archify.zip!/archify/examples/dataflow-product-analytics.html:5246  Hidden Instructions\n      P2 HIGH  archify.zip!/archify/assets/template.html:34  Hidden Instructions\n      P2 HIGH  archify.zip!/archify/examples/dataflow-product-analytics.html:34  Hidden Instructions\n      P2 HIGH  archify.zip!/archify/examples/lifecycle-agent-run.html:34  Hidden Instructions\n      P2 HIGH  archify.zip!/archify/assets/template.html:4852  Hidden Instructions\n      P2 HIGH  archify.zip!/archify/examples/dataflow-product-analytics.html:4852  Hidden Instructions\n      P2 HIGH  archify.zip!/archify/examples/lifecycle-agent-run.html:4852  Hidden Instructions\n      PE2 MEDIUM  .github/workflows/ci.yml:42  Sudo/Root Execution\n      PE2 MEDIUM  .github/workflows/release.yml:36  Sudo/Root Execution\n      EA4 MEDIUM  ROADMAP.md:54  Unbounded Resource Access\n      RA2 MEDIUM  archify.zip!/archify/assets/template.html:7437  Session Persistence\n      RA2 MEDIUM  archify.zip!/archify/assets/template.html:8111  Session Persistence\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

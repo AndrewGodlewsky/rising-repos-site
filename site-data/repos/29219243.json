@@ -1,0 +1,558 @@
+{
+ "security": {
+  "repo_id": 29219243,
+  "commit_sha": "6b09e61cd77c00020c24676f926d7374afd5dd04",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 52,
+    "findings": [
+     {
+      "id": "CVE-2025-8556",
+      "aliases": [],
+      "package": "github.com/cloudflare/circl",
+      "version": "1.3.7",
+      "file": "go.mod",
+      "message": "Package 'github.com/cloudflare/circl@1.3.7' is vulnerable to 'CVE-2025-8556' (also known as 'GO-2025-3754', 'GHSA-2x5j-vhc8-9cwm')."
+     },
+     {
+      "id": "CVE-2026-39828",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-39828' (also known as 'GO-2026-5014', 'GHSA-45gg-vh54-h5m9')."
+     },
+     {
+      "id": "CVE-2023-45288",
+      "aliases": [],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2023-45288' (also known as 'BIT-golang-2023-45288', 'GO-2024-2687', 'GHSA-4v7x-pqxf-cx7m')."
+     },
+     {
+      "id": "CVE-2026-42508",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-42508' (also known as 'GO-2026-5021', 'GHSA-5cgq-3rg8-m6cv')."
+     },
+     {
+      "id": "CVE-2026-25680",
+      "aliases": [],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2026-25680' (also known as 'GO-2026-5028', 'GHSA-5cv4-jp36-h3mw')."
+     },
+     {
+      "id": "CVE-2026-39835",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-39835' (also known as 'GO-2026-5015', 'GHSA-78mq-xcr3-xm33')."
+     },
+     {
+      "id": "CVE-2026-39831",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-39831' (also known as 'GO-2026-5019', 'GHSA-89gr-r52h-f8rx')."
+     },
+     {
+      "id": "CVE-2024-24786",
+      "aliases": [],
+      "package": "google.golang.org/protobuf",
+      "version": "1.32.0",
+      "file": "go.mod",
+      "message": "Package 'google.golang.org/protobuf@1.32.0' is vulnerable to 'CVE-2024-24786' (also known as 'GO-2024-2611', 'GHSA-8r3f-844c-mc37')."
+     },
+     {
+      "id": "CVE-2026-46598",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-46598' (also known as 'GO-2026-5033', 'GHSA-9m57-25v3-79x9')."
+     },
+     {
+      "id": "CVE-2026-39832",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-39832' (also known as 'GO-2026-5006', 'GHSA-f5wc-c3c7-36mc')."
+     },
+     {
+      "id": "CVE-2025-47914",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2025-47914' (also known as 'GO-2025-4135', 'GHSA-f6x5-jh6r-wrfv')."
+     },
+     {
+      "id": "CVE-2025-22869",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2025-22869' (also known as 'GO-2025-3487', 'GHSA-hcg3-q754-cr77')."
+     },
+     {
+      "id": "GO-2026-6061",
+      "aliases": [
+       "GHSA-hrxh-6v49-42gf"
+      ],
+      "package": "google.golang.org/grpc",
+      "version": "1.60.1",
+      "file": "go.mod",
+      "message": "Package 'google.golang.org/grpc@1.60.1' is vulnerable to 'GO-2026-6061' (also known as 'GHSA-hrxh-6v49-42gf')."
+     },
+     {
+      "id": "CVE-2025-58181",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2025-58181' (also known as 'GO-2025-4134', 'GHSA-j5w8-q4qc-rx2x')."
+     },
+     {
+      "id": "CVE-2025-58058",
+      "aliases": [],
+      "package": "github.com/ulikunitz/xz",
+      "version": "0.5.11",
+      "file": "go.mod",
+      "message": "Package 'github.com/ulikunitz/xz@0.5.11' is vulnerable to 'CVE-2025-58058' (also known as 'GO-2025-3922', 'GHSA-jc7w-c686-c4v9')."
+     },
+     {
+      "id": "CVE-2026-39833",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-39833' (also known as 'GO-2026-5005', 'GHSA-jppx-rxg9-jmrx')."
+     },
+     {
+      "id": "CVE-2026-33186",
+      "aliases": [],
+      "package": "google.golang.org/grpc",
+      "version": "1.60.1",
+      "file": "go.mod",
+      "message": "Package 'google.golang.org/grpc@1.60.1' is vulnerable to 'CVE-2026-33186' (also known as 'GO-2026-4762', 'GHSA-p77j-4mvh-x3m3')."
+     },
+     {
+      "id": "CVE-2026-46597",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-46597' (also known as 'GO-2026-5013', 'GHSA-q4h4-gmj2-qvw2')."
+     },
+     {
+      "id": "CVE-2026-1229",
+      "aliases": [],
+      "package": "github.com/cloudflare/circl",
+      "version": "1.3.7",
+      "file": "go.mod",
+      "message": "Package 'github.com/cloudflare/circl@1.3.7' is vulnerable to 'CVE-2026-1229' (also known as 'GO-2026-4550', 'GHSA-q9hv-hpm4-hj6x')."
+     },
+     {
+      "id": "CVE-2026-39827",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-39827' (also known as 'GO-2026-5016', 'GHSA-qpw4-5x99-6vjp')."
+     },
+     {
+      "id": "CVE-2025-22870",
+      "aliases": [],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2025-22870' (also known as 'GO-2025-3503', 'GHSA-qxp5-gwg8-xv66')."
+     },
+     {
+      "id": "CVE-2026-39834",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-39834' (also known as 'GO-2026-5020', 'GHSA-rm3j-f69w-wqmq')."
+     },
+     {
+      "id": "CVE-2024-45337",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2024-45337' (also known as 'GO-2024-3321', 'GHSA-v778-237x-gjrc')."
+     },
+     {
+      "id": "CVE-2026-39830",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-39830' (also known as 'GO-2026-5017', 'GHSA-vgwf-h737-ff37')."
+     },
+     {
+      "id": "CVE-2026-84304",
+      "aliases": [
+       "GHSA-vp52-pcj8-j9qc"
+      ],
+      "package": "google.golang.org/grpc",
+      "version": "1.60.1",
+      "file": "go.mod",
+      "message": "Package 'google.golang.org/grpc@1.60.1' is vulnerable to 'CVE-2026-84304' (also known as 'GHSA-vp52-pcj8-j9qc')."
+     },
+     {
+      "id": "CVE-2025-71405",
+      "aliases": [],
+      "package": "github.com/go-chi/chi/v5",
+      "version": "5.0.11",
+      "file": "go.mod",
+      "message": "Package 'github.com/go-chi/chi/v5@5.0.11' is vulnerable to 'CVE-2025-71405' (also known as 'GO-2025-3770', 'GHSA-vrw8-fxc6-2r93')."
+     },
+     {
+      "id": "CVE-2025-22872",
+      "aliases": [],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2025-22872' (also known as 'GO-2025-3595', 'GHSA-vvgc-356p-c3xw')."
+     },
+     {
+      "id": "CVE-2026-39829",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-39829' (also known as 'GO-2026-5018', 'GHSA-w879-237q-wc7r')."
+     },
+     {
+      "id": "CVE-2026-46595",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-46595' (also known as 'GO-2026-5023', 'GHSA-x527-x647-q7gg')."
+     },
+     {
+      "id": "CVE-2024-45338",
+      "aliases": [],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2024-45338' (also known as 'GO-2024-3333', 'GHSA-w32m-9786-jp63')."
+     },
+     {
+      "id": "CVE-2025-47913",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2025-47913' (also known as 'GO-2025-4116', 'GHSA-56w8-48fp-6mgv')."
+     },
+     {
+      "id": "CVE-2025-47911",
+      "aliases": [],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2025-47911' (also known as 'GO-2026-4440', 'GHSA-w4gw-w5jq-g9jh')."
+     },
+     {
+      "id": "CVE-2025-58190",
+      "aliases": [
+       "GO-2026-4441"
+      ],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2025-58190' (also known as 'GO-2026-4441')."
+     },
+     {
+      "id": "CVE-2026-33814",
+      "aliases": [],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2026-33814' (also known as 'BIT-golang-2026-33814', 'GO-2026-4918')."
+     },
+     {
+      "id": "CVE-2026-39824",
+      "aliases": [
+       "GO-2026-5024"
+      ],
+      "package": "golang.org/x/sys",
+      "version": "0.15.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/sys@0.15.0' is vulnerable to 'CVE-2026-39824' (also known as 'GO-2026-5024')."
+     },
+     {
+      "id": "CVE-2026-42506",
+      "aliases": [
+       "GO-2026-5025"
+      ],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2026-42506' (also known as 'GO-2026-5025')."
+     },
+     {
+      "id": "CVE-2026-39821",
+      "aliases": [
+       "GO-2026-5026"
+      ],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2026-39821' (also known as 'GO-2026-5026')."
+     },
+     {
+      "id": "CVE-2026-42502",
+      "aliases": [
+       "GO-2026-5027"
+      ],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2026-42502' (also known as 'GO-2026-5027')."
+     },
+     {
+      "id": "CVE-2026-25681",
+      "aliases": [
+       "GO-2026-5029"
+      ],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2026-25681' (also known as 'GO-2026-5029')."
+     },
+     {
+      "id": "CVE-2026-27136",
+      "aliases": [
+       "GO-2026-5030"
+      ],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2026-27136' (also known as 'GO-2026-5030')."
+     },
+     {
+      "id": "CVE-2026-72817",
+      "aliases": [],
+      "package": "github.com/go-chi/chi/v5",
+      "version": "5.0.11",
+      "file": "go.mod",
+      "message": "Package 'github.com/go-chi/chi/v5@5.0.11' is vulnerable to 'CVE-2026-72817' (also known as 'GO-2026-5775', 'GHSA-9g5q-2w5x-hmxf')."
+     },
+     {
+      "id": "CVE-2026-72816",
+      "aliases": [],
+      "package": "github.com/go-chi/chi/v5",
+      "version": "5.0.11",
+      "file": "go.mod",
+      "message": "Package 'github.com/go-chi/chi/v5@5.0.11' is vulnerable to 'CVE-2026-72816' (also known as 'GO-2026-5777', 'GHSA-rjr7-jggh-pgcp')."
+     },
+     {
+      "id": "GO-2026-5841",
+      "aliases": [
+       "GHSA-259r-337f-4rfw"
+      ],
+      "package": "github.com/klauspost/compress",
+      "version": "1.17.4",
+      "file": "go.mod",
+      "message": "Package 'github.com/klauspost/compress@1.17.4' is vulnerable to 'GO-2026-5841' (also known as 'GHSA-259r-337f-4rfw')."
+     },
+     {
+      "id": "GO-2026-5932",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'GO-2026-5932'."
+     },
+     {
+      "id": "CVE-2026-46600",
+      "aliases": [],
+      "package": "golang.org/x/net",
+      "version": "0.19.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/net@0.19.0' is vulnerable to 'CVE-2026-46600' (also known as 'BIT-golang-2026-46600', 'GO-2026-5942')."
+     },
+     {
+      "id": "CVE-2026-56852",
+      "aliases": [
+       "GO-2026-5970"
+      ],
+      "package": "golang.org/x/text",
+      "version": "0.14.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/text@0.14.0' is vulnerable to 'CVE-2026-56852' (also known as 'GO-2026-5970')."
+     },
+     {
+      "id": "CVE-2026-56865",
+      "aliases": [],
+      "package": "golang.org/x/mod",
+      "version": "0.14.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/mod@0.14.0' is vulnerable to 'CVE-2026-56865' (also known as 'BIT-golang-2026-56865', 'GO-2026-6179')."
+     },
+     {
+      "id": "CVE-2026-56864",
+      "aliases": [],
+      "package": "golang.org/x/mod",
+      "version": "0.14.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/mod@0.14.0' is vulnerable to 'CVE-2026-56864' (also known as 'BIT-golang-2026-56864', 'GO-2026-6180')."
+     },
+     {
+      "id": "GO-2026-6237",
+      "aliases": [],
+      "package": "github.com/insomniacslk/dhcp",
+      "version": "0.0.0-20231206064809-8c70d406f6d2",
+      "file": "go.mod",
+      "message": "Package 'github.com/insomniacslk/dhcp@0.0.0-20231206064809-8c70d406f6d2' is vulnerable to 'GO-2026-6237'."
+     },
+     {
+      "id": "CVE-2026-56854",
+      "aliases": [
+       "GO-2026-6303"
+      ],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-56854' (also known as 'GO-2026-6303')."
+     },
+     {
+      "id": "CVE-2026-78662",
+      "aliases": [
+       "GO-2026-6354"
+      ],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-78662' (also known as 'GO-2026-6354')."
+     },
+     {
+      "id": "CVE-2026-56855",
+      "aliases": [
+       "GO-2026-6355"
+      ],
+      "package": "golang.org/x/crypto",
+      "version": "0.17.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.17.0' is vulnerable to 'CVE-2026-56855' (also known as 'GO-2026-6355')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no .github/workflows in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "findings",
+    "finding_count": 1,
+    "findings": [
+     {
+      "rule": "betterleaks.gcp-api-key",
+      "level": "error",
+      "file": "fqnews2\\app\\src\\fqnews\\google-services.json",
+      "line": 24
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "53 findings · 1 check pending · 3 checks not applicable",
+  "block": "SECURITY · commit 6b09e61\n\n  Dependency vulnerabilities\n    52 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2025-8556  github.com/cloudflare/circl@1.3.7\n      CVE-2026-39828  golang.org/x/crypto@0.17.0\n      CVE-2023-45288  golang.org/x/net@0.19.0\n      CVE-2026-42508  golang.org/x/crypto@0.17.0\n      CVE-2026-25680  golang.org/x/net@0.19.0\n      CVE-2026-39835  golang.org/x/crypto@0.17.0\n      CVE-2026-39831  golang.org/x/crypto@0.17.0\n      CVE-2024-24786  google.golang.org/protobuf@1.32.0\n      CVE-2026-46598  golang.org/x/crypto@0.17.0\n      CVE-2026-39832  golang.org/x/crypto@0.17.0\n      CVE-2025-47914  golang.org/x/crypto@0.17.0\n      CVE-2025-22869  golang.org/x/crypto@0.17.0\n      GO-2026-6061  google.golang.org/grpc@1.60.1\n      CVE-2025-58181  golang.org/x/crypto@0.17.0\n      CVE-2025-58058  github.com/ulikunitz/xz@0.5.11\n      CVE-2026-39833  golang.org/x/crypto@0.17.0\n      CVE-2026-33186  google.golang.org/grpc@1.60.1\n      CVE-2026-46597  golang.org/x/crypto@0.17.0\n      CVE-2026-1229  github.com/cloudflare/circl@1.3.7\n      CVE-2026-39827  golang.org/x/crypto@0.17.0\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    1 finding                        kingfisher 2.1.0 · 2026-09-03\n      betterleaks.gcp-api-key  fqnews2\\app\\src\\fqnews\\google-services.json:24\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

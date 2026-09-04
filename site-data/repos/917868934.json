@@ -1,0 +1,613 @@
+{
+ "security": {
+  "repo_id": 917868934,
+  "commit_sha": "8c0832eae634ebb34541c65265caa6da4c5d2c57",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 60,
+    "findings": [
+     {
+      "id": "CVE-2026-54279",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54279' (also known as 'PYSEC-2026-2112', 'GHSA-2fqr-mr3j-6wp8')."
+     },
+     {
+      "id": "CVE-2026-34514",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34514' (also known as 'PYSEC-2026-2096', 'GHSA-2vrm-gr82-f7m5')."
+     },
+     {
+      "id": "CVE-2025-66471",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.3.0",
+      "file": "uv.lock",
+      "message": "Package 'urllib3@2.3.0' is vulnerable to 'CVE-2025-66471' (also known as 'PYSEC-2026-1994', 'GHSA-2xpw-w6gg-jr37')."
+     },
+     {
+      "id": "CVE-2025-30167",
+      "aliases": [],
+      "package": "jupyter-core",
+      "version": "5.7.2",
+      "file": "uv.lock",
+      "message": "Package 'jupyter-core@5.7.2' is vulnerable to 'CVE-2025-30167' (also known as 'PYSEC-2026-1477', 'GHSA-33p9-3p43-82vq')."
+     },
+     {
+      "id": "CVE-2026-21441",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.3.0",
+      "file": "uv.lock",
+      "message": "Package 'urllib3@2.3.0' is vulnerable to 'CVE-2026-21441' (also known as 'PYSEC-2026-1996', 'GHSA-38jv-5279-wg99')."
+     },
+     {
+      "id": "CVE-2026-34517",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34517' (also known as 'PYSEC-2026-2099', 'GHSA-3wq7-rqq7-wx6j')."
+     },
+     {
+      "id": "CVE-2026-49853",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.4.2",
+      "file": "uv.lock",
+      "message": "Package 'tornado@6.4.2' is vulnerable to 'CVE-2026-49853' (also known as 'PYSEC-2026-3387', 'GHSA-3x9g-8vmp-wqvf')."
+     },
+     {
+      "id": "CVE-2025-50182",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.3.0",
+      "file": "uv.lock",
+      "message": "Package 'urllib3@2.3.0' is vulnerable to 'CVE-2025-50182' (also known as 'PYSEC-2026-1997', 'GHSA-48p4-8xcf-vxj5')."
+     },
+     {
+      "id": "CVE-2026-54273",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54273' (also known as 'PYSEC-2026-2107', 'GHSA-4fvr-rgm6-gqmc')."
+     },
+     {
+      "id": "CVE-2026-54275",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54275' (also known as 'PYSEC-2026-237', 'GHSA-4m7w-qmgq-4wj5')."
+     },
+     {
+      "id": "CVE-2026-4539",
+      "aliases": [],
+      "package": "pygments",
+      "version": "2.19.1",
+      "file": "uv.lock",
+      "message": "Package 'pygments@2.19.1' is vulnerable to 'CVE-2026-4539' (also known as 'PYSEC-2026-2987', 'GHSA-5239-wwwm-4pmq')."
+     },
+     {
+      "id": "CVE-2025-69226",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69226' (also known as 'PYSEC-2026-1097', 'GHSA-54jq-c3m8-4m76')."
+     },
+     {
+      "id": "CVE-2026-34520",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34520' (also known as 'PYSEC-2026-2102', 'GHSA-63hf-3vf5-4wqf')."
+     },
+     {
+      "id": "CVE-2026-54277",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54277' (also known as 'PYSEC-2026-2110', 'GHSA-63hw-fmq6-xxg2')."
+     },
+     {
+      "id": "CVE-2026-45409",
+      "aliases": [],
+      "package": "idna",
+      "version": "3.10",
+      "file": "uv.lock",
+      "message": "Package 'idna@3.10' is vulnerable to 'CVE-2026-45409' (also known as 'PYSEC-2026-215', 'GHSA-65pc-fj4g-8rjx')."
+     },
+     {
+      "id": "CVE-2025-69224",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69224' (also known as 'PYSEC-2026-1099', 'GHSA-69f9-5gxw-wvc2')."
+     },
+     {
+      "id": "CVE-2025-69228",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69228' (also known as 'PYSEC-2026-1100', 'GHSA-6jhg-hg63-jvvf')."
+     },
+     {
+      "id": "CVE-2025-69223",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69223' (also known as 'PYSEC-2026-1101', 'GHSA-6mq8-rvhq-8wgg')."
+     },
+     {
+      "id": "CVE-2026-35536",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.4.2",
+      "file": "uv.lock",
+      "message": "Package 'tornado@6.4.2' is vulnerable to 'CVE-2026-35536' (also known as 'PYSEC-2026-2287', 'GHSA-78cv-mqj4-43f7', 'GHSA-fqwm-6jpj-5wxc')."
+     },
+     {
+      "id": "CVE-2025-47287",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.4.2",
+      "file": "uv.lock",
+      "message": "Package 'tornado@6.4.2' is vulnerable to 'CVE-2025-47287' (also known as 'PYSEC-2026-1974', 'GHSA-7cx3-6m66-7c5m')."
+     },
+     {
+      "id": "GHSA-8423-8fgw-73vq",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.4.2",
+      "file": "uv.lock",
+      "message": "Package 'tornado@6.4.2' is vulnerable to 'GHSA-8423-8fgw-73vq'."
+     },
+     {
+      "id": "CVE-2025-53643",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-53643' (also known as 'PYSEC-2026-1104', 'GHSA-9548-qrrj-x5pj')."
+     },
+     {
+      "id": "CVE-2026-34518",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34518' (also known as 'PYSEC-2026-2100', 'GHSA-966j-vmvw-g2g9')."
+     },
+     {
+      "id": "CVE-2024-47081",
+      "aliases": [],
+      "package": "requests",
+      "version": "2.32.3",
+      "file": "uv.lock",
+      "message": "Package 'requests@2.32.3' is vulnerable to 'CVE-2024-47081' (also known as 'PYSEC-2026-1872', 'GHSA-9hjg-9r4m-mvj7')."
+     },
+     {
+      "id": "CVE-2026-54280",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54280' (also known as 'PYSEC-2026-2113', 'GHSA-9x8q-7h8h-wcw9')."
+     },
+     {
+      "id": "CVE-2026-34525",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34525' (also known as 'PYSEC-2026-2103', 'GHSA-c427-h43c-vf67')."
+     },
+     {
+      "id": "CVE-2025-67725",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.4.2",
+      "file": "uv.lock",
+      "message": "Package 'tornado@6.4.2' is vulnerable to 'CVE-2025-67725' (also known as 'PYSEC-2025-266', 'GHSA-c98p-7wgm-6p64')."
+     },
+     {
+      "id": "CVE-2026-69244",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-69244' (also known as 'PYSEC-2026-3545', 'GHSA-cq5v-8q36-5273')."
+     },
+     {
+      "id": "CVE-2026-49854",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.4.2",
+      "file": "uv.lock",
+      "message": "Package 'tornado@6.4.2' is vulnerable to 'CVE-2026-49854' (also known as 'PYSEC-2026-3388', 'GHSA-cx3h-4qpv-8hc9')."
+     },
+     {
+      "id": "CVE-2025-69230",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69230' (also known as 'PYSEC-2026-1105', 'GHSA-fh55-r93g-j68g')."
+     },
+     {
+      "id": "CVE-2026-54278",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54278' (also known as 'PYSEC-2026-2111', 'GHSA-g3cq-j2xw-wf74')."
+     },
+     {
+      "id": "CVE-2025-69229",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69229' (also known as 'PYSEC-2026-1106', 'GHSA-g84x-mcqj-x9qq')."
+     },
+     {
+      "id": "CVE-2026-25645",
+      "aliases": [],
+      "package": "requests",
+      "version": "2.32.3",
+      "file": "uv.lock",
+      "message": "Package 'requests@2.32.3' is vulnerable to 'CVE-2026-25645' (also known as 'PYSEC-2026-2275', 'GHSA-gc5v-m9x4-r6x2')."
+     },
+     {
+      "id": "CVE-2025-66418",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.3.0",
+      "file": "uv.lock",
+      "message": "Package 'urllib3@2.3.0' is vulnerable to 'CVE-2025-66418' (also known as 'PYSEC-2026-1998', 'GHSA-gm62-xv2j-4w53')."
+     },
+     {
+      "id": "CVE-2026-34513",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34513' (also known as 'PYSEC-2026-2095', 'GHSA-hcc4-c3v8-rx92')."
+     },
+     {
+      "id": "CVE-2026-47265",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-47265' (also known as 'PYSEC-2026-2105', 'GHSA-hg6j-4rv6-33pg')."
+     },
+     {
+      "id": "CVE-2026-54276",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54276' (also known as 'PYSEC-2026-2109', 'GHSA-hpj7-wq8m-9hgp')."
+     },
+     {
+      "id": "CVE-2026-34993",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34993' (also known as 'PYSEC-2026-2104', 'GHSA-jg22-mg44-37j8')."
+     },
+     {
+      "id": "CVE-2025-67726",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.4.2",
+      "file": "uv.lock",
+      "message": "Package 'tornado@6.4.2' is vulnerable to 'CVE-2025-67726' (also known as 'PYSEC-2025-267', 'GHSA-jhmp-mqwm-3gq8')."
+     },
+     {
+      "id": "CVE-2025-69227",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69227' (also known as 'PYSEC-2026-1107', 'GHSA-jj3x-wxrx-4x23')."
+     },
+     {
+      "id": "CVE-2026-34516",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34516' (also known as 'PYSEC-2026-2098', 'GHSA-m5qp-6w8w-w647')."
+     },
+     {
+      "id": "CVE-2026-50269",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-50269' (also known as 'PYSEC-2026-2106', 'GHSA-m6qw-4cw2-hm4m')."
+     },
+     {
+      "id": "CVE-2026-69243",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-69243' (also known as 'PYSEC-2026-3546', 'GHSA-mfx4-hv73-q22v')."
+     },
+     {
+      "id": "CVE-2026-49855",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.4.2",
+      "file": "uv.lock",
+      "message": "Package 'tornado@6.4.2' is vulnerable to 'CVE-2026-49855' (also known as 'PYSEC-2026-3389', 'GHSA-mgf9-4vpg-hj56')."
+     },
+     {
+      "id": "CVE-2026-82397",
+      "aliases": [
+       "GHSA-mpf4-983q-p7j4"
+      ],
+      "package": "tornado",
+      "version": "6.4.2",
+      "file": "uv.lock",
+      "message": "Package 'tornado@6.4.2' is vulnerable to 'CVE-2026-82397' (also known as 'GHSA-mpf4-983q-p7j4')."
+     },
+     {
+      "id": "CVE-2026-59881",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-59881' (also known as 'PYSEC-2026-3547', 'GHSA-mq44-7p77-q5h7')."
+     },
+     {
+      "id": "CVE-2025-69225",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69225' (also known as 'PYSEC-2026-1109', 'GHSA-mqqc-3gqh-h2x8')."
+     },
+     {
+      "id": "CVE-2026-34519",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34519' (also known as 'PYSEC-2026-2101', 'GHSA-mwh4-6h8g-pg8w')."
+     },
+     {
+      "id": "CVE-2026-34515",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34515' (also known as 'PYSEC-2026-2097', 'GHSA-p998-jp59-783m')."
+     },
+     {
+      "id": "CVE-2025-50181",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.3.0",
+      "file": "uv.lock",
+      "message": "Package 'urllib3@2.3.0' is vulnerable to 'CVE-2025-50181' (also known as 'PYSEC-2026-1999', 'GHSA-pq67-6m6q-mj2v')."
+     },
+     {
+      "id": "CVE-2025-67724",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.4.2",
+      "file": "uv.lock",
+      "message": "Package 'tornado@6.4.2' is vulnerable to 'CVE-2025-67724' (also known as 'PYSEC-2025-265', 'GHSA-pr2v-jx2c-wg9f')."
+     },
+     {
+      "id": "GHSA-pw6j-qg29-8w7f",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.4.2",
+      "file": "uv.lock",
+      "message": "Package 'tornado@6.4.2' is vulnerable to 'GHSA-pw6j-qg29-8w7f'."
+     },
+     {
+      "id": "CVE-2026-44431",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.3.0",
+      "file": "uv.lock",
+      "message": "Package 'urllib3@2.3.0' is vulnerable to 'CVE-2026-44431' (also known as 'PYSEC-2026-141', 'GHSA-qccp-gfcp-xxvc')."
+     },
+     {
+      "id": "CVE-2026-31958",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.4.2",
+      "file": "uv.lock",
+      "message": "Package 'tornado@6.4.2' is vulnerable to 'CVE-2026-31958' (also known as 'PYSEC-2026-140', 'GHSA-qjxf-f2mg-c6mc')."
+     },
+     {
+      "id": "CVE-2026-22701",
+      "aliases": [],
+      "package": "filelock",
+      "version": "3.17.0",
+      "file": "uv.lock",
+      "message": "Package 'filelock@3.17.0' is vulnerable to 'CVE-2026-22701' (also known as 'PYSEC-2026-1374', 'GHSA-qmgc-5h2g-mvrw')."
+     },
+     {
+      "id": "CVE-2026-25087",
+      "aliases": [],
+      "package": "pyarrow",
+      "version": "19.0.0",
+      "file": "uv.lock",
+      "message": "Package 'pyarrow@19.0.0' is vulnerable to 'CVE-2026-25087' (also known as 'PYSEC-2026-113', 'GHSA-rgxp-2hwp-jwgg')."
+     },
+     {
+      "id": "CVE-2026-22815",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-22815' (also known as 'PYSEC-2026-2094', 'GHSA-w2fm-2cpv-w7v5')."
+     },
+     {
+      "id": "CVE-2025-68146",
+      "aliases": [],
+      "package": "filelock",
+      "version": "3.17.0",
+      "file": "uv.lock",
+      "message": "Package 'filelock@3.17.0' is vulnerable to 'CVE-2025-68146' (also known as 'PYSEC-2026-1375', 'GHSA-w853-jp5j-5j7f')."
+     },
+     {
+      "id": "CVE-2026-54274",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "uv.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54274' (also known as 'PYSEC-2026-2108', 'GHSA-xcgm-r5h9-7989')."
+     },
+     {
+      "id": "CVE-2026-66007",
+      "aliases": [
+       "PYSEC-2026-3716"
+      ],
+      "package": "datasets",
+      "version": "3.2.0",
+      "file": "uv.lock",
+      "message": "Package 'datasets@3.2.0' is vulnerable to 'CVE-2026-66007' (also known as 'PYSEC-2026-3716')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 3,
+    "findings": [
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/build_documentation.yml",
+      "line": 9,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/build_pr_documentation.yml",
+      "line": 11,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/upload_pr_documentation.yml",
+      "line": 3,
+      "message": "use of fundamentally insecure workflow trigger: workflow_run is almost always used insecurely"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "63 findings · 1 check pending · 2 checks not applicable",
+  "block": "SECURITY · commit 8c0832e\n\n  Dependency vulnerabilities\n    60 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-54279  aiohttp@3.11.11\n      CVE-2026-34514  aiohttp@3.11.11\n      CVE-2025-66471  urllib3@2.3.0\n      CVE-2025-30167  jupyter-core@5.7.2\n      CVE-2026-21441  urllib3@2.3.0\n      CVE-2026-34517  aiohttp@3.11.11\n      CVE-2026-49853  tornado@6.4.2\n      CVE-2025-50182  urllib3@2.3.0\n      CVE-2026-54273  aiohttp@3.11.11\n      CVE-2026-54275  aiohttp@3.11.11\n      CVE-2026-4539  pygments@2.19.1\n      CVE-2025-69226  aiohttp@3.11.11\n      CVE-2026-34520  aiohttp@3.11.11\n      CVE-2026-54277  aiohttp@3.11.11\n      CVE-2026-45409  idna@3.10\n      CVE-2025-69224  aiohttp@3.11.11\n      CVE-2025-69228  aiohttp@3.11.11\n      CVE-2025-69223  aiohttp@3.11.11\n      CVE-2026-35536  tornado@6.4.2\n      CVE-2025-47287  tornado@6.4.2\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    3 findings                       zizmor 1.30.0 · 2026-09-03\n      excessive-permissions  .github/workflows/build_documentation.yml:9\n      excessive-permissions  .github/workflows/build_pr_documentation.yml:11\n      dangerous-triggers  .github/workflows/upload_pr_documentation.yml:3\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

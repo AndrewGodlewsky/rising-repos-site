@@ -1,0 +1,1161 @@
+{
+ "security": {
+  "repo_id": 742244656,
+  "commit_sha": "10eaaac269101e25ad9f808353c45e305c6d7231",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 82,
+    "findings": [
+     {
+      "id": "CVE-2026-54272",
+      "aliases": [
+       "GHSA-22jq-vg5j-6vgg"
+      ],
+      "package": "ip-address",
+      "version": "10.2.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.2.0' is vulnerable to 'CVE-2026-54272' (also known as 'GHSA-22jq-vg5j-6vgg')."
+     },
+     {
+      "id": "CVE-2026-67214",
+      "aliases": [
+       "GHSA-28wg-ghj8-5hjv"
+      ],
+      "package": "nanoid",
+      "version": "3.3.12",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@3.3.12' is vulnerable to 'CVE-2026-67214' (also known as 'GHSA-28wg-ghj8-5hjv')."
+     },
+     {
+      "id": "CVE-2026-47676",
+      "aliases": [
+       "GHSA-2gcr-mfcq-wcc3"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-47676' (also known as 'GHSA-2gcr-mfcq-wcc3')."
+     },
+     {
+      "id": "CVE-2026-67213",
+      "aliases": [
+       "GHSA-2v37-7h3g-55p8"
+      ],
+      "package": "nanoid",
+      "version": "3.3.12",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@3.3.12' is vulnerable to 'CVE-2026-67213' (also known as 'GHSA-2v37-7h3g-55p8')."
+     },
+     {
+      "id": "CVE-2026-71436",
+      "aliases": [
+       "GHSA-2v8p-3f2j-5mp7"
+      ],
+      "package": "mermaid",
+      "version": "11.16.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'mermaid@11.16.0' is vulnerable to 'CVE-2026-71436' (also known as 'GHSA-2v8p-3f2j-5mp7')."
+     },
+     {
+      "id": "CVE-2026-53666",
+      "aliases": [
+       "GHSA-337j-9hxr-rhxg"
+      ],
+      "package": "react-router",
+      "version": "7.15.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'react-router@7.15.1' is vulnerable to 'CVE-2026-53666' (also known as 'GHSA-337j-9hxr-rhxg')."
+     },
+     {
+      "id": "CVE-2026-13311",
+      "aliases": [
+       "GHSA-395f-4hp3-45gv"
+      ],
+      "package": "shell-quote",
+      "version": "1.8.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'shell-quote@1.8.3' is vulnerable to 'CVE-2026-13311' (also known as 'GHSA-395f-4hp3-45gv')."
+     },
+     {
+      "id": "CVE-2026-47675",
+      "aliases": [
+       "GHSA-3hrh-pfw6-9m5x"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-47675' (also known as 'GHSA-3hrh-pfw6-9m5x')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.6' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-71437",
+      "aliases": [
+       "GHSA-3rrr-jr9j-h3q3"
+      ],
+      "package": "mermaid",
+      "version": "11.16.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'mermaid@11.16.0' is vulnerable to 'CVE-2026-71437' (also known as 'GHSA-3rrr-jr9j-h3q3')."
+     },
+     {
+      "id": "CVE-2026-64647",
+      "aliases": [
+       "GHSA-4633-3j49-mh5q"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64647' (also known as 'GHSA-4633-3j49-mh5q')."
+     },
+     {
+      "id": "CVE-2026-64646",
+      "aliases": [
+       "GHSA-4c39-4ccg-62r3"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64646' (also known as 'GHSA-4c39-4ccg-62r3')."
+     },
+     {
+      "id": "CVE-2026-13676",
+      "aliases": [
+       "GHSA-4c8g-83qw-93j6"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-13676' (also known as 'GHSA-4c8g-83qw-93j6')."
+     },
+     {
+      "id": "CVE-2026-13697",
+      "aliases": [
+       "GHSA-4cwx-7wf7-3272"
+      ],
+      "package": "undici",
+      "version": "7.28.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.28.0' is vulnerable to 'CVE-2026-13697' (also known as 'GHSA-4cwx-7wf7-3272')."
+     },
+     {
+      "id": "CVE-2026-82417",
+      "aliases": [
+       "GHSA-4mjr-xmp4-gh2g"
+      ],
+      "package": "qs",
+      "version": "6.15.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.15.1' is vulnerable to 'CVE-2026-82417' (also known as 'GHSA-4mjr-xmp4-gh2g')."
+     },
+     {
+      "id": "CVE-2026-49356",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@babel/core@7.29.0' is vulnerable to 'CVE-2026-49356' (also known as 'GHSA-4x5r-pxfx-6jf8')."
+     },
+     {
+      "id": "CVE-2026-69198",
+      "aliases": [
+       "GHSA-4xrf-jv44-h6hh"
+      ],
+      "package": "ip-address",
+      "version": "10.2.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.2.0' is vulnerable to 'CVE-2026-69198' (also known as 'GHSA-4xrf-jv44-h6hh')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.2' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-71848",
+      "aliases": [
+       "GHSA-54fx-42gc-7vw4"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-71848' (also known as 'GHSA-54fx-42gc-7vw4')."
+     },
+     {
+      "id": "CVE-2026-75838",
+      "aliases": [
+       "GHSA-55q2-fjhq-7xh7"
+      ],
+      "package": "dompurify",
+      "version": "3.4.12",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'dompurify@3.4.12' is vulnerable to 'CVE-2026-75838' (also known as 'GHSA-55q2-fjhq-7xh7')."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "3.14.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.2' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "CVE-2026-64648",
+      "aliases": [
+       "GHSA-68g3-v927-f742"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64648' (also known as 'GHSA-68g3-v927-f742')."
+     },
+     {
+      "id": "CVE-2026-45623",
+      "aliases": [
+       "GHSA-6g55-p6wh-862q"
+      ],
+      "package": "postcss",
+      "version": "8.4.31",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.4.31' is vulnerable to 'CVE-2026-45623' (also known as 'GHSA-6g55-p6wh-862q')."
+     },
+     {
+      "id": "CVE-2026-64642",
+      "aliases": [
+       "GHSA-6gpp-xcg3-4w24"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64642' (also known as 'GHSA-6gpp-xcg3-4w24')."
+     },
+     {
+      "id": "CVE-2026-50159",
+      "aliases": [
+       "GHSA-6x64-9x62-f2gx"
+      ],
+      "package": "mermaid",
+      "version": "11.16.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'mermaid@11.16.0' is vulnerable to 'CVE-2026-50159' (also known as 'GHSA-6x64-9x62-f2gx')."
+     },
+     {
+      "id": "CVE-2026-73088",
+      "aliases": [
+       "GHSA-73wf-gq98-2v4g"
+      ],
+      "package": "browserslist",
+      "version": "4.28.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'browserslist@4.28.2' is vulnerable to 'CVE-2026-73088' (also known as 'GHSA-73wf-gq98-2v4g')."
+     },
+     {
+      "id": "CVE-2026-71849",
+      "aliases": [
+       "GHSA-79qm-7rj5-m7r9"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-71849' (also known as 'GHSA-79qm-7rj5-m7r9')."
+     },
+     {
+      "id": "CVE-2026-18446",
+      "aliases": [
+       "GHSA-7p8r-x3mc-p8w7"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-18446' (also known as 'GHSA-7p8r-x3mc-p8w7')."
+     },
+     {
+      "id": "CVE-2026-54290",
+      "aliases": [
+       "GHSA-88fw-hqm2-52qc"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-54290' (also known as 'GHSA-88fw-hqm2-52qc')."
+     },
+     {
+      "id": "CVE-2026-64649",
+      "aliases": [
+       "GHSA-89xv-2m56-2m9x"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64649' (also known as 'GHSA-89xv-2m56-2m9x')."
+     },
+     {
+      "id": "CVE-2026-69207",
+      "aliases": [
+       "GHSA-8j4g-w8fx-2239"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-69207' (also known as 'GHSA-8j4g-w8fx-2239')."
+     },
+     {
+      "id": "CVE-2026-16728",
+      "aliases": [
+       "GHSA-8xcm-r25x-g524"
+      ],
+      "package": "undici",
+      "version": "7.28.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.28.0' is vulnerable to 'CVE-2026-16728' (also known as 'GHSA-8xcm-r25x-g524')."
+     },
+     {
+      "id": "CVE-2026-64643",
+      "aliases": [
+       "GHSA-955p-x3mx-jcvp"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64643' (also known as 'GHSA-955p-x3mx-jcvp')."
+     },
+     {
+      "id": "CVE-2026-71438",
+      "aliases": [
+       "GHSA-c4c3-pg64-4m4v"
+      ],
+      "package": "mermaid",
+      "version": "11.16.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'mermaid@11.16.0' is vulnerable to 'CVE-2026-71438' (also known as 'GHSA-c4c3-pg64-4m4v')."
+     },
+     {
+      "id": "CVE-2026-73089",
+      "aliases": [
+       "GHSA-c83g-rgw3-j3cx"
+      ],
+      "package": "browserslist",
+      "version": "4.28.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'browserslist@4.28.2' is vulnerable to 'CVE-2026-73089' (also known as 'GHSA-c83g-rgw3-j3cx')."
+     },
+     {
+      "id": "CVE-2026-55685",
+      "aliases": [
+       "GHSA-chx6-hx7r-mcp5"
+      ],
+      "package": "react-router",
+      "version": "7.15.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'react-router@7.15.1' is vulnerable to 'CVE-2026-55685' (also known as 'GHSA-chx6-hx7r-mcp5')."
+     },
+     {
+      "id": "CVE-2026-71850",
+      "aliases": [
+       "GHSA-f23p-vx2j-j53r"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-71850' (also known as 'GHSA-f23p-vx2j-j53r')."
+     },
+     {
+      "id": "CVE-2026-47673",
+      "aliases": [
+       "GHSA-f577-qrjj-4474"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-47673' (also known as 'GHSA-f577-qrjj-4474')."
+     },
+     {
+      "id": "CVE-2026-75975",
+      "aliases": [
+       "GHSA-f65p-4m7j-42xc"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-75975' (also known as 'GHSA-f65p-4m7j-42xc')."
+     },
+     {
+      "id": "GHSA-f88m-g3jw-g9cj",
+      "aliases": [],
+      "package": "sharp",
+      "version": "0.34.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'sharp@0.34.5' is vulnerable to 'GHSA-f88m-g3jw-g9cj'."
+     },
+     {
+      "id": "CVE-2026-75899",
+      "aliases": [
+       "GHSA-fph4-wmhf-6fwf"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-75899' (also known as 'GHSA-fph4-wmhf-6fwf')."
+     },
+     {
+      "id": "GHSA-frvp-7c67-39w9",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@hono/node-server@1.19.14' is vulnerable to 'GHSA-frvp-7c67-39w9'."
+     },
+     {
+      "id": "CVE-2026-53571",
+      "aliases": [
+       "GHSA-fx2h-pf6j-xcff"
+      ],
+      "package": "vite",
+      "version": "8.0.13",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'vite@8.0.13' is vulnerable to 'CVE-2026-53571' (also known as 'GHSA-fx2h-pf6j-xcff')."
+     },
+     {
+      "id": "CVE-2026-69153",
+      "aliases": [
+       "GHSA-fxqj-rqcc-2cmp"
+      ],
+      "package": "postcss",
+      "version": "8.4.31",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.4.31' is vulnerable to 'CVE-2026-69153' (also known as 'GHSA-fxqj-rqcc-2cmp')."
+     },
+     {
+      "id": "CVE-2026-69153",
+      "aliases": [
+       "GHSA-fxqj-rqcc-2cmp"
+      ],
+      "package": "postcss",
+      "version": "8.5.14",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.14' is vulnerable to 'CVE-2026-69153' (also known as 'GHSA-fxqj-rqcc-2cmp')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.2' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-53667",
+      "aliases": [
+       "GHSA-h8fp-f39c-q6mh"
+      ],
+      "package": "react-router",
+      "version": "7.15.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'react-router@7.15.1' is vulnerable to 'CVE-2026-53667' (also known as 'GHSA-h8fp-f39c-q6mh')."
+     },
+     {
+      "id": "CVE-2026-59896",
+      "aliases": [
+       "GHSA-hvrm-45r6-mjfj"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-59896' (also known as 'GHSA-hvrm-45r6-mjfj')."
+     },
+     {
+      "id": "CVE-2026-54287",
+      "aliases": [
+       "GHSA-j6c9-x7qj-28xf"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-54287' (also known as 'GHSA-j6c9-x7qj-28xf')."
+     },
+     {
+      "id": "CVE-2026-76172",
+      "aliases": [
+       "GHSA-jqff-g426-hqxp"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-76172' (also known as 'GHSA-jqff-g426-hqxp')."
+     },
+     {
+      "id": "CVE-2026-14643",
+      "aliases": [
+       "GHSA-jr45-8vmc-qm54"
+      ],
+      "package": "undici",
+      "version": "7.28.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.28.0' is vulnerable to 'CVE-2026-14643' (also known as 'GHSA-jr45-8vmc-qm54')."
+     },
+     {
+      "id": "CVE-2026-15157",
+      "aliases": [
+       "GHSA-m8rv-5g2x-5cg5"
+      ],
+      "package": "undici",
+      "version": "7.28.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.28.0' is vulnerable to 'CVE-2026-15157' (also known as 'GHSA-m8rv-5g2x-5cg5')."
+     },
+     {
+      "id": "CVE-2026-64641",
+      "aliases": [
+       "GHSA-m99w-x7hq-7vfj"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64641' (also known as 'GHSA-m99w-x7hq-7vfj')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.6' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-69192",
+      "aliases": [
+       "GHSA-mwp4-54f8-5fhr"
+      ],
+      "package": "ip-address",
+      "version": "10.2.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.2.0' is vulnerable to 'CVE-2026-69192' (also known as 'GHSA-mwp4-54f8-5fhr')."
+     },
+     {
+      "id": "CVE-2026-64645",
+      "aliases": [
+       "GHSA-p9j2-gv94-2wf4"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64645' (also known as 'GHSA-p9j2-gv94-2wf4')."
+     },
+     {
+      "id": "CVE-2026-8723",
+      "aliases": [
+       "GHSA-q8mj-m7cp-5q26"
+      ],
+      "package": "qs",
+      "version": "6.15.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.15.1' is vulnerable to 'CVE-2026-8723' (also known as 'GHSA-q8mj-m7cp-5q26')."
+     },
+     {
+      "id": "CVE-2026-64644",
+      "aliases": [
+       "GHSA-q8wf-6r8g-63ch"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64644' (also known as 'GHSA-q8wf-6r8g-63ch')."
+     },
+     {
+      "id": "GHSA-qwww-vcr4-c8h2",
+      "aliases": [],
+      "package": "react-router",
+      "version": "7.15.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'react-router@7.15.1' is vulnerable to 'GHSA-qwww-vcr4-c8h2'."
+     },
+     {
+      "id": "CVE-2026-41305",
+      "aliases": [
+       "GHSA-qx2v-qp2m-jg93"
+      ],
+      "package": "postcss",
+      "version": "8.4.31",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.4.31' is vulnerable to 'CVE-2026-41305' (also known as 'GHSA-qx2v-qp2m-jg93')."
+     },
+     {
+      "id": "CVE-2026-73646",
+      "aliases": [
+       "GHSA-r28c-9q8g-f849"
+      ],
+      "package": "postcss",
+      "version": "8.4.31",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.4.31' is vulnerable to 'CVE-2026-73646' (also known as 'GHSA-r28c-9q8g-f849')."
+     },
+     {
+      "id": "CVE-2026-73646",
+      "aliases": [
+       "GHSA-r28c-9q8g-f849"
+      ],
+      "package": "postcss",
+      "version": "8.5.14",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.14' is vulnerable to 'CVE-2026-73646' (also known as 'GHSA-r28c-9q8g-f849')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.6' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-71439",
+      "aliases": [
+       "GHSA-rhh3-jpg6-66xh"
+      ],
+      "package": "mermaid",
+      "version": "11.16.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'mermaid@11.16.0' is vulnerable to 'CVE-2026-71439' (also known as 'GHSA-rhh3-jpg6-66xh')."
+     },
+     {
+      "id": "CVE-2026-54288",
+      "aliases": [
+       "GHSA-rv63-4mwf-qqc2"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-54288' (also known as 'GHSA-rv63-4mwf-qqc2')."
+     },
+     {
+      "id": "CVE-2026-16221",
+      "aliases": [
+       "GHSA-v2hh-gcrm-f6hx"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-16221' (also known as 'GHSA-v2hh-gcrm-f6hx')."
+     },
+     {
+      "id": "CVE-2026-16729",
+      "aliases": [
+       "GHSA-v3r7-h72x-cjcm"
+      ],
+      "package": "undici",
+      "version": "7.28.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.28.0' is vulnerable to 'CVE-2026-16729' (also known as 'GHSA-v3r7-h72x-cjcm')."
+     },
+     {
+      "id": "CVE-2026-12590",
+      "aliases": [
+       "GHSA-v422-hmwv-36x6"
+      ],
+      "package": "body-parser",
+      "version": "1.20.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'body-parser@1.20.5' is vulnerable to 'CVE-2026-12590' (also known as 'GHSA-v422-hmwv-36x6')."
+     },
+     {
+      "id": "CVE-2026-12590",
+      "aliases": [
+       "GHSA-v422-hmwv-36x6"
+      ],
+      "package": "body-parser",
+      "version": "2.2.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'body-parser@2.2.2' is vulnerable to 'CVE-2026-12590' (also known as 'GHSA-v422-hmwv-36x6')."
+     },
+     {
+      "id": "CVE-2026-53632",
+      "aliases": [
+       "GHSA-v6wh-96g9-6wx3"
+      ],
+      "package": "vite",
+      "version": "8.0.13",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'vite@8.0.13' is vulnerable to 'CVE-2026-53632' (also known as 'GHSA-v6wh-96g9-6wx3')."
+     },
+     {
+      "id": "CVE-2026-59895",
+      "aliases": [
+       "GHSA-w62v-xxxg-mg59"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-59895' (also known as 'GHSA-w62v-xxxg-mg59')."
+     },
+     {
+      "id": "CVE-2026-9277",
+      "aliases": [
+       "GHSA-w7jw-789q-3m8p"
+      ],
+      "package": "shell-quote",
+      "version": "1.8.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'shell-quote@1.8.3' is vulnerable to 'CVE-2026-9277' (also known as 'GHSA-w7jw-789q-3m8p')."
+     },
+     {
+      "id": "CVE-2026-9358",
+      "aliases": [
+       "GHSA-w9m9-85wc-3x92"
+      ],
+      "package": "postcss-selector-parser",
+      "version": "7.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss-selector-parser@7.1.1' is vulnerable to 'CVE-2026-9358' (also known as 'GHSA-w9m9-85wc-3x92')."
+     },
+     {
+      "id": "CVE-2026-54289",
+      "aliases": [
+       "GHSA-wgpf-jwqj-8h8p"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-54289' (also known as 'GHSA-wgpf-jwqj-8h8p')."
+     },
+     {
+      "id": "CVE-2026-53669",
+      "aliases": [
+       "GHSA-wrjc-x8rr-h8h6"
+      ],
+      "package": "react-router",
+      "version": "7.15.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'react-router@7.15.1' is vulnerable to 'CVE-2026-53669' (also known as 'GHSA-wrjc-x8rr-h8h6')."
+     },
+     {
+      "id": "CVE-2026-54286",
+      "aliases": [
+       "GHSA-wwfh-h76j-fc44"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-54286' (also known as 'GHSA-wwfh-h76j-fc44')."
+     },
+     {
+      "id": "CVE-2026-82562",
+      "aliases": [
+       "GHSA-x5fp-wj9c-mxmx"
+      ],
+      "package": "qs",
+      "version": "6.15.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.15.1' is vulnerable to 'CVE-2026-82562' (also known as 'GHSA-x5fp-wj9c-mxmx')."
+     },
+     {
+      "id": "CVE-2026-59897",
+      "aliases": [
+       "GHSA-xgm2-5f3f-mvvc"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-59897' (also known as 'GHSA-xgm2-5f3f-mvvc')."
+     },
+     {
+      "id": "CVE-2026-47674",
+      "aliases": [
+       "GHSA-xrhx-7g5j-rcj5"
+      ],
+      "package": "hono",
+      "version": "4.12.18",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.18' is vulnerable to 'CVE-2026-47674' (also known as 'GHSA-xrhx-7g5j-rcj5')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 35,
+    "findings": [
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/github-monitor.yml",
+      "line": 37,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/github-monitor.yml",
+      "line": 13,
+      "message": "use of fundamentally insecure workflow trigger: pull_request_target is almost always used insecurely"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/github-monitor.yml",
+      "line": 38,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/github-monitor.yml",
+      "line": 43,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/k8s-workspace.yml",
+      "line": 30,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/k8s-workspace.yml",
+      "line": 23,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/k8s-workspace.yml",
+      "line": 30,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/k8s-workspace.yml",
+      "line": 33,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/k8s-workspace.yml",
+      "line": 38,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pr-title-check.yml",
+      "line": 10,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr-title-check.yml",
+      "line": 14,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/pre-commit.yml",
+      "line": 16,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pre-commit.yml",
+      "line": 6,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pre-commit.yml",
+      "line": 16,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pre-commit.yml",
+      "line": 18,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/publish-pypi.yml",
+      "line": 25,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "use-trusted-publishing",
+      "level": "note",
+      "file": ".github/workflows/publish-pypi.yml",
+      "line": 40,
+      "message": "prefer trusted publishing for authentication: this step"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/publish-pypi.yml",
+      "line": 25,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/publish-pypi.yml",
+      "line": 27,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/publish-pypi.yml",
+      "line": 40,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/publish-pypi.yml",
+      "line": 27,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `enable-cache` enables caching for this action version"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/stale.yml",
+      "line": 21,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/unittest.yml",
+      "line": 16,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/unittest.yml",
+      "line": 6,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/unittest.yml",
+      "line": 16,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/unittest.yml",
+      "line": 18,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/update_news.yml",
+      "line": 20,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/update_news.yml",
+      "line": 16,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/update_news.yml",
+      "line": 20,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/update_news.yml",
+      "line": 25,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/web-ui.yml",
+      "line": 25,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/web-ui.yml",
+      "line": 18,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/web-ui.yml",
+      "line": 25,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/web-ui.yml",
+      "line": 28,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/web-ui.yml",
+      "line": 33,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "117 findings · 1 check pending · 1 check not applicable",
+  "block": "SECURITY · commit 10eaaac\n\n  Dependency vulnerabilities\n    82 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-54272  ip-address@10.2.0\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-47676  hono@4.12.18\n      CVE-2026-67213  nanoid@3.3.12\n      CVE-2026-71436  mermaid@11.16.0\n      CVE-2026-53666  react-router@7.15.1\n      CVE-2026-13311  shell-quote@1.8.3\n      CVE-2026-47675  hono@4.12.18\n      CVE-2026-13149  brace-expansion@5.0.6\n      CVE-2026-71437  mermaid@11.16.0\n      CVE-2026-64647  next@16.2.6\n      CVE-2026-64646  next@16.2.6\n      CVE-2026-13676  fast-uri@3.1.2\n      CVE-2026-13697  undici@7.28.0\n      CVE-2026-82417  qs@6.15.1\n      CVE-2026-49356  @\n      CVE-2026-69198  ip-address@10.2.0\n      CVE-2026-59869  js-yaml@3.14.2\n      CVE-2026-59869  js-yaml@4.1.1\n      CVE-2026-71848  hono@4.12.18\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    35 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/github-monitor.yml:37\n      dangerous-triggers  .github/workflows/github-monitor.yml:13\n      unpinned-uses  .github/workflows/github-monitor.yml:38\n      unpinned-uses  .github/workflows/github-monitor.yml:43\n      artipacked  .github/workflows/k8s-workspace.yml:30\n      excessive-permissions  .github/workflows/k8s-workspace.yml:23\n      unpinned-uses  .github/workflows/k8s-workspace.yml:30\n      unpinned-uses  .github/workflows/k8s-workspace.yml:33\n      unpinned-uses  .github/workflows/k8s-workspace.yml:38\n      excessive-permissions  .github/workflows/pr-title-check.yml:10\n      unpinned-uses  .github/workflows/pr-title-check.yml:14\n      artipacked  .github/workflows/pre-commit.yml:16\n      excessive-permissions  .github/workflows/pre-commit.yml:6\n      unpinned-uses  .github/workflows/pre-commit.yml:16\n      unpinned-uses  .github/workflows/pre-commit.yml:18\n      artipacked  .github/workflows/publish-pypi.yml:25\n      use-trusted-publishing  .github/workflows/publish-pypi.yml:40\n      unpinned-uses  .github/workflows/publish-pypi.yml:25\n      unpinned-uses  .github/workflows/publish-pypi.yml:27\n      unpinned-uses  .github/workflows/publish-pypi.yml:40\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

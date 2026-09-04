@@ -1,0 +1,1044 @@
+{
+ "security": {
+  "repo_id": 511987144,
+  "commit_sha": "a636575b09de1fc55d9b8cd98cac88f5f2f16b42",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 58,
+    "findings": [
+     {
+      "id": "CVE-2026-67214",
+      "aliases": [
+       "GHSA-28wg-ghj8-5hjv"
+      ],
+      "package": "nanoid",
+      "version": "3.3.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@3.3.11' is vulnerable to 'CVE-2026-67214' (also known as 'GHSA-28wg-ghj8-5hjv')."
+     },
+     {
+      "id": "CVE-2026-67214",
+      "aliases": [
+       "GHSA-28wg-ghj8-5hjv"
+      ],
+      "package": "nanoid",
+      "version": "5.1.7",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@5.1.7' is vulnerable to 'CVE-2026-67214' (also known as 'GHSA-28wg-ghj8-5hjv')."
+     },
+     {
+      "id": "CVE-2026-66062",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@sveltejs/kit@2.55.0' is vulnerable to 'CVE-2026-66062' (also known as 'GHSA-29g2-3rmr-qm68')."
+     },
+     {
+      "id": "CVE-2026-40073",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@sveltejs/kit@2.55.0' is vulnerable to 'CVE-2026-40073' (also known as 'GHSA-2crg-3p73-43xp')."
+     },
+     {
+      "id": "CVE-2026-67213",
+      "aliases": [
+       "GHSA-2v37-7h3g-55p8"
+      ],
+      "package": "nanoid",
+      "version": "3.3.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@3.3.11' is vulnerable to 'CVE-2026-67213' (also known as 'GHSA-2v37-7h3g-55p8')."
+     },
+     {
+      "id": "CVE-2026-6733",
+      "aliases": [
+       "GHSA-35p6-xmwp-9g52"
+      ],
+      "package": "undici",
+      "version": "6.24.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.24.1' is vulnerable to 'CVE-2026-6733' (also known as 'GHSA-35p6-xmwp-9g52')."
+     },
+     {
+      "id": "CVE-2026-40074",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@sveltejs/kit@2.55.0' is vulnerable to 'CVE-2026-40074' (also known as 'GHSA-3f6h-2hrp-w5wx')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.13",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.13' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-82417",
+      "aliases": [
+       "GHSA-4mjr-xmp4-gh2g"
+      ],
+      "package": "qs",
+      "version": "6.14.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.14.0' is vulnerable to 'CVE-2026-82417' (also known as 'GHSA-4mjr-xmp4-gh2g')."
+     },
+     {
+      "id": "CVE-2026-39365",
+      "aliases": [
+       "GHSA-4w7w-66w2-5vf9"
+      ],
+      "package": "vite",
+      "version": "7.3.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'vite@7.3.1' is vulnerable to 'CVE-2026-39365' (also known as 'GHSA-4w7w-66w2-5vf9')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.1' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "3.14.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.1' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "CVE-2026-45623",
+      "aliases": [
+       "GHSA-6g55-p6wh-862q"
+      ],
+      "package": "postcss",
+      "version": "8.5.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.8' is vulnerable to 'CVE-2026-45623' (also known as 'GHSA-6g55-p6wh-862q')."
+     },
+     {
+      "id": "CVE-2025-15284",
+      "aliases": [
+       "GHSA-6rw7-vpxm-498p"
+      ],
+      "package": "qs",
+      "version": "6.14.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.14.0' is vulnerable to 'CVE-2025-15284' (also known as 'GHSA-6rw7-vpxm-498p')."
+     },
+     {
+      "id": "CVE-2026-42570",
+      "aliases": [
+       "GHSA-77vg-94rm-hx3p"
+      ],
+      "package": "devalue",
+      "version": "5.6.4",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'devalue@5.6.4' is vulnerable to 'CVE-2026-42570' (also known as 'GHSA-77vg-94rm-hx3p')."
+     },
+     {
+      "id": "CVE-2026-82257",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@sveltejs/kit@2.55.0' is vulnerable to 'CVE-2026-82257' (also known as 'GHSA-866w-xmhq-wj7x')."
+     },
+     {
+      "id": "CVE-2026-12644",
+      "aliases": [
+       "GHSA-87mf-gv2c-c62c"
+      ],
+      "package": "ts-deepmerge",
+      "version": "7.0.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ts-deepmerge@7.0.3' is vulnerable to 'CVE-2026-12644' (also known as 'GHSA-87mf-gv2c-c62c')."
+     },
+     {
+      "id": "CVE-2026-16728",
+      "aliases": [
+       "GHSA-8xcm-r25x-g524"
+      ],
+      "package": "undici",
+      "version": "6.24.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.24.1' is vulnerable to 'CVE-2026-16728' (also known as 'GHSA-8xcm-r25x-g524')."
+     },
+     {
+      "id": "CVE-2026-42567",
+      "aliases": [
+       "GHSA-9rmh-mm8f-r9h6"
+      ],
+      "package": "svelte",
+      "version": "5.55.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'svelte@5.55.1' is vulnerable to 'CVE-2026-42567' (also known as 'GHSA-9rmh-mm8f-r9h6')."
+     },
+     {
+      "id": "GHSA-f3cj-j4f6-wq85",
+      "aliases": [],
+      "package": "svelte",
+      "version": "5.55.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'svelte@5.55.1' is vulnerable to 'GHSA-f3cj-j4f6-wq85'."
+     },
+     {
+      "id": "CVE-2026-53571",
+      "aliases": [
+       "GHSA-fx2h-pf6j-xcff"
+      ],
+      "package": "vite",
+      "version": "7.3.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'vite@7.3.1' is vulnerable to 'CVE-2026-53571' (also known as 'GHSA-fx2h-pf6j-xcff')."
+     },
+     {
+      "id": "CVE-2026-69153",
+      "aliases": [
+       "GHSA-fxqj-rqcc-2cmp"
+      ],
+      "package": "postcss",
+      "version": "8.5.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.8' is vulnerable to 'CVE-2026-69153' (also known as 'GHSA-fxqj-rqcc-2cmp')."
+     },
+     {
+      "id": "GHSA-g7r4-m6w7-qqqr",
+      "aliases": [],
+      "package": "esbuild",
+      "version": "0.27.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'esbuild@0.27.5' is vulnerable to 'GHSA-g7r4-m6w7-qqqr'."
+     },
+     {
+      "id": "CVE-2026-11525",
+      "aliases": [
+       "GHSA-g8m3-5g58-fq7m"
+      ],
+      "package": "undici",
+      "version": "6.24.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.24.1' is vulnerable to 'CVE-2026-11525' (also known as 'GHSA-g8m3-5g58-fq7m')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.1' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-82258",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@sveltejs/kit@2.55.0' is vulnerable to 'CVE-2026-82258' (also known as 'GHSA-hgv7-v322-mmgr')."
+     },
+     {
+      "id": "CVE-2026-45149",
+      "aliases": [
+       "GHSA-jxxr-4gwj-5jf2"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-45149' (also known as 'GHSA-jxxr-4gwj-5jf2')."
+     },
+     {
+      "id": "CVE-2026-15157",
+      "aliases": [
+       "GHSA-m8rv-5g2x-5cg5"
+      ],
+      "package": "undici",
+      "version": "6.24.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.24.1' is vulnerable to 'CVE-2026-15157' (also known as 'GHSA-m8rv-5g2x-5cg5')."
+     },
+     {
+      "id": "CVE-2025-64718",
+      "aliases": [
+       "GHSA-mh29-5h37-fv8m"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.1' is vulnerable to 'CVE-2025-64718' (also known as 'GHSA-mh29-5h37-fv8m')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.13",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.13' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-69192",
+      "aliases": [
+       "GHSA-mwp4-54f8-5fhr"
+      ],
+      "package": "ip-address",
+      "version": "10.1.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.1.0' is vulnerable to 'CVE-2026-69192' (also known as 'GHSA-mwp4-54f8-5fhr')."
+     },
+     {
+      "id": "GHSA-p498-v437-472g",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@humanfs/node@0.16.7' is vulnerable to 'GHSA-p498-v437-472g'."
+     },
+     {
+      "id": "CVE-2026-9679",
+      "aliases": [
+       "GHSA-p88m-4jfj-68fv"
+      ],
+      "package": "undici",
+      "version": "6.24.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.24.1' is vulnerable to 'CVE-2026-9679' (also known as 'GHSA-p88m-4jfj-68fv')."
+     },
+     {
+      "id": "CVE-2026-39363",
+      "aliases": [
+       "GHSA-p9ff-h696-f583"
+      ],
+      "package": "vite",
+      "version": "7.3.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'vite@7.3.1' is vulnerable to 'CVE-2026-39363' (also known as 'GHSA-p9ff-h696-f583')."
+     },
+     {
+      "id": "CVE-2026-42599",
+      "aliases": [
+       "GHSA-pr6f-5x2q-rwfp"
+      ],
+      "package": "svelte",
+      "version": "5.55.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'svelte@5.55.1' is vulnerable to 'CVE-2026-42599' (also known as 'GHSA-pr6f-5x2q-rwfp')."
+     },
+     {
+      "id": "CVE-2024-47764",
+      "aliases": [
+       "GHSA-pxg6-pf52-xh8x"
+      ],
+      "package": "cookie",
+      "version": "0.6.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'cookie@0.6.0' is vulnerable to 'CVE-2024-47764' (also known as 'GHSA-pxg6-pf52-xh8x')."
+     },
+     {
+      "id": "CVE-2026-8723",
+      "aliases": [
+       "GHSA-q8mj-m7cp-5q26"
+      ],
+      "package": "qs",
+      "version": "6.14.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.14.0' is vulnerable to 'CVE-2026-8723' (also known as 'GHSA-q8mj-m7cp-5q26')."
+     },
+     {
+      "id": "CVE-2026-41305",
+      "aliases": [
+       "GHSA-qx2v-qp2m-jg93"
+      ],
+      "package": "postcss",
+      "version": "8.5.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.8' is vulnerable to 'CVE-2026-41305' (also known as 'GHSA-qx2v-qp2m-jg93')."
+     },
+     {
+      "id": "CVE-2026-73646",
+      "aliases": [
+       "GHSA-r28c-9q8g-f849"
+      ],
+      "package": "postcss",
+      "version": "8.5.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.8' is vulnerable to 'CVE-2026-73646' (also known as 'GHSA-r28c-9q8g-f849')."
+     },
+     {
+      "id": "CVE-2026-42573",
+      "aliases": [
+       "GHSA-rcqx-6q8c-2c42"
+      ],
+      "package": "svelte",
+      "version": "5.55.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'svelte@5.55.1' is vulnerable to 'CVE-2026-42573' (also known as 'GHSA-rcqx-6q8c-2c42')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.13",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.13' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-42338",
+      "aliases": [
+       "GHSA-v2v4-37r5-5v8g"
+      ],
+      "package": "ip-address",
+      "version": "10.1.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.1.0' is vulnerable to 'CVE-2026-42338' (also known as 'GHSA-v2v4-37r5-5v8g')."
+     },
+     {
+      "id": "CVE-2026-39364",
+      "aliases": [
+       "GHSA-v2wj-q39q-566r"
+      ],
+      "package": "vite",
+      "version": "7.3.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'vite@7.3.1' is vulnerable to 'CVE-2026-39364' (also known as 'GHSA-v2wj-q39q-566r')."
+     },
+     {
+      "id": "CVE-2026-16729",
+      "aliases": [
+       "GHSA-v3r7-h72x-cjcm"
+      ],
+      "package": "undici",
+      "version": "6.24.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.24.1' is vulnerable to 'CVE-2026-16729' (also known as 'GHSA-v3r7-h72x-cjcm')."
+     },
+     {
+      "id": "CVE-2026-12590",
+      "aliases": [
+       "GHSA-v422-hmwv-36x6"
+      ],
+      "package": "body-parser",
+      "version": "1.20.4",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'body-parser@1.20.4' is vulnerable to 'CVE-2026-12590' (also known as 'GHSA-v422-hmwv-36x6')."
+     },
+     {
+      "id": "CVE-2026-53632",
+      "aliases": [
+       "GHSA-v6wh-96g9-6wx3"
+      ],
+      "package": "vite",
+      "version": "7.3.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'vite@7.3.1' is vulnerable to 'CVE-2026-53632' (also known as 'GHSA-v6wh-96g9-6wx3')."
+     },
+     {
+      "id": "CVE-2026-12151",
+      "aliases": [
+       "GHSA-vxpw-j846-p89q"
+      ],
+      "package": "undici",
+      "version": "6.24.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.24.1' is vulnerable to 'CVE-2026-12151' (also known as 'GHSA-vxpw-j846-p89q')."
+     },
+     {
+      "id": "CVE-2026-2391",
+      "aliases": [
+       "GHSA-w7fw-mjwx-w883"
+      ],
+      "package": "qs",
+      "version": "6.14.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.14.0' is vulnerable to 'CVE-2026-2391' (also known as 'GHSA-w7fw-mjwx-w883')."
+     },
+     {
+      "id": "CVE-2026-82256",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@sveltejs/kit@2.55.0' is vulnerable to 'CVE-2026-82256' (also known as 'GHSA-wqjv-9729-c5q2')."
+     },
+     {
+      "id": "CVE-2024-53382",
+      "aliases": [
+       "GHSA-x7hr-w5r2-h6wg"
+      ],
+      "package": "prismjs",
+      "version": "1.29.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'prismjs@1.29.0' is vulnerable to 'CVE-2024-53382' (also known as 'GHSA-x7hr-w5r2-h6wg')."
+     },
+     {
+      "id": "CVE-2026-73086",
+      "aliases": [
+       "GHSA-xwg4-73v4-xw9w"
+      ],
+      "package": "nanoid",
+      "version": "3.3.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@3.3.11' is vulnerable to 'CVE-2026-73086' (also known as 'GHSA-xwg4-73v4-xw9w')."
+     },
+     {
+      "id": "CVE-2026-73086",
+      "aliases": [
+       "GHSA-xwg4-73v4-xw9w"
+      ],
+      "package": "nanoid",
+      "version": "5.1.7",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@5.1.7' is vulnerable to 'CVE-2026-73086' (also known as 'GHSA-xwg4-73v4-xw9w')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 54,
+    "findings": [
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/codeql.yml",
+      "line": 58,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/codeql.yml",
+      "line": 59,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/codeql.yml",
+      "line": 63,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/codeql.yml",
+      "line": 91,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/docker-develop.yml",
+      "line": 18,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker-develop.yml",
+      "line": 19,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker-develop.yml",
+      "line": 21,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker-develop.yml",
+      "line": 23,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker-develop.yml",
+      "line": 26,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker-develop.yml",
+      "line": 41,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker-develop.yml",
+      "line": 47,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/docker-staging.yml",
+      "line": 18,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker-staging.yml",
+      "line": 19,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker-staging.yml",
+      "line": 21,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker-staging.yml",
+      "line": 23,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker-staging.yml",
+      "line": 26,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker-staging.yml",
+      "line": 41,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker-staging.yml",
+      "line": 47,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/docker.yml",
+      "line": 18,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker.yml",
+      "line": 19,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker.yml",
+      "line": 21,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker.yml",
+      "line": 23,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker.yml",
+      "line": 26,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker.yml",
+      "line": 41,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/docker.yml",
+      "line": 51,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/fast-forward.yml",
+      "line": 19,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/test-services.yml",
+      "line": 17,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/test-services.yml",
+      "line": 34,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/test-services.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/test-services.yml",
+      "line": 11,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/test-services.yml",
+      "line": 25,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "template-injection",
+      "level": "warning",
+      "file": ".github/workflows/test-services.yml",
+      "line": 40,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test-services.yml",
+      "line": 17,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test-services.yml",
+      "line": 18,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test-services.yml",
+      "line": 21,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test-services.yml",
+      "line": 34,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test-services.yml",
+      "line": 35,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test-services.yml",
+      "line": 38,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 12,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 24,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 37,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 8,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 20,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 33,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test.yml",
+      "line": 12,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test.yml",
+      "line": 13,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test.yml",
+      "line": 16,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test.yml",
+      "line": 24,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test.yml",
+      "line": 25,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test.yml",
+      "line": 28,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test.yml",
+      "line": 37,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test.yml",
+      "line": 38,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test.yml",
+      "line": 41,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "112 findings · 1 check pending · 1 check not applicable",
+  "block": "SECURITY · commit a636575\n\n  Dependency vulnerabilities\n    58 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-67214  nanoid@3.3.11\n      CVE-2026-67214  nanoid@5.1.7\n      CVE-2026-66062  @\n      CVE-2026-40073  @\n      CVE-2026-67213  nanoid@3.3.11\n      CVE-2026-6733  undici@6.24.1\n      CVE-2026-40074  @\n      CVE-2026-13149  brace-expansion@1.1.13\n      CVE-2026-13149  brace-expansion@5.0.5\n      CVE-2026-82417  qs@6.14.0\n      CVE-2026-39365  vite@7.3.1\n      CVE-2026-59869  js-yaml@3.14.1\n      CVE-2026-59869  js-yaml@4.1.1\n      GHSA-5p4m-2wfm-xmqj  js-yaml@3.14.1\n      GHSA-5p4m-2wfm-xmqj  js-yaml@4.1.1\n      CVE-2026-45623  postcss@8.5.8\n      CVE-2025-15284  qs@6.14.0\n      CVE-2026-42570  devalue@5.6.4\n      CVE-2026-82257  @\n      CVE-2026-12644  ts-deepmerge@7.0.3\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    54 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/codeql.yml:58\n      unpinned-uses  .github/workflows/codeql.yml:59\n      unpinned-uses  .github/workflows/codeql.yml:63\n      unpinned-uses  .github/workflows/codeql.yml:91\n      artipacked  .github/workflows/docker-develop.yml:18\n      unpinned-uses  .github/workflows/docker-develop.yml:19\n      unpinned-uses  .github/workflows/docker-develop.yml:21\n      unpinned-uses  .github/workflows/docker-develop.yml:23\n      unpinned-uses  .github/workflows/docker-develop.yml:26\n      unpinned-uses  .github/workflows/docker-develop.yml:41\n      unpinned-uses  .github/workflows/docker-develop.yml:47\n      artipacked  .github/workflows/docker-staging.yml:18\n      unpinned-uses  .github/workflows/docker-staging.yml:19\n      unpinned-uses  .github/workflows/docker-staging.yml:21\n      unpinned-uses  .github/workflows/docker-staging.yml:23\n      unpinned-uses  .github/workflows/docker-staging.yml:26\n      unpinned-uses  .github/workflows/docker-staging.yml:41\n      unpinned-uses  .github/workflows/docker-staging.yml:47\n      artipacked  .github/workflows/docker.yml:18\n      unpinned-uses  .github/workflows/docker.yml:19\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

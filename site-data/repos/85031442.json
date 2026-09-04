@@ -1,0 +1,222 @@
+{
+ "security": {
+  "repo_id": 85031442,
+  "commit_sha": "b96912cd94e264837bb60cec82309b2b899f489e",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 3,
+    "findings": [
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "2.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@2.1.1' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "2.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@2.1.1' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "2.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@2.1.1' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "findings",
+    "finding_count": 1,
+    "findings": [
+     {
+      "id": "MAL-2023-500",
+      "package": "hiring-without-whiteboards",
+      "ecosystem": "npm",
+      "published": "2023-01-11 03:51:04",
+      "source": "OSV"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 10,
+    "findings": [
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/node.js.yml",
+      "line": 13,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/node.js.yml",
+      "line": 25,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/node.js.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/node.js.yml",
+      "line": 10,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/node.js.yml",
+      "line": 22,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/node.js.yml",
+      "line": 13,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/node.js.yml",
+      "line": 15,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/node.js.yml",
+      "line": 25,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/node.js.yml",
+      "line": 26,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/node.js.yml",
+      "line": 37,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": true,
+  "suppression": {
+   "kind": "mal-advisory",
+   "advisories": [
+    "MAL-2023-500"
+   ],
+   "text": "The registry package named in this repo's manifest carries a live OSV MAL- advisory; the outbound link is withheld until the advisory is withdrawn (L9, name match)."
+  },
+  "card": "14 findings · 1 check pending · 1 check not applicable",
+  "block": "SECURITY · commit b96912c\n\n  Dependency vulnerabilities\n    3 findings                       osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-13149  brace-expansion@2.1.1\n      CVE-2026-14257  brace-expansion@2.1.1\n      CVE-2026-69152  brace-expansion@2.1.1\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    1 finding                        OSV  · 2026-09-03\n      MAL-2023-500  hiring-without-whiteboards (npm) published 2023-01-11\n    The npm package named `hiring-without-whiteboards` carries the advisory above (source: OSV). This repo's manifest declares that package name.\n\n  CI / workflow\n    10 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/node.js.yml:13\n      artipacked  .github/workflows/node.js.yml:25\n      excessive-permissions  .github/workflows/node.js.yml:1\n      excessive-permissions  .github/workflows/node.js.yml:10\n      excessive-permissions  .github/workflows/node.js.yml:22\n      unpinned-uses  .github/workflows/node.js.yml:13\n      unpinned-uses  .github/workflows/node.js.yml:15\n      unpinned-uses  .github/workflows/node.js.yml:25\n      unpinned-uses  .github/workflows/node.js.yml:26\n      unpinned-uses  .github/workflows/node.js.yml:37\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

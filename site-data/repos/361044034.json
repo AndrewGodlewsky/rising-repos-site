@@ -1,0 +1,3032 @@
+{
+ "security": {
+  "repo_id": 361044034,
+  "commit_sha": "a8d8ff717c5a72c1b3a9d98f1c849481f2ddcd00",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 129,
+    "findings": [
+     {
+      "id": "CVE-2026-54272",
+      "aliases": [
+       "GHSA-22jq-vg5j-6vgg"
+      ],
+      "package": "ip-address",
+      "version": "10.2.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.2.0' is vulnerable to 'CVE-2026-54272' (also known as 'GHSA-22jq-vg5j-6vgg')."
+     },
+     {
+      "id": "CVE-2026-27904",
+      "aliases": [
+       "GHSA-23c5-xmqv-rm74"
+      ],
+      "package": "minimatch",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'minimatch@3.1.2' is vulnerable to 'CVE-2026-27904' (also known as 'GHSA-23c5-xmqv-rm74')."
+     },
+     {
+      "id": "CVE-2026-27904",
+      "aliases": [
+       "GHSA-23c5-xmqv-rm74"
+      ],
+      "package": "minimatch",
+      "version": "5.1.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'minimatch@5.1.6' is vulnerable to 'CVE-2026-27904' (also known as 'GHSA-23c5-xmqv-rm74')."
+     },
+     {
+      "id": "CVE-2026-59873",
+      "aliases": [
+       "GHSA-23hp-3jrh-7fpw"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-59873' (also known as 'GHSA-23hp-3jrh-7fpw')."
+     },
+     {
+      "id": "CVE-2026-32141",
+      "aliases": [
+       "GHSA-25h7-pfq9-p65f"
+      ],
+      "package": "flatted",
+      "version": "3.3.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'flatted@3.3.1' is vulnerable to 'CVE-2026-32141' (also known as 'GHSA-25h7-pfq9-p65f')."
+     },
+     {
+      "id": "CVE-2025-69873",
+      "aliases": [
+       "GHSA-2g4f-4pwh-qvx6"
+      ],
+      "package": "ajv",
+      "version": "8.17.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ajv@8.17.1' is vulnerable to 'CVE-2025-69873' (also known as 'GHSA-2g4f-4pwh-qvx6')."
+     },
+     {
+      "id": "CVE-2026-67213",
+      "aliases": [
+       "GHSA-2v37-7h3g-55p8"
+      ],
+      "package": "nanoid",
+      "version": "3.3.16",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@3.3.16' is vulnerable to 'CVE-2026-67213' (also known as 'GHSA-2v37-7h3g-55p8')."
+     },
+     {
+      "id": "CVE-2026-24842",
+      "aliases": [
+       "GHSA-34x7-hfp2-rc4v"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-24842' (also known as 'GHSA-34x7-hfp2-rc4v')."
+     },
+     {
+      "id": "CVE-2026-44494",
+      "aliases": [
+       "GHSA-35jp-ww65-95wh"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-44494' (also known as 'GHSA-35jp-ww65-95wh')."
+     },
+     {
+      "id": "CVE-2026-6733",
+      "aliases": [
+       "GHSA-35p6-xmwp-9g52"
+      ],
+      "package": "undici",
+      "version": "6.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.26.0' is vulnerable to 'CVE-2026-6733' (also known as 'GHSA-35p6-xmwp-9g52')."
+     },
+     {
+      "id": "CVE-2026-44495",
+      "aliases": [
+       "GHSA-3g43-6gmg-66jw"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-44495' (also known as 'GHSA-3g43-6gmg-66jw')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.11' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2025-62718",
+      "aliases": [
+       "GHSA-3p68-rc4w-qgx5"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2025-62718' (also known as 'GHSA-3p68-rc4w-qgx5')."
+     },
+     {
+      "id": "CVE-2026-26996",
+      "aliases": [
+       "GHSA-3ppc-4f35-3m26"
+      ],
+      "package": "minimatch",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'minimatch@3.1.2' is vulnerable to 'CVE-2026-26996' (also known as 'GHSA-3ppc-4f35-3m26')."
+     },
+     {
+      "id": "CVE-2026-26996",
+      "aliases": [
+       "GHSA-3ppc-4f35-3m26"
+      ],
+      "package": "minimatch",
+      "version": "5.1.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'minimatch@5.1.6' is vulnerable to 'CVE-2026-26996' (also known as 'GHSA-3ppc-4f35-3m26')."
+     },
+     {
+      "id": "CVE-2026-33672",
+      "aliases": [
+       "GHSA-3v7f-55p6-f55p"
+      ],
+      "package": "picomatch",
+      "version": "2.3.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'picomatch@2.3.1' is vulnerable to 'CVE-2026-33672' (also known as 'GHSA-3v7f-55p6-f55p')."
+     },
+     {
+      "id": "CVE-2026-42044",
+      "aliases": [
+       "GHSA-3w6x-2g7m-8v23"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-42044' (also known as 'GHSA-3w6x-2g7m-8v23')."
+     },
+     {
+      "id": "CVE-2026-67313",
+      "aliases": [
+       "GHSA-42h9-826w-cgv3"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-67313' (also known as 'GHSA-42h9-826w-cgv3')."
+     },
+     {
+      "id": "CVE-2026-25639",
+      "aliases": [
+       "GHSA-43fc-jf86-j433"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-25639' (also known as 'GHSA-43fc-jf86-j433')."
+     },
+     {
+      "id": "CVE-2026-42037",
+      "aliases": [
+       "GHSA-445q-vr5w-6q77"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-42037' (also known as 'GHSA-445q-vr5w-6q77')."
+     },
+     {
+      "id": "CVE-2026-13676",
+      "aliases": [
+       "GHSA-4c8g-83qw-93j6"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.0.1' is vulnerable to 'CVE-2026-13676' (also known as 'GHSA-4c8g-83qw-93j6')."
+     },
+     {
+      "id": "CVE-2025-58754",
+      "aliases": [
+       "GHSA-4hjh-wcwx-xvwj"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2025-58754' (also known as 'GHSA-4hjh-wcwx-xvwj')."
+     },
+     {
+      "id": "CVE-2026-82417",
+      "aliases": [
+       "GHSA-4mjr-xmp4-gh2g"
+      ],
+      "package": "qs",
+      "version": "6.14.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.14.2' is vulnerable to 'CVE-2026-82417' (also known as 'GHSA-4mjr-xmp4-gh2g')."
+     },
+     {
+      "id": "CVE-2026-82417",
+      "aliases": [
+       "GHSA-4mjr-xmp4-gh2g"
+      ],
+      "package": "qs",
+      "version": "6.15.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.15.3' is vulnerable to 'CVE-2026-82417' (also known as 'GHSA-4mjr-xmp4-gh2g')."
+     },
+     {
+      "id": "CVE-2026-49356",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@babel/core@7.29.0' is vulnerable to 'CVE-2026-49356' (also known as 'GHSA-4x5r-pxfx-6jf8')."
+     },
+     {
+      "id": "CVE-2026-69198",
+      "aliases": [
+       "GHSA-4xrf-jv44-h6hh"
+      ],
+      "package": "ip-address",
+      "version": "10.2.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.2.0' is vulnerable to 'CVE-2026-69198' (also known as 'GHSA-4xrf-jv44-h6hh')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.1' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-71848",
+      "aliases": [
+       "GHSA-54fx-42gc-7vw4"
+      ],
+      "package": "hono",
+      "version": "4.12.27",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.27' is vulnerable to 'CVE-2026-71848' (also known as 'GHSA-54fx-42gc-7vw4')."
+     },
+     {
+      "id": "CVE-2026-75838",
+      "aliases": [
+       "GHSA-55q2-fjhq-7xh7"
+      ],
+      "package": "dompurify",
+      "version": "3.4.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'dompurify@3.4.8' is vulnerable to 'CVE-2026-75838' (also known as 'GHSA-55q2-fjhq-7xh7')."
+     },
+     {
+      "id": "CVE-2026-42034",
+      "aliases": [
+       "GHSA-5c9x-8gcm-mpgx"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-42034' (also known as 'GHSA-5c9x-8gcm-mpgx')."
+     },
+     {
+      "id": "CVE-2025-64756",
+      "aliases": [
+       "GHSA-5j98-mcp5-4vw2"
+      ],
+      "package": "glob",
+      "version": "11.0.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'glob@11.0.3' is vulnerable to 'CVE-2025-64756' (also known as 'GHSA-5j98-mcp5-4vw2')."
+     },
+     {
+      "id": "CVE-2025-71329",
+      "aliases": [
+       "GHSA-5p2g-fcmc-qvqq"
+      ],
+      "package": "image-size",
+      "version": "1.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'image-size@1.2.1' is vulnerable to 'CVE-2025-71329' (also known as 'GHSA-5p2g-fcmc-qvqq')."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "3.14.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.1' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "4.3.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.3.0' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "CVE-2026-50289",
+      "aliases": [
+       "GHSA-5xpp-75jx-m839"
+      ],
+      "package": "systeminformation",
+      "version": "5.31.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'systeminformation@5.31.6' is vulnerable to 'CVE-2026-50289' (also known as 'GHSA-5xpp-75jx-m839')."
+     },
+     {
+      "id": "CVE-2026-42039",
+      "aliases": [
+       "GHSA-62hf-57xw-28j9"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-42039' (also known as 'GHSA-62hf-57xw-28j9')."
+     },
+     {
+      "id": "CVE-2026-42035",
+      "aliases": [
+       "GHSA-6chq-wfr3-2hj9"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-42035' (also known as 'GHSA-6chq-wfr3-2hj9')."
+     },
+     {
+      "id": "CVE-2026-44488",
+      "aliases": [
+       "GHSA-777c-7fjr-54vf"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-44488' (also known as 'GHSA-777c-7fjr-54vf')."
+     },
+     {
+      "id": "CVE-2026-71849",
+      "aliases": [
+       "GHSA-79qm-7rj5-m7r9"
+      ],
+      "package": "hono",
+      "version": "4.12.27",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.27' is vulnerable to 'CVE-2026-71849' (also known as 'GHSA-79qm-7rj5-m7r9')."
+     },
+     {
+      "id": "CVE-2026-18446",
+      "aliases": [
+       "GHSA-7p8r-x3mc-p8w7"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.0.1' is vulnerable to 'CVE-2026-18446' (also known as 'GHSA-7p8r-x3mc-p8w7')."
+     },
+     {
+      "id": "CVE-2026-67319",
+      "aliases": [
+       "GHSA-7q8q-rj6j-mhjq"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-67319' (also known as 'GHSA-7q8q-rj6j-mhjq')."
+     },
+     {
+      "id": "CVE-2026-27903",
+      "aliases": [
+       "GHSA-7r86-cg39-jmmj"
+      ],
+      "package": "minimatch",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'minimatch@3.1.2' is vulnerable to 'CVE-2026-27903' (also known as 'GHSA-7r86-cg39-jmmj')."
+     },
+     {
+      "id": "CVE-2026-27903",
+      "aliases": [
+       "GHSA-7r86-cg39-jmmj"
+      ],
+      "package": "minimatch",
+      "version": "5.1.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'minimatch@5.1.6' is vulnerable to 'CVE-2026-27903' (also known as 'GHSA-7r86-cg39-jmmj')."
+     },
+     {
+      "id": "CVE-2026-26960",
+      "aliases": [
+       "GHSA-83g3-92jg-28cx"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-26960' (also known as 'GHSA-83g3-92jg-28cx')."
+     },
+     {
+      "id": "CVE-2025-65945",
+      "aliases": [
+       "GHSA-869p-cjfg-cm3x"
+      ],
+      "package": "jws",
+      "version": "3.2.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'jws@3.2.2' is vulnerable to 'CVE-2025-65945' (also known as 'GHSA-869p-cjfg-cm3x')."
+     },
+     {
+      "id": "CVE-2025-65945",
+      "aliases": [
+       "GHSA-869p-cjfg-cm3x"
+      ],
+      "package": "jws",
+      "version": "4.0.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'jws@4.0.0' is vulnerable to 'CVE-2025-65945' (also known as 'GHSA-869p-cjfg-cm3x')."
+     },
+     {
+      "id": "CVE-2026-44490",
+      "aliases": [
+       "GHSA-898c-q2cr-xwhg"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-44490' (also known as 'GHSA-898c-q2cr-xwhg')."
+     },
+     {
+      "id": "CVE-2025-48387",
+      "aliases": [
+       "GHSA-8cj5-5rvv-wf4v"
+      ],
+      "package": "tar-fs",
+      "version": "2.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar-fs@2.1.1' is vulnerable to 'CVE-2025-48387' (also known as 'GHSA-8cj5-5rvv-wf4v')."
+     },
+     {
+      "id": "CVE-2026-69207",
+      "aliases": [
+       "GHSA-8j4g-w8fx-2239"
+      ],
+      "package": "hono",
+      "version": "4.12.27",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.27' is vulnerable to 'CVE-2026-69207' (also known as 'GHSA-8j4g-w8fx-2239')."
+     },
+     {
+      "id": "CVE-2026-23745",
+      "aliases": [
+       "GHSA-8qq5-rm4j-mr97"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-23745' (also known as 'GHSA-8qq5-rm4j-mr97')."
+     },
+     {
+      "id": "CVE-2026-59874",
+      "aliases": [
+       "GHSA-8x88-c5mf-7j5w"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-59874' (also known as 'GHSA-8x88-c5mf-7j5w')."
+     },
+     {
+      "id": "CVE-2026-16728",
+      "aliases": [
+       "GHSA-8xcm-r25x-g524"
+      ],
+      "package": "undici",
+      "version": "6.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.26.0' is vulnerable to 'CVE-2026-16728' (also known as 'GHSA-8xcm-r25x-g524')."
+     },
+     {
+      "id": "CVE-2026-31802",
+      "aliases": [
+       "GHSA-9ppj-qmqm-q256"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-31802' (also known as 'GHSA-9ppj-qmqm-q256')."
+     },
+     {
+      "id": "CVE-2026-33671",
+      "aliases": [
+       "GHSA-c2c7-rcm5-vvqj"
+      ],
+      "package": "picomatch",
+      "version": "2.3.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'picomatch@2.3.1' is vulnerable to 'CVE-2026-33671' (also known as 'GHSA-c2c7-rcm5-vvqj')."
+     },
+     {
+      "id": "CVE-2026-66010",
+      "aliases": [
+       "GHSA-c2j3-45gr-mqc4"
+      ],
+      "package": "dompurify",
+      "version": "3.4.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'dompurify@3.4.8' is vulnerable to 'CVE-2026-66010' (also known as 'GHSA-c2j3-45gr-mqc4')."
+     },
+     {
+      "id": "CVE-2026-65898",
+      "aliases": [
+       "GHSA-cmwh-pvxp-8882"
+      ],
+      "package": "dompurify",
+      "version": "3.4.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'dompurify@3.4.8' is vulnerable to 'CVE-2026-65898' (also known as 'GHSA-cmwh-pvxp-8882')."
+     },
+     {
+      "id": "CVE-2025-13465",
+      "aliases": [],
+      "package": "lodash",
+      "version": "4.17.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'lodash@4.17.23' is vulnerable to 'CVE-2025-13465' (also known as 'CVE-2026-2950', 'GHSA-f23m-r3pf-42rh', 'GHSA-xxjr-mmjv-4gpg')."
+     },
+     {
+      "id": "CVE-2025-13465",
+      "aliases": [],
+      "package": "lodash-es",
+      "version": "4.17.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'lodash-es@4.17.23' is vulnerable to 'CVE-2025-13465' (also known as 'CVE-2026-2950', 'GHSA-f23m-r3pf-42rh', 'GHSA-xxjr-mmjv-4gpg')."
+     },
+     {
+      "id": "CVE-2026-71850",
+      "aliases": [
+       "GHSA-f23p-vx2j-j53r"
+      ],
+      "package": "hono",
+      "version": "4.12.27",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.27' is vulnerable to 'CVE-2026-71850' (also known as 'GHSA-f23p-vx2j-j53r')."
+     },
+     {
+      "id": "CVE-2026-75975",
+      "aliases": [
+       "GHSA-f65p-4m7j-42xc"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.0.1' is vulnerable to 'CVE-2026-75975' (also known as 'GHSA-f65p-4m7j-42xc')."
+     },
+     {
+      "id": "CVE-2026-33750",
+      "aliases": [
+       "GHSA-f886-m6hf-6m8v"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.11' is vulnerable to 'CVE-2026-33750' (also known as 'GHSA-f886-m6hf-6m8v')."
+     },
+     {
+      "id": "CVE-2026-33750",
+      "aliases": [
+       "GHSA-f886-m6hf-6m8v"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2026-33750' (also known as 'GHSA-f886-m6hf-6m8v')."
+     },
+     {
+      "id": "GHSA-frvp-7c67-39w9",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@hono/node-server@1.19.14' is vulnerable to 'GHSA-frvp-7c67-39w9'."
+     },
+     {
+      "id": "CVE-2026-40175",
+      "aliases": [
+       "GHSA-fvcv-3m26-pcqx"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-40175' (also known as 'GHSA-fvcv-3m26-pcqx')."
+     },
+     {
+      "id": "GHSA-g7r4-m6w7-qqqr",
+      "aliases": [],
+      "package": "esbuild",
+      "version": "0.28.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'esbuild@0.28.0' is vulnerable to 'GHSA-g7r4-m6w7-qqqr'."
+     },
+     {
+      "id": "CVE-2026-11525",
+      "aliases": [
+       "GHSA-g8m3-5g58-fq7m"
+      ],
+      "package": "undici",
+      "version": "6.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.26.0' is vulnerable to 'CVE-2026-11525' (also known as 'GHSA-g8m3-5g58-fq7m')."
+     },
+     {
+      "id": "CVE-2026-59875",
+      "aliases": [
+       "GHSA-gvwx-54wh-qm9j"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-59875' (also known as 'GHSA-gvwx-54wh-qm9j')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.1' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-44496",
+      "aliases": [
+       "GHSA-hfxv-24rg-xrqf"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-44496' (also known as 'GHSA-hfxv-24rg-xrqf')."
+     },
+     {
+      "id": "CVE-2026-12143",
+      "aliases": [
+       "GHSA-hmw2-7cc7-3qxx"
+      ],
+      "package": "form-data",
+      "version": "4.0.4",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'form-data@4.0.4' is vulnerable to 'CVE-2026-12143' (also known as 'GHSA-hmw2-7cc7-3qxx')."
+     },
+     {
+      "id": "CVE-2026-44486",
+      "aliases": [
+       "GHSA-j5f8-grm9-p9fc"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-44486' (also known as 'GHSA-j5f8-grm9-p9fc')."
+     },
+     {
+      "id": "CVE-2026-76172",
+      "aliases": [
+       "GHSA-jqff-g426-hqxp"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.0.1' is vulnerable to 'CVE-2026-76172' (also known as 'GHSA-jqff-g426-hqxp')."
+     },
+     {
+      "id": "CVE-2026-67317",
+      "aliases": [
+       "GHSA-jqh4-m9w3-8hp9"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-67317' (also known as 'GHSA-jqh4-m9w3-8hp9')."
+     },
+     {
+      "id": "CVE-2025-27152",
+      "aliases": [
+       "GHSA-jr5f-v2jv-69x6"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2025-27152' (also known as 'GHSA-jr5f-v2jv-69x6')."
+     },
+     {
+      "id": "CVE-2026-45149",
+      "aliases": [
+       "GHSA-jxxr-4gwj-5jf2"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-45149' (also known as 'GHSA-jxxr-4gwj-5jf2')."
+     },
+     {
+      "id": "CVE-2026-42038",
+      "aliases": [
+       "GHSA-m7pr-hjqh-92cm"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-42038' (also known as 'GHSA-m7pr-hjqh-92cm')."
+     },
+     {
+      "id": "CVE-2026-15157",
+      "aliases": [
+       "GHSA-m8rv-5g2x-5cg5"
+      ],
+      "package": "undici",
+      "version": "6.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.26.0' is vulnerable to 'CVE-2026-15157' (also known as 'GHSA-m8rv-5g2x-5cg5')."
+     },
+     {
+      "id": "CVE-2025-64718",
+      "aliases": [
+       "GHSA-mh29-5h37-fv8m"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.1' is vulnerable to 'CVE-2025-64718' (also known as 'GHSA-mh29-5h37-fv8m')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.11' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-67316",
+      "aliases": [
+       "GHSA-mmx7-hfxf-jppx"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-67316' (also known as 'GHSA-mmx7-hfxf-jppx')."
+     },
+     {
+      "id": "CVE-2026-69192",
+      "aliases": [
+       "GHSA-mwp4-54f8-5fhr"
+      ],
+      "package": "ip-address",
+      "version": "10.2.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.2.0' is vulnerable to 'CVE-2026-69192' (also known as 'GHSA-mwp4-54f8-5fhr')."
+     },
+     {
+      "id": "GHSA-p498-v437-472g",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@humanfs/node@0.16.6' is vulnerable to 'GHSA-p498-v437-472g'."
+     },
+     {
+      "id": "CVE-2026-9679",
+      "aliases": [
+       "GHSA-p88m-4jfj-68fv"
+      ],
+      "package": "undici",
+      "version": "6.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.26.0' is vulnerable to 'CVE-2026-9679' (also known as 'GHSA-p88m-4jfj-68fv')."
+     },
+     {
+      "id": "CVE-2026-44487",
+      "aliases": [
+       "GHSA-p92q-9vqr-4j8v"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-44487' (also known as 'GHSA-p92q-9vqr-4j8v')."
+     },
+     {
+      "id": "CVE-2026-42033",
+      "aliases": [
+       "GHSA-pf86-5x62-jrwf"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-42033' (also known as 'GHSA-pf86-5x62-jrwf')."
+     },
+     {
+      "id": "CVE-2026-44705",
+      "aliases": [
+       "GHSA-ph9p-34f9-6g65"
+      ],
+      "package": "tmp",
+      "version": "0.2.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tmp@0.2.5' is vulnerable to 'CVE-2026-44705' (also known as 'GHSA-ph9p-34f9-6g65')."
+     },
+     {
+      "id": "CVE-2026-67312",
+      "aliases": [
+       "GHSA-pmv8-rq9r-6j72"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-67312' (also known as 'GHSA-pmv8-rq9r-6j72')."
+     },
+     {
+      "id": "CVE-2026-42043",
+      "aliases": [
+       "GHSA-pmwg-cvhr-8vh7"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-42043' (also known as 'GHSA-pmwg-cvhr-8vh7')."
+     },
+     {
+      "id": "CVE-2024-12905",
+      "aliases": [
+       "GHSA-pq67-2wwv-3xjx"
+      ],
+      "package": "tar-fs",
+      "version": "2.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar-fs@2.1.1' is vulnerable to 'CVE-2024-12905' (also known as 'GHSA-pq67-2wwv-3xjx')."
+     },
+     {
+      "id": "CVE-2026-6321",
+      "aliases": [
+       "GHSA-q3j6-qgpj-74h6"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.0.1' is vulnerable to 'CVE-2026-6321' (also known as 'GHSA-q3j6-qgpj-74h6')."
+     },
+     {
+      "id": "CVE-2026-8723",
+      "aliases": [
+       "GHSA-q8mj-m7cp-5q26"
+      ],
+      "package": "qs",
+      "version": "6.14.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.14.2' is vulnerable to 'CVE-2026-8723' (also known as 'GHSA-q8mj-m7cp-5q26')."
+     },
+     {
+      "id": "CVE-2026-42264",
+      "aliases": [
+       "GHSA-q8qp-cvcw-x6jj"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-42264' (also known as 'GHSA-q8qp-cvcw-x6jj')."
+     },
+     {
+      "id": "CVE-2026-29786",
+      "aliases": [
+       "GHSA-qffp-2rhf-9h96"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-29786' (also known as 'GHSA-qffp-2rhf-9h96')."
+     },
+     {
+      "id": "CVE-2026-27601",
+      "aliases": [
+       "GHSA-qpx9-hpmf-5gmw"
+      ],
+      "package": "underscore",
+      "version": "1.13.7",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'underscore@1.13.7' is vulnerable to 'CVE-2026-27601' (also known as 'GHSA-qpx9-hpmf-5gmw')."
+     },
+     {
+      "id": "CVE-2026-73566",
+      "aliases": [
+       "GHSA-r292-9mhp-454m"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-73566' (also known as 'GHSA-r292-9mhp-454m')."
+     },
+     {
+      "id": "CVE-2021-23337",
+      "aliases": [],
+      "package": "lodash",
+      "version": "4.17.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'lodash@4.17.23' is vulnerable to 'CVE-2021-23337' (also known as 'CVE-2026-4800', 'GHSA-35jh-r3h4-6jhm', 'GHSA-r5fr-rjxr-66jc')."
+     },
+     {
+      "id": "CVE-2021-23337",
+      "aliases": [],
+      "package": "lodash-es",
+      "version": "4.17.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'lodash-es@4.17.23' is vulnerable to 'CVE-2021-23337' (also known as 'CVE-2026-4800', 'GHSA-35jh-r3h4-6jhm', 'GHSA-r5fr-rjxr-66jc')."
+     },
+     {
+      "id": "CVE-2026-23950",
+      "aliases": [
+       "GHSA-r6q2-hw4h-h46w"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-23950' (also known as 'GHSA-r6q2-hw4h-h46w')."
+     },
+     {
+      "id": "CVE-2026-33228",
+      "aliases": [
+       "GHSA-rf6f-7fwh-wjgh"
+      ],
+      "package": "flatted",
+      "version": "3.3.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'flatted@3.3.1' is vulnerable to 'CVE-2026-33228' (also known as 'GHSA-rf6f-7fwh-wjgh')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.11' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.8' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-16221",
+      "aliases": [
+       "GHSA-v2hh-gcrm-f6hx"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.0.1' is vulnerable to 'CVE-2026-16221' (also known as 'GHSA-v2hh-gcrm-f6hx')."
+     },
+     {
+      "id": "CVE-2026-6322",
+      "aliases": [
+       "GHSA-v39h-62p7-jpjc"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.0.1' is vulnerable to 'CVE-2026-6322' (also known as 'GHSA-v39h-62p7-jpjc')."
+     },
+     {
+      "id": "CVE-2026-16729",
+      "aliases": [
+       "GHSA-v3r7-h72x-cjcm"
+      ],
+      "package": "undici",
+      "version": "6.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.26.0' is vulnerable to 'CVE-2026-16729' (also known as 'GHSA-v3r7-h72x-cjcm')."
+     },
+     {
+      "id": "CVE-2025-5889",
+      "aliases": [
+       "GHSA-v6h2-p8h4-qcjw"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.11' is vulnerable to 'CVE-2025-5889' (also known as 'GHSA-v6h2-p8h4-qcjw')."
+     },
+     {
+      "id": "CVE-2025-5889",
+      "aliases": [
+       "GHSA-v6h2-p8h4-qcjw"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2025-5889' (also known as 'GHSA-v6h2-p8h4-qcjw')."
+     },
+     {
+      "id": "CVE-2026-42036",
+      "aliases": [
+       "GHSA-vf2m-468p-8v99"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-42036' (also known as 'GHSA-vf2m-468p-8v99')."
+     },
+     {
+      "id": "CVE-2025-59343",
+      "aliases": [
+       "GHSA-vj76-c3g6-qr5v"
+      ],
+      "package": "tar-fs",
+      "version": "2.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar-fs@2.1.1' is vulnerable to 'CVE-2025-59343' (also known as 'GHSA-vj76-c3g6-qr5v')."
+     },
+     {
+      "id": "CVE-2026-53655",
+      "aliases": [
+       "GHSA-vmf3-w455-68vh"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-53655' (also known as 'GHSA-vmf3-w455-68vh')."
+     },
+     {
+      "id": "CVE-2026-12151",
+      "aliases": [
+       "GHSA-vxpw-j846-p89q"
+      ],
+      "package": "undici",
+      "version": "6.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@6.26.0' is vulnerable to 'CVE-2026-12151' (also known as 'GHSA-vxpw-j846-p89q')."
+     },
+     {
+      "id": "CVE-2026-65899",
+      "aliases": [
+       "GHSA-vxr8-fq34-vvx9"
+      ],
+      "package": "dompurify",
+      "version": "3.4.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'dompurify@3.4.8' is vulnerable to 'CVE-2026-65899' (also known as 'GHSA-vxr8-fq34-vvx9')."
+     },
+     {
+      "id": "CVE-2025-71330",
+      "aliases": [
+       "GHSA-w3rx-r6r6-pgpr"
+      ],
+      "package": "image-size",
+      "version": "1.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'image-size@1.2.1' is vulnerable to 'CVE-2025-71330' (also known as 'GHSA-w3rx-r6r6-pgpr')."
+     },
+     {
+      "id": "CVE-2026-41907",
+      "aliases": [],
+      "package": "uuid",
+      "version": "11.1.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'uuid@11.1.0' is vulnerable to 'CVE-2026-41907' (also known as 'CVE-2026-41988', 'GHSA-w5hq-g745-h8pq')."
+     },
+     {
+      "id": "CVE-2026-41907",
+      "aliases": [],
+      "package": "uuid",
+      "version": "8.3.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'uuid@8.3.2' is vulnerable to 'CVE-2026-41907' (also known as 'CVE-2026-41988', 'GHSA-w5hq-g745-h8pq')."
+     },
+     {
+      "id": "CVE-2026-59871",
+      "aliases": [
+       "GHSA-w8wr-v893-vjvp"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-59871' (also known as 'GHSA-w8wr-v893-vjvp')."
+     },
+     {
+      "id": "CVE-2026-42041",
+      "aliases": [
+       "GHSA-w9j2-pvgh-6h63"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-42041' (also known as 'GHSA-w9j2-pvgh-6h63')."
+     },
+     {
+      "id": "CVE-2026-82562",
+      "aliases": [
+       "GHSA-x5fp-wj9c-mxmx"
+      ],
+      "package": "qs",
+      "version": "6.14.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.14.2' is vulnerable to 'CVE-2026-82562' (also known as 'GHSA-x5fp-wj9c-mxmx')."
+     },
+     {
+      "id": "CVE-2026-82562",
+      "aliases": [
+       "GHSA-x5fp-wj9c-mxmx"
+      ],
+      "package": "qs",
+      "version": "6.15.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.15.3' is vulnerable to 'CVE-2026-82562' (also known as 'GHSA-x5fp-wj9c-mxmx')."
+     },
+     {
+      "id": "CVE-2026-42040",
+      "aliases": [
+       "GHSA-xhjh-pmcv-23jw"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-42040' (also known as 'GHSA-xhjh-pmcv-23jw')."
+     },
+     {
+      "id": "CVE-2026-42042",
+      "aliases": [
+       "GHSA-xx6v-rp6x-q39c"
+      ],
+      "package": "axios",
+      "version": "1.7.8",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'axios@1.7.8' is vulnerable to 'CVE-2026-42042' (also known as 'GHSA-xx6v-rp6x-q39c')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 28,
+    "findings": [
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/autofix.yml",
+      "line": 19,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/autofix.yml",
+      "line": 31,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/cr.yml",
+      "line": 10,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/cr.yml",
+      "line": 6,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/cr.yml",
+      "line": 21,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/release.yml",
+      "line": 16,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/release.yml",
+      "line": 22,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `package-manager-cache` enables caching"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/release.yml",
+      "line": 31,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/smoke.yml",
+      "line": 26,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/smoke.yml",
+      "line": 73,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/smoke.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/smoke.yml",
+      "line": 17,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/smoke.yml",
+      "line": 57,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/smoke.yml",
+      "line": 38,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/smoke.yml",
+      "line": 85,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/smoke.yml",
+      "line": 105,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/smoke.yml",
+      "line": 127,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/smoke.yml",
+      "line": 154,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 32,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 61,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 85,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 15,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 57,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/test.yml",
+      "line": 80,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/test.yml",
+      "line": 44,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/test.yml",
+      "line": 70,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/test.yml",
+      "line": 96,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "findings",
+    "finding_count": 133,
+    "findings": [
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "line": 10,
+      "message": "Hidden Instructions",
+      "finding": "<!-- ⚠️ Please DON'T ignore the issue template -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "line": 12,
+      "message": "Hidden Instructions",
+      "finding": "<!-- 💡 Consider upgrading to the latest version before sending the issue -->"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": ".github/workflows/smoke.yml",
+      "line": 109,
+      "message": "Credential Access",
+      "finding": "/.npmrc"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": ".gitignore",
+      "line": 13,
+      "message": "Credential Access",
+      "finding": ".env\n"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "demo/composable-vue/slides.md",
+      "line": 706,
+      "message": "Hidden Instructions",
+      "finding": "<!--\nLower the mental burden\n-->\n\n---\n\n# `effectScope` RFC <Marker class=\"text-purple-400\">Upcoming</Marker>\n\nA new API to collect the side effects automatically. Likely to be shipped with Vue 3.1<br>"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "demo/starter/slides.md",
+      "line": 161,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Footer -->\n\n[Learn more](https://sli.dev/features/line-highlighting)\n\n<!-- Inline style -->\n<style>\n.footnotes-sep {\n  @apply mt-5 opacity-10;\n}\n.footnotes {\n  @apply text-sm opacity-75;\n}\n.footn"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": "docs/.vitepress/addons.ts",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": "docs/.vitepress/addons.ts"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": "docs/.vitepress/config.ts",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": "docs/.vitepress/config.ts"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": "docs/.vitepress/customizations.ts",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": "docs/.vitepress/customizations.ts"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": "docs/.vitepress/pages.ts",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": "docs/.vitepress/pages.ts"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": "docs/.vitepress/shims/VPMenuLink.ts",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": "docs/.vitepress/shims/VPMenuLink.ts"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": "docs/.vitepress/showcases.ts",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": "docs/.vitepress/showcases.ts"
+     },
+     {
+      "rule": "YR4",
+      "severity": "HIGH",
+      "category": "YARA Match",
+      "pattern": "YARA rule 'exploit_framework': Exploit framework components and payloads [hacktools]",
+      "confidence": 0.8,
+      "file": "docs/.vitepress/showcases.ts",
+      "line": 183,
+      "message": "YARA rule 'exploit_framework': Exploit framework components and payloads [hacktools]",
+      "finding": "social-engineer; social-engineer; social-engineer"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": "docs/.vitepress/sidebar-gen.ts",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": "docs/.vitepress/sidebar-gen.ts"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": "docs/.vitepress/theme/composables/dark.ts",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": "docs/.vitepress/theme/composables/dark.ts"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": "docs/.vitepress/theme/index.ts",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": "docs/.vitepress/theme/index.ts"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": "docs/.vitepress/themes.ts",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": "docs/.vitepress/themes.ts"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": "docs/.vitepress/utils.ts",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": "docs/.vitepress/utils.ts"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "docs/guide/animations.md",
+      "line": 20,
+      "message": "Hidden Instructions",
+      "finding": "<!-- eslint-skip -->\n\n```md\n<!-- Component usage:\n     this will be invisible until you press \"next\" -->\n<v-click> Hello World! </v-click>\n\n<!-- Directive usage:\n     this will be invisible until you "
+     },
+     {
+      "rule": "SC6",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Possible Typosquatting: 'cypress' resembles popular package 'express'",
+      "confidence": 0.7,
+      "file": "package.json",
+      "line": 53,
+      "message": "Possible Typosquatting: 'cypress' resembles popular package 'express'",
+      "finding": "cypress"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": "packages/client/.generated/unocss-tokens.ts",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": "packages/client/.generated/unocss-tokens.ts"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/client/builtin/BlueSky.vue",
+      "line": 1,
+      "message": "Hidden Instructions",
+      "finding": "<!--\nA simple wrapper for embedded Bluesky posts\n\nUsage:\n\n<BlueSky uri=\"at://did:plc:432mbsu2xucyvxl6sluohidu/app.bsky.feed.post/3lgwg2vy44s2q\" />\n<BlueSky uri=\"https://bsky.app/profile/sli.dev/post/3"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "packages/client/composables/useDragElements.ts",
+      "line": 122,
+      "message": "Direct Prompt Extraction",
+      "finding": "return directive"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/client/internals/SlidesShow.vue",
+      "line": 77,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Global Bottom -->\n  <GlobalBottom />\n\n  <!-- Slides -->\n  <component\n    :is=\"(hasViewTransition && !isPrintMode && !hmrSkipTransition && !disableTransition) ? 'div' : TransitionGroup\"\n    v-bind"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "docs/features/code-groups.md",
+      "line": 80,
+      "message": "Credential Access",
+      "finding": ".env'"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "packages/client/internals/TitleIcon.vue",
+      "line": 37,
+      "message": "Credential Access",
+      "finding": ".env'"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "docs/features/code-groups.md",
+      "line": 73,
+      "message": "Credential Access",
+      "finding": ".npmrc"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "packages/client/internals/TitleIcon.vue",
+      "line": 30,
+      "message": "Credential Access",
+      "finding": ".npmrc"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "packages/create-theme/index.mjs",
+      "line": 26,
+      "message": "Credential Access",
+      "finding": ".npmrc"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "demo/starter/slides.md",
+      "line": 44,
+      "message": "Hidden Instructions",
+      "finding": "<!--\nThe last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.h"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/slidev/template.md",
+      "line": 40,
+      "message": "Hidden Instructions",
+      "finding": "<!--\nThe last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.h"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 2655,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 2661,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 2667,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 2673,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 2679,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 2686,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 2693,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 2700,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 2707,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 2714,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 2720,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 2726,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 2732,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11645,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11648,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11651,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11654,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11657,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11660,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11663,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11666,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11669,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11672,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11675,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11678,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11681,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11683,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11684,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11685,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11686,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11687,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11688,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11689,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11690,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11691,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11692,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11693,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 11694,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 14347,
+      "message": "Credential Access",
+      "finding": "keyring"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 5525,
+      "message": "Credential Access",
+      "finding": "keychain"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 14342,
+      "message": "Credential Access",
+      "finding": "keychain"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "pnpm-lock.yaml",
+      "line": 17252,
+      "message": "Credential Access",
+      "finding": "keychain"
+     },
+     {
+      "rule": "RA1",
+      "severity": "HIGH",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "confidence": 0.85,
+      "file": "skills/GENERATION.md",
+      "line": 105,
+      "message": "Self-Modification",
+      "finding": "Update Skill"
+     },
+     {
+      "rule": "RA1",
+      "severity": "HIGH",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "confidence": 0.85,
+      "file": "skills/GENERATION.md",
+      "line": 139,
+      "message": "Self-Modification",
+      "finding": "Update SKILL"
+     },
+     {
+      "rule": "YR4",
+      "severity": "HIGH",
+      "category": "YARA Match",
+      "pattern": "YARA rule 'agent_skill_mcp_tool_poisoning_metadata': MCP/tool metadata poisoning indicators in tool schemas or skill manifests [agent_skills]",
+      "confidence": 0.8,
+      "file": "skills/slidev/references/syntax-importing-slides.md",
+      "line": 3,
+      "message": "YARA rule 'agent_skill_mcp_tool_poisoning_metadata': MCP/tool metadata poisoning indicators in tool schemas or skill manifests [agent_skills]",
+      "finding": "description:; <!-- Content here is ignored -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "skills/slidev/references/syntax-importing-slides.md",
+      "line": 21,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Content here is ignored -->"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "test/import-guard.test.ts",
+      "line": 40,
+      "message": "Credential Access",
+      "finding": "/etc/passwd"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": ".github/workflows/release.yml",
+      "line": 27,
+      "message": "MCP server referenced without pinned version: 'npx changelogithub'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": ".github/workflows/smoke.yml",
+      "line": 109,
+      "message": "MCP server referenced without pinned version: 'npx del-cli'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": ".github/workflows/smoke.yml",
+      "line": 123,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/slidev/references/core-exporting.md",
+      "line": 147,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "demo/composable-vue/slides.md",
+      "line": 627,
+      "message": "External Transmission",
+      "finding": "https://api.github.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "demo/composable-vue/slides.md",
+      "line": 638,
+      "message": "External Transmission",
+      "finding": "https://api.github.com/"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "line": 35,
+      "message": "MCP server referenced without pinned version: 'npx slidev'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/builtin/cli.md",
+      "line": 10,
+      "message": "MCP server referenced without pinned version: 'npx slidev'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "scripts/demo.mjs",
+      "line": 18,
+      "message": "MCP server referenced without pinned version: 'npx slidev'.",
+      "finding": ""
+     },
+     {
+      "rule": "P9",
+      "severity": "MEDIUM",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "confidence": 0.7,
+      "file": "docs/features/mcp.md",
+      "line": 78,
+      "message": "Whitespace Padding",
+      "finding": "U+0020 x88"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.8,
+      "file": "docs/features/monaco-run.md",
+      "line": 28,
+      "message": "Autonomous Decision Making",
+      "finding": "automatically run"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "docs/features/og-image.md",
+      "line": 53,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "docs/guide/exporting.md",
+      "line": 238,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/guide/hosting.md",
+      "line": 17,
+      "message": "MCP server referenced without pinned version: 'npx vite'.",
+      "finding": ""
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.8,
+      "file": "docs/guide/hosting.md",
+      "line": 148,
+      "message": "Autonomous Decision Making",
+      "finding": "automatically deploy"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/guide/hosting.md",
+      "line": 198,
+      "message": "MCP server referenced without pinned version: 'npx with-zephyr'.",
+      "finding": ""
+     },
+     {
+      "rule": "P9",
+      "severity": "MEDIUM",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "confidence": 0.7,
+      "file": "docs/features/mcp.md",
+      "line": 85,
+      "message": "Whitespace Padding",
+      "finding": "U+0020 x85"
+     },
+     {
+      "rule": "P9",
+      "severity": "MEDIUM",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "confidence": 0.7,
+      "file": "docs/guide/ui.md",
+      "line": 21,
+      "message": "Whitespace Padding",
+      "finding": "U+0020 x85"
+     },
+     {
+      "rule": "P9",
+      "severity": "MEDIUM",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "confidence": 0.7,
+      "file": "docs/guide/ui.md",
+      "line": 22,
+      "message": "Whitespace Padding",
+      "finding": "U+0020 x85"
+     },
+     {
+      "rule": "P9",
+      "severity": "MEDIUM",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "confidence": 0.7,
+      "file": "docs/guide/ui.md",
+      "line": 33,
+      "message": "Whitespace Padding",
+      "finding": "U+0020 x85"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "package.json",
+      "line": 84,
+      "message": "MCP server referenced without pinned version: 'npx lint-staged'.",
+      "finding": ""
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.75,
+      "file": "packages/parser/src/config.ts",
+      "line": 65,
+      "message": "Unsafe Defaults",
+      "finding": "verify = false"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "docs/guide/work-with-ai.md",
+      "line": 33,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/slidev/README.md",
+      "line": 8,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.75,
+      "file": "docs/guide/hosting.md",
+      "line": 224,
+      "message": "Docker image referenced without tag or digest: 'docker run --name'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.75,
+      "file": "docs/guide/hosting.md",
+      "line": 248,
+      "message": "Docker image referenced without tag or digest: 'docker run --name'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.75,
+      "file": "skills/slidev/references/core-hosting.md",
+      "line": 108,
+      "message": "Docker image referenced without tag or digest: 'docker run --name'.",
+      "finding": ""
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "packages/slidev/node/utils.ts",
+      "line": 65,
+      "message": "External Transmission",
+      "finding": "https://api.fonts.coollabs.io/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "test/__snapshots__/utils.test.ts.snap",
+      "line": 3,
+      "message": "External Transmission",
+      "finding": "https://api.fonts.coollabs.io/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "test/__snapshots__/utils.test.ts.snap",
+      "line": 5,
+      "message": "External Transmission",
+      "finding": "https://api.fonts.coollabs.io/"
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "packages/create-app/template/package.json",
+      "line": 11,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@slidev/cli\": \"^52.19.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "packages/create-theme/template/package.json",
+      "line": 20,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@slidev/cli\": \"^52.19.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.7,
+      "file": "packages/create-app/template/package.json",
+      "line": 12,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@slidev/theme-default\": \"latest\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.7,
+      "file": "packages/create-app/template/package.json",
+      "line": 13,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@slidev/theme-seriph\": \"latest\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "packages/create-app/template/package.json",
+      "line": 14,
+      "message": "Unpinned Dependencies",
+      "finding": "\"vue\": \"^3.5.33\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "packages/create-theme/template/package.json",
+      "line": 17,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@slidev/types\": \"^52.19.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "packages/slidev/package.json",
+      "line": 44,
+      "message": "Unpinned Dependencies",
+      "finding": "\"playwright-chromium\": \"^1.10.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "packages/slidev/package.json",
+      "line": 45,
+      "message": "Unpinned Dependencies",
+      "finding": "\"vite-plugin-pwa\": \"^1.0.0\""
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "cypress/fixtures/basic/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "demo/composable-vue/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "demo/starter/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "demo/vue-runner/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "docs/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "packages/client/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "packages/create-app/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "packages/create-app/template/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "packages/create-theme/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "packages/create-theme/template/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "packages/parser/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "packages/slidev/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "packages/types/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "packages/vscode/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "packages/vscode/package.json",
+      "line": 21,
+      "message": "Unpinned Dependencies",
+      "finding": "\"vscode\": \"^1.99.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "packages/vscode/package.json",
+      "line": 630,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@types/vscode\": \"^1.99.0\""
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "290 findings · 1 check pending · 1 check not applicable",
+  "block": "SECURITY · commit a8d8ff7\n\n  Dependency vulnerabilities\n    129 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-54272  ip-address@10.2.0\n      CVE-2026-27904  minimatch@3.1.2\n      CVE-2026-27904  minimatch@5.1.6\n      CVE-2026-59873  tar@6.2.1\n      CVE-2026-32141  flatted@3.3.1\n      CVE-2025-69873  ajv@8.17.1\n      CVE-2026-67213  nanoid@3.3.16\n      CVE-2026-24842  tar@6.2.1\n      CVE-2026-44494  axios@1.7.8\n      CVE-2026-6733  undici@6.26.0\n      CVE-2026-44495  axios@1.7.8\n      CVE-2026-13149  brace-expansion@1.1.11\n      CVE-2026-13149  brace-expansion@2.0.1\n      CVE-2026-13149  brace-expansion@5.0.5\n      CVE-2025-62718  axios@1.7.8\n      CVE-2026-26996  minimatch@3.1.2\n      CVE-2026-26996  minimatch@5.1.6\n      CVE-2026-33672  picomatch@2.3.1\n      CVE-2026-42044  axios@1.7.8\n      CVE-2026-67313  axios@1.7.8\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    28 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/autofix.yml:19\n      adhoc-packages  .github/workflows/autofix.yml:31\n      artipacked  .github/workflows/cr.yml:10\n      excessive-permissions  .github/workflows/cr.yml:6\n      adhoc-packages  .github/workflows/cr.yml:21\n      artipacked  .github/workflows/release.yml:16\n      cache-poisoning  .github/workflows/release.yml:22\n      adhoc-packages  .github/workflows/release.yml:31\n      artipacked  .github/workflows/smoke.yml:26\n      artipacked  .github/workflows/smoke.yml:73\n      excessive-permissions  .github/workflows/smoke.yml:1\n      excessive-permissions  .github/workflows/smoke.yml:17\n      excessive-permissions  .github/workflows/smoke.yml:57\n      adhoc-packages  .github/workflows/smoke.yml:38\n      adhoc-packages  .github/workflows/smoke.yml:85\n      adhoc-packages  .github/workflows/smoke.yml:105\n      adhoc-packages  .github/workflows/smoke.yml:127\n      adhoc-packages  .github/workflows/smoke.yml:154\n      artipacked  .github/workflows/test.yml:32\n      artipacked  .github/workflows/test.yml:61\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    133 findings                     skillspector 2.11.0 · 2026-09-03\n      P2 HIGH  .github/ISSUE_TEMPLATE/bug_report.md:10  Hidden Instructions\n      P2 HIGH  .github/ISSUE_TEMPLATE/bug_report.md:12  Hidden Instructions\n      PE3 HIGH  .github/workflows/smoke.yml:109  Credential Access\n      PE3 HIGH  .gitignore:13  Credential Access\n      P2 HIGH  demo/composable-vue/slides.md:706  Hidden Instructions\n      P2 HIGH  demo/starter/slides.md:161  Hidden Instructions\n      SC9 HIGH  docs/.vitepress/addons.ts:1  Concealed Executable Artifact\n      SC9 HIGH  docs/.vitepress/config.ts:1  Concealed Executable Artifact\n      SC9 HIGH  docs/.vitepress/customizations.ts:1  Concealed Executable Artifact\n      SC9 HIGH  docs/.vitepress/pages.ts:1  Concealed Executable Artifact\n      SC9 HIGH  docs/.vitepress/shims/VPMenuLink.ts:1  Concealed Executable Artifact\n      SC9 HIGH  docs/.vitepress/showcases.ts:1  Concealed Executable Artifact\n      YR4 HIGH  docs/.vitepress/showcases.ts:183  YARA rule 'exploit_framework': Exploit framework components and payloads [hacktools]\n      SC9 HIGH  docs/.vitepress/sidebar-gen.ts:1  Concealed Executable Artifact\n      SC9 HIGH  docs/.vitepress/theme/composables/dark.ts:1  Concealed Executable Artifact\n      SC9 HIGH  docs/.vitepress/theme/index.ts:1  Concealed Executable Artifact\n      SC9 HIGH  docs/.vitepress/themes.ts:1  Concealed Executable Artifact\n      SC9 HIGH  docs/.vitepress/utils.ts:1  Concealed Executable Artifact\n      P2 HIGH  docs/guide/animations.md:20  Hidden Instructions\n      SC6 HIGH  package.json:53  Possible Typosquatting: 'cypress' resembles popular package 'express'\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

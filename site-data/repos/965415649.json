@@ -1,0 +1,4317 @@
+{
+ "security": {
+  "repo_id": 965415649,
+  "commit_sha": "a7ab2d66d781b903cb060288a89e26e8d2b9a05f",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 108,
+    "findings": [
+     {
+      "id": "CVE-2026-67214",
+      "aliases": [
+       "GHSA-28wg-ghj8-5hjv"
+      ],
+      "package": "nanoid",
+      "version": "3.3.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@3.3.11' is vulnerable to 'CVE-2026-67214' (also known as 'GHSA-28wg-ghj8-5hjv')."
+     },
+     {
+      "id": "CVE-2025-69873",
+      "aliases": [
+       "GHSA-2g4f-4pwh-qvx6"
+      ],
+      "package": "ajv",
+      "version": "6.12.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ajv@6.12.6' is vulnerable to 'CVE-2025-69873' (also known as 'GHSA-2g4f-4pwh-qvx6')."
+     },
+     {
+      "id": "CVE-2025-69873",
+      "aliases": [
+       "GHSA-2g4f-4pwh-qvx6"
+      ],
+      "package": "ajv",
+      "version": "8.17.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ajv@8.17.1' is vulnerable to 'CVE-2025-69873' (also known as 'GHSA-2g4f-4pwh-qvx6')."
+     },
+     {
+      "id": "CVE-2026-67213",
+      "aliases": [
+       "GHSA-2v37-7h3g-55p8"
+      ],
+      "package": "nanoid",
+      "version": "3.3.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@3.3.11' is vulnerable to 'CVE-2026-67213' (also known as 'GHSA-2v37-7h3g-55p8')."
+     },
+     {
+      "id": "CVE-2026-82250",
+      "aliases": [
+       "GHSA-2vh6-hw4j-32ww"
+      ],
+      "package": "gix-packetline",
+      "version": "0.21.2",
+      "file": "Cargo.lock",
+      "message": "Package 'gix-packetline@0.21.2' is vulnerable to 'CVE-2026-82250' (also known as 'GHSA-2vh6-hw4j-32ww')."
+     },
+     {
+      "id": "CVE-2026-54653",
+      "aliases": [],
+      "package": "datamodel-code-generator",
+      "version": "0.31.2",
+      "file": "uv.lock",
+      "message": "Package 'datamodel-code-generator@0.31.2' is vulnerable to 'CVE-2026-54653' (also known as 'PYSEC-2026-3555', 'GHSA-386q-5hp3-95m9')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.12",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.12' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "GHSA-3pv8-6f4r-ffg2",
+      "aliases": [],
+      "package": "tar",
+      "version": "0.4.45",
+      "file": "Cargo.lock",
+      "message": "Package 'tar@0.4.45' is vulnerable to 'GHSA-3pv8-6f4r-ffg2'."
+     },
+     {
+      "id": "GHSA-3pv8-6f4r-ffg2",
+      "aliases": [],
+      "package": "tar",
+      "version": "0.4.44",
+      "file": "Cargo.lock",
+      "message": "Package 'tar@0.4.44' is vulnerable to 'GHSA-3pv8-6f4r-ffg2'."
+     },
+     {
+      "id": "CVE-2026-50185",
+      "aliases": [
+       "GHSA-3rjw-m598-pq24"
+      ],
+      "package": "cmov",
+      "version": "0.5.3",
+      "file": "Cargo.lock",
+      "message": "Package 'cmov@0.5.3' is vulnerable to 'CVE-2026-50185' (also known as 'GHSA-3rjw-m598-pq24')."
+     },
+     {
+      "id": "RUSTSEC-2026-0118",
+      "aliases": [],
+      "package": "hickory-proto",
+      "version": "0.25.2",
+      "file": "Cargo.lock",
+      "message": "Package 'hickory-proto@0.25.2' is vulnerable to 'RUSTSEC-2026-0118' (also known as 'RUSTSEC-2026-0120', 'GHSA-3v94-mw7p-v465')."
+     },
+     {
+      "id": "CVE-2026-13676",
+      "aliases": [
+       "GHSA-4c8g-83qw-93j6"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.1' is vulnerable to 'CVE-2026-13676' (also known as 'GHSA-4c8g-83qw-93j6')."
+     },
+     {
+      "id": "CVE-2026-13697",
+      "aliases": [
+       "GHSA-4cwx-7wf7-3272"
+      ],
+      "package": "undici",
+      "version": "7.28.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.28.0' is vulnerable to 'CVE-2026-13697' (also known as 'GHSA-4cwx-7wf7-3272')."
+     },
+     {
+      "id": "CVE-2026-82417",
+      "aliases": [
+       "GHSA-4mjr-xmp4-gh2g"
+      ],
+      "package": "qs",
+      "version": "6.15.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.15.1' is vulnerable to 'CVE-2026-82417' (also known as 'GHSA-4mjr-xmp4-gh2g')."
+     },
+     {
+      "id": "CVE-2026-25800",
+      "aliases": [],
+      "package": "quinn-proto",
+      "version": "0.11.14",
+      "file": "Cargo.lock",
+      "message": "Package 'quinn-proto@0.11.14' is vulnerable to 'CVE-2026-25800' (also known as 'RUSTSEC-2026-0185', 'GHSA-4w2j-m93h-cj5j')."
+     },
+     {
+      "id": "CVE-2026-49356",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@babel/core@7.28.4' is vulnerable to 'CVE-2026-49356' (also known as 'GHSA-4x5r-pxfx-6jf8')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.1' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.0' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-71848",
+      "aliases": [
+       "GHSA-54fx-42gc-7vw4"
+      ],
+      "package": "hono",
+      "version": "4.12.25",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.25' is vulnerable to 'CVE-2026-71848' (also known as 'GHSA-54fx-42gc-7vw4')."
+     },
+     {
+      "id": "CVE-2026-55415",
+      "aliases": [],
+      "package": "datamodel-code-generator",
+      "version": "0.31.2",
+      "file": "uv.lock",
+      "message": "Package 'datamodel-code-generator@0.31.2' is vulnerable to 'CVE-2026-55415' (also known as 'PYSEC-2026-3557', 'GHSA-5578-w22f-pfx9')."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "3.14.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.1' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "4.1.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.0' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "CVE-2026-45623",
+      "aliases": [
+       "GHSA-6g55-p6wh-862q"
+      ],
+      "package": "postcss",
+      "version": "8.5.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.6' is vulnerable to 'CVE-2026-45623' (also known as 'GHSA-6g55-p6wh-862q')."
+     },
+     {
+      "id": "CVE-2026-24001",
+      "aliases": [
+       "GHSA-73rr-hh4g-fpgx"
+      ],
+      "package": "diff",
+      "version": "4.0.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'diff@4.0.2' is vulnerable to 'CVE-2026-24001' (also known as 'GHSA-73rr-hh4g-fpgx')."
+     },
+     {
+      "id": "CVE-2026-73088",
+      "aliases": [
+       "GHSA-73wf-gq98-2v4g"
+      ],
+      "package": "browserslist",
+      "version": "4.26.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'browserslist@4.26.2' is vulnerable to 'CVE-2026-73088' (also known as 'GHSA-73wf-gq98-2v4g')."
+     },
+     {
+      "id": "CVE-2026-71849",
+      "aliases": [
+       "GHSA-79qm-7rj5-m7r9"
+      ],
+      "package": "hono",
+      "version": "4.12.25",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.25' is vulnerable to 'CVE-2026-71849' (also known as 'GHSA-79qm-7rj5-m7r9')."
+     },
+     {
+      "id": "GHSA-7gcf-g7xr-8hxj",
+      "aliases": [],
+      "package": "serde_with",
+      "version": "3.17.0",
+      "file": "Cargo.lock",
+      "message": "Package 'serde_with@3.17.0' is vulnerable to 'GHSA-7gcf-g7xr-8hxj'."
+     },
+     {
+      "id": "CVE-2026-18446",
+      "aliases": [
+       "GHSA-7p8r-x3mc-p8w7"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.1' is vulnerable to 'CVE-2026-18446' (also known as 'GHSA-7p8r-x3mc-p8w7')."
+     },
+     {
+      "id": "CVE-2026-55389",
+      "aliases": [],
+      "package": "datamodel-code-generator",
+      "version": "0.31.2",
+      "file": "uv.lock",
+      "message": "Package 'datamodel-code-generator@0.31.2' is vulnerable to 'CVE-2026-55389' (also known as 'PYSEC-2026-3558', 'GHSA-8359-h9fx-j6v9')."
+     },
+     {
+      "id": "CVE-2026-41678",
+      "aliases": [
+       "GHSA-8c75-8mhr-p7r9"
+      ],
+      "package": "openssl",
+      "version": "0.10.75",
+      "file": "Cargo.lock",
+      "message": "Package 'openssl@0.10.75' is vulnerable to 'CVE-2026-41678' (also known as 'GHSA-8c75-8mhr-p7r9')."
+     },
+     {
+      "id": "CVE-2026-69207",
+      "aliases": [
+       "GHSA-8j4g-w8fx-2239"
+      ],
+      "package": "hono",
+      "version": "4.12.25",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.25' is vulnerable to 'CVE-2026-69207' (also known as 'GHSA-8j4g-w8fx-2239')."
+     },
+     {
+      "id": "CVE-2026-16728",
+      "aliases": [
+       "GHSA-8xcm-r25x-g524"
+      ],
+      "package": "undici",
+      "version": "7.28.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.28.0' is vulnerable to 'CVE-2026-16728' (also known as 'GHSA-8xcm-r25x-g524')."
+     },
+     {
+      "id": "CVE-2026-54690",
+      "aliases": [],
+      "package": "datamodel-code-generator",
+      "version": "0.31.2",
+      "file": "uv.lock",
+      "message": "Package 'datamodel-code-generator@0.31.2' is vulnerable to 'CVE-2026-54690' (also known as 'PYSEC-2026-3560', 'GHSA-954p-556p-r752')."
+     },
+     {
+      "id": "GHSA-9857-6mw7-fq2m",
+      "aliases": [],
+      "package": "gix-transport",
+      "version": "0.55.1",
+      "file": "Cargo.lock",
+      "message": "Package 'gix-transport@0.55.1' is vulnerable to 'GHSA-9857-6mw7-fq2m'."
+     },
+     {
+      "id": "CVE-2026-73089",
+      "aliases": [
+       "GHSA-c83g-rgw3-j3cx"
+      ],
+      "package": "browserslist",
+      "version": "4.26.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'browserslist@4.26.2' is vulnerable to 'CVE-2026-73089' (also known as 'GHSA-c83g-rgw3-j3cx')."
+     },
+     {
+      "id": "CVE-2026-71850",
+      "aliases": [
+       "GHSA-f23p-vx2j-j53r"
+      ],
+      "package": "hono",
+      "version": "4.12.25",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.25' is vulnerable to 'CVE-2026-71850' (also known as 'GHSA-f23p-vx2j-j53r')."
+     },
+     {
+      "id": "CVE-2026-40034",
+      "aliases": [
+       "GHSA-f26g-jm89-4g65"
+      ],
+      "package": "gix",
+      "version": "0.81.0",
+      "file": "Cargo.lock",
+      "message": "Package 'gix@0.81.0' is vulnerable to 'CVE-2026-40034' (also known as 'GHSA-f26g-jm89-4g65')."
+     },
+     {
+      "id": "CVE-2026-75975",
+      "aliases": [
+       "GHSA-f65p-4m7j-42xc"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.1' is vulnerable to 'CVE-2026-75975' (also known as 'GHSA-f65p-4m7j-42xc')."
+     },
+     {
+      "id": "CVE-2026-33750",
+      "aliases": [
+       "GHSA-f886-m6hf-6m8v"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.12",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.12' is vulnerable to 'CVE-2026-33750' (also known as 'GHSA-f886-m6hf-6m8v')."
+     },
+     {
+      "id": "CVE-2026-44471",
+      "aliases": [
+       "GHSA-f89h-2fjh-2r9q"
+      ],
+      "package": "gix-fs",
+      "version": "0.19.2",
+      "file": "Cargo.lock",
+      "message": "Package 'gix-fs@0.19.2' is vulnerable to 'CVE-2026-44471' (also known as 'GHSA-f89h-2fjh-2r9q')."
+     },
+     {
+      "id": "CVE-2026-82251",
+      "aliases": [
+       "GHSA-fr8x-3vfx-f45h"
+      ],
+      "package": "gix",
+      "version": "0.81.0",
+      "file": "Cargo.lock",
+      "message": "Package 'gix@0.81.0' is vulnerable to 'CVE-2026-82251' (also known as 'GHSA-fr8x-3vfx-f45h')."
+     },
+     {
+      "id": "GHSA-frvp-7c67-39w9",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@hono/node-server@1.19.13' is vulnerable to 'GHSA-frvp-7c67-39w9'."
+     },
+     {
+      "id": "CVE-2026-69153",
+      "aliases": [
+       "GHSA-fxqj-rqcc-2cmp"
+      ],
+      "package": "postcss",
+      "version": "8.5.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.6' is vulnerable to 'CVE-2026-69153' (also known as 'GHSA-fxqj-rqcc-2cmp')."
+     },
+     {
+      "id": "CVE-2026-33055",
+      "aliases": [],
+      "package": "tar",
+      "version": "0.4.44",
+      "file": "Cargo.lock",
+      "message": "Package 'tar@0.4.44' is vulnerable to 'CVE-2026-33055' (also known as 'RUSTSEC-2026-0068', 'GHSA-gchp-q4r4-x4ff')."
+     },
+     {
+      "id": "CVE-2026-41681",
+      "aliases": [
+       "GHSA-ghm9-cr32-g9qj"
+      ],
+      "package": "openssl",
+      "version": "0.10.75",
+      "file": "Cargo.lock",
+      "message": "Package 'openssl@0.10.75' is vulnerable to 'CVE-2026-41681' (also known as 'GHSA-ghm9-cr32-g9qj')."
+     },
+     {
+      "id": "CVE-2026-25537",
+      "aliases": [
+       "GHSA-h395-gr6q-cpjc"
+      ],
+      "package": "jsonwebtoken",
+      "version": "9.3.1",
+      "file": "Cargo.lock",
+      "message": "Package 'jsonwebtoken@9.3.1' is vulnerable to 'CVE-2026-25537' (also known as 'GHSA-h395-gr6q-cpjc')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.1' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.0' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-41898",
+      "aliases": [
+       "GHSA-hppc-g8h3-xhp3"
+      ],
+      "package": "openssl",
+      "version": "0.10.75",
+      "file": "Cargo.lock",
+      "message": "Package 'openssl@0.10.75' is vulnerable to 'CVE-2026-41898' (also known as 'GHSA-hppc-g8h3-xhp3')."
+     },
+     {
+      "id": "CVE-2026-59896",
+      "aliases": [
+       "GHSA-hvrm-45r6-mjfj"
+      ],
+      "package": "hono",
+      "version": "4.12.25",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.25' is vulnerable to 'CVE-2026-59896' (also known as 'GHSA-hvrm-45r6-mjfj')."
+     },
+     {
+      "id": "CVE-2026-33056",
+      "aliases": [],
+      "package": "tar",
+      "version": "0.4.44",
+      "file": "Cargo.lock",
+      "message": "Package 'tar@0.4.44' is vulnerable to 'CVE-2026-33056' (also known as 'RUSTSEC-2026-0067', 'GHSA-j4xf-2g29-59ph')."
+     },
+     {
+      "id": "CVE-2026-54621",
+      "aliases": [],
+      "package": "datamodel-code-generator",
+      "version": "0.31.2",
+      "file": "uv.lock",
+      "message": "Package 'datamodel-code-generator@0.31.2' is vulnerable to 'CVE-2026-54621' (also known as 'PYSEC-2026-3561', 'GHSA-j884-q54q-mmx3')."
+     },
+     {
+      "id": "CVE-2026-76172",
+      "aliases": [
+       "GHSA-jqff-g426-hqxp"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.1' is vulnerable to 'CVE-2026-76172' (also known as 'GHSA-jqff-g426-hqxp')."
+     },
+     {
+      "id": "CVE-2026-14643",
+      "aliases": [
+       "GHSA-jr45-8vmc-qm54"
+      ],
+      "package": "undici",
+      "version": "7.28.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.28.0' is vulnerable to 'CVE-2026-14643' (also known as 'GHSA-jr45-8vmc-qm54')."
+     },
+     {
+      "id": "CVE-2026-45149",
+      "aliases": [
+       "GHSA-jxxr-4gwj-5jf2"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-45149' (also known as 'GHSA-jxxr-4gwj-5jf2')."
+     },
+     {
+      "id": "CVE-2026-15157",
+      "aliases": [
+       "GHSA-m8rv-5g2x-5cg5"
+      ],
+      "package": "undici",
+      "version": "7.28.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.28.0' is vulnerable to 'CVE-2026-15157' (also known as 'GHSA-m8rv-5g2x-5cg5')."
+     },
+     {
+      "id": "CVE-2025-64718",
+      "aliases": [
+       "GHSA-mh29-5h37-fv8m"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.1' is vulnerable to 'CVE-2025-64718' (also known as 'GHSA-mh29-5h37-fv8m')."
+     },
+     {
+      "id": "CVE-2025-64718",
+      "aliases": [
+       "GHSA-mh29-5h37-fv8m"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.0' is vulnerable to 'CVE-2025-64718' (also known as 'GHSA-mh29-5h37-fv8m')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.12",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.12' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-69192",
+      "aliases": [
+       "GHSA-mwp4-54f8-5fhr"
+      ],
+      "package": "ip-address",
+      "version": "10.1.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.1.0' is vulnerable to 'CVE-2026-69192' (also known as 'GHSA-mwp4-54f8-5fhr')."
+     },
+     {
+      "id": "CVE-2026-82253",
+      "aliases": [
+       "GHSA-p3hw-mv63-rf9w"
+      ],
+      "package": "gix",
+      "version": "0.81.0",
+      "file": "Cargo.lock",
+      "message": "Package 'gix@0.81.0' is vulnerable to 'CVE-2026-82253' (also known as 'GHSA-p3hw-mv63-rf9w')."
+     },
+     {
+      "id": "CVE-2026-82253",
+      "aliases": [
+       "GHSA-p3hw-mv63-rf9w"
+      ],
+      "package": "gix-validate",
+      "version": "0.11.0",
+      "file": "Cargo.lock",
+      "message": "Package 'gix-validate@0.11.0' is vulnerable to 'CVE-2026-82253' (also known as 'GHSA-p3hw-mv63-rf9w')."
+     },
+     {
+      "id": "GHSA-p498-v437-472g",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@humanfs/node@0.16.7' is vulnerable to 'GHSA-p498-v437-472g'."
+     },
+     {
+      "id": "CVE-2026-82252",
+      "aliases": [
+       "GHSA-pg4w-g64p-qwhj"
+      ],
+      "package": "gix",
+      "version": "0.81.0",
+      "file": "Cargo.lock",
+      "message": "Package 'gix@0.81.0' is vulnerable to 'CVE-2026-82252' (also known as 'GHSA-pg4w-g64p-qwhj')."
+     },
+     {
+      "id": "CVE-2026-45784",
+      "aliases": [
+       "GHSA-phqj-4mhp-q6mq"
+      ],
+      "package": "openssl",
+      "version": "0.10.75",
+      "file": "Cargo.lock",
+      "message": "Package 'openssl@0.10.75' is vulnerable to 'CVE-2026-45784' (also known as 'GHSA-phqj-4mhp-q6mq')."
+     },
+     {
+      "id": "CVE-2026-41676",
+      "aliases": [
+       "GHSA-pqf5-4pqq-29f5"
+      ],
+      "package": "openssl",
+      "version": "0.10.75",
+      "file": "Cargo.lock",
+      "message": "Package 'openssl@0.10.75' is vulnerable to 'CVE-2026-41676' (also known as 'GHSA-pqf5-4pqq-29f5')."
+     },
+     {
+      "id": "RUSTSEC-2026-0119",
+      "aliases": [
+       "GHSA-q2qq-hmj6-3wpp"
+      ],
+      "package": "hickory-proto",
+      "version": "0.25.2",
+      "file": "Cargo.lock",
+      "message": "Package 'hickory-proto@0.25.2' is vulnerable to 'RUSTSEC-2026-0119' (also known as 'GHSA-q2qq-hmj6-3wpp')."
+     },
+     {
+      "id": "CVE-2026-8723",
+      "aliases": [
+       "GHSA-q8mj-m7cp-5q26"
+      ],
+      "package": "qs",
+      "version": "6.15.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.15.1' is vulnerable to 'CVE-2026-8723' (also known as 'GHSA-q8mj-m7cp-5q26')."
+     },
+     {
+      "id": "CVE-2026-41305",
+      "aliases": [
+       "GHSA-qx2v-qp2m-jg93"
+      ],
+      "package": "postcss",
+      "version": "8.5.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.6' is vulnerable to 'CVE-2026-41305' (also known as 'GHSA-qx2v-qp2m-jg93')."
+     },
+     {
+      "id": "CVE-2026-73646",
+      "aliases": [
+       "GHSA-r28c-9q8g-f849"
+      ],
+      "package": "postcss",
+      "version": "8.5.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.6' is vulnerable to 'CVE-2026-73646' (also known as 'GHSA-r28c-9q8g-f849')."
+     },
+     {
+      "id": "CVE-2026-55403",
+      "aliases": [],
+      "package": "datamodel-code-generator",
+      "version": "0.31.2",
+      "file": "uv.lock",
+      "message": "Package 'datamodel-code-generator@0.31.2' is vulnerable to 'CVE-2026-55403' (also known as 'PYSEC-2026-3563', 'GHSA-r5vv-ff45-prp2')."
+     },
+     {
+      "id": "CVE-2026-54691",
+      "aliases": [],
+      "package": "datamodel-code-generator",
+      "version": "0.31.2",
+      "file": "uv.lock",
+      "message": "Package 'datamodel-code-generator@0.31.2' is vulnerable to 'CVE-2026-54691' (also known as 'PYSEC-2026-3564', 'GHSA-rfr2-mq9m-x2qx')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.12",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.12' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-16221",
+      "aliases": [
+       "GHSA-v2hh-gcrm-f6hx"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.1' is vulnerable to 'CVE-2026-16221' (also known as 'GHSA-v2hh-gcrm-f6hx')."
+     },
+     {
+      "id": "CVE-2026-42338",
+      "aliases": [
+       "GHSA-v2v4-37r5-5v8g"
+      ],
+      "package": "ip-address",
+      "version": "10.1.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.1.0' is vulnerable to 'CVE-2026-42338' (also known as 'GHSA-v2v4-37r5-5v8g')."
+     },
+     {
+      "id": "CVE-2026-6322",
+      "aliases": [
+       "GHSA-v39h-62p7-jpjc"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.1' is vulnerable to 'CVE-2026-6322' (also known as 'GHSA-v39h-62p7-jpjc')."
+     },
+     {
+      "id": "CVE-2026-16729",
+      "aliases": [
+       "GHSA-v3r7-h72x-cjcm"
+      ],
+      "package": "undici",
+      "version": "7.28.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.28.0' is vulnerable to 'CVE-2026-16729' (also known as 'GHSA-v3r7-h72x-cjcm')."
+     },
+     {
+      "id": "CVE-2026-12590",
+      "aliases": [
+       "GHSA-v422-hmwv-36x6"
+      ],
+      "package": "body-parser",
+      "version": "2.2.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'body-parser@2.2.2' is vulnerable to 'CVE-2026-12590' (also known as 'GHSA-v422-hmwv-36x6')."
+     },
+     {
+      "id": "CVE-2026-55391",
+      "aliases": [],
+      "package": "datamodel-code-generator",
+      "version": "0.31.2",
+      "file": "uv.lock",
+      "message": "Package 'datamodel-code-generator@0.31.2' is vulnerable to 'CVE-2026-55391' (also known as 'PYSEC-2026-3565', 'GHSA-vx7x-vcc2-c44g')."
+     },
+     {
+      "id": "CVE-2026-59895",
+      "aliases": [
+       "GHSA-w62v-xxxg-mg59"
+      ],
+      "package": "hono",
+      "version": "4.12.25",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.25' is vulnerable to 'CVE-2026-59895' (also known as 'GHSA-w62v-xxxg-mg59')."
+     },
+     {
+      "id": "CVE-2026-48504",
+      "aliases": [
+       "GHSA-w9wp-h8wv-79jx"
+      ],
+      "package": "opentelemetry_sdk",
+      "version": "0.31.0",
+      "file": "Cargo.lock",
+      "message": "Package 'opentelemetry_sdk@0.31.0' is vulnerable to 'CVE-2026-48504' (also known as 'GHSA-w9wp-h8wv-79jx')."
+     },
+     {
+      "id": "CVE-2026-54654",
+      "aliases": [],
+      "package": "datamodel-code-generator",
+      "version": "0.31.2",
+      "file": "uv.lock",
+      "message": "Package 'datamodel-code-generator@0.31.2' is vulnerable to 'CVE-2026-54654' (also known as 'PYSEC-2026-3566', 'GHSA-wjv6-jcfj-mf9r')."
+     },
+     {
+      "id": "CVE-2026-82254",
+      "aliases": [
+       "GHSA-x494-mj8g-cj27"
+      ],
+      "package": "gix-pack",
+      "version": "0.68.0",
+      "file": "Cargo.lock",
+      "message": "Package 'gix-pack@0.68.0' is vulnerable to 'CVE-2026-82254' (also known as 'GHSA-x494-mj8g-cj27')."
+     },
+     {
+      "id": "CVE-2026-82562",
+      "aliases": [
+       "GHSA-x5fp-wj9c-mxmx"
+      ],
+      "package": "qs",
+      "version": "6.15.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.15.1' is vulnerable to 'CVE-2026-82562' (also known as 'GHSA-x5fp-wj9c-mxmx')."
+     },
+     {
+      "id": "CVE-2026-59897",
+      "aliases": [
+       "GHSA-xgm2-5f3f-mvvc"
+      ],
+      "package": "hono",
+      "version": "4.12.25",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.25' is vulnerable to 'CVE-2026-59897' (also known as 'GHSA-xgm2-5f3f-mvvc')."
+     },
+     {
+      "id": "CVE-2026-73051",
+      "aliases": [
+       "GHSA-xhj4-vrgc-hr34"
+      ],
+      "package": "actix-http",
+      "version": "3.11.2",
+      "file": "Cargo.lock",
+      "message": "Package 'actix-http@3.11.2' is vulnerable to 'CVE-2026-73051' (also known as 'GHSA-xhj4-vrgc-hr34')."
+     },
+     {
+      "id": "CVE-2026-41677",
+      "aliases": [
+       "GHSA-xmgf-hq76-4vx2"
+      ],
+      "package": "openssl",
+      "version": "0.10.75",
+      "file": "Cargo.lock",
+      "message": "Package 'openssl@0.10.75' is vulnerable to 'CVE-2026-41677' (also known as 'GHSA-xmgf-hq76-4vx2')."
+     },
+     {
+      "id": "CVE-2026-42327",
+      "aliases": [
+       "GHSA-xp3w-r5p5-63rr"
+      ],
+      "package": "openssl",
+      "version": "0.10.75",
+      "file": "Cargo.lock",
+      "message": "Package 'openssl@0.10.75' is vulnerable to 'CVE-2026-42327' (also known as 'GHSA-xp3w-r5p5-63rr')."
+     },
+     {
+      "id": "CVE-2026-44662",
+      "aliases": [
+       "GHSA-xv59-967r-8726"
+      ],
+      "package": "openssl",
+      "version": "0.10.75",
+      "file": "Cargo.lock",
+      "message": "Package 'openssl@0.10.75' is vulnerable to 'CVE-2026-44662' (also known as 'GHSA-xv59-967r-8726')."
+     },
+     {
+      "id": "CVE-2026-73086",
+      "aliases": [
+       "GHSA-xwg4-73v4-xw9w"
+      ],
+      "package": "nanoid",
+      "version": "3.3.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@3.3.11' is vulnerable to 'CVE-2026-73086' (also known as 'GHSA-xwg4-73v4-xw9w')."
+     },
+     {
+      "id": "RUSTSEC-2023-0089",
+      "aliases": [],
+      "package": "atomic-polyfill",
+      "version": "1.0.3",
+      "file": "Cargo.lock",
+      "message": "Package 'atomic-polyfill@1.0.3' is vulnerable to 'RUSTSEC-2023-0089'."
+     },
+     {
+      "id": "RUSTSEC-2024-0320",
+      "aliases": [],
+      "package": "yaml-rust",
+      "version": "0.4.5",
+      "file": "Cargo.lock",
+      "message": "Package 'yaml-rust@0.4.5' is vulnerable to 'RUSTSEC-2024-0320'."
+     },
+     {
+      "id": "RUSTSEC-2024-0388",
+      "aliases": [],
+      "package": "derivative",
+      "version": "2.2.0",
+      "file": "Cargo.lock",
+      "message": "Package 'derivative@2.2.0' is vulnerable to 'RUSTSEC-2024-0388'."
+     },
+     {
+      "id": "RUSTSEC-2024-0436",
+      "aliases": [],
+      "package": "paste",
+      "version": "1.0.15",
+      "file": "Cargo.lock",
+      "message": "Package 'paste@1.0.15' is vulnerable to 'RUSTSEC-2024-0436'."
+     },
+     {
+      "id": "RUSTSEC-2025-0057",
+      "aliases": [],
+      "package": "fxhash",
+      "version": "0.2.1",
+      "file": "Cargo.lock",
+      "message": "Package 'fxhash@0.2.1' is vulnerable to 'RUSTSEC-2025-0057'."
+     },
+     {
+      "id": "RUSTSEC-2025-0141",
+      "aliases": [],
+      "package": "bincode",
+      "version": "1.3.3",
+      "file": "Cargo.lock",
+      "message": "Package 'bincode@1.3.3' is vulnerable to 'RUSTSEC-2025-0141'."
+     },
+     {
+      "id": "RUSTSEC-2026-0173",
+      "aliases": [],
+      "package": "proc-macro-error2",
+      "version": "2.0.1",
+      "file": "Cargo.lock",
+      "message": "Package 'proc-macro-error2@2.0.1' is vulnerable to 'RUSTSEC-2026-0173'."
+     },
+     {
+      "id": "RUSTSEC-2026-0183",
+      "aliases": [],
+      "package": "git2",
+      "version": "0.20.4",
+      "file": "Cargo.lock",
+      "message": "Package 'git2@0.20.4' is vulnerable to 'RUSTSEC-2026-0183'."
+     },
+     {
+      "id": "RUSTSEC-2026-0184",
+      "aliases": [],
+      "package": "git2",
+      "version": "0.20.4",
+      "file": "Cargo.lock",
+      "message": "Package 'git2@0.20.4' is vulnerable to 'RUSTSEC-2026-0184'."
+     },
+     {
+      "id": "RUSTSEC-2026-0186",
+      "aliases": [],
+      "package": "memmap2",
+      "version": "0.9.10",
+      "file": "Cargo.lock",
+      "message": "Package 'memmap2@0.9.10' is vulnerable to 'RUSTSEC-2026-0186'."
+     },
+     {
+      "id": "RUSTSEC-2026-0190",
+      "aliases": [],
+      "package": "anyhow",
+      "version": "1.0.102",
+      "file": "Cargo.lock",
+      "message": "Package 'anyhow@1.0.102' is vulnerable to 'RUSTSEC-2026-0190'."
+     },
+     {
+      "id": "RUSTSEC-2026-0194",
+      "aliases": [],
+      "package": "quick-xml",
+      "version": "0.39.4",
+      "file": "Cargo.lock",
+      "message": "Package 'quick-xml@0.39.4' is vulnerable to 'RUSTSEC-2026-0194'."
+     },
+     {
+      "id": "RUSTSEC-2026-0195",
+      "aliases": [],
+      "package": "quick-xml",
+      "version": "0.39.4",
+      "file": "Cargo.lock",
+      "message": "Package 'quick-xml@0.39.4' is vulnerable to 'RUSTSEC-2026-0195'."
+     },
+     {
+      "id": "RUSTSEC-2026-0205",
+      "aliases": [],
+      "package": "scc",
+      "version": "2.4.0",
+      "file": "Cargo.lock",
+      "message": "Package 'scc@2.4.0' is vulnerable to 'RUSTSEC-2026-0205'."
+     },
+     {
+      "id": "RUSTSEC-2026-0221",
+      "aliases": [],
+      "package": "event-listener",
+      "version": "5.4.1",
+      "file": "Cargo.lock",
+      "message": "Package 'event-listener@5.4.1' is vulnerable to 'RUSTSEC-2026-0221'."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 168,
+    "findings": [
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/actions/prepare-bazel-ci/action.yml",
+      "line": 57,
+      "message": "dangerous use of environment file: write to GITHUB_ENV may allow code execution"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/actions/prepare-bazel-ci/action.yml",
+      "line": 26,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/actions/run-argument-comment-lint/action.yml",
+      "line": 16,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/actions/setup-bazel-ci/action.yml",
+      "line": 37,
+      "message": "dangerous use of environment file: write to $env:GITHUB_ENV may allow code execution"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/actions/setup-bazel-ci/action.yml",
+      "line": 16,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/actions/setup-ci/action.yml",
+      "line": 25,
+      "message": "dangerous use of environment file: write to GITHUB_ENV may allow code execution"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/actions/setup-rusty-v8/action.yml",
+      "line": 15,
+      "message": "dangerous use of environment file: write to GITHUB_ENV may allow code execution"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/actions/setup-rusty-v8/action.yml",
+      "line": 15,
+      "message": "dangerous use of environment file: write to GITHUB_ENV may allow code execution"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/bazel.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/bazel.yml",
+      "line": 17,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/bazel.yml",
+      "line": 132,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/bazel.yml",
+      "line": 239,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/bazel.yml",
+      "line": 256,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/bazel.yml",
+      "line": 337,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/bazel.yml",
+      "line": 440,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/bazel.yml",
+      "line": 61,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/bazel.yml",
+      "line": 130,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/bazel.yml",
+      "line": 165,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/bazel.yml",
+      "line": 237,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/bazel.yml",
+      "line": 277,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/bazel.yml",
+      "line": 335,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/bazel.yml",
+      "line": 369,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/bazel.yml",
+      "line": 438,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/bazel.yml",
+      "line": 468,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/bazel.yml",
+      "line": 554,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/blob-size-policy.yml",
+      "line": 53,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 13,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 18,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 23,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 28,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 33,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 38,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 43,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 48,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 15,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 20,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 25,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 30,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 35,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 40,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 45,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 15,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 20,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 25,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 30,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 35,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 40,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/blocking-ci.yml",
+      "line": 45,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/cargo-deny.yml",
+      "line": 18,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/cargo-deny.yml",
+      "line": 31,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/cla.yml",
+      "line": 2,
+      "message": "use of fundamentally insecure workflow trigger: pull_request_target is almost always used insecurely"
+     },
+     {
+      "rule": "archived-uses",
+      "level": "warning",
+      "file": ".github/workflows/cla.yml",
+      "line": 21,
+      "message": "action or reusable workflow from archived repository: repository is archived"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/codespell.yml",
+      "line": 30,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/postmerge-ci.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/postmerge-ci.yml",
+      "line": 12,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/postmerge-ci.yml",
+      "line": 17,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/postmerge-ci.yml",
+      "line": 22,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/postmerge-ci.yml",
+      "line": 14,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/postmerge-ci.yml",
+      "line": 19,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/postmerge-ci.yml",
+      "line": 14,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/postmerge-ci.yml",
+      "line": 19,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/python-runtime-release.yml",
+      "line": 20,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/python-sdk-release.yml",
+      "line": 74,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/repo-checks.yml",
+      "line": 18,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/repo-checks.yml",
+      "line": 68,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full-nextest-platform.yml",
+      "line": 76,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full-nextest-platform.yml",
+      "line": 94,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full-nextest-platform.yml",
+      "line": 291,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 13,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 32,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 50,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 92,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 153,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 460,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 471,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 485,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 498,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 511,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 529,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 462,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 473,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 487,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 500,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 513,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 23,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 42,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 60,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 116,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 251,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 377,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 462,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 473,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 487,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 500,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 513,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 8,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 60,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 85,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 109,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 164,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 219,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 57,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 72,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 83,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 97,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 107,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 121,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 162,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 209,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 216,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release-windows.yml",
+      "line": 72,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release-windows.yml",
+      "line": 92,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release-windows.yml",
+      "line": 97,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release-windows.yml",
+      "line": 170,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release-windows.yml",
+      "line": 228,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release-windows.yml",
+      "line": 257,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-release-zsh.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-release-zsh.yml",
+      "line": 17,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-release-zsh.yml",
+      "line": 51,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-release-zsh.yml",
+      "line": 104,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "superfluous-actions",
+      "level": "note",
+      "file": ".github/workflows/rust-release-zsh.yml",
+      "line": 168,
+      "message": "action functionality is already included by the runner: use `gh release` in a script step"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 11,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 27,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1174,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1179,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1323,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `package-manager-cache` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1434,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `package-manager-cache` enables caching"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1176,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1367,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1380,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "superfluous-actions",
+      "level": "note",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1350,
+      "message": "action functionality is already included by the runner: use `gh release` in a script step"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 216,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 328,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 526,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 912,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1176,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1182,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1367,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1380,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rusty-v8-release.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/rusty-v8-release.yml",
+      "line": 18,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/rusty-v8-release.yml",
+      "line": 348,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `lookup-only` enables caching"
+     },
+     {
+      "rule": "superfluous-actions",
+      "level": "note",
+      "file": ".github/workflows/rusty-v8-release.yml",
+      "line": 460,
+      "message": "action functionality is already included by the runner: use `gh release` in a script step"
+     },
+     {
+      "rule": "superfluous-actions",
+      "level": "note",
+      "file": ".github/workflows/rusty-v8-release.yml",
+      "line": 470,
+      "message": "action functionality is already included by the runner: use `gh release` in a script step"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/rusty-v8-release.yml",
+      "line": 165,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/sdk.yml",
+      "line": 43,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/sdk.yml",
+      "line": 79,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/sdk.yml",
+      "line": 166,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/v8-canary.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/v8-canary.yml",
+      "line": 17,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/v8-canary.yml",
+      "line": 70,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/v8-canary.yml",
+      "line": 178,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/v8-canary.yml",
+      "line": 300,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/v8-canary.yml",
+      "line": 324,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/v8-canary.yml",
+      "line": 448,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": "codex-rs/vendor/bubblewrap/.github/workflows/check.yml",
+      "line": 16,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": "codex-rs/vendor/bubblewrap/.github/workflows/check.yml",
+      "line": 93,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": "codex-rs/vendor/bubblewrap/.github/workflows/check.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": "codex-rs/vendor/bubblewrap/.github/workflows/check.yml",
+      "line": 12,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": "codex-rs/vendor/bubblewrap/.github/workflows/check.yml",
+      "line": 80,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": "codex-rs/vendor/bubblewrap/.github/workflows/check.yml",
+      "line": 17,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": "codex-rs/vendor/bubblewrap/.github/workflows/check.yml",
+      "line": 74,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": "codex-rs/vendor/bubblewrap/.github/workflows/check.yml",
+      "line": 90,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": "codex-rs/vendor/bubblewrap/.github/workflows/check.yml",
+      "line": 94,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": "codex-rs/vendor/bubblewrap/.github/workflows/check.yml",
+      "line": 105,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "findings",
+    "finding_count": 2,
+    "findings": [
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "codex-rs\\agent-identity\\src\\lib.rs",
+      "line": 832
+     },
+     {
+      "rule": "betterleaks.jwt",
+      "level": "error",
+      "file": "codex-rs\\exec\\tests\\suite\\apply_patch.rs",
+      "line": 200
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "findings",
+    "finding_count": 183,
+    "findings": [
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".codex/skills/babysit-pr/scripts/gh_pr_watch.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".codex/skills/babysit-pr/scripts/gh_pr_watch.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".codex/skills/babysit-pr/scripts/test_gh_pr_watch.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".codex/skills/babysit-pr/scripts/test_gh_pr_watch.py"
+     },
+     {
+      "rule": "PE5",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Privileged Container / Container Escape",
+      "confidence": 0.85,
+      "file": ".devcontainer/devcontainer.secure.json",
+      "line": 15,
+      "message": "Privileged Container / Container Escape",
+      "finding": "--cap-add=SYS_ADMIN"
+     },
+     {
+      "rule": "PE5",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Privileged Container / Container Escape",
+      "confidence": 0.85,
+      "file": ".devcontainer/devcontainer.secure.json",
+      "line": 19,
+      "message": "Privileged Container / Container Escape",
+      "finding": "--cap-add=SYS_PTRACE"
+     },
+     {
+      "rule": "PE5",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Privileged Container / Container Escape",
+      "confidence": 0.85,
+      "file": ".devcontainer/devcontainer.secure.json",
+      "line": 20,
+      "message": "Privileged Container / Container Escape",
+      "finding": "--security-opt=seccomp=unconfined"
+     },
+     {
+      "rule": "PE5",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Privileged Container / Container Escape",
+      "confidence": 0.85,
+      "file": ".devcontainer/devcontainer.secure.json",
+      "line": 21,
+      "message": "Privileged Container / Container Escape",
+      "finding": "--security-opt=apparmor=unconfined"
+     },
+     {
+      "rule": "PE5",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Privileged Container / Container Escape",
+      "confidence": 0.85,
+      "file": ".devcontainer/devcontainer.secure.json",
+      "line": 22,
+      "message": "Privileged Container / Container Escape",
+      "finding": "--cap-add=NET_ADMIN"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".devcontainer/init-firewall.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".devcontainer/init-firewall.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".devcontainer/post-start.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".devcontainer/post-start.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".devcontainer/post_install.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".devcontainer/post_install.py"
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.75,
+      "file": ".github/actions/run-argument-comment-lint/action.yml",
+      "line": 23,
+      "message": "Chaining Abuse",
+      "finding": "|\n        sudo "
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.75,
+      "file": ".github/actions/setup-ci/action.yml",
+      "line": 30,
+      "message": "Chaining Abuse",
+      "finding": "|\n        sudo "
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.75,
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 122,
+      "message": "Chaining Abuse",
+      "finding": "|\n        sudo "
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/actions/setup-msvc-env/setup-msvc-env.ps1",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/actions/setup-msvc-env/setup-msvc-env.ps1"
+     },
+     {
+      "rule": "SC2",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.9,
+      "file": ".github/actions/setup-rusty-v8/action.yml",
+      "line": 38,
+      "message": "External Script Fetching",
+      "finding": "curl -fsSL \"${base_url}/${archive_name}\" -o \"${archive_path}\"\n        curl -fsSL \"${base_url}/${binding_name}\" -o \"${binding_path}\"\n        curl -fsSL \"${base_url}/${checksums_name}\" -o \"${checksums_p"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/archive-release-symbols-and-strip-binaries.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/archive-release-symbols-and-strip-binaries.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/build-codex-package-archive.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/build-codex-package-archive.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/build-zsh-release-artifact.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/build-zsh-release-artifact.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/check_ci_results.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/check_ci_results.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/compute-bazel-windows-path.ps1",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/compute-bazel-windows-path.ps1"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/install-musl-build-tools.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/install-musl-build-tools.sh"
+     },
+     {
+      "rule": "SC2",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.9,
+      "file": ".github/scripts/install-musl-build-tools.sh",
+      "line": 20,
+      "message": "External Script Fetching",
+      "finding": "curl musl-tools pkg-config libcap-dev g++ clang libc++-dev libc++abi-dev lld xz-utils\n\ncase \"${TARGET}\" in\n  x86_64-unknown-linux-musl)\n    arch=\"x86_64\"\n    ;;\n  aarch64-unknown-linux-musl)\n    arch="
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/macos-signing/notarize_macos_binary_with_akv.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/macos-signing/notarize_macos_binary_with_akv.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/macos-signing/notarize_macos_dmg_with_akv.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/macos-signing/notarize_macos_dmg_with_akv.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/macos-signing/notarize_with_akv.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/macos-signing/notarize_with_akv.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/macos-signing/sign_macos_code.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/macos-signing/sign_macos_code.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/macos-signing/test_notarize_with_akv.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/macos-signing/test_notarize_with_akv.py"
+     },
+     {
+      "rule": "E2",
+      "severity": "HIGH",
+      "category": "Data Exfiltration",
+      "pattern": "Env Variable Harvesting",
+      "confidence": 0.6,
+      "file": ".github/scripts/macos-signing/test_notarize_with_akv.py",
+      "line": 209,
+      "message": "Env Variable Harvesting",
+      "finding": "{\n                **os.environ,\n                **ENVIRONMENT,\n                \"PATH\": f\"{tools}:{os.environ['PATH']}\",\n                \"RUNNER_TEMP\": str(root),\n                \"CALL_LOG\": str(call_l"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/publish_r2_release.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/publish_r2_release.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/run-argument-comment-lint-bazel.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/run-argument-comment-lint-bazel.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/run-bazel-ci.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/run-bazel-ci.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/run-bazel-query-ci.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/run-bazel-query-ci.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/run_bazel_with_buildbuddy.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/run_bazel_with_buildbuddy.py"
+     },
+     {
+      "rule": "AST5",
+      "severity": "HIGH",
+      "category": "Dangerous Code Execution",
+      "pattern": "os.system() or os exec-family call",
+      "confidence": 0.85,
+      "file": ".github/scripts/run_bazel_with_buildbuddy.py",
+      "line": 213,
+      "message": "os.system() or os exec-family call",
+      "finding": "    os.execvp(command[0], command)"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/rusty_v8_bazel.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/rusty_v8_bazel.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/rusty_v8_module_bazel.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/rusty_v8_module_bazel.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/setup-dev-drive.ps1",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/setup-dev-drive.ps1"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/test_macos_signing_entitlements.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/test_macos_signing_entitlements.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/test_run_bazel_with_buildbuddy.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/test_run_bazel_with_buildbuddy.py"
+     },
+     {
+      "rule": "E2",
+      "severity": "HIGH",
+      "category": "Data Exfiltration",
+      "pattern": "Env Variable Harvesting",
+      "confidence": 0.6,
+      "file": ".github/scripts/test_run_bazel_with_buildbuddy.py",
+      "line": 266,
+      "message": "Env Variable Harvesting",
+      "finding": "os.environ.copy()"
+     },
+     {
+      "rule": "E2",
+      "severity": "HIGH",
+      "category": "Data Exfiltration",
+      "pattern": "Env Variable Harvesting",
+      "confidence": 0.6,
+      "file": "codex-cli/scripts/build_npm_package.py",
+      "line": 428,
+      "message": "Env Variable Harvesting",
+      "finding": "os.environ.copy()"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/test_rusty_v8_bazel.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/test_rusty_v8_bazel.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/test_v8_canary_changes.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/test_v8_canary_changes.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/v8_canary_changes.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/v8_canary_changes.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/verify-zsh-manifest.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/verify-zsh-manifest.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/verify_bazel_clippy_lints.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/verify_bazel_clippy_lints.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/verify_cargo_workspace_manifests.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/verify_cargo_workspace_manifests.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/verify_tui_core_boundary.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/verify_tui_core_boundary.py"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": ".github/workflows/issue-labeler.yml",
+      "line": 56,
+      "message": "Credential Access",
+      "finding": "access tokens"
+     },
+     {
+      "rule": "RA1",
+      "severity": "HIGH",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "confidence": 0.9,
+      "file": ".github/workflows/rust-ci.yml",
+      "line": 131,
+      "message": "Self-Modification",
+      "finding": "self-update"
+     },
+     {
+      "rule": "RA1",
+      "severity": "HIGH",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "confidence": 0.9,
+      "file": ".github/workflows/rusty-v8-release.yml",
+      "line": 339,
+      "message": "Self-Modification",
+      "finding": "self-update"
+     },
+     {
+      "rule": "RA1",
+      "severity": "HIGH",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "confidence": 0.9,
+      "file": ".github/workflows/v8-canary.yml",
+      "line": 357,
+      "message": "Self-Modification",
+      "finding": "self-update"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/rust-release.yml",
+      "line": 469,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm \"$dest/$base\""
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/rust-release.yml",
+      "line": 869,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm \"$dest/$base\""
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/workflows/zstd",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/workflows/zstd"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.9,
+      "file": ".vscode/settings.json",
+      "line": 23,
+      "message": "Agent Config Directory Access",
+      "finding": "~/.codex/config.toml"
+     },
+     {
+      "rule": "SC2",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.9,
+      "file": "README.md",
+      "line": 19,
+      "message": "External Script Fetching",
+      "finding": "curl -fsSL https://chatgpt.com/codex/install.sh | sh"
+     },
+     {
+      "rule": "SC2",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.9,
+      "file": "codex-rs/app-server-daemon/README.md",
+      "line": 52,
+      "message": "External Script Fetching",
+      "finding": "curl -fsSL https://chatgpt.com/codex/install.sh | sh"
+     },
+     {
+      "rule": "SC2",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.9,
+      "file": "codex-rs/app-server-daemon/src/lib.rs",
+      "line": 707,
+      "message": "External Script Fetching",
+      "finding": "curl -fsSL https://chatgpt.com/codex/install.sh | sh"
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.8,
+      "file": ".bazelrc",
+      "line": 211,
+      "message": "Unsafe Defaults",
+      "finding": "sandbox=False"
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.85,
+      "file": ".codex/skills/babysit-pr/SKILL.md",
+      "line": 223,
+      "message": "Skill Enumeration",
+      "finding": "ls used by the watcher: `.codex/skills"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".codex/skills/babysit-pr/scripts/gh_pr_watch.py",
+      "line": 122,
+      "message": "subprocess module call",
+      "finding": "        proc = subprocess.run(cmd, check=True, capture_output=True, text=True)"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.85,
+      "file": ".devcontainer/Dockerfile.secure",
+      "line": 44,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod u+s"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".devcontainer/Dockerfile.secure",
+      "line": 67,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 500"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".devcontainer/Dockerfile.secure",
+      "line": 68,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 755"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".devcontainer/Dockerfile.secure",
+      "line": 69,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 644"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.75,
+      "file": ".devcontainer/README.md",
+      "line": 42,
+      "message": "Docker image referenced without tag or digest: 'docker run --platform=linux/amd64'.",
+      "finding": ""
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".devcontainer/init-firewall.sh",
+      "line": 106,
+      "message": "External Transmission",
+      "finding": "https://api.github.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".devcontainer/init-firewall.sh",
+      "line": 160,
+      "message": "External Transmission",
+      "finding": "https://api.github.com/"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".devcontainer/post-start.sh",
+      "line": 32,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 0444"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".devcontainer/post_install.py",
+      "line": 41,
+      "message": "subprocess module call",
+      "finding": "            subprocess.run(\n                [\"sudo\", \"chown\", \"-R\", f\"{uid}:{gid}\", str(path)],\n                check=True,\n                capture_output=True,\n                text=True,\n            "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".github/actions/setup-akv-pkcs11-codesigning/action.yaml",
+      "line": 221,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 0755"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".github/workflows/rust-release.yml",
+      "line": 564,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 0755"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".github/workflows/rust-release.yml",
+      "line": 631,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 0755"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".github/workflows/rust-release.yml",
+      "line": 730,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 0755"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".github/workflows/rust-release.yml",
+      "line": 736,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 0755"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1057,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 0755"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1123,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 0755"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".github/actions/setup-akv-pkcs11-codesigning/action.yaml",
+      "line": 226,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 0644"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".github/actions/setup-rusty-v8/action.yml",
+      "line": 38,
+      "message": "External Transmission",
+      "finding": "curl -fsSL \"${base_url}/${archive_name}\" -o \"${archive_path}\"\n        curl -fsSL \"${base_url}/${binding_name}\" -o \"${binding_path}\"\n        curl -fsSL \"${base_url}/${checksums_name}\" -o \"${checksums_p"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".devcontainer/post-start.sh",
+      "line": 29,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".devcontainer/post-start.sh",
+      "line": 30,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".devcontainer/post-start.sh",
+      "line": 31,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".devcontainer/post-start.sh",
+      "line": 32,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".devcontainer/post-start.sh",
+      "line": 36,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/actions/run-argument-comment-lint/action.yml",
+      "line": 24,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/actions/run-argument-comment-lint/action.yml",
+      "line": 25,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/actions/setup-ci/action.yml",
+      "line": 31,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/actions/setup-ci/action.yml",
+      "line": 32,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/actions/setup-ci/action.yml",
+      "line": 33,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/actions/setup-ci/action.yml",
+      "line": 96,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/scripts/install-musl-build-tools.sh",
+      "line": 19,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/scripts/install-musl-build-tools.sh",
+      "line": 20,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/issue-deduplicator.yml",
+      "line": 65,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/issue-deduplicator.yml",
+      "line": 157,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/issue-deduplicator.yml",
+      "line": 209,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/issue-labeler.yml",
+      "line": 26,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/issue-translator.yml",
+      "line": 28,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/rust-ci-full-nextest-platform.yml",
+      "line": 84,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/rust-ci-full-nextest-platform.yml",
+      "line": 85,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/rust-ci-full-nextest-platform.yml",
+      "line": 299,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/rust-ci-full-nextest-platform.yml",
+      "line": 300,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 123,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 124,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 258,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 259,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 348,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/rust-ci-full.yml",
+      "line": 349,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/rust-release.yml",
+      "line": 174,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/rust-release.yml",
+      "line": 175,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/sdk.yml",
+      "line": 63,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/sdk.yml",
+      "line": 64,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex-app-server.entitlements.plist",
+      "line": 2,
+      "message": "Session Persistence",
+      "finding": "PLIST"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex-code-mode-host.entitlements.plist",
+      "line": 2,
+      "message": "Session Persistence",
+      "finding": "PLIST"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex-responses-api-proxy.entitlements.plist",
+      "line": 2,
+      "message": "Session Persistence",
+      "finding": "PLIST"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex.entitlements.plist",
+      "line": 2,
+      "message": "Session Persistence",
+      "finding": "PLIST"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/macos-signing/notarize_with_akv.py",
+      "line": 95,
+      "message": "subprocess module call",
+      "finding": "            result = subprocess.run(command, check=True, capture_output=True, text=True)"
+     },
+     {
+      "rule": "TT2",
+      "severity": "MEDIUM",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'command' from os.environ.get (line 70, credential/environment) → subprocess.run (code execution)",
+      "confidence": 0.65,
+      "file": ".github/scripts/macos-signing/notarize_with_akv.py",
+      "line": 95,
+      "message": "Tainted flow: 'command' from os.environ.get (line 70, credential/environment) → subprocess.run (code execution)",
+      "finding": "            result = subprocess.run(command, check=True, capture_output=True, text=True)"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/macos-signing/notarize_with_akv.py",
+      "line": 193,
+      "message": "subprocess module call",
+      "finding": "        result = subprocess.run(\n            [\n                \"az\",\n                \"rest\",\n                \"--method\",\n                \"post\",\n                \"--url\",\n                f\"{key_url}/si"
+     },
+     {
+      "rule": "SSRF3",
+      "severity": "MEDIUM",
+      "category": "Server-Side Request Forgery",
+      "pattern": "Dynamic Request Target",
+      "confidence": 0.6,
+      "file": ".github/scripts/macos-signing/notarize_with_akv.py",
+      "line": 362,
+      "message": "Dynamic Request Target",
+      "finding": "urllib.request.Request(\n            f\"https://{"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/macos-signing/test_notarize_with_akv.py",
+      "line": 231,
+      "message": "subprocess module call",
+      "finding": "                    subprocess.run(\n                        [\n                            str(\n                                SIGNING_DIRECTORY / f\"notarize_macos_{kind}_with_akv.sh\"\n                "
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/publish_r2_release.py",
+      "line": 57,
+      "message": "subprocess module call",
+      "finding": "    result = subprocess.run(\n        args,\n        stdout=subprocess.PIPE,\n        stderr=subprocess.PIPE,\n        text=True,\n    )"
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.75,
+      "file": ".github/scripts/publish_r2_release.py",
+      "line": 396,
+      "message": "Unsafe Defaults",
+      "finding": "verify=False"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/run_bazel_with_buildbuddy.py",
+      "line": 210,
+      "message": "subprocess module call",
+      "finding": "        result = subprocess.run(command, check=False)"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/rusty_v8_bazel.py",
+      "line": 33,
+      "message": "subprocess module call",
+      "finding": "    output = subprocess.check_output(\n        bazel_command(\"info\", \"execution_root\"),\n        cwd=ROOT,\n        text=True,\n    )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/rusty_v8_bazel.py",
+      "line": 42,
+      "message": "subprocess module call",
+      "finding": "    output = subprocess.check_output(\n        bazel_command(\"info\", \"output_base\"),\n        cwd=ROOT,\n        text=True,\n    )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/rusty_v8_bazel.py",
+      "line": 64,
+      "message": "subprocess module call",
+      "finding": "    output = subprocess.check_output(\n        bazel_command(\n            \"cquery\",\n            \"-c\",\n            compilation_mode,\n            f\"--platforms=@llvm//platforms:{platform}\",\n            *"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/rusty_v8_bazel.py",
+      "line": 91,
+      "message": "subprocess module call",
+      "finding": "    subprocess.run(\n        bazel_command(\n            \"build\",\n            \"-c\",\n            compilation_mode,\n            f\"--platforms=@llvm//platforms:{platform}\",\n            *[f\"--config={config"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex-app-server.entitlements.plist",
+      "line": 2,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex-app-server.entitlements.plist",
+      "line": 3,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex-app-server.entitlements.plist",
+      "line": 10,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex-code-mode-host.entitlements.plist",
+      "line": 2,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex-code-mode-host.entitlements.plist",
+      "line": 3,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex-code-mode-host.entitlements.plist",
+      "line": 10,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex-responses-api-proxy.entitlements.plist",
+      "line": 2,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex-responses-api-proxy.entitlements.plist",
+      "line": 3,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex-responses-api-proxy.entitlements.plist",
+      "line": 8,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex.entitlements.plist",
+      "line": 2,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex.entitlements.plist",
+      "line": 3,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/macos-signing/codex.entitlements.plist",
+      "line": 10,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/test_macos_signing_entitlements.py",
+      "line": 1,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/test_macos_signing_entitlements.py",
+      "line": 16,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/scripts/test_macos_signing_entitlements.py",
+      "line": 18,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/workflows/rust-release.yml",
+      "line": 566,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": ".github/workflows/rust-release.yml",
+      "line": 1061,
+      "message": "Session Persistence",
+      "finding": "plist"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/test_run_bazel_with_buildbuddy.py",
+      "line": 272,
+      "message": "subprocess module call",
+      "finding": "        result = subprocess.run(\n            [\n                sys.executable,\n                str(Path(run_bazel_with_buildbuddy.__file__)),\n                \"-c\",\n                child_code,\n        "
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/test_v8_canary_changes.py",
+      "line": 102,
+      "message": "subprocess module call",
+      "finding": "        return subprocess.check_output(\n            [\"git\", *args],\n            cwd=root,\n            stderr=subprocess.PIPE,\n            text=True,\n        ).strip()"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/v8_canary_changes.py",
+      "line": 117,
+      "message": "subprocess module call",
+      "finding": "    return subprocess.check_output([\"git\", *args], cwd=root)"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.75,
+      "file": ".github/workflows/python-sdk-release.yml",
+      "line": 185,
+      "message": "Docker image referenced without tag or digest: 'docker run --rm'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.75,
+      "file": ".github/workflows/sdk.yml",
+      "line": 25,
+      "message": "Docker image referenced without tag or digest: 'docker run --rm'.",
+      "finding": ""
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.75,
+      "file": ".codex/skills/babysit-pr/SKILL.md",
+      "line": 201,
+      "message": "Autonomous Decision Making",
+      "finding": "without asking"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.75,
+      "file": "AGENTS.md",
+      "line": 68,
+      "message": "Autonomous Decision Making",
+      "finding": "without asking"
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.8,
+      "file": "MODULE.bazel.lock",
+      "line": 1371,
+      "message": "Unsafe Defaults",
+      "finding": "disable-encoding"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "codex-cli/scripts/build_npm_package.py",
+      "line": 334,
+      "message": "subprocess module call",
+      "finding": "    subprocess.run(cmd, cwd=cwd, check=True)"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "codex-cli/scripts/build_npm_package.py",
+      "line": 431,
+      "message": "subprocess module call",
+      "finding": "        stdout = subprocess.check_output(\n            [\"npm\", \"pack\", \"--json\", \"--pack-destination\", str(pack_dir)],\n            cwd=staging_dir,\n            env=env,\n            text=True,\n        )"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.75,
+      "file": "codex-cli/scripts/run_in_container.sh",
+      "line": 60,
+      "message": "Docker image referenced without tag or digest: 'docker run --name'.",
+      "finding": ""
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "codex-rs/app-server-protocol/scripts/write_schema_fixtures.py",
+      "line": 40,
+      "message": "subprocess module call",
+      "finding": "    subprocess.run(\n        [\n            \"cargo\",\n            \"test\",\n            \"-p\",\n            \"codex-app-server-protocol\",\n            \"--lib\",\n            \"schema_fixtures_tests::write_schema_"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "codex-rs/docs/codex_mcp_interface.md",
+      "line": 46,
+      "message": "MCP server referenced without pinned version: 'npx @modelcontextprotocol/inspector'.",
+      "finding": ""
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "codex-rs/skills/src/assets/samples/skill-installer/scripts/install-skill-from-github.py",
+      "line": 101,
+      "message": "subprocess module call",
+      "finding": "    result = subprocess.run(\n        args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True\n    )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "codex-rs/skills/tests/test_plugin_creator.py",
+      "line": 39,
+      "message": "subprocess module call",
+      "finding": "        return subprocess.run(\n            [sys.executable, \"-B\", str(SCRIPTS / script), *arguments],\n            capture_output=True,\n            text=True,\n            check=False,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "codex-rs/skills/tests/test_skill_installer.py",
+      "line": 44,
+      "message": "subprocess module call",
+      "finding": "        subprocess.run(\n            [\"git\", \"init\", \"--initial-branch=main\", str(self.repository)],\n            check=True,\n            capture_output=True,\n            text=True,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "codex-rs/skills/tests/test_skill_installer.py",
+      "line": 50,
+      "message": "subprocess module call",
+      "finding": "        subprocess.run(\n            [\"git\", \"-C\", str(self.repository), \"add\", \".\"],\n            check=True,\n            capture_output=True,\n            text=True,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "codex-rs/skills/tests/test_skill_installer.py",
+      "line": 56,
+      "message": "subprocess module call",
+      "finding": "        subprocess.run(\n            [\n                \"git\",\n                \"-C\",\n                str(self.repository),\n                \"-c\",\n                \"user.name=Skill Installer Test\",\n       "
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "codex-rs/skills/tests/test_skill_installer.py",
+      "line": 89,
+      "message": "subprocess module call",
+      "finding": "        return subprocess.run(\n            [\n                sys.executable,\n                \"-B\",\n                str(INSTALLER),\n                \"--repo\",\n                \"synthetic/fixture\",\n      "
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "codex-rs/tui/src/bottom_pane/chat_composer.rs",
+      "line": 8318,
+      "message": "MCP server referenced without pinned version: 'npx -y @kaeawc/auto-mobile'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "codex-rs/tui/src/bottom_pane/chat_composer.rs",
+      "line": 8694,
+      "message": "MCP server referenced without pinned version: 'npx -y @kaeawc/auto-mobile'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "codex-rs/tui/src/bottom_pane/chat_composer.rs",
+      "line": 8727,
+      "message": "MCP server referenced without pinned version: 'npx -y @kaeawc/auto-mobile'.",
+      "finding": ""
+     },
+     {
+      "rule": "EA3",
+      "severity": "LOW",
+      "category": "Excessive Agency",
+      "pattern": "Scope Creep",
+      "confidence": 0.7,
+      "file": ".codex/skills/codex-pr-body/SKILL.md",
+      "line": 22,
+      "message": "Scope Creep",
+      "finding": "not limited to"
+     },
+     {
+      "rule": "SC2",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.15,
+      "file": ".devcontainer/Dockerfile",
+      "line": 13,
+      "message": "External Script Fetching",
+      "finding": "curl git ca-certificates \\\n    pkg-config libcap-dev clang musl-tools libssl-dev just && \\\n    rm -rf /var/lib/apt/lists/*\n\n# Ubuntu 24.04 ships with user 'ubuntu' already created with UID 1000.\nUSER "
+     },
+     {
+      "rule": "SC2",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.15,
+      "file": ".devcontainer/Dockerfile.secure",
+      "line": 19,
+      "message": "External Script Fetching",
+      "finding": "curl \\\n        git \\\n        ca-certificates \\\n        pkg-config \\\n        clang \\\n        musl-tools \\\n        libssl-dev \\\n        libsqlite3-dev \\\n        just \\\n        python3 \\\n        python3-"
+     },
+     {
+      "rule": "TM2",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.15,
+      "file": ".devcontainer/Dockerfile.secure",
+      "line": 46,
+      "message": "Chaining Abuse",
+      "finding": "&& rm -"
+     },
+     {
+      "rule": "TM2",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.15,
+      "file": ".devcontainer/Dockerfile.secure",
+      "line": 61,
+      "message": "Chaining Abuse",
+      "finding": "&& rm -"
+     },
+     {
+      "rule": "SC2",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.15,
+      "file": ".devcontainer/Dockerfile.secure",
+      "line": 80,
+      "message": "External Script Fetching",
+      "finding": "curl -sSf https://sh.rustup.rs | sh"
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": ".devcontainer/README.md",
+      "line": 42,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -it -e CARGO_TARGET_DIR=/workspace/codex-rs/target-amd64"
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": ".devcontainer/Dockerfile",
+      "line": 15,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": ".devcontainer/Dockerfile.secure",
+      "line": 46,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": ".devcontainer/Dockerfile.secure",
+      "line": 61,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": ".github/workflows/Dockerfile.bazel",
+      "line": 12,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": ".devcontainer/Dockerfile",
+      "line": 15,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /var/lib/apt/lists/*"
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": ".devcontainer/Dockerfile.secure",
+      "line": 46,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /var/lib/apt/lists/*"
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": ".devcontainer/Dockerfile.secure",
+      "line": 61,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /var/lib/apt/lists/*"
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": ".github/workflows/Dockerfile.bazel",
+      "line": 12,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /var/lib/apt/lists/*"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "codex-rs/skills/src/assets/samples/imagegen/scripts/image_gen.py",
+      "line": 525,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        val = getattr(exc, attr, None)"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "461 findings · 1 check pending · 1 check not applicable",
+  "block": "SECURITY · commit a7ab2d6\n\n  Dependency vulnerabilities\n    108 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-67214  nanoid@3.3.11\n      CVE-2025-69873  ajv@6.12.6\n      CVE-2025-69873  ajv@8.17.1\n      CVE-2026-67213  nanoid@3.3.11\n      CVE-2026-82250  gix-packetline@0.21.2\n      CVE-2026-54653  datamodel-code-generator@0.31.2\n      CVE-2026-13149  brace-expansion@1.1.12\n      CVE-2026-13149  brace-expansion@5.0.5\n      GHSA-3pv8-6f4r-ffg2  tar@0.4.45\n      GHSA-3pv8-6f4r-ffg2  tar@0.4.44\n      CVE-2026-50185  cmov@0.5.3\n      RUSTSEC-2026-0118  hickory-proto@0.25.2\n      CVE-2026-13676  fast-uri@3.1.1\n      CVE-2026-13697  undici@7.28.0\n      CVE-2026-82417  qs@6.15.1\n      CVE-2026-25800  quinn-proto@0.11.14\n      CVE-2026-49356  @\n      CVE-2026-59869  js-yaml@3.14.1\n      CVE-2026-59869  js-yaml@4.1.0\n      CVE-2026-71848  hono@4.12.25\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    168 findings                     zizmor 1.30.0 · 2026-09-03\n      github-env  .github/actions/prepare-bazel-ci/action.yml:57\n      self-repository  .github/actions/prepare-bazel-ci/action.yml:26\n      self-repository  .github/actions/run-argument-comment-lint/action.yml:16\n      github-env  .github/actions/setup-bazel-ci/action.yml:37\n      self-repository  .github/actions/setup-bazel-ci/action.yml:16\n      github-env  .github/actions/setup-ci/action.yml:25\n      github-env  .github/actions/setup-rusty-v8/action.yml:15\n      github-env  .github/actions/setup-rusty-v8/action.yml:15\n      excessive-permissions  .github/workflows/bazel.yml:1\n      excessive-permissions  .github/workflows/bazel.yml:17\n      excessive-permissions  .github/workflows/bazel.yml:132\n      excessive-permissions  .github/workflows/bazel.yml:239\n      excessive-permissions  .github/workflows/bazel.yml:256\n      excessive-permissions  .github/workflows/bazel.yml:337\n      excessive-permissions  .github/workflows/bazel.yml:440\n      self-repository  .github/workflows/bazel.yml:61\n      self-repository  .github/workflows/bazel.yml:130\n      self-repository  .github/workflows/bazel.yml:165\n      self-repository  .github/workflows/bazel.yml:237\n      self-repository  .github/workflows/bazel.yml:277\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    2 findings                       kingfisher 2.1.0 · 2026-09-03\n      betterleaks.private-key  codex-rs\\agent-identity\\src\\lib.rs:832\n      betterleaks.jwt  codex-rs\\exec\\tests\\suite\\apply_patch.rs:200\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    183 findings                     skillspector 2.11.0 · 2026-09-03\n      SC9 HIGH  .codex/skills/babysit-pr/scripts/gh_pr_watch.py:1  Concealed Executable Artifact\n      SC9 HIGH  .codex/skills/babysit-pr/scripts/test_gh_pr_watch.py:1  Concealed Executable Artifact\n      PE5 HIGH  .devcontainer/devcontainer.secure.json:15  Privileged Container / Container Escape\n      PE5 HIGH  .devcontainer/devcontainer.secure.json:19  Privileged Container / Container Escape\n      PE5 HIGH  .devcontainer/devcontainer.secure.json:20  Privileged Container / Container Escape\n      PE5 HIGH  .devcontainer/devcontainer.secure.json:21  Privileged Container / Container Escape\n      PE5 HIGH  .devcontainer/devcontainer.secure.json:22  Privileged Container / Container Escape\n      SC9 HIGH  .devcontainer/init-firewall.sh:1  Concealed Executable Artifact\n      SC9 HIGH  .devcontainer/post-start.sh:1  Concealed Executable Artifact\n      SC9 HIGH  .devcontainer/post_install.py:1  Concealed Executable Artifact\n      TM2 HIGH  .github/actions/run-argument-comment-lint/action.yml:23  Chaining Abuse\n      TM2 HIGH  .github/actions/setup-ci/action.yml:30  Chaining Abuse\n      TM2 HIGH  .github/workflows/rust-ci-full.yml:122  Chaining Abuse\n      SC9 HIGH  .github/actions/setup-msvc-env/setup-msvc-env.ps1:1  Concealed Executable Artifact\n      SC2 HIGH  .github/actions/setup-rusty-v8/action.yml:38  External Script Fetching\n      SC9 HIGH  .github/scripts/archive-release-symbols-and-strip-binaries.sh:1  Concealed Executable Artifact\n      SC9 HIGH  .github/scripts/build-codex-package-archive.sh:1  Concealed Executable Artifact\n      SC9 HIGH  .github/scripts/build-zsh-release-artifact.sh:1  Concealed Executable Artifact\n      SC9 HIGH  .github/scripts/check_ci_results.py:1  Concealed Executable Artifact\n      SC9 HIGH  .github/scripts/compute-bazel-windows-path.ps1:1  Concealed Executable Artifact\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

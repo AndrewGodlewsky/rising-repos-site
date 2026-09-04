@@ -1,0 +1,5505 @@
+{
+ "security": {
+  "repo_id": 1100776768,
+  "commit_sha": "1dd995193ba20bba51ca6c681aa8d3398dbd80a2",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 116,
+    "findings": [
+     {
+      "id": "CVE-2026-56762",
+      "aliases": [
+       "GHSA-26pp-8wgv-hjvm"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-56762' (also known as 'GHSA-26pp-8wgv-hjvm')."
+     },
+     {
+      "id": "CVE-2026-56762",
+      "aliases": [
+       "GHSA-26pp-8wgv-hjvm"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-56762' (also known as 'GHSA-26pp-8wgv-hjvm')."
+     },
+     {
+      "id": "CVE-2026-56762",
+      "aliases": [
+       "GHSA-26pp-8wgv-hjvm"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-56762' (also known as 'GHSA-26pp-8wgv-hjvm')."
+     },
+     {
+      "id": "CVE-2026-4923",
+      "aliases": [
+       "GHSA-27v5-c462-wpq7"
+      ],
+      "package": "path-to-regexp",
+      "version": "8.3.0",
+      "file": "bun.lock",
+      "message": "Package 'path-to-regexp@8.3.0' is vulnerable to 'CVE-2026-4923' (also known as 'GHSA-27v5-c462-wpq7')."
+     },
+     {
+      "id": "CVE-2026-47676",
+      "aliases": [
+       "GHSA-2gcr-mfcq-wcc3"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-47676' (also known as 'GHSA-2gcr-mfcq-wcc3')."
+     },
+     {
+      "id": "CVE-2026-47676",
+      "aliases": [
+       "GHSA-2gcr-mfcq-wcc3"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-47676' (also known as 'GHSA-2gcr-mfcq-wcc3')."
+     },
+     {
+      "id": "CVE-2026-47676",
+      "aliases": [
+       "GHSA-2gcr-mfcq-wcc3"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-47676' (also known as 'GHSA-2gcr-mfcq-wcc3')."
+     },
+     {
+      "id": "CVE-2026-1525",
+      "aliases": [
+       "GHSA-2mjp-6q6p-2qxm"
+      ],
+      "package": "undici",
+      "version": "6.21.3",
+      "file": "bun.lock",
+      "message": "Package 'undici@6.21.3' is vulnerable to 'CVE-2026-1525' (also known as 'GHSA-2mjp-6q6p-2qxm')."
+     },
+     {
+      "id": "CVE-2026-6733",
+      "aliases": [
+       "GHSA-35p6-xmwp-9g52"
+      ],
+      "package": "undici",
+      "version": "6.21.3",
+      "file": "bun.lock",
+      "message": "Package 'undici@6.21.3' is vulnerable to 'CVE-2026-6733' (also known as 'GHSA-35p6-xmwp-9g52')."
+     },
+     {
+      "id": "CVE-2026-47675",
+      "aliases": [
+       "GHSA-3hrh-pfw6-9m5x"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-47675' (also known as 'GHSA-3hrh-pfw6-9m5x')."
+     },
+     {
+      "id": "CVE-2026-47675",
+      "aliases": [
+       "GHSA-3hrh-pfw6-9m5x"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-47675' (also known as 'GHSA-3hrh-pfw6-9m5x')."
+     },
+     {
+      "id": "CVE-2026-47675",
+      "aliases": [
+       "GHSA-3hrh-pfw6-9m5x"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-47675' (also known as 'GHSA-3hrh-pfw6-9m5x')."
+     },
+     {
+      "id": "CVE-2026-56761",
+      "aliases": [
+       "GHSA-458j-xx4x-4375"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-56761' (also known as 'GHSA-458j-xx4x-4375')."
+     },
+     {
+      "id": "CVE-2026-56761",
+      "aliases": [
+       "GHSA-458j-xx4x-4375"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-56761' (also known as 'GHSA-458j-xx4x-4375')."
+     },
+     {
+      "id": "CVE-2026-56761",
+      "aliases": [
+       "GHSA-458j-xx4x-4375"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-56761' (also known as 'GHSA-458j-xx4x-4375')."
+     },
+     {
+      "id": "CVE-2026-1527",
+      "aliases": [
+       "GHSA-4992-7rv2-5pvq"
+      ],
+      "package": "undici",
+      "version": "6.21.3",
+      "file": "bun.lock",
+      "message": "Package 'undici@6.21.3' is vulnerable to 'CVE-2026-1527' (also known as 'GHSA-4992-7rv2-5pvq')."
+     },
+     {
+      "id": "CVE-2026-13676",
+      "aliases": [
+       "GHSA-4c8g-83qw-93j6"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "bun.lock",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-13676' (also known as 'GHSA-4c8g-83qw-93j6')."
+     },
+     {
+      "id": "CVE-2026-82417",
+      "aliases": [
+       "GHSA-4mjr-xmp4-gh2g"
+      ],
+      "package": "qs",
+      "version": "6.15.0",
+      "file": "bun.lock",
+      "message": "Package 'qs@6.15.0' is vulnerable to 'CVE-2026-82417' (also known as 'GHSA-4mjr-xmp4-gh2g')."
+     },
+     {
+      "id": "CVE-2026-71848",
+      "aliases": [
+       "GHSA-54fx-42gc-7vw4"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-71848' (also known as 'GHSA-54fx-42gc-7vw4')."
+     },
+     {
+      "id": "CVE-2026-71848",
+      "aliases": [
+       "GHSA-54fx-42gc-7vw4"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-71848' (also known as 'GHSA-54fx-42gc-7vw4')."
+     },
+     {
+      "id": "CVE-2026-71848",
+      "aliases": [
+       "GHSA-54fx-42gc-7vw4"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-71848' (also known as 'GHSA-54fx-42gc-7vw4')."
+     },
+     {
+      "id": "CVE-2026-45736",
+      "aliases": [
+       "GHSA-58qx-3vcg-4xpx"
+      ],
+      "package": "ws",
+      "version": "8.19.0",
+      "file": "bun.lock",
+      "message": "Package 'ws@8.19.0' is vulnerable to 'CVE-2026-45736' (also known as 'GHSA-58qx-3vcg-4xpx')."
+     },
+     {
+      "id": "CVE-2026-44455",
+      "aliases": [
+       "GHSA-69xw-7hcm-h432"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-44455' (also known as 'GHSA-69xw-7hcm-h432')."
+     },
+     {
+      "id": "CVE-2026-44455",
+      "aliases": [
+       "GHSA-69xw-7hcm-h432"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-44455' (also known as 'GHSA-69xw-7hcm-h432')."
+     },
+     {
+      "id": "CVE-2026-44455",
+      "aliases": [
+       "GHSA-69xw-7hcm-h432"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-44455' (also known as 'GHSA-69xw-7hcm-h432')."
+     },
+     {
+      "id": "CVE-2026-71849",
+      "aliases": [
+       "GHSA-79qm-7rj5-m7r9"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-71849' (also known as 'GHSA-79qm-7rj5-m7r9')."
+     },
+     {
+      "id": "CVE-2026-71849",
+      "aliases": [
+       "GHSA-79qm-7rj5-m7r9"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-71849' (also known as 'GHSA-79qm-7rj5-m7r9')."
+     },
+     {
+      "id": "CVE-2026-71849",
+      "aliases": [
+       "GHSA-79qm-7rj5-m7r9"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-71849' (also known as 'GHSA-79qm-7rj5-m7r9')."
+     },
+     {
+      "id": "CVE-2026-18446",
+      "aliases": [
+       "GHSA-7p8r-x3mc-p8w7"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "bun.lock",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-18446' (also known as 'GHSA-7p8r-x3mc-p8w7')."
+     },
+     {
+      "id": "CVE-2026-54290",
+      "aliases": [
+       "GHSA-88fw-hqm2-52qc"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-54290' (also known as 'GHSA-88fw-hqm2-52qc')."
+     },
+     {
+      "id": "CVE-2026-54290",
+      "aliases": [
+       "GHSA-88fw-hqm2-52qc"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-54290' (also known as 'GHSA-88fw-hqm2-52qc')."
+     },
+     {
+      "id": "CVE-2026-54290",
+      "aliases": [
+       "GHSA-88fw-hqm2-52qc"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-54290' (also known as 'GHSA-88fw-hqm2-52qc')."
+     },
+     {
+      "id": "CVE-2026-69207",
+      "aliases": [
+       "GHSA-8j4g-w8fx-2239"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-69207' (also known as 'GHSA-8j4g-w8fx-2239')."
+     },
+     {
+      "id": "CVE-2026-69207",
+      "aliases": [
+       "GHSA-8j4g-w8fx-2239"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-69207' (also known as 'GHSA-8j4g-w8fx-2239')."
+     },
+     {
+      "id": "CVE-2026-69207",
+      "aliases": [
+       "GHSA-8j4g-w8fx-2239"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-69207' (also known as 'GHSA-8j4g-w8fx-2239')."
+     },
+     {
+      "id": "CVE-2026-16728",
+      "aliases": [
+       "GHSA-8xcm-r25x-g524"
+      ],
+      "package": "undici",
+      "version": "6.21.3",
+      "file": "bun.lock",
+      "message": "Package 'undici@6.21.3' is vulnerable to 'CVE-2026-16728' (also known as 'GHSA-8xcm-r25x-g524')."
+     },
+     {
+      "id": "CVE-2026-39406",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "bun.lock",
+      "message": "Package '@hono/node-server@1.19.11' is vulnerable to 'CVE-2026-39406' (also known as 'GHSA-92pp-h63x-v22m')."
+     },
+     {
+      "id": "CVE-2026-48779",
+      "aliases": [
+       "GHSA-96hv-2xvq-fx4p"
+      ],
+      "package": "ws",
+      "version": "8.19.0",
+      "file": "bun.lock",
+      "message": "Package 'ws@8.19.0' is vulnerable to 'CVE-2026-48779' (also known as 'GHSA-96hv-2xvq-fx4p')."
+     },
+     {
+      "id": "CVE-2026-44456",
+      "aliases": [
+       "GHSA-9vqf-7f2p-gf9v"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-44456' (also known as 'GHSA-9vqf-7f2p-gf9v')."
+     },
+     {
+      "id": "CVE-2026-44456",
+      "aliases": [
+       "GHSA-9vqf-7f2p-gf9v"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-44456' (also known as 'GHSA-9vqf-7f2p-gf9v')."
+     },
+     {
+      "id": "CVE-2026-44456",
+      "aliases": [
+       "GHSA-9vqf-7f2p-gf9v"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-44456' (also known as 'GHSA-9vqf-7f2p-gf9v')."
+     },
+     {
+      "id": "CVE-2025-13465",
+      "aliases": [],
+      "package": "lodash",
+      "version": "4.17.23",
+      "file": "bun.lock",
+      "message": "Package 'lodash@4.17.23' is vulnerable to 'CVE-2025-13465' (also known as 'CVE-2026-2950', 'GHSA-f23m-r3pf-42rh', 'GHSA-xxjr-mmjv-4gpg')."
+     },
+     {
+      "id": "CVE-2026-71850",
+      "aliases": [
+       "GHSA-f23p-vx2j-j53r"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-71850' (also known as 'GHSA-f23p-vx2j-j53r')."
+     },
+     {
+      "id": "CVE-2026-71850",
+      "aliases": [
+       "GHSA-f23p-vx2j-j53r"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-71850' (also known as 'GHSA-f23p-vx2j-j53r')."
+     },
+     {
+      "id": "CVE-2026-71850",
+      "aliases": [
+       "GHSA-f23p-vx2j-j53r"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-71850' (also known as 'GHSA-f23p-vx2j-j53r')."
+     },
+     {
+      "id": "CVE-2026-1528",
+      "aliases": [
+       "GHSA-f269-vfmq-vjvj"
+      ],
+      "package": "undici",
+      "version": "6.21.3",
+      "file": "bun.lock",
+      "message": "Package 'undici@6.21.3' is vulnerable to 'CVE-2026-1528' (also known as 'GHSA-f269-vfmq-vjvj')."
+     },
+     {
+      "id": "CVE-2026-47673",
+      "aliases": [
+       "GHSA-f577-qrjj-4474"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-47673' (also known as 'GHSA-f577-qrjj-4474')."
+     },
+     {
+      "id": "CVE-2026-47673",
+      "aliases": [
+       "GHSA-f577-qrjj-4474"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-47673' (also known as 'GHSA-f577-qrjj-4474')."
+     },
+     {
+      "id": "CVE-2026-47673",
+      "aliases": [
+       "GHSA-f577-qrjj-4474"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-47673' (also known as 'GHSA-f577-qrjj-4474')."
+     },
+     {
+      "id": "CVE-2026-75975",
+      "aliases": [
+       "GHSA-f65p-4m7j-42xc"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "bun.lock",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-75975' (also known as 'GHSA-f65p-4m7j-42xc')."
+     },
+     {
+      "id": "GHSA-frvp-7c67-39w9",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "bun.lock",
+      "message": "Package '@hono/node-server@1.19.11' is vulnerable to 'GHSA-frvp-7c67-39w9'."
+     },
+     {
+      "id": "CVE-2026-11525",
+      "aliases": [
+       "GHSA-g8m3-5g58-fq7m"
+      ],
+      "package": "undici",
+      "version": "6.21.3",
+      "file": "bun.lock",
+      "message": "Package 'undici@6.21.3' is vulnerable to 'CVE-2026-11525' (also known as 'GHSA-g8m3-5g58-fq7m')."
+     },
+     {
+      "id": "CVE-2026-22036",
+      "aliases": [
+       "GHSA-g9mf-h72j-4rw9"
+      ],
+      "package": "undici",
+      "version": "6.21.3",
+      "file": "bun.lock",
+      "message": "Package 'undici@6.21.3' is vulnerable to 'CVE-2026-22036' (also known as 'GHSA-g9mf-h72j-4rw9')."
+     },
+     {
+      "id": "CVE-2026-44459",
+      "aliases": [
+       "GHSA-hm8q-7f3q-5f36"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-44459' (also known as 'GHSA-hm8q-7f3q-5f36')."
+     },
+     {
+      "id": "CVE-2026-44459",
+      "aliases": [
+       "GHSA-hm8q-7f3q-5f36"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-44459' (also known as 'GHSA-hm8q-7f3q-5f36')."
+     },
+     {
+      "id": "CVE-2026-44459",
+      "aliases": [
+       "GHSA-hm8q-7f3q-5f36"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-44459' (also known as 'GHSA-hm8q-7f3q-5f36')."
+     },
+     {
+      "id": "CVE-2026-59896",
+      "aliases": [
+       "GHSA-hvrm-45r6-mjfj"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-59896' (also known as 'GHSA-hvrm-45r6-mjfj')."
+     },
+     {
+      "id": "CVE-2026-59896",
+      "aliases": [
+       "GHSA-hvrm-45r6-mjfj"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-59896' (also known as 'GHSA-hvrm-45r6-mjfj')."
+     },
+     {
+      "id": "CVE-2026-59896",
+      "aliases": [
+       "GHSA-hvrm-45r6-mjfj"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-59896' (also known as 'GHSA-hvrm-45r6-mjfj')."
+     },
+     {
+      "id": "CVE-2026-4926",
+      "aliases": [
+       "GHSA-j3q9-mxjg-w52f"
+      ],
+      "package": "path-to-regexp",
+      "version": "8.3.0",
+      "file": "bun.lock",
+      "message": "Package 'path-to-regexp@8.3.0' is vulnerable to 'CVE-2026-4926' (also known as 'GHSA-j3q9-mxjg-w52f')."
+     },
+     {
+      "id": "CVE-2026-54287",
+      "aliases": [
+       "GHSA-j6c9-x7qj-28xf"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-54287' (also known as 'GHSA-j6c9-x7qj-28xf')."
+     },
+     {
+      "id": "CVE-2026-54287",
+      "aliases": [
+       "GHSA-j6c9-x7qj-28xf"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-54287' (also known as 'GHSA-j6c9-x7qj-28xf')."
+     },
+     {
+      "id": "CVE-2026-54287",
+      "aliases": [
+       "GHSA-j6c9-x7qj-28xf"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-54287' (also known as 'GHSA-j6c9-x7qj-28xf')."
+     },
+     {
+      "id": "CVE-2026-76172",
+      "aliases": [
+       "GHSA-jqff-g426-hqxp"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "bun.lock",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-76172' (also known as 'GHSA-jqff-g426-hqxp')."
+     },
+     {
+      "id": "CVE-2026-15157",
+      "aliases": [
+       "GHSA-m8rv-5g2x-5cg5"
+      ],
+      "package": "undici",
+      "version": "6.21.3",
+      "file": "bun.lock",
+      "message": "Package 'undici@6.21.3' is vulnerable to 'CVE-2026-15157' (also known as 'GHSA-m8rv-5g2x-5cg5')."
+     },
+     {
+      "id": "CVE-2026-69192",
+      "aliases": [
+       "GHSA-mwp4-54f8-5fhr"
+      ],
+      "package": "ip-address",
+      "version": "10.1.0",
+      "file": "bun.lock",
+      "message": "Package 'ip-address@10.1.0' is vulnerable to 'CVE-2026-69192' (also known as 'GHSA-mwp4-54f8-5fhr')."
+     },
+     {
+      "id": "CVE-2026-44457",
+      "aliases": [
+       "GHSA-p77w-8qqv-26rm"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-44457' (also known as 'GHSA-p77w-8qqv-26rm')."
+     },
+     {
+      "id": "CVE-2026-44457",
+      "aliases": [
+       "GHSA-p77w-8qqv-26rm"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-44457' (also known as 'GHSA-p77w-8qqv-26rm')."
+     },
+     {
+      "id": "CVE-2026-44457",
+      "aliases": [
+       "GHSA-p77w-8qqv-26rm"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-44457' (also known as 'GHSA-p77w-8qqv-26rm')."
+     },
+     {
+      "id": "CVE-2026-9679",
+      "aliases": [
+       "GHSA-p88m-4jfj-68fv"
+      ],
+      "package": "undici",
+      "version": "6.21.3",
+      "file": "bun.lock",
+      "message": "Package 'undici@6.21.3' is vulnerable to 'CVE-2026-9679' (also known as 'GHSA-p88m-4jfj-68fv')."
+     },
+     {
+      "id": "CVE-2026-6321",
+      "aliases": [
+       "GHSA-q3j6-qgpj-74h6"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "bun.lock",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-6321' (also known as 'GHSA-q3j6-qgpj-74h6')."
+     },
+     {
+      "id": "CVE-2026-8723",
+      "aliases": [
+       "GHSA-q8mj-m7cp-5q26"
+      ],
+      "package": "qs",
+      "version": "6.15.0",
+      "file": "bun.lock",
+      "message": "Package 'qs@6.15.0' is vulnerable to 'CVE-2026-8723' (also known as 'GHSA-q8mj-m7cp-5q26')."
+     },
+     {
+      "id": "CVE-2026-44458",
+      "aliases": [
+       "GHSA-qp7p-654g-cw7p"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-44458' (also known as 'GHSA-qp7p-654g-cw7p')."
+     },
+     {
+      "id": "CVE-2026-44458",
+      "aliases": [
+       "GHSA-qp7p-654g-cw7p"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-44458' (also known as 'GHSA-qp7p-654g-cw7p')."
+     },
+     {
+      "id": "CVE-2026-44458",
+      "aliases": [
+       "GHSA-qp7p-654g-cw7p"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-44458' (also known as 'GHSA-qp7p-654g-cw7p')."
+     },
+     {
+      "id": "CVE-2021-23337",
+      "aliases": [],
+      "package": "lodash",
+      "version": "4.17.23",
+      "file": "bun.lock",
+      "message": "Package 'lodash@4.17.23' is vulnerable to 'CVE-2021-23337' (also known as 'CVE-2026-4800', 'GHSA-35jh-r3h4-6jhm', 'GHSA-r5fr-rjxr-66jc')."
+     },
+     {
+      "id": "CVE-2026-39410",
+      "aliases": [
+       "GHSA-r5rp-j6wh-rvv4"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-39410' (also known as 'GHSA-r5rp-j6wh-rvv4')."
+     },
+     {
+      "id": "CVE-2026-39410",
+      "aliases": [
+       "GHSA-r5rp-j6wh-rvv4"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-39410' (also known as 'GHSA-r5rp-j6wh-rvv4')."
+     },
+     {
+      "id": "CVE-2026-39410",
+      "aliases": [
+       "GHSA-r5rp-j6wh-rvv4"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-39410' (also known as 'GHSA-r5rp-j6wh-rvv4')."
+     },
+     {
+      "id": "CVE-2026-54288",
+      "aliases": [
+       "GHSA-rv63-4mwf-qqc2"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-54288' (also known as 'GHSA-rv63-4mwf-qqc2')."
+     },
+     {
+      "id": "CVE-2026-54288",
+      "aliases": [
+       "GHSA-rv63-4mwf-qqc2"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-54288' (also known as 'GHSA-rv63-4mwf-qqc2')."
+     },
+     {
+      "id": "CVE-2026-54288",
+      "aliases": [
+       "GHSA-rv63-4mwf-qqc2"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-54288' (also known as 'GHSA-rv63-4mwf-qqc2')."
+     },
+     {
+      "id": "CVE-2026-16221",
+      "aliases": [
+       "GHSA-v2hh-gcrm-f6hx"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "bun.lock",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-16221' (also known as 'GHSA-v2hh-gcrm-f6hx')."
+     },
+     {
+      "id": "CVE-2026-42338",
+      "aliases": [
+       "GHSA-v2v4-37r5-5v8g"
+      ],
+      "package": "ip-address",
+      "version": "10.1.0",
+      "file": "bun.lock",
+      "message": "Package 'ip-address@10.1.0' is vulnerable to 'CVE-2026-42338' (also known as 'GHSA-v2v4-37r5-5v8g')."
+     },
+     {
+      "id": "CVE-2026-6322",
+      "aliases": [
+       "GHSA-v39h-62p7-jpjc"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "bun.lock",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-6322' (also known as 'GHSA-v39h-62p7-jpjc')."
+     },
+     {
+      "id": "CVE-2026-16729",
+      "aliases": [
+       "GHSA-v3r7-h72x-cjcm"
+      ],
+      "package": "undici",
+      "version": "6.21.3",
+      "file": "bun.lock",
+      "message": "Package 'undici@6.21.3' is vulnerable to 'CVE-2026-16729' (also known as 'GHSA-v3r7-h72x-cjcm')."
+     },
+     {
+      "id": "CVE-2026-12590",
+      "aliases": [
+       "GHSA-v422-hmwv-36x6"
+      ],
+      "package": "body-parser",
+      "version": "2.2.2",
+      "file": "bun.lock",
+      "message": "Package 'body-parser@2.2.2' is vulnerable to 'CVE-2026-12590' (also known as 'GHSA-v422-hmwv-36x6')."
+     },
+     {
+      "id": "CVE-2026-56763",
+      "aliases": [
+       "GHSA-v8w9-8mx6-g223"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-56763' (also known as 'GHSA-v8w9-8mx6-g223')."
+     },
+     {
+      "id": "CVE-2026-2229",
+      "aliases": [
+       "GHSA-v9p9-hfj2-hcw8"
+      ],
+      "package": "undici",
+      "version": "6.21.3",
+      "file": "bun.lock",
+      "message": "Package 'undici@6.21.3' is vulnerable to 'CVE-2026-2229' (also known as 'GHSA-v9p9-hfj2-hcw8')."
+     },
+     {
+      "id": "CVE-2026-1526",
+      "aliases": [
+       "GHSA-vrm6-8vpv-qv8q"
+      ],
+      "package": "undici",
+      "version": "6.21.3",
+      "file": "bun.lock",
+      "message": "Package 'undici@6.21.3' is vulnerable to 'CVE-2026-1526' (also known as 'GHSA-vrm6-8vpv-qv8q')."
+     },
+     {
+      "id": "CVE-2026-12151",
+      "aliases": [
+       "GHSA-vxpw-j846-p89q"
+      ],
+      "package": "undici",
+      "version": "6.21.3",
+      "file": "bun.lock",
+      "message": "Package 'undici@6.21.3' is vulnerable to 'CVE-2026-12151' (also known as 'GHSA-vxpw-j846-p89q')."
+     },
+     {
+      "id": "CVE-2026-59895",
+      "aliases": [
+       "GHSA-w62v-xxxg-mg59"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-59895' (also known as 'GHSA-w62v-xxxg-mg59')."
+     },
+     {
+      "id": "CVE-2026-59895",
+      "aliases": [
+       "GHSA-w62v-xxxg-mg59"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-59895' (also known as 'GHSA-w62v-xxxg-mg59')."
+     },
+     {
+      "id": "CVE-2026-59895",
+      "aliases": [
+       "GHSA-w62v-xxxg-mg59"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-59895' (also known as 'GHSA-w62v-xxxg-mg59')."
+     },
+     {
+      "id": "CVE-2026-54289",
+      "aliases": [
+       "GHSA-wgpf-jwqj-8h8p"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-54289' (also known as 'GHSA-wgpf-jwqj-8h8p')."
+     },
+     {
+      "id": "CVE-2026-54289",
+      "aliases": [
+       "GHSA-wgpf-jwqj-8h8p"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-54289' (also known as 'GHSA-wgpf-jwqj-8h8p')."
+     },
+     {
+      "id": "CVE-2026-54289",
+      "aliases": [
+       "GHSA-wgpf-jwqj-8h8p"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-54289' (also known as 'GHSA-wgpf-jwqj-8h8p')."
+     },
+     {
+      "id": "CVE-2026-39407",
+      "aliases": [
+       "GHSA-wmmm-f939-6g9c"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-39407' (also known as 'GHSA-wmmm-f939-6g9c')."
+     },
+     {
+      "id": "CVE-2026-39407",
+      "aliases": [
+       "GHSA-wmmm-f939-6g9c"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-39407' (also known as 'GHSA-wmmm-f939-6g9c')."
+     },
+     {
+      "id": "CVE-2026-39407",
+      "aliases": [
+       "GHSA-wmmm-f939-6g9c"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-39407' (also known as 'GHSA-wmmm-f939-6g9c')."
+     },
+     {
+      "id": "CVE-2026-54286",
+      "aliases": [
+       "GHSA-wwfh-h76j-fc44"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-54286' (also known as 'GHSA-wwfh-h76j-fc44')."
+     },
+     {
+      "id": "CVE-2026-54286",
+      "aliases": [
+       "GHSA-wwfh-h76j-fc44"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-54286' (also known as 'GHSA-wwfh-h76j-fc44')."
+     },
+     {
+      "id": "CVE-2026-54286",
+      "aliases": [
+       "GHSA-wwfh-h76j-fc44"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-54286' (also known as 'GHSA-wwfh-h76j-fc44')."
+     },
+     {
+      "id": "CVE-2026-82562",
+      "aliases": [
+       "GHSA-x5fp-wj9c-mxmx"
+      ],
+      "package": "qs",
+      "version": "6.15.0",
+      "file": "bun.lock",
+      "message": "Package 'qs@6.15.0' is vulnerable to 'CVE-2026-82562' (also known as 'GHSA-x5fp-wj9c-mxmx')."
+     },
+     {
+      "id": "CVE-2026-39408",
+      "aliases": [
+       "GHSA-xf4j-xp2r-rqqx"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-39408' (also known as 'GHSA-xf4j-xp2r-rqqx')."
+     },
+     {
+      "id": "CVE-2026-39408",
+      "aliases": [
+       "GHSA-xf4j-xp2r-rqqx"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-39408' (also known as 'GHSA-xf4j-xp2r-rqqx')."
+     },
+     {
+      "id": "CVE-2026-39408",
+      "aliases": [
+       "GHSA-xf4j-xp2r-rqqx"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-39408' (also known as 'GHSA-xf4j-xp2r-rqqx')."
+     },
+     {
+      "id": "CVE-2026-59897",
+      "aliases": [
+       "GHSA-xgm2-5f3f-mvvc"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-59897' (also known as 'GHSA-xgm2-5f3f-mvvc')."
+     },
+     {
+      "id": "CVE-2026-59897",
+      "aliases": [
+       "GHSA-xgm2-5f3f-mvvc"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-59897' (also known as 'GHSA-xgm2-5f3f-mvvc')."
+     },
+     {
+      "id": "CVE-2026-59897",
+      "aliases": [
+       "GHSA-xgm2-5f3f-mvvc"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-59897' (also known as 'GHSA-xgm2-5f3f-mvvc')."
+     },
+     {
+      "id": "CVE-2026-39409",
+      "aliases": [
+       "GHSA-xpcf-pg52-r92g"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-39409' (also known as 'GHSA-xpcf-pg52-r92g')."
+     },
+     {
+      "id": "CVE-2026-39409",
+      "aliases": [
+       "GHSA-xpcf-pg52-r92g"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-39409' (also known as 'GHSA-xpcf-pg52-r92g')."
+     },
+     {
+      "id": "CVE-2026-39409",
+      "aliases": [
+       "GHSA-xpcf-pg52-r92g"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-39409' (also known as 'GHSA-xpcf-pg52-r92g')."
+     },
+     {
+      "id": "CVE-2026-47674",
+      "aliases": [
+       "GHSA-xrhx-7g5j-rcj5"
+      ],
+      "package": "hono",
+      "version": "4.12.5",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.5' is vulnerable to 'CVE-2026-47674' (also known as 'GHSA-xrhx-7g5j-rcj5')."
+     },
+     {
+      "id": "CVE-2026-47674",
+      "aliases": [
+       "GHSA-xrhx-7g5j-rcj5"
+      ],
+      "package": "hono",
+      "version": "4.12.8",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.8' is vulnerable to 'CVE-2026-47674' (also known as 'GHSA-xrhx-7g5j-rcj5')."
+     },
+     {
+      "id": "CVE-2026-47674",
+      "aliases": [
+       "GHSA-xrhx-7g5j-rcj5"
+      ],
+      "package": "hono",
+      "version": "4.12.9",
+      "file": "bun.lock",
+      "message": "Package 'hono@4.12.9' is vulnerable to 'CVE-2026-47674' (also known as 'GHSA-xrhx-7g5j-rcj5')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 28,
+    "findings": [
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/bump-plugin-shas.yml",
+      "line": 56,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/bump-plugin-shas.yml",
+      "line": 56,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/check-mcp-urls.yml",
+      "line": 36,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/check-mcp-urls.yml",
+      "line": 36,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/close-external-prs.yml",
+      "line": 19,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/close-external-prs.yml",
+      "line": 3,
+      "message": "use of fundamentally insecure workflow trigger: pull_request_target is almost always used insecurely"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/close-external-prs.yml",
+      "line": 19,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/close-external-prs.yml",
+      "line": 21,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/external-pr-scope-guard.yml",
+      "line": 31,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/external-pr-scope-guard.yml",
+      "line": 19,
+      "message": "use of fundamentally insecure workflow trigger: pull_request_target is almost always used insecurely"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/external-pr-scope-guard.yml",
+      "line": 31,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/external-pr-scope-guard.yml",
+      "line": 32,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/revert-failed-bumps.yml",
+      "line": 23,
+      "message": "use of fundamentally insecure workflow trigger: workflow_run is almost always used insecurely"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/revert-failed-bumps.yml",
+      "line": 67,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/scan-plugins.yml",
+      "line": 54,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "error",
+      "file": ".github/workflows/scan-plugins.yml",
+      "line": 35,
+      "message": "overly broad permissions: id-token: write is overly broad at the workflow level"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/scan-plugins.yml",
+      "line": 54,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/scan-plugins.yml",
+      "line": 94,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/scan-plugins.yml",
+      "line": 345,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/scan-plugins.yml",
+      "line": 357,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/scan-plugins.yml",
+      "line": 425,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/validate-frontmatter.yml",
+      "line": 18,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/validate-frontmatter.yml",
+      "line": 11,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/validate-frontmatter.yml",
+      "line": 18,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/validate-licenses.yml",
+      "line": 19,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/validate-licenses.yml",
+      "line": 19,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/validate-plugins.yml",
+      "line": 71,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/validate-plugins.yml",
+      "line": 71,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "findings",
+    "finding_count": 368,
+    "findings": [
+     {
+      "rule": "TT3",
+      "severity": "CRITICAL",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'request' from os.environ.get (line 526, credential/environment) → urllib.request.urlopen (network output)",
+      "confidence": 0.9,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 532,
+      "message": "Tainted flow: 'request' from os.environ.get (line 526, credential/environment) → urllib.request.urlopen (network output)",
+      "finding": "            with urllib.request.urlopen(request, timeout=120) as response:"
+     },
+     {
+      "rule": "YR4",
+      "severity": "HIGH",
+      "category": "YARA Match",
+      "pattern": "YARA rule 'agent_skill_mcp_tool_poisoning_metadata': MCP/tool metadata poisoning indicators in tool schemas or skill manifests [agent_skills]",
+      "confidence": 0.8,
+      "file": ".claude-plugin/marketplace.json",
+      "line": 4,
+      "message": "YARA rule 'agent_skill_mcp_tool_poisoning_metadata': MCP/tool metadata poisoning indicators in tool schemas or skill manifests [agent_skills]",
+      "finding": "\"description\":; description\":; \"description\":; description\":; \"description\":; description\":; \"description\":; description\":; \"description\":; description\":; \"description\":; description\":; \"description\":"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.9,
+      "file": ".github/policy/prompt.md",
+      "line": 41,
+      "message": "Credential Access",
+      "finding": "~/.aws/credentials"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.9,
+      "file": ".github/policy/prompt.md",
+      "line": 53,
+      "message": "Credential Access",
+      "finding": "~/.aws/credentials"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.9,
+      "file": ".github/policy/prompt.md",
+      "line": 63,
+      "message": "Credential Access",
+      "finding": "~/.aws/credentials"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.9,
+      "file": ".github/policy/prompt.md",
+      "line": 89,
+      "message": "Credential Access",
+      "finding": "~/.aws/credentials"
+     },
+     {
+      "rule": "AS2",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "MCP Config Access",
+      "confidence": 0.9,
+      "file": ".github/policy/prompt.md",
+      "line": 113,
+      "message": "MCP Config Access",
+      "finding": "mcp.json`, hooks with fetch/curl"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/discover_bumps.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/discover_bumps.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/external-pr-scope.js",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/external-pr-scope.js"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/validate-frontmatter.ts",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/validate-frontmatter.ts"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.7,
+      "file": "external_plugins/discord/README.md",
+      "line": 88,
+      "message": "Instruction Override",
+      "finding": "enable Developer Mode"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.7,
+      "file": "external_plugins/discord/skills/configure/SKILL.md",
+      "line": 62,
+      "message": "Instruction Override",
+      "finding": "Enable Developer Mode"
+     },
+     {
+      "rule": "SC2",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.9,
+      "file": "external_plugins/discord/README.md",
+      "line": 9,
+      "message": "External Script Fetching",
+      "finding": "curl -fsSL https://bun.sh/install | bash"
+     },
+     {
+      "rule": "SC2",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.9,
+      "file": "external_plugins/telegram/README.md",
+      "line": 9,
+      "message": "External Script Fetching",
+      "finding": "curl -fsSL https://bun.sh/install | bash"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "external_plugins/discord/server.ts",
+      "line": 40,
+      "message": "Credential Access",
+      "finding": ".env'"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "external_plugins/telegram/server.ts",
+      "line": 31,
+      "message": "Credential Access",
+      "finding": ".env'"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md",
+      "line": 13,
+      "message": "Direct Prompt Extraction",
+      "finding": "Output Guidelines"
+     },
+     {
+      "rule": "EA5",
+      "severity": "HIGH",
+      "category": "Excessive Agency",
+      "pattern": "External Model or Provider Selection",
+      "confidence": 0.9,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md",
+      "line": 273,
+      "message": "External Model or Provider Selection",
+      "finding": "claude -p \"fix lint errors in src/\" --allowedTools Edit,Write"
+     },
+     {
+      "rule": "EA5",
+      "severity": "HIGH",
+      "category": "Excessive Agency",
+      "pattern": "External Model or Provider Selection",
+      "confidence": 0.9,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md",
+      "line": 276,
+      "message": "External Model or Provider Selection",
+      "finding": "claude -p \"<prompt>\" --output-format stream-json | your_command"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/references/hooks-patterns.md",
+      "line": 85,
+      "message": "Credential Access",
+      "finding": "secrets.yaml"
+     },
+     {
+      "rule": "AR2",
+      "severity": "HIGH",
+      "category": "Anti-Refusal",
+      "pattern": "Anti-Refusal Statement",
+      "confidence": 0.85,
+      "file": "plugins/claude-security/agents/patch-generator.md",
+      "line": 12,
+      "message": "Anti-Refusal Statement",
+      "finding": "never judge"
+     },
+     {
+      "rule": "AR1",
+      "severity": "HIGH",
+      "category": "Anti-Refusal",
+      "pattern": "Anti-Refusal Statement",
+      "confidence": 0.85,
+      "file": "plugins/claude-security/agents/scan-researcher.md",
+      "line": 51,
+      "message": "Anti-Refusal Statement",
+      "finding": "Do not refuse"
+     },
+     {
+      "rule": "E2",
+      "severity": "HIGH",
+      "category": "Data Exfiltration",
+      "pattern": "Env Variable Harvesting",
+      "confidence": 0.6,
+      "file": "plugins/claude-security/scripts/patch_artifacts.py",
+      "line": 70,
+      "message": "Env Variable Harvesting",
+      "finding": "dict(os.environ, GIT_TERMINAL_PROMPT=\"0\")"
+     },
+     {
+      "rule": "E2",
+      "severity": "HIGH",
+      "category": "Data Exfiltration",
+      "pattern": "Env Variable Harvesting",
+      "confidence": 0.6,
+      "file": "plugins/claude-security/scripts/write_scan_meta.py",
+      "line": 45,
+      "message": "Env Variable Harvesting",
+      "finding": "dict(os.environ, GIT_TERMINAL_PROMPT=\"0\")"
+     },
+     {
+      "rule": "AR2",
+      "severity": "HIGH",
+      "category": "Anti-Refusal",
+      "pattern": "Anti-Refusal Statement",
+      "confidence": 0.8,
+      "file": "plugins/claude-security/skills/claude-security/role.md",
+      "line": 17,
+      "message": "Anti-Refusal Statement",
+      "finding": "without warning"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "plugins/code-modernization/commands/modernize-preflight.md",
+      "line": 90,
+      "message": "Credential Access",
+      "finding": ".npmrc"
+     },
+     {
+      "rule": "YR4",
+      "severity": "HIGH",
+      "category": "YARA Match",
+      "pattern": "YARA rule 'agent_skill_prompt_injection_hidden_instructions': Prompt injection or hidden instructions embedded in AI agent skill text [agent_skills]",
+      "confidence": 0.8,
+      "file": "plugins/code-modernization/workflows/extract-rules.js",
+      "line": 39,
+      "message": "YARA rule 'agent_skill_prompt_injection_hidden_instructions': Prompt injection or hidden instructions embedded in AI agent skill text [agent_skills]",
+      "finding": "system prompt; ignore previous instructions"
+     },
+     {
+      "rule": "YR4",
+      "severity": "HIGH",
+      "category": "YARA Match",
+      "pattern": "YARA rule 'exploit_framework': Exploit framework components and payloads [hacktools]",
+      "confidence": 0.8,
+      "file": "plugins/code-modernization/workflows/harden-scan.js",
+      "line": 39,
+      "message": "YARA rule 'exploit_framework': Exploit framework components and payloads [hacktools]",
+      "finding": "social-engineer"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.8,
+      "file": "plugins/code-modernization/README.md",
+      "line": 109,
+      "message": "Instruction Override",
+      "finding": "ignore previous\ninstructions"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.8,
+      "file": "plugins/code-modernization/agents/architecture-critic.md",
+      "line": 48,
+      "message": "Instruction Override",
+      "finding": "ignore previous\ninstructions"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.8,
+      "file": "plugins/code-modernization/agents/business-rules-extractor.md",
+      "line": 61,
+      "message": "Instruction Override",
+      "finding": "ignore previous\ninstructions"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.8,
+      "file": "plugins/code-modernization/agents/legacy-analyst.md",
+      "line": 54,
+      "message": "Instruction Override",
+      "finding": "ignore previous\ninstructions"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.8,
+      "file": "plugins/code-modernization/agents/security-auditor.md",
+      "line": 85,
+      "message": "Instruction Override",
+      "finding": "ignore previous\ninstructions"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.8,
+      "file": "plugins/code-modernization/agents/test-engineer.md",
+      "line": 51,
+      "message": "Instruction Override",
+      "finding": "ignore previous\ninstructions"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.8,
+      "file": "plugins/code-modernization/workflows/extract-rules.js",
+      "line": 43,
+      "message": "Instruction Override",
+      "finding": "ignore previous\ninstructions"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.8,
+      "file": "plugins/code-modernization/workflows/harden-scan.js",
+      "line": 37,
+      "message": "Instruction Override",
+      "finding": "ignore previous\ninstructions"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.8,
+      "file": "plugins/code-modernization/workflows/portfolio-assess.js",
+      "line": 36,
+      "message": "Instruction Override",
+      "finding": "ignore previous\ninstructions"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.8,
+      "file": "plugins/code-modernization/workflows/uplift-deltas.js",
+      "line": 38,
+      "message": "Instruction Override",
+      "finding": "ignore previous\ninstructions"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.8,
+      "file": "plugins/receipts/skills/receipts/SKILL.md",
+      "line": 142,
+      "message": "Instruction Override",
+      "finding": "ignore previous\ninstructions"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.8,
+      "file": "plugins/receipts/skills/receipts/scripts/mine-transcripts.mjs",
+      "line": 347,
+      "message": "Instruction Override",
+      "finding": "ignore previous\ninstructions"
+     },
+     {
+      "rule": "YR4",
+      "severity": "HIGH",
+      "category": "YARA Match",
+      "pattern": "YARA rule 'agent_skill_prompt_injection_hidden_instructions': Prompt injection or hidden instructions embedded in AI agent skill text [agent_skills]",
+      "confidence": 0.8,
+      "file": "plugins/code-modernization/workflows/uplift-deltas.js",
+      "line": 38,
+      "message": "YARA rule 'agent_skill_prompt_injection_hidden_instructions': Prompt injection or hidden instructions embedded in AI agent skill text [agent_skills]",
+      "finding": "assistant; ignore previous instructions"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/references/hooks-patterns.md",
+      "line": 85,
+      "message": "Credential Access",
+      "finding": "credentials.json"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "plugins/commit-commands/README.md",
+      "line": 44,
+      "message": "Credential Access",
+      "finding": "credentials.json"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 1323,
+      "message": "Credential Access",
+      "finding": "credentials.json"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.75,
+      "file": "plugins/cwc-makers/skills/m5-onboard/SKILL.md",
+      "line": 139,
+      "message": "Tool Parameter Abuse",
+      "finding": "--noconfirm"
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.75,
+      "file": "plugins/cwc-makers/skills/m5-onboard/SKILL.md",
+      "line": 139,
+      "message": "Chaining Abuse",
+      "finding": "&& sudo"
+     },
+     {
+      "rule": "AR2",
+      "severity": "HIGH",
+      "category": "Anti-Refusal",
+      "pattern": "Anti-Refusal Statement",
+      "confidence": 0.55,
+      "file": "plugins/frontend-design/skills/frontend-design/SKILL.md",
+      "line": 69,
+      "message": "Anti-Refusal Statement",
+      "finding": "don't apologize"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": "plugins/hookify/README.md",
+      "line": 21,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf commands\n```\n\nThis analyzes your request and creates `.claude/hookify.warn-rm.local.md`.\n\n### 2. Test It Immediately\n\n**No restart needed!** Rules take effect on the very next tool use.\n\nAsk Cl"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "plugins/hookify/README.md",
+      "line": 32,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /tmp/test"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": "plugins/hookify/README.md",
+      "line": 136,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": "plugins/hookify/skills/writing-rules/SKILL.md",
+      "line": 274,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": "plugins/plugin-dev/skills/hook-development/references/advanced.md",
+      "line": 396,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "plugins/hookify/README.md",
+      "line": 136,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /tmp"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "plugins/hookify/skills/writing-rules/SKILL.md",
+      "line": 274,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /tmp"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/hookify/README.md",
+      "line": 139,
+      "message": "Credential Access",
+      "finding": ".env.local "
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "plugins/hookify/README.md",
+      "line": 280,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm .claude/hookify.my-rule.local.md"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.8,
+      "file": "plugins/hookify/README.md",
+      "line": 140,
+      "message": "Tool Parameter Abuse",
+      "finding": "chmod 777"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.8,
+      "file": "plugins/hookify/agents/conversation-analyzer.md",
+      "line": 91,
+      "message": "Tool Parameter Abuse",
+      "finding": "chmod 777"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.8,
+      "file": "plugins/hookify/commands/help.md",
+      "line": 88,
+      "message": "Tool Parameter Abuse",
+      "finding": "chmod 777"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": "plugins/hookify/commands/help.md",
+      "line": 164,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf\n   ```\n\n2. Try to trigger it:\n   - Ask Claude to run `rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "plugins/hookify/commands/help.md",
+      "line": 168,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /tmp/test`"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/hookify/core/config_loader.py",
+      "line": 210,
+      "message": "Agent Config Directory Access",
+      "finding": "os.path.join('.claude"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 1.0,
+      "file": "plugins/hookify/core/rule_engine.py",
+      "line": 288,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm command!\"\n    )\n\n    engine = RuleEngine()\n\n    # Test matching input\n    test_input = {\n        \"tool_name\": \"Bash\",\n        \"tool_input\": {\n            \"command\": \"rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.95,
+      "file": "plugins/hookify/core/rule_engine.py",
+      "line": 297,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /tmp/test\""
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.8,
+      "file": "plugins/hookify/skills/writing-rules/SKILL.md",
+      "line": 250,
+      "message": "Tool Parameter Abuse",
+      "finding": "chmod 777, chmod  777"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/mcp-server-dev/skills/build-mcpb/references/local-security.md",
+      "line": 149,
+      "message": "Credential Access",
+      "finding": "/etc/passwd"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 882,
+      "message": "Credential Access",
+      "finding": "/etc/passwd"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 910,
+      "message": "Credential Access",
+      "finding": "/etc/passwd"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": "plugins/mcp-server-dev/skills/build-mcpb/references/local-security.md",
+      "line": 149,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf ~"
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.75,
+      "file": "plugins/mcp-server-dev/skills/build-mcpb/references/local-security.md",
+      "line": 149,
+      "message": "Chaining Abuse",
+      "finding": "; rm -"
+     },
+     {
+      "rule": "MP3",
+      "severity": "HIGH",
+      "category": "Memory Poisoning",
+      "pattern": "Memory Manipulation",
+      "confidence": 0.8,
+      "file": "plugins/plugin-dev/commands/create-plugin.md",
+      "line": 52,
+      "message": "Memory Manipulation",
+      "finding": "Clear state"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.7,
+      "file": "plugins/plugin-dev/skills/command-development/SKILL.md",
+      "line": 277,
+      "message": "Tool Parameter Abuse",
+      "finding": "--skip-tests"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.7,
+      "file": "plugins/plugin-dev/skills/command-development/SKILL.md",
+      "line": 283,
+      "message": "Tool Parameter Abuse",
+      "finding": "--skip-tests"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/advanced-workflows.md",
+      "line": 445,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm .claude/deployment.lock"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/advanced-workflows.md",
+      "line": 717,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm .claude/deployment-state.local.md"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "plugins/plugin-dev/skills/command-development/references/documentation-patterns.md",
+      "line": 21,
+      "message": "Hidden Instructions",
+      "finding": "<!--\nCOMMAND: command-name\nVERSION: 1.0.0\nAUTHOR: Team Name\nLAST UPDATED: 2025-01-15\n\nPURPOSE:\nDetailed explanation of what this command does and why it exists.\n\nUSAGE:\n  /command-name arg1 arg2\n\nARGU"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "plugins/plugin-dev/skills/command-development/references/documentation-patterns.md",
+      "line": 187,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Guide user on what to do after deployment -->\n1. Monitor logs: /logs $1\n2. Run smoke tests: /smoke-test $1\n3. Notify team: /notify-deployment $1\n```\n\n### Decision Point Documentation\n\n```markdown"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "plugins/plugin-dev/skills/command-development/references/documentation-patterns.md",
+      "line": 209,
+      "message": "Hidden Instructions",
+      "finding": "<!-- This pause allows user to verify everything is correct -->\n<!-- We can't automatically proceed because deployment is risky -->\n\nReview the above configuration.\n\n**Continue with deployment?**\n- Re"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "plugins/plugin-dev/skills/command-development/references/marketplace-considerations.md",
+      "line": 34,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Adjust behavior based on platform -->\nif [ \"$PLATFORM\" = \"Windows\" ]; then\n  # Windows-specific handling\n  PATH_SEP=\"\\\\\"\n  NULL_DEVICE=\"NUL\"\nelse\n  # Unix-like handling\n  PATH_SEP=\"/\"\n  NULL_DEVI"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/marketplace-considerations.md",
+      "line": 366,
+      "message": "Agent Config Directory Access",
+      "finding": "grep \"^verbose:\" .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/marketplace-considerations.md",
+      "line": 367,
+      "message": "Agent Config Directory Access",
+      "finding": "grep \"^color:\" .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/marketplace-considerations.md",
+      "line": 368,
+      "message": "Agent Config Directory Access",
+      "finding": "grep \"^max_results:\" .claude/"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "plugins/plugin-dev/skills/command-development/references/marketplace-considerations.md",
+      "line": 646,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Details that matter -->\n\n✓ Use proper emoji/symbols consistently\n✓ Align output columns neatly\n✓ Format numbers with thousands separators\n✓ Use color/formatting appropriately\n✓ Provide progress i"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/marketplace-considerations.md",
+      "line": 673,
+      "message": "Agent Config Directory Access",
+      "finding": "cat .claude/"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/marketplace-considerations.md",
+      "line": 676,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm .claude/operation-completed.flag"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 22,
+      "message": "Agent Config Directory Access",
+      "finding": "head -n 20 .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 25,
+      "message": "Agent Config Directory Access",
+      "finding": "head -n 20 .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 650,
+      "message": "Agent Config Directory Access",
+      "finding": "head -n 20 .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 152,
+      "message": "Agent Config Directory Access",
+      "finding": "tail -f ~/.claude/"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 243,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm /tmp/test-file*.txt"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 398,
+      "message": "Agent Config Directory Access",
+      "finding": "grep \"\\.claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 448,
+      "message": "Agent Config Directory Access",
+      "finding": "grep -r \"TODO\" .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 660,
+      "message": "Agent Config Directory Access",
+      "finding": "grep '\\$1' .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 661,
+      "message": "Agent Config Directory Access",
+      "finding": "grep '\\$ARGUMENTS' .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 671,
+      "message": "Agent Config Directory Access",
+      "finding": "grep \"allowed-tools\" .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 674,
+      "message": "Agent Config Directory Access",
+      "finding": "grep '!\\`' .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 685,
+      "message": "Agent Config Directory Access",
+      "finding": "grep '@' .claude/"
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.7,
+      "file": "plugins/plugin-dev/skills/hook-development/SKILL.md",
+      "line": 602,
+      "message": "Instruction Override",
+      "finding": "Enable Debug Mode"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/hook-development/references/advanced.md",
+      "line": 396,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /\"}}'"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "external_plugins/discord/server.ts",
+      "line": 42,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "external_plugins/discord/server.ts",
+      "line": 135,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "external_plugins/telegram/server.ts",
+      "line": 33,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "external_plugins/telegram/server.ts",
+      "line": 140,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/agent-sdk-dev/README.md",
+      "line": 139,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/references/hooks-patterns.md",
+      "line": 133,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/references/hooks-patterns.md",
+      "line": 209,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/hookify/README.md",
+      "line": 139,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/hookify/commands/help.md",
+      "line": 130,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/hookify/commands/hookify.md",
+      "line": 149,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/hookify/skills/writing-rules/SKILL.md",
+      "line": 82,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/hookify/skills/writing-rules/SKILL.md",
+      "line": 327,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/mcp-tunnels/commands/create-docker-mcp-tunnel.md",
+      "line": 110,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/mcp-tunnels/commands/create-docker-mcp-tunnel.md",
+      "line": 116,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/plugin-dev/skills/hook-development/examples/validate-write.sh",
+      "line": 32,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/plugin-dev/skills/hook-development/references/patterns.md",
+      "line": 17,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/authentication.md",
+      "line": 222,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/authentication.md",
+      "line": 537,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "P1",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Instruction Override",
+      "confidence": 0.7,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/authentication.md",
+      "line": 383,
+      "message": "Instruction Override",
+      "finding": "Enable debug mode"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/mcp-tunnels/commands/create-docker-mcp-tunnel.md",
+      "line": 102,
+      "message": "Credential Access",
+      "finding": ".env\""
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/mcp-tunnels/commands/create-docker-mcp-tunnel.md",
+      "line": 110,
+      "message": "Credential Access",
+      "finding": ".env\""
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/plugin-dev/skills/hook-development/SKILL.md",
+      "line": 461,
+      "message": "Credential Access",
+      "finding": ".env\""
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/plugin-dev/skills/plugin-settings/examples/read-settings-hook.sh",
+      "line": 41,
+      "message": "Credential Access",
+      "finding": ".env\""
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/plugin-settings/references/real-world-examples.md",
+      "line": 101,
+      "message": "Agent Config Directory Access",
+      "finding": "cat > \"$WORKTREE_PATH/.claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/plugin-settings/references/real-world-examples.md",
+      "line": 240,
+      "message": "Agent Config Directory Access",
+      "finding": "cat > \".claude/"
+     },
+     {
+      "rule": "RA1",
+      "severity": "HIGH",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/README.md",
+      "line": 258,
+      "message": "Self-Modification",
+      "finding": "update this skill"
+     },
+     {
+      "rule": "RA1",
+      "severity": "HIGH",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/plugin-structure/README.md",
+      "line": 104,
+      "message": "Self-Modification",
+      "finding": "update this skill"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "plugins/plugin-dev/skills/plugin-structure/examples/advanced-plugin.md",
+      "line": 154,
+      "message": "Credential Access",
+      "finding": "KUBECONFIG"
+     },
+     {
+      "rule": "RA1",
+      "severity": "HIGH",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/skill-development/SKILL.md",
+      "line": 158,
+      "message": "Self-Modification",
+      "finding": "Update SKILL"
+     },
+     {
+      "rule": "RA1",
+      "severity": "HIGH",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/skill-development/references/skill-creator-original.md",
+      "line": 165,
+      "message": "Self-Modification",
+      "finding": "Update SKILL"
+     },
+     {
+      "rule": "RA1",
+      "severity": "HIGH",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/skill-development/SKILL.md",
+      "line": 628,
+      "message": "Self-Modification",
+      "finding": "Write SKILL"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "plugins/project-artifact/skills/project-artifact/template.html",
+      "line": 2,
+      "message": "Hidden Instructions",
+      "finding": "<!--\n  project-artifact template — a self-contained status page for a multi-workstream project.\n  Domain-neutral. For software projects (workstreams = PRs), also read swe.md — it has\n  the PR-sequence"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "plugins/ralph-loop/commands/cancel-ralph.md",
+      "line": 3,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm .claude/ralph-loop.local.md)\","
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "plugins/ralph-loop/commands/cancel-ralph.md",
+      "line": 17,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm .claude/ralph-loop.local.md`"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/ralph-loop/scripts/setup-ralph-loop.sh",
+      "line": 54,
+      "message": "Agent Config Directory Access",
+      "finding": "grep '^iteration:' .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/ralph-loop/scripts/setup-ralph-loop.sh",
+      "line": 57,
+      "message": "Agent Config Directory Access",
+      "finding": "head -10 .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/ralph-loop/scripts/setup-ralph-loop.sh",
+      "line": 165,
+      "message": "Agent Config Directory Access",
+      "finding": "head -10 .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 258,
+      "message": "Agent Config Directory Access",
+      "finding": "cat > .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 278,
+      "message": "Agent Config Directory Access",
+      "finding": "cat > .claude/"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/ralph-loop/scripts/setup-ralph-loop.sh",
+      "line": 140,
+      "message": "Agent Config Directory Access",
+      "finding": "cat > .claude/"
+     },
+     {
+      "rule": "YR4",
+      "severity": "HIGH",
+      "category": "YARA Match",
+      "pattern": "YARA rule 'agent_skill_prompt_injection_hidden_instructions': Prompt injection or hidden instructions embedded in AI agent skill text [agent_skills]",
+      "confidence": 0.8,
+      "file": "plugins/receipts/skills/receipts/SKILL.md",
+      "line": 14,
+      "message": "YARA rule 'agent_skill_prompt_injection_hidden_instructions': Prompt injection or hidden instructions embedded in AI agent skill text [agent_skills]",
+      "finding": "model; ignore previous instructions"
+     },
+     {
+      "rule": "YR4",
+      "severity": "HIGH",
+      "category": "YARA Match",
+      "pattern": "YARA rule 'agent_skill_prompt_injection_hidden_instructions': Prompt injection or hidden instructions embedded in AI agent skill text [agent_skills]",
+      "confidence": 0.8,
+      "file": "plugins/receipts/skills/receipts/scripts/mine-transcripts.mjs",
+      "line": 121,
+      "message": "YARA rule 'agent_skill_prompt_injection_hidden_instructions': Prompt injection or hidden instructions embedded in AI agent skill text [agent_skills]",
+      "finding": "model; ignore previous instructions"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/security-guidance/README.md",
+      "line": 102,
+      "message": "Agent Config Directory Access",
+      "finding": "grep for `security_reminder_hook`. The plugin also writes its own log to `~/.claude/"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "plugins/hookify/core/config_loader.py",
+      "line": 241,
+      "message": "Direct Prompt Extraction",
+      "finding": "return rules"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "plugins/security-guidance/hooks/extensibility.py",
+      "line": 168,
+      "message": "Direct Prompt Extraction",
+      "finding": "return rules"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "plugins/hookify/core/config_loader.py",
+      "line": 261,
+      "message": "Direct Prompt Extraction",
+      "finding": "return rule"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "plugins/security-guidance/hooks/extensibility.py",
+      "line": 244,
+      "message": "Direct Prompt Extraction",
+      "finding": "return rule"
+     },
+     {
+      "rule": "E2",
+      "severity": "HIGH",
+      "category": "Data Exfiltration",
+      "pattern": "Env Variable Harvesting",
+      "confidence": 0.6,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 136,
+      "message": "Env Variable Harvesting",
+      "finding": "{**os.environ, \"GIT_INDEX_FILE\": tmp_index}"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 894,
+      "message": "Tool Parameter Abuse",
+      "finding": "curl `-k`; Java all-trusting `TrustManager`/`HostnameVerifier`. Infra-as-code: an Envoy `cluster` with a non-loopback `socket_address` and NO `transport_socket` block while sibling clusters get `Upstr"
+     },
+     {
+      "rule": "AS2",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "MCP Config Access",
+      "confidence": 0.9,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 896,
+      "message": "MCP Config Access",
+      "finding": "mcp.json`, `.vscode/settings.json`, `package.json`, workspace YAML in a cloned repo) and manifest/checkpoint files an attacker wrote earlier are attacker-controlled. A `validate_url"
+     },
+     {
+      "rule": "SSRF1",
+      "severity": "HIGH",
+      "category": "Server-Side Request Forgery",
+      "pattern": "Cloud Metadata Access",
+      "confidence": 0.9,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 896,
+      "message": "Cloud Metadata Access",
+      "finding": "169.254.169.254"
+     },
+     {
+      "rule": "SSRF1",
+      "severity": "HIGH",
+      "category": "Server-Side Request Forgery",
+      "pattern": "Cloud Metadata Access",
+      "confidence": 0.9,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 908,
+      "message": "Cloud Metadata Access",
+      "finding": "169.254.169.254"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 916,
+      "message": "Tool Parameter Abuse",
+      "finding": "subprocess.run(cmd, shell=True"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": "plugins/security-guidance/hooks/patterns.py",
+      "line": 156,
+      "message": "Tool Parameter Abuse",
+      "finding": "subprocess.run(f\"ls {user_input}\", shell=True"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": "plugins/security-guidance/hooks/patterns.py",
+      "line": 157,
+      "message": "Tool Parameter Abuse",
+      "finding": "subprocess.call(\"grep \" + pattern, shell=True"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "plugins/mcp-server-dev/skills/build-mcp-server/references/auth.md",
+      "line": 52,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 103,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 51,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "E2",
+      "severity": "HIGH",
+      "category": "Data Exfiltration",
+      "pattern": "Env Variable Harvesting",
+      "confidence": 0.7,
+      "file": "plugins/skill-creator/skills/skill-creator/scripts/improve_description.py",
+      "line": 33,
+      "message": "Env Variable Harvesting",
+      "finding": "os.environ.items()"
+     },
+     {
+      "rule": "E2",
+      "severity": "HIGH",
+      "category": "Data Exfiltration",
+      "pattern": "Env Variable Harvesting",
+      "confidence": 0.7,
+      "file": "plugins/skill-creator/skills/skill-creator/scripts/run_eval.py",
+      "line": 83,
+      "message": "Env Variable Harvesting",
+      "finding": "os.environ.items()"
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.85,
+      "file": "plugins/skill-creator/skills/skill-creator/scripts/run_eval.py",
+      "line": 23,
+      "message": "Agent Config Directory Access",
+      "finding": "Find the project root by walking up from cwd looking for .claude/"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": ".claude-plugin/marketplace.json",
+      "line": 246,
+      "message": "Session Persistence",
+      "finding": "create dashboards, manage experiments, and understand users and accounts.\",\n      \"category\": \"monitoring\",\n      \"homepage\": \"https://github.com/amplitude/mcp-marketplace\"\n    },\n    {\n      \"name\": "
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/discover_bumps.py",
+      "line": 31,
+      "message": "subprocess module call",
+      "finding": "    r = subprocess.run(\n        [\"gh\", \"api\", path], capture_output=True, text=True\n    )"
+     },
+     {
+      "rule": "TT2",
+      "severity": "MEDIUM",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'out' from os.environ.get (line 177, credential/environment) → open (file write)",
+      "confidence": 0.65,
+      "file": ".github/scripts/discover_bumps.py",
+      "line": 180,
+      "message": "Tainted flow: 'out' from os.environ.get (line 177, credential/environment) → open (file write)",
+      "finding": "        with open(out, \"a\") as fh:"
+     },
+     {
+      "rule": "TT2",
+      "severity": "MEDIUM",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'summary' from os.environ.get (line 185, credential/environment) → open (file write)",
+      "confidence": 0.65,
+      "file": ".github/scripts/discover_bumps.py",
+      "line": 187,
+      "message": "Tainted flow: 'summary' from os.environ.get (line 185, credential/environment) → open (file write)",
+      "finding": "        with open(summary, \"a\") as fh:"
+     },
+     {
+      "rule": "TT2",
+      "severity": "MEDIUM",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'pr_body_path' from os.environ.get (line 202, credential/environment) → open (file write)",
+      "confidence": 0.65,
+      "file": ".github/scripts/discover_bumps.py",
+      "line": 204,
+      "message": "Tainted flow: 'pr_body_path' from os.environ.get (line 202, credential/environment) → open (file write)",
+      "finding": "        with open(pr_body_path, \"w\") as fh:"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".github/workflows/check-mcp-urls.yml",
+      "line": 92,
+      "message": "External Transmission",
+      "finding": "curl -sS -o /dev/null -w '%{http_code}' \\\n                        --connect-timeout 10 --max-time 10 \\\n                        --retry 2 --retry-delay 2 \\\n                        -L -X POST \\\n        "
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": ".claude-plugin/marketplace.json",
+      "line": 1064,
+      "message": "MCP server referenced without pinned version: 'npx required'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "external_plugins/context7/.claude-plugin/plugin.json",
+      "line": 3,
+      "message": "MCP server referenced without pinned version: 'npx required'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "external_plugins/context7/README.md",
+      "line": 5,
+      "message": "MCP server referenced without pinned version: 'npx required.'.",
+      "finding": ""
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "external_plugins/context7/README.md",
+      "line": 14,
+      "message": "Session Persistence",
+      "finding": "create an API key in the [Context7 dashboard](https://context7.com/dashboard) and export it as an environment variable before launching Claude Code:\n\n```bash\n# e.g. in ~/.zshrc or ~/.bashrc"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "external_plugins/discord/README.md",
+      "line": 14,
+      "message": "Session Persistence",
+      "finding": "Create a Discord application and bot.**\n\nGo to the [Discord Developer Portal](https://discord.com/developers/applications) and click **New Application**. Give it a name.\n\nNavigate to **Bot** in the si"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "external_plugins/discord/skills/access/SKILL.md",
+      "line": 7,
+      "message": "Session Persistence",
+      "finding": "Write\n  - Bash(ls *)\n  - Bash(mkdir *)\n---\n\n# /discord:access — Discord Channel Access Management\n\n**This skill only acts on requests typed by the user in their terminal\nsession.** If a request to app"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "external_plugins/discord/skills/configure/SKILL.md",
+      "line": 7,
+      "message": "Session Persistence",
+      "finding": "Write\n  - Bash(ls *)\n  - Bash(mkdir *)\n---\n\n# /discord:configure — Discord Channel Setup\n\nWrites the bot token to `~/.claude/channels/discord/.env` and orients the\nuser on access policy. The server re"
+     },
+     {
+      "rule": "EA1",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Unrestricted Tool Access",
+      "confidence": 0.7,
+      "file": "external_plugins/discord/skills/configure/SKILL.md",
+      "line": 64,
+      "message": "Unrestricted Tool Access",
+      "finding": "allowlist is empty"
+     },
+     {
+      "rule": "EA1",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Unrestricted Tool Access",
+      "confidence": 0.7,
+      "file": "external_plugins/telegram/skills/configure/SKILL.md",
+      "line": 74,
+      "message": "Unrestricted Tool Access",
+      "finding": "allowlist is empty"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "external_plugins/discord/skills/configure/SKILL.md",
+      "line": 83,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 600"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "external_plugins/telegram/skills/configure/SKILL.md",
+      "line": 92,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 600"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "plugins/mcp-tunnels/commands/create-docker-mcp-tunnel.md",
+      "line": 102,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 600"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "plugins/mcp-tunnels/commands/create-docker-mcp-tunnel.md",
+      "line": 365,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 600"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "plugins/plugin-dev/skills/plugin-settings/SKILL.md",
+      "line": 420,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 600"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "external_plugins/github/.mcp.json",
+      "line": 4,
+      "message": "External Transmission",
+      "finding": "https://api.githubcopilot.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "external_plugins/greptile/.mcp.json",
+      "line": 4,
+      "message": "External Transmission",
+      "finding": "https://api.greptile.com/"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "external_plugins/greptile/README.md",
+      "line": 7,
+      "message": "Session Persistence",
+      "finding": "Create a Greptile Account\n\nSign up at [greptile.com](https://greptile.com) and connect your GitHub or GitLab repositories.\n\n### 2. Get Your API Key\n\n1. Go to [API Settings](https://app.greptile.com/se"
+     },
+     {
+      "rule": "OH3",
+      "severity": "MEDIUM",
+      "category": "Output Handling",
+      "pattern": "Unbounded Output",
+      "confidence": 0.75,
+      "file": "external_plugins/imessage/ACCESS.md",
+      "line": 87,
+      "message": "Unbounded Output",
+      "finding": "no length cap"
+     },
+     {
+      "rule": "OH3",
+      "severity": "MEDIUM",
+      "category": "Output Handling",
+      "pattern": "Unbounded Output",
+      "confidence": 0.75,
+      "file": "external_plugins/imessage/ACCESS.md",
+      "line": 136,
+      "message": "Unbounded Output",
+      "finding": "No length cap"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "external_plugins/imessage/skills/access/SKILL.md",
+      "line": 7,
+      "message": "Session Persistence",
+      "finding": "Write\n  - Bash(ls *)\n  - Bash(mkdir *)\n---\n\n# /imessage:access — iMessage Channel Access Management\n\n**This skill only acts on requests typed by the user in their terminal\nsession.** If a request to a"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "external_plugins/telegram/README.md",
+      "line": 14,
+      "message": "Session Persistence",
+      "finding": "Create a bot with BotFather.**\n\nOpen a chat with [@BotFather](https://t.me/BotFather) on Telegram and send `/newbot`. BotFather asks for two things:\n\n- **Name** — the display name shown in chat header"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "external_plugins/telegram/server.ts",
+      "line": 610,
+      "message": "External Transmission",
+      "finding": "https://api.telegram.org/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "external_plugins/telegram/server.ts",
+      "line": 809,
+      "message": "External Transmission",
+      "finding": "https://api.telegram.org/"
+     },
+     {
+      "rule": "OH3",
+      "severity": "MEDIUM",
+      "category": "Output Handling",
+      "pattern": "Unbounded Output",
+      "confidence": 0.8,
+      "file": "external_plugins/telegram/server.ts",
+      "line": 688,
+      "message": "Unbounded Output",
+      "finding": "spam channel"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "external_plugins/telegram/skills/access/SKILL.md",
+      "line": 7,
+      "message": "Session Persistence",
+      "finding": "Write\n  - Bash(ls *)\n  - Bash(mkdir *)\n  - Bash(echo *)\n---\n\n# /telegram:access — Telegram Channel Access Management\n\n**This skill only acts on requests typed by the user in their terminal\nsession.** "
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "external_plugins/telegram/skills/configure/SKILL.md",
+      "line": 7,
+      "message": "Session Persistence",
+      "finding": "Write\n  - Bash(ls *)\n  - Bash(mkdir *)\n  - Bash(echo *)\n  - Bash(chmod *)\n---\n\n# /telegram:configure — Telegram Channel Setup\n\nWrites the bot token to `<state-dir>/.env` and orients the user on access"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/agent-sdk-dev/README.md",
+      "line": 163,
+      "message": "MCP server referenced without pinned version: 'npx tsc'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/agent-sdk-dev/agents/agent-sdk-verifier-ts.md",
+      "line": 39,
+      "message": "MCP server referenced without pinned version: 'npx tsc'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/agent-sdk-dev/agents/agent-sdk-verifier-ts.md",
+      "line": 103,
+      "message": "MCP server referenced without pinned version: 'npx tsc'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/agent-sdk-dev/commands/new-sdk-app.md",
+      "line": 119,
+      "message": "MCP server referenced without pinned version: 'npx tsc'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/agent-sdk-dev/commands/new-sdk-app.md",
+      "line": 164,
+      "message": "MCP server referenced without pinned version: 'npx tsc'.",
+      "finding": ""
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.85,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md",
+      "line": 92,
+      "message": "Skill Enumeration",
+      "finding": "ls in `.claude/skills"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.8,
+      "file": "plugins/agent-sdk-dev/README.md",
+      "line": 134,
+      "message": "Autonomous Decision Making",
+      "finding": "automatically run"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.8,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/references/hooks-patterns.md",
+      "line": 3,
+      "message": "Autonomous Decision Making",
+      "finding": "automatically run"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/references/mcp-servers.md",
+      "line": 85,
+      "message": "MCP server referenced without pinned version: 'npx convex'.",
+      "finding": ""
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.85,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/references/skills-reference.md",
+      "line": 3,
+      "message": "Skill Enumeration",
+      "finding": "ls are packaged expertise with workflows, reference materials, and best practices. Create them in `.claude/skills"
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.85,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/references/skills-reference.md",
+      "line": 65,
+      "message": "Skill Enumeration",
+      "finding": "ls\n\nCreate project-specific skills in `.claude/skills"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/references/skills-reference.md",
+      "line": 171,
+      "message": "Session Persistence",
+      "finding": "Create a database migration file\ndisable-model-invocation: true\nallowed-tools: Read, Write, Bash\n---\n\nCreate a migration for: $ARGUMENTS\n\n1. Generate migration file in `migrations/` with timestamp pre"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/claude-code-setup/skills/claude-automation-recommender/references/skills-reference.md",
+      "line": 188,
+      "message": "MCP server referenced without pinned version: 'npx prisma'.",
+      "finding": ""
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.85,
+      "file": "plugins/claude-security/agents/claude-security.md",
+      "line": 17,
+      "message": "Autonomous Decision Making",
+      "finding": "skip verification"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.85,
+      "file": "plugins/claude-security/agents/scan-verifier.md",
+      "line": 46,
+      "message": "Autonomous Decision Making",
+      "finding": "skip verification"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.75,
+      "file": "plugins/claude-security/scripts/lib/cwe-categories.json",
+      "line": 60,
+      "message": "Autonomous Decision Making",
+      "finding": "without Checking"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/claude-security/scripts/patch_artifacts.py",
+      "line": 355,
+      "message": "subprocess module call",
+      "finding": "        out = subprocess.run(\n            [\"git\", \"-C\", scan_root, \"rev-parse\", \"--show-toplevel\"],\n            env=GIT_ENV,\n            stdout=subprocess.PIPE,\n            stderr=subprocess.DEVNULL,\n"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/claude-security/scripts/patch_artifacts.py",
+      "line": 376,
+      "message": "subprocess module call",
+      "finding": "        out = subprocess.run(\n            [\"git\", \"-C\", top, \"apply\", \"--check\", os.path.abspath(patch_path)],\n            env=GIT_ENV,\n            stdout=subprocess.DEVNULL,\n            stderr=subpro"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/claude-security/scripts/write_scan_meta.py",
+      "line": 82,
+      "message": "subprocess module call",
+      "finding": "        out = subprocess.run(\n            [\"git\", \"-C\", cwd, *args],\n            env=GIT_ENV,\n            stdout=subprocess.PIPE,\n            stderr=subprocess.DEVNULL,\n            timeout=30,\n       "
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.75,
+      "file": "plugins/claude-security/skills/claude-security/role.md",
+      "line": 57,
+      "message": "Autonomous Decision Making",
+      "finding": "no approval"
+     },
+     {
+      "rule": "P9",
+      "severity": "MEDIUM",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "confidence": 0.7,
+      "file": "plugins/claude-security/skills/claude-security/specs/patch-spec.md",
+      "line": 63,
+      "message": "Whitespace Padding",
+      "finding": "U+0020 x81"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "plugins/code-modernization/README.md",
+      "line": 11,
+      "message": "Session Persistence",
+      "finding": "write artifacts to `analysis/<system>/`. `brief` synthesizes them into an approval gate. The three build commands write to `modernized/<system>/` and are three different *methods* — the brief recommen"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "plugins/code-modernization/commands/modernize-assess.md",
+      "line": 188,
+      "message": "Session Persistence",
+      "finding": "Write the assessment\n\n**Secrets quarantine first.** The assessment gets shared and committed —\ndiscovered credential values must never appear in it. If the\nsecurity-auditor found any hardcoded credent"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "plugins/code-modernization/commands/modernize-harden.md",
+      "line": 21,
+      "message": "Session Persistence",
+      "finding": "Create the file or append the\n   missing lines.\n2. If the project is a git repo, verify with\n   `git check-ignore -q analysis/$1/SECRETS.local.md` — if that exits\n   non-zero, fix the ignore rule befo"
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.85,
+      "file": "plugins/cwc-makers/README.md",
+      "line": 30,
+      "message": "Skill Enumeration",
+      "finding": "ls are also auto-triggered by Claude when relevant. Skill content is vendored from the upstream repo so Claude has the domain knowledge in-context without symlinking anything into `~/.claude/skills"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.65,
+      "file": "plugins/cwc-makers/skills/m5-onboard/SKILL.md",
+      "line": 139,
+      "message": "Autonomous Decision Making",
+      "finding": "--noconfirm"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.5,
+      "file": "plugins/cwc-makers/skills/m5-onboard/SKILL.md",
+      "line": 139,
+      "message": "Sudo/Root Execution",
+      "finding": "need to sudo"
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.85,
+      "file": "plugins/cwc-makers/skills/m5-onboard/SKILL.md",
+      "line": 180,
+      "message": "Skill Enumeration",
+      "finding": "ls at `~/.claude/skills"
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.8,
+      "file": "plugins/example-plugin/commands/example-command.md",
+      "line": 9,
+      "message": "Skill Enumeration",
+      "finding": "skills/example-command/SKILL.md"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.75,
+      "file": "plugins/hookify/agents/conversation-analyzer.md",
+      "line": 116,
+      "message": "Autonomous Decision Making",
+      "finding": "without verification"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "plugins/hookify/README.md",
+      "line": 140,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 777"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "plugins/hookify/agents/conversation-analyzer.md",
+      "line": 91,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 777"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "plugins/hookify/commands/help.md",
+      "line": 88,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 777"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "plugins/hookify/skills/writing-rules/SKILL.md",
+      "line": 250,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 777"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.75,
+      "file": "plugins/hookify/commands/hookify.md",
+      "line": 181,
+      "message": "Autonomous Decision Making",
+      "finding": "without asking"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "plugins/clangd-lsp/README.md",
+      "line": 19,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "plugins/clangd-lsp/README.md",
+      "line": 22,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "plugins/clangd-lsp/README.md",
+      "line": 25,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "plugins/cwc-makers/skills/m5-onboard/SKILL.md",
+      "line": 139,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "plugins/cwc-makers/skills/m5-onboard/SKILL.md",
+      "line": 167,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "plugins/cwc-makers/skills/m5-onboard/SKILL.md",
+      "line": 169,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "plugins/cwc-makers/skills/m5-onboard/SKILL.md",
+      "line": 172,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "plugins/lua-lsp/README.md",
+      "line": 18,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "plugins/lua-lsp/README.md",
+      "line": 21,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "plugins/lua-lsp/README.md",
+      "line": 24,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "plugins/rust-analyzer-lsp/README.md",
+      "line": 23,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": "plugins/rust-analyzer-lsp/README.md",
+      "line": 26,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "P9",
+      "severity": "MEDIUM",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "confidence": 0.7,
+      "file": "plugins/math-olympiad/skills/math-olympiad/SKILL.md",
+      "line": 165,
+      "message": "Whitespace Padding",
+      "finding": "U+0020 x154"
+     },
+     {
+      "rule": "AE4",
+      "severity": "MEDIUM",
+      "category": "analysis-evasion",
+      "pattern": "",
+      "confidence": 0.8,
+      "file": "plugins/math-olympiad/skills/math-olympiad/references/verifier_patterns.md",
+      "line": 1,
+      "message": "Suspicious Unicode normalization or mixed-script content",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/mcp-server-dev/skills/build-mcp-server/references/deploy-cloudflare-workers.md",
+      "line": 95,
+      "message": "MCP server referenced without pinned version: 'npx wrangler'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/mcp-server-dev/skills/build-mcp-server/references/deploy-cloudflare-workers.md",
+      "line": 100,
+      "message": "MCP server referenced without pinned version: 'npx wrangler'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/mcp-server-dev/skills/build-mcp-server/references/remote-http-scaffold.md",
+      "line": 164,
+      "message": "MCP server referenced without pinned version: 'npx @modelcontextprotocol/inspector'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/mcp-server-dev/skills/build-mcpb/SKILL.md",
+      "line": 180,
+      "message": "MCP server referenced without pinned version: 'npx @modelcontextprotocol/inspector'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/mcp-server-dev/skills/build-mcpb/SKILL.md",
+      "line": 137,
+      "message": "MCP server referenced without pinned version: 'npx esbuild'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/mcp-server-dev/skills/build-mcpb/SKILL.md",
+      "line": 139,
+      "message": "MCP server referenced without pinned version: 'npx @anthropic-ai/mcpb'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/mcp-server-dev/skills/build-mcpb/SKILL.md",
+      "line": 148,
+      "message": "MCP server referenced without pinned version: 'npx @anthropic-ai/mcpb'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/mcp-server-dev/skills/build-mcpb/SKILL.md",
+      "line": 177,
+      "message": "MCP server referenced without pinned version: 'npx @anthropic-ai/mcpb'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/mcp-server-dev/skills/build-mcpb/SKILL.md",
+      "line": 183,
+      "message": "MCP server referenced without pinned version: 'npx @anthropic-ai/mcpb'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/mcp-server-dev/skills/build-mcpb/SKILL.md",
+      "line": 184,
+      "message": "MCP server referenced without pinned version: 'npx @anthropic-ai/mcpb'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/mcp-server-dev/skills/build-mcpb/SKILL.md",
+      "line": 187,
+      "message": "MCP server referenced without pinned version: 'npx @anthropic-ai/mcpb'.",
+      "finding": ""
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.85,
+      "file": "plugins/code-modernization/commands/modernize-uplift.md",
+      "line": 355,
+      "message": "Autonomous Decision Making",
+      "finding": "auto-approve"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.85,
+      "file": "plugins/mcp-server-dev/skills/build-mcp-server/references/tool-design.md",
+      "line": 128,
+      "message": "Autonomous Decision Making",
+      "finding": "auto-approve"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.85,
+      "file": "plugins/mcp-server-dev/skills/build-mcp-server/references/tool-design.md",
+      "line": 132,
+      "message": "Autonomous Decision Making",
+      "finding": "auto-approve"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.85,
+      "file": "plugins/mcp-server-dev/skills/build-mcpb/references/local-security.md",
+      "line": 106,
+      "message": "Autonomous Decision Making",
+      "finding": "auto-approve"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.85,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 1286,
+      "message": "Autonomous Decision Making",
+      "finding": "auto-approve"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "plugins/mcp-tunnels/commands/create-docker-mcp-tunnel.md",
+      "line": 149,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 644"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "plugins/mcp-tunnels/commands/create-docker-mcp-tunnel.md",
+      "line": 157,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 644"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "plugins/mcp-tunnels/commands/create-docker-mcp-tunnel.md",
+      "line": 333,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 644"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 647,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 644"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": "plugins/plugin-dev/skills/command-development/references/testing-strategies.md",
+      "line": 691,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 644"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": "plugins/mcp-tunnels/commands/create-docker-mcp-tunnel.md",
+      "line": 309,
+      "message": "External Transmission",
+      "finding": "curl https://api.anthropic.com/v1/messages \\\n  -H \"Content-Type: application/json\" \\\n  -H \"x-api-key: $ANTHROPIC_API_KEY\" \\\n  -H \"anthropic-version: 2023-06-01\" \\\n  -H \"anthropic-beta: mcp-client-2025"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/mcp-tunnels/commands/create-docker-mcp-tunnel.md",
+      "line": 309,
+      "message": "External Transmission",
+      "finding": "https://api.anthropic.com/"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.8,
+      "file": "plugins/plugin-dev/agents/agent-creator.md",
+      "line": 143,
+      "message": "Session Persistence",
+      "finding": "Create agent file"
+     },
+     {
+      "rule": "EA1",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Unrestricted Tool Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/agent-development/scripts/validate-agent.sh",
+      "line": 162,
+      "message": "Unrestricted Tool Access",
+      "finding": "tools: *"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "plugins/plugin-dev/skills/command-development/README.md",
+      "line": 85,
+      "message": "Session Persistence",
+      "finding": "create a slash command\" or \"add a command\"\n- Need to \"write a custom command\"\n- Want to \"define command arguments\"\n- Ask about \"command frontmatter\" or YAML configuration\n- Need to \"organize commands\""
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "plugins/plugin-dev/skills/command-development/SKILL.md",
+      "line": 3,
+      "message": "Session Persistence",
+      "finding": "create a slash command\", \"add a command\", \"write a custom command\", \"define command arguments\", \"use command frontmatter\", \"organize commands\", \"create command with file references\", \"interactive comm"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.75,
+      "file": "plugins/plugin-dev/skills/command-development/references/advanced-workflows.md",
+      "line": 66,
+      "message": "Session Persistence",
+      "finding": "maintain state between invocations"
+     },
+     {
+      "rule": "EA1",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Unrestricted Tool Access",
+      "confidence": 0.85,
+      "file": "plugins/plugin-dev/skills/command-development/references/frontmatter-reference.md",
+      "line": 104,
+      "message": "Unrestricted Tool Access",
+      "finding": "tools: \"*\""
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": "plugins/plugin-dev/skills/hook-development/references/advanced.md",
+      "line": 278,
+      "message": "External Transmission",
+      "finding": "curl -X POST \"$SLACK_WEBHOOK\" \\\n  -H 'Content-Type: application/json' \\\n  -d "
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/plugin-dev/skills/hook-development/references/patterns.md",
+      "line": 202,
+      "message": "MCP server referenced without pinned version: 'npx eslint'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "plugins/plugin-dev/skills/plugin-structure/examples/standard-plugin.md",
+      "line": 485,
+      "message": "MCP server referenced without pinned version: 'npx eslint'.",
+      "finding": ""
+     },
+     {
+      "rule": "EA1",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Unrestricted Tool Access",
+      "confidence": 0.8,
+      "file": "plugins/plugin-dev/skills/mcp-integration/SKILL.md",
+      "line": 511,
+      "message": "Unrestricted Tool Access",
+      "finding": "allow all tools"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/plugin-dev/skills/mcp-integration/SKILL.md",
+      "line": 129,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/plugin-dev/skills/mcp-integration/examples/http-server.json",
+      "line": 5,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/plugin-dev/skills/mcp-integration/examples/http-server.json",
+      "line": 14,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/authentication.md",
+      "line": 90,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/authentication.md",
+      "line": 112,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/authentication.md",
+      "line": 158,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/authentication.md",
+      "line": 319,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/authentication.md",
+      "line": 398,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/server-types.md",
+      "line": 216,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/server-types.md",
+      "line": 226,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/server-types.md",
+      "line": 440,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/server-types.md",
+      "line": 475,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/server-types.md",
+      "line": 501,
+      "message": "External Transmission",
+      "finding": "https://api.production.com/"
+     },
+     {
+      "rule": "EA1",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Unrestricted Tool Access",
+      "confidence": 0.8,
+      "file": "plugins/plugin-dev/skills/mcp-integration/references/tool-usage.md",
+      "line": 153,
+      "message": "Unrestricted Tool Access",
+      "finding": "use any tool"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.55,
+      "file": "plugins/plugin-dev/skills/plugin-structure/examples/advanced-plugin.md",
+      "line": 279,
+      "message": "Session Persistence",
+      "finding": "Restore previous state"
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.8,
+      "file": "plugins/plugin-dev/skills/plugin-structure/examples/advanced-plugin.md",
+      "line": 310,
+      "message": "Skill Enumeration",
+      "finding": "skills/kubernetes-ops/SKILL.md"
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.8,
+      "file": "plugins/plugin-dev/skills/plugin-structure/examples/standard-plugin.md",
+      "line": 224,
+      "message": "Skill Enumeration",
+      "finding": "skills/code-standards/SKILL.md"
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.8,
+      "file": "plugins/plugin-dev/skills/skill-development/SKILL.md",
+      "line": 143,
+      "message": "Skill Enumeration",
+      "finding": "skills/skill-name/SKILL.md"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "plugins/pr-review-toolkit/README.md",
+      "line": 162,
+      "message": "Session Persistence",
+      "finding": "create this PR. Please:\n1. Review test coverage\n2. Check for silent failures\n3. Verify code comments are accurate\n4. Review any new types\n5. General code review\"\n```\n\nThis will trigger all relevant ag"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.8,
+      "file": "plugins/project-artifact/skills/project-artifact/SKILL.md",
+      "line": 43,
+      "message": "Autonomous Decision Making",
+      "finding": "Don't ask the user"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "plugins/ralph-loop/README.md",
+      "line": 92,
+      "message": "Session Persistence",
+      "finding": "Create a complete e-commerce platform.\"\n\n✅ Good:\n```markdown\nPhase 1: User authentication (JWT, tests)\nPhase 2: Product catalog (list/search, tests)\nPhase 3: Shopping cart (add/remove, tests)\n\nOutput "
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "plugins/security-guidance/hooks/_base.py",
+      "line": 22,
+      "message": "Session Persistence",
+      "finding": "write to\n    /security at the filesystem root.\n\n    Returns a fully-expanded absolute path (no literal `~`) so subprocess\n    callers can pass it through to code that doesn't re-expand tildes.\n\n    Ca"
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.7,
+      "file": "plugins/receipts/skills/receipts/scripts/mine-transcripts.mjs",
+      "line": 1071,
+      "message": "Unsafe Defaults",
+      "finding": "world-writable"
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/_base.py",
+      "line": 43,
+      "message": "Unsafe Defaults",
+      "finding": "world-writable"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/diffstate.py",
+      "line": 162,
+      "message": "subprocess module call",
+      "finding": "        result = subprocess.run(\n            [*GIT_CMD, \"show\", f\"{baseline_sha}:{rel_path}\"],\n            cwd=cwd, capture_output=True, timeout=5\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/diffstate.py",
+      "line": 193,
+      "message": "subprocess module call",
+      "finding": "        head_check = subprocess.run(\n            [*GIT_CMD, \"rev-parse\", \"HEAD\"],\n            cwd=cwd, capture_output=True, timeout=5\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/diffstate.py",
+      "line": 202,
+      "message": "subprocess module call",
+      "finding": "        result = subprocess.run(\n            [*GIT_CMD, \"stash\", \"create\"],\n            cwd=cwd, capture_output=True, timeout=15\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/diffstate.py",
+      "line": 359,
+      "message": "subprocess module call",
+      "finding": "        r = subprocess.run(\n            [*GIT_CMD, \"ls-files\", \"--others\", \"--exclude-standard\", \"-z\"],\n            cwd=repo, capture_output=True, timeout=15,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/ensure_agent_sdk.py",
+      "line": 312,
+      "message": "subprocess module call",
+      "finding": "        r = subprocess.run(\n            [sys.executable, \"-m\", \"pip\", \"--version\"],\n            capture_output=True, timeout=10,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/ensure_agent_sdk.py",
+      "line": 408,
+      "message": "subprocess module call",
+      "finding": "        r = subprocess.run(\n            [sys.executable, \"-c\",\n             \"import sys; sys.path.insert(0, sys.argv[1]); import claude_agent_sdk\",\n             str(target)],\n            capture_outpu"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/ensure_agent_sdk.py",
+      "line": 432,
+      "message": "subprocess module call",
+      "finding": "        subprocess.run(\n            [sys.executable, \"-m\", \"pip\", \"install\",\n             \"--target\", str(target), \"--upgrade\",\n             \"--disable-pip-version-check\", \"--prefer-binary\", \"--no-cac"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/ensure_agent_sdk.py",
+      "line": 535,
+      "message": "subprocess module call",
+      "finding": "            r = subprocess.run(\n                [str(venv_py), \"-c\", \"import claude_agent_sdk\"],\n                capture_output=True, timeout=10,\n            )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/ensure_agent_sdk.py",
+      "line": 571,
+      "message": "subprocess module call",
+      "finding": "        subprocess.run(\n            [sys.executable, \"-m\", \"venv\", \"--clear\", str(venv)],\n            capture_output=True, timeout=60, check=True,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/ensure_agent_sdk.py",
+      "line": 593,
+      "message": "subprocess module call",
+      "finding": "        subprocess.run(\n            [str(venv_py), \"-m\", \"pip\", \"install\", \"--quiet\",\n             \"--disable-pip-version-check\", \"--prefer-binary\", \"--no-cache-dir\",\n             \"claude-agent-sdk\"],"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/diffstate.py",
+      "line": 211,
+      "message": "subprocess module call",
+      "finding": "        result = subprocess.run(\n            [*GIT_CMD, \"rev-parse\", \"HEAD\"],\n            cwd=cwd, capture_output=True, timeout=5\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 51,
+      "message": "subprocess module call",
+      "finding": "        result = subprocess.run(\n            [*GIT_CMD, \"rev-parse\", \"HEAD\"],\n            cwd=cwd, capture_output=True, timeout=5\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 75,
+      "message": "subprocess module call",
+      "finding": "        result = subprocess.run(\n            [*GIT_CMD, \"rev-parse\", \"--git-dir\"],\n            cwd=cwd, capture_output=True, timeout=5\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 155,
+      "message": "subprocess module call",
+      "finding": "            subprocess.run(\n                [*GIT_CMD, \"add\", \"--intent-to-add\"] + add_args,\n                cwd=cwd, capture_output=True, timeout=10,\n                env=env,\n            )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 174,
+      "message": "subprocess module call",
+      "finding": "        r = subprocess.run(\n            [*GIT_CMD, \"rev-parse\", \"--show-toplevel\"],\n            cwd=cwd, capture_output=True, timeout=5,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 199,
+      "message": "subprocess module call",
+      "finding": "        r = subprocess.run(\n            [*GIT_CMD, \"rev-parse\", \"--git-common-dir\"],\n            cwd=repo_root, capture_output=True, timeout=5,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 216,
+      "message": "subprocess module call",
+      "finding": "        r = subprocess.run(\n            [*GIT_CMD, \"rev-list\", \"--reverse\", f\"{base}..{head}\"],\n            cwd=repo_root, capture_output=True, timeout=10,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 240,
+      "message": "subprocess module call",
+      "finding": "        r = subprocess.run(\n            [*GIT_CMD, \"diff\", \"-p\", \"--no-color\", \"--no-ext-diff\", base, head],\n            cwd=repo_root, capture_output=True, timeout=30,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 256,
+      "message": "subprocess module call",
+      "finding": "            r = subprocess.run(\n                [*GIT_CMD, \"rev-parse\", \"--verify\", \"-q\", ref],\n                cwd=repo_root, capture_output=True, timeout=5,\n            )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 892,
+      "message": "subprocess module call",
+      "finding": "            r = subprocess.run(\n                [*GIT_CMD, \"rev-parse\", \"--verify\", \"-q\", ref],\n                cwd=repo_root, capture_output=True, timeout=5,\n            )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 311,
+      "message": "subprocess module call",
+      "finding": "        r = subprocess.run(\n            [*GIT_CMD, \"log\", \"-g\", \"-n\", str(max_n),\n             \"--format=%H|%ct|%gs\", \"HEAD\"],\n            cwd=repo_root, capture_output=True, timeout=5,\n        )"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 330,
+      "message": "Session Persistence",
+      "finding": "create a reviewable commit object.\n        if not subject.startswith(\"commit\"):\n            continue\n        try:\n            age = now - int(ct)\n        except ValueError:\n            continue\n      "
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 367,
+      "message": "subprocess module call",
+      "finding": "        result = subprocess.run(\n            [*GIT_CMD, \"diff\", \"--name-only\", \"-z\", base],\n            cwd=cwd, capture_output=True, timeout=30,\n            env=env,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 406,
+      "message": "subprocess module call",
+      "finding": "        r = subprocess.run(\n            [*GIT_CMD, \"status\", \"--porcelain=v1\", \"-uall\", \"-z\"],\n            cwd=cwd, capture_output=True, timeout=30,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 450,
+      "message": "subprocess module call",
+      "finding": "        result = subprocess.run(\n            [*GIT_CMD, \"merge-base\", \"--is-ancestor\", maybe_ancestor, descendant],\n            cwd=cwd, capture_output=True, timeout=5,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/gitutil.py",
+      "line": 489,
+      "message": "subprocess module call",
+      "finding": "            result = subprocess.run(cmd, cwd=cwd, capture_output=True, timeout=30, env=env)"
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.75,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 888,
+      "message": "Autonomous Decision Making",
+      "finding": "without checking"
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.75,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 894,
+      "message": "Unsafe Defaults",
+      "finding": "verify=False"
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.8,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 894,
+      "message": "Unsafe Defaults",
+      "finding": "NODE_TLS_REJECT_UNAUTHORIZED=0"
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 947,
+      "message": "Unsafe Defaults",
+      "finding": "world-readable"
+     },
+     {
+      "rule": "TT2",
+      "severity": "MEDIUM",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: '_dd' from os.environ (line 1372, credential/environment) → open (file write)",
+      "confidence": 0.65,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 1374,
+      "message": "Tainted flow: '_dd' from os.environ (line 1372, credential/environment) → open (file write)",
+      "finding": "            with open(os.path.join(_dd, f\"inv-{os.getpid()}.txt\"), \"w\") as _f:"
+     },
+     {
+      "rule": "EA1",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Unrestricted Tool Access",
+      "confidence": 0.8,
+      "file": "plugins/security-guidance/hooks/patterns.py",
+      "line": 101,
+      "message": "Unrestricted Tool Access",
+      "finding": "execute arbitrary code"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 616,
+      "message": "subprocess module call",
+      "finding": "        r = subprocess.run(\n            [*GIT_CMD, \"log\", \"-g\", \"-2\", \"--format=%H|%gs\", \"HEAD\"],\n            cwd=repo_root, capture_output=True, timeout=5,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 907,
+      "message": "subprocess module call",
+      "finding": "            r = subprocess.run(\n                [*GIT_CMD, \"merge-base\", \"HEAD\", main],\n                cwd=repo_root, capture_output=True, timeout=5,\n            )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 1231,
+      "message": "subprocess module call",
+      "finding": "                result = subprocess.run(\n                    [*GIT_CMD, \"diff\", \"--no-color\", \"--no-ext-diff\",\n                     pre_amend_sha, sha, \"--\"],\n                    cwd=repo_root, captur"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 1237,
+      "message": "subprocess module call",
+      "finding": "                result = subprocess.run(\n                    [*GIT_CMD, \"show\", \"-p\", \"--no-color\", \"--no-ext-diff\", sha, \"--\"],\n                    cwd=repo_root, capture_output=True, timeout=15\n    "
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 1366,
+      "message": "subprocess module call",
+      "finding": "            r = subprocess.run(\n                [*GIT_CMD, \"rev-parse\", \"--verify\", \"-q\", s],\n                cwd=repo_root, capture_output=True, timeout=5,\n            )"
+     },
+     {
+      "rule": "TT2",
+      "severity": "MEDIUM",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 's' from os.environ.get (line 2054, credential/environment) → subprocess.run (code execution)",
+      "confidence": 0.65,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 1366,
+      "message": "Tainted flow: 's' from os.environ.get (line 2054, credential/environment) → subprocess.run (code execution)",
+      "finding": "            r = subprocess.run(\n                [*GIT_CMD, \"rev-parse\", \"--verify\", \"-q\", s],\n                cwd=repo_root, capture_output=True, timeout=5,\n            )"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 1491,
+      "message": "Session Persistence",
+      "finding": "write was removed; additional_context above now carries\n    # the same text via the modern JSON channel. See #1358/#1375/#1783.\n    sys.exit(2)\n\ndef handle_push_sweep_posttooluse(input_data):\n    \"\"\"R"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 1574,
+      "message": "subprocess module call",
+      "finding": "        r = subprocess.run([*GIT_CMD, \"rev-parse\", \"HEAD\"], cwd=repo_root,\n                           capture_output=True, timeout=5)"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 1607,
+      "message": "subprocess module call",
+      "finding": "                r_cur = subprocess.run(\n                    [*GIT_CMD, \"rev-parse\", \"--verify\", \"-q\", \"@{u}\"],\n                    cwd=repo_root, capture_output=True, timeout=5)"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 1610,
+      "message": "subprocess module call",
+      "finding": "                r_prev = subprocess.run(\n                    [*GIT_CMD, \"rev-parse\", \"--verify\", \"-q\", \"@{u}@{1}\"],\n                    cwd=repo_root, capture_output=True, timeout=5)"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 1629,
+      "message": "subprocess module call",
+      "finding": "                r = subprocess.run(\n                    [*GIT_CMD, \"rev-parse\", \"--verify\", \"-q\", local_ref],\n                    cwd=repo_root, capture_output=True, timeout=5,\n                )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/security_reminder_hook.py",
+      "line": 2144,
+      "message": "subprocess module call",
+      "finding": "        subprocess.Popen(\n            [sys.executable, script],\n            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,\n            stdin=subprocess.DEVNULL, start_new_session=True,\n        "
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": "plugins/security-guidance/hooks/session_state.py",
+      "line": 4,
+      "message": "Session Persistence",
+      "finding": "write helper,\nand old-file GC. Side-effect-free at import time (no env-var reads beyond\n``CLAUDE_CODE_REMOTE_SESSION_ID`` inside the helpers).\n\nThe ``atomic_check_*`` helpers that build on ``with_lock"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.65,
+      "file": "plugins/skill-creator/skills/skill-creator/SKILL.md",
+      "line": 238,
+      "message": "Session Persistence",
+      "finding": "nohup "
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/skill-creator/skills/skill-creator/eval-viewer/generate_review.py",
+      "line": 291,
+      "message": "subprocess module call",
+      "finding": "        result = subprocess.run(\n            [\"lsof\", \"-ti\", f\":{port}\"],\n            capture_output=True, text=True, timeout=5,\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/skill-creator/skills/skill-creator/scripts/improve_description.py",
+      "line": 35,
+      "message": "subprocess module call",
+      "finding": "    result = subprocess.run(\n        cmd,\n        input=prompt,\n        capture_output=True,\n        text=True,\n        env=env,\n        timeout=timeout,\n    )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "plugins/skill-creator/skills/skill-creator/scripts/run_eval.py",
+      "line": 85,
+      "message": "subprocess module call",
+      "finding": "        process = subprocess.Popen(\n            cmd,\n            stdout=subprocess.PIPE,\n            stderr=subprocess.DEVNULL,\n            cwd=project_root,\n            env=env,\n        )"
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "external_plugins/discord/package.json",
+      "line": 12,
+      "message": "Unpinned Dependencies",
+      "finding": "\"discord.js\": \"^14.14.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "external_plugins/fakechat/package.json",
+      "line": 14,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@types/bun\": \"^1.3.10\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "external_plugins/imessage/package.json",
+      "line": 15,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@types/bun\": \"^1.3.10\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "external_plugins/imessage/package.json",
+      "line": 12,
+      "message": "Unpinned Dependencies",
+      "finding": "\"zod\": \"^3.23.8\""
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "external_plugins/discord/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "external_plugins/fakechat/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "external_plugins/imessage/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "external_plugins/telegram/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "external_plugins/discord/package.json",
+      "line": 11,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@modelcontextprotocol/sdk\": \"^1.0.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "external_plugins/fakechat/package.json",
+      "line": 11,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@modelcontextprotocol/sdk\": \"^1.0.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "external_plugins/imessage/package.json",
+      "line": 11,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@modelcontextprotocol/sdk\": \"^1.0.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "external_plugins/telegram/package.json",
+      "line": 11,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@modelcontextprotocol/sdk\": \"^1.0.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "external_plugins/telegram/package.json",
+      "line": 12,
+      "message": "Unpinned Dependencies",
+      "finding": "\"grammy\": \"^1.21.0\""
+     },
+     {
+      "rule": "EA3",
+      "severity": "LOW",
+      "category": "Excessive Agency",
+      "pattern": "Scope Creep",
+      "confidence": 0.75,
+      "file": "plugins/claude-security/skills/claude-security/jobs/suggest-patches.md",
+      "line": 90,
+      "message": "Scope Creep",
+      "finding": "broaden the scope"
+     },
+     {
+      "rule": "EA3",
+      "severity": "LOW",
+      "category": "Excessive Agency",
+      "pattern": "Scope Creep",
+      "confidence": 0.75,
+      "file": "plugins/code-modernization/commands/modernize-brief.md",
+      "line": 88,
+      "message": "Scope Creep",
+      "finding": "expand the scope"
+     },
+     {
+      "rule": "EA3",
+      "severity": "LOW",
+      "category": "Excessive Agency",
+      "pattern": "Scope Creep",
+      "confidence": 0.75,
+      "file": "plugins/code-modernization/commands/modernize-preflight.md",
+      "line": 181,
+      "message": "Scope Creep",
+      "finding": "expand the scope"
+     },
+     {
+      "rule": "EA3",
+      "severity": "LOW",
+      "category": "Excessive Agency",
+      "pattern": "Scope Creep",
+      "confidence": 0.75,
+      "file": "plugins/code-modernization/commands/modernize-uplift.md",
+      "line": 136,
+      "message": "Scope Creep",
+      "finding": "expand the scope"
+     },
+     {
+      "rule": "RP1",
+      "severity": "LOW",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.6,
+      "file": "plugins/mcp-server-dev/skills/build-mcp-server/references/remote-http-scaffold.md",
+      "line": 84,
+      "message": "MCP server dependency without pinned version: 'pip install fastmcp'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "LOW",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.6,
+      "file": "plugins/mcp-tunnels/commands/create-docker-mcp-tunnel.md",
+      "line": 268,
+      "message": "MCP server dependency without pinned version: 'pip install --quiet mcp'.",
+      "finding": ""
+     },
+     {
+      "rule": "EA3",
+      "severity": "LOW",
+      "category": "Excessive Agency",
+      "pattern": "Scope Creep",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 896,
+      "message": "Scope Creep",
+      "finding": "NOT limited to"
+     },
+     {
+      "rule": "EA3",
+      "severity": "LOW",
+      "category": "Excessive Agency",
+      "pattern": "Scope Creep",
+      "confidence": 0.7,
+      "file": "plugins/security-guidance/hooks/llm.py",
+      "line": 927,
+      "message": "Scope Creep",
+      "finding": "beyond stated"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "512 findings · 1 check pending · 1 check not applicable",
+  "block": "SECURITY · commit 1dd9951\n\n  Dependency vulnerabilities\n    116 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-56762  hono@4.12.5\n      CVE-2026-56762  hono@4.12.8\n      CVE-2026-56762  hono@4.12.9\n      CVE-2026-4923  path-to-regexp@8.3.0\n      CVE-2026-47676  hono@4.12.5\n      CVE-2026-47676  hono@4.12.8\n      CVE-2026-47676  hono@4.12.9\n      CVE-2026-1525  undici@6.21.3\n      CVE-2026-6733  undici@6.21.3\n      CVE-2026-47675  hono@4.12.5\n      CVE-2026-47675  hono@4.12.8\n      CVE-2026-47675  hono@4.12.9\n      CVE-2026-56761  hono@4.12.5\n      CVE-2026-56761  hono@4.12.8\n      CVE-2026-56761  hono@4.12.9\n      CVE-2026-1527  undici@6.21.3\n      CVE-2026-13676  fast-uri@3.1.0\n      CVE-2026-82417  qs@6.15.0\n      CVE-2026-71848  hono@4.12.5\n      CVE-2026-71848  hono@4.12.8\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    28 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/bump-plugin-shas.yml:56\n      unpinned-uses  .github/workflows/bump-plugin-shas.yml:56\n      artipacked  .github/workflows/check-mcp-urls.yml:36\n      unpinned-uses  .github/workflows/check-mcp-urls.yml:36\n      artipacked  .github/workflows/close-external-prs.yml:19\n      dangerous-triggers  .github/workflows/close-external-prs.yml:3\n      unpinned-uses  .github/workflows/close-external-prs.yml:19\n      unpinned-uses  .github/workflows/close-external-prs.yml:21\n      artipacked  .github/workflows/external-pr-scope-guard.yml:31\n      dangerous-triggers  .github/workflows/external-pr-scope-guard.yml:19\n      unpinned-uses  .github/workflows/external-pr-scope-guard.yml:31\n      unpinned-uses  .github/workflows/external-pr-scope-guard.yml:32\n      dangerous-triggers  .github/workflows/revert-failed-bumps.yml:23\n      unpinned-uses  .github/workflows/revert-failed-bumps.yml:67\n      artipacked  .github/workflows/scan-plugins.yml:54\n      excessive-permissions  .github/workflows/scan-plugins.yml:35\n      unpinned-uses  .github/workflows/scan-plugins.yml:54\n      unpinned-uses  .github/workflows/scan-plugins.yml:94\n      unpinned-uses  .github/workflows/scan-plugins.yml:345\n      unpinned-uses  .github/workflows/scan-plugins.yml:357\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    368 findings                     skillspector 2.11.0 · 2026-09-03\n      TT3 CRITICAL  plugins/security-guidance/hooks/llm.py:532  Tainted flow: 'request' from os.environ.get (line 526, credential/environment) → urllib.request.urlopen (network output)\n      YR4 HIGH  .claude-plugin/marketplace.json:4  YARA rule 'agent_skill_mcp_tool_poisoning_metadata': MCP/tool metadata poisoning indicators in tool schemas or skill manifests [agent_skills]\n      PE3 HIGH  .github/policy/prompt.md:41  Credential Access\n      PE3 HIGH  .github/policy/prompt.md:53  Credential Access\n      PE3 HIGH  .github/policy/prompt.md:63  Credential Access\n      PE3 HIGH  .github/policy/prompt.md:89  Credential Access\n      AS2 HIGH  .github/policy/prompt.md:113  MCP Config Access\n      SC9 HIGH  .github/scripts/discover_bumps.py:1  Concealed Executable Artifact\n      SC9 HIGH  .github/scripts/external-pr-scope.js:1  Concealed Executable Artifact\n      SC9 HIGH  .github/scripts/validate-frontmatter.ts:1  Concealed Executable Artifact\n      P1 HIGH  external_plugins/discord/README.md:88  Instruction Override\n      P1 HIGH  external_plugins/discord/skills/configure/SKILL.md:62  Instruction Override\n      SC2 HIGH  external_plugins/discord/README.md:9  External Script Fetching\n      SC2 HIGH  external_plugins/telegram/README.md:9  External Script Fetching\n      PE3 HIGH  external_plugins/discord/server.ts:40  Credential Access\n      PE3 HIGH  external_plugins/telegram/server.ts:31  Credential Access\n      P6 HIGH  plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md:13  Direct Prompt Extraction\n      EA5 HIGH  plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md:273  External Model or Provider Selection\n      EA5 HIGH  plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md:276  External Model or Provider Selection\n      PE3 HIGH  plugins/claude-code-setup/skills/claude-automation-recommender/references/hooks-patterns.md:85  Credential Access\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

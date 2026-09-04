@@ -1,0 +1,4745 @@
+{
+ "security": {
+  "repo_id": 107111421,
+  "commit_sha": "30756a79b2f7d4363ac592710146c8e28fa9f1b5",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 93,
+    "findings": [
+     {
+      "id": "CVE-2026-54272",
+      "aliases": [
+       "GHSA-22jq-vg5j-6vgg"
+      ],
+      "package": "ip-address",
+      "version": "10.2.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.2.0' is vulnerable to 'CVE-2026-54272' (also known as 'GHSA-22jq-vg5j-6vgg')."
+     },
+     {
+      "id": "CVE-2026-67214",
+      "aliases": [
+       "GHSA-28wg-ghj8-5hjv"
+      ],
+      "package": "nanoid",
+      "version": "3.3.12",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@3.3.12' is vulnerable to 'CVE-2026-67214' (also known as 'GHSA-28wg-ghj8-5hjv')."
+     },
+     {
+      "id": "CVE-2026-69185",
+      "aliases": [
+       "GHSA-2m8v-j782-fhvr"
+      ],
+      "package": "socket.io-parser",
+      "version": "4.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'socket.io-parser@4.2.6' is vulnerable to 'CVE-2026-69185' (also known as 'GHSA-2m8v-j782-fhvr')."
+     },
+     {
+      "id": "CVE-2026-67213",
+      "aliases": [
+       "GHSA-2v37-7h3g-55p8"
+      ],
+      "package": "nanoid",
+      "version": "3.3.12",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@3.3.12' is vulnerable to 'CVE-2026-67213' (also known as 'GHSA-2v37-7h3g-55p8')."
+     },
+     {
+      "id": "CVE-2026-6733",
+      "aliases": [
+       "GHSA-35p6-xmwp-9g52"
+      ],
+      "package": "undici",
+      "version": "7.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.26.0' is vulnerable to 'CVE-2026-6733' (also known as 'GHSA-35p6-xmwp-9g52')."
+     },
+     {
+      "id": "CVE-2026-13311",
+      "aliases": [
+       "GHSA-395f-4hp3-45gv"
+      ],
+      "package": "shell-quote",
+      "version": "1.8.4",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'shell-quote@1.8.4' is vulnerable to 'CVE-2026-13311' (also known as 'GHSA-395f-4hp3-45gv')."
+     },
+     {
+      "id": "GHSA-3f6p-5ww8-9rcr",
+      "aliases": [],
+      "package": "mysql2",
+      "version": "3.15.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'mysql2@3.15.3' is vulnerable to 'GHSA-3f6p-5ww8-9rcr'."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.15",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.15' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "2.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@2.1.1' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.6' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-64647",
+      "aliases": [
+       "GHSA-4633-3j49-mh5q"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64647' (also known as 'GHSA-4633-3j49-mh5q')."
+     },
+     {
+      "id": "CVE-2026-64646",
+      "aliases": [
+       "GHSA-4c39-4ccg-62r3"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64646' (also known as 'GHSA-4c39-4ccg-62r3')."
+     },
+     {
+      "id": "CVE-2026-13676",
+      "aliases": [
+       "GHSA-4c8g-83qw-93j6"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-13676' (also known as 'GHSA-4c8g-83qw-93j6')."
+     },
+     {
+      "id": "CVE-2026-13697",
+      "aliases": [
+       "GHSA-4cwx-7wf7-3272"
+      ],
+      "package": "undici",
+      "version": "7.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.26.0' is vulnerable to 'CVE-2026-13697' (also known as 'GHSA-4cwx-7wf7-3272')."
+     },
+     {
+      "id": "CVE-2026-82417",
+      "aliases": [
+       "GHSA-4mjr-xmp4-gh2g"
+      ],
+      "package": "qs",
+      "version": "6.15.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.15.2' is vulnerable to 'CVE-2026-82417' (also known as 'GHSA-4mjr-xmp4-gh2g')."
+     },
+     {
+      "id": "CVE-2026-69198",
+      "aliases": [
+       "GHSA-4xrf-jv44-h6hh"
+      ],
+      "package": "ip-address",
+      "version": "10.2.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.2.0' is vulnerable to 'CVE-2026-69198' (also known as 'GHSA-4xrf-jv44-h6hh')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.2' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-71848",
+      "aliases": [
+       "GHSA-54fx-42gc-7vw4"
+      ],
+      "package": "hono",
+      "version": "4.12.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.23' is vulnerable to 'CVE-2026-71848' (also known as 'GHSA-54fx-42gc-7vw4')."
+     },
+     {
+      "id": "CVE-2026-75838",
+      "aliases": [
+       "GHSA-55q2-fjhq-7xh7"
+      ],
+      "package": "dompurify",
+      "version": "3.4.7",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'dompurify@3.4.7' is vulnerable to 'CVE-2026-75838' (also known as 'GHSA-55q2-fjhq-7xh7')."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "3.14.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.2' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "CVE-2026-59952",
+      "aliases": [
+       "GHSA-5qjj-4xww-7phc"
+      ],
+      "package": "valibot",
+      "version": "1.2.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'valibot@1.2.0' is vulnerable to 'CVE-2026-59952' (also known as 'GHSA-5qjj-4xww-7phc')."
+     },
+     {
+      "id": "CVE-2026-64648",
+      "aliases": [
+       "GHSA-68g3-v927-f742"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64648' (also known as 'GHSA-68g3-v927-f742')."
+     },
+     {
+      "id": "CVE-2026-45623",
+      "aliases": [
+       "GHSA-6g55-p6wh-862q"
+      ],
+      "package": "postcss",
+      "version": "8.4.31",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.4.31' is vulnerable to 'CVE-2026-45623' (also known as 'GHSA-6g55-p6wh-862q')."
+     },
+     {
+      "id": "CVE-2026-64642",
+      "aliases": [
+       "GHSA-6gpp-xcg3-4w24"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64642' (also known as 'GHSA-6gpp-xcg3-4w24')."
+     },
+     {
+      "id": "CVE-2026-73088",
+      "aliases": [
+       "GHSA-73wf-gq98-2v4g"
+      ],
+      "package": "browserslist",
+      "version": "4.28.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'browserslist@4.28.2' is vulnerable to 'CVE-2026-73088' (also known as 'GHSA-73wf-gq98-2v4g')."
+     },
+     {
+      "id": "CVE-2026-71849",
+      "aliases": [
+       "GHSA-79qm-7rj5-m7r9"
+      ],
+      "package": "hono",
+      "version": "4.12.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.23' is vulnerable to 'CVE-2026-71849' (also known as 'GHSA-79qm-7rj5-m7r9')."
+     },
+     {
+      "id": "CVE-2026-18446",
+      "aliases": [
+       "GHSA-7p8r-x3mc-p8w7"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-18446' (also known as 'GHSA-7p8r-x3mc-p8w7')."
+     },
+     {
+      "id": "CVE-2026-77465",
+      "aliases": [
+       "GHSA-82x6-q7mm-w9cf"
+      ],
+      "package": "toml",
+      "version": "3.0.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'toml@3.0.0' is vulnerable to 'CVE-2026-77465' (also known as 'GHSA-82x6-q7mm-w9cf')."
+     },
+     {
+      "id": "CVE-2026-67333",
+      "aliases": [
+       "GHSA-86j7-9j95-vpqj"
+      ],
+      "package": "better-auth",
+      "version": "1.6.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'better-auth@1.6.11' is vulnerable to 'CVE-2026-67333' (also known as 'GHSA-86j7-9j95-vpqj')."
+     },
+     {
+      "id": "CVE-2026-54290",
+      "aliases": [
+       "GHSA-88fw-hqm2-52qc"
+      ],
+      "package": "hono",
+      "version": "4.12.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.23' is vulnerable to 'CVE-2026-54290' (also known as 'GHSA-88fw-hqm2-52qc')."
+     },
+     {
+      "id": "CVE-2026-54285",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@opentelemetry/core@2.7.1' is vulnerable to 'CVE-2026-54285' (also known as 'GHSA-8988-4f7v-96qf')."
+     },
+     {
+      "id": "CVE-2026-64649",
+      "aliases": [
+       "GHSA-89xv-2m56-2m9x"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64649' (also known as 'GHSA-89xv-2m56-2m9x')."
+     },
+     {
+      "id": "CVE-2026-69207",
+      "aliases": [
+       "GHSA-8j4g-w8fx-2239"
+      ],
+      "package": "hono",
+      "version": "4.12.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.23' is vulnerable to 'CVE-2026-69207' (also known as 'GHSA-8j4g-w8fx-2239')."
+     },
+     {
+      "id": "CVE-2026-16728",
+      "aliases": [
+       "GHSA-8xcm-r25x-g524"
+      ],
+      "package": "undici",
+      "version": "7.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.26.0' is vulnerable to 'CVE-2026-16728' (also known as 'GHSA-8xcm-r25x-g524')."
+     },
+     {
+      "id": "CVE-2026-39406",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@hono/node-server@1.19.11' is vulnerable to 'CVE-2026-39406' (also known as 'GHSA-92pp-h63x-v22m')."
+     },
+     {
+      "id": "CVE-2026-64643",
+      "aliases": [
+       "GHSA-955p-x3mx-jcvp"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64643' (also known as 'GHSA-955p-x3mx-jcvp')."
+     },
+     {
+      "id": "CVE-2026-48779",
+      "aliases": [
+       "GHSA-96hv-2xvq-fx4p"
+      ],
+      "package": "ws",
+      "version": "8.20.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ws@8.20.1' is vulnerable to 'CVE-2026-48779' (also known as 'GHSA-96hv-2xvq-fx4p')."
+     },
+     {
+      "id": "CVE-2026-66010",
+      "aliases": [
+       "GHSA-c2j3-45gr-mqc4"
+      ],
+      "package": "dompurify",
+      "version": "3.4.7",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'dompurify@3.4.7' is vulnerable to 'CVE-2026-66010' (also known as 'GHSA-c2j3-45gr-mqc4')."
+     },
+     {
+      "id": "CVE-2026-73089",
+      "aliases": [
+       "GHSA-c83g-rgw3-j3cx"
+      ],
+      "package": "browserslist",
+      "version": "4.28.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'browserslist@4.28.2' is vulnerable to 'CVE-2026-73089' (also known as 'GHSA-c83g-rgw3-j3cx')."
+     },
+     {
+      "id": "CVE-2026-65898",
+      "aliases": [
+       "GHSA-cmwh-pvxp-8882"
+      ],
+      "package": "dompurify",
+      "version": "3.4.7",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'dompurify@3.4.7' is vulnerable to 'CVE-2026-65898' (also known as 'GHSA-cmwh-pvxp-8882')."
+     },
+     {
+      "id": "CVE-2026-71850",
+      "aliases": [
+       "GHSA-f23p-vx2j-j53r"
+      ],
+      "package": "hono",
+      "version": "4.12.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.23' is vulnerable to 'CVE-2026-71850' (also known as 'GHSA-f23p-vx2j-j53r')."
+     },
+     {
+      "id": "CVE-2026-75975",
+      "aliases": [
+       "GHSA-f65p-4m7j-42xc"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-75975' (also known as 'GHSA-f65p-4m7j-42xc')."
+     },
+     {
+      "id": "GHSA-f88m-g3jw-g9cj",
+      "aliases": [],
+      "package": "sharp",
+      "version": "0.34.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'sharp@0.34.5' is vulnerable to 'GHSA-f88m-g3jw-g9cj'."
+     },
+     {
+      "id": "CVE-2026-75899",
+      "aliases": [
+       "GHSA-fph4-wmhf-6fwf"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-75899' (also known as 'GHSA-fph4-wmhf-6fwf')."
+     },
+     {
+      "id": "GHSA-frvp-7c67-39w9",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@hono/node-server@1.19.11' is vulnerable to 'GHSA-frvp-7c67-39w9'."
+     },
+     {
+      "id": "CVE-2026-69153",
+      "aliases": [
+       "GHSA-fxqj-rqcc-2cmp"
+      ],
+      "package": "postcss",
+      "version": "8.4.31",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.4.31' is vulnerable to 'CVE-2026-69153' (also known as 'GHSA-fxqj-rqcc-2cmp')."
+     },
+     {
+      "id": "CVE-2026-69153",
+      "aliases": [
+       "GHSA-fxqj-rqcc-2cmp"
+      ],
+      "package": "postcss",
+      "version": "8.5.15",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.15' is vulnerable to 'CVE-2026-69153' (also known as 'GHSA-fxqj-rqcc-2cmp')."
+     },
+     {
+      "id": "GHSA-g7r4-m6w7-qqqr",
+      "aliases": [],
+      "package": "esbuild",
+      "version": "0.28.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'esbuild@0.28.0' is vulnerable to 'GHSA-g7r4-m6w7-qqqr'."
+     },
+     {
+      "id": "CVE-2026-11525",
+      "aliases": [
+       "GHSA-g8m3-5g58-fq7m"
+      ],
+      "package": "undici",
+      "version": "7.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.26.0' is vulnerable to 'CVE-2026-11525' (also known as 'GHSA-g8m3-5g58-fq7m')."
+     },
+     {
+      "id": "CVE-2026-40345",
+      "aliases": [
+       "GHSA-ggr8-5vv4-36mx"
+      ],
+      "package": "deepmerge-ts",
+      "version": "7.1.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'deepmerge-ts@7.1.5' is vulnerable to 'CVE-2026-40345' (also known as 'GHSA-ggr8-5vv4-36mx')."
+     },
+     {
+      "id": "CVE-2026-65900",
+      "aliases": [
+       "GHSA-gvmj-g25r-r7wr"
+      ],
+      "package": "dompurify",
+      "version": "3.4.7",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'dompurify@3.4.7' is vulnerable to 'CVE-2026-65900' (also known as 'GHSA-gvmj-g25r-r7wr')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.2' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-6734",
+      "aliases": [
+       "GHSA-hm92-r4w5-c3mj"
+      ],
+      "package": "undici",
+      "version": "7.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.26.0' is vulnerable to 'CVE-2026-6734' (also known as 'GHSA-hm92-r4w5-c3mj')."
+     },
+     {
+      "id": "CVE-2026-59896",
+      "aliases": [
+       "GHSA-hvrm-45r6-mjfj"
+      ],
+      "package": "hono",
+      "version": "4.12.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.23' is vulnerable to 'CVE-2026-59896' (also known as 'GHSA-hvrm-45r6-mjfj')."
+     },
+     {
+      "id": "CVE-2026-54287",
+      "aliases": [
+       "GHSA-j6c9-x7qj-28xf"
+      ],
+      "package": "hono",
+      "version": "4.12.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.23' is vulnerable to 'CVE-2026-54287' (also known as 'GHSA-j6c9-x7qj-28xf')."
+     },
+     {
+      "id": "CVE-2026-76172",
+      "aliases": [
+       "GHSA-jqff-g426-hqxp"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-76172' (also known as 'GHSA-jqff-g426-hqxp')."
+     },
+     {
+      "id": "CVE-2026-14643",
+      "aliases": [
+       "GHSA-jr45-8vmc-qm54"
+      ],
+      "package": "undici",
+      "version": "7.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.26.0' is vulnerable to 'CVE-2026-14643' (also known as 'GHSA-jr45-8vmc-qm54')."
+     },
+     {
+      "id": "CVE-2026-15157",
+      "aliases": [
+       "GHSA-m8rv-5g2x-5cg5"
+      ],
+      "package": "undici",
+      "version": "7.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.26.0' is vulnerable to 'CVE-2026-15157' (also known as 'GHSA-m8rv-5g2x-5cg5')."
+     },
+     {
+      "id": "CVE-2026-64641",
+      "aliases": [
+       "GHSA-m99w-x7hq-7vfj"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64641' (also known as 'GHSA-m99w-x7hq-7vfj')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.15",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.15' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "2.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@2.1.1' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.6' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-69192",
+      "aliases": [
+       "GHSA-mwp4-54f8-5fhr"
+      ],
+      "package": "ip-address",
+      "version": "10.2.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.2.0' is vulnerable to 'CVE-2026-69192' (also known as 'GHSA-mwp4-54f8-5fhr')."
+     },
+     {
+      "id": "CVE-2026-9679",
+      "aliases": [
+       "GHSA-p88m-4jfj-68fv"
+      ],
+      "package": "undici",
+      "version": "7.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.26.0' is vulnerable to 'CVE-2026-9679' (also known as 'GHSA-p88m-4jfj-68fv')."
+     },
+     {
+      "id": "CVE-2026-64645",
+      "aliases": [
+       "GHSA-p9j2-gv94-2wf4"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64645' (also known as 'GHSA-p9j2-gv94-2wf4')."
+     },
+     {
+      "id": "CVE-2026-9678",
+      "aliases": [
+       "GHSA-pr7r-676h-xcf6"
+      ],
+      "package": "undici",
+      "version": "7.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.26.0' is vulnerable to 'CVE-2026-9678' (also known as 'GHSA-pr7r-676h-xcf6')."
+     },
+     {
+      "id": "CVE-2026-64644",
+      "aliases": [
+       "GHSA-q8wf-6r8g-63ch"
+      ],
+      "package": "next",
+      "version": "16.2.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'next@16.2.6' is vulnerable to 'CVE-2026-64644' (also known as 'GHSA-q8wf-6r8g-63ch')."
+     },
+     {
+      "id": "CVE-2026-67327",
+      "aliases": [
+       "GHSA-qq9h-g4jm-xgf3"
+      ],
+      "package": "better-auth",
+      "version": "1.6.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'better-auth@1.6.11' is vulnerable to 'CVE-2026-67327' (also known as 'GHSA-qq9h-g4jm-xgf3')."
+     },
+     {
+      "id": "CVE-2026-41305",
+      "aliases": [
+       "GHSA-qx2v-qp2m-jg93"
+      ],
+      "package": "postcss",
+      "version": "8.4.31",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.4.31' is vulnerable to 'CVE-2026-41305' (also known as 'GHSA-qx2v-qp2m-jg93')."
+     },
+     {
+      "id": "CVE-2026-73646",
+      "aliases": [
+       "GHSA-r28c-9q8g-f849"
+      ],
+      "package": "postcss",
+      "version": "8.4.31",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.4.31' is vulnerable to 'CVE-2026-73646' (also known as 'GHSA-r28c-9q8g-f849')."
+     },
+     {
+      "id": "CVE-2026-73646",
+      "aliases": [
+       "GHSA-r28c-9q8g-f849"
+      ],
+      "package": "postcss",
+      "version": "8.5.15",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.15' is vulnerable to 'CVE-2026-73646' (also known as 'GHSA-r28c-9q8g-f849')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.15",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.15' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "2.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@2.1.1' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.6",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@5.0.6' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "GHSA-rgwj-5xj2-c3m3",
+      "aliases": [],
+      "package": "mysql2",
+      "version": "3.15.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'mysql2@3.15.3' is vulnerable to 'GHSA-rgwj-5xj2-c3m3'."
+     },
+     {
+      "id": "CVE-2026-54288",
+      "aliases": [
+       "GHSA-rv63-4mwf-qqc2"
+      ],
+      "package": "hono",
+      "version": "4.12.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.23' is vulnerable to 'CVE-2026-54288' (also known as 'GHSA-rv63-4mwf-qqc2')."
+     },
+     {
+      "id": "CVE-2026-16221",
+      "aliases": [
+       "GHSA-v2hh-gcrm-f6hx"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-16221' (also known as 'GHSA-v2hh-gcrm-f6hx')."
+     },
+     {
+      "id": "CVE-2026-16729",
+      "aliases": [
+       "GHSA-v3r7-h72x-cjcm"
+      ],
+      "package": "undici",
+      "version": "7.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.26.0' is vulnerable to 'CVE-2026-16729' (also known as 'GHSA-v3r7-h72x-cjcm')."
+     },
+     {
+      "id": "CVE-2026-12590",
+      "aliases": [
+       "GHSA-v422-hmwv-36x6"
+      ],
+      "package": "body-parser",
+      "version": "2.2.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'body-parser@2.2.2' is vulnerable to 'CVE-2026-12590' (also known as 'GHSA-v422-hmwv-36x6')."
+     },
+     {
+      "id": "CVE-2026-63376",
+      "aliases": [
+       "GHSA-v5mp-jgw5-2x6j"
+      ],
+      "package": "toml",
+      "version": "3.0.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'toml@3.0.0' is vulnerable to 'CVE-2026-63376' (also known as 'GHSA-v5mp-jgw5-2x6j')."
+     },
+     {
+      "id": "CVE-2026-9697",
+      "aliases": [
+       "GHSA-vmh5-mc38-953g"
+      ],
+      "package": "undici",
+      "version": "7.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.26.0' is vulnerable to 'CVE-2026-9697' (also known as 'GHSA-vmh5-mc38-953g')."
+     },
+     {
+      "id": "CVE-2026-12151",
+      "aliases": [
+       "GHSA-vxpw-j846-p89q"
+      ],
+      "package": "undici",
+      "version": "7.26.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'undici@7.26.0' is vulnerable to 'CVE-2026-12151' (also known as 'GHSA-vxpw-j846-p89q')."
+     },
+     {
+      "id": "CVE-2026-65899",
+      "aliases": [
+       "GHSA-vxr8-fq34-vvx9"
+      ],
+      "package": "dompurify",
+      "version": "3.4.7",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'dompurify@3.4.7' is vulnerable to 'CVE-2026-65899' (also known as 'GHSA-vxr8-fq34-vvx9')."
+     },
+     {
+      "id": "CVE-2026-41907",
+      "aliases": [],
+      "package": "uuid",
+      "version": "9.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'uuid@9.0.1' is vulnerable to 'CVE-2026-41907' (also known as 'CVE-2026-41988', 'GHSA-w5hq-g745-h8pq')."
+     },
+     {
+      "id": "CVE-2026-59895",
+      "aliases": [
+       "GHSA-w62v-xxxg-mg59"
+      ],
+      "package": "hono",
+      "version": "4.12.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.23' is vulnerable to 'CVE-2026-59895' (also known as 'GHSA-w62v-xxxg-mg59')."
+     },
+     {
+      "id": "CVE-2026-9358",
+      "aliases": [
+       "GHSA-w9m9-85wc-3x92"
+      ],
+      "package": "postcss-selector-parser",
+      "version": "7.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss-selector-parser@7.1.1' is vulnerable to 'CVE-2026-9358' (also known as 'GHSA-w9m9-85wc-3x92')."
+     },
+     {
+      "id": "CVE-2026-54289",
+      "aliases": [
+       "GHSA-wgpf-jwqj-8h8p"
+      ],
+      "package": "hono",
+      "version": "4.12.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.23' is vulnerable to 'CVE-2026-54289' (also known as 'GHSA-wgpf-jwqj-8h8p')."
+     },
+     {
+      "id": "CVE-2026-54286",
+      "aliases": [
+       "GHSA-wwfh-h76j-fc44"
+      ],
+      "package": "hono",
+      "version": "4.12.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.23' is vulnerable to 'CVE-2026-54286' (also known as 'GHSA-wwfh-h76j-fc44')."
+     },
+     {
+      "id": "CVE-2026-82562",
+      "aliases": [
+       "GHSA-x5fp-wj9c-mxmx"
+      ],
+      "package": "qs",
+      "version": "6.15.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'qs@6.15.2' is vulnerable to 'CVE-2026-82562' (also known as 'GHSA-x5fp-wj9c-mxmx')."
+     },
+     {
+      "id": "CVE-2026-59897",
+      "aliases": [
+       "GHSA-xgm2-5f3f-mvvc"
+      ],
+      "package": "hono",
+      "version": "4.12.23",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'hono@4.12.23' is vulnerable to 'CVE-2026-59897' (also known as 'GHSA-xgm2-5f3f-mvvc')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 119,
+    "findings": [
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/actions/audit/action.yml",
+      "line": 44,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/actions/audit/action.yml",
+      "line": 45,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/actions/audit/action.yml",
+      "line": 69,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/actions/audit/action.yml",
+      "line": 70,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 18,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 43,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 71,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 99,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 127,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 176,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 223,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 287,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 13,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 38,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 66,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 94,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 122,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 171,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 216,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 303,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 19,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 22,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 27,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 44,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 47,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 52,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 72,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 75,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 80,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 100,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 103,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 108,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 128,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 131,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 136,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 151,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 177,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 180,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 185,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 207,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 224,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 227,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 232,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 241,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 262,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 270,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 288,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 291,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 299,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 319,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/e2e.yml",
+      "line": 24,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/e2e.yml",
+      "line": 85,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/e2e.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/e2e.yml",
+      "line": 7,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/e2e.yml",
+      "line": 79,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/e2e.yml",
+      "line": 25,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/e2e.yml",
+      "line": 28,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/e2e.yml",
+      "line": 33,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/e2e.yml",
+      "line": 57,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/e2e.yml",
+      "line": 65,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/e2e.yml",
+      "line": 73,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/e2e.yml",
+      "line": 86,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/e2e.yml",
+      "line": 89,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/e2e.yml",
+      "line": 113,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 26,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 54,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 100,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 131,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 166,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 227,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 262,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 298,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 348,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 50,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 94,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 125,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 160,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 221,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 256,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 292,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 342,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pr.yml",
+      "line": 383,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 78,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 248,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 249,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 283,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 284,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 26,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 27,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 55,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 60,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 65,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 101,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 104,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 109,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 132,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 135,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 140,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 167,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 170,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 175,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 195,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 228,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 233,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 238,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 263,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 268,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 273,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 299,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 302,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 307,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 334,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 349,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 352,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 357,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pr.yml",
+      "line": 390,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/pr.yml",
+      "line": 76,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "findings",
+    "finding_count": 263,
+    "findings": [
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": ".gitignore",
+      "line": 51,
+      "message": "Credential Access",
+      "finding": ".env.local\n"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.75,
+      "file": "AGENTS.md",
+      "line": 295,
+      "message": "Tool Parameter Abuse",
+      "finding": "git commit --no-verify"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 26,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-start -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 49,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-start -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 58,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-start -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 71,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-start -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 80,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-start -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 115,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-start -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 134,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-start -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 153,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-start -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 176,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-start -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 182,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-start -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 257,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-start -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 262,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-start -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 283,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-start -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 29,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-end -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 52,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-end -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 178,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-end -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 221,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-end -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 260,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-end -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 293,
+      "message": "Hidden Instructions",
+      "finding": "<!-- prettier-ignore-end -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 60,
+      "message": "Hidden Instructions",
+      "finding": "<!-- HTML5 -->\n```\n<!-- prettier-ignore-end -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 73,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Set character encoding for the document -->\n<meta charset=\"utf-8\">\n```\n<!-- prettier-ignore-end -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 82,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Viewport for responsive web design -->\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\">\n```\n<!-- prettier-ignore-end -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 90,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Document Title -->\n<title>Page Title less than 55 characters</title>\n```\n\n- 📖 [Title - HTML - MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title)\n- 🛠 [SERP Snippet Generator](ht"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 102,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Meta Description -->\n<meta name=\"description\" content=\"Description of the page less than 150 characters\">\n```\n<!-- prettier-ignore-end -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 117,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Standard favicon -->\n<link rel=\"icon\" type=\"image/x-icon\" href=\"https://example.com/favicon.ico\">\n<!-- Recommended favicon format -->\n<link rel=\"icon\" type=\"image/png\" href=\"https://example.com/f"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 136,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Apple Touch Icon (at least 200x200px) -->\n<link rel=\"apple-touch-icon\" href=\"/custom-icon.png\">\n\n<!-- To run the web application in full-screen -->\n<meta name=\"apple-mobile-web-app-capable\" conte"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 155,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Microsoft Tiles -->\n<meta name=\"msapplication-config\" content=\"browserconfig.xml\">\n```\n<!-- prettier-ignore-end -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 184,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Helps prevent duplicate content issues -->\n<link rel=\"canonical\" href=\"http://example.com/2017/09/a-new-article-to-read.html\">\n```\n<!-- prettier-ignore-end -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 208,
+      "message": "Hidden Instructions",
+      "finding": "<!-- ... -->\n</html>\n```\n\n- 📖 [dir - HTML - MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir)\n\n- [ ] **Alternate language:** ![Low][low_img] The language tag of your websit"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README-OLD.md",
+      "line": 271,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Next tags are optional but recommended -->\n<meta property=\"og:image:width\" content=\"1200\">\n<meta property=\"og:image:height\" content=\"630\">\n```\n<!-- prettier-ignore-end -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "README.md",
+      "line": 113,
+      "message": "Hidden Instructions",
+      "finding": "<!-- rules-catalog:start -->\n\n<!-- Generated from 385 English rules. This block is maintained by `pnpm generate:readme`. -->\n\n### Jump to a category\n\n- [HTML](#html) (25) · [Open on the site](https://"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "SPEC.md",
+      "line": 45,
+      "message": "Hidden Instructions",
+      "finding": "<!-- ✅ Good: Specific recommendation -->\nUse [axe DevTools](https://www.deque.com/axe/) to automatically detect missing alt text.\n\n<!-- ❌ Bad: Vague guidance -->\nYou can use various accessibility test"
+     },
+     {
+      "rule": "AS2",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "MCP Config Access",
+      "confidence": 0.9,
+      "file": "apps/web/app/(site)/mcp/page-data.ts",
+      "line": 442,
+      "message": "MCP Config Access",
+      "finding": "load MCP config"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "apps/web/components/navigation/command-palette-provider.tsx",
+      "line": 75,
+      "message": "Direct Prompt Extraction",
+      "finding": "return rules"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "apps/web/components/navigation/command-palette.tsx",
+      "line": 40,
+      "message": "Direct Prompt Extraction",
+      "finding": "return rules"
+     },
+     {
+      "rule": "MP3",
+      "severity": "HIGH",
+      "category": "Memory Poisoning",
+      "pattern": "Memory Manipulation",
+      "confidence": 0.8,
+      "file": "apps/web/components/rules/controls/rule-checkbox.tsx",
+      "line": 128,
+      "message": "Memory Manipulation",
+      "finding": "clear state"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "apps/web/hooks/use-progress.ts",
+      "line": 260,
+      "message": "Direct Prompt Extraction",
+      "finding": "return rule"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": ".biomeignore",
+      "line": 61,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": ".gitignore",
+      "line": 50,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": ".vercelignore",
+      "line": 26,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "apps/web/jest.config.cjs",
+      "line": 5,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "apps/web/next.config.js",
+      "line": 30,
+      "message": "Direct Prompt Extraction",
+      "finding": "return directives"
+     },
+     {
+      "rule": "SC2",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.9,
+      "file": "docs/audit-comparison/README.md",
+      "line": 42,
+      "message": "External Script Fetching",
+      "finding": "curl -fsSL https://squirrelscan.com/install | bash"
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.7,
+      "file": "docs/audit-comparison/README.md",
+      "line": 42,
+      "message": "Chaining Abuse",
+      "finding": "| bash"
+     },
+     {
+      "rule": "AS2",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "MCP Config Access",
+      "confidence": 0.8,
+      "file": "docs/global-skill-benchmark.md",
+      "line": 26,
+      "message": "MCP Config Access",
+      "finding": "list MCP tools"
+     },
+     {
+      "rule": "AS2",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "MCP Config Access",
+      "confidence": 0.8,
+      "file": "AGENTS.md",
+      "line": 17,
+      "message": "MCP Config Access",
+      "finding": "list MCP server"
+     },
+     {
+      "rule": "AS2",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "MCP Config Access",
+      "confidence": 0.8,
+      "file": "apps/web/app/(site)/mcp/mcp-page-content.tsx",
+      "line": 78,
+      "message": "MCP Config Access",
+      "finding": "list MCP server"
+     },
+     {
+      "rule": "AS2",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "MCP Config Access",
+      "confidence": 0.8,
+      "file": "apps/web/app/(site)/mcp/mcp-page-content.tsx",
+      "line": 215,
+      "message": "MCP Config Access",
+      "finding": "list MCP server"
+     },
+     {
+      "rule": "AS2",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "MCP Config Access",
+      "confidence": 0.8,
+      "file": "apps/web/app/(site)/mcp/page-data.ts",
+      "line": 472,
+      "message": "MCP Config Access",
+      "finding": "list MCP server"
+     },
+     {
+      "rule": "AS2",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "MCP Config Access",
+      "confidence": 0.8,
+      "file": "docs/mcp-quality.md",
+      "line": 3,
+      "message": "MCP Config Access",
+      "finding": "list MCP server"
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.75,
+      "file": "package.json",
+      "line": 27,
+      "message": "Chaining Abuse",
+      "finding": "&& rm -"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/analytics/providers/openpanel.tsx",
+      "line": 41,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/accessibility/heading-hierarchy.mdx",
+      "line": 166,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/css/css-critical.mdx",
+      "line": 148,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/css/css-order.mdx",
+      "line": 157,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/css/css-print.mdx",
+      "line": 485,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/html/breadcrumb-navigation.mdx",
+      "line": 220,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/html/html5-semantic-elements.mdx",
+      "line": 223,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/performance/speculation-rules.mdx",
+      "line": 206,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/security/content-security-policy.mdx",
+      "line": 108,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/security/content-security-policy.mdx",
+      "line": 258,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/seo/faq.mdx",
+      "line": 200,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/seo/json-ld-valid.mdx",
+      "line": 226,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/seo/local-business.mdx",
+      "line": 197,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/seo/organization.mdx",
+      "line": 204,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/seo/product.mdx",
+      "line": 237,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/seo/structured-data.mdx",
+      "line": 162,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/seo/structured-data.mdx",
+      "line": 223,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/seo/structured-data.mdx",
+      "line": 254,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/seo/structured-data.mdx",
+      "line": 283,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/content/rules/en/seo/structured-data.mdx",
+      "line": 314,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "OH1",
+      "severity": "HIGH",
+      "category": "Output Handling",
+      "pattern": "Unvalidated Output Injection",
+      "confidence": 0.65,
+      "file": "packages/design-system/src/custom/navigation/breadcrumb.tsx",
+      "line": 146,
+      "message": "Unvalidated Output Injection",
+      "finding": "dangerouslySetInnerHTML={"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/accessible-authentication.mdx",
+      "line": 92,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Better: password-manager and OTP-friendly fields -->\n<label for=\"email\">Email</label>\n<input id=\"email\" name=\"email\" type=\"email\" autocomplete=\"username webauthn\">\n\n<label for=\"password\">Password"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/anchor-smooth-scroll.mdx",
+      "line": 194,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Target must be focusable for keyboard navigation -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/autofocus-avoidance.mdx",
+      "line": 84,
+      "message": "Hidden Instructions",
+      "finding": "<!-- ❌ Bad: User lands mid-page, missing context -->\n<h1>Welcome to Our Service</h1>\n<p>Important information about our company...</p>\n<p>Read this before signing up...</p>\n\n<form>\n  <!-- Screen reade"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/consistent-help.mdx",
+      "line": 81,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Good: help stays in the same relative area across checkout steps -->\n<header>\n  <a href=\"/checkout\">Checkout</a>\n  <a href=\"/help\" aria-label=\"Get help with checkout\">Help</a>\n</header>\n```\n\n```h"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/content-without-css.mdx",
+      "line": 102,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Bad: layout and CSS generated content carry the meaning -->\n<div class=\"checkout-grid\">\n  <div class=\"step step-summary\">3. Review order</div>\n  <div class=\"step step-payment\">2. Payment</div>\n  "
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/content-without-css.mdx",
+      "line": 185,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Good: instructions exist in the DOM and stay available without CSS -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/content-without-css.mdx",
+      "line": 209,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Bad: visual order differs from the task order -->\n<section class=\"wizard\">\n  <aside class=\"wizard__summary\">Step 3: Confirm</aside>\n  <section class=\"wizard__payment\">Step 2: Payment</section>\n  "
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/focus-not-obscured.mdx",
+      "line": 126,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Better: a skip link target with enough top margin to stay visible -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/focus-order.mdx",
+      "line": 84,
+      "message": "Hidden Instructions",
+      "finding": "<!-- ❌ Bad: Positive tabindex breaks natural order -->\n<button tabindex=\"3\">Third</button>\n<button tabindex=\"1\">First</button>\n<button tabindex=\"2\">Second</button>\n<!-- Focus goes: First → Second → Th"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/focus-order.mdx",
+      "line": 126,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Focus: First → Second → Third (doesn't match visual!) -->\n\n<!-- ✅ Good: DOM order matches intended visual order -->\n<div class=\"container\">\n  <button>First</button>\n  <button>Second</button>\n  <b"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/frame-title.mdx",
+      "line": 85,
+      "message": "Hidden Instructions",
+      "finding": "<!-- No title provided -->\n<iframe src=\"https://example.com/ad\"></iframe>\n\n<!-- Generic or unhelpful title -->\n<iframe title=\"frame\" src=\"https://example.com/content\"></iframe>\n```\n\n## Why It Matters\n"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/heading-hierarchy.mdx",
+      "line": 85,
+      "message": "Hidden Instructions",
+      "finding": "<!-- ✅ Good: Logical hierarchy -->\n<h1>Web Accessibility Guide</h1>\n\n<h2>Getting Started</h2>\n<p>Introduction content...</p>\n\n<h3>Prerequisites</h3>\n<p>What you need to know...</p>\n\n<h3>Tools</h3>\n<p>"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/heading-hierarchy.mdx",
+      "line": 115,
+      "message": "Hidden Instructions",
+      "finding": "<!-- ❌ Bad: Skipping heading levels -->\n<h1>Main Title</h1>\n<h3>This should be h2</h3>\n\n<!-- ❌ Bad: Using headings for styling -->\n<h4>I just want this text to be smaller</h4>\n\n<!-- ❌ Bad: Non-descrip"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/keyboard-navigation.mdx",
+      "line": 87,
+      "message": "Hidden Instructions",
+      "finding": "<!-- ✅ Good: Natural tab order -->\n<button>First</button>\n<button>Second</button>\n<button>Third</button>\n\n<!-- ❌ Bad: Positive tabindex breaks flow -->\n<button tabindex=\"3\">First</button>\n<button tabi"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/label-content-name-mismatch.mdx",
+      "line": 84,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Visible text is part of the ARIA label -->\n<button aria-label=\"Add item to shopping cart\">Add item</button>\n\n<!-- Preferred: Just use the visible text -->\n<button>Add item</button>\n```\n\n### Incor"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/link-text.mdx",
+      "line": 87,
+      "message": "Hidden Instructions",
+      "finding": "<!-- ❌ Bad: Generic, meaningless out of context -->\n<a href=\"/pricing\">Click here</a>\n<a href=\"/docs\">Read more</a>\n<a href=\"/signup\">Learn more</a>\n\n<!-- ✅ Good: Descriptive, understandable alone -->"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/link-text.mdx",
+      "line": 137,
+      "message": "Hidden Instructions",
+      "finding": "<!-- ✅ Also good: Visually hidden expanded text -->\n<article>\n  <h3>Getting Started with React</h3>\n  <p>Learn the basics of React...</p>\n  <a href=\"/react-intro\">\n    Read more<span class=\"sr-only\"> "
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/redundant-entry.mdx",
+      "line": 85,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Bad: step 1 collected the same email address already -->\n<label for=\"confirm-email\">Confirm your email</label>\n<input id=\"confirm-email\" name=\"confirmEmail\" type=\"email\">\n\n<!-- Better: show or pr"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/sensory-instructions.mdx",
+      "line": 86,
+      "message": "Hidden Instructions",
+      "finding": "<!-- ❌ Bad: Color only -->\n<p>Required fields are marked in red.</p>\n<label style=\"color: red;\">Name</label>\n\n<!-- ✅ Good: Color + text indicator -->\n<p>Required fields are marked with an asterisk (*)"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/sensory-instructions.mdx",
+      "line": 118,
+      "message": "Hidden Instructions",
+      "finding": "<!-- ✅ Good: Text label + location -->\n<p>Click the \"Submit\" button (on the right) to continue.</p>\n\n<!-- ✅ Better: Clear button text, no location needed -->\n<button>Submit Form</button>\n<p>Click \"Sub"
+     },
+     {
+      "rule": "AR2",
+      "severity": "HIGH",
+      "category": "Anti-Refusal",
+      "pattern": "Anti-Refusal Statement",
+      "confidence": 0.8,
+      "file": "packages/content/rules/en/accessibility/session-timeout-recovery.mdx",
+      "line": 221,
+      "message": "Anti-Refusal Statement",
+      "finding": "without warning"
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/accessibility/text-in-images.mdx",
+      "line": 85,
+      "message": "Hidden Instructions",
+      "finding": "<!-- ❌ Bad: Text as image -->\n<img src=\"welcome-banner.png\" alt=\"Welcome to our site\">\n\n<!-- ✅ Good: Real text with styling -->\n<h1 class=\"fancy-heading\">Welcome to our site</h1>\n```\n\n```css\n/* Style "
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "packages/content/rules/en/css/css-print.mdx",
+      "line": 497,
+      "message": "Direct Prompt Extraction",
+      "finding": "Print Directive"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "packages/content/rules/en/html/clean-up-comments.mdx",
+      "line": 451,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf .storybook/"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "packages/content/rules/en/html/clean-up-comments.mdx",
+      "line": 452,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf __tests__/"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "packages/content/rules/en/html/clean-up-comments.mdx",
+      "line": 453,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf coverage/"
+     },
+     {
+      "rule": "AR2",
+      "severity": "HIGH",
+      "category": "Anti-Refusal",
+      "pattern": "Anti-Refusal Statement",
+      "confidence": 0.8,
+      "file": "packages/content/rules/en/html/pwa-installability.mdx",
+      "line": 266,
+      "message": "Anti-Refusal Statement",
+      "finding": "no warnings"
+     },
+     {
+      "rule": "SC2",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/performance/js-redirects.mdx",
+      "line": 13,
+      "message": "External Script Fetching",
+      "finding": "download and execute\n    the script"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".github/actions/audit/action.yml",
+      "line": 53,
+      "message": "External Transmission",
+      "finding": "curl -sS -X POST \"$API\" -H \"Content-Type: application/json\" -d "
+     },
+     {
+      "rule": "EA2",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "confidence": 0.75,
+      "file": "AGENTS.md",
+      "line": 174,
+      "message": "Autonomous Decision Making",
+      "finding": "No verification"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "README-OLD.md",
+      "line": 762,
+      "message": "External Transmission",
+      "finding": "https://analytics.google.com/"
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.8,
+      "file": "README.md",
+      "line": 103,
+      "message": "Skill Enumeration",
+      "finding": "skills/https/SKILL.md"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README.md",
+      "line": 96,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "README.md",
+      "line": 97,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "apps/web/components/rules/detail/skill-install-box.tsx",
+      "line": 10,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "apps/web/components/rules/detail/skill-install-box.tsx",
+      "line": 12,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "scripts/generate/generate-skills.ts",
+      "line": 13,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "scripts/generate/generate-skills.ts",
+      "line": 14,
+      "message": "MCP server referenced without pinned version: 'npx skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "apps/web/content-collections-helpers.ts",
+      "line": 16,
+      "message": "External Transmission",
+      "finding": "https://api.npmjs.org/"
+     },
+     {
+      "rule": "AE4",
+      "severity": "MEDIUM",
+      "category": "analysis-evasion",
+      "pattern": "",
+      "confidence": 0.8,
+      "file": "apps/web/data/mentions.json",
+      "line": 1,
+      "message": "Suspicious Unicode normalization or mixed-script content",
+      "finding": ""
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "apps/web/lib/open-collective.ts",
+      "line": 5,
+      "message": "External Transmission",
+      "finding": "https://api.opencollective.com/"
+     },
+     {
+      "rule": "EA1",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Unrestricted Tool Access",
+      "confidence": 0.8,
+      "file": "README.md",
+      "line": 225,
+      "message": "Unrestricted Tool Access",
+      "finding": "execute arbitrary code"
+     },
+     {
+      "rule": "EA1",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Unrestricted Tool Access",
+      "confidence": 0.8,
+      "file": "docs/generated/rules-catalog.md",
+      "line": 115,
+      "message": "Unrestricted Tool Access",
+      "finding": "execute arbitrary code"
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.8,
+      "file": "README.md",
+      "line": 102,
+      "message": "Skill Enumeration",
+      "finding": "skills/frontend-checklist-global/SKILL.md"
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.8,
+      "file": "docs/global-skill-benchmark.md",
+      "line": 24,
+      "message": "Skill Enumeration",
+      "finding": "skills/frontend-checklist-global/SKILL.md"
+     },
+     {
+      "rule": "P9",
+      "severity": "MEDIUM",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "confidence": 0.7,
+      "file": "packages/analytics/README.md",
+      "line": 16,
+      "message": "Whitespace Padding",
+      "finding": "U+0020 x90"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "apps/web/lib/server/__tests__/profile-service.test.ts",
+      "line": 115,
+      "message": "External Transmission",
+      "finding": "https://api.github.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "apps/web/lib/server/__tests__/profile-service.test.ts",
+      "line": 234,
+      "message": "External Transmission",
+      "finding": "https://api.github.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "apps/web/lib/server/github-profile-fetch.ts",
+      "line": 59,
+      "message": "External Transmission",
+      "finding": "https://api.github.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "apps/web/lib/server/github-profile-fetch.ts",
+      "line": 105,
+      "message": "External Transmission",
+      "finding": "https://api.github.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "apps/web/lib/server/github-profile-fetch.ts",
+      "line": 138,
+      "message": "External Transmission",
+      "finding": "https://api.github.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "packages/config/src/routes.ts",
+      "line": 20,
+      "message": "External Transmission",
+      "finding": "https://api.github.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "packages/config/src/routes.ts",
+      "line": 21,
+      "message": "External Transmission",
+      "finding": "https://api.github.com/"
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.6,
+      "file": "packages/content/rules/en/html/clean-up-comments.mdx",
+      "line": 150,
+      "message": "Unsafe Defaults",
+      "finding": "debugMode = true"
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.6,
+      "file": "packages/content/rules/en/html/clean-up-comments.mdx",
+      "line": 571,
+      "message": "Unsafe Defaults",
+      "finding": "DEBUG_MODE = true"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": "packages/content/rules/en/html/w3c-compliant.mdx",
+      "line": 442,
+      "message": "External Transmission",
+      "finding": "curl -H \"Content-Type: text/html; charset=utf-8\" \\\n           --data-binary @dist/index.html \\\n           https://validator.w3.org/nu/?out=json\n  artifacts:\n    reports:\n      junit: validation-report"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "packages/content/rules/en/performance/http-requests.mdx",
+      "line": 205,
+      "message": "External Transmission",
+      "finding": "https://analytics.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "packages/content/rules/en/performance/third-party-scripts.mdx",
+      "line": 100,
+      "message": "External Transmission",
+      "finding": "https://analytics.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "packages/content/rules/en/performance/third-party-scripts.mdx",
+      "line": 107,
+      "message": "External Transmission",
+      "finding": "https://analytics.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "packages/content/rules/en/performance/third-party-scripts.mdx",
+      "line": 212,
+      "message": "External Transmission",
+      "finding": "https://analytics.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "packages/content/rules/en/security/referrer-policy.mdx",
+      "line": 193,
+      "message": "External Transmission",
+      "finding": "https://analytics.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": "packages/content/rules/en/security/blocked-links.mdx",
+      "line": 177,
+      "message": "External Transmission",
+      "finding": "fetch('https://www.google-analytics.com/mp/collect', {\n    method: 'POST'"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": "packages/content/rules/en/security/form-captcha.mdx",
+      "line": 133,
+      "message": "External Transmission",
+      "finding": "fetch(\n    'https://challenges.cloudflare.com/turnstile/v0/siteverify',\n    {\n      method: 'POST'"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": "packages/content/rules/en/security/form-https.mdx",
+      "line": 142,
+      "message": "External Transmission",
+      "finding": "fetch('http://api.example.com/login', {\n  method: 'POST'"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "packages/content/rules/en/security/form-https.mdx",
+      "line": 142,
+      "message": "External Transmission",
+      "finding": "http://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "packages/content/rules/en/javascript/cross-origin-security.mdx",
+      "line": 150,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "packages/content/rules/en/security/form-https.mdx",
+      "line": 148,
+      "message": "External Transmission",
+      "finding": "https://api.example.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": "packages/content/rules/en/security/form-https.mdx",
+      "line": 148,
+      "message": "External Transmission",
+      "finding": "fetch('https://api.example.com/login', {\n  method: 'POST'"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "packages/content/rules/en/security/leaked-secrets.mdx",
+      "line": 122,
+      "message": "External Transmission",
+      "finding": "https://api.stripe.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "packages/content/rules/en/security/password-field-security.mdx",
+      "line": 583,
+      "message": "External Transmission",
+      "finding": "https://api.pwnedpasswords.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": "packages/content/rules/en/security/session-cookie-flags.mdx",
+      "line": 260,
+      "message": "External Transmission",
+      "finding": "curl\ncurl -I -s https://example.com/api/login -d "
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/testing/contract-testing.mdx",
+      "line": 375,
+      "message": "MCP server referenced without pinned version: 'npx pact-broker'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/contract-testing/references/rule.md",
+      "line": 285,
+      "message": "MCP server referenced without pinned version: 'npx pact-broker'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/images/avif-format.mdx",
+      "line": 138,
+      "message": "MCP server referenced without pinned version: 'npx sharp-cli'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/images/image-compression.mdx",
+      "line": 83,
+      "message": "MCP server referenced without pinned version: 'npx sharp-cli'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/images/webp-format.mdx",
+      "line": 133,
+      "message": "MCP server referenced without pinned version: 'npx sharp-cli'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/avif-format/references/rule.md",
+      "line": 70,
+      "message": "MCP server referenced without pinned version: 'npx sharp-cli'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/image-compression/references/rule.md",
+      "line": 17,
+      "message": "MCP server referenced without pinned version: 'npx sharp-cli'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/webp-format/references/rule.md",
+      "line": 71,
+      "message": "MCP server referenced without pinned version: 'npx sharp-cli'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/images/image-compression.mdx",
+      "line": 89,
+      "message": "MCP server referenced without pinned version: 'npx svgo'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/images/optimized.mdx",
+      "line": 174,
+      "message": "MCP server referenced without pinned version: 'npx svgo'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/images/optimized.mdx",
+      "line": 177,
+      "message": "MCP server referenced without pinned version: 'npx svgo'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/images/svg-inline.mdx",
+      "line": 256,
+      "message": "MCP server referenced without pinned version: 'npx svgo'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/images/svg-inline.mdx",
+      "line": 259,
+      "message": "MCP server referenced without pinned version: 'npx svgo'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/images/svg-inline.mdx",
+      "line": 263,
+      "message": "MCP server referenced without pinned version: 'npx svgo'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/image-compression/references/rule.md",
+      "line": 23,
+      "message": "MCP server referenced without pinned version: 'npx svgo'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/optimized/references/rule.md",
+      "line": 63,
+      "message": "MCP server referenced without pinned version: 'npx svgo'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/optimized/references/rule.md",
+      "line": 66,
+      "message": "MCP server referenced without pinned version: 'npx svgo'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/svg-inline/references/rule.md",
+      "line": 134,
+      "message": "MCP server referenced without pinned version: 'npx svgo'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/svg-inline/references/rule.md",
+      "line": 137,
+      "message": "MCP server referenced without pinned version: 'npx svgo'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/svg-inline/references/rule.md",
+      "line": 141,
+      "message": "MCP server referenced without pinned version: 'npx svgo'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/javascript/javascript-minification.mdx",
+      "line": 682,
+      "message": "MCP server referenced without pinned version: 'npx webpack-bundle-analyzer'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/javascript-minification/references/rule.md",
+      "line": 607,
+      "message": "MCP server referenced without pinned version: 'npx webpack-bundle-analyzer'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/seo/llms-txt.mdx",
+      "line": 98,
+      "message": "MCP server referenced without pinned version: 'npx -y @thedaviddias/mcp-llms-txt-explorer'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/seo/llms-txt.mdx",
+      "line": 195,
+      "message": "MCP server referenced without pinned version: 'npx -y @thedaviddias/mcp-llms-txt-explorer'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/llms-txt/references/rule.md",
+      "line": 98,
+      "message": "MCP server referenced without pinned version: 'npx -y @thedaviddias/mcp-llms-txt-explorer'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/security/mixed-content.mdx",
+      "line": 220,
+      "message": "MCP server referenced without pinned version: 'npx lighthouse'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/mixed-content/references/rule.md",
+      "line": 133,
+      "message": "MCP server referenced without pinned version: 'npx lighthouse'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/testing/performance-budget.mdx",
+      "line": 132,
+      "message": "MCP server referenced without pinned version: 'npx size-limit'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/performance-budget/references/rule.md",
+      "line": 51,
+      "message": "MCP server referenced without pinned version: 'npx size-limit'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/testing/performance-budget.mdx",
+      "line": 175,
+      "message": "MCP server referenced without pinned version: 'npx lhci'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/performance-budget/references/rule.md",
+      "line": 94,
+      "message": "MCP server referenced without pinned version: 'npx lhci'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/css/styles-lint.mdx",
+      "line": 743,
+      "message": "MCP server referenced without pinned version: 'npx husky'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/css/styles-lint.mdx",
+      "line": 744,
+      "message": "MCP server referenced without pinned version: 'npx husky'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/javascript/javascript-linter.mdx",
+      "line": 831,
+      "message": "MCP server referenced without pinned version: 'npx husky'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/javascript/javascript-linter.mdx",
+      "line": 832,
+      "message": "MCP server referenced without pinned version: 'npx husky'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/javascript/javascript-linter.mdx",
+      "line": 835,
+      "message": "MCP server referenced without pinned version: 'npx husky'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/javascript-linter/references/rule.md",
+      "line": 747,
+      "message": "MCP server referenced without pinned version: 'npx husky'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/javascript-linter/references/rule.md",
+      "line": 748,
+      "message": "MCP server referenced without pinned version: 'npx husky'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/javascript-linter/references/rule.md",
+      "line": 751,
+      "message": "MCP server referenced without pinned version: 'npx husky'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/styles-lint/references/rule.md",
+      "line": 674,
+      "message": "MCP server referenced without pinned version: 'npx husky'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/styles-lint/references/rule.md",
+      "line": 675,
+      "message": "MCP server referenced without pinned version: 'npx husky'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/css/styles-lint.mdx",
+      "line": 744,
+      "message": "MCP server referenced without pinned version: 'npx lint-staged'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/javascript/javascript-linter.mdx",
+      "line": 832,
+      "message": "MCP server referenced without pinned version: 'npx lint-staged'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/javascript-linter/references/rule.md",
+      "line": 748,
+      "message": "MCP server referenced without pinned version: 'npx lint-staged'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/styles-lint/references/rule.md",
+      "line": 675,
+      "message": "MCP server referenced without pinned version: 'npx lint-staged'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/css/unused-css.mdx",
+      "line": 191,
+      "message": "MCP server referenced without pinned version: 'npx purgecss'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/unused-css/references/rule.md",
+      "line": 127,
+      "message": "MCP server referenced without pinned version: 'npx purgecss'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/testing/e2e-testing.mdx",
+      "line": 213,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/testing/e2e-testing.mdx",
+      "line": 216,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/testing/visual-regression.mdx",
+      "line": 118,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/testing/visual-regression.mdx",
+      "line": 121,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/testing/visual-regression.mdx",
+      "line": 124,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "packages/content/rules/en/testing/visual-regression.mdx",
+      "line": 182,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/e2e-testing/references/rule.md",
+      "line": 157,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/e2e-testing/references/rule.md",
+      "line": 160,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/visual-regression/references/rule.md",
+      "line": 45,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/visual-regression/references/rule.md",
+      "line": 48,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/visual-regression/references/rule.md",
+      "line": 51,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.7,
+      "file": "skills/visual-regression/references/rule.md",
+      "line": 106,
+      "message": "MCP server referenced without pinned version: 'npx playwright'.",
+      "finding": ""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 27,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@content-collections/core\": \"^0.15.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 28,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@content-collections/mdx\": \"^0.2.2\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 29,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@content-collections/next\": \"^0.2.11\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 31,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@next/third-parties\": \"^16.2.6\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 32,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@openpanel/nextjs\": \"^1.5.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 34,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-accordion\": \"^1.2.12\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 39,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-radio-group\": \"^1.3.8\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 61,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@sentry/nextjs\": \"^10.55.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 62,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@tanstack/react-form\": \"^1.33.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 64,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@tanstack/react-query-devtools\": \"^5.100.14\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 66,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@upstash/ratelimit\": \"^2.0.8\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 67,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@upstash/redis\": \"^1.38.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 69,
+      "message": "Unpinned Dependencies",
+      "finding": "\"botid\": \"^1.5.11\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 71,
+      "message": "Unpinned Dependencies",
+      "finding": "\"cmdk\": \"^1.1.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 72,
+      "message": "Unpinned Dependencies",
+      "finding": "\"focus-trap-react\": \"^12.0.2\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 74,
+      "message": "Unpinned Dependencies",
+      "finding": "\"fuse.js\": \"^7.3.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 75,
+      "message": "Unpinned Dependencies",
+      "finding": "\"lru-cache\": \"^11.5.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 77,
+      "message": "Unpinned Dependencies",
+      "finding": "\"next-safe-action\": \"^8.5.3\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 78,
+      "message": "Unpinned Dependencies",
+      "finding": "\"next-themes\": \"^0.4.6\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 79,
+      "message": "Unpinned Dependencies",
+      "finding": "\"nuqs\": \"^2.8.9\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 80,
+      "message": "Unpinned Dependencies",
+      "finding": "\"open-graph-scraper\": \"^6.11.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 83,
+      "message": "Unpinned Dependencies",
+      "finding": "\"rehype-autolink-headings\": \"^7.1.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 84,
+      "message": "Unpinned Dependencies",
+      "finding": "\"rehype-pretty-code\": \"^0.14.3\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 85,
+      "message": "Unpinned Dependencies",
+      "finding": "\"rehype-slug\": \"^6.0.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 86,
+      "message": "Unpinned Dependencies",
+      "finding": "\"remark-gfm\": \"^4.0.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 87,
+      "message": "Unpinned Dependencies",
+      "finding": "\"shiki\": \"^4.1.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 92,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@axe-core/react\": \"^4.11.3\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 93,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@content-collections/cli\": \"^0.1.9\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 94,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@playwright/test\": \"^1.60.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 96,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@tailwindcss/postcss\": \"^4.3.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 97,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@tailwindcss/upgrade\": \"^4.3.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 98,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@testing-library/jest-dom\": \"^6.9.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 100,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@testing-library/user-event\": \"^14.6.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 105,
+      "message": "Unpinned Dependencies",
+      "finding": "\"concurrently\": \"^10.0.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 106,
+      "message": "Unpinned Dependencies",
+      "finding": "\"eslint-plugin-jsx-a11y\": \"^6.10.2\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 108,
+      "message": "Unpinned Dependencies",
+      "finding": "\"jest-environment-jsdom\": \"^30.4.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 109,
+      "message": "Unpinned Dependencies",
+      "finding": "\"tailwindcss\": \"^4.3.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "configs/config-next/package.json",
+      "line": 13,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@next/bundle-analyzer\": \"^16.2.6\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "configs/config-next/package.json",
+      "line": 14,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@t3-oss/env-core\": \"^0.13.11\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "configs/config-next/package.json",
+      "line": 15,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@t3-oss/env-nextjs\": \"^0.13.11\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "package.json",
+      "line": 63,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@biomejs/biome\": \"^2.4.16\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "package.json",
+      "line": 64,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@commitlint/cli\": \"^21.0.2\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "package.json",
+      "line": 65,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@commitlint/config-conventional\": \"^21.0.2\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "package.json",
+      "line": 66,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@mdn/browser-compat-data\": \"^8.0.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "package.json",
+      "line": 67,
+      "message": "Unpinned Dependencies",
+      "finding": "\"baseline-browser-mapping\": \"^2.10.32\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "package.json",
+      "line": 68,
+      "message": "Unpinned Dependencies",
+      "finding": "\"browserslist\": \"^4.28.2\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "package.json",
+      "line": 69,
+      "message": "Unpinned Dependencies",
+      "finding": "\"gray-matter\": \"^4.0.3\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "package.json",
+      "line": 70,
+      "message": "Unpinned Dependencies",
+      "finding": "\"lefthook\": \"^2.1.9\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "package.json",
+      "line": 71,
+      "message": "Unpinned Dependencies",
+      "finding": "\"remark-mdx\": \"^3.1.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "package.json",
+      "line": 72,
+      "message": "Unpinned Dependencies",
+      "finding": "\"remark-parse\": \"^11.0.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "package.json",
+      "line": 75,
+      "message": "Unpinned Dependencies",
+      "finding": "\"turbo\": \"^2.9.16\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "package.json",
+      "line": 77,
+      "message": "Unpinned Dependencies",
+      "finding": "\"unified\": \"^11.0.5\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "package.json",
+      "line": 78,
+      "message": "Unpinned Dependencies",
+      "finding": "\"unist-util-visit\": \"^5.1.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "packages/analytics/package.json",
+      "line": 19,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@openpanel/sdk\": \"^1.3.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "packages/analytics/package.json",
+      "line": 20,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@openpanel/web\": \"^1.4.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "packages/analytics/package.json",
+      "line": 24,
+      "message": "Unpinned Dependencies",
+      "finding": "\"server-only\": \"^0.0.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "packages/auth/package.json",
+      "line": 25,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@prisma/adapter-pg\": \"^7.8.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "apps/web/package.json",
+      "line": 68,
+      "message": "Unpinned Dependencies",
+      "finding": "\"better-auth\": \"^1.6.11\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "packages/auth/package.json",
+      "line": 27,
+      "message": "Unpinned Dependencies",
+      "finding": "\"better-auth\": \"^1.6.11\""
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "475 findings · 1 check pending · 1 check not applicable",
+  "block": "SECURITY · commit 30756a7\n\n  Dependency vulnerabilities\n    93 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-54272  ip-address@10.2.0\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-69185  socket.io-parser@4.2.6\n      CVE-2026-67213  nanoid@3.3.12\n      CVE-2026-6733  undici@7.26.0\n      CVE-2026-13311  shell-quote@1.8.4\n      GHSA-3f6p-5ww8-9rcr  mysql2@3.15.3\n      CVE-2026-13149  brace-expansion@1.1.15\n      CVE-2026-13149  brace-expansion@2.1.1\n      CVE-2026-13149  brace-expansion@5.0.6\n      CVE-2026-64647  next@16.2.6\n      CVE-2026-64646  next@16.2.6\n      CVE-2026-13676  fast-uri@3.1.2\n      CVE-2026-13697  undici@7.26.0\n      CVE-2026-82417  qs@6.15.2\n      CVE-2026-69198  ip-address@10.2.0\n      CVE-2026-59869  js-yaml@3.14.2\n      CVE-2026-59869  js-yaml@4.1.1\n      CVE-2026-71848  hono@4.12.23\n      CVE-2026-75838  dompurify@3.4.7\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    119 findings                     zizmor 1.30.0 · 2026-09-03\n      template-injection  .github/actions/audit/action.yml:44\n      template-injection  .github/actions/audit/action.yml:45\n      template-injection  .github/actions/audit/action.yml:69\n      template-injection  .github/actions/audit/action.yml:70\n      artipacked  .github/workflows/ci.yml:18\n      artipacked  .github/workflows/ci.yml:43\n      artipacked  .github/workflows/ci.yml:71\n      artipacked  .github/workflows/ci.yml:99\n      artipacked  .github/workflows/ci.yml:127\n      artipacked  .github/workflows/ci.yml:176\n      artipacked  .github/workflows/ci.yml:223\n      artipacked  .github/workflows/ci.yml:287\n      excessive-permissions  .github/workflows/ci.yml:1\n      excessive-permissions  .github/workflows/ci.yml:13\n      excessive-permissions  .github/workflows/ci.yml:38\n      excessive-permissions  .github/workflows/ci.yml:66\n      excessive-permissions  .github/workflows/ci.yml:94\n      excessive-permissions  .github/workflows/ci.yml:122\n      excessive-permissions  .github/workflows/ci.yml:171\n      excessive-permissions  .github/workflows/ci.yml:216\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    263 findings                     skillspector 2.11.0 · 2026-09-03\n      PE3 HIGH  .gitignore:51  Credential Access\n      TM1 HIGH  AGENTS.md:295  Tool Parameter Abuse\n      P2 HIGH  README-OLD.md:26  Hidden Instructions\n      P2 HIGH  README-OLD.md:49  Hidden Instructions\n      P2 HIGH  README-OLD.md:58  Hidden Instructions\n      P2 HIGH  README-OLD.md:71  Hidden Instructions\n      P2 HIGH  README-OLD.md:80  Hidden Instructions\n      P2 HIGH  README-OLD.md:115  Hidden Instructions\n      P2 HIGH  README-OLD.md:134  Hidden Instructions\n      P2 HIGH  README-OLD.md:153  Hidden Instructions\n      P2 HIGH  README-OLD.md:176  Hidden Instructions\n      P2 HIGH  README-OLD.md:182  Hidden Instructions\n      P2 HIGH  README-OLD.md:257  Hidden Instructions\n      P2 HIGH  README-OLD.md:262  Hidden Instructions\n      P2 HIGH  README-OLD.md:283  Hidden Instructions\n      P2 HIGH  README-OLD.md:29  Hidden Instructions\n      P2 HIGH  README-OLD.md:52  Hidden Instructions\n      P2 HIGH  README-OLD.md:178  Hidden Instructions\n      P2 HIGH  README-OLD.md:221  Hidden Instructions\n      P2 HIGH  README-OLD.md:260  Hidden Instructions\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

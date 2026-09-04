@@ -1,0 +1,3744 @@
+{
+ "security": {
+  "repo_id": 719367888,
+  "commit_sha": "7f892a8ee3f802862b504a156d4bb437a41cdf49",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 432,
+    "findings": [
+     {
+      "id": "GHSA-26jh-r8g2-6fpr",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'GHSA-26jh-r8g2-6fpr'."
+     },
+     {
+      "id": "CVE-2024-47871",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-47871' (also known as 'PYSEC-2024-219', 'GHSA-279j-x4gx-hfrh')."
+     },
+     {
+      "id": "CVE-2026-4372",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2026-4372' (also known as 'PYSEC-2026-2289', 'GHSA-29pf-2h5f-8g72')."
+     },
+     {
+      "id": "CVE-2026-4372",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2026-4372' (also known as 'PYSEC-2026-2289', 'GHSA-29pf-2h5f-8g72')."
+     },
+     {
+      "id": "CVE-2026-4372",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2026-4372' (also known as 'PYSEC-2026-2289', 'GHSA-29pf-2h5f-8g72')."
+     },
+     {
+      "id": "CVE-2026-4372",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2026-4372' (also known as 'PYSEC-2026-2289', 'GHSA-29pf-2h5f-8g72')."
+     },
+     {
+      "id": "CVE-2026-4372",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2026-4372' (also known as 'PYSEC-2026-2289', 'GHSA-29pf-2h5f-8g72')."
+     },
+     {
+      "id": "CVE-2026-4372",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.57.5",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.57.5' is vulnerable to 'CVE-2026-4372' (also known as 'PYSEC-2026-2289', 'GHSA-29pf-2h5f-8g72')."
+     },
+     {
+      "id": "CVE-2026-67325",
+      "aliases": [
+       "GHSA-2f96-g7mh-g2hx"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-67325' (also known as 'GHSA-2f96-g7mh-g2hx')."
+     },
+     {
+      "id": "CVE-2026-54279",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-54279' (also known as 'PYSEC-2026-2112', 'GHSA-2fqr-mr3j-6wp8')."
+     },
+     {
+      "id": "CVE-2026-34514",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-34514' (also known as 'PYSEC-2026-2096', 'GHSA-2vrm-gr82-f7m5')."
+     },
+     {
+      "id": "CVE-2026-49476",
+      "aliases": [],
+      "package": "soupsieve",
+      "version": "2.7",
+      "file": "requirements.txt",
+      "message": "Package 'soupsieve@2.7' is vulnerable to 'CVE-2026-49476' (also known as 'PYSEC-2026-3071', 'GHSA-2wc2-fm75-p42x')."
+     },
+     {
+      "id": "CVE-2025-66471",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'urllib3@2.5.0' is vulnerable to 'CVE-2025-66471' (also known as 'PYSEC-2026-1994', 'GHSA-2xpw-w6gg-jr37')."
+     },
+     {
+      "id": "CVE-2024-46455",
+      "aliases": [],
+      "package": "unstructured",
+      "version": "0.10.30",
+      "file": "requirements.txt",
+      "message": "Package 'unstructured@0.10.30' is vulnerable to 'CVE-2024-46455' (also known as 'GO-2024-3315', 'PYSEC-2026-1993', 'GHSA-32r8-54hf-c9p3')."
+     },
+     {
+      "id": "CVE-2024-34511",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-34511' (also known as 'PYSEC-2026-1407', 'GHSA-34rf-p3r3-58x2')."
+     },
+     {
+      "id": "CVE-2026-45134",
+      "aliases": [],
+      "package": "langchain",
+      "version": "0.0.292",
+      "file": "requirements.txt",
+      "message": "Package 'langchain@0.0.292' is vulnerable to 'CVE-2026-45134' (also known as 'PYSEC-2026-2555', 'PYSEC-2026-2560', 'PYSEC-2026-2582', 'GHSA-3644-q5cj-c5c7')."
+     },
+     {
+      "id": "CVE-2026-45134",
+      "aliases": [],
+      "package": "langsmith",
+      "version": "0.0.92",
+      "file": "requirements.txt",
+      "message": "Package 'langsmith@0.0.92' is vulnerable to 'CVE-2026-45134' (also known as 'PYSEC-2026-2555', 'PYSEC-2026-2560', 'PYSEC-2026-2582', 'GHSA-3644-q5cj-c5c7')."
+     },
+     {
+      "id": "CVE-2025-2953",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-2953' (also known as 'BIT-pytorch-2025-2953', 'PYSEC-2025-191', 'GHSA-3749-ghw9-m3mg')."
+     },
+     {
+      "id": "CVE-2025-2953",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-2953' (also known as 'BIT-pytorch-2025-2953', 'PYSEC-2025-191', 'GHSA-3749-ghw9-m3mg')."
+     },
+     {
+      "id": "CVE-2025-3933",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-3933' (also known as 'PYSEC-2026-1977', 'GHSA-37mw-44qp-f5jm')."
+     },
+     {
+      "id": "CVE-2025-3933",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-3933' (also known as 'PYSEC-2026-1977', 'GHSA-37mw-44qp-f5jm')."
+     },
+     {
+      "id": "CVE-2025-3933",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-3933' (also known as 'PYSEC-2026-1977', 'GHSA-37mw-44qp-f5jm')."
+     },
+     {
+      "id": "CVE-2025-3933",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-3933' (also known as 'PYSEC-2026-1977', 'GHSA-37mw-44qp-f5jm')."
+     },
+     {
+      "id": "CVE-2025-3933",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-3933' (also known as 'PYSEC-2026-1977', 'GHSA-37mw-44qp-f5jm')."
+     },
+     {
+      "id": "CVE-2024-3568",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2024-3568' (also known as 'PYSEC-2026-1978', 'GHSA-37q5-v5qm-c9v8')."
+     },
+     {
+      "id": "CVE-2024-47166",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-47166' (also known as 'PYSEC-2024-197', 'GHSA-37qc-qgx6-9xjv')."
+     },
+     {
+      "id": "CVE-2023-6730",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2023-6730' (also known as 'PYSEC-2023-300', 'GHSA-3863-2447-669p')."
+     },
+     {
+      "id": "CVE-2026-21441",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'urllib3@2.5.0' is vulnerable to 'CVE-2026-21441' (also known as 'PYSEC-2026-1996', 'GHSA-38jv-5279-wg99')."
+     },
+     {
+      "id": "CVE-2026-28414",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2026-28414' (also known as 'PYSEC-2026-64', 'GHSA-39mp-8hj3-5c49')."
+     },
+     {
+      "id": "CVE-2026-28414",
+      "aliases": [],
+      "package": "gradio",
+      "version": "5.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@5.5.0' is vulnerable to 'CVE-2026-28414' (also known as 'PYSEC-2026-64', 'GHSA-39mp-8hj3-5c49')."
+     },
+     {
+      "id": "CVE-2024-47084",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-47084' (also known as 'PYSEC-2024-196', 'GHSA-3c67-5hwx-f6wx')."
+     },
+     {
+      "id": "CVE-2026-73620",
+      "aliases": [
+       "GHSA-3f7w-8rr8-f37f"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-73620' (also known as 'GHSA-3f7w-8rr8-f37f')."
+     },
+     {
+      "id": "CVE-2024-48052",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-48052' (also known as 'PYSEC-2026-1408', 'GHSA-3gf9-wv65-gwh9')."
+     },
+     {
+      "id": "CVE-2026-63311",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-63311' (also known as 'PYSEC-2026-3723', 'GHSA-3gqm-fcw5-w839')."
+     },
+     {
+      "id": "CVE-2024-2965",
+      "aliases": [],
+      "package": "langchain",
+      "version": "0.0.292",
+      "file": "requirements.txt",
+      "message": "Package 'langchain@0.0.292' is vulnerable to 'CVE-2024-2965' (also known as 'PYSEC-2024-118', 'PYSEC-2026-2561', 'GHSA-3hjh-jh2h-vrg6')."
+     },
+     {
+      "id": "CVE-2026-69097",
+      "aliases": [
+       "GHSA-3rp5-jjmw-4wv2"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-69097' (also known as 'GHSA-3rp5-jjmw-4wv2')."
+     },
+     {
+      "id": "CVE-2026-34517",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-34517' (also known as 'PYSEC-2026-2099', 'GHSA-3wq7-rqq7-wx6j')."
+     },
+     {
+      "id": "CVE-2026-49853",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.5.1",
+      "file": "requirements.txt",
+      "message": "Package 'tornado@6.5.1' is vulnerable to 'CVE-2026-49853' (also known as 'PYSEC-2026-3387', 'GHSA-3x9g-8vmp-wqvf')."
+     },
+     {
+      "id": "CVE-2025-68480",
+      "aliases": [],
+      "package": "marshmallow",
+      "version": "3.26.1",
+      "file": "requirements.txt",
+      "message": "Package 'marshmallow@3.26.1' is vulnerable to 'CVE-2025-68480' (also known as 'PYSEC-2026-1605', 'GHSA-428g-f7cq-pgp5')."
+     },
+     {
+      "id": "CVE-2026-55379",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-55379' (also known as 'BIT-pillow-2026-55379', 'PYSEC-2026-2255', 'GHSA-45hq-cxwh-f6vc')."
+     },
+     {
+      "id": "CVE-2024-8309",
+      "aliases": [],
+      "package": "langchain",
+      "version": "0.0.292",
+      "file": "requirements.txt",
+      "message": "Package 'langchain@0.0.292' is vulnerable to 'CVE-2024-8309' (also known as 'PYSEC-2024-115', 'PYSEC-2026-1507', 'GHSA-45pg-36p6-83v9')."
+     },
+     {
+      "id": "CVE-2026-33236",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-33236' (also known as 'PYSEC-2026-2237', 'GHSA-469j-vmhf-r6v7')."
+     },
+     {
+      "id": "CVE-2024-1727",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-1727' (also known as 'PYSEC-2026-1409', 'GHSA-48cq-79qq-6f7x')."
+     },
+     {
+      "id": "CVE-2026-54273",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-54273' (also known as 'PYSEC-2026-2107', 'GHSA-4fvr-rgm6-gqmc')."
+     },
+     {
+      "id": "CVE-2026-76219",
+      "aliases": [
+       "GHSA-4gmw-gg2m-w46p"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-76219' (also known as 'GHSA-4gmw-gg2m-w46p')."
+     },
+     {
+      "id": "CVE-2025-47278",
+      "aliases": [],
+      "package": "flask",
+      "version": "3.1.0",
+      "file": "requirements.txt",
+      "message": "Package 'flask@3.1.0' is vulnerable to 'CVE-2025-47278' (also known as 'PYSEC-2026-1377', 'GHSA-4grg-w6v8-c28g')."
+     },
+     {
+      "id": "CVE-2026-54275",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-54275' (also known as 'PYSEC-2026-237', 'GHSA-4m7w-qmgq-4wj5')."
+     },
+     {
+      "id": "CVE-2026-71428",
+      "aliases": [
+       "GHSA-4mvj-m6j5-pmf7"
+      ],
+      "package": "unstructured",
+      "version": "0.10.30",
+      "file": "requirements.txt",
+      "message": "Package 'unstructured@0.10.30' is vulnerable to 'CVE-2026-71428' (also known as 'GHSA-4mvj-m6j5-pmf7')."
+     },
+     {
+      "id": "CVE-2024-47868",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-47868' (also known as 'PYSEC-2024-217', 'GHSA-4q3c-cj7g-jcwf')."
+     },
+     {
+      "id": "CVE-2025-6921",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-6921' (also known as 'PYSEC-2026-1980', 'GHSA-4w7r-h757-3r74')."
+     },
+     {
+      "id": "CVE-2025-6921",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-6921' (also known as 'PYSEC-2026-1980', 'GHSA-4w7r-h757-3r74')."
+     },
+     {
+      "id": "CVE-2025-6921",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-6921' (also known as 'PYSEC-2026-1980', 'GHSA-4w7r-h757-3r74')."
+     },
+     {
+      "id": "CVE-2025-6921",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-6921' (also known as 'PYSEC-2026-1980', 'GHSA-4w7r-h757-3r74')."
+     },
+     {
+      "id": "CVE-2025-6921",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-6921' (also known as 'PYSEC-2026-1980', 'GHSA-4w7r-h757-3r74')."
+     },
+     {
+      "id": "CVE-2026-55798",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-55798' (also known as 'BIT-pillow-2026-55798', 'PYSEC-2026-2257', 'GHSA-4x4j-2g7c-83w6')."
+     },
+     {
+      "id": "CVE-2026-4539",
+      "aliases": [],
+      "package": "pygments",
+      "version": "2.19.2",
+      "file": "requirements.txt",
+      "message": "Package 'pygments@2.19.2' is vulnerable to 'CVE-2026-4539' (also known as 'PYSEC-2026-2987', 'GHSA-5239-wwwm-4pmq')."
+     },
+     {
+      "id": "CVE-2026-73619",
+      "aliases": [
+       "GHSA-539m-9xh6-q6rr"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-73619' (also known as 'GHSA-539m-9xh6-q6rr')."
+     },
+     {
+      "id": "CVE-2025-32434",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-32434' (also known as 'BIT-pytorch-2025-32434', 'PYSEC-2025-41', 'GHSA-53q9-r3pm-6pq6')."
+     },
+     {
+      "id": "CVE-2025-69226",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2025-69226' (also known as 'PYSEC-2026-1097', 'GHSA-54jq-c3m8-4m76')."
+     },
+     {
+      "id": "CVE-2024-47167",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-47167' (also known as 'PYSEC-2024-215', 'GHSA-576c-3j53-r9jj')."
+     },
+     {
+      "id": "CVE-2025-6638",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-6638' (also known as 'PYSEC-2026-1981', 'GHSA-59p9-h35m-wg4g')."
+     },
+     {
+      "id": "CVE-2025-6638",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-6638' (also known as 'PYSEC-2026-1981', 'GHSA-59p9-h35m-wg4g')."
+     },
+     {
+      "id": "CVE-2025-6638",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-6638' (also known as 'PYSEC-2026-1981', 'GHSA-59p9-h35m-wg4g')."
+     },
+     {
+      "id": "CVE-2025-6638",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-6638' (also known as 'PYSEC-2026-1981', 'GHSA-59p9-h35m-wg4g')."
+     },
+     {
+      "id": "CVE-2025-6638",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-6638' (also known as 'PYSEC-2026-1981', 'GHSA-59p9-h35m-wg4g')."
+     },
+     {
+      "id": "CVE-2024-8966",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-8966' (also known as 'PYSEC-2026-1410', 'GHSA-5cpq-9538-jm2j')."
+     },
+     {
+      "id": "CVE-2024-8966",
+      "aliases": [],
+      "package": "gradio",
+      "version": "5.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@5.5.0' is vulnerable to 'CVE-2024-8966' (also known as 'PYSEC-2026-1410', 'GHSA-5cpq-9538-jm2j')."
+     },
+     {
+      "id": "CVE-2026-53539",
+      "aliases": [],
+      "package": "python-multipart",
+      "version": "0.0.20",
+      "file": "requirements.txt",
+      "message": "Package 'python-multipart@0.0.20' is vulnerable to 'CVE-2026-53539' (also known as 'PYSEC-2026-3036', 'GHSA-5rvq-cxj2-64vf')."
+     },
+     {
+      "id": "CVE-2025-69534",
+      "aliases": [],
+      "package": "markdown",
+      "version": "3.3.7",
+      "file": "requirements.txt",
+      "message": "Package 'markdown@3.3.7' is vulnerable to 'CVE-2025-69534' (also known as 'PYSEC-2026-89', 'GHSA-5wmx-573v-2qwq')."
+     },
+     {
+      "id": "CVE-2023-47248",
+      "aliases": [],
+      "package": "pyarrow",
+      "version": "12.0.0",
+      "file": "requirements.txt",
+      "message": "Package 'pyarrow@12.0.0' is vulnerable to 'CVE-2023-47248' (also known as 'PYSEC-2023-238', 'GHSA-5wvp-7f3h-6wmm')."
+     },
+     {
+      "id": "CVE-2026-54060",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-54060' (also known as 'BIT-pillow-2026-54060', 'PYSEC-2026-2254', 'GHSA-5x94-69rx-g8h2')."
+     },
+     {
+      "id": "CVE-2026-54058",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-54058' (also known as 'BIT-pillow-2026-54058', 'PYSEC-2026-3493', 'GHSA-62p4-gmf7-7g93')."
+     },
+     {
+      "id": "CVE-2026-34520",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-34520' (also known as 'PYSEC-2026-2102', 'GHSA-63hf-3vf5-4wqf')."
+     },
+     {
+      "id": "CVE-2026-54277",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-54277' (also known as 'PYSEC-2026-2110', 'GHSA-63hw-fmq6-xxg2')."
+     },
+     {
+      "id": "CVE-2026-23490",
+      "aliases": [],
+      "package": "pyasn1",
+      "version": "0.6.1",
+      "file": "requirements.txt",
+      "message": "Package 'pyasn1@0.6.1' is vulnerable to 'CVE-2026-23490' (also known as 'PYSEC-2026-1810', 'GHSA-63vm-454h-vhhq')."
+     },
+     {
+      "id": "CVE-2023-46229",
+      "aliases": [],
+      "package": "langchain",
+      "version": "0.0.292",
+      "file": "requirements.txt",
+      "message": "Package 'langchain@0.0.292' is vulnerable to 'CVE-2023-46229' (also known as 'PYSEC-2023-205', 'GHSA-655w-fm8m-m478')."
+     },
+     {
+      "id": "CVE-2026-45409",
+      "aliases": [],
+      "package": "idna",
+      "version": "3.10",
+      "file": "requirements.txt",
+      "message": "Package 'idna@3.10' is vulnerable to 'CVE-2026-45409' (also known as 'PYSEC-2026-215', 'GHSA-65pc-fj4g-8rjx')."
+     },
+     {
+      "id": "CVE-2026-10783",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2026-10783' (also known as 'PYSEC-2026-211', 'GHSA-6655-8ph2-63j3')."
+     },
+     {
+      "id": "CVE-2026-10783",
+      "aliases": [],
+      "package": "gradio",
+      "version": "5.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@5.5.0' is vulnerable to 'CVE-2026-10783' (also known as 'PYSEC-2026-211', 'GHSA-6655-8ph2-63j3')."
+     },
+     {
+      "id": "CVE-2026-10783",
+      "aliases": [],
+      "package": "gradio",
+      "version": "6.9.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@6.9.0' is vulnerable to 'CVE-2026-10783' (also known as 'PYSEC-2026-211', 'GHSA-6655-8ph2-63j3')."
+     },
+     {
+      "id": "CVE-2026-0847",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-0847' (also known as 'PYSEC-2026-98', 'GHSA-68j8-pq59-fqgm')."
+     },
+     {
+      "id": "CVE-2026-27205",
+      "aliases": [],
+      "package": "flask",
+      "version": "3.1.0",
+      "file": "requirements.txt",
+      "message": "Package 'flask@3.1.0' is vulnerable to 'CVE-2026-27205' (also known as 'PYSEC-2026-2151', 'GHSA-68rp-wp8r-4726')."
+     },
+     {
+      "id": "CVE-2025-69224",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2025-69224' (also known as 'PYSEC-2026-1099', 'GHSA-69f9-5gxw-wvc2')."
+     },
+     {
+      "id": "CVE-2026-1839",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2026-1839' (also known as 'PYSEC-2026-2288', 'GHSA-69w3-r845-3855')."
+     },
+     {
+      "id": "CVE-2026-1839",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2026-1839' (also known as 'PYSEC-2026-2288', 'GHSA-69w3-r845-3855')."
+     },
+     {
+      "id": "CVE-2026-1839",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2026-1839' (also known as 'PYSEC-2026-2288', 'GHSA-69w3-r845-3855')."
+     },
+     {
+      "id": "CVE-2026-1839",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2026-1839' (also known as 'PYSEC-2026-2288', 'GHSA-69w3-r845-3855')."
+     },
+     {
+      "id": "CVE-2026-1839",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2026-1839' (also known as 'PYSEC-2026-2288', 'GHSA-69w3-r845-3855')."
+     },
+     {
+      "id": "CVE-2026-1839",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.57.5",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.57.5' is vulnerable to 'CVE-2026-1839' (also known as 'PYSEC-2026-2288', 'GHSA-69w3-r845-3855')."
+     },
+     {
+      "id": "CVE-2023-32786",
+      "aliases": [],
+      "package": "langchain",
+      "version": "0.0.292",
+      "file": "requirements.txt",
+      "message": "Package 'langchain@0.0.292' is vulnerable to 'CVE-2023-32786' (also known as 'PYSEC-2026-1508', 'GHSA-6h8p-4hx9-w66c')."
+     },
+     {
+      "id": "CVE-2026-12072",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-12072' (also known as 'PYSEC-2026-3581', 'GHSA-6hm5-jgcp-p838')."
+     },
+     {
+      "id": "CVE-2026-78680",
+      "aliases": [
+       "GHSA-6hwm-xvph-95vm"
+      ],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-78680' (also known as 'GHSA-6hwm-xvph-95vm')."
+     },
+     {
+      "id": "CVE-2025-69228",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2025-69228' (also known as 'PYSEC-2026-1100', 'GHSA-6jhg-hg63-jvvf')."
+     },
+     {
+      "id": "CVE-2026-53538",
+      "aliases": [],
+      "package": "python-multipart",
+      "version": "0.0.20",
+      "file": "requirements.txt",
+      "message": "Package 'python-multipart@0.0.20' is vulnerable to 'CVE-2026-53538' (also known as 'PYSEC-2026-3037', 'GHSA-6jv3-5f52-599m')."
+     },
+     {
+      "id": "CVE-2025-69223",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2025-69223' (also known as 'PYSEC-2026-1101', 'GHSA-6mq8-rvhq-8wgg')."
+     },
+     {
+      "id": "CVE-2026-73623",
+      "aliases": [
+       "GHSA-6p8h-3wgx-97gf"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-73623' (also known as 'GHSA-6p8h-3wgx-97gf')."
+     },
+     {
+      "id": "CVE-2023-51449",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2023-51449' (also known as 'PYSEC-2023-249', 'GHSA-6qm2-wpxq-7qh2')."
+     },
+     {
+      "id": "CVE-2026-59199",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-59199' (also known as 'BIT-pillow-2026-59199', 'PYSEC-2026-3451', 'GHSA-6r8x-57c9-28j4')."
+     },
+     {
+      "id": "CVE-2024-12720",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2024-12720' (also known as 'PYSEC-2026-1982', 'GHSA-6rvg-6v2m-4j46')."
+     },
+     {
+      "id": "CVE-2024-12720",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2024-12720' (also known as 'PYSEC-2026-1982', 'GHSA-6rvg-6v2m-4j46')."
+     },
+     {
+      "id": "CVE-2024-12720",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2024-12720' (also known as 'PYSEC-2026-1982', 'GHSA-6rvg-6v2m-4j46')."
+     },
+     {
+      "id": "CVE-2024-4941",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-4941' (also known as 'PYSEC-2024-184', 'GHSA-6v6g-j5fq-hpvw')."
+     },
+     {
+      "id": "CVE-2026-44243",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-44243' (also known as 'PYSEC-2026-2162', 'GHSA-7545-fcxq-7j24')."
+     },
+     {
+      "id": "CVE-2025-66034",
+      "aliases": [],
+      "package": "fonttools",
+      "version": "4.59.1",
+      "file": "requirements.txt",
+      "message": "Package 'fonttools@4.59.1' is vulnerable to 'CVE-2025-66034' (also known as 'PYSEC-2026-1389', 'GHSA-768j-98cg-p3fv')."
+     },
+     {
+      "id": "CVE-2024-47164",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-47164' (also known as 'PYSEC-2024-213', 'GHSA-77xq-6g77-h274')."
+     },
+     {
+      "id": "CVE-2026-35536",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.5.1",
+      "file": "requirements.txt",
+      "message": "Package 'tornado@6.5.1' is vulnerable to 'CVE-2026-35536' (also known as 'PYSEC-2026-2287', 'GHSA-78cv-mqj4-43f7', 'GHSA-fqwm-6jpj-5wxc')."
+     },
+     {
+      "id": "CVE-2025-62727",
+      "aliases": [],
+      "package": "starlette",
+      "version": "0.47.3",
+      "file": "requirements.txt",
+      "message": "Package 'starlette@0.47.3' is vulnerable to 'CVE-2025-62727' (also known as 'PYSEC-2026-1942', 'GHSA-7f5h-v6xp-fcq8')."
+     },
+     {
+      "id": "CVE-2026-0994",
+      "aliases": [],
+      "package": "protobuf",
+      "version": "6.32.0",
+      "file": "requirements.txt",
+      "message": "Package 'protobuf@6.32.0' is vulnerable to 'CVE-2026-0994' (also known as 'PYSEC-2026-1805', 'GHSA-7gcm-g887-7qv7')."
+     },
+     {
+      "id": "CVE-2023-36281",
+      "aliases": [],
+      "package": "langchain",
+      "version": "0.0.292",
+      "file": "requirements.txt",
+      "message": "Package 'langchain@0.0.292' is vulnerable to 'CVE-2023-36281' (also known as 'PYSEC-2023-151', 'GHSA-7gfq-f96f-g85j')."
+     },
+     {
+      "id": "CVE-2026-48545",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2026-48545' (also known as 'PYSEC-2026-2178', 'GHSA-7hp7-4p35-3cx2')."
+     },
+     {
+      "id": "CVE-2026-48545",
+      "aliases": [],
+      "package": "gradio",
+      "version": "5.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@5.5.0' is vulnerable to 'CVE-2026-48545' (also known as 'PYSEC-2026-2178', 'GHSA-7hp7-4p35-3cx2')."
+     },
+     {
+      "id": "CVE-2026-48545",
+      "aliases": [],
+      "package": "gradio",
+      "version": "6.9.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@6.9.0' is vulnerable to 'CVE-2026-48545' (also known as 'PYSEC-2026-2178', 'GHSA-7hp7-4p35-3cx2')."
+     },
+     {
+      "id": "CVE-2026-33682",
+      "aliases": [],
+      "package": "streamlit",
+      "version": "1.49.0",
+      "file": "requirements.txt",
+      "message": "Package 'streamlit@1.49.0' is vulnerable to 'CVE-2026-33682' (also known as 'PYSEC-2026-2285', 'GHSA-7p48-42j8-8846')."
+     },
+     {
+      "id": "CVE-2025-14009",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2025-14009' (also known as 'PYSEC-2026-96', 'GHSA-7p94-766c-hgjp')."
+     },
+     {
+      "id": "CVE-2024-8021",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-8021' (also known as 'PYSEC-2026-1411', 'GHSA-7v2w-h4gh-w5cv')."
+     },
+     {
+      "id": "CVE-2024-10569",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-10569' (also known as 'PYSEC-2026-1412', 'GHSA-7xmc-vhjp-qv5q')."
+     },
+     {
+      "id": "CVE-2026-54283",
+      "aliases": [],
+      "package": "starlette",
+      "version": "0.47.3",
+      "file": "requirements.txt",
+      "message": "Package 'starlette@0.47.3' is vulnerable to 'CVE-2026-54283' (also known as 'PYSEC-2026-249', 'GHSA-82w8-qh3p-5jfq')."
+     },
+     {
+      "id": "CVE-2026-49477",
+      "aliases": [],
+      "package": "soupsieve",
+      "version": "2.7",
+      "file": "requirements.txt",
+      "message": "Package 'soupsieve@2.7' is vulnerable to 'CVE-2026-49477' (also known as 'PYSEC-2026-3072', 'GHSA-836r-79rf-4m37')."
+     },
+     {
+      "id": "GHSA-8423-8fgw-73vq",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.5.1",
+      "file": "requirements.txt",
+      "message": "Package 'tornado@6.5.1' is vulnerable to 'GHSA-8423-8fgw-73vq'."
+     },
+     {
+      "id": "CVE-2025-71408",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2025-71408' (also known as 'PYSEC-2026-3657', 'GHSA-848c-c2cx-j7qx')."
+     },
+     {
+      "id": "CVE-2026-48710",
+      "aliases": [],
+      "package": "starlette",
+      "version": "0.47.3",
+      "file": "requirements.txt",
+      "message": "Package 'starlette@0.47.3' is vulnerable to 'CVE-2026-48710' (also known as 'PYSEC-2026-161', 'X41-2026-002', 'GHSA-86qp-5c8j-p5mr')."
+     },
+     {
+      "id": "CVE-2025-3730",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-3730' (also known as 'BIT-pytorch-2025-3730', 'PYSEC-2026-1970', 'GHSA-887c-mr87-cxwp')."
+     },
+     {
+      "id": "CVE-2025-3730",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-3730' (also known as 'BIT-pytorch-2025-3730', 'PYSEC-2026-1970', 'GHSA-887c-mr87-cxwp')."
+     },
+     {
+      "id": "CVE-2024-47165",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-47165' (also known as 'PYSEC-2024-214', 'GHSA-89v2-pqfv-c5r9')."
+     },
+     {
+      "id": "CVE-2024-47867",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-47867' (also known as 'PYSEC-2024-216', 'GHSA-8c87-gvhj-xm8m')."
+     },
+     {
+      "id": "CVE-2025-48889",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2025-48889' (also known as 'PYSEC-2025-119', 'GHSA-8jw3-6x8j-v96g')."
+     },
+     {
+      "id": "CVE-2025-48889",
+      "aliases": [],
+      "package": "gradio",
+      "version": "5.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@5.5.0' is vulnerable to 'CVE-2025-48889' (also known as 'PYSEC-2025-119', 'GHSA-8jw3-6x8j-v96g')."
+     },
+     {
+      "id": "CVE-2026-81726",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-81726' (also known as 'PYSEC-2026-3740', 'GHSA-8mgp-746c-j5xp')."
+     },
+     {
+      "id": "CVE-2026-59885",
+      "aliases": [],
+      "package": "pyasn1",
+      "version": "0.6.1",
+      "file": "requirements.txt",
+      "message": "Package 'pyasn1@0.6.1' is vulnerable to 'CVE-2026-59885' (also known as 'PYSEC-2026-3456', 'GHSA-8ppf-4f7h-5ppj')."
+     },
+     {
+      "id": "CVE-2026-54059",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-54059' (also known as 'BIT-pillow-2026-54059', 'PYSEC-2026-2253', 'GHSA-8v84-f9pq-wr9x')."
+     },
+     {
+      "id": "CVE-2025-5197",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-5197' (also known as 'PYSEC-2026-1983', 'GHSA-9356-575x-2w9m')."
+     },
+     {
+      "id": "CVE-2025-5197",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-5197' (also known as 'PYSEC-2026-1983', 'GHSA-9356-575x-2w9m')."
+     },
+     {
+      "id": "CVE-2025-5197",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-5197' (also known as 'PYSEC-2026-1983', 'GHSA-9356-575x-2w9m')."
+     },
+     {
+      "id": "CVE-2025-5197",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-5197' (also known as 'PYSEC-2026-1983', 'GHSA-9356-575x-2w9m')."
+     },
+     {
+      "id": "CVE-2025-5197",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-5197' (also known as 'PYSEC-2026-1983', 'GHSA-9356-575x-2w9m')."
+     },
+     {
+      "id": "CVE-2026-73622",
+      "aliases": [
+       "GHSA-94p4-4cq8-9g67"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-73622' (also known as 'GHSA-94p4-4cq8-9g67')."
+     },
+     {
+      "id": "CVE-2026-67323",
+      "aliases": [
+       "GHSA-956x-8gvw-wg5v"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-67323' (also known as 'GHSA-956x-8gvw-wg5v')."
+     },
+     {
+      "id": "CVE-2026-34518",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-34518' (also known as 'PYSEC-2026-2100', 'GHSA-966j-vmvw-g2g9')."
+     },
+     {
+      "id": "CVE-2024-4325",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-4325' (also known as 'PYSEC-2026-1413', 'GHSA-973g-55hp-3frw')."
+     },
+     {
+      "id": "CVE-2026-59205",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-59205' (also known as 'BIT-pillow-2026-59205', 'PYSEC-2026-3453', 'GHSA-9hw9-ch79-4vh6')."
+     },
+     {
+      "id": "CVE-2026-76218",
+      "aliases": [
+       "GHSA-9rj7-rf2p-w77r"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-76218' (also known as 'GHSA-9rj7-rf2p-w77r')."
+     },
+     {
+      "id": "CVE-2026-54280",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-54280' (also known as 'PYSEC-2026-2113', 'GHSA-9x8q-7h8h-wcw9')."
+     },
+     {
+      "id": "CVE-2026-34525",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-34525' (also known as 'PYSEC-2026-2103', 'GHSA-c427-h43c-vf67')."
+     },
+     {
+      "id": "CVE-2025-2148",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-2148' (also known as 'BIT-pytorch-2025-2148', 'PYSEC-2025-189', 'GHSA-c678-jfcj-6jmf')."
+     },
+     {
+      "id": "CVE-2025-2148",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-2148' (also known as 'BIT-pytorch-2025-2148', 'PYSEC-2025-189', 'GHSA-c678-jfcj-6jmf')."
+     },
+     {
+      "id": "CVE-2025-67725",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.5.1",
+      "file": "requirements.txt",
+      "message": "Package 'tornado@6.5.1' is vulnerable to 'CVE-2025-67725' (also known as 'PYSEC-2025-266', 'GHSA-c98p-7wgm-6p64')."
+     },
+     {
+      "id": "CVE-2026-25990",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-25990' (also known as 'BIT-pillow-2026-25990', 'PYSEC-2026-2249', 'GHSA-cfh3-3jmp-rvhc')."
+     },
+     {
+      "id": "CVE-2026-69244",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-69244' (also known as 'PYSEC-2026-3545', 'GHSA-cq5v-8q36-5273')."
+     },
+     {
+      "id": "CVE-2026-81724",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-81724' (also known as 'PYSEC-2026-3739', 'GHSA-cw6x-m8jw-qmrh')."
+     },
+     {
+      "id": "CVE-2026-49854",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.5.1",
+      "file": "requirements.txt",
+      "message": "Package 'tornado@6.5.1' is vulnerable to 'CVE-2026-49854' (also known as 'PYSEC-2026-3388', 'GHSA-cx3h-4qpv-8hc9')."
+     },
+     {
+      "id": "CVE-2024-0964",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-0964' (also known as 'PYSEC-2024-261', 'GHSA-f3h9-8phc-6gvh')."
+     },
+     {
+      "id": "CVE-2025-2998",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-2998' (also known as 'BIT-pytorch-2025-2998', 'PYSEC-2025-192', 'GHSA-f4hp-rmr7-r7v8')."
+     },
+     {
+      "id": "CVE-2025-2998",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-2998' (also known as 'BIT-pytorch-2025-2998', 'PYSEC-2025-192', 'GHSA-f4hp-rmr7-r7v8')."
+     },
+     {
+      "id": "CVE-2026-59152",
+      "aliases": [
+       "GHSA-f4xh-w4cj-qxq8"
+      ],
+      "package": "langsmith",
+      "version": "0.0.92",
+      "file": "requirements.txt",
+      "message": "Package 'langsmith@0.0.92' is vulnerable to 'CVE-2026-59152' (also known as 'GHSA-f4xh-w4cj-qxq8')."
+     },
+     {
+      "id": "CVE-2023-39631",
+      "aliases": [],
+      "package": "langchain",
+      "version": "0.0.292",
+      "file": "requirements.txt",
+      "message": "Package 'langchain@0.0.292' is vulnerable to 'CVE-2023-39631' (also known as 'PYSEC-2023-162', 'PYSEC-2023-163', 'GHSA-f73w-4m7g-ch9x')."
+     },
+     {
+      "id": "CVE-2026-81727",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-81727' (also known as 'PYSEC-2026-3741', 'GHSA-f794-5jv7-7672')."
+     },
+     {
+      "id": "CVE-2026-12876",
+      "aliases": [
+       "GHSA-ff5c-cp5c-9wjf"
+      ],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-12876' (also known as 'GHSA-ff5c-cp5c-9wjf')."
+     },
+     {
+      "id": "CVE-2026-12061",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-12061' (also known as 'PYSEC-2026-3582', 'GHSA-fg7f-2386-8897')."
+     },
+     {
+      "id": "CVE-2026-5241",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2026-5241' (also known as 'PYSEC-2026-2290', 'GHSA-fgcw-684q-jj6r')."
+     },
+     {
+      "id": "CVE-2026-5241",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2026-5241' (also known as 'PYSEC-2026-2290', 'GHSA-fgcw-684q-jj6r')."
+     },
+     {
+      "id": "CVE-2026-5241",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2026-5241' (also known as 'PYSEC-2026-2290', 'GHSA-fgcw-684q-jj6r')."
+     },
+     {
+      "id": "CVE-2026-5241",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2026-5241' (also known as 'PYSEC-2026-2290', 'GHSA-fgcw-684q-jj6r')."
+     },
+     {
+      "id": "CVE-2026-5241",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2026-5241' (also known as 'PYSEC-2026-2290', 'GHSA-fgcw-684q-jj6r')."
+     },
+     {
+      "id": "CVE-2026-5241",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.57.5",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.57.5' is vulnerable to 'CVE-2026-5241' (also known as 'PYSEC-2026-2290', 'GHSA-fgcw-684q-jj6r')."
+     },
+     {
+      "id": "CVE-2025-69230",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2025-69230' (also known as 'PYSEC-2026-1105', 'GHSA-fh55-r93g-j68g')."
+     },
+     {
+      "id": "CVE-2025-51427",
+      "aliases": [],
+      "package": "modelscope",
+      "version": "1.22.3",
+      "file": "requirements.txt",
+      "message": "Package 'modelscope@1.22.3' is vulnerable to 'CVE-2025-51427' (also known as 'PYSEC-2026-2663', 'GHSA-fhhq-h4hg-549x')."
+     },
+     {
+      "id": "CVE-2025-51427",
+      "aliases": [],
+      "package": "modelscope",
+      "version": "1.20.0",
+      "file": "requirements.txt",
+      "message": "Package 'modelscope@1.20.0' is vulnerable to 'CVE-2025-51427' (also known as 'PYSEC-2026-2663', 'GHSA-fhhq-h4hg-549x')."
+     },
+     {
+      "id": "CVE-2025-51427",
+      "aliases": [],
+      "package": "modelscope",
+      "version": "1.15.0",
+      "file": "requirements.txt",
+      "message": "Package 'modelscope@1.15.0' is vulnerable to 'CVE-2025-51427' (also known as 'PYSEC-2026-2663', 'GHSA-fhhq-h4hg-549x')."
+     },
+     {
+      "id": "CVE-2026-59198",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-59198' (also known as 'BIT-pillow-2026-59198', 'PYSEC-2026-3494', 'GHSA-fj7v-r99m-22gq')."
+     },
+     {
+      "id": "CVE-2026-73624",
+      "aliases": [
+       "GHSA-fjr4-x663-mwxc"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-73624' (also known as 'GHSA-fjr4-x663-mwxc')."
+     },
+     {
+      "id": "CVE-2025-1194",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-1194' (also known as 'PYSEC-2026-1984', 'GHSA-fpwr-67px-3qhx')."
+     },
+     {
+      "id": "CVE-2025-1194",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-1194' (also known as 'PYSEC-2026-1984', 'GHSA-fpwr-67px-3qhx')."
+     },
+     {
+      "id": "CVE-2025-1194",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-1194' (also known as 'PYSEC-2026-1984', 'GHSA-fpwr-67px-3qhx')."
+     },
+     {
+      "id": "CVE-2025-1194",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-1194' (also known as 'PYSEC-2026-1984', 'GHSA-fpwr-67px-3qhx')."
+     },
+     {
+      "id": "CVE-2026-54278",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-54278' (also known as 'PYSEC-2026-2111', 'GHSA-g3cq-j2xw-wf74')."
+     },
+     {
+      "id": "CVE-2024-4940",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-4940' (also known as 'PYSEC-2026-1414', 'GHSA-g6c9-f4xm-9j4x')."
+     },
+     {
+      "id": "CVE-2025-69229",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2025-69229' (also known as 'PYSEC-2026-1106', 'GHSA-g84x-mcqj-x9qq')."
+     },
+     {
+      "id": "CVE-2024-1561",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-1561' (also known as 'PYSEC-2026-1415', 'GHSA-g9cj-cfpp-4g2x')."
+     },
+     {
+      "id": "CVE-2026-25645",
+      "aliases": [],
+      "package": "requests",
+      "version": "2.32.5",
+      "file": "requirements.txt",
+      "message": "Package 'requests@2.32.5' is vulnerable to 'CVE-2026-25645' (also known as 'PYSEC-2026-2275', 'GHSA-gc5v-m9x4-r6x2')."
+     },
+     {
+      "id": "CVE-2026-33230",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-33230' (also known as 'PYSEC-2026-2235', 'GHSA-gfwx-w7gr-fvh7')."
+     },
+     {
+      "id": "CVE-2025-66418",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'urllib3@2.5.0' is vulnerable to 'CVE-2025-66418' (also known as 'PYSEC-2026-1998', 'GHSA-gm62-xv2j-4w53')."
+     },
+     {
+      "id": "CVE-2025-64712",
+      "aliases": [],
+      "package": "unstructured",
+      "version": "0.10.30",
+      "file": "requirements.txt",
+      "message": "Package 'unstructured@0.10.30' is vulnerable to 'CVE-2025-64712' (also known as 'PYSEC-2026-558', 'GHSA-gm8q-m8mv-jj5m')."
+     },
+     {
+      "id": "CVE-2023-6572",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2023-6572' (also known as 'PYSEC-2023-255', 'GHSA-gqvf-3hgp-5hxv')."
+     },
+     {
+      "id": "CVE-2026-55443",
+      "aliases": [],
+      "package": "langchain",
+      "version": "0.0.292",
+      "file": "requirements.txt",
+      "message": "Package 'langchain@0.0.292' is vulnerable to 'CVE-2026-55443' (also known as 'PYSEC-2026-2192', 'PYSEC-2026-2556', 'GHSA-gr75-jv2w-4656')."
+     },
+     {
+      "id": "CVE-2024-47872",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-47872' (also known as 'PYSEC-2024-220', 'GHSA-gvv6-33j7-884g')."
+     },
+     {
+      "id": "CVE-2026-59890",
+      "aliases": [],
+      "package": "setuptools",
+      "version": "80.9.0",
+      "file": "requirements.txt",
+      "message": "Package 'setuptools@80.9.0' is vulnerable to 'CVE-2026-59890' (also known as 'BIT-setuptools-2026-59890', 'PYSEC-2026-3447', 'GHSA-h35f-9h28-mq5c')."
+     },
+     {
+      "id": "CVE-2026-27167",
+      "aliases": [],
+      "package": "gradio",
+      "version": "5.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@5.5.0' is vulnerable to 'CVE-2026-27167' (also known as 'PYSEC-2026-63', 'GHSA-h3h8-3v2v-rg7m')."
+     },
+     {
+      "id": "CVE-2024-28088",
+      "aliases": [],
+      "package": "langchain",
+      "version": "0.0.292",
+      "file": "requirements.txt",
+      "message": "Package 'langchain@0.0.292' is vulnerable to 'CVE-2024-28088' (also known as 'PYSEC-2024-43', 'PYSEC-2024-45', 'GHSA-h59x-p739-982c')."
+     },
+     {
+      "id": "CVE-2026-0846",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-0846' (also known as 'PYSEC-2026-97', 'GHSA-h8wq-7xc4-p3qx')."
+     },
+     {
+      "id": "CVE-2024-0243",
+      "aliases": [],
+      "package": "langchain",
+      "version": "0.0.292",
+      "file": "requirements.txt",
+      "message": "Package 'langchain@0.0.292' is vulnerable to 'CVE-2024-0243' (also known as 'PYSEC-2024-235', 'PYSEC-2026-1509', 'GHSA-h9j7-5xvc-qhg5')."
+     },
+     {
+      "id": "CVE-2026-34513",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-34513' (also known as 'PYSEC-2026-2095', 'GHSA-hcc4-c3v8-rx92')."
+     },
+     {
+      "id": "CVE-2026-47265",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-47265' (also known as 'PYSEC-2026-2105', 'GHSA-hg6j-4rv6-33pg')."
+     },
+     {
+      "id": "CVE-2026-76217",
+      "aliases": [
+       "GHSA-hh9p-6wh2-4mfc"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-76217' (also known as 'GHSA-hh9p-6wh2-4mfc')."
+     },
+     {
+      "id": "CVE-2024-47168",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-47168' (also known as 'PYSEC-2024-198', 'GHSA-hm3c-93pg-4cxw')."
+     },
+     {
+      "id": "CVE-2026-59886",
+      "aliases": [],
+      "package": "pyasn1",
+      "version": "0.6.1",
+      "file": "requirements.txt",
+      "message": "Package 'pyasn1@0.6.1' is vulnerable to 'CVE-2026-59886' (also known as 'PYSEC-2026-3457', 'GHSA-hm4w-wwcw-mr6r')."
+     },
+     {
+      "id": "CVE-2026-76222",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-76222' (also known as 'PYSEC-2026-3784', 'GHSA-hmq2-w58f-27jc')."
+     },
+     {
+      "id": "CVE-2024-1729",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-1729' (also known as 'PYSEC-2026-1416', 'GHSA-hmx6-r76c-85g9')."
+     },
+     {
+      "id": "CVE-2026-54276",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-54276' (also known as 'PYSEC-2026-2109', 'GHSA-hpj7-wq8m-9hgp')."
+     },
+     {
+      "id": "CVE-2025-67221",
+      "aliases": [],
+      "package": "orjson",
+      "version": "3.11.2",
+      "file": "requirements.txt",
+      "message": "Package 'orjson@3.11.2' is vulnerable to 'CVE-2025-67221' (also known as 'PYSEC-2026-107', 'GHSA-hx9q-6w63-j58v')."
+     },
+     {
+      "id": "CVE-2024-11394",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2024-11394' (also known as 'PYSEC-2024-229', 'GHSA-hxxf-235m-72v3')."
+     },
+     {
+      "id": "CVE-2024-11394",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2024-11394' (also known as 'PYSEC-2024-229', 'GHSA-hxxf-235m-72v3')."
+     },
+     {
+      "id": "CVE-2024-11394",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2024-11394' (also known as 'PYSEC-2024-229', 'GHSA-hxxf-235m-72v3')."
+     },
+     {
+      "id": "CVE-2025-23042",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2025-23042' (also known as 'PYSEC-2025-118', 'GHSA-j2jg-fq62-7c3h')."
+     },
+     {
+      "id": "CVE-2025-23042",
+      "aliases": [],
+      "package": "gradio",
+      "version": "5.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@5.5.0' is vulnerable to 'CVE-2025-23042' (also known as 'PYSEC-2025-118', 'GHSA-j2jg-fq62-7c3h')."
+     },
+     {
+      "id": "CVE-2024-47869",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-47869' (also known as 'PYSEC-2024-199', 'GHSA-j757-pf57-f8r4')."
+     },
+     {
+      "id": "CVE-2026-34993",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-34993' (also known as 'PYSEC-2026-2104', 'GHSA-jg22-mg44-37j8')."
+     },
+     {
+      "id": "CVE-2025-67726",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.5.1",
+      "file": "requirements.txt",
+      "message": "Package 'tornado@6.5.1' is vulnerable to 'CVE-2025-67726' (also known as 'PYSEC-2025-267', 'GHSA-jhmp-mqwm-3gq8')."
+     },
+     {
+      "id": "CVE-2025-69227",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2025-69227' (also known as 'PYSEC-2026-1107', 'GHSA-jj3x-wxrx-4x23')."
+     },
+     {
+      "id": "CVE-2026-59200",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-59200' (also known as 'BIT-pillow-2026-59200', 'PYSEC-2026-3495', 'GHSA-jjj6-mw9f-p565')."
+     },
+     {
+      "id": "CVE-2025-3264",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-3264' (also known as 'PYSEC-2026-1985', 'GHSA-jjph-296x-mrcr')."
+     },
+     {
+      "id": "CVE-2025-3264",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-3264' (also known as 'PYSEC-2026-1985', 'GHSA-jjph-296x-mrcr')."
+     },
+     {
+      "id": "CVE-2025-3264",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-3264' (also known as 'PYSEC-2026-1985', 'GHSA-jjph-296x-mrcr')."
+     },
+     {
+      "id": "CVE-2025-3264",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-3264' (also known as 'PYSEC-2026-1985', 'GHSA-jjph-296x-mrcr')."
+     },
+     {
+      "id": "CVE-2026-33231",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-33231' (also known as 'PYSEC-2026-2236', 'GHSA-jm6w-m3j8-898g')."
+     },
+     {
+      "id": "CVE-2026-76221",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-76221' (also known as 'PYSEC-2026-3783', 'GHSA-jm78-9fvv-mhgr')."
+     },
+     {
+      "id": "CVE-2026-28416",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2026-28416' (also known as 'PYSEC-2026-66', 'GHSA-jmh7-g254-2cq9')."
+     },
+     {
+      "id": "CVE-2026-28416",
+      "aliases": [],
+      "package": "gradio",
+      "version": "5.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@5.5.0' is vulnerable to 'CVE-2026-28416' (also known as 'PYSEC-2026-66', 'GHSA-jmh7-g254-2cq9')."
+     },
+     {
+      "id": "CVE-2026-54282",
+      "aliases": [],
+      "package": "starlette",
+      "version": "0.47.3",
+      "file": "requirements.txt",
+      "message": "Package 'starlette@0.47.3' is vulnerable to 'CVE-2026-54282' (also known as 'PYSEC-2026-248', 'GHSA-jp82-jpqv-5vv3')."
+     },
+     {
+      "id": "CVE-2026-30922",
+      "aliases": [],
+      "package": "pyasn1",
+      "version": "0.6.1",
+      "file": "requirements.txt",
+      "message": "Package 'pyasn1@0.6.1' is vulnerable to 'CVE-2026-30922' (also known as 'PYSEC-2026-2263', 'GHSA-jr27-m4p2-rc6r')."
+     },
+     {
+      "id": "CVE-2026-12243",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-12243' (also known as 'PYSEC-2026-597', 'GHSA-m42h-3232-vpv3')."
+     },
+     {
+      "id": "CVE-2026-59884",
+      "aliases": [],
+      "package": "pyasn1",
+      "version": "0.6.1",
+      "file": "requirements.txt",
+      "message": "Package 'pyasn1@0.6.1' is vulnerable to 'CVE-2026-59884' (also known as 'PYSEC-2026-3455', 'GHSA-m4p7-r5rc-7g4j')."
+     },
+     {
+      "id": "CVE-2026-79675",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-79675' (also known as 'PYSEC-2026-3749', 'GHSA-m4rf-3fr8-xwx3')."
+     },
+     {
+      "id": "CVE-2026-34516",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-34516' (also known as 'PYSEC-2026-2098', 'GHSA-m5qp-6w8w-w647')."
+     },
+     {
+      "id": "CVE-2026-50269",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-50269' (also known as 'PYSEC-2026-2106', 'GHSA-m6qw-4cw2-hm4m')."
+     },
+     {
+      "id": "CVE-2024-1728",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-1728' (also known as 'PYSEC-2026-345', 'GHSA-m842-4qm8-7gpq')."
+     },
+     {
+      "id": "CVE-2026-28684",
+      "aliases": [],
+      "package": "python-dotenv",
+      "version": "1.1.1",
+      "file": "requirements.txt",
+      "message": "Package 'python-dotenv@1.1.1' is vulnerable to 'CVE-2026-28684' (also known as 'PYSEC-2026-2270', 'GHSA-mf9w-mj56-hr94')."
+     },
+     {
+      "id": "CVE-2026-69243",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-69243' (also known as 'PYSEC-2026-3546', 'GHSA-mfx4-hv73-q22v')."
+     },
+     {
+      "id": "CVE-2026-49855",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.5.1",
+      "file": "requirements.txt",
+      "message": "Package 'tornado@6.5.1' is vulnerable to 'CVE-2026-49855' (also known as 'PYSEC-2026-3389', 'GHSA-mgf9-4vpg-hj56')."
+     },
+     {
+      "id": "CVE-2026-40347",
+      "aliases": [],
+      "package": "python-multipart",
+      "version": "0.0.20",
+      "file": "requirements.txt",
+      "message": "Package 'python-multipart@0.0.20' is vulnerable to 'CVE-2026-40347' (also known as 'PYSEC-2026-3038', 'GHSA-mj87-hwqh-73pj')."
+     },
+     {
+      "id": "CVE-2026-82397",
+      "aliases": [
+       "GHSA-mpf4-983q-p7j4"
+      ],
+      "package": "tornado",
+      "version": "6.5.1",
+      "file": "requirements.txt",
+      "message": "Package 'tornado@6.5.1' is vulnerable to 'CVE-2026-82397' (also known as 'GHSA-mpf4-983q-p7j4')."
+     },
+     {
+      "id": "CVE-2026-59881",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-59881' (also known as 'PYSEC-2026-3547', 'GHSA-mq44-7p77-q5h7')."
+     },
+     {
+      "id": "CVE-2026-42557",
+      "aliases": [],
+      "package": "notebook",
+      "version": "7.4.7",
+      "file": "requirements.txt",
+      "message": "Package 'notebook@7.4.7' is vulnerable to 'CVE-2026-42557' (also known as 'BIT-jupyter-base-notebook-2026-42557', 'BIT-jupyter-notebook-2026-42557', 'BIT-jupyterlab-2026-42557', 'PYSEC-2026-2537', 'PYSEC-2026-2681', 'GHSA-mqcg-5x36-vfcg')."
+     },
+     {
+      "id": "CVE-2025-69225",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2025-69225' (also known as 'PYSEC-2026-1109', 'GHSA-mqqc-3gqh-h2x8')."
+     },
+     {
+      "id": "CVE-2026-67326",
+      "aliases": [
+       "GHSA-mv93-w799-cj2w"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-67326' (also known as 'GHSA-mv93-w799-cj2w')."
+     },
+     {
+      "id": "CVE-2026-34519",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-34519' (also known as 'PYSEC-2026-2101', 'GHSA-mwh4-6h8g-pg8w')."
+     },
+     {
+      "id": "CVE-2026-62388",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-62388' (also known as 'PYSEC-2026-3722', 'GHSA-p3m8-78j2-g5p3')."
+     },
+     {
+      "id": "CVE-2026-54293",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-54293' (also known as 'PYSEC-2026-2078', 'GHSA-p4gq-832x-fm9v')."
+     },
+     {
+      "id": "CVE-2026-73621",
+      "aliases": [
+       "GHSA-p538-c434-8v24"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-73621' (also known as 'GHSA-p538-c434-8v24')."
+     },
+     {
+      "id": "CVE-2026-34515",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-34515' (also known as 'PYSEC-2026-2097', 'GHSA-p998-jp59-783m')."
+     },
+     {
+      "id": "CVE-2026-28415",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2026-28415' (also known as 'PYSEC-2026-65', 'GHSA-pfjf-5gxr-995x')."
+     },
+     {
+      "id": "CVE-2026-28415",
+      "aliases": [],
+      "package": "gradio",
+      "version": "5.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@5.5.0' is vulnerable to 'CVE-2026-28415' (also known as 'PYSEC-2026-65', 'GHSA-pfjf-5gxr-995x')."
+     },
+     {
+      "id": "CVE-2024-10648",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-10648' (also known as 'PYSEC-2026-1417', 'GHSA-pgfv-gvc5-prfg')."
+     },
+     {
+      "id": "CVE-2025-3777",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-3777' (also known as 'PYSEC-2026-1986', 'GHSA-phhr-52qp-3mj4')."
+     },
+     {
+      "id": "CVE-2025-3777",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-3777' (also known as 'PYSEC-2026-1986', 'GHSA-phhr-52qp-3mj4')."
+     },
+     {
+      "id": "CVE-2025-3777",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-3777' (also known as 'PYSEC-2026-1986', 'GHSA-phhr-52qp-3mj4')."
+     },
+     {
+      "id": "CVE-2025-3777",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-3777' (also known as 'PYSEC-2026-1986', 'GHSA-phhr-52qp-3mj4')."
+     },
+     {
+      "id": "CVE-2025-3777",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-3777' (also known as 'PYSEC-2026-1986', 'GHSA-phhr-52qp-3mj4')."
+     },
+     {
+      "id": "CVE-2026-55380",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-55380' (also known as 'BIT-pillow-2026-55380', 'PYSEC-2026-2256', 'GHSA-phj9-mv4w-65pm')."
+     },
+     {
+      "id": "CVE-2026-42561",
+      "aliases": [],
+      "package": "python-multipart",
+      "version": "0.0.20",
+      "file": "requirements.txt",
+      "message": "Package 'python-multipart@0.0.20' is vulnerable to 'CVE-2026-42561' (also known as 'PYSEC-2026-3039', 'GHSA-pp6c-gr5w-3c5g')."
+     },
+     {
+      "id": "CVE-2025-67724",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.5.1",
+      "file": "requirements.txt",
+      "message": "Package 'tornado@6.5.1' is vulnerable to 'CVE-2025-67724' (also known as 'PYSEC-2025-265', 'GHSA-pr2v-jx2c-wg9f')."
+     },
+     {
+      "id": "CVE-2023-39659",
+      "aliases": [],
+      "package": "langchain",
+      "version": "0.0.292",
+      "file": "requirements.txt",
+      "message": "Package 'langchain@0.0.292' is vulnerable to 'CVE-2023-39659' (also known as 'PYSEC-2023-147', 'GHSA-prgp-w7vf-ch62')."
+     },
+     {
+      "id": "CVE-2024-12217",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-12217' (also known as 'PYSEC-2026-1418', 'GHSA-prpg-p95c-32fv')."
+     },
+     {
+      "id": "GHSA-pw6j-qg29-8w7f",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.5.1",
+      "file": "requirements.txt",
+      "message": "Package 'tornado@6.5.1' is vulnerable to 'GHSA-pw6j-qg29-8w7f'."
+     },
+     {
+      "id": "CVE-2026-42311",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-42311' (also known as 'BIT-pillow-2026-42311', 'PYSEC-2026-2252', 'GHSA-pwv6-vv43-88gr')."
+     },
+     {
+      "id": "CVE-2025-3263",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-3263' (also known as 'PYSEC-2026-1987', 'GHSA-q2wp-rjmx-x6x9')."
+     },
+     {
+      "id": "CVE-2025-3263",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-3263' (also known as 'PYSEC-2026-1987', 'GHSA-q2wp-rjmx-x6x9')."
+     },
+     {
+      "id": "CVE-2025-3263",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-3263' (also known as 'PYSEC-2026-1987', 'GHSA-q2wp-rjmx-x6x9')."
+     },
+     {
+      "id": "CVE-2025-3263",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-3263' (also known as 'PYSEC-2026-1987', 'GHSA-q2wp-rjmx-x6x9')."
+     },
+     {
+      "id": "CVE-2026-44431",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'urllib3@2.5.0' is vulnerable to 'CVE-2026-44431' (also known as 'PYSEC-2026-141', 'GHSA-qccp-gfcp-xxvc')."
+     },
+     {
+      "id": "CVE-2025-3001",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.8.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.8.0' is vulnerable to 'CVE-2025-3001' (also known as 'BIT-pytorch-2025-3001', 'PYSEC-2025-195', 'GHSA-qfhq-4f3w-5fph')."
+     },
+     {
+      "id": "CVE-2025-3001",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-3001' (also known as 'BIT-pytorch-2025-3001', 'PYSEC-2025-195', 'GHSA-qfhq-4f3w-5fph')."
+     },
+     {
+      "id": "CVE-2025-3001",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-3001' (also known as 'BIT-pytorch-2025-3001', 'PYSEC-2025-195', 'GHSA-qfhq-4f3w-5fph')."
+     },
+     {
+      "id": "CVE-2024-1183",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-1183' (also known as 'PYSEC-2026-1419', 'GHSA-qh6x-j82h-vpf9')."
+     },
+     {
+      "id": "CVE-2026-31958",
+      "aliases": [],
+      "package": "tornado",
+      "version": "6.5.1",
+      "file": "requirements.txt",
+      "message": "Package 'tornado@6.5.1' is vulnerable to 'CVE-2026-31958' (also known as 'PYSEC-2026-140', 'GHSA-qjxf-f2mg-c6mc')."
+     },
+     {
+      "id": "CVE-2026-22701",
+      "aliases": [],
+      "package": "filelock",
+      "version": "3.19.1",
+      "file": "requirements.txt",
+      "message": "Package 'filelock@3.19.1' is vulnerable to 'CVE-2026-22701' (also known as 'PYSEC-2026-1374', 'GHSA-qmgc-5h2g-mvrw')."
+     },
+     {
+      "id": "CVE-2025-2099",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-2099' (also known as 'PYSEC-2025-40', 'GHSA-qq3j-4f4f-9583')."
+     },
+     {
+      "id": "CVE-2025-2099",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-2099' (also known as 'PYSEC-2025-40', 'GHSA-qq3j-4f4f-9583')."
+     },
+     {
+      "id": "CVE-2025-2099",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-2099' (also known as 'PYSEC-2025-40', 'GHSA-qq3j-4f4f-9583')."
+     },
+     {
+      "id": "CVE-2025-2099",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-2099' (also known as 'PYSEC-2025-40', 'GHSA-qq3j-4f4f-9583')."
+     },
+     {
+      "id": "CVE-2026-12075",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-12075' (also known as 'PYSEC-2026-3583', 'GHSA-qvv7-cg9c-w4x3')."
+     },
+     {
+      "id": "CVE-2026-72818",
+      "aliases": [
+       "GHSA-qx2g-xrx7-vfh8"
+      ],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-72818' (also known as 'GHSA-qx2g-xrx7-vfh8')."
+     },
+     {
+      "id": "CVE-2024-11392",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2024-11392' (also known as 'PYSEC-2024-227', 'GHSA-qxrp-vhvm-j765')."
+     },
+     {
+      "id": "CVE-2024-11392",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2024-11392' (also known as 'PYSEC-2024-227', 'GHSA-qxrp-vhvm-j765')."
+     },
+     {
+      "id": "CVE-2024-11392",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2024-11392' (also known as 'PYSEC-2024-227', 'GHSA-qxrp-vhvm-j765')."
+     },
+     {
+      "id": "CVE-2024-2206",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-2206' (also known as 'PYSEC-2026-1420', 'GHSA-r364-m2j9-mf4h')."
+     },
+     {
+      "id": "CVE-2026-42310",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-42310' (also known as 'BIT-pillow-2026-42310', 'PYSEC-2026-2874', 'GHSA-r73j-pqj5-w3x7')."
+     },
+     {
+      "id": "CVE-2026-73625",
+      "aliases": [
+       "GHSA-r9mr-m37c-5fr3"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-73625' (also known as 'GHSA-r9mr-m37c-5fr3')."
+     },
+     {
+      "id": "CVE-2026-40171",
+      "aliases": [],
+      "package": "notebook",
+      "version": "7.4.7",
+      "file": "requirements.txt",
+      "message": "Package 'notebook@7.4.7' is vulnerable to 'CVE-2026-40171' (also known as 'BIT-jupyter-base-notebook-2026-40171', 'BIT-jupyter-notebook-2026-40171', 'BIT-jupyterlab-2026-40171', 'PYSEC-2026-2538', 'PYSEC-2026-2682', 'GHSA-rch3-82jr-f9w9')."
+     },
+     {
+      "id": "CVE-2025-6051",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-6051' (also known as 'PYSEC-2026-1988', 'GHSA-rcv9-qm8p-9p6j')."
+     },
+     {
+      "id": "CVE-2025-6051",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-6051' (also known as 'PYSEC-2026-1988', 'GHSA-rcv9-qm8p-9p6j')."
+     },
+     {
+      "id": "CVE-2025-6051",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-6051' (also known as 'PYSEC-2026-1988', 'GHSA-rcv9-qm8p-9p6j')."
+     },
+     {
+      "id": "CVE-2025-6051",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-6051' (also known as 'PYSEC-2026-1988', 'GHSA-rcv9-qm8p-9p6j')."
+     },
+     {
+      "id": "CVE-2025-6051",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-6051' (also known as 'PYSEC-2026-1988', 'GHSA-rcv9-qm8p-9p6j')."
+     },
+     {
+      "id": "CVE-2026-66393",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-66393' (also known as 'PYSEC-2026-3724', 'GHSA-rf74-v2fm-23pw')."
+     },
+     {
+      "id": "CVE-2024-3571",
+      "aliases": [],
+      "package": "langchain",
+      "version": "0.0.292",
+      "file": "requirements.txt",
+      "message": "Package 'langchain@0.0.292' is vulnerable to 'CVE-2024-3571' (also known as 'PYSEC-2026-1510', 'GHSA-rgp8-pm28-3759')."
+     },
+     {
+      "id": "CVE-2026-42215",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-42215' (also known as 'PYSEC-2026-2160', 'GHSA-rpm5-65cw-6hj4')."
+     },
+     {
+      "id": "CVE-2026-41182",
+      "aliases": [],
+      "package": "langsmith",
+      "version": "0.0.92",
+      "file": "requirements.txt",
+      "message": "Package 'langsmith@0.0.92' is vulnerable to 'CVE-2026-41182' (also known as 'PYSEC-2026-2583', 'GHSA-rr7j-v2q5-chgv')."
+     },
+     {
+      "id": "CVE-2025-3000",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.8.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.8.0' is vulnerable to 'CVE-2025-3000' (also known as 'BIT-pytorch-2025-3000', 'PYSEC-2025-194', 'GHSA-rrmf-rvhw-rf47')."
+     },
+     {
+      "id": "CVE-2025-3000",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-3000' (also known as 'BIT-pytorch-2025-3000', 'PYSEC-2025-194', 'GHSA-rrmf-rvhw-rf47')."
+     },
+     {
+      "id": "CVE-2025-3000",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-3000' (also known as 'BIT-pytorch-2025-3000', 'PYSEC-2025-194', 'GHSA-rrmf-rvhw-rf47')."
+     },
+     {
+      "id": "CVE-2024-34510",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-34510' (also known as 'PYSEC-2024-255', 'GHSA-rvfh-h6c7-fc3c')."
+     },
+     {
+      "id": "CVE-2026-67322",
+      "aliases": [
+       "GHSA-rwj8-pgh3-r573"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-67322' (also known as 'GHSA-rwj8-pgh3-r573')."
+     },
+     {
+      "id": "CVE-2023-7018",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2023-7018' (also known as 'PYSEC-2023-301', 'GHSA-v68g-wm8c-6x7j')."
+     },
+     {
+      "id": "CVE-2026-44244",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-44244' (also known as 'PYSEC-2026-2163', 'GHSA-v87r-6q3f-2j67')."
+     },
+     {
+      "id": "CVE-2026-53540",
+      "aliases": [],
+      "package": "python-multipart",
+      "version": "0.0.20",
+      "file": "requirements.txt",
+      "message": "Package 'python-multipart@0.0.20' is vulnerable to 'CVE-2026-53540' (also known as 'PYSEC-2026-3040', 'GHSA-v9pg-7xvm-68hf')."
+     },
+     {
+      "id": "CVE-2026-53537",
+      "aliases": [],
+      "package": "python-multipart",
+      "version": "0.0.20",
+      "file": "requirements.txt",
+      "message": "Package 'python-multipart@0.0.20' is vulnerable to 'CVE-2026-53537' (also known as 'PYSEC-2026-3041', 'GHSA-vffw-93wf-4j4q')."
+     },
+     {
+      "id": "CVE-2026-41066",
+      "aliases": [],
+      "package": "lxml",
+      "version": "6.0.1",
+      "file": "requirements.txt",
+      "message": "Package 'lxml@6.0.1' is vulnerable to 'CVE-2026-41066' (also known as 'PYSEC-2026-87', 'GHSA-vfmq-68hx-4jfw')."
+     },
+     {
+      "id": "CVE-2025-2999",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.8.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.8.0' is vulnerable to 'CVE-2025-2999' (also known as 'BIT-pytorch-2025-2999', 'PYSEC-2025-193', 'GHSA-vgrw-7cvw-pwgx')."
+     },
+     {
+      "id": "CVE-2025-2999",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-2999' (also known as 'BIT-pytorch-2025-2999', 'PYSEC-2025-193', 'GHSA-vgrw-7cvw-pwgx')."
+     },
+     {
+      "id": "CVE-2025-2999",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-2999' (also known as 'BIT-pytorch-2025-2999', 'PYSEC-2025-193', 'GHSA-vgrw-7cvw-pwgx')."
+     },
+     {
+      "id": "CVE-2026-59204",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-59204' (also known as 'BIT-pillow-2026-59204', 'PYSEC-2026-3496', 'GHSA-vjc4-5qp5-m44j')."
+     },
+     {
+      "id": "CVE-2026-81723",
+      "aliases": [
+       "GHSA-vp2x-qp44-57v7"
+      ],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-81723' (also known as 'GHSA-vp2x-qp44-57v7')."
+     },
+     {
+      "id": "CVE-2026-10804",
+      "aliases": [],
+      "package": "streamlit",
+      "version": "1.49.0",
+      "file": "requirements.txt",
+      "message": "Package 'streamlit@1.49.0' is vulnerable to 'CVE-2026-10804' (also known as 'PYSEC-2026-212', 'GHSA-vqwp-45wm-r9r5')."
+     },
+     {
+      "id": "CVE-2026-22815",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-22815' (also known as 'PYSEC-2026-2094', 'GHSA-w2fm-2cpv-w7v5')."
+     },
+     {
+      "id": "CVE-2025-68146",
+      "aliases": [],
+      "package": "filelock",
+      "version": "3.19.1",
+      "file": "requirements.txt",
+      "message": "Package 'filelock@3.19.1' is vulnerable to 'CVE-2025-68146' (also known as 'PYSEC-2026-1375', 'GHSA-w853-jp5j-5j7f')."
+     },
+     {
+      "id": "CVE-2026-40192",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-40192' (also known as 'BIT-pillow-2026-40192', 'PYSEC-2026-2250', 'GHSA-whj4-6x5x-4v2j')."
+     },
+     {
+      "id": "CVE-2026-42308",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-42308' (also known as 'BIT-pillow-2026-42308', 'PYSEC-2026-165', 'GHSA-wjx4-4jcj-g98j')."
+     },
+     {
+      "id": "CVE-2025-5320",
+      "aliases": [],
+      "package": "gradio",
+      "version": "5.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@5.5.0' is vulnerable to 'CVE-2025-5320' (also known as 'PYSEC-2026-1423', 'GHSA-wmjh-cpqj-4v6x')."
+     },
+     {
+      "id": "CVE-2026-24486",
+      "aliases": [],
+      "package": "python-multipart",
+      "version": "0.0.20",
+      "file": "requirements.txt",
+      "message": "Package 'python-multipart@0.0.20' is vulnerable to 'CVE-2026-24486' (also known as 'PYSEC-2026-1852', 'GHSA-wp53-j4wj-2cfg')."
+     },
+     {
+      "id": "CVE-2026-48818",
+      "aliases": [],
+      "package": "starlette",
+      "version": "0.47.3",
+      "file": "requirements.txt",
+      "message": "Package 'starlette@0.47.3' is vulnerable to 'CVE-2026-48818' (also known as 'PYSEC-2026-2281', 'GHSA-wqp7-x3pw-xc5r')."
+     },
+     {
+      "id": "CVE-2024-11393",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2024-11393' (also known as 'PYSEC-2024-228', 'GHSA-wrfc-pvp9-mr9g')."
+     },
+     {
+      "id": "CVE-2024-11393",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2024-11393' (also known as 'PYSEC-2024-228', 'GHSA-wrfc-pvp9-mr9g')."
+     },
+     {
+      "id": "CVE-2024-11393",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2024-11393' (also known as 'PYSEC-2024-228', 'GHSA-wrfc-pvp9-mr9g')."
+     },
+     {
+      "id": "CVE-2026-76220",
+      "aliases": [
+       "GHSA-wvpp-8hx9-p66j"
+      ],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-76220' (also known as 'GHSA-wvpp-8hx9-p66j')."
+     },
+     {
+      "id": "CVE-2026-81722",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-81722' (also known as 'PYSEC-2026-3738', 'GHSA-ww6m-cw3f-q94g')."
+     },
+     {
+      "id": "CVE-2026-42284",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-42284' (also known as 'PYSEC-2026-2161', 'GHSA-x2qx-6953-8485')."
+     },
+     {
+      "id": "CVE-2025-2149",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-2149' (also known as 'BIT-pytorch-2025-2149', 'PYSEC-2025-190', 'GHSA-x3gm-94wq-g975')."
+     },
+     {
+      "id": "CVE-2025-2149",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-2149' (also known as 'BIT-pytorch-2025-2149', 'PYSEC-2025-190', 'GHSA-x3gm-94wq-g975')."
+     },
+     {
+      "id": "CVE-2026-48817",
+      "aliases": [],
+      "package": "starlette",
+      "version": "0.47.3",
+      "file": "requirements.txt",
+      "message": "Package 'starlette@0.47.3' is vulnerable to 'CVE-2026-48817' (also known as 'PYSEC-2026-2280', 'GHSA-x746-7m8f-x49c')."
+     },
+     {
+      "id": "CVE-2026-54274",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.12.15",
+      "file": "requirements.txt",
+      "message": "Package 'aiohttp@3.12.15' is vulnerable to 'CVE-2026-54274' (also known as 'PYSEC-2026-2108', 'GHSA-xcgm-r5h9-7989')."
+     },
+     {
+      "id": "CVE-2024-47870",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-47870' (also known as 'PYSEC-2024-218', 'GHSA-xh2x-3mrm-fwqm')."
+     },
+     {
+      "id": "CVE-2026-12074",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-12074' (also known as 'PYSEC-2026-3584', 'GHSA-xh95-f55m-82fw')."
+     },
+     {
+      "id": "CVE-2026-59197",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-59197' (also known as 'BIT-pillow-2026-59197', 'PYSEC-2026-3454', 'GHSA-xj96-63gp-2gmr')."
+     },
+     {
+      "id": "CVE-2026-9856",
+      "aliases": [
+       "GHSA-xrqw-3rrv-vx5w"
+      ],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2026-9856' (also known as 'GHSA-xrqw-3rrv-vx5w')."
+     },
+     {
+      "id": "CVE-2026-9856",
+      "aliases": [
+       "GHSA-xrqw-3rrv-vx5w"
+      ],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2026-9856' (also known as 'GHSA-xrqw-3rrv-vx5w')."
+     },
+     {
+      "id": "CVE-2026-9856",
+      "aliases": [
+       "GHSA-xrqw-3rrv-vx5w"
+      ],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2026-9856' (also known as 'GHSA-xrqw-3rrv-vx5w')."
+     },
+     {
+      "id": "CVE-2026-9856",
+      "aliases": [
+       "GHSA-xrqw-3rrv-vx5w"
+      ],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2026-9856' (also known as 'GHSA-xrqw-3rrv-vx5w')."
+     },
+     {
+      "id": "CVE-2026-9856",
+      "aliases": [
+       "GHSA-xrqw-3rrv-vx5w"
+      ],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2026-9856' (also known as 'GHSA-xrqw-3rrv-vx5w')."
+     },
+     {
+      "id": "CVE-2026-9856",
+      "aliases": [
+       "GHSA-xrqw-3rrv-vx5w"
+      ],
+      "package": "transformers",
+      "version": "4.57.5",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.57.5' is vulnerable to 'CVE-2026-9856' (also known as 'GHSA-xrqw-3rrv-vx5w')."
+     },
+     {
+      "id": "CVE-2024-52338",
+      "aliases": [
+       "PYSEC-2024-161"
+      ],
+      "package": "pyarrow",
+      "version": "12.0.0",
+      "file": "requirements.txt",
+      "message": "Package 'pyarrow@12.0.0' is vulnerable to 'CVE-2024-52338' (also known as 'PYSEC-2024-161')."
+     },
+     {
+      "id": "CVE-2024-48063",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2024-48063' (also known as 'BIT-pytorch-2024-48063', 'PYSEC-2024-259')."
+     },
+     {
+      "id": "CVE-2024-39236",
+      "aliases": [],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-39236' (also known as 'PYSEC-2024-274', 'GHSA-9v2f-6vcg-3hgv')."
+     },
+     {
+      "id": "CVE-2024-4253",
+      "aliases": [
+       "PYSEC-2024-321"
+      ],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2024-4253' (also known as 'PYSEC-2024-321')."
+     },
+     {
+      "id": "CVE-2024-5998",
+      "aliases": [],
+      "package": "langchain",
+      "version": "0.0.292",
+      "file": "requirements.txt",
+      "message": "Package 'langchain@0.0.292' is vulnerable to 'CVE-2024-5998' (also known as 'PYSEC-2024-323', 'PYSEC-2026-1514', 'GHSA-f2jm-rw3h-6phg')."
+     },
+     {
+      "id": "CVE-2025-46148",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-46148' (also known as 'BIT-pytorch-2025-46148', 'PYSEC-2025-198')."
+     },
+     {
+      "id": "CVE-2025-46148",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-46148' (also known as 'BIT-pytorch-2025-46148', 'PYSEC-2025-198')."
+     },
+     {
+      "id": "CVE-2025-46149",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-46149' (also known as 'BIT-pytorch-2025-46149', 'PYSEC-2025-199')."
+     },
+     {
+      "id": "CVE-2025-46150",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-46150' (also known as 'BIT-pytorch-2025-46150', 'PYSEC-2025-200')."
+     },
+     {
+      "id": "CVE-2025-46152",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-46152' (also known as 'BIT-pytorch-2025-46152', 'PYSEC-2025-201')."
+     },
+     {
+      "id": "CVE-2025-46153",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-46153' (also known as 'BIT-pytorch-2025-46153', 'PYSEC-2025-202')."
+     },
+     {
+      "id": "CVE-2025-55551",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.8.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.8.0' is vulnerable to 'CVE-2025-55551' (also known as 'BIT-pytorch-2025-55551', 'PYSEC-2025-203')."
+     },
+     {
+      "id": "CVE-2025-55551",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-55551' (also known as 'BIT-pytorch-2025-55551', 'PYSEC-2025-203')."
+     },
+     {
+      "id": "CVE-2025-55551",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-55551' (also known as 'BIT-pytorch-2025-55551', 'PYSEC-2025-203')."
+     },
+     {
+      "id": "CVE-2025-55552",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.8.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.8.0' is vulnerable to 'CVE-2025-55552' (also known as 'BIT-pytorch-2025-55552', 'PYSEC-2025-204')."
+     },
+     {
+      "id": "CVE-2025-55552",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-55552' (also known as 'BIT-pytorch-2025-55552', 'PYSEC-2025-204')."
+     },
+     {
+      "id": "CVE-2025-55552",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-55552' (also known as 'BIT-pytorch-2025-55552', 'PYSEC-2025-204')."
+     },
+     {
+      "id": "CVE-2025-55553",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-55553' (also known as 'BIT-pytorch-2025-55553', 'PYSEC-2025-205')."
+     },
+     {
+      "id": "CVE-2025-55553",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-55553' (also known as 'BIT-pytorch-2025-55553', 'PYSEC-2025-205')."
+     },
+     {
+      "id": "CVE-2025-55554",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.8.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.8.0' is vulnerable to 'CVE-2025-55554' (also known as 'BIT-pytorch-2025-55554', 'PYSEC-2025-206')."
+     },
+     {
+      "id": "CVE-2025-55554",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-55554' (also known as 'BIT-pytorch-2025-55554', 'PYSEC-2025-206')."
+     },
+     {
+      "id": "CVE-2025-55554",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-55554' (also known as 'BIT-pytorch-2025-55554', 'PYSEC-2025-206')."
+     },
+     {
+      "id": "CVE-2025-55557",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-55557' (also known as 'BIT-pytorch-2025-55557', 'PYSEC-2025-207')."
+     },
+     {
+      "id": "CVE-2025-55557",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-55557' (also known as 'BIT-pytorch-2025-55557', 'PYSEC-2025-207')."
+     },
+     {
+      "id": "CVE-2025-55558",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-55558' (also known as 'BIT-pytorch-2025-55558', 'PYSEC-2025-208')."
+     },
+     {
+      "id": "CVE-2025-55558",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-55558' (also known as 'BIT-pytorch-2025-55558', 'PYSEC-2025-208')."
+     },
+     {
+      "id": "CVE-2025-55560",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2025-55560' (also known as 'BIT-pytorch-2025-55560', 'PYSEC-2025-209')."
+     },
+     {
+      "id": "CVE-2025-55560",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2025-55560' (also known as 'BIT-pytorch-2025-55560', 'PYSEC-2025-209')."
+     },
+     {
+      "id": "CVE-2025-14920",
+      "aliases": [
+       "PYSEC-2025-211"
+      ],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-14920' (also known as 'PYSEC-2025-211')."
+     },
+     {
+      "id": "CVE-2025-14920",
+      "aliases": [
+       "PYSEC-2025-211"
+      ],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-14920' (also known as 'PYSEC-2025-211')."
+     },
+     {
+      "id": "CVE-2025-14920",
+      "aliases": [
+       "PYSEC-2025-211"
+      ],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-14920' (also known as 'PYSEC-2025-211')."
+     },
+     {
+      "id": "CVE-2025-14920",
+      "aliases": [
+       "PYSEC-2025-211"
+      ],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-14920' (also known as 'PYSEC-2025-211')."
+     },
+     {
+      "id": "CVE-2025-14920",
+      "aliases": [
+       "PYSEC-2025-211"
+      ],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-14920' (also known as 'PYSEC-2025-211')."
+     },
+     {
+      "id": "CVE-2025-14921",
+      "aliases": [
+       "PYSEC-2025-212"
+      ],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-14921' (also known as 'PYSEC-2025-212')."
+     },
+     {
+      "id": "CVE-2025-14921",
+      "aliases": [
+       "PYSEC-2025-212"
+      ],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-14921' (also known as 'PYSEC-2025-212')."
+     },
+     {
+      "id": "CVE-2025-14921",
+      "aliases": [
+       "PYSEC-2025-212"
+      ],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-14921' (also known as 'PYSEC-2025-212')."
+     },
+     {
+      "id": "CVE-2025-14921",
+      "aliases": [
+       "PYSEC-2025-212"
+      ],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-14921' (also known as 'PYSEC-2025-212')."
+     },
+     {
+      "id": "CVE-2025-14921",
+      "aliases": [
+       "PYSEC-2025-212"
+      ],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-14921' (also known as 'PYSEC-2025-212')."
+     },
+     {
+      "id": "CVE-2025-14924",
+      "aliases": [
+       "PYSEC-2025-213"
+      ],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-14924' (also known as 'PYSEC-2025-213')."
+     },
+     {
+      "id": "CVE-2025-14924",
+      "aliases": [
+       "PYSEC-2025-213"
+      ],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-14924' (also known as 'PYSEC-2025-213')."
+     },
+     {
+      "id": "CVE-2025-14924",
+      "aliases": [
+       "PYSEC-2025-213"
+      ],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-14924' (also known as 'PYSEC-2025-213')."
+     },
+     {
+      "id": "CVE-2025-14924",
+      "aliases": [
+       "PYSEC-2025-213"
+      ],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-14924' (also known as 'PYSEC-2025-213')."
+     },
+     {
+      "id": "CVE-2025-14924",
+      "aliases": [
+       "PYSEC-2025-213"
+      ],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-14924' (also known as 'PYSEC-2025-213')."
+     },
+     {
+      "id": "CVE-2025-14926",
+      "aliases": [
+       "PYSEC-2025-214"
+      ],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-14926' (also known as 'PYSEC-2025-214')."
+     },
+     {
+      "id": "CVE-2025-14926",
+      "aliases": [
+       "PYSEC-2025-214"
+      ],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-14926' (also known as 'PYSEC-2025-214')."
+     },
+     {
+      "id": "CVE-2025-14926",
+      "aliases": [
+       "PYSEC-2025-214"
+      ],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-14926' (also known as 'PYSEC-2025-214')."
+     },
+     {
+      "id": "CVE-2025-14926",
+      "aliases": [
+       "PYSEC-2025-214"
+      ],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-14926' (also known as 'PYSEC-2025-214')."
+     },
+     {
+      "id": "CVE-2025-14926",
+      "aliases": [
+       "PYSEC-2025-214"
+      ],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-14926' (also known as 'PYSEC-2025-214')."
+     },
+     {
+      "id": "CVE-2025-14927",
+      "aliases": [
+       "PYSEC-2025-215"
+      ],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-14927' (also known as 'PYSEC-2025-215')."
+     },
+     {
+      "id": "CVE-2025-14927",
+      "aliases": [
+       "PYSEC-2025-215"
+      ],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-14927' (also known as 'PYSEC-2025-215')."
+     },
+     {
+      "id": "CVE-2025-14927",
+      "aliases": [
+       "PYSEC-2025-215"
+      ],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-14927' (also known as 'PYSEC-2025-215')."
+     },
+     {
+      "id": "CVE-2025-14927",
+      "aliases": [
+       "PYSEC-2025-215"
+      ],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-14927' (also known as 'PYSEC-2025-215')."
+     },
+     {
+      "id": "CVE-2025-14927",
+      "aliases": [
+       "PYSEC-2025-215"
+      ],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-14927' (also known as 'PYSEC-2025-215')."
+     },
+     {
+      "id": "CVE-2025-14928",
+      "aliases": [
+       "PYSEC-2025-216"
+      ],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-14928' (also known as 'PYSEC-2025-216')."
+     },
+     {
+      "id": "CVE-2025-14928",
+      "aliases": [
+       "PYSEC-2025-216"
+      ],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-14928' (also known as 'PYSEC-2025-216')."
+     },
+     {
+      "id": "CVE-2025-14928",
+      "aliases": [
+       "PYSEC-2025-216"
+      ],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-14928' (also known as 'PYSEC-2025-216')."
+     },
+     {
+      "id": "CVE-2025-14928",
+      "aliases": [
+       "PYSEC-2025-216"
+      ],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-14928' (also known as 'PYSEC-2025-216')."
+     },
+     {
+      "id": "CVE-2025-14928",
+      "aliases": [
+       "PYSEC-2025-216"
+      ],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-14928' (also known as 'PYSEC-2025-216')."
+     },
+     {
+      "id": "CVE-2025-14929",
+      "aliases": [
+       "PYSEC-2025-217"
+      ],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-14929' (also known as 'PYSEC-2025-217')."
+     },
+     {
+      "id": "CVE-2025-14929",
+      "aliases": [
+       "PYSEC-2025-217"
+      ],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-14929' (also known as 'PYSEC-2025-217')."
+     },
+     {
+      "id": "CVE-2025-14929",
+      "aliases": [
+       "PYSEC-2025-217"
+      ],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-14929' (also known as 'PYSEC-2025-217')."
+     },
+     {
+      "id": "CVE-2025-14929",
+      "aliases": [
+       "PYSEC-2025-217"
+      ],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-14929' (also known as 'PYSEC-2025-217')."
+     },
+     {
+      "id": "CVE-2025-14929",
+      "aliases": [
+       "PYSEC-2025-217"
+      ],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-14929' (also known as 'PYSEC-2025-217')."
+     },
+     {
+      "id": "CVE-2025-14929",
+      "aliases": [
+       "PYSEC-2025-217"
+      ],
+      "package": "transformers",
+      "version": "4.57.5",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.57.5' is vulnerable to 'CVE-2025-14929' (also known as 'PYSEC-2025-217')."
+     },
+     {
+      "id": "CVE-2025-14930",
+      "aliases": [
+       "PYSEC-2025-218"
+      ],
+      "package": "transformers",
+      "version": "4.30.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.30.2' is vulnerable to 'CVE-2025-14930' (also known as 'PYSEC-2025-218')."
+     },
+     {
+      "id": "CVE-2025-14930",
+      "aliases": [
+       "PYSEC-2025-218"
+      ],
+      "package": "transformers",
+      "version": "4.48.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.48.2' is vulnerable to 'CVE-2025-14930' (also known as 'PYSEC-2025-218')."
+     },
+     {
+      "id": "CVE-2025-14930",
+      "aliases": [
+       "PYSEC-2025-218"
+      ],
+      "package": "transformers",
+      "version": "4.51.0",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.51.0' is vulnerable to 'CVE-2025-14930' (also known as 'PYSEC-2025-218')."
+     },
+     {
+      "id": "CVE-2025-14930",
+      "aliases": [
+       "PYSEC-2025-218"
+      ],
+      "package": "transformers",
+      "version": "4.46.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.46.2' is vulnerable to 'CVE-2025-14930' (also known as 'PYSEC-2025-218')."
+     },
+     {
+      "id": "CVE-2025-14930",
+      "aliases": [
+       "PYSEC-2025-218"
+      ],
+      "package": "transformers",
+      "version": "4.41.2",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.41.2' is vulnerable to 'CVE-2025-14930' (also known as 'PYSEC-2025-218')."
+     },
+     {
+      "id": "CVE-2026-4538",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.8.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.8.0' is vulnerable to 'CVE-2026-4538' (also known as 'BIT-pytorch-2026-4538', 'PYSEC-2026-139')."
+     },
+     {
+      "id": "CVE-2026-4538",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2026-4538' (also known as 'BIT-pytorch-2026-4538', 'PYSEC-2026-139')."
+     },
+     {
+      "id": "CVE-2026-4538",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2026-4538' (also known as 'BIT-pytorch-2026-4538', 'PYSEC-2026-139')."
+     },
+     {
+      "id": "CVE-2026-12252",
+      "aliases": [
+       "PYSEC-2026-2085"
+      ],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-12252' (also known as 'PYSEC-2026-2085')."
+     },
+     {
+      "id": "CVE-2026-7246",
+      "aliases": [],
+      "package": "click",
+      "version": "8.2.1",
+      "file": "requirements.txt",
+      "message": "Package 'click@8.2.1' is vulnerable to 'CVE-2026-7246' (also known as 'PYSEC-2026-2132', 'GHSA-47fr-3ffg-hgmw')."
+     },
+     {
+      "id": "CVE-2026-49119",
+      "aliases": [
+       "PYSEC-2026-2179"
+      ],
+      "package": "gradio",
+      "version": "4.4.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@4.4.0' is vulnerable to 'CVE-2026-49119' (also known as 'PYSEC-2026-2179')."
+     },
+     {
+      "id": "CVE-2026-49119",
+      "aliases": [
+       "PYSEC-2026-2179"
+      ],
+      "package": "gradio",
+      "version": "5.5.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@5.5.0' is vulnerable to 'CVE-2026-49119' (also known as 'PYSEC-2026-2179')."
+     },
+     {
+      "id": "CVE-2026-49119",
+      "aliases": [
+       "PYSEC-2026-2179"
+      ],
+      "package": "gradio",
+      "version": "6.9.0",
+      "file": "requirements.txt",
+      "message": "Package 'gradio@6.9.0' is vulnerable to 'CVE-2026-49119' (also known as 'PYSEC-2026-2179')."
+     },
+     {
+      "id": "CVE-2026-24747",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.8.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.8.0' is vulnerable to 'CVE-2026-24747' (also known as 'BIT-pytorch-2026-24747', 'PYSEC-2026-1856', 'PYSEC-2026-2286', 'GHSA-63cw-57p8-fm3p')."
+     },
+     {
+      "id": "CVE-2026-24747",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.6.0' is vulnerable to 'CVE-2026-24747' (also known as 'BIT-pytorch-2026-24747', 'PYSEC-2026-1856', 'PYSEC-2026-2286', 'GHSA-63cw-57p8-fm3p')."
+     },
+     {
+      "id": "CVE-2026-24747",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.3.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.3.0' is vulnerable to 'CVE-2026-24747' (also known as 'BIT-pytorch-2026-24747', 'PYSEC-2026-1856', 'PYSEC-2026-2286', 'GHSA-63cw-57p8-fm3p')."
+     },
+     {
+      "id": "CVE-2026-66007",
+      "aliases": [
+       "PYSEC-2026-3716"
+      ],
+      "package": "datasets",
+      "version": "2.14.0",
+      "file": "requirements.txt",
+      "message": "Package 'datasets@2.14.0' is vulnerable to 'CVE-2026-66007' (also known as 'PYSEC-2026-3716')."
+     },
+     {
+      "id": "CVE-2026-66007",
+      "aliases": [
+       "PYSEC-2026-3716"
+      ],
+      "package": "datasets",
+      "version": "5.0.0",
+      "file": "requirements.txt",
+      "message": "Package 'datasets@5.0.0' is vulnerable to 'CVE-2026-66007' (also known as 'PYSEC-2026-3716')."
+     },
+     {
+      "id": "CVE-2026-66007",
+      "aliases": [
+       "PYSEC-2026-3716"
+      ],
+      "package": "datasets",
+      "version": "2.18.0",
+      "file": "requirements.txt",
+      "message": "Package 'datasets@2.18.0' is vulnerable to 'CVE-2026-66007' (also known as 'PYSEC-2026-3716')."
+     },
+     {
+      "id": "CVE-2026-66007",
+      "aliases": [
+       "PYSEC-2026-3716"
+      ],
+      "package": "datasets",
+      "version": "4.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'datasets@4.2.0' is vulnerable to 'CVE-2026-66007' (also known as 'PYSEC-2026-3716')."
+     },
+     {
+      "id": "CVE-2026-62385",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-62385' (also known as 'PYSEC-2026-3728', 'GHSA-568f-pv23-39p4')."
+     },
+     {
+      "id": "CVE-2026-63310",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-63310' (also known as 'PYSEC-2026-3729', 'GHSA-5wp5-5229-5g6q')."
+     },
+     {
+      "id": "CVE-2026-63312",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-63312' (also known as 'PYSEC-2026-3730', 'GHSA-x5ph-mj9p-rfr8')."
+     },
+     {
+      "id": "CVE-2026-65915",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-65915' (also known as 'PYSEC-2026-3731', 'GHSA-72r2-7mfr-5xr9')."
+     },
+     {
+      "id": "CVE-2026-70626",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-70626' (also known as 'PYSEC-2026-3732', 'GHSA-r6gq-whwq-mvg9')."
+     },
+     {
+      "id": "CVE-2026-78682",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-78682' (also known as 'PYSEC-2026-3733', 'GHSA-6ww7-3frv-cqxh')."
+     },
+     {
+      "id": "CVE-2026-78683",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-78683' (also known as 'PYSEC-2026-3734', 'GHSA-rhp5-r9x4-f5g2')."
+     },
+     {
+      "id": "CVE-2026-79657",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-79657' (also known as 'PYSEC-2026-3735', 'GHSA-x99w-6fgc-pmfw')."
+     },
+     {
+      "id": "CVE-2026-79674",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-79674' (also known as 'PYSEC-2026-3736', 'GHSA-3gq4-3j92-5w49')."
+     },
+     {
+      "id": "CVE-2026-79676",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-79676' (also known as 'PYSEC-2026-3737', 'GHSA-p4rw-rvv2-7xwr')."
+     },
+     {
+      "id": "CVE-2026-78681",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-78681' (also known as 'PYSEC-2026-3748', 'GHSA-97qj-x29f-37w7')."
+     },
+     {
+      "id": "CVE-2026-80205",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-80205' (also known as 'PYSEC-2026-3750', 'GHSA-rrv8-h7p8-rx55')."
+     },
+     {
+      "id": "CVE-2026-80206",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-80206' (also known as 'PYSEC-2026-3751', 'GHSA-w3v8-gmh9-3wv7')."
+     },
+     {
+      "id": "CVE-2026-81725",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-81725' (also known as 'PYSEC-2026-3752', 'GHSA-8mpw-7fpc-4gqj')."
+     },
+     {
+      "id": "CVE-2026-78675",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-78675' (also known as 'PYSEC-2026-3785', 'GHSA-7833-fr7j-v32q')."
+     },
+     {
+      "id": "CVE-2026-78676",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-78676' (also known as 'PYSEC-2026-3786', 'GHSA-284h-m62q-gf8w')."
+     },
+     {
+      "id": "CVE-2026-78677",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-78677' (also known as 'PYSEC-2026-3787', 'GHSA-8mcc-hrx5-hvxc')."
+     },
+     {
+      "id": "CVE-2026-78678",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.45",
+      "file": "requirements.txt",
+      "message": "Package 'gitpython@3.1.45' is vulnerable to 'CVE-2026-78678' (also known as 'PYSEC-2026-3788', 'GHSA-5xxx-qhh7-9287')."
+     },
+     {
+      "id": "CVE-2026-0848",
+      "aliases": [
+       "PYSEC-2026-99"
+      ],
+      "package": "nltk",
+      "version": "3.9.1",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.9.1' is vulnerable to 'CVE-2026-0848' (also known as 'PYSEC-2026-99')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no .github/workflows in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [
+   {
+    "advisory_id": "GHSA-9v2f-6vcg-3hgv",
+    "change": "withdrawn",
+    "changed_at": "2025-10-17 20:26:00",
+    "observed_at": "2026-09-03 22:34:18.952979"
+   },
+   {
+    "advisory_id": "GHSA-3f95-mxq2-2f63",
+    "change": "withdrawn",
+    "changed_at": "2026-02-03 17:39:05",
+    "observed_at": "2026-09-03 22:34:18.952979"
+   },
+   {
+    "advisory_id": "PYSEC-2024-115",
+    "change": "withdrawn",
+    "changed_at": "2026-07-09 16:45:06.281535",
+    "observed_at": "2026-09-03 22:34:18.952979"
+   }
+  ],
+  "since_as_of": "2026-09-03 22:34:18.952979",
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "432 findings · 1 check pending · 3 checks not applicable",
+  "block": "SECURITY · commit 7f892a8\n\n  Dependency vulnerabilities\n    432 findings                     osv-scanner 2.5.1 · 2026-09-03\n      GHSA-26jh-r8g2-6fpr  gradio@4.4.0\n      CVE-2024-47871  gradio@4.4.0\n      CVE-2026-4372  transformers@4.30.2\n      CVE-2026-4372  transformers@4.48.2\n      CVE-2026-4372  transformers@4.51.0\n      CVE-2026-4372  transformers@4.46.2\n      CVE-2026-4372  transformers@4.41.2\n      CVE-2026-4372  transformers@4.57.5\n      CVE-2026-67325  gitpython@3.1.45\n      CVE-2026-54279  aiohttp@3.12.15\n      CVE-2026-34514  aiohttp@3.12.15\n      CVE-2026-49476  soupsieve@2.7\n      CVE-2025-66471  urllib3@2.5.0\n      CVE-2024-46455  unstructured@0.10.30\n      CVE-2024-34511  gradio@4.4.0\n      CVE-2026-45134  langchain@0.0.292\n      CVE-2026-45134  langsmith@0.0.92\n      CVE-2025-2953  torch@2.6.0\n      CVE-2025-2953  torch@2.3.0\n      CVE-2025-3933  transformers@4.30.2\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-03\n  GHSA-9v2f-6vcg-3hgv was WITHDRAWN upstream on 2025-10-17\n  GHSA-3f95-mxq2-2f63 was WITHDRAWN upstream on 2026-02-03\n  PYSEC-2024-115 was WITHDRAWN upstream on 2026-07-09\n\n→ How we run these scans (/methodology)"
+ }
+}

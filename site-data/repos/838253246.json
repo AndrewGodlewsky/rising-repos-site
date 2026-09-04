@@ -1,0 +1,267 @@
+{
+ "security": {
+  "repo_id": 838253246,
+  "commit_sha": "0b341e582afbf9e1011f24744b554c96a3477eb5",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 20,
+    "findings": [
+     {
+      "id": "CVE-2025-2953",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-2953' (also known as 'BIT-pytorch-2025-2953', 'PYSEC-2025-191', 'GHSA-3749-ghw9-m3mg')."
+     },
+     {
+      "id": "CVE-2025-32434",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-32434' (also known as 'BIT-pytorch-2025-32434', 'PYSEC-2025-41', 'GHSA-53q9-r3pm-6pq6')."
+     },
+     {
+      "id": "CVE-2025-3730",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-3730' (also known as 'BIT-pytorch-2025-3730', 'PYSEC-2026-1970', 'GHSA-887c-mr87-cxwp')."
+     },
+     {
+      "id": "CVE-2025-2148",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-2148' (also known as 'BIT-pytorch-2025-2148', 'PYSEC-2025-189', 'GHSA-c678-jfcj-6jmf')."
+     },
+     {
+      "id": "CVE-2025-2998",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-2998' (also known as 'BIT-pytorch-2025-2998', 'PYSEC-2025-192', 'GHSA-f4hp-rmr7-r7v8')."
+     },
+     {
+      "id": "CVE-2025-3001",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-3001' (also known as 'BIT-pytorch-2025-3001', 'PYSEC-2025-195', 'GHSA-qfhq-4f3w-5fph')."
+     },
+     {
+      "id": "CVE-2025-3000",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-3000' (also known as 'BIT-pytorch-2025-3000', 'PYSEC-2025-194', 'GHSA-rrmf-rvhw-rf47')."
+     },
+     {
+      "id": "CVE-2025-2999",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-2999' (also known as 'BIT-pytorch-2025-2999', 'PYSEC-2025-193', 'GHSA-vgrw-7cvw-pwgx')."
+     },
+     {
+      "id": "CVE-2025-2149",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-2149' (also known as 'BIT-pytorch-2025-2149', 'PYSEC-2025-190', 'GHSA-x3gm-94wq-g975')."
+     },
+     {
+      "id": "CVE-2024-48063",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2024-48063' (also known as 'BIT-pytorch-2024-48063', 'PYSEC-2024-259')."
+     },
+     {
+      "id": "CVE-2025-46148",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-46148' (also known as 'BIT-pytorch-2025-46148', 'PYSEC-2025-198')."
+     },
+     {
+      "id": "CVE-2025-55551",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-55551' (also known as 'BIT-pytorch-2025-55551', 'PYSEC-2025-203')."
+     },
+     {
+      "id": "CVE-2025-55552",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-55552' (also known as 'BIT-pytorch-2025-55552', 'PYSEC-2025-204')."
+     },
+     {
+      "id": "CVE-2025-55553",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-55553' (also known as 'BIT-pytorch-2025-55553', 'PYSEC-2025-205')."
+     },
+     {
+      "id": "CVE-2025-55554",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-55554' (also known as 'BIT-pytorch-2025-55554', 'PYSEC-2025-206')."
+     },
+     {
+      "id": "CVE-2025-55557",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-55557' (also known as 'BIT-pytorch-2025-55557', 'PYSEC-2025-207')."
+     },
+     {
+      "id": "CVE-2025-55558",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-55558' (also known as 'BIT-pytorch-2025-55558', 'PYSEC-2025-208')."
+     },
+     {
+      "id": "CVE-2025-55560",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2025-55560' (also known as 'BIT-pytorch-2025-55560', 'PYSEC-2025-209')."
+     },
+     {
+      "id": "CVE-2026-4538",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2026-4538' (also known as 'BIT-pytorch-2026-4538', 'PYSEC-2026-139')."
+     },
+     {
+      "id": "CVE-2026-24747",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'torch@2.2.0' is vulnerable to 'CVE-2026-24747' (also known as 'BIT-pytorch-2026-24747', 'PYSEC-2026-1856', 'PYSEC-2026-2286', 'GHSA-63cw-57p8-fm3p')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no .github/workflows in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "20 findings · 1 check pending · 3 checks not applicable",
+  "block": "SECURITY · commit 0b341e5\n\n  Dependency vulnerabilities\n    20 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2025-2953  torch@2.2.0\n      CVE-2025-32434  torch@2.2.0\n      CVE-2025-3730  torch@2.2.0\n      CVE-2025-2148  torch@2.2.0\n      CVE-2025-2998  torch@2.2.0\n      CVE-2025-3001  torch@2.2.0\n      CVE-2025-3000  torch@2.2.0\n      CVE-2025-2999  torch@2.2.0\n      CVE-2025-2149  torch@2.2.0\n      CVE-2024-48063  torch@2.2.0\n      CVE-2025-46148  torch@2.2.0\n      CVE-2025-55551  torch@2.2.0\n      CVE-2025-55552  torch@2.2.0\n      CVE-2025-55553  torch@2.2.0\n      CVE-2025-55554  torch@2.2.0\n      CVE-2025-55557  torch@2.2.0\n      CVE-2025-55558  torch@2.2.0\n      CVE-2025-55560  torch@2.2.0\n      CVE-2026-4538  torch@2.2.0\n      CVE-2026-24747  torch@2.2.0\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

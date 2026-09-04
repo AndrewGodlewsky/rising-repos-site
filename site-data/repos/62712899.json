@@ -1,0 +1,1211 @@
+{
+ "security": {
+  "repo_id": 62712899,
+  "commit_sha": "fe0f05643acb2ea1d002d7859637b5c80c9414ea",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 83,
+    "findings": [
+     {
+      "id": "CVE-2026-67214",
+      "aliases": [
+       "GHSA-28wg-ghj8-5hjv"
+      ],
+      "package": "nanoid",
+      "version": "3.3.8",
+      "file": "package-lock.json",
+      "message": "Package 'nanoid@3.3.8' is vulnerable to 'CVE-2026-67214' (also known as 'GHSA-28wg-ghj8-5hjv')."
+     },
+     {
+      "id": "CVE-2026-67214",
+      "aliases": [
+       "GHSA-28wg-ghj8-5hjv"
+      ],
+      "package": "nanoid",
+      "version": "3.3.12",
+      "file": "package-lock.json",
+      "message": "Package 'nanoid@3.3.12' is vulnerable to 'CVE-2026-67214' (also known as 'GHSA-28wg-ghj8-5hjv')."
+     },
+     {
+      "id": "CVE-2026-67214",
+      "aliases": [
+       "GHSA-28wg-ghj8-5hjv"
+      ],
+      "package": "nanoid",
+      "version": "5.1.11",
+      "file": "package-lock.json",
+      "message": "Package 'nanoid@5.1.11' is vulnerable to 'CVE-2026-67214' (also known as 'GHSA-28wg-ghj8-5hjv')."
+     },
+     {
+      "id": "CVE-2026-67213",
+      "aliases": [
+       "GHSA-2v37-7h3g-55p8"
+      ],
+      "package": "nanoid",
+      "version": "3.3.8",
+      "file": "package-lock.json",
+      "message": "Package 'nanoid@3.3.8' is vulnerable to 'CVE-2026-67213' (also known as 'GHSA-2v37-7h3g-55p8')."
+     },
+     {
+      "id": "CVE-2026-67213",
+      "aliases": [
+       "GHSA-2v37-7h3g-55p8"
+      ],
+      "package": "nanoid",
+      "version": "3.3.12",
+      "file": "package-lock.json",
+      "message": "Package 'nanoid@3.3.12' is vulnerable to 'CVE-2026-67213' (also known as 'GHSA-2v37-7h3g-55p8')."
+     },
+     {
+      "id": "CVE-2026-13311",
+      "aliases": [
+       "GHSA-395f-4hp3-45gv"
+      ],
+      "package": "shell-quote",
+      "version": "1.8.1",
+      "file": "package-lock.json",
+      "message": "Package 'shell-quote@1.8.1' is vulnerable to 'CVE-2026-13311' (also known as 'GHSA-395f-4hp3-45gv')."
+     },
+     {
+      "id": "CVE-2026-13311",
+      "aliases": [
+       "GHSA-395f-4hp3-45gv"
+      ],
+      "package": "shell-quote",
+      "version": "1.8.4",
+      "file": "package-lock.json",
+      "message": "Package 'shell-quote@1.8.4' is vulnerable to 'CVE-2026-13311' (also known as 'GHSA-395f-4hp3-45gv')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.14",
+      "file": "package-lock.json",
+      "message": "Package 'brace-expansion@1.1.14' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "2.1.0",
+      "file": "package-lock.json",
+      "message": "Package 'brace-expansion@2.1.0' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.15",
+      "file": "package-lock.json",
+      "message": "Package 'brace-expansion@1.1.15' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.6",
+      "file": "package-lock.json",
+      "message": "Package 'brace-expansion@5.0.6' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-13676",
+      "aliases": [
+       "GHSA-4c8g-83qw-93j6"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-13676' (also known as 'GHSA-4c8g-83qw-93j6')."
+     },
+     {
+      "id": "CVE-2026-13676",
+      "aliases": [
+       "GHSA-4c8g-83qw-93j6"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-13676' (also known as 'GHSA-4c8g-83qw-93j6')."
+     },
+     {
+      "id": "CVE-2026-82417",
+      "aliases": [
+       "GHSA-4mjr-xmp4-gh2g"
+      ],
+      "package": "qs",
+      "version": "6.14.2",
+      "file": "package-lock.json",
+      "message": "Package 'qs@6.14.2' is vulnerable to 'CVE-2026-82417' (also known as 'GHSA-4mjr-xmp4-gh2g')."
+     },
+     {
+      "id": "CVE-2026-82417",
+      "aliases": [
+       "GHSA-4mjr-xmp4-gh2g"
+      ],
+      "package": "qs",
+      "version": "6.15.2",
+      "file": "package-lock.json",
+      "message": "Package 'qs@6.15.2' is vulnerable to 'CVE-2026-82417' (also known as 'GHSA-4mjr-xmp4-gh2g')."
+     },
+     {
+      "id": "CVE-2026-49356",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "package-lock.json",
+      "message": "Package '@babel/core@7.24.5' is vulnerable to 'CVE-2026-49356' (also known as 'GHSA-4x5r-pxfx-6jf8')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.2",
+      "file": "package-lock.json",
+      "message": "Package 'js-yaml@3.14.2' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "package-lock.json",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "4.2.0",
+      "file": "package-lock.json",
+      "message": "Package 'js-yaml@4.2.0' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-45736",
+      "aliases": [
+       "GHSA-58qx-3vcg-4xpx"
+      ],
+      "package": "ws",
+      "version": "8.18.3",
+      "file": "package-lock.json",
+      "message": "Package 'ws@8.18.3' is vulnerable to 'CVE-2026-45736' (also known as 'GHSA-58qx-3vcg-4xpx')."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "3.14.2",
+      "file": "package-lock.json",
+      "message": "Package 'js-yaml@3.14.2' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "package-lock.json",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "4.2.0",
+      "file": "package-lock.json",
+      "message": "Package 'js-yaml@4.2.0' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "CVE-2026-59952",
+      "aliases": [
+       "GHSA-5qjj-4xww-7phc"
+      ],
+      "package": "valibot",
+      "version": "1.4.1",
+      "file": "package-lock.json",
+      "message": "Package 'valibot@1.4.1' is vulnerable to 'CVE-2026-59952' (also known as 'GHSA-5qjj-4xww-7phc')."
+     },
+     {
+      "id": "CVE-2026-47429",
+      "aliases": [
+       "GHSA-5xrq-8626-4rwp"
+      ],
+      "package": "vitest",
+      "version": "3.1.1",
+      "file": "package-lock.json",
+      "message": "Package 'vitest@3.1.1' is vulnerable to 'CVE-2026-47429' (also known as 'GHSA-5xrq-8626-4rwp')."
+     },
+     {
+      "id": "CVE-2026-55602",
+      "aliases": [
+       "GHSA-64mm-vxmg-q3vj"
+      ],
+      "package": "http-proxy-middleware",
+      "version": "2.0.9",
+      "file": "package-lock.json",
+      "message": "Package 'http-proxy-middleware@2.0.9' is vulnerable to 'CVE-2026-55602' (also known as 'GHSA-64mm-vxmg-q3vj')."
+     },
+     {
+      "id": "CVE-2026-45623",
+      "aliases": [
+       "GHSA-6g55-p6wh-862q"
+      ],
+      "package": "postcss",
+      "version": "8.5.3",
+      "file": "package-lock.json",
+      "message": "Package 'postcss@8.5.3' is vulnerable to 'CVE-2026-45623' (also known as 'GHSA-6g55-p6wh-862q')."
+     },
+     {
+      "id": "CVE-2026-73088",
+      "aliases": [
+       "GHSA-73wf-gq98-2v4g"
+      ],
+      "package": "browserslist",
+      "version": "4.28.2",
+      "file": "package-lock.json",
+      "message": "Package 'browserslist@4.28.2' is vulnerable to 'CVE-2026-73088' (also known as 'GHSA-73wf-gq98-2v4g')."
+     },
+     {
+      "id": "CVE-2026-6402",
+      "aliases": [
+       "GHSA-79cf-xcqc-c78w"
+      ],
+      "package": "webpack-dev-server",
+      "version": "5.2.3",
+      "file": "package-lock.json",
+      "message": "Package 'webpack-dev-server@5.2.3' is vulnerable to 'CVE-2026-6402' (also known as 'GHSA-79cf-xcqc-c78w')."
+     },
+     {
+      "id": "CVE-2026-18446",
+      "aliases": [
+       "GHSA-7p8r-x3mc-p8w7"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-18446' (also known as 'GHSA-7p8r-x3mc-p8w7')."
+     },
+     {
+      "id": "CVE-2026-18446",
+      "aliases": [
+       "GHSA-7p8r-x3mc-p8w7"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-18446' (also known as 'GHSA-7p8r-x3mc-p8w7')."
+     },
+     {
+      "id": "CVE-2026-48779",
+      "aliases": [
+       "GHSA-96hv-2xvq-fx4p"
+      ],
+      "package": "ws",
+      "version": "8.18.3",
+      "file": "package-lock.json",
+      "message": "Package 'ws@8.18.3' is vulnerable to 'CVE-2026-48779' (also known as 'GHSA-96hv-2xvq-fx4p')."
+     },
+     {
+      "id": "CVE-2024-52011",
+      "aliases": [
+       "GHSA-c27g-q93r-2cwf"
+      ],
+      "package": "launch-editor",
+      "version": "2.6.1",
+      "file": "package-lock.json",
+      "message": "Package 'launch-editor@2.6.1' is vulnerable to 'CVE-2024-52011' (also known as 'GHSA-c27g-q93r-2cwf')."
+     },
+     {
+      "id": "CVE-2026-73089",
+      "aliases": [
+       "GHSA-c83g-rgw3-j3cx"
+      ],
+      "package": "browserslist",
+      "version": "4.28.2",
+      "file": "package-lock.json",
+      "message": "Package 'browserslist@4.28.2' is vulnerable to 'CVE-2026-73089' (also known as 'GHSA-c83g-rgw3-j3cx')."
+     },
+     {
+      "id": "CVE-2026-14620",
+      "aliases": [
+       "GHSA-f5vj-f2hx-8m93"
+      ],
+      "package": "webpack-dev-server",
+      "version": "5.2.3",
+      "file": "package-lock.json",
+      "message": "Package 'webpack-dev-server@5.2.3' is vulnerable to 'CVE-2026-14620' (also known as 'GHSA-f5vj-f2hx-8m93')."
+     },
+     {
+      "id": "CVE-2026-14620",
+      "aliases": [
+       "GHSA-f5vj-f2hx-8m93"
+      ],
+      "package": "webpack-dev-server",
+      "version": "5.2.5",
+      "file": "package-lock.json",
+      "message": "Package 'webpack-dev-server@5.2.5' is vulnerable to 'CVE-2026-14620' (also known as 'GHSA-f5vj-f2hx-8m93')."
+     },
+     {
+      "id": "CVE-2026-75975",
+      "aliases": [
+       "GHSA-f65p-4m7j-42xc"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-75975' (also known as 'GHSA-f65p-4m7j-42xc')."
+     },
+     {
+      "id": "CVE-2026-75975",
+      "aliases": [
+       "GHSA-f65p-4m7j-42xc"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-75975' (also known as 'GHSA-f65p-4m7j-42xc')."
+     },
+     {
+      "id": "CVE-2026-75899",
+      "aliases": [
+       "GHSA-fph4-wmhf-6fwf"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-75899' (also known as 'GHSA-fph4-wmhf-6fwf')."
+     },
+     {
+      "id": "CVE-2026-44728",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "package-lock.json",
+      "message": "Package '@babel/plugin-transform-modules-systemjs@7.24.1' is vulnerable to 'CVE-2026-44728' (also known as 'GHSA-fv7c-fp4j-7gwp')."
+     },
+     {
+      "id": "CVE-2026-53571",
+      "aliases": [
+       "GHSA-fx2h-pf6j-xcff"
+      ],
+      "package": "vite",
+      "version": "6.4.2",
+      "file": "package-lock.json",
+      "message": "Package 'vite@6.4.2' is vulnerable to 'CVE-2026-53571' (also known as 'GHSA-fx2h-pf6j-xcff')."
+     },
+     {
+      "id": "CVE-2026-69153",
+      "aliases": [
+       "GHSA-fxqj-rqcc-2cmp"
+      ],
+      "package": "postcss",
+      "version": "8.5.3",
+      "file": "package-lock.json",
+      "message": "Package 'postcss@8.5.3' is vulnerable to 'CVE-2026-69153' (also known as 'GHSA-fxqj-rqcc-2cmp')."
+     },
+     {
+      "id": "CVE-2026-69153",
+      "aliases": [
+       "GHSA-fxqj-rqcc-2cmp"
+      ],
+      "package": "postcss",
+      "version": "8.5.15",
+      "file": "package-lock.json",
+      "message": "Package 'postcss@8.5.15' is vulnerable to 'CVE-2026-69153' (also known as 'GHSA-fxqj-rqcc-2cmp')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.2",
+      "file": "package-lock.json",
+      "message": "Package 'js-yaml@3.14.2' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "package-lock.json",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-76172",
+      "aliases": [
+       "GHSA-jqff-g426-hqxp"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-76172' (also known as 'GHSA-jqff-g426-hqxp')."
+     },
+     {
+      "id": "CVE-2026-76172",
+      "aliases": [
+       "GHSA-jqff-g426-hqxp"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-76172' (also known as 'GHSA-jqff-g426-hqxp')."
+     },
+     {
+      "id": "CVE-2026-14631",
+      "aliases": [
+       "GHSA-m28w-2pqf-7qgj"
+      ],
+      "package": "webpack-dev-server",
+      "version": "5.2.3",
+      "file": "package-lock.json",
+      "message": "Package 'webpack-dev-server@5.2.3' is vulnerable to 'CVE-2026-14631' (also known as 'GHSA-m28w-2pqf-7qgj')."
+     },
+     {
+      "id": "CVE-2026-14631",
+      "aliases": [
+       "GHSA-m28w-2pqf-7qgj"
+      ],
+      "package": "webpack-dev-server",
+      "version": "5.2.5",
+      "file": "package-lock.json",
+      "message": "Package 'webpack-dev-server@5.2.5' is vulnerable to 'CVE-2026-14631' (also known as 'GHSA-m28w-2pqf-7qgj')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.14",
+      "file": "package-lock.json",
+      "message": "Package 'brace-expansion@1.1.14' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "2.1.0",
+      "file": "package-lock.json",
+      "message": "Package 'brace-expansion@2.1.0' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.15",
+      "file": "package-lock.json",
+      "message": "Package 'brace-expansion@1.1.15' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.6",
+      "file": "package-lock.json",
+      "message": "Package 'brace-expansion@5.0.6' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-54490",
+      "aliases": [
+       "GHSA-mp7j-qc5w-4988"
+      ],
+      "package": "websocket-driver",
+      "version": "0.7.4",
+      "file": "package-lock.json",
+      "message": "Package 'websocket-driver@0.7.4' is vulnerable to 'CVE-2026-54490' (also known as 'GHSA-mp7j-qc5w-4988')."
+     },
+     {
+      "id": "CVE-2026-9595",
+      "aliases": [
+       "GHSA-mx8g-39q3-5c79"
+      ],
+      "package": "webpack-dev-server",
+      "version": "5.2.3",
+      "file": "package-lock.json",
+      "message": "Package 'webpack-dev-server@5.2.3' is vulnerable to 'CVE-2026-9595' (also known as 'GHSA-mx8g-39q3-5c79')."
+     },
+     {
+      "id": "CVE-2026-6321",
+      "aliases": [
+       "GHSA-q3j6-qgpj-74h6"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-6321' (also known as 'GHSA-q3j6-qgpj-74h6')."
+     },
+     {
+      "id": "CVE-2026-8723",
+      "aliases": [
+       "GHSA-q8mj-m7cp-5q26"
+      ],
+      "package": "qs",
+      "version": "6.14.2",
+      "file": "package-lock.json",
+      "message": "Package 'qs@6.14.2' is vulnerable to 'CVE-2026-8723' (also known as 'GHSA-q8mj-m7cp-5q26')."
+     },
+     {
+      "id": "CVE-2026-41305",
+      "aliases": [
+       "GHSA-qx2v-qp2m-jg93"
+      ],
+      "package": "postcss",
+      "version": "8.5.3",
+      "file": "package-lock.json",
+      "message": "Package 'postcss@8.5.3' is vulnerable to 'CVE-2026-41305' (also known as 'GHSA-qx2v-qp2m-jg93')."
+     },
+     {
+      "id": "CVE-2026-73646",
+      "aliases": [
+       "GHSA-r28c-9q8g-f849"
+      ],
+      "package": "postcss",
+      "version": "8.5.3",
+      "file": "package-lock.json",
+      "message": "Package 'postcss@8.5.3' is vulnerable to 'CVE-2026-73646' (also known as 'GHSA-r28c-9q8g-f849')."
+     },
+     {
+      "id": "CVE-2026-73646",
+      "aliases": [
+       "GHSA-r28c-9q8g-f849"
+      ],
+      "package": "postcss",
+      "version": "8.5.15",
+      "file": "package-lock.json",
+      "message": "Package 'postcss@8.5.15' is vulnerable to 'CVE-2026-73646' (also known as 'GHSA-r28c-9q8g-f849')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.14",
+      "file": "package-lock.json",
+      "message": "Package 'brace-expansion@1.1.14' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "2.1.0",
+      "file": "package-lock.json",
+      "message": "Package 'brace-expansion@2.1.0' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.15",
+      "file": "package-lock.json",
+      "message": "Package 'brace-expansion@1.1.15' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.6",
+      "file": "package-lock.json",
+      "message": "Package 'brace-expansion@5.0.6' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-16221",
+      "aliases": [
+       "GHSA-v2hh-gcrm-f6hx"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-16221' (also known as 'GHSA-v2hh-gcrm-f6hx')."
+     },
+     {
+      "id": "CVE-2026-16221",
+      "aliases": [
+       "GHSA-v2hh-gcrm-f6hx"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.2",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.2' is vulnerable to 'CVE-2026-16221' (also known as 'GHSA-v2hh-gcrm-f6hx')."
+     },
+     {
+      "id": "CVE-2026-6322",
+      "aliases": [
+       "GHSA-v39h-62p7-jpjc"
+      ],
+      "package": "fast-uri",
+      "version": "3.1.0",
+      "file": "package-lock.json",
+      "message": "Package 'fast-uri@3.1.0' is vulnerable to 'CVE-2026-6322' (also known as 'GHSA-v39h-62p7-jpjc')."
+     },
+     {
+      "id": "CVE-2026-12590",
+      "aliases": [
+       "GHSA-v422-hmwv-36x6"
+      ],
+      "package": "body-parser",
+      "version": "1.20.4",
+      "file": "package-lock.json",
+      "message": "Package 'body-parser@1.20.4' is vulnerable to 'CVE-2026-12590' (also known as 'GHSA-v422-hmwv-36x6')."
+     },
+     {
+      "id": "CVE-2026-12590",
+      "aliases": [
+       "GHSA-v422-hmwv-36x6"
+      ],
+      "package": "body-parser",
+      "version": "1.20.5",
+      "file": "package-lock.json",
+      "message": "Package 'body-parser@1.20.5' is vulnerable to 'CVE-2026-12590' (also known as 'GHSA-v422-hmwv-36x6')."
+     },
+     {
+      "id": "CVE-2026-53632",
+      "aliases": [
+       "GHSA-v6wh-96g9-6wx3"
+      ],
+      "package": "launch-editor",
+      "version": "2.6.1",
+      "file": "package-lock.json",
+      "message": "Package 'launch-editor@2.6.1' is vulnerable to 'CVE-2026-53632' (also known as 'GHSA-v6wh-96g9-6wx3')."
+     },
+     {
+      "id": "CVE-2026-53632",
+      "aliases": [
+       "GHSA-v6wh-96g9-6wx3"
+      ],
+      "package": "vite",
+      "version": "6.4.2",
+      "file": "package-lock.json",
+      "message": "Package 'vite@6.4.2' is vulnerable to 'CVE-2026-53632' (also known as 'GHSA-v6wh-96g9-6wx3')."
+     },
+     {
+      "id": "CVE-2026-45822",
+      "aliases": [
+       "GHSA-vcc3-ghjq-m6fr"
+      ],
+      "package": "decode-uri-component",
+      "version": "0.2.2",
+      "file": "package-lock.json",
+      "message": "Package 'decode-uri-component@0.2.2' is vulnerable to 'CVE-2026-45822' (also known as 'GHSA-vcc3-ghjq-m6fr')."
+     },
+     {
+      "id": "CVE-2026-84304",
+      "aliases": [
+       "GHSA-vp52-pcj8-j9qc"
+      ],
+      "package": "google.golang.org/grpc",
+      "version": "1.83.0",
+      "file": "go.mod",
+      "message": "Package 'google.golang.org/grpc@1.83.0' is vulnerable to 'CVE-2026-84304' (also known as 'GHSA-vp52-pcj8-j9qc')."
+     },
+     {
+      "id": "CVE-2026-41907",
+      "aliases": [],
+      "package": "uuid",
+      "version": "8.3.2",
+      "file": "package-lock.json",
+      "message": "Package 'uuid@8.3.2' is vulnerable to 'CVE-2026-41907' (also known as 'CVE-2026-41988', 'GHSA-w5hq-g745-h8pq')."
+     },
+     {
+      "id": "CVE-2026-9277",
+      "aliases": [
+       "GHSA-w7jw-789q-3m8p"
+      ],
+      "package": "shell-quote",
+      "version": "1.8.1",
+      "file": "package-lock.json",
+      "message": "Package 'shell-quote@1.8.1' is vulnerable to 'CVE-2026-9277' (also known as 'GHSA-w7jw-789q-3m8p')."
+     },
+     {
+      "id": "CVE-2026-9358",
+      "aliases": [
+       "GHSA-w9m9-85wc-3x92"
+      ],
+      "package": "postcss-selector-parser",
+      "version": "6.1.0",
+      "file": "package-lock.json",
+      "message": "Package 'postcss-selector-parser@6.1.0' is vulnerable to 'CVE-2026-9358' (also known as 'GHSA-w9m9-85wc-3x92')."
+     },
+     {
+      "id": "CVE-2026-82562",
+      "aliases": [
+       "GHSA-x5fp-wj9c-mxmx"
+      ],
+      "package": "qs",
+      "version": "6.14.2",
+      "file": "package-lock.json",
+      "message": "Package 'qs@6.14.2' is vulnerable to 'CVE-2026-82562' (also known as 'GHSA-x5fp-wj9c-mxmx')."
+     },
+     {
+      "id": "CVE-2026-82562",
+      "aliases": [
+       "GHSA-x5fp-wj9c-mxmx"
+      ],
+      "package": "qs",
+      "version": "6.15.2",
+      "file": "package-lock.json",
+      "message": "Package 'qs@6.15.2' is vulnerable to 'CVE-2026-82562' (also known as 'GHSA-x5fp-wj9c-mxmx')."
+     },
+     {
+      "id": "CVE-2026-54466",
+      "aliases": [
+       "GHSA-xv26-6w52-cph6"
+      ],
+      "package": "websocket-driver",
+      "version": "0.7.4",
+      "file": "package-lock.json",
+      "message": "Package 'websocket-driver@0.7.4' is vulnerable to 'CVE-2026-54466' (also known as 'GHSA-xv26-6w52-cph6')."
+     },
+     {
+      "id": "CVE-2026-73086",
+      "aliases": [
+       "GHSA-xwg4-73v4-xw9w"
+      ],
+      "package": "nanoid",
+      "version": "3.3.8",
+      "file": "package-lock.json",
+      "message": "Package 'nanoid@3.3.8' is vulnerable to 'CVE-2026-73086' (also known as 'GHSA-xwg4-73v4-xw9w')."
+     },
+     {
+      "id": "GO-2026-5932",
+      "aliases": [],
+      "package": "golang.org/x/crypto",
+      "version": "0.55.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.55.0' is vulnerable to 'GO-2026-5932'."
+     },
+     {
+      "id": "CVE-2026-78662",
+      "aliases": [
+       "GO-2026-6354"
+      ],
+      "package": "golang.org/x/crypto",
+      "version": "0.55.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.55.0' is vulnerable to 'CVE-2026-78662' (also known as 'GO-2026-6354')."
+     },
+     {
+      "id": "CVE-2026-56855",
+      "aliases": [
+       "GO-2026-6355"
+      ],
+      "package": "golang.org/x/crypto",
+      "version": "0.55.0",
+      "file": "go.mod",
+      "message": "Package 'golang.org/x/crypto@0.55.0' is vulnerable to 'CVE-2026-56855' (also known as 'GO-2026-6355')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 40,
+    "findings": [
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build.yaml",
+      "line": 20,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build.yaml",
+      "line": 27,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build.yaml",
+      "line": 38,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build.yaml",
+      "line": 47,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build.yaml",
+      "line": 65,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build.yaml",
+      "line": 81,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build.yaml",
+      "line": 87,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build.yaml",
+      "line": 92,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build.yaml",
+      "line": 106,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unsound-condition",
+      "level": "error",
+      "file": ".github/workflows/build.yaml",
+      "line": 14,
+      "message": "unsound conditional expression: condition always evaluates to true"
+     },
+     {
+      "rule": "unsound-condition",
+      "level": "error",
+      "file": ".github/workflows/build.yaml",
+      "line": 74,
+      "message": "unsound conditional expression: condition always evaluates to true"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/mirror.yaml",
+      "line": 9,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unsound-condition",
+      "level": "error",
+      "file": ".github/workflows/mirror.yaml",
+      "line": 3,
+      "message": "unsound conditional expression: condition always evaluates to true"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/private.yaml",
+      "line": 18,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/private.yaml",
+      "line": 45,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/private.yaml",
+      "line": 80,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/private.yaml",
+      "line": 114,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unsound-condition",
+      "level": "error",
+      "file": ".github/workflows/private.yaml",
+      "line": 12,
+      "message": "unsound conditional expression: condition always evaluates to true"
+     },
+     {
+      "rule": "unsound-condition",
+      "level": "error",
+      "file": ".github/workflows/private.yaml",
+      "line": 39,
+      "message": "unsound conditional expression: condition always evaluates to true"
+     },
+     {
+      "rule": "unsound-condition",
+      "level": "error",
+      "file": ".github/workflows/private.yaml",
+      "line": 71,
+      "message": "unsound conditional expression: condition always evaluates to true"
+     },
+     {
+      "rule": "unsound-condition",
+      "level": "error",
+      "file": ".github/workflows/private.yaml",
+      "line": 103,
+      "message": "unsound conditional expression: condition always evaluates to true"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 13,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 53,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 59,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 76,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 94,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 107,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 113,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 117,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 122,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 133,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 135,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 59,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `cache` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 76,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `package-manager-cache` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 113,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `cache` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 117,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `lookup-only` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 122,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `package-manager-cache` enables caching"
+     },
+     {
+      "rule": "unsound-condition",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 7,
+      "message": "unsound conditional expression: condition always evaluates to true"
+     },
+     {
+      "rule": "unsound-condition",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 40,
+      "message": "unsound conditional expression: condition always evaluates to true"
+     },
+     {
+      "rule": "unsound-condition",
+      "level": "error",
+      "file": ".github/workflows/workflow.yaml",
+      "line": 100,
+      "message": "unsound conditional expression: condition always evaluates to true"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "findings",
+    "finding_count": 1,
+    "findings": [
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "internal\\home\\testdata\\key.pem",
+      "line": 1
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "124 findings · 1 check pending · 1 check not applicable",
+  "block": "SECURITY · commit fe0f056\n\n  Dependency vulnerabilities\n    83 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-67214  nanoid@3.3.8\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-67214  nanoid@5.1.11\n      CVE-2026-67213  nanoid@3.3.8\n      CVE-2026-67213  nanoid@3.3.12\n      CVE-2026-13311  shell-quote@1.8.1\n      CVE-2026-13311  shell-quote@1.8.4\n      CVE-2026-13149  brace-expansion@1.1.14\n      CVE-2026-13149  brace-expansion@2.1.0\n      CVE-2026-13149  brace-expansion@1.1.15\n      CVE-2026-13149  brace-expansion@5.0.6\n      CVE-2026-13676  fast-uri@3.1.0\n      CVE-2026-13676  fast-uri@3.1.2\n      CVE-2026-82417  qs@6.14.2\n      CVE-2026-82417  qs@6.15.2\n      CVE-2026-49356  @\n      CVE-2026-59869  js-yaml@3.14.2\n      CVE-2026-59869  js-yaml@4.1.1\n      CVE-2026-59869  js-yaml@4.2.0\n      CVE-2026-45736  ws@8.18.3\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    40 findings                      zizmor 1.30.0 · 2026-09-03\n      unpinned-uses  .github/workflows/build.yaml:20\n      unpinned-uses  .github/workflows/build.yaml:27\n      unpinned-uses  .github/workflows/build.yaml:38\n      unpinned-uses  .github/workflows/build.yaml:47\n      unpinned-uses  .github/workflows/build.yaml:65\n      unpinned-uses  .github/workflows/build.yaml:81\n      unpinned-uses  .github/workflows/build.yaml:87\n      unpinned-uses  .github/workflows/build.yaml:92\n      unpinned-uses  .github/workflows/build.yaml:106\n      unsound-condition  .github/workflows/build.yaml:14\n      unsound-condition  .github/workflows/build.yaml:74\n      unpinned-uses  .github/workflows/mirror.yaml:9\n      unsound-condition  .github/workflows/mirror.yaml:3\n      unpinned-uses  .github/workflows/private.yaml:18\n      unpinned-uses  .github/workflows/private.yaml:45\n      unpinned-uses  .github/workflows/private.yaml:80\n      unpinned-uses  .github/workflows/private.yaml:114\n      unsound-condition  .github/workflows/private.yaml:12\n      unsound-condition  .github/workflows/private.yaml:39\n      unsound-condition  .github/workflows/private.yaml:71\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    1 finding                        kingfisher 2.1.0 · 2026-09-03\n      betterleaks.private-key  internal\\home\\testdata\\key.pem:1\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

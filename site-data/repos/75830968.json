@@ -1,0 +1,717 @@
+{
+ "security": {
+  "repo_id": 75830968,
+  "commit_sha": "a03e98d2298528a13779f9fc4c8e7f8c1bd204f7",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 62,
+    "findings": [
+     {
+      "id": "CVE-2019-18197",
+      "aliases": [
+       "GHSA-242x-7cm6-4w8j"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2019-18197' (also known as 'GHSA-242x-7cm6-4w8j')."
+     },
+     {
+      "id": "CVE-2021-3537",
+      "aliases": [
+       "GHSA-286v-pcf5-25rc"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2021-3537' (also known as 'GHSA-286v-pcf5-25rc')."
+     },
+     {
+      "id": "CVE-2018-1000201",
+      "aliases": [
+       "GHSA-2gw2-8q9w-cw8p"
+      ],
+      "package": "ffi",
+      "version": "1.9.14",
+      "file": "Gemfile.lock",
+      "message": "Package 'ffi@1.9.14' is vulnerable to 'CVE-2018-1000201' (also known as 'GHSA-2gw2-8q9w-cw8p')."
+     },
+     {
+      "id": "CVE-2026-33176",
+      "aliases": [
+       "GHSA-2j26-frm8-cmj9"
+      ],
+      "package": "activesupport",
+      "version": "4.2.7",
+      "file": "Gemfile.lock",
+      "message": "Package 'activesupport@4.2.7' is vulnerable to 'CVE-2026-33176' (also known as 'GHSA-2j26-frm8-cmj9')."
+     },
+     {
+      "id": "CVE-2022-50998",
+      "aliases": [
+       "GHSA-2qc6-mcvw-92cw"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2022-50998' (also known as 'GHSA-2qc6-mcvw-92cw')."
+     },
+     {
+      "id": "CVE-2021-41098",
+      "aliases": [
+       "GHSA-2rr5-8q37-2w7h"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2021-41098' (also known as 'GHSA-2rr5-8q37-2w7h')."
+     },
+     {
+      "id": "CVE-2014-10077",
+      "aliases": [
+       "GHSA-34hf-g744-jw64"
+      ],
+      "package": "i18n",
+      "version": "0.7.0",
+      "file": "Gemfile.lock",
+      "message": "Package 'i18n@0.7.0' is vulnerable to 'CVE-2014-10077' (also known as 'GHSA-34hf-g744-jw64')."
+     },
+     {
+      "id": "GHSA-353f-x4gh-cqq8",
+      "aliases": [],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'GHSA-353f-x4gh-cqq8'."
+     },
+     {
+      "id": "CVE-2019-13117",
+      "aliases": [
+       "GHSA-4hm9-844j-jmxp"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2019-13117' (also known as 'GHSA-4hm9-844j-jmxp')."
+     },
+     {
+      "id": "CVE-2018-17567",
+      "aliases": [
+       "GHSA-4xjh-m3qx-49wc"
+      ],
+      "package": "jekyll",
+      "version": "3.3.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'jekyll@3.3.1' is vulnerable to 'CVE-2018-17567' (also known as 'GHSA-4xjh-m3qx-49wc')."
+     },
+     {
+      "id": "CVE-2021-30560",
+      "aliases": [
+       "GHSA-59gp-qqm7-cw4j"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2021-30560' (also known as 'GHSA-59gp-qqm7-cw4j')."
+     },
+     {
+      "id": "CVE-2022-31163",
+      "aliases": [
+       "GHSA-5cm2-9h8c-rvfx"
+      ],
+      "package": "tzinfo",
+      "version": "1.2.2",
+      "file": "Gemfile.lock",
+      "message": "Package 'tzinfo@1.2.2' is vulnerable to 'CVE-2022-31163' (also known as 'GHSA-5cm2-9h8c-rvfx')."
+     },
+     {
+      "id": "CVE-2026-57235",
+      "aliases": [
+       "GHSA-5prr-v3j2-97mh"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2026-57235' (also known as 'GHSA-5prr-v3j2-97mh')."
+     },
+     {
+      "id": "CVE-2026-57236",
+      "aliases": [
+       "GHSA-5v8h-3h3q-446p"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2026-57236' (also known as 'GHSA-5v8h-3h3q-446p')."
+     },
+     {
+      "id": "CVE-2025-71346",
+      "aliases": [
+       "GHSA-5w6v-399v-w3cc"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2025-71346' (also known as 'GHSA-5w6v-399v-w3cc')."
+     },
+     {
+      "id": "CVE-2018-14404",
+      "aliases": [
+       "GHSA-6qvp-r6r3-9p7h"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2018-14404' (also known as 'GHSA-6qvp-r6r3-9p7h')."
+     },
+     {
+      "id": "CVE-2012-6685",
+      "aliases": [
+       "GHSA-6wj9-77wq-jq7p"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2012-6685' (also known as 'GHSA-6wj9-77wq-jq7p')."
+     },
+     {
+      "id": "CVE-2020-7595",
+      "aliases": [
+       "GHSA-7553-jr98-vx47"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2020-7595' (also known as 'GHSA-7553-jr98-vx47')."
+     },
+     {
+      "id": "CVE-2021-47996",
+      "aliases": [
+       "GHSA-7rrm-v45f-jp64"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2021-47996' (also known as 'GHSA-7rrm-v45f-jp64')."
+     },
+     {
+      "id": "CVE-2026-57234",
+      "aliases": [
+       "GHSA-8678-w3jw-xfc2"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2026-57234' (also known as 'GHSA-8678-w3jw-xfc2')."
+     },
+     {
+      "id": "CVE-2017-18258",
+      "aliases": [
+       "GHSA-882p-jqgm-f45g"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2017-18258' (also known as 'GHSA-882p-jqgm-f45g')."
+     },
+     {
+      "id": "CVE-2026-33170",
+      "aliases": [
+       "GHSA-89vf-4333-qx8v"
+      ],
+      "package": "activesupport",
+      "version": "4.2.7",
+      "file": "Gemfile.lock",
+      "message": "Package 'activesupport@4.2.7' is vulnerable to 'CVE-2026-33170' (also known as 'GHSA-89vf-4333-qx8v')."
+     },
+     {
+      "id": "CVE-2017-9050",
+      "aliases": [
+       "GHSA-8c56-cpmw-89x7"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2017-9050' (also known as 'GHSA-8c56-cpmw-89x7')."
+     },
+     {
+      "id": "CVE-2026-57434",
+      "aliases": [
+       "GHSA-9cv2-cfxc-v4v2"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2026-57434' (also known as 'GHSA-9cv2-cfxc-v4v2')."
+     },
+     {
+      "id": "CVE-2026-79770",
+      "aliases": [
+       "GHSA-c4rq-3m3g-8wgx"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2026-79770' (also known as 'GHSA-c4rq-3m3g-8wgx')."
+     },
+     {
+      "id": "CVE-2019-13118",
+      "aliases": [
+       "GHSA-cf46-6xxh-pc75"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2019-13118' (also known as 'GHSA-cf46-6xxh-pc75')."
+     },
+     {
+      "id": "CVE-2026-33169",
+      "aliases": [
+       "GHSA-cg4j-q9v8-6v38"
+      ],
+      "package": "activesupport",
+      "version": "4.2.7",
+      "file": "Gemfile.lock",
+      "message": "Package 'activesupport@4.2.7' is vulnerable to 'CVE-2026-33169' (also known as 'GHSA-cg4j-q9v8-6v38')."
+     },
+     {
+      "id": "CVE-2022-50999",
+      "aliases": [
+       "GHSA-cgx6-hpwq-fhv5"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2022-50999' (also known as 'GHSA-cgx6-hpwq-fhv5')."
+     },
+     {
+      "id": "CVE-2019-5477",
+      "aliases": [
+       "GHSA-cr5j-953j-xw5p"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2019-5477' (also known as 'GHSA-cr5j-953j-xw5p')."
+     },
+     {
+      "id": "CVE-2022-24836",
+      "aliases": [
+       "GHSA-crjr-9rc5-ghw8"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2022-24836' (also known as 'GHSA-crjr-9rc5-ghw8')."
+     },
+     {
+      "id": "CVE-2022-51000",
+      "aliases": [
+       "GHSA-fq42-c5rg-92c2"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2022-51000' (also known as 'GHSA-fq42-c5rg-92c2')."
+     },
+     {
+      "id": "CVE-2016-4658",
+      "aliases": [
+       "GHSA-fr52-4hqw-p27f"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2016-4658' (also known as 'GHSA-fr52-4hqw-p27f')."
+     },
+     {
+      "id": "GHSA-gx8x-g87m-h5q6",
+      "aliases": [],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'GHSA-gx8x-g87m-h5q6'."
+     },
+     {
+      "id": "CVE-2026-35611",
+      "aliases": [
+       "GHSA-h27x-rffw-24p4"
+      ],
+      "package": "addressable",
+      "version": "2.5.0",
+      "file": "Gemfile.lock",
+      "message": "Package 'addressable@2.5.0' is vulnerable to 'CVE-2026-35611' (also known as 'GHSA-h27x-rffw-24p4')."
+     },
+     {
+      "id": "CVE-2023-22796",
+      "aliases": [
+       "GHSA-j6gc-792m-qgm2"
+      ],
+      "package": "activesupport",
+      "version": "4.2.7",
+      "file": "Gemfile.lock",
+      "message": "Package 'activesupport@4.2.7' is vulnerable to 'CVE-2023-22796' (also known as 'GHSA-j6gc-792m-qgm2')."
+     },
+     {
+      "id": "CVE-2018-25032",
+      "aliases": [],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2018-25032' (also known as 'PSF-2022-3', 'GHSA-jc36-42cf-vqwj')."
+     },
+     {
+      "id": "CVE-2020-10663",
+      "aliases": [
+       "GHSA-jphg-qwrw-7w9g"
+      ],
+      "package": "json",
+      "version": "1.8.3",
+      "file": "Gemfile.lock",
+      "message": "Package 'json@1.8.3' is vulnerable to 'CVE-2020-10663' (also known as 'GHSA-jphg-qwrw-7w9g')."
+     },
+     {
+      "id": "CVE-2021-3517",
+      "aliases": [
+       "GHSA-jw9f-hh49-cvp9"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2021-3517' (also known as 'GHSA-jw9f-hh49-cvp9')."
+     },
+     {
+      "id": "CVE-2021-32740",
+      "aliases": [
+       "GHSA-jxhc-q857-3j6g"
+      ],
+      "package": "addressable",
+      "version": "2.5.0",
+      "file": "Gemfile.lock",
+      "message": "Package 'addressable@2.5.0' is vulnerable to 'CVE-2021-32740' (also known as 'GHSA-jxhc-q857-3j6g')."
+     },
+     {
+      "id": "CVE-2020-14001",
+      "aliases": [
+       "GHSA-mqm2-cgpr-p4m6"
+      ],
+      "package": "kramdown",
+      "version": "1.11.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'kramdown@1.11.1' is vulnerable to 'CVE-2020-14001' (also known as 'GHSA-mqm2-cgpr-p4m6')."
+     },
+     {
+      "id": "CVE-2025-71406",
+      "aliases": [
+       "GHSA-mrxw-mxhj-p664"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2025-71406' (also known as 'GHSA-mrxw-mxhj-p664')."
+     },
+     {
+      "id": "CVE-2026-57437",
+      "aliases": [
+       "GHSA-p67v-3w7g-wjg7"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2026-57437' (also known as 'GHSA-p67v-3w7g-wjg7')."
+     },
+     {
+      "id": "CVE-2017-5029",
+      "aliases": [
+       "GHSA-pf6m-fxpq-fg8v"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2017-5029' (also known as 'GHSA-pf6m-fxpq-fg8v')."
+     },
+     {
+      "id": "CVE-2026-57435",
+      "aliases": [
+       "GHSA-phwj-rprq-35pp"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2026-57435' (also known as 'GHSA-phwj-rprq-35pp')."
+     },
+     {
+      "id": "CVE-2023-28120",
+      "aliases": [
+       "GHSA-pj73-v5mw-pm9j"
+      ],
+      "package": "activesupport",
+      "version": "4.2.7",
+      "file": "Gemfile.lock",
+      "message": "Package 'activesupport@4.2.7' is vulnerable to 'CVE-2023-28120' (also known as 'GHSA-pj73-v5mw-pm9j')."
+     },
+     {
+      "id": "CVE-2023-54354",
+      "aliases": [
+       "GHSA-pxvg-2qj5-37jq"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2023-54354' (also known as 'GHSA-pxvg-2qj5-37jq')."
+     },
+     {
+      "id": "CVE-2019-11068",
+      "aliases": [
+       "GHSA-qxcg-xjjg-66mj"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2019-11068' (also known as 'GHSA-qxcg-xjjg-66mj')."
+     },
+     {
+      "id": "CVE-2017-15412",
+      "aliases": [
+       "GHSA-r58r-74gx-6wx3"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2017-15412' (also known as 'GHSA-r58r-74gx-6wx3')."
+     },
+     {
+      "id": "CVE-2024-58377",
+      "aliases": [
+       "GHSA-r95h-9x8f-r3f7"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2024-58377' (also known as 'GHSA-r95h-9x8f-r3f7')."
+     },
+     {
+      "id": "CVE-2026-79771",
+      "aliases": [
+       "GHSA-v2fc-qm4h-8hqv"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2026-79771' (also known as 'GHSA-v2fc-qm4h-8hqv')."
+     },
+     {
+      "id": "CVE-2021-3518",
+      "aliases": [
+       "GHSA-v4f8-2847-rwm7"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2021-3518' (also known as 'GHSA-v4f8-2847-rwm7')."
+     },
+     {
+      "id": "GHSA-v6gp-9mmm-c6p5",
+      "aliases": [],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'GHSA-v6gp-9mmm-c6p5'."
+     },
+     {
+      "id": "CVE-2019-5815",
+      "aliases": [
+       "GHSA-vmfx-gcfq-wvm2"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2019-5815' (also known as 'GHSA-vmfx-gcfq-wvm2')."
+     },
+     {
+      "id": "CVE-2020-26247",
+      "aliases": [
+       "GHSA-vr8q-g5c7-m54m"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2020-26247' (also known as 'GHSA-vr8q-g5c7-m54m')."
+     },
+     {
+      "id": "CVE-2025-71407",
+      "aliases": [
+       "GHSA-vvfq-8hwr-qm4m"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2025-71407' (also known as 'GHSA-vvfq-8hwr-qm4m')."
+     },
+     {
+      "id": "CVE-2026-57438",
+      "aliases": [
+       "GHSA-wfpw-mmfh-qq69"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2026-57438' (also known as 'GHSA-wfpw-mmfh-qq69')."
+     },
+     {
+      "id": "CVE-2026-57436",
+      "aliases": [
+       "GHSA-wjv4-x9w8-wm3h"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2026-57436' (also known as 'GHSA-wjv4-x9w8-wm3h')."
+     },
+     {
+      "id": "CVE-2017-16932",
+      "aliases": [
+       "GHSA-x2fm-93ww-ggvx"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2017-16932' (also known as 'GHSA-x2fm-93ww-ggvx')."
+     },
+     {
+      "id": "CVE-2018-8048",
+      "aliases": [
+       "GHSA-x7rv-cr6v-4vm4"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2018-8048' (also known as 'GHSA-x7rv-cr6v-4vm4')."
+     },
+     {
+      "id": "CVE-2024-58378",
+      "aliases": [
+       "GHSA-xc9x-jj77-9p9j"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2024-58378' (also known as 'GHSA-xc9x-jj77-9p9j')."
+     },
+     {
+      "id": "CVE-2022-29181",
+      "aliases": [
+       "GHSA-xh29-r2w5-wx8m"
+      ],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'CVE-2022-29181' (also known as 'GHSA-xh29-r2w5-wx8m')."
+     },
+     {
+      "id": "GHSA-xxx9-3xcr-gjj3",
+      "aliases": [],
+      "package": "nokogiri",
+      "version": "~> 1.8.1",
+      "file": "Gemfile.lock",
+      "message": "Package 'nokogiri@~> 1.8.1' is vulnerable to 'GHSA-xxx9-3xcr-gjj3'."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no .github/workflows in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "62 findings · 1 check pending · 3 checks not applicable",
+  "block": "SECURITY · commit a03e98d\n\n  Dependency vulnerabilities\n    62 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2019-18197  nokogiri@~> 1.8.1\n      CVE-2021-3537  nokogiri@~> 1.8.1\n      CVE-2018-1000201  ffi@1.9.14\n      CVE-2026-33176  activesupport@4.2.7\n      CVE-2022-50998  nokogiri@~> 1.8.1\n      CVE-2021-41098  nokogiri@~> 1.8.1\n      CVE-2014-10077  i18n@0.7.0\n      GHSA-353f-x4gh-cqq8  nokogiri@~> 1.8.1\n      CVE-2019-13117  nokogiri@~> 1.8.1\n      CVE-2018-17567  jekyll@3.3.1\n      CVE-2021-30560  nokogiri@~> 1.8.1\n      CVE-2022-31163  tzinfo@1.2.2\n      CVE-2026-57235  nokogiri@~> 1.8.1\n      CVE-2026-57236  nokogiri@~> 1.8.1\n      CVE-2025-71346  nokogiri@~> 1.8.1\n      CVE-2018-14404  nokogiri@~> 1.8.1\n      CVE-2012-6685  nokogiri@~> 1.8.1\n      CVE-2020-7595  nokogiri@~> 1.8.1\n      CVE-2021-47996  nokogiri@~> 1.8.1\n      CVE-2026-57234  nokogiri@~> 1.8.1\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}

@@ -1,0 +1,2347 @@
+{
+ "security": {
+  "repo_id": 718741813,
+  "commit_sha": "d026163f586dfa8c5c10d28c36edd59a9d3b0e88",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 124,
+    "findings": [
+     {
+      "id": "CVE-2026-54272",
+      "aliases": [
+       "GHSA-22jq-vg5j-6vgg"
+      ],
+      "package": "ip-address",
+      "version": "10.2.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.2.0' is vulnerable to 'CVE-2026-54272' (also known as 'GHSA-22jq-vg5j-6vgg')."
+     },
+     {
+      "id": "CVE-2026-27904",
+      "aliases": [
+       "GHSA-23c5-xmqv-rm74"
+      ],
+      "package": "minimatch",
+      "version": "9.0.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'minimatch@9.0.3' is vulnerable to 'CVE-2026-27904' (also known as 'GHSA-23c5-xmqv-rm74')."
+     },
+     {
+      "id": "CVE-2026-67214",
+      "aliases": [
+       "GHSA-28wg-ghj8-5hjv"
+      ],
+      "package": "nanoid",
+      "version": "3.3.12",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@3.3.12' is vulnerable to 'CVE-2026-67214' (also known as 'GHSA-28wg-ghj8-5hjv')."
+     },
+     {
+      "id": "CVE-2026-67214",
+      "aliases": [
+       "GHSA-28wg-ghj8-5hjv"
+      ],
+      "package": "nanoid",
+      "version": "5.1.11",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@5.1.11' is vulnerable to 'CVE-2026-67214' (also known as 'GHSA-28wg-ghj8-5hjv')."
+     },
+     {
+      "id": "CVE-2025-54121",
+      "aliases": [],
+      "package": "starlette",
+      "version": "0.41.3",
+      "file": "poetry.lock",
+      "message": "Package 'starlette@0.41.3' is vulnerable to 'CVE-2025-54121' (also known as 'PYSEC-2026-1941', 'GHSA-2c2j-9gv5-cj73')."
+     },
+     {
+      "id": "CVE-2026-54279",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54279' (also known as 'PYSEC-2026-2112', 'GHSA-2fqr-mr3j-6wp8')."
+     },
+     {
+      "id": "CVE-2026-40181",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@remix-run/router@1.23.2' is vulnerable to 'CVE-2026-40181' (also known as 'GHSA-2j2x-hqr9-3h42')."
+     },
+     {
+      "id": "CVE-2026-40181",
+      "aliases": [
+       "GHSA-2j2x-hqr9-3h42"
+      ],
+      "package": "react-router",
+      "version": "6.30.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'react-router@6.30.3' is vulnerable to 'CVE-2026-40181' (also known as 'GHSA-2j2x-hqr9-3h42')."
+     },
+     {
+      "id": "CVE-2026-67213",
+      "aliases": [
+       "GHSA-2v37-7h3g-55p8"
+      ],
+      "package": "nanoid",
+      "version": "3.3.12",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'nanoid@3.3.12' is vulnerable to 'CVE-2026-67213' (also known as 'GHSA-2v37-7h3g-55p8')."
+     },
+     {
+      "id": "CVE-2026-34514",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34514' (also known as 'PYSEC-2026-2096', 'GHSA-2vrm-gr82-f7m5')."
+     },
+     {
+      "id": "CVE-2026-49476",
+      "aliases": [],
+      "package": "soupsieve",
+      "version": "2.6",
+      "file": "poetry.lock",
+      "message": "Package 'soupsieve@2.6' is vulnerable to 'CVE-2026-49476' (also known as 'PYSEC-2026-3071', 'GHSA-2wc2-fm75-p42x')."
+     },
+     {
+      "id": "CVE-2025-66471",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.2.3",
+      "file": "poetry.lock",
+      "message": "Package 'urllib3@2.2.3' is vulnerable to 'CVE-2025-66471' (also known as 'PYSEC-2026-1994', 'GHSA-2xpw-w6gg-jr37')."
+     },
+     {
+      "id": "CVE-2026-53666",
+      "aliases": [
+       "GHSA-337j-9hxr-rhxg"
+      ],
+      "package": "react-router",
+      "version": "6.30.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'react-router@6.30.3' is vulnerable to 'CVE-2026-53666' (also known as 'GHSA-337j-9hxr-rhxg')."
+     },
+     {
+      "id": "CVE-2026-21441",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.2.3",
+      "file": "poetry.lock",
+      "message": "Package 'urllib3@2.2.3' is vulnerable to 'CVE-2026-21441' (also known as 'PYSEC-2026-1996', 'GHSA-38jv-5279-wg99')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.14",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.14' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "2.1.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@2.1.0' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-26996",
+      "aliases": [
+       "GHSA-3ppc-4f35-3m26"
+      ],
+      "package": "minimatch",
+      "version": "9.0.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'minimatch@9.0.3' is vulnerable to 'CVE-2026-26996' (also known as 'GHSA-3ppc-4f35-3m26')."
+     },
+     {
+      "id": "CVE-2026-34517",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34517' (also known as 'PYSEC-2026-2099', 'GHSA-3wq7-rqq7-wx6j')."
+     },
+     {
+      "id": "CVE-2026-55379",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-55379' (also known as 'BIT-pillow-2026-55379', 'PYSEC-2026-2255', 'GHSA-45hq-cxwh-f6vc')."
+     },
+     {
+      "id": "CVE-2025-50182",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.2.3",
+      "file": "poetry.lock",
+      "message": "Package 'urllib3@2.2.3' is vulnerable to 'CVE-2025-50182' (also known as 'PYSEC-2026-1997', 'GHSA-48p4-8xcf-vxj5')."
+     },
+     {
+      "id": "CVE-2026-54273",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54273' (also known as 'PYSEC-2026-2107', 'GHSA-4fvr-rgm6-gqmc')."
+     },
+     {
+      "id": "CVE-2026-54275",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54275' (also known as 'PYSEC-2026-237', 'GHSA-4m7w-qmgq-4wj5')."
+     },
+     {
+      "id": "CVE-2026-39365",
+      "aliases": [
+       "GHSA-4w7w-66w2-5vf9"
+      ],
+      "package": "vite",
+      "version": "5.4.21",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'vite@5.4.21' is vulnerable to 'CVE-2026-39365' (also known as 'GHSA-4w7w-66w2-5vf9')."
+     },
+     {
+      "id": "CVE-2026-55798",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-55798' (also known as 'BIT-pillow-2026-55798', 'PYSEC-2026-2257', 'GHSA-4x4j-2g7c-83w6')."
+     },
+     {
+      "id": "CVE-2026-49356",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "pnpm-lock.yaml",
+      "message": "Package '@babel/core@7.29.0' is vulnerable to 'CVE-2026-49356' (also known as 'GHSA-4x5r-pxfx-6jf8')."
+     },
+     {
+      "id": "CVE-2026-69198",
+      "aliases": [
+       "GHSA-4xrf-jv44-h6hh"
+      ],
+      "package": "ip-address",
+      "version": "10.2.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.2.0' is vulnerable to 'CVE-2026-69198' (also known as 'GHSA-4xrf-jv44-h6hh')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.2' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2025-69226",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69226' (also known as 'PYSEC-2026-1097', 'GHSA-54jq-c3m8-4m76')."
+     },
+     {
+      "id": "CVE-2026-45736",
+      "aliases": [
+       "GHSA-58qx-3vcg-4xpx"
+      ],
+      "package": "ws",
+      "version": "8.20.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ws@8.20.0' is vulnerable to 'CVE-2026-45736' (also known as 'GHSA-58qx-3vcg-4xpx')."
+     },
+     {
+      "id": "CVE-2026-22702",
+      "aliases": [],
+      "package": "virtualenv",
+      "version": "20.28.0",
+      "file": "poetry.lock",
+      "message": "Package 'virtualenv@20.28.0' is vulnerable to 'CVE-2026-22702' (also known as 'BIT-virtualenv-2026-22702', 'PYSEC-2026-2009', 'GHSA-597g-3phw-6986')."
+     },
+     {
+      "id": "CVE-2026-28231",
+      "aliases": [],
+      "package": "pillow-heif",
+      "version": "0.18.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow-heif@0.18.0' is vulnerable to 'CVE-2026-28231' (also known as 'PYSEC-2026-2248', 'PYSEC-2026-2258', 'GHSA-5gjj-6r7v-ph3x')."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "3.14.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.2' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "CVE-2025-47273",
+      "aliases": [],
+      "package": "setuptools",
+      "version": "75.6.0",
+      "file": "poetry.lock",
+      "message": "Package 'setuptools@75.6.0' is vulnerable to 'CVE-2025-47273' (also known as 'BIT-setuptools-2025-47273', 'PYSEC-2025-49', 'GHSA-5rjg-fvgr-3xxf')."
+     },
+     {
+      "id": "CVE-2026-54060",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-54060' (also known as 'BIT-pillow-2026-54060', 'PYSEC-2026-2254', 'GHSA-5x94-69rx-g8h2')."
+     },
+     {
+      "id": "CVE-2026-47429",
+      "aliases": [
+       "GHSA-5xrq-8626-4rwp"
+      ],
+      "package": "vitest",
+      "version": "1.6.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'vitest@1.6.1' is vulnerable to 'CVE-2026-47429' (also known as 'GHSA-5xrq-8626-4rwp')."
+     },
+     {
+      "id": "CVE-2026-54058",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-54058' (also known as 'BIT-pillow-2026-54058', 'PYSEC-2026-3493', 'GHSA-62p4-gmf7-7g93')."
+     },
+     {
+      "id": "CVE-2026-34520",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34520' (also known as 'PYSEC-2026-2102', 'GHSA-63hf-3vf5-4wqf')."
+     },
+     {
+      "id": "CVE-2026-54277",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54277' (also known as 'PYSEC-2026-2110', 'GHSA-63hw-fmq6-xxg2')."
+     },
+     {
+      "id": "CVE-2026-23490",
+      "aliases": [],
+      "package": "pyasn1",
+      "version": "0.6.1",
+      "file": "poetry.lock",
+      "message": "Package 'pyasn1@0.6.1' is vulnerable to 'CVE-2026-23490' (also known as 'PYSEC-2026-1810', 'GHSA-63vm-454h-vhhq')."
+     },
+     {
+      "id": "CVE-2026-45409",
+      "aliases": [],
+      "package": "idna",
+      "version": "3.10",
+      "file": "poetry.lock",
+      "message": "Package 'idna@3.10' is vulnerable to 'CVE-2026-45409' (also known as 'PYSEC-2026-215', 'GHSA-65pc-fj4g-8rjx')."
+     },
+     {
+      "id": "GHSA-67mh-4wv8-2f99",
+      "aliases": [],
+      "package": "esbuild",
+      "version": "0.21.5",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'esbuild@0.21.5' is vulnerable to 'GHSA-67mh-4wv8-2f99'."
+     },
+     {
+      "id": "CVE-2025-69224",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69224' (also known as 'PYSEC-2026-1099', 'GHSA-69f9-5gxw-wvc2')."
+     },
+     {
+      "id": "CVE-2025-69228",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69228' (also known as 'PYSEC-2026-1100', 'GHSA-6jhg-hg63-jvvf')."
+     },
+     {
+      "id": "CVE-2025-69223",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69223' (also known as 'PYSEC-2026-1101', 'GHSA-6mq8-rvhq-8wgg')."
+     },
+     {
+      "id": "CVE-2026-59199",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-59199' (also known as 'BIT-pillow-2026-59199', 'PYSEC-2026-3451', 'GHSA-6r8x-57c9-28j4')."
+     },
+     {
+      "id": "CVE-2025-71176",
+      "aliases": [],
+      "package": "pytest",
+      "version": "7.4.4",
+      "file": "poetry.lock",
+      "message": "Package 'pytest@7.4.4' is vulnerable to 'CVE-2025-71176' (also known as 'PYSEC-2026-1845', 'GHSA-6w46-j5rx-g56g')."
+     },
+     {
+      "id": "CVE-2026-73088",
+      "aliases": [
+       "GHSA-73wf-gq98-2v4g"
+      ],
+      "package": "browserslist",
+      "version": "4.28.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'browserslist@4.28.2' is vulnerable to 'CVE-2026-73088' (also known as 'GHSA-73wf-gq98-2v4g')."
+     },
+     {
+      "id": "CVE-2025-62727",
+      "aliases": [],
+      "package": "starlette",
+      "version": "0.41.3",
+      "file": "poetry.lock",
+      "message": "Package 'starlette@0.41.3' is vulnerable to 'CVE-2025-62727' (also known as 'PYSEC-2026-1942', 'GHSA-7f5h-v6xp-fcq8')."
+     },
+     {
+      "id": "CVE-2026-0994",
+      "aliases": [],
+      "package": "protobuf",
+      "version": "5.29.5",
+      "file": "poetry.lock",
+      "message": "Package 'protobuf@5.29.5' is vulnerable to 'CVE-2026-0994' (also known as 'PYSEC-2026-1805', 'GHSA-7gcm-g887-7qv7')."
+     },
+     {
+      "id": "CVE-2026-27903",
+      "aliases": [
+       "GHSA-7r86-cg39-jmmj"
+      ],
+      "package": "minimatch",
+      "version": "9.0.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'minimatch@9.0.3' is vulnerable to 'CVE-2026-27903' (also known as 'GHSA-7r86-cg39-jmmj')."
+     },
+     {
+      "id": "CVE-2026-54283",
+      "aliases": [],
+      "package": "starlette",
+      "version": "0.41.3",
+      "file": "poetry.lock",
+      "message": "Package 'starlette@0.41.3' is vulnerable to 'CVE-2026-54283' (also known as 'PYSEC-2026-249', 'GHSA-82w8-qh3p-5jfq')."
+     },
+     {
+      "id": "CVE-2026-49477",
+      "aliases": [],
+      "package": "soupsieve",
+      "version": "2.6",
+      "file": "poetry.lock",
+      "message": "Package 'soupsieve@2.6' is vulnerable to 'CVE-2026-49477' (also known as 'PYSEC-2026-3072', 'GHSA-836r-79rf-4m37')."
+     },
+     {
+      "id": "CVE-2026-48710",
+      "aliases": [],
+      "package": "starlette",
+      "version": "0.41.3",
+      "file": "poetry.lock",
+      "message": "Package 'starlette@0.41.3' is vulnerable to 'CVE-2026-48710' (also known as 'PYSEC-2026-161', 'X41-2026-002', 'GHSA-86qp-5c8j-p5mr')."
+     },
+     {
+      "id": "CVE-2026-59885",
+      "aliases": [],
+      "package": "pyasn1",
+      "version": "0.6.1",
+      "file": "poetry.lock",
+      "message": "Package 'pyasn1@0.6.1' is vulnerable to 'CVE-2026-59885' (also known as 'PYSEC-2026-3456', 'GHSA-8ppf-4f7h-5ppj')."
+     },
+     {
+      "id": "CVE-2026-54059",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-54059' (also known as 'BIT-pillow-2026-54059', 'PYSEC-2026-2253', 'GHSA-8v84-f9pq-wr9x')."
+     },
+     {
+      "id": "CVE-2025-53643",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-53643' (also known as 'PYSEC-2026-1104', 'GHSA-9548-qrrj-x5pj')."
+     },
+     {
+      "id": "CVE-2026-34518",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34518' (also known as 'PYSEC-2026-2100', 'GHSA-966j-vmvw-g2g9')."
+     },
+     {
+      "id": "CVE-2026-48779",
+      "aliases": [
+       "GHSA-96hv-2xvq-fx4p"
+      ],
+      "package": "ws",
+      "version": "8.20.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ws@8.20.0' is vulnerable to 'CVE-2026-48779' (also known as 'GHSA-96hv-2xvq-fx4p')."
+     },
+     {
+      "id": "CVE-2024-47081",
+      "aliases": [],
+      "package": "requests",
+      "version": "2.32.3",
+      "file": "poetry.lock",
+      "message": "Package 'requests@2.32.3' is vulnerable to 'CVE-2024-47081' (also known as 'PYSEC-2026-1872', 'GHSA-9hjg-9r4m-mvj7')."
+     },
+     {
+      "id": "CVE-2026-59205",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-59205' (also known as 'BIT-pillow-2026-59205', 'PYSEC-2026-3453', 'GHSA-9hw9-ch79-4vh6')."
+     },
+     {
+      "id": "CVE-2026-54280",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54280' (also known as 'PYSEC-2026-2113', 'GHSA-9x8q-7h8h-wcw9')."
+     },
+     {
+      "id": "CVE-2026-34525",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34525' (also known as 'PYSEC-2026-2103', 'GHSA-c427-h43c-vf67')."
+     },
+     {
+      "id": "CVE-2026-73089",
+      "aliases": [
+       "GHSA-c83g-rgw3-j3cx"
+      ],
+      "package": "browserslist",
+      "version": "4.28.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'browserslist@4.28.2' is vulnerable to 'CVE-2026-73089' (also known as 'GHSA-c83g-rgw3-j3cx')."
+     },
+     {
+      "id": "CVE-2026-25990",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-25990' (also known as 'BIT-pillow-2026-25990', 'PYSEC-2026-2249', 'GHSA-cfh3-3jmp-rvhc')."
+     },
+     {
+      "id": "CVE-2026-69244",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-69244' (also known as 'PYSEC-2026-3545', 'GHSA-cq5v-8q36-5273')."
+     },
+     {
+      "id": "CVE-2025-69230",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69230' (also known as 'PYSEC-2026-1105', 'GHSA-fh55-r93g-j68g')."
+     },
+     {
+      "id": "CVE-2026-59198",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-59198' (also known as 'BIT-pillow-2026-59198', 'PYSEC-2026-3494', 'GHSA-fj7v-r99m-22gq')."
+     },
+     {
+      "id": "CVE-2026-53571",
+      "aliases": [
+       "GHSA-fx2h-pf6j-xcff"
+      ],
+      "package": "vite",
+      "version": "5.4.21",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'vite@5.4.21' is vulnerable to 'CVE-2026-53571' (also known as 'GHSA-fx2h-pf6j-xcff')."
+     },
+     {
+      "id": "CVE-2026-69153",
+      "aliases": [
+       "GHSA-fxqj-rqcc-2cmp"
+      ],
+      "package": "postcss",
+      "version": "8.5.13",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.13' is vulnerable to 'CVE-2026-69153' (also known as 'GHSA-fxqj-rqcc-2cmp')."
+     },
+     {
+      "id": "CVE-2026-54278",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54278' (also known as 'PYSEC-2026-2111', 'GHSA-g3cq-j2xw-wf74')."
+     },
+     {
+      "id": "CVE-2025-69229",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69229' (also known as 'PYSEC-2026-1106', 'GHSA-g84x-mcqj-x9qq')."
+     },
+     {
+      "id": "CVE-2026-25645",
+      "aliases": [],
+      "package": "requests",
+      "version": "2.32.3",
+      "file": "poetry.lock",
+      "message": "Package 'requests@2.32.3' is vulnerable to 'CVE-2026-25645' (also known as 'PYSEC-2026-2275', 'GHSA-gc5v-m9x4-r6x2')."
+     },
+     {
+      "id": "CVE-2025-66418",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.2.3",
+      "file": "poetry.lock",
+      "message": "Package 'urllib3@2.2.3' is vulnerable to 'CVE-2025-66418' (also known as 'PYSEC-2026-1998', 'GHSA-gm62-xv2j-4w53')."
+     },
+     {
+      "id": "CVE-2026-59890",
+      "aliases": [],
+      "package": "setuptools",
+      "version": "75.6.0",
+      "file": "poetry.lock",
+      "message": "Package 'setuptools@75.6.0' is vulnerable to 'CVE-2026-59890' (also known as 'BIT-setuptools-2026-59890', 'PYSEC-2026-3447', 'GHSA-h35f-9h28-mq5c')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "3.14.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@3.14.2' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-34513",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34513' (also known as 'PYSEC-2026-2095', 'GHSA-hcc4-c3v8-rx92')."
+     },
+     {
+      "id": "CVE-2026-47265",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-47265' (also known as 'PYSEC-2026-2105', 'GHSA-hg6j-4rv6-33pg')."
+     },
+     {
+      "id": "CVE-2026-59886",
+      "aliases": [],
+      "package": "pyasn1",
+      "version": "0.6.1",
+      "file": "poetry.lock",
+      "message": "Package 'pyasn1@0.6.1' is vulnerable to 'CVE-2026-59886' (also known as 'PYSEC-2026-3457', 'GHSA-hm4w-wwcw-mr6r')."
+     },
+     {
+      "id": "CVE-2026-54276",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54276' (also known as 'PYSEC-2026-2109', 'GHSA-hpj7-wq8m-9hgp')."
+     },
+     {
+      "id": "CVE-2026-34993",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34993' (also known as 'PYSEC-2026-2104', 'GHSA-jg22-mg44-37j8')."
+     },
+     {
+      "id": "CVE-2025-69227",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69227' (also known as 'PYSEC-2026-1107', 'GHSA-jj3x-wxrx-4x23')."
+     },
+     {
+      "id": "CVE-2026-59200",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-59200' (also known as 'BIT-pillow-2026-59200', 'PYSEC-2026-3495', 'GHSA-jjj6-mw9f-p565')."
+     },
+     {
+      "id": "CVE-2026-53668",
+      "aliases": [
+       "GHSA-jjmj-jmhj-qwj2"
+      ],
+      "package": "react-router-dom",
+      "version": "6.30.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'react-router-dom@6.30.3' is vulnerable to 'CVE-2026-53668' (also known as 'GHSA-jjmj-jmhj-qwj2')."
+     },
+     {
+      "id": "CVE-2026-56876",
+      "aliases": [
+       "GHSA-jmr9-qjv8-65gv"
+      ],
+      "package": "extract-zip",
+      "version": "2.0.1",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'extract-zip@2.0.1' is vulnerable to 'CVE-2026-56876' (also known as 'GHSA-jmr9-qjv8-65gv')."
+     },
+     {
+      "id": "CVE-2026-54282",
+      "aliases": [],
+      "package": "starlette",
+      "version": "0.41.3",
+      "file": "poetry.lock",
+      "message": "Package 'starlette@0.41.3' is vulnerable to 'CVE-2026-54282' (also known as 'PYSEC-2026-248', 'GHSA-jp82-jpqv-5vv3')."
+     },
+     {
+      "id": "CVE-2026-30922",
+      "aliases": [],
+      "package": "pyasn1",
+      "version": "0.6.1",
+      "file": "poetry.lock",
+      "message": "Package 'pyasn1@0.6.1' is vulnerable to 'CVE-2026-30922' (also known as 'PYSEC-2026-2263', 'GHSA-jr27-m4p2-rc6r')."
+     },
+     {
+      "id": "CVE-2026-59884",
+      "aliases": [],
+      "package": "pyasn1",
+      "version": "0.6.1",
+      "file": "poetry.lock",
+      "message": "Package 'pyasn1@0.6.1' is vulnerable to 'CVE-2026-59884' (also known as 'PYSEC-2026-3455', 'GHSA-m4p7-r5rc-7g4j')."
+     },
+     {
+      "id": "CVE-2026-34516",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34516' (also known as 'PYSEC-2026-2098', 'GHSA-m5qp-6w8w-w647')."
+     },
+     {
+      "id": "CVE-2026-50269",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-50269' (also known as 'PYSEC-2026-2106', 'GHSA-m6qw-4cw2-hm4m')."
+     },
+     {
+      "id": "CVE-2026-28684",
+      "aliases": [],
+      "package": "python-dotenv",
+      "version": "1.0.1",
+      "file": "poetry.lock",
+      "message": "Package 'python-dotenv@1.0.1' is vulnerable to 'CVE-2026-28684' (also known as 'PYSEC-2026-2270', 'GHSA-mf9w-mj56-hr94')."
+     },
+     {
+      "id": "CVE-2026-69243",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-69243' (also known as 'PYSEC-2026-3546', 'GHSA-mfx4-hv73-q22v')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.14",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.14' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "2.1.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@2.1.0' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-59881",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-59881' (also known as 'PYSEC-2026-3547', 'GHSA-mq44-7p77-q5h7')."
+     },
+     {
+      "id": "CVE-2025-69225",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2025-69225' (also known as 'PYSEC-2026-1109', 'GHSA-mqqc-3gqh-h2x8')."
+     },
+     {
+      "id": "CVE-2026-34519",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34519' (also known as 'PYSEC-2026-2101', 'GHSA-mwh4-6h8g-pg8w')."
+     },
+     {
+      "id": "CVE-2026-69192",
+      "aliases": [
+       "GHSA-mwp4-54f8-5fhr"
+      ],
+      "package": "ip-address",
+      "version": "10.2.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'ip-address@10.2.0' is vulnerable to 'CVE-2026-69192' (also known as 'GHSA-mwp4-54f8-5fhr')."
+     },
+     {
+      "id": "CVE-2026-34515",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-34515' (also known as 'PYSEC-2026-2097', 'GHSA-p998-jp59-783m')."
+     },
+     {
+      "id": "CVE-2026-55380",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-55380' (also known as 'BIT-pillow-2026-55380', 'PYSEC-2026-2256', 'GHSA-phj9-mv4w-65pm')."
+     },
+     {
+      "id": "CVE-2025-50181",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.2.3",
+      "file": "poetry.lock",
+      "message": "Package 'urllib3@2.2.3' is vulnerable to 'CVE-2025-50181' (also known as 'PYSEC-2026-1999', 'GHSA-pq67-6m6q-mj2v')."
+     },
+     {
+      "id": "CVE-2026-42311",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-42311' (also known as 'BIT-pillow-2026-42311', 'PYSEC-2026-2252', 'GHSA-pwv6-vv43-88gr')."
+     },
+     {
+      "id": "CVE-2026-44431",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.2.3",
+      "file": "poetry.lock",
+      "message": "Package 'urllib3@2.2.3' is vulnerable to 'CVE-2026-44431' (also known as 'PYSEC-2026-141', 'GHSA-qccp-gfcp-xxvc')."
+     },
+     {
+      "id": "CVE-2026-22701",
+      "aliases": [],
+      "package": "filelock",
+      "version": "3.16.1",
+      "file": "poetry.lock",
+      "message": "Package 'filelock@3.16.1' is vulnerable to 'CVE-2026-22701' (also known as 'PYSEC-2026-1374', 'GHSA-qmgc-5h2g-mvrw')."
+     },
+     {
+      "id": "CVE-2026-73646",
+      "aliases": [
+       "GHSA-r28c-9q8g-f849"
+      ],
+      "package": "postcss",
+      "version": "8.5.13",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss@8.5.13' is vulnerable to 'CVE-2026-73646' (also known as 'GHSA-r28c-9q8g-f849')."
+     },
+     {
+      "id": "CVE-2026-42310",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-42310' (also known as 'BIT-pillow-2026-42310', 'PYSEC-2026-2874', 'GHSA-r73j-pqj5-w3x7')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.14",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@1.1.14' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "2.1.0",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'brace-expansion@2.1.0' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-53632",
+      "aliases": [
+       "GHSA-v6wh-96g9-6wx3"
+      ],
+      "package": "vite",
+      "version": "5.4.21",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'vite@5.4.21' is vulnerable to 'CVE-2026-53632' (also known as 'GHSA-v6wh-96g9-6wx3')."
+     },
+     {
+      "id": "CVE-2026-59204",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-59204' (also known as 'BIT-pillow-2026-59204', 'PYSEC-2026-3496', 'GHSA-vjc4-5qp5-m44j')."
+     },
+     {
+      "id": "CVE-2025-43859",
+      "aliases": [],
+      "package": "h11",
+      "version": "0.14.0",
+      "file": "poetry.lock",
+      "message": "Package 'h11@0.14.0' is vulnerable to 'CVE-2025-43859' (also known as 'PYSEC-2026-348', 'GHSA-vqfr-h8mv-ghfj')."
+     },
+     {
+      "id": "CVE-2026-22815",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-22815' (also known as 'PYSEC-2026-2094', 'GHSA-w2fm-2cpv-w7v5')."
+     },
+     {
+      "id": "CVE-2025-68146",
+      "aliases": [],
+      "package": "filelock",
+      "version": "3.16.1",
+      "file": "poetry.lock",
+      "message": "Package 'filelock@3.16.1' is vulnerable to 'CVE-2025-68146' (also known as 'PYSEC-2026-1375', 'GHSA-w853-jp5j-5j7f')."
+     },
+     {
+      "id": "CVE-2026-9358",
+      "aliases": [
+       "GHSA-w9m9-85wc-3x92"
+      ],
+      "package": "postcss-selector-parser",
+      "version": "6.1.2",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'postcss-selector-parser@6.1.2' is vulnerable to 'CVE-2026-9358' (also known as 'GHSA-w9m9-85wc-3x92')."
+     },
+     {
+      "id": "CVE-2026-40192",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-40192' (also known as 'BIT-pillow-2026-40192', 'PYSEC-2026-2250', 'GHSA-whj4-6x5x-4v2j')."
+     },
+     {
+      "id": "CVE-2026-42308",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-42308' (also known as 'BIT-pillow-2026-42308', 'PYSEC-2026-165', 'GHSA-wjx4-4jcj-g98j')."
+     },
+     {
+      "id": "CVE-2026-48818",
+      "aliases": [],
+      "package": "starlette",
+      "version": "0.41.3",
+      "file": "poetry.lock",
+      "message": "Package 'starlette@0.41.3' is vulnerable to 'CVE-2026-48818' (also known as 'PYSEC-2026-2281', 'GHSA-wqp7-x3pw-xc5r')."
+     },
+     {
+      "id": "CVE-2026-53669",
+      "aliases": [
+       "GHSA-wrjc-x8rr-h8h6"
+      ],
+      "package": "react-router",
+      "version": "6.30.3",
+      "file": "pnpm-lock.yaml",
+      "message": "Package 'react-router@6.30.3' is vulnerable to 'CVE-2026-53669' (also known as 'GHSA-wrjc-x8rr-h8h6')."
+     },
+     {
+      "id": "CVE-2026-48817",
+      "aliases": [],
+      "package": "starlette",
+      "version": "0.41.3",
+      "file": "poetry.lock",
+      "message": "Package 'starlette@0.41.3' is vulnerable to 'CVE-2026-48817' (also known as 'PYSEC-2026-2280', 'GHSA-x746-7m8f-x49c')."
+     },
+     {
+      "id": "CVE-2026-54274",
+      "aliases": [],
+      "package": "aiohttp",
+      "version": "3.11.11",
+      "file": "poetry.lock",
+      "message": "Package 'aiohttp@3.11.11' is vulnerable to 'CVE-2026-54274' (also known as 'PYSEC-2026-2108', 'GHSA-xcgm-r5h9-7989')."
+     },
+     {
+      "id": "CVE-2026-59197",
+      "aliases": [],
+      "package": "pillow",
+      "version": "10.4.0",
+      "file": "poetry.lock",
+      "message": "Package 'pillow@10.4.0' is vulnerable to 'CVE-2026-59197' (also known as 'BIT-pillow-2026-59197', 'PYSEC-2026-3454', 'GHSA-xj96-63gp-2gmr')."
+     },
+     {
+      "id": "CVE-2026-7246",
+      "aliases": [],
+      "package": "click",
+      "version": "8.1.7",
+      "file": "poetry.lock",
+      "message": "Package 'click@8.1.7' is vulnerable to 'CVE-2026-7246' (also known as 'PYSEC-2026-2132', 'GHSA-47fr-3ffg-hgmw')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no .github/workflows in this tree",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "findings",
+    "finding_count": 107,
+    "findings": [
+     {
+      "rule": "SC6",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Possible Typosquatting: 'uvicorn' resembles popular package 'gunicorn'",
+      "confidence": 0.7,
+      "file": "backend/poetry.lock",
+      "line": 2485,
+      "message": "Possible Typosquatting: 'uvicorn' resembles popular package 'gunicorn'",
+      "finding": "uvicorn"
+     },
+     {
+      "rule": "AR1",
+      "severity": "HIGH",
+      "category": "Anti-Refusal",
+      "pattern": "Anti-Refusal Statement",
+      "confidence": 0.7,
+      "file": "backend/prompts/system_prompt.py",
+      "line": 9,
+      "message": "Anti-Refusal Statement",
+      "finding": "Always respond"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "backend/evals/asset_extraction_benchmark.py",
+      "line": 843,
+      "message": "Credential Access",
+      "finding": ".env\""
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "backend/run_image_generation_evals.py",
+      "line": 286,
+      "message": "Credential Access",
+      "finding": ".env\""
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "backend/tests/test_local_assets.py",
+      "line": 51,
+      "message": "Credential Access",
+      "finding": "/etc/passwd"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "backend/routes/prompt_reports.py",
+      "line": 112,
+      "message": "Direct Prompt Extraction",
+      "finding": "return Prompt"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "backend/routes/prompt_reports.py",
+      "line": 144,
+      "message": "Direct Prompt Extraction",
+      "finding": "return Prompt"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "backend/tests/test_prompt_reports.py",
+      "line": 32,
+      "message": "Direct Prompt Extraction",
+      "finding": "return Prompt"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "backend/tests/test_prompt_reports.py",
+      "line": 181,
+      "message": "Credential Access",
+      "finding": "secrets.json"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "backend/prompts/update/from_history.py",
+      "line": 61,
+      "message": "Direct Prompt Extraction",
+      "finding": "return prompt"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "backend/routes/generate_code.py",
+      "line": 526,
+      "message": "Direct Prompt Extraction",
+      "finding": "return prompt"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "backend/run_image_generation_evals.py",
+      "line": 95,
+      "message": "Direct Prompt Extraction",
+      "finding": "return prompt"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "backend/uploaded_assets/prompts.py",
+      "line": 49,
+      "message": "Direct Prompt Extraction",
+      "finding": "return prompt"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": ".gitignore",
+      "line": 16,
+      "message": "Credential Access",
+      "finding": ".env.local\r"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "docker-compose.yml",
+      "line": 14,
+      "message": "Credential Access",
+      "finding": ".env.local\r"
+     },
+     {
+      "rule": "MP3",
+      "severity": "HIGH",
+      "category": "Memory Poisoning",
+      "pattern": "Memory Manipulation",
+      "confidence": 0.8,
+      "file": "frontend/src/components/ImageLightbox.tsx",
+      "line": 33,
+      "message": "Memory Manipulation",
+      "finding": "Reset state"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "frontend/src/components/agent/AgentActivity.tsx",
+      "line": 390,
+      "message": "Direct Prompt Extraction",
+      "finding": "show prompt"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": ".gitignore",
+      "line": 17,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "README.md",
+      "line": 65,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "README.md",
+      "line": 66,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "README.md",
+      "line": 67,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "README.md",
+      "line": 68,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "README.md",
+      "line": 100,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "backend/.gitignore",
+      "line": 115,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "backend/poetry.lock",
+      "line": 2186,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "backend/routes/generate_code.py",
+      "line": 446,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "backend/routes/generate_code.py",
+      "line": 467,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "docker-compose.yml",
+      "line": 10,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "frontend/src/components/settings/SettingsTab.tsx",
+      "line": 143,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "frontend/src/components/settings/SettingsTab.tsx",
+      "line": 189,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "frontend/src/components/settings/SettingsTab.tsx",
+      "line": 211,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "frontend/src/components/settings/SettingsTab.tsx",
+      "line": 234,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "frontend/src/setupTests.ts",
+      "line": 1,
+      "message": "Credential Access",
+      "finding": ".env "
+     },
+     {
+      "rule": "P9",
+      "severity": "MEDIUM",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "confidence": 0.7,
+      "file": "README.md",
+      "line": 119,
+      "message": "Whitespace Padding",
+      "finding": "U+0020 x152"
+     },
+     {
+      "rule": "P9",
+      "severity": "MEDIUM",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "confidence": 0.7,
+      "file": "README.md",
+      "line": 119,
+      "message": "Whitespace Padding",
+      "finding": "U+0020 x153"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": "backend/image_generation/replicate.py",
+      "line": 6,
+      "message": "External Transmission",
+      "finding": "https://api.replicate.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": "backend/routes/screenshot.py",
+      "line": 48,
+      "message": "External Transmission",
+      "finding": "https://api.screenshotone.com/"
+     },
+     {
+      "rule": "AST3",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic import via __import__()",
+      "confidence": 0.75,
+      "file": "backend/tests/test_agent_runs.py",
+      "line": 794,
+      "message": "Dynamic import via __import__()",
+      "finding": "    old_time = __import__(\"time\").time() - ninety_days_ago"
+     },
+     {
+      "rule": "AST3",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic import via __import__()",
+      "confidence": 0.75,
+      "file": "backend/tests/test_agent_runs.py",
+      "line": 828,
+      "message": "Dynamic import via __import__()",
+      "finding": "    old_time = __import__(\"time\").time() - ninety_days_ago"
+     },
+     {
+      "rule": "OH3",
+      "severity": "MEDIUM",
+      "category": "Output Handling",
+      "pattern": "Unbounded Output",
+      "confidence": 0.6,
+      "file": "backend/tests/test_prompt_summary.py",
+      "line": 106,
+      "message": "Unbounded Output",
+      "finding": "without truncation"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": "frontend/src/components/TermsOfServiceDialog.tsx",
+      "line": 23,
+      "message": "External Transmission",
+      "finding": "fetch(\"https://backend.buildpicoapps.com/form\", {\r\n      method: \"POST\""
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "backend/agent/providers/openai.py",
+      "line": 70,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        return getattr(event, key)"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "backend/poetry.lock",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "backend/pyproject.toml",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC4",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "confidence": 1.0,
+      "file": "frontend/package.json",
+      "line": 1,
+      "message": "🟡 SC4: OSV.dev unreachable, using static fallback (9 packages). Results may be incomplete. Set SKILLSPECTOR_OSV_TIMEOUT to increase timeout or check network connectivity to api.osv.dev.",
+      "finding": "SC4 fallback active"
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 18,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@codemirror/lang-html\": \"^6.4.6\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 22,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-accordion\": \"^1.1.2\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 23,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-alert-dialog\": \"^1.0.5\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 24,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-checkbox\": \"^1.0.4\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 25,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-collapsible\": \"^1.0.3\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 26,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-dialog\": \"^1.0.5\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 27,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-hover-card\": \"^1.0.7\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 28,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-icons\": \"^1.3.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 29,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-label\": \"^2.0.2\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 30,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-popover\": \"^1.0.7\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 31,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-progress\": \"^1.0.3\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 32,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-scroll-area\": \"^1.0.5\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 33,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-select\": \"^2.0.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 34,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-separator\": \"^1.0.3\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 35,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-slot\": \"^1.0.2\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 36,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-switch\": \"^1.0.3\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 37,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@radix-ui/react-tabs\": \"^1.0.4\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 38,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@types/react-syntax-highlighter\": \"^15.5.13\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 39,
+      "message": "Unpinned Dependencies",
+      "finding": "\"class-variance-authority\": \"^0.7.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 40,
+      "message": "Unpinned Dependencies",
+      "finding": "\"classnames\": \"^2.3.2\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 41,
+      "message": "Unpinned Dependencies",
+      "finding": "\"clsx\": \"^2.0.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 42,
+      "message": "Unpinned Dependencies",
+      "finding": "\"codemirror\": \"^6.0.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 43,
+      "message": "Unpinned Dependencies",
+      "finding": "\"copy-to-clipboard\": \"^3.3.3\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 44,
+      "message": "Unpinned Dependencies",
+      "finding": "\"html2canvas\": \"^1.4.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 45,
+      "message": "Unpinned Dependencies",
+      "finding": "\"nanoid\": \"^5.0.7\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 46,
+      "message": "Unpinned Dependencies",
+      "finding": "\"react\": \"^18.2.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 47,
+      "message": "Unpinned Dependencies",
+      "finding": "\"react-dom\": \"^18.2.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 48,
+      "message": "Unpinned Dependencies",
+      "finding": "\"react-dropzone\": \"^14.2.3\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 49,
+      "message": "Unpinned Dependencies",
+      "finding": "\"react-hot-toast\": \"^2.4.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 50,
+      "message": "Unpinned Dependencies",
+      "finding": "\"react-icons\": \"^4.12.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 51,
+      "message": "Unpinned Dependencies",
+      "finding": "\"react-markdown\": \"^10.1.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 52,
+      "message": "Unpinned Dependencies",
+      "finding": "\"react-router-dom\": \"^6.20.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 53,
+      "message": "Unpinned Dependencies",
+      "finding": "\"react-syntax-highlighter\": \"^16.1.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 54,
+      "message": "Unpinned Dependencies",
+      "finding": "\"tailwind-merge\": \"^2.0.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 55,
+      "message": "Unpinned Dependencies",
+      "finding": "\"tailwindcss-animate\": \"^1.0.7\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 56,
+      "message": "Unpinned Dependencies",
+      "finding": "\"thememirror\": \"^2.0.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 57,
+      "message": "Unpinned Dependencies",
+      "finding": "\"vite-plugin-checker\": \"^0.9.3\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 58,
+      "message": "Unpinned Dependencies",
+      "finding": "\"webm-duration-fix\": \"^1.0.4\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 59,
+      "message": "Unpinned Dependencies",
+      "finding": "\"zustand\": \"^4.5.2\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 62,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@types/jest\": \"^29.5.12\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 63,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@types/node\": \"^20.9.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 64,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@types/puppeteer\": \"^7.0.4\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 65,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@types/react\": \"^18.2.15\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 66,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@types/react-dom\": \"^18.2.7\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 67,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@typescript-eslint/eslint-plugin\": \"^6.0.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 68,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@typescript-eslint/parser\": \"^6.0.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 69,
+      "message": "Unpinned Dependencies",
+      "finding": "\"@vitejs/plugin-react\": \"^4.7.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 70,
+      "message": "Unpinned Dependencies",
+      "finding": "\"autoprefixer\": \"^10.4.16\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 71,
+      "message": "Unpinned Dependencies",
+      "finding": "\"dotenv\": \"^16.4.5\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 72,
+      "message": "Unpinned Dependencies",
+      "finding": "\"eslint\": \"^8.45.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 73,
+      "message": "Unpinned Dependencies",
+      "finding": "\"eslint-plugin-react-hooks\": \"^4.6.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 74,
+      "message": "Unpinned Dependencies",
+      "finding": "\"eslint-plugin-react-refresh\": \"^0.4.3\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 75,
+      "message": "Unpinned Dependencies",
+      "finding": "\"jest\": \"^29.7.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 76,
+      "message": "Unpinned Dependencies",
+      "finding": "\"postcss\": \"^8.4.31\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 77,
+      "message": "Unpinned Dependencies",
+      "finding": "\"puppeteer\": \"^22.6.4\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 78,
+      "message": "Unpinned Dependencies",
+      "finding": "\"tailwindcss\": \"^3.3.5\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 79,
+      "message": "Unpinned Dependencies",
+      "finding": "\"ts-jest\": \"^29.1.2\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 80,
+      "message": "Unpinned Dependencies",
+      "finding": "\"typescript\": \"^5.0.2\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 81,
+      "message": "Unpinned Dependencies",
+      "finding": "\"vite\": \"^6.4.1\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 82,
+      "message": "Unpinned Dependencies",
+      "finding": "\"vite-plugin-html\": \"^3.2.0\""
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.4,
+      "file": "frontend/package.json",
+      "line": 83,
+      "message": "Unpinned Dependencies",
+      "finding": "\"vitest\": \"^1.0.1\""
+     },
+     {
+      "rule": "SC2",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.15,
+      "file": "scripts/cursor-cloud-install.sh",
+      "line": 7,
+      "message": "External Script Fetching",
+      "finding": "curl -sSL https://install.python-poetry.org | python"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-03T22:27:07.310817",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "suppression": null,
+  "card": "231 findings · 1 check pending · 2 checks not applicable",
+  "block": "SECURITY · commit d026163\n\n  Dependency vulnerabilities\n    124 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-54272  ip-address@10.2.0\n      CVE-2026-27904  minimatch@9.0.3\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-67214  nanoid@5.1.11\n      CVE-2025-54121  starlette@0.41.3\n      CVE-2026-54279  aiohttp@3.11.11\n      CVE-2026-40181  @\n      CVE-2026-40181  react-router@6.30.3\n      CVE-2026-67213  nanoid@3.3.12\n      CVE-2026-34514  aiohttp@3.11.11\n      CVE-2026-49476  soupsieve@2.6\n      CVE-2025-66471  urllib3@2.2.3\n      CVE-2026-53666  react-router@6.30.3\n      CVE-2026-21441  urllib3@2.2.3\n      CVE-2026-13149  brace-expansion@1.1.14\n      CVE-2026-13149  brace-expansion@2.1.0\n      CVE-2026-26996  minimatch@9.0.3\n      CVE-2026-34517  aiohttp@3.11.11\n      CVE-2026-55379  pillow@10.4.0\n      CVE-2025-50182  urllib3@2.2.3\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    107 findings                     skillspector 2.11.0 · 2026-09-03\n      SC6 HIGH  backend/poetry.lock:2485  Possible Typosquatting: 'uvicorn' resembles popular package 'gunicorn'\n      AR1 HIGH  backend/prompts/system_prompt.py:9  Anti-Refusal Statement\n      PE3 HIGH  backend/evals/asset_extraction_benchmark.py:843  Credential Access\n      PE3 HIGH  backend/run_image_generation_evals.py:286  Credential Access\n      PE3 HIGH  backend/tests/test_local_assets.py:51  Credential Access\n      P6 HIGH  backend/routes/prompt_reports.py:112  Direct Prompt Extraction\n      P6 HIGH  backend/routes/prompt_reports.py:144  Direct Prompt Extraction\n      P6 HIGH  backend/tests/test_prompt_reports.py:32  Direct Prompt Extraction\n      PE3 HIGH  backend/tests/test_prompt_reports.py:181  Credential Access\n      P6 HIGH  backend/prompts/update/from_history.py:61  Direct Prompt Extraction\n      P6 HIGH  backend/routes/generate_code.py:526  Direct Prompt Extraction\n      P6 HIGH  backend/run_image_generation_evals.py:95  Direct Prompt Extraction\n      P6 HIGH  backend/uploaded_assets/prompts.py:49  Direct Prompt Extraction\n      PE3 HIGH  .gitignore:16  Credential Access\n      PE3 HIGH  docker-compose.yml:14  Credential Access\n      MP3 HIGH  frontend/src/components/ImageLightbox.tsx:33  Memory Manipulation\n      P6 HIGH  frontend/src/components/agent/AgentActivity.tsx:390  Direct Prompt Extraction\n      PE3 HIGH  .gitignore:17  Credential Access\n      PE3 HIGH  README.md:65  Credential Access\n      PE3 HIGH  README.md:66  Credential Access\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ }
+}
