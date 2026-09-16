@@ -1034,12 +1034,124 @@
     "home": ""
    }
   ],
-  "since": [],
-  "since_as_of": null,
+  "since": [
+   {
+    "advisory_id": "GHSA-2883-xcg3-v3hh",
+    "change": "published",
+    "changed_at": "2026-09-08 21:24:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   }
+  ],
+  "since_as_of": "2026-09-16 18:14:56.768795",
   "link_suppressed": false,
   "provenance": null,
   "suppression": null,
   "card": "112 findings · 1 check pending · 1 check not applicable",
-  "block": "SECURITY · commit a636575\n\n  Dependency vulnerabilities\n    58 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-67214  nanoid@3.3.11\n      CVE-2026-67214  nanoid@5.1.7\n      CVE-2026-66062  @\n      CVE-2026-40073  @\n      CVE-2026-67213  nanoid@3.3.11\n      CVE-2026-6733  undici@6.24.1\n      CVE-2026-40074  @\n      CVE-2026-13149  brace-expansion@1.1.13\n      CVE-2026-13149  brace-expansion@5.0.5\n      CVE-2026-82417  qs@6.14.0\n      CVE-2026-39365  vite@7.3.1\n      CVE-2026-59869  js-yaml@3.14.1\n      CVE-2026-59869  js-yaml@4.1.1\n      GHSA-5p4m-2wfm-xmqj  js-yaml@3.14.1\n      GHSA-5p4m-2wfm-xmqj  js-yaml@4.1.1\n      CVE-2026-45623  postcss@8.5.8\n      CVE-2025-15284  qs@6.14.0\n      CVE-2026-42570  devalue@5.6.4\n      CVE-2026-82257  @\n      CVE-2026-12644  ts-deepmerge@7.0.3\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    54 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/codeql.yml:58\n      unpinned-uses  .github/workflows/codeql.yml:59\n      unpinned-uses  .github/workflows/codeql.yml:63\n      unpinned-uses  .github/workflows/codeql.yml:91\n      artipacked  .github/workflows/docker-develop.yml:18\n      unpinned-uses  .github/workflows/docker-develop.yml:19\n      unpinned-uses  .github/workflows/docker-develop.yml:21\n      unpinned-uses  .github/workflows/docker-develop.yml:23\n      unpinned-uses  .github/workflows/docker-develop.yml:26\n      unpinned-uses  .github/workflows/docker-develop.yml:41\n      unpinned-uses  .github/workflows/docker-develop.yml:47\n      artipacked  .github/workflows/docker-staging.yml:18\n      unpinned-uses  .github/workflows/docker-staging.yml:19\n      unpinned-uses  .github/workflows/docker-staging.yml:21\n      unpinned-uses  .github/workflows/docker-staging.yml:23\n      unpinned-uses  .github/workflows/docker-staging.yml:26\n      unpinned-uses  .github/workflows/docker-staging.yml:41\n      unpinned-uses  .github/workflows/docker-staging.yml:47\n      artipacked  .github/workflows/docker.yml:18\n      unpinned-uses  .github/workflows/docker.yml:19\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+  "block": "SECURITY · commit a636575\n\n  Dependency vulnerabilities\n    58 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-67214  nanoid@3.3.11\n      CVE-2026-67214  nanoid@5.1.7\n      CVE-2026-66062  @\n      CVE-2026-40073  @\n      CVE-2026-67213  nanoid@3.3.11\n      CVE-2026-6733  undici@6.24.1\n      CVE-2026-40074  @\n      CVE-2026-13149  brace-expansion@1.1.13\n      CVE-2026-13149  brace-expansion@5.0.5\n      CVE-2026-82417  qs@6.14.0\n      CVE-2026-39365  vite@7.3.1\n      CVE-2026-59869  js-yaml@3.14.1\n      CVE-2026-59869  js-yaml@4.1.1\n      GHSA-5p4m-2wfm-xmqj  js-yaml@3.14.1\n      GHSA-5p4m-2wfm-xmqj  js-yaml@4.1.1\n      CVE-2026-45623  postcss@8.5.8\n      CVE-2025-15284  qs@6.14.0\n      CVE-2026-42570  devalue@5.6.4\n      CVE-2026-82257  @\n      CVE-2026-12644  ts-deepmerge@7.0.3\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    54 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/codeql.yml:58\n      unpinned-uses  .github/workflows/codeql.yml:59\n      unpinned-uses  .github/workflows/codeql.yml:63\n      unpinned-uses  .github/workflows/codeql.yml:91\n      artipacked  .github/workflows/docker-develop.yml:18\n      unpinned-uses  .github/workflows/docker-develop.yml:19\n      unpinned-uses  .github/workflows/docker-develop.yml:21\n      unpinned-uses  .github/workflows/docker-develop.yml:23\n      unpinned-uses  .github/workflows/docker-develop.yml:26\n      unpinned-uses  .github/workflows/docker-develop.yml:41\n      unpinned-uses  .github/workflows/docker-develop.yml:47\n      artipacked  .github/workflows/docker-staging.yml:18\n      unpinned-uses  .github/workflows/docker-staging.yml:19\n      unpinned-uses  .github/workflows/docker-staging.yml:21\n      unpinned-uses  .github/workflows/docker-staging.yml:23\n      unpinned-uses  .github/workflows/docker-staging.yml:26\n      unpinned-uses  .github/workflows/docker-staging.yml:41\n      unpinned-uses  .github/workflows/docker-staging.yml:47\n      artipacked  .github/workflows/docker.yml:18\n      unpinned-uses  .github/workflows/docker.yml:19\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-16\n  GHSA-2883-xcg3-v3hh was PUBLISHED upstream on 2026-09-08\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "a636575b09de1fc55d9b8cd98cac88f5f2f16b42",
+  "built_at": "2026-09-11 18:15:03.955729",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 1244,
+  "edge_count": 1810,
+  "community_count": 164,
+  "extracted_pct": 0.9883977770805359,
+  "subsystems": [
+   {
+    "label": "Video and Audio Processing",
+    "size": 49
+   },
+   {
+    "label": "Cookie Management",
+    "size": 44
+   },
+   {
+    "label": "Backend Dependencies",
+    "size": 41
+   },
+   {
+    "label": "UI Dialogs and Settings",
+    "size": 40
+   },
+   {
+    "label": "Social Links and Sharing",
+    "size": 31
+   },
+   {
+    "label": "Service URL Resolvers",
+    "size": 30
+   },
+   {
+    "label": "Settings Migration and Defaults",
+    "size": 28
+   },
+   {
+    "label": "API Package Metadata",
+    "size": 27
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "env",
+    "degree": 27,
+    "file": "api/src/config.js"
+   },
+   {
+    "name": "runAPI()",
+    "degree": 15,
+    "file": "api/src/core/api.js"
+   },
+   {
+    "name": "createStream()",
+    "degree": 14,
+    "file": "api/src/stream/manage.js"
+   },
+   {
+    "name": "Green()",
+    "degree": 12,
+    "file": "api/src/misc/console-text.js"
+   },
+   {
+    "name": "Yellow()",
+    "degree": 12,
+    "file": "api/src/misc/console-text.js"
+   },
+   {
+    "name": "resolveRedirectingURL()",
+    "degree": 12,
+    "file": "api/src/processing/url.js"
+   },
+   {
+    "name": "compilerOptions",
+    "degree": 12,
+    "file": "web/tsconfig.json"
+   },
+   {
+    "name": "getCookie()",
+    "degree": 11,
+    "file": "api/src/processing/cookie/manager.js"
+   },
+   {
+    "name": "Cookie",
+    "degree": 10,
+    "file": "api/src/processing/cookie/cookie.js"
+   },
+   {
+    "name": "render()",
+    "degree": 10,
+    "file": "api/src/stream/ffmpeg.js"
+   }
+  ],
+  "lines": [
+   "Structure: 164 subsystems — Video and Audio Processing · Cookie Management · Backend Dependencies",
+   "Core: env · runAPI() · createStream()"
+  ],
+  "block": "Code structure (mapped 2026-09-11 · a636575b · graphify 0.9.37)\n1,244 concepts · 1,810 connections · 164 subsystems · 99% read directly from source\nSubsystems: Video and Audio Processing · Cookie Management · Backend Dependencies · UI Dialogs and Settings · Social Links and Sharing · Service URL Resolvers · Settings Migration and Defaults · API Package Metadata\nCore abstractions:\n  1. env — 27 connections\n  2. runAPI() — 15 connections\n  3. createStream() — 14 connections\n  4. Green() — 12 connections\n  5. Yellow() — 12 connections\n  6. resolveRedirectingURL() — 12 connections\n  7. compilerOptions — 12 connections\n  8. getCookie() — 11 connections\n  9. Cookie — 10 connections\n  10. render() — 10 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

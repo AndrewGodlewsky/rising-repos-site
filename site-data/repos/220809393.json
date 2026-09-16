@@ -331,5 +331,110 @@
   "suppression": null,
   "card": "31 findings · 1 check pending · 1 check not applicable",
   "block": "SECURITY · commit 9d8f9a3\n\n  Dependency vulnerabilities\n    9 findings                       osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-4539  pygments@2.19.2\n      CVE-2026-22702  virtualenv@20.34.0\n      CVE-2025-71176  pytest@7.4.4\n      CVE-2024-21503  black@22.12.0\n      CVE-2026-22701  filelock@3.16.1\n      CVE-2025-68146  filelock@3.16.1\n      CVE-2026-31900  black@22.12.0\n      CVE-2026-32274  black@22.12.0\n      CVE-2026-7246  click@8.1.8\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    22 findings                      zizmor 1.30.0 · 2026-09-03\n      dependabot-cooldown  .github/dependabot.yml:8\n      dependabot-cooldown  .github/dependabot.yml:12\n      artipacked  .github/workflows/codeql.yml:31\n      unpinned-uses  .github/workflows/codeql.yml:32\n      unpinned-uses  .github/workflows/codeql.yml:36\n      unpinned-uses  .github/workflows/codeql.yml:50\n      unpinned-uses  .github/workflows/codeql.yml:63\n      artipacked  .github/workflows/codespell.yml:7\n      excessive-permissions  .github/workflows/codespell.yml:4\n      unpinned-uses  .github/workflows/codespell.yml:7\n      artipacked  .github/workflows/newissue.yml:11\n      unpinned-uses  .github/workflows/newissue.yml:11\n      unpinned-uses  .github/workflows/newissue.yml:22\n      artipacked  .github/workflows/pythonpackage.yml:19\n      excessive-permissions  .github/workflows/pythonpackage.yml:6\n      unpinned-uses  .github/workflows/pythonpackage.yml:19\n      unpinned-uses  .github/workflows/pythonpackage.yml:21\n      unpinned-uses  .github/workflows/pythonpackage.yml:27\n      unpinned-uses  .github/workflows/pythonpackage.yml:47\n      artipacked  .github/workflows/readmechanged.yml:14\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+  "built_at": "2026-09-04 00:05:52.524922",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 3095,
+  "edge_count": 9081,
+  "community_count": 179,
+  "extracted_pct": 0.8027750253677368,
+  "subsystems": [
+   {
+    "label": "Console Rendering Options",
+    "size": 106
+   },
+   {
+    "label": "Styled Text Representation",
+    "size": 90
+   },
+   {
+    "label": "Layout and Panels",
+    "size": 89
+   },
+   {
+    "label": "Console Interface",
+    "size": 83
+   },
+   {
+    "label": "ANSI Style Management",
+    "size": 79
+   },
+   {
+    "label": "Object Inspection",
+    "size": 68
+   },
+   {
+    "label": "Color Parsing",
+    "size": 58
+   },
+   {
+    "label": "File Progress Tracking",
+    "size": 53
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "Console",
+    "degree": 702,
+    "file": "rich/console.py"
+   },
+   {
+    "name": "Text",
+    "degree": 416,
+    "file": "rich/text.py"
+   },
+   {
+    "name": "Style",
+    "degree": 276,
+    "file": "rich/style.py"
+   },
+   {
+    "name": "Segment",
+    "degree": 225,
+    "file": "rich/segment.py"
+   },
+   {
+    "name": "ConsoleOptions",
+    "degree": 181,
+    "file": "rich/console.py"
+   },
+   {
+    "name": "Table",
+    "degree": 157,
+    "file": "rich/table.py"
+   },
+   {
+    "name": "Syntax",
+    "degree": 127,
+    "file": "rich/syntax.py"
+   },
+   {
+    "name": "Measurement",
+    "degree": 120,
+    "file": "rich/measure.py"
+   },
+   {
+    "name": "Panel",
+    "degree": 110,
+    "file": "rich/panel.py"
+   },
+   {
+    "name": "JupyterMixin",
+    "degree": 97,
+    "file": "rich/jupyter.py"
+   }
+  ],
+  "lines": [
+   "Structure: 179 subsystems — Console Rendering Options · Styled Text Representation · Layout and Panels",
+   "Core: Console · Text · Style"
+  ],
+  "block": "Code structure (mapped 2026-09-04 · 9d8f9a37 · graphify 0.9.37)\n3,095 concepts · 9,081 connections · 179 subsystems · 80% read directly from source\nSubsystems: Console Rendering Options · Styled Text Representation · Layout and Panels · Console Interface · ANSI Style Management · Object Inspection · Color Parsing · File Progress Tracking\nCore abstractions:\n  1. Console — 702 connections\n  2. Text — 416 connections\n  3. Style — 276 connections\n  4. Segment — 225 connections\n  5. ConsoleOptions — 181 connections\n  6. Table — 157 connections\n  7. Syntax — 127 connections\n  8. Measurement — 120 connections\n  9. Panel — 110 connections\n  10. JupyterMixin — 97 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

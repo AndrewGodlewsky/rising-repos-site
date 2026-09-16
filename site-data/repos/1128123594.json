@@ -8555,12 +8555,154 @@
     "home": ""
    }
   ],
-  "since": [],
-  "since_as_of": null,
+  "since": [
+   {
+    "advisory_id": "GHSA-82fw-gwwq-j7x9",
+    "change": "published",
+    "changed_at": "2026-09-08 20:46:45",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-crvj-82cr-hjcx",
+    "change": "published",
+    "changed_at": "2026-09-08 21:22:50",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-g6gw-c38x-mqfc",
+    "change": "published",
+    "changed_at": "2026-09-08 21:23:02",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-gqvv-2mrq-wpjv",
+    "change": "published",
+    "changed_at": "2026-09-08 21:23:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-2883-xcg3-v3hh",
+    "change": "published",
+    "changed_at": "2026-09-08 21:24:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "RUSTSEC-2026-0285",
+    "change": "published",
+    "changed_at": "2026-09-14 12:00:00",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   }
+  ],
+  "since_as_of": "2026-09-16 18:14:56.768795",
   "link_suppressed": false,
   "provenance": null,
   "suppression": null,
   "card": "940 findings · 1 check pending",
-  "block": "SECURITY · commit a838014\n\n  Dependency vulnerabilities\n    409 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-56762  hono@4.12.8\n      CVE-2026-4923  path-to-regexp@8.3.0\n      CVE-2026-67214  nanoid@3.3.11\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-67214  nanoid@3.3.15\n      CVE-2026-54279  aiohttp@3.8.0\n      CVE-2026-54279  aiohttp@3.13.3\n      CVE-2025-31130  gix-features@0.38.2\n      CVE-2025-31130  gix-object@0.42.3\n      CVE-2026-47676  hono@4.12.8\n      CVE-2026-47676  hono@4.12.12\n      CVE-2026-67213  nanoid@3.3.11\n      CVE-2026-67213  nanoid@3.3.12\n      CVE-2026-67213  nanoid@3.3.15\n      CVE-2026-71436  mermaid@11.14.0\n      CVE-2026-34514  aiohttp@3.8.0\n      CVE-2026-34514  aiohttp@3.13.3\n      CVE-2026-49476  soupsieve@2.8.3\n      CVE-2026-44494  axios@1.15.0\n      CVE-2026-6733  undici@7.24.7\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    264 findings                     zizmor 1.30.0 · 2026-09-03\n      dependabot-cooldown  .github/dependabot.yml:4\n      dependabot-cooldown  .github/dependabot.yml:13\n      artipacked  .github/workflows/_build.yml:53\n      artipacked  .github/workflows/_build.yml:158\n      artipacked  .github/workflows/_build.yml:396\n      excessive-permissions  .github/workflows/_build.yml:1\n      excessive-permissions  .github/workflows/_build.yml:48\n      excessive-permissions  .github/workflows/_build.yml:114\n      excessive-permissions  .github/workflows/_build.yml:379\n      template-injection  .github/workflows/_build.yml:178\n      template-injection  .github/workflows/_build.yml:193\n      template-injection  .github/workflows/_build.yml:377\n      template-injection  .github/workflows/_build.yml:377\n      template-injection  .github/workflows/_build.yml:413\n      template-injection  .github/workflows/_build.yml:416\n      template-injection  .github/workflows/_build.yml:420\n      template-injection  .github/workflows/_build.yml:476\n      template-injection  .github/workflows/_build.yml:486\n      template-injection  .github/workflows/_build.yml:603\n      template-injection  .github/workflows/_build.yml:603\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    6 findings                       kingfisher 2.1.0 · 2026-09-03\n      betterleaks.curl-auth-header  docs/en/concepts/11-multi-tenant.md:153\n      betterleaks.curl-auth-header  docs/zh/guides/09-ovpack.md:287\n      betterleaks.generic-credential-uri  bot\\deploy\\docker\\langfuse\\docker-compose.yml:23\n      betterleaks.curl-auth-header  docs\\en\\guides\\04-authentication.md:377\n      betterleaks.curl-auth-header  examples\\cloud\\GUIDE.md:421\n      betterleaks.curl-auth-header  examples\\cloud\\GUIDE.md:472\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    261 findings                     skillspector 2.11.0 · 2026-09-03\n      TT3 CRITICAL  benchmark/locomo/hermes/eval.py:235  Tainted flow: 'headers' from os.getenv (line 58, credential/environment) → requests.post (network output)\n      TT3 CRITICAL  benchmark/locomo/hermes/import_e2e.py:223  Tainted flow: 'headers' from os.getenv (line 67, credential/environment) → requests.post (network output)\n      TT3 CRITICAL  benchmark/locomo/hermes/import_e2e.py:511  Tainted flow: 'headers' from os.getenv (line 67, credential/environment) → requests.post (network output)\n      TT3 CRITICAL  benchmark/locomo/mem0/ingest.py:233  Tainted flow: 'api_key' from os.environ.get (line 303, credential/environment) → requests.get (network output)\n      SC9 HIGH  .github/scripts/stage-memory-plugin-marketplace.sh:1  Concealed Executable Artifact\n      TM1 HIGH  .github/workflows/_build.yml:80  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/_build.yml:253  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/_build.yml:498  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/_build.yml:255  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/_build.yml:500  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/_build.yml:294  Tool Parameter Abuse\n      TM2 HIGH  .github/workflows/_codeql.yml:38  Chaining Abuse\n      TM2 HIGH  .github/workflows/_test_full.yml:54  Chaining Abuse\n      TM2 HIGH  .github/workflows/_test_lite.yml:54  Chaining Abuse\n      TM2 HIGH  .github/workflows/api_test.yml:76  Chaining Abuse\n      TM2 HIGH  .github/workflows/api_test_effect.yml:49  Chaining Abuse\n      SC2 HIGH  .github/workflows/api_test.yml:502  External Script Fetching\n      TM2 HIGH  .github/workflows/api_test.yml:502  Chaining Abuse\n      TM2 HIGH  .github/workflows/api_test.yml:77  Chaining Abuse\n      TM2 HIGH  .github/workflows/api_test_effect.yml:50  Chaining Abuse\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+  "block": "SECURITY · commit a838014\n\n  Dependency vulnerabilities\n    409 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-56762  hono@4.12.8\n      CVE-2026-4923  path-to-regexp@8.3.0\n      CVE-2026-67214  nanoid@3.3.11\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-67214  nanoid@3.3.15\n      CVE-2026-54279  aiohttp@3.8.0\n      CVE-2026-54279  aiohttp@3.13.3\n      CVE-2025-31130  gix-features@0.38.2\n      CVE-2025-31130  gix-object@0.42.3\n      CVE-2026-47676  hono@4.12.8\n      CVE-2026-47676  hono@4.12.12\n      CVE-2026-67213  nanoid@3.3.11\n      CVE-2026-67213  nanoid@3.3.12\n      CVE-2026-67213  nanoid@3.3.15\n      CVE-2026-71436  mermaid@11.14.0\n      CVE-2026-34514  aiohttp@3.8.0\n      CVE-2026-34514  aiohttp@3.13.3\n      CVE-2026-49476  soupsieve@2.8.3\n      CVE-2026-44494  axios@1.15.0\n      CVE-2026-6733  undici@7.24.7\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    264 findings                     zizmor 1.30.0 · 2026-09-03\n      dependabot-cooldown  .github/dependabot.yml:4\n      dependabot-cooldown  .github/dependabot.yml:13\n      artipacked  .github/workflows/_build.yml:53\n      artipacked  .github/workflows/_build.yml:158\n      artipacked  .github/workflows/_build.yml:396\n      excessive-permissions  .github/workflows/_build.yml:1\n      excessive-permissions  .github/workflows/_build.yml:48\n      excessive-permissions  .github/workflows/_build.yml:114\n      excessive-permissions  .github/workflows/_build.yml:379\n      template-injection  .github/workflows/_build.yml:178\n      template-injection  .github/workflows/_build.yml:193\n      template-injection  .github/workflows/_build.yml:377\n      template-injection  .github/workflows/_build.yml:377\n      template-injection  .github/workflows/_build.yml:413\n      template-injection  .github/workflows/_build.yml:416\n      template-injection  .github/workflows/_build.yml:420\n      template-injection  .github/workflows/_build.yml:476\n      template-injection  .github/workflows/_build.yml:486\n      template-injection  .github/workflows/_build.yml:603\n      template-injection  .github/workflows/_build.yml:603\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    6 findings                       kingfisher 2.1.0 · 2026-09-03\n      betterleaks.curl-auth-header  docs/en/concepts/11-multi-tenant.md:153\n      betterleaks.curl-auth-header  docs/zh/guides/09-ovpack.md:287\n      betterleaks.generic-credential-uri  bot\\deploy\\docker\\langfuse\\docker-compose.yml:23\n      betterleaks.curl-auth-header  docs\\en\\guides\\04-authentication.md:377\n      betterleaks.curl-auth-header  examples\\cloud\\GUIDE.md:421\n      betterleaks.curl-auth-header  examples\\cloud\\GUIDE.md:472\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    261 findings                     skillspector 2.11.0 · 2026-09-03\n      TT3 CRITICAL  benchmark/locomo/hermes/eval.py:235  Tainted flow: 'headers' from os.getenv (line 58, credential/environment) → requests.post (network output)\n      TT3 CRITICAL  benchmark/locomo/hermes/import_e2e.py:223  Tainted flow: 'headers' from os.getenv (line 67, credential/environment) → requests.post (network output)\n      TT3 CRITICAL  benchmark/locomo/hermes/import_e2e.py:511  Tainted flow: 'headers' from os.getenv (line 67, credential/environment) → requests.post (network output)\n      TT3 CRITICAL  benchmark/locomo/mem0/ingest.py:233  Tainted flow: 'api_key' from os.environ.get (line 303, credential/environment) → requests.get (network output)\n      SC9 HIGH  .github/scripts/stage-memory-plugin-marketplace.sh:1  Concealed Executable Artifact\n      TM1 HIGH  .github/workflows/_build.yml:80  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/_build.yml:253  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/_build.yml:498  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/_build.yml:255  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/_build.yml:500  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/_build.yml:294  Tool Parameter Abuse\n      TM2 HIGH  .github/workflows/_codeql.yml:38  Chaining Abuse\n      TM2 HIGH  .github/workflows/_test_full.yml:54  Chaining Abuse\n      TM2 HIGH  .github/workflows/_test_lite.yml:54  Chaining Abuse\n      TM2 HIGH  .github/workflows/api_test.yml:76  Chaining Abuse\n      TM2 HIGH  .github/workflows/api_test_effect.yml:49  Chaining Abuse\n      SC2 HIGH  .github/workflows/api_test.yml:502  External Script Fetching\n      TM2 HIGH  .github/workflows/api_test.yml:502  Chaining Abuse\n      TM2 HIGH  .github/workflows/api_test.yml:77  Chaining Abuse\n      TM2 HIGH  .github/workflows/api_test_effect.yml:50  Chaining Abuse\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-16\n  GHSA-82fw-gwwq-j7x9 was PUBLISHED upstream on 2026-09-08\n  GHSA-crvj-82cr-hjcx was PUBLISHED upstream on 2026-09-08\n  GHSA-g6gw-c38x-mqfc was PUBLISHED upstream on 2026-09-08\n  GHSA-gqvv-2mrq-wpjv was PUBLISHED upstream on 2026-09-08\n  GHSA-2883-xcg3-v3hh was PUBLISHED upstream on 2026-09-08\n  RUSTSEC-2026-0285 was PUBLISHED upstream on 2026-09-14\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "0f77ab5625a5e2ead4f286d4e58ea77e05fcfdee",
+  "built_at": "2026-09-11 18:15:03.955729",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 60754,
+  "edge_count": 160166,
+  "community_count": 1457,
+  "extracted_pct": 0.9276625514030457,
+  "subsystems": [
+   {
+    "label": "HTTP Client Exceptions",
+    "size": 719
+   },
+   {
+    "label": "Execution and Auth Modes",
+    "size": 606
+   },
+   {
+    "label": "Server Error Handling",
+    "size": 516
+   },
+   {
+    "label": "Task Context Management",
+    "size": 471
+   },
+   {
+    "label": "User Memory Management",
+    "size": 439
+   },
+   {
+    "label": "Memory File Extraction",
+    "size": 421
+   },
+   {
+    "label": "Generated API Client",
+    "size": 417
+   },
+   {
+    "label": "Tool Compilation and Execution",
+    "size": 400
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "RequestContext",
+    "degree": 2050,
+    "file": "openviking/server/identity.py"
+   },
+   {
+    "name": "UserIdentifier",
+    "degree": 736,
+    "file": "openviking_cli/session/user_id.py"
+   },
+   {
+    "name": "Role",
+    "degree": 511,
+    "file": "openviking/server/identity.py"
+   },
+   {
+    "name": "MemoryFile",
+    "degree": 294,
+    "file": "openviking/session/memory/dataclass.py"
+   },
+   {
+    "name": "InvalidArgumentError",
+    "degree": 294,
+    "file": "openviking_cli/exceptions.py"
+   },
+   {
+    "name": "TextPart",
+    "degree": 285,
+    "file": "openviking/message/part.py"
+   },
+   {
+    "name": "SessionKey",
+    "degree": 273,
+    "file": "bot/vikingbot/config/schema.py"
+   },
+   {
+    "name": "Slice()",
+    "degree": 265,
+    "file": "third_party/leveldb-1.23/include/leveldb/slice.h"
+   },
+   {
+    "name": "AsyncHTTPClient",
+    "degree": 256,
+    "file": "sdk/python/openviking_sdk/client.py"
+   },
+   {
+    "name": "HttpClient",
+    "degree": 244,
+    "file": "crates/ov_cli/src/client.rs"
+   }
+  ],
+  "lines": [
+   "Structure: 1,457 subsystems — HTTP Client Exceptions · Execution and Auth Modes · Server Error Handling",
+   "Core: RequestContext · UserIdentifier · Role"
+  ],
+  "block": "Code structure (mapped 2026-09-11 · 0f77ab56 · graphify 0.9.37)\n60,754 concepts · 160,166 connections · 1,457 subsystems · 93% read directly from source\nSubsystems: HTTP Client Exceptions · Execution and Auth Modes · Server Error Handling · Task Context Management · User Memory Management · Memory File Extraction · Generated API Client · Tool Compilation and Execution\nCore abstractions:\n  1. RequestContext — 2,050 connections\n  2. UserIdentifier — 736 connections\n  3. Role — 511 connections\n  4. MemoryFile — 294 connections\n  5. InvalidArgumentError — 294 connections\n  6. TextPart — 285 connections\n  7. SessionKey — 273 connections\n  8. Slice() — 265 connections\n  9. AsyncHTTPClient — 256 connections\n  10. HttpClient — 244 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

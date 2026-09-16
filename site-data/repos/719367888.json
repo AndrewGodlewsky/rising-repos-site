@@ -3717,23 +3717,146 @@
   ],
   "since": [
    {
-    "advisory_id": "GHSA-3f95-mxq2-2f63",
+    "advisory_id": "GHSA-9v2f-6vcg-3hgv",
     "change": "withdrawn",
-    "changed_at": "2026-02-03 17:39:05",
-    "observed_at": "2026-09-03 23:23:02.154942"
+    "changed_at": "2025-10-17 20:26:00",
+    "observed_at": "2026-09-16 18:14:56.768795"
    },
    {
     "advisory_id": "PYSEC-2024-115",
     "change": "withdrawn",
     "changed_at": "2026-07-09 16:45:06.281535",
-    "observed_at": "2026-09-03 23:23:02.154942"
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-3wxw-xv34-2frg",
+    "change": "published",
+    "changed_at": "2026-09-08 19:42:22",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "PYSEC-2026-3804",
+    "change": "published",
+    "changed_at": "2026-09-10 09:44:51.517506",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "PYSEC-2026-3837",
+    "change": "published",
+    "changed_at": "2026-09-10 09:45:00.699290",
+    "observed_at": "2026-09-16 18:14:56.768795"
    }
   ],
-  "since_as_of": "2026-09-03 23:23:02.154942",
+  "since_as_of": "2026-09-16 18:14:56.768795",
   "link_suppressed": false,
   "provenance": null,
   "suppression": null,
   "card": "432 findings · 1 check pending · 3 checks not applicable",
-  "block": "SECURITY · commit 7f892a8\n\n  Dependency vulnerabilities\n    432 findings                     osv-scanner 2.5.1 · 2026-09-03\n      GHSA-26jh-r8g2-6fpr  gradio@4.4.0\n      CVE-2024-47871  gradio@4.4.0\n      CVE-2026-4372  transformers@4.30.2\n      CVE-2026-4372  transformers@4.48.2\n      CVE-2026-4372  transformers@4.51.0\n      CVE-2026-4372  transformers@4.46.2\n      CVE-2026-4372  transformers@4.41.2\n      CVE-2026-4372  transformers@4.57.5\n      CVE-2026-67325  gitpython@3.1.45\n      CVE-2026-54279  aiohttp@3.12.15\n      CVE-2026-34514  aiohttp@3.12.15\n      CVE-2026-49476  soupsieve@2.7\n      CVE-2025-66471  urllib3@2.5.0\n      CVE-2024-46455  unstructured@0.10.30\n      CVE-2024-34511  gradio@4.4.0\n      CVE-2026-45134  langchain@0.0.292\n      CVE-2026-45134  langsmith@0.0.92\n      CVE-2025-2953  torch@2.6.0\n      CVE-2025-2953  torch@2.3.0\n      CVE-2025-3933  transformers@4.30.2\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-03\n  GHSA-3f95-mxq2-2f63 was WITHDRAWN upstream on 2026-02-03\n  PYSEC-2024-115 was WITHDRAWN upstream on 2026-07-09\n\n→ How we run these scans (/methodology)"
+  "block": "SECURITY · commit 7f892a8\n\n  Dependency vulnerabilities\n    432 findings                     osv-scanner 2.5.1 · 2026-09-03\n      GHSA-26jh-r8g2-6fpr  gradio@4.4.0\n      CVE-2024-47871  gradio@4.4.0\n      CVE-2026-4372  transformers@4.30.2\n      CVE-2026-4372  transformers@4.48.2\n      CVE-2026-4372  transformers@4.51.0\n      CVE-2026-4372  transformers@4.46.2\n      CVE-2026-4372  transformers@4.41.2\n      CVE-2026-4372  transformers@4.57.5\n      CVE-2026-67325  gitpython@3.1.45\n      CVE-2026-54279  aiohttp@3.12.15\n      CVE-2026-34514  aiohttp@3.12.15\n      CVE-2026-49476  soupsieve@2.7\n      CVE-2025-66471  urllib3@2.5.0\n      CVE-2024-46455  unstructured@0.10.30\n      CVE-2024-34511  gradio@4.4.0\n      CVE-2026-45134  langchain@0.0.292\n      CVE-2026-45134  langsmith@0.0.92\n      CVE-2025-2953  torch@2.6.0\n      CVE-2025-2953  torch@2.3.0\n      CVE-2025-3933  transformers@4.30.2\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-16\n  GHSA-9v2f-6vcg-3hgv was WITHDRAWN upstream on 2025-10-17\n  PYSEC-2024-115 was WITHDRAWN upstream on 2026-07-09\n  GHSA-3wxw-xv34-2frg was PUBLISHED upstream on 2026-09-08\n  PYSEC-2026-3804 was PUBLISHED upstream on 2026-09-10\n  PYSEC-2026-3837 was PUBLISHED upstream on 2026-09-10\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "7f892a8ee3f802862b504a156d4bb437a41cdf49",
+  "built_at": "2026-09-11 18:15:03.955729",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 498,
+  "edge_count": 712,
+  "community_count": 60,
+  "extracted_pct": 0.9452247023582458,
+  "subsystems": [
+   {
+    "label": "Model Download and UI",
+    "size": 49
+   },
+   {
+    "label": "Dataset Preprocessing",
+    "size": 39
+   },
+   {
+    "label": "Vision API Server",
+    "size": 39
+   },
+   {
+    "label": "FastAPI Model Server",
+    "size": 31
+   },
+   {
+    "label": "Model Loading and Chat",
+    "size": 29
+   },
+   {
+    "label": "Inference Backend Framework",
+    "size": 21
+   },
+   {
+    "label": "Qwen VL API Server",
+    "size": 19
+   },
+   {
+    "label": "Environment Configuration",
+    "size": 16
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "process_vision_info()",
+    "degree": 17,
+    "file": "models/Qwen2-VL/01-Qwen2-VL-2B-Instruct FastApi 参考代码/qwen_vl_utils/vision_process.py"
+   },
+   {
+    "name": "build_ui()",
+    "degree": 13,
+    "file": "models_mlx/run_app_gradio.py"
+   },
+   {
+    "name": "Framework",
+    "degree": 11,
+    "file": "models_mlx/modules/core_types.py"
+   },
+   {
+    "name": "get_local_path()",
+    "degree": 9,
+    "file": "models_mlx/modules/download_model.py"
+   },
+   {
+    "name": "BaseBackend",
+    "degree": 9,
+    "file": "models_mlx/modules/framework.py"
+   },
+   {
+    "name": "Atom",
+    "degree": 8,
+    "file": "models/Atom/03-Atom-7B-Chat 接入langchain搭建知识库助手/LLM.py"
+   },
+   {
+    "name": "SupervisedDataset",
+    "degree": 8,
+    "file": "models/MiniCPM-o/04-MiniCPM-0-2.6 Lora微调 参考代码/minicpm_datasets.py"
+   },
+   {
+    "name": "preprocess()",
+    "degree": 8,
+    "file": "models/MiniCPM-o/04-MiniCPM-0-2.6 Lora微调 参考代码/minicpm_datasets.py"
+   },
+   {
+    "name": "fetch_video()",
+    "degree": 8,
+    "file": "models/Qwen2-VL/01-Qwen2-VL-2B-Instruct FastApi 参考代码/qwen_vl_utils/vision_process.py"
+   },
+   {
+    "name": "ChatGLM_LLM",
+    "degree": 7,
+    "file": "models/ChatGLM/05-ChatGLM3-6B接入LangChain搭建知识库助手/LLM.py"
+   }
+  ],
+  "lines": [
+   "Structure: 60 subsystems — Model Download and UI · Dataset Preprocessing · Vision API Server",
+   "Core: process_vision_info() · build_ui() · Framework"
+  ],
+  "block": "Code structure (mapped 2026-09-11 · 7f892a8e · graphify 0.9.37)\n498 concepts · 712 connections · 60 subsystems · 95% read directly from source\nSubsystems: Model Download and UI · Dataset Preprocessing · Vision API Server · FastAPI Model Server · Model Loading and Chat · Inference Backend Framework · Qwen VL API Server · Environment Configuration\nCore abstractions:\n  1. process_vision_info() — 17 connections\n  2. build_ui() — 13 connections\n  3. Framework — 11 connections\n  4. get_local_path() — 9 connections\n  5. BaseBackend — 9 connections\n  6. Atom — 8 connections\n  7. SupervisedDataset — 8 connections\n  8. preprocess() — 8 connections\n  9. fetch_video() — 8 connections\n  10. ChatGLM_LLM — 7 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

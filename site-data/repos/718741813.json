@@ -2337,12 +2337,124 @@
     "home": ""
    }
   ],
-  "since": [],
-  "since_as_of": null,
+  "since": [
+   {
+    "advisory_id": "GHSA-2883-xcg3-v3hh",
+    "change": "published",
+    "changed_at": "2026-09-08 21:24:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   }
+  ],
+  "since_as_of": "2026-09-16 18:14:56.768795",
   "link_suppressed": false,
   "provenance": null,
   "suppression": null,
   "card": "231 findings · 1 check pending · 2 checks not applicable",
-  "block": "SECURITY · commit d026163\n\n  Dependency vulnerabilities\n    124 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-54272  ip-address@10.2.0\n      CVE-2026-27904  minimatch@9.0.3\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-67214  nanoid@5.1.11\n      CVE-2025-54121  starlette@0.41.3\n      CVE-2026-54279  aiohttp@3.11.11\n      CVE-2026-40181  @\n      CVE-2026-40181  react-router@6.30.3\n      CVE-2026-67213  nanoid@3.3.12\n      CVE-2026-34514  aiohttp@3.11.11\n      CVE-2026-49476  soupsieve@2.6\n      CVE-2025-66471  urllib3@2.2.3\n      CVE-2026-53666  react-router@6.30.3\n      CVE-2026-21441  urllib3@2.2.3\n      CVE-2026-13149  brace-expansion@1.1.14\n      CVE-2026-13149  brace-expansion@2.1.0\n      CVE-2026-26996  minimatch@9.0.3\n      CVE-2026-34517  aiohttp@3.11.11\n      CVE-2026-55379  pillow@10.4.0\n      CVE-2025-50182  urllib3@2.2.3\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    107 findings                     skillspector 2.11.0 · 2026-09-03\n      SC6 HIGH  backend/poetry.lock:2485  Possible Typosquatting: 'uvicorn' resembles popular package 'gunicorn'\n      AR1 HIGH  backend/prompts/system_prompt.py:9  Anti-Refusal Statement\n      PE3 HIGH  backend/evals/asset_extraction_benchmark.py:843  Credential Access\n      PE3 HIGH  backend/run_image_generation_evals.py:286  Credential Access\n      PE3 HIGH  backend/tests/test_local_assets.py:51  Credential Access\n      P6 HIGH  backend/routes/prompt_reports.py:112  Direct Prompt Extraction\n      P6 HIGH  backend/routes/prompt_reports.py:144  Direct Prompt Extraction\n      P6 HIGH  backend/tests/test_prompt_reports.py:32  Direct Prompt Extraction\n      PE3 HIGH  backend/tests/test_prompt_reports.py:181  Credential Access\n      P6 HIGH  backend/prompts/update/from_history.py:61  Direct Prompt Extraction\n      P6 HIGH  backend/routes/generate_code.py:526  Direct Prompt Extraction\n      P6 HIGH  backend/run_image_generation_evals.py:95  Direct Prompt Extraction\n      P6 HIGH  backend/uploaded_assets/prompts.py:49  Direct Prompt Extraction\n      PE3 HIGH  .gitignore:16  Credential Access\n      PE3 HIGH  docker-compose.yml:14  Credential Access\n      MP3 HIGH  frontend/src/components/ImageLightbox.tsx:33  Memory Manipulation\n      P6 HIGH  frontend/src/components/agent/AgentActivity.tsx:390  Direct Prompt Extraction\n      PE3 HIGH  .gitignore:17  Credential Access\n      PE3 HIGH  README.md:65  Credential Access\n      PE3 HIGH  README.md:66  Credential Access\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+  "block": "SECURITY · commit d026163\n\n  Dependency vulnerabilities\n    124 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-54272  ip-address@10.2.0\n      CVE-2026-27904  minimatch@9.0.3\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-67214  nanoid@5.1.11\n      CVE-2025-54121  starlette@0.41.3\n      CVE-2026-54279  aiohttp@3.11.11\n      CVE-2026-40181  @\n      CVE-2026-40181  react-router@6.30.3\n      CVE-2026-67213  nanoid@3.3.12\n      CVE-2026-34514  aiohttp@3.11.11\n      CVE-2026-49476  soupsieve@2.6\n      CVE-2025-66471  urllib3@2.2.3\n      CVE-2026-53666  react-router@6.30.3\n      CVE-2026-21441  urllib3@2.2.3\n      CVE-2026-13149  brace-expansion@1.1.14\n      CVE-2026-13149  brace-expansion@2.1.0\n      CVE-2026-26996  minimatch@9.0.3\n      CVE-2026-34517  aiohttp@3.11.11\n      CVE-2026-55379  pillow@10.4.0\n      CVE-2025-50182  urllib3@2.2.3\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    107 findings                     skillspector 2.11.0 · 2026-09-03\n      SC6 HIGH  backend/poetry.lock:2485  Possible Typosquatting: 'uvicorn' resembles popular package 'gunicorn'\n      AR1 HIGH  backend/prompts/system_prompt.py:9  Anti-Refusal Statement\n      PE3 HIGH  backend/evals/asset_extraction_benchmark.py:843  Credential Access\n      PE3 HIGH  backend/run_image_generation_evals.py:286  Credential Access\n      PE3 HIGH  backend/tests/test_local_assets.py:51  Credential Access\n      P6 HIGH  backend/routes/prompt_reports.py:112  Direct Prompt Extraction\n      P6 HIGH  backend/routes/prompt_reports.py:144  Direct Prompt Extraction\n      P6 HIGH  backend/tests/test_prompt_reports.py:32  Direct Prompt Extraction\n      PE3 HIGH  backend/tests/test_prompt_reports.py:181  Credential Access\n      P6 HIGH  backend/prompts/update/from_history.py:61  Direct Prompt Extraction\n      P6 HIGH  backend/routes/generate_code.py:526  Direct Prompt Extraction\n      P6 HIGH  backend/run_image_generation_evals.py:95  Direct Prompt Extraction\n      P6 HIGH  backend/uploaded_assets/prompts.py:49  Direct Prompt Extraction\n      PE3 HIGH  .gitignore:16  Credential Access\n      PE3 HIGH  docker-compose.yml:14  Credential Access\n      MP3 HIGH  frontend/src/components/ImageLightbox.tsx:33  Memory Manipulation\n      P6 HIGH  frontend/src/components/agent/AgentActivity.tsx:390  Direct Prompt Extraction\n      PE3 HIGH  .gitignore:17  Credential Access\n      PE3 HIGH  README.md:65  Credential Access\n      PE3 HIGH  README.md:66  Credential Access\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-16\n  GHSA-2883-xcg3-v3hh was PUBLISHED upstream on 2026-09-08\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "d026163f586dfa8c5c10d28c36edd59a9d3b0e88",
+  "built_at": "2026-09-04 00:05:52.524922",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 2176,
+  "edge_count": 5496,
+  "community_count": 158,
+  "extracted_pct": 0.9523289799690247,
+  "subsystems": [
+   {
+    "label": "Asset Extraction and Detection",
+    "size": 90
+   },
+   {
+    "label": "Agent Execution Engine",
+    "size": 89
+   },
+   {
+    "label": "Session Management",
+    "size": 81
+   },
+   {
+    "label": "Evaluation Runner and Config",
+    "size": 70
+   },
+   {
+    "label": "Evaluation Input Comparison",
+    "size": 63
+   },
+   {
+    "label": "Token Usage and Pricing",
+    "size": 60
+   },
+   {
+    "label": "Replicate Image Generation",
+    "size": 51
+   },
+   {
+    "label": "Anthropic Provider Integration",
+    "size": 48
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "Llm",
+    "degree": 97,
+    "file": "backend/llm.py"
+   },
+   {
+    "name": "AgentRunRecorder",
+    "degree": 73,
+    "file": "backend/fs_logging/agent_runs.py"
+   },
+   {
+    "name": "TokenUsage",
+    "degree": 62,
+    "file": "backend/costs/token_usage.py"
+   },
+   {
+    "name": "ToolCall",
+    "degree": 58,
+    "file": "backend/agent/tools/types.py"
+   },
+   {
+    "name": "cn()",
+    "degree": 58,
+    "file": "frontend/src/lib/utils.ts"
+   },
+   {
+    "name": "ProviderTurn",
+    "degree": 43,
+    "file": "backend/agent/providers/base.py"
+   },
+   {
+    "name": "AgentToolRuntime",
+    "degree": 43,
+    "file": "backend/agent/tools/runtime.py"
+   },
+   {
+    "name": "AgentFileState",
+    "degree": 42,
+    "file": "backend/agent/state.py"
+   },
+   {
+    "name": "ExecutedToolCall",
+    "degree": 35,
+    "file": "backend/agent/providers/base.py"
+   },
+   {
+    "name": "ToolExecutionResult",
+    "degree": 35,
+    "file": "backend/agent/tools/types.py"
+   }
+  ],
+  "lines": [
+   "Structure: 158 subsystems — Asset Extraction and Detection · Agent Execution Engine · Session Management",
+   "Core: Llm · AgentRunRecorder · TokenUsage"
+  ],
+  "block": "Code structure (mapped 2026-09-04 · d026163f · graphify 0.9.37)\n2,176 concepts · 5,496 connections · 158 subsystems · 95% read directly from source\nSubsystems: Asset Extraction and Detection · Agent Execution Engine · Session Management · Evaluation Runner and Config · Evaluation Input Comparison · Token Usage and Pricing · Replicate Image Generation · Anthropic Provider Integration\nCore abstractions:\n  1. Llm — 97 connections\n  2. AgentRunRecorder — 73 connections\n  3. TokenUsage — 62 connections\n  4. ToolCall — 58 connections\n  5. cn() — 58 connections\n  6. ProviderTurn — 43 connections\n  7. AgentToolRuntime — 43 connections\n  8. AgentFileState — 42 connections\n  9. ExecutedToolCall — 35 connections\n  10. ToolExecutionResult — 35 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

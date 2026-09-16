@@ -1151,12 +1151,160 @@
     "home": ""
    }
   ],
-  "since": [],
-  "since_as_of": null,
+  "since": [
+   {
+    "advisory_id": "GHSA-p293-qw3h-jr36",
+    "change": "published",
+    "changed_at": "2026-09-08 20:51:40",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-2xp9-vwfh-vxw4",
+    "change": "published",
+    "changed_at": "2026-09-08 21:21:12",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-crvj-82cr-hjcx",
+    "change": "published",
+    "changed_at": "2026-09-08 21:22:50",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-g6gw-c38x-mqfc",
+    "change": "published",
+    "changed_at": "2026-09-08 21:23:02",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-gqvv-2mrq-wpjv",
+    "change": "published",
+    "changed_at": "2026-09-08 21:23:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-2883-xcg3-v3hh",
+    "change": "published",
+    "changed_at": "2026-09-08 21:24:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-rgj7-g3m4-5g8c",
+    "change": "published",
+    "changed_at": "2026-09-08 21:25:11",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   }
+  ],
+  "since_as_of": "2026-09-16 18:14:56.768795",
   "link_suppressed": false,
   "provenance": null,
   "suppression": null,
   "card": "117 findings · 1 check pending · 1 check not applicable",
-  "block": "SECURITY · commit 10eaaac\n\n  Dependency vulnerabilities\n    82 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-54272  ip-address@10.2.0\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-47676  hono@4.12.18\n      CVE-2026-67213  nanoid@3.3.12\n      CVE-2026-71436  mermaid@11.16.0\n      CVE-2026-53666  react-router@7.15.1\n      CVE-2026-13311  shell-quote@1.8.3\n      CVE-2026-47675  hono@4.12.18\n      CVE-2026-13149  brace-expansion@5.0.6\n      CVE-2026-71437  mermaid@11.16.0\n      CVE-2026-64647  next@16.2.6\n      CVE-2026-64646  next@16.2.6\n      CVE-2026-13676  fast-uri@3.1.2\n      CVE-2026-13697  undici@7.28.0\n      CVE-2026-82417  qs@6.15.1\n      CVE-2026-49356  @\n      CVE-2026-69198  ip-address@10.2.0\n      CVE-2026-59869  js-yaml@3.14.2\n      CVE-2026-59869  js-yaml@4.1.1\n      CVE-2026-71848  hono@4.12.18\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    35 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/github-monitor.yml:37\n      dangerous-triggers  .github/workflows/github-monitor.yml:13\n      unpinned-uses  .github/workflows/github-monitor.yml:38\n      unpinned-uses  .github/workflows/github-monitor.yml:43\n      artipacked  .github/workflows/k8s-workspace.yml:30\n      excessive-permissions  .github/workflows/k8s-workspace.yml:23\n      unpinned-uses  .github/workflows/k8s-workspace.yml:30\n      unpinned-uses  .github/workflows/k8s-workspace.yml:33\n      unpinned-uses  .github/workflows/k8s-workspace.yml:38\n      excessive-permissions  .github/workflows/pr-title-check.yml:10\n      unpinned-uses  .github/workflows/pr-title-check.yml:14\n      artipacked  .github/workflows/pre-commit.yml:16\n      excessive-permissions  .github/workflows/pre-commit.yml:6\n      unpinned-uses  .github/workflows/pre-commit.yml:16\n      unpinned-uses  .github/workflows/pre-commit.yml:18\n      artipacked  .github/workflows/publish-pypi.yml:25\n      use-trusted-publishing  .github/workflows/publish-pypi.yml:40\n      unpinned-uses  .github/workflows/publish-pypi.yml:25\n      unpinned-uses  .github/workflows/publish-pypi.yml:27\n      unpinned-uses  .github/workflows/publish-pypi.yml:40\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+  "block": "SECURITY · commit 10eaaac\n\n  Dependency vulnerabilities\n    82 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-54272  ip-address@10.2.0\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-47676  hono@4.12.18\n      CVE-2026-67213  nanoid@3.3.12\n      CVE-2026-71436  mermaid@11.16.0\n      CVE-2026-53666  react-router@7.15.1\n      CVE-2026-13311  shell-quote@1.8.3\n      CVE-2026-47675  hono@4.12.18\n      CVE-2026-13149  brace-expansion@5.0.6\n      CVE-2026-71437  mermaid@11.16.0\n      CVE-2026-64647  next@16.2.6\n      CVE-2026-64646  next@16.2.6\n      CVE-2026-13676  fast-uri@3.1.2\n      CVE-2026-13697  undici@7.28.0\n      CVE-2026-82417  qs@6.15.1\n      CVE-2026-49356  @\n      CVE-2026-69198  ip-address@10.2.0\n      CVE-2026-59869  js-yaml@3.14.2\n      CVE-2026-59869  js-yaml@4.1.1\n      CVE-2026-71848  hono@4.12.18\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    35 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/github-monitor.yml:37\n      dangerous-triggers  .github/workflows/github-monitor.yml:13\n      unpinned-uses  .github/workflows/github-monitor.yml:38\n      unpinned-uses  .github/workflows/github-monitor.yml:43\n      artipacked  .github/workflows/k8s-workspace.yml:30\n      excessive-permissions  .github/workflows/k8s-workspace.yml:23\n      unpinned-uses  .github/workflows/k8s-workspace.yml:30\n      unpinned-uses  .github/workflows/k8s-workspace.yml:33\n      unpinned-uses  .github/workflows/k8s-workspace.yml:38\n      excessive-permissions  .github/workflows/pr-title-check.yml:10\n      unpinned-uses  .github/workflows/pr-title-check.yml:14\n      artipacked  .github/workflows/pre-commit.yml:16\n      excessive-permissions  .github/workflows/pre-commit.yml:6\n      unpinned-uses  .github/workflows/pre-commit.yml:16\n      unpinned-uses  .github/workflows/pre-commit.yml:18\n      artipacked  .github/workflows/publish-pypi.yml:25\n      use-trusted-publishing  .github/workflows/publish-pypi.yml:40\n      unpinned-uses  .github/workflows/publish-pypi.yml:25\n      unpinned-uses  .github/workflows/publish-pypi.yml:27\n      unpinned-uses  .github/workflows/publish-pypi.yml:40\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-16\n  GHSA-p293-qw3h-jr36 was PUBLISHED upstream on 2026-09-08\n  GHSA-2xp9-vwfh-vxw4 was PUBLISHED upstream on 2026-09-08\n  GHSA-crvj-82cr-hjcx was PUBLISHED upstream on 2026-09-08\n  GHSA-g6gw-c38x-mqfc was PUBLISHED upstream on 2026-09-08\n  GHSA-gqvv-2mrq-wpjv was PUBLISHED upstream on 2026-09-08\n  GHSA-2883-xcg3-v3hh was PUBLISHED upstream on 2026-09-08\n  GHSA-rgj7-g3m4-5g8c was PUBLISHED upstream on 2026-09-08\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "10eaaac269101e25ad9f808353c45e305c6d7231",
+  "built_at": "2026-09-04 00:05:52.524922",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 16593,
+  "edge_count": 37084,
+  "community_count": 427,
+  "extracted_pct": 0.8856919407844543,
+  "subsystems": [
+   {
+    "label": "Content Block Rendering",
+    "size": 390
+   },
+   {
+    "label": "API Request Schemas",
+    "size": 359
+   },
+   {
+    "label": "Session Inbox Management",
+    "size": 344
+   },
+   {
+    "label": "Agent and KB Creation",
+    "size": 332
+   },
+   {
+    "label": "Session and Credential Views",
+    "size": 294
+   },
+   {
+    "label": "Model Response Formatting",
+    "size": 275
+   },
+   {
+    "label": "Anthropic Model Integration",
+    "size": 270
+   },
+   {
+    "label": "Permission Engine",
+    "size": 246
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "TextBlock",
+    "degree": 493,
+    "file": "src/agentscope/message/_block.py"
+   },
+   {
+    "name": "AnyString",
+    "degree": 471,
+    "file": "tests/utils.py"
+   },
+   {
+    "name": "Msg",
+    "degree": 278,
+    "file": "src/agentscope/message/_base.py"
+   },
+   {
+    "name": "UserMsg()",
+    "degree": 256,
+    "file": "src/agentscope/message/_base.py"
+   },
+   {
+    "name": "cn()",
+    "degree": 254,
+    "file": "examples/web_ui/frontend/src/lib/utils.ts"
+   },
+   {
+    "name": "DataBlock",
+    "degree": 245,
+    "file": "src/agentscope/message/_block.py"
+   },
+   {
+    "name": "ToolCallBlock",
+    "degree": 215,
+    "file": "src/agentscope/message/_block.py"
+   },
+   {
+    "name": "ChatResponse",
+    "degree": 185,
+    "file": "src/agentscope/model/_model_response.py"
+   },
+   {
+    "name": "Agent",
+    "degree": 184,
+    "file": "src/agentscope/agent/_agent.py"
+   },
+   {
+    "name": "MockModel",
+    "degree": 175,
+    "file": "tests/utils.py"
+   }
+  ],
+  "lines": [
+   "Structure: 427 subsystems — Content Block Rendering · API Request Schemas · Session Inbox Management",
+   "Core: TextBlock · AnyString · Msg"
+  ],
+  "block": "Code structure (mapped 2026-09-04 · 10eaaac2 · graphify 0.9.37)\n16,593 concepts · 37,084 connections · 427 subsystems · 89% read directly from source\nSubsystems: Content Block Rendering · API Request Schemas · Session Inbox Management · Agent and KB Creation · Session and Credential Views · Model Response Formatting · Anthropic Model Integration · Permission Engine\nCore abstractions:\n  1. TextBlock — 493 connections\n  2. AnyString — 471 connections\n  3. Msg — 278 connections\n  4. UserMsg() — 256 connections\n  5. cn() — 254 connections\n  6. DataBlock — 245 connections\n  7. ToolCallBlock — 215 connections\n  8. ChatResponse — 185 connections\n  9. Agent — 184 connections\n  10. MockModel — 175 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

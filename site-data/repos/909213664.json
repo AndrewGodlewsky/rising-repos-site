@@ -195,5 +195,110 @@
   "suppression": null,
   "card": "13 findings · 1 check pending · 3 checks not applicable",
   "block": "SECURITY · commit 9dee508\n\n  Dependency vulnerabilities\n    nothing to check — osv-scanner reports no package sources it reads in this tree\n\n  Known-malicious packages\n    nothing to check — osv-scanner reports no package sources it reads in this tree\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    13 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/ci.yml:21\n      artipacked  .github/workflows/ci.yml:36\n      artipacked  .github/workflows/ci.yml:52\n      excessive-permissions  .github/workflows/ci.yml:1\n      excessive-permissions  .github/workflows/ci.yml:13\n      excessive-permissions  .github/workflows/ci.yml:32\n      excessive-permissions  .github/workflows/ci.yml:48\n      unpinned-uses  .github/workflows/ci.yml:21\n      unpinned-uses  .github/workflows/ci.yml:22\n      unpinned-uses  .github/workflows/ci.yml:36\n      unpinned-uses  .github/workflows/ci.yml:37\n      unpinned-uses  .github/workflows/ci.yml:52\n      unpinned-uses  .github/workflows/ci.yml:53\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "be952b8eccb49720509af544c6675233bc1f10d0",
+  "built_at": "2026-09-16 18:00:03.441063",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 1861,
+  "edge_count": 3877,
+  "community_count": 89,
+  "extracted_pct": 0.9370647668838501,
+  "subsystems": [
+   {
+    "label": "Structured Agent Prompts",
+    "size": 98
+   },
+   {
+    "label": "Debate Router State",
+    "size": 55
+   },
+   {
+    "label": "Alpha Vantage Hardening",
+    "size": 54
+   },
+   {
+    "label": "Reddit Fetcher Fallback",
+    "size": 51
+   },
+   {
+    "label": "LLM Capability Table",
+    "size": 48
+   },
+   {
+    "label": "DeepSeek Reasoning Tests",
+    "size": 47
+   },
+   {
+    "label": "YFinance Date Boundaries",
+    "size": 47
+   },
+   {
+    "label": "Signal Processing Tests",
+    "size": 44
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "TradingAgentsGraph",
+    "degree": 58,
+    "file": "tradingagents/graph/trading_graph.py"
+   },
+   {
+    "name": "make_log()",
+    "degree": 41,
+    "file": "tests/test_memory_log.py"
+   },
+   {
+    "name": "TestTradingMemoryLogCore",
+    "degree": 37,
+    "file": "tests/test_memory_log.py"
+   },
+   {
+    "name": "set_config()",
+    "degree": 36,
+    "file": "tradingagents/dataflows/config.py"
+   },
+   {
+    "name": "get_capabilities()",
+    "degree": 34,
+    "file": "tradingagents/llm_clients/capabilities.py"
+   },
+   {
+    "name": "normalize_symbol()",
+    "degree": 33,
+    "file": "tradingagents/dataflows/symbol_utils.py"
+   },
+   {
+    "name": "get_instrument_context_from_state()",
+    "degree": 32,
+    "file": "tradingagents/agents/utils/agent_utils.py"
+   },
+   {
+    "name": "BaseLLMClient",
+    "degree": 32,
+    "file": "tradingagents/llm_clients/base_client.py"
+   },
+   {
+    "name": "TestDeferredReflection",
+    "degree": 31,
+    "file": "tests/test_memory_log.py"
+   },
+   {
+    "name": "TradingMemoryLog",
+    "degree": 31,
+    "file": "tradingagents/agents/utils/memory.py"
+   }
+  ],
+  "lines": [
+   "Structure: 89 subsystems — Structured Agent Prompts · Debate Router State · Alpha Vantage Hardening",
+   "Core: TradingAgentsGraph · make_log() · TestTradingMemoryLogCore"
+  ],
+  "block": "Code structure (mapped 2026-09-16 · be952b8e · graphify 0.9.37)\n1,861 concepts · 3,877 connections · 89 subsystems · 94% read directly from source\nSubsystems: Structured Agent Prompts · Debate Router State · Alpha Vantage Hardening · Reddit Fetcher Fallback · LLM Capability Table · DeepSeek Reasoning Tests · YFinance Date Boundaries · Signal Processing Tests\nCore abstractions:\n  1. TradingAgentsGraph — 58 connections\n  2. make_log() — 41 connections\n  3. TestTradingMemoryLogCore — 37 connections\n  4. set_config() — 36 connections\n  5. get_capabilities() — 34 connections\n  6. normalize_symbol() — 33 connections\n  7. get_instrument_context_from_state() — 32 connections\n  8. BaseLLMClient — 32 connections\n  9. TestDeferredReflection — 31 connections\n  10. TradingMemoryLog — 31 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

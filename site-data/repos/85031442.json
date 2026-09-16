@@ -224,5 +224,110 @@
   "suppression": null,
   "card": "14 findings · 1 check pending · 1 check not applicable",
   "block": "SECURITY · commit b96912c\n\n  Dependency vulnerabilities\n    3 findings                       osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-13149  brace-expansion@2.1.1\n      CVE-2026-14257  brace-expansion@2.1.1\n      CVE-2026-69152  brace-expansion@2.1.1\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    1 finding                        OSV  · 2026-09-03\n      MAL-2023-500  hiring-without-whiteboards (npm) published 2023-01-11\n    The npm package named `hiring-without-whiteboards` carries the advisory above (source: OSV). This repo's manifest declares that package name.\n    Today: The registry package named in this repo's manifest carries MAL-2023-500 (source: OSV). This repo's manifest declares that package name and names this repository as its source. The registry's own record for that name points elsewhere (github.com/npm/security-holder), so the link stays live.\n\n  CI / workflow\n    10 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/node.js.yml:13\n      artipacked  .github/workflows/node.js.yml:25\n      excessive-permissions  .github/workflows/node.js.yml:1\n      excessive-permissions  .github/workflows/node.js.yml:10\n      excessive-permissions  .github/workflows/node.js.yml:22\n      unpinned-uses  .github/workflows/node.js.yml:13\n      unpinned-uses  .github/workflows/node.js.yml:15\n      unpinned-uses  .github/workflows/node.js.yml:25\n      unpinned-uses  .github/workflows/node.js.yml:26\n      unpinned-uses  .github/workflows/node.js.yml:37\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "b96912cd94e264837bb60cec82309b2b899f489e",
+  "built_at": "2026-09-04 00:05:52.524922",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 39,
+  "edge_count": 43,
+  "community_count": 9,
+  "extracted_pct": 1.0,
+  "subsystems": [
+   {
+    "label": "Remark Linting Configuration",
+    "size": 10
+   },
+   {
+    "label": "Remark CLI and Dependencies",
+    "size": 9
+   },
+   {
+    "label": "Package Metadata Fields",
+    "size": 8
+   },
+   {
+    "label": "Repository Configuration",
+    "size": 3
+   },
+   {
+    "label": "Trailing Space Linting Rule",
+    "size": 2
+   },
+   {
+    "label": "URL Formatting Linting Rule",
+    "size": 2
+   },
+   {
+    "label": "Package Keywords",
+    "size": 2
+   },
+   {
+    "label": "Test Scripts",
+    "size": 2
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "plugins",
+    "degree": 9,
+    "file": "package.json"
+   },
+   {
+    "name": "repository",
+    "degree": 3,
+    "file": "package.json"
+   },
+   {
+    "name": "scripts",
+    "degree": 2,
+    "file": "package.json"
+   },
+   {
+    "name": "keywords",
+    "degree": 2,
+    "file": "package.json"
+   },
+   {
+    "name": "remark-cli",
+    "degree": 2,
+    "file": "package.json"
+   },
+   {
+    "name": "remark-lint",
+    "degree": 2,
+    "file": "package.json"
+   },
+   {
+    "name": "remark-lint-alphabetize-lists",
+    "degree": 2,
+    "file": "package.json"
+   },
+   {
+    "name": "remark-lint-hiring-without-whiteboards-links",
+    "degree": 2,
+    "file": "package.json"
+   },
+   {
+    "name": "remark-lint-hiring-without-whiteboards-links",
+    "degree": 2,
+    "file": "package.json"
+   },
+   {
+    "name": "remark-lint-no-tabs",
+    "degree": 2,
+    "file": "package.json"
+   }
+  ],
+  "lines": [
+   "Structure: 9 subsystems — Remark Linting Configuration · Remark CLI and Dependencies · Package Metadata Fields",
+   "Core: plugins · repository · scripts"
+  ],
+  "block": "Code structure (mapped 2026-09-04 · b96912cd · graphify 0.9.37)\n39 concepts · 43 connections · 9 subsystems · 100% read directly from source\nSubsystems: Remark Linting Configuration · Remark CLI and Dependencies · Package Metadata Fields · Repository Configuration · Trailing Space Linting Rule · URL Formatting Linting Rule · Package Keywords · Test Scripts\nCore abstractions:\n  1. plugins — 9 connections\n  2. repository — 3 connections\n  3. scripts — 2 connections\n  4. keywords — 2 connections\n  5. remark-cli — 2 connections\n  6. remark-lint — 2 connections\n  7. remark-lint-alphabetize-lists — 2 connections\n  8. remark-lint-hiring-without-whiteboards-links — 2 connections\n  9. remark-lint-hiring-without-whiteboards-links — 2 connections\n  10. remark-lint-no-tabs — 2 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

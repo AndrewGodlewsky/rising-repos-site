@@ -714,5 +714,110 @@
   "suppression": null,
   "card": "62 findings · 1 check pending · 3 checks not applicable",
   "block": "SECURITY · commit a03e98d\n\n  Dependency vulnerabilities\n    62 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2019-18197  nokogiri@~> 1.8.1\n      CVE-2021-3537  nokogiri@~> 1.8.1\n      CVE-2018-1000201  ffi@1.9.14\n      CVE-2026-33176  activesupport@4.2.7\n      CVE-2022-50998  nokogiri@~> 1.8.1\n      CVE-2021-41098  nokogiri@~> 1.8.1\n      CVE-2014-10077  i18n@0.7.0\n      GHSA-353f-x4gh-cqq8  nokogiri@~> 1.8.1\n      CVE-2019-13117  nokogiri@~> 1.8.1\n      CVE-2018-17567  jekyll@3.3.1\n      CVE-2021-30560  nokogiri@~> 1.8.1\n      CVE-2022-31163  tzinfo@1.2.2\n      CVE-2026-57235  nokogiri@~> 1.8.1\n      CVE-2026-57236  nokogiri@~> 1.8.1\n      CVE-2025-71346  nokogiri@~> 1.8.1\n      CVE-2018-14404  nokogiri@~> 1.8.1\n      CVE-2012-6685  nokogiri@~> 1.8.1\n      CVE-2020-7595  nokogiri@~> 1.8.1\n      CVE-2021-47996  nokogiri@~> 1.8.1\n      CVE-2026-57234  nokogiri@~> 1.8.1\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "a03e98d2298528a13779f9fc4c8e7f8c1bd204f7",
+  "built_at": "2026-09-11 18:15:03.955729",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 85,
+  "edge_count": 145,
+  "community_count": 15,
+  "extracted_pct": 0.8482758402824402,
+  "subsystems": [
+   {
+    "label": "jQuery Core Library",
+    "size": 22
+   },
+   {
+    "label": "Modernizr and Custom Scripts",
+    "size": 14
+   },
+   {
+    "label": "Minified Utility Functions",
+    "size": 14
+   },
+   {
+    "label": "Minified Helper Methods",
+    "size": 7
+   },
+   {
+    "label": "Minified DOM Utilities",
+    "size": 6
+   },
+   {
+    "label": "Minified Navigation Variables",
+    "size": 5
+   },
+   {
+    "label": "GLS Dictionary Parser",
+    "size": 4
+   },
+   {
+    "label": "Minified Core Variables",
+    "size": 3
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "yt()",
+    "degree": 10,
+    "file": "docs/assets/js/vendor/jquery-1.9.1.min.js"
+   },
+   {
+    "name": "m()",
+    "degree": 8,
+    "file": "docs/assets/js/vendor/modernizr-2.6.2.custom.min.js"
+   },
+   {
+    "name": "n()",
+    "degree": 7,
+    "file": "docs/assets/js/vendor/modernizr-2.6.2.custom.min.js"
+   },
+   {
+    "name": "p()",
+    "degree": 7,
+    "file": "docs/assets/js/vendor/modernizr-2.6.2.custom.min.js"
+   },
+   {
+    "name": "st()",
+    "degree": 6,
+    "file": "docs/assets/js/vendor/jquery-1.9.1.min.js"
+   },
+   {
+    "name": "vt()",
+    "degree": 6,
+    "file": "docs/assets/js/vendor/jquery-1.9.1.min.js"
+   },
+   {
+    "name": "W()",
+    "degree": 5,
+    "file": "docs/assets/js/vendor/jquery-1.9.1.min.js"
+   },
+   {
+    "name": "ft()",
+    "degree": 5,
+    "file": "docs/assets/js/vendor/jquery-1.9.1.min.js"
+   },
+   {
+    "name": "mt()",
+    "degree": 5,
+    "file": "docs/assets/js/vendor/jquery-1.9.1.min.js"
+   },
+   {
+    "name": "k()",
+    "degree": 5,
+    "file": "docs/assets/js/vendor/jquery-1.9.1.min.js"
+   }
+  ],
+  "lines": [
+   "Structure: 15 subsystems — jQuery Core Library · Modernizr and Custom Scripts · Minified Utility Functions",
+   "Core: yt() · m() · n()"
+  ],
+  "block": "Code structure (mapped 2026-09-11 · a03e98d2 · graphify 0.9.37)\n85 concepts · 145 connections · 15 subsystems · 85% read directly from source\nSubsystems: jQuery Core Library · Modernizr and Custom Scripts · Minified Utility Functions · Minified Helper Methods · Minified DOM Utilities · Minified Navigation Variables · GLS Dictionary Parser · Minified Core Variables\nCore abstractions:\n  1. yt() — 10 connections\n  2. m() — 8 connections\n  3. n() — 7 connections\n  4. p() — 7 connections\n  5. st() — 6 connections\n  6. vt() — 6 connections\n  7. W() — 5 connections\n  8. ft() — 5 connections\n  9. mt() — 5 connections\n  10. k() — 5 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

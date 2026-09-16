@@ -103,5 +103,110 @@
   "suppression": null,
   "card": "no findings · 1 check pending · 5 checks not applicable",
   "block": "SECURITY · commit 0899241\n\n  Dependency vulnerabilities\n    nothing to check — no lockfile or dependency manifest osv-scanner reads\n\n  Known-malicious packages\n    nothing to check — no lockfile or dependency manifest osv-scanner reads\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "eb1032706a62cd1ca9bd4eb54c147e4e2542d76e",
+  "built_at": "2026-09-11 18:15:03.955729",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 21,
+  "edge_count": 18,
+  "community_count": 11,
+  "extracted_pct": 1.0,
+  "subsystems": [
+   {
+    "label": "Web Search and Chat",
+    "size": 5
+   },
+   {
+    "label": "Image Input and Description",
+    "size": 4
+   },
+   {
+    "label": "Function Calling",
+    "size": 2
+   },
+   {
+    "label": "Multimodal Image Analysis",
+    "size": 2
+   },
+   {
+    "label": "Document and PDF Analysis",
+    "size": 2
+   },
+   {
+    "label": "Text to Speech",
+    "size": 1
+   },
+   {
+    "label": "AI Image Editing",
+    "size": 1
+   },
+   {
+    "label": "AI Image Generation",
+    "size": 1
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "print_separator()",
+    "degree": 6,
+    "file": "demo/openai_response_demo.py"
+   },
+   {
+    "name": "test_image_analysis()",
+    "degree": 3,
+    "file": "demo/openai_response_demo.py"
+   },
+   {
+    "name": "test_file_analysis()",
+    "degree": 3,
+    "file": "demo/openai_response_demo.py"
+   },
+   {
+    "name": "test_web_search()",
+    "degree": 3,
+    "file": "demo/openai_response_demo.py"
+   },
+   {
+    "name": "test_function_calling()",
+    "degree": 3,
+    "file": "demo/openai_response_demo.py"
+   },
+   {
+    "name": "describe_image_from_local()",
+    "degree": 2,
+    "file": "demo/openai_chat_completion_picture_demo.py"
+   },
+   {
+    "name": "test_basic_chat()",
+    "degree": 2,
+    "file": "demo/openai_response_demo.py"
+   },
+   {
+    "name": "方法2：读取本地图片 -> 转Base64 -> 发送",
+    "degree": 1,
+    "file": "demo/openai_chat_completion_picture_demo.py"
+   },
+   {
+    "name": "测试 2: 图像识别 (Multimodal Image)",
+    "degree": 1,
+    "file": "demo/openai_response_demo.py"
+   },
+   {
+    "name": "测试 3: 文件/PDF 分析 (Multimodal File)",
+    "degree": 1,
+    "file": "demo/openai_response_demo.py"
+   }
+  ],
+  "lines": [
+   "Structure: 11 subsystems — Web Search and Chat · Image Input and Description · Function Calling",
+   "Core: print_separator() · test_image_analysis() · test_file_analysis()"
+  ],
+  "block": "Code structure (mapped 2026-09-11 · eb103270 · graphify 0.9.37)\n21 concepts · 18 connections · 11 subsystems · 100% read directly from source\nSubsystems: Web Search and Chat · Image Input and Description · Function Calling · Multimodal Image Analysis · Document and PDF Analysis · Text to Speech · AI Image Editing · AI Image Generation\nCore abstractions:\n  1. print_separator() — 6 connections\n  2. test_image_analysis() — 3 connections\n  3. test_file_analysis() — 3 connections\n  4. test_web_search() — 3 connections\n  5. test_function_calling() — 3 connections\n  6. describe_image_from_local() — 2 connections\n  7. test_basic_chat() — 2 connections\n  8. 方法2：读取本地图片 -&gt; 转Base64 -&gt; 发送 — 1 connections\n  9. 测试 2: 图像识别 (Multimodal Image) — 1 connections\n  10. 测试 3: 文件/PDF 分析 (Multimodal File) — 1 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

@@ -1222,5 +1222,110 @@
   "suppression": null,
   "card": "158 findings · 1 check pending · 2 checks not applicable",
   "block": "SECURITY · commit 499f15c\n\n  Dependency vulnerabilities\n    9 findings                       osv-scanner 2.5.1 · 2026-09-03\n      RUSTSEC-2024-0436  paste@1.0.15\n      RUSTSEC-2025-0141  bincode@1.3.3\n      RUSTSEC-2025-0141  bincode@2.0.1\n      RUSTSEC-2026-0192  ttf-parser@0.25.1\n      RUSTSEC-2026-0194  quick-xml@0.37.5\n      RUSTSEC-2026-0195  quick-xml@0.37.5\n      RUSTSEC-2026-0206  rustybuzz@0.20.1\n      RUSTSEC-2026-0221  event-listener@5.4.1\n      RUSTSEC-2026-0257  webbrowser@1.2.1\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    149 findings                     zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/android.yml:26\n      excessive-permissions  .github/workflows/android.yml:11\n      unpinned-uses  .github/workflows/android.yml:27\n      unpinned-uses  .github/workflows/android.yml:30\n      unpinned-uses  .github/workflows/android.yml:36\n      unpinned-uses  .github/workflows/android.yml:114\n      unpinned-uses  .github/workflows/android.yml:121\n      superfluous-actions  .github/workflows/android.yml:121\n      artipacked  .github/workflows/linux.yml:22\n      artipacked  .github/workflows/linux.yml:126\n      artipacked  .github/workflows/linux.yml:229\n      artipacked  .github/workflows/linux.yml:281\n      artipacked  .github/workflows/linux.yml:313\n      artipacked  .github/workflows/linux.yml:352\n      artipacked  .github/workflows/linux.yml:369\n      artipacked  .github/workflows/linux.yml:396\n      excessive-permissions  .github/workflows/linux.yml:1\n      excessive-permissions  .github/workflows/linux.yml:15\n      excessive-permissions  .github/workflows/linux.yml:119\n      excessive-permissions  .github/workflows/linux.yml:226\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "f9be31f586f9473a91b9fe3785b7ba76ddaecf44",
+  "built_at": "2026-09-11 18:15:03.955729",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 4656,
+  "edge_count": 11484,
+  "community_count": 251,
+  "extracted_pct": 0.9156217575073242,
+  "subsystems": [
+   {
+    "label": "BKTree Image Hashing",
+    "size": 112
+   },
+   {
+    "label": "Common Data Traits",
+    "size": 88
+   },
+   {
+    "label": "Audio File Validation",
+    "size": 86
+   },
+   {
+    "label": "Cache File Management",
+    "size": 75
+   },
+   {
+    "label": "Default Settings Models",
+    "size": 71
+   },
+   {
+    "label": "Bad File Names Checker",
+    "size": 64
+   },
+   {
+    "label": "Advanced File System Tests",
+    "size": 60
+   },
+   {
+    "label": "File Selection Callbacks",
+    "size": 57
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "ProgressData",
+    "degree": 172,
+    "file": "czkawka_core/src/common/progress_data.rs"
+   },
+   {
+    "name": "GuiData",
+    "degree": 99,
+    "file": "czkawka_gui/src/gui_structs/gui_data.rs"
+   },
+   {
+    "name": "WorkContinueStatus",
+    "degree": 70,
+    "file": "czkawka_core/src/common/model.rs"
+   },
+   {
+    "name": "SubView",
+    "degree": 62,
+    "file": "czkawka_gui/src/gui_structs/common_tree_view.rs"
+   },
+   {
+    "name": "create_model_from_model_vec()",
+    "degree": 57,
+    "file": "krokiet/src/common.rs"
+   },
+   {
+    "name": "main()",
+    "degree": 49,
+    "file": "krokiet/src/main.rs"
+   },
+   {
+    "name": "BrokenEntry",
+    "degree": 43,
+    "file": "czkawka_core/src/tools/broken_files/mod.rs"
+   },
+   {
+    "name": "check_if_stop_received()",
+    "degree": 42,
+    "file": "czkawka_core/src/common/progress_stop_handler.rs"
+   },
+   {
+    "name": "ScanData",
+    "degree": 40,
+    "file": "krokiet/src/connect_scan.rs"
+   },
+   {
+    "name": "get_model_vec()",
+    "degree": 40,
+    "file": "krokiet/src/test_common.rs"
+   }
+  ],
+  "lines": [
+   "Structure: 251 subsystems — BKTree Image Hashing · Common Data Traits · Audio File Validation",
+   "Core: ProgressData · GuiData · WorkContinueStatus"
+  ],
+  "block": "Code structure (mapped 2026-09-11 · f9be31f5 · graphify 0.9.37)\n4,656 concepts · 11,484 connections · 251 subsystems · 92% read directly from source\nSubsystems: BKTree Image Hashing · Common Data Traits · Audio File Validation · Cache File Management · Default Settings Models · Bad File Names Checker · Advanced File System Tests · File Selection Callbacks\nCore abstractions:\n  1. ProgressData — 172 connections\n  2. GuiData — 99 connections\n  3. WorkContinueStatus — 70 connections\n  4. SubView — 62 connections\n  5. create_model_from_model_vec() — 57 connections\n  6. main() — 49 connections\n  7. BrokenEntry — 43 connections\n  8. check_if_stop_received() — 42 connections\n  9. ScanData — 40 connections\n  10. get_model_vec() — 40 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

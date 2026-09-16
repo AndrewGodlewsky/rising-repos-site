@@ -17147,12 +17147,255 @@
     "home": ""
    }
   ],
-  "since": [],
-  "since_as_of": null,
+  "since": [
+   {
+    "advisory_id": "GHSA-4r6h-5v86-94p3",
+    "change": "published",
+    "changed_at": "2026-09-08 18:10:35",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-3wxw-xv34-2frg",
+    "change": "published",
+    "changed_at": "2026-09-08 19:42:22",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-4w3w-2rp5-g8jm",
+    "change": "published",
+    "changed_at": "2026-09-08 20:30:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-w2rr-34g9-rvrj",
+    "change": "published",
+    "changed_at": "2026-09-08 20:31:08",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-g53g-w8rj-fmg7",
+    "change": "published",
+    "changed_at": "2026-09-08 20:31:50",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-82fw-gwwq-j7x9",
+    "change": "published",
+    "changed_at": "2026-09-08 20:46:45",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-jrc7-96c5-q579",
+    "change": "published",
+    "changed_at": "2026-09-08 20:50:47",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-gg4h-3hg2-grpc",
+    "change": "published",
+    "changed_at": "2026-09-08 20:51:21",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-p293-qw3h-jr36",
+    "change": "published",
+    "changed_at": "2026-09-08 20:51:40",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-2wm5-q62r-hmrv",
+    "change": "published",
+    "changed_at": "2026-09-08 20:51:57",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-6w3j-5fw6-r9vr",
+    "change": "published",
+    "changed_at": "2026-09-08 20:55:58",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-6mj3-qw4j-hgrw",
+    "change": "published",
+    "changed_at": "2026-09-08 20:59:54",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-93r5-fhx6-vmg9",
+    "change": "published",
+    "changed_at": "2026-09-08 21:00:41",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-965w-775f-mr7g",
+    "change": "published",
+    "changed_at": "2026-09-08 21:00:52",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-x4fp-j954-r2f4",
+    "change": "published",
+    "changed_at": "2026-09-08 21:01:09",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-8344-3jmq-59r6",
+    "change": "published",
+    "changed_at": "2026-09-08 21:01:31",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-6h8r-xr42-gp59",
+    "change": "published",
+    "changed_at": "2026-09-08 21:02:13",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-vr34-hp96-76pp",
+    "change": "published",
+    "changed_at": "2026-09-08 21:02:25",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-3px3-54cx-rmw9",
+    "change": "published",
+    "changed_at": "2026-09-08 21:02:33",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-27p8-2357-5qqv",
+    "change": "published",
+    "changed_at": "2026-09-08 21:02:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-c7q8-3ch8-vqpv",
+    "change": "published",
+    "changed_at": "2026-09-08 21:03:28",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-8m3c-c648-2xjj",
+    "change": "published",
+    "changed_at": "2026-09-08 21:16:00",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-4vpr-x523-8j87",
+    "change": "published",
+    "changed_at": "2026-09-08 21:20:05",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-w27v-7q3p-w38r",
+    "change": "published",
+    "changed_at": "2026-09-08 21:20:28",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-2xp9-vwfh-vxw4",
+    "change": "published",
+    "changed_at": "2026-09-08 21:21:12",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-crvj-82cr-hjcx",
+    "change": "published",
+    "changed_at": "2026-09-08 21:22:50",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-g6gw-c38x-mqfc",
+    "change": "published",
+    "changed_at": "2026-09-08 21:23:02",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-gqvv-2mrq-wpjv",
+    "change": "published",
+    "changed_at": "2026-09-08 21:23:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-j95f-988m-3j2f",
+    "change": "published",
+    "changed_at": "2026-09-08 21:24:09",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-2883-xcg3-v3hh",
+    "change": "published",
+    "changed_at": "2026-09-08 21:24:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-rgj7-g3m4-5g8c",
+    "change": "published",
+    "changed_at": "2026-09-08 21:25:11",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-cc9r-2j5m-2m83",
+    "change": "published",
+    "changed_at": "2026-09-08 21:32:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-2x7j-588g-ccc2",
+    "change": "published",
+    "changed_at": "2026-09-08 21:33:17",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-wmmp-3585-3rmp",
+    "change": "published",
+    "changed_at": "2026-09-08 21:33:32",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-7w5x-hrqm-74c2",
+    "change": "published",
+    "changed_at": "2026-09-09 18:07:11",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "PYSEC-2026-3837",
+    "change": "published",
+    "changed_at": "2026-09-10 09:45:00.699290",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "RUSTSEC-2026-0285",
+    "change": "published",
+    "changed_at": "2026-09-14 12:00:00",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   }
+  ],
+  "since_as_of": "2026-09-16 18:14:56.768795",
   "link_suppressed": false,
   "provenance": null,
   "suppression": null,
   "card": "1926 findings · 1 check pending",
-  "block": "SECURITY · commit 63939f8\n\n  Dependency vulnerabilities\n    686 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-54272  ip-address@10.2.0\n      CVE-2026-48801  linkify-it@5.0.0\n      CVE-2026-27904  minimatch@9.0.3\n      CVE-2026-27904  minimatch@3.1.2\n      CVE-2026-27904  minimatch@10.1.1\n      CVE-2026-27904  minimatch@10.1.2\n      CVE-2026-27904  minimatch@9.0.5\n      CVE-2026-59873  tar@7.5.15\n      CVE-2026-84310  pypdf@6.10.2\n      CVE-2025-11065  github.com/go-viper/mapstructure/v2@2.3.0\n      CVE-2026-48156  pypdf@6.10.2\n      CVE-2026-82661  nodemailer@8.0.8\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-4372  transformers@4.51.3\n      CVE-2026-67325  gitpython@3.1.44\n      CVE-2026-43868  thrift@0.17.0\n      CVE-2026-54279  aiohttp@3.13.5\n      CVE-2025-69873  ajv@6.12.6\n      CVE-2025-69873  ajv@8.17.1\n      CVE-2026-26013  langchain-core@0.3.81\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    632 findings                     zizmor 1.30.0 · 2026-09-03\n      github-env  .depot/actions/setup-sqlx-cli/action.yml:50\n      artipacked  .github/actions/build-n-cache-image/action.yml:51\n      github-env  .github/actions/setup-emsdk/action.yml:56\n      github-env  .github/actions/setup-emsdk/action.yml:56\n      github-env  .github/actions/setup-emsdk/action.yml:56\n      github-env  .github/actions/setup-emsdk/action.yml:56\n      github-env  .github/actions/setup-protoc/action.yml:65\n      github-env  .github/actions/setup-sccache/action.yml:70\n      github-env  .github/actions/setup-sqlx-cli/action.yml:50\n      artipacked  .github/workflows/_rust-build-images.yml:61\n      artipacked  .github/workflows/_rust-build-images.yml:103\n      artipacked  .github/workflows/auto-assign-labels.yml:42\n      dangerous-triggers  .github/workflows/auto-assign-labels.yml:18\n      github-app  .github/workflows/auto-assign-labels.yml:57\n      github-app  .github/workflows/auto-assign-labels.yml:53\n      artipacked  .github/workflows/auto-assign-reviewers.yml:36\n      dangerous-triggers  .github/workflows/auto-assign-reviewers.yml:13\n      github-app  .github/workflows/auto-assign-reviewers.yml:31\n      artipacked  .github/workflows/browserslist.yml:25\n      github-app  .github/workflows/browserslist.yml:20\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    63 findings                      kingfisher 2.1.0 · 2026-09-03\n      betterleaks.private-key  env.example:5\n      betterleaks.private-key  env.example:9\n      betterleaks.generic-credential-uri  env.services:10\n      betterleaks.posthog-project-api-key  ee/billing/quota_limiting.py:176\n      betterleaks.posthog-project-api-key  frontend/src/queries/nodes/DataNode/__mocks__/EventsNode.json:825\n      betterleaks.posthog-project-api-key  frontend/src/scenes/activity/explore/__mocks__/eventsQuery.json:832\n      betterleaks.posthog-project-api-key  frontend/src/scenes/data-pipelines/__mocks__/pluginErrorDetails.json:335\n      betterleaks.posthog-project-api-key  frontend/src/scenes/notebooks/Notebook/Notebook.stories.tsx:301\n      betterleaks.posthog-project-api-key  frontend/src/scenes/session-recordings/__mocks__/large_recording_web_vitals_props.json:37\n      betterleaks.posthog-project-api-key  nodejs/src/cdp/legacy-plugins/_transformations/posthog-plugin-snowplow-referer-parser/index.test.ts:120\n      betterleaks.jwt  nodejs/src/cdp/services/messaging/recipient-tokens.service.test.ts:17\n      betterleaks.gcp-application-default-credentials  posthog/api/oauth/test_views.py:2061\n      betterleaks.private-key  posthog/api/test/test_integration.py:1122\n      betterleaks.posthog-project-api-key  posthog/cdp/templates/avo/test_template_avo.py:36\n      betterleaks.gcp-service-account  posthog/models/test/integration/test_google_cloud.py:20\n      betterleaks.gcp-application-default-credentials  posthog/models/test/integration/test_oauth.py:444\n      betterleaks.private-key  posthog/models/test/integration/test_snowflake.py:46\n      betterleaks.private-key  posthog/models/test/integration/test_snowflake.py:58\n      betterleaks.private-key  posthog/models/test/test_apple_push_integration.py:11\n      betterleaks.posthog-project-api-key  posthog/test/test_utils.py:889\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    545 findings                     skillspector 2.11.0 · 2026-09-03\n      TT3 CRITICAL  bin/hobby-ci.py:548  Tainted flow: 'headers' from os.environ.get (line 1974, credential/environment) → requests.get (network output)\n      TT3 CRITICAL  bin/hobby-ci.py:1975  Tainted flow: 'headers' from os.environ.get (line 1974, credential/environment) → requests.get (network output)\n      AR2 HIGH  .agents/skills/adding-ingestion-warnings/SKILL.md:98  Anti-Refusal Statement\n      AR3 HIGH  .agents/skills/adding-ingestion-warnings/SKILL.md:100  Anti-Refusal Statement\n      RA1 HIGH  .agents/skills/adding-product-alerting/references/extending-platform-alerting.md:112  Self-Modification\n      TM1 HIGH  .agents/skills/adopting-generated-api-types/SKILL.md:92  Tool Parameter Abuse\n      AR2 HIGH  .agents/skills/announcing-behavior-changes/SKILL.md:120  Anti-Refusal Statement\n      SC9 HIGH  .agents/skills/auditing-warehouse-source-coverage/scripts/dump_source_inventory.py:1  Concealed Executable Artifact\n      SC9 HIGH  .agents/skills/autoresolving-pr-conflicts/scripts/autoresolve-marker.sh:1  Concealed Executable Artifact\n      SC9 HIGH  .agents/skills/autoresolving-pr-conflicts/scripts/regen-artifacts.sh:1  Concealed Executable Artifact\n      PE3 HIGH  .agents/skills/depot-container-builds/SKILL.md:63  Credential Access\n      PE3 HIGH  .agents/skills/implementing-warehouse-sources/SKILL.md:716  Credential Access\n      PE3 HIGH  .agents/skills/debugging-local-task-agent-runs/SKILL.md:111  Credential Access\n      PE3 HIGH  .agents/skills/implementing-warehouse-sources/references/oauth-app-deployment.md:49  Credential Access\n      RA1 HIGH  .agents/skills/isolating-product-facade-contracts/SKILL.md:99  Self-Modification\n      RA1 HIGH  .agents/skills/manage-dashboard-widgets/references/live-widgets.md:3  Self-Modification\n      RA1 HIGH  .agents/skills/manage-dashboard-widgets/references/managing-existing-widgets.md:83  Self-Modification\n      SC9 HIGH  .agents/skills/placing-product-frontend-code/scripts/scene_product_split.py:1  Concealed Executable Artifact\n      SC9 HIGH  .agents/skills/qa-frontend/scripts/annotate-evidence.py:1  Concealed Executable Artifact\n      SC9 HIGH  .agents/skills/qa-frontend/scripts/cursor-overlay.js:1  Concealed Executable Artifact\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+  "block": "SECURITY · commit 63939f8\n\n  Dependency vulnerabilities\n    686 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-54272  ip-address@10.2.0\n      CVE-2026-48801  linkify-it@5.0.0\n      CVE-2026-27904  minimatch@9.0.3\n      CVE-2026-27904  minimatch@3.1.2\n      CVE-2026-27904  minimatch@10.1.1\n      CVE-2026-27904  minimatch@10.1.2\n      CVE-2026-27904  minimatch@9.0.5\n      CVE-2026-59873  tar@7.5.15\n      CVE-2026-84310  pypdf@6.10.2\n      CVE-2025-11065  github.com/go-viper/mapstructure/v2@2.3.0\n      CVE-2026-48156  pypdf@6.10.2\n      CVE-2026-82661  nodemailer@8.0.8\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-4372  transformers@4.51.3\n      CVE-2026-67325  gitpython@3.1.44\n      CVE-2026-43868  thrift@0.17.0\n      CVE-2026-54279  aiohttp@3.13.5\n      CVE-2025-69873  ajv@6.12.6\n      CVE-2025-69873  ajv@8.17.1\n      CVE-2026-26013  langchain-core@0.3.81\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    632 findings                     zizmor 1.30.0 · 2026-09-03\n      github-env  .depot/actions/setup-sqlx-cli/action.yml:50\n      artipacked  .github/actions/build-n-cache-image/action.yml:51\n      github-env  .github/actions/setup-emsdk/action.yml:56\n      github-env  .github/actions/setup-emsdk/action.yml:56\n      github-env  .github/actions/setup-emsdk/action.yml:56\n      github-env  .github/actions/setup-emsdk/action.yml:56\n      github-env  .github/actions/setup-protoc/action.yml:65\n      github-env  .github/actions/setup-sccache/action.yml:70\n      github-env  .github/actions/setup-sqlx-cli/action.yml:50\n      artipacked  .github/workflows/_rust-build-images.yml:61\n      artipacked  .github/workflows/_rust-build-images.yml:103\n      artipacked  .github/workflows/auto-assign-labels.yml:42\n      dangerous-triggers  .github/workflows/auto-assign-labels.yml:18\n      github-app  .github/workflows/auto-assign-labels.yml:57\n      github-app  .github/workflows/auto-assign-labels.yml:53\n      artipacked  .github/workflows/auto-assign-reviewers.yml:36\n      dangerous-triggers  .github/workflows/auto-assign-reviewers.yml:13\n      github-app  .github/workflows/auto-assign-reviewers.yml:31\n      artipacked  .github/workflows/browserslist.yml:25\n      github-app  .github/workflows/browserslist.yml:20\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    63 findings                      kingfisher 2.1.0 · 2026-09-03\n      betterleaks.private-key  env.example:5\n      betterleaks.private-key  env.example:9\n      betterleaks.generic-credential-uri  env.services:10\n      betterleaks.posthog-project-api-key  ee/billing/quota_limiting.py:176\n      betterleaks.posthog-project-api-key  frontend/src/queries/nodes/DataNode/__mocks__/EventsNode.json:825\n      betterleaks.posthog-project-api-key  frontend/src/scenes/activity/explore/__mocks__/eventsQuery.json:832\n      betterleaks.posthog-project-api-key  frontend/src/scenes/data-pipelines/__mocks__/pluginErrorDetails.json:335\n      betterleaks.posthog-project-api-key  frontend/src/scenes/notebooks/Notebook/Notebook.stories.tsx:301\n      betterleaks.posthog-project-api-key  frontend/src/scenes/session-recordings/__mocks__/large_recording_web_vitals_props.json:37\n      betterleaks.posthog-project-api-key  nodejs/src/cdp/legacy-plugins/_transformations/posthog-plugin-snowplow-referer-parser/index.test.ts:120\n      betterleaks.jwt  nodejs/src/cdp/services/messaging/recipient-tokens.service.test.ts:17\n      betterleaks.gcp-application-default-credentials  posthog/api/oauth/test_views.py:2061\n      betterleaks.private-key  posthog/api/test/test_integration.py:1122\n      betterleaks.posthog-project-api-key  posthog/cdp/templates/avo/test_template_avo.py:36\n      betterleaks.gcp-service-account  posthog/models/test/integration/test_google_cloud.py:20\n      betterleaks.gcp-application-default-credentials  posthog/models/test/integration/test_oauth.py:444\n      betterleaks.private-key  posthog/models/test/integration/test_snowflake.py:46\n      betterleaks.private-key  posthog/models/test/integration/test_snowflake.py:58\n      betterleaks.private-key  posthog/models/test/test_apple_push_integration.py:11\n      betterleaks.posthog-project-api-key  posthog/test/test_utils.py:889\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    545 findings                     skillspector 2.11.0 · 2026-09-03\n      TT3 CRITICAL  bin/hobby-ci.py:548  Tainted flow: 'headers' from os.environ.get (line 1974, credential/environment) → requests.get (network output)\n      TT3 CRITICAL  bin/hobby-ci.py:1975  Tainted flow: 'headers' from os.environ.get (line 1974, credential/environment) → requests.get (network output)\n      AR2 HIGH  .agents/skills/adding-ingestion-warnings/SKILL.md:98  Anti-Refusal Statement\n      AR3 HIGH  .agents/skills/adding-ingestion-warnings/SKILL.md:100  Anti-Refusal Statement\n      RA1 HIGH  .agents/skills/adding-product-alerting/references/extending-platform-alerting.md:112  Self-Modification\n      TM1 HIGH  .agents/skills/adopting-generated-api-types/SKILL.md:92  Tool Parameter Abuse\n      AR2 HIGH  .agents/skills/announcing-behavior-changes/SKILL.md:120  Anti-Refusal Statement\n      SC9 HIGH  .agents/skills/auditing-warehouse-source-coverage/scripts/dump_source_inventory.py:1  Concealed Executable Artifact\n      SC9 HIGH  .agents/skills/autoresolving-pr-conflicts/scripts/autoresolve-marker.sh:1  Concealed Executable Artifact\n      SC9 HIGH  .agents/skills/autoresolving-pr-conflicts/scripts/regen-artifacts.sh:1  Concealed Executable Artifact\n      PE3 HIGH  .agents/skills/depot-container-builds/SKILL.md:63  Credential Access\n      PE3 HIGH  .agents/skills/implementing-warehouse-sources/SKILL.md:716  Credential Access\n      PE3 HIGH  .agents/skills/debugging-local-task-agent-runs/SKILL.md:111  Credential Access\n      PE3 HIGH  .agents/skills/implementing-warehouse-sources/references/oauth-app-deployment.md:49  Credential Access\n      RA1 HIGH  .agents/skills/isolating-product-facade-contracts/SKILL.md:99  Self-Modification\n      RA1 HIGH  .agents/skills/manage-dashboard-widgets/references/live-widgets.md:3  Self-Modification\n      RA1 HIGH  .agents/skills/manage-dashboard-widgets/references/managing-existing-widgets.md:83  Self-Modification\n      SC9 HIGH  .agents/skills/placing-product-frontend-code/scripts/scene_product_split.py:1  Concealed Executable Artifact\n      SC9 HIGH  .agents/skills/qa-frontend/scripts/annotate-evidence.py:1  Concealed Executable Artifact\n      SC9 HIGH  .agents/skills/qa-frontend/scripts/cursor-overlay.js:1  Concealed Executable Artifact\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-16\n  GHSA-4r6h-5v86-94p3 was PUBLISHED upstream on 2026-09-08\n  GHSA-3wxw-xv34-2frg was PUBLISHED upstream on 2026-09-08\n  GHSA-4w3w-2rp5-g8jm was PUBLISHED upstream on 2026-09-08\n  GHSA-w2rr-34g9-rvrj was PUBLISHED upstream on 2026-09-08\n  GHSA-g53g-w8rj-fmg7 was PUBLISHED upstream on 2026-09-08\n  GHSA-82fw-gwwq-j7x9 was PUBLISHED upstream on 2026-09-08\n  GHSA-jrc7-96c5-q579 was PUBLISHED upstream on 2026-09-08\n  GHSA-gg4h-3hg2-grpc was PUBLISHED upstream on 2026-09-08\n  GHSA-p293-qw3h-jr36 was PUBLISHED upstream on 2026-09-08\n  GHSA-2wm5-q62r-hmrv was PUBLISHED upstream on 2026-09-08\n  GHSA-6w3j-5fw6-r9vr was PUBLISHED upstream on 2026-09-08\n  GHSA-6mj3-qw4j-hgrw was PUBLISHED upstream on 2026-09-08\n  GHSA-93r5-fhx6-vmg9 was PUBLISHED upstream on 2026-09-08\n  GHSA-965w-775f-mr7g was PUBLISHED upstream on 2026-09-08\n  GHSA-x4fp-j954-r2f4 was PUBLISHED upstream on 2026-09-08\n  GHSA-8344-3jmq-59r6 was PUBLISHED upstream on 2026-09-08\n  GHSA-6h8r-xr42-gp59 was PUBLISHED upstream on 2026-09-08\n  GHSA-vr34-hp96-76pp was PUBLISHED upstream on 2026-09-08\n  GHSA-3px3-54cx-rmw9 was PUBLISHED upstream on 2026-09-08\n  GHSA-27p8-2357-5qqv was PUBLISHED upstream on 2026-09-08\n  GHSA-c7q8-3ch8-vqpv was PUBLISHED upstream on 2026-09-08\n  GHSA-8m3c-c648-2xjj was PUBLISHED upstream on 2026-09-08\n  GHSA-4vpr-x523-8j87 was PUBLISHED upstream on 2026-09-08\n  GHSA-w27v-7q3p-w38r was PUBLISHED upstream on 2026-09-08\n  GHSA-2xp9-vwfh-vxw4 was PUBLISHED upstream on 2026-09-08\n  GHSA-crvj-82cr-hjcx was PUBLISHED upstream on 2026-09-08\n  GHSA-g6gw-c38x-mqfc was PUBLISHED upstream on 2026-09-08\n  GHSA-gqvv-2mrq-wpjv was PUBLISHED upstream on 2026-09-08\n  GHSA-j95f-988m-3j2f was PUBLISHED upstream on 2026-09-08\n  GHSA-2883-xcg3-v3hh was PUBLISHED upstream on 2026-09-08\n  GHSA-rgj7-g3m4-5g8c was PUBLISHED upstream on 2026-09-08\n  GHSA-cc9r-2j5m-2m83 was PUBLISHED upstream on 2026-09-08\n  GHSA-2x7j-588g-ccc2 was PUBLISHED upstream on 2026-09-08\n  GHSA-wmmp-3585-3rmp was PUBLISHED upstream on 2026-09-08\n  GHSA-7w5x-hrqm-74c2 was PUBLISHED upstream on 2026-09-09\n  PYSEC-2026-3837 was PUBLISHED upstream on 2026-09-10\n  RUSTSEC-2026-0285 was PUBLISHED upstream on 2026-09-14\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "failed(timeout)",
+  "commit_sha": "947b32b479ddd3e07756a8b90b5137b86e41c8de",
+  "built_at": "2026-09-16 18:00:03.441063",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 0,
+  "edge_count": 0,
+  "community_count": 0,
+  "extracted_pct": null,
+  "subsystems": [],
+  "god_nodes": [],
+  "lines": [
+   "Structure: not yet mapped — queued"
+  ],
+  "block": "not yet mapped — queued",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

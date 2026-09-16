@@ -11199,5 +11199,110 @@
   "suppression": null,
   "card": "1009 findings · 1 check pending · 4 checks not applicable",
   "block": "SECURITY · commit f99d33a\n\n  Dependency vulnerabilities\n    nothing to check — no lockfile or dependency manifest osv-scanner reads\n\n  Known-malicious packages\n    nothing to check — no lockfile or dependency manifest osv-scanner reads\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    1 finding                        kingfisher 2.1.0 · 2026-09-03\n      betterleaks.curl-auth-user  plans/remote.md:64\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    1008 findings                    skillspector 2.11.0 · 2026-09-03\n      TM1 HIGH  agents/skills/migrations.md:162  Tool Parameter Abuse\n      P6 HIGH  bin/omarchy-agent-usage-claude:330  Direct Prompt Extraction\n      PE3 HIGH  bin/omarchy-agent-usage-claude:580  Credential Access\n      E2 HIGH  bin/omarchy-agent-usage-codex:82  Env Variable Harvesting\n      TM1 HIGH  bin/omarchy-dev-pkg-test:125  Tool Parameter Abuse\n      TM2 HIGH  bin/omarchy-install-dev-env:100  Chaining Abuse\n      TM1 HIGH  bin/omarchy-install-hermes-cli:137  Tool Parameter Abuse\n      TM1 HIGH  bin/omarchy-install-hermes-cli:188  Tool Parameter Abuse\n      TM1 HIGH  bin/omarchy-install-hermes-cli:232  Tool Parameter Abuse\n      TM1 HIGH  bin/omarchy-install-hermes-cli:148  Tool Parameter Abuse\n      TM1 HIGH  bin/omarchy-install-preinstalls:34  Tool Parameter Abuse\n      TM1 HIGH  bin/omarchy-menu-images:259  Tool Parameter Abuse\n      TM2 HIGH  bin/omarchy-menu-tmux-keybindings:41  Chaining Abuse\n      TM2 HIGH  bin/omarchy-reminder:198  Chaining Abuse\n      TM2 HIGH  bin/omarchy-theme-set:122  Chaining Abuse\n      TM2 HIGH  bin/omarchy-theme-set:126  Chaining Abuse\n      TM2 HIGH  bin/omarchy-theme-set:131  Chaining Abuse\n      TM2 HIGH  bin/omarchy-update-system-pkgs-when-conflicted:61  Chaining Abuse\n      TM1 HIGH  bin/omarchy-mise-install:21  Tool Parameter Abuse\n      TM2 HIGH  bin/omarchy-pkg-install:24  Chaining Abuse\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "f99d33a8ddee7b36509a71a6d20d5d23355ce8b1",
+  "built_at": "2026-09-04 00:05:52.524922",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 4432,
+  "edge_count": 5266,
+  "community_count": 1031,
+  "extracted_pct": 0.9409418702125549,
+  "subsystems": [
+   {
+    "label": "Windows VM Management",
+    "size": 64
+   },
+   {
+    "label": "System Provisioning",
+    "size": 62
+   },
+   {
+    "label": "System Upgrade and Transition",
+    "size": 57
+   },
+   {
+    "label": "CLI Command Dispatcher",
+    "size": 47
+   },
+   {
+    "label": "Clipboard Extension Manifest",
+    "size": 45
+   },
+   {
+    "label": "Copy URL Extension",
+    "size": 43
+   },
+   {
+    "label": "Claude Agent Usage",
+    "size": 38
+   },
+   {
+    "label": "Fireworks Agent Usage",
+    "size": 36
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "monitor-clamshell-scale-test.sh script",
+    "degree": 18,
+    "file": "test/shell.d/monitor-clamshell-scale-test.sh"
+   },
+   {
+    "name": "DBusMenu",
+    "degree": 13,
+    "file": "test/shell.d/fixtures/tray-menu-activation/mock-sni.py"
+   },
+   {
+    "name": "bar-widget",
+    "degree": 12,
+    "file": "shell/plugins/menu/manifest.json"
+   },
+   {
+    "name": "StatusNotifierItem",
+    "degree": 10,
+    "file": "test/shell.d/fixtures/tray-menu-activation/mock-sni.py"
+   },
+   {
+    "name": "legacy-power-udev-rules-migration-test.sh script",
+    "degree": 9,
+    "file": "test/shell.d/legacy-power-udev-rules-migration-test.sh"
+   },
+   {
+    "name": "SendViaLocalSendAction",
+    "degree": 8,
+    "file": "default/nautilus-python/extensions/localsend.py"
+   },
+   {
+    "name": "TranscodeAction",
+    "degree": 8,
+    "file": "default/nautilus-python/extensions/transcode.py"
+   },
+   {
+    "name": "borderPaths()",
+    "degree": 8,
+    "file": "shell/Commons/BorderGeometry.js"
+   },
+   {
+    "name": "barWidget",
+    "degree": 8,
+    "file": "shell/plugins/agents/manifest.json"
+   },
+   {
+    "name": "displayRows()",
+    "degree": 8,
+    "file": "shell/plugins/clipboard/ClipboardHistory.js"
+   }
+  ],
+  "lines": [
+   "Structure: 1,031 subsystems — Windows VM Management · System Provisioning · System Upgrade and Transition",
+   "Core: monitor-clamshell-scale-test.sh script · DBusMenu · bar-widget"
+  ],
+  "block": "Code structure (mapped 2026-09-04 · f99d33a8 · graphify 0.9.37)\n4,432 concepts · 5,266 connections · 1,031 subsystems · 94% read directly from source\nSubsystems: Windows VM Management · System Provisioning · System Upgrade and Transition · CLI Command Dispatcher · Clipboard Extension Manifest · Copy URL Extension · Claude Agent Usage · Fireworks Agent Usage\nCore abstractions:\n  1. monitor-clamshell-scale-test.sh script — 18 connections\n  2. DBusMenu — 13 connections\n  3. bar-widget — 12 connections\n  4. StatusNotifierItem — 10 connections\n  5. legacy-power-udev-rules-migration-test.sh script — 9 connections\n  6. SendViaLocalSendAction — 8 connections\n  7. TranscodeAction — 8 connections\n  8. borderPaths() — 8 connections\n  9. barWidget — 8 connections\n  10. displayRows() — 8 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

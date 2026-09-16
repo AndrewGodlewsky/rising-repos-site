@@ -103,5 +103,110 @@
   "suppression": null,
   "card": "no findings · 1 check pending · 5 checks not applicable",
   "block": "SECURITY · commit 283c175\n\n  Dependency vulnerabilities\n    nothing to check — no lockfile or dependency manifest osv-scanner reads\n\n  Known-malicious packages\n    nothing to check — no lockfile or dependency manifest osv-scanner reads\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "8eff9e336692fc95961e096564f1044c600b881d",
+  "built_at": "2026-09-11 18:15:03.955729",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 7971,
+  "edge_count": 13987,
+  "community_count": 321,
+  "extracted_pct": 0.9169943332672119,
+  "subsystems": [
+   {
+    "label": "Basic Assertion Tests",
+    "size": 274
+   },
+   {
+    "label": "Test Flag Configurations",
+    "size": 181
+   },
+   {
+    "label": "Array Matcher Tests",
+    "size": 178
+   },
+   {
+    "label": "Character Array Tests",
+    "size": 163
+   },
+   {
+    "label": "Logical Matcher Tests",
+    "size": 162
+   },
+   {
+    "label": "Mock Expectation Tests",
+    "size": 139
+   },
+   {
+    "label": "Mock Action Definitions",
+    "size": 132
+   },
+   {
+    "label": "Action Macro Overloads",
+    "size": 119
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "TEST()",
+    "degree": 430,
+    "file": "googletest/test/gtest_unittest.cc"
+   },
+   {
+    "name": "string_",
+    "degree": 420,
+    "file": "googlemock/include/gmock/gmock-matchers.h"
+   },
+   {
+    "name": "TEST()",
+    "degree": 247,
+    "file": "googlemock/test/gmock-matchers-containers_test.cc"
+   },
+   {
+    "name": "TEST_F()",
+    "degree": 229,
+    "file": "googletest/test/gtest_unittest.cc"
+   },
+   {
+    "name": "TEST()",
+    "degree": 220,
+    "file": "googlemock/test/gmock-matchers-comparisons_test.cc"
+   },
+   {
+    "name": "TEST()",
+    "degree": 201,
+    "file": "googletest/test/googletest-printers-test.cc"
+   },
+   {
+    "name": "TEST()",
+    "degree": 180,
+    "file": "googlemock/test/gmock-actions_test.cc"
+   },
+   {
+    "name": "TEST()",
+    "degree": 177,
+    "file": "googlemock/test/gmock-spec-builders_test.cc"
+   },
+   {
+    "name": "TEST()",
+    "degree": 162,
+    "file": "googlemock/test/gmock-more-actions_test.cc"
+   },
+   {
+    "name": "TEST()",
+    "degree": 137,
+    "file": "googlemock/test/gmock-matchers-misc_test.cc"
+   }
+  ],
+  "lines": [
+   "Structure: 321 subsystems — Basic Assertion Tests · Test Flag Configurations · Array Matcher Tests",
+   "Core: TEST() · string_ · TEST()"
+  ],
+  "block": "Code structure (mapped 2026-09-11 · 8eff9e33 · graphify 0.9.37)\n7,971 concepts · 13,987 connections · 321 subsystems · 92% read directly from source\nSubsystems: Basic Assertion Tests · Test Flag Configurations · Array Matcher Tests · Character Array Tests · Logical Matcher Tests · Mock Expectation Tests · Mock Action Definitions · Action Macro Overloads\nCore abstractions:\n  1. TEST() — 430 connections\n  2. string_ — 420 connections\n  3. TEST() — 247 connections\n  4. TEST_F() — 229 connections\n  5. TEST() — 220 connections\n  6. TEST() — 201 connections\n  7. TEST() — 180 connections\n  8. TEST() — 177 connections\n  9. TEST() — 162 connections\n  10. TEST() — 137 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

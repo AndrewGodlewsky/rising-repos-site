@@ -5495,12 +5495,136 @@
     "home": ""
    }
   ],
-  "since": [],
-  "since_as_of": null,
+  "since": [
+   {
+    "advisory_id": "GHSA-crvj-82cr-hjcx",
+    "change": "published",
+    "changed_at": "2026-09-08 21:22:50",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-g6gw-c38x-mqfc",
+    "change": "published",
+    "changed_at": "2026-09-08 21:23:02",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-gqvv-2mrq-wpjv",
+    "change": "published",
+    "changed_at": "2026-09-08 21:23:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   }
+  ],
+  "since_as_of": "2026-09-16 18:14:56.768795",
   "link_suppressed": false,
   "provenance": null,
   "suppression": null,
   "card": "512 findings · 1 check pending · 1 check not applicable",
-  "block": "SECURITY · commit 1dd9951\n\n  Dependency vulnerabilities\n    116 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-56762  hono@4.12.5\n      CVE-2026-56762  hono@4.12.8\n      CVE-2026-56762  hono@4.12.9\n      CVE-2026-4923  path-to-regexp@8.3.0\n      CVE-2026-47676  hono@4.12.5\n      CVE-2026-47676  hono@4.12.8\n      CVE-2026-47676  hono@4.12.9\n      CVE-2026-1525  undici@6.21.3\n      CVE-2026-6733  undici@6.21.3\n      CVE-2026-47675  hono@4.12.5\n      CVE-2026-47675  hono@4.12.8\n      CVE-2026-47675  hono@4.12.9\n      CVE-2026-56761  hono@4.12.5\n      CVE-2026-56761  hono@4.12.8\n      CVE-2026-56761  hono@4.12.9\n      CVE-2026-1527  undici@6.21.3\n      CVE-2026-13676  fast-uri@3.1.0\n      CVE-2026-82417  qs@6.15.0\n      CVE-2026-71848  hono@4.12.5\n      CVE-2026-71848  hono@4.12.8\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    28 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/bump-plugin-shas.yml:56\n      unpinned-uses  .github/workflows/bump-plugin-shas.yml:56\n      artipacked  .github/workflows/check-mcp-urls.yml:36\n      unpinned-uses  .github/workflows/check-mcp-urls.yml:36\n      artipacked  .github/workflows/close-external-prs.yml:19\n      dangerous-triggers  .github/workflows/close-external-prs.yml:3\n      unpinned-uses  .github/workflows/close-external-prs.yml:19\n      unpinned-uses  .github/workflows/close-external-prs.yml:21\n      artipacked  .github/workflows/external-pr-scope-guard.yml:31\n      dangerous-triggers  .github/workflows/external-pr-scope-guard.yml:19\n      unpinned-uses  .github/workflows/external-pr-scope-guard.yml:31\n      unpinned-uses  .github/workflows/external-pr-scope-guard.yml:32\n      dangerous-triggers  .github/workflows/revert-failed-bumps.yml:23\n      unpinned-uses  .github/workflows/revert-failed-bumps.yml:67\n      artipacked  .github/workflows/scan-plugins.yml:54\n      excessive-permissions  .github/workflows/scan-plugins.yml:35\n      unpinned-uses  .github/workflows/scan-plugins.yml:54\n      unpinned-uses  .github/workflows/scan-plugins.yml:94\n      unpinned-uses  .github/workflows/scan-plugins.yml:345\n      unpinned-uses  .github/workflows/scan-plugins.yml:357\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    368 findings                     skillspector 2.11.0 · 2026-09-03\n      TT3 CRITICAL  plugins/security-guidance/hooks/llm.py:532  Tainted flow: 'request' from os.environ.get (line 526, credential/environment) → urllib.request.urlopen (network output)\n      YR4 HIGH  .claude-plugin/marketplace.json:4  YARA rule 'agent_skill_mcp_tool_poisoning_metadata': MCP/tool metadata poisoning indicators in tool schemas or skill manifests [agent_skills]\n      PE3 HIGH  .github/policy/prompt.md:41  Credential Access\n      PE3 HIGH  .github/policy/prompt.md:53  Credential Access\n      PE3 HIGH  .github/policy/prompt.md:63  Credential Access\n      PE3 HIGH  .github/policy/prompt.md:89  Credential Access\n      AS2 HIGH  .github/policy/prompt.md:113  MCP Config Access\n      SC9 HIGH  .github/scripts/discover_bumps.py:1  Concealed Executable Artifact\n      SC9 HIGH  .github/scripts/external-pr-scope.js:1  Concealed Executable Artifact\n      SC9 HIGH  .github/scripts/validate-frontmatter.ts:1  Concealed Executable Artifact\n      P1 HIGH  external_plugins/discord/README.md:88  Instruction Override\n      P1 HIGH  external_plugins/discord/skills/configure/SKILL.md:62  Instruction Override\n      SC2 HIGH  external_plugins/discord/README.md:9  External Script Fetching\n      SC2 HIGH  external_plugins/telegram/README.md:9  External Script Fetching\n      PE3 HIGH  external_plugins/discord/server.ts:40  Credential Access\n      PE3 HIGH  external_plugins/telegram/server.ts:31  Credential Access\n      P6 HIGH  plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md:13  Direct Prompt Extraction\n      EA5 HIGH  plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md:273  External Model or Provider Selection\n      EA5 HIGH  plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md:276  External Model or Provider Selection\n      PE3 HIGH  plugins/claude-code-setup/skills/claude-automation-recommender/references/hooks-patterns.md:85  Credential Access\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+  "block": "SECURITY · commit 1dd9951\n\n  Dependency vulnerabilities\n    116 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-56762  hono@4.12.5\n      CVE-2026-56762  hono@4.12.8\n      CVE-2026-56762  hono@4.12.9\n      CVE-2026-4923  path-to-regexp@8.3.0\n      CVE-2026-47676  hono@4.12.5\n      CVE-2026-47676  hono@4.12.8\n      CVE-2026-47676  hono@4.12.9\n      CVE-2026-1525  undici@6.21.3\n      CVE-2026-6733  undici@6.21.3\n      CVE-2026-47675  hono@4.12.5\n      CVE-2026-47675  hono@4.12.8\n      CVE-2026-47675  hono@4.12.9\n      CVE-2026-56761  hono@4.12.5\n      CVE-2026-56761  hono@4.12.8\n      CVE-2026-56761  hono@4.12.9\n      CVE-2026-1527  undici@6.21.3\n      CVE-2026-13676  fast-uri@3.1.0\n      CVE-2026-82417  qs@6.15.0\n      CVE-2026-71848  hono@4.12.5\n      CVE-2026-71848  hono@4.12.8\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    28 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/bump-plugin-shas.yml:56\n      unpinned-uses  .github/workflows/bump-plugin-shas.yml:56\n      artipacked  .github/workflows/check-mcp-urls.yml:36\n      unpinned-uses  .github/workflows/check-mcp-urls.yml:36\n      artipacked  .github/workflows/close-external-prs.yml:19\n      dangerous-triggers  .github/workflows/close-external-prs.yml:3\n      unpinned-uses  .github/workflows/close-external-prs.yml:19\n      unpinned-uses  .github/workflows/close-external-prs.yml:21\n      artipacked  .github/workflows/external-pr-scope-guard.yml:31\n      dangerous-triggers  .github/workflows/external-pr-scope-guard.yml:19\n      unpinned-uses  .github/workflows/external-pr-scope-guard.yml:31\n      unpinned-uses  .github/workflows/external-pr-scope-guard.yml:32\n      dangerous-triggers  .github/workflows/revert-failed-bumps.yml:23\n      unpinned-uses  .github/workflows/revert-failed-bumps.yml:67\n      artipacked  .github/workflows/scan-plugins.yml:54\n      excessive-permissions  .github/workflows/scan-plugins.yml:35\n      unpinned-uses  .github/workflows/scan-plugins.yml:54\n      unpinned-uses  .github/workflows/scan-plugins.yml:94\n      unpinned-uses  .github/workflows/scan-plugins.yml:345\n      unpinned-uses  .github/workflows/scan-plugins.yml:357\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    368 findings                     skillspector 2.11.0 · 2026-09-03\n      TT3 CRITICAL  plugins/security-guidance/hooks/llm.py:532  Tainted flow: 'request' from os.environ.get (line 526, credential/environment) → urllib.request.urlopen (network output)\n      YR4 HIGH  .claude-plugin/marketplace.json:4  YARA rule 'agent_skill_mcp_tool_poisoning_metadata': MCP/tool metadata poisoning indicators in tool schemas or skill manifests [agent_skills]\n      PE3 HIGH  .github/policy/prompt.md:41  Credential Access\n      PE3 HIGH  .github/policy/prompt.md:53  Credential Access\n      PE3 HIGH  .github/policy/prompt.md:63  Credential Access\n      PE3 HIGH  .github/policy/prompt.md:89  Credential Access\n      AS2 HIGH  .github/policy/prompt.md:113  MCP Config Access\n      SC9 HIGH  .github/scripts/discover_bumps.py:1  Concealed Executable Artifact\n      SC9 HIGH  .github/scripts/external-pr-scope.js:1  Concealed Executable Artifact\n      SC9 HIGH  .github/scripts/validate-frontmatter.ts:1  Concealed Executable Artifact\n      P1 HIGH  external_plugins/discord/README.md:88  Instruction Override\n      P1 HIGH  external_plugins/discord/skills/configure/SKILL.md:62  Instruction Override\n      SC2 HIGH  external_plugins/discord/README.md:9  External Script Fetching\n      SC2 HIGH  external_plugins/telegram/README.md:9  External Script Fetching\n      PE3 HIGH  external_plugins/discord/server.ts:40  Credential Access\n      PE3 HIGH  external_plugins/telegram/server.ts:31  Credential Access\n      P6 HIGH  plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md:13  Direct Prompt Extraction\n      EA5 HIGH  plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md:273  External Model or Provider Selection\n      EA5 HIGH  plugins/claude-code-setup/skills/claude-automation-recommender/SKILL.md:276  External Model or Provider Selection\n      PE3 HIGH  plugins/claude-code-setup/skills/claude-automation-recommender/references/hooks-patterns.md:85  Credential Access\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-16\n  GHSA-crvj-82cr-hjcx was PUBLISHED upstream on 2026-09-08\n  GHSA-g6gw-c38x-mqfc was PUBLISHED upstream on 2026-09-08\n  GHSA-gqvv-2mrq-wpjv was PUBLISHED upstream on 2026-09-08\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "1dd995193ba20bba51ca6c681aa8d3398dbd80a2",
+  "built_at": "2026-09-04 00:05:52.524922",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 1399,
+  "edge_count": 2548,
+  "community_count": 97,
+  "extracted_pct": 0.965855598449707,
+  "subsystems": [
+   {
+    "label": "Scan Chain State",
+    "size": 60
+   },
+   {
+    "label": "Mathematical Variables",
+    "size": 56
+   },
+   {
+    "label": "Report Path Validation",
+    "size": 50
+   },
+   {
+    "label": "Rule Configuration Loader",
+    "size": 48
+   },
+   {
+    "label": "iMessage Server Integration",
+    "size": 46
+   },
+   {
+    "label": "Session Analysis Utilities",
+    "size": 44
+   },
+   {
+    "label": "LLM API Logging",
+    "size": 41
+   },
+   {
+    "label": "Transcript Mining Utilities",
+    "size": 40
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "$",
+    "degree": 55,
+    "file": "plugins/claude-security/workflows/scan.js"
+   },
+   {
+    "name": "debug_log()",
+    "degree": 34,
+    "file": "plugins/security-guidance/hooks/_base.py"
+   },
+   {
+    "name": "is_map()",
+    "degree": 33,
+    "file": "plugins/claude-security/scripts/lib/strictjson.py"
+   },
+   {
+    "name": "Finding",
+    "degree": 32,
+    "file": "plugins/claude-security/scripts/lib/finding.py"
+   },
+   {
+    "name": "render()",
+    "degree": 32,
+    "file": "plugins/claude-security/scripts/render_report.py"
+   },
+   {
+    "name": "is_str()",
+    "degree": 27,
+    "file": "plugins/claude-security/scripts/lib/strictjson.py"
+   },
+   {
+    "name": "Record",
+    "degree": 24,
+    "file": "plugins/claude-security/scripts/lib/finding.py"
+   },
+   {
+    "name": "FindingError",
+    "degree": 24,
+    "file": "plugins/claude-security/scripts/lib/finding.py"
+   },
+   {
+    "name": "handle_push_sweep_posttooluse()",
+    "degree": 24,
+    "file": "plugins/security-guidance/hooks/security_reminder_hook.py"
+   },
+   {
+    "name": "with_locked_state()",
+    "degree": 24,
+    "file": "plugins/security-guidance/hooks/session_state.py"
+   }
+  ],
+  "lines": [
+   "Structure: 97 subsystems — Scan Chain State · Mathematical Variables · Report Path Validation",
+   "Core: $ · debug_log() · is_map()"
+  ],
+  "block": "Code structure (mapped 2026-09-04 · 1dd99519 · graphify 0.9.37)\n1,399 concepts · 2,548 connections · 97 subsystems · 97% read directly from source\nSubsystems: Scan Chain State · Mathematical Variables · Report Path Validation · Rule Configuration Loader · iMessage Server Integration · Session Analysis Utilities · LLM API Logging · Transcript Mining Utilities\nCore abstractions:\n  1. $ — 55 connections\n  2. debug_log() — 34 connections\n  3. is_map() — 33 connections\n  4. Finding — 32 connections\n  5. render() — 32 connections\n  6. is_str() — 27 connections\n  7. Record — 24 connections\n  8. FindingError — 24 connections\n  9. handle_push_sweep_posttooluse() — 24 connections\n  10. with_locked_state() — 24 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

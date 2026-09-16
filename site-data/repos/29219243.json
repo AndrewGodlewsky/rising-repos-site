@@ -548,12 +548,142 @@
     "home": ""
    }
   ],
-  "since": [],
-  "since_as_of": null,
+  "since": [
+   {
+    "advisory_id": "GHSA-qc2q-p7wx-3px3",
+    "change": "published",
+    "changed_at": "2026-09-08 20:50:21",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-2v4p-qf9q-27wj",
+    "change": "published",
+    "changed_at": "2026-09-08 21:21:43",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GO-2026-6441",
+    "change": "published",
+    "changed_at": "2026-09-15 18:39:25",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GO-2026-6443",
+    "change": "published",
+    "changed_at": "2026-09-15 18:39:25",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   }
+  ],
+  "since_as_of": "2026-09-16 18:14:56.768795",
   "link_suppressed": false,
   "provenance": null,
   "suppression": null,
   "card": "53 findings · 1 check pending · 3 checks not applicable",
-  "block": "SECURITY · commit 6b09e61\n\n  Dependency vulnerabilities\n    52 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2025-8556  github.com/cloudflare/circl@1.3.7\n      CVE-2026-39828  golang.org/x/crypto@0.17.0\n      CVE-2023-45288  golang.org/x/net@0.19.0\n      CVE-2026-42508  golang.org/x/crypto@0.17.0\n      CVE-2026-25680  golang.org/x/net@0.19.0\n      CVE-2026-39835  golang.org/x/crypto@0.17.0\n      CVE-2026-39831  golang.org/x/crypto@0.17.0\n      CVE-2024-24786  google.golang.org/protobuf@1.32.0\n      CVE-2026-46598  golang.org/x/crypto@0.17.0\n      CVE-2026-39832  golang.org/x/crypto@0.17.0\n      CVE-2025-47914  golang.org/x/crypto@0.17.0\n      CVE-2025-22869  golang.org/x/crypto@0.17.0\n      GO-2026-6061  google.golang.org/grpc@1.60.1\n      CVE-2025-58181  golang.org/x/crypto@0.17.0\n      CVE-2025-58058  github.com/ulikunitz/xz@0.5.11\n      CVE-2026-39833  golang.org/x/crypto@0.17.0\n      CVE-2026-33186  google.golang.org/grpc@1.60.1\n      CVE-2026-46597  golang.org/x/crypto@0.17.0\n      CVE-2026-1229  github.com/cloudflare/circl@1.3.7\n      CVE-2026-39827  golang.org/x/crypto@0.17.0\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    1 finding                        kingfisher 2.1.0 · 2026-09-03\n      betterleaks.gcp-api-key  fqnews2\\app\\src\\fqnews\\google-services.json:24\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+  "block": "SECURITY · commit 6b09e61\n\n  Dependency vulnerabilities\n    52 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2025-8556  github.com/cloudflare/circl@1.3.7\n      CVE-2026-39828  golang.org/x/crypto@0.17.0\n      CVE-2023-45288  golang.org/x/net@0.19.0\n      CVE-2026-42508  golang.org/x/crypto@0.17.0\n      CVE-2026-25680  golang.org/x/net@0.19.0\n      CVE-2026-39835  golang.org/x/crypto@0.17.0\n      CVE-2026-39831  golang.org/x/crypto@0.17.0\n      CVE-2024-24786  google.golang.org/protobuf@1.32.0\n      CVE-2026-46598  golang.org/x/crypto@0.17.0\n      CVE-2026-39832  golang.org/x/crypto@0.17.0\n      CVE-2025-47914  golang.org/x/crypto@0.17.0\n      CVE-2025-22869  golang.org/x/crypto@0.17.0\n      GO-2026-6061  google.golang.org/grpc@1.60.1\n      CVE-2025-58181  golang.org/x/crypto@0.17.0\n      CVE-2025-58058  github.com/ulikunitz/xz@0.5.11\n      CVE-2026-39833  golang.org/x/crypto@0.17.0\n      CVE-2026-33186  google.golang.org/grpc@1.60.1\n      CVE-2026-46597  golang.org/x/crypto@0.17.0\n      CVE-2026-1229  github.com/cloudflare/circl@1.3.7\n      CVE-2026-39827  golang.org/x/crypto@0.17.0\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    1 finding                        kingfisher 2.1.0 · 2026-09-03\n      betterleaks.gcp-api-key  fqnews2\\app\\src\\fqnews\\google-services.json:24\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-16\n  GHSA-qc2q-p7wx-3px3 was PUBLISHED upstream on 2026-09-08\n  GHSA-2v4p-qf9q-27wj was PUBLISHED upstream on 2026-09-08\n  GO-2026-6441 was PUBLISHED upstream on 2026-09-15\n  GO-2026-6443 was PUBLISHED upstream on 2026-09-15\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "6b09e61cd77c00020c24676f926d7374afd5dd04",
+  "built_at": "2026-09-04 00:05:52.524922",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 6783,
+  "edge_count": 14639,
+  "community_count": 364,
+  "extracted_pct": 0.9530022740364075,
+  "subsystems": [
+   {
+    "label": "SingBox Configuration Builder",
+    "size": 139
+   },
+   {
+    "label": "Feed Repository Architecture",
+    "size": 107
+   },
+   {
+    "label": "Server Installation Scripts",
+    "size": 95
+   },
+   {
+    "label": "Database Migration Setup",
+    "size": 90
+   },
+   {
+    "label": "User Settings Store",
+    "size": 84
+   },
+   {
+    "label": "Database Schema Migrations",
+    "size": 73
+   },
+   {
+    "label": "Proxy Fetch Plugins",
+    "size": 72
+   },
+   {
+    "label": "Migration Test Helpers",
+    "size": 70
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "Repository",
+    "degree": 171,
+    "file": "fqnews2/app/src/main/java/com/nononsenseapps/feeder/archmodel/Repository.kt"
+   },
+   {
+    "name": "SingBoxOptions",
+    "degree": 145,
+    "file": "fqnews2/app/src/main/java/moe/matsuri/nb4a/SingBoxOptions.java"
+   },
+   {
+    "name": "SingBoxOption",
+    "degree": 93,
+    "file": "fqnews2/app/src/main/java/moe/matsuri/nb4a/SingBoxOptions.java"
+   },
+   {
+    "name": "Feed()",
+    "degree": 78,
+    "file": "fqnews2/app/src/main/java/com/nononsenseapps/feeder/ui/compose/navdrawer/NavDrawer.kt"
+   },
+   {
+    "name": "FeederApplication",
+    "degree": 70,
+    "file": "fqnews2/app/src/main/java/jww/app/FeederApplication.kt"
+   },
+   {
+    "name": "HtmlToPlainTextConverter",
+    "degree": 63,
+    "file": "fqnews2/app/src/main/java/com/nononsenseapps/feeder/ui/text/HtmlToPlainTextConverter.kt"
+   },
+   {
+    "name": "Either",
+    "degree": 62,
+    "file": "fqnews2/app/src/main/java/com/nononsenseapps/feeder/util/Either.kt"
+   },
+   {
+    "name": "AbstractBean",
+    "degree": 60,
+    "file": "fqnews2/app/src/main/java/io/nekohasekai/sagernet/fmt/AbstractBean.java"
+   },
+   {
+    "name": "FeedParserTest",
+    "degree": 57,
+    "file": "fqnews2/app/src/androidTest/java/com/nononsenseapps/feeder/model/FeedParserTest.kt"
+   },
+   {
+    "name": "FeedItemDao",
+    "degree": 56,
+    "file": "fqnews2/app/src/main/java/com/nononsenseapps/feeder/db/room/FeedItemDao.kt"
+   }
+  ],
+  "lines": [
+   "Structure: 364 subsystems — SingBox Configuration Builder · Feed Repository Architecture · Server Installation Scripts",
+   "Core: Repository · SingBoxOptions · SingBoxOption"
+  ],
+  "block": "Code structure (mapped 2026-09-04 · 6b09e61c · graphify 0.9.37)\n6,783 concepts · 14,639 connections · 364 subsystems · 95% read directly from source\nSubsystems: SingBox Configuration Builder · Feed Repository Architecture · Server Installation Scripts · Database Migration Setup · User Settings Store · Database Schema Migrations · Proxy Fetch Plugins · Migration Test Helpers\nCore abstractions:\n  1. Repository — 171 connections\n  2. SingBoxOptions — 145 connections\n  3. SingBoxOption — 93 connections\n  4. Feed() — 78 connections\n  5. FeederApplication — 70 connections\n  6. HtmlToPlainTextConverter — 63 connections\n  7. Either — 62 connections\n  8. AbstractBean — 60 connections\n  9. FeedParserTest — 57 connections\n  10. FeedItemDao — 56 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

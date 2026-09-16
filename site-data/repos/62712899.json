@@ -1201,12 +1201,160 @@
     "home": ""
    }
   ],
-  "since": [],
-  "since_as_of": null,
+  "since": [
+   {
+    "advisory_id": "GHSA-82fw-gwwq-j7x9",
+    "change": "published",
+    "changed_at": "2026-09-08 20:46:45",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-qc2q-p7wx-3px3",
+    "change": "published",
+    "changed_at": "2026-09-08 20:50:21",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-2wm5-q62r-hmrv",
+    "change": "published",
+    "changed_at": "2026-09-08 20:51:57",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-2v4p-qf9q-27wj",
+    "change": "published",
+    "changed_at": "2026-09-08 21:21:43",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-2883-xcg3-v3hh",
+    "change": "published",
+    "changed_at": "2026-09-08 21:24:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GO-2026-6441",
+    "change": "published",
+    "changed_at": "2026-09-15 18:39:25",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GO-2026-6443",
+    "change": "published",
+    "changed_at": "2026-09-15 18:39:25",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   }
+  ],
+  "since_as_of": "2026-09-16 18:14:56.768795",
   "link_suppressed": false,
   "provenance": null,
   "suppression": null,
   "card": "124 findings · 1 check pending · 1 check not applicable",
-  "block": "SECURITY · commit fe0f056\n\n  Dependency vulnerabilities\n    83 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-67214  nanoid@3.3.8\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-67214  nanoid@5.1.11\n      CVE-2026-67213  nanoid@3.3.8\n      CVE-2026-67213  nanoid@3.3.12\n      CVE-2026-13311  shell-quote@1.8.1\n      CVE-2026-13311  shell-quote@1.8.4\n      CVE-2026-13149  brace-expansion@1.1.14\n      CVE-2026-13149  brace-expansion@2.1.0\n      CVE-2026-13149  brace-expansion@1.1.15\n      CVE-2026-13149  brace-expansion@5.0.6\n      CVE-2026-13676  fast-uri@3.1.0\n      CVE-2026-13676  fast-uri@3.1.2\n      CVE-2026-82417  qs@6.14.2\n      CVE-2026-82417  qs@6.15.2\n      CVE-2026-49356  @\n      CVE-2026-59869  js-yaml@3.14.2\n      CVE-2026-59869  js-yaml@4.1.1\n      CVE-2026-59869  js-yaml@4.2.0\n      CVE-2026-45736  ws@8.18.3\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    40 findings                      zizmor 1.30.0 · 2026-09-03\n      unpinned-uses  .github/workflows/build.yaml:20\n      unpinned-uses  .github/workflows/build.yaml:27\n      unpinned-uses  .github/workflows/build.yaml:38\n      unpinned-uses  .github/workflows/build.yaml:47\n      unpinned-uses  .github/workflows/build.yaml:65\n      unpinned-uses  .github/workflows/build.yaml:81\n      unpinned-uses  .github/workflows/build.yaml:87\n      unpinned-uses  .github/workflows/build.yaml:92\n      unpinned-uses  .github/workflows/build.yaml:106\n      unsound-condition  .github/workflows/build.yaml:14\n      unsound-condition  .github/workflows/build.yaml:74\n      unpinned-uses  .github/workflows/mirror.yaml:9\n      unsound-condition  .github/workflows/mirror.yaml:3\n      unpinned-uses  .github/workflows/private.yaml:18\n      unpinned-uses  .github/workflows/private.yaml:45\n      unpinned-uses  .github/workflows/private.yaml:80\n      unpinned-uses  .github/workflows/private.yaml:114\n      unsound-condition  .github/workflows/private.yaml:12\n      unsound-condition  .github/workflows/private.yaml:39\n      unsound-condition  .github/workflows/private.yaml:71\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    1 finding                        kingfisher 2.1.0 · 2026-09-03\n      betterleaks.private-key  internal\\home\\testdata\\key.pem:1\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+  "block": "SECURITY · commit fe0f056\n\n  Dependency vulnerabilities\n    83 findings                      osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-67214  nanoid@3.3.8\n      CVE-2026-67214  nanoid@3.3.12\n      CVE-2026-67214  nanoid@5.1.11\n      CVE-2026-67213  nanoid@3.3.8\n      CVE-2026-67213  nanoid@3.3.12\n      CVE-2026-13311  shell-quote@1.8.1\n      CVE-2026-13311  shell-quote@1.8.4\n      CVE-2026-13149  brace-expansion@1.1.14\n      CVE-2026-13149  brace-expansion@2.1.0\n      CVE-2026-13149  brace-expansion@1.1.15\n      CVE-2026-13149  brace-expansion@5.0.6\n      CVE-2026-13676  fast-uri@3.1.0\n      CVE-2026-13676  fast-uri@3.1.2\n      CVE-2026-82417  qs@6.14.2\n      CVE-2026-82417  qs@6.15.2\n      CVE-2026-49356  @\n      CVE-2026-59869  js-yaml@3.14.2\n      CVE-2026-59869  js-yaml@4.1.1\n      CVE-2026-59869  js-yaml@4.2.0\n      CVE-2026-45736  ws@8.18.3\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-03\n\n  CI / workflow\n    40 findings                      zizmor 1.30.0 · 2026-09-03\n      unpinned-uses  .github/workflows/build.yaml:20\n      unpinned-uses  .github/workflows/build.yaml:27\n      unpinned-uses  .github/workflows/build.yaml:38\n      unpinned-uses  .github/workflows/build.yaml:47\n      unpinned-uses  .github/workflows/build.yaml:65\n      unpinned-uses  .github/workflows/build.yaml:81\n      unpinned-uses  .github/workflows/build.yaml:87\n      unpinned-uses  .github/workflows/build.yaml:92\n      unpinned-uses  .github/workflows/build.yaml:106\n      unsound-condition  .github/workflows/build.yaml:14\n      unsound-condition  .github/workflows/build.yaml:74\n      unpinned-uses  .github/workflows/mirror.yaml:9\n      unsound-condition  .github/workflows/mirror.yaml:3\n      unpinned-uses  .github/workflows/private.yaml:18\n      unpinned-uses  .github/workflows/private.yaml:45\n      unpinned-uses  .github/workflows/private.yaml:80\n      unpinned-uses  .github/workflows/private.yaml:114\n      unsound-condition  .github/workflows/private.yaml:12\n      unsound-condition  .github/workflows/private.yaml:39\n      unsound-condition  .github/workflows/private.yaml:71\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    1 finding                        kingfisher 2.1.0 · 2026-09-03\n      betterleaks.private-key  internal\\home\\testdata\\key.pem:1\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-16\n  GHSA-82fw-gwwq-j7x9 was PUBLISHED upstream on 2026-09-08\n  GHSA-qc2q-p7wx-3px3 was PUBLISHED upstream on 2026-09-08\n  GHSA-2wm5-q62r-hmrv was PUBLISHED upstream on 2026-09-08\n  GHSA-2v4p-qf9q-27wj was PUBLISHED upstream on 2026-09-08\n  GHSA-2883-xcg3-v3hh was PUBLISHED upstream on 2026-09-08\n  GO-2026-6441 was PUBLISHED upstream on 2026-09-15\n  GO-2026-6443 was PUBLISHED upstream on 2026-09-15\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "fe0f05643acb2ea1d002d7859637b5c80c9414ea",
+  "built_at": "2026-09-04 00:05:52.524922",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 9445,
+  "edge_count": 23072,
+  "community_count": 504,
+  "extracted_pct": 0.9184725880622864,
+  "subsystems": [
+   {
+    "label": "Filter Form Components",
+    "size": 197
+   },
+   {
+    "label": "Textarea and DHCP Modals",
+    "size": 164
+   },
+   {
+    "label": "Blocked Domains Dashboard",
+    "size": 158
+   },
+   {
+    "label": "Breadcrumbs and Header UI",
+    "size": 142
+   },
+   {
+    "label": "Form Input Components",
+    "size": 142
+   },
+   {
+    "label": "Static Lease Actions",
+    "size": 138
+   },
+   {
+    "label": "API Fetch and Services",
+    "size": 137
+   },
+   {
+    "label": "Input and Internationalization",
+    "size": 134
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "intl",
+    "degree": 184,
+    "file": "client_v2/src/common/intl/index.ts"
+   },
+   {
+    "name": "theme",
+    "degree": 135,
+    "file": "client_v2/src/lib/theme/index.ts"
+   },
+   {
+    "name": "addErrorToast()",
+    "degree": 89,
+    "file": "client_v2/src/stores/toasts.ts"
+   },
+   {
+    "name": "customFetch()",
+    "degree": 84,
+    "file": "client_v2/src/api/customFetch.ts"
+   },
+   {
+    "name": "addErrorToast",
+    "degree": 80,
+    "file": "client/src/actions/toasts.ts"
+   },
+   {
+    "name": "Api",
+    "degree": 70,
+    "file": "client/src/api/Api.ts"
+   },
+   {
+    "name": "Icon()",
+    "degree": 70,
+    "file": "client_v2/src/common/ui/Icon/Icon.tsx"
+   },
+   {
+    "name": "addSuccessToast()",
+    "degree": 64,
+    "file": "client_v2/src/stores/toasts.ts"
+   },
+   {
+    "name": "ErrorAndLog()",
+    "degree": 58,
+    "file": "internal/aghhttp/aghhttp.go"
+   },
+   {
+    "name": "Persistent",
+    "degree": 53,
+    "file": "internal/client/persistent.go"
+   }
+  ],
+  "lines": [
+   "Structure: 504 subsystems — Filter Form Components · Textarea and DHCP Modals · Blocked Domains Dashboard",
+   "Core: intl · theme · addErrorToast()"
+  ],
+  "block": "Code structure (mapped 2026-09-04 · fe0f0564 · graphify 0.9.37)\n9,445 concepts · 23,072 connections · 504 subsystems · 92% read directly from source\nSubsystems: Filter Form Components · Textarea and DHCP Modals · Blocked Domains Dashboard · Breadcrumbs and Header UI · Form Input Components · Static Lease Actions · API Fetch and Services · Input and Internationalization\nCore abstractions:\n  1. intl — 184 connections\n  2. theme — 135 connections\n  3. addErrorToast() — 89 connections\n  4. customFetch() — 84 connections\n  5. addErrorToast — 80 connections\n  6. Api — 70 connections\n  7. Icon() — 70 connections\n  8. addSuccessToast() — 64 connections\n  9. ErrorAndLog() — 58 connections\n  10. Persistent — 53 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }

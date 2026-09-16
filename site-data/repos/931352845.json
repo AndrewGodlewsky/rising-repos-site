@@ -2176,12 +2176,202 @@
     "home": ""
    }
   ],
-  "since": [],
-  "since_as_of": null,
+  "since": [
+   {
+    "advisory_id": "GHSA-4w3w-2rp5-g8jm",
+    "change": "published",
+    "changed_at": "2026-09-08 20:30:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-w2rr-34g9-rvrj",
+    "change": "published",
+    "changed_at": "2026-09-08 20:31:08",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-82fw-gwwq-j7x9",
+    "change": "published",
+    "changed_at": "2026-09-08 20:46:45",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-93r5-fhx6-vmg9",
+    "change": "published",
+    "changed_at": "2026-09-08 21:00:41",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-965w-775f-mr7g",
+    "change": "published",
+    "changed_at": "2026-09-08 21:00:52",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-x4fp-j954-r2f4",
+    "change": "published",
+    "changed_at": "2026-09-08 21:01:09",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-8344-3jmq-59r6",
+    "change": "published",
+    "changed_at": "2026-09-08 21:01:31",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-6h8r-xr42-gp59",
+    "change": "published",
+    "changed_at": "2026-09-08 21:02:13",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-27p8-2357-5qqv",
+    "change": "published",
+    "changed_at": "2026-09-08 21:02:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-c7q8-3ch8-vqpv",
+    "change": "published",
+    "changed_at": "2026-09-08 21:03:28",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-crvj-82cr-hjcx",
+    "change": "published",
+    "changed_at": "2026-09-08 21:22:50",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-g6gw-c38x-mqfc",
+    "change": "published",
+    "changed_at": "2026-09-08 21:23:02",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-gqvv-2mrq-wpjv",
+    "change": "published",
+    "changed_at": "2026-09-08 21:23:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   },
+   {
+    "advisory_id": "GHSA-2883-xcg3-v3hh",
+    "change": "published",
+    "changed_at": "2026-09-08 21:24:51",
+    "observed_at": "2026-09-16 18:14:56.768795"
+   }
+  ],
+  "since_as_of": "2026-09-16 18:14:56.768795",
   "link_suppressed": false,
   "provenance": null,
   "suppression": null,
   "card": "229 findings · 1 check pending · 2 checks not applicable",
-  "block": "SECURITY · commit 3e677b1\n\n  Dependency vulnerabilities\n    171 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-48801  linkify-it@5.0.0\n      CVE-2026-59873  tar@7.5.13\n      CVE-2026-56762  hono@4.12.9\n      CVE-2026-67214  nanoid@3.3.11\n      CVE-2026-47676  hono@4.12.9\n      CVE-2026-44294  protobufjs@7.5.4\n      CVE-2026-41673  @\n      CVE-2026-67213  nanoid@3.3.11\n      CVE-2026-6733  undici@7.24.6\n      CVE-2026-13311  shell-quote@1.8.3\n      CVE-2026-65903  dompurify@3.3.3\n      CVE-2026-47675  hono@4.12.9\n      CVE-2026-13149  brace-expansion@1.1.13\n      CVE-2026-13149  brace-expansion@2.0.2\n      CVE-2026-13149  brace-expansion@2.0.3\n      CVE-2026-13149  brace-expansion@5.0.5\n      CVE-2026-33672  picomatch@4.0.3\n      CVE-2026-56761  hono@4.12.9\n      CVE-2026-33532  yaml@2.8.2\n      CVE-2026-13676  fast-uri@3.1.0\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    58 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/docker.yml:27\n      dangerous-triggers  .github/workflows/docker.yml:3\n      unpinned-uses  .github/workflows/docker.yml:28\n      unpinned-uses  .github/workflows/docker.yml:40\n      unpinned-uses  .github/workflows/docker.yml:46\n      unpinned-uses  .github/workflows/docker.yml:53\n      unpinned-uses  .github/workflows/docker.yml:56\n      unpinned-uses  .github/workflows/docker.yml:59\n      artipacked  .github/workflows/release.yml:25\n      artipacked  .github/workflows/release.yml:63\n      artipacked  .github/workflows/release.yml:150\n      artipacked  .github/workflows/release.yml:250\n      artipacked  .github/workflows/release.yml:344\n      artipacked  .github/workflows/release.yml:459\n      excessive-permissions  .github/workflows/release.yml:1\n      excessive-permissions  .github/workflows/release.yml:19\n      excessive-permissions  .github/workflows/release.yml:22\n      template-injection  .github/workflows/release.yml:39\n      template-injection  .github/workflows/release.yml:78\n      template-injection  .github/workflows/release.yml:114\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+  "block": "SECURITY · commit 3e677b1\n\n  Dependency vulnerabilities\n    171 findings                     osv-scanner 2.5.1 · 2026-09-03\n      CVE-2026-48801  linkify-it@5.0.0\n      CVE-2026-59873  tar@7.5.13\n      CVE-2026-56762  hono@4.12.9\n      CVE-2026-67214  nanoid@3.3.11\n      CVE-2026-47676  hono@4.12.9\n      CVE-2026-44294  protobufjs@7.5.4\n      CVE-2026-41673  @\n      CVE-2026-67213  nanoid@3.3.11\n      CVE-2026-6733  undici@7.24.6\n      CVE-2026-13311  shell-quote@1.8.3\n      CVE-2026-65903  dompurify@3.3.3\n      CVE-2026-47675  hono@4.12.9\n      CVE-2026-13149  brace-expansion@1.1.13\n      CVE-2026-13149  brace-expansion@2.0.2\n      CVE-2026-13149  brace-expansion@2.0.3\n      CVE-2026-13149  brace-expansion@5.0.5\n      CVE-2026-33672  picomatch@4.0.3\n      CVE-2026-56761  hono@4.12.9\n      CVE-2026-33532  yaml@2.8.2\n      CVE-2026-13676  fast-uri@3.1.0\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    58 findings                      zizmor 1.30.0 · 2026-09-03\n      artipacked  .github/workflows/docker.yml:27\n      dangerous-triggers  .github/workflows/docker.yml:3\n      unpinned-uses  .github/workflows/docker.yml:28\n      unpinned-uses  .github/workflows/docker.yml:40\n      unpinned-uses  .github/workflows/docker.yml:46\n      unpinned-uses  .github/workflows/docker.yml:53\n      unpinned-uses  .github/workflows/docker.yml:56\n      unpinned-uses  .github/workflows/docker.yml:59\n      artipacked  .github/workflows/release.yml:25\n      artipacked  .github/workflows/release.yml:63\n      artipacked  .github/workflows/release.yml:150\n      artipacked  .github/workflows/release.yml:250\n      artipacked  .github/workflows/release.yml:344\n      artipacked  .github/workflows/release.yml:459\n      excessive-permissions  .github/workflows/release.yml:1\n      excessive-permissions  .github/workflows/release.yml:19\n      excessive-permissions  .github/workflows/release.yml:22\n      template-injection  .github/workflows/release.yml:39\n      template-injection  .github/workflows/release.yml:78\n      template-injection  .github/workflows/release.yml:114\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-16\n  GHSA-4w3w-2rp5-g8jm was PUBLISHED upstream on 2026-09-08\n  GHSA-w2rr-34g9-rvrj was PUBLISHED upstream on 2026-09-08\n  GHSA-82fw-gwwq-j7x9 was PUBLISHED upstream on 2026-09-08\n  GHSA-93r5-fhx6-vmg9 was PUBLISHED upstream on 2026-09-08\n  GHSA-965w-775f-mr7g was PUBLISHED upstream on 2026-09-08\n  GHSA-x4fp-j954-r2f4 was PUBLISHED upstream on 2026-09-08\n  GHSA-8344-3jmq-59r6 was PUBLISHED upstream on 2026-09-08\n  GHSA-6h8r-xr42-gp59 was PUBLISHED upstream on 2026-09-08\n  GHSA-27p8-2357-5qqv was PUBLISHED upstream on 2026-09-08\n  GHSA-c7q8-3ch8-vqpv was PUBLISHED upstream on 2026-09-08\n  GHSA-crvj-82cr-hjcx was PUBLISHED upstream on 2026-09-08\n  GHSA-g6gw-c38x-mqfc was PUBLISHED upstream on 2026-09-08\n  GHSA-gqvv-2mrq-wpjv was PUBLISHED upstream on 2026-09-08\n  GHSA-2883-xcg3-v3hh was PUBLISHED upstream on 2026-09-08\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "3e677b1d9f7e0493c142c175560531e7ae786dce",
+  "built_at": "2026-09-04 00:05:52.524922",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 10520,
+  "edge_count": 22925,
+  "community_count": 451,
+  "extracted_pct": 0.9871755838394165,
+  "subsystems": [
+   {
+    "label": "Text-to-Image Workspace",
+    "size": 163
+   },
+   {
+    "label": "Multi-Image Workspace",
+    "size": 159
+   },
+   {
+    "label": "Image-to-Image Workspace",
+    "size": 144
+   },
+   {
+    "label": "User Context Workspace",
+    "size": 136
+   },
+   {
+    "label": "Data Import and Export",
+    "size": 132
+   },
+   {
+    "label": "Text Model Configuration",
+    "size": 122
+   },
+   {
+    "label": "Template Language Service",
+    "size": 116
+   },
+   {
+    "label": "Image Model Configuration",
+    "size": 108
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "Template",
+    "degree": 124,
+    "file": "packages/core/src/services/template/types.ts"
+   },
+   {
+    "name": "EvaluationService",
+    "degree": 103,
+    "file": "packages/core/src/services/evaluation/service.ts"
+   },
+   {
+    "name": "Message",
+    "degree": 101,
+    "file": "packages/core/src/services/llm/types.ts"
+   },
+   {
+    "name": "ImageModelConfig",
+    "degree": 91,
+    "file": "packages/core/src/services/image/types.ts"
+   },
+   {
+    "name": "TextModelConfig",
+    "degree": 90,
+    "file": "packages/core/src/services/model/types.ts"
+   },
+   {
+    "name": "AppServices",
+    "degree": 88,
+    "file": "packages/ui/src/types/services.ts"
+   },
+   {
+    "name": "useToast()",
+    "degree": 83,
+    "file": "packages/ui/src/composables/ui/useToast.ts"
+   },
+   {
+    "name": "ModelManager",
+    "degree": 74,
+    "file": "packages/core/src/services/model/manager.ts"
+   },
+   {
+    "name": "TextModelConfig",
+    "degree": 73,
+    "file": "packages/core/src/services/llm/types.ts"
+   },
+   {
+    "name": "StreamHandlers",
+    "degree": 73,
+    "file": "packages/core/src/services/llm/types.ts"
+   }
+  ],
+  "lines": [
+   "Structure: 451 subsystems — Text-to-Image Workspace · Multi-Image Workspace · Image-to-Image Workspace",
+   "Core: Template · EvaluationService · Message"
+  ],
+  "block": "Code structure (mapped 2026-09-04 · 3e677b1d · graphify 0.9.37)\n10,520 concepts · 22,925 connections · 451 subsystems · 99% read directly from source\nSubsystems: Text-to-Image Workspace · Multi-Image Workspace · Image-to-Image Workspace · User Context Workspace · Data Import and Export · Text Model Configuration · Template Language Service · Image Model Configuration\nCore abstractions:\n  1. Template — 124 connections\n  2. EvaluationService — 103 connections\n  3. Message — 101 connections\n  4. ImageModelConfig — 91 connections\n  5. TextModelConfig — 90 connections\n  6. AppServices — 88 connections\n  7. useToast() — 83 connections\n  8. ModelManager — 74 connections\n  9. TextModelConfig — 73 connections\n  10. StreamHandlers — 73 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
  }
 }
