@@ -1,18 +1,479 @@
 {
  "board_type": "daily",
- "day": "2026-09-17",
+ "day": "2026-09-18",
  "floor": 3.0,
- "strata_admitted": [],
+ "strata_admitted": [
+  "30k+"
+ ],
  "strata_held": [
   "1-3k",
   "10-30k",
   "200-1k",
-  "3-10k",
-  "30k+"
+  "3-10k"
  ],
- "hold_reason": "200-1k: 211468/212139 on 2026-09-17; 1-3k: 43642/43739 on 2026-09-17; 3-10k: 16496/16523 on 2026-09-17; 10-30k: 4377/4382 on 2026-09-17; 30k+: no coverage record for 2026-09-15",
- "rows": [],
+ "hold_reason": "200-1k: 211558/212228 on 2026-09-18; 1-3k: 43669/43766 on 2026-09-18; 3-10k: 16505/16532 on 2026-09-18; 10-30k: 4374/4379 on 2026-09-18",
+ "rows": [
+  {
+   "security": {
+    "card": "26 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "2035b8153afaf7ce2edde24a2c80b62bbcf5127f"
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": "ebd54fcf5275f331aef8f07f1f2b80d78d22f25a"
+   },
+   "repo_id": 173228436,
+   "rank": 1,
+   "name": "NationalSecurityAgency/ghidra",
+   "final_display": 8.38476479361441,
+   "final_is_capped": false,
+   "rs": 8.385,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 1328.2,
+   "pace_multiple": 13.21,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 78805,
+   "pushed_at": "2026-09-18T10:01:09",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 277168957,
+   "rank": 2,
+   "name": "eugeneyan/applied-ml",
+   "final_display": 7.017344254552423,
+   "final_is_capped": false,
+   "rs": 11.26,
+   "fork_corroboration": 0.623,
+   "excess_above_trend": 173.5,
+   "pace_multiple": 21.39,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 30311,
+   "pushed_at": "2024-07-18T22:41:02",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1116542,
+   "rank": 3,
+   "name": "aria2/aria2",
+   "final_display": 6.639917159917941,
+   "final_is_capped": false,
+   "rs": 6.64,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 69.9,
+   "pace_multiple": 4.66,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 42473,
+   "pushed_at": "2026-06-25T14:49:35",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 764287615,
+   "rank": 4,
+   "name": "supermemoryai/supermemory",
+   "final_display": 5.4437963970785175,
+   "final_is_capped": false,
+   "rs": 5.837,
+   "fork_corroboration": 0.933,
+   "excess_above_trend": 385.5,
+   "pace_multiple": 10.08,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 30116,
+   "pushed_at": "2026-09-18T06:09:26",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 344191198,
+   "rank": 5,
+   "name": "microsoft/Data-Science-For-Beginners",
+   "final_display": 5.438517717812683,
+   "final_is_capped": false,
+   "rs": 5.439,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 81.7,
+   "pace_multiple": 4.51,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 37128,
+   "pushed_at": "2026-09-13T21:52:54",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "112 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "a636575b09de1fc55d9b8cd98cac88f5f2f16b42"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 164 subsystems \u2014 Video and Audio Processing \u00b7 Cookie Management \u00b7 Backend Dependencies",
+     "Core: env \u00b7 runAPI() \u00b7 createStream()"
+    ],
+    "commit_sha": "a636575b09de1fc55d9b8cd98cac88f5f2f16b42"
+   },
+   "repo_id": 511987144,
+   "rank": 6,
+   "name": "imputnet/cobalt",
+   "final_display": 4.570458131550967,
+   "final_is_capped": false,
+   "rs": 5.235,
+   "fork_corroboration": 0.873,
+   "excess_above_trend": 274.3,
+   "pace_multiple": 8.48,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 43582,
+   "pushed_at": "2026-04-06T11:59:56",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 12888993,
+   "rank": 7,
+   "name": "home-assistant/core",
+   "final_display": 3.876928378711726,
+   "final_is_capped": false,
+   "rs": 3.877,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 118.8,
+   "pace_multiple": 3.75,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 90697,
+   "pushed_at": "2026-09-18T11:30:13",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1032459340,
+   "rank": 8,
+   "name": "Fission-AI/OpenSpec",
+   "final_display": 3.588365971995829,
+   "final_is_capped": false,
+   "rs": 3.588,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 381.9,
+   "pace_multiple": 2.29,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 69182,
+   "pushed_at": "2026-09-17T16:05:08",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 876064934,
+   "rank": 9,
+   "name": "patchy631/ai-engineering-hub",
+   "final_display": 3.37862116915158,
+   "final_is_capped": false,
+   "rs": 4.162,
+   "fork_corroboration": 0.812,
+   "excess_above_trend": 124.3,
+   "pace_multiple": 4.69,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 37725,
+   "pushed_at": "2026-09-10T21:32:11",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 138754790,
+   "rank": 10,
+   "name": "duckdb/duckdb",
+   "final_display": 3.203680912022946,
+   "final_is_capped": false,
+   "rs": 3.204,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 125.3,
+   "pace_multiple": 3.03,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 41492,
+   "pushed_at": "2026-09-18T13:23:01",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 937253475,
+   "rank": 11,
+   "name": "anthropics/claude-code",
+   "final_display": 3.2023491937789346,
+   "final_is_capped": false,
+   "rs": 3.202,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 569.2,
+   "pace_multiple": 3.2,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 146146,
+   "pushed_at": "2026-09-18T02:12:25",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 834369920,
+   "rank": 12,
+   "name": "jingyaogong/minimind",
+   "final_display": 3.074748241391433,
+   "final_is_capped": false,
+   "rs": 3.075,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 150.8,
+   "pace_multiple": 2.47,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 61573,
+   "pushed_at": "2026-09-18T08:33:20",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 193215554,
+   "rank": 13,
+   "name": "n8n-io/n8n",
+   "final_display": 2.543397840108068,
+   "final_is_capped": false,
+   "rs": 5.087,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 436.7,
+   "pace_multiple": 2.82,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 205225,
+   "pushed_at": "2026-09-18T13:53:52",
+   "link_suppressed": false,
+   "corrections": []
+  }
+ ],
  "facets": {
-  "band": {}
+  "band": {
+   "established": 13
+  }
  }
 }
