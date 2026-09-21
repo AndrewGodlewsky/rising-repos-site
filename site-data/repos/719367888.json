@@ -3717,36 +3717,72 @@
   ],
   "since": [
    {
-    "advisory_id": "PYSEC-2024-115",
-    "change": "withdrawn",
-    "changed_at": "2026-07-09 16:45:06.281535",
-    "observed_at": "2026-09-17 17:41:29.049738"
-   },
-   {
     "advisory_id": "GHSA-3wxw-xv34-2frg",
     "change": "published",
     "changed_at": "2026-09-08 19:42:22",
-    "observed_at": "2026-09-17 17:41:29.049738"
+    "observed_at": "2026-09-21 18:44:37.840244"
+   },
+   {
+    "advisory_id": "PYSEC-2026-3982",
+    "change": "published",
+    "changed_at": "2026-09-09 12:17:16.830000",
+    "observed_at": "2026-09-21 18:44:37.840244"
+   },
+   {
+    "advisory_id": "PYSEC-2026-3983",
+    "change": "published",
+    "changed_at": "2026-09-09 12:17:16.980000",
+    "observed_at": "2026-09-21 18:44:37.840244"
+   },
+   {
+    "advisory_id": "PYSEC-2026-3984",
+    "change": "published",
+    "changed_at": "2026-09-09 12:17:17.120000",
+    "observed_at": "2026-09-21 18:44:37.840244"
    },
    {
     "advisory_id": "PYSEC-2026-3804",
     "change": "published",
     "changed_at": "2026-09-10 09:44:51.517506",
-    "observed_at": "2026-09-17 17:41:29.049738"
+    "observed_at": "2026-09-21 18:44:37.840244"
    },
    {
     "advisory_id": "PYSEC-2026-3837",
     "change": "published",
     "changed_at": "2026-09-10 09:45:00.699290",
-    "observed_at": "2026-09-17 17:41:29.049738"
+    "observed_at": "2026-09-21 18:44:37.840244"
+   },
+   {
+    "advisory_id": "GHSA-j934-xhv5-fg8f",
+    "change": "published",
+    "changed_at": "2026-09-17 20:32:53",
+    "observed_at": "2026-09-21 18:44:37.840244"
+   },
+   {
+    "advisory_id": "GHSA-gjv8-xp57-g29c",
+    "change": "published",
+    "changed_at": "2026-09-17 20:32:58",
+    "observed_at": "2026-09-21 18:44:37.840244"
+   },
+   {
+    "advisory_id": "GHSA-5p39-cfhj-2xmp",
+    "change": "published",
+    "changed_at": "2026-09-18 17:17:10",
+    "observed_at": "2026-09-21 18:44:37.840244"
+   },
+   {
+    "advisory_id": "GHSA-82r6-8w77-94w6",
+    "change": "published",
+    "changed_at": "2026-09-18 17:17:18",
+    "observed_at": "2026-09-21 18:44:37.840244"
    }
   ],
-  "since_as_of": "2026-09-17 17:41:29.049738",
+  "since_as_of": "2026-09-21 18:44:37.840244",
   "link_suppressed": false,
   "provenance": null,
   "suppression": null,
   "card": "432 findings · 1 check pending · 3 checks not applicable",
-  "block": "SECURITY · commit 7f892a8\n\n  Dependency vulnerabilities\n    432 findings                     osv-scanner 2.5.1 · 2026-09-03\n      GHSA-26jh-r8g2-6fpr  gradio@4.4.0\n      CVE-2024-47871  gradio@4.4.0\n      CVE-2026-4372  transformers@4.30.2\n      CVE-2026-4372  transformers@4.48.2\n      CVE-2026-4372  transformers@4.51.0\n      CVE-2026-4372  transformers@4.46.2\n      CVE-2026-4372  transformers@4.41.2\n      CVE-2026-4372  transformers@4.57.5\n      CVE-2026-67325  gitpython@3.1.45\n      CVE-2026-54279  aiohttp@3.12.15\n      CVE-2026-34514  aiohttp@3.12.15\n      CVE-2026-49476  soupsieve@2.7\n      CVE-2025-66471  urllib3@2.5.0\n      CVE-2024-46455  unstructured@0.10.30\n      CVE-2024-34511  gradio@4.4.0\n      CVE-2026-45134  langchain@0.0.292\n      CVE-2026-45134  langsmith@0.0.92\n      CVE-2025-2953  torch@2.6.0\n      CVE-2025-2953  torch@2.3.0\n      CVE-2025-3933  transformers@4.30.2\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-17\n  PYSEC-2024-115 was WITHDRAWN upstream on 2026-07-09\n  GHSA-3wxw-xv34-2frg was PUBLISHED upstream on 2026-09-08\n  PYSEC-2026-3804 was PUBLISHED upstream on 2026-09-10\n  PYSEC-2026-3837 was PUBLISHED upstream on 2026-09-10\n\n→ How we run these scans (/methodology)"
+  "block": "SECURITY · commit 7f892a8\n\n  Dependency vulnerabilities\n    432 findings                     osv-scanner 2.5.1 · 2026-09-03\n      GHSA-26jh-r8g2-6fpr  gradio@4.4.0\n      CVE-2024-47871  gradio@4.4.0\n      CVE-2026-4372  transformers@4.30.2\n      CVE-2026-4372  transformers@4.48.2\n      CVE-2026-4372  transformers@4.51.0\n      CVE-2026-4372  transformers@4.46.2\n      CVE-2026-4372  transformers@4.41.2\n      CVE-2026-4372  transformers@4.57.5\n      CVE-2026-67325  gitpython@3.1.45\n      CVE-2026-54279  aiohttp@3.12.15\n      CVE-2026-34514  aiohttp@3.12.15\n      CVE-2026-49476  soupsieve@2.7\n      CVE-2025-66471  urllib3@2.5.0\n      CVE-2024-46455  unstructured@0.10.30\n      CVE-2024-34511  gradio@4.4.0\n      CVE-2026-45134  langchain@0.0.292\n      CVE-2026-45134  langsmith@0.0.92\n      CVE-2025-2953  torch@2.6.0\n      CVE-2025-2953  torch@2.3.0\n      CVE-2025-3933  transformers@4.30.2\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-03\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-03\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-21\n  GHSA-3wxw-xv34-2frg was PUBLISHED upstream on 2026-09-08\n  PYSEC-2026-3982 was PUBLISHED upstream on 2026-09-09\n  PYSEC-2026-3983 was PUBLISHED upstream on 2026-09-09\n  PYSEC-2026-3984 was PUBLISHED upstream on 2026-09-09\n  PYSEC-2026-3804 was PUBLISHED upstream on 2026-09-10\n  PYSEC-2026-3837 was PUBLISHED upstream on 2026-09-10\n  GHSA-j934-xhv5-fg8f was PUBLISHED upstream on 2026-09-17\n  GHSA-gjv8-xp57-g29c was PUBLISHED upstream on 2026-09-17\n  GHSA-5p39-cfhj-2xmp was PUBLISHED upstream on 2026-09-18\n  GHSA-82r6-8w77-94w6 was PUBLISHED upstream on 2026-09-18\n\n→ How we run these scans (/methodology)"
  },
  "structure": {
   "state": "done",

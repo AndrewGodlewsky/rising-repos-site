@@ -1,0 +1,269 @@
+{
+ "security": {
+  "repo_id": 1116542,
+  "commit_sha": "9e7273583f83e881e3ec067b523ba88724088d2f",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no lockfile or dependency manifest osv-scanner reads",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no lockfile or dependency manifest osv-scanner reads",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 8,
+    "findings": [
+     {
+      "rule": "dependabot-cooldown",
+      "level": "warning",
+      "file": ".github/dependabot.yml",
+      "line": 3,
+      "message": "insufficient cooldown in Dependabot updates: insufficient implicit default-days (less than 7)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/android.yml",
+      "line": 17,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/android.yml",
+      "line": 17,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/android.yml",
+      "line": 19,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/android.yml",
+      "line": 21,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/build.yml",
+      "line": 22,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/build.yml",
+      "line": 6,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build.yml",
+      "line": 22,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "provenance": null,
+  "suppression": null,
+  "card": "8 findings · 1 check pending · 4 checks not applicable",
+  "block": "SECURITY · commit 9e72735\n\n  Dependency vulnerabilities\n    nothing to check — no lockfile or dependency manifest osv-scanner reads\n\n  Known-malicious packages\n    nothing to check — no lockfile or dependency manifest osv-scanner reads\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    8 findings                       zizmor 1.30.0 · 2026-09-21\n      dependabot-cooldown  .github/dependabot.yml:3\n      artipacked  .github/workflows/android.yml:17\n      unpinned-uses  .github/workflows/android.yml:17\n      unpinned-uses  .github/workflows/android.yml:19\n      unpinned-uses  .github/workflows/android.yml:21\n      artipacked  .github/workflows/build.yml:22\n      excessive-permissions  .github/workflows/build.yml:6\n      unpinned-uses  .github/workflows/build.yml:22\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-21\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "9e7273583f83e881e3ec067b523ba88724088d2f",
+  "built_at": "2026-09-21 18:00:02.903082",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 15959,
+  "edge_count": 33022,
+  "community_count": 805,
+  "extracted_pct": 0.9171461462974548,
+  "subsystems": [
+   {
+    "label": "Core Utility Headers",
+    "size": 245
+   },
+   {
+    "label": "BitTorrent Core Utilities",
+    "size": 226
+   },
+   {
+    "label": "Command Execution",
+    "size": 175
+   },
+   {
+    "label": "DHT Message Tasks",
+    "size": 156
+   },
+   {
+    "label": "HTTP Server Commands",
+    "size": 117
+   },
+   {
+    "label": "Network Socket Address",
+    "size": 114
+   },
+   {
+    "label": "Download Context Metadata",
+    "size": 110
+   },
+   {
+    "label": "Socket Connection Commands",
+    "size": 96
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "fmt()",
+    "degree": 481,
+    "file": "src/fmt.cc"
+   },
+   {
+    "name": "RequestGroup",
+    "degree": 160,
+    "file": "src/RequestGroup.h"
+   },
+   {
+    "name": "MetalinkParserStateMachine",
+    "degree": 125,
+    "file": "src/MetalinkParserStateMachine.h"
+   },
+   {
+    "name": "DefaultBtInteractive",
+    "degree": 103,
+    "file": "src/DefaultBtInteractive.h"
+   },
+   {
+    "name": "RequestGroupMan",
+    "degree": 96,
+    "file": "src/RequestGroupMan.h"
+   },
+   {
+    "name": "DefaultPieceStorage",
+    "degree": 92,
+    "file": "src/DefaultPieceStorage.h"
+   },
+   {
+    "name": "MetalinkParserController",
+    "degree": 78,
+    "file": "src/MetalinkParserController.h"
+   },
+   {
+    "name": "Peer",
+    "degree": 77,
+    "file": "src/Peer.h"
+   },
+   {
+    "name": "DownloadEngine",
+    "degree": 76,
+    "file": "src/DownloadEngine.h"
+   },
+   {
+    "name": "BitfieldMan",
+    "degree": 75,
+    "file": "src/BitfieldMan.h"
+   }
+  ],
+  "lines": [
+   "Structure: 805 subsystems — Core Utility Headers · BitTorrent Core Utilities · Command Execution",
+   "Core: fmt() · RequestGroup · MetalinkParserStateMachine"
+  ],
+  "block": "Code structure (mapped 2026-09-21 · 9e727358 · graphify 0.9.37)\n15,959 concepts · 33,022 connections · 805 subsystems · 92% read directly from source\nSubsystems: Core Utility Headers · BitTorrent Core Utilities · Command Execution · DHT Message Tasks · HTTP Server Commands · Network Socket Address · Download Context Metadata · Socket Connection Commands\nCore abstractions:\n  1. fmt() — 481 connections\n  2. RequestGroup — 160 connections\n  3. MetalinkParserStateMachine — 125 connections\n  4. DefaultBtInteractive — 103 connections\n  5. RequestGroupMan — 96 connections\n  6. DefaultPieceStorage — 92 connections\n  7. MetalinkParserController — 78 connections\n  8. Peer — 77 connections\n  9. DownloadEngine — 76 connections\n  10. BitfieldMan — 75 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
+ }
+}

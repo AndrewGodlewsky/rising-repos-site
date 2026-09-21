@@ -1,0 +1,4879 @@
+{
+ "security": {
+  "repo_id": 175856326,
+  "commit_sha": "3d799132046993eade5a364ddd1e557906854eda",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 424,
+    "findings": [
+     {
+      "id": "CVE-2026-33128",
+      "aliases": [
+       "GHSA-22cc-p3c6-wpvm"
+      ],
+      "package": "h3",
+      "version": "1.13.0",
+      "file": "yarn.lock",
+      "message": "Package 'h3@1.13.0' is vulnerable to 'CVE-2026-33128' (also known as 'GHSA-22cc-p3c6-wpvm')."
+     },
+     {
+      "id": "CVE-2026-33128",
+      "aliases": [
+       "GHSA-22cc-p3c6-wpvm"
+      ],
+      "package": "h3",
+      "version": "1.15.1",
+      "file": "yarn.lock",
+      "message": "Package 'h3@1.15.1' is vulnerable to 'CVE-2026-33128' (also known as 'GHSA-22cc-p3c6-wpvm')."
+     },
+     {
+      "id": "CVE-2026-33896",
+      "aliases": [
+       "GHSA-2328-f5f3-gj25"
+      ],
+      "package": "node-forge",
+      "version": "1.3.1",
+      "file": "yarn.lock",
+      "message": "Package 'node-forge@1.3.1' is vulnerable to 'CVE-2026-33896' (also known as 'GHSA-2328-f5f3-gj25')."
+     },
+     {
+      "id": "CVE-2026-27904",
+      "aliases": [
+       "GHSA-23c5-xmqv-rm74"
+      ],
+      "package": "minimatch",
+      "version": "10.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@10.0.1' is vulnerable to 'CVE-2026-27904' (also known as 'GHSA-23c5-xmqv-rm74')."
+     },
+     {
+      "id": "CVE-2026-27904",
+      "aliases": [
+       "GHSA-23c5-xmqv-rm74"
+      ],
+      "package": "minimatch",
+      "version": "3.1.2",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@3.1.2' is vulnerable to 'CVE-2026-27904' (also known as 'GHSA-23c5-xmqv-rm74')."
+     },
+     {
+      "id": "CVE-2026-27904",
+      "aliases": [
+       "GHSA-23c5-xmqv-rm74"
+      ],
+      "package": "minimatch",
+      "version": "5.1.6",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@5.1.6' is vulnerable to 'CVE-2026-27904' (also known as 'GHSA-23c5-xmqv-rm74')."
+     },
+     {
+      "id": "CVE-2026-27904",
+      "aliases": [
+       "GHSA-23c5-xmqv-rm74"
+      ],
+      "package": "minimatch",
+      "version": "9.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@9.0.5' is vulnerable to 'CVE-2026-27904' (also known as 'GHSA-23c5-xmqv-rm74')."
+     },
+     {
+      "id": "CVE-2026-59873",
+      "aliases": [
+       "GHSA-23hp-3jrh-7fpw"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-59873' (also known as 'GHSA-23hp-3jrh-7fpw')."
+     },
+     {
+      "id": "CVE-2026-59873",
+      "aliases": [
+       "GHSA-23hp-3jrh-7fpw"
+      ],
+      "package": "tar",
+      "version": "7.4.3",
+      "file": "yarn.lock",
+      "message": "Package 'tar@7.4.3' is vulnerable to 'CVE-2026-59873' (also known as 'GHSA-23hp-3jrh-7fpw')."
+     },
+     {
+      "id": "CVE-2026-32141",
+      "aliases": [
+       "GHSA-25h7-pfq9-p65f"
+      ],
+      "package": "flatted",
+      "version": "3.3.2",
+      "file": "yarn.lock",
+      "message": "Package 'flatted@3.3.2' is vulnerable to 'CVE-2026-32141' (also known as 'GHSA-25h7-pfq9-p65f')."
+     },
+     {
+      "id": "CVE-2026-71319",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@nuxt/devtools@1.7.0' is vulnerable to 'CVE-2026-71319' (also known as 'GHSA-279x-mwfv-vcqv')."
+     },
+     {
+      "id": "CVE-2026-83608",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-83608' (also known as 'GHSA-27p8-2357-5qqv')."
+     },
+     {
+      "id": "CVE-2026-84375",
+      "aliases": [
+       "GHSA-2883-xcg3-v3hh"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.0",
+      "file": "yarn.lock",
+      "message": "Package 'js-yaml@4.1.0' is vulnerable to 'CVE-2026-84375' (also known as 'GHSA-2883-xcg3-v3hh')."
+     },
+     {
+      "id": "CVE-2026-67214",
+      "aliases": [
+       "GHSA-28wg-ghj8-5hjv"
+      ],
+      "package": "nanoid",
+      "version": "3.3.8",
+      "file": "yarn.lock",
+      "message": "Package 'nanoid@3.3.8' is vulnerable to 'CVE-2026-67214' (also known as 'GHSA-28wg-ghj8-5hjv')."
+     },
+     {
+      "id": "CVE-2026-67214",
+      "aliases": [
+       "GHSA-28wg-ghj8-5hjv"
+      ],
+      "package": "nanoid",
+      "version": "5.0.9",
+      "file": "yarn.lock",
+      "message": "Package 'nanoid@5.0.9' is vulnerable to 'CVE-2026-67214' (also known as 'GHSA-28wg-ghj8-5hjv')."
+     },
+     {
+      "id": "CVE-2025-69873",
+      "aliases": [
+       "GHSA-2g4f-4pwh-qvx6"
+      ],
+      "package": "ajv",
+      "version": "6.12.6",
+      "file": "yarn.lock",
+      "message": "Package 'ajv@6.12.6' is vulnerable to 'CVE-2025-69873' (also known as 'GHSA-2g4f-4pwh-qvx6')."
+     },
+     {
+      "id": "CVE-2025-69873",
+      "aliases": [
+       "GHSA-2g4f-4pwh-qvx6"
+      ],
+      "package": "ajv",
+      "version": "8.13.0",
+      "file": "yarn.lock",
+      "message": "Package 'ajv@8.13.0' is vulnerable to 'CVE-2025-69873' (also known as 'GHSA-2g4f-4pwh-qvx6')."
+     },
+     {
+      "id": "CVE-2025-69873",
+      "aliases": [
+       "GHSA-2g4f-4pwh-qvx6"
+      ],
+      "package": "ajv",
+      "version": "8.17.1",
+      "file": "yarn.lock",
+      "message": "Package 'ajv@8.17.1' is vulnerable to 'CVE-2025-69873' (also known as 'GHSA-2g4f-4pwh-qvx6')."
+     },
+     {
+      "id": "CVE-2026-40181",
+      "aliases": [
+       "GHSA-2j2x-hqr9-3h42"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2026-40181' (also known as 'GHSA-2j2x-hqr9-3h42')."
+     },
+     {
+      "id": "CVE-2026-1525",
+      "aliases": [
+       "GHSA-2mjp-6q6p-2qxm"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2026-1525' (also known as 'GHSA-2mjp-6q6p-2qxm')."
+     },
+     {
+      "id": "CVE-2026-73650",
+      "aliases": [
+       "GHSA-2p49-hgcm-8545"
+      ],
+      "package": "svgo",
+      "version": "3.3.2",
+      "file": "yarn.lock",
+      "message": "Package 'svgo@3.3.2' is vulnerable to 'CVE-2026-73650' (also known as 'GHSA-2p49-hgcm-8545')."
+     },
+     {
+      "id": "CVE-2026-41673",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-41673' (also known as 'GHSA-2v35-w6hq-6mfw')."
+     },
+     {
+      "id": "CVE-2026-67213",
+      "aliases": [
+       "GHSA-2v37-7h3g-55p8"
+      ],
+      "package": "nanoid",
+      "version": "3.3.8",
+      "file": "yarn.lock",
+      "message": "Package 'nanoid@3.3.8' is vulnerable to 'CVE-2026-67213' (also known as 'GHSA-2v37-7h3g-55p8')."
+     },
+     {
+      "id": "CVE-2026-67213",
+      "aliases": [
+       "GHSA-2v37-7h3g-55p8"
+      ],
+      "package": "nanoid",
+      "version": "5.0.9",
+      "file": "yarn.lock",
+      "message": "Package 'nanoid@5.0.9' is vulnerable to 'CVE-2026-67213' (also known as 'GHSA-2v37-7h3g-55p8')."
+     },
+     {
+      "id": "CVE-2026-71436",
+      "aliases": [
+       "GHSA-2v8p-3f2j-5mp7"
+      ],
+      "package": "mermaid",
+      "version": "11.5.0",
+      "file": "yarn.lock",
+      "message": "Package 'mermaid@11.5.0' is vulnerable to 'CVE-2026-71436' (also known as 'GHSA-2v8p-3f2j-5mp7')."
+     },
+     {
+      "id": "CVE-2026-22029",
+      "aliases": [
+       "GHSA-2w69-qvjg-hvjx"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2026-22029' (also known as 'GHSA-2w69-qvjg-hvjx')."
+     },
+     {
+      "id": "CVE-2026-85062",
+      "aliases": [
+       "GHSA-2wm5-q62r-hmrv"
+      ],
+      "package": "colord",
+      "version": "2.9.3",
+      "file": "yarn.lock",
+      "message": "Package 'colord@2.9.3' is vulnerable to 'CVE-2026-85062' (also known as 'GHSA-2wm5-q62r-hmrv')."
+     },
+     {
+      "id": "CVE-2026-53666",
+      "aliases": [
+       "GHSA-337j-9hxr-rhxg"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2026-53666' (also known as 'GHSA-337j-9hxr-rhxg')."
+     },
+     {
+      "id": "GHSA-33hq-fvwr-56pm",
+      "aliases": [],
+      "package": "devalue",
+      "version": "5.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'devalue@5.1.1' is vulnerable to 'GHSA-33hq-fvwr-56pm'."
+     },
+     {
+      "id": "CVE-2026-24842",
+      "aliases": [
+       "GHSA-34x7-hfp2-rc4v"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-24842' (also known as 'GHSA-34x7-hfp2-rc4v')."
+     },
+     {
+      "id": "CVE-2026-24842",
+      "aliases": [
+       "GHSA-34x7-hfp2-rc4v"
+      ],
+      "package": "tar",
+      "version": "7.4.3",
+      "file": "yarn.lock",
+      "message": "Package 'tar@7.4.3' is vulnerable to 'CVE-2026-24842' (also known as 'GHSA-34x7-hfp2-rc4v')."
+     },
+     {
+      "id": "CVE-2025-32395",
+      "aliases": [
+       "GHSA-356w-63v5-8wf4"
+      ],
+      "package": "vite",
+      "version": "5.4.14",
+      "file": "yarn.lock",
+      "message": "Package 'vite@5.4.14' is vulnerable to 'CVE-2025-32395' (also known as 'GHSA-356w-63v5-8wf4')."
+     },
+     {
+      "id": "CVE-2025-32395",
+      "aliases": [
+       "GHSA-356w-63v5-8wf4"
+      ],
+      "package": "vite",
+      "version": "6.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.1.1' is vulnerable to 'CVE-2025-32395' (also known as 'GHSA-356w-63v5-8wf4')."
+     },
+     {
+      "id": "CVE-2025-32395",
+      "aliases": [
+       "GHSA-356w-63v5-8wf4"
+      ],
+      "package": "vite",
+      "version": "6.2.2",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.2.2' is vulnerable to 'CVE-2025-32395' (also known as 'GHSA-356w-63v5-8wf4')."
+     },
+     {
+      "id": "CVE-2026-44494",
+      "aliases": [
+       "GHSA-35jp-ww65-95wh"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-44494' (also known as 'GHSA-35jp-ww65-95wh')."
+     },
+     {
+      "id": "CVE-2026-6733",
+      "aliases": [
+       "GHSA-35p6-xmwp-9g52"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2026-6733' (also known as 'GHSA-35p6-xmwp-9g52')."
+     },
+     {
+      "id": "CVE-2026-45134",
+      "aliases": [],
+      "package": "langsmith",
+      "version": "0.2.11",
+      "file": "yarn.lock",
+      "message": "Package 'langsmith@0.2.11' is vulnerable to 'CVE-2026-45134' (also known as 'PYSEC-2026-2555', 'PYSEC-2026-2560', 'PYSEC-2026-2582', 'GHSA-3644-q5cj-c5c7')."
+     },
+     {
+      "id": "CVE-2026-45134",
+      "aliases": [],
+      "package": "langsmith",
+      "version": "0.3.10",
+      "file": "yarn.lock",
+      "message": "Package 'langsmith@0.3.10' is vulnerable to 'CVE-2026-45134' (also known as 'PYSEC-2026-2555', 'PYSEC-2026-2560', 'PYSEC-2026-2582', 'GHSA-3644-q5cj-c5c7')."
+     },
+     {
+      "id": "CVE-2024-45296",
+      "aliases": [],
+      "package": "path-to-regexp",
+      "version": "0.1.12",
+      "file": "yarn.lock",
+      "message": "Package 'path-to-regexp@0.1.12' is vulnerable to 'CVE-2024-45296' (also known as 'CVE-2026-4867', 'GHSA-37ch-88jc-xwx2', 'GHSA-9wv6-86v2-598j')."
+     },
+     {
+      "id": "CVE-2026-13311",
+      "aliases": [
+       "GHSA-395f-4hp3-45gv"
+      ],
+      "package": "shell-quote",
+      "version": "1.8.2",
+      "file": "yarn.lock",
+      "message": "Package 'shell-quote@1.8.2' is vulnerable to 'CVE-2026-13311' (also known as 'GHSA-395f-4hp3-45gv')."
+     },
+     {
+      "id": "CVE-2026-65903",
+      "aliases": [
+       "GHSA-39q2-94rc-95cp"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-65903' (also known as 'GHSA-39q2-94rc-95cp')."
+     },
+     {
+      "id": "CVE-2026-34776",
+      "aliases": [
+       "GHSA-3c8v-cfp5-9885"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34776' (also known as 'GHSA-3c8v-cfp5-9885')."
+     },
+     {
+      "id": "CVE-2025-59057",
+      "aliases": [
+       "GHSA-3cgp-3xvw-98x8"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2025-59057' (also known as 'GHSA-3cgp-3xvw-98x8')."
+     },
+     {
+      "id": "CVE-2026-44495",
+      "aliases": [
+       "GHSA-3g43-6gmg-66jw"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-44495' (also known as 'GHSA-3g43-6gmg-66jw')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.11",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@1.1.11' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2025-62718",
+      "aliases": [
+       "GHSA-3p68-rc4w-qgx5"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2025-62718' (also known as 'GHSA-3p68-rc4w-qgx5')."
+     },
+     {
+      "id": "CVE-2025-2792",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@mozilla/readability@0.5.0' is vulnerable to 'CVE-2025-2792' (also known as 'GHSA-3p6v-hrg8-8qj7')."
+     },
+     {
+      "id": "CVE-2026-26996",
+      "aliases": [
+       "GHSA-3ppc-4f35-3m26"
+      ],
+      "package": "minimatch",
+      "version": "10.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@10.0.1' is vulnerable to 'CVE-2026-26996' (also known as 'GHSA-3ppc-4f35-3m26')."
+     },
+     {
+      "id": "CVE-2026-26996",
+      "aliases": [
+       "GHSA-3ppc-4f35-3m26"
+      ],
+      "package": "minimatch",
+      "version": "3.1.2",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@3.1.2' is vulnerable to 'CVE-2026-26996' (also known as 'GHSA-3ppc-4f35-3m26')."
+     },
+     {
+      "id": "CVE-2026-26996",
+      "aliases": [
+       "GHSA-3ppc-4f35-3m26"
+      ],
+      "package": "minimatch",
+      "version": "5.1.6",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@5.1.6' is vulnerable to 'CVE-2026-26996' (also known as 'GHSA-3ppc-4f35-3m26')."
+     },
+     {
+      "id": "CVE-2026-26996",
+      "aliases": [
+       "GHSA-3ppc-4f35-3m26"
+      ],
+      "package": "minimatch",
+      "version": "9.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@9.0.5' is vulnerable to 'CVE-2026-26996' (also known as 'GHSA-3ppc-4f35-3m26')."
+     },
+     {
+      "id": "CVE-2026-71437",
+      "aliases": [
+       "GHSA-3rrr-jr9j-h3q3"
+      ],
+      "package": "mermaid",
+      "version": "11.5.0",
+      "file": "yarn.lock",
+      "message": "Package 'mermaid@11.5.0' is vulnerable to 'CVE-2026-71437' (also known as 'GHSA-3rrr-jr9j-h3q3')."
+     },
+     {
+      "id": "CVE-2026-33672",
+      "aliases": [
+       "GHSA-3v7f-55p6-f55p"
+      ],
+      "package": "picomatch",
+      "version": "2.3.1",
+      "file": "yarn.lock",
+      "message": "Package 'picomatch@2.3.1' is vulnerable to 'CVE-2026-33672' (also known as 'GHSA-3v7f-55p6-f55p')."
+     },
+     {
+      "id": "CVE-2026-33672",
+      "aliases": [
+       "GHSA-3v7f-55p6-f55p"
+      ],
+      "package": "picomatch",
+      "version": "4.0.2",
+      "file": "yarn.lock",
+      "message": "Package 'picomatch@4.0.2' is vulnerable to 'CVE-2026-33672' (also known as 'GHSA-3v7f-55p6-f55p')."
+     },
+     {
+      "id": "CVE-2026-42044",
+      "aliases": [
+       "GHSA-3w6x-2g7m-8v23"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-42044' (also known as 'GHSA-3w6x-2g7m-8v23')."
+     },
+     {
+      "id": "CVE-2026-67313",
+      "aliases": [
+       "GHSA-42h9-826w-cgv3"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-67313' (also known as 'GHSA-42h9-826w-cgv3')."
+     },
+     {
+      "id": "CVE-2026-25639",
+      "aliases": [
+       "GHSA-43fc-jf86-j433"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-25639' (also known as 'GHSA-43fc-jf86-j433')."
+     },
+     {
+      "id": "CVE-2026-42037",
+      "aliases": [
+       "GHSA-445q-vr5w-6q77"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-42037' (also known as 'GHSA-445q-vr5w-6q77')."
+     },
+     {
+      "id": "CVE-2026-33532",
+      "aliases": [
+       "GHSA-48c2-rrv3-qjmp"
+      ],
+      "package": "yaml",
+      "version": "2.6.1",
+      "file": "yarn.lock",
+      "message": "Package 'yaml@2.6.1' is vulnerable to 'CVE-2026-33532' (also known as 'GHSA-48c2-rrv3-qjmp')."
+     },
+     {
+      "id": "CVE-2026-33532",
+      "aliases": [
+       "GHSA-48c2-rrv3-qjmp"
+      ],
+      "package": "yaml",
+      "version": "2.7.0",
+      "file": "yarn.lock",
+      "message": "Package 'yaml@2.7.0' is vulnerable to 'CVE-2026-33532' (also known as 'GHSA-48c2-rrv3-qjmp')."
+     },
+     {
+      "id": "CVE-2026-71318",
+      "aliases": [
+       "GHSA-48hr-524c-v5w3"
+      ],
+      "package": "nuxt",
+      "version": "3.15.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt@3.15.4' is vulnerable to 'CVE-2026-71318' (also known as 'GHSA-48hr-524c-v5w3')."
+     },
+     {
+      "id": "CVE-2026-1527",
+      "aliases": [
+       "GHSA-4992-7rv2-5pvq"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2026-1527' (also known as 'GHSA-4992-7rv2-5pvq')."
+     },
+     {
+      "id": "CVE-2026-42211",
+      "aliases": [
+       "GHSA-49rj-9fvp-4h2h"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2026-42211' (also known as 'GHSA-49rj-9fvp-4h2h')."
+     },
+     {
+      "id": "CVE-2026-13676",
+      "aliases": [
+       "GHSA-4c8g-83qw-93j6"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.3",
+      "file": "yarn.lock",
+      "message": "Package 'fast-uri@3.0.3' is vulnerable to 'CVE-2026-13676' (also known as 'GHSA-4c8g-83qw-93j6')."
+     },
+     {
+      "id": "CVE-2026-70609",
+      "aliases": [
+       "GHSA-4f78-qhmw-8j8m"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70609' (also known as 'GHSA-4f78-qhmw-8j8m')."
+     },
+     {
+      "id": "CVE-2025-66400",
+      "aliases": [
+       "GHSA-4fh9-h7wg-q85m"
+      ],
+      "package": "mdast-util-to-hast",
+      "version": "13.2.0",
+      "file": "yarn.lock",
+      "message": "Package 'mdast-util-to-hast@13.2.0' is vulnerable to 'CVE-2025-66400' (also known as 'GHSA-4fh9-h7wg-q85m')."
+     },
+     {
+      "id": "CVE-2025-58754",
+      "aliases": [
+       "GHSA-4hjh-wcwx-xvwj"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2025-58754' (also known as 'GHSA-4hjh-wcwx-xvwj')."
+     },
+     {
+      "id": "CVE-2026-86252",
+      "aliases": [
+       "GHSA-4hxc-9384-m385"
+      ],
+      "package": "h3",
+      "version": "1.13.0",
+      "file": "yarn.lock",
+      "message": "Package 'h3@1.13.0' is vulnerable to 'CVE-2026-86252' (also known as 'GHSA-4hxc-9384-m385')."
+     },
+     {
+      "id": "CVE-2026-86252",
+      "aliases": [
+       "GHSA-4hxc-9384-m385"
+      ],
+      "package": "h3",
+      "version": "1.15.1",
+      "file": "yarn.lock",
+      "message": "Package 'h3@1.15.1' is vulnerable to 'CVE-2026-86252' (also known as 'GHSA-4hxc-9384-m385')."
+     },
+     {
+      "id": "CVE-2026-82417",
+      "aliases": [
+       "GHSA-4mjr-xmp4-gh2g"
+      ],
+      "package": "qs",
+      "version": "6.13.0",
+      "file": "yarn.lock",
+      "message": "Package 'qs@6.13.0' is vulnerable to 'CVE-2026-82417' (also known as 'GHSA-4mjr-xmp4-gh2g')."
+     },
+     {
+      "id": "CVE-2026-34767",
+      "aliases": [
+       "GHSA-4p4r-m79c-wq3v"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34767' (also known as 'GHSA-4p4r-m79c-wq3v')."
+     },
+     {
+      "id": "CVE-2025-31125",
+      "aliases": [
+       "GHSA-4r4m-qw57-chr8"
+      ],
+      "package": "vite",
+      "version": "5.4.14",
+      "file": "yarn.lock",
+      "message": "Package 'vite@5.4.14' is vulnerable to 'CVE-2025-31125' (also known as 'GHSA-4r4m-qw57-chr8')."
+     },
+     {
+      "id": "CVE-2025-31125",
+      "aliases": [
+       "GHSA-4r4m-qw57-chr8"
+      ],
+      "package": "vite",
+      "version": "6.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.1.1' is vulnerable to 'CVE-2025-31125' (also known as 'GHSA-4r4m-qw57-chr8')."
+     },
+     {
+      "id": "CVE-2025-31125",
+      "aliases": [
+       "GHSA-4r4m-qw57-chr8"
+      ],
+      "package": "vite",
+      "version": "6.2.2",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.2.2' is vulnerable to 'CVE-2025-31125' (also known as 'GHSA-4r4m-qw57-chr8')."
+     },
+     {
+      "id": "CVE-2026-84369",
+      "aliases": [
+       "GHSA-4vpr-x523-8j87"
+      ],
+      "package": "svgo",
+      "version": "3.3.2",
+      "file": "yarn.lock",
+      "message": "Package 'svgo@3.3.2' is vulnerable to 'CVE-2026-84369' (also known as 'GHSA-4vpr-x523-8j87')."
+     },
+     {
+      "id": "CVE-2026-83605",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-83605' (also known as 'GHSA-4w3w-2rp5-g8jm')."
+     },
+     {
+      "id": "CVE-2026-39365",
+      "aliases": [
+       "GHSA-4w7w-66w2-5vf9"
+      ],
+      "package": "vite",
+      "version": "5.4.14",
+      "file": "yarn.lock",
+      "message": "Package 'vite@5.4.14' is vulnerable to 'CVE-2026-39365' (also known as 'GHSA-4w7w-66w2-5vf9')."
+     },
+     {
+      "id": "CVE-2026-39365",
+      "aliases": [
+       "GHSA-4w7w-66w2-5vf9"
+      ],
+      "package": "vite",
+      "version": "6.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.1.1' is vulnerable to 'CVE-2026-39365' (also known as 'GHSA-4w7w-66w2-5vf9')."
+     },
+     {
+      "id": "CVE-2026-39365",
+      "aliases": [
+       "GHSA-4w7w-66w2-5vf9"
+      ],
+      "package": "vite",
+      "version": "6.2.2",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.2.2' is vulnerable to 'CVE-2026-39365' (also known as 'GHSA-4w7w-66w2-5vf9')."
+     },
+     {
+      "id": "CVE-2026-49356",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@babel/core@7.26.0' is vulnerable to 'CVE-2026-49356' (also known as 'GHSA-4x5r-pxfx-6jf8')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.0",
+      "file": "yarn.lock",
+      "message": "Package 'js-yaml@4.1.0' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2025-54798",
+      "aliases": [
+       "GHSA-52f5-9888-hmc6"
+      ],
+      "package": "tmp",
+      "version": "0.2.3",
+      "file": "yarn.lock",
+      "message": "Package 'tmp@0.2.3' is vulnerable to 'CVE-2025-54798' (also known as 'GHSA-52f5-9888-hmc6')."
+     },
+     {
+      "id": "CVE-2026-34774",
+      "aliases": [
+       "GHSA-532v-xpq5-8h95"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34774' (also known as 'GHSA-532v-xpq5-8h95')."
+     },
+     {
+      "id": "CVE-2026-31873",
+      "aliases": [
+       "GHSA-5339-hvwr-7582"
+      ],
+      "package": "unhead",
+      "version": "1.11.19",
+      "file": "yarn.lock",
+      "message": "Package 'unhead@1.11.19' is vulnerable to 'CVE-2026-31873' (also known as 'GHSA-5339-hvwr-7582')."
+     },
+     {
+      "id": "CVE-2025-66031",
+      "aliases": [
+       "GHSA-554w-wpv2-vw27"
+      ],
+      "package": "node-forge",
+      "version": "1.3.1",
+      "file": "yarn.lock",
+      "message": "Package 'node-forge@1.3.1' is vulnerable to 'CVE-2025-66031' (also known as 'GHSA-554w-wpv2-vw27')."
+     },
+     {
+      "id": "CVE-2026-75838",
+      "aliases": [
+       "GHSA-55q2-fjhq-7xh7"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-75838' (also known as 'GHSA-55q2-fjhq-7xh7')."
+     },
+     {
+      "id": "CVE-2026-45736",
+      "aliases": [
+       "GHSA-58qx-3vcg-4xpx"
+      ],
+      "package": "ws",
+      "version": "8.18.0",
+      "file": "yarn.lock",
+      "message": "Package 'ws@8.18.0' is vulnerable to 'CVE-2026-45736' (also known as 'GHSA-58qx-3vcg-4xpx')."
+     },
+     {
+      "id": "CVE-2026-45736",
+      "aliases": [
+       "GHSA-58qx-3vcg-4xpx"
+      ],
+      "package": "ws",
+      "version": "8.18.1",
+      "file": "yarn.lock",
+      "message": "Package 'ws@8.18.1' is vulnerable to 'CVE-2026-45736' (also known as 'GHSA-58qx-3vcg-4xpx')."
+     },
+     {
+      "id": "GHSA-5c6j-r48x-rmvq",
+      "aliases": [],
+      "package": "serialize-javascript",
+      "version": "6.0.2",
+      "file": "yarn.lock",
+      "message": "Package 'serialize-javascript@6.0.2' is vulnerable to 'GHSA-5c6j-r48x-rmvq'."
+     },
+     {
+      "id": "CVE-2026-70603",
+      "aliases": [
+       "GHSA-5c9j-mhmv-5xgx"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70603' (also known as 'GHSA-5c9j-mhmv-5xgx')."
+     },
+     {
+      "id": "CVE-2026-42034",
+      "aliases": [
+       "GHSA-5c9x-8gcm-mpgx"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-42034' (also known as 'GHSA-5c9x-8gcm-mpgx')."
+     },
+     {
+      "id": "CVE-2025-12816",
+      "aliases": [
+       "GHSA-5gfm-wpxj-wjgq"
+      ],
+      "package": "node-forge",
+      "version": "1.3.1",
+      "file": "yarn.lock",
+      "message": "Package 'node-forge@1.3.1' is vulnerable to 'CVE-2025-12816' (also known as 'GHSA-5gfm-wpxj-wjgq')."
+     },
+     {
+      "id": "CVE-2025-64756",
+      "aliases": [
+       "GHSA-5j98-mcp5-4vw2"
+      ],
+      "package": "glob",
+      "version": "10.4.5",
+      "file": "yarn.lock",
+      "message": "Package 'glob@10.4.5' is vulnerable to 'CVE-2025-64756' (also known as 'GHSA-5j98-mcp5-4vw2')."
+     },
+     {
+      "id": "CVE-2025-64756",
+      "aliases": [
+       "GHSA-5j98-mcp5-4vw2"
+      ],
+      "package": "glob",
+      "version": "11.0.0",
+      "file": "yarn.lock",
+      "message": "Package 'glob@11.0.0' is vulnerable to 'CVE-2025-64756' (also known as 'GHSA-5j98-mcp5-4vw2')."
+     },
+     {
+      "id": "CVE-2026-33891",
+      "aliases": [
+       "GHSA-5m6q-g25r-mvwx"
+      ],
+      "package": "node-forge",
+      "version": "1.3.1",
+      "file": "yarn.lock",
+      "message": "Package 'node-forge@1.3.1' is vulnerable to 'CVE-2026-33891' (also known as 'GHSA-5m6q-g25r-mvwx')."
+     },
+     {
+      "id": "CVE-2025-71329",
+      "aliases": [
+       "GHSA-5p2g-fcmc-qvqq"
+      ],
+      "package": "image-size",
+      "version": "0.7.5",
+      "file": "yarn.lock",
+      "message": "Package 'image-size@0.7.5' is vulnerable to 'CVE-2025-71329' (also known as 'GHSA-5p2g-fcmc-qvqq')."
+     },
+     {
+      "id": "CVE-2025-71329",
+      "aliases": [
+       "GHSA-5p2g-fcmc-qvqq"
+      ],
+      "package": "image-size",
+      "version": "1.2.0",
+      "file": "yarn.lock",
+      "message": "Package 'image-size@1.2.0' is vulnerable to 'CVE-2025-71329' (also known as 'GHSA-5p2g-fcmc-qvqq')."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "4.1.0",
+      "file": "yarn.lock",
+      "message": "Package 'js-yaml@4.1.0' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "CVE-2026-27699",
+      "aliases": [
+       "GHSA-5rq4-664w-9x2c"
+      ],
+      "package": "basic-ftp",
+      "version": "5.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'basic-ftp@5.0.5' is vulnerable to 'CVE-2026-27699' (also known as 'GHSA-5rq4-664w-9x2c')."
+     },
+     {
+      "id": "CVE-2026-34779",
+      "aliases": [
+       "GHSA-5rqw-r77c-jp79"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34779' (also known as 'GHSA-5rqw-r77c-jp79')."
+     },
+     {
+      "id": "CVE-2026-31808",
+      "aliases": [
+       "GHSA-5v7r-6r5c-r473"
+      ],
+      "package": "file-type",
+      "version": "19.6.0",
+      "file": "yarn.lock",
+      "message": "Package 'file-type@19.6.0' is vulnerable to 'CVE-2026-31808' (also known as 'GHSA-5v7r-6r5c-r473')."
+     },
+     {
+      "id": "CVE-2026-44373",
+      "aliases": [
+       "GHSA-5w89-w975-hf9q"
+      ],
+      "package": "nitropack",
+      "version": "2.10.4",
+      "file": "yarn.lock",
+      "message": "Package 'nitropack@2.10.4' is vulnerable to 'CVE-2026-44373' (also known as 'GHSA-5w89-w975-hf9q')."
+     },
+     {
+      "id": "CVE-2026-42039",
+      "aliases": [
+       "GHSA-62hf-57xw-28j9"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-42039' (also known as 'GHSA-62hf-57xw-28j9')."
+     },
+     {
+      "id": "CVE-2026-30951",
+      "aliases": [
+       "GHSA-6457-6jrx-69cr"
+      ],
+      "package": "sequelize",
+      "version": "6.37.6",
+      "file": "yarn.lock",
+      "message": "Package 'sequelize@6.37.6' is vulnerable to 'CVE-2026-30951' (also known as 'GHSA-6457-6jrx-69cr')."
+     },
+     {
+      "id": "GHSA-6475-r3vj-m8vf",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@smithy/config-resolver@3.0.12' is vulnerable to 'GHSA-6475-r3vj-m8vf'."
+     },
+     {
+      "id": "CVE-2025-66030",
+      "aliases": [
+       "GHSA-65ch-62r8-g69g"
+      ],
+      "package": "node-forge",
+      "version": "1.3.1",
+      "file": "yarn.lock",
+      "message": "Package 'node-forge@1.3.1' is vulnerable to 'CVE-2025-66030' (also known as 'GHSA-65ch-62r8-g69g')."
+     },
+     {
+      "id": "GHSA-67mh-4wv8-2f99",
+      "aliases": [],
+      "package": "esbuild",
+      "version": "0.21.5",
+      "file": "yarn.lock",
+      "message": "Package 'esbuild@0.21.5' is vulnerable to 'GHSA-67mh-4wv8-2f99'."
+     },
+     {
+      "id": "GHSA-67mh-4wv8-2f99",
+      "aliases": [],
+      "package": "esbuild",
+      "version": "0.24.0",
+      "file": "yarn.lock",
+      "message": "Package 'esbuild@0.24.0' is vulnerable to 'GHSA-67mh-4wv8-2f99'."
+     },
+     {
+      "id": "GHSA-67mh-4wv8-2f99",
+      "aliases": [],
+      "package": "esbuild",
+      "version": "0.24.2",
+      "file": "yarn.lock",
+      "message": "Package 'esbuild@0.24.2' is vulnerable to 'GHSA-67mh-4wv8-2f99'."
+     },
+     {
+      "id": "CVE-2026-42035",
+      "aliases": [
+       "GHSA-6chq-wfr3-2hj9"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-42035' (also known as 'GHSA-6chq-wfr3-2hj9')."
+     },
+     {
+      "id": "CVE-2026-45623",
+      "aliases": [
+       "GHSA-6g55-p6wh-862q"
+      ],
+      "package": "postcss",
+      "version": "8.4.49",
+      "file": "yarn.lock",
+      "message": "Package 'postcss@8.4.49' is vulnerable to 'CVE-2026-45623' (also known as 'GHSA-6g55-p6wh-862q')."
+     },
+     {
+      "id": "CVE-2026-45623",
+      "aliases": [
+       "GHSA-6g55-p6wh-862q"
+      ],
+      "package": "postcss",
+      "version": "8.5.1",
+      "file": "yarn.lock",
+      "message": "Package 'postcss@8.5.1' is vulnerable to 'CVE-2026-45623' (also known as 'GHSA-6g55-p6wh-862q')."
+     },
+     {
+      "id": "CVE-2026-45623",
+      "aliases": [
+       "GHSA-6g55-p6wh-862q"
+      ],
+      "package": "postcss",
+      "version": "8.5.3",
+      "file": "yarn.lock",
+      "message": "Package 'postcss@8.5.3' is vulnerable to 'CVE-2026-45623' (also known as 'GHSA-6g55-p6wh-862q')."
+     },
+     {
+      "id": "CVE-2026-83610",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-83610' (also known as 'GHSA-6gmq-8vp8-gcm6')."
+     },
+     {
+      "id": "CVE-2026-83611",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-83611' (also known as 'GHSA-6h8r-xr42-gp59')."
+     },
+     {
+      "id": "CVE-2026-41150",
+      "aliases": [
+       "GHSA-6m6c-36f7-fhxh"
+      ],
+      "package": "mermaid",
+      "version": "11.5.0",
+      "file": "yarn.lock",
+      "message": "Package 'mermaid@11.5.0' is vulnerable to 'CVE-2026-41150' (also known as 'GHSA-6m6c-36f7-fhxh')."
+     },
+     {
+      "id": "CVE-2025-15284",
+      "aliases": [
+       "GHSA-6rw7-vpxm-498p"
+      ],
+      "package": "qs",
+      "version": "6.13.0",
+      "file": "yarn.lock",
+      "message": "Package 'qs@6.13.0' is vulnerable to 'CVE-2025-15284' (also known as 'GHSA-6rw7-vpxm-498p')."
+     },
+     {
+      "id": "GHSA-6v7q-wjvx-w8wg",
+      "aliases": [],
+      "package": "basic-ftp",
+      "version": "5.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'basic-ftp@5.0.5' is vulnerable to 'GHSA-6v7q-wjvx-w8wg'."
+     },
+     {
+      "id": "CVE-2026-50159",
+      "aliases": [
+       "GHSA-6x64-9x62-f2gx"
+      ],
+      "package": "mermaid",
+      "version": "11.5.0",
+      "file": "yarn.lock",
+      "message": "Package 'mermaid@11.5.0' is vulnerable to 'CVE-2026-50159' (also known as 'GHSA-6x64-9x62-f2gx')."
+     },
+     {
+      "id": "CVE-2026-86251",
+      "aliases": [
+       "GHSA-72gr-qfp7-vwhw"
+      ],
+      "package": "h3",
+      "version": "1.13.0",
+      "file": "yarn.lock",
+      "message": "Package 'h3@1.13.0' is vulnerable to 'CVE-2026-86251' (also known as 'GHSA-72gr-qfp7-vwhw')."
+     },
+     {
+      "id": "CVE-2026-86251",
+      "aliases": [
+       "GHSA-72gr-qfp7-vwhw"
+      ],
+      "package": "h3",
+      "version": "1.15.1",
+      "file": "yarn.lock",
+      "message": "Package 'h3@1.15.1' is vulnerable to 'CVE-2026-86251' (also known as 'GHSA-72gr-qfp7-vwhw')."
+     },
+     {
+      "id": "CVE-2026-35209",
+      "aliases": [
+       "GHSA-737v-mqg7-c878"
+      ],
+      "package": "defu",
+      "version": "6.1.4",
+      "file": "yarn.lock",
+      "message": "Package 'defu@6.1.4' is vulnerable to 'CVE-2026-35209' (also known as 'GHSA-737v-mqg7-c878')."
+     },
+     {
+      "id": "CVE-2026-24001",
+      "aliases": [
+       "GHSA-73rr-hh4g-fpgx"
+      ],
+      "package": "diff",
+      "version": "4.0.2",
+      "file": "yarn.lock",
+      "message": "Package 'diff@4.0.2' is vulnerable to 'CVE-2026-24001' (also known as 'GHSA-73rr-hh4g-fpgx')."
+     },
+     {
+      "id": "CVE-2026-24001",
+      "aliases": [
+       "GHSA-73rr-hh4g-fpgx"
+      ],
+      "package": "diff",
+      "version": "7.0.0",
+      "file": "yarn.lock",
+      "message": "Package 'diff@7.0.0' is vulnerable to 'CVE-2026-24001' (also known as 'GHSA-73rr-hh4g-fpgx')."
+     },
+     {
+      "id": "CVE-2026-73088",
+      "aliases": [
+       "GHSA-73wf-gq98-2v4g"
+      ],
+      "package": "browserslist",
+      "version": "4.24.2",
+      "file": "yarn.lock",
+      "message": "Package 'browserslist@4.24.2' is vulnerable to 'CVE-2026-73088' (also known as 'GHSA-73wf-gq98-2v4g')."
+     },
+     {
+      "id": "CVE-2026-73088",
+      "aliases": [
+       "GHSA-73wf-gq98-2v4g"
+      ],
+      "package": "browserslist",
+      "version": "4.24.4",
+      "file": "yarn.lock",
+      "message": "Package 'browserslist@4.24.4' is vulnerable to 'CVE-2026-73088' (also known as 'GHSA-73wf-gq98-2v4g')."
+     },
+     {
+      "id": "CVE-2026-65902",
+      "aliases": [
+       "GHSA-76mc-f452-cxcm"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-65902' (also known as 'GHSA-76mc-f452-cxcm')."
+     },
+     {
+      "id": "CVE-2026-44488",
+      "aliases": [
+       "GHSA-777c-7fjr-54vf"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-44488' (also known as 'GHSA-777c-7fjr-54vf')."
+     },
+     {
+      "id": "CVE-2025-59288",
+      "aliases": [
+       "GHSA-7mvr-c777-76hp"
+      ],
+      "package": "playwright",
+      "version": "1.51.0",
+      "file": "yarn.lock",
+      "message": "Package 'playwright@1.51.0' is vulnerable to 'CVE-2025-59288' (also known as 'GHSA-7mvr-c777-76hp')."
+     },
+     {
+      "id": "CVE-2026-18446",
+      "aliases": [
+       "GHSA-7p8r-x3mc-p8w7"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.3",
+      "file": "yarn.lock",
+      "message": "Package 'fast-uri@3.0.3' is vulnerable to 'CVE-2026-18446' (also known as 'GHSA-7p8r-x3mc-p8w7')."
+     },
+     {
+      "id": "CVE-2026-19693",
+      "aliases": [
+       "GHSA-7pqw-9j4j-h8q3"
+      ],
+      "package": "extract-zip",
+      "version": "2.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'extract-zip@2.0.1' is vulnerable to 'CVE-2026-19693' (also known as 'GHSA-7pqw-9j4j-h8q3')."
+     },
+     {
+      "id": "CVE-2026-67319",
+      "aliases": [
+       "GHSA-7q8q-rj6j-mhjq"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-67319' (also known as 'GHSA-7q8q-rj6j-mhjq')."
+     },
+     {
+      "id": "CVE-2026-27903",
+      "aliases": [
+       "GHSA-7r86-cg39-jmmj"
+      ],
+      "package": "minimatch",
+      "version": "10.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@10.0.1' is vulnerable to 'CVE-2026-27903' (also known as 'GHSA-7r86-cg39-jmmj')."
+     },
+     {
+      "id": "CVE-2026-27903",
+      "aliases": [
+       "GHSA-7r86-cg39-jmmj"
+      ],
+      "package": "minimatch",
+      "version": "3.1.2",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@3.1.2' is vulnerable to 'CVE-2026-27903' (also known as 'GHSA-7r86-cg39-jmmj')."
+     },
+     {
+      "id": "CVE-2026-27903",
+      "aliases": [
+       "GHSA-7r86-cg39-jmmj"
+      ],
+      "package": "minimatch",
+      "version": "5.1.6",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@5.1.6' is vulnerable to 'CVE-2026-27903' (also known as 'GHSA-7r86-cg39-jmmj')."
+     },
+     {
+      "id": "CVE-2026-27903",
+      "aliases": [
+       "GHSA-7r86-cg39-jmmj"
+      ],
+      "package": "minimatch",
+      "version": "9.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@9.0.5' is vulnerable to 'CVE-2026-27903' (also known as 'GHSA-7r86-cg39-jmmj')."
+     },
+     {
+      "id": "CVE-2025-54881",
+      "aliases": [
+       "GHSA-7rqq-prvp-x9jh"
+      ],
+      "package": "mermaid",
+      "version": "11.5.0",
+      "file": "yarn.lock",
+      "message": "Package 'mermaid@11.5.0' is vulnerable to 'CVE-2025-54881' (also known as 'GHSA-7rqq-prvp-x9jh')."
+     },
+     {
+      "id": "CVE-2026-34771",
+      "aliases": [
+       "GHSA-8337-3p73-46f4"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34771' (also known as 'GHSA-8337-3p73-46f4')."
+     },
+     {
+      "id": "CVE-2026-83613",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-83613' (also known as 'GHSA-8344-3jmq-59r6')."
+     },
+     {
+      "id": "CVE-2026-26960",
+      "aliases": [
+       "GHSA-83g3-92jg-28cx"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-26960' (also known as 'GHSA-83g3-92jg-28cx')."
+     },
+     {
+      "id": "CVE-2026-26960",
+      "aliases": [
+       "GHSA-83g3-92jg-28cx"
+      ],
+      "package": "tar",
+      "version": "7.4.3",
+      "file": "yarn.lock",
+      "message": "Package 'tar@7.4.3' is vulnerable to 'CVE-2026-26960' (also known as 'GHSA-83g3-92jg-28cx')."
+     },
+     {
+      "id": "CVE-2025-46565",
+      "aliases": [
+       "GHSA-859w-5945-r5v3"
+      ],
+      "package": "vite",
+      "version": "5.4.14",
+      "file": "yarn.lock",
+      "message": "Package 'vite@5.4.14' is vulnerable to 'CVE-2025-46565' (also known as 'GHSA-859w-5945-r5v3')."
+     },
+     {
+      "id": "CVE-2025-46565",
+      "aliases": [
+       "GHSA-859w-5945-r5v3"
+      ],
+      "package": "vite",
+      "version": "6.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.1.1' is vulnerable to 'CVE-2025-46565' (also known as 'GHSA-859w-5945-r5v3')."
+     },
+     {
+      "id": "CVE-2025-46565",
+      "aliases": [
+       "GHSA-859w-5945-r5v3"
+      ],
+      "package": "vite",
+      "version": "6.2.2",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.2.2' is vulnerable to 'CVE-2025-46565' (also known as 'GHSA-859w-5945-r5v3')."
+     },
+     {
+      "id": "CVE-2026-41159",
+      "aliases": [
+       "GHSA-87f9-hvmw-gh4p"
+      ],
+      "package": "mermaid",
+      "version": "11.5.0",
+      "file": "yarn.lock",
+      "message": "Package 'mermaid@11.5.0' is vulnerable to 'CVE-2026-41159' (also known as 'GHSA-87f9-hvmw-gh4p')."
+     },
+     {
+      "id": "CVE-2026-44490",
+      "aliases": [
+       "GHSA-898c-q2cr-xwhg"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-44490' (also known as 'GHSA-898c-q2cr-xwhg')."
+     },
+     {
+      "id": "CVE-2025-48387",
+      "aliases": [
+       "GHSA-8cj5-5rvv-wf4v"
+      ],
+      "package": "tar-fs",
+      "version": "2.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar-fs@2.1.1' is vulnerable to 'CVE-2025-48387' (also known as 'GHSA-8cj5-5rvv-wf4v')."
+     },
+     {
+      "id": "CVE-2025-25975",
+      "aliases": [
+       "GHSA-8g77-54rh-46hx"
+      ],
+      "package": "parse-git-config",
+      "version": "3.0.0",
+      "file": "yarn.lock",
+      "message": "Package 'parse-git-config@3.0.0' is vulnerable to 'CVE-2025-25975' (also known as 'GHSA-8g77-54rh-46hx')."
+     },
+     {
+      "id": "CVE-2026-33036",
+      "aliases": [
+       "GHSA-8gc5-j5rx-235r"
+      ],
+      "package": "fast-xml-parser",
+      "version": "4.4.1",
+      "file": "yarn.lock",
+      "message": "Package 'fast-xml-parser@4.4.1' is vulnerable to 'CVE-2026-33036' (also known as 'GHSA-8gc5-j5rx-235r')."
+     },
+     {
+      "id": "CVE-2025-13204",
+      "aliases": [
+       "GHSA-8gw3-rxh4-v6jx"
+      ],
+      "package": "expr-eval",
+      "version": "2.0.2",
+      "file": "yarn.lock",
+      "message": "Package 'expr-eval@2.0.2' is vulnerable to 'CVE-2025-13204' (also known as 'GHSA-8gw3-rxh4-v6jx')."
+     },
+     {
+      "id": "CVE-2025-54880",
+      "aliases": [
+       "GHSA-8gwm-58g9-j8pw"
+      ],
+      "package": "mermaid",
+      "version": "11.5.0",
+      "file": "yarn.lock",
+      "message": "Package 'mermaid@11.5.0' is vulnerable to 'CVE-2025-54880' (also known as 'GHSA-8gwm-58g9-j8pw')."
+     },
+     {
+      "id": "GHSA-8qm3-746x-r74r",
+      "aliases": [],
+      "package": "devalue",
+      "version": "5.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'devalue@5.1.1' is vulnerable to 'GHSA-8qm3-746x-r74r'."
+     },
+     {
+      "id": "CVE-2026-23745",
+      "aliases": [
+       "GHSA-8qq5-rm4j-mr97"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-23745' (also known as 'GHSA-8qq5-rm4j-mr97')."
+     },
+     {
+      "id": "CVE-2026-23745",
+      "aliases": [
+       "GHSA-8qq5-rm4j-mr97"
+      ],
+      "package": "tar",
+      "version": "7.4.3",
+      "file": "yarn.lock",
+      "message": "Package 'tar@7.4.3' is vulnerable to 'CVE-2026-23745' (also known as 'GHSA-8qq5-rm4j-mr97')."
+     },
+     {
+      "id": "CVE-2026-21884",
+      "aliases": [
+       "GHSA-8v8x-cx79-35w7"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2026-21884' (also known as 'GHSA-8v8x-cx79-35w7')."
+     },
+     {
+      "id": "CVE-2026-34764",
+      "aliases": [
+       "GHSA-8x5q-pvf5-64mp"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34764' (also known as 'GHSA-8x5q-pvf5-64mp')."
+     },
+     {
+      "id": "CVE-2026-42342",
+      "aliases": [
+       "GHSA-8x6r-g9mw-2r78"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2026-42342' (also known as 'GHSA-8x6r-g9mw-2r78')."
+     },
+     {
+      "id": "CVE-2026-59874",
+      "aliases": [
+       "GHSA-8x88-c5mf-7j5w"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-59874' (also known as 'GHSA-8x88-c5mf-7j5w')."
+     },
+     {
+      "id": "CVE-2026-59874",
+      "aliases": [
+       "GHSA-8x88-c5mf-7j5w"
+      ],
+      "package": "tar",
+      "version": "7.4.3",
+      "file": "yarn.lock",
+      "message": "Package 'tar@7.4.3' is vulnerable to 'CVE-2026-59874' (also known as 'GHSA-8x88-c5mf-7j5w')."
+     },
+     {
+      "id": "CVE-2026-16728",
+      "aliases": [
+       "GHSA-8xcm-r25x-g524"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2026-16728' (also known as 'GHSA-8xcm-r25x-g524')."
+     },
+     {
+      "id": "CVE-2025-69874",
+      "aliases": [
+       "GHSA-92fh-27vv-894w"
+      ],
+      "package": "nanotar",
+      "version": "0.2.0",
+      "file": "yarn.lock",
+      "message": "Package 'nanotar@0.2.0' is vulnerable to 'CVE-2025-69874' (also known as 'GHSA-92fh-27vv-894w')."
+     },
+     {
+      "id": "CVE-2026-53722",
+      "aliases": [
+       "GHSA-934w-87qh-qr26"
+      ],
+      "package": "nuxt",
+      "version": "3.15.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt@3.15.4' is vulnerable to 'CVE-2026-53722' (also known as 'GHSA-934w-87qh-qr26')."
+     },
+     {
+      "id": "CVE-2025-62522",
+      "aliases": [
+       "GHSA-93m4-6634-74q7"
+      ],
+      "package": "vite",
+      "version": "5.4.14",
+      "file": "yarn.lock",
+      "message": "Package 'vite@5.4.14' is vulnerable to 'CVE-2025-62522' (also known as 'GHSA-93m4-6634-74q7')."
+     },
+     {
+      "id": "CVE-2025-62522",
+      "aliases": [
+       "GHSA-93m4-6634-74q7"
+      ],
+      "package": "vite",
+      "version": "6.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.1.1' is vulnerable to 'CVE-2025-62522' (also known as 'GHSA-93m4-6634-74q7')."
+     },
+     {
+      "id": "CVE-2025-62522",
+      "aliases": [
+       "GHSA-93m4-6634-74q7"
+      ],
+      "package": "vite",
+      "version": "6.2.2",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.2.2' is vulnerable to 'CVE-2025-62522' (also known as 'GHSA-93m4-6634-74q7')."
+     },
+     {
+      "id": "CVE-2026-83614",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-83614' (also known as 'GHSA-93r5-fhx6-vmg9')."
+     },
+     {
+      "id": "CVE-2026-71320",
+      "aliases": [
+       "GHSA-9473-5f9j-94wq"
+      ],
+      "package": "nuxt",
+      "version": "3.15.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt@3.15.4' is vulnerable to 'CVE-2026-71320' (also known as 'GHSA-9473-5f9j-94wq')."
+     },
+     {
+      "id": "CVE-2026-39315",
+      "aliases": [
+       "GHSA-95h2-gj7x-gx9w"
+      ],
+      "package": "unhead",
+      "version": "1.11.19",
+      "file": "yarn.lock",
+      "message": "Package 'unhead@1.11.19' is vulnerable to 'CVE-2026-39315' (also known as 'GHSA-95h2-gj7x-gx9w')."
+     },
+     {
+      "id": "CVE-2026-83615",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-83615' (also known as 'GHSA-965w-775f-mr7g')."
+     },
+     {
+      "id": "CVE-2025-27789",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@babel/helpers@7.26.0' is vulnerable to 'CVE-2025-27789' (also known as 'GHSA-968p-4wvh-cqc8')."
+     },
+     {
+      "id": "CVE-2026-48779",
+      "aliases": [
+       "GHSA-96hv-2xvq-fx4p"
+      ],
+      "package": "ws",
+      "version": "7.5.10",
+      "file": "yarn.lock",
+      "message": "Package 'ws@7.5.10' is vulnerable to 'CVE-2026-48779' (also known as 'GHSA-96hv-2xvq-fx4p')."
+     },
+     {
+      "id": "CVE-2026-48779",
+      "aliases": [
+       "GHSA-96hv-2xvq-fx4p"
+      ],
+      "package": "ws",
+      "version": "8.18.0",
+      "file": "yarn.lock",
+      "message": "Package 'ws@8.18.0' is vulnerable to 'CVE-2026-48779' (also known as 'GHSA-96hv-2xvq-fx4p')."
+     },
+     {
+      "id": "CVE-2026-48779",
+      "aliases": [
+       "GHSA-96hv-2xvq-fx4p"
+      ],
+      "package": "ws",
+      "version": "8.18.1",
+      "file": "yarn.lock",
+      "message": "Package 'ws@8.18.1' is vulnerable to 'CVE-2026-48779' (also known as 'GHSA-96hv-2xvq-fx4p')."
+     },
+     {
+      "id": "CVE-2026-34766",
+      "aliases": [
+       "GHSA-9899-m83m-qhpj"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34766' (also known as 'GHSA-9899-m83m-qhpj')."
+     },
+     {
+      "id": "CVE-2025-56200",
+      "aliases": [
+       "GHSA-9965-vmph-33xx"
+      ],
+      "package": "validator",
+      "version": "13.12.0",
+      "file": "yarn.lock",
+      "message": "Package 'validator@13.12.0' is vulnerable to 'CVE-2025-56200' (also known as 'GHSA-9965-vmph-33xx')."
+     },
+     {
+      "id": "CVE-2026-70608",
+      "aliases": [
+       "GHSA-9f4c-93c8-jc8g"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70608' (also known as 'GHSA-9f4c-93c8-jc8g')."
+     },
+     {
+      "id": "CVE-2025-68470",
+      "aliases": [
+       "GHSA-9jcx-v3wj-wh4m"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2025-68470' (also known as 'GHSA-9jcx-v3wj-wh4m')."
+     },
+     {
+      "id": "CVE-2026-70599",
+      "aliases": [
+       "GHSA-9pf5-hg6p-4pwp"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70599' (also known as 'GHSA-9pf5-hg6p-4pwp')."
+     },
+     {
+      "id": "CVE-2026-71321",
+      "aliases": [
+       "GHSA-9pgf-384g-p7mv"
+      ],
+      "package": "nuxt",
+      "version": "3.15.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt@3.15.4' is vulnerable to 'CVE-2026-71321' (also known as 'GHSA-9pgf-384g-p7mv')."
+     },
+     {
+      "id": "CVE-2026-44372",
+      "aliases": [
+       "GHSA-9phm-9p8f-hw5m"
+      ],
+      "package": "nitropack",
+      "version": "2.10.4",
+      "file": "yarn.lock",
+      "message": "Package 'nitropack@2.10.4' is vulnerable to 'CVE-2026-44372' (also known as 'GHSA-9phm-9p8f-hw5m')."
+     },
+     {
+      "id": "CVE-2026-31802",
+      "aliases": [
+       "GHSA-9ppj-qmqm-q256"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-31802' (also known as 'GHSA-9ppj-qmqm-q256')."
+     },
+     {
+      "id": "CVE-2026-31802",
+      "aliases": [
+       "GHSA-9ppj-qmqm-q256"
+      ],
+      "package": "tar",
+      "version": "7.4.3",
+      "file": "yarn.lock",
+      "message": "Package 'tar@7.4.3' is vulnerable to 'CVE-2026-31802' (also known as 'GHSA-9ppj-qmqm-q256')."
+     },
+     {
+      "id": "CVE-2026-81176",
+      "aliases": [
+       "GHSA-9rgm-9g3h-6x36"
+      ],
+      "package": "devalue",
+      "version": "5.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'devalue@5.1.1' is vulnerable to 'CVE-2026-81176' (also known as 'GHSA-9rgm-9g3h-6x36')."
+     },
+     {
+      "id": "CVE-2026-34772",
+      "aliases": [
+       "GHSA-9w97-2464-8783"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34772' (also known as 'GHSA-9w97-2464-8783')."
+     },
+     {
+      "id": "CVE-2026-34769",
+      "aliases": [
+       "GHSA-9wfr-w7mm-pc7f"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34769' (also known as 'GHSA-9wfr-w7mm-pc7f')."
+     },
+     {
+      "id": "CVE-2026-33671",
+      "aliases": [
+       "GHSA-c2c7-rcm5-vvqj"
+      ],
+      "package": "picomatch",
+      "version": "2.3.1",
+      "file": "yarn.lock",
+      "message": "Package 'picomatch@2.3.1' is vulnerable to 'CVE-2026-33671' (also known as 'GHSA-c2c7-rcm5-vvqj')."
+     },
+     {
+      "id": "CVE-2026-33671",
+      "aliases": [
+       "GHSA-c2c7-rcm5-vvqj"
+      ],
+      "package": "picomatch",
+      "version": "4.0.2",
+      "file": "yarn.lock",
+      "message": "Package 'picomatch@4.0.2' is vulnerable to 'CVE-2026-33671' (also known as 'GHSA-c2c7-rcm5-vvqj')."
+     },
+     {
+      "id": "CVE-2026-66010",
+      "aliases": [
+       "GHSA-c2j3-45gr-mqc4"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-66010' (also known as 'GHSA-c2j3-45gr-mqc4')."
+     },
+     {
+      "id": "CVE-2026-71438",
+      "aliases": [
+       "GHSA-c4c3-pg64-4m4v"
+      ],
+      "package": "mermaid",
+      "version": "11.5.0",
+      "file": "yarn.lock",
+      "message": "Package 'mermaid@11.5.0' is vulnerable to 'CVE-2026-71438' (also known as 'GHSA-c4c3-pg64-4m4v')."
+     },
+     {
+      "id": "CVE-2025-22150",
+      "aliases": [
+       "GHSA-c76h-2ccp-4975"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2025-22150' (also known as 'GHSA-c76h-2ccp-4975')."
+     },
+     {
+      "id": "CVE-2026-83616",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-83616' (also known as 'GHSA-c7q8-3ch8-vqpv')."
+     },
+     {
+      "id": "CVE-2026-34404",
+      "aliases": [
+       "GHSA-c7xp-q6q8-hg76"
+      ],
+      "package": "nuxt-og-image",
+      "version": "4.1.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt-og-image@4.1.4' is vulnerable to 'CVE-2026-34404' (also known as 'GHSA-c7xp-q6q8-hg76')."
+     },
+     {
+      "id": "CVE-2026-73089",
+      "aliases": [
+       "GHSA-c83g-rgw3-j3cx"
+      ],
+      "package": "browserslist",
+      "version": "4.24.2",
+      "file": "yarn.lock",
+      "message": "Package 'browserslist@4.24.2' is vulnerable to 'CVE-2026-73089' (also known as 'GHSA-c83g-rgw3-j3cx')."
+     },
+     {
+      "id": "CVE-2026-73089",
+      "aliases": [
+       "GHSA-c83g-rgw3-j3cx"
+      ],
+      "package": "browserslist",
+      "version": "4.24.4",
+      "file": "yarn.lock",
+      "message": "Package 'browserslist@4.24.4' is vulnerable to 'CVE-2026-73089' (also known as 'GHSA-c83g-rgw3-j3cx')."
+     },
+     {
+      "id": "CVE-2026-56326",
+      "aliases": [],
+      "package": "nuxt",
+      "version": "3.15.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt@3.15.4' is vulnerable to 'CVE-2026-56326' (also known as 'CVE-2026-56697', 'CVE-2026-56698', 'GHSA-c9cv-mq2m-ppp3')."
+     },
+     {
+      "id": "CVE-2026-30226",
+      "aliases": [
+       "GHSA-cfw5-2vxh-hr84"
+      ],
+      "package": "devalue",
+      "version": "5.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'devalue@5.1.1' is vulnerable to 'CVE-2026-30226' (also known as 'GHSA-cfw5-2vxh-hr84')."
+     },
+     {
+      "id": "CVE-2025-23207",
+      "aliases": [
+       "GHSA-cg87-wmx4-v546"
+      ],
+      "package": "katex",
+      "version": "0.16.14",
+      "file": "yarn.lock",
+      "message": "Package 'katex@0.16.14' is vulnerable to 'CVE-2025-23207' (also known as 'GHSA-cg87-wmx4-v546')."
+     },
+     {
+      "id": "CVE-2026-55685",
+      "aliases": [
+       "GHSA-chx6-hx7r-mcp5"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2026-55685' (also known as 'GHSA-chx6-hx7r-mcp5')."
+     },
+     {
+      "id": "CVE-2026-65913",
+      "aliases": [
+       "GHSA-cj63-jhhr-wcxv"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-65913' (also known as 'GHSA-cj63-jhhr-wcxv')."
+     },
+     {
+      "id": "CVE-2026-65912",
+      "aliases": [
+       "GHSA-cjmm-f4jc-qw8r"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-65912' (also known as 'GHSA-cjmm-f4jc-qw8r')."
+     },
+     {
+      "id": "CVE-2026-65898",
+      "aliases": [
+       "GHSA-cmwh-pvxp-8882"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-65898' (also known as 'GHSA-cmwh-pvxp-8882')."
+     },
+     {
+      "id": "CVE-2025-43865",
+      "aliases": [
+       "GHSA-cpj6-fhp6-mr6j"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2025-43865' (also known as 'GHSA-cpj6-fhp6-mr6j')."
+     },
+     {
+      "id": "CVE-2026-41239",
+      "aliases": [
+       "GHSA-crv5-9vww-q3g8"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-41239' (also known as 'GHSA-crv5-9vww-q3g8')."
+     },
+     {
+      "id": "CVE-2025-47279",
+      "aliases": [
+       "GHSA-cxrh-j4jr-qwg3"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2025-47279' (also known as 'GHSA-cxrh-j4jr-qwg3')."
+     },
+     {
+      "id": "CVE-2025-13465",
+      "aliases": [],
+      "package": "lodash",
+      "version": "4.17.21",
+      "file": "yarn.lock",
+      "message": "Package 'lodash@4.17.21' is vulnerable to 'CVE-2025-13465' (also known as 'CVE-2026-2950', 'GHSA-f23m-r3pf-42rh', 'GHSA-xxjr-mmjv-4gpg')."
+     },
+     {
+      "id": "CVE-2025-13465",
+      "aliases": [],
+      "package": "lodash-es",
+      "version": "4.17.21",
+      "file": "yarn.lock",
+      "message": "Package 'lodash-es@4.17.21' is vulnerable to 'CVE-2025-13465' (also known as 'CVE-2026-2950', 'GHSA-f23m-r3pf-42rh', 'GHSA-xxjr-mmjv-4gpg')."
+     },
+     {
+      "id": "CVE-2026-1528",
+      "aliases": [
+       "GHSA-f269-vfmq-vjvj"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2026-1528' (also known as 'GHSA-f269-vfmq-vjvj')."
+     },
+     {
+      "id": "CVE-2026-70611",
+      "aliases": [
+       "GHSA-f2r8-jv7c-xqmp"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70611' (also known as 'GHSA-f2r8-jv7c-xqmp')."
+     },
+     {
+      "id": "CVE-2026-34781",
+      "aliases": [
+       "GHSA-f37v-82c4-4x64"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34781' (also known as 'GHSA-f37v-82c4-4x64')."
+     },
+     {
+      "id": "CVE-2026-34765",
+      "aliases": [
+       "GHSA-f3pv-wv63-48x8"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34765' (also known as 'GHSA-f3pv-wv63-48x8')."
+     },
+     {
+      "id": "CVE-2025-43864",
+      "aliases": [
+       "GHSA-f46r-rw29-r322"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2025-43864' (also known as 'GHSA-f46r-rw29-r322')."
+     },
+     {
+      "id": "CVE-2026-75975",
+      "aliases": [
+       "GHSA-f65p-4m7j-42xc"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.3",
+      "file": "yarn.lock",
+      "message": "Package 'fast-uri@3.0.3' is vulnerable to 'CVE-2026-75975' (also known as 'GHSA-f65p-4m7j-42xc')."
+     },
+     {
+      "id": "CVE-2026-41674",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-41674' (also known as 'GHSA-f6ww-3ggp-fr8h')."
+     },
+     {
+      "id": "CVE-2026-33750",
+      "aliases": [
+       "GHSA-f886-m6hf-6m8v"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.11",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@1.1.11' is vulnerable to 'CVE-2026-33750' (also known as 'GHSA-f886-m6hf-6m8v')."
+     },
+     {
+      "id": "CVE-2026-33750",
+      "aliases": [
+       "GHSA-f886-m6hf-6m8v"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2026-33750' (also known as 'GHSA-f886-m6hf-6m8v')."
+     },
+     {
+      "id": "CVE-2026-70610",
+      "aliases": [
+       "GHSA-ff2p-hmqr-hxm4"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70610' (also known as 'GHSA-ff2p-hmqr-hxm4')."
+     },
+     {
+      "id": "CVE-2026-27942",
+      "aliases": [
+       "GHSA-fj3w-jwp8-x2g3"
+      ],
+      "package": "fast-xml-parser",
+      "version": "4.4.1",
+      "file": "yarn.lock",
+      "message": "Package 'fast-xml-parser@4.4.1' is vulnerable to 'CVE-2026-27942' (also known as 'GHSA-fj3w-jwp8-x2g3')."
+     },
+     {
+      "id": "CVE-2025-7783",
+      "aliases": [
+       "GHSA-fjxv-7rqg-78g4"
+      ],
+      "package": "form-data",
+      "version": "3.0.2",
+      "file": "yarn.lock",
+      "message": "Package 'form-data@3.0.2' is vulnerable to 'CVE-2025-7783' (also known as 'GHSA-fjxv-7rqg-78g4')."
+     },
+     {
+      "id": "CVE-2025-7783",
+      "aliases": [
+       "GHSA-fjxv-7rqg-78g4"
+      ],
+      "package": "form-data",
+      "version": "4.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'form-data@4.0.1' is vulnerable to 'CVE-2025-7783' (also known as 'GHSA-fjxv-7rqg-78g4')."
+     },
+     {
+      "id": "CVE-2025-7783",
+      "aliases": [
+       "GHSA-fjxv-7rqg-78g4"
+      ],
+      "package": "form-data",
+      "version": "4.0.2",
+      "file": "yarn.lock",
+      "message": "Package 'form-data@4.0.2' is vulnerable to 'CVE-2025-7783' (also known as 'GHSA-fjxv-7rqg-78g4')."
+     },
+     {
+      "id": "CVE-2026-40175",
+      "aliases": [
+       "GHSA-fvcv-3m26-pcqx"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-40175' (also known as 'GHSA-fvcv-3m26-pcqx')."
+     },
+     {
+      "id": "CVE-2026-40190",
+      "aliases": [
+       "GHSA-fw9q-39r9-c252"
+      ],
+      "package": "langsmith",
+      "version": "0.2.11",
+      "file": "yarn.lock",
+      "message": "Package 'langsmith@0.2.11' is vulnerable to 'CVE-2026-40190' (also known as 'GHSA-fw9q-39r9-c252')."
+     },
+     {
+      "id": "CVE-2026-40190",
+      "aliases": [
+       "GHSA-fw9q-39r9-c252"
+      ],
+      "package": "langsmith",
+      "version": "0.3.10",
+      "file": "yarn.lock",
+      "message": "Package 'langsmith@0.3.10' is vulnerable to 'CVE-2026-40190' (also known as 'GHSA-fw9q-39r9-c252')."
+     },
+     {
+      "id": "CVE-2026-53571",
+      "aliases": [
+       "GHSA-fx2h-pf6j-xcff"
+      ],
+      "package": "vite",
+      "version": "5.4.14",
+      "file": "yarn.lock",
+      "message": "Package 'vite@5.4.14' is vulnerable to 'CVE-2026-53571' (also known as 'GHSA-fx2h-pf6j-xcff')."
+     },
+     {
+      "id": "CVE-2026-53571",
+      "aliases": [
+       "GHSA-fx2h-pf6j-xcff"
+      ],
+      "package": "vite",
+      "version": "6.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.1.1' is vulnerable to 'CVE-2026-53571' (also known as 'GHSA-fx2h-pf6j-xcff')."
+     },
+     {
+      "id": "CVE-2026-53571",
+      "aliases": [
+       "GHSA-fx2h-pf6j-xcff"
+      ],
+      "package": "vite",
+      "version": "6.2.2",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.2.2' is vulnerable to 'CVE-2026-53571' (also known as 'GHSA-fx2h-pf6j-xcff')."
+     },
+     {
+      "id": "CVE-2026-45669",
+      "aliases": [
+       "GHSA-fx6j-w5w5-h468"
+      ],
+      "package": "nuxt",
+      "version": "3.15.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt@3.15.4' is vulnerable to 'CVE-2026-45669' (also known as 'GHSA-fx6j-w5w5-h468')."
+     },
+     {
+      "id": "CVE-2026-69153",
+      "aliases": [
+       "GHSA-fxqj-rqcc-2cmp"
+      ],
+      "package": "postcss",
+      "version": "8.4.49",
+      "file": "yarn.lock",
+      "message": "Package 'postcss@8.4.49' is vulnerable to 'CVE-2026-69153' (also known as 'GHSA-fxqj-rqcc-2cmp')."
+     },
+     {
+      "id": "CVE-2026-69153",
+      "aliases": [
+       "GHSA-fxqj-rqcc-2cmp"
+      ],
+      "package": "postcss",
+      "version": "8.5.1",
+      "file": "yarn.lock",
+      "message": "Package 'postcss@8.5.1' is vulnerable to 'CVE-2026-69153' (also known as 'GHSA-fxqj-rqcc-2cmp')."
+     },
+     {
+      "id": "CVE-2026-69153",
+      "aliases": [
+       "GHSA-fxqj-rqcc-2cmp"
+      ],
+      "package": "postcss",
+      "version": "8.5.3",
+      "file": "yarn.lock",
+      "message": "Package 'postcss@8.5.3' is vulnerable to 'CVE-2026-69153' (also known as 'GHSA-fxqj-rqcc-2cmp')."
+     },
+     {
+      "id": "CVE-2026-22775",
+      "aliases": [
+       "GHSA-g2pg-6438-jwpf"
+      ],
+      "package": "devalue",
+      "version": "5.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'devalue@5.1.1' is vulnerable to 'CVE-2026-22775' (also known as 'GHSA-g2pg-6438-jwpf')."
+     },
+     {
+      "id": "CVE-2025-58751",
+      "aliases": [
+       "GHSA-g4jq-h2w9-997c"
+      ],
+      "package": "vite",
+      "version": "5.4.14",
+      "file": "yarn.lock",
+      "message": "Package 'vite@5.4.14' is vulnerable to 'CVE-2025-58751' (also known as 'GHSA-g4jq-h2w9-997c')."
+     },
+     {
+      "id": "CVE-2025-58751",
+      "aliases": [
+       "GHSA-g4jq-h2w9-997c"
+      ],
+      "package": "vite",
+      "version": "6.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.1.1' is vulnerable to 'CVE-2025-58751' (also known as 'GHSA-g4jq-h2w9-997c')."
+     },
+     {
+      "id": "CVE-2025-58751",
+      "aliases": [
+       "GHSA-g4jq-h2w9-997c"
+      ],
+      "package": "vite",
+      "version": "6.2.2",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.2.2' is vulnerable to 'CVE-2025-58751' (also known as 'GHSA-g4jq-h2w9-997c')."
+     },
+     {
+      "id": "CVE-2026-31860",
+      "aliases": [
+       "GHSA-g5xx-pwrp-g3fv"
+      ],
+      "package": "unhead",
+      "version": "1.11.19",
+      "file": "yarn.lock",
+      "message": "Package 'unhead@1.11.19' is vulnerable to 'CVE-2026-31860' (also known as 'GHSA-g5xx-pwrp-g3fv')."
+     },
+     {
+      "id": "CVE-2026-11525",
+      "aliases": [
+       "GHSA-g8m3-5g58-fq7m"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2026-11525' (also known as 'GHSA-g8m3-5g58-fq7m')."
+     },
+     {
+      "id": "CVE-2026-46342",
+      "aliases": [
+       "GHSA-g8wj-3cr3-6w7v"
+      ],
+      "package": "nuxt",
+      "version": "3.15.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt@3.15.4' is vulnerable to 'CVE-2026-46342' (also known as 'GHSA-g8wj-3cr3-6w7v')."
+     },
+     {
+      "id": "CVE-2026-22036",
+      "aliases": [
+       "GHSA-g9mf-h72j-4rw9"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2026-22036' (also known as 'GHSA-g9mf-h72j-4rw9')."
+     },
+     {
+      "id": "CVE-2026-26019",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@langchain/community@0.3.35' is vulnerable to 'CVE-2026-26019' (also known as 'GHSA-gf3v-fwqg-4vh7')."
+     },
+     {
+      "id": "CVE-2026-41650",
+      "aliases": [
+       "GHSA-gh4j-gqv2-49f6"
+      ],
+      "package": "fast-xml-parser",
+      "version": "4.4.1",
+      "file": "yarn.lock",
+      "message": "Package 'fast-xml-parser@4.4.1' is vulnerable to 'CVE-2026-41650' (also known as 'GHSA-gh4j-gqv2-49f6')."
+     },
+     {
+      "id": "CVE-2026-41149",
+      "aliases": [
+       "GHSA-ghcm-xqfw-q4vr"
+      ],
+      "package": "mermaid",
+      "version": "11.5.0",
+      "file": "yarn.lock",
+      "message": "Package 'mermaid@11.5.0' is vulnerable to 'CVE-2026-41149' (also known as 'GHSA-ghcm-xqfw-q4vr')."
+     },
+     {
+      "id": "CVE-2026-65900",
+      "aliases": [
+       "GHSA-gvmj-g25r-r7wr"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-65900' (also known as 'GHSA-gvmj-g25r-r7wr')."
+     },
+     {
+      "id": "CVE-2026-59875",
+      "aliases": [
+       "GHSA-gvwx-54wh-qm9j"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-59875' (also known as 'GHSA-gvwx-54wh-qm9j')."
+     },
+     {
+      "id": "CVE-2026-59875",
+      "aliases": [
+       "GHSA-gvwx-54wh-qm9j"
+      ],
+      "package": "tar",
+      "version": "7.4.3",
+      "file": "yarn.lock",
+      "message": "Package 'tar@7.4.3' is vulnerable to 'CVE-2026-59875' (also known as 'GHSA-gvwx-54wh-qm9j')."
+     },
+     {
+      "id": "CVE-2025-25288",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@octokit/plugin-paginate-rest@2.21.3' is vulnerable to 'CVE-2025-25288' (also known as 'GHSA-h5c3-5r3r-rr8q')."
+     },
+     {
+      "id": "CVE-2026-22030",
+      "aliases": [
+       "GHSA-h5cw-625j-3rxh"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2026-22030' (also known as 'GHSA-h5cw-625j-3rxh')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.0",
+      "file": "yarn.lock",
+      "message": "Package 'js-yaml@4.1.0' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-41240",
+      "aliases": [
+       "GHSA-h7mw-gpvr-xq4m"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-41240' (also known as 'GHSA-h7mw-gpvr-xq4m')."
+     },
+     {
+      "id": "CVE-2026-70601",
+      "aliases": [
+       "GHSA-h7rp-cf8h-j98x"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70601' (also known as 'GHSA-h7rp-cf8h-j98x')."
+     },
+     {
+      "id": "CVE-2026-65914",
+      "aliases": [
+       "GHSA-h8r8-wccr-v5f2"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-65914' (also known as 'GHSA-h8r8-wccr-v5f2')."
+     },
+     {
+      "id": "CVE-2026-6951",
+      "aliases": [
+       "GHSA-hffm-xvc3-vprc"
+      ],
+      "package": "simple-git",
+      "version": "3.27.0",
+      "file": "yarn.lock",
+      "message": "Package 'simple-git@3.27.0' is vulnerable to 'CVE-2026-6951' (also known as 'GHSA-hffm-xvc3-vprc')."
+     },
+     {
+      "id": "CVE-2026-44496",
+      "aliases": [
+       "GHSA-hfxv-24rg-xrqf"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-44496' (also known as 'GHSA-hfxv-24rg-xrqf')."
+     },
+     {
+      "id": "CVE-2026-47200",
+      "aliases": [
+       "GHSA-hg3f-28rg-4jxj"
+      ],
+      "package": "nuxt",
+      "version": "3.15.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt@3.15.4' is vulnerable to 'CVE-2026-47200' (also known as 'GHSA-hg3f-28rg-4jxj')."
+     },
+     {
+      "id": "CVE-2026-12143",
+      "aliases": [
+       "GHSA-hmw2-7cc7-3qxx"
+      ],
+      "package": "form-data",
+      "version": "3.0.2",
+      "file": "yarn.lock",
+      "message": "Package 'form-data@3.0.2' is vulnerable to 'CVE-2026-12143' (also known as 'GHSA-hmw2-7cc7-3qxx')."
+     },
+     {
+      "id": "CVE-2026-12143",
+      "aliases": [
+       "GHSA-hmw2-7cc7-3qxx"
+      ],
+      "package": "form-data",
+      "version": "4.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'form-data@4.0.1' is vulnerable to 'CVE-2026-12143' (also known as 'GHSA-hmw2-7cc7-3qxx')."
+     },
+     {
+      "id": "CVE-2026-12143",
+      "aliases": [
+       "GHSA-hmw2-7cc7-3qxx"
+      ],
+      "package": "form-data",
+      "version": "4.0.2",
+      "file": "yarn.lock",
+      "message": "Package 'form-data@4.0.2' is vulnerable to 'CVE-2026-12143' (also known as 'GHSA-hmw2-7cc7-3qxx')."
+     },
+     {
+      "id": "CVE-2026-27212",
+      "aliases": [
+       "GHSA-hmx5-qpq5-p643"
+      ],
+      "package": "swiper",
+      "version": "11.2.5",
+      "file": "yarn.lock",
+      "message": "Package 'swiper@11.2.5' is vulnerable to 'CVE-2026-27212' (also known as 'GHSA-hmx5-qpq5-p643')."
+     },
+     {
+      "id": "CVE-2026-49458",
+      "aliases": [
+       "GHSA-hpcv-96wg-7vj8"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-49458' (also known as 'GHSA-hpcv-96wg-7vj8')."
+     },
+     {
+      "id": "CVE-2026-71314",
+      "aliases": [
+       "GHSA-hxcr-hm88-mpq6"
+      ],
+      "package": "nuxt",
+      "version": "3.15.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt@3.15.4' is vulnerable to 'CVE-2026-71314' (also known as 'GHSA-hxcr-hm88-mpq6')."
+     },
+     {
+      "id": "CVE-2026-44486",
+      "aliases": [
+       "GHSA-j5f8-grm9-p9fc"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-44486' (also known as 'GHSA-j5f8-grm9-p9fc')."
+     },
+     {
+      "id": "CVE-2026-41672",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-41672' (also known as 'GHSA-j759-j44w-7fr8')."
+     },
+     {
+      "id": "CVE-2025-12735",
+      "aliases": [
+       "GHSA-jc85-fpwf-qm7x"
+      ],
+      "package": "expr-eval",
+      "version": "2.0.2",
+      "file": "yarn.lock",
+      "message": "Package 'expr-eval@2.0.2' is vulnerable to 'CVE-2025-12735' (also known as 'GHSA-jc85-fpwf-qm7x')."
+     },
+     {
+      "id": "CVE-2026-28291",
+      "aliases": [
+       "GHSA-jcxm-m3jx-f287"
+      ],
+      "package": "simple-git",
+      "version": "3.27.0",
+      "file": "yarn.lock",
+      "message": "Package 'simple-git@3.27.0' is vulnerable to 'CVE-2026-28291' (also known as 'GHSA-jcxm-m3jx-f287')."
+     },
+     {
+      "id": "CVE-2026-34768",
+      "aliases": [
+       "GHSA-jfqx-fxh3-c62j"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34768' (also known as 'GHSA-jfqx-fxh3-c62j')."
+     },
+     {
+      "id": "CVE-2026-34770",
+      "aliases": [
+       "GHSA-jjp3-mq3x-295m"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34770' (also known as 'GHSA-jjp3-mq3x-295m')."
+     },
+     {
+      "id": "CVE-2026-70597",
+      "aliases": [
+       "GHSA-jm7p-cc5g-qwxx"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70597' (also known as 'GHSA-jm7p-cc5g-qwxx')."
+     },
+     {
+      "id": "CVE-2026-26278",
+      "aliases": [
+       "GHSA-jmr7-xgp7-cmfj"
+      ],
+      "package": "fast-xml-parser",
+      "version": "4.4.1",
+      "file": "yarn.lock",
+      "message": "Package 'fast-xml-parser@4.4.1' is vulnerable to 'CVE-2026-26278' (also known as 'GHSA-jmr7-xgp7-cmfj')."
+     },
+     {
+      "id": "CVE-2026-56876",
+      "aliases": [
+       "GHSA-jmr9-qjv8-65gv"
+      ],
+      "package": "extract-zip",
+      "version": "2.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'extract-zip@2.0.1' is vulnerable to 'CVE-2026-56876' (also known as 'GHSA-jmr9-qjv8-65gv')."
+     },
+     {
+      "id": "CVE-2026-33349",
+      "aliases": [
+       "GHSA-jp2q-39xq-3w4g"
+      ],
+      "package": "fast-xml-parser",
+      "version": "4.4.1",
+      "file": "yarn.lock",
+      "message": "Package 'fast-xml-parser@4.4.1' is vulnerable to 'CVE-2026-33349' (also known as 'GHSA-jp2q-39xq-3w4g')."
+     },
+     {
+      "id": "CVE-2026-76172",
+      "aliases": [
+       "GHSA-jqff-g426-hqxp"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.3",
+      "file": "yarn.lock",
+      "message": "Package 'fast-uri@3.0.3' is vulnerable to 'CVE-2026-76172' (also known as 'GHSA-jqff-g426-hqxp')."
+     },
+     {
+      "id": "CVE-2025-58752",
+      "aliases": [
+       "GHSA-jqfw-vq24-v9c3"
+      ],
+      "package": "vite",
+      "version": "5.4.14",
+      "file": "yarn.lock",
+      "message": "Package 'vite@5.4.14' is vulnerable to 'CVE-2025-58752' (also known as 'GHSA-jqfw-vq24-v9c3')."
+     },
+     {
+      "id": "CVE-2025-58752",
+      "aliases": [
+       "GHSA-jqfw-vq24-v9c3"
+      ],
+      "package": "vite",
+      "version": "6.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.1.1' is vulnerable to 'CVE-2025-58752' (also known as 'GHSA-jqfw-vq24-v9c3')."
+     },
+     {
+      "id": "CVE-2025-58752",
+      "aliases": [
+       "GHSA-jqfw-vq24-v9c3"
+      ],
+      "package": "vite",
+      "version": "6.2.2",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.2.2' is vulnerable to 'CVE-2025-58752' (also known as 'GHSA-jqfw-vq24-v9c3')."
+     },
+     {
+      "id": "CVE-2026-67317",
+      "aliases": [
+       "GHSA-jqh4-m9w3-8hp9"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-67317' (also known as 'GHSA-jqh4-m9w3-8hp9')."
+     },
+     {
+      "id": "CVE-2025-27415",
+      "aliases": [
+       "GHSA-jvhm-gjrh-3h93"
+      ],
+      "package": "nuxt",
+      "version": "3.15.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt@3.15.4' is vulnerable to 'CVE-2025-27415' (also known as 'GHSA-jvhm-gjrh-3h93')."
+     },
+     {
+      "id": "CVE-2026-56317",
+      "aliases": [
+       "GHSA-m3q2-p4fw-w38m"
+      ],
+      "package": "nuxt",
+      "version": "3.15.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt@3.15.4' is vulnerable to 'CVE-2026-56317' (also known as 'GHSA-m3q2-p4fw-w38m')."
+     },
+     {
+      "id": "CVE-2026-70602",
+      "aliases": [
+       "GHSA-m55f-7gqj-fr98"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70602' (also known as 'GHSA-m55f-7gqj-fr98')."
+     },
+     {
+      "id": "CVE-2025-71319",
+      "aliases": [
+       "GHSA-m5qc-5hw7-8vg7"
+      ],
+      "package": "image-size",
+      "version": "1.2.0",
+      "file": "yarn.lock",
+      "message": "Package 'image-size@1.2.0' is vulnerable to 'CVE-2025-71319' (also known as 'GHSA-m5qc-5hw7-8vg7')."
+     },
+     {
+      "id": "CVE-2026-25896",
+      "aliases": [
+       "GHSA-m7jm-9gc2-mpf2"
+      ],
+      "package": "fast-xml-parser",
+      "version": "4.4.1",
+      "file": "yarn.lock",
+      "message": "Package 'fast-xml-parser@4.4.1' is vulnerable to 'CVE-2026-25896' (also known as 'GHSA-m7jm-9gc2-mpf2')."
+     },
+     {
+      "id": "CVE-2026-42038",
+      "aliases": [
+       "GHSA-m7pr-hjqh-92cm"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-42038' (also known as 'GHSA-m7pr-hjqh-92cm')."
+     },
+     {
+      "id": "CVE-2026-15157",
+      "aliases": [
+       "GHSA-m8rv-5g2x-5cg5"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2026-15157' (also known as 'GHSA-m8rv-5g2x-5cg5')."
+     },
+     {
+      "id": "CVE-2026-34405",
+      "aliases": [
+       "GHSA-mg36-wvcr-m75h"
+      ],
+      "package": "nuxt-og-image",
+      "version": "4.1.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt-og-image@4.1.4' is vulnerable to 'CVE-2026-34405' (also known as 'GHSA-mg36-wvcr-m75h')."
+     },
+     {
+      "id": "CVE-2025-64718",
+      "aliases": [
+       "GHSA-mh29-5h37-fv8m"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.0",
+      "file": "yarn.lock",
+      "message": "Package 'js-yaml@4.1.0' is vulnerable to 'CVE-2025-64718' (also known as 'GHSA-mh29-5h37-fv8m')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.11",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@1.1.11' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-53721",
+      "aliases": [
+       "GHSA-mm7m-92g8-7m47"
+      ],
+      "package": "nuxt",
+      "version": "3.15.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt@3.15.4' is vulnerable to 'CVE-2026-53721' (also known as 'GHSA-mm7m-92g8-7m47')."
+     },
+     {
+      "id": "CVE-2026-67316",
+      "aliases": [
+       "GHSA-mmx7-hfxf-jppx"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-67316' (also known as 'GHSA-mmx7-hfxf-jppx')."
+     },
+     {
+      "id": "CVE-2026-23527",
+      "aliases": [
+       "GHSA-mp2g-9vg9-f4cg"
+      ],
+      "package": "h3",
+      "version": "1.13.0",
+      "file": "yarn.lock",
+      "message": "Package 'h3@1.13.0' is vulnerable to 'CVE-2026-23527' (also known as 'GHSA-mp2g-9vg9-f4cg')."
+     },
+     {
+      "id": "CVE-2026-23527",
+      "aliases": [
+       "GHSA-mp2g-9vg9-f4cg"
+      ],
+      "package": "h3",
+      "version": "1.15.1",
+      "file": "yarn.lock",
+      "message": "Package 'h3@1.15.1' is vulnerable to 'CVE-2026-23527' (also known as 'GHSA-mp2g-9vg9-f4cg')."
+     },
+     {
+      "id": "CVE-2026-27795",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@langchain/community@0.3.35' is vulnerable to 'CVE-2026-27795' (also known as 'GHSA-mphv-75cg-56wg')."
+     },
+     {
+      "id": "CVE-2026-27606",
+      "aliases": [
+       "GHSA-mw96-cpmx-2vgc"
+      ],
+      "package": "rollup",
+      "version": "4.28.1",
+      "file": "yarn.lock",
+      "message": "Package 'rollup@4.28.1' is vulnerable to 'CVE-2026-27606' (also known as 'GHSA-mw96-cpmx-2vgc')."
+     },
+     {
+      "id": "CVE-2026-27606",
+      "aliases": [
+       "GHSA-mw96-cpmx-2vgc"
+      ],
+      "package": "rollup",
+      "version": "4.34.8",
+      "file": "yarn.lock",
+      "message": "Package 'rollup@4.34.8' is vulnerable to 'CVE-2026-27606' (also known as 'GHSA-mw96-cpmx-2vgc')."
+     },
+     {
+      "id": "CVE-2026-34773",
+      "aliases": [
+       "GHSA-mwmh-mq4g-g6gr"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34773' (also known as 'GHSA-mwmh-mq4g-g6gr')."
+     },
+     {
+      "id": "CVE-2026-69192",
+      "aliases": [
+       "GHSA-mwp4-54f8-5fhr"
+      ],
+      "package": "ip-address",
+      "version": "9.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'ip-address@9.0.5' is vulnerable to 'CVE-2026-69192' (also known as 'GHSA-mwp4-54f8-5fhr')."
+     },
+     {
+      "id": "GHSA-mwv9-gp5h-frr4",
+      "aliases": [],
+      "package": "devalue",
+      "version": "5.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'devalue@5.1.1' is vulnerable to 'GHSA-mwv9-gp5h-frr4'."
+     },
+     {
+      "id": "CVE-2026-70612",
+      "aliases": [
+       "GHSA-p2rr-rvmm-c5fp"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70612' (also known as 'GHSA-p2rr-rvmm-c5fp')."
+     },
+     {
+      "id": "GHSA-p498-v437-472g",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@humanfs/node@0.16.6' is vulnerable to 'GHSA-p498-v437-472g'."
+     },
+     {
+      "id": "CVE-2025-59414",
+      "aliases": [
+       "GHSA-p6jq-8vc4-79f6"
+      ],
+      "package": "nuxt",
+      "version": "3.15.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt@3.15.4' is vulnerable to 'CVE-2025-59414' (also known as 'GHSA-p6jq-8vc4-79f6')."
+     },
+     {
+      "id": "CVE-2026-9679",
+      "aliases": [
+       "GHSA-p88m-4jfj-68fv"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2026-9679' (also known as 'GHSA-p88m-4jfj-68fv')."
+     },
+     {
+      "id": "CVE-2026-44487",
+      "aliases": [
+       "GHSA-p92q-9vqr-4j8v"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-44487' (also known as 'GHSA-p92q-9vqr-4j8v')."
+     },
+     {
+      "id": "CVE-2026-39363",
+      "aliases": [
+       "GHSA-p9ff-h696-f583"
+      ],
+      "package": "vite",
+      "version": "6.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.1.1' is vulnerable to 'CVE-2026-39363' (also known as 'GHSA-p9ff-h696-f583')."
+     },
+     {
+      "id": "CVE-2026-39363",
+      "aliases": [
+       "GHSA-p9ff-h696-f583"
+      ],
+      "package": "vite",
+      "version": "6.2.2",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.2.2' is vulnerable to 'CVE-2026-39363' (also known as 'GHSA-p9ff-h696-f583')."
+     },
+     {
+      "id": "CVE-2026-42033",
+      "aliases": [
+       "GHSA-pf86-5x62-jrwf"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-42033' (also known as 'GHSA-pf86-5x62-jrwf')."
+     },
+     {
+      "id": "CVE-2026-70598",
+      "aliases": [
+       "GHSA-pfmc-3mgc-p6fp"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70598' (also known as 'GHSA-pfmc-3mgc-p6fp')."
+     },
+     {
+      "id": "CVE-2026-44705",
+      "aliases": [
+       "GHSA-ph9p-34f9-6g65"
+      ],
+      "package": "tmp",
+      "version": "0.2.3",
+      "file": "yarn.lock",
+      "message": "Package 'tmp@0.2.3' is vulnerable to 'CVE-2026-44705' (also known as 'GHSA-ph9p-34f9-6g65')."
+     },
+     {
+      "id": "CVE-2026-67312",
+      "aliases": [
+       "GHSA-pmv8-rq9r-6j72"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-67312' (also known as 'GHSA-pmv8-rq9r-6j72')."
+     },
+     {
+      "id": "CVE-2026-42043",
+      "aliases": [
+       "GHSA-pmwg-cvhr-8vh7"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-42043' (also known as 'GHSA-pmwg-cvhr-8vh7')."
+     },
+     {
+      "id": "CVE-2025-57753",
+      "aliases": [
+       "GHSA-pp7p-q8fx-2968"
+      ],
+      "package": "vite-plugin-static-copy",
+      "version": "2.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'vite-plugin-static-copy@2.3.0' is vulnerable to 'CVE-2025-57753' (also known as 'GHSA-pp7p-q8fx-2968')."
+     },
+     {
+      "id": "CVE-2026-33894",
+      "aliases": [],
+      "package": "node-forge",
+      "version": "1.3.1",
+      "file": "yarn.lock",
+      "message": "Package 'node-forge@1.3.1' is vulnerable to 'CVE-2026-33894' (also known as 'CVE-2026-85393', 'GHSA-ppp5-5v6c-4jwp')."
+     },
+     {
+      "id": "CVE-2024-12905",
+      "aliases": [
+       "GHSA-pq67-2wwv-3xjx"
+      ],
+      "package": "tar-fs",
+      "version": "2.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar-fs@2.1.1' is vulnerable to 'CVE-2024-12905' (also known as 'GHSA-pq67-2wwv-3xjx')."
+     },
+     {
+      "id": "GHSA-pqhr-mp3f-hrpp",
+      "aliases": [],
+      "package": "nuxt-og-image",
+      "version": "4.1.4",
+      "file": "yarn.lock",
+      "message": "Package 'nuxt-og-image@4.1.4' is vulnerable to 'GHSA-pqhr-mp3f-hrpp'."
+     },
+     {
+      "id": "CVE-2026-45820",
+      "aliases": [
+       "GHSA-px8p-9vwx-vf98"
+      ],
+      "package": "fflate",
+      "version": "0.7.4",
+      "file": "yarn.lock",
+      "message": "Package 'fflate@0.7.4' is vulnerable to 'CVE-2026-45820' (also known as 'GHSA-px8p-9vwx-vf98')."
+     },
+     {
+      "id": "CVE-2026-6321",
+      "aliases": [
+       "GHSA-q3j6-qgpj-74h6"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.3",
+      "file": "yarn.lock",
+      "message": "Package 'fast-uri@3.0.3' is vulnerable to 'CVE-2026-6321' (also known as 'GHSA-q3j6-qgpj-74h6')."
+     },
+     {
+      "id": "CVE-2026-33895",
+      "aliases": [
+       "GHSA-q67f-28xg-22rw"
+      ],
+      "package": "node-forge",
+      "version": "1.3.1",
+      "file": "yarn.lock",
+      "message": "Package 'node-forge@1.3.1' is vulnerable to 'CVE-2026-33895' (also known as 'GHSA-q67f-28xg-22rw')."
+     },
+     {
+      "id": "CVE-2026-8723",
+      "aliases": [
+       "GHSA-q8mj-m7cp-5q26"
+      ],
+      "package": "qs",
+      "version": "6.13.0",
+      "file": "yarn.lock",
+      "message": "Package 'qs@6.13.0' is vulnerable to 'CVE-2026-8723' (also known as 'GHSA-q8mj-m7cp-5q26')."
+     },
+     {
+      "id": "CVE-2026-42264",
+      "aliases": [
+       "GHSA-q8qp-cvcw-x6jj"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-42264' (also known as 'GHSA-q8qp-cvcw-x6jj')."
+     },
+     {
+      "id": "CVE-2026-29786",
+      "aliases": [
+       "GHSA-qffp-2rhf-9h96"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-29786' (also known as 'GHSA-qffp-2rhf-9h96')."
+     },
+     {
+      "id": "CVE-2026-29786",
+      "aliases": [
+       "GHSA-qffp-2rhf-9h96"
+      ],
+      "package": "tar",
+      "version": "7.4.3",
+      "file": "yarn.lock",
+      "message": "Package 'tar@7.4.3' is vulnerable to 'CVE-2026-29786' (also known as 'GHSA-qffp-2rhf-9h96')."
+     },
+     {
+      "id": "CVE-2026-34043",
+      "aliases": [
+       "GHSA-qj8w-gfj5-8c6v"
+      ],
+      "package": "serialize-javascript",
+      "version": "6.0.2",
+      "file": "yarn.lock",
+      "message": "Package 'serialize-javascript@6.0.2' is vulnerable to 'CVE-2026-34043' (also known as 'GHSA-qj8w-gfj5-8c6v')."
+     },
+     {
+      "id": "CVE-2026-41305",
+      "aliases": [
+       "GHSA-qx2v-qp2m-jg93"
+      ],
+      "package": "postcss",
+      "version": "8.4.49",
+      "file": "yarn.lock",
+      "message": "Package 'postcss@8.4.49' is vulnerable to 'CVE-2026-41305' (also known as 'GHSA-qx2v-qp2m-jg93')."
+     },
+     {
+      "id": "CVE-2026-41305",
+      "aliases": [
+       "GHSA-qx2v-qp2m-jg93"
+      ],
+      "package": "postcss",
+      "version": "8.5.1",
+      "file": "yarn.lock",
+      "message": "Package 'postcss@8.5.1' is vulnerable to 'CVE-2026-41305' (also known as 'GHSA-qx2v-qp2m-jg93')."
+     },
+     {
+      "id": "CVE-2026-41305",
+      "aliases": [
+       "GHSA-qx2v-qp2m-jg93"
+      ],
+      "package": "postcss",
+      "version": "8.5.3",
+      "file": "yarn.lock",
+      "message": "Package 'postcss@8.5.3' is vulnerable to 'CVE-2026-41305' (also known as 'GHSA-qx2v-qp2m-jg93')."
+     },
+     {
+      "id": "CVE-2026-28292",
+      "aliases": [
+       "GHSA-r275-fr43-pm7q"
+      ],
+      "package": "simple-git",
+      "version": "3.27.0",
+      "file": "yarn.lock",
+      "message": "Package 'simple-git@3.27.0' is vulnerable to 'CVE-2026-28292' (also known as 'GHSA-r275-fr43-pm7q')."
+     },
+     {
+      "id": "CVE-2026-73646",
+      "aliases": [
+       "GHSA-r28c-9q8g-f849"
+      ],
+      "package": "postcss",
+      "version": "8.4.49",
+      "file": "yarn.lock",
+      "message": "Package 'postcss@8.4.49' is vulnerable to 'CVE-2026-73646' (also known as 'GHSA-r28c-9q8g-f849')."
+     },
+     {
+      "id": "CVE-2026-73646",
+      "aliases": [
+       "GHSA-r28c-9q8g-f849"
+      ],
+      "package": "postcss",
+      "version": "8.5.1",
+      "file": "yarn.lock",
+      "message": "Package 'postcss@8.5.1' is vulnerable to 'CVE-2026-73646' (also known as 'GHSA-r28c-9q8g-f849')."
+     },
+     {
+      "id": "CVE-2026-73646",
+      "aliases": [
+       "GHSA-r28c-9q8g-f849"
+      ],
+      "package": "postcss",
+      "version": "8.5.3",
+      "file": "yarn.lock",
+      "message": "Package 'postcss@8.5.3' is vulnerable to 'CVE-2026-73646' (also known as 'GHSA-r28c-9q8g-f849')."
+     },
+     {
+      "id": "CVE-2026-73566",
+      "aliases": [
+       "GHSA-r292-9mhp-454m"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-73566' (also known as 'GHSA-r292-9mhp-454m')."
+     },
+     {
+      "id": "CVE-2026-73566",
+      "aliases": [
+       "GHSA-r292-9mhp-454m"
+      ],
+      "package": "tar",
+      "version": "7.4.3",
+      "file": "yarn.lock",
+      "message": "Package 'tar@7.4.3' is vulnerable to 'CVE-2026-73566' (also known as 'GHSA-r292-9mhp-454m')."
+     },
+     {
+      "id": "CVE-2025-68665",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@langchain/core@0.3.42' is vulnerable to 'CVE-2025-68665' (also known as 'GHSA-r399-636x-v7f6')."
+     },
+     {
+      "id": "CVE-2025-68665",
+      "aliases": [
+       "GHSA-r399-636x-v7f6"
+      ],
+      "package": "langchain",
+      "version": "0.3.19",
+      "file": "yarn.lock",
+      "message": "Package 'langchain@0.3.19' is vulnerable to 'CVE-2025-68665' (also known as 'GHSA-r399-636x-v7f6')."
+     },
+     {
+      "id": "CVE-2025-68665",
+      "aliases": [
+       "GHSA-r399-636x-v7f6"
+      ],
+      "package": "langchain",
+      "version": "0.3.6",
+      "file": "yarn.lock",
+      "message": "Package 'langchain@0.3.6' is vulnerable to 'CVE-2025-68665' (also known as 'GHSA-r399-636x-v7f6')."
+     },
+     {
+      "id": "CVE-2026-49459",
+      "aliases": [
+       "GHSA-r47g-fvhr-h676"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-49459' (also known as 'GHSA-r47g-fvhr-h676')."
+     },
+     {
+      "id": "CVE-2026-40895",
+      "aliases": [
+       "GHSA-r4q5-vmmm-2653"
+      ],
+      "package": "follow-redirects",
+      "version": "1.15.9",
+      "file": "yarn.lock",
+      "message": "Package 'follow-redirects@1.15.9' is vulnerable to 'CVE-2026-40895' (also known as 'GHSA-r4q5-vmmm-2653')."
+     },
+     {
+      "id": "CVE-2021-23337",
+      "aliases": [],
+      "package": "lodash",
+      "version": "4.17.21",
+      "file": "yarn.lock",
+      "message": "Package 'lodash@4.17.21' is vulnerable to 'CVE-2021-23337' (also known as 'CVE-2026-4800', 'GHSA-35jh-r3h4-6jhm', 'GHSA-r5fr-rjxr-66jc')."
+     },
+     {
+      "id": "CVE-2021-23337",
+      "aliases": [],
+      "package": "lodash-es",
+      "version": "4.17.21",
+      "file": "yarn.lock",
+      "message": "Package 'lodash-es@4.17.21' is vulnerable to 'CVE-2021-23337' (also known as 'CVE-2026-4800', 'GHSA-35jh-r3h4-6jhm', 'GHSA-r5fr-rjxr-66jc')."
+     },
+     {
+      "id": "CVE-2026-27837",
+      "aliases": [
+       "GHSA-r5mx-6wc6-7h9w"
+      ],
+      "package": "dottie",
+      "version": "2.0.6",
+      "file": "yarn.lock",
+      "message": "Package 'dottie@2.0.6' is vulnerable to 'CVE-2026-27837' (also known as 'GHSA-r5mx-6wc6-7h9w')."
+     },
+     {
+      "id": "CVE-2026-34777",
+      "aliases": [
+       "GHSA-r5p7-gp4j-qhrx"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34777' (also known as 'GHSA-r5p7-gp4j-qhrx')."
+     },
+     {
+      "id": "CVE-2026-23950",
+      "aliases": [
+       "GHSA-r6q2-hw4h-h46w"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-23950' (also known as 'GHSA-r6q2-hw4h-h46w')."
+     },
+     {
+      "id": "CVE-2026-23950",
+      "aliases": [
+       "GHSA-r6q2-hw4h-h46w"
+      ],
+      "package": "tar",
+      "version": "7.4.3",
+      "file": "yarn.lock",
+      "message": "Package 'tar@7.4.3' is vulnerable to 'CVE-2026-23950' (also known as 'GHSA-r6q2-hw4h-h46w')."
+     },
+     {
+      "id": "CVE-2026-33228",
+      "aliases": [
+       "GHSA-rf6f-7fwh-wjgh"
+      ],
+      "package": "flatted",
+      "version": "3.3.2",
+      "file": "yarn.lock",
+      "message": "Package 'flatted@3.3.2' is vulnerable to 'CVE-2026-33228' (also known as 'GHSA-rf6f-7fwh-wjgh')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.11",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@1.1.11' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2025-25290",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@octokit/request@5.6.3' is vulnerable to 'CVE-2025-25290' (also known as 'GHSA-rmvr-2pp2-xj38')."
+     },
+     {
+      "id": "CVE-2026-41324",
+      "aliases": [
+       "GHSA-rp42-5vxx-qpwr"
+      ],
+      "package": "basic-ftp",
+      "version": "5.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'basic-ftp@5.0.5' is vulnerable to 'CVE-2026-41324' (also known as 'GHSA-rp42-5vxx-qpwr')."
+     },
+     {
+      "id": "CVE-2026-49978",
+      "aliases": [
+       "GHSA-rp9w-3fw7-7cwq"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-49978' (also known as 'GHSA-rp9w-3fw7-7cwq')."
+     },
+     {
+      "id": "CVE-2026-44240",
+      "aliases": [
+       "GHSA-rpmf-866q-6p89"
+      ],
+      "package": "basic-ftp",
+      "version": "5.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'basic-ftp@5.0.5' is vulnerable to 'CVE-2026-44240' (also known as 'GHSA-rpmf-866q-6p89')."
+     },
+     {
+      "id": "CVE-2026-41182",
+      "aliases": [],
+      "package": "langsmith",
+      "version": "0.2.11",
+      "file": "yarn.lock",
+      "message": "Package 'langsmith@0.2.11' is vulnerable to 'CVE-2026-41182' (also known as 'PYSEC-2026-2583', 'GHSA-rr7j-v2q5-chgv')."
+     },
+     {
+      "id": "CVE-2026-41182",
+      "aliases": [],
+      "package": "langsmith",
+      "version": "0.3.10",
+      "file": "yarn.lock",
+      "message": "Package 'langsmith@0.3.10' is vulnerable to 'CVE-2026-41182' (also known as 'PYSEC-2026-2583', 'GHSA-rr7j-v2q5-chgv')."
+     },
+     {
+      "id": "CVE-2026-34077",
+      "aliases": [
+       "GHSA-rxv8-25v2-qmq8"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2026-34077' (also known as 'GHSA-rxv8-25v2-qmq8')."
+     },
+     {
+      "id": "CVE-2026-34077",
+      "aliases": [
+       "GHSA-rxv8-25v2-qmq8"
+      ],
+      "package": "turbo-stream",
+      "version": "2.4.0",
+      "file": "yarn.lock",
+      "message": "Package 'turbo-stream@2.4.0' is vulnerable to 'CVE-2026-34077' (also known as 'GHSA-rxv8-25v2-qmq8')."
+     },
+     {
+      "id": "CVE-2026-16221",
+      "aliases": [
+       "GHSA-v2hh-gcrm-f6hx"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.3",
+      "file": "yarn.lock",
+      "message": "Package 'fast-uri@3.0.3' is vulnerable to 'CVE-2026-16221' (also known as 'GHSA-v2hh-gcrm-f6hx')."
+     },
+     {
+      "id": "CVE-2026-42338",
+      "aliases": [
+       "GHSA-v2v4-37r5-5v8g"
+      ],
+      "package": "ip-address",
+      "version": "9.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'ip-address@9.0.5' is vulnerable to 'CVE-2026-42338' (also known as 'GHSA-v2v4-37r5-5v8g')."
+     },
+     {
+      "id": "CVE-2026-0540",
+      "aliases": [
+       "GHSA-v2wj-7wpq-c8vv"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-0540' (also known as 'GHSA-v2wj-7wpq-c8vv')."
+     },
+     {
+      "id": "CVE-2026-6322",
+      "aliases": [
+       "GHSA-v39h-62p7-jpjc"
+      ],
+      "package": "fast-uri",
+      "version": "3.0.3",
+      "file": "yarn.lock",
+      "message": "Package 'fast-uri@3.0.3' is vulnerable to 'CVE-2026-6322' (also known as 'GHSA-v39h-62p7-jpjc')."
+     },
+     {
+      "id": "CVE-2026-70604",
+      "aliases": [
+       "GHSA-v3j7-r9gq-3gjw"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70604' (also known as 'GHSA-v3j7-r9gq-3gjw')."
+     },
+     {
+      "id": "CVE-2026-16729",
+      "aliases": [
+       "GHSA-v3r7-h72x-cjcm"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2026-16729' (also known as 'GHSA-v3r7-h72x-cjcm')."
+     },
+     {
+      "id": "CVE-2026-12590",
+      "aliases": [
+       "GHSA-v422-hmwv-36x6"
+      ],
+      "package": "body-parser",
+      "version": "1.20.3",
+      "file": "yarn.lock",
+      "message": "Package 'body-parser@1.20.3' is vulnerable to 'CVE-2026-12590' (also known as 'GHSA-v422-hmwv-36x6')."
+     },
+     {
+      "id": "CVE-2026-59879",
+      "aliases": [
+       "GHSA-v56q-mh7h-f735"
+      ],
+      "package": "immutable",
+      "version": "5.0.3",
+      "file": "yarn.lock",
+      "message": "Package 'immutable@5.0.3' is vulnerable to 'CVE-2026-59879' (also known as 'GHSA-v56q-mh7h-f735')."
+     },
+     {
+      "id": "CVE-2026-70605",
+      "aliases": [
+       "GHSA-v64r-4m7r-3mvq"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70605' (also known as 'GHSA-v64r-4m7r-3mvq')."
+     },
+     {
+      "id": "CVE-2025-5889",
+      "aliases": [
+       "GHSA-v6h2-p8h4-qcjw"
+      ],
+      "package": "brace-expansion",
+      "version": "1.1.11",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@1.1.11' is vulnerable to 'CVE-2025-5889' (also known as 'GHSA-v6h2-p8h4-qcjw')."
+     },
+     {
+      "id": "CVE-2025-5889",
+      "aliases": [
+       "GHSA-v6h2-p8h4-qcjw"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2025-5889' (also known as 'GHSA-v6h2-p8h4-qcjw')."
+     },
+     {
+      "id": "CVE-2026-53632",
+      "aliases": [
+       "GHSA-v6wh-96g9-6wx3"
+      ],
+      "package": "launch-editor",
+      "version": "2.9.1",
+      "file": "yarn.lock",
+      "message": "Package 'launch-editor@2.9.1' is vulnerable to 'CVE-2026-53632' (also known as 'GHSA-v6wh-96g9-6wx3')."
+     },
+     {
+      "id": "CVE-2026-53632",
+      "aliases": [
+       "GHSA-v6wh-96g9-6wx3"
+      ],
+      "package": "vite",
+      "version": "5.4.14",
+      "file": "yarn.lock",
+      "message": "Package 'vite@5.4.14' is vulnerable to 'CVE-2026-53632' (also known as 'GHSA-v6wh-96g9-6wx3')."
+     },
+     {
+      "id": "CVE-2026-53632",
+      "aliases": [
+       "GHSA-v6wh-96g9-6wx3"
+      ],
+      "package": "vite",
+      "version": "6.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.1.1' is vulnerable to 'CVE-2026-53632' (also known as 'GHSA-v6wh-96g9-6wx3')."
+     },
+     {
+      "id": "CVE-2026-53632",
+      "aliases": [
+       "GHSA-v6wh-96g9-6wx3"
+      ],
+      "package": "vite",
+      "version": "6.2.2",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.2.2' is vulnerable to 'CVE-2026-53632' (also known as 'GHSA-v6wh-96g9-6wx3')."
+     },
+     {
+      "id": "CVE-2025-15599",
+      "aliases": [
+       "GHSA-v8jm-5vwx-cfxm"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2025-15599' (also known as 'GHSA-v8jm-5vwx-cfxm')."
+     },
+     {
+      "id": "CVE-2026-70607",
+      "aliases": [
+       "GHSA-v93f-fgjr-hjrj"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70607' (also known as 'GHSA-v93f-fgjr-hjrj')."
+     },
+     {
+      "id": "CVE-2026-41238",
+      "aliases": [
+       "GHSA-v9jr-rg53-9pgp"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-41238' (also known as 'GHSA-v9jr-rg53-9pgp')."
+     },
+     {
+      "id": "CVE-2026-2229",
+      "aliases": [
+       "GHSA-v9p9-hfj2-hcw8"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2026-2229' (also known as 'GHSA-v9p9-hfj2-hcw8')."
+     },
+     {
+      "id": "CVE-2026-42036",
+      "aliases": [
+       "GHSA-vf2m-468p-8v99"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-42036' (also known as 'GHSA-vf2m-468p-8v99')."
+     },
+     {
+      "id": "CVE-2025-12758",
+      "aliases": [
+       "GHSA-vghf-hv5q-vc2g"
+      ],
+      "package": "validator",
+      "version": "13.12.0",
+      "file": "yarn.lock",
+      "message": "Package 'validator@13.12.0' is vulnerable to 'CVE-2025-12758' (also known as 'GHSA-vghf-hv5q-vc2g')."
+     },
+     {
+      "id": "CVE-2025-57820",
+      "aliases": [
+       "GHSA-vj54-72f3-p5jv"
+      ],
+      "package": "devalue",
+      "version": "5.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'devalue@5.1.1' is vulnerable to 'CVE-2025-57820' (also known as 'GHSA-vj54-72f3-p5jv')."
+     },
+     {
+      "id": "CVE-2025-59343",
+      "aliases": [
+       "GHSA-vj76-c3g6-qr5v"
+      ],
+      "package": "tar-fs",
+      "version": "2.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar-fs@2.1.1' is vulnerable to 'CVE-2025-59343' (also known as 'GHSA-vj76-c3g6-qr5v')."
+     },
+     {
+      "id": "CVE-2026-53655",
+      "aliases": [
+       "GHSA-vmf3-w455-68vh"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-53655' (also known as 'GHSA-vmf3-w455-68vh')."
+     },
+     {
+      "id": "CVE-2026-53655",
+      "aliases": [
+       "GHSA-vmf3-w455-68vh"
+      ],
+      "package": "tar",
+      "version": "7.4.3",
+      "file": "yarn.lock",
+      "message": "Package 'tar@7.4.3' is vulnerable to 'CVE-2026-53655' (also known as 'GHSA-vmf3-w455-68vh')."
+     },
+     {
+      "id": "CVE-2025-55305",
+      "aliases": [
+       "GHSA-vmqv-hx8q-j7mg"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2025-55305' (also known as 'GHSA-vmqv-hx8q-j7mg')."
+     },
+     {
+      "id": "CVE-2026-3449",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@tootallnate/once@1.1.2' is vulnerable to 'CVE-2026-3449' (also known as 'GHSA-vpq2-c234-7xj6')."
+     },
+     {
+      "id": "CVE-2026-1526",
+      "aliases": [
+       "GHSA-vrm6-8vpv-qv8q"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2026-1526' (also known as 'GHSA-vrm6-8vpv-qv8q')."
+     },
+     {
+      "id": "CVE-2026-12151",
+      "aliases": [
+       "GHSA-vxpw-j846-p89q"
+      ],
+      "package": "undici",
+      "version": "6.21.0",
+      "file": "yarn.lock",
+      "message": "Package 'undici@6.21.0' is vulnerable to 'CVE-2026-12151' (also known as 'GHSA-vxpw-j846-p89q')."
+     },
+     {
+      "id": "CVE-2026-65899",
+      "aliases": [
+       "GHSA-vxr8-fq34-vvx9"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-65899' (also known as 'GHSA-vxr8-fq34-vvx9')."
+     },
+     {
+      "id": "CVE-2026-84370",
+      "aliases": [
+       "GHSA-w27v-7q3p-w38r"
+      ],
+      "package": "svgo",
+      "version": "3.3.2",
+      "file": "yarn.lock",
+      "message": "Package 'svgo@3.3.2' is vulnerable to 'CVE-2026-84370' (also known as 'GHSA-w27v-7q3p-w38r')."
+     },
+     {
+      "id": "CVE-2026-83607",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-83607' (also known as 'GHSA-w2rr-34g9-rvrj')."
+     },
+     {
+      "id": "CVE-2025-71330",
+      "aliases": [
+       "GHSA-w3rx-r6r6-pgpr"
+      ],
+      "package": "image-size",
+      "version": "0.7.5",
+      "file": "yarn.lock",
+      "message": "Package 'image-size@0.7.5' is vulnerable to 'CVE-2025-71330' (also known as 'GHSA-w3rx-r6r6-pgpr')."
+     },
+     {
+      "id": "CVE-2025-71330",
+      "aliases": [
+       "GHSA-w3rx-r6r6-pgpr"
+      ],
+      "package": "image-size",
+      "version": "1.2.0",
+      "file": "yarn.lock",
+      "message": "Package 'image-size@1.2.0' is vulnerable to 'CVE-2025-71330' (also known as 'GHSA-w3rx-r6r6-pgpr')."
+     },
+     {
+      "id": "CVE-2026-41907",
+      "aliases": [],
+      "package": "uuid",
+      "version": "10.0.0",
+      "file": "yarn.lock",
+      "message": "Package 'uuid@10.0.0' is vulnerable to 'CVE-2026-41907' (also known as 'CVE-2026-41988', 'GHSA-w5hq-g745-h8pq')."
+     },
+     {
+      "id": "CVE-2026-41907",
+      "aliases": [],
+      "package": "uuid",
+      "version": "11.1.0",
+      "file": "yarn.lock",
+      "message": "Package 'uuid@11.1.0' is vulnerable to 'CVE-2026-41907' (also known as 'CVE-2026-41988', 'GHSA-w5hq-g745-h8pq')."
+     },
+     {
+      "id": "CVE-2026-41907",
+      "aliases": [],
+      "package": "uuid",
+      "version": "8.3.2",
+      "file": "yarn.lock",
+      "message": "Package 'uuid@8.3.2' is vulnerable to 'CVE-2026-41907' (also known as 'CVE-2026-41988', 'GHSA-w5hq-g745-h8pq')."
+     },
+     {
+      "id": "CVE-2026-41907",
+      "aliases": [],
+      "package": "uuid",
+      "version": "9.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'uuid@9.0.1' is vulnerable to 'CVE-2026-41907' (also known as 'CVE-2026-41988', 'GHSA-w5hq-g745-h8pq')."
+     },
+     {
+      "id": "CVE-2026-2391",
+      "aliases": [
+       "GHSA-w7fw-mjwx-w883"
+      ],
+      "package": "qs",
+      "version": "6.13.0",
+      "file": "yarn.lock",
+      "message": "Package 'qs@6.13.0' is vulnerable to 'CVE-2026-2391' (also known as 'GHSA-w7fw-mjwx-w883')."
+     },
+     {
+      "id": "CVE-2026-9277",
+      "aliases": [
+       "GHSA-w7jw-789q-3m8p"
+      ],
+      "package": "shell-quote",
+      "version": "1.8.2",
+      "file": "yarn.lock",
+      "message": "Package 'shell-quote@1.8.2' is vulnerable to 'CVE-2026-9277' (also known as 'GHSA-w7jw-789q-3m8p')."
+     },
+     {
+      "id": "CVE-2025-13437",
+      "aliases": [
+       "GHSA-w87r-vg9q-crqm"
+      ],
+      "package": "zx",
+      "version": "8.4.1",
+      "file": "yarn.lock",
+      "message": "Package 'zx@8.4.1' is vulnerable to 'CVE-2025-13437' (also known as 'GHSA-w87r-vg9q-crqm')."
+     },
+     {
+      "id": "CVE-2026-59871",
+      "aliases": [
+       "GHSA-w8wr-v893-vjvp"
+      ],
+      "package": "tar",
+      "version": "6.2.1",
+      "file": "yarn.lock",
+      "message": "Package 'tar@6.2.1' is vulnerable to 'CVE-2026-59871' (also known as 'GHSA-w8wr-v893-vjvp')."
+     },
+     {
+      "id": "CVE-2026-59871",
+      "aliases": [
+       "GHSA-w8wr-v893-vjvp"
+      ],
+      "package": "tar",
+      "version": "7.4.3",
+      "file": "yarn.lock",
+      "message": "Package 'tar@7.4.3' is vulnerable to 'CVE-2026-59871' (also known as 'GHSA-w8wr-v893-vjvp')."
+     },
+     {
+      "id": "CVE-2026-42041",
+      "aliases": [
+       "GHSA-w9j2-pvgh-6h63"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-42041' (also known as 'GHSA-w9j2-pvgh-6h63')."
+     },
+     {
+      "id": "CVE-2026-9358",
+      "aliases": [
+       "GHSA-w9m9-85wc-3x92"
+      ],
+      "package": "postcss-selector-parser",
+      "version": "6.1.2",
+      "file": "yarn.lock",
+      "message": "Package 'postcss-selector-parser@6.1.2' is vulnerable to 'CVE-2026-9358' (also known as 'GHSA-w9m9-85wc-3x92')."
+     },
+     {
+      "id": "CVE-2026-29063",
+      "aliases": [
+       "GHSA-wf6x-7x77-mvgw"
+      ],
+      "package": "immutable",
+      "version": "5.0.3",
+      "file": "yarn.lock",
+      "message": "Package 'immutable@5.0.3' is vulnerable to 'CVE-2026-29063' (also known as 'GHSA-wf6x-7x77-mvgw')."
+     },
+     {
+      "id": "CVE-2026-34601",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-34601' (also known as 'GHSA-wh4c-j3r5-mjhp')."
+     },
+     {
+      "id": "CVE-2026-86253",
+      "aliases": [
+       "GHSA-wr4h-v87w-p3r7"
+      ],
+      "package": "h3",
+      "version": "1.13.0",
+      "file": "yarn.lock",
+      "message": "Package 'h3@1.13.0' is vulnerable to 'CVE-2026-86253' (also known as 'GHSA-wr4h-v87w-p3r7')."
+     },
+     {
+      "id": "CVE-2026-86253",
+      "aliases": [
+       "GHSA-wr4h-v87w-p3r7"
+      ],
+      "package": "h3",
+      "version": "1.15.1",
+      "file": "yarn.lock",
+      "message": "Package 'h3@1.15.1' is vulnerable to 'CVE-2026-86253' (also known as 'GHSA-wr4h-v87w-p3r7')."
+     },
+     {
+      "id": "CVE-2026-53669",
+      "aliases": [
+       "GHSA-wrjc-x8rr-h8h6"
+      ],
+      "package": "react-router",
+      "version": "7.3.0",
+      "file": "yarn.lock",
+      "message": "Package 'react-router@7.3.0' is vulnerable to 'CVE-2026-53669' (also known as 'GHSA-wrjc-x8rr-h8h6')."
+     },
+     {
+      "id": "CVE-2025-25285",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@octokit/endpoint@10.1.1' is vulnerable to 'CVE-2025-25285' (also known as 'GHSA-x4c5-c7rf-jjgv')."
+     },
+     {
+      "id": "CVE-2026-83619",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-83619' (also known as 'GHSA-x4fp-j954-r2f4')."
+     },
+     {
+      "id": "CVE-2026-65901",
+      "aliases": [
+       "GHSA-x4vx-rjvf-j5p4"
+      ],
+      "package": "dompurify",
+      "version": "3.2.4",
+      "file": "yarn.lock",
+      "message": "Package 'dompurify@3.2.4' is vulnerable to 'CVE-2026-65901' (also known as 'GHSA-x4vx-rjvf-j5p4')."
+     },
+     {
+      "id": "CVE-2025-30208",
+      "aliases": [
+       "GHSA-x574-m823-4x7w"
+      ],
+      "package": "vite",
+      "version": "5.4.14",
+      "file": "yarn.lock",
+      "message": "Package 'vite@5.4.14' is vulnerable to 'CVE-2025-30208' (also known as 'GHSA-x574-m823-4x7w')."
+     },
+     {
+      "id": "CVE-2025-30208",
+      "aliases": [
+       "GHSA-x574-m823-4x7w"
+      ],
+      "package": "vite",
+      "version": "6.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.1.1' is vulnerable to 'CVE-2025-30208' (also known as 'GHSA-x574-m823-4x7w')."
+     },
+     {
+      "id": "CVE-2025-30208",
+      "aliases": [
+       "GHSA-x574-m823-4x7w"
+      ],
+      "package": "vite",
+      "version": "6.2.2",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.2.2' is vulnerable to 'CVE-2025-30208' (also known as 'GHSA-x574-m823-4x7w')."
+     },
+     {
+      "id": "CVE-2026-41675",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@xmldom/xmldom@0.8.10' is vulnerable to 'CVE-2026-41675' (also known as 'GHSA-x6wf-f3px-wcqx')."
+     },
+     {
+      "id": "CVE-2026-70600",
+      "aliases": [
+       "GHSA-x8rc-wpg4-grpf"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-70600' (also known as 'GHSA-x8rc-wpg4-grpf')."
+     },
+     {
+      "id": "CVE-2025-31486",
+      "aliases": [
+       "GHSA-xcj6-pq6g-qj4x"
+      ],
+      "package": "vite",
+      "version": "5.4.14",
+      "file": "yarn.lock",
+      "message": "Package 'vite@5.4.14' is vulnerable to 'CVE-2025-31486' (also known as 'GHSA-xcj6-pq6g-qj4x')."
+     },
+     {
+      "id": "CVE-2025-31486",
+      "aliases": [
+       "GHSA-xcj6-pq6g-qj4x"
+      ],
+      "package": "vite",
+      "version": "6.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.1.1' is vulnerable to 'CVE-2025-31486' (also known as 'GHSA-xcj6-pq6g-qj4x')."
+     },
+     {
+      "id": "CVE-2025-31486",
+      "aliases": [
+       "GHSA-xcj6-pq6g-qj4x"
+      ],
+      "package": "vite",
+      "version": "6.2.2",
+      "file": "yarn.lock",
+      "message": "Package 'vite@6.2.2' is vulnerable to 'CVE-2025-31486' (also known as 'GHSA-xcj6-pq6g-qj4x')."
+     },
+     {
+      "id": "CVE-2026-41148",
+      "aliases": [
+       "GHSA-xcj9-5m2h-648r"
+      ],
+      "package": "mermaid",
+      "version": "11.5.0",
+      "file": "yarn.lock",
+      "message": "Package 'mermaid@11.5.0' is vulnerable to 'CVE-2026-41148' (also known as 'GHSA-xcj9-5m2h-648r')."
+     },
+     {
+      "id": "GHSA-xffm-g5w8-qvg7",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@eslint/plugin-kit@0.2.7' is vulnerable to 'GHSA-xffm-g5w8-qvg7'."
+     },
+     {
+      "id": "CVE-2026-42040",
+      "aliases": [
+       "GHSA-xhjh-pmcv-23jw"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-42040' (also known as 'GHSA-xhjh-pmcv-23jw')."
+     },
+     {
+      "id": "CVE-2026-34778",
+      "aliases": [
+       "GHSA-xj5x-m3f3-5x3h"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34778' (also known as 'GHSA-xj5x-m3f3-5x3h')."
+     },
+     {
+      "id": "CVE-2025-52662",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@nuxt/devtools@1.7.0' is vulnerable to 'CVE-2025-52662' (also known as 'GHSA-xmq3-q5pm-rp26')."
+     },
+     {
+      "id": "CVE-2026-29074",
+      "aliases": [
+       "GHSA-xpqw-6gx7-v673"
+      ],
+      "package": "svgo",
+      "version": "3.3.2",
+      "file": "yarn.lock",
+      "message": "Package 'svgo@3.3.2' is vulnerable to 'CVE-2026-29074' (also known as 'GHSA-xpqw-6gx7-v673')."
+     },
+     {
+      "id": "CVE-2026-59880",
+      "aliases": [
+       "GHSA-xvcm-6775-5m9r"
+      ],
+      "package": "immutable",
+      "version": "5.0.3",
+      "file": "yarn.lock",
+      "message": "Package 'immutable@5.0.3' is vulnerable to 'CVE-2026-59880' (also known as 'GHSA-xvcm-6775-5m9r')."
+     },
+     {
+      "id": "CVE-2026-73086",
+      "aliases": [
+       "GHSA-xwg4-73v4-xw9w"
+      ],
+      "package": "nanoid",
+      "version": "3.3.8",
+      "file": "yarn.lock",
+      "message": "Package 'nanoid@3.3.8' is vulnerable to 'CVE-2026-73086' (also known as 'GHSA-xwg4-73v4-xw9w')."
+     },
+     {
+      "id": "CVE-2026-73086",
+      "aliases": [
+       "GHSA-xwg4-73v4-xw9w"
+      ],
+      "package": "nanoid",
+      "version": "5.0.9",
+      "file": "yarn.lock",
+      "message": "Package 'nanoid@5.0.9' is vulnerable to 'CVE-2026-73086' (also known as 'GHSA-xwg4-73v4-xw9w')."
+     },
+     {
+      "id": "CVE-2026-34775",
+      "aliases": [
+       "GHSA-xwr5-m59h-vwqr"
+      ],
+      "package": "electron",
+      "version": "34.3.3",
+      "file": "yarn.lock",
+      "message": "Package 'electron@34.3.3' is vulnerable to 'CVE-2026-34775' (also known as 'GHSA-xwr5-m59h-vwqr')."
+     },
+     {
+      "id": "CVE-2025-25289",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@octokit/request-error@2.1.0' is vulnerable to 'CVE-2025-25289' (also known as 'GHSA-xx4v-prfh-6cgc')."
+     },
+     {
+      "id": "CVE-2026-42042",
+      "aliases": [
+       "GHSA-xx6v-rp6x-q39c"
+      ],
+      "package": "axios",
+      "version": "1.8.3",
+      "file": "yarn.lock",
+      "message": "Package 'axios@1.8.3' is vulnerable to 'CVE-2026-42042' (also known as 'GHSA-xx6v-rp6x-q39c')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 74,
+    "findings": [
+     {
+      "rule": "dependabot-cooldown",
+      "level": "warning",
+      "file": ".github/dependabot.yml",
+      "line": 8,
+      "message": "insufficient cooldown in Dependabot updates: insufficient implicit default-days (less than 7)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/build-enjoy-app-linux.yml",
+      "line": 9,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/build-enjoy-app-linux.yml",
+      "line": 6,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-linux.yml",
+      "line": 9,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-linux.yml",
+      "line": 11,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-linux.yml",
+      "line": 15,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-linux.yml",
+      "line": 30,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/build-enjoy-app-macos-arm64.yml",
+      "line": 9,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/build-enjoy-app-macos-arm64.yml",
+      "line": 6,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-macos-arm64.yml",
+      "line": 9,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-macos-arm64.yml",
+      "line": 11,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-macos-arm64.yml",
+      "line": 15,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-macos-arm64.yml",
+      "line": 39,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/build-enjoy-app-macos-x64.yml",
+      "line": 9,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/build-enjoy-app-macos-x64.yml",
+      "line": 6,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-macos-x64.yml",
+      "line": 9,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-macos-x64.yml",
+      "line": 11,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-macos-x64.yml",
+      "line": 15,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-macos-x64.yml",
+      "line": 39,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/build-enjoy-app-windows.yml",
+      "line": 9,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/build-enjoy-app-windows.yml",
+      "line": 6,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-windows.yml",
+      "line": 9,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-windows.yml",
+      "line": 11,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-windows.yml",
+      "line": 15,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/build-enjoy-app-windows.yml",
+      "line": 30,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/deploy-1000h-aliyun.yml",
+      "line": 23,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/deploy-1000h-aliyun.yml",
+      "line": 18,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-aliyun.yml",
+      "line": 23,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-aliyun.yml",
+      "line": 25,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-aliyun.yml",
+      "line": 31,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-aliyun.yml",
+      "line": 45,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/deploy-1000h-entry.yml",
+      "line": 22,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/deploy-1000h-entry.yml",
+      "line": 17,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-entry.yml",
+      "line": 22,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-entry.yml",
+      "line": 24,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-entry.yml",
+      "line": 30,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-entry.yml",
+      "line": 35,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-entry.yml",
+      "line": 24,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `lookup-only` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-entry.yml",
+      "line": 30,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `package-manager-cache` enables caching"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/deploy-1000h-portal-aliyun.yml",
+      "line": 25,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/deploy-1000h-portal-aliyun.yml",
+      "line": 20,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-portal-aliyun.yml",
+      "line": 25,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-portal-aliyun.yml",
+      "line": 27,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-portal-aliyun.yml",
+      "line": 34,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-portal-aliyun.yml",
+      "line": 58,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/deploy-1000h-portal-aliyun.yml",
+      "line": 56,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/deploy-1000h-portal.yml",
+      "line": 22,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/deploy-1000h-portal.yml",
+      "line": 17,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-portal.yml",
+      "line": 22,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-portal.yml",
+      "line": 24,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-portal.yml",
+      "line": 31,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-portal.yml",
+      "line": 47,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-portal.yml",
+      "line": 24,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `lookup-only` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h-portal.yml",
+      "line": 31,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `package-manager-cache` enables caching"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/deploy-1000h.yml",
+      "line": 22,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/deploy-1000h.yml",
+      "line": 17,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h.yml",
+      "line": 22,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h.yml",
+      "line": 24,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h.yml",
+      "line": 30,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h.yml",
+      "line": 49,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h.yml",
+      "line": 24,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `lookup-only` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/deploy-1000h.yml",
+      "line": 30,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `package-manager-cache` enables caching"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/deploy-1000h.yml",
+      "line": 46,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/release-enjoy-app.yml",
+      "line": 11,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/release-enjoy-app.yml",
+      "line": 5,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/release-enjoy-app.yml",
+      "line": 11,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/release-enjoy-app.yml",
+      "line": 13,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/release-enjoy-app.yml",
+      "line": 40,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/test-enjoy-app.yml",
+      "line": 24,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/test-enjoy-app.yml",
+      "line": 16,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test-enjoy-app.yml",
+      "line": 24,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test-enjoy-app.yml",
+      "line": 26,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test-enjoy-app.yml",
+      "line": 30,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/test-enjoy-app.yml",
+      "line": 89,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "findings",
+    "finding_count": 3,
+    "findings": [
+     {
+      "rule": "betterleaks.jwt",
+      "level": "error",
+      "file": "enjoy\\e2e\\renderer.spec.ts",
+      "line": 13
+     },
+     {
+      "rule": "betterleaks.openai-api-key",
+      "level": "error",
+      "file": "new-edition-drafts\\jupyter-notebooks\\daily-speech-practice.ipynb",
+      "line": 39
+     },
+     {
+      "rule": "betterleaks.openai-api-key",
+      "level": "error",
+      "file": "new-edition-drafts\\jupyter-notebooks\\ja-daily-speech-practice.ipynb",
+      "line": 42
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "provenance": null,
+  "suppression": null,
+  "card": "501 findings · 1 check pending · 2 checks not applicable",
+  "block": "SECURITY · commit 3d79913\n\n  Dependency vulnerabilities\n    424 findings                     osv-scanner 2.5.1 · 2026-09-21\n      CVE-2026-33128  h3@1.13.0\n      CVE-2026-33128  h3@1.15.1\n      CVE-2026-33896  node-forge@1.3.1\n      CVE-2026-27904  minimatch@10.0.1\n      CVE-2026-27904  minimatch@3.1.2\n      CVE-2026-27904  minimatch@5.1.6\n      CVE-2026-27904  minimatch@9.0.5\n      CVE-2026-59873  tar@6.2.1\n      CVE-2026-59873  tar@7.4.3\n      CVE-2026-32141  flatted@3.3.2\n      CVE-2026-71319  @\n      CVE-2026-83608  @\n      CVE-2026-84375  js-yaml@4.1.0\n      CVE-2026-67214  nanoid@3.3.8\n      CVE-2026-67214  nanoid@5.0.9\n      CVE-2025-69873  ajv@6.12.6\n      CVE-2025-69873  ajv@8.13.0\n      CVE-2025-69873  ajv@8.17.1\n      CVE-2026-40181  react-router@7.3.0\n      CVE-2026-1525  undici@6.21.0\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-21\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    74 findings                      zizmor 1.30.0 · 2026-09-21\n      dependabot-cooldown  .github/dependabot.yml:8\n      artipacked  .github/workflows/build-enjoy-app-linux.yml:9\n      excessive-permissions  .github/workflows/build-enjoy-app-linux.yml:6\n      unpinned-uses  .github/workflows/build-enjoy-app-linux.yml:9\n      unpinned-uses  .github/workflows/build-enjoy-app-linux.yml:11\n      unpinned-uses  .github/workflows/build-enjoy-app-linux.yml:15\n      unpinned-uses  .github/workflows/build-enjoy-app-linux.yml:30\n      artipacked  .github/workflows/build-enjoy-app-macos-arm64.yml:9\n      excessive-permissions  .github/workflows/build-enjoy-app-macos-arm64.yml:6\n      unpinned-uses  .github/workflows/build-enjoy-app-macos-arm64.yml:9\n      unpinned-uses  .github/workflows/build-enjoy-app-macos-arm64.yml:11\n      unpinned-uses  .github/workflows/build-enjoy-app-macos-arm64.yml:15\n      unpinned-uses  .github/workflows/build-enjoy-app-macos-arm64.yml:39\n      artipacked  .github/workflows/build-enjoy-app-macos-x64.yml:9\n      excessive-permissions  .github/workflows/build-enjoy-app-macos-x64.yml:6\n      unpinned-uses  .github/workflows/build-enjoy-app-macos-x64.yml:9\n      unpinned-uses  .github/workflows/build-enjoy-app-macos-x64.yml:11\n      unpinned-uses  .github/workflows/build-enjoy-app-macos-x64.yml:15\n      unpinned-uses  .github/workflows/build-enjoy-app-macos-x64.yml:39\n      artipacked  .github/workflows/build-enjoy-app-windows.yml:9\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    3 findings                       kingfisher 2.1.0 · 2026-09-21\n      betterleaks.jwt  enjoy\\e2e\\renderer.spec.ts:13\n      betterleaks.openai-api-key  new-edition-drafts\\jupyter-notebooks\\daily-speech-practice.ipynb:39\n      betterleaks.openai-api-key  new-edition-drafts\\jupyter-notebooks\\ja-daily-speech-practice.ipynb:42\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "3d799132046993eade5a364ddd1e557906854eda",
+  "built_at": "2026-09-21 18:00:02.903082",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 5750,
+  "edge_count": 17730,
+  "community_count": 366,
+  "extracted_pct": 0.9413423538208008,
+  "subsystems": [
+   {
+    "label": "Yarn Package Manager",
+    "size": 644
+   },
+   {
+    "label": "Minified Core Utilities",
+    "size": 173
+   },
+   {
+    "label": "Emscripten Runtime Lifecycle",
+    "size": 163
+   },
+   {
+    "label": "Audio Editing UI",
+    "size": 158
+   },
+   {
+    "label": "Audio and Chat Components",
+    "size": 147
+   },
+   {
+    "label": "Metal GPU Kernels (ARM64)",
+    "size": 144
+   },
+   {
+    "label": "Metal GPU Kernels (x64)",
+    "size": 144
+   },
+   {
+    "label": "Plugin Execution Utilities",
+    "size": 144
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "o()",
+    "degree": 220,
+    "file": ".yarn/releases/yarn-4.6.0.cjs"
+   },
+   {
+    "name": "cn()",
+    "degree": 203,
+    "file": "enjoy/src/renderer/lib/utils.ts"
+   },
+   {
+    "name": "u()",
+    "degree": 194,
+    "file": ".yarn/releases/yarn-4.6.0.cjs"
+   },
+   {
+    "name": "a()",
+    "degree": 190,
+    "file": ".yarn/releases/yarn-4.6.0.cjs"
+   },
+   {
+    "name": "n()",
+    "degree": 178,
+    "file": ".yarn/releases/yarn-4.6.0.cjs"
+   },
+   {
+    "name": "AppSettingsProviderContext",
+    "degree": 154,
+    "file": "enjoy/src/renderer/context/app-settings-provider.tsx"
+   },
+   {
+    "name": "Button",
+    "degree": 142,
+    "file": "enjoy/src/renderer/components/ui/button.tsx"
+   },
+   {
+    "name": "execute()",
+    "degree": 138,
+    "file": ".yarn/releases/yarn-4.6.0.cjs"
+   },
+   {
+    "name": "p()",
+    "degree": 103,
+    "file": ".yarn/releases/yarn-4.6.0.cjs"
+   },
+   {
+    "name": "constructor()",
+    "degree": 102,
+    "file": ".yarn/releases/yarn-4.6.0.cjs"
+   }
+  ],
+  "lines": [
+   "Structure: 366 subsystems — Yarn Package Manager · Minified Core Utilities · Emscripten Runtime Lifecycle",
+   "Core: o() · cn() · u()"
+  ],
+  "block": "Code structure (mapped 2026-09-21 · 3d799132 · graphify 0.9.37)\n5,750 concepts · 17,730 connections · 366 subsystems · 94% read directly from source\nSubsystems: Yarn Package Manager · Minified Core Utilities · Emscripten Runtime Lifecycle · Audio Editing UI · Audio and Chat Components · Metal GPU Kernels (ARM64) · Metal GPU Kernels (x64) · Plugin Execution Utilities\nCore abstractions:\n  1. o() — 220 connections\n  2. cn() — 203 connections\n  3. u() — 194 connections\n  4. a() — 190 connections\n  5. n() — 178 connections\n  6. AppSettingsProviderContext — 154 connections\n  7. Button — 142 connections\n  8. execute() — 138 connections\n  9. p() — 103 connections\n  10. constructor() — 102 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
+ }
+}

@@ -1,0 +1,1716 @@
+{
+ "security": {
+  "repo_id": 12888993,
+  "commit_sha": "90233bf798181ca5dad08e638ba19feb2f3f38e7",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 12,
+    "findings": [
+     {
+      "id": "CVE-2024-39689",
+      "aliases": [],
+      "package": "certifi",
+      "version": "2021.5.30",
+      "file": "requirements.txt",
+      "message": "Package 'certifi@2021.5.30' is vulnerable to 'CVE-2024-39689' (also known as 'PYSEC-2024-230', 'GHSA-248v-346w-9cwc')."
+     },
+     {
+      "id": "CVE-2025-66471",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.0",
+      "file": "requirements.txt",
+      "message": "Package 'urllib3@2.0' is vulnerable to 'CVE-2025-66471' (also known as 'PYSEC-2026-1994', 'GHSA-2xpw-w6gg-jr37')."
+     },
+     {
+      "id": "CVE-2024-37891",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.0",
+      "file": "requirements.txt",
+      "message": "Package 'urllib3@2.0' is vulnerable to 'CVE-2024-37891' (also known as 'PYSEC-2026-1995', 'GHSA-34jh-p97f-mpxf')."
+     },
+     {
+      "id": "CVE-2026-21441",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.0",
+      "file": "requirements.txt",
+      "message": "Package 'urllib3@2.0' is vulnerable to 'CVE-2026-21441' (also known as 'PYSEC-2026-1996', 'GHSA-38jv-5279-wg99')."
+     },
+     {
+      "id": "CVE-2022-23491",
+      "aliases": [],
+      "package": "certifi",
+      "version": "2021.5.30",
+      "file": "requirements.txt",
+      "message": "Package 'certifi@2021.5.30' is vulnerable to 'CVE-2022-23491' (also known as 'PYSEC-2022-42986', 'GHSA-43fp-rhv2-5gv8')."
+     },
+     {
+      "id": "CVE-2023-45803",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.0",
+      "file": "requirements.txt",
+      "message": "Package 'urllib3@2.0' is vulnerable to 'CVE-2023-45803' (also known as 'PYSEC-2023-212', 'GHSA-g4mx-q9vg-27p4')."
+     },
+     {
+      "id": "CVE-2025-66418",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.0",
+      "file": "requirements.txt",
+      "message": "Package 'urllib3@2.0' is vulnerable to 'CVE-2025-66418' (also known as 'PYSEC-2026-1998', 'GHSA-gm62-xv2j-4w53')."
+     },
+     {
+      "id": "CVE-2025-50181",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.0",
+      "file": "requirements.txt",
+      "message": "Package 'urllib3@2.0' is vulnerable to 'CVE-2025-50181' (also known as 'PYSEC-2026-1999', 'GHSA-pq67-6m6q-mj2v')."
+     },
+     {
+      "id": "CVE-2026-44431",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.0",
+      "file": "requirements.txt",
+      "message": "Package 'urllib3@2.0' is vulnerable to 'CVE-2026-44431' (also known as 'PYSEC-2026-141', 'GHSA-qccp-gfcp-xxvc')."
+     },
+     {
+      "id": "CVE-2026-62949",
+      "aliases": [
+       "GHSA-rw4j-r22c-9gc3"
+      ],
+      "package": "asyncssh",
+      "version": "2.23.1",
+      "file": "requirements_all.txt",
+      "message": "Package 'asyncssh@2.23.1' is vulnerable to 'CVE-2026-62949' (also known as 'GHSA-rw4j-r22c-9gc3')."
+     },
+     {
+      "id": "CVE-2023-43804",
+      "aliases": [],
+      "package": "urllib3",
+      "version": "2.0",
+      "file": "requirements.txt",
+      "message": "Package 'urllib3@2.0' is vulnerable to 'CVE-2023-43804' (also known as 'PYSEC-2023-192', 'GHSA-v845-jxx5-vc9f')."
+     },
+     {
+      "id": "CVE-2023-37920",
+      "aliases": [],
+      "package": "certifi",
+      "version": "2021.5.30",
+      "file": "requirements.txt",
+      "message": "Package 'certifi@2021.5.30' is vulnerable to 'CVE-2023-37920' (also known as 'PYSEC-2023-135', 'GHSA-xqr8-7jwr-rhp7')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 5,
+    "findings": [
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 755,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 756,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 759,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 435,
+      "message": "dangerous use of environment file: write to GITHUB_ENV may allow code execution"
+     },
+     {
+      "rule": "unsound-condition",
+      "level": "error",
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 81,
+      "message": "unsound conditional expression: condition always evaluates to true"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "findings",
+    "finding_count": 22,
+    "findings": [
+     {
+      "rule": "betterleaks.lichess-personal-access-token",
+      "level": "error",
+      "file": "homeassistant/components/lutron_caseta/__init__.py",
+      "line": 436
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "homeassistant/components/mqtt/config_flow.py",
+      "line": 5202
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "homeassistant/components/weatherkit/config_flow.py",
+      "line": 117
+     },
+     {
+      "rule": "betterleaks.jwt",
+      "level": "error",
+      "file": "tests/components/august/fixtures/jwt",
+      "line": 1
+     },
+     {
+      "rule": "betterleaks.jwt",
+      "level": "error",
+      "file": "tests/components/august/fixtures/legacy_jwt",
+      "line": 1
+     },
+     {
+      "rule": "betterleaks.jwt",
+      "level": "error",
+      "file": "tests/components/august/fixtures/migration_jwt",
+      "line": 1
+     },
+     {
+      "rule": "betterleaks.jwt",
+      "level": "error",
+      "file": "tests/components/august/fixtures/reauth_jwt",
+      "line": 1
+     },
+     {
+      "rule": "betterleaks.jwt",
+      "level": "error",
+      "file": "tests/components/elmax/fixtures/direct/login.json",
+      "line": 2
+     },
+     {
+      "rule": "betterleaks.jwt",
+      "level": "error",
+      "file": "tests/components/elmax/fixtures/login.json",
+      "line": 2
+     },
+     {
+      "rule": "betterleaks.github-oauth",
+      "level": "error",
+      "file": "tests/components/github/const.py",
+      "line": 3
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "tests/components/google_assistant/test_http.py",
+      "line": 45
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "tests/components/google_cloud/conftest.py",
+      "line": 23
+     },
+     {
+      "rule": "betterleaks.jwt",
+      "level": "error",
+      "file": "tests/components/husqvarna_automower/fixtures/jwt",
+      "line": 1
+     },
+     {
+      "rule": "betterleaks.jwt",
+      "level": "error",
+      "file": "tests/components/mealie/fixtures/users_self.json",
+      "line": 17
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "tests/components/mqtt/test_config_flow.py",
+      "line": 129
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "tests/components/mqtt/test_config_flow.py",
+      "line": 139
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "tests/components/mqtt/test_config_flow.py",
+      "line": 144
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "tests/components/weatherkit/test_config_flow.py",
+      "line": 40
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "tests/components/weatherkit/test_config_flow.py",
+      "line": 137
+     },
+     {
+      "rule": "betterleaks.jwt",
+      "level": "error",
+      "file": "tests/components/yale/fixtures/reauth_jwt",
+      "line": 1
+     },
+     {
+      "rule": "betterleaks.jwt",
+      "level": "error",
+      "file": "tests/components/yale/fixtures/reauth_jwt_wrong_account",
+      "line": 1
+     },
+     {
+      "rule": "betterleaks.generic-credential-uri",
+      "level": "warning",
+      "file": "github\\workflows\\ci.yaml",
+      "line": 1206
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "findings",
+    "finding_count": 120,
+    "findings": [
+     {
+      "rule": "P5",
+      "severity": "CRITICAL",
+      "category": "Prompt Injection",
+      "pattern": "Harmful Content Injection",
+      "confidence": 0.7,
+      "file": "homeassistant/components/airq/strings.json",
+      "line": 87,
+      "message": "Harmful Content Injection",
+      "finding": "cyanide"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".claude/skills/bump-dependency/scripts/resolve_dependency.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".claude/skills/bump-dependency/scripts/resolve_dependency.py"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/actions/cache-apt-packages/action.yml",
+      "line": 30,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -f /etc/apt/sources.list.d/microsoft-prod.list"
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.75,
+      "file": ".github/actions/cache-apt-packages/action.yml",
+      "line": 51,
+      "message": "Chaining Abuse",
+      "finding": "| sudo "
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": ".github/copilot-instructions.md",
+      "line": 1,
+      "message": "Hidden Instructions",
+      "finding": "<!-- Automatically generated by gen_copilot_instructions.py, do not edit -->"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 335,
+      "message": "Direct Prompt Extraction",
+      "finding": "Print prompt"
+     },
+     {
+      "rule": "PE4",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Docker Socket Access",
+      "confidence": 0.9,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 736,
+      "message": "Docker Socket Access",
+      "finding": "/var/run/docker.sock"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 854,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -f \"$HOME/.copilot/settings.json\""
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.75,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 854,
+      "message": "Chaining Abuse",
+      "finding": "; rm -"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 1493,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /tmp/gh-aw/sandbox/firewall/logs\n          rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 1493,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /tmp/gh-aw/sandbox/firewall/logs"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 1494,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /tmp/gh-aw/sandbox/firewall/audit"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 1514,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -f \"${RUNNER_TEMP}/gh-aw/mcp-config/mcp-servers.json\""
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 1515,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -f \"$HOME/.copilot/mcp-config.json\""
+     },
+     {
+      "rule": "AS1",
+      "severity": "HIGH",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "confidence": 0.9,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 1516,
+      "message": "Agent Config Directory Access",
+      "finding": "/.gemini/settings.json"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 1516,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -f \"$GITHUB_WORKSPACE/.gemini/settings.json\""
+     },
+     {
+      "rule": "P2",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "confidence": 0.7,
+      "file": ".github/workflows/check-requirements.md",
+      "line": 137,
+      "message": "Hidden Instructions",
+      "finding": "<!-- requirements-check -->\n## Check requirements\n\n❌ Internal error: deterministic artifact contains an unknown check kind\n(`<check_kind>` on `<pkg>`).\n```\n\nThen stop. Do not improvise a verdict.\n\n## "
+     },
+     {
+      "rule": "RA1",
+      "severity": "HIGH",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "confidence": 0.9,
+      "file": ".github/workflows/check-requirements.md",
+      "line": 321,
+      "message": "Self-Modification",
+      "finding": "self-update"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": ".github/workflows/check-requirements.md",
+      "line": 349,
+      "message": "Credential Access",
+      "finding": "secrets.yaml"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": ".github/workflows/check-requirements.md",
+      "line": 398,
+      "message": "Credential Access",
+      "finding": "secrets.yaml"
+     },
+     {
+      "rule": "SC2",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.9,
+      "file": ".github/workflows/check-requirements.md",
+      "line": 356,
+      "message": "External Script Fetching",
+      "finding": "curl … | sh"
+     },
+     {
+      "rule": "SC2",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.9,
+      "file": ".github/workflows/check-requirements.md",
+      "line": 356,
+      "message": "External Script Fetching",
+      "finding": "curl ... | sh"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": ".gitignore",
+      "line": 116,
+      "message": "Credential Access",
+      "finding": ".env\n"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".prettierrc.js",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".prettierrc.js"
+     },
+     {
+      "rule": "SC2",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.9,
+      "file": "Dockerfile.dev",
+      "line": 61,
+      "message": "External Script Fetching",
+      "finding": "curl -fsSL https://claude.ai/install.sh | bash"
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.7,
+      "file": "Dockerfile.dev",
+      "line": 61,
+      "message": "Chaining Abuse",
+      "finding": "| bash\n"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/auth/models.py",
+      "line": 104,
+      "message": "Credential Access",
+      "finding": "access tokens"
+     },
+     {
+      "rule": "MP3",
+      "severity": "HIGH",
+      "category": "Memory Poisoning",
+      "pattern": "Memory Manipulation",
+      "confidence": 0.8,
+      "file": "homeassistant/components/actron_air/config_flow.py",
+      "line": 177,
+      "message": "Memory Manipulation",
+      "finding": "Reset state"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/auth/__init__.py",
+      "line": 496,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/auth/__init__.py",
+      "line": 602,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/auth/__init__.py",
+      "line": 655,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/airpatrol/coordinator.py",
+      "line": 67,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/aladdin_connect/api.py",
+      "line": 23,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/aladdin_connect/api.py",
+      "line": 43,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/auth.py",
+      "line": 50,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/auth.py",
+      "line": 51,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/auth.py",
+      "line": 60,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/auth.py",
+      "line": 68,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/auth.py",
+      "line": 73,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/auth.py",
+      "line": 95,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/config.py",
+      "line": 109,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/config.py",
+      "line": 113,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/errors.py",
+      "line": 16,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/smart_home.py",
+      "line": 112,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/smart_home.py",
+      "line": 118,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/state_report.py",
+      "line": 279,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/state_report.py",
+      "line": 395,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "homeassistant/components/alexa/state_report.py",
+      "line": 446,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/actions/cache-apt-packages/action.yml",
+      "line": 30,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/actions/cache-apt-packages/action.yml",
+      "line": 51,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/actions/cache-apt-packages/action.yml",
+      "line": 52,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/ci.yaml",
+      "line": 1145,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.75,
+      "file": ".github/workflows/builder.yml",
+      "line": 549,
+      "message": "Docker image referenced without tag or digest: 'docker run --rm'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.75,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 736,
+      "message": "Docker image referenced without tag or digest: 'docker run -i'.",
+      "finding": ""
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 869,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 755"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 1606,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 755"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.55,
+      "file": "homeassistant/auth/mfa_modules/notify.py",
+      "line": 118,
+      "message": "Session Persistence",
+      "finding": "Load stored data"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.55,
+      "file": "homeassistant/auth/mfa_modules/totp.py",
+      "line": 96,
+      "message": "Session Persistence",
+      "finding": "Load stored data"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.55,
+      "file": "homeassistant/auth/providers/homeassistant.py",
+      "line": 93,
+      "message": "Session Persistence",
+      "finding": "Load stored data"
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.8,
+      "file": "homeassistant/components/adax/coordinator.py",
+      "line": 88,
+      "message": "Unsafe Defaults",
+      "finding": "verify_ssl=False"
+     },
+     {
+      "rule": "AE4",
+      "severity": "MEDIUM",
+      "category": "analysis-evasion",
+      "pattern": "",
+      "confidence": 0.8,
+      "file": "homeassistant/components/air_quality/conditions.yaml",
+      "line": 1,
+      "message": "Suspicious Unicode normalization or mixed-script content",
+      "finding": ""
+     },
+     {
+      "rule": "AE4",
+      "severity": "MEDIUM",
+      "category": "analysis-evasion",
+      "pattern": "",
+      "confidence": 0.8,
+      "file": "homeassistant/components/air_quality/triggers.yaml",
+      "line": 1,
+      "message": "Suspicious Unicode normalization or mixed-script content",
+      "finding": ""
+     },
+     {
+      "rule": "AE4",
+      "severity": "MEDIUM",
+      "category": "analysis-evasion",
+      "pattern": "",
+      "confidence": 0.8,
+      "file": "homeassistant/components/airgradient/strings.json",
+      "line": 1,
+      "message": "Suspicious Unicode normalization or mixed-script content",
+      "finding": ""
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.8,
+      "file": "homeassistant/components/airos/const.py",
+      "line": 12,
+      "message": "Unsafe Defaults",
+      "finding": "VERIFY_SSL = False"
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.75,
+      "file": "homeassistant/components/alexa/flash_briefings.py",
+      "line": 48,
+      "message": "Unsafe Defaults",
+      "finding": "auth = False"
+     },
+     {
+      "rule": "TM3",
+      "severity": "MEDIUM",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "confidence": 0.75,
+      "file": "homeassistant/components/alexa/smart_home.py",
+      "line": 54,
+      "message": "Unsafe Defaults",
+      "finding": "auth = None"
+     },
+     {
+      "rule": "AE4",
+      "severity": "MEDIUM",
+      "category": "analysis-evasion",
+      "pattern": "",
+      "confidence": 0.8,
+      "file": "homeassistant/components/altruist/sensor.py",
+      "line": 1,
+      "message": "Suspicious Unicode normalization or mixed-script content",
+      "finding": ""
+     },
+     {
+      "rule": "AE4",
+      "severity": "MEDIUM",
+      "category": "analysis-evasion",
+      "pattern": "",
+      "confidence": 0.8,
+      "file": "homeassistant/components/aranet/sensor.py",
+      "line": 1,
+      "message": "Suspicious Unicode normalization or mixed-script content",
+      "finding": ""
+     },
+     {
+      "rule": "AE4",
+      "severity": "MEDIUM",
+      "category": "analysis-evasion",
+      "pattern": "",
+      "confidence": 0.8,
+      "file": "homeassistant/components/bthome/sensor.py",
+      "line": 1,
+      "message": "Suspicious Unicode normalization or mixed-script content",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.75,
+      "file": "homeassistant/components/network/strings.json",
+      "line": 4,
+      "message": "Docker image referenced without tag or digest: 'Docker run command'.",
+      "finding": ""
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": ".github/workflows/builder.yml",
+      "line": 549,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -v \"${GITHUB_WORKSPACE}\":/github/workspace"
+     },
+     {
+      "rule": "SC1",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "confidence": 0.7,
+      "file": ".github/workflows/check-requirements.lock.yml",
+      "line": 771,
+      "message": "Unpinned Dependencies",
+      "finding": "\"DEBUG\": \"*\""
+     },
+     {
+      "rule": "SC2",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.15,
+      "file": ".github/copilot-instructions.md",
+      "line": 155,
+      "message": "External Script Fetching",
+      "finding": "curl -LsSf https://astral.sh/uv/install.sh | sh"
+     },
+     {
+      "rule": "SC2",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.15,
+      "file": "AGENTS.md",
+      "line": 17,
+      "message": "External Script Fetching",
+      "finding": "curl -LsSf https://astral.sh/uv/install.sh | sh"
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": "Dockerfile.dev",
+      "line": 28,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": "Dockerfile.dev",
+      "line": 28,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /var/lib/apt/lists/*"
+     },
+     {
+      "rule": "TM2",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.15,
+      "file": "Dockerfile.dev",
+      "line": 28,
+      "message": "Chaining Abuse",
+      "finding": "&& rm -"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/ai_task/__init__.py",
+      "line": 103,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "                if getattr(self, key) != value:"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/ai_task/__init__.py",
+      "line": 115,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        return {key: getattr(self, key) for key in self.KEYS}"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/air_quality/__init__.py",
+      "line": 140,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "            if (value := getattr(self, prop)) is not None:"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/airgradient/const.py",
+      "line": 134,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        return getattr(config, capability) is not None and ("
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/alexa_devices/select.py",
+      "line": 121,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        method = getattr(self.coordinator.api, self.entity_description.method)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/alexa_devices/switch.py",
+      "line": 134,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        method = getattr(self.coordinator.api, self.entity_description.method)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/amcrest/camera.py",
+      "line": 438,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "                await getattr(self, f\"_async_set_{func}\")(value)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/amcrest/camera.py",
+      "line": 439,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "                new_value = await getattr(self, f\"_async_get_{func}\")()"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/apple_tv/remote.py",
+      "line": 89,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "                        attr_value = getattr(attr_value, attr_name, None)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/apple_tv/remote.py",
+      "line": 91,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "                    attr_value = getattr(self.atv.remote_control, single_command, None)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/aqualogic/sensor.py",
+      "line": 147,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "            self._attr_native_value = getattr(panel, self.entity_description.key)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/aranet/sensor.py",
+      "line": 167,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        val = getattr(adv.readings, key)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/atome/sensor.py",
+      "line": 273,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        update_function = getattr(self._data, f\"update_{self._sensor_type}_usage\")"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/atome/sensor.py",
+      "line": 283,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "            self._attr_native_value = getattr(self._data, f\"{self._sensor_type}_usage\")"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/atome/sensor.py",
+      "line": 285,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "                \"price\": getattr(self._data, f\"{self._sensor_type}_price\")"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/automation/__init__.py",
+      "line": 140,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        if referenced_id in getattr(automation_entity, property_name)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/automation/__init__.py",
+      "line": 154,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "    return list(getattr(automation_entity, property_name))"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/baf/sensor.py",
+      "line": 101,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        if getattr(device, description.key)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/balboa/time.py",
+      "line": 50,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        return getattr(self._client, f\"{FILTER_CYCLE}{self.index}_{self.period}\")"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/bitvis/sensor.py",
+      "line": 44,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "            return cast(float, getattr(data, field))"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/bluetooth/passive_update_processor.py",
+      "line": 124,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        if (value := getattr(description, field.name)) != field.default"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/bosch_shc/switch.py",
+      "line": 288,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "            getattr(self._device, self.entity_description.on_key)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/bring/util.py",
+      "line": 33,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        getattr(item.attributes[0].content, attribute)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/caldav/api.py",
+      "line": 31,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        return getattr(obj, attribute).value"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/camera/__init__.py",
+      "line": 1060,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        return getattr(self._camera, name)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/cloud/assist_pipeline.py",
+      "line": 94,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        if getattr(pipeline, pipeline_attribute) == DOMAIN:"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/comelit/sensor.py",
+      "line": 129,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "            getattr(\n                self.coordinator.data[OTHER][self._device.index],\n                self.entity_description.key,\n            ),"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/deconz/button.py",
+      "line": 102,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        async_button_fn = getattr(\n            self.hub.api.scenes,\n            self.entity_description.button_fn,\n        )"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/device_automation/helpers.py",
+      "line": 116,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "            ConfigType, getattr(platform, STATIC_VALIDATOR[automation_type])(config)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/device_automation/helpers.py",
+      "line": 129,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "            await getattr(platform, DYNAMIC_VALIDATOR[automation_type])(hass, config),"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/device_automation/helpers.py",
+      "line": 150,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "            await getattr(platform, DYNAMIC_VALIDATOR[automation_type])(hass, config),"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/devolo_home_control/sensor.py",
+      "line": 172,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        self._attr_native_unit_of_measurement = getattr(\n            device_instance.consumption_property[element_uid], f\"{consumption}_unit\"\n        )"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/devolo_home_control/sensor.py",
+      "line": 176,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        self._value = getattr(\n            device_instance.consumption_property[element_uid], consumption\n        )"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/devolo_home_control/sensor.py",
+      "line": 196,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "            self._value = getattr(\n                self._device_instance.consumption_property[self._attr_unique_id],\n                self._sensor_type,\n            )"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/devolo_home_network/sensor.py",
+      "line": 106,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        value_func=lambda data: getattr(data, DataRateDirection.RX, 0),"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/devolo_home_network/sensor.py",
+      "line": 115,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        value_func=lambda data: getattr(data, DataRateDirection.TX, 0),"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/dormakaba_dkey/sensor.py",
+      "line": 60,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        self._attr_native_value = getattr(\n            self.coordinator.lock, self.entity_description.key\n        )"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/dsmr/sensor.py",
+      "line": 639,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "    dsmr_object = getattr(data, entity_description.obis_reference)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/dsmr/sensor.py",
+      "line": 758,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "    return getattr(telegram_or_device, obis_reference, None)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/dsmr/sensor.py",
+      "line": 1051,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        attr: str | None = getattr(dsmr_object, attribute)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/ecoal_boiler/sensor.py",
+      "line": 48,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        self._attr_native_value = getattr(status, self._status_attr)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/ecoal_boiler/switch.py",
+      "line": 46,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        self._contr_set_fun = getattr(self._ecoal_contr, f\"set_{state_attr}\")"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "homeassistant/components/ecoal_boiler/switch.py",
+      "line": 54,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "        self._attr_is_on = getattr(status, self._state_attr)"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "provenance": null,
+  "suppression": null,
+  "card": "159 findings · 1 check pending",
+  "block": "SECURITY · commit 90233bf\n\n  Dependency vulnerabilities\n    12 findings                      osv-scanner 2.5.1 · 2026-09-21\n      CVE-2024-39689  certifi@2021.5.30\n      CVE-2025-66471  urllib3@2.0\n      CVE-2024-37891  urllib3@2.0\n      CVE-2026-21441  urllib3@2.0\n      CVE-2022-23491  certifi@2021.5.30\n      CVE-2023-45803  urllib3@2.0\n      CVE-2025-66418  urllib3@2.0\n      CVE-2025-50181  urllib3@2.0\n      CVE-2026-44431  urllib3@2.0\n      CVE-2026-62949  asyncssh@2.23.1\n      CVE-2023-43804  urllib3@2.0\n      CVE-2023-37920  certifi@2021.5.30\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-21\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-21\n\n  CI / workflow\n    5 findings                       zizmor 1.30.0 · 2026-09-21\n      template-injection  .github/workflows/check-requirements.lock.yml:755\n      template-injection  .github/workflows/check-requirements.lock.yml:756\n      template-injection  .github/workflows/check-requirements.lock.yml:759\n      github-env  .github/workflows/check-requirements.lock.yml:435\n      unsound-condition  .github/workflows/check-requirements.lock.yml:81\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    22 findings                      kingfisher 2.1.0 · 2026-09-21\n      betterleaks.lichess-personal-access-token  homeassistant/components/lutron_caseta/__init__.py:436\n      betterleaks.private-key  homeassistant/components/mqtt/config_flow.py:5202\n      betterleaks.private-key  homeassistant/components/weatherkit/config_flow.py:117\n      betterleaks.jwt  tests/components/august/fixtures/jwt:1\n      betterleaks.jwt  tests/components/august/fixtures/legacy_jwt:1\n      betterleaks.jwt  tests/components/august/fixtures/migration_jwt:1\n      betterleaks.jwt  tests/components/august/fixtures/reauth_jwt:1\n      betterleaks.jwt  tests/components/elmax/fixtures/direct/login.json:2\n      betterleaks.jwt  tests/components/elmax/fixtures/login.json:2\n      betterleaks.github-oauth  tests/components/github/const.py:3\n      betterleaks.private-key  tests/components/google_assistant/test_http.py:45\n      betterleaks.private-key  tests/components/google_cloud/conftest.py:23\n      betterleaks.jwt  tests/components/husqvarna_automower/fixtures/jwt:1\n      betterleaks.jwt  tests/components/mealie/fixtures/users_self.json:17\n      betterleaks.private-key  tests/components/mqtt/test_config_flow.py:129\n      betterleaks.private-key  tests/components/mqtt/test_config_flow.py:139\n      betterleaks.private-key  tests/components/mqtt/test_config_flow.py:144\n      betterleaks.private-key  tests/components/weatherkit/test_config_flow.py:40\n      betterleaks.private-key  tests/components/weatherkit/test_config_flow.py:137\n      betterleaks.jwt  tests/components/yale/fixtures/reauth_jwt:1\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    120 findings                     skillspector 2.11.0 · 2026-09-21\n      P5 CRITICAL  homeassistant/components/airq/strings.json:87  Harmful Content Injection\n      SC9 HIGH  .claude/skills/bump-dependency/scripts/resolve_dependency.py:1  Concealed Executable Artifact\n      TM1 HIGH  .github/actions/cache-apt-packages/action.yml:30  Tool Parameter Abuse\n      TM2 HIGH  .github/actions/cache-apt-packages/action.yml:51  Chaining Abuse\n      P2 HIGH  .github/copilot-instructions.md:1  Hidden Instructions\n      P6 HIGH  .github/workflows/check-requirements.lock.yml:335  Direct Prompt Extraction\n      PE4 HIGH  .github/workflows/check-requirements.lock.yml:736  Docker Socket Access\n      TM1 HIGH  .github/workflows/check-requirements.lock.yml:854  Tool Parameter Abuse\n      TM2 HIGH  .github/workflows/check-requirements.lock.yml:854  Chaining Abuse\n      TM1 HIGH  .github/workflows/check-requirements.lock.yml:1493  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/check-requirements.lock.yml:1493  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/check-requirements.lock.yml:1494  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/check-requirements.lock.yml:1514  Tool Parameter Abuse\n      TM1 HIGH  .github/workflows/check-requirements.lock.yml:1515  Tool Parameter Abuse\n      AS1 HIGH  .github/workflows/check-requirements.lock.yml:1516  Agent Config Directory Access\n      TM1 HIGH  .github/workflows/check-requirements.lock.yml:1516  Tool Parameter Abuse\n      P2 HIGH  .github/workflows/check-requirements.md:137  Hidden Instructions\n      RA1 HIGH  .github/workflows/check-requirements.md:321  Self-Modification\n      PE3 HIGH  .github/workflows/check-requirements.md:349  Credential Access\n      PE3 HIGH  .github/workflows/check-requirements.md:398  Credential Access\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "failed(timeout)",
+  "commit_sha": "90233bf798181ca5dad08e638ba19feb2f3f38e7",
+  "built_at": "2026-09-21 18:00:02.903082",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 0,
+  "edge_count": 0,
+  "community_count": 0,
+  "extracted_pct": null,
+  "subsystems": [],
+  "god_nodes": [],
+  "lines": [
+   "Structure: not yet mapped — queued"
+  ],
+  "block": "not yet mapped — queued",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
+ }
+}

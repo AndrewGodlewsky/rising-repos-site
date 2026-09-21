@@ -1,0 +1,731 @@
+{
+ "security": {
+  "repo_id": 834369920,
+  "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 73,
+    "findings": [
+     {
+      "id": "CVE-2026-4372",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.57.6",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.57.6' is vulnerable to 'CVE-2026-4372' (also known as 'PYSEC-2026-2289', 'GHSA-29pf-2h5f-8g72')."
+     },
+     {
+      "id": "CVE-2026-1260",
+      "aliases": [],
+      "package": "sentencepiece",
+      "version": "0.2.0",
+      "file": "requirements.txt",
+      "message": "Package 'sentencepiece@0.2.0' is vulnerable to 'CVE-2026-1260' (also known as 'PYSEC-2026-1909', 'GHSA-38vq-g6vr-w8wf')."
+     },
+     {
+      "id": "CVE-2026-79674",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-79674' (also known as 'PYSEC-2026-3736', 'GHSA-3gq4-3j92-5w49')."
+     },
+     {
+      "id": "CVE-2026-63311",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-63311' (also known as 'PYSEC-2026-3723', 'GHSA-3gqm-fcw5-w839')."
+     },
+     {
+      "id": "CVE-2026-54911",
+      "aliases": [],
+      "package": "ujson",
+      "version": "5.1.0",
+      "file": "requirements.txt",
+      "message": "Package 'ujson@5.1.0' is vulnerable to 'CVE-2026-54911' (also known as 'PYSEC-2026-2294', 'GHSA-3j69-69wj-xqx2')."
+     },
+     {
+      "id": "CVE-2025-68480",
+      "aliases": [],
+      "package": "marshmallow",
+      "version": "3.22.0",
+      "file": "requirements.txt",
+      "message": "Package 'marshmallow@3.22.0' is vulnerable to 'CVE-2025-68480' (also known as 'PYSEC-2026-1605', 'GHSA-428g-f7cq-pgp5')."
+     },
+     {
+      "id": "CVE-2024-6866",
+      "aliases": [],
+      "package": "flask-cors",
+      "version": "4.0.0",
+      "file": "requirements.txt",
+      "message": "Package 'flask-cors@4.0.0' is vulnerable to 'CVE-2024-6866' (also known as 'PYSEC-2026-1383', 'GHSA-43qf-4rqw-9q2g')."
+     },
+     {
+      "id": "CVE-2026-33236",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-33236' (also known as 'PYSEC-2026-2237', 'GHSA-469j-vmhf-r6v7')."
+     },
+     {
+      "id": "CVE-2026-62385",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-62385' (also known as 'PYSEC-2026-3728', 'GHSA-568f-pv23-39p4')."
+     },
+     {
+      "id": "CVE-2026-12259",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-12259' (also known as 'CVE-2026-63310', 'PYSEC-2026-3729', 'GHSA-5wp5-5229-5g6q', 'GHSA-gf32-cmjh-8m9v')."
+     },
+     {
+      "id": "CVE-2026-0847",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-0847' (also known as 'PYSEC-2026-98', 'GHSA-68j8-pq59-fqgm')."
+     },
+     {
+      "id": "CVE-2026-27205",
+      "aliases": [],
+      "package": "flask",
+      "version": "3.0.3",
+      "file": "requirements.txt",
+      "message": "Package 'flask@3.0.3' is vulnerable to 'CVE-2026-27205' (also known as 'PYSEC-2026-2151', 'GHSA-68rp-wp8r-4726')."
+     },
+     {
+      "id": "CVE-2026-1839",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.57.6",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.57.6' is vulnerable to 'CVE-2026-1839' (also known as 'PYSEC-2026-2288', 'GHSA-69w3-r845-3855')."
+     },
+     {
+      "id": "CVE-2026-12072",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-12072' (also known as 'PYSEC-2026-3581', 'GHSA-6hm5-jgcp-p838')."
+     },
+     {
+      "id": "CVE-2026-78680",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-78680' (also known as 'PYSEC-2026-3868', 'GHSA-6hwm-xvph-95vm')."
+     },
+     {
+      "id": "CVE-2026-78682",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-78682' (also known as 'PYSEC-2026-3733', 'GHSA-6ww7-3frv-cqxh')."
+     },
+     {
+      "id": "CVE-2026-65915",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-65915' (also known as 'PYSEC-2026-3731', 'GHSA-72r2-7mfr-5xr9')."
+     },
+     {
+      "id": "CVE-2026-33682",
+      "aliases": [],
+      "package": "streamlit",
+      "version": "1.50.0",
+      "file": "requirements.txt",
+      "message": "Package 'streamlit@1.50.0' is vulnerable to 'CVE-2026-33682' (also known as 'PYSEC-2026-2285', 'GHSA-7p48-42j8-8846')."
+     },
+     {
+      "id": "CVE-2025-14009",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2025-14009' (also known as 'PYSEC-2026-96', 'GHSA-7p94-766c-hgjp')."
+     },
+     {
+      "id": "CVE-2024-6839",
+      "aliases": [],
+      "package": "flask-cors",
+      "version": "4.0.0",
+      "file": "requirements.txt",
+      "message": "Package 'flask-cors@4.0.0' is vulnerable to 'CVE-2024-6839' (also known as 'PYSEC-2026-1384', 'GHSA-7rxf-gvfg-47g4')."
+     },
+     {
+      "id": "CVE-2025-71408",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2025-71408' (also known as 'PYSEC-2026-3657', 'GHSA-848c-c2cx-j7qx')."
+     },
+     {
+      "id": "CVE-2024-1681",
+      "aliases": [],
+      "package": "flask-cors",
+      "version": "4.0.0",
+      "file": "requirements.txt",
+      "message": "Package 'flask-cors@4.0.0' is vulnerable to 'CVE-2024-1681' (also known as 'PYSEC-2024-271', 'GHSA-84pr-m4jr-85g5')."
+     },
+     {
+      "id": "CVE-2026-81726",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-81726' (also known as 'PYSEC-2026-3740', 'GHSA-8mgp-746c-j5xp')."
+     },
+     {
+      "id": "CVE-2026-81725",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-81725' (also known as 'PYSEC-2026-3752', 'GHSA-8mpw-7fpc-4gqj')."
+     },
+     {
+      "id": "CVE-2024-6844",
+      "aliases": [],
+      "package": "flask-cors",
+      "version": "4.0.0",
+      "file": "requirements.txt",
+      "message": "Package 'flask-cors@4.0.0' is vulnerable to 'CVE-2024-6844' (also known as 'PYSEC-2026-1385', 'GHSA-8vgw-p6qm-5gr7')."
+     },
+     {
+      "id": "CVE-2026-78681",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-78681' (also known as 'PYSEC-2026-3748', 'GHSA-97qj-x29f-37w7')."
+     },
+     {
+      "id": "CVE-2026-44660",
+      "aliases": [],
+      "package": "ujson",
+      "version": "5.1.0",
+      "file": "requirements.txt",
+      "message": "Package 'ujson@5.1.0' is vulnerable to 'CVE-2026-44660' (also known as 'PYSEC-2026-2293', 'GHSA-c38f-wx89-p2xg')."
+     },
+     {
+      "id": "CVE-2026-32875",
+      "aliases": [],
+      "package": "ujson",
+      "version": "5.1.0",
+      "file": "requirements.txt",
+      "message": "Package 'ujson@5.1.0' is vulnerable to 'CVE-2026-32875' (also known as 'PYSEC-2026-2292', 'GHSA-c8rr-9gxc-jprv')."
+     },
+     {
+      "id": "CVE-2024-39705",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2024-39705' (also known as 'PYSEC-2024-167', 'GHSA-cgvx-9447-vcch')."
+     },
+     {
+      "id": "CVE-2025-27516",
+      "aliases": [],
+      "package": "jinja2",
+      "version": "3.1.2",
+      "file": "requirements.txt",
+      "message": "Package 'jinja2@3.1.2' is vulnerable to 'CVE-2025-27516' (also known as 'PYSEC-2026-1471', 'GHSA-cpwx-vrp4-4pq7')."
+     },
+     {
+      "id": "CVE-2026-81724",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-81724' (also known as 'PYSEC-2026-3739', 'GHSA-cw6x-m8jw-qmrh')."
+     },
+     {
+      "id": "CVE-2026-81727",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-81727' (also known as 'PYSEC-2026-3741', 'GHSA-f794-5jv7-7672')."
+     },
+     {
+      "id": "CVE-2026-12876",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-12876' (also known as 'PYSEC-2026-3869', 'GHSA-ff5c-cp5c-9wjf')."
+     },
+     {
+      "id": "CVE-2026-12061",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-12061' (also known as 'PYSEC-2026-3582', 'GHSA-fg7f-2386-8897')."
+     },
+     {
+      "id": "CVE-2026-5241",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.57.6",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.57.6' is vulnerable to 'CVE-2026-5241' (also known as 'PYSEC-2026-2290', 'GHSA-fgcw-684q-jj6r')."
+     },
+     {
+      "id": "CVE-2021-45958",
+      "aliases": [],
+      "package": "ujson",
+      "version": "5.1.0",
+      "file": "requirements.txt",
+      "message": "Package 'ujson@5.1.0' is vulnerable to 'CVE-2021-45958' (also known as 'PYSEC-2022-25', 'GHSA-fh56-85cw-5pq6')."
+     },
+     {
+      "id": "CVE-2022-31117",
+      "aliases": [],
+      "package": "ujson",
+      "version": "5.1.0",
+      "file": "requirements.txt",
+      "message": "Package 'ujson@5.1.0' is vulnerable to 'CVE-2022-31117' (also known as 'PYSEC-2026-1056', 'GHSA-fm67-cv37-96ff')."
+     },
+     {
+      "id": "CVE-2026-33230",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-33230' (also known as 'PYSEC-2026-2235', 'GHSA-gfwx-w7gr-fvh7')."
+     },
+     {
+      "id": "CVE-2024-56201",
+      "aliases": [],
+      "package": "jinja2",
+      "version": "3.1.2",
+      "file": "requirements.txt",
+      "message": "Package 'jinja2@3.1.2' is vulnerable to 'CVE-2024-56201' (also known as 'PYSEC-2026-1472', 'GHSA-gmj6-6f8f-6699')."
+     },
+     {
+      "id": "CVE-2024-22195",
+      "aliases": [],
+      "package": "jinja2",
+      "version": "3.1.2",
+      "file": "requirements.txt",
+      "message": "Package 'jinja2@3.1.2' is vulnerable to 'CVE-2024-22195' (also known as 'PYSEC-2026-1473', 'GHSA-h5c8-rqwp-cp95')."
+     },
+     {
+      "id": "CVE-2024-34064",
+      "aliases": [],
+      "package": "jinja2",
+      "version": "3.1.2",
+      "file": "requirements.txt",
+      "message": "Package 'jinja2@3.1.2' is vulnerable to 'CVE-2024-34064' (also known as 'PYSEC-2026-1474', 'GHSA-h75v-3vvj-5mfj')."
+     },
+     {
+      "id": "CVE-2026-0846",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-0846' (also known as 'PYSEC-2026-97', 'GHSA-h8wq-7xc4-p3qx')."
+     },
+     {
+      "id": "CVE-2024-6221",
+      "aliases": [],
+      "package": "flask-cors",
+      "version": "4.0.0",
+      "file": "requirements.txt",
+      "message": "Package 'flask-cors@4.0.0' is vulnerable to 'CVE-2024-6221' (also known as 'PYSEC-2024-71', 'GHSA-hxwh-jpp2-84pm')."
+     },
+     {
+      "id": "CVE-2026-33231",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-33231' (also known as 'PYSEC-2026-2236', 'GHSA-jm6w-m3j8-898g')."
+     },
+     {
+      "id": "CVE-2026-12243",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-12243' (also known as 'PYSEC-2026-597', 'GHSA-m42h-3232-vpv3')."
+     },
+     {
+      "id": "CVE-2026-79675",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-79675' (also known as 'PYSEC-2026-3749', 'GHSA-m4rf-3fr8-xwx3')."
+     },
+     {
+      "id": "CVE-2026-62388",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-62388' (also known as 'PYSEC-2026-3722', 'GHSA-p3m8-78j2-g5p3')."
+     },
+     {
+      "id": "CVE-2026-54293",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-54293' (also known as 'PYSEC-2026-2078', 'GHSA-p4gq-832x-fm9v')."
+     },
+     {
+      "id": "CVE-2026-79676",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-79676' (also known as 'PYSEC-2026-3737', 'GHSA-p4rw-rvv2-7xwr')."
+     },
+     {
+      "id": "CVE-2024-56326",
+      "aliases": [],
+      "package": "jinja2",
+      "version": "3.1.2",
+      "file": "requirements.txt",
+      "message": "Package 'jinja2@3.1.2' is vulnerable to 'CVE-2024-56326' (also known as 'PYSEC-2026-1475', 'GHSA-q2x7-8rv6-6q7h')."
+     },
+     {
+      "id": "CVE-2026-12075",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-12075' (also known as 'PYSEC-2026-3583', 'GHSA-qvv7-cg9c-w4x3')."
+     },
+     {
+      "id": "CVE-2026-72818",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-72818' (also known as 'PYSEC-2026-3870', 'GHSA-qx2g-xrx7-vfh8')."
+     },
+     {
+      "id": "CVE-2026-70626",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-70626' (also known as 'PYSEC-2026-3732', 'GHSA-r6gq-whwq-mvg9')."
+     },
+     {
+      "id": "CVE-2026-66393",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-66393' (also known as 'PYSEC-2026-3724', 'GHSA-rf74-v2fm-23pw')."
+     },
+     {
+      "id": "CVE-2026-78683",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-78683' (also known as 'PYSEC-2026-3734', 'GHSA-rhp5-r9x4-f5g2')."
+     },
+     {
+      "id": "CVE-2026-80205",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-80205' (also known as 'PYSEC-2026-3750', 'GHSA-rrv8-h7p8-rx55')."
+     },
+     {
+      "id": "CVE-2026-81723",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-81723' (also known as 'PYSEC-2026-3871', 'GHSA-vp2x-qp44-57v7')."
+     },
+     {
+      "id": "CVE-2026-10804",
+      "aliases": [],
+      "package": "streamlit",
+      "version": "1.50.0",
+      "file": "requirements.txt",
+      "message": "Package 'streamlit@1.50.0' is vulnerable to 'CVE-2026-10804' (also known as 'PYSEC-2026-212', 'GHSA-vqwp-45wm-r9r5')."
+     },
+     {
+      "id": "CVE-2026-80206",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-80206' (also known as 'PYSEC-2026-3751', 'GHSA-w3v8-gmh9-3wv7')."
+     },
+     {
+      "id": "CVE-2022-31116",
+      "aliases": [],
+      "package": "ujson",
+      "version": "5.1.0",
+      "file": "requirements.txt",
+      "message": "Package 'ujson@5.1.0' is vulnerable to 'CVE-2022-31116' (also known as 'PYSEC-2026-1057', 'GHSA-wpqr-jcpx-745r')."
+     },
+     {
+      "id": "CVE-2026-81722",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-81722' (also known as 'PYSEC-2026-3738', 'GHSA-ww6m-cw3f-q94g')."
+     },
+     {
+      "id": "CVE-2026-63312",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-63312' (also known as 'PYSEC-2026-3730', 'GHSA-x5ph-mj9p-rfr8')."
+     },
+     {
+      "id": "CVE-2026-79657",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-79657' (also known as 'PYSEC-2026-3735', 'GHSA-x99w-6fgc-pmfw')."
+     },
+     {
+      "id": "CVE-2026-12074",
+      "aliases": [],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-12074' (also known as 'PYSEC-2026-3584', 'GHSA-xh95-f55m-82fw')."
+     },
+     {
+      "id": "CVE-2026-9856",
+      "aliases": [],
+      "package": "transformers",
+      "version": "4.57.6",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.57.6' is vulnerable to 'CVE-2026-9856' (also known as 'PYSEC-2026-3929', 'GHSA-xrqw-3rrv-vx5w')."
+     },
+     {
+      "id": "OSV-2021-1809",
+      "aliases": [],
+      "package": "ujson",
+      "version": "5.1.0",
+      "file": "requirements.txt",
+      "message": "Package 'ujson@5.1.0' is vulnerable to 'OSV-2021-1809'."
+     },
+     {
+      "id": "OSV-2021-955",
+      "aliases": [],
+      "package": "ujson",
+      "version": "5.1.0",
+      "file": "requirements.txt",
+      "message": "Package 'ujson@5.1.0' is vulnerable to 'OSV-2021-955'."
+     },
+     {
+      "id": "CVE-2025-14929",
+      "aliases": [
+       "PYSEC-2025-217"
+      ],
+      "package": "transformers",
+      "version": "4.57.6",
+      "file": "requirements.txt",
+      "message": "Package 'transformers@4.57.6' is vulnerable to 'CVE-2025-14929' (also known as 'PYSEC-2025-217')."
+     },
+     {
+      "id": "CVE-2026-12252",
+      "aliases": [
+       "PYSEC-2026-2085"
+      ],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-12252' (also known as 'PYSEC-2026-2085')."
+     },
+     {
+      "id": "CVE-2026-66007",
+      "aliases": [
+       "PYSEC-2026-3716"
+      ],
+      "package": "datasets",
+      "version": "3.6.0",
+      "file": "requirements.txt",
+      "message": "Package 'datasets@3.6.0' is vulnerable to 'CVE-2026-66007' (also known as 'PYSEC-2026-3716')."
+     },
+     {
+      "id": "CVE-2026-12261",
+      "aliases": [
+       "PYSEC-2026-3954"
+      ],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-12261' (also known as 'PYSEC-2026-3954')."
+     },
+     {
+      "id": "CVE-2026-12372",
+      "aliases": [
+       "PYSEC-2026-3955"
+      ],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-12372' (also known as 'PYSEC-2026-3955')."
+     },
+     {
+      "id": "CVE-2026-0848",
+      "aliases": [
+       "PYSEC-2026-99"
+      ],
+      "package": "nltk",
+      "version": "3.8",
+      "file": "requirements.txt",
+      "message": "Package 'nltk@3.8' is vulnerable to 'CVE-2026-0848' (also known as 'PYSEC-2026-99')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no .github/workflows in this tree",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [
+   {
+    "advisory_id": "PYSEC-2024-260",
+    "change": "withdrawn",
+    "changed_at": "2026-07-09 14:57:00",
+    "observed_at": "2026-09-21 18:44:37.840244"
+   }
+  ],
+  "since_as_of": "2026-09-21 18:44:37.840244",
+  "link_suppressed": false,
+  "provenance": null,
+  "suppression": null,
+  "card": "73 findings · 1 check pending · 3 checks not applicable",
+  "block": "SECURITY · commit 1e6e909\n\n  Dependency vulnerabilities\n    73 findings                      osv-scanner 2.5.1 · 2026-09-21\n      CVE-2026-4372  transformers@4.57.6\n      CVE-2026-1260  sentencepiece@0.2.0\n      CVE-2026-79674  nltk@3.8\n      CVE-2026-63311  nltk@3.8\n      CVE-2026-54911  ujson@5.1.0\n      CVE-2025-68480  marshmallow@3.22.0\n      CVE-2024-6866  flask-cors@4.0.0\n      CVE-2026-33236  nltk@3.8\n      CVE-2026-62385  nltk@3.8\n      CVE-2026-12259  nltk@3.8\n      CVE-2026-0847  nltk@3.8\n      CVE-2026-27205  flask@3.0.3\n      CVE-2026-1839  transformers@4.57.6\n      CVE-2026-12072  nltk@3.8\n      CVE-2026-78680  nltk@3.8\n      CVE-2026-78682  nltk@3.8\n      CVE-2026-65915  nltk@3.8\n      CVE-2026-33682  streamlit@1.50.0\n      CVE-2025-14009  nltk@3.8\n      CVE-2024-6839  flask-cors@4.0.0\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-21\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    nothing to check — no .github/workflows in this tree\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-21\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\nSINCE THAT SCAN · as of 2026-09-21\n  PYSEC-2024-260 was WITHDRAWN upstream on 2026-07-09\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "failed(label)",
+  "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2",
+  "built_at": "2026-09-21 18:00:02.903082",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 198,
+  "edge_count": 495,
+  "community_count": 13,
+  "extracted_pct": 0.973737359046936,
+  "subsystems": [],
+  "god_nodes": [],
+  "lines": [
+   "Structure: not yet mapped — queued"
+  ],
+  "block": "not yet mapped — queued",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
+ }
+}

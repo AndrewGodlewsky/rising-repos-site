@@ -1,0 +1,1347 @@
+{
+ "security": {
+  "repo_id": 7270538,
+  "commit_sha": "1516af9e4f5c3674af04db58009d4d4e9dc16f64",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 62,
+    "findings": [
+     {
+      "id": "CVE-2026-27904",
+      "aliases": [
+       "GHSA-23c5-xmqv-rm74"
+      ],
+      "package": "minimatch",
+      "version": "9.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@9.0.5' is vulnerable to 'CVE-2026-27904' (also known as 'GHSA-23c5-xmqv-rm74')."
+     },
+     {
+      "id": "CVE-2026-78676",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-78676' (also known as 'PYSEC-2026-3786', 'GHSA-284h-m62q-gf8w')."
+     },
+     {
+      "id": "CVE-2026-84375",
+      "aliases": [
+       "GHSA-2883-xcg3-v3hh"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-84375' (also known as 'GHSA-2883-xcg3-v3hh')."
+     },
+     {
+      "id": "CVE-2025-69873",
+      "aliases": [
+       "GHSA-2g4f-4pwh-qvx6"
+      ],
+      "package": "ajv",
+      "version": "6.12.6",
+      "file": "yarn.lock",
+      "message": "Package 'ajv@6.12.6' is vulnerable to 'CVE-2025-69873' (also known as 'GHSA-2g4f-4pwh-qvx6')."
+     },
+     {
+      "id": "CVE-2026-67213",
+      "aliases": [
+       "GHSA-2v37-7h3g-55p8"
+      ],
+      "package": "nanoid",
+      "version": "3.3.16",
+      "file": "yarn.lock",
+      "message": "Package 'nanoid@3.3.16' is vulnerable to 'CVE-2026-67213' (also known as 'GHSA-2v37-7h3g-55p8')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-13149",
+      "aliases": [
+       "GHSA-3jxr-9vmj-r5cp"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-13149' (also known as 'GHSA-3jxr-9vmj-r5cp')."
+     },
+     {
+      "id": "CVE-2026-26996",
+      "aliases": [
+       "GHSA-3ppc-4f35-3m26"
+      ],
+      "package": "minimatch",
+      "version": "9.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@9.0.5' is vulnerable to 'CVE-2026-26996' (also known as 'GHSA-3ppc-4f35-3m26')."
+     },
+     {
+      "id": "CVE-2026-33672",
+      "aliases": [
+       "GHSA-3v7f-55p6-f55p"
+      ],
+      "package": "picomatch",
+      "version": "2.3.1",
+      "file": "yarn.lock",
+      "message": "Package 'picomatch@2.3.1' is vulnerable to 'CVE-2026-33672' (also known as 'GHSA-3v7f-55p6-f55p')."
+     },
+     {
+      "id": "CVE-2026-33672",
+      "aliases": [
+       "GHSA-3v7f-55p6-f55p"
+      ],
+      "package": "picomatch",
+      "version": "4.0.2",
+      "file": "yarn.lock",
+      "message": "Package 'picomatch@4.0.2' is vulnerable to 'CVE-2026-33672' (also known as 'GHSA-3v7f-55p6-f55p')."
+     },
+     {
+      "id": "CVE-2026-78679",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-78679' (also known as 'PYSEC-2026-3837', 'GHSA-3wxw-xv34-2frg')."
+     },
+     {
+      "id": "CVE-2026-33532",
+      "aliases": [
+       "GHSA-48c2-rrv3-qjmp"
+      ],
+      "package": "yaml",
+      "version": "1.10.2",
+      "file": "yarn.lock",
+      "message": "Package 'yaml@1.10.2' is vulnerable to 'CVE-2026-33532' (also known as 'GHSA-48c2-rrv3-qjmp')."
+     },
+     {
+      "id": "CVE-2026-76219",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-76219' (also known as 'PYSEC-2026-3838', 'GHSA-4gmw-gg2m-w46p')."
+     },
+     {
+      "id": "CVE-2026-84369",
+      "aliases": [
+       "GHSA-4vpr-x523-8j87"
+      ],
+      "package": "svgo",
+      "version": "3.3.4",
+      "file": "yarn.lock",
+      "message": "Package 'svgo@3.3.4' is vulnerable to 'CVE-2026-84369' (also known as 'GHSA-4vpr-x523-8j87')."
+     },
+     {
+      "id": "CVE-2026-4539",
+      "aliases": [],
+      "package": "pygments",
+      "version": "2.19.2",
+      "file": "uv.lock",
+      "message": "Package 'pygments@2.19.2' is vulnerable to 'CVE-2026-4539' (also known as 'PYSEC-2026-2987', 'GHSA-5239-wwwm-4pmq')."
+     },
+     {
+      "id": "CVE-2026-59869",
+      "aliases": [
+       "GHSA-52cp-r559-cp3m"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-59869' (also known as 'GHSA-52cp-r559-cp3m')."
+     },
+     {
+      "id": "CVE-2026-64847",
+      "aliases": [
+       "GHSA-5p39-cfhj-2xmp"
+      ],
+      "package": "anyio",
+      "version": "4.13.0",
+      "file": "uv.lock",
+      "message": "Package 'anyio@4.13.0' is vulnerable to 'CVE-2026-64847' (also known as 'GHSA-5p39-cfhj-2xmp')."
+     },
+     {
+      "id": "GHSA-5p4m-2wfm-xmqj",
+      "aliases": [],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'GHSA-5p4m-2wfm-xmqj'."
+     },
+     {
+      "id": "CVE-2026-78678",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-78678' (also known as 'PYSEC-2026-3788', 'GHSA-5xxx-qhh7-9287')."
+     },
+     {
+      "id": "CVE-2025-71176",
+      "aliases": [],
+      "package": "pytest",
+      "version": "8.4.1",
+      "file": "uv.lock",
+      "message": "Package 'pytest@8.4.1' is vulnerable to 'CVE-2025-71176' (also known as 'PYSEC-2026-1845', 'GHSA-6w46-j5rx-g56g')."
+     },
+     {
+      "id": "CVE-2026-24001",
+      "aliases": [
+       "GHSA-73rr-hh4g-fpgx"
+      ],
+      "package": "diff",
+      "version": "5.2.0",
+      "file": "yarn.lock",
+      "message": "Package 'diff@5.2.0' is vulnerable to 'CVE-2026-24001' (also known as 'GHSA-73rr-hh4g-fpgx')."
+     },
+     {
+      "id": "CVE-2026-78675",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-78675' (also known as 'PYSEC-2026-3785', 'GHSA-7833-fr7j-v32q')."
+     },
+     {
+      "id": "CVE-2026-27903",
+      "aliases": [
+       "GHSA-7r86-cg39-jmmj"
+      ],
+      "package": "minimatch",
+      "version": "9.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'minimatch@9.0.5' is vulnerable to 'CVE-2026-27903' (also known as 'GHSA-7r86-cg39-jmmj')."
+     },
+     {
+      "id": "CVE-2026-84373",
+      "aliases": [],
+      "package": "",
+      "version": "",
+      "file": "yarn.lock",
+      "message": "Package '@vitest/mocker@3.2.6' is vulnerable to 'CVE-2026-84373' (also known as 'GHSA-82fw-gwwq-j7x9')."
+     },
+     {
+      "id": "CVE-2026-84373",
+      "aliases": [
+       "GHSA-82fw-gwwq-j7x9"
+      ],
+      "package": "vitest",
+      "version": "3.2.6",
+      "file": "yarn.lock",
+      "message": "Package 'vitest@3.2.6' is vulnerable to 'CVE-2026-84373' (also known as 'GHSA-82fw-gwwq-j7x9')."
+     },
+     {
+      "id": "CVE-2026-63374",
+      "aliases": [
+       "GHSA-82r6-8w77-94w6"
+      ],
+      "package": "anyio",
+      "version": "4.13.0",
+      "file": "uv.lock",
+      "message": "Package 'anyio@4.13.0' is vulnerable to 'CVE-2026-63374' (also known as 'GHSA-82r6-8w77-94w6')."
+     },
+     {
+      "id": "CVE-2026-78677",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-78677' (also known as 'PYSEC-2026-3787', 'GHSA-8mcc-hrx5-hvxc')."
+     },
+     {
+      "id": "CVE-2026-81176",
+      "aliases": [
+       "GHSA-9rgm-9g3h-6x36"
+      ],
+      "package": "devalue",
+      "version": "5.8.1",
+      "file": "yarn.lock",
+      "message": "Package 'devalue@5.8.1' is vulnerable to 'CVE-2026-81176' (also known as 'GHSA-9rgm-9g3h-6x36')."
+     },
+     {
+      "id": "CVE-2026-76218",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-76218' (also known as 'PYSEC-2026-3840', 'GHSA-9rj7-rf2p-w77r')."
+     },
+     {
+      "id": "CVE-2026-33671",
+      "aliases": [
+       "GHSA-c2c7-rcm5-vvqj"
+      ],
+      "package": "picomatch",
+      "version": "2.3.1",
+      "file": "yarn.lock",
+      "message": "Package 'picomatch@2.3.1' is vulnerable to 'CVE-2026-33671' (also known as 'GHSA-c2c7-rcm5-vvqj')."
+     },
+     {
+      "id": "CVE-2026-33671",
+      "aliases": [
+       "GHSA-c2c7-rcm5-vvqj"
+      ],
+      "package": "picomatch",
+      "version": "4.0.2",
+      "file": "yarn.lock",
+      "message": "Package 'picomatch@4.0.2' is vulnerable to 'CVE-2026-33671' (also known as 'GHSA-c2c7-rcm5-vvqj')."
+     },
+     {
+      "id": "RUSTSEC-2026-0097",
+      "aliases": [
+       "GHSA-cq8v-f236-94qc"
+      ],
+      "package": "rand",
+      "version": "0.8.5",
+      "file": "Cargo.lock",
+      "message": "Package 'rand@0.8.5' is vulnerable to 'RUSTSEC-2026-0097' (also known as 'GHSA-cq8v-f236-94qc')."
+     },
+     {
+      "id": "CVE-2026-33750",
+      "aliases": [
+       "GHSA-f886-m6hf-6m8v"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2026-33750' (also known as 'GHSA-f886-m6hf-6m8v')."
+     },
+     {
+      "id": "GHSA-g7r4-m6w7-qqqr",
+      "aliases": [],
+      "package": "esbuild",
+      "version": "0.28.0",
+      "file": "yarn.lock",
+      "message": "Package 'esbuild@0.28.0' is vulnerable to 'GHSA-g7r4-m6w7-qqqr'."
+     },
+     {
+      "id": "CVE-2026-59890",
+      "aliases": [],
+      "package": "setuptools",
+      "version": "82.0.1",
+      "file": "uv.lock",
+      "message": "Package 'setuptools@82.0.1' is vulnerable to 'CVE-2026-59890' (also known as 'BIT-setuptools-2026-59890', 'PYSEC-2026-3447', 'GHSA-h35f-9h28-mq5c')."
+     },
+     {
+      "id": "CVE-2026-53550",
+      "aliases": [
+       "GHSA-h67p-54hq-rp68"
+      ],
+      "package": "js-yaml",
+      "version": "4.1.1",
+      "file": "yarn.lock",
+      "message": "Package 'js-yaml@4.1.1' is vulnerable to 'CVE-2026-53550' (also known as 'GHSA-h67p-54hq-rp68')."
+     },
+     {
+      "id": "CVE-2026-27013",
+      "aliases": [
+       "GHSA-hfvx-25r5-qc3w"
+      ],
+      "package": "fabric",
+      "version": "5.4.0",
+      "file": "yarn.lock",
+      "message": "Package 'fabric@5.4.0' is vulnerable to 'CVE-2026-27013' (also known as 'GHSA-hfvx-25r5-qc3w')."
+     },
+     {
+      "id": "CVE-2026-76217",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-76217' (also known as 'PYSEC-2026-3841', 'GHSA-hh9p-6wh2-4mfc')."
+     },
+     {
+      "id": "CVE-2026-76222",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-76222' (also known as 'PYSEC-2026-3784', 'GHSA-hmq2-w58f-27jc')."
+     },
+     {
+      "id": "CVE-2026-76221",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-76221' (also known as 'PYSEC-2026-3783', 'GHSA-jm78-9fvv-mhgr')."
+     },
+     {
+      "id": "CVE-2026-45149",
+      "aliases": [
+       "GHSA-jxxr-4gwj-5jf2"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-45149' (also known as 'GHSA-jxxr-4gwj-5jf2')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-14257",
+      "aliases": [
+       "GHSA-mh99-v99m-4gvg"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-14257' (also known as 'GHSA-mh99-v99m-4gvg')."
+     },
+     {
+      "id": "CVE-2026-69192",
+      "aliases": [
+       "GHSA-mwp4-54f8-5fhr"
+      ],
+      "package": "ip-address",
+      "version": "9.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'ip-address@9.0.5' is vulnerable to 'CVE-2026-69192' (also known as 'GHSA-mwp4-54f8-5fhr')."
+     },
+     {
+      "id": "CVE-2026-13346",
+      "aliases": [],
+      "package": "pip",
+      "version": "26.1.2",
+      "file": "uv.lock",
+      "message": "Package 'pip@26.1.2' is vulnerable to 'CVE-2026-13346' (also known as 'PYSEC-2026-3721', 'GHSA-qwm4-qh6w-59xr')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-69152",
+      "aliases": [
+       "GHSA-rgw5-rvv9-x895"
+      ],
+      "package": "brace-expansion",
+      "version": "5.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@5.0.5' is vulnerable to 'CVE-2026-69152' (also known as 'GHSA-rgw5-rvv9-x895')."
+     },
+     {
+      "id": "CVE-2026-42338",
+      "aliases": [
+       "GHSA-v2v4-37r5-5v8g"
+      ],
+      "package": "ip-address",
+      "version": "9.0.5",
+      "file": "yarn.lock",
+      "message": "Package 'ip-address@9.0.5' is vulnerable to 'CVE-2026-42338' (also known as 'GHSA-v2v4-37r5-5v8g')."
+     },
+     {
+      "id": "CVE-2025-5889",
+      "aliases": [
+       "GHSA-v6h2-p8h4-qcjw"
+      ],
+      "package": "brace-expansion",
+      "version": "2.0.1",
+      "file": "yarn.lock",
+      "message": "Package 'brace-expansion@2.0.1' is vulnerable to 'CVE-2025-5889' (also known as 'GHSA-v6h2-p8h4-qcjw')."
+     },
+     {
+      "id": "CVE-2026-44311",
+      "aliases": [
+       "GHSA-w22m-hvvm-xmwx"
+      ],
+      "package": "fabric",
+      "version": "5.4.0",
+      "file": "yarn.lock",
+      "message": "Package 'fabric@5.4.0' is vulnerable to 'CVE-2026-44311' (also known as 'GHSA-w22m-hvvm-xmwx')."
+     },
+     {
+      "id": "CVE-2026-84370",
+      "aliases": [
+       "GHSA-w27v-7q3p-w38r"
+      ],
+      "package": "svgo",
+      "version": "3.3.4",
+      "file": "yarn.lock",
+      "message": "Package 'svgo@3.3.4' is vulnerable to 'CVE-2026-84370' (also known as 'GHSA-w27v-7q3p-w38r')."
+     },
+     {
+      "id": "CVE-2026-9358",
+      "aliases": [
+       "GHSA-w9m9-85wc-3x92"
+      ],
+      "package": "postcss-selector-parser",
+      "version": "6.1.2",
+      "file": "yarn.lock",
+      "message": "Package 'postcss-selector-parser@6.1.2' is vulnerable to 'CVE-2026-9358' (also known as 'GHSA-w9m9-85wc-3x92')."
+     },
+     {
+      "id": "CVE-2026-76220",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-76220' (also known as 'PYSEC-2026-3843', 'GHSA-wvpp-8hx9-p66j')."
+     },
+     {
+      "id": "CVE-2026-87817",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-87817' (also known as 'PYSEC-2026-3982', 'GHSA-239g-whfq-7xj9')."
+     },
+     {
+      "id": "CVE-2026-87818",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-87818' (also known as 'PYSEC-2026-3983', 'GHSA-whh4-5q6c-9v3x')."
+     },
+     {
+      "id": "CVE-2026-87819",
+      "aliases": [],
+      "package": "gitpython",
+      "version": "3.1.57",
+      "file": "uv.lock",
+      "message": "Package 'gitpython@3.1.57' is vulnerable to 'CVE-2026-87819' (also known as 'PYSEC-2026-3984', 'GHSA-g5vv-9gxw-82hx')."
+     },
+     {
+      "id": "RUSTSEC-2025-0075",
+      "aliases": [],
+      "package": "unic-char-range",
+      "version": "0.9.0",
+      "file": "Cargo.lock",
+      "message": "Package 'unic-char-range@0.9.0' is vulnerable to 'RUSTSEC-2025-0075'."
+     },
+     {
+      "id": "RUSTSEC-2025-0080",
+      "aliases": [],
+      "package": "unic-common",
+      "version": "0.9.0",
+      "file": "Cargo.lock",
+      "message": "Package 'unic-common@0.9.0' is vulnerable to 'RUSTSEC-2025-0080'."
+     },
+     {
+      "id": "RUSTSEC-2025-0081",
+      "aliases": [],
+      "package": "unic-char-property",
+      "version": "0.9.0",
+      "file": "Cargo.lock",
+      "message": "Package 'unic-char-property@0.9.0' is vulnerable to 'RUSTSEC-2025-0081'."
+     },
+     {
+      "id": "RUSTSEC-2025-0094",
+      "aliases": [],
+      "package": "unic-ucd-category",
+      "version": "0.9.0",
+      "file": "Cargo.lock",
+      "message": "Package 'unic-ucd-category@0.9.0' is vulnerable to 'RUSTSEC-2025-0094'."
+     },
+     {
+      "id": "RUSTSEC-2025-0098",
+      "aliases": [],
+      "package": "unic-ucd-version",
+      "version": "0.9.0",
+      "file": "Cargo.lock",
+      "message": "Package 'unic-ucd-version@0.9.0' is vulnerable to 'RUSTSEC-2025-0098'."
+     },
+     {
+      "id": "RUSTSEC-2025-0134",
+      "aliases": [],
+      "package": "rustls-pemfile",
+      "version": "2.2.0",
+      "file": "Cargo.lock",
+      "message": "Package 'rustls-pemfile@2.2.0' is vulnerable to 'RUSTSEC-2025-0134'."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 81,
+    "findings": [
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/actions/setup-anki/action.yml",
+      "line": 63,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/actions/setup-anki/action.yml",
+      "line": 87,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/actions/setup-anki/action.yml",
+      "line": 96,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/actions/setup-anki/action.yml",
+      "line": 62,
+      "message": "dangerous use of environment file: write to $env:GITHUB_PATH may allow code execution"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/actions/setup-anki/action.yml",
+      "line": 86,
+      "message": "dangerous use of environment file: write to GITHUB_ENV may allow code execution"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/actions/setup-anki/action.yml",
+      "line": 96,
+      "message": "dangerous use of environment file: write to GITHUB_ENV may allow code execution"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/actions/setup-anki/action.yml",
+      "line": 101,
+      "message": "dangerous use of environment file: write to GITHUB_PATH may allow code execution"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/check-linked-issue.yml",
+      "line": 3,
+      "message": "use of fundamentally insecure workflow trigger: pull_request_target is almost always used insecurely"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 45,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 80,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 109,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 272,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 345,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 419,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 499,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 578,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 22,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 42,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 77,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 105,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 264,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 337,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 411,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 485,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 568,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 51,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `cache` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 83,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `cache` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 86,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `enable-cache` enables caching for this action version"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 89,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `package-manager-cache` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 112,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `lookup-only` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 275,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `lookup-only` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 350,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `lookup-only` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 424,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `lookup-only` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 508,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `lookup-only` enables caching"
+     },
+     {
+      "rule": "cache-poisoning",
+      "level": "error",
+      "file": ".github/workflows/ci.yml",
+      "line": 583,
+      "message": "runtime artifacts potentially vulnerable to a cache poisoning attack: omitting `lookup-only` enables caching"
+     },
+     {
+      "rule": "unpinned-tools",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 99,
+      "message": "action installs an unpinned external tool: omitting `just-version` implicitly selects an unpinned tool version"
+     },
+     {
+      "rule": "unpinned-tools",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 138,
+      "message": "action installs an unpinned external tool: omitting `just-version` implicitly selects an unpinned tool version"
+     },
+     {
+      "rule": "unpinned-tools",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 301,
+      "message": "action installs an unpinned external tool: omitting `just-version` implicitly selects an unpinned tool version"
+     },
+     {
+      "rule": "unpinned-tools",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 376,
+      "message": "action installs an unpinned external tool: omitting `just-version` implicitly selects an unpinned tool version"
+     },
+     {
+      "rule": "unpinned-tools",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 450,
+      "message": "action installs an unpinned external tool: omitting `just-version` implicitly selects an unpinned tool version"
+     },
+     {
+      "rule": "unpinned-tools",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 534,
+      "message": "action installs an unpinned external tool: omitting `just-version` implicitly selects an unpinned tool version"
+     },
+     {
+      "rule": "unpinned-tools",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 609,
+      "message": "action installs an unpinned external tool: omitting `just-version` implicitly selects an unpinned tool version"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ci.yml",
+      "line": 135,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ci.yml",
+      "line": 298,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ci.yml",
+      "line": 373,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ci.yml",
+      "line": 447,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ci.yml",
+      "line": 531,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ci.yml",
+      "line": 606,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/docs-site.yml",
+      "line": 22,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/docs-site.yml",
+      "line": 19,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "adhoc-packages",
+      "level": "note",
+      "file": ".github/workflows/docs-site.yml",
+      "line": 33,
+      "message": "ad-hoc installation of packages: installs a package outside of a lockfile"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/prune-coverage-cache.yml",
+      "line": 3,
+      "message": "use of fundamentally insecure workflow trigger: workflow_run is almost always used insecurely"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/publish-audio-package.yml",
+      "line": 66,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/publish-audio-package.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/publish-audio-package.yml",
+      "line": 29,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/publish-audio-package.yml",
+      "line": 42,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/publish-audio-package.yml",
+      "line": 69,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/release.yml",
+      "line": 61,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/release.yml",
+      "line": 163,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/release.yml",
+      "line": 219,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/release.yml",
+      "line": 275,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/release.yml",
+      "line": 370,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/release.yml",
+      "line": 451,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/release.yml",
+      "line": 534,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/release.yml",
+      "line": 600,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/release.yml",
+      "line": 626,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/release.yml",
+      "line": 670,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "error",
+      "file": ".github/workflows/release.yml",
+      "line": 38,
+      "message": "overly broad permissions: contents: write is overly broad at the workflow level"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/release.yml",
+      "line": 323,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/release.yml",
+      "line": 466,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/release.yml",
+      "line": 168,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/release.yml",
+      "line": 224,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/release.yml",
+      "line": 280,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/release.yml",
+      "line": 375,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/release.yml",
+      "line": 456,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/release.yml",
+      "line": 539,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/release.yml",
+      "line": 605,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/release.yml",
+      "line": 631,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/sonar.yml",
+      "line": 3,
+      "message": "use of fundamentally insecure workflow trigger: workflow_run is almost always used insecurely"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/workflows/sonar.yml",
+      "line": 72,
+      "message": "dangerous use of environment file: write to GITHUB_ENV may allow code execution"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "provenance": null,
+  "suppression": null,
+  "card": "143 findings · 1 check pending · 1 check not applicable",
+  "block": "SECURITY · commit 1516af9\n\n  Dependency vulnerabilities\n    62 findings                      osv-scanner 2.5.1 · 2026-09-21\n      CVE-2026-27904  minimatch@9.0.5\n      CVE-2026-78676  gitpython@3.1.57\n      CVE-2026-84375  js-yaml@4.1.1\n      CVE-2025-69873  ajv@6.12.6\n      CVE-2026-67213  nanoid@3.3.16\n      CVE-2026-13149  brace-expansion@2.0.1\n      CVE-2026-13149  brace-expansion@5.0.5\n      CVE-2026-26996  minimatch@9.0.5\n      CVE-2026-33672  picomatch@2.3.1\n      CVE-2026-33672  picomatch@4.0.2\n      CVE-2026-78679  gitpython@3.1.57\n      CVE-2026-33532  yaml@1.10.2\n      CVE-2026-76219  gitpython@3.1.57\n      CVE-2026-84369  svgo@3.3.4\n      CVE-2026-4539  pygments@2.19.2\n      CVE-2026-59869  js-yaml@4.1.1\n      CVE-2026-64847  anyio@4.13.0\n      GHSA-5p4m-2wfm-xmqj  js-yaml@4.1.1\n      CVE-2026-78678  gitpython@3.1.57\n      CVE-2025-71176  pytest@8.4.1\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-21\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-21\n\n  CI / workflow\n    81 findings                      zizmor 1.30.0 · 2026-09-21\n      template-injection  .github/actions/setup-anki/action.yml:63\n      template-injection  .github/actions/setup-anki/action.yml:87\n      template-injection  .github/actions/setup-anki/action.yml:96\n      github-env  .github/actions/setup-anki/action.yml:62\n      github-env  .github/actions/setup-anki/action.yml:86\n      github-env  .github/actions/setup-anki/action.yml:96\n      github-env  .github/actions/setup-anki/action.yml:101\n      dangerous-triggers  .github/workflows/check-linked-issue.yml:3\n      artipacked  .github/workflows/ci.yml:45\n      artipacked  .github/workflows/ci.yml:80\n      artipacked  .github/workflows/ci.yml:109\n      artipacked  .github/workflows/ci.yml:272\n      artipacked  .github/workflows/ci.yml:345\n      artipacked  .github/workflows/ci.yml:419\n      artipacked  .github/workflows/ci.yml:499\n      artipacked  .github/workflows/ci.yml:578\n      excessive-permissions  .github/workflows/ci.yml:1\n      excessive-permissions  .github/workflows/ci.yml:22\n      excessive-permissions  .github/workflows/ci.yml:42\n      excessive-permissions  .github/workflows/ci.yml:77\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    0 findings                       kingfisher 2.1.0 · 2026-09-21\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "1516af9e4f5c3674af04db58009d4d4e9dc16f64",
+  "built_at": "2026-09-21 18:00:02.903082",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 15628,
+  "edge_count": 37786,
+  "community_count": 730,
+  "extracted_pct": 0.9513841271400452,
+  "subsystems": [
+   {
+    "label": "PyQt GUI Components",
+    "size": 252
+   },
+   {
+    "label": "Anki Database Models",
+    "size": 239
+   },
+   {
+    "label": "Main Window State",
+    "size": 217
+   },
+   {
+    "label": "Import Dialog UI",
+    "size": 205
+   },
+   {
+    "label": "Svelte UI Components",
+    "size": 186
+   },
+   {
+    "label": "Collection Sync Actions",
+    "size": 144
+   },
+   {
+    "label": "Card State Management",
+    "size": 144
+   },
+   {
+    "label": "Legacy Layout Aliases",
+    "size": 130
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "&String",
+    "degree": 597,
+    "file": "rslib/src/search/mod.rs"
+   },
+   {
+    "name": "AnkiQt",
+    "degree": 312,
+    "file": "qt/aqt/main.py"
+   },
+   {
+    "name": "Collection",
+    "degree": 232,
+    "file": "pylib/anki/collection.py"
+   },
+   {
+    "name": "NotetypeId",
+    "degree": 141,
+    "file": "rslib/src/notetype/service.rs"
+   },
+   {
+    "name": "qconnect()",
+    "degree": 132,
+    "file": "qt/aqt/qt/__init__.py"
+   },
+   {
+    "name": "Browser",
+    "degree": 126,
+    "file": "qt/aqt/browser/browser.py"
+   },
+   {
+    "name": "AnkiWebView",
+    "degree": 111,
+    "file": "qt/aqt/webview.py"
+   },
+   {
+    "name": "ProfileManager",
+    "degree": 109,
+    "file": "qt/aqt/profiles.py"
+   },
+   {
+    "name": "Editor",
+    "degree": 107,
+    "file": "qt/aqt/editor_legacy.py"
+   },
+   {
+    "name": "SidebarTreeView",
+    "degree": 96,
+    "file": "qt/aqt/browser/sidebar/tree.py"
+   }
+  ],
+  "lines": [
+   "Structure: 730 subsystems — PyQt GUI Components · Anki Database Models · Main Window State",
+   "Core: &amp;String · AnkiQt · Collection"
+  ],
+  "block": "Code structure (mapped 2026-09-21 · 1516af9e · graphify 0.9.37)\n15,628 concepts · 37,786 connections · 730 subsystems · 95% read directly from source\nSubsystems: PyQt GUI Components · Anki Database Models · Main Window State · Import Dialog UI · Svelte UI Components · Collection Sync Actions · Card State Management · Legacy Layout Aliases\nCore abstractions:\n  1. &amp;String — 597 connections\n  2. AnkiQt — 312 connections\n  3. Collection — 232 connections\n  4. NotetypeId — 141 connections\n  5. qconnect() — 132 connections\n  6. Browser — 126 connections\n  7. AnkiWebView — 111 connections\n  8. ProfileManager — 109 connections\n  9. Editor — 107 connections\n  10. SidebarTreeView — 96 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
+ }
+}

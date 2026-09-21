@@ -1,0 +1,3361 @@
+{
+ "security": {
+  "repo_id": 138754790,
+  "commit_sha": "238f5a5ee2cef48cd5883c8df4836eb7a604566e",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no lockfile or dependency manifest osv-scanner reads",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no lockfile or dependency manifest osv-scanner reads",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no root manifest declares a package name",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 441,
+    "findings": [
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/actions/ccache-action/action.yml",
+      "line": 17,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/actions/cleanup_runner/action.yml",
+      "line": 11,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/actions/setup-msvc-env/action.yml",
+      "line": 18,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/actions/setup-msvc-env/action.yml",
+      "line": 19,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/actions/setup-msvc-env/action.yml",
+      "line": 17,
+      "message": "dangerous use of environment file: write to $env:GITHUB_ENV may allow code execution"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/actions/swap_space/action.yml",
+      "line": 11,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/actions/trim-ccache/action.yml",
+      "line": 25,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/Android.yml",
+      "line": 65,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Android.yml",
+      "line": 45,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Android.yml",
+      "line": 65,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Android.yml",
+      "line": 104,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/CheckIssueForCodeFormatting.yml",
+      "line": 14,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/CheckIssueForCodeFormatting.yml",
+      "line": 11,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/CheckIssueForCodeFormatting.yml",
+      "line": 14,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/CheckIssueForCodeFormatting.yml",
+      "line": 18,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/DockerTests.yml",
+      "line": 76,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/DockerTests.yml",
+      "line": 243,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/DockerTests.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/DockerTests.yml",
+      "line": 43,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/DockerTests.yml",
+      "line": 136,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/DockerTests.yml",
+      "line": 76,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/DockerTests.yml",
+      "line": 81,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/DockerTests.yml",
+      "line": 243,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/DockerTests.yml",
+      "line": 248,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/DraftMeNot.yml",
+      "line": 12,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 36,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 73,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 151,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 229,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 312,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 25,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 62,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 140,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 217,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 300,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 93,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 171,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 254,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 331,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 36,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 40,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 73,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 77,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 151,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 155,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 229,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 233,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 312,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 316,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 47,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 87,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 165,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 243,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ExtendedTests.yml",
+      "line": 325,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/ExtraTests.yml",
+      "line": 25,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ExtraTests.yml",
+      "line": 13,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ExtraTests.yml",
+      "line": 25,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/ExtraTests.yml",
+      "line": 29,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ExtraTests.yml",
+      "line": 38,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/InternalIssuesCreateMirror.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/InternalIssuesCreateMirror.yml",
+      "line": 11,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/InternalIssuesCreateMirror.yml",
+      "line": 19,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/InternalIssuesUpdateMirror.yml",
+      "line": 16,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/InternalIssuesUpdateMirror.yml",
+      "line": 35,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/IssuesCloseStale.yml",
+      "line": 16,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 46,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 239,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 292,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 335,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 354,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 390,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 439,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 598,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 631,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 809,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 857,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 900,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1015,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1039,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1052,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1067,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1079,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1130,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1176,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1213,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1262,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1325,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 89,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 90,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 114,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 166,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 169,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 172,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 173,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 180,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 188,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 188,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 194,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 273,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 663,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 793,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 999,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 1035,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 1036,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 1436,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 1437,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 1445,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 83,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 98,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 139,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 160,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 221,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 261,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 276,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 307,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 312,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 367,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 384,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 393,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 453,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 461,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 521,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 565,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 592,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 614,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 619,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 649,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 666,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 771,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 777,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 783,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 825,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 837,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 851,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 872,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 879,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 917,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 929,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 980,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 985,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 990,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1026,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1096,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1106,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1152,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1162,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1197,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1230,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1240,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1289,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1295,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 337,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1041,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1054,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/Main.yml",
+      "line": 1069,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 246,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 300,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 360,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 606,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 641,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 817,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 864,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 910,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1084,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1135,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1181,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1221,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Main.yml",
+      "line": 1267,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 267,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 337,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 459,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 623,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 655,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 831,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 923,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 1041,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 1054,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 1069,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 1101,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 1157,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 1202,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Main.yml",
+      "line": 1235,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/MirrorDiscussions.yml",
+      "line": 13,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NeedsDocumentation.yml",
+      "line": 21,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/NeedsDocumentation.yml",
+      "line": 2,
+      "message": "use of fundamentally insecure workflow trigger: pull_request_target is almost always used insecurely"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/workflows/NeedsDocumentation.yml",
+      "line": 26,
+      "message": "dangerous use of environment file: write to GITHUB_ENV may allow code execution"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 53,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 106,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 135,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 174,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 218,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 253,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 294,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 339,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 374,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 407,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 439,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 443,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 500,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 505,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 575,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 620,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 668,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 736,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 767,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 805,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 937,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 31,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 39,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 127,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 161,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 206,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 244,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 279,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 326,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 368,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 397,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 429,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 487,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 567,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 610,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 643,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 723,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 761,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 796,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 887,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 928,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 840,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 53,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 82,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 107,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 112,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 120,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 123,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 135,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 139,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 174,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 188,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 218,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 222,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 253,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 294,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 308,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 339,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 374,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 407,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 439,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 444,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 453,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 501,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 506,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 511,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 575,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 620,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 650,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 668,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 717,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 736,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 767,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 791,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 805,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 809,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 814,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 873,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 880,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 894,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 937,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 146,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 148,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 150,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 181,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 183,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 185,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 229,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 231,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 233,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 260,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 262,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 264,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 301,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 303,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 305,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 350,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 352,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 354,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 378,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 380,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 382,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 415,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 417,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 419,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 461,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 463,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 465,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 518,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 520,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 522,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 582,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 584,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 586,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 627,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 629,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 631,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 683,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 685,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 687,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 743,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 745,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 747,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/NightlyTests.yml",
+      "line": 782,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/OSX.yml",
+      "line": 37,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/OSX.yml",
+      "line": 79,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/OSX.yml",
+      "line": 106,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OSX.yml",
+      "line": 37,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OSX.yml",
+      "line": 42,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OSX.yml",
+      "line": 79,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OSX.yml",
+      "line": 84,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OSX.yml",
+      "line": 200,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OSX.yml",
+      "line": 205,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OSX.yml",
+      "line": 210,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OSX.yml",
+      "line": 215,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OSX.yml",
+      "line": 220,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OSX.yml",
+      "line": 225,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OSX.yml",
+      "line": 230,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OSX.yml",
+      "line": 235,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/OSX.yml",
+      "line": 46,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/OSX.yml",
+      "line": 51,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/OSX.yml",
+      "line": 91,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/OnPR.yml",
+      "line": 2,
+      "message": "use of fundamentally insecure workflow trigger: pull_request_target is almost always used insecurely"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OnPR.yml",
+      "line": 62,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/OnPR.yml",
+      "line": 82,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/OnTag.yml",
+      "line": 12,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "secrets-inherit",
+      "level": "warning",
+      "file": ".github/workflows/OnTag.yml",
+      "line": 13,
+      "message": "secrets unconditionally inherited by called workflow: this reusable workflow"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/OnTag.yml",
+      "line": 13,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/PRNeedsMaintainerApproval.yml",
+      "line": 13,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/PRNeedsMaintainerApproval.yml",
+      "line": 2,
+      "message": "use of fundamentally insecure workflow trigger: pull_request_target is almost always used insecurely"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/workflows/PRNeedsMaintainerApproval.yml",
+      "line": 18,
+      "message": "dangerous use of environment file: write to GITHUB_ENV may allow code execution"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/Regression.yml",
+      "line": 164,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/Regression.yml",
+      "line": 280,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/Regression.yml",
+      "line": 284,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/Regression.yml",
+      "line": 328,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/Regression.yml",
+      "line": 410,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 87,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 59,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 69,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 117,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 164,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 169,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 180,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 231,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 237,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 248,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 280,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 286,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 294,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 305,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 328,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 333,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 344,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 370,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 376,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 387,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 410,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 415,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 426,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 53,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 136,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 211,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 277,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 325,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 364,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "unpinned-images",
+      "level": "error",
+      "file": ".github/workflows/Regression.yml",
+      "line": 407,
+      "message": "unpinned image references: container image may be unpinned"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Regression.yml",
+      "line": 65,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/StagedUpload.yml",
+      "line": 24,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/StagedUpload.yml",
+      "line": 17,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/StagedUpload.yml",
+      "line": 24,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/StagedUpload.yml",
+      "line": 29,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Swift.yml",
+      "line": 44,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Swift.yml",
+      "line": 53,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/SwiftRelease.yml",
+      "line": 21,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/SwiftRelease.yml",
+      "line": 29,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/SwiftRelease.yml",
+      "line": 16,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/SwiftRelease.yml",
+      "line": 22,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/SwiftRelease.yml",
+      "line": 30,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/Windows.yml",
+      "line": 215,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 41,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 47,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 102,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 142,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 147,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 152,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 168,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 174,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 215,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 220,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 247,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 278,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 283,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 288,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 305,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 310,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/Windows.yml",
+      "line": 388,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Windows.yml",
+      "line": 51,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Windows.yml",
+      "line": 53,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Windows.yml",
+      "line": 178,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Windows.yml",
+      "line": 180,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Windows.yml",
+      "line": 224,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Windows.yml",
+      "line": 226,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/Windows.yml",
+      "line": 325,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/_extension_client_tests.yml",
+      "line": 30,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/_extension_client_tests.yml",
+      "line": 30,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/_extension_client_tests.yml",
+      "line": 40,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 55,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 107,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 154,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 3,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 45,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 74,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 100,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 147,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 137,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 166,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 178,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 55,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 77,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 107,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 111,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 140,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 154,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/_manual_extension_deploy.yml",
+      "line": 158,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/cifuzz.yml",
+      "line": 25,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/cifuzz.yml",
+      "line": 36,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/cifuzz.yml",
+      "line": 42,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/cifuzz.yml",
+      "line": 49,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "artipacked",
+      "level": "note",
+      "file": ".github/workflows/coverity.yml",
+      "line": 26,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/coverity.yml",
+      "line": 19,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/coverity.yml",
+      "line": 26,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/coverity.yml",
+      "line": 37,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "findings",
+    "finding_count": 10,
+    "findings": [
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "test/mbedtls/private.pem",
+      "line": 1
+     },
+     {
+      "rule": "betterleaks.proof-full-access-api-key",
+      "level": "error",
+      "file": "test/sql/join/inner/test_prefix_range_filter_pushdown_strinline.test",
+      "line": 130
+     },
+     {
+      "rule": "betterleaks.proof-full-access-api-key",
+      "level": "error",
+      "file": "test/sql/join/inner/test_prefix_range_filter_pushdown_strinline.test",
+      "line": 131
+     },
+     {
+      "rule": "betterleaks.proof-full-access-api-key",
+      "level": "error",
+      "file": "test/sql/join/inner/test_prefix_range_filter_pushdown_strinline.test",
+      "line": 158
+     },
+     {
+      "rule": "betterleaks.proof-full-access-api-key",
+      "level": "error",
+      "file": "test/sql/join/inner/test_prefix_range_filter_pushdown_strinline.test",
+      "line": 159
+     },
+     {
+      "rule": "betterleaks.proof-full-access-api-key",
+      "level": "error",
+      "file": "test/sql/join/inner/test_prefix_range_filter_pushdown_strinline.test",
+      "line": 215
+     },
+     {
+      "rule": "betterleaks.proof-full-access-api-key",
+      "level": "error",
+      "file": "test/sql/join/inner/test_prefix_range_filter_pushdown_strinline.test",
+      "line": 216
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "third_party\\mbedtls\\library\\pk_internal.h",
+      "line": 36
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "third_party\\mbedtls\\library\\pk_internal.h",
+      "line": 40
+     },
+     {
+      "rule": "betterleaks.private-key",
+      "level": "error",
+      "file": "third_party\\mbedtls\\library\\pk_internal.h",
+      "line": 44
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "not_applicable",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "provenance": null,
+  "suppression": null,
+  "card": "451 findings · 1 check pending · 4 checks not applicable",
+  "block": "SECURITY · commit 238f5a5\n\n  Dependency vulnerabilities\n    nothing to check — no lockfile or dependency manifest osv-scanner reads\n\n  Known-malicious packages\n    nothing to check — no lockfile or dependency manifest osv-scanner reads\n\n  Registry package by this repo's manifest name\n    nothing to check — no root manifest declares a package name\n\n  CI / workflow\n    441 findings                     zizmor 1.30.0 · 2026-09-21\n      unpinned-uses  .github/actions/ccache-action/action.yml:17\n      unpinned-uses  .github/actions/cleanup_runner/action.yml:11\n      template-injection  .github/actions/setup-msvc-env/action.yml:18\n      template-injection  .github/actions/setup-msvc-env/action.yml:19\n      github-env  .github/actions/setup-msvc-env/action.yml:17\n      unpinned-uses  .github/actions/swap_space/action.yml:11\n      template-injection  .github/actions/trim-ccache/action.yml:25\n      artipacked  .github/workflows/Android.yml:65\n      excessive-permissions  .github/workflows/Android.yml:45\n      unpinned-uses  .github/workflows/Android.yml:65\n      unpinned-uses  .github/workflows/Android.yml:104\n      artipacked  .github/workflows/CheckIssueForCodeFormatting.yml:14\n      excessive-permissions  .github/workflows/CheckIssueForCodeFormatting.yml:11\n      unpinned-uses  .github/workflows/CheckIssueForCodeFormatting.yml:14\n      unpinned-uses  .github/workflows/CheckIssueForCodeFormatting.yml:18\n      artipacked  .github/workflows/DockerTests.yml:76\n      artipacked  .github/workflows/DockerTests.yml:243\n      excessive-permissions  .github/workflows/DockerTests.yml:1\n      excessive-permissions  .github/workflows/DockerTests.yml:43\n      excessive-permissions  .github/workflows/DockerTests.yml:136\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    10 findings                      kingfisher 2.1.0 · 2026-09-21\n      betterleaks.private-key  test/mbedtls/private.pem:1\n      betterleaks.proof-full-access-api-key  test/sql/join/inner/test_prefix_range_filter_pushdown_strinline.test:130\n      betterleaks.proof-full-access-api-key  test/sql/join/inner/test_prefix_range_filter_pushdown_strinline.test:131\n      betterleaks.proof-full-access-api-key  test/sql/join/inner/test_prefix_range_filter_pushdown_strinline.test:158\n      betterleaks.proof-full-access-api-key  test/sql/join/inner/test_prefix_range_filter_pushdown_strinline.test:159\n      betterleaks.proof-full-access-api-key  test/sql/join/inner/test_prefix_range_filter_pushdown_strinline.test:215\n      betterleaks.proof-full-access-api-key  test/sql/join/inner/test_prefix_range_filter_pushdown_strinline.test:216\n      betterleaks.private-key  third_party\\mbedtls\\library\\pk_internal.h:36\n      betterleaks.private-key  third_party\\mbedtls\\library\\pk_internal.h:40\n      betterleaks.private-key  third_party\\mbedtls\\library\\pk_internal.h:44\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    nothing to check — no SKILL.md, mcp.json, .mcp.json or .claude/ in this tree\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "238f5a5ee2cef48cd5883c8df4836eb7a604566e",
+  "built_at": "2026-09-21 18:00:02.903082",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 130251,
+  "edge_count": 278461,
+  "community_count": 3152,
+  "extracted_pct": 0.9317067861557007,
+  "subsystems": [
+   {
+    "label": "Task Execution State",
+    "size": 2589
+   },
+   {
+    "label": "SQL Parser Trampolines",
+    "size": 2390
+   },
+   {
+    "label": "Database Utility Functions",
+    "size": 1477
+   },
+   {
+    "label": "Data Conversion Utilities",
+    "size": 618
+   },
+   {
+    "label": "Vector Aggregation Functions",
+    "size": 463
+   },
+   {
+    "label": "Binary Encoding Functions",
+    "size": 440
+   },
+   {
+    "label": "JSON Serialization",
+    "size": 380
+   },
+   {
+    "label": "Dictionary Decoder Filtering",
+    "size": 360
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "unique_ptr",
+    "degree": 6404,
+    "file": "src/include/duckdb/common/unique_ptr.hpp"
+   },
+   {
+    "name": "vector",
+    "degree": 4478,
+    "file": "src/include/duckdb/common/vector.hpp"
+   },
+   {
+    "name": "PEGTransformerFactory",
+    "degree": 2922,
+    "file": "src/include/duckdb/parser/peg/transformer/peg_transformer.hpp"
+   },
+   {
+    "name": "GeneratedTransformProcess",
+    "degree": 2097,
+    "file": "src/include/duckdb/parser/peg/transformer/peg_transformer.hpp"
+   },
+   {
+    "name": "StringUtil",
+    "degree": 1532,
+    "file": "src/include/duckdb/common/string_util.hpp"
+   },
+   {
+    "name": "optional_ptr",
+    "degree": 1421,
+    "file": "src/include/duckdb/common/optional_ptr.hpp"
+   },
+   {
+    "name": "Value()",
+    "degree": 1381,
+    "file": "src/include/duckdb/function/aggregate/distributive_function_utils.hpp"
+   },
+   {
+    "name": "TransformResultValue()",
+    "degree": 1058,
+    "file": "src/include/duckdb/parser/peg/transformer/transform_result.hpp"
+   },
+   {
+    "name": "shared_ptr",
+    "degree": 1039,
+    "file": "src/include/duckdb/common/shared_ptr_ipp.hpp"
+   },
+   {
+    "name": "FlatVector",
+    "degree": 725,
+    "file": "src/include/duckdb/common/vector/flat_vector.hpp"
+   }
+  ],
+  "lines": [
+   "Structure: 3,152 subsystems — Task Execution State · SQL Parser Trampolines · Database Utility Functions",
+   "Core: unique_ptr · vector · PEGTransformerFactory"
+  ],
+  "block": "Code structure (mapped 2026-09-21 · 238f5a5e · graphify 0.9.37)\n130,251 concepts · 278,461 connections · 3,152 subsystems · 93% read directly from source\nSubsystems: Task Execution State · SQL Parser Trampolines · Database Utility Functions · Data Conversion Utilities · Vector Aggregation Functions · Binary Encoding Functions · JSON Serialization · Dictionary Decoder Filtering\nCore abstractions:\n  1. unique_ptr — 6,404 connections\n  2. vector — 4,478 connections\n  3. PEGTransformerFactory — 2,922 connections\n  4. GeneratedTransformProcess — 2,097 connections\n  5. StringUtil — 1,532 connections\n  6. optional_ptr — 1,421 connections\n  7. Value() — 1,381 connections\n  8. TransformResultValue() — 1,058 connections\n  9. shared_ptr — 1,039 connections\n  10. FlatVector — 725 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
+ }
+}

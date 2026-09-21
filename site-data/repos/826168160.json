@@ -1,0 +1,2186 @@
+{
+ "security": {
+  "repo_id": 826168160,
+  "commit_sha": "b078ea34921eafe181141e6179e87885196497c3",
+  "coverage_model_version": "1",
+  "rows": [
+   {
+    "dimension": "deps_vulns",
+    "label": "Dependency vulnerabilities",
+    "state": "findings",
+    "finding_count": 5,
+    "findings": [
+     {
+      "id": "CVE-2026-61632",
+      "aliases": [],
+      "package": "pymdown-extensions",
+      "version": "10.21.3",
+      "file": "uv.lock",
+      "message": "Package 'pymdown-extensions@10.21.3' is vulnerable to 'CVE-2026-61632' (also known as 'PYSEC-2026-3609', 'GHSA-9xwg-3r6f-jcx2')."
+     },
+     {
+      "id": "CVE-2026-67422",
+      "aliases": [],
+      "package": "pymdown-extensions",
+      "version": "10.21.3",
+      "file": "uv.lock",
+      "message": "Package 'pymdown-extensions@10.21.3' is vulnerable to 'CVE-2026-67422' (also known as 'PYSEC-2026-3654', 'GHSA-gm37-52c6-37mw')."
+     },
+     {
+      "id": "CVE-2026-59890",
+      "aliases": [],
+      "package": "setuptools",
+      "version": "81.0.0",
+      "file": "uv.lock",
+      "message": "Package 'setuptools@81.0.0' is vulnerable to 'CVE-2026-59890' (also known as 'BIT-setuptools-2026-59890', 'PYSEC-2026-3447', 'GHSA-h35f-9h28-mq5c')."
+     },
+     {
+      "id": "CVE-2025-3000",
+      "aliases": [],
+      "package": "torch",
+      "version": "2.11.0",
+      "file": "uv.lock",
+      "message": "Package 'torch@2.11.0' is vulnerable to 'CVE-2025-3000' (also known as 'BIT-pytorch-2025-3000', 'PYSEC-2025-194', 'GHSA-rrmf-rvhw-rf47')."
+     },
+     {
+      "id": "CVE-2026-66007",
+      "aliases": [
+       "PYSEC-2026-3716"
+      ],
+      "package": "datasets",
+      "version": "2.21.0",
+      "file": "uv.lock",
+      "message": "Package 'datasets@2.21.0' is vulnerable to 'CVE-2026-66007' (also known as 'PYSEC-2026-3716')."
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "deps_malware",
+    "label": "Known-malicious packages",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "osv-scanner",
+    "tool_version": "2.5.1",
+    "argv": "osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .",
+    "home": "https://github.com/google/osv-scanner"
+   },
+   {
+    "dimension": "own_package",
+    "label": "Registry package by this repo's manifest name",
+    "state": "none",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "OSV",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   },
+   {
+    "dimension": "ci_config",
+    "label": "CI / workflow",
+    "state": "findings",
+    "finding_count": 71,
+    "findings": [
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/actions/setup-ubuntu-ci/action.yml",
+      "line": 59,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/actions/setup-ubuntu-ci/action.yml",
+      "line": 51,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "github-env",
+      "level": "error",
+      "file": ".github/actions/setup-ubuntu-ci/action.yml",
+      "line": 48,
+      "message": "dangerous use of environment file: write to GITHUB_ENV may allow code execution"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/cd-docs.yml",
+      "line": 10,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/cd.yml",
+      "line": 27,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/cd.yml",
+      "line": 54,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/cd.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/cd.yml",
+      "line": 22,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/cd.yml",
+      "line": 42,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "github-app",
+      "level": "error",
+      "file": ".github/workflows/cd.yml",
+      "line": 49,
+      "message": "dangerous use of GitHub App tokens: app token inherits blanket installation permissions"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/cd.yml",
+      "line": 15,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/cd.yml",
+      "line": 30,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/cd.yml",
+      "line": 58,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 81,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 155,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 183,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 205,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 247,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 300,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 374,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 420,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 462,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 500,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 580,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 658,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "template-injection",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 265,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 266,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 267,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "warning",
+      "file": ".github/workflows/checks.yml",
+      "line": 269,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/checks.yml",
+      "line": 382,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/checks.yml",
+      "line": 428,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/checks.yml",
+      "line": 465,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/checks.yml",
+      "line": 503,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/checks.yml",
+      "line": 583,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/checks.yml",
+      "line": 625,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/checks.yml",
+      "line": 156,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/checks.yml",
+      "line": 184,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/checks.yml",
+      "line": 208,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/checks.yml",
+      "line": 250,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/checks.yml",
+      "line": 301,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci-docs.yml",
+      "line": 24,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci-docs.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci-docs.yml",
+      "line": 42,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ci-docs.yml",
+      "line": 45,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci-heavy-examples.yml",
+      "line": 34,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci-heavy-examples.yml",
+      "line": 67,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci-heavy-examples.yml",
+      "line": 1,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/ci-heavy-examples.yml",
+      "line": 20,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ci-heavy-examples.yml",
+      "line": 35,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ci-main.yml",
+      "line": 32,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/ci.yml",
+      "line": 69,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/ci.yml",
+      "line": 121,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/dco-advisor.yml",
+      "line": 3,
+      "message": "use of fundamentally insecure workflow trigger: pull_request_target is almost always used insecurely"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/discord-release.yml",
+      "line": 9,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/discord-release.yml",
+      "line": 17,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/discord-release.yml",
+      "line": 18,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/discord-release.yml",
+      "line": 19,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "template-injection",
+      "level": "error",
+      "file": ".github/workflows/discord-release.yml",
+      "line": 23,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/docs.yml",
+      "line": 25,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/docs.yml",
+      "line": 26,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "dangerous-triggers",
+      "level": "error",
+      "file": ".github/workflows/pr-fast-checks.yml",
+      "line": 3,
+      "message": "use of fundamentally insecure workflow trigger: pull_request_target is almost always used insecurely"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/pr-fast-checks.yml",
+      "line": 57,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/pr-fast-checks.yml",
+      "line": 47,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     },
+     {
+      "rule": "excessive-permissions",
+      "level": "warning",
+      "file": ".github/workflows/pr-reminders.yml",
+      "line": 9,
+      "message": "overly broad permissions: default permissions used due to no permissions: block"
+     },
+     {
+      "rule": "template-injection",
+      "level": "note",
+      "file": ".github/workflows/pr-reminders.yml",
+      "line": 52,
+      "message": "code injection via template expansion: may expand into attacker-controllable code"
+     },
+     {
+      "rule": "artipacked",
+      "level": "warning",
+      "file": ".github/workflows/pypi.yml",
+      "line": 20,
+      "message": "credential persistence through GitHub Actions artifacts: does not set persist-credentials: false"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pypi.yml",
+      "line": 28,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pypi.yml",
+      "line": 43,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pypi.yml",
+      "line": 66,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "unpinned-uses",
+      "level": "error",
+      "file": ".github/workflows/pypi.yml",
+      "line": 93,
+      "message": "unpinned action reference: action is not pinned to a hash (required by blanket policy)"
+     },
+     {
+      "rule": "self-repository",
+      "level": "note",
+      "file": ".github/workflows/pypi.yml",
+      "line": 21,
+      "message": "use GitHub's dedicated self-repository syntax: use '$/...' instead of './...'"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "zizmor",
+    "tool_version": "1.30.0",
+    "argv": "zizmor --offline --persona=regular --format=sarif .",
+    "home": "https://github.com/zizmorcore/zizmor"
+   },
+   {
+    "dimension": "secrets",
+    "label": "Leaked credentials",
+    "state": "findings",
+    "finding_count": 2,
+    "findings": [
+     {
+      "rule": "betterleaks.curl-auth-header",
+      "level": "error",
+      "file": "actor\\README.md",
+      "line": 60
+     },
+     {
+      "rule": "betterleaks.brave-search-api-key",
+      "level": "error",
+      "file": "tests/data/latex/groundtruth/2310.06825_main.tex.json",
+      "line": 1416
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "kingfisher",
+    "tool_version": "2.1.0",
+    "argv": "kingfisher scan . --no-validate --format=sarif --no-update-check",
+    "home": "https://github.com/mongodb/kingfisher"
+   },
+   {
+    "dimension": "agent_artifacts",
+    "label": "Agent artifacts",
+    "state": "findings",
+    "finding_count": 129,
+    "findings": [
+     {
+      "rule": "TT3",
+      "severity": "CRITICAL",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'api_key' from os.environ.get (line 83, credential/environment) → requests.post (network output)",
+      "confidence": 0.9,
+      "file": "docs/examples/legacy/pictures_description_api_legacy.py",
+      "line": 87,
+      "message": "Tainted flow: 'api_key' from os.environ.get (line 83, credential/environment) → requests.post (network output)",
+      "finding": "        res = requests.post(\n            url=\"https://iam.cloud.ibm.com/identity/token\",\n            headers={\n                \"Content-Type\": \"application/x-www-form-urlencoded\",\n            },\n     "
+     },
+     {
+      "rule": "TT3",
+      "severity": "CRITICAL",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'api_key' from os.environ.get (line 83, credential/environment) → requests.post (network output)",
+      "confidence": 0.9,
+      "file": "docs/examples/legacy/vlm_pipeline_api_model_legacy.py",
+      "line": 179,
+      "message": "Tainted flow: 'api_key' from os.environ.get (line 83, credential/environment) → requests.post (network output)",
+      "finding": "        res = requests.post(\n            url=\"https://iam.cloud.ibm.com/identity/token\",\n            headers={\n                \"Content-Type\": \"application/x-www-form-urlencoded\",\n            },\n     "
+     },
+     {
+      "rule": "TT3",
+      "severity": "CRITICAL",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'api_key' from os.environ.get (line 108, credential/environment) → requests.post (network output)",
+      "confidence": 0.9,
+      "file": "docs/examples/pictures_description_api.py",
+      "line": 121,
+      "message": "Tainted flow: 'api_key' from os.environ.get (line 108, credential/environment) → requests.post (network output)",
+      "finding": "        res = requests.post(\n            url=\"https://iam.cloud.ibm.com/identity/token\",\n            headers={\"Content-Type\": \"application/x-www-form-urlencoded\"},\n            data=f\"grant_type=urn:ib"
+     },
+     {
+      "rule": "TT3",
+      "severity": "CRITICAL",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'api_key' from os.environ.get (line 108, credential/environment) → requests.post (network output)",
+      "confidence": 0.9,
+      "file": "docs/examples/vlm_pipeline_api_model.py",
+      "line": 378,
+      "message": "Tainted flow: 'api_key' from os.environ.get (line 108, credential/environment) → requests.post (network output)",
+      "finding": "        res = requests.post(\n            url=\"https://iam.cloud.ibm.com/identity/token\",\n            headers={\"Content-Type\": \"application/x-www-form-urlencoded\"},\n            data=f\"grant_type=urn:ib"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": ".actor/.dockerignore",
+      "line": 7,
+      "message": "Credential Access",
+      "finding": ".env\r"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": ".gitignore",
+      "line": 344,
+      "message": "Credential Access",
+      "finding": ".env\r"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "docling/.agents/skills/docling/references/service-client.md",
+      "line": 57,
+      "message": "Credential Access",
+      "finding": ".env\r"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "docling/cli/remote.py",
+      "line": 76,
+      "message": "Credential Access",
+      "finding": ".env\r"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "docling/cli/remote.py",
+      "line": 79,
+      "message": "Credential Access",
+      "finding": ".env\r"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "docling/cli/remote.py",
+      "line": 87,
+      "message": "Credential Access",
+      "finding": ".env\r"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "docling/cli/remote.py",
+      "line": 149,
+      "message": "Credential Access",
+      "finding": ".env\r"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "docling/cli/remote.py",
+      "line": 158,
+      "message": "Credential Access",
+      "finding": ".env\r"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "docling/cli/remote.py",
+      "line": 322,
+      "message": "Credential Access",
+      "finding": ".env\r"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "docling/cli/remote.py",
+      "line": 326,
+      "message": "Credential Access",
+      "finding": ".env\r"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "docs/examples/ag2_multiagent_document_analysis.ipynb",
+      "line": 71,
+      "message": "Credential Access",
+      "finding": ".env\r"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.8,
+      "file": ".actor/Dockerfile",
+      "line": 18,
+      "message": "Tool Parameter Abuse",
+      "finding": "chmod +x bin/actor \\\r\n    # Clean up npm cache to reduce image size\r\n    && npm cache clean --force\r\n\r\n# Final stage with docling-serve-cpu\r\nFROM quay.io/ds4sd/docling-serve-cpu:latest\r\n\r\nLABEL mainta"
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.75,
+      "file": ".actor/Dockerfile",
+      "line": 53,
+      "message": "Chaining Abuse",
+      "finding": "&& chown -R"
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.75,
+      "file": ".actor/Dockerfile",
+      "line": 56,
+      "message": "Chaining Abuse",
+      "finding": "&& chmod 777"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": ".actor/Dockerfile",
+      "line": 58,
+      "message": "Credential Access",
+      "finding": "/etc/passwd"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.6,
+      "file": "docling/backend/opendocument_backend.py",
+      "line": 895,
+      "message": "Credential Access",
+      "finding": "/etc/passwd"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".actor/actor.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".actor/actor.sh"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.95,
+      "file": ".actor/actor.sh",
+      "line": 164,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm \"$OCR_DIR/test_write\""
+     },
+     {
+      "rule": "E2",
+      "severity": "HIGH",
+      "category": "Data Exfiltration",
+      "pattern": "Env Variable Harvesting",
+      "confidence": 0.7,
+      "file": ".agents/skills/dignified-python/versions/python-3.11.md",
+      "line": 426,
+      "message": "Env Variable Harvesting",
+      "finding": "for k, v in os.environ.items()"
+     },
+     {
+      "rule": "TM2",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.75,
+      "file": ".github/actions/setup-ubuntu-ci/action.yml",
+      "line": 41,
+      "message": "Chaining Abuse",
+      "finding": "|\n        sudo "
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/build-packages.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/build-packages.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/check_needs_results.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/check_needs_results.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/pytest_marker_selection.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/pytest_marker_selection.py"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/release.sh",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/release.sh"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/run_pr_fast_checks.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/run_pr_fast_checks.py"
+     },
+     {
+      "rule": "E2",
+      "severity": "HIGH",
+      "category": "Data Exfiltration",
+      "pattern": "Env Variable Harvesting",
+      "confidence": 0.6,
+      "file": ".github/scripts/run_pr_fast_checks.py",
+      "line": 376,
+      "message": "Env Variable Harvesting",
+      "finding": "os.environ.copy()"
+     },
+     {
+      "rule": "SC9",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "confidence": 1.0,
+      "file": ".github/scripts/run_selected_examples.py",
+      "line": 1,
+      "message": "Executable content is concealed inside a document, hidden, or disguised artifact.",
+      "finding": ".github/scripts/run_selected_examples.py"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": ".actor/Dockerfile",
+      "line": 7,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": ".github/workflows/checks.yml",
+      "line": 486,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": ".github/workflows/checks.yml",
+      "line": 565,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": "Dockerfile",
+      "line": 7,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/checks.yml",
+      "line": 486,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /tmp/venv-${py_version}"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/checks.yml",
+      "line": 525,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf \"$python_include_dir\"/*"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/checks.yml",
+      "line": 527,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf \"$python_include_dir\"/*"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/checks.yml",
+      "line": 565,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /tmp/venv-nodev-${py_version}"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": ".github/workflows/checks.yml",
+      "line": 311,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /usr/share/dotnet\n          sudo rm -rf /usr/local/lib/android\n          sudo rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.9,
+      "file": ".github/workflows/ci-heavy-examples.yml",
+      "line": 45,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /usr/share/dotnet\n          sudo rm -rf /usr/local/lib/android\n          sudo rm -rf /"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/checks.yml",
+      "line": 311,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /usr/share/dotnet"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/ci-heavy-examples.yml",
+      "line": 45,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /usr/share/dotnet"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/checks.yml",
+      "line": 312,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /usr/local/lib/android"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/ci-heavy-examples.yml",
+      "line": 46,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /usr/local/lib/android"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/checks.yml",
+      "line": 313,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /opt/ghc"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".github/workflows/ci-heavy-examples.yml",
+      "line": 47,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /opt/ghc"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.7,
+      "file": ".github/workflows/dco-advisor.yml",
+      "line": 144,
+      "message": "Tool Parameter Abuse",
+      "finding": "git push --force-with-lease',\n                '```',\n                '',\n                '**For multiple commits:**',\n                '```bash',\n                `git rebase --signoff origin/${baseRef}"
+     },
+     {
+      "rule": "P3",
+      "severity": "HIGH",
+      "category": "Prompt Injection",
+      "pattern": "Exfiltration Commands",
+      "confidence": 0.9,
+      "file": ".github/workflows/pr-reminders.yml",
+      "line": 50,
+      "message": "Exfiltration Commands",
+      "finding": "Send message to"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": ".gitignore",
+      "line": 77,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -r .ipynb_checkpoints/"
+     },
+     {
+      "rule": "TM1",
+      "severity": "HIGH",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.85,
+      "file": "Makefile",
+      "line": 72,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf docs/_generated"
+     },
+     {
+      "rule": "MP3",
+      "severity": "HIGH",
+      "category": "Memory Poisoning",
+      "pattern": "Memory Manipulation",
+      "confidence": 0.8,
+      "file": "docling/backend/html_backend.py",
+      "line": 903,
+      "message": "Memory Manipulation",
+      "finding": "reset context"
+     },
+     {
+      "rule": "SC2",
+      "severity": "HIGH",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.9,
+      "file": "docling/backend/latex/engines/tectonic.py",
+      "line": 89,
+      "message": "External Script Fetching",
+      "finding": "curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh"
+     },
+     {
+      "rule": "RA1",
+      "severity": "HIGH",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "confidence": 0.7,
+      "file": "docling/backend/msword_backend.py",
+      "line": 1926,
+      "message": "Self-Modification",
+      "finding": "Remove check"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "docling/datamodel/service/sources.py",
+      "line": 374,
+      "message": "Credential Access",
+      "finding": "access token"
+     },
+     {
+      "rule": "PE3",
+      "severity": "HIGH",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "confidence": 0.7,
+      "file": "docling/datamodel/service/sources.py",
+      "line": 400,
+      "message": "Credential Access",
+      "finding": "credentials.json"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "docling/datamodel/chart_extraction_options.py",
+      "line": 141,
+      "message": "Direct Prompt Extraction",
+      "finding": "return prompt"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "docling/models/base_model.py",
+      "line": 124,
+      "message": "Direct Prompt Extraction",
+      "finding": "return prompt"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "docling/models/base_model.py",
+      "line": 139,
+      "message": "Direct Prompt Extraction",
+      "finding": "return prompt"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "docling/models/inference_engines/vlm/_utils.py",
+      "line": 251,
+      "message": "Direct Prompt Extraction",
+      "finding": "return prompt"
+     },
+     {
+      "rule": "P6",
+      "severity": "HIGH",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "confidence": 0.85,
+      "file": "docling/models/stages/code_formula/code_formula_model.py",
+      "line": 253,
+      "message": "Direct Prompt Extraction",
+      "finding": "return prompt"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".actor/Dockerfile",
+      "line": 54,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 1777"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".actor/Dockerfile",
+      "line": 55,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 1777"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".actor/Dockerfile",
+      "line": 56,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 777"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".actor/README.md",
+      "line": 57,
+      "message": "External Transmission",
+      "finding": "curl --request POST \\\n  --url \"https://api.apify.com/v2/acts/vancura~docling/run\" \\\n  --header 'Content-Type: application/json' \\\n  --header 'Authorization: Bearer YOUR_API_TOKEN' \\\n  --data "
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".actor/README.md",
+      "line": 58,
+      "message": "External Transmission",
+      "finding": "https://api.apify.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".actor/README.md",
+      "line": 116,
+      "message": "External Transmission",
+      "finding": "https://api.apify.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".actor/README.md",
+      "line": 130,
+      "message": "External Transmission",
+      "finding": "https://api.apify.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".actor/actor.sh",
+      "line": 26,
+      "message": "External Transmission",
+      "finding": "https://api.apify.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".actor/actor.sh",
+      "line": 35,
+      "message": "External Transmission",
+      "finding": "https://api.apify.com/"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".actor/actor.sh",
+      "line": 321,
+      "message": "External Transmission",
+      "finding": "https://api.apify.com/"
+     },
+     {
+      "rule": "RA2",
+      "severity": "MEDIUM",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "confidence": 0.6,
+      "file": ".actor/actor.sh",
+      "line": 146,
+      "message": "Session Persistence",
+      "finding": "mkdir -p \"$TOOLS_DIR\"\n\n# Copy tools if available\nif [ -d \"/build-files\" ]; then\n    echo \"Copying tools from /build-files...\"\n    cp -r /build-files/* \"$TOOLS_DIR/\"\n    export PATH=\"$TOOLS_DIR/bin:$PA"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.7,
+      "file": ".actor/actor.sh",
+      "line": 305,
+      "message": "External Transmission",
+      "finding": "Curl the Docling API\"\ncurl -s -H \"content-type: application/json\" -X POST --data-binary "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.8,
+      "file": ".actor/actor.sh",
+      "line": 348,
+      "message": "Sudo/Root Execution",
+      "finding": "chmod 644"
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/actions/setup-ubuntu-ci/action.yml",
+      "line": 27,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/actions/setup-ubuntu-ci/action.yml",
+      "line": 42,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/actions/setup-ubuntu-ci/action.yml",
+      "line": 43,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/actions/setup-ubuntu-ci/action.yml",
+      "line": 77,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/checks.yml",
+      "line": 311,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/checks.yml",
+      "line": 312,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/checks.yml",
+      "line": 313,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/checks.yml",
+      "line": 314,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/checks.yml",
+      "line": 523,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/checks.yml",
+      "line": 527,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/ci-heavy-examples.yml",
+      "line": 45,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/ci-heavy-examples.yml",
+      "line": 46,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/ci-heavy-examples.yml",
+      "line": 47,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "PE2",
+      "severity": "MEDIUM",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "confidence": 0.7,
+      "file": ".github/workflows/ci-heavy-examples.yml",
+      "line": 48,
+      "message": "Sudo/Root Execution",
+      "finding": "sudo "
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/run_pr_fast_checks.py",
+      "line": 73,
+      "message": "subprocess module call",
+      "finding": "    completed = subprocess.run(\n        args,\n        cwd=cwd,\n        env=env,\n        capture_output=True,\n        text=True,\n        check=False,\n    )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/run_pr_fast_checks.py",
+      "line": 95,
+      "message": "subprocess module call",
+      "finding": "    completed = subprocess.run(\n        [\"git\", *args],\n        cwd=repo_root,\n        capture_output=True,\n        text=True,\n        check=True,\n    )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/run_pr_fast_checks.py",
+      "line": 106,
+      "message": "subprocess module call",
+      "finding": "    completed = subprocess.run(\n        [\"git\", *args],\n        cwd=repo_root,\n        capture_output=True,\n        check=True,\n    )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": ".github/scripts/run_selected_examples.py",
+      "line": 141,
+      "message": "subprocess module call",
+      "finding": "        completed = subprocess.run(\n            build_example_command(path, under_coverage=under_coverage),\n            check=False,\n        )"
+     },
+     {
+      "rule": "TT2",
+      "severity": "MEDIUM",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'under_coverage' from os.environ.get (line 128, credential/environment) → subprocess.run (code execution)",
+      "confidence": 0.65,
+      "file": ".github/scripts/run_selected_examples.py",
+      "line": 141,
+      "message": "Tainted flow: 'under_coverage' from os.environ.get (line 128, credential/environment) → subprocess.run (code execution)",
+      "finding": "        completed = subprocess.run(\n            build_example_command(path, under_coverage=under_coverage),\n            check=False,\n        )"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".github/workflows/discord-release.yml",
+      "line": 40,
+      "message": "External Transmission",
+      "finding": "curl -H \"Content-Type: application/json\" \\\n               -d "
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": ".github/workflows/pr-reminders.yml",
+      "line": 53,
+      "message": "External Transmission",
+      "finding": "curl -X POST -H \"Content-Type: application/json\" \\\n            -d "
+     },
+     {
+      "rule": "AS3",
+      "severity": "MEDIUM",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "confidence": 0.8,
+      "file": "AGENTS.md",
+      "line": 31,
+      "message": "Skill Enumeration",
+      "finding": "skills/docling/SKILL.md"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.75,
+      "file": "Dockerfile",
+      "line": 28,
+      "message": "Docker image referenced without tag or digest: 'docker run -e'.",
+      "finding": ""
+     },
+     {
+      "rule": "EA1",
+      "severity": "MEDIUM",
+      "category": "Excessive Agency",
+      "pattern": "Unrestricted Tool Access",
+      "confidence": 0.85,
+      "file": "docling/.agents/skills/docling/SKILL.md",
+      "line": 21,
+      "message": "Unrestricted Tool Access",
+      "finding": "tools:*"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.65,
+      "file": "docling/.agents/skills/docling/SKILL.md",
+      "line": 75,
+      "message": "MCP server referenced without pinned version: 'uvx --from docling'.",
+      "finding": ""
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "docling/backend/docx/drawingml/utils.py",
+      "line": 183,
+      "message": "subprocess module call",
+      "finding": "    proc = subprocess.Popen(\n        args,\n        stdout=subprocess.DEVNULL,\n        stderr=subprocess.DEVNULL,\n        start_new_session=True,\n    )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "docling/backend/docx/drawingml/utils.py",
+      "line": 217,
+      "message": "subprocess module call",
+      "finding": "        subprocess.run(\n            [\n                libreoffice_cmd,\n                \"-h\",\n            ],\n            stdout=subprocess.DEVNULL,\n            stderr=subprocess.DEVNULL,\n            ch"
+     },
+     {
+      "rule": "TT2",
+      "severity": "MEDIUM",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'libreoffice_cmd' from os.environ.get (line 201, credential/environment) → subprocess.run (code execution)",
+      "confidence": 0.65,
+      "file": "docling/backend/docx/drawingml/utils.py",
+      "line": 217,
+      "message": "Tainted flow: 'libreoffice_cmd' from os.environ.get (line 201, credential/environment) → subprocess.run (code execution)",
+      "finding": "        subprocess.run(\n            [\n                libreoffice_cmd,\n                \"-h\",\n            ],\n            stdout=subprocess.DEVNULL,\n            stderr=subprocess.DEVNULL,\n            ch"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "docling/backend/latex/engines/tectonic.py",
+      "line": 253,
+      "message": "subprocess module call",
+      "finding": "                subprocess.run(\n                    cmd,\n                    cwd=temp_dir,\n                    capture_output=True,\n                    check=True,\n                    timeout=self.tim"
+     },
+     {
+      "rule": "OH3",
+      "severity": "MEDIUM",
+      "category": "Output Handling",
+      "pattern": "Unbounded Output",
+      "confidence": 0.75,
+      "file": "docling/datamodel/pipeline_options_vlm_model.py",
+      "line": 67,
+      "message": "Unbounded Output",
+      "finding": "no size limit"
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.6,
+      "file": "docling/datamodel/vlm_engine_options.py",
+      "line": 246,
+      "message": "External Transmission",
+      "finding": "https://api.openai.com/"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "docling/models/stages/ocr/tesseract_ocr_cli_model.py",
+      "line": 180,
+      "message": "subprocess module call",
+      "finding": "        proc = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=False)"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "docling/models/stages/ocr/tesseract_ocr_cli_model.py",
+      "line": 231,
+      "message": "subprocess module call",
+      "finding": "        output = subprocess.run(\n            cmd, stdout=PIPE, stderr=DEVNULL, stdin=DEVNULL, check=True, shell=False\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "docling/models/stages/ocr/tesseract_ocr_cli_model.py",
+      "line": 309,
+      "message": "subprocess module call",
+      "finding": "        output = subprocess.run(\n            cmd, stdout=PIPE, stderr=DEVNULL, stdin=DEVNULL, check=True, shell=False\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "docling/models/stages/ocr/tesseract_ocr_cli_model.py",
+      "line": 271,
+      "message": "subprocess module call",
+      "finding": "        output = subprocess.run(\n            cmd, capture_output=True, stdin=DEVNULL, check=True, shell=False\n        )"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "docling/pipeline/video_pipeline.py",
+      "line": 82,
+      "message": "subprocess module call",
+      "finding": "    result = subprocess.run(\n        [\n            \"ffmpeg\",\n            \"-nostdin\",\n            \"-i\",\n            str(video_path),\n            \"-vn\",\n            \"-acodec\",\n            \"pcm_s16le\",\n "
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "docling/utils/video_frame_sampling.py",
+      "line": 114,
+      "message": "subprocess module call",
+      "finding": "        out = subprocess.run(\n            [\n                \"ffprobe\",\n                \"-v\",\n                \"error\",\n                \"-show_entries\",\n                \"format=duration\",\n              "
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "docling/utils/video_frame_sampling.py",
+      "line": 139,
+      "message": "subprocess module call",
+      "finding": "    proc = subprocess.run(\n        [\n            \"ffmpeg\",\n            \"-nostdin\",\n            \"-ss\",\n            f\"{timestamp:.3f}\",\n            \"-i\",\n            str(video_path),\n            \"-frame"
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "docling/utils/video_frame_sampling.py",
+      "line": 181,
+      "message": "subprocess module call",
+      "finding": "    proc = subprocess.run(\n        [\n            \"ffmpeg\",\n            \"-nostdin\",\n            \"-ss\",\n            f\"{start:.3f}\",\n            \"-i\",\n            str(video_path),\n            \"-t\",\n     "
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "docling/utils/video_frame_sampling.py",
+      "line": 245,
+      "message": "subprocess module call",
+      "finding": "    proc = subprocess.run(\n        [\n            \"ffmpeg\",\n            \"-nostdin\",\n            \"-i\",\n            str(video_path),\n            \"-vf\",\n            f\"fps={fps},scale={size}:{size}\",\n     "
+     },
+     {
+      "rule": "E1",
+      "severity": "MEDIUM",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "confidence": 0.5,
+      "file": "docs/examples/dpk-ingest-chunk-tokenize.ipynb",
+      "line": 100,
+      "message": "External Transmission",
+      "finding": "https://api.enterprise.wikimedia.com/"
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.65,
+      "file": "docs/usage/agent_skills.md",
+      "line": 17,
+      "message": "MCP server referenced without pinned version: 'uvx library-skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.65,
+      "file": "docs/usage/agent_skills.md",
+      "line": 26,
+      "message": "MCP server referenced without pinned version: 'uvx library-skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.65,
+      "file": "docs/usage/agent_skills.md",
+      "line": 37,
+      "message": "MCP server referenced without pinned version: 'uvx library-skills'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.75,
+      "file": "docs/examples/retrieval_qdrant.ipynb",
+      "line": 122,
+      "message": "Docker image referenced without tag or digest: 'docker run -p'.",
+      "finding": ""
+     },
+     {
+      "rule": "RP1",
+      "severity": "MEDIUM",
+      "category": "MCP Rug Pull",
+      "pattern": "",
+      "confidence": 0.75,
+      "file": "docs/usage/api_server/deployment.md",
+      "line": 114,
+      "message": "Docker image referenced without tag or digest: 'docker run -p'.",
+      "finding": ""
+     },
+     {
+      "rule": "AST4",
+      "severity": "MEDIUM",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "confidence": 0.7,
+      "file": "perfs/xlsx_merged_cells.py",
+      "line": 98,
+      "message": "subprocess module call",
+      "finding": "    git_result = subprocess.run(\n        [\"git\", \"rev-parse\", \"HEAD\"],\n        check=True,\n        capture_output=True,\n        cwd=repository_root,\n        text=True,\n        timeout=10,\n    )"
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": ".actor/Dockerfile",
+      "line": 7,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /var/lib/apt/lists/*"
+     },
+     {
+      "rule": "TM1",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "confidence": 0.15,
+      "file": "Dockerfile",
+      "line": 7,
+      "message": "Tool Parameter Abuse",
+      "finding": "rm -rf /var/lib/apt/lists/*"
+     },
+     {
+      "rule": "TM2",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.15,
+      "file": ".actor/Dockerfile",
+      "line": 7,
+      "message": "Chaining Abuse",
+      "finding": "&& rm -"
+     },
+     {
+      "rule": "TM2",
+      "severity": "LOW",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "confidence": 0.15,
+      "file": "Dockerfile",
+      "line": 7,
+      "message": "Chaining Abuse",
+      "finding": "&& rm -"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "docling/backend/mspowerpoint_backend.py",
+      "line": 659,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "            value = getattr(shape, attr)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "docling/models/factories/base_factory.py",
+      "line": 112,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "            attr = getattr(plugin_module, self.plugin_attr_name, None)"
+     },
+     {
+      "rule": "AST7",
+      "severity": "LOW",
+      "category": "Dangerous Code Execution",
+      "pattern": "Dynamic attribute access via getattr()",
+      "confidence": 0.5,
+      "file": "docling/service_client/client.py",
+      "line": 361,
+      "message": "Dynamic attribute access via getattr()",
+      "finding": "                field: getattr(options, field) for field in options.model_fields_set"
+     },
+     {
+      "rule": "SC2",
+      "severity": "LOW",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "confidence": 0.15,
+      "file": "docs/examples/rag_opensearch.ipynb",
+      "line": 46,
+      "message": "External Script Fetching",
+      "finding": "curl -LsSf https://astral.sh/uv/install.sh | sh"
+     }
+    ],
+    "reason": "",
+    "scanned_at": "2026-09-21T18:00:02.903082",
+    "tool": "skillspector",
+    "tool_version": "2.11.0",
+    "argv": "skillspector scan . --no-llm --format=sarif",
+    "home": "https://github.com/NVIDIA/SkillSpector"
+   },
+   {
+    "dimension": "injection_suspected",
+    "label": "Doc / README injection",
+    "state": "queued",
+    "finding_count": 0,
+    "findings": [],
+    "reason": "classification pending (#12)",
+    "scanned_at": null,
+    "tool": "classifier",
+    "tool_version": "",
+    "argv": "",
+    "home": ""
+   }
+  ],
+  "since": [],
+  "since_as_of": null,
+  "link_suppressed": false,
+  "provenance": null,
+  "suppression": null,
+  "card": "207 findings · 1 check pending",
+  "block": "SECURITY · commit b078ea3\n\n  Dependency vulnerabilities\n    5 findings                       osv-scanner 2.5.1 · 2026-09-21\n      CVE-2026-61632  pymdown-extensions@10.21.3\n      CVE-2026-67422  pymdown-extensions@10.21.3\n      CVE-2026-59890  setuptools@81.0.0\n      CVE-2025-3000  torch@2.11.0\n      CVE-2026-66007  datasets@2.21.0\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Known-malicious packages\n    0 findings                       osv-scanner 2.5.1 · 2026-09-21\n    Reproduce: $ osv-scanner scan source --offline --no-call-analysis=go --no-resolve --format=sarif -r .\n\n  Registry package by this repo's manifest name\n    0 findings                       OSV  · 2026-09-21\n\n  CI / workflow\n    71 findings                      zizmor 1.30.0 · 2026-09-21\n      template-injection  .github/actions/setup-ubuntu-ci/action.yml:59\n      unpinned-uses  .github/actions/setup-ubuntu-ci/action.yml:51\n      github-env  .github/actions/setup-ubuntu-ci/action.yml:48\n      self-repository  .github/workflows/cd-docs.yml:10\n      artipacked  .github/workflows/cd.yml:27\n      artipacked  .github/workflows/cd.yml:54\n      excessive-permissions  .github/workflows/cd.yml:1\n      excessive-permissions  .github/workflows/cd.yml:22\n      excessive-permissions  .github/workflows/cd.yml:42\n      github-app  .github/workflows/cd.yml:49\n      self-repository  .github/workflows/cd.yml:15\n      self-repository  .github/workflows/cd.yml:30\n      self-repository  .github/workflows/cd.yml:58\n      artipacked  .github/workflows/checks.yml:81\n      artipacked  .github/workflows/checks.yml:155\n      artipacked  .github/workflows/checks.yml:183\n      artipacked  .github/workflows/checks.yml:205\n      artipacked  .github/workflows/checks.yml:247\n      artipacked  .github/workflows/checks.yml:300\n      artipacked  .github/workflows/checks.yml:374\n    Reproduce: $ zizmor --offline --persona=regular --format=sarif .\n\n  Leaked credentials\n    2 findings                       kingfisher 2.1.0 · 2026-09-21\n      betterleaks.curl-auth-header  actor\\README.md:60\n      betterleaks.brave-search-api-key  tests/data/latex/groundtruth/2310.06825_main.tex.json:1416\n    Reproduce: $ kingfisher scan . --no-validate --format=sarif --no-update-check\n\n  Agent artifacts\n    129 findings                     skillspector 2.11.0 · 2026-09-21\n      TT3 CRITICAL  docs/examples/legacy/pictures_description_api_legacy.py:87  Tainted flow: 'api_key' from os.environ.get (line 83, credential/environment) → requests.post (network output)\n      TT3 CRITICAL  docs/examples/legacy/vlm_pipeline_api_model_legacy.py:179  Tainted flow: 'api_key' from os.environ.get (line 83, credential/environment) → requests.post (network output)\n      TT3 CRITICAL  docs/examples/pictures_description_api.py:121  Tainted flow: 'api_key' from os.environ.get (line 108, credential/environment) → requests.post (network output)\n      TT3 CRITICAL  docs/examples/vlm_pipeline_api_model.py:378  Tainted flow: 'api_key' from os.environ.get (line 108, credential/environment) → requests.post (network output)\n      PE3 HIGH  .actor/.dockerignore:7  Credential Access\n      PE3 HIGH  .gitignore:344  Credential Access\n      PE3 HIGH  docling/.agents/skills/docling/references/service-client.md:57  Credential Access\n      PE3 HIGH  docling/cli/remote.py:76  Credential Access\n      PE3 HIGH  docling/cli/remote.py:79  Credential Access\n      PE3 HIGH  docling/cli/remote.py:87  Credential Access\n      PE3 HIGH  docling/cli/remote.py:149  Credential Access\n      PE3 HIGH  docling/cli/remote.py:158  Credential Access\n      PE3 HIGH  docling/cli/remote.py:322  Credential Access\n      PE3 HIGH  docling/cli/remote.py:326  Credential Access\n      PE3 HIGH  docs/examples/ag2_multiagent_document_analysis.ipynb:71  Credential Access\n      TM1 HIGH  .actor/Dockerfile:18  Tool Parameter Abuse\n      TM2 HIGH  .actor/Dockerfile:53  Chaining Abuse\n      TM2 HIGH  .actor/Dockerfile:56  Chaining Abuse\n      PE3 HIGH  .actor/Dockerfile:58  Credential Access\n      PE3 HIGH  docling/backend/opendocument_backend.py:895  Credential Access\n    Reproduce: $ skillspector scan . --no-llm --format=sarif\n\n  Doc / README injection\n    not checked yet — queued — classification pending (#12)\n\n→ How we run these scans (/methodology)"
+ },
+ "structure": {
+  "state": "done",
+  "commit_sha": "b078ea34921eafe181141e6179e87885196497c3",
+  "built_at": "2026-09-21 18:00:02.903082",
+  "tool": "graphify",
+  "tool_version": "0.9.37",
+  "label_model": "gemini-3.5-flash",
+  "node_count": 9357,
+  "edge_count": 31678,
+  "community_count": 333,
+  "extracted_pct": 0.7642843723297119,
+  "subsystems": [
+   {
+    "label": "OCR Engine Configurations",
+    "size": 283
+   },
+   {
+    "label": "Inference Device and Chart Options",
+    "size": 225
+   },
+   {
+    "label": "Document Format and Pipeline Routing",
+    "size": 224
+   },
+   {
+    "label": "Email Document Backend",
+    "size": 215
+   },
+   {
+    "label": "Specialized Document Backends",
+    "size": 177
+   },
+   {
+    "label": "Conversion Results and Abstract Backends",
+    "size": 159
+   },
+   {
+    "label": "Docling Service Client and Chunking",
+    "size": 145
+   },
+   {
+    "label": "Conversion Regression and Integration Tests",
+    "size": 142
+   }
+  ],
+  "god_nodes": [
+   {
+    "name": "InputDocument",
+    "degree": 555,
+    "file": "docling/datamodel/document.py"
+   },
+   {
+    "name": "InputFormat",
+    "degree": 414,
+    "file": "docling/datamodel/base_models.py"
+   },
+   {
+    "name": "DocumentConverter",
+    "degree": 413,
+    "file": "docling/document_converter.py"
+   },
+   {
+    "name": "ConversionResult",
+    "degree": 396,
+    "file": "docling/datamodel/document.py"
+   },
+   {
+    "name": "AcceleratorOptions",
+    "degree": 359,
+    "file": "docling/datamodel/accelerator_options.py"
+   },
+   {
+    "name": "Page",
+    "degree": 255,
+    "file": "docling/datamodel/base_models.py"
+   },
+   {
+    "name": "HTMLDocumentBackend",
+    "degree": 230,
+    "file": "docling/backend/html_backend.py"
+   },
+   {
+    "name": "ConversionStatus",
+    "degree": 220,
+    "file": "docling/datamodel/base_models.py"
+   },
+   {
+    "name": "DoclingServiceClient",
+    "degree": 205,
+    "file": "docling/service_client/client.py"
+   },
+   {
+    "name": "PdfFormatOption",
+    "degree": 204,
+    "file": "docling/document_converter.py"
+   }
+  ],
+  "lines": [
+   "Structure: 333 subsystems — OCR Engine Configurations · Inference Device and Chart Options · Document Format and Pipeline Routing",
+   "Core: InputDocument · InputFormat · DocumentConverter"
+  ],
+  "block": "Code structure (mapped 2026-09-21 · b078ea34 · graphify 0.9.37)\n9,357 concepts · 31,678 connections · 333 subsystems · 76% read directly from source\nSubsystems: OCR Engine Configurations · Inference Device and Chart Options · Document Format and Pipeline Routing · Email Document Backend · Specialized Document Backends · Conversion Results and Abstract Backends · Docling Service Client and Chunking · Conversion Regression and Integration Tests\nCore abstractions:\n  1. InputDocument — 555 connections\n  2. InputFormat — 414 connections\n  3. DocumentConverter — 413 connections\n  4. ConversionResult — 396 connections\n  5. AcceleratorOptions — 359 connections\n  6. Page — 255 connections\n  7. HTMLDocumentBackend — 230 connections\n  8. ConversionStatus — 220 connections\n  9. DoclingServiceClient — 205 connections\n  10. PdfFormatOption — 204 connections\nstructure mapped by graphify 0.9.37",
+  "attribution": "structure mapped by graphify 0.9.37",
+  "untrusted_text": "subsystems[].label and god_nodes[].name are repo-derived; lines/block are HTML-escaped"
+ }
+}
