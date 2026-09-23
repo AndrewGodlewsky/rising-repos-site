@@ -1,0 +1,303 @@
+{
+ "board_type": "weekly",
+ "day": "2026-09-10",
+ "floor": 3.0,
+ "strata_admitted": [
+  "200-1k",
+  "1-3k",
+  "3-10k",
+  "10-30k",
+  "30k+"
+ ],
+ "strata_held": [],
+ "hold_reason": null,
+ "partial_history": true,
+ "rows": [
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 4047634,
+   "rank": 1,
+   "name": "sonoramac/Sonora",
+   "description": "A minimal, beautifully designed music player for OS X.",
+   "language": "Objective-C",
+   "topics": [],
+   "license": "NOASSERTION",
+   "homepage": "http://getsonora.com",
+   "forks": 123,
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.744,
+   "excess_above_trend": 25.9,
+   "pace_multiple": 260.0,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 966,
+   "pushed_at": "2015-05-13T01:03:32",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 12499251,
+   "rank": 2,
+   "name": "checkstyle/checkstyle",
+   "description": "Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. By default it supports the Google Java Style Guide and Sun Code Conventions, but is highly configurable. It can be invoked with an ANT task and a command line program.",
+   "language": "Java",
+   "topics": [
+    "code-quality",
+    "command-line-tool",
+    "hacktoberfest",
+    "java",
+    "static-analysis",
+    "static-code-analysis"
+   ],
+   "license": "LGPL-2.1",
+   "homepage": "https://checkstyle.org",
+   "forks": 4235,
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 27.338,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 557.3,
+   "pace_multiple": 53.3,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 9570,
+   "pushed_at": "2026-09-10T21:00:11",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1185075092,
+   "rank": 3,
+   "name": "rcortx/kiwiq",
+   "description": "Production-grade multi-agent orchestration platform - JSON-defined agents, multi-tier memory, and built-in observability. Battle-tested on 200+ enterprise AI agents. Now fully open-sourced (prod at https://kiwiq.ai).",
+   "language": "Python",
+   "topics": [],
+   "license": "Apache-2.0",
+   "homepage": null,
+   "forks": 242,
+   "final_display": 8.747020667704577,
+   "final_is_capped": false,
+   "rs": 17.416,
+   "fork_corroboration": 0.502,
+   "excess_above_trend": 797.0,
+   "pace_multiple": 89.98,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 2235,
+   "pushed_at": "2026-04-13T18:33:03",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 596892,
+   "rank": 4,
+   "name": "pallets/flask",
+   "description": "The Python micro framework for building web applications.",
+   "language": "Python",
+   "topics": [
+    "flask",
+    "jinja",
+    "pallets",
+    "python",
+    "web-framework",
+    "werkzeug",
+    "wsgi"
+   ],
+   "license": "BSD-3-Clause",
+   "homepage": "https://flask.palletsprojects.com",
+   "forks": 16976,
+   "final_display": 3.621072542099961,
+   "final_is_capped": false,
+   "rs": 7.242,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1573.4,
+   "pace_multiple": 21.82,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 73791,
+   "pushed_at": "2026-09-08T16:40:53",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 11730342,
+   "rank": 5,
+   "name": "vuejs/vue",
+   "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
+   "language": "TypeScript",
+   "topics": [
+    "framework",
+    "frontend",
+    "javascript",
+    "vue"
+   ],
+   "license": "MIT",
+   "homepage": "http://v2.vuejs.org",
+   "forks": 33725,
+   "final_display": 3.559988748426381,
+   "final_is_capped": false,
+   "rs": 7.12,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1206.8,
+   "pace_multiple": 11.3,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 212078,
+   "pushed_at": "2024-10-10T07:24:15",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 4164482,
+   "rank": 6,
+   "name": "django/django",
+   "description": "The Web framework for perfectionists with deadlines.",
+   "language": "Python",
+   "topics": [
+    "apps",
+    "django",
+    "framework",
+    "models",
+    "orm",
+    "python",
+    "templates",
+    "views",
+    "web"
+   ],
+   "license": "BSD-3-Clause",
+   "homepage": "https://www.djangoproject.com/",
+   "forks": 34245,
+   "final_display": 2.3642755943944933,
+   "final_is_capped": false,
+   "rs": 4.729,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1174.4,
+   "pace_multiple": 6.71,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 90407,
+   "pushed_at": "2026-09-08T19:01:03",
+   "link_suppressed": false,
+   "corrections": []
+  }
+ ],
+ "facets": {
+  "band": {
+   "emerging": 1,
+   "growing": 2,
+   "established": 3
+  }
+ }
+}
