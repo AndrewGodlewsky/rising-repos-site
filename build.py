@@ -171,7 +171,11 @@ def prepare_row(r: dict) -> dict:
     name = r.get("name")
     r["display_name"] = name or f"repository {r['repo_id']}"
     r["href"] = None if (r.get("link_suppressed") or not name) else f"https://github.com/{name}"
-    r["pace_text"] = f"{float(r['pace_multiple']):.1f}×"
+    # A repo whose usual pace is near zero saturates the multiple (1031× was
+    # measured on 2026-09-22); past 100× the number stops carrying information,
+    # so it is capped in words the way the score is (`final_is_capped`).
+    pace = float(r["pace_multiple"])
+    r["pace_text"] = ">100×" if pace >= 100 else f"{pace:.1f}×"
     r["excess_text"] = f"+{round(float(r['excess_above_trend'])):,}"
     n = int(r.get("consecutive_days") or 1)
     r["days_words"] = f"{ordinal(n)} day on the board" if n > 1 else ""
@@ -515,6 +519,8 @@ def selfcheck() -> None:
                      "corrections": [{"kind": "deleted/dmca", "detail": "451"}],
                      "security": {"card": "c", "link_suppressed": False, "commit_sha": None}, "structure": {}})
     assert r["href"] is None and r["pace_text"] == "3.4×" and r["excess_text"] == "+1,240"
+    assert prepare_row({**r, "pace_multiple": 1031.45})["pace_text"] == ">100×", "saturated pace must be capped"
+    assert prepare_row({**r, "pace_multiple": 99.96})["pace_text"] == "100.0×"
     assert r["tags"] == ["provisional"] and r["days_words"] == "3rd day on the board"
     assert r["notes"] == ["Listed as deleted/dmca — link removed"]
 
