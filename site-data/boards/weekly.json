@@ -2,17 +2,272 @@
  "board_type": "weekly",
  "day": "2026-09-22",
  "floor": 3.0,
- "strata_admitted": [],
+ "strata_admitted": [
+  "30k+"
+ ],
  "strata_held": [
   "1-3k",
   "10-30k",
   "200-1k",
-  "3-10k",
-  "30k+"
+  "3-10k"
  ],
- "hold_reason": "200-1k: 211965/212686 on 2026-09-22; 1-3k: 43710/43818 on 2026-09-22; 3-10k: 16533/16562 on 2026-09-22; 10-30k: 4386/4391 on 2026-09-22; 30k+: no coverage record for 2026-09-15",
- "rows": [],
+ "hold_reason": "200-1k: 210769/211249 on 2026-09-08; 1-3k: 43521/43610 on 2026-09-08; 3-10k: 16410/16436 on 2026-09-08; 10-30k: 4370/4375 on 2026-09-08",
+ "partial_history": true,
+ "rows": [
+  {
+   "security": {
+    "card": "28 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+   },
+   "repo_id": 173228436,
+   "rank": 1,
+   "name": "NationalSecurityAgency/ghidra",
+   "final_display": 8.747332160151124,
+   "final_is_capped": false,
+   "rs": 8.747,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 4052.7,
+   "pace_multiple": 6.63,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 79375,
+   "pushed_at": "2026-09-21T18:16:49",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "8 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "9e7273583f83e881e3ec067b523ba88724088d2f"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 805 subsystems \u2014 Core Utility Headers \u00b7 BitTorrent Core Utilities \u00b7 Command Execution",
+     "Core: fmt() \u00b7 RequestGroup \u00b7 MetalinkParserStateMachine"
+    ],
+    "commit_sha": "9e7273583f83e881e3ec067b523ba88724088d2f"
+   },
+   "repo_id": 1116542,
+   "rank": 2,
+   "name": "aria2/aria2",
+   "final_display": 4.089408823111713,
+   "final_is_capped": false,
+   "rs": 8.179,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 538.6,
+   "pace_multiple": 5.26,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 42615,
+   "pushed_at": "2026-06-25T14:49:35",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "1166 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "4b0118520e822416a7078610398be70d971da5f2"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 1,607 subsystems \u2014 Table Catalog Metadata Updates \u00b7 Disk File Deletion State \u00b7 Object Storage Operations Validation",
+     "Core: Value \u00b7 init_logging() \u00b7 ObjectOptions"
+    ],
+    "commit_sha": "4b0118520e822416a7078610398be70d971da5f2"
+   },
+   "repo_id": 722597620,
+   "rank": 3,
+   "name": "rustfs/rustfs",
+   "final_display": 2.765866154598362,
+   "final_is_capped": false,
+   "rs": 5.532,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1269.7,
+   "pace_multiple": 3.43,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 33647,
+   "pushed_at": "2026-09-22T15:03:26",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "d58606b6ec039e9cc242f43fd64d16af71cd1297"
+   },
+   "structure": {
+    "state": "empty(no_code)",
+    "lines": [
+     "Structure: no code to map \u2014 curated list / documentation repository"
+    ],
+    "commit_sha": "d58606b6ec039e9cc242f43fd64d16af71cd1297"
+   },
+   "repo_id": 277168957,
+   "rank": 4,
+   "name": "eugeneyan/applied-ml",
+   "final_display": 2.403696067729418,
+   "final_is_capped": false,
+   "rs": 4.807,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 225.7,
+   "pace_multiple": 5.4,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 30393,
+   "pushed_at": "2024-07-18T22:41:02",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "724 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "57b430b5b6a19106a989651f4cde853c05147682"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 279 subsystems \u2014 UI Avatar and Breadcrumb \u00b7 Chat Middleware and API \u00b7 Spatial Index and Hit Testing",
+     "Core: cn() \u00b7 react \u00b7 SupermemoryTools"
+    ],
+    "commit_sha": "57b430b5b6a19106a989651f4cde853c05147682"
+   },
+   "repo_id": 764287615,
+   "rank": 5,
+   "name": "supermemoryai/supermemory",
+   "final_display": 2.2538466675858744,
+   "final_is_capped": false,
+   "rs": 4.508,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1286.4,
+   "pace_multiple": 6.05,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 30817,
+   "pushed_at": "2026-09-20T05:42:08",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "112 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "a636575b09de1fc55d9b8cd98cac88f5f2f16b42"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 164 subsystems \u2014 Video and Audio Processing \u00b7 Cookie Management \u00b7 Backend Dependencies",
+     "Core: env \u00b7 runAPI() \u00b7 createStream()"
+    ],
+    "commit_sha": "a636575b09de1fc55d9b8cd98cac88f5f2f16b42"
+   },
+   "repo_id": 511987144,
+   "rank": 6,
+   "name": "imputnet/cobalt",
+   "final_display": 1.7558294244433097,
+   "final_is_capped": false,
+   "rs": 3.512,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 731.6,
+   "pace_multiple": 3.31,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 43753,
+   "pushed_at": "2026-04-06T11:59:56",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "143 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "1516af9e4f5c3674af04db58009d4d4e9dc16f64"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 730 subsystems \u2014 PyQt GUI Components \u00b7 Anki Database Models \u00b7 Main Window State",
+     "Core: &amp;String \u00b7 AnkiQt \u00b7 Collection"
+    ],
+    "commit_sha": "1516af9e4f5c3674af04db58009d4d4e9dc16f64"
+   },
+   "repo_id": 7270538,
+   "rank": 7,
+   "name": "ankitects/anki",
+   "final_display": 1.5702357470548454,
+   "final_is_capped": false,
+   "rs": 3.14,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 661.1,
+   "pace_multiple": 2.96,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 31415,
+   "pushed_at": "2026-09-22T09:06:57",
+   "link_suppressed": false,
+   "corrections": []
+  }
+ ],
  "facets": {
-  "band": {}
+  "band": {
+   "established": 7
+  }
  }
 }

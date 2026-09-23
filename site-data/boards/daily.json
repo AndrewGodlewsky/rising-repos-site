@@ -1,18 +1,7755 @@
 {
  "board_type": "daily",
- "day": "2026-09-21",
+ "day": "2026-09-22",
  "floor": 3.0,
- "strata_admitted": [],
- "strata_held": [
-  "1-3k",
-  "10-30k",
+ "strata_admitted": [
   "200-1k",
+  "1-3k",
   "3-10k",
+  "10-30k",
   "30k+"
  ],
- "hold_reason": "200-1k: 211927/212592 on 2026-09-21; 1-3k: 43703/43800 on 2026-09-21; 3-10k: 16528/16555 on 2026-09-21; 10-30k: 4383/4388 on 2026-09-21; 30k+: no coverage record for 2026-09-20",
- "rows": [],
+ "strata_held": [],
+ "hold_reason": null,
+ "partial_history": true,
+ "rows": [
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 221222446,
+   "rank": 1,
+   "name": "taskctl/taskctl",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 99.9,
+   "pace_multiple": 1000.0,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 426,
+   "pushed_at": "2026-07-20T07:55:25",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 326033603,
+   "rank": 2,
+   "name": "harsh-bothra/learn365",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 132.7,
+   "pace_multiple": 450.24,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1961,
+   "pushed_at": "2022-06-20T05:51:00",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1182072622,
+   "rank": 3,
+   "name": "AnthonyDavidAdams/zero-employee-company-book",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 56.8,
+   "pace_multiple": 48.58,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 646,
+   "pushed_at": "2026-04-14T17:22:12",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 310324131,
+   "rank": 4,
+   "name": "iamj0ker/bypass-403",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 35.7,
+   "pace_multiple": 105.28,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2255,
+   "pushed_at": "2024-05-30T15:11:05",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 325143907,
+   "rank": 5,
+   "name": "zeroc00I/AllVideoPocsFromHackerOne",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 32.9,
+   "pace_multiple": 330.0,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 960,
+   "pushed_at": "2025-10-10T13:14:56",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 130843750,
+   "rank": 6,
+   "name": "kubernetes-sigs/kubernetes-mixin",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 22.9,
+   "pace_multiple": 21.66,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2475,
+   "pushed_at": "2026-09-21T22:34:26",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1289612923,
+   "rank": 7,
+   "name": "SirAllap/agentglass",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 23.1,
+   "pace_multiple": 27.05,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 323,
+   "pushed_at": "2026-09-22T07:25:56",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1185005258,
+   "rank": 8,
+   "name": "avinash201199/DSA-KIT",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 25.0,
+   "pace_multiple": 26.92,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 613,
+   "pushed_at": "2026-03-18T15:11:35",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 849137171,
+   "rank": 9,
+   "name": "amazingcoderpro/rss-recomanded",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 22.6,
+   "pace_multiple": 61.37,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 229,
+   "pushed_at": "2024-08-29T06:57:40",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 167417059,
+   "rank": 10,
+   "name": "vuestorefront/storefront-ui",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 62.4,
+   "pace_multiple": 112.38,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2575,
+   "pushed_at": "2026-09-04T11:58:26",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 865999900,
+   "rank": 11,
+   "name": "superbacked/superbacked",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 49.9,
+   "pace_multiple": 500.0,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 278,
+   "pushed_at": "2026-09-17T23:27:17",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 968020346,
+   "rank": 12,
+   "name": "Themaister/pyrowave",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 50.5,
+   "pace_multiple": 111.08,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 304,
+   "pushed_at": "2026-09-10T13:31:11",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 11837082,
+   "rank": 13,
+   "name": "ZeroK-RTS/Zero-K",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 15.7,
+   "pace_multiple": 62.02,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 847,
+   "pushed_at": "2026-09-22T10:07:21",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 880986730,
+   "rank": 14,
+   "name": "circlemind-ai/fast-graphrag",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 54.7,
+   "pace_multiple": 41.71,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3941,
+   "pushed_at": "2025-11-01T20:45:25",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 689511986,
+   "rank": 15,
+   "name": "MizuhoAOKI/python_simple_mppi",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.998,
+   "excess_above_trend": 29.7,
+   "pace_multiple": 88.72,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 799,
+   "pushed_at": "2026-05-04T12:16:09",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 392405338,
+   "rank": 16,
+   "name": "antonio-morales/Fuzzing101",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.972,
+   "excess_above_trend": 36.1,
+   "pace_multiple": 42.8,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3866,
+   "pushed_at": "2026-06-16T09:38:26",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 467706461,
+   "rank": 17,
+   "name": "dphilla/boxer",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.868,
+   "excess_above_trend": 21.8,
+   "pace_multiple": 125.36,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1028,
+   "pushed_at": "2026-09-21T21:57:24",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 339993112,
+   "rank": 18,
+   "name": "matrixorigin/matrixone",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.857,
+   "excess_above_trend": 89.7,
+   "pace_multiple": 320.3,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1978,
+   "pushed_at": "2026-09-22T14:46:44",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 577318959,
+   "rank": 19,
+   "name": "fjykTec/ModernWMS",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.852,
+   "excess_above_trend": 60.1,
+   "pace_multiple": 67.73,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1754,
+   "pushed_at": "2025-06-22T03:36:48",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 440436833,
+   "rank": 20,
+   "name": "baidu/dperf",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.834,
+   "excess_above_trend": 22.4,
+   "pace_multiple": 38.12,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 5631,
+   "pushed_at": "2026-08-07T03:44:20",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 950036175,
+   "rank": 21,
+   "name": "BytedTsinghua-SIA/DAPO",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.829,
+   "excess_above_trend": 60.6,
+   "pace_multiple": 167.13,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1933,
+   "pushed_at": "2025-05-11T09:09:41",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 125995921,
+   "rank": 22,
+   "name": "jones2000/HQChart",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.819,
+   "excess_above_trend": 21.3,
+   "pace_multiple": 30.76,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3402,
+   "pushed_at": "2026-08-27T14:54:09",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 487181974,
+   "rank": 23,
+   "name": "ibaihuo/chanvis",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.818,
+   "excess_above_trend": 16.4,
+   "pace_multiple": 27.09,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 600,
+   "pushed_at": "2024-07-02T10:01:57",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 421787720,
+   "rank": 24,
+   "name": "foxsen/archbase",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.802,
+   "excess_above_trend": 27.9,
+   "pace_multiple": 261.43,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3367,
+   "pushed_at": "2025-11-20T01:47:45",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1112938534,
+   "rank": 25,
+   "name": "LingyiChen-AI/DeepDiagram",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.801,
+   "excess_above_trend": 12.1,
+   "pace_multiple": 13.79,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 943,
+   "pushed_at": "2026-06-01T01:57:44",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 141416327,
+   "rank": 26,
+   "name": "pluwen/china-domain-allowlist",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.606,
+   "excess_above_trend": 30.7,
+   "pace_multiple": 93.5,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 655,
+   "pushed_at": "2026-08-12T00:56:34",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1006376412,
+   "rank": 27,
+   "name": "ChenlizheMe/Infernux",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 300.0,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 79.0,
+   "pace_multiple": 27.32,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1152,
+   "pushed_at": "2026-09-19T12:45:19",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1195324890,
+   "rank": 28,
+   "name": "arman-bd/guppylm",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 41.929,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 118.8,
+   "pace_multiple": 54.26,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3775,
+   "pushed_at": "2026-04-15T21:23:03",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 969286259,
+   "rank": 29,
+   "name": "skyzh/tiny-llm",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 35.336,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 82.7,
+   "pace_multiple": 20.07,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 4668,
+   "pushed_at": "2026-09-20T21:08:08",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1198203138,
+   "rank": 30,
+   "name": "crisng95/flowkit",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 32.646,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 76.6,
+   "pace_multiple": 13.03,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 800,
+   "pushed_at": "2026-09-20T09:57:36",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1145741988,
+   "rank": 31,
+   "name": "imxv/Pretty-mermaid-skills",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 38.304,
+   "fork_corroboration": 0.842,
+   "excess_above_trend": 145.5,
+   "pace_multiple": 33.16,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1362,
+   "pushed_at": "2026-08-22T16:40:04",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1155424764,
+   "rank": 32,
+   "name": "yjeanrenaud/yj_nearbyglasses",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 40.179,
+   "fork_corroboration": 0.733,
+   "excess_above_trend": 197.1,
+   "pace_multiple": 34.38,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2358,
+   "pushed_at": "2026-09-06T20:15:48",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 363593219,
+   "rank": 33,
+   "name": "tegal1337/CiLocks",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 27.714,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 40.5,
+   "pace_multiple": 17.12,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3071,
+   "pushed_at": "2024-03-12T20:36:07",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1152720637,
+   "rank": 34,
+   "name": "fynnfluegge/agtx",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 27.009,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 121.2,
+   "pace_multiple": 44.15,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1638,
+   "pushed_at": "2026-09-19T02:52:50",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 489481382,
+   "rank": 35,
+   "name": "posit-dev/great-tables",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 38.575,
+   "fork_corroboration": 0.665,
+   "excess_above_trend": 23.4,
+   "pace_multiple": 15.34,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2859,
+   "pushed_at": "2026-09-22T14:28:57",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1202240800,
+   "rank": 36,
+   "name": "liixini/skwd-wall",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 21.174,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 124.5,
+   "pace_multiple": 17.5,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 927,
+   "pushed_at": "2026-09-22T17:34:53",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1196352488,
+   "rank": 37,
+   "name": "Observal/Observal",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 18.969,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 363.1,
+   "pace_multiple": 126.83,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2966,
+   "pushed_at": "2026-09-22T14:43:12",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1025929171,
+   "rank": 38,
+   "name": "acsandmann/rift",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 29.683,
+   "fork_corroboration": 0.63,
+   "excess_above_trend": 136.9,
+   "pace_multiple": 23.55,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2400,
+   "pushed_at": "2026-09-22T16:49:26",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 477407390,
+   "rank": 39,
+   "name": "std-microblock/chromatic",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 26.242,
+   "fork_corroboration": 0.71,
+   "excess_above_trend": 33.5,
+   "pace_multiple": 22.9,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 8420,
+   "pushed_at": "2026-03-31T12:05:08",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1053373003,
+   "rank": 40,
+   "name": "jmiao24/Paper2Agent",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 16.122,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 143.3,
+   "pace_multiple": 19.61,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3322,
+   "pushed_at": "2026-09-17T16:56:07",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 761068700,
+   "rank": 41,
+   "name": "Junyi-99/ChatGPT-API-Scanner",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 16.335,
+   "fork_corroboration": 0.987,
+   "excess_above_trend": 21.8,
+   "pace_multiple": 19.95,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1108,
+   "pushed_at": "2026-04-17T08:36:54",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 738929635,
+   "rank": 42,
+   "name": "mezonai/mezon",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 19.085,
+   "fork_corroboration": 0.838,
+   "excess_above_trend": 54.0,
+   "pace_multiple": 19.21,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1836,
+   "pushed_at": "2026-09-22T16:05:53",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 543101941,
+   "rank": 43,
+   "name": "dream-num/univer",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 17.177,
+   "fork_corroboration": 0.899,
+   "excess_above_trend": 595.3,
+   "pace_multiple": 31.23,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 15115,
+   "pushed_at": "2026-09-22T07:17:35",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1239264029,
+   "rank": 44,
+   "name": "cloudflare/claude-managed-agents",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 14.429,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 35.1,
+   "pace_multiple": 40.76,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 319,
+   "pushed_at": "2026-08-12T20:43:02",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 646852648,
+   "rank": 45,
+   "name": "Codensity30/Strivers-A2Z-DSA-Sheet",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 14.134,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 49.5,
+   "pace_multiple": 8.6,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 894,
+   "pushed_at": "2026-05-09T06:35:24",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1187289496,
+   "rank": 46,
+   "name": "satwiksps/GSoC_archive_2026",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 13.864,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 27.0,
+   "pace_multiple": 26.86,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 374,
+   "pushed_at": "2026-07-21T15:28:03",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1193534101,
+   "rank": 47,
+   "name": "garinasset/leak-check",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 13.855,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 195.4,
+   "pace_multiple": 23.66,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 5366,
+   "pushed_at": "2026-04-07T02:54:52",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1196447493,
+   "rank": 48,
+   "name": "google/ax",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 19.084,
+   "fork_corroboration": 0.725,
+   "excess_above_trend": 4735.7,
+   "pace_multiple": 748.98,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 7265,
+   "pushed_at": "2026-09-20T03:33:20",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1287568859,
+   "rank": 49,
+   "name": "grft-dev/graftcode",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 13.699,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 260.3,
+   "pace_multiple": 396.4,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 517,
+   "pushed_at": "2026-09-08T11:22:07",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1236183038,
+   "rank": 50,
+   "name": "Asymptote-Labs/agent-beacon",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 13.687,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 588.1,
+   "pace_multiple": 121.62,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 1053,
+   "pushed_at": "2026-09-22T16:52:22",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 648080779,
+   "rank": 51,
+   "name": "2swap/swaptube",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 19.134,
+   "fork_corroboration": 0.708,
+   "excess_above_trend": 27.0,
+   "pace_multiple": 27.0,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1716,
+   "pushed_at": "2026-09-19T08:19:19",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1174682625,
+   "rank": 52,
+   "name": "ferdinandobons/startup-skill",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 13.434,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 142.1,
+   "pace_multiple": 15.35,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 1100,
+   "pushed_at": "2026-07-01T07:03:04",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 71061785,
+   "rank": 53,
+   "name": "openinframap/openinframap",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 13.361,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 20.5,
+   "pace_multiple": 41.49,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 624,
+   "pushed_at": "2026-09-22T06:02:01",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 386524895,
+   "rank": 54,
+   "name": "mvt-project/mvt",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 17.769,
+   "fork_corroboration": 0.729,
+   "excess_above_trend": 572.6,
+   "pace_multiple": 47.19,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 13853,
+   "pushed_at": "2026-09-22T14:11:02",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1140582982,
+   "rank": 55,
+   "name": "TNT-Likely/PanWatch",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 12.692,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 205.2,
+   "pace_multiple": 19.98,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 1295,
+   "pushed_at": "2026-09-21T03:59:53",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 741450201,
+   "rank": 56,
+   "name": "Marker-Inc-Korea/AutoRAG",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 12.671,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 25.3,
+   "pace_multiple": 15.45,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 5103,
+   "pushed_at": "2026-09-22T01:39:47",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1102306812,
+   "rank": 57,
+   "name": "sumuru789/S2AM3D",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 11.891,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 50.7,
+   "pace_multiple": 22.6,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 359,
+   "pushed_at": "2026-07-21T08:31:46",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1161958643,
+   "rank": 58,
+   "name": "lahfir/agent-desktop",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 15.855,
+   "fork_corroboration": 0.738,
+   "excess_above_trend": 143.4,
+   "pace_multiple": 15.92,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1485,
+   "pushed_at": "2026-09-21T18:15:13",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1089628716,
+   "rank": 59,
+   "name": "199-biotechnologies/claude-deep-research-skill",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 14.844,
+   "fork_corroboration": 0.781,
+   "excess_above_trend": 53.1,
+   "pace_multiple": 19.45,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1107,
+   "pushed_at": "2026-04-11T22:18:08",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 997369878,
+   "rank": 60,
+   "name": "Dacid99/Eonvelope",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 11.275,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 25.8,
+   "pace_multiple": 114.42,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 274,
+   "pushed_at": "2026-09-21T20:24:31",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1221180063,
+   "rank": 61,
+   "name": "coco-research/coco",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 11.219,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 55.9,
+   "pace_multiple": 14.48,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 431,
+   "pushed_at": "2026-09-21T03:45:49",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 903700733,
+   "rank": 62,
+   "name": "ahmedkhaleel2004/gitdiagram",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 14.107,
+   "fork_corroboration": 0.788,
+   "excess_above_trend": 151.4,
+   "pace_multiple": 16.85,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 16920,
+   "pushed_at": "2026-09-20T09:57:54",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1330144990,
+   "rank": 63,
+   "name": "OpenSparX/MasterAgent",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 11.106,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 121.9,
+   "pace_multiple": 1031.45,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 568,
+   "pushed_at": "2026-09-09T10:25:45",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 930030228,
+   "rank": 64,
+   "name": "jez500/pricebuddy",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 16.547,
+   "fork_corroboration": 0.67,
+   "excess_above_trend": 97.0,
+   "pace_multiple": 33.17,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1205,
+   "pushed_at": "2026-08-27T06:48:29",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1226304875,
+   "rank": 65,
+   "name": "tddworks/baguette",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 15.376,
+   "fork_corroboration": 0.708,
+   "excess_above_trend": 170.7,
+   "pace_multiple": 19.36,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2035,
+   "pushed_at": "2026-09-22T04:03:35",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 642065600,
+   "rank": 66,
+   "name": "Anil-matcha/awesome-jev-by-typesafe",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 10.504,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 98.6,
+   "pace_multiple": 16.42,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 794,
+   "pushed_at": "2026-09-20T19:43:18",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1038196040,
+   "rank": 67,
+   "name": "yashab-cyber/HackGpt",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 10.444,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 31.8,
+   "pace_multiple": 10.84,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1206,
+   "pushed_at": "2026-09-19T15:06:30",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 335164964,
+   "rank": 68,
+   "name": "dataease/dataease",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 11.3,
+   "fork_corroboration": 0.92,
+   "excess_above_trend": 68.9,
+   "pace_multiple": 12.36,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 24528,
+   "pushed_at": "2026-09-22T14:53:23",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1219291910,
+   "rank": 69,
+   "name": "oneshot-agent/oneshot-gtm",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 10.375,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 76.9,
+   "pace_multiple": 770.0,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 697,
+   "pushed_at": "2026-09-18T21:53:11",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1210260086,
+   "rank": 70,
+   "name": "cshuangyy/videdown",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 10.372,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 79.4,
+   "pace_multiple": 4.85,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1454,
+   "pushed_at": "2026-08-22T01:57:14",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 665734851,
+   "rank": 71,
+   "name": "polius/FileSync",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 10.183,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 40.3,
+   "pace_multiple": 9.58,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1772,
+   "pushed_at": "2026-09-20T09:30:08",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1287938366,
+   "rank": 72,
+   "name": "shengshu-ai/Vidu-S",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 9.36,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 32.9,
+   "pace_multiple": 9.12,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 445,
+   "pushed_at": "2026-09-20T03:21:06",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1095154444,
+   "rank": 73,
+   "name": "StuckAtPrototype/AirCube",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 9.225,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 30.5,
+   "pace_multiple": 21.14,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 331,
+   "pushed_at": "2026-09-21T13:51:42",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 667155414,
+   "rank": 74,
+   "name": "Source-Robotics/PAROL6-Desktop-robot-arm",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 9.123,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 33.6,
+   "pace_multiple": 6.29,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3300,
+   "pushed_at": "2026-09-07T15:55:30",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1252992358,
+   "rank": 75,
+   "name": "a6216abcd/Free-Residential-IP-Proxy-Controller",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 9.103,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 54.0,
+   "pace_multiple": 28.36,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 333,
+   "pushed_at": "2026-09-21T12:29:43",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 643163403,
+   "rank": 76,
+   "name": "eat-pray-ai/yutu",
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 9.667,
+   "fork_corroboration": 0.931,
+   "excess_above_trend": 41.1,
+   "pace_multiple": 48.2,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 690,
+   "pushed_at": "2026-09-22T14:56:36",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 684776900,
+   "rank": 77,
+   "name": "bendlang/bend",
+   "final_display": 8.864731150734018,
+   "final_is_capped": false,
+   "rs": 8.865,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 339.3,
+   "pace_multiple": 32.63,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 22465,
+   "pushed_at": "2026-09-22T15:13:43",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1110932933,
+   "rank": 78,
+   "name": "thu-ml/TurboDiffusion",
+   "final_display": 8.848282137481702,
+   "final_is_capped": false,
+   "rs": 16.349,
+   "fork_corroboration": 0.541,
+   "excess_above_trend": 41.0,
+   "pace_multiple": 14.62,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3796,
+   "pushed_at": "2026-08-27T14:12:34",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 80723074,
+   "rank": 79,
+   "name": "gopasspw/gopass",
+   "final_display": 8.686293656918608,
+   "final_is_capped": false,
+   "rs": 14.404,
+   "fork_corroboration": 0.603,
+   "excess_above_trend": 45.9,
+   "pace_multiple": 12.32,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 7202,
+   "pushed_at": "2026-09-17T13:02:53",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1213693437,
+   "rank": 80,
+   "name": "VoltiusApp/voltius",
+   "final_display": 8.660040720240548,
+   "final_is_capped": false,
+   "rs": 8.66,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 82.1,
+   "pace_multiple": 14.98,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 673,
+   "pushed_at": "2026-09-22T09:15:15",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1080442728,
+   "rank": 81,
+   "name": "oceanbase/seekdb",
+   "final_display": 8.505018897942618,
+   "final_is_capped": false,
+   "rs": 9.545,
+   "fork_corroboration": 0.891,
+   "excess_above_trend": 58.7,
+   "pace_multiple": 14.72,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3008,
+   "pushed_at": "2026-09-22T17:08:00",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1015324976,
+   "rank": 82,
+   "name": "mostafa-wahied/portracker",
+   "final_display": 8.479507566574968,
+   "final_is_capped": false,
+   "rs": 10.083,
+   "fork_corroboration": 0.841,
+   "excess_above_trend": 21.9,
+   "pace_multiple": 11.32,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2450,
+   "pushed_at": "2026-09-14T23:39:50",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 150891532,
+   "rank": 83,
+   "name": "cloudflare/quiche",
+   "final_display": 8.46818159984832,
+   "final_is_capped": false,
+   "rs": 13.465,
+   "fork_corroboration": 0.629,
+   "excess_above_trend": 330.6,
+   "pace_multiple": 52.39,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 12473,
+   "pushed_at": "2026-09-21T12:57:02",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 312318044,
+   "rank": 84,
+   "name": "nuxt-content/docus",
+   "final_display": 8.419732040266666,
+   "final_is_capped": false,
+   "rs": 9.491,
+   "fork_corroboration": 0.887,
+   "excess_above_trend": 33.4,
+   "pace_multiple": 21.82,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3072,
+   "pushed_at": "2026-09-21T20:48:03",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1321965715,
+   "rank": 85,
+   "name": "zqxwce/vphone-ws",
+   "final_display": 8.419660385093962,
+   "final_is_capped": false,
+   "rs": 8.42,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 136.4,
+   "pace_multiple": 15.13,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 787,
+   "pushed_at": "2026-08-12T17:02:51",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1291988340,
+   "rank": 86,
+   "name": "RLinf/RPent",
+   "final_display": 8.154980857805805,
+   "final_is_capped": false,
+   "rs": 8.155,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 269.5,
+   "pace_multiple": 10.44,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 899,
+   "pushed_at": "2026-09-22T13:07:43",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1162194563,
+   "rank": 87,
+   "name": "ShinMegamiBoson/OpenPlanter",
+   "final_display": 8.070457554712302,
+   "final_is_capped": false,
+   "rs": 10.792,
+   "fork_corroboration": 0.748,
+   "excess_above_trend": 78.3,
+   "pace_multiple": 14.74,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2625,
+   "pushed_at": "2026-03-06T00:30:14",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1223752589,
+   "rank": 88,
+   "name": "vectorize-io/self-driving-agents",
+   "final_display": 7.8757079620098525,
+   "final_is_capped": false,
+   "rs": 7.876,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 349.8,
+   "pace_multiple": 27.58,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 3047,
+   "pushed_at": "2026-09-21T14:14:47",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1015815983,
+   "rank": 89,
+   "name": "zhouxiaoka/autoclip",
+   "final_display": 7.784903846738033,
+   "final_is_capped": false,
+   "rs": 8.73,
+   "fork_corroboration": 0.892,
+   "excess_above_trend": 794.6,
+   "pace_multiple": 27.11,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 8681,
+   "pushed_at": "2026-09-22T16:55:16",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1065936302,
+   "rank": 90,
+   "name": "Open-Dev-Society/OpenStock",
+   "final_display": 7.7092610620925415,
+   "final_is_capped": false,
+   "rs": 9.345,
+   "fork_corroboration": 0.825,
+   "excess_above_trend": 1571.1,
+   "pace_multiple": 72.64,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 18288,
+   "pushed_at": "2026-09-21T20:01:02",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 938664587,
+   "rank": 91,
+   "name": "thu-ml/SpargeAttn",
+   "final_display": 7.701631362934411,
+   "final_is_capped": false,
+   "rs": 13.445,
+   "fork_corroboration": 0.573,
+   "excess_above_trend": 34.1,
+   "pace_multiple": 12.61,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1208,
+   "pushed_at": "2026-02-25T00:07:21",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 963683674,
+   "rank": 92,
+   "name": "superxslam/SuperOdom",
+   "final_display": 7.677316620408948,
+   "final_is_capped": false,
+   "rs": 8.139,
+   "fork_corroboration": 0.943,
+   "excess_above_trend": 24.1,
+   "pace_multiple": 13.52,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1151,
+   "pushed_at": "2026-07-23T17:37:20",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1198636839,
+   "rank": 93,
+   "name": "alejandrobalderas/claude-code-from-source",
+   "final_display": 7.65478817857672,
+   "final_is_capped": false,
+   "rs": 7.655,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 62.9,
+   "pace_multiple": 16.27,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2901,
+   "pushed_at": "2026-04-04T00:00:48",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 904490600,
+   "rank": 94,
+   "name": "krillinai/OpenCreator",
+   "final_display": 7.590552262127599,
+   "final_is_capped": false,
+   "rs": 7.591,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 244.6,
+   "pace_multiple": 17.96,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 12197,
+   "pushed_at": "2026-09-22T09:49:46",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 139636077,
+   "rank": 95,
+   "name": "PlatformLab/HomaModule",
+   "final_display": 7.562762054324678,
+   "final_is_capped": false,
+   "rs": 7.563,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 25.6,
+   "pace_multiple": 18.75,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 387,
+   "pushed_at": "2026-09-22T04:38:36",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1180373371,
+   "rank": 96,
+   "name": "BigKunLun/Agent-Interview-100",
+   "final_display": 7.4967379280863495,
+   "final_is_capped": false,
+   "rs": 7.497,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 26.9,
+   "pace_multiple": 7.57,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 312,
+   "pushed_at": "2026-08-15T14:03:13",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 175635390,
+   "rank": 97,
+   "name": "xiaolai/the-craft-of-selfteaching",
+   "final_display": 7.477099479927189,
+   "final_is_capped": false,
+   "rs": 10.855,
+   "fork_corroboration": 0.689,
+   "excess_above_trend": 170.5,
+   "pace_multiple": 27.14,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 17005,
+   "pushed_at": "2026-05-20T23:38:19",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 473670467,
+   "rank": 98,
+   "name": "flet-dev/flet",
+   "final_display": 7.430195716696494,
+   "final_is_capped": false,
+   "rs": 10.613,
+   "fork_corroboration": 0.7,
+   "excess_above_trend": 70.2,
+   "pace_multiple": 8.12,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 17039,
+   "pushed_at": "2026-09-22T15:08:55",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1293709142,
+   "rank": 99,
+   "name": "anthropics/code-migration-kit-with-claude-code",
+   "final_display": 7.243873267215191,
+   "final_is_capped": false,
+   "rs": 7.244,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 196.8,
+   "pace_multiple": 61.98,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 542,
+   "pushed_at": "2026-07-08T15:00:59",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1195794651,
+   "rank": 100,
+   "name": "toby-bridges/api-relay-audit",
+   "final_display": 7.17403818396308,
+   "final_is_capped": false,
+   "rs": 7.174,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 15.0,
+   "pace_multiple": 8.65,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 856,
+   "pushed_at": "2026-09-16T09:42:54",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1007827531,
+   "rank": 101,
+   "name": "Crosstalk-Solutions/project-nomad",
+   "final_display": 7.155102369439515,
+   "final_is_capped": false,
+   "rs": 7.617,
+   "fork_corroboration": 0.939,
+   "excess_above_trend": 736.3,
+   "pace_multiple": 14.98,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 38118,
+   "pushed_at": "2026-09-21T23:10:39",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1134411737,
+   "rank": 102,
+   "name": "vercel-labs/json-render",
+   "final_display": 7.101576725134223,
+   "final_is_capped": false,
+   "rs": 9.068,
+   "fork_corroboration": 0.783,
+   "excess_above_trend": 845.1,
+   "pace_multiple": 41.5,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 18073,
+   "pushed_at": "2026-09-21T22:01:04",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1137515077,
+   "rank": 103,
+   "name": "tech-leads-club/agent-skills",
+   "final_display": 7.031316832491857,
+   "final_is_capped": false,
+   "rs": 7.323,
+   "fork_corroboration": 0.96,
+   "excess_above_trend": 86.5,
+   "pace_multiple": 5.21,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 6648,
+   "pushed_at": "2026-09-20T12:37:19",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1124754056,
+   "rank": 104,
+   "name": "samugit83/redamon",
+   "final_display": 6.9862196074256575,
+   "final_is_capped": false,
+   "rs": 6.986,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 55.6,
+   "pace_multiple": 5.88,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2560,
+   "pushed_at": "2026-09-22T11:51:33",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1079155251,
+   "rank": 105,
+   "name": "Lumen-Labs/brainapi2",
+   "final_display": 6.828806146810127,
+   "final_is_capped": false,
+   "rs": 6.829,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 20.4,
+   "pace_multiple": 8.76,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 454,
+   "pushed_at": "2026-09-06T12:29:37",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 552877440,
+   "rank": 106,
+   "name": "juspay/hyperswitch",
+   "final_display": 6.706743742555888,
+   "final_is_capped": false,
+   "rs": 6.707,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 76.8,
+   "pace_multiple": 19.18,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 43701,
+   "pushed_at": "2026-09-22T16:11:34",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1204984760,
+   "rank": 107,
+   "name": "milind-soni/tiptour-macos",
+   "final_display": 6.671383548119725,
+   "final_is_capped": false,
+   "rs": 6.671,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 29.2,
+   "pace_multiple": 11.48,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 650,
+   "pushed_at": "2026-09-19T14:56:03",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 948240671,
+   "rank": 108,
+   "name": "AminForou/mcp-gsc",
+   "final_display": 6.652866390841914,
+   "final_is_capped": false,
+   "rs": 8.142,
+   "fork_corroboration": 0.817,
+   "excess_above_trend": 70.5,
+   "pace_multiple": 7.16,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1677,
+   "pushed_at": "2026-09-15T16:54:24",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1155576139,
+   "rank": 109,
+   "name": "rocketride-org/rocketride-server",
+   "final_display": 6.57977060255699,
+   "final_is_capped": false,
+   "rs": 6.58,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 895.1,
+   "pace_multiple": 22.89,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 9412,
+   "pushed_at": "2026-09-22T16:31:13",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1191984666,
+   "rank": 110,
+   "name": "PrismML-Eng/Bonsai-demo",
+   "final_display": 6.536185433202371,
+   "final_is_capped": false,
+   "rs": 6.536,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 147.0,
+   "pace_multiple": 12.29,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3005,
+   "pushed_at": "2026-09-22T04:02:30",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1167686439,
+   "rank": 111,
+   "name": "fasouto/termaid",
+   "final_display": 6.527788691711233,
+   "final_is_capped": false,
+   "rs": 6.528,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 33.1,
+   "pace_multiple": 12.3,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 525,
+   "pushed_at": "2026-09-21T14:27:05",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 860188605,
+   "rank": 112,
+   "name": "iwe-org/iwe",
+   "final_display": 6.526642888178974,
+   "final_is_capped": false,
+   "rs": 6.527,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 50.2,
+   "pace_multiple": 11.38,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1709,
+   "pushed_at": "2026-09-20T19:18:22",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 832690363,
+   "rank": 113,
+   "name": "dan1471/FREE-openai-api-keys",
+   "final_display": 6.5024976318616625,
+   "final_is_capped": false,
+   "rs": 7.438,
+   "fork_corroboration": 0.874,
+   "excess_above_trend": 53.3,
+   "pace_multiple": 5.22,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 5671,
+   "pushed_at": "2024-07-23T14:32:10",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 997490512,
+   "rank": 114,
+   "name": "tbphp/gpt-load",
+   "final_display": 6.375951960300424,
+   "final_is_capped": false,
+   "rs": 6.376,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 70.8,
+   "pace_multiple": 7.32,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 6959,
+   "pushed_at": "2026-09-22T13:52:09",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1064015049,
+   "rank": 115,
+   "name": "thu-ml/SLA",
+   "final_display": 6.3700933685960255,
+   "final_is_capped": false,
+   "rs": 6.37,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 32.7,
+   "pace_multiple": 8.63,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 508,
+   "pushed_at": "2026-02-24T00:03:09",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 911480271,
+   "rank": 116,
+   "name": "DmNote-App/DmNote",
+   "final_display": 6.334691760901817,
+   "final_is_capped": false,
+   "rs": 6.335,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 221.3,
+   "pace_multiple": 9.0,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 1613,
+   "pushed_at": "2026-09-17T06:26:11",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1099960003,
+   "rank": 117,
+   "name": "LowderPlay/cheburcheck",
+   "final_display": 6.3044197732650264,
+   "final_is_capped": false,
+   "rs": 6.304,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 20.9,
+   "pace_multiple": 7.85,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 592,
+   "pushed_at": "2026-09-22T17:17:18",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1146410319,
+   "rank": 118,
+   "name": "EchoStretch/kstuff-lite",
+   "final_display": 6.208471402739448,
+   "final_is_capped": false,
+   "rs": 6.208,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 23.1,
+   "pace_multiple": 6.97,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 462,
+   "pushed_at": "2026-09-20T21:59:26",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 594309385,
+   "rank": 119,
+   "name": "Cute-Dress/Dress",
+   "final_display": 6.1899205188480115,
+   "final_is_capped": false,
+   "rs": 8.582,
+   "fork_corroboration": 0.721,
+   "excess_above_trend": 54.2,
+   "pace_multiple": 10.3,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2986,
+   "pushed_at": "2026-09-22T11:51:27",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1265908861,
+   "rank": 120,
+   "name": "omnichar/OmniChar",
+   "final_display": 6.157653885673127,
+   "final_is_capped": false,
+   "rs": 6.158,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 54.9,
+   "pace_multiple": 14.54,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 364,
+   "pushed_at": "2026-09-22T09:41:26",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1150852058,
+   "rank": 121,
+   "name": "rana-gmbh/NetFluss",
+   "final_display": 6.091350824246062,
+   "final_is_capped": false,
+   "rs": 6.091,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 36.6,
+   "pace_multiple": 11.66,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 622,
+   "pushed_at": "2026-09-13T14:52:57",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 801763739,
+   "rank": 122,
+   "name": "poloclub/transformer-explainer",
+   "final_display": 6.052541288889298,
+   "final_is_capped": false,
+   "rs": 6.174,
+   "fork_corroboration": 0.98,
+   "excess_above_trend": 79.2,
+   "pace_multiple": 9.09,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 8691,
+   "pushed_at": "2026-06-06T12:08:04",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 440752086,
+   "rank": 123,
+   "name": "coder/coder",
+   "final_display": 6.003541337675112,
+   "final_is_capped": false,
+   "rs": 8.919,
+   "fork_corroboration": 0.673,
+   "excess_above_trend": 562.9,
+   "pace_multiple": 15.76,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 16586,
+   "pushed_at": "2026-09-22T15:51:49",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 89359792,
+   "rank": 124,
+   "name": "reacherhq/check-if-email-exists",
+   "final_display": 5.892215801155459,
+   "final_is_capped": false,
+   "rs": 5.892,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 48.9,
+   "pace_multiple": 7.93,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 9943,
+   "pushed_at": "2026-03-17T15:14:47",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1203631993,
+   "rank": 125,
+   "name": "kooker/FreeSubsCheck",
+   "final_display": 5.82714224728402,
+   "final_is_capped": false,
+   "rs": 5.827,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 62.1,
+   "pace_multiple": 8.91,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 397,
+   "pushed_at": "2026-09-22T16:00:46",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1048068299,
+   "rank": 126,
+   "name": "serenedb/serenedb",
+   "final_display": 5.7900158991586785,
+   "final_is_capped": false,
+   "rs": 5.79,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 27.2,
+   "pace_multiple": 8.09,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 791,
+   "pushed_at": "2026-09-22T16:40:04",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1165056385,
+   "rank": 127,
+   "name": "anthropics/financial-services",
+   "final_display": 5.634074318126408,
+   "final_is_capped": false,
+   "rs": 9.152,
+   "fork_corroboration": 0.616,
+   "excess_above_trend": 858.4,
+   "pace_multiple": 25.79,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 36204,
+   "pushed_at": "2026-09-21T21:10:41",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 134999697,
+   "rank": 128,
+   "name": "higgsfield-ai/higgsfield",
+   "final_display": 5.626398405241642,
+   "final_is_capped": false,
+   "rs": 5.626,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 288.1,
+   "pace_multiple": 16.26,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 5617,
+   "pushed_at": "2026-09-14T02:46:36",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 922438220,
+   "rank": 129,
+   "name": "any-listen/any-listen",
+   "final_display": 5.601850642406128,
+   "final_is_capped": false,
+   "rs": 5.602,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 45.9,
+   "pace_multiple": 4.26,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3960,
+   "pushed_at": "2026-09-22T13:30:47",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 718748920,
+   "rank": 130,
+   "name": "urchade/GLiNER",
+   "final_display": 5.57587998533488,
+   "final_is_capped": false,
+   "rs": 5.576,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 39.0,
+   "pace_multiple": 4.26,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3906,
+   "pushed_at": "2026-09-08T12:50:09",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 575457792,
+   "rank": 131,
+   "name": "Rhizomatica/mercury",
+   "final_display": 5.575238919588213,
+   "final_is_capped": false,
+   "rs": 5.575,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 22.1,
+   "pace_multiple": 12.62,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 310,
+   "pushed_at": "2026-09-21T22:15:58",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1156170875,
+   "rank": 132,
+   "name": "Nasiko-Labs/nasiko",
+   "final_display": 5.551873560067611,
+   "final_is_capped": false,
+   "rs": 5.552,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 883.7,
+   "pace_multiple": 21.88,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 7592,
+   "pushed_at": "2026-09-14T11:39:37",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 519577891,
+   "rank": 133,
+   "name": "upscayl/upscayl",
+   "final_display": 5.5478248702591575,
+   "final_is_capped": false,
+   "rs": 5.548,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 291.4,
+   "pace_multiple": 6.34,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 49762,
+   "pushed_at": "2026-09-15T00:34:26",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 842768870,
+   "rank": 134,
+   "name": "city96/ComfyUI-GGUF",
+   "final_display": 5.494921406534162,
+   "final_is_capped": false,
+   "rs": 5.613,
+   "fork_corroboration": 0.979,
+   "excess_above_trend": 25.5,
+   "pace_multiple": 4.9,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 4060,
+   "pushed_at": "2026-01-12T13:02:18",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1145442985,
+   "rank": 135,
+   "name": "FrondEnt/PolymarketBTC15mAssistant",
+   "final_display": 5.492579582458737,
+   "final_is_capped": false,
+   "rs": 5.493,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 51.0,
+   "pace_multiple": 7.39,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1250,
+   "pushed_at": "2026-01-29T22:25:24",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1187896522,
+   "rank": 136,
+   "name": "mex-memory/mex",
+   "final_display": 5.487276814937041,
+   "final_is_capped": false,
+   "rs": 5.487,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 41.6,
+   "pace_multiple": 7.48,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1674,
+   "pushed_at": "2026-09-22T06:35:45",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1238047523,
+   "rank": 137,
+   "name": "agent-substrate/substrate",
+   "final_display": 5.454895299477936,
+   "final_is_capped": false,
+   "rs": 8.75,
+   "fork_corroboration": 0.623,
+   "excess_above_trend": 722.7,
+   "pace_multiple": 22.68,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2850,
+   "pushed_at": "2026-09-22T17:32:16",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1203385870,
+   "rank": 138,
+   "name": "stephenschoettler/hermes-lcm",
+   "final_display": 5.392223609264175,
+   "final_is_capped": false,
+   "rs": 6.722,
+   "fork_corroboration": 0.802,
+   "excess_above_trend": 41.7,
+   "pace_multiple": 8.81,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1224,
+   "pushed_at": "2026-09-14T21:37:59",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1189384516,
+   "rank": 139,
+   "name": "repowise-dev/repowise",
+   "final_display": 5.359215507064654,
+   "final_is_capped": false,
+   "rs": 5.359,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 201.5,
+   "pace_multiple": 8.07,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 6921,
+   "pushed_at": "2026-09-21T21:40:12",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1207529559,
+   "rank": 140,
+   "name": "axoviq-ai/synthadoc",
+   "final_display": 5.346520105040239,
+   "final_is_capped": false,
+   "rs": 5.347,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 78.2,
+   "pace_multiple": 9.93,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 1313,
+   "pushed_at": "2026-09-22T17:36:57",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 940826973,
+   "rank": 141,
+   "name": "Comfy-Org/workflow_templates",
+   "final_display": 5.310749812136189,
+   "final_is_capped": false,
+   "rs": 7.173,
+   "fork_corroboration": 0.74,
+   "excess_above_trend": 32.8,
+   "pace_multiple": 5.03,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 971,
+   "pushed_at": "2026-09-22T14:36:02",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1243618131,
+   "rank": 142,
+   "name": "elvisun/newsjack",
+   "final_display": 5.277421510452599,
+   "final_is_capped": false,
+   "rs": 5.277,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 47.9,
+   "pace_multiple": 4.96,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 1313,
+   "pushed_at": "2026-09-19T17:11:34",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 883769819,
+   "rank": 143,
+   "name": "flexprice/flexprice",
+   "final_display": 5.107673516973791,
+   "final_is_capped": false,
+   "rs": 5.108,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 790.0,
+   "pace_multiple": 67.06,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 6312,
+   "pushed_at": "2026-09-22T14:30:05",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 776908852,
+   "rank": 144,
+   "name": "browserbase/stagehand",
+   "final_display": 5.0997273656418365,
+   "final_is_capped": false,
+   "rs": 7.262,
+   "fork_corroboration": 0.702,
+   "excess_above_trend": 488.4,
+   "pace_multiple": 18.72,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 25157,
+   "pushed_at": "2026-09-22T16:29:56",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1154123797,
+   "rank": 145,
+   "name": "ZeroLu/awesome-seedance",
+   "final_display": 5.094198136788575,
+   "final_is_capped": false,
+   "rs": 5.094,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 33.9,
+   "pace_multiple": 5.19,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2477,
+   "pushed_at": "2026-09-22T12:19:42",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1200204014,
+   "rank": 146,
+   "name": "brycewang-stanford/Auto-Empirical-Research-Skills",
+   "final_display": 4.9825626939196725,
+   "final_is_capped": false,
+   "rs": 5.215,
+   "fork_corroboration": 0.955,
+   "excess_above_trend": 310.3,
+   "pace_multiple": 12.61,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 4233,
+   "pushed_at": "2026-09-21T10:16:24",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 680668856,
+   "rank": 147,
+   "name": "Eltirosto/Degrees-of-Lewdity-Chinese-Localization",
+   "final_display": 4.976090398385699,
+   "final_is_capped": false,
+   "rs": 4.976,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 31.8,
+   "pace_multiple": 6.17,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 954,
+   "pushed_at": "2026-08-14T18:23:48",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1161720369,
+   "rank": 148,
+   "name": "nikaiw/VMkatz",
+   "final_display": 4.953460500961533,
+   "final_is_capped": false,
+   "rs": 9.907,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 25.4,
+   "pace_multiple": 16.65,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1584,
+   "pushed_at": "2026-06-07T18:29:44",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1279760665,
+   "rank": 149,
+   "name": "suboss87/FDEOps",
+   "final_display": 4.945591696604411,
+   "final_is_capped": false,
+   "rs": 4.946,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 63.0,
+   "pace_multiple": 5.51,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 845,
+   "pushed_at": "2026-09-22T04:37:10",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1235980238,
+   "rank": 150,
+   "name": "handbook-academy/engineering-handbook",
+   "final_display": 4.8856395231525855,
+   "final_is_capped": false,
+   "rs": 4.886,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 27.7,
+   "pace_multiple": 7.49,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 560,
+   "pushed_at": "2026-09-21T15:44:10",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 333850832,
+   "rank": 151,
+   "name": "JerBouma/FinanceDatabase",
+   "final_display": 4.882075427932653,
+   "final_is_capped": false,
+   "rs": 4.969,
+   "fork_corroboration": 0.983,
+   "excess_above_trend": 121.3,
+   "pace_multiple": 7.14,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 9314,
+   "pushed_at": "2026-09-20T12:03:57",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1329163060,
+   "rank": 152,
+   "name": "HarnessRouter/harnessrouter",
+   "final_display": 4.804782436181221,
+   "final_is_capped": false,
+   "rs": 4.805,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 529.1,
+   "pace_multiple": 6.35,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 2204,
+   "pushed_at": "2026-09-22T17:41:45",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 974591843,
+   "rank": 153,
+   "name": "ChenLiu-1996/figures4papers",
+   "final_display": 4.75436816617366,
+   "final_is_capped": false,
+   "rs": 4.754,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 842.7,
+   "pace_multiple": 8.78,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 6300,
+   "pushed_at": "2026-09-06T19:21:31",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 925270205,
+   "rank": 154,
+   "name": "trycua/cua",
+   "final_display": 4.745769963542584,
+   "final_is_capped": false,
+   "rs": 5.628,
+   "fork_corroboration": 0.843,
+   "excess_above_trend": 769.3,
+   "pace_multiple": 8.21,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 25959,
+   "pushed_at": "2026-09-22T16:50:59",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1227634482,
+   "rank": 155,
+   "name": "Continuum-AI-Corp/OrcaRouter-Lite",
+   "final_display": 4.684971798874179,
+   "final_is_capped": false,
+   "rs": 4.685,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 119.2,
+   "pace_multiple": 3.78,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1710,
+   "pushed_at": "2026-09-21T09:39:38",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1181479848,
+   "rank": 156,
+   "name": "calesthio/Crucix",
+   "final_display": 4.653429464342364,
+   "final_is_capped": false,
+   "rs": 4.918,
+   "fork_corroboration": 0.946,
+   "excess_above_trend": 121.7,
+   "pace_multiple": 6.98,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 11918,
+   "pushed_at": "2026-05-20T00:50:21",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 983715534,
+   "rank": 157,
+   "name": "strands-agents/harness-sdk",
+   "final_display": 4.563163651138446,
+   "final_is_capped": false,
+   "rs": 6.614,
+   "fork_corroboration": 0.69,
+   "excess_above_trend": 132.0,
+   "pace_multiple": 6.08,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 7535,
+   "pushed_at": "2026-09-22T17:15:35",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 345346677,
+   "rank": 158,
+   "name": "NeoApplications/Neo-Store",
+   "final_display": 4.532653843942193,
+   "final_is_capped": false,
+   "rs": 7.195,
+   "fork_corroboration": 0.63,
+   "excess_above_trend": 38.7,
+   "pace_multiple": 5.68,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 5189,
+   "pushed_at": "2026-09-20T15:04:00",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1033674301,
+   "rank": 159,
+   "name": "mihail911/modern-software-dev-assignments",
+   "final_display": 4.504944771074673,
+   "final_is_capped": false,
+   "rs": 5.809,
+   "fork_corroboration": 0.776,
+   "excess_above_trend": 208.3,
+   "pace_multiple": 24.87,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 4735,
+   "pushed_at": "2025-11-10T17:06:44",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1106809206,
+   "rank": 160,
+   "name": "TwilitRealm/dusklight",
+   "final_display": 4.386898684840682,
+   "final_is_capped": false,
+   "rs": 5.134,
+   "fork_corroboration": 0.854,
+   "excess_above_trend": 36.1,
+   "pace_multiple": 3.78,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 5496,
+   "pushed_at": "2026-09-22T04:57:35",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1231743029,
+   "rank": 161,
+   "name": "echo-loop/Echo-Loop",
+   "final_display": 4.378902564146504,
+   "final_is_capped": false,
+   "rs": 4.379,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 135.0,
+   "pace_multiple": 5.23,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3823,
+   "pushed_at": "2026-09-21T13:24:20",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 134949638,
+   "rank": 162,
+   "name": "hoochanlon/fq-book",
+   "final_display": 4.355778735084946,
+   "final_is_capped": false,
+   "rs": 4.356,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 140.2,
+   "pace_multiple": 6.43,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 6583,
+   "pushed_at": "2026-09-19T16:52:11",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 915520679,
+   "rank": 163,
+   "name": "FareedKhan-dev/train-llm-from-scratch",
+   "final_display": 4.33299938225799,
+   "final_is_capped": false,
+   "rs": 4.333,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 476.1,
+   "pace_multiple": 11.38,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 10799,
+   "pushed_at": "2026-08-17T05:07:26",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1189576423,
+   "rank": 164,
+   "name": "grafana/gcx",
+   "final_display": 4.280155600973977,
+   "final_is_capped": false,
+   "rs": 4.28,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 22.3,
+   "pace_multiple": 4.31,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 739,
+   "pushed_at": "2026-09-22T16:15:04",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1086419061,
+   "rank": 165,
+   "name": "vectorize-io/hindsight",
+   "final_display": 4.1156976844419555,
+   "final_is_capped": false,
+   "rs": 4.116,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 960.0,
+   "pace_multiple": 6.96,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 25188,
+   "pushed_at": "2026-09-22T17:12:23",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 893031915,
+   "rank": 166,
+   "name": "HelixDB/helix-db",
+   "final_display": 4.069057676222899,
+   "final_is_capped": false,
+   "rs": 8.138,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 104.8,
+   "pace_multiple": 12.37,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 6076,
+   "pushed_at": "2026-09-22T15:18:46",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1251086916,
+   "rank": 167,
+   "name": "yb2460/harness-anything",
+   "final_display": 3.9990362870217124,
+   "final_is_capped": false,
+   "rs": 3.999,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 55.7,
+   "pace_multiple": 2.97,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1994,
+   "pushed_at": "2026-07-28T01:23:43",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 140395644,
+   "rank": 168,
+   "name": "CharlesPikachu/videodl",
+   "final_display": 3.9655566700613463,
+   "final_is_capped": false,
+   "rs": 4.119,
+   "fork_corroboration": 0.963,
+   "excess_above_trend": 38.9,
+   "pace_multiple": 4.51,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2893,
+   "pushed_at": "2026-09-22T00:01:06",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1335045235,
+   "rank": 169,
+   "name": "Alain00/blobatar",
+   "final_display": 3.8909087027300746,
+   "final_is_capped": false,
+   "rs": 3.891,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 121.7,
+   "pace_multiple": 5.15,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 1188,
+   "pushed_at": "2026-09-07T20:11:34",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 385748634,
+   "rank": 170,
+   "name": "dsp56300/gearmulator",
+   "final_display": 3.803356051970447,
+   "final_is_capped": false,
+   "rs": 3.803,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 24.8,
+   "pace_multiple": 4.03,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1396,
+   "pushed_at": "2026-09-22T05:00:26",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1248716248,
+   "rank": 171,
+   "name": "liominsb/Antigravity-Chinese-Localization",
+   "final_display": 3.768724684813082,
+   "final_is_capped": false,
+   "rs": 3.769,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 25.0,
+   "pace_multiple": 4.11,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 424,
+   "pushed_at": "2026-09-22T06:23:06",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1132444278,
+   "rank": 172,
+   "name": "wafer-ai/gpu-perf-engineering-resources",
+   "final_display": 3.753347853058604,
+   "final_is_capped": false,
+   "rs": 3.918,
+   "fork_corroboration": 0.958,
+   "excess_above_trend": 319.6,
+   "pace_multiple": 6.87,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3725,
+   "pushed_at": "2026-09-12T17:22:08",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1259108597,
+   "rank": 173,
+   "name": "zhuzhaoyun/Molio",
+   "final_display": 3.7080128635358025,
+   "final_is_capped": false,
+   "rs": 3.708,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 21.3,
+   "pace_multiple": 4.17,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 367,
+   "pushed_at": "2026-09-22T17:11:39",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1172273835,
+   "rank": 174,
+   "name": "SnailSploit/Claude-Red",
+   "final_display": 3.642334381609007,
+   "final_is_capped": false,
+   "rs": 3.642,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 212.9,
+   "pace_multiple": 4.08,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 6757,
+   "pushed_at": "2026-09-19T23:46:22",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 704568773,
+   "rank": 175,
+   "name": "chan2zen/rust-chan",
+   "final_display": 3.6080238119222483,
+   "final_is_capped": false,
+   "rs": 3.608,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 34.1,
+   "pace_multiple": 39.69,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 335,
+   "pushed_at": "2026-02-27T07:01:43",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1006258471,
+   "rank": 176,
+   "name": "FluidInference/FluidAudio",
+   "final_display": 3.5740543364786053,
+   "final_is_capped": false,
+   "rs": 4.836,
+   "fork_corroboration": 0.739,
+   "excess_above_trend": 53.7,
+   "pace_multiple": 8.4,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2845,
+   "pushed_at": "2026-09-21T20:27:01",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1284653133,
+   "rank": 177,
+   "name": "xerj-org/xerj",
+   "final_display": 3.5018154474516177,
+   "final_is_capped": false,
+   "rs": 3.502,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 190.6,
+   "pace_multiple": 4.38,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 2339,
+   "pushed_at": "2026-09-22T11:33:22",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1170099788,
+   "rank": 178,
+   "name": "akitaonrails/ai-jail",
+   "final_display": 3.4996372786875765,
+   "final_is_capped": false,
+   "rs": 3.5,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 27.3,
+   "pace_multiple": 4.13,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1271,
+   "pushed_at": "2026-09-21T21:31:22",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 190823163,
+   "rank": 179,
+   "name": "Datalux/Osintgram",
+   "final_display": 3.477888016744708,
+   "final_is_capped": false,
+   "rs": 4.195,
+   "fork_corroboration": 0.829,
+   "excess_above_trend": 74.8,
+   "pace_multiple": 3.75,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 14576,
+   "pushed_at": "2026-09-14T16:01:19",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1158460203,
+   "rank": 180,
+   "name": "olalie/tapmap",
+   "final_display": 3.4605003812607684,
+   "final_is_capped": false,
+   "rs": 3.461,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 22.3,
+   "pace_multiple": 4.31,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1501,
+   "pushed_at": "2026-09-22T12:45:38",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 458648791,
+   "rank": 181,
+   "name": "paperless-ngx/paperless-ngx",
+   "final_display": 3.4470641127694877,
+   "final_is_capped": false,
+   "rs": 3.637,
+   "fork_corroboration": 0.948,
+   "excess_above_trend": 326.2,
+   "pace_multiple": 6.19,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 45887,
+   "pushed_at": "2026-09-22T15:02:27",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 867007699,
+   "rank": 182,
+   "name": "thu-ml/SageAttention",
+   "final_display": 3.4067993339875224,
+   "final_is_capped": false,
+   "rs": 6.692,
+   "fork_corroboration": 0.509,
+   "excess_above_trend": 36.5,
+   "pace_multiple": 5.27,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3887,
+   "pushed_at": "2026-01-17T17:43:28",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 691058691,
+   "rank": 183,
+   "name": "jbiaojerry/ebook-treasure-chest",
+   "final_display": 3.379447554096191,
+   "final_is_capped": false,
+   "rs": 3.379,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 460.6,
+   "pace_multiple": 4.99,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 19139,
+   "pushed_at": "2026-01-13T00:59:23",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 448358672,
+   "rank": 184,
+   "name": "dmunozv04/iSponsorBlockTV",
+   "final_display": 3.3488881631532843,
+   "final_is_capped": false,
+   "rs": 3.349,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 21.1,
+   "pace_multiple": 4.6,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 6127,
+   "pushed_at": "2026-09-19T20:52:59",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1237174940,
+   "rank": 185,
+   "name": "simonlin1212/TradingAgents-astock",
+   "final_display": 3.339742137626449,
+   "final_is_capped": false,
+   "rs": 3.857,
+   "fork_corroboration": 0.866,
+   "excess_above_trend": 102.9,
+   "pace_multiple": 6.13,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3510,
+   "pushed_at": "2026-09-21T00:30:21",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 512334495,
+   "rank": 186,
+   "name": "firerpa/lamda",
+   "final_display": 3.331701306956633,
+   "final_is_capped": false,
+   "rs": 3.332,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 36.8,
+   "pace_multiple": 4.63,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 8398,
+   "pushed_at": "2026-08-30T07:37:32",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 540371158,
+   "rank": 187,
+   "name": "fleetbase/fleetbase",
+   "final_display": 3.328422629928501,
+   "final_is_capped": false,
+   "rs": 3.328,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 39.1,
+   "pace_multiple": 3.19,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3863,
+   "pushed_at": "2026-09-22T12:25:18",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 920995232,
+   "rank": 188,
+   "name": "multimodal-art-projection/YuE",
+   "final_display": 3.2995693850780676,
+   "final_is_capped": false,
+   "rs": 3.3,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 122.2,
+   "pace_multiple": 4.15,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 10063,
+   "pushed_at": "2026-09-22T15:57:22",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1235039420,
+   "rank": 189,
+   "name": "jithin-sabu/purge-app",
+   "final_display": 3.2725981338529633,
+   "final_is_capped": false,
+   "rs": 3.273,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 34.2,
+   "pace_multiple": 3.17,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 846,
+   "pushed_at": "2026-09-19T22:55:55",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1148683593,
+   "rank": 190,
+   "name": "eval-exec/neomacs",
+   "final_display": 3.2456988389314554,
+   "final_is_capped": false,
+   "rs": 5.091,
+   "fork_corroboration": 0.637,
+   "excess_above_trend": 45.3,
+   "pace_multiple": 4.58,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1469,
+   "pushed_at": "2026-09-22T16:49:12",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1139004474,
+   "rank": 191,
+   "name": "MobAI-App/ios-builder",
+   "final_display": 3.2385743412447803,
+   "final_is_capped": false,
+   "rs": 3.674,
+   "fork_corroboration": 0.881,
+   "excess_above_trend": 20.2,
+   "pace_multiple": 3.3,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 955,
+   "pushed_at": "2026-09-20T10:50:32",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1202875287,
+   "rank": 192,
+   "name": "zzet/gortex",
+   "final_display": 3.19038215032077,
+   "final_is_capped": false,
+   "rs": 5.054,
+   "fork_corroboration": 0.631,
+   "excess_above_trend": 85.1,
+   "pace_multiple": 6.34,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1687,
+   "pushed_at": "2026-09-21T21:21:05",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 677953180,
+   "rank": 193,
+   "name": "leejet/stable-diffusion.cpp",
+   "final_display": 3.1896371494505718,
+   "final_is_capped": false,
+   "rs": 3.441,
+   "fork_corroboration": 0.927,
+   "excess_above_trend": 28.0,
+   "pace_multiple": 2.47,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 7092,
+   "pushed_at": "2026-09-22T15:55:05",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 943088234,
+   "rank": 194,
+   "name": "confident-ai/deepteam",
+   "final_display": 3.165576028415114,
+   "final_is_capped": false,
+   "rs": 3.166,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 33.2,
+   "pace_multiple": 3.24,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2925,
+   "pushed_at": "2026-09-21T07:16:56",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 525105056,
+   "rank": 195,
+   "name": "karanpratapsingh/system-design",
+   "final_display": 3.15438023050943,
+   "final_is_capped": false,
+   "rs": 3.154,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 60.5,
+   "pace_multiple": 2.8,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 46278,
+   "pushed_at": "2026-07-08T00:36:51",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 924394244,
+   "rank": 196,
+   "name": "cloudflare/agents",
+   "final_display": 3.1053577905702348,
+   "final_is_capped": false,
+   "rs": 3.105,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 25.9,
+   "pace_multiple": 3.58,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 5645,
+   "pushed_at": "2026-09-22T13:34:42",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1202559832,
+   "rank": 197,
+   "name": "AlphaGBM/skills",
+   "final_display": 3.105199367860412,
+   "final_is_capped": false,
+   "rs": 5.748,
+   "fork_corroboration": 0.54,
+   "excess_above_trend": 307.2,
+   "pace_multiple": 5.16,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 3445,
+   "pushed_at": "2026-09-22T17:03:39",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 152870372,
+   "rank": 198,
+   "name": "ruanyf/weekly",
+   "final_display": 3.0968239057593734,
+   "final_is_capped": false,
+   "rs": 3.097,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 619.9,
+   "pace_multiple": 4.67,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 104439,
+   "pushed_at": "2026-09-19T11:38:43",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 925147332,
+   "rank": 199,
+   "name": "umlx5h/LLPlayer",
+   "final_display": 3.0876083491281574,
+   "final_is_capped": false,
+   "rs": 3.088,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 21.4,
+   "pace_multiple": 3.23,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 4230,
+   "pushed_at": "2026-09-10T15:18:20",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1306722822,
+   "rank": 200,
+   "name": "shengjidaguai-china/goutoujunshi",
+   "final_display": 3.0792267242328513,
+   "final_is_capped": false,
+   "rs": 3.079,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 377.7,
+   "pace_multiple": 4.62,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "limited-history",
+    "fork-history-insufficient"
+   ],
+   "summary": null,
+   "stars": 3497,
+   "pushed_at": "2026-09-20T12:23:53",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 934959044,
+   "rank": 201,
+   "name": "Dispatcharr/Dispatcharr",
+   "final_display": 2.940477180842215,
+   "final_is_capped": false,
+   "rs": 3.056,
+   "fork_corroboration": 0.962,
+   "excess_above_trend": 34.0,
+   "pace_multiple": 3.26,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 4100,
+   "pushed_at": "2026-09-22T14:48:36",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 60493101,
+   "rank": 202,
+   "name": "jwasham/coding-interview-university",
+   "final_display": 2.892126939329619,
+   "final_is_capped": false,
+   "rs": 3.668,
+   "fork_corroboration": 0.788,
+   "excess_above_trend": 332.8,
+   "pace_multiple": 3.89,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 361693,
+   "pushed_at": "2025-08-28T14:42:47",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 701494311,
+   "rank": 203,
+   "name": "BoundaryML/baml",
+   "final_display": 2.825075511570754,
+   "final_is_capped": false,
+   "rs": 5.65,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 49.4,
+   "pace_multiple": 6.14,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 9258,
+   "pushed_at": "2026-09-22T08:13:59",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1013480284,
+   "rank": 204,
+   "name": "davila7/claude-code-templates",
+   "final_display": 2.750528819252036,
+   "final_is_capped": false,
+   "rs": 3.576,
+   "fork_corroboration": 0.769,
+   "excess_above_trend": 117.8,
+   "pace_multiple": 4.55,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 31005,
+   "pushed_at": "2026-09-22T14:01:00",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1054812421,
+   "rank": 205,
+   "name": "antvis/Infographic",
+   "final_display": 2.744695318927145,
+   "final_is_capped": false,
+   "rs": 4.128,
+   "fork_corroboration": 0.665,
+   "excess_above_trend": 71.5,
+   "pace_multiple": 6.28,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 6846,
+   "pushed_at": "2026-08-21T14:04:18",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1234429907,
+   "rank": 206,
+   "name": "konbakuyomu/smartsearch",
+   "final_display": 2.702780944595802,
+   "final_is_capped": false,
+   "rs": 5.406,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 28.7,
+   "pace_multiple": 13.43,
+   "stratum": "200-1k",
+   "band": "emerging",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 841,
+   "pushed_at": "2026-09-22T17:41:59",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1213049020,
+   "rank": 207,
+   "name": "browser-use/browser-harness",
+   "final_display": 2.692206930525086,
+   "final_is_capped": false,
+   "rs": 3.798,
+   "fork_corroboration": 0.709,
+   "excess_above_trend": 110.2,
+   "pace_multiple": 3.21,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 18022,
+   "pushed_at": "2026-09-12T08:30:02",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 171664300,
+   "rank": 208,
+   "name": "makepad/makepad",
+   "final_display": 2.6816519102019782,
+   "final_is_capped": false,
+   "rs": 3.341,
+   "fork_corroboration": 0.803,
+   "excess_above_trend": 20.1,
+   "pace_multiple": 3.25,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 7053,
+   "pushed_at": "2026-09-22T12:17:00",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 924738875,
+   "rank": 209,
+   "name": "daveebbelaar/ai-cookbook",
+   "final_display": 2.634822474063088,
+   "final_is_capped": false,
+   "rs": 3.466,
+   "fork_corroboration": 0.76,
+   "excess_above_trend": 22.0,
+   "pace_multiple": 4.17,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 4568,
+   "pushed_at": "2026-09-21T15:45:18",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1184090452,
+   "rank": 210,
+   "name": "fallow-rs/fallow",
+   "final_display": 2.6123009710687417,
+   "final_is_capped": false,
+   "rs": 5.225,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 126.9,
+   "pace_multiple": 8.86,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 4821,
+   "pushed_at": "2026-09-22T14:02:52",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 888848712,
+   "rank": 211,
+   "name": "Zitann/HarmonyOS-Haps",
+   "final_display": 2.496817832557789,
+   "final_is_capped": false,
+   "rs": 3.636,
+   "fork_corroboration": 0.687,
+   "excess_above_trend": 37.3,
+   "pace_multiple": 2.9,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3146,
+   "pushed_at": "2026-09-22T09:26:28",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1233603128,
+   "rank": 212,
+   "name": "tophant-ai/aibeat",
+   "final_display": 2.4959776569831833,
+   "final_is_capped": false,
+   "rs": 4.619,
+   "fork_corroboration": 0.54,
+   "excess_above_trend": 36.4,
+   "pace_multiple": 5.78,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1057,
+   "pushed_at": "2026-09-22T07:32:29",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1020672081,
+   "rank": 213,
+   "name": "Usagi-org/ai-goofish-monitor",
+   "final_display": 2.3820442069365533,
+   "final_is_capped": false,
+   "rs": 4.764,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 62.2,
+   "pace_multiple": 8.04,
+   "stratum": "10-30k",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 14437,
+   "pushed_at": "2026-05-18T10:52:34",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1170548091,
+   "rank": 214,
+   "name": "0xNyk/council-of-high-intelligence",
+   "final_display": 2.19462953169043,
+   "final_is_capped": false,
+   "rs": 4.389,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 91.2,
+   "pace_multiple": 6.78,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 4454,
+   "pushed_at": "2026-09-22T06:26:27",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 951958279,
+   "rank": 215,
+   "name": "chigwell/telegram-mcp",
+   "final_display": 1.993658827447932,
+   "final_is_capped": false,
+   "rs": 3.473,
+   "fork_corroboration": 0.574,
+   "excess_above_trend": 25.2,
+   "pace_multiple": 3.58,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 1668,
+   "pushed_at": "2026-09-21T14:07:11",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1218231004,
+   "rank": 216,
+   "name": "NVlabs/cuda-oxide",
+   "final_display": 1.9199764587828485,
+   "final_is_capped": false,
+   "rs": 3.209,
+   "fork_corroboration": 0.598,
+   "excess_above_trend": 27.6,
+   "pace_multiple": 3.42,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3566,
+   "pushed_at": "2026-09-20T10:54:12",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 777597786,
+   "rank": 217,
+   "name": "Armur-Ai/Pentest-Swarm-AI",
+   "final_display": 1.7190749693311036,
+   "final_is_capped": false,
+   "rs": 3.438,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 31.0,
+   "pace_multiple": 4.87,
+   "stratum": "1-3k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 2564,
+   "pushed_at": "2026-09-22T08:00:34",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1185965712,
+   "rank": 218,
+   "name": "Dailin521/codex-provider-sync",
+   "final_display": 1.6173215916062431,
+   "final_is_capped": false,
+   "rs": 3.235,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 35.6,
+   "pace_multiple": 3.87,
+   "stratum": "3-10k",
+   "band": "growing",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 3475,
+   "pushed_at": "2026-09-15T11:16:48",
+   "link_suppressed": false,
+   "corrections": []
+  }
+ ],
  "facets": {
-  "band": {}
+  "band": {
+   "emerging": 59,
+   "growing": 128,
+   "established": 31
+  }
  }
 }
