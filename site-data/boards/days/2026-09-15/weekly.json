@@ -1,0 +1,1088 @@
+{
+ "board_type": "weekly",
+ "day": "2026-09-15",
+ "floor": 3.0,
+ "strata_admitted": [
+  "30k+"
+ ],
+ "strata_held": [
+  "1-3k",
+  "10-30k",
+  "200-1k",
+  "3-10k"
+ ],
+ "hold_reason": "200-1k: 210769/211249 on 2026-09-08; 1-3k: 43521/43610 on 2026-09-08; 3-10k: 16410/16436 on 2026-09-08; 10-30k: 4370/4375 on 2026-09-08",
+ "partial_history": true,
+ "rows": [
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 596892,
+   "rank": 1,
+   "name": "pallets/flask",
+   "description": "The Python micro framework for building web applications.",
+   "language": "Python",
+   "topics": [
+    "flask",
+    "jinja",
+    "pallets",
+    "python",
+    "web-framework",
+    "werkzeug",
+    "wsgi"
+   ],
+   "license": "BSD-3-Clause",
+   "homepage": "https://flask.palletsprojects.com",
+   "forks": 16987,
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 20.04,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 2483.9,
+   "pace_multiple": 28.58,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 74742,
+   "pushed_at": "2026-09-08T16:40:53",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 11730342,
+   "rank": 2,
+   "name": "vuejs/vue",
+   "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
+   "language": "TypeScript",
+   "topics": [
+    "framework",
+    "frontend",
+    "javascript",
+    "vue"
+   ],
+   "license": "MIT",
+   "homepage": "http://v2.vuejs.org",
+   "forks": 33724,
+   "final_display": 4.703507711265199,
+   "final_is_capped": false,
+   "rs": 9.407,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1452.6,
+   "pace_multiple": 16.72,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 212807,
+   "pushed_at": "2024-10-10T07:24:15",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1178737655,
+   "rank": 3,
+   "name": "THU-MAIC/OpenMAIC",
+   "description": "Open Multi-Agent Interactive Classroom \u2014 Get an immersive, multi-agent learning experience in just one click",
+   "language": "TypeScript",
+   "topics": [],
+   "license": "MIT",
+   "homepage": null,
+   "forks": 5862,
+   "final_display": 3.4202716202407104,
+   "final_is_capped": false,
+   "rs": 6.841,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 7199.0,
+   "pace_multiple": 9.74,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 37163,
+   "pushed_at": "2026-09-16T04:05:38",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "1009 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "f99d33a8ddee7b36509a71a6d20d5d23355ce8b1"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 1,031 subsystems \u2014 Windows VM Management \u00b7 System Provisioning \u00b7 System Upgrade and Transition",
+     "Core: monitor-clamshell-scale-test.sh script \u00b7 DBusMenu \u00b7 bar-widget"
+    ],
+    "commit_sha": "f99d33a8ddee7b36509a71a6d20d5d23355ce8b1"
+   },
+   "repo_id": 994093166,
+   "rank": 4,
+   "name": "omacom/omarchy",
+   "description": "Beautiful, Modern & Opinionated Linux",
+   "language": "Shell",
+   "topics": [],
+   "license": "MIT",
+   "homepage": "https://omarchy.org",
+   "forks": 4676,
+   "final_display": 3.3346718096904846,
+   "final_is_capped": false,
+   "rs": 3.335,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 3621.6,
+   "pace_multiple": 4.39,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 41332,
+   "pushed_at": "2026-09-16T03:56:18",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "231 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "d026163f586dfa8c5c10d28c36edd59a9d3b0e88"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 158 subsystems \u2014 Asset Extraction and Detection \u00b7 Agent Execution Engine \u00b7 Session Management",
+     "Core: Llm \u00b7 AgentRunRecorder \u00b7 TokenUsage"
+    ],
+    "commit_sha": "d026163f586dfa8c5c10d28c36edd59a9d3b0e88"
+   },
+   "repo_id": 718741813,
+   "rank": 5,
+   "name": "abi/screenshot-to-code",
+   "description": "Drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue)",
+   "language": "Python",
+   "topics": [],
+   "license": "MIT",
+   "homepage": "https://screenshottocode.com",
+   "forks": 9640,
+   "final_display": 3.0525672232314447,
+   "final_is_capped": false,
+   "rs": 3.053,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 1682.4,
+   "pace_multiple": 5.21,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 78961,
+   "pushed_at": "2026-09-09T17:27:34",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "08992417141a93a061f8c3d866c6b0c3012f9454"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 11 subsystems \u2014 Web Search and Chat \u00b7 Image Input and Description \u00b7 Function Calling",
+     "Core: print_separator() \u00b7 test_image_analysis() \u00b7 test_file_analysis()"
+    ],
+    "commit_sha": "eb1032706a62cd1ca9bd4eb54c147e4e2542d76e"
+   },
+   "repo_id": 631567741,
+   "rank": 6,
+   "name": "chatanywhere/GPT_API_free",
+   "description": "\u514d\u8d39\u5927\u6a21\u578bAPI\uff0c\u652f\u6301\u514d\u8d39\u8c03\u7528GPT\u3001DeepSeek\u7b49\u4e3b\u6d41\u6a21\u578b\uff0c\u514d\u8d39\u989d\u5ea610000\u70b9\uff0c\u6bcf\u65e5\u5237\u65b0\uff01\u53e6\u4ed8\u8d39\u4ef7\u683c\u6700\u4f4e\u5b98\u65b91-2\u6298\uff01",
+   "language": null,
+   "topics": [
+    "api",
+    "chatgpt",
+    "claude",
+    "deepseek",
+    "gemini",
+    "gpt",
+    "grok",
+    "llm-agents"
+   ],
+   "license": "MIT",
+   "homepage": "https://api.chatanywhere.tech",
+   "forks": 2721,
+   "final_display": 2.8350604828190287,
+   "final_is_capped": false,
+   "rs": 5.67,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 670.9,
+   "pace_multiple": 2.98,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 42614,
+   "pushed_at": "2026-09-07T17:19:11",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 333483116,
+   "rank": 7,
+   "name": "dgtlmoon/changedetection.io",
+   "description": "Best and simplest tool for website change detection, web page monitoring, and website change alerts. Perfect for tracking content changes, price drops, restock alerts, and website defacement monitoring\u2014all for free or enjoy our SaaS plan!",
+   "language": "Python",
+   "topics": [
+    "back-in-stock",
+    "change-alert",
+    "change-detection",
+    "change-monitoring",
+    "monitoring",
+    "notifications",
+    "restock-monitor",
+    "rss",
+    "self-hosted",
+    "url-monitor",
+    "web-scraping",
+    "website-change-detection",
+    "website-change-detector",
+    "website-change-monitor",
+    "website-change-notification",
+    "website-change-tracker",
+    "website-defacement-monitoring",
+    "website-monitor",
+    "website-monitoring",
+    "website-watcher"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://changedetection.io",
+   "forks": 2056,
+   "final_display": 2.7015107606046245,
+   "final_is_capped": false,
+   "rs": 5.403,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 623.7,
+   "pace_multiple": 3.94,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 34271,
+   "pushed_at": "2026-09-15T07:43:43",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "8 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "9e7273583f83e881e3ec067b523ba88724088d2f"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 805 subsystems \u2014 Core Utility Headers \u00b7 BitTorrent Core Utilities \u00b7 Command Execution",
+     "Core: fmt() \u00b7 RequestGroup \u00b7 MetalinkParserStateMachine"
+    ],
+    "commit_sha": "9e7273583f83e881e3ec067b523ba88724088d2f"
+   },
+   "repo_id": 1116542,
+   "rank": 8,
+   "name": "aria2/aria2",
+   "description": "aria2 is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.",
+   "language": "C++",
+   "topics": [
+    "bittorrent",
+    "cpp11",
+    "download",
+    "ftp",
+    "http",
+    "metalink",
+    "rpc",
+    "sftp"
+   ],
+   "license": "GPL-2.0",
+   "homepage": "https://aria2.github.io/",
+   "forks": 3910,
+   "final_display": 2.5769379814702873,
+   "final_is_capped": false,
+   "rs": 5.154,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 355.0,
+   "pace_multiple": 3.82,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 42370,
+   "pushed_at": "2026-06-25T14:49:35",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 4164482,
+   "rank": 9,
+   "name": "django/django",
+   "description": "The Web framework for perfectionists with deadlines.",
+   "language": "Python",
+   "topics": [
+    "apps",
+    "django",
+    "framework",
+    "models",
+    "orm",
+    "python",
+    "templates",
+    "views",
+    "web"
+   ],
+   "license": "BSD-3-Clause",
+   "homepage": "https://www.djangoproject.com/",
+   "forks": 34414,
+   "final_display": 2.557525104754404,
+   "final_is_capped": false,
+   "rs": 5.115,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1323.1,
+   "pace_multiple": 8.39,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 91066,
+   "pushed_at": "2026-09-15T17:37:20",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1206390571,
+   "rank": 10,
+   "name": "debpalash/VoiceStudio",
+   "description": "The Open-Source Elevenlabs alternative AI Voice Clone, Dub, Dictate, Transcribe, Audiobook creator and Voice workflow studio.",
+   "language": "Python",
+   "topics": [
+    "ai",
+    "cuda",
+    "dubbing",
+    "huggingface",
+    "mlx",
+    "omnivoice-studio",
+    "transcription",
+    "translate",
+    "tts",
+    "voice-ai",
+    "voice-cloning",
+    "voice-generation",
+    "workflow"
+   ],
+   "license": "AGPL-3.0",
+   "homepage": "https://x.com/idebpalash",
+   "forks": 3712,
+   "final_display": 2.5105437632815217,
+   "final_is_capped": false,
+   "rs": 5.021,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 15590.0,
+   "pace_multiple": 8.05,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 31199,
+   "pushed_at": "2026-09-15T14:32:21",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 164140756,
+   "rank": 11,
+   "name": "files-community/Files",
+   "description": "A modern file manager that helps users organize their files and folders.",
+   "language": "C#",
+   "topics": [
+    "alternatives",
+    "csharp",
+    "customization",
+    "developer-tools",
+    "dotnet",
+    "file-manager",
+    "files",
+    "fluent",
+    "fluent-design",
+    "git",
+    "good-first-issue",
+    "power-user",
+    "productivity",
+    "utilities",
+    "winappsdk",
+    "windows",
+    "windows-10",
+    "windows-11",
+    "winui",
+    "xaml"
+   ],
+   "license": "MIT",
+   "homepage": "https://files.community",
+   "forks": 2908,
+   "final_display": 2.427095564075858,
+   "final_is_capped": false,
+   "rs": 4.854,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 434.6,
+   "pace_multiple": 3.6,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 45447,
+   "pushed_at": "2026-09-16T02:42:41",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "28 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+   },
+   "repo_id": 173228436,
+   "rank": 12,
+   "name": "NationalSecurityAgency/ghidra",
+   "description": "Ghidra is a software reverse engineering (SRE) framework",
+   "language": "Java",
+   "topics": [
+    "disassembler",
+    "reverse-engineering",
+    "software-analysis"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://www.nsa.gov/ghidra",
+   "forks": 8479,
+   "final_display": 2.3448272923945432,
+   "final_is_capped": false,
+   "rs": 4.69,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1956.4,
+   "pace_multiple": 3.81,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 76852,
+   "pushed_at": "2026-09-15T16:02:22",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 45717250,
+   "rank": 13,
+   "name": "tensorflow/tensorflow",
+   "description": "An Open Source Machine Learning Framework for Everyone",
+   "language": "C++",
+   "topics": [
+    "deep-learning",
+    "deep-neural-networks",
+    "distributed",
+    "machine-learning",
+    "ml",
+    "neural-network",
+    "python",
+    "tensorflow"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://tensorflow.org",
+   "forks": 76494,
+   "final_display": 2.0901370591030575,
+   "final_is_capped": false,
+   "rs": 4.18,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1433.9,
+   "pace_multiple": 5.13,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 200121,
+   "pushed_at": "2026-09-16T03:59:13",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 81598961,
+   "rank": 14,
+   "name": "python/cpython",
+   "description": "The Python programming language",
+   "language": "Python",
+   "topics": [],
+   "license": "NOASSERTION",
+   "homepage": "https://www.python.org",
+   "forks": 35531,
+   "final_display": 2.088009664251741,
+   "final_is_capped": false,
+   "rs": 4.176,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1294.1,
+   "pace_multiple": 5.19,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 77183,
+   "pushed_at": "2026-09-16T02:13:12",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 28751632,
+   "rank": 15,
+   "name": "0xAX/linux-insides",
+   "description": "A book-in-progress about the Linux kernel and its insides.",
+   "language": "Python",
+   "topics": [
+    "linux",
+    "linux-insides",
+    "linux-kernel"
+   ],
+   "license": "NOASSERTION",
+   "homepage": "https://0xax.dev/books/linux-inside/",
+   "forks": 3564,
+   "final_display": 2.0737897330356962,
+   "final_is_capped": false,
+   "rs": 4.148,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 467.5,
+   "pace_multiple": 9.9,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 33500,
+   "pushed_at": "2026-09-14T07:24:09",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 27193779,
+   "rank": 16,
+   "name": "nodejs/node",
+   "description": "Node.js JavaScript runtime \u2728\ud83d\udc22\ud83d\ude80\u2728",
+   "language": "JavaScript",
+   "topics": [
+    "javascript",
+    "js",
+    "linux",
+    "macos",
+    "mit",
+    "node",
+    "nodejs",
+    "runtime",
+    "windows"
+   ],
+   "license": "NOASSERTION",
+   "homepage": "https://nodejs.org",
+   "forks": 36896,
+   "final_display": 2.0471742776557518,
+   "final_is_capped": false,
+   "rs": 4.094,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1400.1,
+   "pace_multiple": 5.36,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 121964,
+   "pushed_at": "2026-09-16T00:39:59",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 20580498,
+   "rank": 17,
+   "name": "kubernetes/kubernetes",
+   "description": "Production-Grade Container Scheduling and Management",
+   "language": "Go",
+   "topics": [
+    "cncf",
+    "containers",
+    "go",
+    "kubernetes"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://kubernetes.io",
+   "forks": 44223,
+   "final_display": 2.043449018232718,
+   "final_is_capped": false,
+   "rs": 4.087,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1448.2,
+   "pace_multiple": 4.66,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 127752,
+   "pushed_at": "2026-09-16T01:13:25",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 23096959,
+   "rank": 18,
+   "name": "golang/go",
+   "description": "The Go programming language",
+   "language": "Go",
+   "topics": [
+    "go",
+    "golang",
+    "language",
+    "programming-language"
+   ],
+   "license": "BSD-3-Clause",
+   "homepage": "https://go.dev",
+   "forks": 19505,
+   "final_display": 1.8553092877391908,
+   "final_is_capped": false,
+   "rs": 3.711,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1401.5,
+   "pace_multiple": 5.04,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 138838,
+   "pushed_at": "2026-09-16T00:54:19",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "73 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
+   },
+   "structure": {
+    "state": "failed(label)",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
+   },
+   "repo_id": 834369920,
+   "rank": 19,
+   "name": "jingyaogong/minimind",
+   "description": "\ud83e\udde0\u300c\u5927\u6a21\u578b\u300d2\u5c0f\u65f6\u5b8c\u5168\u4ece0\u8bad\u7ec364M\u7684\u5c0f\u53c2\u6570LLM\uff01Train a 64M-parameter LLM from scratch in just 2h!",
+   "language": "Python",
+   "topics": [
+    "artificial-intelligence",
+    "large-language-model"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://jingyaogong.github.io/minimind",
+   "forks": 7964,
+   "final_display": 1.852888618727665,
+   "final_is_capped": false,
+   "rs": 3.706,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 3627.4,
+   "pace_multiple": 5.8,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 61234,
+   "pushed_at": "2026-09-15T06:53:55",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 724712,
+   "rank": 20,
+   "name": "rust-lang/rust",
+   "description": "Empowering everyone to build reliable and efficient software.",
+   "language": "Rust",
+   "topics": [
+    "compiler",
+    "language",
+    "rust"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://www.rust-lang.org",
+   "forks": 15713,
+   "final_display": 1.7773068632346827,
+   "final_is_capped": false,
+   "rs": 3.555,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1510.6,
+   "pace_multiple": 4.25,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 118921,
+   "pushed_at": "2026-09-16T03:48:08",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 80990461,
+   "rank": 21,
+   "name": "eriklindernoren/ML-From-Scratch",
+   "description": "Machine Learning From Scratch. Bare bones NumPy implementations of machine learning models and algorithms with a focus on accessibility. Aims to cover everything from linear regression to deep learning.",
+   "language": "Python",
+   "topics": [
+    "data-mining",
+    "data-science",
+    "deep-learning",
+    "deep-reinforcement-learning",
+    "genetic-algorithm",
+    "machine-learning",
+    "machine-learning-from-scratch"
+   ],
+   "license": "MIT",
+   "homepage": null,
+   "forks": 5486,
+   "final_display": 1.6801182789786724,
+   "final_is_capped": false,
+   "rs": 3.36,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 223.3,
+   "pace_multiple": 3.73,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 32862,
+   "pushed_at": "2023-10-15T06:05:06",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 10270250,
+   "rank": 22,
+   "name": "react/react",
+   "description": "The library for web and native user interfaces.",
+   "language": "JavaScript",
+   "topics": [
+    "declarative",
+    "frontend",
+    "javascript",
+    "library",
+    "react",
+    "ui"
+   ],
+   "license": "MIT",
+   "homepage": "https://react.dev",
+   "forks": 51352,
+   "final_display": 1.5412435530804298,
+   "final_is_capped": false,
+   "rs": 3.082,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1366.0,
+   "pace_multiple": 3.83,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 250478,
+   "pushed_at": "2026-09-16T02:27:02",
+   "link_suppressed": false,
+   "corrections": []
+  }
+ ],
+ "facets": {
+  "band": {
+   "established": 22
+  }
+ }
+}
