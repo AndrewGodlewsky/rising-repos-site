@@ -1,0 +1,541 @@
+{
+ "board_type": "daily",
+ "day": "2026-08-31",
+ "floor": 3.0,
+ "strata_admitted": [
+  "30k+"
+ ],
+ "strata_held": [
+  "1-3k",
+  "10-30k",
+  "200-1k",
+  "3-10k"
+ ],
+ "hold_reason": "200-1k: 210193/210572 on 2026-08-31; 1-3k: 43404/43485 on 2026-08-31; 3-10k: 16339/16362 on 2026-08-31; 10-30k: 4358/4363 on 2026-08-31",
+ "partial_history": true,
+ "rows": [
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 169839893,
+   "rank": 1,
+   "name": "imthenachoman/How-To-Secure-A-Linux-Server",
+   "description": "An evolving how-to guide for securing a Linux server.",
+   "language": null,
+   "topics": [
+    "cc-by-sa",
+    "hardening",
+    "hardening-steps",
+    "linux",
+    "linux-server",
+    "security",
+    "security-hardening",
+    "server"
+   ],
+   "license": "CC-BY-SA-4.0",
+   "homepage": null,
+   "forks": 2085,
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 9.998,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 620.6,
+   "pace_multiple": 55.46,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 30947,
+   "pushed_at": "2026-07-13T18:25:52",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 245704608,
+   "rank": 2,
+   "name": "colinhacks/zod",
+   "description": "TypeScript-first schema validation with static type inference",
+   "language": "TypeScript",
+   "topics": [
+    "runtime-validation",
+    "schema-validation",
+    "static-types",
+    "type-inference",
+    "typescript"
+   ],
+   "license": "MIT",
+   "homepage": "https://zod.dev",
+   "forks": 2161,
+   "final_display": 8.875436943523596,
+   "final_is_capped": false,
+   "rs": 13.257,
+   "fork_corroboration": 0.669,
+   "excess_above_trend": 140.7,
+   "pace_multiple": 10.16,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 43719,
+   "pushed_at": "2026-08-30T22:04:57",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "73 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
+   },
+   "structure": {
+    "state": "failed(label)",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
+   },
+   "repo_id": 834369920,
+   "rank": 3,
+   "name": "jingyaogong/minimind",
+   "description": "\ud83e\udde0\u300c\u5927\u6a21\u578b\u300d2\u5c0f\u65f6\u5b8c\u5168\u4ece0\u8bad\u7ec364M\u7684\u5c0f\u53c2\u6570LLM\uff01Train a 64M-parameter LLM from scratch in just 2h!",
+   "language": "Python",
+   "topics": [
+    "artificial-intelligence",
+    "large-language-model"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://jingyaogong.github.io/minimind",
+   "forks": 7301,
+   "final_display": 8.467543079746898,
+   "final_is_capped": false,
+   "rs": 8.716,
+   "fork_corroboration": 0.971,
+   "excess_above_trend": 684.1,
+   "pace_multiple": 10.51,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 55888,
+   "pushed_at": "2026-08-31T10:08:14",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "53 findings \u00b7 1 check pending",
+    "link_suppressed": false,
+    "commit_sha": "1e5eeffbdad3749125afe7ab48a39694e27f181c"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 823 subsystems \u2014 DICOM Anonymization Tool \u00b7 Claim Citation Auditing \u00b7 Dataset Auditing Utilities",
+     "Core: CliError \u00b7 run_script() \u00b7 SafetyError"
+    ],
+    "commit_sha": "1e5eeffbdad3749125afe7ab48a39694e27f181c"
+   },
+   "repo_id": 1079456184,
+   "rank": 4,
+   "name": "K-Dense-AI/scientific-agent-skills",
+   "description": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 170,000+ scientists worldwide. 158 ready-to-use skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+   "language": "Python",
+   "topics": [
+    "agent-skills",
+    "ai-scientist",
+    "bioinformatics",
+    "chemoinformatics",
+    "claude",
+    "claude-skills",
+    "claudecode",
+    "clinical-research",
+    "computational-biology",
+    "data-analysis",
+    "drug-discovery",
+    "genomics",
+    "materials-science",
+    "metabolomics",
+    "proteomics",
+    "scientific-computing",
+    "scientific-visualization"
+   ],
+   "license": "MIT",
+   "homepage": "https://k-dense.ai",
+   "forks": 3748,
+   "final_display": 7.563336907178084,
+   "final_is_capped": false,
+   "rs": 7.747,
+   "fork_corroboration": 0.976,
+   "excess_above_trend": 2510.1,
+   "pace_multiple": 9.54,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 40490,
+   "pushed_at": "2026-08-31T09:27:47",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "231 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "d026163f586dfa8c5c10d28c36edd59a9d3b0e88"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 158 subsystems \u2014 Asset Extraction and Detection \u00b7 Agent Execution Engine \u00b7 Session Management",
+     "Core: Llm \u00b7 AgentRunRecorder \u00b7 TokenUsage"
+    ],
+    "commit_sha": "d026163f586dfa8c5c10d28c36edd59a9d3b0e88"
+   },
+   "repo_id": 718741813,
+   "rank": 5,
+   "name": "abi/screenshot-to-code",
+   "description": "Drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue)",
+   "language": "Python",
+   "topics": [],
+   "license": "MIT",
+   "homepage": "https://screenshottocode.com",
+   "forks": 9323,
+   "final_display": 6.287354974468072,
+   "final_is_capped": false,
+   "rs": 6.458,
+   "fork_corroboration": 0.974,
+   "excess_above_trend": 651.6,
+   "pace_multiple": 9.88,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 76634,
+   "pushed_at": "2026-08-14T17:20:50",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "28 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+   },
+   "repo_id": 173228436,
+   "rank": 6,
+   "name": "NationalSecurityAgency/ghidra",
+   "description": "Ghidra is a software reverse engineering (SRE) framework",
+   "language": "Java",
+   "topics": [
+    "disassembler",
+    "reverse-engineering",
+    "software-analysis"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://www.nsa.gov/ghidra",
+   "forks": 8077,
+   "final_display": 5.627113607846515,
+   "final_is_capped": false,
+   "rs": 6.089,
+   "fork_corroboration": 0.924,
+   "excess_above_trend": 486.2,
+   "pace_multiple": 5.02,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 74130,
+   "pushed_at": "2026-08-31T09:57:06",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "573 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "3c2b14aff59791be0a000160b35f3c5e8f2997a0"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 2,400 subsystems \u2014 Local Embedding Backend \u00b7 Spring Auto-Configuration \u00b7 Embedding Server Commands",
+     "Core: SyntaxNode \u00b7 runPipelineFromRepo() \u00b7 TraversalResult"
+    ],
+    "commit_sha": "8b21ce3b959f14730438f387b94562c0bc5864f7"
+   },
+   "repo_id": 1031059905,
+   "rank": 7,
+   "name": "abhigyanpatwari/GitNexus",
+   "description": "GitNexus: The Zero-Server Code Intelligence Engine -       GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a git repository (Github, Gitlab, Azure, Local) or ZIP file, and get an interactive knowledge graph with a built in Graph RAG Agent. Perfect for code exploration",
+   "language": "TypeScript",
+   "topics": [],
+   "license": "NOASSERTION",
+   "homepage": "https://gitnexus.vercel.app",
+   "forks": 5138,
+   "final_display": 4.434925209293531,
+   "final_is_capped": false,
+   "rs": 4.696,
+   "fork_corroboration": 0.944,
+   "excess_above_trend": 308.6,
+   "pace_multiple": 4.38,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 46746,
+   "pushed_at": "2026-08-31T15:52:23",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 71583602,
+   "rank": 8,
+   "name": "Developer-Y/cs-video-courses",
+   "description": "List of Computer Science courses with video lectures.",
+   "language": null,
+   "topics": [
+    "algorithms",
+    "bioinformatics",
+    "computational-biology",
+    "computational-physics",
+    "computer-architecture",
+    "computer-science",
+    "computer-vision",
+    "database-systems",
+    "databases",
+    "deep-learning",
+    "embedded-systems",
+    "machine-learning",
+    "quantum-computing",
+    "reinforcement-learning",
+    "robotics",
+    "security",
+    "systems",
+    "web-development"
+   ],
+   "license": null,
+   "homepage": null,
+   "forks": 11468,
+   "final_display": 4.346077527479925,
+   "final_is_capped": false,
+   "rs": 4.346,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 101.8,
+   "pace_multiple": 5.58,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 83327,
+   "pushed_at": "2026-08-30T19:20:44",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 781022269,
+   "rank": 9,
+   "name": "anthropics/prompt-eng-interactive-tutorial",
+   "description": "Anthropic's Interactive Prompt Engineering Tutorial",
+   "language": "Jupyter Notebook",
+   "topics": [],
+   "license": null,
+   "homepage": null,
+   "forks": 4187,
+   "final_display": 3.147469395154327,
+   "final_is_capped": false,
+   "rs": 3.858,
+   "fork_corroboration": 0.816,
+   "excess_above_trend": 100.6,
+   "pace_multiple": 4.54,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 37966,
+   "pushed_at": "2026-08-28T05:31:39",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "283c17563fe7a1111cd7f581aa5d541e8baeff2f"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 321 subsystems \u2014 Basic Assertion Tests \u00b7 Test Flag Configurations \u00b7 Array Matcher Tests",
+     "Core: TEST() \u00b7 string_ \u00b7 TEST()"
+    ],
+    "commit_sha": "8eff9e336692fc95961e096564f1044c600b881d"
+   },
+   "repo_id": 39840932,
+   "rank": 10,
+   "name": "google/googletest",
+   "description": "GoogleTest - Google Testing and Mocking Framework",
+   "language": "C++",
+   "topics": [],
+   "license": "BSD-3-Clause",
+   "homepage": "https://google.github.io/googletest/",
+   "forks": 10883,
+   "final_display": 3.1066284386127716,
+   "final_is_capped": false,
+   "rs": 4.738,
+   "fork_corroboration": 0.656,
+   "excess_above_trend": 151.8,
+   "pace_multiple": 15.81,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 39401,
+   "pushed_at": "2026-08-27T11:15:21",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 896335270,
+   "rank": 11,
+   "name": "punkpeye/awesome-mcp-servers",
+   "description": "A collection of MCP servers.",
+   "language": null,
+   "topics": [
+    "ai",
+    "mcp"
+   ],
+   "license": "MIT",
+   "homepage": "https://glama.ai/mcp/servers",
+   "forks": 15355,
+   "final_display": 2.3679653948953625,
+   "final_is_capped": false,
+   "rs": 4.571,
+   "fork_corroboration": 0.518,
+   "excess_above_trend": 418.3,
+   "pace_multiple": 4.44,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 93587,
+   "pushed_at": "2026-08-29T22:03:27",
+   "link_suppressed": false,
+   "corrections": []
+  }
+ ],
+ "facets": {
+  "band": {
+   "established": 11
+  }
+ }
+}

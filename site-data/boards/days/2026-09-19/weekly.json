@@ -1,0 +1,575 @@
+{
+ "board_type": "weekly",
+ "day": "2026-09-19",
+ "floor": 3.0,
+ "strata_admitted": [
+  "30k+"
+ ],
+ "strata_held": [
+  "1-3k",
+  "10-30k",
+  "200-1k",
+  "3-10k"
+ ],
+ "hold_reason": "200-1k: 211138/211658 on 2026-09-12; 1-3k: 43603/43693 on 2026-09-12; 3-10k: 16442/16468 on 2026-09-12; 10-30k: 4374/4379 on 2026-09-12",
+ "partial_history": true,
+ "rows": [
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 596892,
+   "rank": 1,
+   "name": "pallets/flask",
+   "description": "The Python micro framework for building web applications.",
+   "language": "Python",
+   "topics": [
+    "flask",
+    "jinja",
+    "pallets",
+    "python",
+    "web-framework",
+    "werkzeug",
+    "wsgi"
+   ],
+   "license": "BSD-3-Clause",
+   "homepage": "https://flask.palletsprojects.com",
+   "forks": 16984,
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 31.52,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 2545.2,
+   "pace_multiple": 64.97,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 3,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 74755,
+   "pushed_at": "2026-09-08T16:40:53",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "8 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "9e7273583f83e881e3ec067b523ba88724088d2f"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 805 subsystems \u2014 Core Utility Headers \u00b7 BitTorrent Core Utilities \u00b7 Command Execution",
+     "Core: fmt() \u00b7 RequestGroup \u00b7 MetalinkParserStateMachine"
+    ],
+    "commit_sha": "9e7273583f83e881e3ec067b523ba88724088d2f"
+   },
+   "repo_id": 1116542,
+   "rank": 2,
+   "name": "aria2/aria2",
+   "description": "aria2 is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.",
+   "language": "C++",
+   "topics": [
+    "bittorrent",
+    "cpp11",
+    "download",
+    "ftp",
+    "http",
+    "metalink",
+    "rpc",
+    "sftp"
+   ],
+   "license": "GPL-2.0",
+   "homepage": "https://aria2.github.io/",
+   "forks": 3923,
+   "final_display": 4.8407423204459645,
+   "final_is_capped": false,
+   "rs": 9.681,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 464.7,
+   "pace_multiple": 4.57,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 3,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 42520,
+   "pushed_at": "2026-06-25T14:49:35",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "231 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "d026163f586dfa8c5c10d28c36edd59a9d3b0e88"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 158 subsystems \u2014 Asset Extraction and Detection \u00b7 Agent Execution Engine \u00b7 Session Management",
+     "Core: Llm \u00b7 AgentRunRecorder \u00b7 TokenUsage"
+    ],
+    "commit_sha": "d026163f586dfa8c5c10d28c36edd59a9d3b0e88"
+   },
+   "repo_id": 718741813,
+   "rank": 3,
+   "name": "abi/screenshot-to-code",
+   "description": "Drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue)",
+   "language": "Python",
+   "topics": [],
+   "license": "MIT",
+   "homepage": "https://screenshottocode.com",
+   "forks": 9686,
+   "final_display": 4.825255604295839,
+   "final_is_capped": false,
+   "rs": 4.825,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 1075.0,
+   "pace_multiple": 3.99,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 79306,
+   "pushed_at": "2026-09-09T17:27:34",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 837911756,
+   "rank": 4,
+   "name": "feder-cr/invisible_playwright_mcp",
+   "description": "AIHawk aims to easy job hunt process by automating the job application process. Utilizing artificial intelligence, it enables users to apply for multiple jobs in a tailored way.",
+   "language": "Python",
+   "topics": [
+    "agent",
+    "application-resume",
+    "artificial-intelligence",
+    "automate",
+    "automation",
+    "bot",
+    "chatgpt",
+    "chrome",
+    "gpt",
+    "human-resources",
+    "job",
+    "jobs",
+    "jobsearch",
+    "jobseeker",
+    "opeai",
+    "python",
+    "resume",
+    "scraper",
+    "scraping",
+    "selenium"
+   ],
+   "license": "AGPL-3.0",
+   "homepage": null,
+   "forks": 4668,
+   "final_display": 4.491936208426019,
+   "final_is_capped": false,
+   "rs": 8.984,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1209.5,
+   "pace_multiple": 17.68,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 31594,
+   "pushed_at": "2026-09-18T18:39:28",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "28 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+   },
+   "repo_id": 173228436,
+   "rank": 5,
+   "name": "NationalSecurityAgency/ghidra",
+   "description": "Ghidra is a software reverse engineering (SRE) framework",
+   "language": "Java",
+   "topics": [
+    "disassembler",
+    "reverse-engineering",
+    "software-analysis"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://www.nsa.gov/ghidra",
+   "forks": 8737,
+   "final_display": 3.142691975310792,
+   "final_is_capped": false,
+   "rs": 3.143,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 3815.3,
+   "pace_multiple": 6.08,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 3,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 78987,
+   "pushed_at": "2026-09-18T10:01:09",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "143 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "1516af9e4f5c3674af04db58009d4d4e9dc16f64"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 730 subsystems \u2014 PyQt GUI Components \u00b7 Anki Database Models \u00b7 Main Window State",
+     "Core: &amp;String \u00b7 AnkiQt \u00b7 Collection"
+    ],
+    "commit_sha": "1516af9e4f5c3674af04db58009d4d4e9dc16f64"
+   },
+   "repo_id": 7270538,
+   "rank": 6,
+   "name": "ankitects/anki",
+   "description": "Anki is a smart spaced repetition flashcard program",
+   "language": "Rust",
+   "topics": [],
+   "license": "NOASSERTION",
+   "homepage": "https://apps.ankiweb.net",
+   "forks": 3242,
+   "final_display": 2.119511992174674,
+   "final_is_capped": false,
+   "rs": 4.239,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 646.0,
+   "pace_multiple": 3.06,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 31297,
+   "pushed_at": "2026-09-19T01:46:47",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "1166 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "4b0118520e822416a7078610398be70d971da5f2"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 1,607 subsystems \u2014 Table Catalog Metadata Updates \u00b7 Disk File Deletion State \u00b7 Object Storage Operations Validation",
+     "Core: Value \u00b7 init_logging() \u00b7 ObjectOptions"
+    ],
+    "commit_sha": "4b0118520e822416a7078610398be70d971da5f2"
+   },
+   "repo_id": 722597620,
+   "rank": 7,
+   "name": "rustfs/rustfs",
+   "description": "\ud83d\ude802.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.",
+   "language": "Rust",
+   "topics": [
+    "ai-native",
+    "ai-storage",
+    "amazon-s3",
+    "bigdata",
+    "cloud-native",
+    "filesystem",
+    "minio",
+    "multi-cloud",
+    "object-storage",
+    "objectstorage",
+    "rust",
+    "s3"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://rustfs.com/download/",
+   "forks": 1490,
+   "final_display": 1.990496530767492,
+   "final_is_capped": false,
+   "rs": 3.981,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 991.4,
+   "pace_multiple": 2.72,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 3,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 33325,
+   "pushed_at": "2026-09-19T11:33:26",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 164140756,
+   "rank": 8,
+   "name": "files-community/Files",
+   "description": "A modern file manager that helps users organize their files and folders.",
+   "language": "C#",
+   "topics": [
+    "alternatives",
+    "csharp",
+    "customization",
+    "developer-tools",
+    "dotnet",
+    "file-manager",
+    "files",
+    "fluent",
+    "fluent-design",
+    "git",
+    "good-first-issue",
+    "power-user",
+    "productivity",
+    "utilities",
+    "winappsdk",
+    "windows",
+    "windows-10",
+    "windows-11",
+    "winui",
+    "xaml"
+   ],
+   "license": "MIT",
+   "homepage": "https://files.community",
+   "forks": 2918,
+   "final_display": 1.8272388146637837,
+   "final_is_capped": false,
+   "rs": 3.654,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 469.0,
+   "pace_multiple": 3.79,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 3,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 45533,
+   "pushed_at": "2026-09-17T21:50:31",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 283211901,
+   "rank": 9,
+   "name": "yuliskov/SmartTube",
+   "description": "Browse media content with your own rules on Android TV",
+   "language": "Java",
+   "topics": [
+    "android",
+    "android-tv",
+    "android-tv-box",
+    "java",
+    "kotlin",
+    "retrofit2",
+    "rxjava-android"
+   ],
+   "license": "MIT",
+   "homepage": "https://smarttubeapp.github.io",
+   "forks": 2070,
+   "final_display": 1.7193298935236845,
+   "final_is_capped": false,
+   "rs": 3.439,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 928.7,
+   "pace_multiple": 3.8,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 33882,
+   "pushed_at": "2026-09-19T01:22:49",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 655099582,
+   "rank": 10,
+   "name": "mlabonne/llm-course",
+   "description": "Course to get into Large Language Models (LLMs) with roadmaps and Colab notebooks.",
+   "language": null,
+   "topics": [
+    "course",
+    "large-language-models",
+    "llm",
+    "machine-learning",
+    "roadmap"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://mlabonne.github.io/blog/",
+   "forks": 9660,
+   "final_display": 1.6908475712413886,
+   "final_is_capped": false,
+   "rs": 3.382,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 344.2,
+   "pace_multiple": 1.94,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 83024,
+   "pushed_at": "2026-02-05T13:09:26",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 11730342,
+   "rank": 11,
+   "name": "vuejs/vue",
+   "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
+   "language": "TypeScript",
+   "topics": [
+    "framework",
+    "frontend",
+    "javascript",
+    "vue"
+   ],
+   "license": "MIT",
+   "homepage": "http://v2.vuejs.org",
+   "forks": 33726,
+   "final_display": 1.539171844098066,
+   "final_is_capped": false,
+   "rs": 3.078,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 999.0,
+   "pace_multiple": 6.4,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 3,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 212815,
+   "pushed_at": "2024-10-10T07:24:15",
+   "link_suppressed": false,
+   "corrections": []
+  }
+ ],
+ "facets": {
+  "band": {
+   "established": 11
+  }
+ }
+}

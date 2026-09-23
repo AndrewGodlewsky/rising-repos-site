@@ -1,0 +1,864 @@
+{
+ "board_type": "daily",
+ "day": "2026-09-01",
+ "floor": 3.0,
+ "strata_admitted": [
+  "30k+"
+ ],
+ "strata_held": [
+  "1-3k",
+  "10-30k",
+  "200-1k",
+  "3-10k"
+ ],
+ "hold_reason": "200-1k: 210260/210649 on 2026-09-01; 1-3k: 43422/43504 on 2026-09-01; 3-10k: 16343/16366 on 2026-09-01; 10-30k: 4362/4367 on 2026-09-01",
+ "partial_history": true,
+ "rows": [
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 169839893,
+   "rank": 1,
+   "name": "imthenachoman/How-To-Secure-A-Linux-Server",
+   "description": "An evolving how-to guide for securing a Linux server.",
+   "language": null,
+   "topics": [
+    "cc-by-sa",
+    "hardening",
+    "hardening-steps",
+    "linux",
+    "linux-server",
+    "security",
+    "security-hardening",
+    "server"
+   ],
+   "license": "CC-BY-SA-4.0",
+   "homepage": null,
+   "forks": 2094,
+   "final_display": 8.742487180891375,
+   "final_is_capped": false,
+   "rs": 8.742,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 405.2,
+   "pace_multiple": 32.63,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 31074,
+   "pushed_at": "2026-07-13T18:25:52",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 437245741,
+   "rank": 2,
+   "name": "dragonflydb/dragonfly",
+   "description": "A modern replacement for Redis and Memcached",
+   "language": "C++",
+   "topics": [
+    "cache",
+    "cpp",
+    "database",
+    "fibers",
+    "in-memory",
+    "in-memory-database",
+    "key-value",
+    "keydb",
+    "memcached",
+    "message-broker",
+    "multi-threading",
+    "nosql",
+    "redis",
+    "valkey",
+    "vector-search"
+   ],
+   "license": "NOASSERTION",
+   "homepage": "https://www.dragonflydb.io/",
+   "forks": 1241,
+   "final_display": 7.683084374508513,
+   "final_is_capped": false,
+   "rs": 7.683,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 69.8,
+   "pace_multiple": 12.23,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 31127,
+   "pushed_at": "2026-09-01T14:31:12",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "73 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
+   },
+   "structure": {
+    "state": "failed(label)",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
+   },
+   "repo_id": 834369920,
+   "rank": 3,
+   "name": "jingyaogong/minimind",
+   "description": "\ud83e\udde0\u300c\u5927\u6a21\u578b\u300d2\u5c0f\u65f6\u5b8c\u5168\u4ece0\u8bad\u7ec364M\u7684\u5c0f\u53c2\u6570LLM\uff01Train a 64M-parameter LLM from scratch in just 2h!",
+   "language": "Python",
+   "topics": [
+    "artificial-intelligence",
+    "large-language-model"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://jingyaogong.github.io/minimind",
+   "forks": 7403,
+   "final_display": 7.62253492993028,
+   "final_is_capped": false,
+   "rs": 8.616,
+   "fork_corroboration": 0.885,
+   "excess_above_trend": 1373.5,
+   "pace_multiple": 20.78,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 56851,
+   "pushed_at": "2026-08-31T10:08:14",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "53 findings \u00b7 1 check pending",
+    "link_suppressed": false,
+    "commit_sha": "1e5eeffbdad3749125afe7ab48a39694e27f181c"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 823 subsystems \u2014 DICOM Anonymization Tool \u00b7 Claim Citation Auditing \u00b7 Dataset Auditing Utilities",
+     "Core: CliError \u00b7 run_script() \u00b7 SafetyError"
+    ],
+    "commit_sha": "1e5eeffbdad3749125afe7ab48a39694e27f181c"
+   },
+   "repo_id": 1079456184,
+   "rank": 4,
+   "name": "K-Dense-AI/scientific-agent-skills",
+   "description": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 170,000+ scientists worldwide. 158 ready-to-use skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+   "language": "Python",
+   "topics": [
+    "agent-skills",
+    "ai-scientist",
+    "bioinformatics",
+    "chemoinformatics",
+    "claude",
+    "claude-skills",
+    "claudecode",
+    "clinical-research",
+    "computational-biology",
+    "data-analysis",
+    "drug-discovery",
+    "genomics",
+    "materials-science",
+    "metabolomics",
+    "proteomics",
+    "scientific-computing",
+    "scientific-visualization"
+   ],
+   "license": "MIT",
+   "homepage": "https://k-dense.ai",
+   "forks": 3811,
+   "final_display": 6.193221619136901,
+   "final_is_capped": false,
+   "rs": 6.433,
+   "fork_corroboration": 0.963,
+   "excess_above_trend": 2023.9,
+   "pace_multiple": 7.81,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 41348,
+   "pushed_at": "2026-08-31T17:14:03",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 255378816,
+   "rank": 5,
+   "name": "bigskysoftware/htmx",
+   "description": "</> htmx - high power tools for HTML",
+   "language": "JavaScript",
+   "topics": [
+    "hateoas",
+    "html",
+    "htmx",
+    "hyperscript",
+    "javascript",
+    "rest"
+   ],
+   "license": "NOASSERTION",
+   "homepage": "https://htmx.org",
+   "forks": 1648,
+   "final_display": 5.426447344271536,
+   "final_is_capped": false,
+   "rs": 5.426,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 70.1,
+   "pace_multiple": 6.03,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 49307,
+   "pushed_at": "2026-08-30T23:22:00",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "231 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "d026163f586dfa8c5c10d28c36edd59a9d3b0e88"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 158 subsystems \u2014 Asset Extraction and Detection \u00b7 Agent Execution Engine \u00b7 Session Management",
+     "Core: Llm \u00b7 AgentRunRecorder \u00b7 TokenUsage"
+    ],
+    "commit_sha": "d026163f586dfa8c5c10d28c36edd59a9d3b0e88"
+   },
+   "repo_id": 718741813,
+   "rank": 6,
+   "name": "abi/screenshot-to-code",
+   "description": "Drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue)",
+   "language": "Python",
+   "topics": [],
+   "license": "MIT",
+   "homepage": "https://screenshottocode.com",
+   "forks": 9365,
+   "final_display": 5.291846417851624,
+   "final_is_capped": false,
+   "rs": 5.292,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 442.7,
+   "pace_multiple": 6.58,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 76879,
+   "pushed_at": "2026-08-14T17:20:50",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1197990888,
+   "rank": 7,
+   "name": "Gitlawb/openclaude",
+   "description": "runs anywhere. uses anything",
+   "language": "TypeScript",
+   "topics": [
+    "ai",
+    "ai-agent",
+    "ai-tools",
+    "cli",
+    "coding"
+   ],
+   "license": "NOASSERTION",
+   "homepage": "https://openclaude.gitlawb.com",
+   "forks": 8937,
+   "final_display": 4.269980012978391,
+   "final_is_capped": false,
+   "rs": 5.04,
+   "fork_corroboration": 0.847,
+   "excess_above_trend": 183.8,
+   "pace_multiple": 7.75,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 31109,
+   "pushed_at": "2026-08-31T02:25:05",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 738733003,
+   "rank": 8,
+   "name": "danielmiessler/Fabric",
+   "description": "Fabric is an open-source framework for augmenting humans using AI. It provides a modular system for solving specific problems using a crowdsourced set of AI prompts that can be used anywhere.",
+   "language": "Go",
+   "topics": [
+    "ai",
+    "augmentation",
+    "flourishing",
+    "life",
+    "work"
+   ],
+   "license": "MIT",
+   "homepage": "https://danielmiessler.com/p/fabric-origin-story",
+   "forks": 4247,
+   "final_display": 4.015583709129653,
+   "final_is_capped": false,
+   "rs": 4.016,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 101.0,
+   "pace_multiple": 6.05,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 43701,
+   "pushed_at": "2026-08-29T16:37:17",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 11730342,
+   "rank": 9,
+   "name": "vuejs/vue",
+   "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
+   "language": "TypeScript",
+   "topics": [
+    "framework",
+    "frontend",
+    "javascript",
+    "vue"
+   ],
+   "license": "MIT",
+   "homepage": "http://v2.vuejs.org",
+   "forks": 33754,
+   "final_display": 3.6511549377805967,
+   "final_is_capped": false,
+   "rs": 5.179,
+   "fork_corroboration": 0.705,
+   "excess_above_trend": 243.0,
+   "pace_multiple": 27.93,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 211262,
+   "pushed_at": "2024-10-10T07:24:15",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1065059442,
+   "rank": 10,
+   "name": "KeygraphHQ/shannon",
+   "description": "Shannon is an AI pentester for web applications and APIs. It analyzes your source code, identifies attack vectors, and executes real exploits to prove vulnerabilities before they reach production.",
+   "language": "TypeScript",
+   "topics": [
+    "agents",
+    "ai-penetration-testing",
+    "ai-security",
+    "cybersecurity",
+    "ethical-hacking",
+    "offensive-security",
+    "penetration-testing",
+    "pentesting",
+    "pentesting-tools",
+    "red-teaming",
+    "security",
+    "security-audit",
+    "security-automation",
+    "security-testing",
+    "security-tools"
+   ],
+   "license": "AGPL-3.0",
+   "homepage": "https://keygraph.io/",
+   "forks": 5465,
+   "final_display": 3.291514643913727,
+   "final_is_capped": false,
+   "rs": 3.292,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 123.3,
+   "pace_multiple": 3.0,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 47487,
+   "pushed_at": "2026-08-31T23:26:17",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 71583602,
+   "rank": 11,
+   "name": "Developer-Y/cs-video-courses",
+   "description": "List of Computer Science courses with video lectures.",
+   "language": null,
+   "topics": [
+    "algorithms",
+    "bioinformatics",
+    "computational-biology",
+    "computational-physics",
+    "computer-architecture",
+    "computer-science",
+    "computer-vision",
+    "database-systems",
+    "databases",
+    "deep-learning",
+    "embedded-systems",
+    "machine-learning",
+    "quantum-computing",
+    "reinforcement-learning",
+    "robotics",
+    "security",
+    "systems",
+    "web-development"
+   ],
+   "license": null,
+   "homepage": null,
+   "forks": 11473,
+   "final_display": 3.197666791484158,
+   "final_is_capped": false,
+   "rs": 3.198,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 63.7,
+   "pace_multiple": 3.98,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 83360,
+   "pushed_at": "2026-08-30T19:20:44",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 245704608,
+   "rank": 12,
+   "name": "colinhacks/zod",
+   "description": "TypeScript-first schema validation with static type inference",
+   "language": "TypeScript",
+   "topics": [
+    "runtime-validation",
+    "schema-validation",
+    "static-types",
+    "type-inference",
+    "typescript"
+   ],
+   "license": "MIT",
+   "homepage": "https://zod.dev",
+   "forks": 2163,
+   "final_display": 2.8143403686957353,
+   "final_is_capped": false,
+   "rs": 4.62,
+   "fork_corroboration": 0.609,
+   "excess_above_trend": 92.2,
+   "pace_multiple": 7.24,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 43742,
+   "pushed_at": "2026-09-01T08:55:50",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 4164482,
+   "rank": 13,
+   "name": "django/django",
+   "description": "The Web framework for perfectionists with deadlines.",
+   "language": "Python",
+   "topics": [
+    "apps",
+    "django",
+    "framework",
+    "models",
+    "orm",
+    "python",
+    "templates",
+    "views",
+    "web"
+   ],
+   "license": "BSD-3-Clause",
+   "homepage": "https://www.djangoproject.com/",
+   "forks": 34216,
+   "final_display": 2.435238682691394,
+   "final_is_capped": false,
+   "rs": 4.75,
+   "fork_corroboration": 0.513,
+   "excess_above_trend": 254.8,
+   "pace_multiple": 15.02,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 89564,
+   "pushed_at": "2026-08-31T20:40:48",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 23096959,
+   "rank": 14,
+   "name": "golang/go",
+   "description": "The Go programming language",
+   "language": "Go",
+   "topics": [
+    "go",
+    "golang",
+    "language",
+    "programming-language"
+   ],
+   "license": "BSD-3-Clause",
+   "homepage": "https://go.dev",
+   "forks": 19339,
+   "final_display": 2.103793426849625,
+   "final_is_capped": false,
+   "rs": 3.268,
+   "fork_corroboration": 0.644,
+   "excess_above_trend": 204.5,
+   "pace_multiple": 5.22,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 137090,
+   "pushed_at": "2026-09-01T01:58:01",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 81598961,
+   "rank": 15,
+   "name": "python/cpython",
+   "description": "The Python programming language",
+   "language": "Python",
+   "topics": [],
+   "license": "NOASSERTION",
+   "homepage": "https://www.python.org",
+   "forks": 35319,
+   "final_display": 1.7780197061426197,
+   "final_is_capped": false,
+   "rs": 3.556,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 244.1,
+   "pace_multiple": 6.32,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 75580,
+   "pushed_at": "2026-09-01T11:49:55",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 20580498,
+   "rank": 16,
+   "name": "kubernetes/kubernetes",
+   "description": "Production-Grade Container Scheduling and Management",
+   "language": "Go",
+   "topics": [
+    "cncf",
+    "containers",
+    "go",
+    "kubernetes"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://kubernetes.io",
+   "forks": 43981,
+   "final_display": 1.7037550803733885,
+   "final_is_capped": false,
+   "rs": 3.29,
+   "fork_corroboration": 0.518,
+   "excess_above_trend": 260.9,
+   "pace_multiple": 4.94,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 125908,
+   "pushed_at": "2026-09-01T11:48:20",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 10270250,
+   "rank": 17,
+   "name": "react/react",
+   "description": "The library for web and native user interfaces.",
+   "language": "JavaScript",
+   "topics": [
+    "declarative",
+    "frontend",
+    "javascript",
+    "library",
+    "react",
+    "ui"
+   ],
+   "license": "MIT",
+   "homepage": "https://react.dev",
+   "forks": 51269,
+   "final_display": 1.5907599050036565,
+   "final_is_capped": false,
+   "rs": 3.182,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 241.9,
+   "pace_multiple": 5.16,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 248629,
+   "pushed_at": "2026-08-31T17:52:30",
+   "link_suppressed": false,
+   "corrections": []
+  }
+ ],
+ "facets": {
+  "band": {
+   "established": 17
+  }
+ }
+}

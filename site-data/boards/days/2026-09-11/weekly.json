@@ -1,0 +1,890 @@
+{
+ "board_type": "weekly",
+ "day": "2026-09-11",
+ "floor": 3.0,
+ "strata_admitted": [
+  "30k+"
+ ],
+ "strata_held": [
+  "1-3k",
+  "10-30k",
+  "200-1k",
+  "3-10k"
+ ],
+ "hold_reason": "200-1k: 211051/211573 on 2026-09-11; 1-3k: 43590/43680 on 2026-09-11; 3-10k: 16437/16463 on 2026-09-11; 10-30k: 4372/4377 on 2026-09-11",
+ "partial_history": true,
+ "rows": [
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 28751632,
+   "rank": 1,
+   "name": "0xAX/linux-insides",
+   "description": "A book-in-progress about the Linux kernel and its insides.",
+   "language": "Python",
+   "topics": [
+    "linux",
+    "linux-insides",
+    "linux-kernel"
+   ],
+   "license": "NOASSERTION",
+   "homepage": "https://0xax.dev/books/linux-inside/",
+   "forks": 3561,
+   "final_display": 9.0,
+   "final_is_capped": true,
+   "rs": 24.184,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 471.3,
+   "pace_multiple": 10.29,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 33481,
+   "pushed_at": "2026-09-09T18:58:35",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 11730342,
+   "rank": 2,
+   "name": "vuejs/vue",
+   "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
+   "language": "TypeScript",
+   "topics": [
+    "framework",
+    "frontend",
+    "javascript",
+    "vue"
+   ],
+   "license": "MIT",
+   "homepage": "http://v2.vuejs.org",
+   "forks": 33723,
+   "final_display": 6.783049556424389,
+   "final_is_capped": false,
+   "rs": 13.566,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1654.2,
+   "pace_multiple": 29.13,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 212463,
+   "pushed_at": "2024-10-10T07:24:15",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "231 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "d026163f586dfa8c5c10d28c36edd59a9d3b0e88"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 158 subsystems \u2014 Asset Extraction and Detection \u00b7 Agent Execution Engine \u00b7 Session Management",
+     "Core: Llm \u00b7 AgentRunRecorder \u00b7 TokenUsage"
+    ],
+    "commit_sha": "d026163f586dfa8c5c10d28c36edd59a9d3b0e88"
+   },
+   "repo_id": 718741813,
+   "rank": 3,
+   "name": "abi/screenshot-to-code",
+   "description": "Drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue)",
+   "language": "Python",
+   "topics": [],
+   "license": "MIT",
+   "homepage": "https://screenshottocode.com",
+   "forks": 9578,
+   "final_display": 6.5179492661000635,
+   "final_is_capped": false,
+   "rs": 6.518,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 2954.9,
+   "pace_multiple": 14.25,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 78551,
+   "pushed_at": "2026-09-09T17:27:34",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 596892,
+   "rank": 4,
+   "name": "pallets/flask",
+   "description": "The Python micro framework for building web applications.",
+   "language": "Python",
+   "topics": [
+    "flask",
+    "jinja",
+    "pallets",
+    "python",
+    "web-framework",
+    "werkzeug",
+    "wsgi"
+   ],
+   "license": "BSD-3-Clause",
+   "homepage": "https://flask.palletsprojects.com",
+   "forks": 16978,
+   "final_display": 4.552220523970842,
+   "final_is_capped": false,
+   "rs": 9.104,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 2072.5,
+   "pace_multiple": 42.05,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 74268,
+   "pushed_at": "2026-09-08T16:40:53",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 4164482,
+   "rank": 5,
+   "name": "django/django",
+   "description": "The Web framework for perfectionists with deadlines.",
+   "language": "Python",
+   "topics": [
+    "apps",
+    "django",
+    "framework",
+    "models",
+    "orm",
+    "python",
+    "templates",
+    "views",
+    "web"
+   ],
+   "license": "BSD-3-Clause",
+   "homepage": "https://www.djangoproject.com/",
+   "forks": 34247,
+   "final_display": 4.396966577144237,
+   "final_is_capped": false,
+   "rs": 8.794,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1566.5,
+   "pace_multiple": 10.52,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 90759,
+   "pushed_at": "2026-09-08T19:01:03",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 27193779,
+   "rank": 6,
+   "name": "nodejs/node",
+   "description": "Node.js JavaScript runtime \u2728\ud83d\udc22\ud83d\ude80\u2728",
+   "language": "JavaScript",
+   "topics": [
+    "javascript",
+    "js",
+    "linux",
+    "macos",
+    "mit",
+    "node",
+    "nodejs",
+    "runtime",
+    "windows"
+   ],
+   "license": "NOASSERTION",
+   "homepage": "https://nodejs.org",
+   "forks": 36714,
+   "final_display": 2.809872259740469,
+   "final_is_capped": false,
+   "rs": 5.62,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1682.5,
+   "pace_multiple": 7.88,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 121579,
+   "pushed_at": "2026-09-11T11:44:16",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 10270250,
+   "rank": 7,
+   "name": "react/react",
+   "description": "The library for web and native user interfaces.",
+   "language": "JavaScript",
+   "topics": [
+    "declarative",
+    "frontend",
+    "javascript",
+    "library",
+    "react",
+    "ui"
+   ],
+   "license": "MIT",
+   "homepage": "https://react.dev",
+   "forks": 51327,
+   "final_display": 2.76980147426021,
+   "final_is_capped": false,
+   "rs": 5.54,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1660.8,
+   "pace_multiple": 5.43,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 250035,
+   "pushed_at": "2026-09-11T10:15:52",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 81598961,
+   "rank": 8,
+   "name": "python/cpython",
+   "description": "The Python programming language",
+   "language": "Python",
+   "topics": [],
+   "license": "NOASSERTION",
+   "homepage": "https://www.python.org",
+   "forks": 35364,
+   "final_display": 2.708444273136252,
+   "final_is_capped": false,
+   "rs": 5.417,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1560.1,
+   "pace_multiple": 7.17,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 76837,
+   "pushed_at": "2026-09-11T12:42:45",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 20580498,
+   "rank": 9,
+   "name": "kubernetes/kubernetes",
+   "description": "Production-Grade Container Scheduling and Management",
+   "language": "Go",
+   "topics": [
+    "cncf",
+    "containers",
+    "go",
+    "kubernetes"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://kubernetes.io",
+   "forks": 44037,
+   "final_display": 2.6407294457858717,
+   "final_is_capped": false,
+   "rs": 5.281,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1672.8,
+   "pace_multiple": 5.89,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 127328,
+   "pushed_at": "2026-09-11T10:48:37",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "73 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
+   },
+   "structure": {
+    "state": "failed(label)",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
+   },
+   "repo_id": 834369920,
+   "rank": 10,
+   "name": "jingyaogong/minimind",
+   "description": "\ud83e\udde0\u300c\u5927\u6a21\u578b\u300d2\u5c0f\u65f6\u5b8c\u5168\u4ece0\u8bad\u7ec364M\u7684\u5c0f\u53c2\u6570LLM\uff01Train a 64M-parameter LLM from scratch in just 2h!",
+   "language": "Python",
+   "topics": [
+    "artificial-intelligence",
+    "large-language-model"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://jingyaogong.github.io/minimind",
+   "forks": 7876,
+   "final_display": 2.5178605836421326,
+   "final_is_capped": false,
+   "rs": 5.036,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 4795.2,
+   "pace_multiple": 7.09,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 60692,
+   "pushed_at": "2026-09-10T03:44:15",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 45717250,
+   "rank": 11,
+   "name": "tensorflow/tensorflow",
+   "description": "An Open Source Machine Learning Framework for Everyone",
+   "language": "C++",
+   "topics": [
+    "deep-learning",
+    "deep-neural-networks",
+    "distributed",
+    "machine-learning",
+    "ml",
+    "neural-network",
+    "python",
+    "tensorflow"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://tensorflow.org",
+   "forks": 76301,
+   "final_display": 2.4901948931781743,
+   "final_is_capped": false,
+   "rs": 4.98,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1674.3,
+   "pace_multiple": 7.12,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 199709,
+   "pushed_at": "2026-09-11T11:40:02",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 23096959,
+   "rank": 12,
+   "name": "golang/go",
+   "description": "The Go programming language",
+   "language": "Go",
+   "topics": [
+    "go",
+    "golang",
+    "language",
+    "programming-language"
+   ],
+   "license": "BSD-3-Clause",
+   "homepage": "https://go.dev",
+   "forks": 19353,
+   "final_display": 2.102311742956236,
+   "final_is_capped": false,
+   "rs": 4.205,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1514.4,
+   "pace_multiple": 5.34,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 138413,
+   "pushed_at": "2026-09-10T23:01:21",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 724712,
+   "rank": 13,
+   "name": "rust-lang/rust",
+   "description": "Empowering everyone to build reliable and efficient software.",
+   "language": "Rust",
+   "topics": [
+    "compiler",
+    "language",
+    "rust"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://www.rust-lang.org",
+   "forks": 15549,
+   "final_display": 2.035148438030526,
+   "final_is_capped": false,
+   "rs": 4.07,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1649.6,
+   "pace_multiple": 4.87,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 118386,
+   "pushed_at": "2026-09-11T10:47:33",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "08992417141a93a061f8c3d866c6b0c3012f9454"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 11 subsystems \u2014 Web Search and Chat \u00b7 Image Input and Description \u00b7 Function Calling",
+     "Core: print_separator() \u00b7 test_image_analysis() \u00b7 test_file_analysis()"
+    ],
+    "commit_sha": "eb1032706a62cd1ca9bd4eb54c147e4e2542d76e"
+   },
+   "repo_id": 631567741,
+   "rank": 14,
+   "name": "chatanywhere/GPT_API_free",
+   "description": "\u514d\u8d39\u5927\u6a21\u578bAPI\uff0c\u652f\u6301\u514d\u8d39\u8c03\u7528GPT\u3001DeepSeek\u7b49\u4e3b\u6d41\u6a21\u578b\uff0c\u514d\u8d39\u989d\u5ea610000\u70b9\uff0c\u6bcf\u65e5\u5237\u65b0\uff01\u53e6\u4ed8\u8d39\u4ef7\u683c\u6700\u4f4e\u5b98\u65b91-2\u6298\uff01",
+   "language": null,
+   "topics": [
+    "api",
+    "chatgpt",
+    "claude",
+    "deepseek",
+    "gemini",
+    "gpt",
+    "grok",
+    "llm-agents"
+   ],
+   "license": "MIT",
+   "homepage": "https://api.chatanywhere.tech",
+   "forks": 2720,
+   "final_display": 1.9808976779940044,
+   "final_is_capped": false,
+   "rs": 3.962,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 695.6,
+   "pace_multiple": 3.26,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 42313,
+   "pushed_at": "2026-09-07T17:19:11",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 400215964,
+   "rank": 15,
+   "name": "novuhq/novu",
+   "description": "The open-source communication infrastructure for agents and products",
+   "language": "TypeScript",
+   "topics": [
+    "agents",
+    "communication",
+    "email",
+    "inbox",
+    "infrastructure",
+    "nodejs",
+    "notification-center",
+    "notifications",
+    "novu",
+    "push-notifications",
+    "react",
+    "reactjs",
+    "sms",
+    "transactional",
+    "typescript"
+   ],
+   "license": "NOASSERTION",
+   "homepage": "https://go.novu.co/github",
+   "forks": 4484,
+   "final_display": 1.5999437637409946,
+   "final_is_capped": false,
+   "rs": 3.2,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 204.5,
+   "pace_multiple": 3.45,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 39969,
+   "pushed_at": "2026-09-11T13:49:36",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 41881900,
+   "rank": 16,
+   "name": "microsoft/vscode",
+   "description": "Visual Studio Code",
+   "language": "TypeScript",
+   "topics": [
+    "editor",
+    "electron",
+    "microsoft",
+    "typescript",
+    "visual-studio-code"
+   ],
+   "license": "MIT",
+   "homepage": "https://code.visualstudio.com",
+   "forks": 42103,
+   "final_display": 1.5472613096791676,
+   "final_is_capped": false,
+   "rs": 3.095,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 1604.7,
+   "pace_multiple": 3.5,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 191994,
+   "pushed_at": "2026-09-11T12:11:12",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 172521926,
+   "rank": 17,
+   "name": "pmndrs/react-three-fiber",
+   "description": "\ud83c\udde8\ud83c\udded A React renderer for Three.js",
+   "language": "TypeScript",
+   "topics": [
+    "3d",
+    "animation",
+    "fiber",
+    "react",
+    "renderer",
+    "threejs"
+   ],
+   "license": "MIT",
+   "homepage": "https://docs.pmnd.rs/react-three-fiber",
+   "forks": 1967,
+   "final_display": 1.5392936457462594,
+   "final_is_capped": false,
+   "rs": 3.079,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 299.5,
+   "pace_multiple": 3.33,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 32244,
+   "pushed_at": "2026-09-08T06:09:37",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "311 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "d913011e6e8ab8bd28315921c4b3ea86f908934a"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 449 subsystems \u2014 Task Status Management \u00b7 Cryptographic Utilities \u00b7 UI Form Components",
+     "Core: cn() \u00b7 DownloadTask \u00b7 TaskStatus"
+    ],
+    "commit_sha": "18745cce4e17961e673cdfd85b297bf4f6d1a82c"
+   },
+   "repo_id": 162279822,
+   "rank": 18,
+   "name": "agalwood/Motrix",
+   "description": "A full-featured download manager.",
+   "language": "JavaScript",
+   "topics": [
+    "aria2",
+    "bittorrent",
+    "bt",
+    "download",
+    "download-manager",
+    "electron",
+    "linux",
+    "mac",
+    "macos",
+    "magnet",
+    "motrix",
+    "torrent",
+    "windows"
+   ],
+   "license": "MIT",
+   "homepage": "https://motrix.app",
+   "forks": 5030,
+   "final_display": 1.514294074868265,
+   "final_is_capped": false,
+   "rs": 3.029,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 486.1,
+   "pace_multiple": 3.47,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 55436,
+   "pushed_at": "2026-09-11T12:13:50",
+   "link_suppressed": false,
+   "corrections": []
+  }
+ ],
+ "facets": {
+  "band": {
+   "established": 18
+  }
+ }
+}

@@ -1,0 +1,262 @@
+{
+ "board_type": "daily",
+ "day": "2026-09-08",
+ "floor": 3.0,
+ "strata_admitted": [
+  "30k+"
+ ],
+ "strata_held": [
+  "1-3k",
+  "10-30k",
+  "200-1k",
+  "3-10k"
+ ],
+ "hold_reason": "200-1k: 210769/211249 on 2026-09-08; 1-3k: 43521/43610 on 2026-09-08; 3-10k: 16410/16436 on 2026-09-08; 10-30k: 4370/4375 on 2026-09-08",
+ "partial_history": true,
+ "rows": [
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1177402105,
+   "rank": 1,
+   "name": "heygen-com/hyperframes",
+   "description": "Write HTML. Render video. Built for agents.",
+   "language": "TypeScript",
+   "topics": [
+    "ai",
+    "animation",
+    "ffmpeg",
+    "framework",
+    "gsap",
+    "html",
+    "mcp",
+    "puppeteer",
+    "rendering",
+    "typescript",
+    "video"
+   ],
+   "license": "Apache-2.0",
+   "homepage": null,
+   "forks": 4379,
+   "final_display": 4.781192029601894,
+   "final_is_capped": false,
+   "rs": 7.648,
+   "fork_corroboration": 0.625,
+   "excess_above_trend": 2709.5,
+   "pace_multiple": 9.15,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 47476,
+   "pushed_at": "2026-09-08T13:18:58",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "73 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
+   },
+   "structure": {
+    "state": "failed(label)",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
+   },
+   "repo_id": 834369920,
+   "rank": 2,
+   "name": "jingyaogong/minimind",
+   "description": "\ud83e\udde0\u300c\u5927\u6a21\u578b\u300d2\u5c0f\u65f6\u5b8c\u5168\u4ece0\u8bad\u7ec364M\u7684\u5c0f\u53c2\u6570LLM\uff01Train a 64M-parameter LLM from scratch in just 2h!",
+   "language": "Python",
+   "topics": [
+    "artificial-intelligence",
+    "large-language-model"
+   ],
+   "license": "Apache-2.0",
+   "homepage": "https://jingyaogong.github.io/minimind",
+   "forks": 7748,
+   "final_display": 3.90901972772069,
+   "final_is_capped": false,
+   "rs": 4.401,
+   "fork_corroboration": 0.888,
+   "excess_above_trend": 509.3,
+   "pace_multiple": 4.42,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 59827,
+   "pushed_at": "2026-09-04T14:16:47",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 598667202,
+   "rank": 3,
+   "name": "lightpanda-io/browser",
+   "description": "Lightpanda: the headless browser designed for AI and automation",
+   "language": "Zig",
+   "topics": [
+    "browser",
+    "browser-automation",
+    "cdp",
+    "headless",
+    "lightpanda",
+    "playwright",
+    "puppeteer",
+    "zig"
+   ],
+   "license": "AGPL-3.0",
+   "homepage": "https://lightpanda.io",
+   "forks": 1662,
+   "final_display": 3.7536977905300235,
+   "final_is_capped": false,
+   "rs": 6.398,
+   "fork_corroboration": 0.587,
+   "excess_above_trend": 475.0,
+   "pace_multiple": 8.67,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 35135,
+   "pushed_at": "2026-09-08T13:42:20",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1197990888,
+   "rank": 4,
+   "name": "Gitlawb/openclaude",
+   "description": "runs anywhere. uses anything",
+   "language": "TypeScript",
+   "topics": [
+    "ai",
+    "ai-agent",
+    "ai-tools",
+    "cli",
+    "coding"
+   ],
+   "license": "NOASSERTION",
+   "homepage": "https://openclaude.gitlawb.com",
+   "forks": 9070,
+   "final_display": 3.2637117429657443,
+   "final_is_capped": false,
+   "rs": 3.706,
+   "fork_corroboration": 0.881,
+   "excess_above_trend": 108.7,
+   "pace_multiple": 3.25,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 33004,
+   "pushed_at": "2026-09-07T23:53:01",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1135212071,
+   "rank": 5,
+   "name": "coreyhaines31/marketingskills",
+   "description": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
+   "language": "JavaScript",
+   "topics": [
+    "claude",
+    "codex",
+    "marketing"
+   ],
+   "license": "MIT",
+   "homepage": "https://marketing-skills.com",
+   "forks": 7480,
+   "final_display": 3.0757632194496005,
+   "final_is_capped": false,
+   "rs": 3.602,
+   "fork_corroboration": 0.854,
+   "excess_above_trend": 709.1,
+   "pace_multiple": 3.09,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 48589,
+   "pushed_at": "2026-09-05T04:48:10",
+   "link_suppressed": false,
+   "corrections": []
+  }
+ ],
+ "facets": {
+  "band": {
+   "established": 5
+  }
+ }
+}

@@ -1,0 +1,934 @@
+{
+ "board_type": "daily",
+ "day": "2026-08-25",
+ "floor": 3.0,
+ "strata_admitted": [
+  "30k+"
+ ],
+ "strata_held": [
+  "1-3k",
+  "10-30k",
+  "200-1k",
+  "3-10k"
+ ],
+ "hold_reason": "200-1k: 209754/210015 on 2026-08-25; 1-3k: 43281/43351 on 2026-08-25; 3-10k: 16295/16314 on 2026-08-25; 10-30k: 4351/4356 on 2026-08-25",
+ "partial_history": true,
+ "rows": [
+  {
+   "security": {
+    "card": "475 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "30756a79b2f7d4363ac592710146c8e28fa9f1b5"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 282 subsystems \u2014 Telemetry and Interaction Tracking \u00b7 Dashboard and Rule Pages \u00b7 Core Dependencies",
+     "Core: scripts \u00b7 Rule \u00b7 TELEMETRY_EVENTS"
+    ],
+    "commit_sha": "30756a79b2f7d4363ac592710146c8e28fa9f1b5"
+   },
+   "repo_id": 107111421,
+   "rank": 1,
+   "name": "thedaviddias/Front-End-Checklist",
+   "description": "\ud83d\uddc2 The essential checklist for modern web development, for humans and AI agents",
+   "language": "MDX",
+   "topics": [
+    "ai-agent",
+    "ai-agents",
+    "checklist",
+    "css",
+    "front-end-developer-tool",
+    "front-end-development",
+    "frontend",
+    "guidelines",
+    "html",
+    "javascript",
+    "lists",
+    "reference",
+    "resources",
+    "rules",
+    "web-development"
+   ],
+   "license": null,
+   "homepage": "https://frontendchecklist.io",
+   "forks": 6700,
+   "final_display": 7.813644362205776,
+   "final_is_capped": false,
+   "rs": 7.814,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 168.3,
+   "pace_multiple": 8.77,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 73810,
+   "pushed_at": "2026-08-14T05:59:25",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "1009 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "f99d33a8ddee7b36509a71a6d20d5d23355ce8b1"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 1,031 subsystems \u2014 Windows VM Management \u00b7 System Provisioning \u00b7 System Upgrade and Transition",
+     "Core: monitor-clamshell-scale-test.sh script \u00b7 DBusMenu \u00b7 bar-widget"
+    ],
+    "commit_sha": "f99d33a8ddee7b36509a71a6d20d5d23355ce8b1"
+   },
+   "repo_id": 994093166,
+   "rank": 2,
+   "name": "omacom/omarchy",
+   "description": "Beautiful, Modern & Opinionated Linux",
+   "language": "Shell",
+   "topics": [],
+   "license": "MIT",
+   "homepage": "https://omarchy.org",
+   "forks": 3144,
+   "final_display": 7.167416604877045,
+   "final_is_capped": false,
+   "rs": 7.554,
+   "fork_corroboration": 0.949,
+   "excess_above_trend": 1800.2,
+   "pace_multiple": 16.28,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 30920,
+   "pushed_at": "2026-08-25T15:29:07",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
+    "link_suppressed": false,
+    "commit_sha": "4a755af153df462e10859336596c73415d64437a"
+   },
+   "structure": {
+    "state": "empty(no_code)",
+    "lines": [
+     "Structure: no code to map \u2014 curated list / documentation repository"
+    ],
+    "commit_sha": "8873794bcb26ff5dcf9cd518c87cf5638ca44b92"
+   },
+   "repo_id": 1084853233,
+   "rank": 3,
+   "name": "VoltAgent/awesome-agent-skills",
+   "description": "A curated collection of 1000+ agent skills from official dev teams and the community, compatible with Claude Code, Codex, Gemini CLI, Cursor, and more.",
+   "language": null,
+   "topics": [
+    "agent-skills",
+    "ai-agents",
+    "antigravity-skills",
+    "awesome",
+    "awesome-list",
+    "awesome-lists",
+    "claude-code",
+    "claude-code-skills",
+    "claude-skills",
+    "codex-skills",
+    "cursor-skills",
+    "gemini-skills",
+    "opencode-skills",
+    "skills"
+   ],
+   "license": "MIT",
+   "homepage": "https://officialskills.sh/",
+   "forks": 3417,
+   "final_display": 6.224334531021408,
+   "final_is_capped": false,
+   "rs": 8.036,
+   "fork_corroboration": 0.775,
+   "excess_above_trend": 847.7,
+   "pace_multiple": 7.27,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 32196,
+   "pushed_at": "2026-08-25T08:04:16",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "14 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "b96912cd94e264837bb60cec82309b2b899f489e"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 9 subsystems \u2014 Remark Linting Configuration \u00b7 Remark CLI and Dependencies \u00b7 Package Metadata Fields",
+     "Core: plugins \u00b7 repository \u00b7 scripts"
+    ],
+    "commit_sha": "b96912cd94e264837bb60cec82309b2b899f489e"
+   },
+   "repo_id": 85031442,
+   "rank": 4,
+   "name": "poteto/hiring-without-whiteboards",
+   "description": "\u2b50\ufe0f  Companies that don't have a broken hiring process",
+   "language": "JavaScript",
+   "topics": [
+    "airtable",
+    "hiring",
+    "hiring-without-whiteboards",
+    "interview",
+    "jobs",
+    "tech",
+    "whiteboard"
+   ],
+   "license": "MIT",
+   "homepage": null,
+   "forks": 3918,
+   "final_display": 5.973617767177895,
+   "final_is_capped": false,
+   "rs": 6.035,
+   "fork_corroboration": 0.99,
+   "excess_above_trend": 118.5,
+   "pace_multiple": 8.18,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 51605,
+   "pushed_at": "2026-08-24T02:32:28",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "461 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "a7ab2d66d781b903cb060288a89e26e8d2b9a05f"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 2,619 subsystems \u2014 Account Notification API \u00b7 Guardian Prompt Tests \u00b7 Credits Schema Definition",
+     "Core: PathBuf \u00b7 Value \u00b7 test_codex()"
+    ],
+    "commit_sha": "16491f7f708d0869fc2356f12172f0b5e3922d19"
+   },
+   "repo_id": 965415649,
+   "rank": 5,
+   "name": "openai/codex",
+   "description": "Lightweight coding agent that runs in your terminal",
+   "language": "Rust",
+   "topics": [],
+   "license": "Apache-2.0",
+   "homepage": null,
+   "forks": 17981,
+   "final_display": 5.958894268678444,
+   "final_is_capped": false,
+   "rs": 6.206,
+   "fork_corroboration": 0.96,
+   "excess_above_trend": 2245.4,
+   "pace_multiple": 4.71,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 117915,
+   "pushed_at": "2026-08-25T15:17:29",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "31 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 179 subsystems \u2014 Console Rendering Options \u00b7 Styled Text Representation \u00b7 Layout and Panels",
+     "Core: Console \u00b7 Text \u00b7 Style"
+    ],
+    "commit_sha": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f"
+   },
+   "repo_id": 220809393,
+   "rank": 6,
+   "name": "Textualize/rich",
+   "description": "Rich is a Python library for rich text and beautiful formatting in the terminal.",
+   "language": "Python",
+   "topics": [
+    "ansi-colors",
+    "emoji",
+    "markdown",
+    "progress-bar",
+    "progress-bar-python",
+    "python",
+    "python-library",
+    "python3",
+    "rich",
+    "syntax-highlighting",
+    "tables",
+    "terminal",
+    "terminal-color",
+    "traceback",
+    "tracebacks-rich",
+    "tui"
+   ],
+   "license": "MIT",
+   "homepage": "https://rich.readthedocs.io/en/latest/",
+   "forks": 2309,
+   "final_display": 4.869531353300747,
+   "final_is_capped": false,
+   "rs": 7.981,
+   "fork_corroboration": 0.61,
+   "excess_above_trend": 79.5,
+   "pace_multiple": 6.9,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 57225,
+   "pushed_at": "2026-06-23T03:10:19",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1144520675,
+   "rank": 7,
+   "name": "Alishahryar1/free-claude-code",
+   "description": "Use Claude Code, Codex and Pi for free from your terminal, app, IDE, or phone like OpenClaw (voice supported)",
+   "language": "Python",
+   "topics": [],
+   "license": "MIT",
+   "homepage": null,
+   "forks": 8075,
+   "final_display": 4.355586335166053,
+   "final_is_capped": false,
+   "rs": 5.679,
+   "fork_corroboration": 0.767,
+   "excess_above_trend": 1482.2,
+   "pace_multiple": 6.13,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 49630,
+   "pushed_at": "2026-08-25T08:15:11",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "1926 findings \u00b7 1 check pending",
+    "link_suppressed": false,
+    "commit_sha": "63939f874f38d1cacb675534944f860dc3dd0a9e"
+   },
+   "structure": {
+    "state": "failed(timeout)",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": "277d8694e5af9f07013d355aff5cb5d7adf9fbb6"
+   },
+   "repo_id": 235901813,
+   "rank": 8,
+   "name": "PostHog/posthog",
+   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools \u2013 AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more \u2013 capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
+   "language": "Python",
+   "topics": [
+    "ab-testing",
+    "ai-analytics",
+    "analytics",
+    "cdp",
+    "data-warehouse",
+    "experiments",
+    "feature-flags",
+    "javascript",
+    "product-analytics",
+    "python",
+    "react",
+    "session-replay",
+    "surveys",
+    "typescript",
+    "web-analytics"
+   ],
+   "license": "NOASSERTION",
+   "homepage": "https://posthog.com",
+   "forks": 3284,
+   "final_display": 3.8785865726071584,
+   "final_is_capped": false,
+   "rs": 5.801,
+   "fork_corroboration": 0.669,
+   "excess_above_trend": 301.1,
+   "pace_multiple": 7.42,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 39125,
+   "pushed_at": "2026-08-25T14:02:58",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 32484381,
+   "rank": 9,
+   "name": "ripienaar/free-for-dev",
+   "description": "A list of SaaS, PaaS and IaaS offerings that have free tiers of interest to devops and infradev",
+   "language": "HTML",
+   "topics": [
+    "awesome-list",
+    "free-for-developers"
+   ],
+   "license": null,
+   "homepage": "https://free-for.dev/",
+   "forks": 14142,
+   "final_display": 3.524762477497673,
+   "final_is_capped": false,
+   "rs": 3.897,
+   "fork_corroboration": 0.904,
+   "excess_above_trend": 643.0,
+   "pace_multiple": 4.4,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 135175,
+   "pushed_at": "2026-08-25T11:20:58",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "311 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "link_suppressed": false,
+    "commit_sha": "d913011e6e8ab8bd28315921c4b3ea86f908934a"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 449 subsystems \u2014 Task Status Management \u00b7 Cryptographic Utilities \u00b7 UI Form Components",
+     "Core: cn() \u00b7 DownloadTask \u00b7 TaskStatus"
+    ],
+    "commit_sha": "18745cce4e17961e673cdfd85b297bf4f6d1a82c"
+   },
+   "repo_id": 162279822,
+   "rank": 10,
+   "name": "agalwood/Motrix",
+   "description": "A full-featured download manager.",
+   "language": "JavaScript",
+   "topics": [
+    "aria2",
+    "bittorrent",
+    "bt",
+    "download",
+    "download-manager",
+    "electron",
+    "linux",
+    "mac",
+    "macos",
+    "magnet",
+    "motrix",
+    "torrent",
+    "windows"
+   ],
+   "license": "MIT",
+   "homepage": "https://motrix.app",
+   "forks": 4995,
+   "final_display": 3.3752137056371914,
+   "final_is_capped": false,
+   "rs": 3.375,
+   "fork_corroboration": 1.0,
+   "excess_above_trend": 97.0,
+   "pace_multiple": 4.13,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 54532,
+   "pushed_at": "2026-08-25T13:28:56",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 438384984,
+   "rank": 11,
+   "name": "honojs/hono",
+   "description": "Web framework built on Web Standards",
+   "language": "TypeScript",
+   "topics": [
+    "aws-lambda",
+    "bun",
+    "cloudflare",
+    "cloudflare-workers",
+    "deno",
+    "npm",
+    "router",
+    "typescript",
+    "web-framework"
+   ],
+   "license": "MIT",
+   "homepage": "https://hono.dev",
+   "forks": 1252,
+   "final_display": 3.364541838541891,
+   "final_is_capped": false,
+   "rs": 3.863,
+   "fork_corroboration": 0.871,
+   "excess_above_trend": 62.9,
+   "pace_multiple": 3.6,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 31956,
+   "pushed_at": "2026-08-24T08:44:48",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 568098118,
+   "rank": 12,
+   "name": "makeplane/plane",
+   "description": "\ud83d\udd25\ud83d\udd25\ud83d\udd25 Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.",
+   "language": "TypeScript",
+   "topics": [
+    "boards",
+    "bug-tracker",
+    "django",
+    "docker",
+    "gantt",
+    "issue-tracker",
+    "jira",
+    "jira-alternative",
+    "kanban",
+    "linear",
+    "postgresql",
+    "product-management",
+    "project-management",
+    "project-planning",
+    "python",
+    "react",
+    "redis",
+    "typescipt",
+    "vite",
+    "work-management"
+   ],
+   "license": "AGPL-3.0",
+   "homepage": "http://plane.so",
+   "forks": 5510,
+   "final_display": 3.3638496946409715,
+   "final_is_capped": false,
+   "rs": 5.226,
+   "fork_corroboration": 0.644,
+   "excess_above_trend": 594.1,
+   "pace_multiple": 6.95,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 58206,
+   "pushed_at": "2026-08-25T11:03:19",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "940 findings \u00b7 1 check pending",
+    "link_suppressed": false,
+    "commit_sha": "a8380147a23d9fd97ee5457c109478d235eaded9"
+   },
+   "structure": {
+    "state": "done",
+    "lines": [
+     "Structure: 1,457 subsystems \u2014 HTTP Client Exceptions \u00b7 Execution and Auth Modes \u00b7 Server Error Handling",
+     "Core: RequestContext \u00b7 UserIdentifier \u00b7 Role"
+    ],
+    "commit_sha": "0f77ab5625a5e2ead4f286d4e58ea77e05fcfdee"
+   },
+   "repo_id": 1128123594,
+   "rank": 13,
+   "name": "volcengine/OpenViking",
+   "description": "Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.",
+   "language": "Python",
+   "topics": [
+    "agent-memory",
+    "agent-plugins",
+    "agentic-rag",
+    "context-database",
+    "self-evolving"
+   ],
+   "license": "AGPL-3.0",
+   "homepage": "https://openviking.ai/",
+   "forks": 2530,
+   "final_display": 2.7398704423405484,
+   "final_is_capped": false,
+   "rs": 3.489,
+   "fork_corroboration": 0.785,
+   "excess_above_trend": 560.8,
+   "pace_multiple": 3.69,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 2,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 33210,
+   "pushed_at": "2026-08-25T14:25:20",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 11730342,
+   "rank": 14,
+   "name": "vuejs/vue",
+   "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
+   "language": "TypeScript",
+   "topics": [
+    "framework",
+    "frontend",
+    "javascript",
+    "vue"
+   ],
+   "license": "MIT",
+   "homepage": "http://v2.vuejs.org",
+   "forks": 33749,
+   "final_display": 2.683616282747379,
+   "final_is_capped": false,
+   "rs": 5.367,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 208.7,
+   "pace_multiple": 23.37,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 210690,
+   "pushed_at": "2024-10-10T07:24:15",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 1161163182,
+   "rank": 15,
+   "name": "tinyhumansai/openhuman",
+   "description": "Your Personal AI super intelligence. A brain that builds a local-first memory of your life, a fantastic orchestrator of agent fleets and workflows, and a deep researcher.",
+   "language": "Rust",
+   "topics": [],
+   "license": "GPL-3.0",
+   "homepage": "https://tinyhumans.ai/openhuman",
+   "forks": 3725,
+   "final_display": 2.4629637977907035,
+   "final_is_capped": false,
+   "rs": 4.926,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 840.0,
+   "pace_multiple": 8.85,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 37610,
+   "pushed_at": "2026-08-25T14:19:31",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 4164482,
+   "rank": 16,
+   "name": "django/django",
+   "description": "The Web framework for perfectionists with deadlines.",
+   "language": "Python",
+   "topics": [
+    "apps",
+    "django",
+    "framework",
+    "models",
+    "orm",
+    "python",
+    "templates",
+    "views",
+    "web"
+   ],
+   "license": "BSD-3-Clause",
+   "homepage": "https://www.djangoproject.com/",
+   "forks": 34178,
+   "final_display": 2.2785835395796266,
+   "final_is_capped": false,
+   "rs": 4.483,
+   "fork_corroboration": 0.508,
+   "excess_above_trend": 192.9,
+   "pace_multiple": 11.08,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 88967,
+   "pushed_at": "2026-08-23T19:39:31",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 23096959,
+   "rank": 17,
+   "name": "golang/go",
+   "description": "The Go programming language",
+   "language": "Go",
+   "topics": [
+    "go",
+    "golang",
+    "language",
+    "programming-language"
+   ],
+   "license": "BSD-3-Clause",
+   "homepage": "https://go.dev",
+   "forks": 19298,
+   "final_display": 1.8754292088474755,
+   "final_is_capped": false,
+   "rs": 3.751,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 220.1,
+   "pace_multiple": 6.25,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary",
+    "unconfirmed-by-forks"
+   ],
+   "summary": null,
+   "stars": 136450,
+   "pushed_at": "2026-08-25T07:07:58",
+   "link_suppressed": false,
+   "corrections": []
+  },
+  {
+   "security": {
+    "card": "not yet scanned \u2014 queued",
+    "link_suppressed": false,
+    "commit_sha": null
+   },
+   "structure": {
+    "state": "queued",
+    "lines": [
+     "Structure: not yet mapped \u2014 queued"
+    ],
+    "commit_sha": null
+   },
+   "repo_id": 974186260,
+   "rank": 18,
+   "name": "sansan0/TrendRadar",
+   "description": "\u2b50AI-driven public opinion & trend monitor with multi-platform aggregation, RSS, and smart alerts.\ud83c\udfaf \u544a\u522b\u4fe1\u606f\u8fc7\u8f7d\uff0c\u4f60\u7684 AI \u8206\u60c5\u76d1\u63a7\u52a9\u624b\u4e0e\u70ed\u70b9\u7b5b\u9009\u5de5\u5177\uff01\u805a\u5408\u591a\u5e73\u53f0\u70ed\u70b9 +  RSS \u8ba2\u9605\uff0c\u652f\u6301\u5173\u952e\u8bcd\u7cbe\u51c6\u7b5b\u9009\u3002AI \u667a\u80fd\u7b5b\u9009\u65b0\u95fb + AI \u7ffb\u8bd1 +  AI \u5206\u6790\u7b80\u62a5\u76f4\u63a8\u624b\u673a\uff0c\u4e5f\u652f\u6301\u63a5\u5165 MCP \u67b6\u6784\uff0c\u8d4b\u80fd AI \u81ea\u7136\u8bed\u8a00\u5bf9\u8bdd\u5206\u6790\u3001\u60c5\u611f\u6d1e\u5bdf\u4e0e\u8d8b\u52bf\u9884\u6d4b\u7b49\u3002\u652f\u6301 Docker \uff0c\u6570\u636e\u672c\u5730/\u4e91\u7aef\u81ea\u6301\u3002\u96c6\u6210\u5fae\u4fe1/\u98de\u4e66/\u9489\u9489/Telegram/\u90ae\u4ef6/ntfy/bark/slack \u7b49\u6e20\u9053\u667a\u80fd\u63a8\u9001\u3002",
+   "language": "Python",
+   "topics": [
+    "ai",
+    "bark",
+    "data-analysis",
+    "docker",
+    "hot-news",
+    "llm",
+    "mail",
+    "mcp",
+    "mcp-server",
+    "news",
+    "ntfy",
+    "python",
+    "rss",
+    "trending-topics",
+    "wechat",
+    "wework"
+   ],
+   "license": "GPL-3.0",
+   "homepage": "https://trendradar.sandev.cc",
+   "forks": 24877,
+   "final_display": 1.5204290470130424,
+   "final_is_capped": false,
+   "rs": 3.041,
+   "fork_corroboration": 0.5,
+   "excess_above_trend": 85.3,
+   "pace_multiple": 2.75,
+   "stratum": "30k+",
+   "band": "established",
+   "consecutive_days": 1,
+   "badges": [
+    "category-withheld",
+    "no-summary"
+   ],
+   "summary": null,
+   "stars": 61825,
+   "pushed_at": "2026-07-17T13:54:28",
+   "link_suppressed": false,
+   "corrections": []
+  }
+ ],
+ "facets": {
+  "band": {
+   "established": 18
+  }
+ }
+}
