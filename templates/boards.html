@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% import "strip.html" as daystrip %}
+
+{% block title %}{% if page_kind == "day" %}Boards for {{ day_long }} — Rising Repos{% else %}Rising Repos{% endif %}{% endblock %}
+{% block description %}Daily, weekly and monthly boards for {{ day_long }}: GitHub repositories gaining stars faster than their own history predicts.{% endblock %}
+
+{% block header %}
+  <p class="dateline">Boards for <time datetime="{{ board_date }}">{{ day_long }}</time>
+    <small>published <time datetime="{{ generated_at }}">{{ published_human }}</time></small></p>
+  {{ daystrip.render(strip, board_date) }}
+{% endblock %}
+
+{% block main %}
+  {% if page_kind == "latest" and state == "banner" %}
+  <p class="status" role="status">The newest board is from {{ day_long }}, {{ age_days }} day{{ "" if age_days == 1 else "s" }} ago.
+    Tonight's boards have not arrived; this page shows the last ones that did.</p>
+  {% elif page_kind == "latest" and state == "dark" %}
+  <p class="status" role="status">No board has been published since {{ day_long }}. Rather than show data more than
+    seven days old as if it were tonight's, this page shows nothing. <a href="/days/">Every earlier day</a> is still there.</p>
+  {% endif %}
+
+  {% if page_kind == "day" %}
+  <nav class="daynav" aria-label="Neighbouring days">
+    {% if prev %}<a href="{{ prev.href }}">Previous day, {{ prev.label }}</a>{% endif %}
+    {% if next %}<a href="{{ next.href }}">Next day, {{ next.label }}</a>{% else %}<a href="/">Latest day</a>{% endif %}
+  </nav>
+  {% endif %}
+
+  {% if boards %}
+  <nav class="boardnav" aria-label="Boards on this page">
+    {% for b in boards %}<a href="#{{ b.board_type }}">{{ b.board_type | capitalize }} <span class="num">{{ b.rows | length }}</span></a>{% endfor %}
+  </nav>
+
+  <div class="boards">
+  {% for b in boards %}
+    <section class="board" id="{{ b.board_type }}" aria-labelledby="h-{{ b.board_type }}">
+      <h2 id="h-{{ b.board_type }}">{{ b.board_type | capitalize }}
+        <small><span class="num">{{ b.rows | length }}</span> {{ "repository" if b.rows | length == 1 else "repositories" }}</small></h2>
+
+      {% if b.strata_held %}
+      {# G §9.2: disclosure is load-bearing — verify() fails the build if it is missing. #}
+      <p class="disclosure" id="disclosure-{{ b.board_type }}">
+        {% if b.rows %}The crawl behind this board was incomplete for repositories with {{ b.held_words }} stars, so
+        {{ "that range is" if b.strata_held | length == 1 else "those ranges are" }} held: any of them that rose {{ b.day_words }} {{ "is" if b.strata_held | length == 1 else "are" }} absent here, not quiet.
+        {% else %}Every star range was held {{ b.day_words }}: the crawl behind this board was incomplete, so publishing would be a guess.{% endif %}
+        {% if b.hold_reason %}<span class="why">{{ b.hold_reason }}</span>{% endif %}
+      </p>
+      {% endif %}
+
+      {% if b.partial_history %}
+      <p class="partial">Part of this board's lookback comes from a backfilled day at about 98&nbsp;% coverage, so its trends rest on slightly thinner history than usual.</p>
+      {% endif %}
+
+      {% if b.rows %}
+      <ol>
+        {% for r in b.rows %}
+        <li class="repo" id="{{ b.board_type }}-{{ r.rank }}">
+          <span class="rank num">{{ r.rank }}</span>
+          <div>
+            <h3 class="name">{% if r.href %}<a href="{{ r.href }}">{{ r.display_name }}</a>{% else %}{{ r.display_name }}{% endif %}</h3>
+            {% if r.description %}<p class="desc">{{ r.description }}</p>{% endif %}
+
+            <p class="pace">
+              <span class="mult num">{{ r.pace_text }}</span>
+              <span class="words">its usual pace<br><span class="num">{{ r.excess_text }}</span> stars above its own trend</span>
+            </p>
+
+            <p class="facts">
+              {% if r.stars is not none %}<span><span class="num">{{ r.stars | thousands }}</span> stars</span> {% endif %}
+              {% if r.forks is not none %}<span><span class="num">{{ r.forks | thousands }}</span> forks</span> {% endif %}
+              {% if r.language %}<span>{{ r.language }}</span> {% endif %}
+              <span>{{ r.band }}</span>
+              {% if r.days_words %}<span>{{ r.days_words }}</span> {% endif %}
+              <span>RS <span class="num">{{ "%.2f" | format(r.rs) }}</span></span>
+            </p>
+
+            {% if r.tags %}
+            <ul class="tags">{% for t in r.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+            {% endif %}
+
+            {% for n in r.notes %}<p class="note">{{ n }}</p>{% endfor %}
+
+            <details class="more">
+              <summary>Security and structure</summary>
+              <p>{{ r.security.card }}</p>
+              {% for line in r.structure.lines %}<p>{{ line }}</p>{% endfor %}
+              <p>Score <span class="num">{{ "%.2f" | format(r.final_display) }}{{ "+" if r.final_is_capped }}</span>,
+                fork corroboration <span class="num">{{ "%.2f" | format(r.fork_corroboration) }}</span>,
+                compared within the {{ r.stratum }} star stratum.{% if r.security.commit_sha %}
+                Scanned at <span class="sha">{{ r.security.commit_sha[:12] }}</span>.{% endif %}</p>
+            </details>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+      {% else %}
+      <p class="empty">{{ b.empty_reason }}</p>
+      {% endif %}
+    </section>
+  {% endfor %}
+  </div>
+  {% endif %}
+{% endblock %}

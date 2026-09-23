@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Rising Repos{% endblock %}</title>
+<meta name="description" content="{% block description %}GitHub repositories gaining stars faster than their own history predicts — three boards a day.{% endblock %}">
+<link rel="canonical" href="https://risingrepos.com{{ path }}">
+<link rel="icon" href="data:,">
+{# I §8.1: the staleness island reads exactly these two tags, on every page. #}
+<meta name="rr:board-date" content="{{ board_date }}">
+<meta name="rr:build-ts" content="{{ build_ts }}">
+<style>
+  /* DESIGN.md §1 — tokens. One accent (rise); amber only for hold/partial disclosures. */
+  :root {
+    color-scheme: light dark;
+    --base: #F4F6F8; --surface: #FFFFFF; --ink: #14181F; --muted: #66707A;
+    --rule: #D9DEE3; --rise: #1F7A5A; --rise-rgb: 31 122 90; --amber: #B9791B;
+    --sans: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "Cascadia Mono", Consolas, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --base: #0F1418; --surface: #161C22; --ink: #E8ECEF; --muted: #8A949C;
+      --rule: #2A323A; --rise: #4CC38A; --rise-rgb: 76 195 138; --amber: #D9A441;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--base); }
+  body {
+    margin: 0; padding: 1.5rem 1rem 3rem; background: var(--base); color: var(--ink);
+    font: 1rem/1.5 var(--sans); font-variant-numeric: tabular-nums; -webkit-text-size-adjust: 100%;
+  }
+  @media (min-width: 720px) { body { padding: 2rem 2.5rem 4rem; } }
+  a { color: inherit; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: .2em; }
+  a:hover { text-decoration-color: var(--rise); }
+  :focus-visible { outline: 2px solid var(--rise); outline-offset: 2px; }
+  p, h1, h2, h3 { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* header */
+  .site { max-width: 90rem; }
+  .wordline { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1.5rem; }
+  .wordmark { font-size: 1.6rem; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+  .wordmark a { text-decoration: none; }
+  .wordmark a:hover { color: var(--rise); }
+  .sitenav { display: flex; gap: 1rem; font-size: .9rem; color: var(--muted); }
+  .tagline { margin-top: .25rem; max-width: 60ch; color: var(--muted); }
+  .dateline { margin-top: 1rem; font-size: 1.25rem; font-weight: 600; letter-spacing: -.01em; }
+  .dateline small { font-size: .9rem; font-weight: 400; color: var(--muted); margin-left: .5rem; }
+
+  /* day strip — fill = rows published that day, amber underline = a held band */
+  .strip { display: flex; flex-wrap: wrap; gap: .3rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+  .strip li { display: block; }
+  .strip a, .strip span.gap {
+    display: block; width: 1.05rem; height: 1.05rem; border: 1px solid var(--rule);
+    border-bottom-width: 3px; border-bottom-color: transparent; background: var(--surface);
+  }
+  .strip span.gap { border-style: dashed; border-bottom-width: 1px; border-bottom-color: var(--rule); background: transparent; }
+  .strip .l1 { background: rgb(var(--rise-rgb) / .25); }
+  .strip .l2 { background: rgb(var(--rise-rgb) / .5); }
+  .strip .l3 { background: rgb(var(--rise-rgb) / .75); }
+  .strip .l4 { background: rgb(var(--rise-rgb) / 1); }
+  .strip .held { border-bottom-color: var(--amber); }
+  .strip .current { outline: 2px solid var(--ink); outline-offset: 1px; }
+  .strip a:hover { border-color: var(--rise); border-bottom-color: var(--rise); }
+  .strip a.held:hover { border-bottom-color: var(--amber); }
+  .strip a:focus-visible { outline-color: var(--rise); }
+  .striplabel { margin-top: .35rem; font-size: .8rem; color: var(--muted); }
+
+  /* status and disclosures — amber is a border here, never running text */
+  .status, .disclosure {
+    border-left: 3px solid var(--amber); padding: .5rem .9rem; margin: 1.25rem 0 0; max-width: 60ch;
+  }
+  .disclosure { margin: .75rem 0 0; font-size: .9rem; }
+  .disclosure .why { display: block; margin-top: .25rem; color: var(--muted); overflow-wrap: anywhere; }
+  .partial { margin: .75rem 0 0; font-size: .9rem; color: var(--muted); max-width: 60ch; }
+  .empty { margin: .75rem 0 0; color: var(--muted); max-width: 60ch; }
+
+  /* in-page nav (narrow screens only) and prev/next */
+  .boardnav, .daynav { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: 1.25rem 0 0; font-size: .9rem; color: var(--muted); }
+  .boardnav .num, .daynav .num { color: var(--ink); }
+
+  /* boards */
+  .boards { display: grid; gap: 2.5rem; margin-top: 1.5rem; max-width: 90rem; }
+  .board h2 { font-size: 1.25rem; font-weight: 600; letter-spacing: -.01em; }
+  .board h2 small { font-size: .9rem; font-weight: 400; color: var(--muted); margin-left: .5rem; }
+  .board ol { list-style: none; margin: .75rem 0 0; padding: 0; }
+  @media (min-width: 1100px) {
+    .boardnav { display: none; }
+    .boards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+    .board { padding-right: 1.5rem; min-width: 0; }
+    .board + .board { border-left: 1px solid var(--rule); padding-left: 1.5rem; }
+  }
+
+  /* a row */
+  .repo { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: 0 .6rem; padding: 1rem 0; border-top: 1px solid var(--rule); }
+  .rank { color: var(--muted); font-size: .9rem; text-align: right; padding-top: .15rem; }
+  .name { font-family: var(--mono); font-size: 1rem; font-weight: 500; overflow-wrap: anywhere; }
+  .desc { margin-top: .2rem; max-width: 60ch; color: var(--ink); }
+  .pace { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 .7rem; align-items: center; margin-top: .7rem; }
+  .pace .mult { font-size: 2.6rem; font-weight: 300; line-height: 1; letter-spacing: -.03em; color: var(--rise); }
+  .pace .words { font-size: .9rem; line-height: 1.35; color: var(--muted); max-width: 32ch; }
+  .pace .words .num { color: var(--ink); }
+  .facts { display: flex; flex-wrap: wrap; gap: .1rem 1rem; margin-top: .7rem; font-size: .9rem; color: var(--muted); }
+  .facts .num { color: var(--ink); }
+  .tags { list-style: none; display: flex; flex-wrap: wrap; gap: .35rem; margin: .5rem 0 0; padding: 0; font-size: .8rem; }
+  .tags li { border: 1px solid var(--rule); border-radius: 999px; padding: 0 .55rem; color: var(--muted); }
+  .note { margin: .5rem 0 0; font-size: .9rem; border-left: 2px solid var(--amber); padding-left: .6rem; max-width: 60ch; }
+  .more { margin-top: .5rem; font-size: .9rem; }
+  .more summary { cursor: pointer; color: var(--muted); width: max-content; }
+  .more summary:hover { color: var(--ink); }
+  .more[open] summary { color: var(--ink); }
+  .more p { margin: .35rem 0 0 1rem; color: var(--muted); max-width: 60ch; overflow-wrap: anywhere; }
+  .more .sha { font-family: var(--mono); font-size: .8rem; }
+
+  /* archive table */
+  .archive { border-collapse: collapse; margin-top: 1.25rem; font-size: .9rem; max-width: 70rem; width: 100%; }
+  .archive th, .archive td { text-align: left; vertical-align: top; padding: .5rem 1rem .5rem 0; border-top: 1px solid var(--rule); }
+  .archive th { font-weight: 600; border-top: 0; color: var(--muted); }
+  .archive .n { text-align: right; }
+  .archive td.n { color: var(--ink); }
+  .archive td.n.zero { color: var(--muted); }
+  .archive .notes { color: var(--muted); }
+  .archive .notes > span { display: block; }
+  .mark { display: inline-block; width: .6rem; height: .6rem; background: var(--amber); vertical-align: -.05em; margin-right: .4rem; }
+  @media (max-width: 560px) {
+    .archive th:nth-child(4), .archive td:nth-child(4) { display: none; }
+  }
+
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: .9rem; color: var(--muted); max-width: 60ch; }
+  footer p + p { margin-top: .35rem; }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wordline">
+    {% if path == "/" %}<h1 class="wordmark">Rising Repos</h1>{% else %}<p class="wordmark"><a href="/">Rising Repos</a></p>{% endif %}
+    <nav class="sitenav" aria-label="Site">
+      {% if path != "/days/" %}<a href="/days/">Every day</a>{% endif %}
+      <a href="https://github.com/AndrewGodlewsky/rising-repos-site">How it works</a>
+    </nav>
+  </div>
+  <p class="tagline">Repositories gaining stars faster than their own history predicts.</p>
+  {% block header %}{% endblock %}
+</header>
+<main>
+{% block main %}{% endblock %}
+</main>
+<footer>
+  <p>Built <time datetime="{{ build_ts }}">{{ build_ts_human }}</time>.</p>
+  <p>RS is how rare a repository's excess above its own trend is, in &minus;log<sub>10</sub> units within its star stratum; boards publish RS&nbsp;&ge;&nbsp;3, and a held star range means the crawl behind it was incomplete.</p>
+  <p><a href="https://github.com/AndrewGodlewsky/rising-repos-site">Source and method</a></p>
+</footer>
+</body>
+</html>

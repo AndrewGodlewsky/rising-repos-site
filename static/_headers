@@ -9,6 +9,11 @@
   Cache-Control: no-cache, must-revalidate
 /*.html
   Cache-Control: no-cache, must-revalidate
+# The archive and every day page are directory indexes (/days/, /days/<day>/),
+# so they need their own rule for the same reason the apex does. build.py's
+# verify() refuses to ship a directory index that no rule here covers.
+/days/*
+  Cache-Control: no-cache, must-revalidate
 /site-data/*
   Cache-Control: no-cache, must-revalidate
 /api/v1/*

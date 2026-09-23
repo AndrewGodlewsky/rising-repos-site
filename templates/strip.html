@@ -1,0 +1,18 @@
+{# The day strip: the last ~30 calendar days as small blocks. Fill level = rows
+   published that day (hollow = none), amber underline = a band was held,
+   dashed = no boards were run that day, outline = the day this page shows. #}
+{% macro render(strip, current_day) %}
+  <ol class="strip" aria-label="Recent days">
+  {% for d in strip %}
+    <li>
+    {% if d.href %}
+      <a class="l{{ d.level }}{{ " held" if d.held }}{{ " current" if d.day == current_day }}"
+         href="{{ d.href }}" title="{{ d.title }}"{% if d.day == current_day %} aria-current="page"{% endif %}><span class="vh">{{ d.title }}</span></a>
+    {% else %}
+      <span class="gap" title="{{ d.title }}"><span class="vh">{{ d.title }}</span></span>
+    {% endif %}
+    </li>
+  {% endfor %}
+  </ol>
+  <p class="striplabel">{{ strip | length }} days to <time datetime="{{ strip[-1].day }}">{{ strip[-1].short }}</time>; fuller blocks published more repositories, an amber edge marks a held star range.</p>
+{% endmacro %}

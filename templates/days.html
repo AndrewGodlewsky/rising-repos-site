@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import "strip.html" as daystrip %}
+
+{% block title %}Every board day — Rising Repos{% endblock %}
+{% block description %}Every day of Rising Repos boards: how many repositories each board published, which star ranges were held, and where the history was backfilled.{% endblock %}
+
+{% block header %}
+  <p class="dateline">Every board day <small><span class="num">{{ days | length }}</span> day{{ "" if days | length == 1 else "s" }}, newest first</small></p>
+  {{ daystrip.render(strip, latest) }}
+{% endblock %}
+
+{% block main %}
+  <table class="archive">
+    <thead>
+      <tr>
+        <th scope="col">Day</th>
+        <th scope="col" class="n">Daily</th>
+        <th scope="col" class="n">Weekly</th>
+        <th scope="col" class="n">Monthly</th>
+        <th scope="col">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for d in days %}
+      <tr>
+        <td><a href="{{ d.href }}"><time datetime="{{ d.day }}">{{ d.long }}</time></a>{% if d.day == latest %} <span class="notes">(latest)</span>{% endif %}</td>
+        {% for bt in ("daily", "weekly", "monthly") %}
+        <td class="n{{ " zero" if d.rows[bt] == 0 }}"><span class="num">{{ d.rows[bt] }}</span></td>
+        {% endfor %}
+        <td class="notes">
+          {% for n in d.hold_notes %}<span><span class="mark" aria-hidden="true"></span>{{ n }}</span>{% endfor %}
+          {% if d.partial %}<span>part of the {{ d.partial | join(" and ") }} lookback is backfilled</span>{% endif %}
+          {% if d.empty_all %}<span>no repository cleared the floor</span>{% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
