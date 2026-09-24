@@ -15,16 +15,17 @@
  "rows": [
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "0e9c031c3924bf7b30cca448e064ba38f612e03f"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 169 subsystems \u2014 Drag and Drop UI \u00b7 Audio Metadata Parsing \u00b7 Song and Album Models",
+     "Core: _SNRSong \u00b7 NSArray \u00b7 NSUserDefaults"
     ],
-    "commit_sha": null
+    "commit_sha": "0e9c031c3924bf7b30cca448e064ba38f612e03f"
    },
    "repo_id": 4047634,
    "rank": 1,
@@ -56,16 +57,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "313 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "4cfb89eb8cc17e1da927d9eadadb272d785f6ae4"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 6,283 subsystems \u2014 Javadoc Format Tests \u00b7 Javadoc and Override Tests \u00b7 Indentation Check Tests",
+     "Core: DetailAST \u00b7 AbstractModuleTestSupport \u00b7 AbstractExamplesModuleTestSupport"
     ],
-    "commit_sha": null
+    "commit_sha": "4cfb89eb8cc17e1da927d9eadadb272d785f6ae4"
    },
    "repo_id": 12499251,
    "rank": 2,
@@ -110,7 +112,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -147,16 +149,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "15 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "d73fa1cdcbd8b1465c151db8924ba58b1dd14e35"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 98 subsystems \u2014 Request Lifecycle Tests \u00b7 Core WSGI Classes \u00b7 Blueprint Template Tests",
+     "Core: Flask \u00b7 App \u00b7 setupmethod()"
     ],
-    "commit_sha": null
+    "commit_sha": "d73fa1cdcbd8b1465c151db8924ba58b1dd14e35"
    },
    "repo_id": 596892,
    "rank": 4,
@@ -197,16 +200,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "135 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "9e88707940088cb1f4cd7dd210c9168a50dc347c"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 225 subsystems \u2014 SSR Code Generation \u00b7 Render Utilities \u00b7 JSX and HTML Typings",
+     "Core: warn \u00b7 isArray \u00b7 isDef()"
     ],
-    "commit_sha": null
+    "commit_sha": "9e88707940088cb1f4cd7dd210c9168a50dc347c"
    },
    "repo_id": 11730342,
    "rank": 5,
@@ -243,16 +247,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "no findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "951d13c77bc120be385c46fc701a1ad93694edd1"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 1,877 subsystems \u2014 Admin Actions and Fields \u00b7 Testing and Template Engines \u00b7 Admin Authentication and Forms",
+     "Core: override_settings \u00b7 SimpleTestCase \u00b7 TestCase"
     ],
-    "commit_sha": null
+    "commit_sha": "951d13c77bc120be385c46fc701a1ad93694edd1"
    },
    "repo_id": 4164482,
    "rank": 6,

@@ -72,7 +72,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -134,7 +134,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -192,16 +192,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "189 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "c607e4ef28616456402b6da32c916e977c95d665"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 722 subsystems \u2014 Web App Examples \u00b7 Desktop Wheel Events \u00b7 State Management Examples",
+     "Core: (T,) \u00b7 use_signal() \u00b7 Output"
     ],
-    "commit_sha": null
+    "commit_sha": "c607e4ef28616456402b6da32c916e977c95d665"
    },
    "repo_id": 329782568,
    "rank": 4,
@@ -247,16 +248,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "206 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "4f411281417e88660bea1c1a1749aa71ae0bd60f"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 131 subsystems \u2014 Workflow Planning \u00b7 GitHub Context Parsing \u00b7 CLI Commands and Notices",
+     "Core: Executor \u00b7 Logger() \u00b7 New()"
     ],
-    "commit_sha": null
+    "commit_sha": "4f411281417e88660bea1c1a1749aa71ae0bd60f"
    },
    "repo_id": 163883279,
    "rank": 5,
@@ -293,16 +295,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "8 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "9336539b3db340c7bcf55f95afad44d1d1abb7e4"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 571 subsystems \u2014 Android UI Components \u00b7 Android Graphics and Animation \u00b7 Android Event Listeners",
+     "Core: Format \u00b7 ParsableByteArray \u00b7 C"
     ],
-    "commit_sha": null
+    "commit_sha": "9336539b3db340c7bcf55f95afad44d1d1abb7e4"
    },
    "repo_id": 283211901,
    "rank": 6,
@@ -343,16 +346,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "66 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "06f1a6086422854fb0f78381945f80e62bae7a4e"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 784 subsystems \u2014 UI Layout and States \u00b7 Credential Dialog Components \u00b7 Page Event Handlers",
+     "Core: VisualState \u00b7 Files.App.Actions \u00b7 ShellViewModel"
     ],
-    "commit_sha": null
+    "commit_sha": "06f1a6086422854fb0f78381945f80e62bae7a4e"
    },
    "repo_id": 164140756,
    "rank": 7,
@@ -466,20 +470,21 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "654 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "f13b0eaef465c9173c3c14070b1d352e4bea24bf"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 987 subsystems \u2014 UI Localization and Settings \u00b7 Agent Database Models \u00b7 Activity Phase UI Components",
+     "Core: useLocalize() \u00b7 cn() \u00b7 mongoose"
     ],
-    "commit_sha": null
+    "commit_sha": "f13b0eaef465c9173c3c14070b1d352e4bea24bf"
    },
    "repo_id": 600596928,
    "rank": 9,
-   "name": "danny-avila/LibreChat",
+   "name": "LibreChat-AI/LibreChat",
    "description": "Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active",
    "language": "TypeScript",
    "topics": [
@@ -533,7 +538,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -569,16 +574,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "178 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "fd7c9db23e371803bf1892b827b03d9c9c946bcd"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 332 subsystems \u2014 Notification Email Formats \u00b7 Browser Content Fetching \u00b7 API Tag Management",
+     "Core: delete_all_watches() \u00b7 wait_for_all_checks() \u00b7 ChangeDetectionStore"
     ],
-    "commit_sha": null
+    "commit_sha": "fd7c9db23e371803bf1892b827b03d9c9c946bcd"
    },
    "repo_id": 333483116,
    "rank": 11,
@@ -631,16 +637,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "355 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "616637f26527af364c8ff5d67576c9ebdfefd801"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 237 subsystems \u2014 Subscription List Pages \u00b7 Rule Configuration Models \u00b7 Track Service Overlay",
+     "Core: RawSubscription \u00b7 GkIconButton() \u00b7 GkIcon()"
     ],
-    "commit_sha": null
+    "commit_sha": "616637f26527af364c8ff5d67576c9ebdfefd801"
    },
    "repo_id": 661957079,
    "rank": 12,
@@ -688,7 +695,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -735,16 +742,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "146 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "73ed3f9b0331d9ae4f97040d2684d06d0357e1ff"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 307 subsystems \u2014 Testing Utilities \u00b7 Resume Import Dialog \u00b7 UI Dialogs and Inputs",
+     "Core: vitest \u00b7 ResumeData \u00b7 @testing-library/react"
     ],
-    "commit_sha": null
+    "commit_sha": "73ed3f9b0331d9ae4f97040d2684d06d0357e1ff"
    },
    "repo_id": 249995750,
    "rank": 14,
@@ -785,16 +793,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "15 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "d73fa1cdcbd8b1465c151db8924ba58b1dd14e35"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 98 subsystems \u2014 Request Lifecycle Tests \u00b7 Core WSGI Classes \u00b7 Blueprint Template Tests",
+     "Core: Flask \u00b7 App \u00b7 setupmethod()"
     ],
-    "commit_sha": null
+    "commit_sha": "d73fa1cdcbd8b1465c151db8924ba58b1dd14e35"
    },
    "repo_id": 596892,
    "rank": 15,
@@ -835,16 +844,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "630 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "f324707307757d9c0b8dac1c4462eceff911fa2f"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(timeout)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "f324707307757d9c0b8dac1c4462eceff911fa2f"
    },
    "repo_id": 155220641,
    "rank": 16,
@@ -897,16 +906,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "3 findings \u00b7 2 checks pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "13b273ac7ebcd64fb1a1c7a014d1ba557874b447"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 2,184 subsystems \u2014 Command Line Arguments \u00b7 Package Attestation and Verification \u00b7 Homebrew Core Commands",
+     "Core: File \u00b7 Formula \u00b7 Homebrew::Livecheck::Strategy::Json"
     ],
-    "commit_sha": null
+    "commit_sha": "13b273ac7ebcd64fb1a1c7a014d1ba557874b447"
    },
    "repo_id": 53238813,
    "rank": 17,
@@ -990,16 +1000,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "135 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "9e88707940088cb1f4cd7dd210c9168a50dc347c"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 225 subsystems \u2014 SSR Code Generation \u00b7 Render Utilities \u00b7 JSX and HTML Typings",
+     "Core: warn \u00b7 isArray \u00b7 isDef()"
     ],
-    "commit_sha": null
+    "commit_sha": "9e88707940088cb1f4cd7dd210c9168a50dc347c"
    },
    "repo_id": 11730342,
    "rank": 19,
@@ -1037,16 +1048,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "1724 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "d083ec1da1e5252abd3ddfdde6dfbc09701a2c51"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 2,830 subsystems \u2014 DOM and Web Animations \u00b7 Babel Constant Propagation Tests \u00b7 React Runtime and ESM Shell",
+     "Core: identity() \u00b7 mutate() \u00b7 HirFunction"
     ],
-    "commit_sha": null
+    "commit_sha": "d083ec1da1e5252abd3ddfdde6dfbc09701a2c51"
    },
    "repo_id": 10270250,
    "rank": 20,
@@ -1085,16 +1097,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "62 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "ab269a42a408b8acaf038c811354a68139df38ba"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(timeout)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "ab269a42a408b8acaf038c811354a68139df38ba"
    },
    "repo_id": 23096959,
    "rank": 21,
@@ -1132,16 +1144,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "437 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "1a8fa555801329bd0e803d7384b5a21191c61f30"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(timeout)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "1a8fa555801329bd0e803d7384b5a21191c61f30"
    },
    "repo_id": 724712,
    "rank": 22,

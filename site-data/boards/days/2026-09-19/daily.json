@@ -184,7 +184,7 @@
     "commit_sha": "4d2ac427ad6f022e73a75c4f46a28bbb7978ec3f"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -435,17 +435,17 @@
   },
   {
    "security": {
-    "card": "143 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "card": "142 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": "1516af9e4f5c3674af04db58009d4d4e9dc16f64"
+    "commit_sha": "2ef2f7cac9673b697c4b9924a4135bfcbe3269b4"
    },
    "structure": {
     "state": "done",
     "lines": [
-     "Structure: 730 subsystems \u2014 PyQt GUI Components \u00b7 Anki Database Models \u00b7 Main Window State",
+     "Structure: 753 subsystems \u2014 Localization and Language Settings \u00b7 Main Window UI \u00b7 Card Model Logic",
      "Core: &amp;String \u00b7 AnkiQt \u00b7 Collection"
     ],
-    "commit_sha": "1516af9e4f5c3674af04db58009d4d4e9dc16f64"
+    "commit_sha": "2ef2f7cac9673b697c4b9924a4135bfcbe3269b4"
    },
    "repo_id": 7270538,
    "rank": 9,
@@ -477,16 +477,16 @@
   },
   {
    "security": {
-    "card": "159 findings \u00b7 1 check pending",
+    "card": "137 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": "90233bf798181ca5dad08e638ba19feb2f3f38e7"
+    "commit_sha": "4f0366f3fce5edc5e09f7d2382973a2bf36bda3a"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "90233bf798181ca5dad08e638ba19feb2f3f38e7"
+    "commit_sha": "4f0366f3fce5edc5e09f7d2382973a2bf36bda3a"
    },
    "repo_id": 12888993,
    "rank": 10,
@@ -663,16 +663,16 @@
   },
   {
    "security": {
-    "card": "849 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "card": "440 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": "e1bdcc99dbf88fad664be2be968c64f8b6f641db"
+    "commit_sha": "d067e81a696808240094066d0272e2cc1f295aa1"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(timeout)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "e1bdcc99dbf88fad664be2be968c64f8b6f641db"
+    "commit_sha": "d067e81a696808240094066d0272e2cc1f295aa1"
    },
    "repo_id": 214587193,
    "rank": 14,

@@ -21,7 +21,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -74,7 +74,7 @@
     "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -113,16 +113,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "125 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "54b0d114add54adb5bd1aec304550fb2cca96660"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 703 subsystems \u2014 DOM Element Manipulation \u00b7 Browser Frame Navigation \u00b7 HTML Event Getters",
+     "Core: getAttributeFunction() \u00b7 setAttributeListener() \u00b7 Url"
     ],
-    "commit_sha": null
+    "commit_sha": "54b0d114add54adb5bd1aec304550fb2cca96660"
    },
    "repo_id": 598667202,
    "rank": 3,
@@ -168,7 +169,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -215,7 +216,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],

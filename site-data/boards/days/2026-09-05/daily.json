@@ -20,7 +20,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -79,7 +79,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -122,7 +122,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -165,7 +165,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -216,7 +216,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -271,7 +271,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -326,7 +326,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -369,7 +369,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -407,16 +407,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "41 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "8f72ed3210050f96db9a4efcb445c83a1a71012a"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 18 subsystems \u2014 OpenSpiel Compatibility Wrapper \u00b7 Gym Compatibility Wrapper \u00b7 Multi-Agent DM Control Compatibility",
+     "Core: OpenSpielCompatibilityV0 \u00b7 AndroidEnvCompatibilityV0 \u00b7 DmControlCompatibilityV0"
     ],
-    "commit_sha": null
+    "commit_sha": "8f72ed3210050f96db9a4efcb445c83a1a71012a"
    },
    "repo_id": 546914412,
    "rank": 9,
@@ -456,16 +457,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "4389d0ce5a4a331376d0352e1b33e4abc3563604"
    },
    "structure": {
-    "state": "queued",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "4389d0ce5a4a331376d0352e1b33e4abc3563604"
    },
    "repo_id": 266579224,
    "rank": 10,
@@ -502,7 +503,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -560,7 +561,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -611,16 +612,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "364 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "2810e97113e538ca55336bd1eacd4788b36ea66d"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 499 subsystems \u2014 Agent Account Types \u00b7 Provider API Configuration \u00b7 LLM Record Logging",
+     "Core: New() \u00b7 Installation \u00b7 Endpoint"
     ],
-    "commit_sha": null
+    "commit_sha": "2810e97113e538ca55336bd1eacd4788b36ea66d"
    },
    "repo_id": 91144427,
    "rank": 13,
@@ -670,7 +672,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -722,7 +724,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -772,7 +774,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -829,7 +831,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -865,16 +867,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "3 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "503a1646a8883b43c8805c7ab6ab62d93a82dbb1"
    },
    "structure": {
-    "state": "queued",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "503a1646a8883b43c8805c7ab6ab62d93a82dbb1"
    },
    "repo_id": 456448232,
    "rank": 18,
@@ -914,7 +916,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -955,7 +957,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -991,16 +993,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "13 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "63ae30982cf28ec7de1a4de23b85d15eccc031d8"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 305 subsystems \u2014 GameShell Core Engine \u00b7 GameShell Environment Configuration \u00b7 Admin and Translation Tools",
+     "Core: gsh() \u00b7 new_mission_with_gettext() \u00b7 new_mission_without_gettext()"
     ],
-    "commit_sha": null
+    "commit_sha": "63ae30982cf28ec7de1a4de23b85d15eccc031d8"
    },
    "repo_id": 94422621,
    "rank": 21,
@@ -1032,16 +1035,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "135 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "493bd1c390ca6dc8156cd3fd579394b375ab2398"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "493bd1c390ca6dc8156cd3fd579394b375ab2398"
    },
    "repo_id": 213661616,
    "rank": 22,
@@ -1078,7 +1081,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1133,7 +1136,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1217,7 +1220,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1258,16 +1261,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "9a3499480a8e53dcaa665e2836f287e3b7764009"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 3 subsystems \u2014 Configuration and Logging \u00b7 Tab and Node Utilities \u00b7 Plugin Entry Point",
+     "Core: tab.lua \u00b7 lua/tabout.lua \u00b7 config.lua"
     ],
-    "commit_sha": null
+    "commit_sha": "9a3499480a8e53dcaa665e2836f287e3b7764009"
    },
    "repo_id": 388928951,
    "rank": 27,
@@ -1308,7 +1312,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1349,7 +1353,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1385,16 +1389,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "24 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "6d71f74624be5daa548073ff8e4e0c8aa5476010"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 221 subsystems \u2014 Google Test Utilities \u00b7 Template Metaprogramming Helpers \u00b7 Google Test Assertions",
+     "Core: TEST() \u00b7 string_view_ \u00b7 TEST()"
     ],
-    "commit_sha": null
+    "commit_sha": "6d71f74624be5daa548073ff8e4e0c8aa5476010"
    },
    "repo_id": 7056202,
    "rank": 30,
@@ -1444,7 +1449,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1488,16 +1493,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "23 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "1e81dc838c94c7ddd0281418558f498d488fcfd9"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "1e81dc838c94c7ddd0281418558f498d488fcfd9"
    },
    "repo_id": 28751632,
    "rank": 32,
@@ -1533,16 +1538,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "6 findings \u00b7 3 checks pending \u00b7 3 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "9478dee528ccaf366b08fca9ec5feb5d256b7aca"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 117 subsystems \u2014 Fund Share Crawler \u00b7 Stock Limit Report \u00b7 ETF Info Spider",
+     "Core: BaseService \u00b7 PrivateFund \u00b7 filter_stock"
     ],
-    "commit_sha": null
+    "commit_sha": "9478dee528ccaf366b08fca9ec5feb5d256b7aca"
    },
    "repo_id": 55381387,
    "rank": 33,
@@ -1583,7 +1589,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1624,7 +1630,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1665,7 +1671,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1706,16 +1712,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "639 findings \u00b7 2 checks pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "9e121f27d404cad6cdb1cc695eab4276469adace"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(timeout)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "9e121f27d404cad6cdb1cc695eab4276469adace"
    },
    "repo_id": 64289545,
    "rank": 37,
@@ -1758,7 +1764,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1805,7 +1811,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1913,7 +1919,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1971,16 +1977,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "4eaba93608d74004ec507f765ad011bdd08b672d"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 3 subsystems \u2014 URL Fetching and Validation \u00b7 URL Processing and Cleaning \u00b7 Batch File Processing",
+     "Core: process_urls() \u00b7 bound_fetch() \u00b7 process_file_in_batches()"
     ],
-    "commit_sha": null
+    "commit_sha": "4eaba93608d74004ec507f765ad011bdd08b672d"
    },
    "repo_id": 445044283,
    "rank": 42,
@@ -2017,7 +2024,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2060,16 +2067,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "95 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "fb0a33a75e5a36aa0cadec0c1f5dac6d5e5bb4f4"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 267 subsystems \u2014 Audio and Subtitle Menus \u00b7 PWA and Service Worker Updates \u00b7 Form and Search Components",
+     "Core: useCore() \u00b7 Button \u00b7 useModelState"
     ],
-    "commit_sha": null
+    "commit_sha": "fb0a33a75e5a36aa0cadec0c1f5dac6d5e5bb4f4"
    },
    "repo_id": 136023747,
    "rank": 44,
@@ -2109,7 +2117,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2151,7 +2159,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2194,7 +2202,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2243,7 +2251,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2294,7 +2302,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2337,7 +2345,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2380,7 +2388,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2421,7 +2429,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2462,16 +2470,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "56 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "d0b95bd51f9c594c81bac0b20c7ab6cbd084c51e"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 21 subsystems \u2014 Financial Identifier Validation \u00b7 Test Fixtures and Utilities \u00b7 Equities Unit Tests",
+     "Core: Recorder \u00b7 FinanceFrame \u00b7 FinanceDatabase"
     ],
-    "commit_sha": null
+    "commit_sha": "d0b95bd51f9c594c81bac0b20c7ab6cbd084c51e"
    },
    "repo_id": 333850832,
    "rank": 53,
@@ -2528,7 +2537,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2579,7 +2588,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2620,16 +2629,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "339d69a6b34d6838daf1cdeedee235e5219adf75"
    },
    "structure": {
-    "state": "queued",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "339d69a6b34d6838daf1cdeedee235e5219adf75"
    },
    "repo_id": 432464602,
    "rank": 56,
@@ -2668,7 +2677,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2724,7 +2733,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2788,7 +2797,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2851,7 +2860,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2892,7 +2901,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -2935,7 +2944,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3074,16 +3083,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "225 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "6980a24fe936abdc8a8f2e9778d90f2109f332c3"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 270 subsystems \u2014 Three.js Animation Actions \u00b7 Three.js Material Properties \u00b7 UI Utility Libraries",
+     "Core: VisualState \u00b7 MediaViewModel \u00b7 copy()"
     ],
-    "commit_sha": null
+    "commit_sha": "6980a24fe936abdc8a8f2e9778d90f2109f332c3"
    },
    "repo_id": 447153396,
    "rank": 65,
@@ -3123,16 +3133,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "11 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "56b04001f75044dbd15507303a9438c71e93c6e4"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 123 subsystems \u2014 Battery UI Component \u00b7 Windows System APIs \u00b7 Qt Application Typography",
+     "Core: MainWindow \u00b7 Battery \u00b7 TrayIcon"
     ],
-    "commit_sha": null
+    "commit_sha": "56b04001f75044dbd15507303a9438c71e93c6e4"
    },
    "repo_id": 370397287,
    "rank": 66,
@@ -3180,7 +3191,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3221,7 +3232,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3267,7 +3278,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(checkout)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3326,16 +3337,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "36 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "b6b55fef1e8636b540a6d016a4729ca8cdf2e60b"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 15 subsystems \u2014 Package Metadata \u00b7 Twemoji Build Utilities \u00b7 Bower Module Configuration",
+     "Core: ignore \u00b7 keywords \u00b7 scripts"
     ],
-    "commit_sha": null
+    "commit_sha": "b6b55fef1e8636b540a6d016a4729ca8cdf2e60b"
    },
    "repo_id": 262439177,
    "rank": 70,
@@ -3372,7 +3384,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3423,7 +3435,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3543,16 +3555,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "113 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "b75e8835c93f2215b1b54a5cf948b876adbadf2a"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 1,465 subsystems \u2014 Command Execution \u00b7 Network Request Manager \u00b7 Bass Treble Settings UI",
+     "Core: string \u00b7 QString \u00b7 CommandContext()"
     ],
-    "commit_sha": null
+    "commit_sha": "b75e8835c93f2215b1b54a5cf948b876adbadf2a"
    },
    "repo_id": 32921736,
    "rank": 74,
@@ -3590,16 +3603,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "283 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "b5a251a0a088ec4792a03f439d64792c1600919a"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 217 subsystems \u2014 Plan Classification \u00b7 Agent Execution Policy \u00b7 CLI Testing",
+     "Core: EPUBBookLoader \u00b7 ChatGPTAPI \u00b7 Base"
     ],
-    "commit_sha": null
+    "commit_sha": "b5a251a0a088ec4792a03f439d64792c1600919a"
    },
    "repo_id": 608419025,
    "rank": 75,
@@ -3636,7 +3650,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3679,7 +3693,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3721,7 +3735,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3772,7 +3786,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3820,7 +3834,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3863,7 +3877,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3906,7 +3920,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3956,7 +3970,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4005,7 +4019,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4049,16 +4063,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "196 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "2122257e0fce486f91b385aa63b9a09b0a34b363"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 484 subsystems \u2014 ImGui UI Components \u00b7 D3D12 Pipeline State Streams \u00b7 Resource Tracking and Profiling",
+     "Core: Generic \u00b7 Vulkan \u00b7 Resource()"
     ],
-    "commit_sha": null
+    "commit_sha": "2122257e0fce486f91b385aa63b9a09b0a34b363"
    },
    "repo_id": 460619077,
    "rank": 85,
@@ -4138,16 +4153,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "5 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "6fdf6eb52ba0aaa5ff7b50777483986a2a1689ff"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "6fdf6eb52ba0aaa5ff7b50777483986a2a1689ff"
    },
    "repo_id": 62419944,
    "rank": 87,
@@ -4187,7 +4202,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4228,16 +4243,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "18 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "071dcede74841a311b801e111e2872487139430a"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 52 subsystems \u2014 Audio Compression Manager \u00b7 Xbox Live Emulation \u00b7 Zip Archive Management",
+     "Core: LoadPluginsAndRestoreIAT() \u00b7 mz_zip_set_error() \u00b7 IXHV2ENGINE"
     ],
-    "commit_sha": null
+    "commit_sha": "071dcede74841a311b801e111e2872487139430a"
    },
    "repo_id": 14176293,
    "rank": 89,
@@ -4279,7 +4295,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4338,7 +4354,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4386,7 +4402,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4433,7 +4449,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4476,7 +4492,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4517,7 +4533,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4575,7 +4591,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4625,7 +4641,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4676,7 +4692,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4773,7 +4789,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4814,7 +4830,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4855,7 +4871,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4902,7 +4918,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4947,7 +4963,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4997,7 +5013,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5040,7 +5056,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5080,16 +5096,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "2 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "e4a0fd5852c1abf77d9ace8ccd3ce4b042d35fe9"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 623 subsystems \u2014 Neural Network Layers \u00b7 Loss Functions \u00b7 CUDA Driver Utilities",
+     "Core: Tensor \u00b7 Network \u00b7 Layer"
     ],
-    "commit_sha": null
+    "commit_sha": "e4a0fd5852c1abf77d9ace8ccd3ce4b042d35fe9"
    },
    "repo_id": 200879995,
    "rank": 107,
@@ -5135,7 +5152,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5172,16 +5189,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "34 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "66fcff3c8b6269761fec160526b9ad80caf23c39"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 1,140 subsystems \u2014 Menu and Thread Callbacks \u00b7 SymCrypt Cryptographic Types \u00b7 Graph and Buffer Utilities",
+     "Core: PhDereferenceObject() \u00b7 PhFree() \u00b7 SIZE_T"
     ],
-    "commit_sha": null
+    "commit_sha": "66fcff3c8b6269761fec160526b9ad80caf23c39"
    },
    "repo_id": 50824485,
    "rank": 109,
@@ -5233,16 +5251,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "9c6d77746c90bf65752838149e824294b1d47efc"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 3,715 subsystems \u2014 D3.js Visualization Library \u00b7 ECharts Visualization Library \u00b7 SheetJS Formula Parsing",
+     "Core: n() \u00b7 d() \u00b7 a()"
     ],
-    "commit_sha": null
+    "commit_sha": "9c6d77746c90bf65752838149e824294b1d47efc"
    },
    "repo_id": 374462451,
    "rank": 110,
@@ -5276,16 +5295,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "no findings \u00b7 2 checks pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "3fa5cf21dde2913d58d7b74e150625e18bd490bd"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 90 subsystems \u2014 Compression Threading \u00b7 Extent Cache Management \u00b7 RAID Scrubbing Context",
+     "Core: find_item() \u00b7 InsertTailList() \u00b7 IsListEmpty()"
     ],
-    "commit_sha": null
+    "commit_sha": "3fa5cf21dde2913d58d7b74e150625e18bd490bd"
    },
    "repo_id": 52230396,
    "rank": 111,
@@ -5325,7 +5345,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5374,7 +5394,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5410,16 +5430,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "150 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "48ae28d9a95381d65b14b5221e06eb9d075012c1"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 45 subsystems \u2014 Error Handling \u00b7 SQL Query Templates \u00b7 Database Connection Management",
+     "Core: PgmqError \u00b7 PGMQueueExt \u00b7 ConnDetails"
     ],
-    "commit_sha": null
+    "commit_sha": "48ae28d9a95381d65b14b5221e06eb9d075012c1"
    },
    "repo_id": 670192969,
    "rank": 114,
@@ -5458,7 +5479,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5500,7 +5521,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5547,7 +5568,7 @@
     "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5591,7 +5612,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5636,7 +5657,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5677,7 +5698,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5734,7 +5755,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5839,17 +5860,17 @@
   },
   {
    "security": {
-    "card": "53 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
+    "card": "55 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": "6b09e61cd77c00020c24676f926d7374afd5dd04"
+    "commit_sha": "da8a1d15f19acc174dc5dfd0a34587d4a65b1385"
    },
    "structure": {
     "state": "done",
     "lines": [
-     "Structure: 364 subsystems \u2014 SingBox Configuration Builder \u00b7 Feed Repository Architecture \u00b7 Server Installation Scripts",
+     "Structure: 362 subsystems \u2014 SingBox Configuration \u00b7 Feed Repository Architecture \u00b7 Shell Installation Scripts",
      "Core: Repository \u00b7 SingBoxOptions \u00b7 SingBoxOption"
     ],
-    "commit_sha": "6b09e61cd77c00020c24676f926d7374afd5dd04"
+    "commit_sha": "da8a1d15f19acc174dc5dfd0a34587d4a65b1385"
    },
    "repo_id": 29219243,
    "rank": 123,
@@ -5898,7 +5919,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5951,7 +5972,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5989,16 +6010,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "649 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "6e3205bd4ee1b95f7420dad1339394df5d66b74e"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 675 subsystems \u2014 Search Aggregation Tests \u00b7 Server and Client Management \u00b7 Replication Test Fixtures",
+     "Core: CmdArgParser \u00b7 TEST_F() \u00b7 dfly_args()"
     ],
-    "commit_sha": null
+    "commit_sha": "6e3205bd4ee1b95f7420dad1339394df5d66b74e"
    },
    "repo_id": 437245741,
    "rank": 126,
@@ -6051,7 +6073,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6094,16 +6116,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "3c798f4745acec99b66346afe3e9a04a6a86a9a9"
    },
    "structure": {
-    "state": "queued",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "3c798f4745acec99b66346afe3e9a04a6a86a9a9"
    },
    "repo_id": 274682587,
    "rank": 128,
@@ -6140,7 +6162,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6181,7 +6203,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6232,7 +6254,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6281,7 +6303,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6323,7 +6345,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6364,7 +6386,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6423,16 +6445,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "98 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "a885b885fef16fac4bc544188fb25e9e37ae83e8"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 329 subsystems \u2014 NVM Core Utilities \u00b7 NVM Path and Environment Helpers \u00b7 NVM Installation and Aliasing",
+     "Core: nvm_echo() \u00b7 nvm_err() \u00b7 nvm()"
     ],
-    "commit_sha": null
+    "commit_sha": "a885b885fef16fac4bc544188fb25e9e37ae83e8"
    },
    "repo_id": 612230,
    "rank": 135,
@@ -6483,7 +6506,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6521,16 +6544,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "237 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "68bdd740037a11c639f8b91fd775949c71d718d0"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 246 subsystems \u2014 Figma API Types \u00b7 Image Export Utilities \u00b7 Figma Plugin API",
+     "Core: PluginAPI \u00b7 cn() \u00b7 TextSublayerNode"
     ],
-    "commit_sha": null
+    "commit_sha": "68bdd740037a11c639f8b91fd775949c71d718d0"
    },
    "repo_id": 482297518,
    "rank": 137,
@@ -6569,16 +6593,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "194 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "7db6056f80f11db3ba97038429eb935514f8b4d1"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 80 subsystems \u2014 Core Event System \u00b7 Example App Dependencies \u00b7 ESLint Configuration",
+     "Core: useFrame() \u00b7 Canvas() \u00b7 useThree()"
     ],
-    "commit_sha": null
+    "commit_sha": "7db6056f80f11db3ba97038429eb935514f8b4d1"
    },
    "repo_id": 172521926,
    "rank": 138,
@@ -6622,7 +6647,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6671,7 +6696,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6767,16 +6792,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "8af7be5e4f120b953b92b5766a4ff404b76b2b3e"
    },
    "structure": {
-    "state": "queued",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "8af7be5e4f120b953b92b5766a4ff404b76b2b3e"
    },
    "repo_id": 370004230,
    "rank": 142,
@@ -6815,7 +6840,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6867,7 +6892,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6908,7 +6933,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6944,16 +6969,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "17 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "52d7678c7510de61ec36db5cfcd80cd684b8d864"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 296 subsystems \u2014 Danbooru Image Viewer \u00b7 Download Runtime Factory \u00b7 Spider Serialization Utilities",
+     "Core: CgsIcon \u00b7 Episode \u00b7 SpiderGUI"
     ],
-    "commit_sha": null
+    "commit_sha": "52d7678c7510de61ec36db5cfcd80cd684b8d864"
    },
    "repo_id": 228387695,
    "rank": 146,
@@ -7005,7 +7031,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -7057,16 +7083,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "0e9c031c3924bf7b30cca448e064ba38f612e03f"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 169 subsystems \u2014 Drag and Drop UI \u00b7 Audio Metadata Parsing \u00b7 Song and Album Models",
+     "Core: _SNRSong \u00b7 NSArray \u00b7 NSUserDefaults"
     ],
-    "commit_sha": null
+    "commit_sha": "0e9c031c3924bf7b30cca448e064ba38f612e03f"
    },
    "repo_id": 4047634,
    "rank": 148,
@@ -7103,7 +7130,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -7188,16 +7215,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "41 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "ab9b1e2d4bb04187c48fe58eeea06c2b0ea71fbb"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 134 subsystems \u2014 Localization and File Helpers \u00b7 UI Dialog Styles \u00b7 Game Platform Data Models",
+     "Core: DLSS_Swapper.Helpers \u00b7 Game \u00b7 DLSS_Swapper.UserControls"
     ],
-    "commit_sha": null
+    "commit_sha": "ab9b1e2d4bb04187c48fe58eeea06c2b0ea71fbb"
    },
    "repo_id": 393538656,
    "rank": 151,
@@ -7234,7 +7262,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -7289,7 +7317,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -7330,7 +7358,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],

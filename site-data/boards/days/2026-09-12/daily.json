@@ -16,16 +16,17 @@
  "rows": [
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "66 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "06f1a6086422854fb0f78381945f80e62bae7a4e"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 784 subsystems \u2014 UI Layout and States \u00b7 Credential Dialog Components \u00b7 Page Event Handlers",
+     "Core: VisualState \u00b7 Files.App.Actions \u00b7 ShellViewModel"
     ],
-    "commit_sha": null
+    "commit_sha": "06f1a6086422854fb0f78381945f80e62bae7a4e"
    },
    "repo_id": 164140756,
    "rank": 1,
@@ -78,16 +79,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "13 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "9f405eac0c38f9d3a73d42c67d9ec947657fd01d"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 105 subsystems \u2014 Database Schema Generation \u00b7 Database Theme Constants \u00b7 App Layout Components",
+     "Core: useLayout() \u00b7 useDiagram() \u00b7 useUndoRedo()"
     ],
-    "commit_sha": null
+    "commit_sha": "9f405eac0c38f9d3a73d42c67d9ec947657fd01d"
    },
    "repo_id": 667110339,
    "rank": 2,
@@ -137,16 +139,17 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "8 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "9336539b3db340c7bcf55f95afad44d1d1abb7e4"
    },
    "structure": {
-    "state": "queued",
+    "state": "done",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: 571 subsystems \u2014 Android UI Components \u00b7 Android Graphics and Animation \u00b7 Android Event Listeners",
+     "Core: Format \u00b7 ParsableByteArray \u00b7 C"
     ],
-    "commit_sha": null
+    "commit_sha": "9336539b3db340c7bcf55f95afad44d1d1abb7e4"
    },
    "repo_id": 283211901,
    "rank": 3,
@@ -192,7 +195,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
