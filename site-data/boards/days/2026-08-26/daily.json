@@ -113,12 +113,11 @@
     "commit_sha": "f99d33a8ddee7b36509a71a6d20d5d23355ce8b1"
    },
    "structure": {
-    "state": "done",
+    "state": "failed(label)",
     "lines": [
-     "Structure: 1,031 subsystems \u2014 Windows VM Management \u00b7 System Provisioning \u00b7 System Upgrade and Transition",
-     "Core: monitor-clamshell-scale-test.sh script \u00b7 DBusMenu \u00b7 bar-widget"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "f99d33a8ddee7b36509a71a6d20d5d23355ce8b1"
+    "commit_sha": "93e8cd56b19df756a6435b0c0e8ed5073d192c36"
    },
    "repo_id": 994093166,
    "rank": 3,
@@ -624,12 +623,11 @@
     "commit_sha": "9dee508c44662702281a8dbaad1f7b42179b5ba7"
    },
    "structure": {
-    "state": "done",
+    "state": "failed(label)",
     "lines": [
-     "Structure: 89 subsystems \u2014 Structured Agent Prompts \u00b7 Debate Router State \u00b7 Alpha Vantage Hardening",
-     "Core: TradingAgentsGraph \u00b7 make_log() \u00b7 TestTradingMemoryLogCore"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "be952b8eccb49720509af544c6675233bc1f10d0"
+    "commit_sha": "35543d0248bf89fcb92b17a15858ad0c0e940687"
    },
    "repo_id": 909213664,
    "rank": 13,
@@ -814,7 +812,7 @@
     "commit_sha": "a030dfc0290fbf48ab3a5c81c704a0cf1f28e44b"
    },
    "structure": {
-    "state": "failed(timeout)",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],

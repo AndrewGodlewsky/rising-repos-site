@@ -165,11 +165,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "662419a759a41224bc2c91a3a140946bff82aed1"
    },
    "repo_id": 837911756,
    "rank": 4,
@@ -225,14 +225,14 @@
    "security": {
     "card": "28 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+    "commit_sha": "8e9a8e7a276d270d9855bce0599c9387f6193871"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(timeout)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+    "commit_sha": "8e9a8e7a276d270d9855bce0599c9387f6193871"
    },
    "repo_id": 173228436,
    "rank": 5,
@@ -270,15 +270,15 @@
    "security": {
     "card": "142 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": "2ef2f7cac9673b697c4b9924a4135bfcbe3269b4"
+    "commit_sha": "618c1787c83ac9baace0527a2f572631b86b7aee"
    },
    "structure": {
     "state": "done",
     "lines": [
-     "Structure: 753 subsystems \u2014 Localization and Language Settings \u00b7 Main Window UI \u00b7 Card Model Logic",
+     "Structure: 735 subsystems \u2014 Database and Collection Core \u00b7 Qt Dialogs and Windows \u00b7 WebView and Bridge Communication",
      "Core: &amp;String \u00b7 AnkiQt \u00b7 Collection"
     ],
-    "commit_sha": "2ef2f7cac9673b697c4b9924a4135bfcbe3269b4"
+    "commit_sha": "618c1787c83ac9baace0527a2f572631b86b7aee"
    },
    "repo_id": 7270538,
    "rank": 6,
@@ -310,17 +310,16 @@
   },
   {
    "security": {
-    "card": "1166 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "card": "1024 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": "4b0118520e822416a7078610398be70d971da5f2"
+    "commit_sha": "286bbb8e1f88a817bfd88e3594d2a07bacf6235a"
    },
    "structure": {
-    "state": "done",
+    "state": "queued",
     "lines": [
-     "Structure: 1,607 subsystems \u2014 Table Catalog Metadata Updates \u00b7 Disk File Deletion State \u00b7 Object Storage Operations Validation",
-     "Core: Value \u00b7 init_logging() \u00b7 ObjectOptions"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "4b0118520e822416a7078610398be70d971da5f2"
+    "commit_sha": "286bbb8e1f88a817bfd88e3594d2a07bacf6235a"
    },
    "repo_id": 722597620,
    "rank": 7,

@@ -79,12 +79,11 @@
     "commit_sha": "f99d33a8ddee7b36509a71a6d20d5d23355ce8b1"
    },
    "structure": {
-    "state": "done",
+    "state": "failed(label)",
     "lines": [
-     "Structure: 1,031 subsystems \u2014 Windows VM Management \u00b7 System Provisioning \u00b7 System Upgrade and Transition",
-     "Core: monitor-clamshell-scale-test.sh script \u00b7 DBusMenu \u00b7 bar-widget"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "f99d33a8ddee7b36509a71a6d20d5d23355ce8b1"
+    "commit_sha": "93e8cd56b19df756a6435b0c0e8ed5073d192c36"
    },
    "repo_id": 994093166,
    "rank": 2,
@@ -369,7 +368,7 @@
     "commit_sha": "a030dfc0290fbf48ab3a5c81c704a0cf1f28e44b"
    },
    "structure": {
-    "state": "failed(timeout)",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -526,7 +525,7 @@
     "commit_sha": "8dcd52b92beada28962e818bdca8a137a6beb656"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "running",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -834,7 +833,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "ab269a42a408b8acaf038c811354a68139df38ba"
+    "commit_sha": "8190b02cec0bf33d9b250201f4463cc3485e7f45"
    },
    "repo_id": 23096959,
    "rank": 17,

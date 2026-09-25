@@ -119,11 +119,11 @@
     "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "1e6e909f887a442c4df7797b6fcf7464c374a4a2"
+    "commit_sha": "f659b55761b754d306bd140573493a6543cafd7f"
    },
    "repo_id": 834369920,
    "rank": 3,
@@ -262,14 +262,14 @@
    "security": {
     "card": "28 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+    "commit_sha": "8e9a8e7a276d270d9855bce0599c9387f6193871"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(timeout)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+    "commit_sha": "8e9a8e7a276d270d9855bce0599c9387f6193871"
    },
    "repo_id": 173228436,
    "rank": 6,

@@ -15,16 +15,16 @@
  "rows": [
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "22 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "68132def761c2dccc20d1a71c04abdc5db35463f"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "68132def761c2dccc20d1a71c04abdc5db35463f"
    },
    "repo_id": 809318502,
    "rank": 1,
@@ -179,11 +179,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "98768e8124ca24ec3f76211daa45290392f6eefa"
    },
    "repo_id": 777542931,
    "rank": 4,
@@ -226,11 +226,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "788660e9e64e773bbfbc2554f787c44e23d1068a"
    },
    "repo_id": 779040282,
    "rank": 5,
@@ -262,17 +262,17 @@
   },
   {
    "security": {
-    "card": "183 findings \u00b7 1 check pending",
+    "card": "181 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": "505a2b368eabf67043f996904b2917174f190be2"
+    "commit_sha": "36b06530e9089e4f452abaa11202075fe509e689"
    },
    "structure": {
     "state": "done",
     "lines": [
-     "Structure: 491 subsystems \u2014 Clip Speed Control \u00b7 Timeline Store and App \u00b7 Undo History and Bridge",
+     "Structure: 504 subsystems \u2014 Document and Media Schema \u00b7 Timeline UI and Timing \u00b7 Agent Bridge and History",
      "Core: normalizeDocument() \u00b7 createTrack() \u00b7 TimelineDocument"
     ],
-    "commit_sha": "505a2b368eabf67043f996904b2917174f190be2"
+    "commit_sha": "36b06530e9089e4f452abaa11202075fe509e689"
    },
    "repo_id": 529433810,
    "rank": 6,
@@ -311,16 +311,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "1287 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "829f516d738ec611addedb59895fb8bb8d35b258"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "829f516d738ec611addedb59895fb8bb8d35b258"
    },
    "repo_id": 1221180063,
    "rank": 7,
@@ -417,11 +417,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "ceec54963250432376558c67c3acc221d9ba9602"
    },
    "repo_id": 1007027516,
    "rank": 9,
@@ -460,11 +460,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "58de7c0f5d3c9b34790d55a4fde9a27f7066b0b4"
    },
    "repo_id": 1287938366,
    "rank": 10,
@@ -507,7 +507,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "484344e3a5b40c06c7b58e7567500c23aecc87cc"
    },
    "repo_id": 1038196040,
    "rank": 11,
@@ -551,11 +551,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "88c271823f2c1941c8276c8fc585131559099e71"
    },
    "repo_id": 932994756,
    "rank": 12,
@@ -642,11 +642,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "6abb251c7041af8ac7ced2fae07b1a803a5c8820"
    },
    "repo_id": 1220947600,
    "rank": 14,
@@ -685,11 +685,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "164a9db2a67353f5ef226db039eb430de83ebb8d"
    },
    "repo_id": 693957507,
    "rank": 15,
@@ -830,11 +830,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "ed40f5ef82b9ecd86c5431186b8464b1f9adee34"
    },
    "repo_id": 1054045281,
    "rank": 18,
@@ -986,7 +986,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "5b22b19c72124a7b5fc581f7c895f23c33b20353"
    },
    "repo_id": 1077985558,
    "rank": 21,
@@ -1035,11 +1035,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "7e1c588cbf8dcd5fc0be4dcf55d302bb3c285c6f"
    },
    "repo_id": 763201818,
    "rank": 22,
@@ -1088,7 +1088,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "238ae8c45301cc1ad8ef338288720cee1f0ada93"
    },
    "repo_id": 1187817252,
    "rank": 23,
@@ -1129,7 +1129,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "2c892cab8fe1285d8116216ec18b6b7b44bcd394"
    },
    "repo_id": 1127415267,
    "rank": 24,
@@ -1226,11 +1226,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "ff6439da6f63d7d72181abea4568abd69878c600"
    },
    "repo_id": 966185288,
    "rank": 26,
@@ -1272,11 +1272,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "9f2b703ffe8d1449851617665ab1ffb3516d54ac"
    },
    "repo_id": 1169612059,
    "rank": 27,
@@ -1330,7 +1330,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "b009d3dbedf14795a5c10804a5455386563f4b5b"
    },
    "repo_id": 1131946571,
    "rank": 28,
@@ -1481,11 +1481,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "10f6062feb825790ff9d062a3df4587ddab7fae6"
    },
    "repo_id": 1126805411,
    "rank": 31,
@@ -1522,11 +1522,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "a789bd2a107a4be94d093ee47c9a434b517db4d3"
    },
    "repo_id": 941160149,
    "rank": 32,
@@ -1570,11 +1570,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "388e43e1fc0d0ee382968d3dd72970fd62a0450c"
    },
    "repo_id": 979060063,
    "rank": 33,
@@ -1670,11 +1670,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "1cbddba12b61c68f998a119f81d11e33fd220550"
    },
    "repo_id": 1132664039,
    "rank": 35,
@@ -1717,11 +1717,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "75123845436fe15c5ef0e2a27ced79b050522092"
    },
    "repo_id": 1116144677,
    "rank": 36,
@@ -1928,7 +1928,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "8c2d059165ef8cdcb70dbea76655b9c2b55b38e6"
    },
    "repo_id": 1053373003,
    "rank": 40,
@@ -2007,11 +2007,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "819d9e4f0184042d72998c86535ecbc1b40195b5"
    },
    "repo_id": 1122566616,
    "rank": 42,
@@ -2151,7 +2151,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "a906ed32ce025d9b350ec6e7f533d093be9be2b1"
    },
    "repo_id": 1200793556,
    "rank": 45,
@@ -2188,11 +2188,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "2bf52d832bb45b91adc569a98b87e3291d06edcb"
    },
    "repo_id": 1170189222,
    "rank": 46,
@@ -2254,7 +2254,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "62913c933e21b27da353a89316a09f60525af496"
    },
    "repo_id": 1039282306,
    "rank": 47,
@@ -2302,11 +2302,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "c893c5ed52aed84e3e2ee56787de869fccdae6b0"
    },
    "repo_id": 1271560627,
    "rank": 48,
@@ -2344,11 +2344,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "cff50fa04d50472b607ba6822e8bf482b19cd427"
    },
    "repo_id": 1160885886,
    "rank": 49,
@@ -2394,11 +2394,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "2320c9dea6cafeee965ca671bb902cef68ae0860"
    },
    "repo_id": 1105879493,
    "rank": 50,
@@ -2439,11 +2439,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "e77833990169858a1aeee72cd4f3a9d9378eaaee"
    },
    "repo_id": 995289258,
    "rank": 51,
@@ -2482,16 +2482,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "no findings \u00b7 1 check pending \u00b7 5 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "c907820aff7f4f073c1fcb6cdcf856830e6f77ce"
    },
    "structure": {
-    "state": "queued",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "c907820aff7f4f073c1fcb6cdcf856830e6f77ce"
    },
    "repo_id": 995796077,
    "rank": 52,
@@ -2528,16 +2528,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "287 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "336fa6b106c384fbaedcde5125920bf1022c6ad6"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "336fa6b106c384fbaedcde5125920bf1022c6ad6"
    },
    "repo_id": 1279760665,
    "rank": 53,
@@ -2586,16 +2586,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "14 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "2bd74780040aaa59807f44df3c150e7a949118c8"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "2bd74780040aaa59807f44df3c150e7a949118c8"
    },
    "repo_id": 922438220,
    "rank": 54,
@@ -2636,11 +2636,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "2826b5e8b1aa938bd19303c91009f9d59deddac1"
    },
    "repo_id": 1215329248,
    "rank": 55,
@@ -2677,11 +2677,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "a04a6829bc0bf47061d72b3be77a15c801e53800"
    },
    "repo_id": 1290445936,
    "rank": 56,
@@ -2727,11 +2727,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "9d58e66769ed2479c089b531705f09223d37fff3"
    },
    "repo_id": 1266808913,
    "rank": 57,
@@ -2778,11 +2778,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "cf3f2dfca389e4f19a10dd36ce110c41ea12c899"
    },
    "repo_id": 1161318197,
    "rank": 58,
@@ -2829,11 +2829,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8"
    },
    "repo_id": 1273427276,
    "rank": 59,
@@ -2871,11 +2871,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "dcd0ceefe65785c3cb167b39d1f08a68d0a4e20c"
    },
    "repo_id": 1283642247,
    "rank": 60,
@@ -2917,7 +2917,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "190d916871b5295e774588c52bf958cd4facaa88"
    },
    "repo_id": 750108230,
    "rank": 61,
@@ -2963,11 +2963,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "7d52f1591437332cb0157be3303c1c46da811344"
    },
    "repo_id": 1290658774,
    "rank": 62,
@@ -3012,11 +3012,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "4ff10a2080cc19a4a5a01ca538e13b18c0972a59"
    },
    "repo_id": 1242312297,
    "rank": 63,
@@ -3116,11 +3116,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "3601d41882a346d85041f7955c66429d248e8cd9"
    },
    "repo_id": 1185476360,
    "rank": 65,
@@ -3161,7 +3161,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "1d73f3f9620f990f51bc6f048fb6f4243db932ee"
    },
    "repo_id": 864777463,
    "rank": 66,
@@ -3221,7 +3221,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "e3d61360b0eeab60c5cd09ff7d6c1020cccc80b2"
    },
    "repo_id": 1110932933,
    "rank": 67,
@@ -3269,11 +3269,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "47e7d15e8dbd314cdd2551058f25951ce6a50188"
    },
    "repo_id": 1226362693,
    "rank": 68,
@@ -3316,7 +3316,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "09a1e8a85bf35a93b8c01b3f12b139b558b49852"
    },
    "repo_id": 920995232,
    "rank": 69,
@@ -3416,7 +3416,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "ae5b629ebb41e41f86b3ea2ab5a3283f13ac151a"
    },
    "repo_id": 938664587,
    "rank": 71,
@@ -3513,11 +3513,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "1e9921837385b8218774955b699d949c233e52ea"
    },
    "repo_id": 1084726333,
    "rank": 73,
@@ -3574,11 +3574,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "0c7260603be3de4dd5161565ab92e85b31c45eb5"
    },
    "repo_id": 1084058975,
    "rank": 74,
@@ -3617,16 +3617,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "no findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "1a80c9c85272cd6809009b102b770c452e928196"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "1a80c9c85272cd6809009b102b770c452e928196"
    },
    "repo_id": 1015508367,
    "rank": 75,
@@ -3663,11 +3663,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "147727a0e2ded65a7d0f364beea8cc2ebcdec8af"
    },
    "repo_id": 1276665883,
    "rank": 76,
@@ -3708,11 +3708,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "0a58cec67635c964d3f90706d498acf399ced67d"
    },
    "repo_id": 1169897190,
    "rank": 77,
@@ -3757,11 +3757,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "cdd0bd07d064eec2c30555c037127d0bd2a45a74"
    },
    "repo_id": 1150852058,
    "rank": 78,
@@ -3809,7 +3809,7 @@
     "commit_sha": "4d2ac427ad6f022e73a75c4f46a28bbb7978ec3f"
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3857,11 +3857,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "527333e60d4913f3af217c2153a8ee7bc68cf857"
    },
    "repo_id": 804067963,
    "rank": 80,
@@ -3919,11 +3919,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "a529df80920bb3162f91f7df71c03a2abeb66232"
    },
    "repo_id": 1236310444,
    "rank": 81,
@@ -3959,14 +3959,14 @@
    "security": {
     "card": "28 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+    "commit_sha": "8e9a8e7a276d270d9855bce0599c9387f6193871"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(timeout)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+    "commit_sha": "8e9a8e7a276d270d9855bce0599c9387f6193871"
    },
    "repo_id": 173228436,
    "rank": 82,
@@ -4007,11 +4007,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "07726c06560d75acd4d33d4a8c2cc46495b261fd"
    },
    "repo_id": 1214821189,
    "rank": 83,
@@ -4061,11 +4061,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "7db4039111a9002f900be537c2b2061d26d73744"
    },
    "repo_id": 1064015049,
    "rank": 84,
@@ -4115,11 +4115,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "cf562cd0e47031d12a3c53106179a3dd4bfbab33"
    },
    "repo_id": 1227634482,
    "rank": 85,
@@ -4156,11 +4156,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "8eb3a0523ad5bc6530c030dfa868d10b92c71083"
    },
    "repo_id": 850651449,
    "rank": 86,
@@ -4197,11 +4197,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "22134e125fe9c4ee21d3bfcc105ec89275b26dcc"
    },
    "repo_id": 1076312498,
    "rank": 87,
@@ -4251,7 +4251,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "acdc998c64829f8ae037be48e3c273ccc8d71f60"
    },
    "repo_id": 875103769,
    "rank": 88,
@@ -4292,7 +4292,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "b2627e84b4c512430759f55c8d7ac5b54bc368b3"
    },
    "repo_id": 1194517182,
    "rank": 89,
@@ -4344,11 +4344,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "7feda8e01e22bc0886c86123f3884947e36d8c69"
    },
    "repo_id": 1177695121,
    "rank": 90,
@@ -4432,11 +4432,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "4beafff2ff41da7d97a4faee9b516ccde466fb4b"
    },
    "repo_id": 1274547830,
    "rank": 92,
@@ -4490,16 +4490,16 @@
   },
   {
    "security": {
-    "card": "2611 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "card": "3045 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": "ce993013e778a722d9e2ed1276c4a1da571b0382"
+    "commit_sha": "ad9970e145d4246a7f89a549f80687638fae1045"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "ce993013e778a722d9e2ed1276c4a1da571b0382"
+    "commit_sha": "ad9970e145d4246a7f89a549f80687638fae1045"
    },
    "repo_id": 189829392,
    "rank": 93,
@@ -4561,7 +4561,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "c4dd3d7256bea3c3defb2b9544418452511cfa4d"
    },
    "repo_id": 1330144990,
    "rank": 94,
@@ -4606,16 +4606,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "152 findings \u00b7 1 check pending \u00b7 3 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "7570db299aa9846094c90d8ca72db77f56e6a0e0"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "7570db299aa9846094c90d8ca72db77f56e6a0e0"
    },
    "repo_id": 1065936302,
    "rank": 95,
@@ -4659,11 +4659,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "43b69e44c9ca905fe3a3418ccdf4102255e20d40"
    },
    "repo_id": 1239414821,
    "rank": 96,
@@ -4705,11 +4705,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "ffe2d10042041dcc23325f013e8b7e607e069952"
    },
    "repo_id": 1174539837,
    "rank": 97,
@@ -4743,16 +4743,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "96 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "5803656797660de8bb3b480303611bcb07a0202e"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "5803656797660de8bb3b480303611bcb07a0202e"
    },
    "repo_id": 718748920,
    "rank": 98,
@@ -4795,11 +4795,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "1e17f218a48d73f733fac1f15629e0345968e1ba"
    },
    "repo_id": 1129299091,
    "rank": 99,
@@ -4838,11 +4838,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "97a21b7a98e4446142a39bd38190023ebb34cd74"
    },
    "repo_id": 1073214662,
    "rank": 100,
@@ -4874,9 +4874,9 @@
   },
   {
    "security": {
-    "card": "280 findings \u00b7 2 checks pending \u00b7 1 check not applicable",
+    "card": "not yet scanned \u2014 queued",
     "link_suppressed": false,
-    "commit_sha": "f158b2ff661ab0e195987ea5077f6cc5b902a05c"
+    "commit_sha": "ca4d8510677f98c7f482bbd7aba1cb265a48d1e9"
    },
    "structure": {
     "state": "done",
@@ -4943,11 +4943,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "f2c723634e8770c64510b6eaef20a25cd444137e"
    },
    "repo_id": 723187026,
    "rank": 102,
@@ -4991,11 +4991,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "f79b66ca34c217af1dbf779c9e2fd7a475277c99"
    },
    "repo_id": 949144653,
    "rank": 103,
@@ -5036,7 +5036,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "120b67676388241b314699fa8fa9af25ada6d1d4"
    },
    "repo_id": 1137515077,
    "rank": 104,
@@ -5076,16 +5076,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "15 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "9d82e10f6a2ef1307a0c76bcd8f34628e14b155b"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "9d82e10f6a2ef1307a0c76bcd8f34628e14b155b"
    },
    "repo_id": 1279187498,
    "rank": 105,
@@ -5124,11 +5124,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "91bd4de5c405d27f1217df1bf22c2394e55b07d2"
    },
    "repo_id": 1160827158,
    "rank": 106,
@@ -5182,11 +5182,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "1733b820f3cdf6f74bbc81a10bda3201b38c7bcf"
    },
    "repo_id": 1177953619,
    "rank": 107,
@@ -5225,16 +5225,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "9 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "fdf91875367f15afdaa9ab8108b51b169626d2ad"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "fdf91875367f15afdaa9ab8108b51b169626d2ad"
    },
    "repo_id": 903700733,
    "rank": 108,
@@ -5276,11 +5276,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "f71ada2ea5187c316a3e67a37a6c8f5932ca13b2"
    },
    "repo_id": 1116604175,
    "rank": 109,
@@ -5375,16 +5375,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "6 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "0677254f1f49f714c6014527ff674c1eb976e7e7"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "0677254f1f49f714c6014527ff674c1eb976e7e7"
    },
    "repo_id": 1229961940,
    "rank": 111,
@@ -5423,11 +5423,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "ad978652682270a593e7029269beff5411477a70"
    },
    "repo_id": 1197739644,
    "rank": 112,
@@ -5475,11 +5475,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "ce0121896b2895637ab1f656cbb0d75fa2874489"
    },
    "repo_id": 1182800787,
    "rank": 113,
@@ -5517,16 +5517,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "182 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "dcfeb737344290f62d8d1df5ad5c42646926fa05"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "dcfeb737344290f62d8d1df5ad5c42646926fa05"
    },
    "repo_id": 1161958643,
    "rank": 114,
@@ -5573,11 +5573,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "8fbdcab151f368abde999700a8940c7bf35d445e"
    },
    "repo_id": 825347997,
    "rank": 115,
@@ -5632,7 +5632,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "d4fbd48f13a7857180c9d5450d03de0e14cc33d5"
    },
    "repo_id": 837479775,
    "rank": 116,
@@ -5676,11 +5676,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "a3db62f9436074e485c0278290c2164ed6150808"
    },
    "repo_id": 1173532413,
    "rank": 117,
@@ -5719,11 +5719,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "486022daaf14f7142275eddb9b3cacc3cc5dadfa"
    },
    "repo_id": 1241960226,
    "rank": 118,
@@ -5771,7 +5771,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "739512a8588b28ff3b554e669391c22508602878"
    },
    "repo_id": 1172273835,
    "rank": 119,
@@ -5815,11 +5815,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "adaecf71a38277126fbe1e5e0d79664300f855c1"
    },
    "repo_id": 1154273018,
    "rank": 120,
@@ -5879,7 +5879,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "ff9457587fb6ec900e16e93be9ad2d77409afa08"
    },
    "repo_id": 1004147641,
    "rank": 121,
@@ -5980,17 +5980,16 @@
   },
   {
    "security": {
-    "card": "445 findings \u00b7 1 check pending",
+    "card": "441 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": "d65f594f7e5b495edbda79bb5fe16883b17077ae"
+    "commit_sha": "3d30e201b5b902b7284ccb1aa83cd5e8cffa02a4"
    },
    "structure": {
-    "state": "done",
+    "state": "queued",
     "lines": [
-     "Structure: 1,597 subsystems \u2014 Frontend API Integration \u00b7 AI Budget and Chat Management \u00b7 Database Mocking and AI Models",
-     "Core: Context() \u00b7 Now() \u00b7 Errorf()"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "d65f594f7e5b495edbda79bb5fe16883b17077ae"
+    "commit_sha": "3d30e201b5b902b7284ccb1aa83cd5e8cffa02a4"
    },
    "repo_id": 440752086,
    "rank": 123,
@@ -6038,11 +6037,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "4525768c8b7d706cc688956e328ed30aca8983e9"
    },
    "repo_id": 1186582345,
    "rank": 124,
@@ -6091,11 +6090,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "a4e025c10b280f0ab718a3b2b2a29534fd1cf05a"
    },
    "repo_id": 1234188479,
    "rank": 125,
@@ -6221,16 +6220,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "661 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "7b043bd23c8487c2510cbf045ac215add6f93182"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "7b043bd23c8487c2510cbf045ac215add6f93182"
    },
    "repo_id": 1207529559,
    "rank": 128,
@@ -6284,11 +6283,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "7e7d455249cf6cf9490788bd9997ec4516f23eeb"
    },
    "repo_id": 1197569406,
    "rank": 129,
@@ -6340,11 +6339,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "3f8159ea94ef6170c069b58575c381cadc636c3c"
    },
    "repo_id": 1184570845,
    "rank": 130,
@@ -6381,11 +6380,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "4c05849bc6ca5055ad187d056ef26e61b3bc2fea"
    },
    "repo_id": 925273833,
    "rank": 131,
@@ -6427,11 +6426,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "d31c03813451ffab5a1c4e1d5870fbbb90ba6108"
    },
    "repo_id": 916009087,
    "rank": 132,
@@ -6484,11 +6483,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "7fa15b14b36b9570ac03302ec4939bcff4b4b83a"
    },
    "repo_id": 812044182,
    "rank": 133,
@@ -6550,7 +6549,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "d067e81a696808240094066d0272e2cc1f295aa1"
+    "commit_sha": "ad5c4bb8791b24f9ea24802f5b500e7126aeacf8"
    },
    "repo_id": 214587193,
    "rank": 134,
@@ -6602,16 +6601,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "92 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "716aa0dfe4f376d17039804e1a6c4b7bbd3d7ffd"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "716aa0dfe4f376d17039804e1a6c4b7bbd3d7ffd"
    },
    "repo_id": 948393531,
    "rank": 135,
@@ -6656,11 +6655,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "726e9aabfaa642203722eb126f5eaf0f37f3e1ad"
    },
    "repo_id": 1292782830,
    "rank": 136,
@@ -6702,11 +6701,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "cef933f118ca216cb00af7d44d8f6b0c3ce9771d"
    },
    "repo_id": 1253566852,
    "rank": 137,
@@ -6752,11 +6751,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "2234480338b1c4378a2a3bb2199e5795dc4c7d52"
    },
    "repo_id": 1053730183,
    "rank": 138,
@@ -6845,11 +6844,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "e17f2c81da5dc393faddc3cca5757ede9dd29961"
    },
    "repo_id": 1143633223,
    "rank": 140,
@@ -6886,11 +6885,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "710b5eaf72420b81db1784183815fa8779116c11"
    },
    "repo_id": 1299986310,
    "rank": 141,
@@ -6933,16 +6932,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "879 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "3f401cd84a93c522ceadea974fb523d2fe027866"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "3f401cd84a93c522ceadea974fb523d2fe027866"
    },
    "repo_id": 1118625788,
    "rank": 142,
@@ -6992,11 +6991,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "b56ec29cc5acfc53749c2b9a614ea796207e7d7a"
    },
    "repo_id": 1146874912,
    "rank": 143,
@@ -7035,11 +7034,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "b2296b6b8145242e43efb7adaba397dfc84d507c"
    },
    "repo_id": 1249360152,
    "rank": 144,
@@ -7072,16 +7071,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "465 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "da38ec1ee89d41e5380e652a97382695003396e7"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "da38ec1ee89d41e5380e652a97382695003396e7"
    },
    "repo_id": 1140828898,
    "rank": 145,
@@ -7118,11 +7117,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "458c923aaa43c3ef581b290d38935993928e0520"
    },
    "repo_id": 1291034571,
    "rank": 146,
@@ -7225,16 +7224,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "1104 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "8bc3175dcfd62f5aad970085b0be9f0faaba2e5e"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "8bc3175dcfd62f5aad970085b0be9f0faaba2e5e"
    },
    "repo_id": 1071272475,
    "rank": 148,
@@ -7291,11 +7290,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "d42226d5c4fd6f8fef4d9dd312171cc0227220a8"
    },
    "repo_id": 1152014383,
    "rank": 149,
@@ -7353,11 +7352,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "empty(no_code)",
     "lines": [
-     "Structure: not yet mapped \u2014 queued"
+     "Structure: no code to map \u2014 curated list / documentation repository"
     ],
-    "commit_sha": null
+    "commit_sha": "b8343f8873b7bdd8bd8739a42aa7557d5644cf48"
    },
    "repo_id": 1196855016,
    "rank": 150,
@@ -7438,11 +7437,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "a6a39d1c64793c87cdafc834e9ef89a1314f4778"
    },
    "repo_id": 1275972890,
    "rank": 152,
@@ -7481,11 +7480,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "ff477fb5a1f280d6d5bb344b0b148809e47a6238"
    },
    "repo_id": 1179410901,
    "rank": 153,
@@ -7535,7 +7534,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "d015e9bfe441bd90ae431bac24c55cb74bdbce26"
    },
    "repo_id": 750484475,
    "rank": 154,
@@ -7577,11 +7576,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "21e88cc8b14bbc9926cc95a4c901fa17b2486a2e"
    },
    "repo_id": 1246211773,
    "rank": 155,
@@ -7686,11 +7685,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "4b72f46b045e6fef52e6a98d4c162dd309826aed"
    },
    "repo_id": 1173738644,
    "rank": 157,
@@ -7724,16 +7723,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "73 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "ec4aa4797956534578a1af010f86252a0b6d8626"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "ec4aa4797956534578a1af010f86252a0b6d8626"
    },
    "repo_id": 1218231004,
    "rank": 158,
@@ -7775,16 +7774,16 @@
   },
   {
    "security": {
-    "card": "2041 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "card": "2035 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": "7524f9a4979f8af96ce669e1ba35155c9571355d"
+    "commit_sha": "53bd7ad6af61fa9a59ed2ecde6c1654381f25b19"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "7524f9a4979f8af96ce669e1ba35155c9571355d"
+    "commit_sha": "53bd7ad6af61fa9a59ed2ecde6c1654381f25b19"
    },
    "repo_id": 48109239,
    "rank": 159,
@@ -7838,11 +7837,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "c04aacc604a23ac05c00538f1bd4bc586fee6bb6"
    },
    "repo_id": 1293600453,
    "rank": 160,
@@ -7931,11 +7930,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "4b5185f34ded1820c618c63ceec5d95f2ad5271d"
    },
    "repo_id": 1079141596,
    "rank": 162,
@@ -7995,11 +7994,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "ba06effa02adcc99d8ab9d590cbfb969d45edce9"
    },
    "repo_id": 966586935,
    "rank": 163,
@@ -8038,11 +8037,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "9c617ed94974173c6250819e5a08f95f5328d7d8"
    },
    "repo_id": 1265107923,
    "rank": 164,
@@ -8081,11 +8080,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "1e08d8e4905651e935e4408f15614734c8ad55f9"
    },
    "repo_id": 1010561139,
    "rank": 165,
@@ -8189,11 +8188,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "27dbd3ed74535213e7c40be8abcdcec4145bebf2"
    },
    "repo_id": 1051229663,
    "rank": 167,
@@ -8286,11 +8285,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "f754c96ea56d94e209b366289818193f7b1b36e3"
    },
    "repo_id": 1177225364,
    "rank": 169,
@@ -8539,16 +8538,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "26 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "36b4012410dfeee032a2343d9809b7861d4907d4"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "36b4012410dfeee032a2343d9809b7861d4907d4"
    },
    "repo_id": 997490512,
    "rank": 174,
@@ -8593,11 +8592,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "796713ce11da728a3024e07c09ffd9c8c4c6d1c4"
    },
    "repo_id": 1036441713,
    "rank": 175,
@@ -8634,12 +8633,11 @@
     "commit_sha": "57b430b5b6a19106a989651f4cde853c05147682"
    },
    "structure": {
-    "state": "done",
+    "state": "failed(label)",
     "lines": [
-     "Structure: 279 subsystems \u2014 UI Avatar and Breadcrumb \u00b7 Chat Middleware and API \u00b7 Spatial Index and Hit Testing",
-     "Core: cn() \u00b7 react \u00b7 SupermemoryTools"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "57b430b5b6a19106a989651f4cde853c05147682"
+    "commit_sha": "0e12f0b3a65af1cf7b03f48561f20ddf4369bc3f"
    },
    "repo_id": 764287615,
    "rank": 176,
@@ -8689,11 +8687,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(timeout)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "b7235db5317420b1137926ad424f6b9373843e61"
    },
    "repo_id": 1147866277,
    "rank": 177,
@@ -8742,11 +8740,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "0c620c1b5b487e2ab735c929dd0127419e5cb963"
    },
    "repo_id": 1210260086,
    "rank": 178,
@@ -8778,17 +8776,16 @@
   },
   {
    "security": {
-    "card": "1166 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "card": "1024 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": "4b0118520e822416a7078610398be70d971da5f2"
+    "commit_sha": "286bbb8e1f88a817bfd88e3594d2a07bacf6235a"
    },
    "structure": {
-    "state": "done",
+    "state": "queued",
     "lines": [
-     "Structure: 1,607 subsystems \u2014 Table Catalog Metadata Updates \u00b7 Disk File Deletion State \u00b7 Object Storage Operations Validation",
-     "Core: Value \u00b7 init_logging() \u00b7 ObjectOptions"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "4b0118520e822416a7078610398be70d971da5f2"
+    "commit_sha": "286bbb8e1f88a817bfd88e3594d2a07bacf6235a"
    },
    "repo_id": 722597620,
    "rank": 179,
@@ -8838,11 +8835,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "c893205377d486c7bb951aab5d5de7f6a783d0a2"
    },
    "repo_id": 897268988,
    "rank": 180,
@@ -8945,16 +8942,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "170 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "f7468ae2920a2b0aedbd0848cf121de56a07f93c"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "f7468ae2920a2b0aedbd0848cf121de56a07f93c"
    },
    "repo_id": 1011570102,
    "rank": 182,
@@ -9048,11 +9045,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "9fad399909314233d426c0719f52e7990c02db17"
    },
    "repo_id": 1155787322,
    "rank": 184,
@@ -9105,16 +9102,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "456 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "1db5c5b26469468ce2fd782c7b447c064012a7f6"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "1db5c5b26469468ce2fd782c7b447c064012a7f6"
    },
    "repo_id": 1109050469,
    "rank": 185,
@@ -9156,11 +9153,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "b0ba7ddcc3d0f4c16092236ca6a01b56c0614810"
    },
    "repo_id": 943034935,
    "rank": 186,
@@ -9201,11 +9198,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "9d06ed9ca7bd54625fb5ab72e9598865836e695e"
    },
    "repo_id": 1200773996,
    "rank": 187,
@@ -9249,11 +9246,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "a8c34fc1af1f89626218712d940b673206a69ed6"
    },
    "repo_id": 1112733896,
    "rank": 188,
@@ -9305,7 +9302,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "2147b86ac48bb0e707eaeb8c8e09af4ab0023012"
+    "commit_sha": "be877ff2d56eb9f48cc38af49ca7165fb335b5f2"
    },
    "repo_id": 644461337,
    "rank": 189,
@@ -9358,12 +9355,11 @@
     "commit_sha": "b486776a2eef0d3f39abaebaa3c03e378c7480b8"
    },
    "structure": {
-    "state": "done",
+    "state": "failed(label)",
     "lines": [
-     "Structure: 192 subsystems \u2014 Agent Types and Interfaces \u00b7 Git Index and Hunks \u00b7 UI Pane State",
-     "Core: default \u00b7 default \u00b7 default"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "b486776a2eef0d3f39abaebaa3c03e378c7480b8"
+    "commit_sha": "684ffc4da0eaaddcafa61842dc719c6a8febc5c2"
    },
    "repo_id": 937253475,
    "rank": 190,
@@ -9451,11 +9447,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "93aa1fe6642e8e2aca3e26a0d49ad2d2dcaa1e0a"
    },
    "repo_id": 1175748759,
    "rank": 192,
@@ -9501,16 +9497,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "281 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "bc051f2308db050b0d987b696c843664d483b515"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "bc051f2308db050b0d987b696c843664d483b515"
    },
    "repo_id": 1198203138,
    "rank": 193,
@@ -9545,15 +9541,14 @@
    "security": {
     "card": "471 findings \u00b7 1 check pending \u00b7 2 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": "8985a461fd49ee8656776651cf0ca6b4576fc10c"
+    "commit_sha": "6482aa5fe53e9028c6796bebd191c500bce56add"
    },
    "structure": {
-    "state": "done",
+    "state": "queued",
     "lines": [
-     "Structure: 4,392 subsystems \u2014 Payment Core Models \u00b7 Card and Billing Details \u00b7 Kafka Storage Operations",
-     "Core: SessionState \u00b7 Execute \u00b7 Connectors"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "8985a461fd49ee8656776651cf0ca6b4576fc10c"
+    "commit_sha": "6482aa5fe53e9028c6796bebd191c500bce56add"
    },
    "repo_id": 552877440,
    "rank": 194,
@@ -9612,11 +9607,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "8a380d99270bef9f6e4d82cda0a33370d0dc5345"
    },
    "repo_id": 1155113456,
    "rank": 195,
@@ -9654,11 +9649,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "5e5d31eb39659d2b18773b0df203dc43de7552da"
    },
    "repo_id": 858645266,
    "rank": 196,
@@ -9700,11 +9695,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "f51c0442802f1a557220943c72fb2584c7c99fa4"
    },
    "repo_id": 866237193,
    "rank": 197,
@@ -9757,11 +9752,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "bd5fcf99e29567dbc8407af3dddab47294ec09b1"
    },
    "repo_id": 1015340186,
    "rank": 198,
@@ -9798,11 +9793,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "2ed78f9805067a9422f553f20c3bc41bbbcb944f"
    },
    "repo_id": 977919152,
    "rank": 199,
@@ -9839,11 +9834,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "39cc34a84bfb78023154c9f4e99c61f3cbe8fc19"
    },
    "repo_id": 1265947881,
    "rank": 200,
@@ -10041,11 +10036,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "6f72cfd0db69e2952713f24a648812407fef1e78"
    },
    "repo_id": 1150780143,
    "rank": 204,
@@ -10089,11 +10084,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "0102ee8de157e6148640f0fba25c903d141d9174"
    },
    "repo_id": 707764474,
    "rank": 205,
@@ -10149,11 +10144,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "64cc7424ec063edb6460b47ed8165b6011f7a100"
    },
    "repo_id": 736076016,
    "rank": 206,
@@ -10187,15 +10182,15 @@
    "security": {
     "card": "142 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": "2ef2f7cac9673b697c4b9924a4135bfcbe3269b4"
+    "commit_sha": "618c1787c83ac9baace0527a2f572631b86b7aee"
    },
    "structure": {
     "state": "done",
     "lines": [
-     "Structure: 753 subsystems \u2014 Localization and Language Settings \u00b7 Main Window UI \u00b7 Card Model Logic",
+     "Structure: 735 subsystems \u2014 Database and Collection Core \u00b7 Qt Dialogs and Windows \u00b7 WebView and Bridge Communication",
      "Core: &amp;String \u00b7 AnkiQt \u00b7 Collection"
     ],
-    "commit_sha": "2ef2f7cac9673b697c4b9924a4135bfcbe3269b4"
+    "commit_sha": "618c1787c83ac9baace0527a2f572631b86b7aee"
    },
    "repo_id": 7270538,
    "rank": 207,
@@ -10232,11 +10227,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "6b3f4b8582a8bc3f20f795735f5383716c4ba794"
    },
    "repo_id": 1083010192,
    "rank": 208,
@@ -10277,7 +10272,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "84748d7a076c2ef3ab751435e80bf419b1c9ca61"
    },
    "repo_id": 924738875,
    "rank": 209,
@@ -10321,11 +10316,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "46b3d1e6d4a0672e577d84e49906c1c78f22a74f"
    },
    "repo_id": 1124919682,
    "rank": 210,
@@ -10375,11 +10370,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "4d31d4bdb456666ad44ecfb462bc3a94d08dd6a9"
    },
    "repo_id": 1216672009,
    "rank": 211,
@@ -10423,11 +10418,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "0916b28e598e06012f035ad506bfaeca79c31564"
    },
    "repo_id": 957782869,
    "rank": 212,
@@ -10478,11 +10473,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "eebfe20646eb9612cb1ae0579b8e121f63cbd05b"
    },
    "repo_id": 1038434342,
    "rank": 213,
@@ -10525,11 +10520,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "9bad9dbe55e4e946ec46aee07f3b74b5e232b5fc"
    },
    "repo_id": 1106177770,
    "rank": 214,
@@ -10568,16 +10563,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "662 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "e2433b1293fa350d972902cd3676a1aa9a9c9aac"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "e2433b1293fa350d972902cd3676a1aa9a9c9aac"
    },
    "repo_id": 1024118326,
    "rank": 215,
@@ -10635,11 +10630,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "76143f7473a86e750787cf6f44756964363f9bbc"
    },
    "repo_id": 713106159,
    "rank": 216,
@@ -10683,11 +10678,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "b24e9338c0976bf882bbf50dbc3d61c9a451d130"
    },
    "repo_id": 1145374818,
    "rank": 217,
@@ -10728,16 +10723,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "44 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "6329f0dd26934998d188b88fa52a3e2ac69b0fc6"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "6329f0dd26934998d188b88fa52a3e2ac69b0fc6"
    },
    "repo_id": 1170138985,
    "rank": 218,
@@ -10794,11 +10789,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "268916b2e5de54af11e0248bbf4b4144dc547c59"
    },
    "repo_id": 884056167,
    "rank": 219,
@@ -10830,16 +10825,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "135 findings \u00b7 3 checks pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "c7a6feb56ec5d1b71544c1b223cc707100866512"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "c7a6feb56ec5d1b71544c1b223cc707100866512"
    },
    "repo_id": 1226304875,
    "rank": 220,
@@ -10884,11 +10879,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "dd2e190e5c5551f666dea8fafc6f5d1b1a8e5909"
    },
    "repo_id": 824874689,
    "rank": 221,
@@ -10973,11 +10968,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "51f49dea198384b4eb6087b72c17057c6eb1c1cd"
    },
    "repo_id": 1141782198,
    "rank": 223,
@@ -11023,11 +11018,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "768894c4655c6c6fd6ed4cf69501cc502a2c0b41"
    },
    "repo_id": 981177285,
    "rank": 224,
@@ -11073,11 +11068,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "939eb66485832dead1b0a28a954f76f7aa2bdb06"
    },
    "repo_id": 1126473386,
    "rank": 225,
@@ -11183,11 +11178,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "d20c728368bf9c189d6d7aab704744decb6ec0cc"
    },
    "repo_id": 957658915,
    "rank": 227,
@@ -11231,16 +11226,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "24 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "b3ba9cf16dd3a0452944b2159278cce1411de29c"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "b3ba9cf16dd3a0452944b2159278cce1411de29c"
    },
    "repo_id": 1202559832,
    "rank": 228,
@@ -11278,11 +11273,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "a7367d07e55db61099f7b4e2c1108bc5831a24f3"
    },
    "repo_id": 1014729376,
    "rank": 229,
@@ -11396,15 +11391,14 @@
    "security": {
     "card": "164 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": "549e4b5e61c7103685ef8392f246ebdba783ed03"
+    "commit_sha": "d0b51bcf3cd56d9a3f71e049cb6e226554e24162"
    },
    "structure": {
-    "state": "done",
+    "state": "queued",
     "lines": [
-     "Structure: 117 subsystems \u2014 Terminal Core Rendering \u00b7 Scrape Job Database Tests \u00b7 Terminal Cursor Control",
-     "Core: k \u00b7 Entry \u00b7 d"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "549e4b5e61c7103685ef8392f246ebdba783ed03"
+    "commit_sha": "d0b51bcf3cd56d9a3f71e049cb6e226554e24162"
    },
    "repo_id": 631285104,
    "rank": 231,

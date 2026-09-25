@@ -195,11 +195,11 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "4a725c5b51895d0022da198c473432561933fb2c"
    },
    "repo_id": 976921297,
    "rank": 4,
@@ -303,16 +303,16 @@
   },
   {
    "security": {
-    "card": "not yet scanned \u2014 queued",
+    "card": "1816 findings \u00b7 1 check pending",
     "link_suppressed": false,
-    "commit_sha": null
+    "commit_sha": "c8ff7ab95f5958731872afb5aaa9b3f3fa89966a"
    },
    "structure": {
     "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": null
+    "commit_sha": "c8ff7ab95f5958731872afb5aaa9b3f3fa89966a"
    },
    "repo_id": 1013480284,
    "rank": 6,

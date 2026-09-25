@@ -72,12 +72,11 @@
     "commit_sha": "57b430b5b6a19106a989651f4cde853c05147682"
    },
    "structure": {
-    "state": "done",
+    "state": "failed(label)",
     "lines": [
-     "Structure: 279 subsystems \u2014 UI Avatar and Breadcrumb \u00b7 Chat Middleware and API \u00b7 Spatial Index and Hit Testing",
-     "Core: cn() \u00b7 react \u00b7 SupermemoryTools"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "57b430b5b6a19106a989651f4cde853c05147682"
+    "commit_sha": "0e12f0b3a65af1cf7b03f48561f20ddf4369bc3f"
    },
    "repo_id": 764287615,
    "rank": 2,
@@ -184,7 +183,7 @@
     "commit_sha": "4d2ac427ad6f022e73a75c4f46a28bbb7978ec3f"
    },
    "structure": {
-    "state": "running",
+    "state": "failed(label)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -232,12 +231,11 @@
     "commit_sha": "b486776a2eef0d3f39abaebaa3c03e378c7480b8"
    },
    "structure": {
-    "state": "done",
+    "state": "failed(label)",
     "lines": [
-     "Structure: 192 subsystems \u2014 Agent Types and Interfaces \u00b7 Git Index and Hunks \u00b7 UI Pane State",
-     "Core: default \u00b7 default \u00b7 default"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "b486776a2eef0d3f39abaebaa3c03e378c7480b8"
+    "commit_sha": "684ffc4da0eaaddcafa61842dc719c6a8febc5c2"
    },
    "repo_id": 937253475,
    "rank": 5,
@@ -269,17 +267,16 @@
   },
   {
    "security": {
-    "card": "1166 findings \u00b7 1 check pending \u00b7 1 check not applicable",
+    "card": "1024 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": "4b0118520e822416a7078610398be70d971da5f2"
+    "commit_sha": "286bbb8e1f88a817bfd88e3594d2a07bacf6235a"
    },
    "structure": {
-    "state": "done",
+    "state": "queued",
     "lines": [
-     "Structure: 1,607 subsystems \u2014 Table Catalog Metadata Updates \u00b7 Disk File Deletion State \u00b7 Object Storage Operations Validation",
-     "Core: Value \u00b7 init_logging() \u00b7 ObjectOptions"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "4b0118520e822416a7078610398be70d971da5f2"
+    "commit_sha": "286bbb8e1f88a817bfd88e3594d2a07bacf6235a"
    },
    "repo_id": 722597620,
    "rank": 6,
@@ -382,12 +379,11 @@
     "commit_sha": "b078ea34921eafe181141e6179e87885196497c3"
    },
    "structure": {
-    "state": "done",
+    "state": "failed(label)",
     "lines": [
-     "Structure: 333 subsystems \u2014 OCR Engine Configurations \u00b7 Inference Device and Chart Options \u00b7 Document Format and Pipeline Routing",
-     "Core: InputDocument \u00b7 InputFormat \u00b7 DocumentConverter"
+     "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "b078ea34921eafe181141e6179e87885196497c3"
+    "commit_sha": "570f956792fcfe8e51bde0f4a79a2ddabc1a061a"
    },
    "repo_id": 826168160,
    "rank": 8,
@@ -437,15 +433,15 @@
    "security": {
     "card": "142 findings \u00b7 1 check pending \u00b7 1 check not applicable",
     "link_suppressed": false,
-    "commit_sha": "2ef2f7cac9673b697c4b9924a4135bfcbe3269b4"
+    "commit_sha": "618c1787c83ac9baace0527a2f572631b86b7aee"
    },
    "structure": {
     "state": "done",
     "lines": [
-     "Structure: 753 subsystems \u2014 Localization and Language Settings \u00b7 Main Window UI \u00b7 Card Model Logic",
+     "Structure: 735 subsystems \u2014 Database and Collection Core \u00b7 Qt Dialogs and Windows \u00b7 WebView and Bridge Communication",
      "Core: &amp;String \u00b7 AnkiQt \u00b7 Collection"
     ],
-    "commit_sha": "2ef2f7cac9673b697c4b9924a4135bfcbe3269b4"
+    "commit_sha": "618c1787c83ac9baace0527a2f572631b86b7aee"
    },
    "repo_id": 7270538,
    "rank": 9,
@@ -482,7 +478,7 @@
     "commit_sha": "4f0366f3fce5edc5e09f7d2382973a2bf36bda3a"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(checkout)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -620,14 +616,14 @@
    "security": {
     "card": "28 findings \u00b7 1 check pending \u00b7 4 checks not applicable",
     "link_suppressed": false,
-    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+    "commit_sha": "8e9a8e7a276d270d9855bce0599c9387f6193871"
    },
    "structure": {
-    "state": "queued",
+    "state": "failed(timeout)",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "d6192cb3f900f74152a4eeec1aa6758b6143b093"
+    "commit_sha": "8e9a8e7a276d270d9855bce0599c9387f6193871"
    },
    "repo_id": 173228436,
    "rank": 13,
@@ -672,7 +668,7 @@
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
-    "commit_sha": "d067e81a696808240094066d0272e2cc1f295aa1"
+    "commit_sha": "ad5c4bb8791b24f9ea24802f5b500e7126aeacf8"
    },
    "repo_id": 214587193,
    "rank": 14,
