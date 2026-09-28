@@ -75,12 +75,12 @@
    "description": "Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. By default it supports the Google Java Style Guide and Sun Code Conventions, but is highly configurable. It can be invoked with an ANT task and a command line program.",
    "language": "Java",
    "topics": [
-    "code-quality",
-    "command-line-tool",
-    "hacktoberfest",
     "java",
+    "static-code-analysis",
+    "command-line-tool",
     "static-analysis",
-    "static-code-analysis"
+    "code-quality",
+    "hacktoberfest"
    ],
    "license": "LGPL-2.1",
    "homepage": "https://checkstyle.org",
@@ -167,13 +167,13 @@
    "description": "The Python micro framework for building web applications.",
    "language": "Python",
    "topics": [
-    "flask",
-    "jinja",
-    "pallets",
     "python",
+    "flask",
+    "wsgi",
     "web-framework",
     "werkzeug",
-    "wsgi"
+    "jinja",
+    "pallets"
    ],
    "license": "BSD-3-Clause",
    "homepage": "https://flask.palletsprojects.com",
@@ -218,10 +218,10 @@
    "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
    "language": "TypeScript",
    "topics": [
-    "framework",
-    "frontend",
+    "vue",
     "javascript",
-    "vue"
+    "frontend",
+    "framework"
    ],
    "license": "MIT",
    "homepage": "http://v2.vuejs.org",
@@ -265,15 +265,15 @@
    "description": "The Web framework for perfectionists with deadlines.",
    "language": "Python",
    "topics": [
-    "apps",
-    "django",
-    "framework",
-    "models",
-    "orm",
     "python",
+    "django",
+    "web",
+    "framework",
+    "orm",
     "templates",
+    "models",
     "views",
-    "web"
+    "apps"
    ],
    "license": "BSD-3-Clause",
    "homepage": "https://www.djangoproject.com/",

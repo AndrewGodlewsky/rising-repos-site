@@ -75,9 +75,9 @@
    "description": "A book-in-progress about the Linux kernel and its insides.",
    "language": "Python",
    "topics": [
-    "linux",
+    "linux-kernel",
     "linux-insides",
-    "linux-kernel"
+    "linux"
    ],
    "license": "NOASSERTION",
    "homepage": "https://0xax.dev/books/linux-inside/",
@@ -121,10 +121,10 @@
    "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
    "language": "TypeScript",
    "topics": [
-    "framework",
-    "frontend",
+    "vue",
     "javascript",
-    "vue"
+    "frontend",
+    "framework"
    ],
    "license": "MIT",
    "homepage": "http://v2.vuejs.org",
@@ -168,13 +168,13 @@
    "description": "The Python micro framework for building web applications.",
    "language": "Python",
    "topics": [
-    "flask",
-    "jinja",
-    "pallets",
     "python",
+    "flask",
+    "wsgi",
     "web-framework",
     "werkzeug",
-    "wsgi"
+    "jinja",
+    "pallets"
    ],
    "license": "BSD-3-Clause",
    "homepage": "https://flask.palletsprojects.com",
@@ -219,15 +219,15 @@
    "description": "The Web framework for perfectionists with deadlines.",
    "language": "Python",
    "topics": [
-    "apps",
-    "django",
-    "framework",
-    "models",
-    "orm",
     "python",
+    "django",
+    "web",
+    "framework",
+    "orm",
     "templates",
+    "models",
     "views",
-    "web"
+    "apps"
    ],
    "license": "BSD-3-Clause",
    "homepage": "https://www.djangoproject.com/",
@@ -268,7 +268,7 @@
    "repo_id": 834369920,
    "rank": 6,
    "name": "jingyaogong/minimind",
-   "description": "\ud83e\udde0\u300c\u5927\u6a21\u578b\u300d2\u5c0f\u65f6\u5b8c\u5168\u4ece0\u8bad\u7ec364M\u7684\u5c0f\u53c2\u6570LLM\uff01Train a 64M-parameter LLM from scratch in just 2h!",
+   "description": "\ud83e\udde0 Train a 64M-parameter LLM from scratch in just 2h!",
    "language": "Python",
    "topics": [
     "artificial-intelligence",
@@ -317,10 +317,10 @@
    "description": "Animation engine for explanatory math videos",
    "language": "Python",
    "topics": [
-    "3b1b-videos",
+    "python",
     "animation",
     "explanatory-math-videos",
-    "python"
+    "3b1b-videos"
    ],
    "license": "MIT",
    "homepage": null,
@@ -363,14 +363,14 @@
    "description": "An Open Source Machine Learning Framework for Everyone",
    "language": "C++",
    "topics": [
+    "tensorflow",
+    "machine-learning",
+    "python",
     "deep-learning",
     "deep-neural-networks",
-    "distributed",
-    "machine-learning",
-    "ml",
     "neural-network",
-    "python",
-    "tensorflow"
+    "ml",
+    "distributed"
    ],
    "license": "Apache-2.0",
    "homepage": "https://tensorflow.org",
@@ -456,12 +456,12 @@
    "description": "The library for web and native user interfaces.",
    "language": "JavaScript",
    "topics": [
-    "declarative",
-    "frontend",
     "javascript",
-    "library",
     "react",
-    "ui"
+    "frontend",
+    "declarative",
+    "ui",
+    "library"
    ],
    "license": "MIT",
    "homepage": "https://react.dev",
@@ -504,10 +504,10 @@
    "description": "Production-Grade Container Scheduling and Management",
    "language": "Go",
    "topics": [
-    "cncf",
-    "containers",
+    "kubernetes",
     "go",
-    "kubernetes"
+    "cncf",
+    "containers"
    ],
    "license": "Apache-2.0",
    "homepage": "https://kubernetes.io",
@@ -550,14 +550,14 @@
    "description": "Node.js JavaScript runtime \u2728\ud83d\udc22\ud83d\ude80\u2728",
    "language": "JavaScript",
    "topics": [
+    "nodejs",
     "javascript",
+    "node",
     "js",
+    "runtime",
+    "mit",
     "linux",
     "macos",
-    "mit",
-    "node",
-    "nodejs",
-    "runtime",
     "windows"
    ],
    "license": "NOASSERTION",
@@ -601,10 +601,10 @@
    "description": "The Go programming language",
    "language": "Go",
    "topics": [
-    "go",
-    "golang",
+    "programming-language",
     "language",
-    "programming-language"
+    "go",
+    "golang"
    ],
    "license": "BSD-3-Clause",
    "homepage": "https://go.dev",
@@ -649,9 +649,9 @@
    "topics": [
     "editor",
     "electron",
-    "microsoft",
+    "visual-studio-code",
     "typescript",
-    "visual-studio-code"
+    "microsoft"
    ],
    "license": "MIT",
    "homepage": "https://code.visualstudio.com",
@@ -694,9 +694,9 @@
    "description": "Empowering everyone to build reliable and efficient software.",
    "language": "Rust",
    "topics": [
+    "rust",
     "compiler",
-    "language",
-    "rust"
+    "language"
    ],
    "license": "Apache-2.0",
    "homepage": "https://www.rust-lang.org",
@@ -738,23 +738,21 @@
    "rank": 16,
    "name": "agalwood/Motrix",
    "description": "A full-featured download manager.",
-   "language": "JavaScript",
+   "language": "TypeScript",
    "topics": [
-    "aria2",
-    "bittorrent",
-    "bt",
-    "download",
-    "download-manager",
-    "electron",
-    "linux",
-    "mac",
-    "macos",
-    "magnet",
     "motrix",
-    "torrent",
-    "windows"
+    "aria2",
+    "macos",
+    "windows",
+    "linux",
+    "magnet",
+    "electron",
+    "bt",
+    "mac",
+    "download",
+    "torrent"
    ],
-   "license": "MIT",
+   "license": "NOASSERTION",
    "homepage": "https://motrix.app",
    "forks": 5031,
    "final_display": 1.5594635025972563,
