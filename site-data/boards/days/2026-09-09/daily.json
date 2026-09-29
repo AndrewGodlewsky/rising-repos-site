@@ -3724,7 +3724,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5424,7 +5424,7 @@
     "commit_sha": "b4f8ed57460cbfb32016a4afd3fd7212987d33c3"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6284,7 +6284,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6898,7 +6898,7 @@
     "commit_sha": "0d89417bb942b34fa87775897cc8cf8437d17b79"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -10971,7 +10971,7 @@
    },
    "repo_id": 1218231004,
    "rank": 221,
-   "name": "NVlabs/cuda-oxide",
+   "name": "NVIDIA/cuda-rust",
    "description": "cuda-oxide is a Rust-to-CUDA compiler that lets you write (SIMT) GPU kernels in safe(ish), idiomatic Rust. It compiles standard Rust code directly to PTX \u2014 no DSLs, no foreign language bindings, just Rust.",
    "language": "Rust",
    "topics": [
