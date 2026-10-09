@@ -183,7 +183,9 @@
     "androidtv-x86",
     "android-tv",
     "android-tv-x86",
-    "android"
+    "android",
+    "linux",
+    "waydroid-image"
    ],
    "license": "GPL-3.0",
    "homepage": "https://t.me/WayDroidATV",
@@ -974,7 +976,7 @@
    "description": "Driving and spinning and speeding and turning, woah!",
    "language": "C++",
    "topics": [],
-   "license": "MIT",
+   "license": "GPL-3.0",
    "homepage": null,
    "forks": 7,
    "final_display": 9.0,
@@ -3950,7 +3952,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4246,7 +4248,9 @@
    "topics": [
     "android",
     "scrcpy",
-    "adb"
+    "adb",
+    "android-mirroring",
+    "mirroring"
    ],
    "license": "Apache-2.0",
    "homepage": "https://linkandroid.com",
@@ -5206,7 +5210,7 @@
    },
    "repo_id": 1232272213,
    "rank": 108,
-   "name": "BraveOPotato/FckSignups",
+   "name": "BraveOPotato/NoSignups",
    "description": "A list of tools that are open-source, in-browser, and require no-signups!",
    "language": "TypeScript",
    "topics": [],
@@ -6696,7 +6700,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6991,7 +6995,7 @@
    "repo_id": 944414751,
    "rank": 145,
    "name": "ahujasid/mcp-for-blender",
-   "description": "Community plugin to control Blender 3D with any LLM of your choice",
+   "description": "Community plugin to control Blender 3D with any LLM of your choice. Not affiliated with the official Blender Foundation.",
    "language": "Python",
    "topics": [
     "3d-modeling",

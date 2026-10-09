@@ -189,16 +189,11 @@
     "pentesting",
     "hacking",
     "recon",
-    "infosec",
-    "security",
     "vulnerability-management",
     "attack-surface-management",
     "offensive-security",
     "red-teaming",
-    "security-audit",
-    "security-automation",
-    "security-scanner",
-    "security-tools"
+    "security-automation"
    ],
    "license": "GPL-3.0",
    "homepage": null,
@@ -487,7 +482,11 @@
     "mcp",
     "mthds",
     "pipelex",
-    "python"
+    "python",
+    "api",
+    "docker",
+    "fastapi",
+    "self-hosted"
    ],
    "license": "NOASSERTION",
    "homepage": "https://pipelex.com",
@@ -1519,7 +1518,7 @@
     "muse"
    ],
    "license": "Apache-2.0",
-   "homepage": "https://docs.celesto.ai",
+   "homepage": "https://celesto.ai/docs",
    "forks": 67,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -2736,7 +2735,7 @@
    "rank": 56,
    "name": "huytieu/COG-second-brain",
    "description": "Self-evolving second brain with 35 AI skills, 10 agents, and people CRM. Closed-loop harness: a V-model verification lifecycle where the worker never grades its own homework. Plus paired anti-slop design skills for marketing and product UI. Works with Claude Code, Cursor, Kiro, Gemini CLI, Codex.",
-   "language": "HTML",
+   "language": "Python",
    "topics": [
     "agentic",
     "ai-agents",
@@ -3164,7 +3163,7 @@
    "repo_id": 1122859216,
    "rank": 65,
    "name": "the-open-engine/zeroshot",
-   "description": "Independent executor\u2013verifier orchestration for software changes.",
+   "description": "Runs coding agents as a graph: one agent implements, independent agents review, failures go to repair, and nothing ships until the checks pass. Works with Codex, Claude Code and Copilot.",
    "language": "Rust",
    "topics": [
     "ai-agents",
@@ -3177,12 +3176,14 @@
     "claude",
     "codex",
     "coding-assistant",
-    "gemini",
     "multi-agent",
     "vibecoding",
     "agent-loops",
     "loop-engineering",
-    "meta-harness"
+    "meta-harness",
+    "claude-code",
+    "code-review",
+    "github-copilot"
    ],
    "license": "MIT",
    "homepage": "https://the-open-engine.github.io/zeroshot/",
@@ -3563,7 +3564,7 @@
    "rank": 73,
    "name": "Thiago-code-lab/aws-certified-solutions-architect-associate-brasil",
    "description": "Guia completo em PT-BR para a certifica\u00e7\u00e3o AWS Solutions Architect (SAA-C03), com resumo dos dom\u00ednios, labs pr\u00e1ticos, mapas mentais e simulados focados em arquitetura escal\u00e1vel, resiliente e segura na AWS.",
-   "language": "Shell",
+   "language": "HTML",
    "topics": [
     "associate",
     "aws",
@@ -5491,7 +5492,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6000,7 +6001,9 @@
     "search-api",
     "tavily-alternative",
     "web-search-api",
-    "ai-search"
+    "ai-search",
+    "agent",
+    "agent-browser"
    ],
    "license": null,
    "homepage": null,
@@ -7743,7 +7746,7 @@
    "repo_id": 1169880696,
    "rank": 156,
    "name": "LetsFG/LetsFG",
-   "description": "Agent-native flight & hotel search and booking \u2014 MCP server, CLI, and Python/JS SDKs. Hundreds of airlines plus the major booking sites, with per-flight reliability history. Free-cancellation hotel rates: hold the room with a small upfront charge, then pay the balance later by link, up to the hotel's own deadline.",
+   "description": "Agent-native flight & hotel search and booking \u2014 MCP server, CLI, and Python/JS SDKs. Every airline in the world, major booking sites and OTAs, with per-flight reliability history.",
    "language": "Python",
    "topics": [
     "ai",
@@ -8438,7 +8441,7 @@
    "repo_id": 1079456184,
    "rank": 170,
    "name": "K-Dense-AI/scientific-agent-skills",
-   "description": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+   "description": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 250,000+ scientists worldwide. 177 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
    "language": "Python",
    "topics": [
     "ai-scientist",
@@ -8651,29 +8654,29 @@
    "repo_id": 1211139949,
    "rank": 174,
    "name": "tt-a1i/archify",
-   "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams\u2014self-contained HTML with motion and crisp export.",
+   "description": "Turn any idea, plan, or codebase into a beautiful interactive diagram. An agent skill for Claude Code, Codex, and more.",
    "language": "JavaScript",
    "topics": [
     "architecture-diagram",
-    "claude-skill",
     "developer-tools",
-    "diagram-as-code",
-    "mermaid-alternative",
     "system-design",
     "agent-skills",
     "codex",
-    "data-flow-diagram",
     "opencode",
     "sequence-diagram",
     "deepseek-harness",
     "dsh-plugin",
-    "architecture-as-code",
-    "code-visualization",
     "coding-agents",
     "diagrams",
     "diagrams-as-code",
     "software-architecture",
-    "text-to-diagram"
+    "ai-agents",
+    "claude-code",
+    "claude-skills",
+    "flowchart",
+    "llm",
+    "mermaid",
+    "visualization"
    ],
    "license": "MIT",
    "homepage": "https://tt-a1i.github.io/archify/",
@@ -10199,7 +10202,6 @@
    "topics": [
     "networking",
     "packet-sniffer",
-    "rust-crate",
     "linux",
     "macos",
     "packet-capture",
@@ -10216,7 +10218,8 @@
     "tool",
     "app",
     "ipfix",
-    "ip-geolocation"
+    "ip-geolocation",
+    "cybersecurity"
    ],
    "license": "Apache-2.0",
    "homepage": "https://sniffnet.app",
@@ -10953,7 +10956,7 @@
    "repo_id": 1018687398,
    "rank": 219,
    "name": "SemiAnalysisAI/InferenceX",
-   "description": "Open Source Continuous Inference Benchmark Research Platform \u2014 Kimi K3 2.8T, MiniMax M3, DeepSeekv4, GLM5 - GB200 NVL72 vs MI355X vs B200 vs GB300 NVL72 & soon\u2122 TPUv6e/v7/Trainium2/3 | \u5f00\u6e90\u6301\u7eed\u63a8\u7406\u57fa\u51c6\u7814\u7a76\u5e73\u53f0 \u2014 Kimi K3-Code\u3001MiniMax M3\u3001DeepSeekv4\u3001GLM5 - GB200 NVL72 vs MI355X vs B200 vs GB300 NVL72\uff0c\u5373\u5c06\u63a8\u51fa\u2122 TPUv6e/v7/Trainium2/3",
+   "description": "Open Source Inference Research Platform Standard / \u5f00\u6e90\u63a8\u7406\u7814\u7a76\u5e73\u53f0",
    "language": "Python",
    "topics": [
     "pytorch",
@@ -11484,7 +11487,7 @@
    "repo_id": 1156170875,
    "rank": 229,
    "name": "Nasiko-Labs/nasiko",
-   "description": "Developer Control Plane for your AI Agents",
+   "description": "The Open Runtime for AI Agents",
    "language": "Rust",
    "topics": [
     "agent-security",

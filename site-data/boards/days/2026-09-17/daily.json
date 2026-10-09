@@ -700,7 +700,7 @@
    "repo_id": 693957507,
    "rank": 15,
    "name": "SJTU-IPADS/OS-Course-Lab",
-   "description": "\u672c\u4ed3\u5e93\u5305\u542b\u4e0a\u6d77\u4ea4\u901a\u5927\u5b66IPADS\u5b9e\u9a8c\u5ba4\u8bbe\u8ba1\u7684\u64cd\u4f5c\u7cfb\u7edf\u8bfe\u7a0b\u7cfb\u5217\u5b9e\u9a8c\uff0c\u4ee5\u53ca\u524d\u7f6e\u8bfe\u7a0bICS/CSAPP\u7684\u7cfb\u5217\u5b9e\u9a8c\u3002",
+   "description": "\u4e0a\u6d77\u4ea4\u901a\u5927\u5b66IPADS\u5b9e\u9a8c\u5ba4\u8bbe\u8ba1\u7684ICS/CSAPP+OS\u8bfe\u7a0b\u8bfe\u4ef6\u4e0e\u5b9e\u9a8c\u3002",
    "language": "C",
    "topics": [],
    "license": null,
@@ -1232,7 +1232,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1501,7 +1501,7 @@
    "language": "Rust",
    "topics": [],
    "license": "NOASSERTION",
-   "homepage": null,
+   "homepage": "letrecovery.net",
    "forks": 203,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -1628,7 +1628,7 @@
    "rank": 34,
    "name": "Mathieu2301/TradingView-API",
    "description": "\ud83d\udcc8 Get real-time stocks from TradingView",
-   "language": "JavaScript",
+   "language": "TypeScript",
    "topics": [
     "tradingview",
     "tradingview-api",
@@ -2313,9 +2313,16 @@
    "name": "latent-spaces/brag",
    "description": "You built it. Now brag. Turn the project you just created into a short, shareable launch video with one command.",
    "language": "Python",
-   "topics": [],
+   "topics": [
+    "agent-skills",
+    "claude-code",
+    "claude-skills",
+    "hyperframes",
+    "launch-video",
+    "video-generation"
+   ],
    "license": "MIT",
-   "homepage": null,
+   "homepage": "https://latent-spaces.github.io/brag/",
    "forks": 225,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -2366,7 +2373,7 @@
     "droidspaces"
    ],
    "license": "GPL-3.0",
-   "homepage": "https://t.me/Droidspaces",
+   "homepage": "https://www.droidspaces.org",
    "forks": 202,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -2680,7 +2687,7 @@
    "repo_id": 1290445936,
    "rank": 56,
    "name": "PKU-YuanGroup/OpenAI4S",
-   "description": "9.9 \u5143\u8c46\u5305 API \u590d\u523b Claude Science",
+   "description": "Open-source AI agent for scientific research. Analyze data in Python/R with Claude, GPT, Gemini, and more.",
    "language": "Python",
    "topics": [
     "agent",
@@ -4016,19 +4023,27 @@
    "repo_id": 1214821189,
    "rank": 83,
    "name": "timhartmann7/omnyssh",
-   "description": "A fast, keyboard-driven TUI for managing SSH connections, written in Rust",
+   "description": "Fast, open-source SSH client and server manager for macOS, Windows and Linux. Desktop GUI and terminal TUI with a live metrics dashboard, tabbed terminal, SFTP file manager, port forwarding, one-click SSH keys and snippets. Built in Rust.",
    "language": "Rust",
    "topics": [
-    "cli",
-    "dev-ops",
-    "ratatui",
     "rust",
     "sftp",
     "ssh",
     "ssh-client",
     "ssh-manager",
     "terminal",
-    "tui"
+    "tui",
+    "cross-platform",
+    "desktop-app",
+    "devops",
+    "gui",
+    "homelab",
+    "port-forwarding",
+    "server-monitoring",
+    "sftp-client",
+    "ssh-tunnel",
+    "sysadmin",
+    "tauri"
    ],
    "license": "Apache-2.0",
    "homepage": null,
@@ -5109,7 +5124,7 @@
    "repo_id": 1279187498,
    "rank": 105,
    "name": "px0-ai/px0",
-   "description": "px0 is the IDE for humans and AI, optimized for quick, fast code reviews. It turns your browser into a zero-latency console with native Git and GitHub integrations, instant search across massive codebases, and seamless handoff to local AI coding harnesses.",
+   "description": "px0 is an IDE built for reviewing AI-generated code, optimized for speed. It turns your browser into a zero-latency console with native Git and GitHub integrations, instant search across massive codebases, and seamless handoff to local AI coding harnesses.",
    "language": "Go",
    "topics": [
     "code-viewer",
@@ -5264,14 +5279,25 @@
    "repo_id": 903700733,
    "rank": 108,
    "name": "ahmedkhaleel2004/gitdiagram",
-   "description": "Free, simple, fast interactive diagrams and videos for any GitHub repository",
+   "description": "Visualize any GitHub codebase: free interactive architecture diagrams and one-minute explainer videos. Replace 'hub' with 'diagram' in any GitHub URL.",
    "language": "TypeScript",
    "topics": [
     "ai",
     "github",
     "system-design",
     "code",
-    "video"
+    "video",
+    "architecture-diagram",
+    "code-visualization",
+    "codebase-visualization",
+    "developer-tools",
+    "diagram-generator",
+    "llm",
+    "mermaid",
+    "nextjs",
+    "repository-visualization",
+    "software-architecture",
+    "gemini-cli-extension"
    ],
    "license": "MIT",
    "homepage": "https://gitdiagram.com",
@@ -6693,11 +6719,12 @@
    "repo_id": 1292782830,
    "rank": 136,
    "name": "RoboDojo-Benchmark/RoboDojo",
-   "description": "RoboDojo Official Repo",
+   "description": "Official repository for \"RoboDojo: A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Manipulation Policies\".",
    "language": "Python",
    "topics": [
     "manipulation",
-    "robotics"
+    "robotics",
+    "benchmark"
    ],
    "license": "MIT",
    "homepage": "https://robodojo-benchmark.com/",
@@ -7109,7 +7136,7 @@
     "commit_sha": "da38ec1ee89d41e5380e652a97382695003396e7"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -7159,7 +7186,7 @@
    "repo_id": 1291034571,
    "rank": 146,
    "name": "l0ng-ai/tty7",
-   "description": "A terminal workbench in pure Rust: shells, persistent sessions, SSH, coding agents. GPU-rendered on Zed's gpui, VT core from Alacritty.",
+   "description": "The terminal that outlives its window. Shells survive quitting the app, agents can drive other agents, and remote machines work the same way. Pure Rust, GPU-rendered.",
    "language": "Rust",
    "topics": [
     "alacritty",
@@ -7479,9 +7506,20 @@
    "repo_id": 1275972890,
    "rank": 152,
    "name": "Mahanaicoach/google-maps-scraper-kit",
-   "description": "Run a free open-source Google Maps scraper locally and let Claude drive it on autopilot.",
+   "description": "Local Google Maps lead extraction, operated by Claude. Clean CSVs with phones, emails, websites and socials. No API keys, runs on your machine.",
    "language": "Python",
-   "topics": [],
+   "topics": [
+    "b2b-leads",
+    "claude-code",
+    "claude-skill",
+    "docker",
+    "google-maps",
+    "google-maps-scraper",
+    "lead-generation",
+    "local-business",
+    "scraper",
+    "web-scraping"
+   ],
    "license": "NOASSERTION",
    "homepage": null,
    "forks": 95,
@@ -7796,7 +7834,7 @@
     "heterogeneous-computing"
    ],
    "license": "Apache-2.0",
-   "homepage": "https://nvlabs.github.io/cuda-oxide/",
+   "homepage": "https://nvidia.github.io/cuda-rust/",
    "forks": 270,
    "final_display": 4.915097877010914,
    "final_is_capped": false,
@@ -8798,7 +8836,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -8893,7 +8931,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -8910,7 +8948,11 @@
     "ai",
     "agent",
     "javascript",
-    "llm"
+    "llm",
+    "ag-ui",
+    "langchain",
+    "mastra",
+    "react"
    ],
    "license": "MIT",
    "homepage": "https://www.openui.com",
@@ -9311,7 +9353,7 @@
    "repo_id": 1112733896,
    "rank": 188,
    "name": "apify/mcpc",
-   "description": "A universal CLI client for MCP. mcpc supports persistent sessions, stdio/HTTP, OAuth 2.1, tasks, JSON output for code mode, proxy for AI sandboxes, x402, and more.",
+   "description": "The most compatible MCP CLI client. mcpc supports persistent sessions, stdio/HTTP, OAuth 2.1, Tasks and Skills extensions, --json for code mode, proxy for AI sandboxes, x402, and more.",
    "language": "TypeScript",
    "topics": [
     "cli",
@@ -9719,7 +9761,9 @@
    "topics": [
     "android",
     "scrcpy",
-    "adb"
+    "adb",
+    "android-mirroring",
+    "mirroring"
    ],
    "license": "Apache-2.0",
    "homepage": "https://linkandroid.com",

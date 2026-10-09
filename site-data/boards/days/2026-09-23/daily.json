@@ -1140,7 +1140,7 @@
    "repo_id": 1025929171,
    "rank": 23,
    "name": "acsandmann/rift",
-   "description": "a tiling window manager for macos",
+   "description": "a tiling and scrolling window manager for macos",
    "language": "Rust",
    "topics": [
     "i3",
@@ -2056,7 +2056,7 @@
    "repo_id": 1006376412,
    "rank": 42,
    "name": "ChenlizheMe/Infernux",
-   "description": "Open-source python game engine with a C++17 / Vulkan runtime, made for agentic/NN gaming runtime.",
+   "description": "Building a Neural Network-Native Engine (3N). Python authoring, C++ runtime, Vulkan/WebGPU. Windows, Linux, Android and Web.",
    "language": "Python",
    "topics": [
     "editor",
@@ -2130,7 +2130,7 @@
     "mcp"
    ],
    "license": "MIT",
-   "homepage": null,
+   "homepage": "https://github.com/TNT-Likely/PanWatch#quick-start",
    "forks": 291,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -2970,7 +2970,7 @@
    "repo_id": 1236183038,
    "rank": 60,
    "name": "Asymptote-Labs/agent-beacon",
-   "description": "The cross-harness self-improving memory layer for AI agents.",
+   "description": "The cross-harness, self-improving memory layer for AI agents.",
    "language": "Go",
    "topics": [
     "security-tools",
@@ -3828,14 +3828,25 @@
    "repo_id": 903700733,
    "rank": 77,
    "name": "ahmedkhaleel2004/gitdiagram",
-   "description": "Free, simple, fast interactive diagrams and videos for any GitHub repository",
+   "description": "Visualize any GitHub codebase: free interactive architecture diagrams and one-minute explainer videos. Replace 'hub' with 'diagram' in any GitHub URL.",
    "language": "TypeScript",
    "topics": [
     "ai",
     "github",
     "system-design",
     "code",
-    "video"
+    "video",
+    "architecture-diagram",
+    "code-visualization",
+    "codebase-visualization",
+    "developer-tools",
+    "diagram-generator",
+    "llm",
+    "mermaid",
+    "nextjs",
+    "repository-visualization",
+    "software-architecture",
+    "gemini-cli-extension"
    ],
    "license": "MIT",
    "homepage": "https://gitdiagram.com",
@@ -3959,7 +3970,7 @@
     "commit_sha": "d4f1525f15a491170de19bc6abc1c89fe185b16c"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4155,7 +4166,7 @@
    "repo_id": 1156170875,
    "rank": 84,
    "name": "Nasiko-Labs/nasiko",
-   "description": "Developer Control Plane for your AI Agents",
+   "description": "The Open Runtime for AI Agents",
    "language": "Rust",
    "topics": [
     "agent-security",
@@ -4351,7 +4362,7 @@
    "repo_id": 1262740944,
    "rank": 88,
    "name": "chubbyguan/chubbyskills",
-   "description": "\u628a\u4e2d\u6587\u5168\u6e20\u9053\u5185\u5bb9\uff08\u6296\u97f3 / B\u7ad9 / \u5c0f\u7ea2\u4e66 / \u516c\u4f17\u53f7 / X / \u64ad\u5ba2\uff09\u91c7\u96c6\u8fdb\u4e2a\u4eba\u77e5\u8bc6\u5e93\u7684 13 \u4e2a AI Skill\uff1a\u56fe\u6587\u5b58\u56fe\u3001\u89c6\u9891\u8f6c\u6587\u5b57\u7a3f\u3001\u5b57\u5e55\u4f18\u5148\u514d GPU\uff0c\u9644\u5e26\u77e5\u8bc6\u5e93 MCP server\u3002 \uff5c Ingest Chinese content into your personal knowledge base \u2014 image/video routing, subtitle-first transcription, and a KB MCP server.",
+   "description": "\u628a\u4e2d\u6587\u5168\u6e20\u9053\u5185\u5bb9\uff08\u6296\u97f3 / B\u7ad9 / \u5c0f\u7ea2\u4e66 / \u516c\u4f17\u53f7 / X / \u64ad\u5ba2\uff09\u91c7\u96c6\u8fdb\u4e2a\u4eba\u77e5\u8bc6\u5e93\u7684 14 \u4e2a AI Skill\uff1a\u56fe\u6587\u5b58\u56fe\u3001\u89c6\u9891\u8f6c\u6587\u5b57\u7a3f\u3001\u5b57\u5e55\u4f18\u5148\u514d GPU\u3001RSS/YouTube \u8ba2\u9605\u8c03\u5ea6\u4e0e\u6bcf\u65e5\u60c5\u62a5\u7b80\u62a5\uff0c\u9644\u5e26\u77e5\u8bc6\u5e93 MCP server\u3002\uff5c Ingest Chinese content into your personal knowledge base \u2014 image/video routing, subtitle-first transcription, feed subscriptions with daily digests, and a KB MCP server.",
    "language": "Python",
    "topics": [
     "agent-skills",
@@ -4363,7 +4374,15 @@
     "obsidian",
     "second-brain",
     "transcription",
-    "xiaohongshu"
+    "xiaohongshu",
+    "bilibili",
+    "douyin",
+    "personal-knowledge-management",
+    "podcast",
+    "rss",
+    "skills",
+    "wechat",
+    "youtube"
    ],
    "license": "MIT",
    "homepage": null,
@@ -4843,7 +4862,7 @@
    "repo_id": 792165334,
    "rank": 98,
    "name": "vega-org/vega-app",
-   "description": "A media streaming app for android.",
+   "description": "A app to Play, Stream or Cast Media for andorid.",
    "language": "TypeScript",
    "topics": [
     "android-app",
@@ -4851,7 +4870,7 @@
     "video-streaming",
     "react-native"
    ],
-   "license": "Apache-2.0",
+   "license": "NOASSERTION",
    "homepage": null,
    "forks": 193,
    "final_display": 6.76722739556382,
@@ -5289,7 +5308,7 @@
    "repo_id": 1265908861,
    "rank": 107,
    "name": "omnichar/OmniChar",
-   "description": "AI character studio for portable identity. Build multi model consistent characters, train LoRAs, and generate on your own GPU.",
+   "description": "The open .char format for characters. Face, body and wardrobe in one file, consistent across every model.",
    "language": "Python",
    "topics": [
     "ai-video",
@@ -5636,7 +5655,7 @@
     "commit_sha": "005d248d20dd529bd3e8dca4d17a65ab05135ce8"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5750,22 +5769,24 @@
    "repo_id": 1015815983,
    "rank": 116,
    "name": "zhouxiaoka/autoclip",
-   "description": "AutoClip : AI-powered video clipping and highlight generation \u00b7 \u4e00\u6b3e\u667a\u80fd\u9ad8\u5149\u63d0\u53d6\u4e0e\u526a\u8f91\u7684\u4e8c\u521b\u5de5\u5177",
+   "description": "AutoClip\uff5c\u4e00\u4e2a\u94fe\u63a5\uff0c\u4e00\u952e\u51fa\u7247\u3002\u5f00\u6e90 AI \u89c6\u9891\u526a\u8f91\u684c\u9762\u5de5\u5177\uff0c\u5c06\u64ad\u5ba2\u3001\u8bbf\u8c08\u3001\u8bfe\u7a0b\u7b49\u957f\u89c6\u9891\u81ea\u52a8\u526a\u6210\u77ed\u89c6\u9891\uff0c\u751f\u6210\u5b57\u5e55\u3001\u5c01\u9762\u548c\u53d1\u5e03\u6587\u6848\uff0c\u9002\u914d\u6296\u97f3\u3001\u5c0f\u7ea2\u4e66\u3001TikTok\u3001Reels \u4e0e YouTube Shorts\u3002Open-source AI video clipping & content repurposing.",
    "language": "Python",
    "topics": [
-    "ai",
-    "ai-agents",
-    "ai-tools",
-    "ai-video",
     "ai-video-editor",
-    "auto",
-    "auto-highlight",
-    "highlight",
-    "llm",
-    "video",
-    "video-editing",
-    "video-processing",
-    "videos"
+    "ai-agent",
+    "content-repurposing",
+    "desktop-app",
+    "douyin",
+    "instagram-reels",
+    "mcp",
+    "open-source",
+    "podcast",
+    "subtitles",
+    "tiktok",
+    "video-clipping",
+    "video-editing-software",
+    "xiaohongshu",
+    "youtube-shorts"
    ],
    "license": "MIT",
    "homepage": "https://zhouxiaoka.github.io/autoclip_intro/",
@@ -5806,7 +5827,7 @@
    "rank": 117,
    "name": "decolua/9remote",
    "description": "\ud83d\udcf1 Terminal in Your Pocket \u2014 Control Claude Code, Codex, Gemini CLI & your Mac/Linux/Windows from any phone or browser. Vibe coding from anywhere. Alternative to MobileCLI, Claude Remote, vibe-remote, MuxAgent.",
-   "language": null,
+   "language": "JavaScript",
    "topics": [
     "agentic-workflow",
     "ai-agent",
@@ -5824,7 +5845,7 @@
     "web-terminal",
     "claude-remote"
    ],
-   "license": null,
+   "license": "Apache-2.0",
    "homepage": "https://9remote.cc",
    "forks": 43,
    "final_display": 5.92808771730816,
@@ -6154,7 +6175,7 @@
    "repo_id": 1122859216,
    "rank": 124,
    "name": "the-open-engine/zeroshot",
-   "description": "Independent executor\u2013verifier orchestration for software changes.",
+   "description": "Runs coding agents as a graph: one agent implements, independent agents review, failures go to repair, and nothing ships until the checks pass. Works with Codex, Claude Code and Copilot.",
    "language": "Rust",
    "topics": [
     "ai-agents",
@@ -6167,12 +6188,14 @@
     "claude",
     "codex",
     "coding-assistant",
-    "gemini",
     "multi-agent",
     "vibecoding",
     "agent-loops",
     "loop-engineering",
-    "meta-harness"
+    "meta-harness",
+    "claude-code",
+    "code-review",
+    "github-copilot"
    ],
    "license": "MIT",
    "homepage": "https://the-open-engine.github.io/zeroshot/",
@@ -6365,9 +6388,20 @@
    "repo_id": 1275972890,
    "rank": 128,
    "name": "Mahanaicoach/google-maps-scraper-kit",
-   "description": "Run a free open-source Google Maps scraper locally and let Claude drive it on autopilot.",
+   "description": "Local Google Maps lead extraction, operated by Claude. Clean CSVs with phones, emails, websites and socials. No API keys, runs on your machine.",
    "language": "Python",
-   "topics": [],
+   "topics": [
+    "b2b-leads",
+    "claude-code",
+    "claude-skill",
+    "docker",
+    "google-maps",
+    "google-maps-scraper",
+    "lead-generation",
+    "local-business",
+    "scraper",
+    "web-scraping"
+   ],
    "license": "NOASSERTION",
    "homepage": null,
    "forks": 158,
@@ -6784,7 +6818,7 @@
    "rank": 137,
    "name": "Mathieu2301/TradingView-API",
    "description": "\ud83d\udcc8 Get real-time stocks from TradingView",
-   "language": "JavaScript",
+   "language": "TypeScript",
    "topics": [
     "tradingview",
     "tradingview-api",
@@ -6967,7 +7001,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -8238,7 +8272,7 @@
     "orchestrator"
    ],
    "license": "MIT",
-   "homepage": "https://second-brain.art",
+   "homepage": null,
    "forks": 80,
    "final_display": 3.931365882259495,
    "final_is_capped": false,
@@ -9479,19 +9513,14 @@
    "language": "Python",
    "topics": [
     "ai",
-    "fastapi",
-    "langchain",
-    "nextjs",
     "rag",
-    "python",
-    "typescript",
     "notebooklm",
-    "ollama",
     "agent",
     "agents",
-    "langgraph",
     "notebooklm-alternative",
-    "web-scraping"
+    "web-scraping",
+    "self-hosted",
+    "self-hosted-ai"
    ],
    "license": "NOASSERTION",
    "homepage": "https://www.surfsense.com",
@@ -10011,7 +10040,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],

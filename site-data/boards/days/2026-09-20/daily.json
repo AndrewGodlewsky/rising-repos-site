@@ -29,21 +29,20 @@
    "repo_id": 1219291910,
    "rank": 1,
    "name": "oneshot-agent/oneshot-gtm",
-   "description": "GTM agent for technical founders. Pay-per-result. Signed receipts. Two surfaces: terminal CLI + local web dashboard.",
+   "description": "GTM agent for technical founders. Pay-per-result. Two surfaces: terminal CLI + local web dashboard.",
    "language": "TypeScript",
    "topics": [
     "ai-agent",
     "bun",
     "cli",
     "cold-email",
-    "dashboard",
     "founder-led-sales",
     "gtm",
-    "mit-license",
     "oneshot",
     "react",
-    "signed-receipts",
-    "typescript"
+    "apollo",
+    "clay",
+    "prospero"
    ],
    "license": "MIT",
    "homepage": "https://oneshot-gtm.com",
@@ -393,7 +392,7 @@
     "mcp"
    ],
    "license": "MIT",
-   "homepage": null,
+   "homepage": "https://github.com/TNT-Likely/PanWatch#quick-start",
    "forks": 238,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -1191,7 +1190,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1362,21 +1361,29 @@
    "repo_id": 809730532,
    "rank": 28,
    "name": "crbnos/carbon",
-   "description": "Carbon is an open source ERP, MES and QMS for manufacturing. Perfect for complex assembly, contract manufacturing, high volume, and configure to order manufacturing.",
+   "description": "Open-source manufacturing ERP, MES and QMS. Quoting, MRP, inventory, shop floor, quality and lot/serial traceability on one Postgres schema, with a REST API and MCP server. Self-host or use Carbon Cloud.",
    "language": "TypeScript",
    "topics": [
     "erp",
     "manufacturing",
     "supabase",
     "typescript",
-    "business",
-    "management",
     "lean",
     "mes",
     "qms",
     "postgresql",
     "react-router",
-    "mcp-server"
+    "mcp-server",
+    "ai-agents",
+    "bill-of-materials",
+    "inventory-management",
+    "manufacturing-execution-system",
+    "mrp",
+    "open-source-erp",
+    "production-planning",
+    "quality-management-system",
+    "self-hosted",
+    "traceability"
    ],
    "license": "NOASSERTION",
    "homepage": "https://carbon.ms",
@@ -1610,7 +1617,7 @@
    "repo_id": 1006376412,
    "rank": 33,
    "name": "ChenlizheMe/Infernux",
-   "description": "Open-source python game engine with a C++17 / Vulkan runtime, made for agentic/NN gaming runtime.",
+   "description": "Building a Neural Network-Native Engine (3N). Python authoring, C++ runtime, Vulkan/WebGPU. Windows, Linux, Android and Web.",
    "language": "Python",
    "topics": [
     "editor",
@@ -2339,7 +2346,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3468,14 +3475,25 @@
    "repo_id": 903700733,
    "rank": 71,
    "name": "ahmedkhaleel2004/gitdiagram",
-   "description": "Free, simple, fast interactive diagrams and videos for any GitHub repository",
+   "description": "Visualize any GitHub codebase: free interactive architecture diagrams and one-minute explainer videos. Replace 'hub' with 'diagram' in any GitHub URL.",
    "language": "TypeScript",
    "topics": [
     "ai",
     "github",
     "system-design",
     "code",
-    "video"
+    "video",
+    "architecture-diagram",
+    "code-visualization",
+    "codebase-visualization",
+    "developer-tools",
+    "diagram-generator",
+    "llm",
+    "mermaid",
+    "nextjs",
+    "repository-visualization",
+    "software-architecture",
+    "gemini-cli-extension"
    ],
    "license": "MIT",
    "homepage": "https://gitdiagram.com",
@@ -4795,7 +4813,7 @@
    "rank": 98,
    "name": "DialmasterOrg/Youtarr",
    "description": "Self-hosted web app that automates downloading, organizing, and scheduling YouTube channel content with support for Plex, Kodi, Emby and Jellyfin",
-   "language": "TypeScript",
+   "language": "JavaScript",
    "topics": [
     "automation",
     "plex",
@@ -5545,7 +5563,7 @@
    "rank": 113,
    "name": "trycua/cua",
    "description": "Scale computer-use 2.0 with open-source drivers, cross-OS fleets, and benchmarks for training, evaluation, and data generation.",
-   "language": "HTML",
+   "language": "Rust",
    "topics": [
     "apple",
     "cua",
@@ -6078,9 +6096,20 @@
    "repo_id": 1275972890,
    "rank": 124,
    "name": "Mahanaicoach/google-maps-scraper-kit",
-   "description": "Run a free open-source Google Maps scraper locally and let Claude drive it on autopilot.",
+   "description": "Local Google Maps lead extraction, operated by Claude. Clean CSVs with phones, emails, websites and socials. No API keys, runs on your machine.",
    "language": "Python",
-   "topics": [],
+   "topics": [
+    "b2b-leads",
+    "claude-code",
+    "claude-skill",
+    "docker",
+    "google-maps",
+    "google-maps-scraper",
+    "lead-generation",
+    "local-business",
+    "scraper",
+    "web-scraping"
+   ],
    "license": "NOASSERTION",
    "homepage": null,
    "forks": 122,
@@ -6227,22 +6256,24 @@
    "repo_id": 1015815983,
    "rank": 127,
    "name": "zhouxiaoka/autoclip",
-   "description": "AutoClip : AI-powered video clipping and highlight generation \u00b7 \u4e00\u6b3e\u667a\u80fd\u9ad8\u5149\u63d0\u53d6\u4e0e\u526a\u8f91\u7684\u4e8c\u521b\u5de5\u5177",
+   "description": "AutoClip\uff5c\u4e00\u4e2a\u94fe\u63a5\uff0c\u4e00\u952e\u51fa\u7247\u3002\u5f00\u6e90 AI \u89c6\u9891\u526a\u8f91\u684c\u9762\u5de5\u5177\uff0c\u5c06\u64ad\u5ba2\u3001\u8bbf\u8c08\u3001\u8bfe\u7a0b\u7b49\u957f\u89c6\u9891\u81ea\u52a8\u526a\u6210\u77ed\u89c6\u9891\uff0c\u751f\u6210\u5b57\u5e55\u3001\u5c01\u9762\u548c\u53d1\u5e03\u6587\u6848\uff0c\u9002\u914d\u6296\u97f3\u3001\u5c0f\u7ea2\u4e66\u3001TikTok\u3001Reels \u4e0e YouTube Shorts\u3002Open-source AI video clipping & content repurposing.",
    "language": "Python",
    "topics": [
-    "ai",
-    "ai-agents",
-    "ai-tools",
-    "ai-video",
     "ai-video-editor",
-    "auto",
-    "auto-highlight",
-    "highlight",
-    "llm",
-    "video",
-    "video-editing",
-    "video-processing",
-    "videos"
+    "ai-agent",
+    "content-repurposing",
+    "desktop-app",
+    "douyin",
+    "instagram-reels",
+    "mcp",
+    "open-source",
+    "podcast",
+    "subtitles",
+    "tiktok",
+    "video-clipping",
+    "video-editing-software",
+    "xiaohongshu",
+    "youtube-shorts"
    ],
    "license": "MIT",
    "homepage": "https://zhouxiaoka.github.io/autoclip_intro/",
@@ -6282,7 +6313,7 @@
    "repo_id": 1300173275,
    "rank": 128,
    "name": "vshulcz/deja-vu",
-   "description": "The most accurate, cheapest and fastest memory for coding agents: one index over the history Claude Code, Codex, Cursor and 32 more agents already wrote. No LLM, one Go binary.",
+   "description": "The most accurate, cheapest and fastest memory for coding agents: searchable session history from Claude Code, Codex, Cursor and 32 more agents, already on your disk. No LLM, one Go binary.",
    "language": "Go",
    "topics": [
     "claude-code",
@@ -6301,10 +6332,10 @@
     "kimi-code",
     "qwen-code",
     "zed-extension",
-    "agents",
-    "ai",
-    "genai",
-    "memory"
+    "memory",
+    "ai-memory",
+    "llm-memory",
+    "persistent-memory"
    ],
    "license": "MIT",
    "homepage": "https://vshulcz.github.io/deja-vu/",
@@ -7803,7 +7834,7 @@
     "commit_sha": "da38ec1ee89d41e5380e652a97382695003396e7"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -7993,9 +8024,16 @@
    "name": "latent-spaces/brag",
    "description": "You built it. Now brag. Turn the project you just created into a short, shareable launch video with one command.",
    "language": "Python",
-   "topics": [],
+   "topics": [
+    "agent-skills",
+    "claude-code",
+    "claude-skills",
+    "hyperframes",
+    "launch-video",
+    "video-generation"
+   ],
    "license": "MIT",
-   "homepage": null,
+   "homepage": "https://latent-spaces.github.io/brag/",
    "forks": 389,
    "final_display": 5.159799832333404,
    "final_is_capped": false,
@@ -8853,7 +8891,7 @@
    "description": null,
    "language": "Rust",
    "topics": [],
-   "license": null,
+   "license": "NOASSERTION",
    "homepage": null,
    "forks": 27,
    "final_display": 4.351816874942226,
@@ -9249,7 +9287,7 @@
    "repo_id": 875403491,
    "rank": 189,
    "name": "builtbybel/Flyoobe",
-   "description": "Fly through your Windows 11 setup \ud83d\udc1d",
+   "description": "Flyoobe is the Control Panel for setting up Windows",
    "language": "C#",
    "topics": [
     "belim",
@@ -10022,7 +10060,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -10277,7 +10315,7 @@
    "rank": 209,
    "name": "tophant-ai/aibeat",
    "description": "Break your AI before they do.                           Join Discord: https://discord.gg/NXXz8JG74",
-   "language": "MDX",
+   "language": "HTML",
    "topics": [
     "agents",
     "ai-security",
@@ -10958,7 +10996,7 @@
    "repo_id": 1079089186,
    "rank": 224,
    "name": "kaifcodec/user-scanner",
-   "description": "\ud83d\udd75\ufe0f\u200d\u2642\ufe0f (2-in-1) Email & Username OSINT suite featuring native MCP support for deep data extraction just from a single Email/Username. Analyzes 1080+ actively maintained scan vectors (200+ email / 880+ username) for security research, investigations, and digital footprinting.",
+   "description": "\ud83d\udd75\ufe0f\u200d\u2642\ufe0f (2-in-1) Email & Username OSINT suite featuring native MCP support for deep data extraction just from a single Email/Username. Analyzes 2720+ actively maintained scan vectors (210+ email / 2510+ username) for security research, investigations, and digital footprinting.",
    "language": "Python",
    "topics": [
     "osint",
@@ -11150,7 +11188,7 @@
    "repo_id": 1150366077,
    "rank": 228,
    "name": "akiralereal/iptv",
-   "description": "\u5f00\u7bb1\u5373\u6709 800+ \u53ef\u7a33\u5b9a\u6d41\u7545\u64ad\u653e\u9891\u9053\u7684\u81ea\u6258\u7ba1 IPTV \u76f4\u64ad\u6e90\u7ba1\u7406\u4e0e\u5206\u53d1\u7cfb\u7edf\uff0c\u805a\u5408\u4e86\u592e\u89c6\u9891\u3001\u54aa\u5495\u3001\u592e\u89c6\u3001\u536b\u89c6\u3001\u51e4\u51f0\u536b\u89c6\u3001\u4e9a\u592a\u3001\u56fd\u9645\u3001\u5730\u65b9\u53f0\u3001\u4f53\u80b2\u8d5b\u4e8b\u3001B \u7ad9\u76f4\u64ad\u3001\u6597\u9c7c\u76f4\u64ad\u3001\u864e\u7259\u76f4\u64ad\u7b49\uff0c\u4ee5\u53ca\u81ea\u5b9a\u4e49\u6293\u53d6\u6e90\u548c\u8ba2\u9605\uff0c\u5e76\u63d0\u4f9b EPG \u8282\u76ee\u5355\u4e0e\u805a\u5408\u529f\u80fd\uff1b\u53e6\u5916\u8fd8\u81ea\u5e26 GUI \u53ef\u89c6\u5316\u7ba1\u7406\u540e\u53f0\uff0c\u652f\u6301 Docker Compose \u6216 Node.js \u8fd0\u884c\uff0c\u9002\u5408 NAS \u4e0e\u5bb6\u5ead\u670d\u52a1\u5668\u3002",
+   "description": "\u5f00\u7bb1\u5373\u6709 800+ \u53ef\u7a33\u5b9a\u6d41\u7545\u64ad\u653e\u9891\u9053\u7684\u81ea\u6258\u7ba1 IPTV \u76f4\u64ad\u6e90\u7ba1\u7406\u4e0e\u5206\u53d1\u7cfb\u7edf\uff0c\u805a\u5408\u4e86\u592e\u89c6\u9891\u3001\u54aa\u5495\u3001\u592e\u89c6\u3001\u536b\u89c6\u3001\u51e4\u51f0\u536b\u89c6\u3001\u4e9a\u592a\u3001\u56fd\u9645\u3001\u5730\u65b9\u53f0\u3001\u4f53\u80b2\u8d5b\u4e8b\u3001\u6296\u97f3\u76f4\u64ad\u3001B \u7ad9\u76f4\u64ad\u3001\u6597\u9c7c\u76f4\u64ad\u3001\u864e\u7259\u76f4\u64ad\u7b49\uff0c\u4ee5\u53ca\u81ea\u5b9a\u4e49\u6293\u53d6\u6e90\u548c\u8ba2\u9605\uff0c\u5e76\u63d0\u4f9b EPG \u8282\u76ee\u5355\u4e0e\u805a\u5408\u529f\u80fd\uff1b\u53e6\u5916\u8fd8\u81ea\u5e26 GUI \u53ef\u89c6\u5316\u7ba1\u7406\u540e\u53f0\uff0c\u652f\u6301 Docker Compose \u6216 Node.js \u8fd0\u884c\uff0c\u9002\u5408 NAS \u4e0e\u5bb6\u5ead\u670d\u52a1\u5668\u3002",
    "language": "JavaScript",
    "topics": [
     "iptv",
@@ -11374,7 +11412,7 @@
    "rank": 232,
    "name": "S3N4T0R-0X0/BEAR-C2",
    "description": "BEAR-C2 is an adversary simulation and emulation framework built around real-world TTPs inspired by Russian, Chinese, North Korean, and Iranian APT groups.",
-   "language": "Python",
+   "language": "C++",
    "topics": [
     "adversary-simulation",
     "adversary-emulation",
@@ -11806,7 +11844,7 @@
    "repo_id": 1184090452,
    "rank": 240,
    "name": "fallow-rs/fallow",
-   "description": "Codebase intelligence for TypeScript and JavaScript. Free static analysis of code and styles: unused code, duplication, circular deps, complexity hotspots, architecture boundaries, design-system drift. Optional paid runtime layer (Fallow Runtime): hot-path review and cold-path deletion evidence from real production traffic.",
+   "description": "Codebase intelligence for TypeScript and JavaScript. Health, complexity hotspots, duplication, architecture boundaries, circular dependencies, design-system drift, and unused code, from one graph. CLI, GitHub Action, LSP, MCP, and VS Code. Rust, MIT licensed.",
    "language": "Rust",
    "topics": [
     "cli",
@@ -11814,19 +11852,19 @@
     "dead-code",
     "developer-tools",
     "javascript",
-    "linter",
     "oxc",
     "rust",
     "static-analysis",
     "typescript",
     "unused-code",
-    "unused-dependencies",
-    "unused-exports",
     "code-duplication",
-    "duplicate-code",
-    "copy-paste-detection",
     "codebase-intelligence",
-    "runtime-intelligence"
+    "architecture",
+    "circular-dependencies",
+    "code-health",
+    "complexity",
+    "mcp",
+    "monorepo"
    ],
    "license": "MIT",
    "homepage": "https://docs.fallow.tools",
@@ -12302,7 +12340,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],

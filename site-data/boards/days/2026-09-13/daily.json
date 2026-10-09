@@ -82,7 +82,7 @@
    "rank": 2,
    "name": "asgeirtj/system_prompts_leaks",
    "description": "Documented system prompts from Anthropic - Claude Fable 5.1, Opus 5.5, Claude Design, Claude Code. OpenAI - ChatGPT GPT-6-Astra, Codex. Google - Gemini 3.8 Flash, 3.1 Pro, Antigravity. xAI - Grok, Grok Bot, Cursor, Kimi and more! Updated regularly.",
-   "language": "JavaScript",
+   "language": "Python",
    "topics": [
     "ai",
     "anthropic",
@@ -134,7 +134,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -142,7 +142,7 @@
    },
    "repo_id": 837911756,
    "rank": 3,
-   "name": "feder-cr/invisible_playwright_mcp",
+   "name": "feder-cr/invisible_dots",
    "description": "Playwright MCP server undetected by anti-bots and captchas: AI agent browses the web on anti-detect stealth Firefox, Python, undetected browser automation, scraping, computer use.",
    "language": "Python",
    "topics": [
@@ -680,7 +680,8 @@
     "jetpack-compose",
     "kotlin-js",
     "auto",
-    "click"
+    "click",
+    "compose-multiplatform"
    ],
    "license": "GPL-3.0",
    "homepage": "https://gkd.li",

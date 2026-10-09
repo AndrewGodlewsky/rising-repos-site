@@ -30,7 +30,7 @@
    "repo_id": 634841108,
    "rank": 1,
    "name": "4xmen/Get-Github-Achievements",
-   "description": "How to Get GitHub Achievements, Step by Step ; Translated to Persian \ud83c\uddee\ud83c\uddf7, Deutsch \ud83c\udde9\ud83c\uddea, France \ud83c\uddeb\ud83c\uddf7, Russian \ud83c\uddf7\ud83c\uddfa, Turkish \ud83c\uddf9\ud83c\uddf7, Dutch \ud83c\uddf3\ud83c\uddf1, Chinese \ud83c\udde8\ud83c\uddf3, Spanish \ud83c\uddea\ud83c\uddf8, Arabic \ud83c\uddf8\ud83c\udde6, Indonesian \ud83c\uddee\ud83c\udde9, Japanese \ud83c\uddef\ud83c\uddf5, Hindi \ud83c\uddee\ud83c\uddf3, Swahili \ud83c\uddf0\ud83c\uddea, Armenia \ud83c\udde6\ud83c\uddf2, Vietnamese \ud83c\uddfb\ud83c\uddf3  Guide.",
+   "description": "How to Get GitHub Achievements, Step by Step ; Translated to Persian \ud83c\uddee\ud83c\uddf7, Deutsch \ud83c\udde9\ud83c\uddea, France \ud83c\uddeb\ud83c\uddf7, Russian \ud83c\uddf7\ud83c\uddfa, Turkish \ud83c\uddf9\ud83c\uddf7, Dutch \ud83c\uddf3\ud83c\uddf1, Chinese \ud83c\udde8\ud83c\uddf3, Spanish \ud83c\uddea\ud83c\uddf8, Arabic \ud83c\uddf8\ud83c\udde6, Indonesian \ud83c\uddee\ud83c\udde9, Japanese \ud83c\uddef\ud83c\uddf5, Hindi \ud83c\uddee\ud83c\uddf3, Swahili \ud83c\uddf0\ud83c\uddea, Armenia \ud83c\udde6\ud83c\uddf2, Vietnamese \ud83c\uddfb\ud83c\uddf3, Polish \ud83c\uddf5\ud83c\uddf1  Guide.",
    "language": null,
    "topics": [
     "achievement-hunter",
@@ -661,29 +661,29 @@
    "repo_id": 1106398326,
    "rank": 14,
    "name": "thetahealth/mirobody",
-   "description": "The AI-native health data engine \u2014 collect, translate, and reason with AI Agents over labs results, wearables & genomics.",
+   "description": "Self-hosted health data engine: lab reports, wearables and genetic files in one record, and an agent that cites its sources.",
    "language": "Python",
    "topics": [
     "fhir",
-    "mcp",
     "ai-agents",
     "health-data",
     "lab-reports",
     "loinc",
     "self-hosted",
-    "terminology",
     "wearables",
     "apple-health",
     "digital-health",
     "ehr",
-    "garmin",
-    "health",
-    "healthcare",
     "healthcare-ai",
     "mcp-server",
     "medical-records",
-    "ocr",
-    "quantified-self"
+    "quantified-self",
+    "lab-results",
+    "personal-health-record",
+    "genetic-data",
+    "genomics",
+    "python",
+    "icpc-3"
    ],
    "license": "Apache-2.0",
    "homepage": "https://mirobody.ai",
@@ -1197,7 +1197,7 @@
    "rank": 25,
    "name": "S3N4T0R-0X0/BEAR-C2",
    "description": "BEAR-C2 is an adversary simulation and emulation framework built around real-world TTPs inspired by Russian, Chinese, North Korean, and Iranian APT groups.",
-   "language": "Python",
+   "language": "C++",
    "topics": [
     "adversary-simulation",
     "adversary-emulation",
@@ -4463,7 +4463,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5413,7 +5413,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5515,7 +5515,9 @@
    "topics": [
     "dashboard",
     "docker",
-    "go"
+    "go",
+    "golang",
+    "rss-reader"
    ],
    "license": "AGPL-3.0",
    "homepage": "https://dynacat.artur.zone/",
@@ -5852,7 +5854,7 @@
    "repo_id": 1112733896,
    "rank": 120,
    "name": "apify/mcpc",
-   "description": "A universal CLI client for MCP. mcpc supports persistent sessions, stdio/HTTP, OAuth 2.1, tasks, JSON output for code mode, proxy for AI sandboxes, x402, and more.",
+   "description": "The most compatible MCP CLI client. mcpc supports persistent sessions, stdio/HTTP, OAuth 2.1, Tasks and Skills extensions, --json for code mode, proxy for AI sandboxes, x402, and more.",
    "language": "TypeScript",
    "topics": [
     "cli",
@@ -8065,7 +8067,7 @@
    "repo_id": 216628419,
    "rank": 166,
    "name": "flyteorg/flyte",
-   "description": "Dynamic, resilient AI orchestration. Coordinate data, models, and compute as you build AI workflows.",
+   "description": "Type-safe, distributed orchestration of agents, ML pipelines, and real-time inference on your k8s \u2014 in pure Python with async/await, also other languages (rust, go and ts)",
    "language": "Go",
    "topics": [
     "flyte",
@@ -10438,7 +10440,7 @@
    "language": "TypeScript",
    "topics": [],
    "license": "GPL-3.0",
-   "homepage": "https://fluent.thinkstu.com",
+   "homepage": "https://read.thinkstu.com/",
    "forks": 406,
    "final_display": 2.289429637528767,
    "final_is_capped": false,
@@ -11597,7 +11599,7 @@
    "rank": 238,
    "name": "Mathieu2301/TradingView-API",
    "description": "\ud83d\udcc8 Get real-time stocks from TradingView",
-   "language": "JavaScript",
+   "language": "TypeScript",
    "topics": [
     "tradingview",
     "tradingview-api",

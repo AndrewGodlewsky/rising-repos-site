@@ -138,7 +138,7 @@
    "language": "Rust",
    "topics": [],
    "license": "NOASSERTION",
-   "homepage": null,
+   "homepage": "letrecovery.net",
    "forks": 160,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -332,7 +332,7 @@
    "rank": 7,
    "name": "S3N4T0R-0X0/BEAR-C2",
    "description": "BEAR-C2 is an adversary simulation and emulation framework built around real-world TTPs inspired by Russian, Chinese, North Korean, and Iranian APT groups.",
-   "language": "Python",
+   "language": "C++",
    "topics": [
     "adversary-simulation",
     "adversary-emulation",
@@ -2373,7 +2373,7 @@
    "repo_id": 1236183038,
    "rank": 48,
    "name": "Asymptote-Labs/agent-beacon",
-   "description": "The cross-harness self-improving memory layer for AI agents.",
+   "description": "The cross-harness, self-improving memory layer for AI agents.",
    "language": "Go",
    "topics": [
     "security-tools",
@@ -4298,7 +4298,7 @@
     "heterogeneous-computing"
    ],
    "license": "Apache-2.0",
-   "homepage": "https://nvlabs.github.io/cuda-oxide/",
+   "homepage": "https://nvidia.github.io/cuda-rust/",
    "forks": 256,
    "final_display": 6.500582583267822,
    "final_is_capped": false,
@@ -5451,7 +5451,7 @@
    "repo_id": 1158705125,
    "rank": 109,
    "name": "kunobi-ninja/kache",
-   "description": "Zero-copy, content-addressed Rust build cache for Rust, C/C++ and more. No copies, no wasted disk \u2014 just hardlinks locally and S3 for sharing.",
+   "description": "Zero-copy, content-addressed Rust build cache for Rust, C/C++ and more. No copies, no wasted disk",
    "language": "Rust",
    "topics": [
     "build-cache",
@@ -5464,7 +5464,7 @@
     "zero-copy"
    ],
    "license": "Apache-2.0",
-   "homepage": "https://kunobi.ninja/product/kache",
+   "homepage": "https://kunobi.ninja/kache",
    "forks": 42,
    "final_display": 4.847187348908601,
    "final_is_capped": false,
@@ -7840,7 +7840,7 @@
    "repo_id": 1206357666,
    "rank": 156,
    "name": "jordan-gibbs/hyperresearch",
-   "description": "Convert Claude Code or Codex into the most intelligent Deep Research Agent. Collect, search, and synthesize web research into a persistent, searchable wiki that builds on itself.",
+   "description": "Convert Claude Code or Codex into the most intelligent Deep Research Agent. Collect, search, and synthesize web research into a persistent, searchable wiki that builds on itself. Hosted API + MCP: hyperresearch.ai",
    "language": "Python",
    "topics": [
     "agents",
@@ -7854,7 +7854,9 @@
     "research-agent",
     "research-tools",
     "codex-plugin",
-    "codex-skill"
+    "codex-skill",
+    "citations",
+    "mcp-server"
    ],
    "license": "MIT",
    "homepage": "https://hyperresearch.ai",

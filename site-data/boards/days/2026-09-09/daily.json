@@ -2994,7 +2994,7 @@
    "language": "TypeScript",
    "topics": [],
    "license": "GPL-3.0",
-   "homepage": "https://fluent.thinkstu.com",
+   "homepage": "https://read.thinkstu.com/",
    "forks": 397,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -3140,9 +3140,18 @@
    "repo_id": 1229751246,
    "rank": 65,
    "name": "huggingface/Repo2RLEnv",
-   "description": "Convert any Repo into an RL Environment ",
+   "description": "Turn any repository into verifiable RL environments for coding agents - Harbor tasks you can train on, evaluate and share on the Hugging Face Hub",
    "language": "Python",
-   "topics": [],
+   "topics": [
+    "coding-agents",
+    "datasets",
+    "harbor",
+    "huggingface",
+    "llm",
+    "reinforcement-learning",
+    "rl-environments",
+    "swe-bench"
+   ],
    "license": "Apache-2.0",
    "homepage": "https://huggingface.github.io/Repo2RLEnv/",
    "forks": 84,
@@ -4290,7 +4299,7 @@
    "language": "Rust",
    "topics": [],
    "license": "NOASSERTION",
-   "homepage": null,
+   "homepage": "letrecovery.net",
    "forks": 152,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -6611,7 +6620,7 @@
    "repo_id": 1236183038,
    "rank": 134,
    "name": "Asymptote-Labs/agent-beacon",
-   "description": "The cross-harness self-improving memory layer for AI agents.",
+   "description": "The cross-harness, self-improving memory layer for AI agents.",
    "language": "Go",
    "topics": [
     "security-tools",
@@ -8320,7 +8329,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -8807,7 +8816,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -10540,7 +10549,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -10557,7 +10566,11 @@
     "ai",
     "agent",
     "javascript",
-    "llm"
+    "llm",
+    "ag-ui",
+    "langchain",
+    "mastra",
+    "react"
    ],
    "license": "MIT",
    "homepage": "https://www.openui.com",
@@ -10986,7 +10999,7 @@
     "heterogeneous-computing"
    ],
    "license": "Apache-2.0",
-   "homepage": "https://nvlabs.github.io/cuda-oxide/",
+   "homepage": "https://nvidia.github.io/cuda-rust/",
    "forks": 253,
    "final_display": 3.750287796972387,
    "final_is_capped": false,
@@ -11980,7 +11993,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -12846,7 +12859,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -13061,7 +13074,7 @@
    "repo_id": 1217522067,
    "rank": 262,
    "name": "earthtojake/text-to-cad",
-   "description": "A library of agent skills for CAD, CAE and CAM",
+   "description": "Give your agent CAD superpowers.",
    "language": "Python",
    "topics": [
     "agents",
