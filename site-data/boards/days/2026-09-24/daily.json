@@ -584,7 +584,9 @@
     "android-app",
     "multimedia",
     "video-streaming",
-    "react-native"
+    "react-native",
+    "cast",
+    "casting"
    ],
    "license": "NOASSERTION",
    "homepage": null,
@@ -1960,7 +1962,14 @@
     "pdf",
     "docx",
     "office",
-    "xlsx"
+    "xlsx",
+    "document-conversion",
+    "hwp-parser",
+    "llm",
+    "mcp-server",
+    "ocr",
+    "pdf-to-markdown",
+    "rag"
    ],
    "license": "MIT",
    "homepage": "https://www.npmjs.com/package/kordoc",
@@ -3178,7 +3187,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3949,26 +3958,20 @@
    "repo_id": 1025929171,
    "rank": 79,
    "name": "acsandmann/rift",
-   "description": "a tiling and scrolling window manager for macos",
+   "description": "a tiling window manager for macos",
    "language": "Rust",
    "topics": [
     "i3",
     "macos",
     "tiling",
-    "i3wm",
+    "hyprland",
+    "niriwm",
+    "apple",
     "mac",
-    "rust",
     "tiling-window-manager",
-    "window-manager",
-    "niri",
-    "paperwm",
-    "scrolling",
-    "rift",
-    "twm",
-    "wm",
-    "aerospace",
-    "yabai",
-    "hyprland"
+    "tiling-wm",
+    "window-managers",
+    "wm"
    ],
    "license": "NOASSERTION",
    "homepage": "https://acsandmann.github.io/rift-docs/",
@@ -4378,7 +4381,7 @@
    "repo_id": 1236183038,
    "rank": 87,
    "name": "Asymptote-Labs/agent-beacon",
-   "description": "The cross-harness, self-improving memory layer for AI agents.",
+   "description": "The cross-harness, self-improving memory layer for AI agents. Join our community: https://discord.com/invite/zdNChS2fBu",
    "language": "Go",
    "topics": [
     "security-tools",
@@ -5398,7 +5401,7 @@
    "repo_id": 1122859216,
    "rank": 108,
    "name": "the-open-engine/zeroshot",
-   "description": "Runs coding agents as a graph: one agent implements, independent agents review, failures go to repair, and nothing ships until the checks pass. Works with Codex, Claude Code and Copilot.",
+   "description": "Runs coding agents as a graph: one agent implements, independent agents review, failures go to repair, and nothing ships until the checks pass. Works with Codex, Claude Code and Copilot. Bring your own topology.",
    "language": "Rust",
    "topics": [
     "ai-agents",
@@ -5421,7 +5424,7 @@
     "github-copilot"
    ],
    "license": "MIT",
-   "homepage": "https://the-open-engine.github.io/zeroshot/",
+   "homepage": "https://zeroshot.sh",
    "forks": 177,
    "final_display": 6.670282745840829,
    "final_is_capped": false,
@@ -5718,7 +5721,7 @@
    "rank": 114,
    "name": "coco-research/coco",
    "description": "CoCo Super Intelligence is the orchestration layer that turns Claude Code, Cursor, or Codex into an engineering department: a routed advisory board, 226 skills, 386 commands, persistent state. Local. Open-core \u2014 MIT core; Super Intelligence is proprietary, own-use.",
-   "language": "HTML",
+   "language": "Python",
    "topics": [
     "agent-skills",
     "agents-md",
@@ -6304,7 +6307,7 @@
     "email-verification-api",
     "email-verifier"
    ],
-   "license": "NOASSERTION",
+   "license": "MIT",
    "homepage": "https://reacher.email",
    "forks": 721,
    "final_display": 5.844987841158933,
@@ -6981,7 +6984,7 @@
    "language": "Rust",
    "topics": [],
    "license": "MIT",
-   "homepage": null,
+   "homepage": "https://wake.cool",
    "forks": 78,
    "final_display": 5.296526603174309,
    "final_is_capped": false,
@@ -7159,7 +7162,7 @@
    "repo_id": 904490600,
    "rank": 144,
    "name": "krillinai/OpenCreator",
-   "description": "Formerly KrillinAI. Open-source AI workspace for creators, powered by Codex. Create videos, images, voice, avatars, video translation, and edits with Agents in one place.",
+   "description": "Formerly KrillinAI. Open-source AI workspace for creators, powered by Codex. Video translation, create videos, images, voice, avatars, and edits with Agents in one place. Suitable for your Social Media like YouTube, TikTok, Instagram, etc.",
    "language": "TypeScript",
    "topics": [
     "video-transcription",
@@ -7176,7 +7179,7 @@
     "video-generation"
    ],
    "license": "Apache-2.0",
-   "homepage": "https://www.open-creator.ai/",
+   "homepage": "https://www.open-creator.ai/en/",
    "forks": 1264,
    "final_display": 4.890174613987975,
    "final_is_capped": false,
@@ -7930,7 +7933,7 @@
    "repo_id": 1265908861,
    "rank": 159,
    "name": "omnichar/OmniChar",
-   "description": "The open .char format for characters. Face, body and wardrobe in one file, consistent across every model.",
+   "description": "The open .char format for consistent characters. Face, body, wardrobe & voice in one file, consistent across every model.",
    "language": "Python",
    "topics": [
     "ai-video",
@@ -8045,7 +8048,7 @@
    },
    "repo_id": 642065600,
    "rank": 161,
-   "name": "Anil-matcha/awesome-jev-by-typesafe",
+   "name": "Anil-matcha/open-spaces",
    "description": "Evidence-backed use cases, patterns, prompts, and starter code for TypeSafe Jev \u2014 a System One model for fast, typed, confidence-aware decisions in software.",
    "language": "Python",
    "topics": [
@@ -8701,7 +8704,7 @@
    "rank": 174,
    "name": "pymss-project/pymss-studio",
    "description": "Cross-platform desktop GUI for music source separation",
-   "language": "Vue",
+   "language": "Python",
    "topics": [],
    "license": "AGPL-3.0",
    "homepage": null,
@@ -9204,7 +9207,7 @@
     "commit_sha": "18b787f1f24ad2863b6b75467a981b74c993bbda"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -9253,7 +9256,7 @@
     "commit_sha": "6329f0dd26934998d188b88fa52a3e2ac69b0fc6"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -9262,7 +9265,7 @@
    "repo_id": 1170138985,
    "rank": 186,
    "name": "proxysoul/Empryo",
-   "description": "Empryo's engine, v2 (soulforge) and issue tracker!! Empryo is the graph-powered AI coding agent that edits symbols, not strings: AST surgery, full LSP, a live code genome. Get it at https://empryo.com",
+   "description": "AI coding harness for desktop, terminal and CI. Maps your repo, edits code by symbol through AST and LSP, then runs your checks. Any model or the plan you already pay for. Get it at https://empryo.com",
    "language": "TypeScript",
    "topics": [
     "ai",
@@ -9283,7 +9286,8 @@
     "llm",
     "terminal",
     "tree-sitter",
-    "empryo"
+    "empryo",
+    "agent-harness"
    ],
    "license": "NOASSERTION",
    "homepage": "https://empryo.com/",
@@ -9738,7 +9742,7 @@
    "language": "Python",
    "topics": [],
    "license": "MIT",
-   "homepage": null,
+   "homepage": "https://video-use.com",
    "forks": 3184,
    "final_display": 3.162460812632175,
    "final_is_capped": false,
@@ -10525,7 +10529,7 @@
    "description": "Fast, accurate & comprehensive text measurement & layout",
    "language": "TypeScript",
    "topics": [],
-   "license": "MIT",
+   "license": "NOASSERTION",
    "homepage": "http://chenglou.me/pretext/",
    "forks": 2738,
    "final_display": 2.1225472300036556,

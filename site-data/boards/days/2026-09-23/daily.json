@@ -1000,7 +1000,7 @@
    "rank": 20,
    "name": "dphilla/boxer",
    "description": "Dockerfile \u2192 Universal Wasm Distribution",
-   "language": "Rust",
+   "language": "HTML",
    "topics": [
     "webassembly",
     "cloud-infrastructure",
@@ -1140,26 +1140,20 @@
    "repo_id": 1025929171,
    "rank": 23,
    "name": "acsandmann/rift",
-   "description": "a tiling and scrolling window manager for macos",
+   "description": "a tiling window manager for macos",
    "language": "Rust",
    "topics": [
     "i3",
     "macos",
     "tiling",
-    "i3wm",
+    "hyprland",
+    "niriwm",
+    "apple",
     "mac",
-    "rust",
     "tiling-window-manager",
-    "window-manager",
-    "niri",
-    "paperwm",
-    "scrolling",
-    "rift",
-    "twm",
-    "wm",
-    "aerospace",
-    "yabai",
-    "hyprland"
+    "tiling-wm",
+    "window-managers",
+    "wm"
    ],
    "license": "NOASSERTION",
    "homepage": "https://acsandmann.github.io/rift-docs/",
@@ -2970,7 +2964,7 @@
    "repo_id": 1236183038,
    "rank": 60,
    "name": "Asymptote-Labs/agent-beacon",
-   "description": "The cross-harness, self-improving memory layer for AI agents.",
+   "description": "The cross-harness, self-improving memory layer for AI agents. Join our community: https://discord.com/invite/zdNChS2fBu",
    "language": "Go",
    "topics": [
     "security-tools",
@@ -3560,7 +3554,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -3662,7 +3656,7 @@
    "rank": 74,
    "name": "coco-research/coco",
    "description": "CoCo Super Intelligence is the orchestration layer that turns Claude Code, Cursor, or Codex into an engineering department: a routed advisory board, 226 skills, 386 commands, persistent state. Local. Open-core \u2014 MIT core; Super Intelligence is proprietary, own-use.",
-   "language": "HTML",
+   "language": "Python",
    "topics": [
     "agent-skills",
     "agents-md",
@@ -4797,7 +4791,7 @@
    },
    "repo_id": 642065600,
    "rank": 97,
-   "name": "Anil-matcha/awesome-jev-by-typesafe",
+   "name": "Anil-matcha/open-spaces",
    "description": "Evidence-backed use cases, patterns, prompts, and starter code for TypeSafe Jev \u2014 a System One model for fast, typed, confidence-aware decisions in software.",
    "language": "Python",
    "topics": [
@@ -4868,7 +4862,9 @@
     "android-app",
     "multimedia",
     "video-streaming",
-    "react-native"
+    "react-native",
+    "cast",
+    "casting"
    ],
    "license": "NOASSERTION",
    "homepage": null,
@@ -5308,7 +5304,7 @@
    "repo_id": 1265908861,
    "rank": 107,
    "name": "omnichar/OmniChar",
-   "description": "The open .char format for characters. Face, body and wardrobe in one file, consistent across every model.",
+   "description": "The open .char format for consistent characters. Face, body, wardrobe & voice in one file, consistent across every model.",
    "language": "Python",
    "topics": [
     "ai-video",
@@ -5583,7 +5579,7 @@
     "email-verification-api",
     "email-verifier"
    ],
-   "license": "NOASSERTION",
+   "license": "MIT",
    "homepage": "https://reacher.email",
    "forks": 720,
    "final_display": 6.239352345394821,
@@ -6175,7 +6171,7 @@
    "repo_id": 1122859216,
    "rank": 124,
    "name": "the-open-engine/zeroshot",
-   "description": "Runs coding agents as a graph: one agent implements, independent agents review, failures go to repair, and nothing ships until the checks pass. Works with Codex, Claude Code and Copilot.",
+   "description": "Runs coding agents as a graph: one agent implements, independent agents review, failures go to repair, and nothing ships until the checks pass. Works with Codex, Claude Code and Copilot. Bring your own topology.",
    "language": "Rust",
    "topics": [
     "ai-agents",
@@ -6198,7 +6194,7 @@
     "github-copilot"
    ],
    "license": "MIT",
-   "homepage": "https://the-open-engine.github.io/zeroshot/",
+   "homepage": "https://zeroshot.sh",
    "forks": 172,
    "final_display": 5.746789046143275,
    "final_is_capped": false,
@@ -6388,7 +6384,7 @@
    "repo_id": 1275972890,
    "rank": 128,
    "name": "Mahanaicoach/google-maps-scraper-kit",
-   "description": "Local Google Maps lead extraction, operated by Claude. Clean CSVs with phones, emails, websites and socials. No API keys, runs on your machine.",
+   "description": "Google Maps scraper for lead generation, run by Claude Code. Exports clean CSVs with phones, emails, websites and socials. Local, free, no API keys.",
    "language": "Python",
    "topics": [
     "b2b-leads",
@@ -6400,9 +6396,14 @@
     "lead-generation",
     "local-business",
     "scraper",
-    "web-scraping"
+    "web-scraping",
+    "claude",
+    "csv",
+    "email-extractor",
+    "lead-scraper",
+    "python"
    ],
-   "license": "NOASSERTION",
+   "license": "MIT",
    "homepage": null,
    "forks": 158,
    "final_display": 5.586165225219703,
@@ -6632,7 +6633,7 @@
    "rank": 133,
    "name": "pymss-project/pymss-studio",
    "description": "Cross-platform desktop GUI for music source separation",
-   "language": "Vue",
+   "language": "Python",
    "topics": [],
    "license": "AGPL-3.0",
    "homepage": null,
@@ -6777,7 +6778,14 @@
     "pdf",
     "docx",
     "office",
-    "xlsx"
+    "xlsx",
+    "document-conversion",
+    "hwp-parser",
+    "llm",
+    "mcp-server",
+    "ocr",
+    "pdf-to-markdown",
+    "rag"
    ],
    "license": "MIT",
    "homepage": "https://www.npmjs.com/package/kordoc",
@@ -7488,7 +7496,7 @@
    "repo_id": 904490600,
    "rank": 151,
    "name": "krillinai/OpenCreator",
-   "description": "Formerly KrillinAI. Open-source AI workspace for creators, powered by Codex. Create videos, images, voice, avatars, video translation, and edits with Agents in one place.",
+   "description": "Formerly KrillinAI. Open-source AI workspace for creators, powered by Codex. Video translation, create videos, images, voice, avatars, and edits with Agents in one place. Suitable for your Social Media like YouTube, TikTok, Instagram, etc.",
    "language": "TypeScript",
    "topics": [
     "video-transcription",
@@ -7505,7 +7513,7 @@
     "video-generation"
    ],
    "license": "Apache-2.0",
-   "homepage": "https://www.open-creator.ai/",
+   "homepage": "https://www.open-creator.ai/en/",
    "forks": 1257,
    "final_display": 4.425487593362958,
    "final_is_capped": false,
@@ -8512,7 +8520,7 @@
    "rank": 171,
    "name": "caamer20/Telegram-Drive",
    "description": "Turn your Telegram account into an unlimited, secure cloud storage drive. an Open-source desktop app built with Tauri, Rust, and React.",
-   "language": "TypeScript",
+   "language": "Rust",
    "topics": [
     "open-source",
     "react",
@@ -8962,7 +8970,7 @@
    "language": "Python",
    "topics": [],
    "license": "MIT",
-   "homepage": null,
+   "homepage": "https://video-use.com",
    "forks": 3155,
    "final_display": 3.613858409085637,
    "final_is_capped": false,
@@ -9509,7 +9517,7 @@
    "repo_id": 835975784,
    "rank": 192,
    "name": "MODSetter/SurfSense",
-   "description": "Air gapped, privacy focused open source NotebookLM alternative. Join our Discord: https://discord.gg/ejRNvftDp9",
+   "description": "Air-gapped, privacy-focused, open-source NotebookLM alternative. AI agent that researches, transforms, and edits your documents. Join our Discord: https://discord.gg/ejRNvftDp9",
    "language": "Python",
    "topics": [
     "ai",

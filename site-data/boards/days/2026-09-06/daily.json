@@ -3678,7 +3678,7 @@
    "repo_id": 1307136587,
    "rank": 77,
    "name": "risa-labs-inc/BossConsole",
-   "description": "Open-source, multi-platform harness for AI agents - a native, multi-threaded operator's console (JVM, not Electron) to run Claude Code, Codex, Gemini or OpenCode with a real browser, terminal, editor, secrets & 100+ MCP tools. Built for enterprises, science & research.",
+   "description": "Open-source, multi-platform harness for AI agents - a native, multi-threaded operator's console (JVM, not Electron) to run Claude Code, Codex, Gemini or OpenCode with a real browser, terminal, editor, secrets & 200+ MCP tools. Built for enterprises, science & research.",
    "language": "Kotlin",
    "topics": [
     "agent-harness",
@@ -4512,7 +4512,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4757,7 +4757,7 @@
    "rank": 98,
    "name": "nowork-studio/notfair-plugin",
    "description": "Open-source SEO, GEO, and marketing skills for AI agents.",
-   "language": "TypeScript",
+   "language": "Python",
    "topics": [
     "claude-code-plugin",
     "claude-skills",
@@ -6062,7 +6062,7 @@
    "repo_id": 1049779526,
    "rank": 124,
    "name": "scrapfly/Antibot-Detector",
-   "description": " Real-time detection of anti-bot systems, CAPTCHAs & fingerprinting techniques. Identifies Cloudflare, Akamai, DataDome, reCAPTCHA, hCaptcha, Shape Security & more with confidence scoring and advanced capture tools.",
+   "description": " Real-time detection of anti-bot systems, captchas & fingerprinting techniques. Identifies Cloudflare, Akamai, DataDome, reCAPTCHA, hCaptcha, Shape Security & more with confidence scoring and advanced capture tools.",
    "language": "JavaScript",
    "topics": [
     "anti-bot",
@@ -6078,7 +6078,8 @@
     "detector",
     "scrapfly",
     "antibot-detector",
-    "captcha-detector"
+    "captcha-detector",
+    "anti-bot-detection"
    ],
    "license": "NOASSERTION",
    "homepage": null,
@@ -8587,7 +8588,7 @@
    "repo_id": 1167515091,
    "rank": 175,
    "name": "Lakr233/vphone-cli",
-   "description": null,
+   "description": "Run a virtual iPhone on an Apple Silicon Mac.",
    "language": "Swift",
    "topics": [],
    "license": "MIT",
@@ -8711,19 +8712,19 @@
    "repo_id": 1264098367,
    "rank": 178,
    "name": "KytyPS5/KytyPS5",
-   "description": "PlayStation 5 emulator for Windows, Linux and MacOS",
+   "description": "PlayStation 5 translation layer for Windows, Linux and macOS",
    "language": "C++",
    "topics": [
     "windows",
     "cpp",
-    "emulation",
-    "emulator",
     "playstation5",
     "ps5",
     "vulkan",
     "gpu",
     "linux",
-    "macos"
+    "macos",
+    "rdna",
+    "translation"
    ],
    "license": "GPL-2.0",
    "homepage": null,
@@ -9619,7 +9620,7 @@
     "vitepress"
    ],
    "license": "MIT",
-   "homepage": "https://awesome-android-root.zhoe.org",
+   "homepage": "https://awesome-android-root.xyz",
    "forks": 258,
    "final_display": 2.2489267857365642,
    "final_is_capped": false,
@@ -9657,7 +9658,7 @@
    "repo_id": 369755856,
    "rank": 197,
    "name": "majd/ipatool",
-   "description": "Command-line tool that allows you to search for iOS, iPadOS, tvOS, visionOS, and macOS apps on the App Store, and download .ipa or macOS .pkg app packages.",
+   "description": "Command-line tool that allows you to search for iOS, iPadOS, tvOS, watchOS, visionOS, and macOS apps on the App Store, and download .ipa or macOS .pkg app packages.",
    "language": "Go",
    "topics": [
     "ios",

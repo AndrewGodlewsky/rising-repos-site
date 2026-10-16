@@ -20,7 +20,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1937,7 +1937,7 @@
    "rank": 41,
    "name": "wy51ai/edulab",
    "description": null,
-   "language": "HTML",
+   "language": "Python",
    "topics": [],
    "license": "Apache-2.0",
    "homepage": null,
@@ -2367,7 +2367,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4463,7 +4463,9 @@
     "cursor-skills",
     "gemini-skills",
     "opencode-skills",
-    "awesome"
+    "awesome",
+    "codex",
+    "cursor"
    ],
    "license": "MIT",
    "homepage": "https://officialskills.sh/",
@@ -4549,15 +4551,12 @@
    "description": "Your own search engine",
    "language": "Go",
    "topics": [
-    "go",
-    "golang",
     "history",
     "index",
     "search",
     "search-engine",
     "web",
     "mcp",
-    "mcp-server",
     "privacy",
     "semantic-search",
     "browser-history",
@@ -7656,7 +7655,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -8383,10 +8382,11 @@
     "agent-memory",
     "self-evolving",
     "agent-plugins",
-    "dsh-plugin"
+    "dsh-plugin",
+    "agent-context"
    ],
    "license": "AGPL-3.0",
-   "homepage": "https://openviking.ai/",
+   "homepage": "https://openviking.ai",
    "forks": 2479,
    "final_display": 3.5458591607969985,
    "final_is_capped": false,
@@ -11091,7 +11091,7 @@
    "repo_id": 1045247072,
    "rank": 225,
    "name": "vllm-project/semantic-router",
-   "description": "A programmable Mixture-of-Models router for heterogeneous LLM inference",
+   "description": "An open, programmable decision layer for models and compute.",
    "language": "Go",
    "topics": [
     "mixture-of-models",

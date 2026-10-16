@@ -403,7 +403,11 @@
     "tool",
     "texturing",
     "painting",
-    "armorpaint"
+    "armorpaint",
+    "animation",
+    "modeling",
+    "sculpting",
+    "pbr"
    ],
    "license": "NOASSERTION",
    "homepage": "https://armorpaint.org",
@@ -1093,7 +1097,7 @@
     "hacktoberfest"
    ],
    "license": "GPL-2.0",
-   "homepage": "https://vlang.io",
+   "homepage": "https://vinix-os.org",
    "forks": 136,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -3741,7 +3745,7 @@
    },
    "repo_id": 1214519814,
    "rank": 76,
-   "name": "nateherkai/hyperframes-student-kit",
+   "name": "nateherkai/herk-edit-kit",
    "description": "Edit videos, reels, and YouTube Shorts with Codex or Claude Code. 14 skills, transcript-driven cuts, storytelling, 406 motion-graphics cards, and HyperFrames templates.",
    "language": "HTML",
    "topics": [
@@ -4471,7 +4475,7 @@
     "commit_sha": "45b097a8ed06b91125e69d04137d3bed52a7ac76"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5121,7 +5125,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5224,7 +5228,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5602,7 +5606,7 @@
    "repo_id": 1307136587,
    "rank": 114,
    "name": "risa-labs-inc/BossConsole",
-   "description": "Open-source, multi-platform harness for AI agents - a native, multi-threaded operator's console (JVM, not Electron) to run Claude Code, Codex, Gemini or OpenCode with a real browser, terminal, editor, secrets & 100+ MCP tools. Built for enterprises, science & research.",
+   "description": "Open-source, multi-platform harness for AI agents - a native, multi-threaded operator's console (JVM, not Electron) to run Claude Code, Codex, Gemini or OpenCode with a real browser, terminal, editor, secrets & 200+ MCP tools. Built for enterprises, science & research.",
    "language": "Kotlin",
    "topics": [
     "agent-harness",
@@ -6620,7 +6624,7 @@
    "repo_id": 1236183038,
    "rank": 134,
    "name": "Asymptote-Labs/agent-beacon",
-   "description": "The cross-harness, self-improving memory layer for AI agents.",
+   "description": "The cross-harness, self-improving memory layer for AI agents. Join our community: https://discord.com/invite/zdNChS2fBu",
    "language": "Go",
    "topics": [
     "security-tools",
@@ -6858,7 +6862,7 @@
    "repo_id": 1049779526,
    "rank": 138,
    "name": "scrapfly/Antibot-Detector",
-   "description": " Real-time detection of anti-bot systems, CAPTCHAs & fingerprinting techniques. Identifies Cloudflare, Akamai, DataDome, reCAPTCHA, hCaptcha, Shape Security & more with confidence scoring and advanced capture tools.",
+   "description": " Real-time detection of anti-bot systems, captchas & fingerprinting techniques. Identifies Cloudflare, Akamai, DataDome, reCAPTCHA, hCaptcha, Shape Security & more with confidence scoring and advanced capture tools.",
    "language": "JavaScript",
    "topics": [
     "anti-bot",
@@ -6874,7 +6878,8 @@
     "detector",
     "scrapfly",
     "antibot-detector",
-    "captcha-detector"
+    "captcha-detector",
+    "anti-bot-detection"
    ],
    "license": "NOASSERTION",
    "homepage": null,
@@ -6958,7 +6963,7 @@
    "rank": 140,
    "name": "nowork-studio/notfair-plugin",
    "description": "Open-source SEO, GEO, and marketing skills for AI agents.",
-   "language": "TypeScript",
+   "language": "Python",
    "topics": [
     "claude-code-plugin",
     "claude-skills",
@@ -10416,7 +10421,7 @@
     "video"
    ],
    "license": "Apache-2.0",
-   "homepage": null,
+   "homepage": "https://hyperframes.dev",
    "forks": 4440,
    "final_display": 4.025053688606628,
    "final_is_capped": false,
@@ -10752,7 +10757,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -10893,7 +10898,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -10985,7 +10990,7 @@
    "repo_id": 1218231004,
    "rank": 221,
    "name": "NVIDIA/cuda-rust",
-   "description": "cuda-oxide is a Rust-to-CUDA compiler that lets you write (SIMT) GPU kernels in safe(ish), idiomatic Rust. It compiles standard Rust code directly to PTX \u2014 no DSLs, no foreign language bindings, just Rust.",
+   "description": "NVIDIA's CUDA platform for Rust. Host runtime crates plus Tile (cutile-rs) and SIMT (cuda-oxide) kernel programming models in idiomatic Rust.",
    "language": "Rust",
    "topics": [
     "compiler-backend",
@@ -11613,7 +11618,7 @@
    "repo_id": 1185768353,
    "rank": 233,
    "name": "kentcdodds/kody",
-   "description": "\ud83d\udc28 Your assistant's home \u2014 the memory, keys, code, and automations your AI agent keeps, portable across every MCP host. Built on Cloudflare Workers.",
+   "description": "\ud83d\udc28 Your agents' cloud \u2014 the memory, keys, code, and automations your AI agent keeps, portable across every MCP host.",
    "language": "TypeScript",
    "topics": [
     "agents",
@@ -12002,7 +12007,7 @@
    "repo_id": 1214783544,
    "rank": 241,
    "name": "oritera/Cairn",
-   "description": "A AI general-purpose state-space search engine, validated first on autonomous penetration testing.",
+   "description": "Cairn is a general-purpose AI state-space search engine, validated first on autonomous penetration testing. Sometimes misspelled as Carin.",
    "language": "Python",
    "topics": [
     "ai",
@@ -12347,7 +12352,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -12531,7 +12536,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -12540,7 +12545,7 @@
    "repo_id": 1183286798,
    "rank": 252,
    "name": "plugin87/ux-ui-agent-skills",
-   "description": "Turn Claude into a senior design architect: DTCG tokens, 50 components, WCAG 2.2 AA-AAA, 138 design systems, any-framework code, and 43 objective gates that fail the build instead of faking success.",
+   "description": "Turn Claude into a senior design architect: DTCG tokens, 52 components, WCAG 2.2 AA-AAA, 138 design systems, any-framework code, and 50 objective gates that fail the build instead of faking success.",
    "language": "JavaScript",
    "topics": [
     "accessibility",
@@ -12924,19 +12929,19 @@
    "description": "Open source factory for one-shot engineering",
    "language": "Go",
    "topics": [
-    "control-plane",
-    "devops",
-    "event-driven",
-    "kubernetes",
-    "release-automation",
     "self-hosted",
     "workflow-automation",
-    "automation",
     "react",
     "go",
-    "platform-engineering"
+    "agent-orchestration",
+    "agentic-workflows",
+    "ai-agents",
+    "ai-coding",
+    "ai-software-engineering",
+    "developer-tools",
+    "software-factory"
    ],
-   "license": "Apache-2.0",
+   "license": "NOASSERTION",
    "homepage": "https://superplane.com",
    "forks": 632,
    "final_display": 2.5134251755498953,
@@ -12980,7 +12985,24 @@
    "topics": [
     "claude",
     "codex",
-    "marketing"
+    "marketing",
+    "agent-skills",
+    "ai-agents",
+    "ai-seo",
+    "claude-code",
+    "claude-code-plugin",
+    "claude-skills",
+    "content-marketing",
+    "conversion-rate-optimization",
+    "copywriting",
+    "cursor",
+    "email-marketing",
+    "generative-engine-optimization",
+    "growth-marketing",
+    "marketing-automation",
+    "saas-marketing",
+    "seo",
+    "skill-md"
    ],
    "license": "MIT",
    "homepage": "https://marketing-skills.com",
@@ -13065,7 +13087,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -13675,7 +13697,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],

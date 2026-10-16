@@ -730,7 +730,7 @@
    "rank": 15,
    "name": "S3N4T0R-0X0/BEAR-C2",
    "description": "BEAR-C2 is an adversary simulation and emulation framework built around real-world TTPs inspired by Russian, Chinese, North Korean, and Iranian APT groups.",
-   "language": "C++",
+   "language": "Python",
    "topics": [
     "adversary-simulation",
     "adversary-emulation",
@@ -794,7 +794,7 @@
     "hacktoberfest"
    ],
    "license": "GPL-2.0",
-   "homepage": "https://vlang.io",
+   "homepage": "https://vinix-os.org",
    "forks": 144,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -2624,7 +2624,7 @@
    },
    "repo_id": 1038196040,
    "rank": 53,
-   "name": "yashab-cyber/HackGpt",
+   "name": "yashab-cyber/hackpilot",
    "description": "HackGPT Enterprise is a production-ready, cloud-native AI-powered penetration testing platform designed for enterprise security teams. It combines advanced AI, machine learning, microservices architecture, and comprehensive security frameworks to deliver professional-grade cybersecurity assessments.",
    "language": "Python",
    "topics": [
@@ -4280,7 +4280,11 @@
     "tool",
     "texturing",
     "painting",
-    "armorpaint"
+    "armorpaint",
+    "animation",
+    "modeling",
+    "sculpting",
+    "pbr"
    ],
    "license": "NOASSERTION",
    "homepage": "https://armorpaint.org",
@@ -4774,7 +4778,7 @@
     "bastion"
    ],
    "license": "AGPL-3.0",
-   "homepage": "https://www.v1ops.com",
+   "homepage": null,
    "forks": 203,
    "final_display": 8.755548147418937,
    "final_is_capped": false,
@@ -5562,7 +5566,7 @@
     "commit_sha": "8e9a8e7a276d270d9855bce0599c9387f6193871"
    },
    "structure": {
-    "state": "failed(timeout)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5972,7 +5976,7 @@
    "repo_id": 904490600,
    "rank": 122,
    "name": "krillinai/OpenCreator",
-   "description": "Formerly KrillinAI. Open-source AI workspace for creators, powered by Codex. Create videos, images, voice, avatars, video translation, and edits with Agents in one place.",
+   "description": "Formerly KrillinAI. Open-source AI workspace for creators, powered by Codex. Video translation, create videos, images, voice, avatars, and edits with Agents in one place. Suitable for your Social Media like YouTube, TikTok, Instagram, etc.",
    "language": "TypeScript",
    "topics": [
     "video-transcription",
@@ -5989,7 +5993,7 @@
     "video-generation"
    ],
    "license": "Apache-2.0",
-   "homepage": "https://www.open-creator.ai/",
+   "homepage": "https://www.open-creator.ai/en/",
    "forks": 1257,
    "final_display": 6.458250233809141,
    "final_is_capped": false,
@@ -8878,7 +8882,7 @@
     "harmonyos",
     "harmonyos-next"
    ],
-   "license": null,
+   "license": "CC-BY-4.0",
    "homepage": null,
    "forks": 100,
    "final_display": 3.4587449001712565,
@@ -9016,10 +9020,7 @@
     "media-synchronisation",
     "plex",
     "simkl",
-    "tautulli",
     "trakt",
-    "watcher",
-    "webhook",
     "tmdb",
     "nuvio",
     "publicmetadb",
@@ -9027,7 +9028,10 @@
     "stremio",
     "floppy",
     "yamtrack",
-    "tracearr"
+    "tracearr",
+    "kitsu",
+    "myanimelist",
+    "wetrakr"
    ],
    "license": "AGPL-3.0",
    "homepage": "https://wiki.crosswatch.app",
@@ -9067,7 +9071,7 @@
    "repo_id": 689299900,
    "rank": 186,
    "name": "langwatch/langwatch",
-   "description": "The platform for LLM evaluations and AI agent testing",
+   "description": "Open-Source Agent Observability & Evals for AI Platform teams. Trace, test, route and govern every agent & coding assistant in the company.",
    "language": "TypeScript",
    "topics": [
     "ai",
@@ -11025,7 +11029,7 @@
    "repo_id": 1167515091,
    "rank": 225,
    "name": "Lakr233/vphone-cli",
-   "description": null,
+   "description": "Run a virtual iPhone on an Apple Silicon Mac.",
    "language": "Swift",
    "topics": [],
    "license": "MIT",
@@ -11804,7 +11808,7 @@
    "repo_id": 1218231004,
    "rank": 241,
    "name": "NVIDIA/cuda-rust",
-   "description": "cuda-oxide is a Rust-to-CUDA compiler that lets you write (SIMT) GPU kernels in safe(ish), idiomatic Rust. It compiles standard Rust code directly to PTX \u2014 no DSLs, no foreign language bindings, just Rust.",
+   "description": "NVIDIA's CUDA platform for Rust. Host runtime crates plus Tile (cutile-rs) and SIMT (cuda-oxide) kernel programming models in idiomatic Rust.",
    "language": "Rust",
    "topics": [
     "compiler-backend",

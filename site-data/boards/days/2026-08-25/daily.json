@@ -50,7 +50,7 @@
     "ai-agents",
     "rules"
    ],
-   "license": null,
+   "license": "MIT",
    "homepage": "https://frontendchecklist.io",
    "forks": 6700,
    "final_display": 7.813644362205776,
@@ -143,7 +143,9 @@
     "cursor-skills",
     "gemini-skills",
     "opencode-skills",
-    "awesome"
+    "awesome",
+    "codex",
+    "cursor"
    ],
    "license": "MIT",
    "homepage": "https://officialskills.sh/",
@@ -653,10 +655,11 @@
     "agent-memory",
     "self-evolving",
     "agent-plugins",
-    "dsh-plugin"
+    "dsh-plugin",
+    "agent-context"
    ],
    "license": "AGPL-3.0",
-   "homepage": "https://openviking.ai/",
+   "homepage": "https://openviking.ai",
    "forks": 2530,
    "final_display": 2.7398704423405484,
    "final_is_capped": false,
@@ -740,7 +743,7 @@
    "repo_id": 1161163182,
    "rank": 15,
    "name": "tinyhumansai/openhuman",
-   "description": "OpenHuman is the fastest, cheapest, most efficient open-source agent harness. Written in Rust",
+   "description": "The fastest, cheapest, most efficient open-source agent harness. Run more than 500 agents on a $10 VPS.",
    "language": "Rust",
    "topics": [
     "ai-agents",

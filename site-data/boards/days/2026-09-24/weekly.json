@@ -152,7 +152,7 @@
    },
    "repo_id": 1038196040,
    "rank": 4,
-   "name": "yashab-cyber/HackGpt",
+   "name": "yashab-cyber/hackpilot",
    "description": "HackGPT Enterprise is a production-ready, cloud-native AI-powered penetration testing platform designed for enterprise security teams. It combines advanced AI, machine learning, microservices architecture, and comprehensive security frameworks to deliver professional-grade cybersecurity assessments.",
    "language": "Python",
    "topics": [
@@ -491,7 +491,7 @@
     "hacktoberfest"
    ],
    "license": "GPL-2.0",
-   "homepage": "https://vlang.io",
+   "homepage": "https://vinix-os.org",
    "forks": 145,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -1163,7 +1163,7 @@
    "rank": 25,
    "name": "S3N4T0R-0X0/BEAR-C2",
    "description": "BEAR-C2 is an adversary simulation and emulation framework built around real-world TTPs inspired by Russian, Chinese, North Korean, and Iranian APT groups.",
-   "language": "C++",
+   "language": "Python",
    "topics": [
     "adversary-simulation",
     "adversary-emulation",
@@ -1884,7 +1884,7 @@
     "bastion"
    ],
    "license": "AGPL-3.0",
-   "homepage": "https://www.v1ops.com",
+   "homepage": null,
    "forks": 204,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -5556,7 +5556,11 @@
     "tool",
     "texturing",
     "painting",
-    "armorpaint"
+    "armorpaint",
+    "animation",
+    "modeling",
+    "sculpting",
+    "pbr"
    ],
    "license": "NOASSERTION",
    "homepage": "https://armorpaint.org",
@@ -5685,7 +5689,7 @@
     "commit_sha": "8e9a8e7a276d270d9855bce0599c9387f6193871"
    },
    "structure": {
-    "state": "failed(timeout)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6389,7 +6393,7 @@
    "repo_id": 904490600,
    "rank": 130,
    "name": "krillinai/OpenCreator",
-   "description": "Formerly KrillinAI. Open-source AI workspace for creators, powered by Codex. Create videos, images, voice, avatars, video translation, and edits with Agents in one place.",
+   "description": "Formerly KrillinAI. Open-source AI workspace for creators, powered by Codex. Video translation, create videos, images, voice, avatars, and edits with Agents in one place. Suitable for your Social Media like YouTube, TikTok, Instagram, etc.",
    "language": "TypeScript",
    "topics": [
     "video-transcription",
@@ -6406,7 +6410,7 @@
     "video-generation"
    ],
    "license": "Apache-2.0",
-   "homepage": "https://www.open-creator.ai/",
+   "homepage": "https://www.open-creator.ai/en/",
    "forks": 1264,
    "final_display": 5.504683912058668,
    "final_is_capped": false,
@@ -8596,7 +8600,7 @@
    "repo_id": 689299900,
    "rank": 174,
    "name": "langwatch/langwatch",
-   "description": "The platform for LLM evaluations and AI agent testing",
+   "description": "Open-Source Agent Observability & Evals for AI Platform teams. Trace, test, route and govern every agent & coding assistant in the company.",
    "language": "TypeScript",
    "topics": [
     "ai",
@@ -9567,26 +9571,26 @@
    "description": "Playwright that anti-bots cannot see, so no captchas: same API, anti-detect stealth headless Firefox, undetected fingerprint, bypass bot detection, Python web scraping and browser automation.",
    "language": "Python",
    "topics": [
-    "turnstile",
     "datadome",
-    "kasada",
     "perimeterx",
-    "imperva",
-    "arkose",
     "akamai",
-    "antidetect",
     "antidetect-browser",
-    "hcaptcha",
     "headless-browser",
-    "incapsula",
     "playwright",
     "recaptcha",
-    "shadow-dom",
     "webscraping",
-    "antibot",
-    "bot-management",
-    "fingerprintjs",
-    "user-agent"
+    "anti-detect-browser",
+    "bot-detection",
+    "browser-automation",
+    "browser-fingerprinting",
+    "cloudflare",
+    "firefox",
+    "python",
+    "scraping",
+    "stealth",
+    "stealth-browser",
+    "web-automation",
+    "web-scraping"
    ],
    "license": "MIT",
    "homepage": null,
@@ -10071,7 +10075,9 @@
     "android-app",
     "multimedia",
     "video-streaming",
-    "react-native"
+    "react-native",
+    "cast",
+    "casting"
    ],
    "license": "NOASSERTION",
    "homepage": null,
@@ -10276,7 +10282,7 @@
    "repo_id": 1218231004,
    "rank": 207,
    "name": "NVIDIA/cuda-rust",
-   "description": "cuda-oxide is a Rust-to-CUDA compiler that lets you write (SIMT) GPU kernels in safe(ish), idiomatic Rust. It compiles standard Rust code directly to PTX \u2014 no DSLs, no foreign language bindings, just Rust.",
+   "description": "NVIDIA's CUDA platform for Rust. Host runtime crates plus Tile (cutile-rs) and SIMT (cuda-oxide) kernel programming models in idiomatic Rust.",
    "language": "Rust",
    "topics": [
     "compiler-backend",
@@ -11737,15 +11743,12 @@
    "description": "Your own search engine",
    "language": "Go",
    "topics": [
-    "go",
-    "golang",
     "history",
     "index",
     "search",
     "search-engine",
     "web",
     "mcp",
-    "mcp-server",
     "privacy",
     "semantic-search",
     "browser-history",

@@ -1128,7 +1128,7 @@
     "commit_sha": "45b097a8ed06b91125e69d04137d3bed52a7ac76"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1799,7 +1799,6 @@
    "description": "A WiFi security auditing software",
    "language": "Rust",
    "topics": [
-    "aircrack-ng",
     "gui",
     "security",
     "security-audit",
@@ -3265,7 +3264,7 @@
    "repo_id": 369755856,
    "rank": 68,
    "name": "majd/ipatool",
-   "description": "Command-line tool that allows you to search for iOS, iPadOS, tvOS, visionOS, and macOS apps on the App Store, and download .ipa or macOS .pkg app packages.",
+   "description": "Command-line tool that allows you to search for iOS, iPadOS, tvOS, watchOS, visionOS, and macOS apps on the App Store, and download .ipa or macOS .pkg app packages.",
    "language": "Go",
    "topics": [
     "ios",
@@ -4349,7 +4348,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4510,7 +4509,7 @@
    "repo_id": 1167515091,
    "rank": 93,
    "name": "Lakr233/vphone-cli",
-   "description": null,
+   "description": "Run a virtual iPhone on an Apple Silicon Mac.",
    "language": "Swift",
    "topics": [],
    "license": "MIT",
@@ -4602,7 +4601,7 @@
    },
    "repo_id": 1156645601,
    "rank": 95,
-   "name": "MaxMiksa/Auto-Company",
+   "name": "MaxMiksa/Autonomous-Company",
    "description": "An auto-company works for 24/7 on your own PC - Windows/Linux/macOS.",
    "language": "Python",
    "topics": [
@@ -5456,10 +5455,11 @@
     "rust",
     "skill-management",
     "skills-manager",
-    "tauri"
+    "tauri",
+    "skills-hub"
    ],
    "license": "MIT",
-   "homepage": null,
+   "homepage": "https://aiskillshub.link",
    "forks": 148,
    "final_display": 7.662846390622433,
    "final_is_capped": false,
@@ -5638,7 +5638,7 @@
     "commit_sha": "8e9a8e7a276d270d9855bce0599c9387f6193871"
    },
    "structure": {
-    "state": "failed(timeout)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6125,7 +6125,7 @@
     "commit_sha": "6329f0dd26934998d188b88fa52a3e2ac69b0fc6"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6134,7 +6134,7 @@
    "repo_id": 1170138985,
    "rank": 127,
    "name": "proxysoul/Empryo",
-   "description": "Empryo's engine, v2 (soulforge) and issue tracker!! Empryo is the graph-powered AI coding agent that edits symbols, not strings: AST surgery, full LSP, a live code genome. Get it at https://empryo.com",
+   "description": "AI coding harness for desktop, terminal and CI. Maps your repo, edits code by symbol through AST and LSP, then runs your checks. Any model or the plan you already pay for. Get it at https://empryo.com",
    "language": "TypeScript",
    "topics": [
     "ai",
@@ -6155,7 +6155,8 @@
     "llm",
     "terminal",
     "tree-sitter",
-    "empryo"
+    "empryo",
+    "agent-harness"
    ],
    "license": "NOASSERTION",
    "homepage": "https://empryo.com/",
@@ -7338,7 +7339,7 @@
     "email-verification-api",
     "email-verifier"
    ],
-   "license": "NOASSERTION",
+   "license": "MIT",
    "homepage": "https://reacher.email",
    "forks": 689,
    "final_display": 5.819491315603839,
@@ -7762,7 +7763,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -7945,7 +7946,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -8558,7 +8559,7 @@
     "usb-exclusive"
    ],
    "license": "GPL-3.0",
-   "homepage": "https://kano.kim",
+   "homepage": "https://neri.kano.kim",
    "forks": 106,
    "final_display": 4.93864047223457,
    "final_is_capped": false,
@@ -9079,7 +9080,7 @@
    },
    "repo_id": 1079329832,
    "rank": 185,
-   "name": "A-EDev/Flow",
+   "name": "Flow-Tube/Flow",
    "description": "A modern, feature-rich YouTube and YouTube  Music client with local recommendation for Android built with Jetpack Compose",
    "language": "Kotlin",
    "topics": [
@@ -11014,7 +11015,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -11191,7 +11192,7 @@
     "visualization"
    ],
    "license": "MIT",
-   "homepage": "https://tt-a1i.github.io/archify/",
+   "homepage": "https://archify.si",
    "forks": 2175,
    "final_display": 3.346311662949559,
    "final_is_capped": false,

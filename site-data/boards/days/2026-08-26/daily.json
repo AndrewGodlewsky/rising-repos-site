@@ -183,7 +183,7 @@
     "ai-agents",
     "rules"
    ],
-   "license": null,
+   "license": "MIT",
    "homepage": "https://frontendchecklist.io",
    "forks": 6709,
    "final_display": 8.639554843323982,
@@ -378,7 +378,7 @@
     "commit_sha": "0b341e582afbf9e1011f24744b554c96a3477eb5"
    },
    "structure": {
-    "state": "running",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -484,7 +484,9 @@
     "cursor-skills",
     "gemini-skills",
     "opencode-skills",
-    "awesome"
+    "awesome",
+    "codex",
+    "cursor"
    ],
    "license": "MIT",
    "homepage": "https://officialskills.sh/",
@@ -589,10 +591,11 @@
     "agent-memory",
     "self-evolving",
     "agent-plugins",
-    "dsh-plugin"
+    "dsh-plugin",
+    "agent-context"
    ],
    "license": "AGPL-3.0",
-   "homepage": "https://openviking.ai/",
+   "homepage": "https://openviking.ai",
    "forks": 2550,
    "final_display": 3.8553449464088607,
    "final_is_capped": false,

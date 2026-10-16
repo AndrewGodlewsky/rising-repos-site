@@ -1742,7 +1742,7 @@
    "repo_id": 1049779526,
    "rank": 37,
    "name": "scrapfly/Antibot-Detector",
-   "description": " Real-time detection of anti-bot systems, CAPTCHAs & fingerprinting techniques. Identifies Cloudflare, Akamai, DataDome, reCAPTCHA, hCaptcha, Shape Security & more with confidence scoring and advanced capture tools.",
+   "description": " Real-time detection of anti-bot systems, captchas & fingerprinting techniques. Identifies Cloudflare, Akamai, DataDome, reCAPTCHA, hCaptcha, Shape Security & more with confidence scoring and advanced capture tools.",
    "language": "JavaScript",
    "topics": [
     "anti-bot",
@@ -1758,7 +1758,8 @@
     "detector",
     "scrapfly",
     "antibot-detector",
-    "captcha-detector"
+    "captcha-detector",
+    "anti-bot-detection"
    ],
    "license": "NOASSERTION",
    "homepage": null,
@@ -2507,7 +2508,7 @@
    "rank": 52,
    "name": "nowork-studio/notfair-plugin",
    "description": "Open-source SEO, GEO, and marketing skills for AI agents.",
-   "language": "TypeScript",
+   "language": "Python",
    "topics": [
     "claude-code-plugin",
     "claude-skills",
@@ -4437,7 +4438,7 @@
    "repo_id": 1307136587,
    "rank": 91,
    "name": "risa-labs-inc/BossConsole",
-   "description": "Open-source, multi-platform harness for AI agents - a native, multi-threaded operator's console (JVM, not Electron) to run Claude Code, Codex, Gemini or OpenCode with a real browser, terminal, editor, secrets & 100+ MCP tools. Built for enterprises, science & research.",
+   "description": "Open-source, multi-platform harness for AI agents - a native, multi-threaded operator's console (JVM, not Electron) to run Claude Code, Codex, Gemini or OpenCode with a real browser, terminal, editor, secrets & 200+ MCP tools. Built for enterprises, science & research.",
    "language": "Kotlin",
    "topics": [
     "agent-harness",
@@ -5435,7 +5436,7 @@
     "vitepress"
    ],
    "license": "MIT",
-   "homepage": "https://awesome-android-root.zhoe.org",
+   "homepage": "https://awesome-android-root.xyz",
    "forks": 264,
    "final_display": 5.828816087343991,
    "final_is_capped": false,
@@ -7747,18 +7748,17 @@
    "description": "A fast, parallel subdomain enumeration tool that queries 4 Certificate Transparency log sources simultaneously.",
    "language": "Go",
    "topics": [
-    "bash",
-    "bash-script",
     "crtsh",
     "domains",
     "bug-bounty",
     "awesome",
     "enumeration-tool",
     "subdomain",
-    "subdomain-enumeration"
+    "subdomain-enumeration",
+    "go"
    ],
    "license": "MIT",
-   "homepage": null,
+   "homepage": "https://github.com/az7rb/crt.sh",
    "forks": 43,
    "final_display": 4.122077992380795,
    "final_is_capped": false,
@@ -7866,7 +7866,24 @@
    "topics": [
     "claude",
     "codex",
-    "marketing"
+    "marketing",
+    "agent-skills",
+    "ai-agents",
+    "ai-seo",
+    "claude-code",
+    "claude-code-plugin",
+    "claude-skills",
+    "content-marketing",
+    "conversion-rate-optimization",
+    "copywriting",
+    "cursor",
+    "email-marketing",
+    "generative-engine-optimization",
+    "growth-marketing",
+    "marketing-automation",
+    "saas-marketing",
+    "seo",
+    "skill-md"
    ],
    "license": "MIT",
    "homepage": "https://marketing-skills.com",
@@ -8627,7 +8644,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -10146,7 +10163,7 @@
    "rank": 204,
    "name": "paradigmxyz/centaur",
    "description": "Centaur is frontier, agentic infrastructure that you own. Centaur is like Claude Tag, but open source and on steroids.",
-   "language": "Python",
+   "language": "Rust",
    "topics": [],
    "license": "NOASSERTION",
    "homepage": "https://centaur.run",
@@ -10649,7 +10666,7 @@
     "video"
    ],
    "license": "Apache-2.0",
-   "homepage": null,
+   "homepage": "https://hyperframes.dev",
    "forks": 4301,
    "final_display": 2.2067225095358376,
    "final_is_capped": false,
@@ -10770,7 +10787,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],

@@ -808,7 +808,7 @@
    "rank": 17,
    "name": "dphilla/boxer",
    "description": "Dockerfile \u2192 Universal Wasm Distribution",
-   "language": "Rust",
+   "language": "HTML",
    "topics": [
     "webassembly",
     "cloud-infrastructure",
@@ -1863,26 +1863,20 @@
    "repo_id": 1025929171,
    "rank": 38,
    "name": "acsandmann/rift",
-   "description": "a tiling and scrolling window manager for macos",
+   "description": "a tiling window manager for macos",
    "language": "Rust",
    "topics": [
     "i3",
     "macos",
     "tiling",
-    "i3wm",
+    "hyprland",
+    "niriwm",
+    "apple",
     "mac",
-    "rust",
     "tiling-window-manager",
-    "window-manager",
-    "niri",
-    "paperwm",
-    "scrolling",
-    "rift",
-    "twm",
-    "wm",
-    "aerospace",
-    "yabai",
-    "hyprland"
+    "tiling-wm",
+    "window-managers",
+    "wm"
    ],
    "license": "NOASSERTION",
    "homepage": "https://acsandmann.github.io/rift-docs/",
@@ -2447,7 +2441,7 @@
    "repo_id": 1236183038,
    "rank": 50,
    "name": "Asymptote-Labs/agent-beacon",
-   "description": "The cross-harness, self-improving memory layer for AI agents.",
+   "description": "The cross-harness, self-improving memory layer for AI agents. Join our community: https://discord.com/invite/zdNChS2fBu",
    "language": "Go",
    "topics": [
     "security-tools",
@@ -3007,7 +3001,7 @@
    "rank": 61,
    "name": "coco-research/coco",
    "description": "CoCo Super Intelligence is the orchestration layer that turns Claude Code, Cursor, or Codex into an engineering department: a routed advisory board, 226 skills, 386 commands, persistent state. Local. Open-core \u2014 MIT core; Super Intelligence is proprietary, own-use.",
-   "language": "HTML",
+   "language": "Python",
    "topics": [
     "agent-skills",
     "agents-md",
@@ -3274,7 +3268,7 @@
    },
    "repo_id": 642065600,
    "rank": 66,
-   "name": "Anil-matcha/awesome-jev-by-typesafe",
+   "name": "Anil-matcha/open-spaces",
    "description": "Evidence-backed use cases, patterns, prompts, and starter code for TypeSafe Jev \u2014 a System One model for fast, typed, confidence-aware decisions in software.",
    "language": "Python",
    "topics": [
@@ -3338,7 +3332,7 @@
    },
    "repo_id": 1038196040,
    "rank": 67,
-   "name": "yashab-cyber/HackGpt",
+   "name": "yashab-cyber/hackpilot",
    "description": "HackGPT Enterprise is a production-ready, cloud-native AI-powered penetration testing platform designed for enterprise security teams. It combines advanced AI, machine learning, microservices architecture, and comprehensive security frameworks to deliver professional-grade cybersecurity assessments.",
    "language": "Python",
    "topics": [
@@ -4653,7 +4647,7 @@
    "repo_id": 904490600,
    "rank": 94,
    "name": "krillinai/OpenCreator",
-   "description": "Formerly KrillinAI. Open-source AI workspace for creators, powered by Codex. Create videos, images, voice, avatars, video translation, and edits with Agents in one place.",
+   "description": "Formerly KrillinAI. Open-source AI workspace for creators, powered by Codex. Video translation, create videos, images, voice, avatars, and edits with Agents in one place. Suitable for your Social Media like YouTube, TikTok, Instagram, etc.",
    "language": "TypeScript",
    "topics": [
     "video-transcription",
@@ -4670,7 +4664,7 @@
     "video-generation"
    ],
    "license": "Apache-2.0",
-   "homepage": "https://www.open-creator.ai/",
+   "homepage": "https://www.open-creator.ai/en/",
    "forks": 1242,
    "final_display": 7.590552262127599,
    "final_is_capped": false,
@@ -5940,7 +5934,7 @@
    "repo_id": 1265908861,
    "rank": 120,
    "name": "omnichar/OmniChar",
-   "description": "The open .char format for characters. Face, body and wardrobe in one file, consistent across every model.",
+   "description": "The open .char format for consistent characters. Face, body, wardrobe & voice in one file, consistent across every model.",
    "language": "Python",
    "topics": [
     "ai-video",
@@ -6005,7 +5999,7 @@
    "rank": 121,
    "name": "rana-gmbh/NetFluss",
    "description": "A light-weight & open-source menubar app that shows current upload & download speed plus the top apps using bandwidth",
-   "language": "Swift",
+   "language": "C#",
    "topics": [
     "macos",
     "menubar-app",
@@ -6168,7 +6162,7 @@
     "email-verification-api",
     "email-verifier"
    ],
-   "license": "NOASSERTION",
+   "license": "MIT",
    "homepage": "https://reacher.email",
    "forks": 716,
    "final_display": 5.892215801155459,
@@ -8807,7 +8801,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -10071,7 +10065,7 @@
    "rank": 201,
    "name": "Dispatcharr/Dispatcharr",
    "description": "Your Ultimate IPTV & Stream Management Companion",
-   "language": "JavaScript",
+   "language": "Python",
    "topics": [],
    "license": "AGPL-3.0",
    "homepage": "https://dispatcharr.tv/",
@@ -10557,7 +10551,7 @@
     "harmonyos",
     "harmonyos-next"
    ],
-   "license": null,
+   "license": "CC-BY-4.0",
    "homepage": null,
    "forks": 100,
    "final_display": 2.496817832557789,
@@ -10807,7 +10801,7 @@
    "repo_id": 1218231004,
    "rank": 216,
    "name": "NVIDIA/cuda-rust",
-   "description": "cuda-oxide is a Rust-to-CUDA compiler that lets you write (SIMT) GPU kernels in safe(ish), idiomatic Rust. It compiles standard Rust code directly to PTX \u2014 no DSLs, no foreign language bindings, just Rust.",
+   "description": "NVIDIA's CUDA platform for Rust. Host runtime crates plus Tile (cutile-rs) and SIMT (cuda-oxide) kernel programming models in idiomatic Rust.",
    "language": "Rust",
    "topics": [
     "compiler-backend",

@@ -163,9 +163,13 @@
    "repo_id": 1222774647,
    "rank": 4,
    "name": "Lucas0623z/NoteLite",
-   "description": null,
+   "description": "Open-source OMR and guided music practice: turn sheet music PDFs/images into MusicXML/MIDI, refine scores, and practice with MIDI or microphone feedback.",
    "language": "Java",
-   "topics": [],
+   "topics": [
+    "midi",
+    "musicxml",
+    "omr"
+   ],
    "license": "MIT",
    "homepage": null,
    "forks": 148,
@@ -686,7 +690,7 @@
    "repo_id": 141453630,
    "rank": 15,
    "name": "fangfufu/httpdirfs",
-   "description": "A filesystem which allows you to mount HTTP directory listings or a single file, with a permanent cache. Now with Airsonic / Subsonic support! ",
+   "description": "HTTPDirFS is a filesystem that allows you to mount arbitrary websites using the FUSE framework. It comes with a cache system, and Airsonic / Subsonic server support.",
    "language": "C",
    "topics": [
     "filesystem",
@@ -1005,7 +1009,7 @@
     "hacktoberfest"
    ],
    "license": "GPL-2.0",
-   "homepage": "https://vlang.io",
+   "homepage": "https://vinix-os.org",
    "forks": 151,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -1262,9 +1266,9 @@
    },
    "repo_id": 120053075,
    "rank": 27,
-   "name": "nicholas-ochoa/OpenSC2K",
-   "description": "OpenSC2K - Open Source remake of Sim City 2000 using godot. Available for macOS, Windows and Linux",
-   "language": "GDScript",
+   "name": "OpenSC2K/OpenSC2K",
+   "description": "OpenSC2K - Open Source remake of Sim City 2000 using rust and godot. Available for macOS, Windows and Linux",
+   "language": "Rust",
    "topics": [
     "simcity",
     "simcity-2000",
@@ -1894,9 +1898,16 @@
    "repo_id": 942863899,
    "rank": 40,
    "name": "peass-ng/CloudPEASS",
-   "description": null,
+   "description": "Red Team scripts to find the permissions assigned to a compromised principal in AWS, GCP, Azure and Kubernetes.",
    "language": "Python",
-   "topics": [],
+   "topics": [
+    "aws",
+    "azure",
+    "cloud",
+    "gcp",
+    "kubernetes",
+    "redteam-tool"
+   ],
    "license": null,
    "homepage": null,
    "forks": 87,
@@ -3577,7 +3588,7 @@
     "filmmaking",
     "imagegeneration"
    ],
-   "license": "NOASSERTION",
+   "license": "Apache-2.0",
    "homepage": "https://getartcraft.com",
    "forks": 1520,
    "final_display": 8.279349131361887,
@@ -4867,8 +4878,8 @@
     "mpsc",
     "profiler",
     "mcp",
-    "grafan",
-    "prometheus"
+    "prometheus",
+    "grafana"
    ],
    "license": "MIT",
    "homepage": "https://hotpath.rs",
@@ -4932,7 +4943,7 @@
     "manus-cue",
     "grok-bot-alternative"
    ],
-   "license": "MIT",
+   "license": null,
    "homepage": null,
    "forks": 666,
    "final_display": 6.402540685876703,
@@ -5148,7 +5159,7 @@
    "repo_id": 1137489544,
    "rank": 108,
    "name": "zerobrewhq/zerobrew",
-   "description": "A 5-20x faster experimental Homebrew alternative",
+   "description": "An up to 6.6x faster Homebrew client",
    "language": "Rust",
    "topics": [],
    "license": "Apache-2.0",
@@ -7683,7 +7694,7 @@
    "repo_id": 1112733896,
    "rank": 161,
    "name": "apify/mcpc",
-   "description": "The most compatible MCP CLI client. mcpc supports persistent sessions, stdio/HTTP, OAuth 2.1, Tasks and Skills extensions, --json for code mode, proxy for AI sandboxes, x402, and more.",
+   "description": "The most compatible MCP CLI client. Supports: tools, resources, prompts, completions, async tasks, skills, stdio and Streamable HTTP (MCP 2026-07-28 and 2025-11-25). Persistent sessions, OAuth 2.1 with DCR, CIMD, client credentials, and ID-JAG, OS keychain, --json for code mode, grep across servers, proxy for AI sandboxes, x402 & more.",
    "language": "TypeScript",
    "topics": [
     "cli",
@@ -7941,7 +7952,9 @@
     "android-app",
     "multimedia",
     "video-streaming",
-    "react-native"
+    "react-native",
+    "cast",
+    "casting"
    ],
    "license": "NOASSERTION",
    "homepage": null,
@@ -8291,7 +8304,7 @@
     "vst"
    ],
    "license": "Apache-2.0",
-   "homepage": null,
+   "homepage": "https://damrsn.github.io/NeuralNote/",
    "forks": 207,
    "final_display": 2.631043677083908,
    "final_is_capped": false,

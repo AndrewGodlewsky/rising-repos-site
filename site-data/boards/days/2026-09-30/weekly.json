@@ -138,7 +138,7 @@
     "hacktoberfest"
    ],
    "license": "GPL-2.0",
-   "homepage": "https://vlang.io",
+   "homepage": "https://vinix-os.org",
    "forks": 147,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -2138,7 +2138,9 @@
     "android-app",
     "multimedia",
     "video-streaming",
-    "react-native"
+    "react-native",
+    "cast",
+    "casting"
    ],
    "license": "NOASSERTION",
    "homepage": null,
@@ -3308,9 +3310,9 @@
    },
    "repo_id": 120053075,
    "rank": 67,
-   "name": "nicholas-ochoa/OpenSC2K",
-   "description": "OpenSC2K - Open Source remake of Sim City 2000 using godot. Available for macOS, Windows and Linux",
-   "language": "GDScript",
+   "name": "OpenSC2K/OpenSC2K",
+   "description": "OpenSC2K - Open Source remake of Sim City 2000 using rust and godot. Available for macOS, Windows and Linux",
+   "language": "Rust",
    "topics": [
     "simcity",
     "simcity-2000",
@@ -3494,7 +3496,7 @@
     "bastion"
    ],
    "license": "AGPL-3.0",
-   "homepage": "https://www.v1ops.com",
+   "homepage": null,
    "forks": 207,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -4714,7 +4716,7 @@
    "repo_id": 904490600,
    "rank": 95,
    "name": "krillinai/OpenCreator",
-   "description": "Formerly KrillinAI. Open-source AI workspace for creators, powered by Codex. Create videos, images, voice, avatars, video translation, and edits with Agents in one place.",
+   "description": "Formerly KrillinAI. Open-source AI workspace for creators, powered by Codex. Video translation, create videos, images, voice, avatars, and edits with Agents in one place. Suitable for your Social Media like YouTube, TikTok, Instagram, etc.",
    "language": "TypeScript",
    "topics": [
     "video-transcription",
@@ -4731,7 +4733,7 @@
     "video-generation"
    ],
    "license": "Apache-2.0",
-   "homepage": "https://www.open-creator.ai/",
+   "homepage": "https://www.open-creator.ai/en/",
    "forks": 1288,
    "final_display": 7.792190265280375,
    "final_is_capped": false,
@@ -5114,7 +5116,7 @@
    },
    "repo_id": 1038196040,
    "rank": 103,
-   "name": "yashab-cyber/HackGpt",
+   "name": "yashab-cyber/hackpilot",
    "description": "HackGPT Enterprise is a production-ready, cloud-native AI-powered penetration testing platform designed for enterprise security teams. It combines advanced AI, machine learning, microservices architecture, and comprehensive security frameworks to deliver professional-grade cybersecurity assessments.",
    "language": "Python",
    "topics": [
@@ -9211,7 +9213,11 @@
     "tool",
     "texturing",
     "painting",
-    "armorpaint"
+    "armorpaint",
+    "animation",
+    "modeling",
+    "sculpting",
+    "pbr"
    ],
    "license": "NOASSERTION",
    "homepage": "https://armorpaint.org",
@@ -10748,7 +10754,7 @@
    "repo_id": 940594927,
    "rank": 218,
    "name": "open-saas-directory/awesome-native-macosx-apps",
-   "description": "Best macOS Apps (2026) \u2014 Fast, Lightweight, No Electron Bloat",
+   "description": "Discover the best native macOS apps: fast, lightweight Mac apps for productivity, developer tools, and everyday utilities. Free and paid options. No Electron.",
    "language": "Shell",
    "topics": [
     "awesome-list",
@@ -11296,7 +11302,7 @@
    "repo_id": 1122859216,
    "rank": 229,
    "name": "the-open-engine/zeroshot",
-   "description": "Runs coding agents as a graph: one agent implements, independent agents review, failures go to repair, and nothing ships until the checks pass. Works with Codex, Claude Code and Copilot.",
+   "description": "Runs coding agents as a graph: one agent implements, independent agents review, failures go to repair, and nothing ships until the checks pass. Works with Codex, Claude Code and Copilot. Bring your own topology.",
    "language": "Rust",
    "topics": [
     "ai-agents",
@@ -11319,7 +11325,7 @@
     "github-copilot"
    ],
    "license": "MIT",
-   "homepage": "https://the-open-engine.github.io/zeroshot/",
+   "homepage": "https://zeroshot.sh",
    "forks": 179,
    "final_display": 1.7194735906623226,
    "final_is_capped": false,
@@ -12070,7 +12076,7 @@
    "repo_id": 1112733896,
    "rank": 245,
    "name": "apify/mcpc",
-   "description": "The most compatible MCP CLI client. mcpc supports persistent sessions, stdio/HTTP, OAuth 2.1, Tasks and Skills extensions, --json for code mode, proxy for AI sandboxes, x402, and more.",
+   "description": "The most compatible MCP CLI client. Supports: tools, resources, prompts, completions, async tasks, skills, stdio and Streamable HTTP (MCP 2026-07-28 and 2025-11-25). Persistent sessions, OAuth 2.1 with DCR, CIMD, client credentials, and ID-JAG, OS keychain, --json for code mode, grep across servers, proxy for AI sandboxes, x402 & more.",
    "language": "TypeScript",
    "topics": [
     "cli",

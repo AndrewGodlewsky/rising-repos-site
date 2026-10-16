@@ -661,7 +661,7 @@
    "repo_id": 1106398326,
    "rank": 14,
    "name": "thetahealth/mirobody",
-   "description": "Self-hosted health data engine: lab reports, wearables and genetic files in one record, and an agent that cites its sources.",
+   "description": "Turn scattered health data into answers you can trace. Self-hosted AI health data engine for lab reports, wearables and genetics, with a built-in MCP server. Run it with Docker and one LLM key, or keep every model local on llama.cpp.",
    "language": "Python",
    "topics": [
     "fhir",
@@ -686,7 +686,7 @@
     "icpc-3"
    ],
    "license": "Apache-2.0",
-   "homepage": "https://mirobody.ai",
+   "homepage": "https://docs.mirobody.ai/en/self-host",
    "forks": 228,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -734,7 +734,7 @@
     "hacktoberfest"
    ],
    "license": "GPL-2.0",
-   "homepage": "https://vlang.io",
+   "homepage": "https://vinix-os.org",
    "forks": 137,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -1197,7 +1197,7 @@
    "rank": 25,
    "name": "S3N4T0R-0X0/BEAR-C2",
    "description": "BEAR-C2 is an adversary simulation and emulation framework built around real-world TTPs inspired by Russian, Chinese, North Korean, and Iranian APT groups.",
-   "language": "C++",
+   "language": "Python",
    "topics": [
     "adversary-simulation",
     "adversary-emulation",
@@ -1865,7 +1865,7 @@
     "commit_sha": "45b097a8ed06b91125e69d04137d3bed52a7ac76"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4272,7 +4272,11 @@
     "tool",
     "texturing",
     "painting",
-    "armorpaint"
+    "armorpaint",
+    "animation",
+    "modeling",
+    "sculpting",
+    "pbr"
    ],
    "license": "NOASSERTION",
    "homepage": "https://armorpaint.org",
@@ -5854,7 +5858,7 @@
    "repo_id": 1112733896,
    "rank": 120,
    "name": "apify/mcpc",
-   "description": "The most compatible MCP CLI client. mcpc supports persistent sessions, stdio/HTTP, OAuth 2.1, Tasks and Skills extensions, --json for code mode, proxy for AI sandboxes, x402, and more.",
+   "description": "The most compatible MCP CLI client. Supports: tools, resources, prompts, completions, async tasks, skills, stdio and Streamable HTTP (MCP 2026-07-28 and 2025-11-25). Persistent sessions, OAuth 2.1 with DCR, CIMD, client credentials, and ID-JAG, OS keychain, --json for code mode, grep across servers, proxy for AI sandboxes, x402 & more.",
    "language": "TypeScript",
    "topics": [
     "cli",
@@ -7158,7 +7162,7 @@
    "repo_id": 369755856,
    "rank": 148,
    "name": "majd/ipatool",
-   "description": "Command-line tool that allows you to search for iOS, iPadOS, tvOS, visionOS, and macOS apps on the App Store, and download .ipa or macOS .pkg app packages.",
+   "description": "Command-line tool that allows you to search for iOS, iPadOS, tvOS, watchOS, visionOS, and macOS apps on the App Store, and download .ipa or macOS .pkg app packages.",
    "language": "Go",
    "topics": [
     "ios",
@@ -7335,7 +7339,6 @@
    "description": "A WiFi security auditing software",
    "language": "Rust",
    "topics": [
-    "aircrack-ng",
     "gui",
     "security",
     "security-audit",
@@ -7857,7 +7860,7 @@
    "repo_id": 689299900,
    "rank": 162,
    "name": "langwatch/langwatch",
-   "description": "The platform for LLM evaluations and AI agent testing",
+   "description": "Open-Source Agent Observability & Evals for AI Platform teams. Trace, test, route and govern every agent & coding assistant in the company.",
    "language": "TypeScript",
    "topics": [
     "ai",
@@ -8025,7 +8028,7 @@
    "repo_id": 1167515091,
    "rank": 165,
    "name": "Lakr233/vphone-cli",
-   "description": null,
+   "description": "Run a virtual iPhone on an Apple Silicon Mac.",
    "language": "Swift",
    "topics": [],
    "license": "MIT",
@@ -8284,13 +8287,18 @@
    "repo_id": 1016411413,
    "rank": 170,
    "name": "omnara-ai/omnara",
-   "description": "The open-source alternative to Claude Managed Agents",
+   "description": "The open-source managed agent platform. A self-hostable alternative to Claude Managed Agents and OpenAI's Agents API.",
    "language": "Go",
    "topics": [
     "agent-infrastructure",
     "managed-agents",
     "durable-agents",
-    "coding-agents"
+    "agent-platform",
+    "agents-api",
+    "ai-infrastructure",
+    "cloud-agents",
+    "durable-execution",
+    "agent-runtime"
    ],
    "license": "Apache-2.0",
    "homepage": "https://www.omnara.com",
@@ -9890,7 +9898,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -11219,7 +11227,7 @@
     "commit_sha": "6a5b367ff97f33a11d4630a2158cc3e4b637faac"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -11851,7 +11859,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -11911,7 +11919,7 @@
     "commit_sha": "8e9a8e7a276d270d9855bce0599c9387f6193871"
    },
    "structure": {
-    "state": "failed(timeout)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -12370,7 +12378,7 @@
     "email-verification-api",
     "email-verifier"
    ],
-   "license": "NOASSERTION",
+   "license": "MIT",
    "homepage": "https://reacher.email",
    "forks": 707,
    "final_display": 1.6762077282474002,

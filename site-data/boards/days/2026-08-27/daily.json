@@ -1241,7 +1241,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -1610,7 +1610,7 @@
    "repo_id": 1034803214,
    "rank": 33,
    "name": "vibheksoni/stealth-browser-mcp",
-   "description": "The only browser automation that bypasses anti-bot systems. AI writes network hooks, clones UIs pixel-perfect via simple chat.",
+   "description": "Stealth browser automation for AI agents over MCP and the Chrome DevTools Protocol: navigation, network hooks, DOM extraction, and pixel-accurate UI cloning.",
    "language": "Python",
    "topics": [
     "ai-agent-tools",
@@ -3163,7 +3163,7 @@
    "repo_id": 1122859216,
    "rank": 65,
    "name": "the-open-engine/zeroshot",
-   "description": "Runs coding agents as a graph: one agent implements, independent agents review, failures go to repair, and nothing ships until the checks pass. Works with Codex, Claude Code and Copilot.",
+   "description": "Runs coding agents as a graph: one agent implements, independent agents review, failures go to repair, and nothing ships until the checks pass. Works with Codex, Claude Code and Copilot. Bring your own topology.",
    "language": "Rust",
    "topics": [
     "ai-agents",
@@ -3186,7 +3186,7 @@
     "github-copilot"
    ],
    "license": "MIT",
-   "homepage": "https://the-open-engine.github.io/zeroshot/",
+   "homepage": "https://zeroshot.sh",
    "forks": 163,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -6392,7 +6392,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6957,7 +6957,9 @@
     "cursor-skills",
     "gemini-skills",
     "opencode-skills",
-    "awesome"
+    "awesome",
+    "codex",
+    "cursor"
    ],
    "license": "MIT",
    "homepage": "https://officialskills.sh/",
@@ -7840,7 +7842,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -8503,15 +8505,12 @@
    "description": "Your own search engine",
    "language": "Go",
    "topics": [
-    "go",
-    "golang",
     "history",
     "index",
     "search",
     "search-engine",
     "web",
     "mcp",
-    "mcp-server",
     "privacy",
     "semantic-search",
     "browser-history",
@@ -8679,7 +8678,7 @@
     "visualization"
    ],
    "license": "MIT",
-   "homepage": "https://tt-a1i.github.io/archify/",
+   "homepage": "https://archify.si",
    "forks": 1433,
    "final_display": 3.906403466284359,
    "final_is_capped": false,
@@ -9384,7 +9383,7 @@
    "repo_id": 940594927,
    "rank": 188,
    "name": "open-saas-directory/awesome-native-macosx-apps",
-   "description": "Best macOS Apps (2026) \u2014 Fast, Lightweight, No Electron Bloat",
+   "description": "Discover the best native macOS apps: fast, lightweight Mac apps for productivity, developer tools, and everyday utilities. Free and paid options. No Electron.",
    "language": "Shell",
    "topics": [
     "awesome-list",
@@ -9541,7 +9540,7 @@
     "commit_sha": "88f775d84a57764def07a32da9457cf3043ad11b"
    },
    "structure": {
-    "state": "running",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -9653,7 +9652,7 @@
    "repo_id": 1152014594,
    "rank": 193,
    "name": "AgriciDaniel/claude-seo",
-   "description": "Universal SEO skill for Claude Code. 26 sub-skills + 19 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, agent readiness (Lighthouse Agentic Browsing, WebMCP, llms.txt), backlinks, local SEO, e-commerce, international SEO, Google APIs, and PDF/Excel reporting. 9 optional extensions, including DataForSEO, Firecrawl, Ahrefs and Matomo.",
+   "description": "Universal SEO skill for Claude Code. 26 sub-skills + 19 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, agent readiness (Lighthouse Agentic Browsing, WebMCP, llms.txt), backlinks, local SEO, e-commerce, international SEO, Google APIs, and PDF/Excel reporting. 9 optional extensions for live SEO data.",
    "language": "Python",
    "topics": [
     "claude-code",
@@ -10109,7 +10108,7 @@
     "ai-agents",
     "rules"
    ],
-   "license": null,
+   "license": "MIT",
    "homepage": "https://frontendchecklist.io",
    "forks": 6714,
    "final_display": 3.2665835146826163,
@@ -10494,7 +10493,7 @@
    "repo_id": 1161163182,
    "rank": 210,
    "name": "tinyhumansai/openhuman",
-   "description": "OpenHuman is the fastest, cheapest, most efficient open-source agent harness. Written in Rust",
+   "description": "The fastest, cheapest, most efficient open-source agent harness. Run more than 500 agents on a $10 VPS.",
    "language": "Rust",
    "topics": [
     "ai-agents",
@@ -10956,7 +10955,7 @@
    "repo_id": 1018687398,
    "rank": 219,
    "name": "SemiAnalysisAI/InferenceX",
-   "description": "Open Source Inference Research Platform Standard / \u5f00\u6e90\u63a8\u7406\u7814\u7a76\u5e73\u53f0",
+   "description": "Open Source AI Accelerator Research Platform Standard / \u5f00\u6e90\u63a8\u7406\u7814\u7a76\u5e73\u53f0",
    "language": "Python",
    "topics": [
     "pytorch",
@@ -11272,7 +11271,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "running",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],

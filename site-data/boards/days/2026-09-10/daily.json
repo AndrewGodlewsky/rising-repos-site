@@ -228,7 +228,7 @@
    },
    "repo_id": 1214519814,
    "rank": 5,
-   "name": "nateherkai/hyperframes-student-kit",
+   "name": "nateherkai/herk-edit-kit",
    "description": "Edit videos, reels, and YouTube Shorts with Codex or Claude Code. 14 skills, transcript-driven cuts, storytelling, 406 motion-graphics cards, and HyperFrames templates.",
    "language": "HTML",
    "topics": [
@@ -332,7 +332,7 @@
    "rank": 7,
    "name": "S3N4T0R-0X0/BEAR-C2",
    "description": "BEAR-C2 is an adversary simulation and emulation framework built around real-world TTPs inspired by Russian, Chinese, North Korean, and Iranian APT groups.",
-   "language": "C++",
+   "language": "Python",
    "topics": [
     "adversary-simulation",
     "adversary-emulation",
@@ -756,7 +756,7 @@
     "hacktoberfest"
    ],
    "license": "GPL-2.0",
-   "homepage": "https://vlang.io",
+   "homepage": "https://vinix-os.org",
    "forks": 137,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -1030,7 +1030,11 @@
     "tool",
     "texturing",
     "painting",
-    "armorpaint"
+    "armorpaint",
+    "animation",
+    "modeling",
+    "sculpting",
+    "pbr"
    ],
    "license": "NOASSERTION",
    "homepage": "https://armorpaint.org",
@@ -2373,7 +2377,7 @@
    "repo_id": 1236183038,
    "rank": 48,
    "name": "Asymptote-Labs/agent-beacon",
-   "description": "The cross-harness, self-improving memory layer for AI agents.",
+   "description": "The cross-harness, self-improving memory layer for AI agents. Join our community: https://discord.com/invite/zdNChS2fBu",
    "language": "Go",
    "topics": [
     "security-tools",
@@ -3073,7 +3077,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4284,7 +4288,7 @@
    "repo_id": 1218231004,
    "rank": 86,
    "name": "NVIDIA/cuda-rust",
-   "description": "cuda-oxide is a Rust-to-CUDA compiler that lets you write (SIMT) GPU kernels in safe(ish), idiomatic Rust. It compiles standard Rust code directly to PTX \u2014 no DSLs, no foreign language bindings, just Rust.",
+   "description": "NVIDIA's CUDA platform for Rust. Host runtime crates plus Tile (cutile-rs) and SIMT (cuda-oxide) kernel programming models in idiomatic Rust.",
    "language": "Rust",
    "topics": [
     "compiler-backend",
@@ -4650,7 +4654,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -4977,7 +4981,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5494,7 +5498,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -5747,7 +5751,7 @@
    "repo_id": 1185768353,
    "rank": 115,
    "name": "kentcdodds/kody",
-   "description": "\ud83d\udc28 Your assistant's home \u2014 the memory, keys, code, and automations your AI agent keeps, portable across every MCP host. Built on Cloudflare Workers.",
+   "description": "\ud83d\udc28 Your agents' cloud \u2014 the memory, keys, code, and automations your AI agent keeps, portable across every MCP host.",
    "language": "TypeScript",
    "topics": [
     "agents",
@@ -6988,7 +6992,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6997,7 +7001,7 @@
    "repo_id": 1183286798,
    "rank": 139,
    "name": "plugin87/ux-ui-agent-skills",
-   "description": "Turn Claude into a senior design architect: DTCG tokens, 50 components, WCAG 2.2 AA-AAA, 138 design systems, any-framework code, and 43 objective gates that fail the build instead of faking success.",
+   "description": "Turn Claude into a senior design architect: DTCG tokens, 52 components, WCAG 2.2 AA-AAA, 138 design systems, any-framework code, and 50 objective gates that fail the build instead of faking success.",
    "language": "JavaScript",
    "topics": [
     "accessibility",
@@ -7098,7 +7102,7 @@
    "repo_id": 1216173720,
    "rank": 141,
    "name": "tw93/Kami",
-   "description": "\ud83d\udc69\u200d\ud83d\ude92 Good content deserves good paper.",
+   "description": "\ud83d\udc69\u200d\ud83d\ude92 Paper-inspired typography for elegant reading on screen. Good content deserves good paper.",
    "language": "HTML",
    "topics": [],
    "license": "MIT",
@@ -7367,19 +7371,19 @@
    "description": "Open source factory for one-shot engineering",
    "language": "Go",
    "topics": [
-    "control-plane",
-    "devops",
-    "event-driven",
-    "kubernetes",
-    "release-automation",
     "self-hosted",
     "workflow-automation",
-    "automation",
     "react",
     "go",
-    "platform-engineering"
+    "agent-orchestration",
+    "agentic-workflows",
+    "ai-agents",
+    "ai-coding",
+    "ai-software-engineering",
+    "developer-tools",
+    "software-factory"
    ],
-   "license": "Apache-2.0",
+   "license": "NOASSERTION",
    "homepage": "https://superplane.com",
    "forks": 634,
    "final_display": 3.4735763220691918,

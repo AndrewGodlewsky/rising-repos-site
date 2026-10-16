@@ -305,9 +305,13 @@
    "repo_id": 1222774647,
    "rank": 7,
    "name": "Lucas0623z/NoteLite",
-   "description": null,
+   "description": "Open-source OMR and guided music practice: turn sheet music PDFs/images into MusicXML/MIDI, refine scores, and practice with MIDI or microphone feedback.",
    "language": "Java",
-   "topics": [],
+   "topics": [
+    "midi",
+    "musicxml",
+    "omr"
+   ],
    "license": "MIT",
    "homepage": null,
    "forks": 129,
@@ -1927,7 +1931,7 @@
     "manus-cue",
     "grok-bot-alternative"
    ],
-   "license": "MIT",
+   "license": null,
    "homepage": null,
    "forks": 613,
    "final_display": 9.0,
@@ -2032,7 +2036,7 @@
     "mcp"
    ],
    "license": "GPL-3.0",
-   "homepage": "https://www.reddit.com/r/LazyOwnRT/",
+   "homepage": "https://grisuno.github.io/LazyOwn/",
    "forks": 52,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -2192,7 +2196,7 @@
     "vitepress"
    ],
    "license": "MIT",
-   "homepage": "https://awesome-android-root.zhoe.org",
+   "homepage": "https://awesome-android-root.xyz",
    "forks": 300,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -2230,7 +2234,7 @@
    "rank": 46,
    "name": "nicobailon/visual-explainer",
    "description": "Agent skill that generates rich HTML pages or slide decks for diagrams, diff reviews, plan audits, data tables, and project recaps",
-   "language": "HTML",
+   "language": "JavaScript",
    "topics": [],
    "license": "MIT",
    "homepage": null,
@@ -2471,10 +2475,8 @@
     "decision-model",
     "llama-cpp",
     "yes-no",
-    "binary-classification",
     "classification",
     "edge-ai",
-    "fastapi",
     "gguf",
     "jev",
     "llm-inference",
@@ -2485,10 +2487,12 @@
     "on-device-ai",
     "python",
     "self-hosted",
-    "text-classification"
+    "ai",
+    "local-ai",
+    "open-source-alternative"
    ],
    "license": "MIT",
-   "homepage": null,
+   "homepage": "https://huggingface.co/feder-cr/jev",
    "forks": 132,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -3473,7 +3477,7 @@
    "repo_id": 1131512003,
    "rank": 73,
    "name": "phantomptr/ps5upload",
-   "description": "PS5 Upload is a tool designed to get your apps and homebrew onto your console without the headache of slow transfers.",
+   "description": "Send games, apps and homebrew to a jailbroken PS5, and manage the console from your computer, phone or browser.",
    "language": "TypeScript",
    "topics": [
     "ps5upload",
@@ -4756,7 +4760,7 @@
    "repo_id": 1242316635,
    "rank": 100,
    "name": "lynote-ai/humanize-text",
-   "description": "Open-source text humanization pipeline with every intermediate step published. Two LLM rewrites at temp 1.3, then two hops across different NMT engines. Four documented methodologies you can read, modify, and run locally.",
+   "description": "Open-source AI humanizer that rewrites AI-generated text into natural, human-sounding writing. Structure-first SFT + KTO training-data pipeline plus a runnable translation-chain humanizer (DeepSeek, OpenRouter, n8n). Transparent, auditable, MIT.",
    "language": "Python",
    "topics": [
     "ai-humanizer",
@@ -4768,10 +4772,12 @@
     "paraphrasing",
     "text-processing",
     "text-rewriting",
-    "writing-assistant",
-    "python",
     "responsible-ai",
-    "n8n"
+    "n8n",
+    "ai-rewriter",
+    "ai-writing-assistant",
+    "llm",
+    "nlp"
    ],
    "license": "MIT",
    "homepage": "https://lynote.ai/ai-humanizer",
@@ -7125,7 +7131,7 @@
    "repo_id": 1290565606,
    "rank": 148,
    "name": "inclusionAI/Avernet",
-   "description": "Distributed agent coordination platform where agents live, connect, coordinate, execute, and evolve together.",
+   "description": "Distributed agent coordination platform where agents live, connect, coordinate, execute, and evolve together \u2014 like an organization.",
    "language": "Python",
    "topics": [
     "agent-coordination",
@@ -7316,7 +7322,8 @@
     "specification",
     "formal-methods",
     "verification",
-    "specification-language"
+    "specification-language",
+    "formal-verification"
    ],
    "license": "Apache-2.0",
    "homepage": "https://quint.sh",
@@ -7672,7 +7679,9 @@
     "best-ai-plugins",
     "best-codex-plugins",
     "chatgpt",
-    "chatgpt-plugins"
+    "chatgpt-plugins",
+    "best-chatgpt-plugins",
+    "best-openai-plugins"
    ],
    "license": "Apache-2.0",
    "homepage": "https://hol.org/plugins/best-codex-plugins",
@@ -8151,7 +8160,7 @@
    "repo_id": 1235467345,
    "rank": 169,
    "name": "ys-ll/uniterm",
-   "description": "A lightweight all-in-one terminal with 30+ protocols \u2014 SSH, RDP, SFTP, databases, Kubernetes and more. With a built-in autonomous AI Agent that plans and runs multi-turn shell commands.",
+   "description": "All-in-one terminal covering 30+ protocols \u2014 SSH, RDP, SFTP, databases, Kubernetes and more. With a built-in AI Agent that runs multi-turn shell commands autonomously.",
    "language": "Go",
    "topics": [
     "ai-agent",
@@ -8371,7 +8380,7 @@
    },
    "repo_id": 992424531,
    "rank": 173,
-   "name": "zhom/donutbrowser",
+   "name": "donutbrowser/donutbrowser",
    "description": "The Most Private Anti-Detect Browser \ud83c\udf69",
    "language": "Rust",
    "topics": [

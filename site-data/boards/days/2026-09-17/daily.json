@@ -327,7 +327,7 @@
    "rank": 7,
    "name": "coco-research/coco",
    "description": "CoCo Super Intelligence is the orchestration layer that turns Claude Code, Cursor, or Codex into an engineering department: a routed advisory board, 226 skills, 386 commands, persistent state. Local. Open-core \u2014 MIT core; Super Intelligence is proprietary, own-use.",
-   "language": "HTML",
+   "language": "Python",
    "topics": [
     "agent-skills",
     "agents-md",
@@ -517,7 +517,7 @@
    },
    "repo_id": 1038196040,
    "rank": 11,
-   "name": "yashab-cyber/HackGpt",
+   "name": "yashab-cyber/hackpilot",
    "description": "HackGPT Enterprise is a production-ready, cloud-native AI-powered penetration testing platform designed for enterprise security teams. It combines advanced AI, machine learning, microservices architecture, and comprehensive security frameworks to deliver professional-grade cybersecurity assessments.",
    "language": "Python",
    "topics": [
@@ -2204,7 +2204,7 @@
    "repo_id": 1170189222,
    "rank": 46,
    "name": "mkbhardwas12/prismos-ai",
-   "description": "Desktop AI that runs on your laptop. Drop a file, ask a question, it remembers. Nothing leaves the machine.",
+   "description": "Local-first desktop AI: chat with your files, turn one line into a living 3D scene, investigate logs and harden configs. Runs on your laptop, works offline.",
    "language": "Rust",
    "topics": [
     "ai",
@@ -2217,7 +2217,12 @@
     "rust",
     "sqlite",
     "tauri",
-    "typescript"
+    "typescript",
+    "incident-response",
+    "local-llm",
+    "security-hardening",
+    "threejs",
+    "voxel"
    ],
    "license": "MIT",
    "homepage": "https://github.com/mkbhardwas12/prismos-ai",
@@ -2941,7 +2946,7 @@
     "bastion"
    ],
    "license": "AGPL-3.0",
-   "homepage": "https://www.v1ops.com",
+   "homepage": null,
    "forks": 185,
    "final_display": 9.0,
    "final_is_capped": true,
@@ -3774,7 +3779,7 @@
    "rank": 78,
    "name": "rana-gmbh/NetFluss",
    "description": "A light-weight & open-source menubar app that shows current upload & download speed plus the top apps using bandwidth",
-   "language": "Swift",
+   "language": "C#",
    "topics": [
     "macos",
     "menubar-app",
@@ -3969,7 +3974,7 @@
     "commit_sha": "8e9a8e7a276d270d9855bce0599c9387f6193871"
    },
    "structure": {
-    "state": "failed(timeout)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -6347,7 +6352,7 @@
    "repo_id": 1197569406,
    "rank": 129,
    "name": "NanmiCoder/cc-haha",
-   "description": "Local-first cross-platform desktop workspace for Claude Code / agents: multi-agent, Git worktrees, code diffs, skill marketplace, multi-model, Computer Use, task-aware desktop pets, with WeChat, Feishu, DingTalk, Telegram, WhatsApp and H5 access.",
+   "description": "\u672c\u5730\u4f18\u5148\u7684\u8de8\u5e73\u53f0 Claude Code / AI Agent \u684c\u9762\u5de5\u4f5c\u53f0\uff1a\u591a Agent \u534f\u4f5c\u3001Git Worktree\u3001\u4ee3\u7801 Diff\u3001\u6280\u80fd\u5e02\u573a\u3001\u591a\u6a21\u578b\u3001Computer Use\u3001\u684c\u9762\u5ba0\u7269\uff1b\u652f\u6301\u5fae\u4fe1\u3001\u98de\u4e66\u3001\u9489\u9489\u53ca H5 \u7b49\u8fdc\u7a0b\u8bbf\u95ee\u3002 | Local-first Claude Code / AI Agent desktop workspace: multi-agent teams, Git worktrees, diffs, skills marketplace, multi-model, Computer Use, task-aware desktop pets; remote via WeChat, Feishu, DingTalk, Telegram, WhatsApp & H5.",
    "language": "TypeScript",
    "topics": [
     "agent",
@@ -6366,7 +6371,7 @@
     "typescript"
    ],
    "license": "MIT",
-   "homepage": "cchaha.ai",
+   "homepage": "https://cchaha.ai",
    "forks": 8561,
    "final_display": 5.541756216449705,
    "final_is_capped": false,
@@ -6719,7 +6724,7 @@
    "repo_id": 1292782830,
    "rank": 136,
    "name": "RoboDojo-Benchmark/RoboDojo",
-   "description": "Official repository for \"RoboDojo: A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Manipulation Policies\".",
+   "description": "Official repository for RoboDojo",
    "language": "Python",
    "topics": [
     "manipulation",
@@ -7051,7 +7056,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -7506,7 +7511,7 @@
    "repo_id": 1275972890,
    "rank": 152,
    "name": "Mahanaicoach/google-maps-scraper-kit",
-   "description": "Local Google Maps lead extraction, operated by Claude. Clean CSVs with phones, emails, websites and socials. No API keys, runs on your machine.",
+   "description": "Google Maps scraper for lead generation, run by Claude Code. Exports clean CSVs with phones, emails, websites and socials. Local, free, no API keys.",
    "language": "Python",
    "topics": [
     "b2b-leads",
@@ -7518,9 +7523,14 @@
     "lead-generation",
     "local-business",
     "scraper",
-    "web-scraping"
+    "web-scraping",
+    "claude",
+    "csv",
+    "email-extractor",
+    "lead-scraper",
+    "python"
    ],
-   "license": "NOASSERTION",
+   "license": "MIT",
    "homepage": null,
    "forks": 95,
    "final_display": 5.032736475023366,
@@ -7820,7 +7830,7 @@
    "repo_id": 1218231004,
    "rank": 158,
    "name": "NVIDIA/cuda-rust",
-   "description": "cuda-oxide is a Rust-to-CUDA compiler that lets you write (SIMT) GPU kernels in safe(ish), idiomatic Rust. It compiles standard Rust code directly to PTX \u2014 no DSLs, no foreign language bindings, just Rust.",
+   "description": "NVIDIA's CUDA platform for Rust. Host runtime crates plus Tile (cutile-rs) and SIMT (cuda-oxide) kernel programming models in idiomatic Rust.",
    "language": "Rust",
    "topics": [
     "compiler-backend",
@@ -8781,7 +8791,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(timeout)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -9353,7 +9363,7 @@
    "repo_id": 1112733896,
    "rank": 188,
    "name": "apify/mcpc",
-   "description": "The most compatible MCP CLI client. mcpc supports persistent sessions, stdio/HTTP, OAuth 2.1, Tasks and Skills extensions, --json for code mode, proxy for AI sandboxes, x402, and more.",
+   "description": "The most compatible MCP CLI client. Supports: tools, resources, prompts, completions, async tasks, skills, stdio and Streamable HTTP (MCP 2026-07-28 and 2025-11-25). Persistent sessions, OAuth 2.1 with DCR, CIMD, client credentials, and ID-JAG, OS keychain, --json for code mode, grep across servers, proxy for AI sandboxes, x402 & more.",
    "language": "TypeScript",
    "topics": [
     "cli",
@@ -9747,7 +9757,7 @@
     "commit_sha": null
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -10807,7 +10817,7 @@
     "menu-bar-manager"
    ],
    "license": "GPL-3.0",
-   "homepage": null,
+   "homepage": "https://www.getthaw.app",
    "forks": 265,
    "final_display": 3.0500896911418742,
    "final_is_capped": false,
@@ -10835,7 +10845,7 @@
     "commit_sha": "6329f0dd26934998d188b88fa52a3e2ac69b0fc6"
    },
    "structure": {
-    "state": "failed(label)",
+    "state": "queued",
     "lines": [
      "Structure: not yet mapped \u2014 queued"
     ],
@@ -10844,7 +10854,7 @@
    "repo_id": 1170138985,
    "rank": 218,
    "name": "proxysoul/Empryo",
-   "description": "Empryo's engine, v2 (soulforge) and issue tracker!! Empryo is the graph-powered AI coding agent that edits symbols, not strings: AST surgery, full LSP, a live code genome. Get it at https://empryo.com",
+   "description": "AI coding harness for desktop, terminal and CI. Maps your repo, edits code by symbol through AST and LSP, then runs your checks. Any model or the plan you already pay for. Get it at https://empryo.com",
    "language": "TypeScript",
    "topics": [
     "ai",
@@ -10865,7 +10875,8 @@
     "llm",
     "terminal",
     "tree-sitter",
-    "empryo"
+    "empryo",
+    "agent-harness"
    ],
    "license": "NOASSERTION",
    "homepage": "https://empryo.com/",
@@ -11085,7 +11096,7 @@
    "rank": 223,
    "name": "jamiepine/voicebox",
    "description": "The open-source AI voice studio. Clone, dictate, create.",
-   "language": "TypeScript",
+   "language": "Python",
    "topics": [
     "ai",
     "voice-clone",
@@ -11139,12 +11150,13 @@
    "topics": [
     "ai-agent",
     "api",
-    "powerpoint-automation",
-    "powerpoint-free",
     "powerpoint-generation",
     "presentation",
     "ai-presentation",
-    "gamma"
+    "gamma",
+    "powerpoint-ai",
+    "presentation-agent",
+    "powerpoint-agent"
    ],
    "license": "Apache-2.0",
    "homepage": "https://presenton.ai",
@@ -11234,7 +11246,7 @@
    "rank": 226,
    "name": "ToolJet/ToolJet",
    "description": "Open-source foundation of ToolJet AI - the enterprise app generation platform for internal tools, dashboards, business applications, workflows and AI agents. Build visually, from a prompt, or from Claude Code, Codex and Cursor over MCP \ud83d\ude80",
-   "language": "JavaScript",
+   "language": "HTML",
    "topics": [
     "javascript",
     "internal-tools",
