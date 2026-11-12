@@ -1,0 +1,264 @@
+name: Stale check
+
+# Once a day, and when started by hand, this fetches the site's page and posts
+# to Discord in three cases: the newest board has grown too old, the page cannot
+# be fetched, or the page gives no usable board day. Because GitHub runs it, a
+# stale site is still reported while the machine that publishes is switched
+# off.
+#
+# The job holds the DISCORD_WEBHOOK_URL secret, and it reads a page that the
+# daily data push can change. That push can change any file in this
+# repository except a workflow, so:
+#
+# - the job checks out nothing and uses no action. All it runs is the script
+#   below, with the runner image's own Python.
+# - nothing it reads from the page reaches a shell, a command line, the log,
+#   or a file that GitHub reads back. Each value is used only once it has the
+#   exact shape the data contract gives it, and the message is made only of
+#   checked values.
+# - the webhook's address is in the one step's environment, and the script
+#   never prints it.
+#
+# tests/test_stale_check.py checks each of these and runs the script.
+# README.md ("The stale check") explains them.
+
+on:
+  schedule:
+    # 04:41 UTC. The daily publish aims to have a day's board up by 8:00 pm New
+    # York time (00:00 UTC under daylight time, 01:00 UTC otherwise), and a
+    # board that made it is 26 hours old by 02:00 or 03:00 UTC the night after.
+    # Not on the hour, when GitHub delays scheduled runs most, and drops some.
+    - cron: "41 4 * * *"
+  workflow_dispatch:
+    inputs:
+      address:
+        description: The page to read. It must be an https address
+        type: string
+        default: https://preview.risingrepos.pages.dev/
+      max_age_hours:
+        description: How many hours after its publish the newest board is too old, a whole number from 0 to 168. 0 makes any board too old
+        type: string
+        default: "26"
+
+# The job reads nothing from this repository, so its token needs no permission.
+permissions: {}
+
+env:
+  # A scheduled run has no inputs, and takes these. Until go-live the check
+  # reads the preview. Going live (RisingRepos#58) changes this address, and
+  # the default of the input above, to https://risingrepos.com/.
+  DEFAULT_ADDRESS: https://preview.risingrepos.pages.dev/
+  # The site is fresh for 26 hours after its newest board's publish.
+  DEFAULT_MAX_AGE_HOURS: "26"
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Read the page, and post an alarm when it is stale
+        env:
+          CHECK_ADDRESS: ${{ inputs.address }}
+          CHECK_MAX_AGE_HOURS: ${{ inputs.max_age_hours }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        # -I: no PYTHON variable of the environment, and no file of the folder
+        # the script runs in, changes what Python runs.
+        shell: python3 -I {0}
+        run: |
+          # The stale check, in the runner image's own Python 3 (3.12 on
+          # ubuntu-24.04), with nothing but the standard library.
+          import datetime
+          import html.parser
+          import http.client
+          import json
+          import math
+          import os
+          import re
+          import ssl
+          import sys
+          import traceback
+          import urllib.error
+          import urllib.request
+
+          TAGS = ("rr:board-date", "rr:published-at")  # how the page states its board day, once each
+          BOARD_DAY = re.compile(r"[0-9]{4}-[0-9]{2}-[0-9]{2}")
+          PUBLISHED_AT = re.compile(r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z")
+          AHEAD = datetime.timedelta(minutes=10)  # how far ahead of the runner's clock a publish time may be
+          ADDRESS = re.compile(r"https://[a-z0-9.-]+(:[0-9]{1,5})?(/[A-Za-z0-9._~/-]*)?")
+          LONGEST_ADDRESS = 200
+          HOURS = re.compile(r"[0-9]{1,3}")
+          MOST_HOURS = 168  # a week, after which the site shows no board at all
+          PAGE_LIMIT = 4_000_000  # bytes of the page read at most
+          TIMEOUT = 30  # seconds that one request may take
+          AGENT = "rising-repos-site stale check"  # each request names the check, as Discord asks of a caller
+          SUPPRESS_EMBEDS = 4  # the message flag that keeps Discord from showing a preview of each link
+
+          STALE = (
+              "whether the daily job ran and published its board. If it did, whether the site's latest Build "
+              "and deploy run passed."
+          )
+          UNREADABLE = (
+              "whether the address opens in a browser. If it does not, the site's latest Build and deploy run, "
+              "then Cloudflare Pages."
+          )
+          UNSTATED = (
+              "the site's latest Build and deploy run, and whether the page's head still carries rr:board-date "
+              "and rr:published-at once each."
+          )
+
+          # Every request goes out over HTTPS, through no proxy. A redirect to another scheme fails, and no file
+          # is opened.
+          OPENER = urllib.request.OpenerDirector()
+          for handler in (
+              urllib.request.HTTPSHandler(context=ssl.create_default_context()),
+              urllib.request.HTTPRedirectHandler(),
+              urllib.request.HTTPDefaultErrorHandler(),
+              urllib.request.HTTPErrorProcessor(),
+              urllib.request.UnknownHandler(),
+          ):
+              OPENER.add_handler(handler)
+
+
+          class Tags(html.parser.HTMLParser):
+              """The content of each <meta> tag of a page whose name is one of TAGS."""
+
+              def __init__(self):
+                  super().__init__()
+                  self.contents = {tag: [] for tag in TAGS}
+
+              def handle_starttag(self, tag, attrs):
+                  attributes = dict(attrs)
+                  if tag == "meta" and attributes.get("name") in self.contents:
+                      self.contents[attributes["name"]].append(attributes.get("content") or "")
+
+
+          def stated(page, now):
+              """The board day and the publish time the page states, or None unless it states each once, in the
+              exact shape the data contract gives it, with a publish time that is not ahead of `now`."""
+              tags = Tags()
+              try:
+                  tags.feed(page.decode("utf-8", errors="replace"))
+                  tags.close()
+              except Exception:  # whatever the page holds, it is only ever reported as stating no board day
+                  return None
+              board_days, published = (tags.contents[tag] for tag in TAGS)
+              if len(board_days) != 1 or len(published) != 1:
+                  return None
+              # The patterns hold the shape, ASCII digits and all, which the parsers below do not. The parsers
+              # hold that the shape is a real day and a real time.
+              if not (BOARD_DAY.fullmatch(board_days[0]) and PUBLISHED_AT.fullmatch(published[0])):
+                  return None
+              try:
+                  datetime.date.fromisoformat(board_days[0])
+                  moment = datetime.datetime.strptime(published[0], "%Y-%m-%dT%H:%M:%SZ")
+              except ValueError:
+                  return None
+              moment = moment.replace(tzinfo=datetime.timezone.utc)
+              if moment > now + AHEAD:  # a page could otherwise state a time that never grows old
+                  return None
+              return board_days[0], moment
+
+
+          def kind(error):
+              """A failure, named by its type. An error's own words can repeat an address."""
+              reason = getattr(error, "reason", None)
+              return type(reason if isinstance(reason, BaseException) else error).__name__
+
+
+          def check(address, limit):
+              """What the alarm reports and what to check first. None when the page's board is fresh, which it says
+              in the log."""
+              request = urllib.request.Request(address, headers={"Cache-Control": "no-cache", "User-Agent": AGENT})
+              try:
+                  with OPENER.open(request, timeout=TIMEOUT) as answer:
+                      page = answer.read(PAGE_LIMIT)
+              except urllib.error.HTTPError as error:
+                  return f"the page could not be read: it answered HTTP {error.code}.", UNREADABLE
+              except (OSError, ValueError, http.client.HTTPException) as error:
+                  return f"the page could not be read: the request failed with {kind(error)}.", UNREADABLE
+              now = datetime.datetime.now(datetime.timezone.utc)
+              board = stated(page, now)
+              if board is None:
+                  return "the page was read, and it states no usable board day.", UNSTATED
+              board_day, published = board
+              # A publish time a little ahead of the clock counts as a publish just now.
+              age = max(now - published, datetime.timedelta(0)) / datetime.timedelta(hours=1)
+              # The age to a tenth of an hour, rounded down, so that it never reads as older than it is.
+              how_old = (
+                  f"Board day {board_day} was published {math.floor(age * 10) / 10:.1f} hours ago, "
+                  f"at {published:%Y-%m-%dT%H:%M:%SZ}"
+              )
+              if age < limit:
+                  print(f"Fresh. {how_old}, under the limit of {limit} hours. Read: {address}. Nothing was posted.")
+                  return None
+              return f"the newest board is too old. {how_old}, and the limit is {limit} hours.", STALE
+
+
+          def post(message):
+              """Send `message` to Discord once, and say only how Discord answered."""
+              webhook = os.environ.get("DISCORD_WEBHOOK_URL", "")
+              if not webhook:
+                  print("::error::The alarm was not sent: the secret DISCORD_WEBHOOK_URL is empty.")
+                  return 1
+              body = {"content": message, "allowed_mentions": {"parse": []}, "flags": SUPPRESS_EMBEDS}
+              try:
+                  request = urllib.request.Request(
+                      webhook,
+                      data=json.dumps(body).encode(),
+                      method="POST",
+                      headers={"Content-Type": "application/json", "User-Agent": AGENT},
+                  )
+                  with OPENER.open(request, timeout=TIMEOUT) as answer:
+                      status = answer.status
+              except urllib.error.HTTPError as error:
+                  print(f"::error::Discord refused the alarm: it answered HTTP {error.code}.")
+                  return 1
+              except Exception as error:  # its words could hold the webhook's address
+                  print(f"::error::The alarm was not sent: the request failed with {kind(error)}.")
+                  return 1
+              print(f"Discord answered HTTP {status}.")
+              return 0
+
+
+          def main():
+              address = os.environ["CHECK_ADDRESS"] or os.environ["DEFAULT_ADDRESS"]
+              hours = os.environ["CHECK_MAX_AGE_HOURS"] or os.environ["DEFAULT_MAX_AGE_HOURS"]
+              if len(address) > LONGEST_ADDRESS or not ADDRESS.fullmatch(address):
+                  print(
+                      "::error::The address to read is not one this check takes: https://, a host name in lower "
+                      "case, a port if any, and a path of letters, digits, and . _ ~ / -, in 200 characters at most."
+                  )
+                  return 1
+              if not HOURS.fullmatch(hours) or int(hours) > MOST_HOURS:
+                  print(f"::error::The age limit is not a whole number of hours from 0 to {MOST_HOURS}.")
+                  return 1
+              found = check(address, int(hours))
+              if found is None:
+                  return 0
+              what, first = found
+              by_hand = (
+                  os.environ["GITHUB_EVENT_NAME"] == "workflow_dispatch"  # from the Actions tab, or gh workflow run
+                  or os.environ["GITHUB_RUN_ATTEMPT"] != "1"  # a scheduled run, run again by hand
+              )
+              run = "{GITHUB_SERVER_URL}/{GITHUB_REPOSITORY}/actions/runs/{GITHUB_RUN_ID}".format_map(os.environ)
+              message = "\n".join(
+                  [
+                      *(["Started by hand, not by the daily schedule."] if by_hand else []),
+                      f"Rising Repos site check: {what}",
+                      f"Address read: {address}",
+                      f"Check first: {first}",
+                      f"Run: {run}",
+                  ]
+              )
+              print("The alarm, as it is sent to Discord:")
+              print(message)
+              return post(message)
+
+
+          try:
+              sys.exit(main())
+          except Exception as error:  # say where it stopped, and nothing an error's words could hold
+              ours = [frame.lineno for frame in traceback.extract_tb(error.__traceback__) if frame.filename == __file__]
+              where = f"line {ours[-1]} of the script" if ours else "a line outside the script"
+              print(f"::error::The check stopped on an unexpected {type(error).__name__}, at {where}.")
+              sys.exit(1)
