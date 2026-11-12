@@ -163,7 +163,9 @@ baseline.
 
 A repository's link holds the owner and the name, and only the name is
 underlined. A browser lets a visited link change only its colours, so the
-visited state is a change of colour.
+visited state is a change of colour. To see it in an automated browser, whose
+fresh contexts record no visits, force the state on a link with the DevTools
+protocol's `CSS.forcePseudoState` and `visited`.
 
 **What a later page keeps.**
 
