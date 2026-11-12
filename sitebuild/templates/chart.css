@@ -1,0 +1,143 @@
+/* The chart: the board set like a record chart. A deep evergreen band carries the date in a condensed
+   signage face, and the positions are set large in the same face. The text is in each reader's interface
+   face, so the two families are plainly different. */
+
+:root {
+  color-scheme: light;
+  --field: #0f3b2e;
+  --field-ink: #f2f7f4;
+  --field-muted: #b6cfc3;
+  --paper: #ffffff;
+  --ink: #13201a;
+  --muted: #50605a;
+  --green: #12704b;
+  --rule: #dae3de;
+  --display: Bahnschrift, "DIN Alternate", "DIN Condensed", "Roboto Condensed", "Arial Narrow", sans-serif-condensed, sans-serif;
+  --text: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1rem/1.5 var(--text); }
+p, h1 { margin: 0; }
+
+.wrap { max-width: 68rem; margin: 0 auto; padding: 0 1rem; }
+
+/* The band */
+
+.band { background: var(--field); color: var(--field-ink); }
+.band .wrap { padding-top: 1.25rem; padding-bottom: 1.75rem; }
+.site { max-width: 34rem; color: var(--field-muted); font-size: 0.9375rem; }
+.site strong {
+  display: block;
+  color: var(--field-ink);
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+h1 {
+  margin-top: 2.25rem;
+  font-family: var(--display);
+  font-size: clamp(3rem, 1.75rem + 6vw, 6.5rem);
+  font-stretch: condensed;
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+}
+.kind {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--field-muted);
+  font-family: var(--text);
+  font-size: 1rem;
+  font-stretch: normal;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.published { margin-top: 1rem; color: var(--field-muted); }
+.provisional {
+  max-width: 40rem;
+  margin-top: 1rem;
+  padding-left: 0.875rem;
+  border-left: 3px solid #7fcfa6;
+}
+
+/* The chart */
+
+.chart { width: 100%; margin-top: 0.5rem; border-collapse: collapse; }
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 1rem 0.75rem 0.5rem 0;
+  background: var(--paper);
+  box-shadow: inset 0 -2px 0 var(--ink); /* a border would not stay with the sticky cell in a collapsed table */
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-align: left;
+}
+tbody tr { border-bottom: 1px solid var(--rule); }
+td, tbody th { padding: 1.125rem 0.625rem 1.125rem 0; vertical-align: top; }
+.rank { width: 1%; white-space: nowrap; }
+td.rank {
+  color: var(--green);
+  font-family: var(--display);
+  font-size: 1.75rem;
+  font-stretch: condensed;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  line-height: 1;
+  text-align: right;
+}
+thead .rank { text-align: right; }
+.repository { font-weight: 400; text-align: left; }
+.stars { padding-right: 0; text-align: right; white-space: nowrap; }
+td.stars {
+  padding-top: 1.375rem;
+  font-family: var(--display);
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.repository a { display: inline-block; color: var(--ink); text-decoration: none; }
+.owner { display: block; color: var(--muted); font-size: 0.875rem; overflow-wrap: anywhere; }
+.name {
+  display: block;
+  font-family: var(--display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--green);
+}
+.repository a:visited .name { text-decoration-color: var(--muted); }
+.repository a:hover .name { color: var(--green); }
+.repository a:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; border-radius: 2px; }
+.description { max-width: 42rem; margin-top: 0.375rem; overflow-wrap: anywhere; }
+.description.none { color: var(--muted); font-style: italic; }
+.language { margin-top: 0.375rem; color: var(--muted); font-size: 0.875rem; }
+
+.empty { padding: 3rem 0 1rem; }
+.empty-title { font-family: var(--display); font-size: 2rem; font-weight: 700; line-height: 1.1; }
+.empty p + p { max-width: 32rem; margin-top: 0.75rem; color: var(--muted); }
+
+footer { max-width: 40rem; padding: 2.5rem 0 3rem; color: var(--muted); font-size: 0.875rem; }
+
+/* A desktop: room for larger positions and names */
+
+@media (min-width: 48rem) {
+  .wrap { padding: 0 2rem; }
+  .band .wrap { padding-top: 1.75rem; padding-bottom: 2.5rem; }
+  td.rank { padding-right: 1.5rem; font-size: 2.75rem; }
+  thead .rank { padding-right: 1.5rem; }
+  td, tbody th { padding-top: 1.375rem; padding-bottom: 1.375rem; padding-right: 0.75rem; }
+  td.stars { padding-top: 1.625rem; font-size: 1.375rem; }
+  .name { font-size: 1.625rem; }
+}

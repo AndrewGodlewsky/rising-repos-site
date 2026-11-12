@@ -3,7 +3,12 @@ name = "rising-repos-site"
 version = "0"
 description = "The static pages of risingrepos.com, built by a Python generator with Jinja2 templates"
 requires-python = ">=3.14"
-dependencies = ["jinja2>=3.1.6"]
+dependencies = [
+    "jinja2>=3.1.6",
+    # Checks each data file against the schema shipped with it. RisingRepos checks
+    # the same files with the same version, which its data contract names.
+    "fastjsonschema==2.22.2",
+]
 
 [dependency-groups]
 # The tests read the deploy workflow, which is YAML.

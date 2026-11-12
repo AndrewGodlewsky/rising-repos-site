@@ -1,0 +1,53 @@
+{% extends "page.html" %}
+{# The chart: the day's board set like a record chart, under a band that carries its date. #}
+{% block theme_color %}#0f3b2e{% endblock %}
+{% block style %}{% include "chart.css" %}{% endblock %}
+{% block body %}
+<header class="band">
+<div class="wrap">
+<p class="site"><strong>Rising Repos</strong> GitHub repositories gaining stars faster than their own pace predicts</p>
+<h1 id="board"><span class="kind">Daily board</span> <time datetime="{{ board.board_day }}">{{ board.board_day|long_date }}</time></h1>
+<p class="published">{{ board.rows|length|repositories }}. Published <time datetime="{{ board.published_at }}">{{ board.published_at|utc_time }}</time>.</p>
+{% if board.score_provisional %}
+<p class="provisional"><strong>The score is provisional.</strong> The formula behind this board is still being tested, so its results may change.</p>
+{% endif %}
+</div>
+</header>
+<main class="wrap">
+{% if board.rows %}
+<table class="chart" aria-labelledby="board">
+<thead>
+<tr><th scope="col" class="rank">Rank</th><th scope="col" class="repository">Repository</th><th scope="col" class="stars">Stars</th></tr>
+</thead>
+<tbody>
+{% for row in board.rows %}
+{% set owner, _, name = row.full_name.partition("/") %}
+<tr class="row">
+<td class="rank">{{ row.rank }}</td>
+<th scope="row" class="repository">
+<a href="https://github.com/{{ row.full_name }}"><span class="owner">{{ owner }}/</span><span class="name">{{ name }}</span></a>
+{% if row.description %}
+<p class="description" dir="auto">{{ row.description }}</p>
+{% else %}
+<p class="description none">No description</p>
+{% endif %}
+{% if row.language %}
+<p class="language">{{ row.language }}</p>
+{% endif %}
+</th>
+<td class="stars">{{ row.stars|thousands }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<div class="empty">
+<p class="empty-title">No repository made the board on this day.</p>
+<p>A repository makes the board when it gains stars faster than its own pace predicts.</p>
+</div>
+{% endif %}
+<footer>
+<p>Star counts are from the board day. Rising Repos is not affiliated with GitHub.</p>
+</footer>
+</main>
+{% endblock %}
