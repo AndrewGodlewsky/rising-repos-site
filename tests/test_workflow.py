@@ -113,9 +113,20 @@ class TheWorkflow(unittest.TestCase):
         steps = [step.get("name") for step in self.deploy["steps"]]
         self.assertEqual(steps.index("Upload only the newest push") + 1, steps.index("Upload to Cloudflare Pages"))
         newest = step_named(self.deploy, "Upload only the newest push")
-        self.assertIn('line=$(git ls-remote --exit-code "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" refs/heads/main)', newest["run"])
-        self.assertIn("head=${line%%[[:space:]]*}", newest["run"])
-        self.assertIn('if [ "$head" = "$GITHUB_SHA" ]; then\n  echo "newest=true" >> "$GITHUB_OUTPUT"', newest["run"])
+        # The whole script, because a one-word change in either branch (newest=true where main has moved on)
+        # uploads every push again.
+        self.assertEqual(
+            newest["run"],
+            'line=$(git ls-remote --exit-code "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" refs/heads/main)\n'
+            "head=${line%%[[:space:]]*}\n"
+            'if [ "$head" = "$GITHUB_SHA" ]; then\n'
+            '  echo "newest=true" >> "$GITHUB_OUTPUT"\n'
+            "else\n"
+            '  echo "::notice::Not uploaded: main has moved on to $head from this run\'s $GITHUB_SHA.'
+            ' The run for $head uploads once its build passes."\n'
+            '  echo "newest=false" >> "$GITHUB_OUTPUT"\n'
+            "fi\n",
+        )
         upload = step_named(self.deploy, "Upload to Cloudflare Pages")
         self.assertEqual(upload["if"], f"steps.{newest['id']}.outputs.newest == 'true'")
 

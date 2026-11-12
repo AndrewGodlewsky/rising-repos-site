@@ -76,12 +76,11 @@ What every page holds to, each checked by a test in `tests/`:
 
 ### The design note
 
-The brief is the user's, from RisingRepos#16 and its `expectations.md`: a site
-"a lot easier to navigate", "a lot cleaner and a lot more modern", "simple,
-convenient, and enjoyable and intuitive to use", that does not "feel like it
-was made by an AI", and that leans into affordance, so that a visitor can tell
-what each thing on the page does by looking at it. The look was designed from
-nothing, and takes nothing from the earlier site.
+The aims: a page that is easy to find one's way around, clean and current,
+simple and pleasant to use, with a character of its own rather than a stock
+look, and with clear affordances, so that a visitor can tell what each thing on
+the page does by looking at it. The look was designed from nothing, and takes
+nothing from the earlier site.
 
 What both designs share: each name looks like a link before it is touched,
 underlined in the link's own colour, and shows when it has been visited. Ranks
@@ -133,18 +132,25 @@ checks each against the schema shipped with it before it writes a page:
   states. A file below it fails the build.
 - A field the pages do not read is ignored. RisingRepos adds a field to the
   schema and to the files in one publish, so the files still match.
-- The schemas are checked with fastjsonschema, the validator the data contract
-  names. It turns a schema into Python, and it fetches whatever document a
-  `$ref` points to elsewhere. A schema arrives with the data, so the build
-  refuses one that holds a `$ref` that does not start with `#`, and compiles
-  every schema with handlers that refuse to fetch anything. A `$ref` that
-  starts with `#` can still point elsewhere under some `$id`s, and the handlers
-  refuse that too. The build never fetches a reference.
+- The schemas are checked with fastjsonschema, the validator that RisingRepos's
+  ADR 0013 chose, at the version RisingRepos's `pyproject.toml` pins. It turns
+  a schema into Python, and it fetches whatever document a `$ref` points to
+  elsewhere. A schema arrives with the data, so the build refuses one that
+  holds a `$ref` that does not start with `#`, and compiles every schema with
+  handlers that refuse to fetch anything. A `$ref` that starts with `#` can
+  still point elsewhere under some `$id`s, and the handlers refuse that too.
+  The build never fetches a reference.
 
 The tests build from their own copy of the contract's example, in
-`tests/fixtures/contract-example/`, so that they never depend on the day's
-data. A test holds that copy to the bytes of the RisingRepos commit above. A
-change to the contract reaches it, and that test, by a pull request here.
+`tests/fixtures/contract-example/`, so that the day's data does not change what
+they check. Two tests read the day's files all the same. One builds from
+`site-data/`, to show that the build reads it when no folder is given, so a
+day's files that fail their schema fail the tests as well as the build. The
+token search (below) reads every file git would commit, `site-data/` included,
+so a day's file that holds a string shaped like a credential fails the tests.
+A test holds the copy in `tests/fixtures/` to the bytes of the RisingRepos
+commit above. A change to the contract reaches it, and that test, by a pull
+request here.
 `.gitattributes` keeps git from changing the line endings of either copy.
 
 ## The workflow
@@ -171,9 +177,11 @@ can finish first. Their uploads take turns, in the concurrency group
 `main` with `git ls-remote`, which needs no credential because the repository
 is public. If `main` has moved past the run's commit, the run uploads nothing
 and says so in a notice in its log, and the newer push's run uploads its own
-pages. So the pages of an older push never replace those of a newer one,
-whichever build finishes first. If `main` cannot be read, the job fails and
-nothing is uploaded.
+pages once its build passes. So the pages of an older push never replace those
+of a newer one, whichever build finishes first. If the newer push's build
+fails, neither push uploads, and the preview keeps the pages it had until a
+push to `main` builds or the failed run is re-run. If `main` cannot be read,
+the job fails and nothing is uploaded.
 
 A pull request builds and does not deploy.
 
@@ -189,7 +197,8 @@ python -m http.server 8000 --bind 127.0.0.1 --directory dist  # then open http:/
 ```
 
 The tests are the one command the workflow's build job runs too. They build
-from `tests/fixtures/`, write only to temporary folders, and read no network.
+from `tests/fixtures/`, but for the one test that builds from `site-data/`
+(see "The data"), write only to temporary folders, and read no network.
 They include the search that RisingRepos's regression command makes, for a
 file git would commit that holds a string shaped like a GitHub token or a
 Discord webhook address: `tests/test_tokens.py` fails on one and names the
