@@ -145,10 +145,9 @@ class TheWorkflow(unittest.TestCase):
         self.job = self.workflow["jobs"]["check"]
         self.step = the_step(self.workflow)
 
-    def test_it_runs_on_a_schedule_and_by_hand_and_from_nothing_else(self):
+    def test_only_its_schedule_and_a_start_by_hand_can_run_it(self):
         # No pull request can start it, so no change that is not yet on main runs where the webhook is.
         self.assertEqual(set(self.workflow["on"]), {"schedule", "workflow_dispatch"})
-        self.assertEqual(set(self.workflow["jobs"]), {"check"})
 
     def test_it_runs_once_a_day_after_a_board_due_by_8pm_eastern_has_passed_26_hours(self):
         (entry,) = self.workflow["on"]["schedule"]
@@ -170,6 +169,7 @@ class TheWorkflow(unittest.TestCase):
         self.assertNotIn("permissions", self.job)
 
     def test_it_checks_out_nothing_uses_no_action_and_runs_only_the_script_in_this_file(self):
+        self.assertEqual(set(self.workflow["jobs"]), {"check"})
         self.assertEqual(len(self.job["steps"]), 1)
         self.assertNotIn("uses", self.step)
         # The runner image's own Python, isolated from the environment's PYTHON variables and from the folder it
@@ -217,26 +217,25 @@ class TheCheck(unittest.TestCase):
         temporary = Path(self.enterContext(tempfile.TemporaryDirectory()))
         self.folder = temporary / "run"
         self.folder.mkdir()
-        tls = temporary / "tls"
-        tls.mkdir()
-        (tls / "certificate.pem").write_text(CERTIFICATE, encoding="ascii", newline="\n")
-        (tls / "key.pem").write_text(KEY, encoding="ascii", newline="\n")
-        self.certificate = tls / "certificate.pem"
+        self.tls = temporary / "tls"
+        self.tls.mkdir()
+        (self.tls / "certificate.pem").write_text(CERTIFICATE, encoding="ascii", newline="\n")
+        (self.tls / "key.pem").write_text(KEY, encoding="ascii", newline="\n")
         workflow = load()
         step = the_step(workflow)
         self.script = temporary / "stale-check.py"
         self.script.write_text(step["run"], encoding="utf-8", newline="\n")
         self.shell = step["shell"].split()
         self.default_hours = workflow["env"]["DEFAULT_MAX_AGE_HOURS"]
-        self.site = StandIn(self, tls, 200, page(published_at=hours_ago(2)))
-        self.discord = StandIn(self, tls, 204)
+        self.site = StandIn(self, self.tls, 200, page(published_at=hours_ago(2)))
+        self.discord = StandIn(self, self.tls, 204)
         # A made-up webhook address, put together here so that no file holds one.
         self.token = secrets.token_urlsafe(48)
         self.webhook = f"{self.discord.address}api/webhooks/{secrets.randbelow(10**18)}/{self.token}"
 
     def check(self, address: str | None = None, hours: str = "", **environment: str) -> subprocess.CompletedProcess:
-        """Run the script as the job does, with the inputs `address` (the stand-in site by default) and `hours`,
-        and the workflow's default age limit. `environment` sets or replaces any other variable."""
+        """Run the script as the job does, with the inputs `address` (the stand-in site by default) and `hours`
+        (empty, so the workflow's default age limit, by default). `environment` sets or replaces any other variable."""
         given = {
             "CHECK_ADDRESS": self.site.address if address is None else address,
             "CHECK_MAX_AGE_HOURS": hours,
@@ -248,7 +247,7 @@ class TheCheck(unittest.TestCase):
             "GITHUB_SERVER_URL": "https://github.com",
             "GITHUB_REPOSITORY": "AndrewGodlewsky/rising-repos-site",
             "GITHUB_RUN_ID": "123456789",
-            "SSL_CERT_FILE": str(self.certificate),
+            "SSL_CERT_FILE": str(self.tls / "certificate.pem"),
         }
         given.update(environment)
         ours = ("CHECK_", "DEFAULT_", "DISCORD_", "GITHUB_", "SSL_CERT_")
@@ -291,7 +290,7 @@ class TheCheck(unittest.TestCase):
                 self.assertIn("Fresh. Board day 2026-11-09 was published", result.stdout)
                 self.assertIn("Nothing was posted.", result.stdout)
 
-    def test_a_board_26_hours_old_or_more_posts_one_alarm_that_says_how_old_and_what_to_check_first(self):
+    def test_a_board_26_hours_old_or_more_posts_one_alarm_with_its_age_and_where_to_look(self):
         published_at = hours_ago(30)
         self.site.answer(200, page(published_at=published_at))
         result = self.check()
@@ -434,7 +433,7 @@ class TheCheck(unittest.TestCase):
         self.assertIn("and the limit is 26 hours.", self.alarm()["content"])
 
     def test_a_redirect_is_followed_only_to_an_https_address(self):
-        moved = StandIn(self, self.certificate.parent, 200, page(published_at=hours_ago(30)))
+        moved = StandIn(self, self.tls, 200, page(published_at=hours_ago(30)))
         port = moved.address.split(":")[2].rstrip("/")
         for case, location, found in (
             ("to https", moved.address, "the newest board is too old"),

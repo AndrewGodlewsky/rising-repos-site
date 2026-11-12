@@ -226,22 +226,23 @@ uv.lock             every package, pinned with its hashes
 
 ## The stale check
 
-`.github/workflows/stale-check.yml` reads the site's page once a day and posts
-to Discord when the newest board is too old, when the page cannot be read, or
-when the page states no usable board day. It runs on GitHub, so it reports a
-stale site when the machine that publishes is off. It reads the page's
-`rr:published-at`, when its board day was first published (see "The first
-page"). The board is fresh for 26 hours after that, and too old from then on.
-Its age is counted in hours from that moment, not by the date.
+`.github/workflows/stale-check.yml` fetches the site's page once a day and
+posts to Discord in three cases: the newest board has grown too old, the page
+cannot be fetched, or the page gives no usable board day. Because GitHub runs
+it, a stale site is still reported while the machine that publishes is
+switched off. The age comes from the page's `rr:published-at`, the moment its
+board day was first published (see "The first page"): the board counts as
+fresh for 26 hours from then, and as too old after that. The age is a number
+of hours since that moment, and the calendar date plays no part in it.
 
-**When it runs.** At 04:41 UTC every day. Each day's board is due by 8:00 pm
-US Eastern, which is 00:00 UTC in summer and 01:00 UTC in winter, so a board
-that was on time passes 26 hours by 02:00 or 03:00 UTC the night after. The
-check runs after both, so a missed day is reported that same night (11:41 pm
-Eastern in winter, 12:41 am in summer), as long as the board before it was up
-by 9:41 pm Eastern in winter or 10:41 pm in summer. It runs at 41 minutes past
-the hour because GitHub delays scheduled runs most, and drops some, at the
-start of an hour.
+**When it runs.** At 04:41 UTC every day. The daily publish aims to have a
+day's board on the site by 8:00 pm New York time: 00:00 UTC while daylight
+time is in force, 01:00 UTC otherwise. A board that made it is 26 hours old by
+02:00 or 03:00 UTC the night after. The check runs after both, so a missed day
+is reported that same night (11:41 pm in New York in winter, 12:41 am in
+summer), as long as the board before it was up by 9:41 pm in winter or
+10:41 pm in summer. It runs at 41 minutes past the hour because GitHub delays
+scheduled runs most, and drops some, at the start of an hour.
 
 **At most one alarm a day.** The schedule starts it once a day, and a run
 posts at most one message, so a stale board day is reported at most once a
@@ -287,8 +288,8 @@ fails the run, and nothing is read or posted. At go-live
 secret, `DISCORD_WEBHOOK_URL`, in the environment of its one step, and no
 deployment environment's secrets. No pull request starts it. It checks out
 nothing and uses no action. All it runs is the script written in the workflow
-file, with the runner image's own `python3 -I`, so no file that the daily data
-push can change runs where the webhook is.
+file, with the runner image's own `python3 -I`. None of this repository's other
+files, which the daily data push can change, is ever run beside the webhook.
 
 The page is the one thing it reads, and the daily data push can change it, so
 the script trusts nothing on it:
@@ -318,8 +319,9 @@ is told to trust. GitHub starts a scheduled or manual run only once the
 workflow is on `main`, so the check's first real runs come after the change
 that adds it is merged.
 
-GitHub turns off a scheduled workflow in a public repository after 60 days
-with no activity in it. The daily data commits keep this repository active.
+GitHub switches off the schedule of a public repository's workflow once the
+repository has gone 60 days without activity. The data pushed here each day
+counts as activity, so the schedule stays on.
 
 ## Changing a pinned version
 

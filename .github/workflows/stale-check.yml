@@ -1,9 +1,10 @@
 name: Stale check
 
-# Once a day, and when started by hand, this reads the site's page and posts to
-# Discord when the newest board is too old, when the page cannot be read, or
-# when the page states no usable board day. It runs on GitHub, so it reports a
-# stale site when the machine that publishes is off.
+# Once a day, and when started by hand, this fetches the site's page and posts
+# to Discord in three cases: the newest board has grown too old, the page cannot
+# be fetched, or the page gives no usable board day. Because GitHub runs it, a
+# stale site is still reported while the machine that publishes is switched
+# off.
 #
 # The job holds the DISCORD_WEBHOOK_URL secret, and it reads a page that the
 # daily data push can change. That push can change any file in this
@@ -23,10 +24,10 @@ name: Stale check
 
 on:
   schedule:
-    # 04:41 UTC. Each day's board is due by 8:00 pm US Eastern, which is 00:00
-    # UTC in summer and 01:00 UTC in winter, so a board that was on time passes
-    # 26 hours by 02:00 or 03:00 UTC the night after. Not on the hour, when
-    # GitHub delays scheduled runs most, and drops some.
+    # 04:41 UTC. The daily publish aims to have a day's board up by 8:00 pm New
+    # York time (00:00 UTC under daylight time, 01:00 UTC otherwise), and a
+    # board that made it is 26 hours old by 02:00 or 03:00 UTC the night after.
+    # Not on the hour, when GitHub delays scheduled runs most, and drops some.
     - cron: "41 4 * * *"
   workflow_dispatch:
     inputs:
@@ -131,9 +132,9 @@ jobs:
                       self.contents[attributes["name"]].append(attributes.get("content") or "")
 
 
-          def stated(page):
+          def stated(page, now):
               """The board day and the publish time the page states, or None unless it states each once, in the
-              exact shape the data contract gives it."""
+              exact shape the data contract gives it, with a publish time that is not ahead of `now`."""
               tags = Tags()
               try:
                   tags.feed(page.decode("utf-8", errors="replace"))
@@ -143,6 +144,8 @@ jobs:
               board_days, published = (tags.contents[tag] for tag in TAGS)
               if len(board_days) != 1 or len(published) != 1:
                   return None
+              # The patterns hold the shape, ASCII digits and all, which the parsers below do not. The parsers
+              # hold that the shape is a real day and a real time.
               if not (BOARD_DAY.fullmatch(board_days[0]) and PUBLISHED_AT.fullmatch(published[0])):
                   return None
               try:
@@ -150,7 +153,10 @@ jobs:
                   moment = datetime.datetime.strptime(published[0], "%Y-%m-%dT%H:%M:%SZ")
               except ValueError:
                   return None
-              return board_days[0], moment.replace(tzinfo=datetime.timezone.utc)
+              moment = moment.replace(tzinfo=datetime.timezone.utc)
+              if moment > now + AHEAD:  # a page could otherwise state a time that never grows old
+                  return None
+              return board_days[0], moment
 
 
           def kind(error):
@@ -171,10 +177,11 @@ jobs:
               except (OSError, ValueError, http.client.HTTPException) as error:
                   return f"the page could not be read: the request failed with {kind(error)}.", UNREADABLE
               now = datetime.datetime.now(datetime.timezone.utc)
-              board = stated(page)
-              if board is None or board[1] > now + AHEAD:
+              board = stated(page, now)
+              if board is None:
                   return "the page was read, and it states no usable board day.", UNSTATED
               board_day, published = board
+              # A publish time a little ahead of the clock counts as a publish just now.
               age = max(now - published, datetime.timedelta(0)) / datetime.timedelta(hours=1)
               # The age to a tenth of an hour, rounded down, so that it never reads as older than it is.
               how_old = (
