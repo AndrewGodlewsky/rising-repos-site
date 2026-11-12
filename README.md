@@ -20,9 +20,13 @@ addresses serve two different sites:
   project's production branch is `main`, so the upload is a preview deployment.
 - Every page built for the preview carries
   `<meta name="robots" content="noindex">`.
-- Going live is one reviewed change to `.github/workflows/deploy.yml`:
-  `PAGES_BRANCH: preview` becomes `PAGES_BRANCH: main`. The same line drops the
-  `noindex` tag.
+- Going live is one reviewed change. In `.github/workflows/deploy.yml`,
+  `PAGES_BRANCH: preview` becomes `PAGES_BRANCH: main`, and the same line drops
+  the `noindex` tag. The change also points the site eval at the live address:
+  `PREVIEW` in `evals/site/measure.py`, with `evals/site/accepted.json` measured
+  there, and the default `address` in `.github/workflows/site-eval.yml`.
+  Otherwise the eval that follows each deploy waits for a board day the preview
+  no longer shows, and fails.
 
 ## The first page
 
@@ -231,8 +235,8 @@ the pages are already on the preview.
 **What a site change reports.** A pull request's own pages reach the preview
 only when it merges, so:
 
-- Its description gives the numbers before it: the last run on `main` that
-  followed a deploy.
+- The evidence on its tracking issue gives the numbers before it: the last run
+  on `main` that followed a deploy.
 - The run that follows its deploy gives the numbers after it, and the change's
   tracking issue links that run. A number that got worse is fixed in a later
   change, or the tracking issue says why it is right.
@@ -252,7 +256,7 @@ site-data/          the data files RisingRepos publishes, and their schemas
 evals/site/         the site eval, its limits, and its accepted numbers, which .github/workflows/site-eval.yml runs
 tests/              the tests
   fixtures/         the data contract's example, which the tests build from
-.github/workflows/  deploy.yml: the build job and the deploy job
+.github/workflows/  deploy.yml: the build job and the deploy job. site-eval.yml: the site eval
 pyproject.toml      the dependencies, and the date uv resolves them as of
 uv.lock             every package, pinned with its hashes
 .python-version     3.14, for local builds. CI uses the exact version in deploy.yml
