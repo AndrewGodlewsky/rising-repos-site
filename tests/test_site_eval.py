@@ -3,8 +3,9 @@ summary which number failed or could not be measured.
 
 Each test runs the eval with tests/fake_lighthouse.py in Lighthouse's place, so that no test reads the network,
 on reports the test makes up or on tests/fixtures/site-eval/phone-report.json: a report that Lighthouse wrote
-for the preview's first page on 2026-11-12, cut down to the parts the eval reads. What reaches the network in the workflow, main's head and the preview's page,
-is handed to the eval as a function, which each test replaces.
+for the preview's first page on 2026-11-12, cut down to the parts the eval reads. What reaches the network in
+the workflow, main's head and the preview's page, is handed to the eval as a function, which each test
+replaces.
 """
 
 import json
@@ -15,20 +16,19 @@ import subprocess
 import sys
 import tempfile
 import unittest
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from unittest import mock
 
-from helpers import EXAMPLE, ROOT, read_json
-
 from evals.site import measure
+from helpers import EXAMPLE, ROOT, read_json
 
 FAKE = ROOT / "tests" / "fake_lighthouse.py"
 RECORDED = ROOT / "tests" / "fixtures" / "site-eval" / "phone-report.json"
 PREVIEW_PAGE = "https://preview.risingrepos.pages.dev/"
 COMMIT = "a" * 40
 NEWER = "b" * 40
-NOW = datetime(2026, 11, 12, 16, 0, 0, tzinfo=timezone.utc)
+NOW = datetime(2026, 11, 12, 16, 0, 0, tzinfo=UTC)
 CHROME = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
 PROFILES = ("phone", "desktop")
 
@@ -85,7 +85,9 @@ class EvalTest(unittest.TestCase):
         self.calls = self.folder / "calls.jsonl"
         self.plan_file = self.folder / "plan.json"
         self.enterContext(
-            mock.patch.dict(os.environ, {"FAKE_LIGHTHOUSE_CALLS": str(self.calls), "FAKE_LIGHTHOUSE_PLAN": str(self.plan_file)})
+            mock.patch.dict(
+                os.environ, {"FAKE_LIGHTHOUSE_CALLS": str(self.calls), "FAKE_LIGHTHOUSE_PLAN": str(self.plan_file)}
+            )
         )
         self.plan(phone=[report()], desktop=[report(performance=1.0, lcp_ms=600.0)])
         self.pauses = []
@@ -186,7 +188,11 @@ class TheNumbers(EvalTest):
         calls = self.lighthouse_calls()
         for arguments in calls:
             self.assertEqual(arguments[0], PREVIEW_PAGE)
-            for option in ("--output=json", "--only-categories=performance,accessibility", "--no-enable-error-reporting"):
+            for option in (
+                "--output=json",
+                "--only-categories=performance,accessibility",
+                "--no-enable-error-reporting",
+            ):
                 self.assertIn(option, arguments)
         self.assertEqual(["--preset=desktop" in arguments for arguments in calls], [False] * 5 + [True] * 5)
 
@@ -219,9 +225,18 @@ class TheLimits(EvalTest):
         earlier["pages"]["/"]["phone"]["performance"] = {"median": 97, "runs": [97] * 5}
         earlier["commit"] = COMMIT
         outcome = self.evaluate(accepted=earlier, out=self.folder / "again")
-        self.assertEqual(self.row(outcome, "Performance score"), "| Performance score | 98 | 98 to 98 | 97 | at least 90 | pass |")
-        self.assertEqual(self.row(outcome, "Cumulative Layout Shift"), "| Cumulative Layout Shift | 0.000 | 0.000 to 0.000 | 0.000 | at most 0.100 | pass |")
-        self.assertEqual(self.row(outcome, "Total transfer size"), "| Total transfer size | 74,512 bytes | 74,512 bytes to 74,512 bytes | 74,512 bytes | at most 100,000 bytes | pass |")
+        self.assertEqual(
+            self.row(outcome, "Performance score"), "| Performance score | 98 | 98 to 98 | 97 | at least 90 | pass |"
+        )
+        self.assertEqual(
+            self.row(outcome, "Cumulative Layout Shift"),
+            "| Cumulative Layout Shift | 0.000 | 0.000 to 0.000 | 0.000 | at most 0.100 | pass |",
+        )
+        self.assertEqual(
+            self.row(outcome, "Total transfer size"),
+            "| Total transfer size | 74,512 bytes | 74,512 bytes to 74,512 bytes | 74,512 bytes "
+            "| at most 100,000 bytes | pass |",
+        )
         self.assertEqual(self.row(outcome, "Requests", "desktop"), "| Requests | 1 | 1 to 1 | 1 | at most 2 | pass |")
         self.assertIn(f"The accepted numbers were measured on 2026-11-12, at `{COMMIT}`.", outcome.summary)
 
@@ -236,7 +251,10 @@ class TheLimits(EvalTest):
                 "Desktop, `/`: Total transfer size 100,001 bytes is over its limit of 100,000 bytes",
             ],
         )
-        self.assertEqual(self.row(outcome, "Largest Contentful Paint"), "| Largest Contentful Paint | 3.10 s | 3.10 s to 3.10 s | none | at most 2.50 s | **fail** |")
+        self.assertEqual(
+            self.row(outcome, "Largest Contentful Paint"),
+            "| Largest Contentful Paint | 3.10 s | 3.10 s to 3.10 s | none | at most 2.50 s | **fail** |",
+        )
         for problem in outcome.problems:
             self.assertIn(f"- {problem}", outcome.summary)
 
@@ -247,7 +265,9 @@ class TheLimits(EvalTest):
         self.assertEqual(outcome.problems, ["Phone, `/`: Accessibility score 89 is under its limit of 90"])
 
     def test_a_number_at_its_limit_passes(self):
-        self.plan(phone=[report(performance=0.9, accessibility=0.9, lcp_ms=2500.0, cls=0.1, transfer=100_000, requests=2)])
+        self.plan(
+            phone=[report(performance=0.9, accessibility=0.9, lcp_ms=2500.0, cls=0.1, transfer=100_000, requests=2)]
+        )
         outcome = self.evaluate()
         self.assertTrue(outcome.passed, outcome.problems)
 
@@ -257,7 +277,10 @@ class TheLimits(EvalTest):
         self.plan(phone=[report(transfer=9_999_999)], desktop=[report()])
         outcome = self.evaluate(limits=limits)
         self.assertTrue(outcome.passed, outcome.problems)
-        self.assertEqual(self.row(outcome, "Total transfer size"), "| Total transfer size | 9,999,999 bytes | 9,999,999 bytes to 9,999,999 bytes | none | none | no limit |")
+        self.assertEqual(
+            self.row(outcome, "Total transfer size"),
+            "| Total transfer size | 9,999,999 bytes | 9,999,999 bytes to 9,999,999 bytes | none | none | no limit |",
+        )
 
 
 class AMeasurementThatCouldNotBeMade(EvalTest):
@@ -268,7 +291,10 @@ class AMeasurementThatCouldNotBeMade(EvalTest):
         self.assertIn(f"{heading}\n\nCould not be measured: {reason}.", outcome.summary)
 
     def test_a_run_that_lighthouse_reports_an_error_for_fails_the_eval_and_says_which(self):
-        failed = {**report(performance=None, accessibility=None), "runtimeError": {"code": "FAILED_DOCUMENT_REQUEST", "message": "x"}}
+        failed = {
+            **report(performance=None, accessibility=None),
+            "runtimeError": {"code": "FAILED_DOCUMENT_REQUEST", "message": "x"},
+        }
         self.plan(phone=[report(), failed], desktop=[report()])
         outcome = self.evaluate()
         self.assertCouldNotMeasure(outcome, "run 2 of 5: Lighthouse reported FAILED_DOCUMENT_REQUEST")
@@ -329,7 +355,9 @@ class TheAddress(EvalTest):
             with self.subTest(address):
                 outcome = self.evaluate(address=address)
                 self.assertFalse(outcome.passed)
-                self.assertEqual(outcome.problems, ["The address given is not an https address, so nothing was measured"])
+                self.assertEqual(
+                    outcome.problems, ["The address given is not an https address, so nothing was measured"]
+                )
                 self.assertNotIn(address.strip(), outcome.summary)
                 self.assertEqual(self.lighthouse_calls(), [])
 
@@ -340,12 +368,16 @@ class TheAddress(EvalTest):
         self.assertTrue(outcome.passed, outcome.problems)
         self.assertEqual({arguments[0] for arguments in self.lighthouse_calls()}, {"https://risingrepos.com/"})
         self.assertEqual(outcome.results["base"], "https://risingrepos.com")
-        self.assertEqual(self.row(outcome, "Performance score"), "| Performance score | 98 | 98 to 98 | 98 | at least 90 | pass |")
+        self.assertEqual(
+            self.row(outcome, "Performance score"), "| Performance score | 98 | 98 to 98 | 98 | at least 90 | pass |"
+        )
         self.assertIn("Measured `https://risingrepos.com/`, the address given by hand,", outcome.summary)
 
     def test_the_summary_shows_an_address_as_code_so_that_none_of_it_is_read_as_markdown(self):
         outcome = self.evaluate(address="https://example.com/a_b*c*[x](https://example.org)")
-        self.assertIn("Measured `https://example.com/a_b*c*[x](https://example.org)`, the address given by hand,", outcome.summary)
+        self.assertIn(
+            "Measured `https://example.com/a_b*c*[x](https://example.org)`, the address given by hand,", outcome.summary
+        )
         self.assertIn("### `/a_b*c*[x](https://example.org)` on a phone", outcome.summary)
 
 
@@ -359,7 +391,10 @@ class AfterADeploy(EvalTest):
         self.assertTrue(outcome.passed)
         self.assertEqual(outcome.problems, [])
         self.assertIsNone(outcome.results)
-        self.assertIn(f"Not measured. `main` has moved on from `{COMMIT}`, whose deploy this run follows, to `{NEWER}`.", outcome.summary)
+        self.assertIn(
+            f"Not measured. `main` has moved on from `{COMMIT}`, whose deploy this run follows, to `{NEWER}`.",
+            outcome.summary,
+        )
         self.assertEqual(self.lighthouse_calls(), [])
 
     def test_the_numbers_are_not_judged_when_main_moves_on_while_the_preview_is_measured(self):
@@ -374,7 +409,9 @@ class AfterADeploy(EvalTest):
         self.assertTrue(outcome.passed)
         self.assertEqual(outcome.problems, [])
         self.assertIsNone(outcome.results)
-        self.assertIn(f"Not judged. `main` moved on from `{COMMIT}` to `{NEWER}` while the preview was measured", outcome.summary)
+        self.assertIn(
+            f"Not judged. `main` moved on from `{COMMIT}` to `{NEWER}` while the preview was measured", outcome.summary
+        )
 
     def test_the_preview_is_measured_once_it_states_the_commits_newest_board_day(self):
         day, published = newest_board_of_the_example()
@@ -404,7 +441,10 @@ class AfterADeploy(EvalTest):
         self.assertFalse(outcome.passed)
         self.assertEqual(
             outcome.problems,
-            [f"`/` does not state the newest board day of `{COMMIT}`, {day} published at {published}, so nothing was measured"],
+            [
+                f"`/` does not state the newest board day of `{COMMIT}`, {day} published at {published}, "
+                "so nothing was measured"
+            ],
         )
         self.assertEqual(len(self.pauses), measure.SERVED_TRIES - 1)
         self.assertEqual(self.lighthouse_calls(), [])
@@ -416,6 +456,27 @@ class AfterADeploy(EvalTest):
         outcome = self.evaluate(commit=COMMIT, head_of_main=unreadable)
         self.assertFalse(outcome.passed)
         self.assertEqual(outcome.problems, ["The head of main could not be read, so nothing was measured"])
+
+    def test_a_head_of_main_that_cannot_be_read_after_the_measurement_fails_the_eval(self):
+        heads = iter([COMMIT, measure.CouldNotMeasure("the head of main could not be read")])
+
+        def head_of_main():
+            head = next(heads)
+            if isinstance(head, Exception):
+                raise head
+            return head
+
+        outcome = self.evaluate(
+            commit=COMMIT,
+            head_of_main=head_of_main,
+            read_page=lambda address: page_stating(*newest_board_of_the_example()),
+            data=EXAMPLE,
+        )
+        self.assertFalse(outcome.passed)
+        self.assertEqual(
+            outcome.problems,
+            ["The head of main could not be read after the measurement, so the numbers were not judged"],
+        )
 
 
 class TheCommand(EvalTest):
@@ -447,7 +508,10 @@ class TheCommand(EvalTest):
         summary = (self.folder / "summary.md").read_text(encoding="utf-8")
         self.assertTrue(summary.startswith("Earlier steps' summary.\n## Site eval\n"), summary[:200])
         self.assertIn("Phone, `/`: Largest Contentful Paint 60.00 s is over its limit of", summary)
-        self.assertRegex(result.stdout, r"(?m)^::error title=Site eval::Phone, `/`: Largest Contentful Paint 60\.00 s is over its limit of ")
+        self.assertRegex(
+            result.stdout,
+            r"(?m)^::error title=Site eval::Phone, `/`: Largest Contentful Paint 60\.00 s is over its limit of ",
+        )
         results = read_json(self.folder / "out" / "results.json")
         self.assertEqual(results["pages"]["/"]["phone"]["largest_contentful_paint"]["median"], 60.0)
 
@@ -458,7 +522,9 @@ class TheCommand(EvalTest):
         self.assertNotIn("::error", result.stdout)
 
     def test_nothing_lighthouse_prints_reaches_the_jobs_log_where_github_would_read_it_as_a_command(self):
-        self.plan(phone=[{"print": "::warning::text a measured page could put in Lighthouse's output", "report": report()}])
+        self.plan(
+            phone=[{"print": "::warning::text a measured page could put in Lighthouse's output", "report": report()}]
+        )
         result = self.run_command()
         self.assertNotIn("text a measured page could put", result.stdout + result.stderr)
         logs = sorted((self.folder / "out").glob("*.log"))
@@ -468,7 +534,9 @@ class TheCommand(EvalTest):
     def test_an_address_that_is_not_https_fails_the_command_and_measures_nothing(self):
         result = self.run_command(address="http://example.com/")
         self.assertEqual(result.returncode, 1)
-        self.assertIn("::error title=Site eval::The address given is not an https address, so nothing was measured", result.stdout)
+        self.assertIn(
+            "::error title=Site eval::The address given is not an https address, so nothing was measured", result.stdout
+        )
         self.assertEqual(self.lighthouse_calls(), [])
 
 
@@ -490,7 +558,9 @@ class TheEvalFolder(unittest.TestCase):
         accepted = read_json(ROOT / "evals" / "site" / "accepted.json")
         self.assertRegex(accepted["commit"], r"^[0-9a-f]{40}$")
         self.assertRegex(accepted["measured_at"], r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
-        self.assertRegex(accepted["run"], r"^https://github\.com/AndrewGodlewsky/rising-repos-site/actions/runs/\d+/attempts/\d+$")
+        self.assertRegex(
+            accepted["run"], r"^https://github\.com/AndrewGodlewsky/rising-repos-site/actions/runs/\d+/attempts/\d+$"
+        )
         self.assertEqual(accepted["base"], measure.PREVIEW)
         self.assertEqual(set(accepted["pages"]), set(measure.PAGES))
         for page in measure.PAGES:

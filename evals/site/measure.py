@@ -29,7 +29,7 @@ import sys
 import time
 import urllib.request
 from collections.abc import Callable
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import NamedTuple
@@ -44,19 +44,21 @@ PAGES = ("/",)
 
 RUNS = 5
 """Lighthouse runs for each page on each profile. Lighthouse's documentation on variability says that the
-median of five runs is about twice as stable as one run."""
+median of five runs is about twice as stable as one run. The median is always one of the runs' values: were
+the runs ever even in number, it would be the lower of the middle two."""
 
 RUN_TIMEOUT = 180
-"""Seconds one Lighthouse run may take. A run of the first page takes under a minute."""
+"""Seconds one Lighthouse run may take. A run of the first page takes under half a minute."""
 
 SERVED_TRIES = 10
 SERVED_PAUSE = 15
-"""After a deploy, how many times the eval reads the preview, SERVED_PAUSE seconds apart, before it gives up
+"""After a deploy, how many times the eval reads each page, SERVED_PAUSE seconds apart, before it gives up
 waiting for the preview to state the deployed commit's newest board day."""
 
 PROFILES = {"phone": (), "desktop": ("--preset=desktop",)}
 """Lighthouse's own two profiles. With no preset it emulates a mid-range phone on a slow 4G connection, and
-`--preset=desktop` a desktop on a wired one. Both simulate the throttling, which varies least from run to run."""
+`--preset=desktop` a desktop on a wired one. Both simulate the slow CPU and connection from one fast load,
+which removes much of the variation a real network brings."""
 
 OPTIONS = (
     "--output=json",
@@ -76,7 +78,7 @@ nor start a line of the job's log."""
 ERROR_CODE = re.compile(r"[A-Z][A-Z0-9_]*")
 VERSION = re.compile(r"[0-9]+(?:\.[0-9]+){1,3}")
 CHROME = re.compile(r"Chrome/([0-9]+)\.")
-"""Chrome's major version, from the user agent in a report. Chrome reports only its major version there."""
+"""Chrome's major version, from the user agent in a report, which holds no other part of it."""
 COMMIT = re.compile(r"[0-9a-f]{40}")
 
 
@@ -90,29 +92,35 @@ class Measure(NamedTuple):
     read: Callable[[dict], int | float]
     show: Callable[[int | float], str]
 
+    def within(self, value: int | float, limit: int | float) -> bool:
+        return value >= limit if self.higher_is_better else value <= limit
 
-def _score(category: str) -> Callable[[dict], int]:
-    return lambda report: round(report["categories"][category]["score"] * 100)
+
+def _score(report: dict, category: str) -> int:
+    return round(report["categories"][category]["score"] * 100)
 
 
-def _audit(audit: str) -> Callable[[dict], float]:
-    return lambda report: report["audits"][audit]["numericValue"]
+def _audit(report: dict, audit: str) -> float:
+    return report["audits"][audit]["numericValue"]
 
 
 MEASURES = {
-    "performance": Measure("Performance score", True, _score("performance"), str),
-    "accessibility": Measure("Accessibility score", True, _score("accessibility"), str),
+    "performance": Measure("Performance score", True, lambda report: _score(report, "performance"), str),
+    "accessibility": Measure("Accessibility score", True, lambda report: _score(report, "accessibility"), str),
     "largest_contentful_paint": Measure(
         "Largest Contentful Paint",
         False,
-        lambda report: round(_audit("largest-contentful-paint")(report) / 1000, 2),
+        lambda report: round(_audit(report, "largest-contentful-paint") / 1000, 2),
         lambda seconds: f"{seconds:.2f} s",
     ),
     "cumulative_layout_shift": Measure(
-        "Cumulative Layout Shift", False, lambda report: round(_audit("cumulative-layout-shift")(report), 3), "{:.3f}".format
+        "Cumulative Layout Shift",
+        False,
+        lambda report: round(_audit(report, "cumulative-layout-shift"), 3),
+        "{:.3f}".format,
     ),
     "transfer_size": Measure(
-        "Total transfer size", False, lambda report: round(_audit("total-byte-weight")(report)), "{:,} bytes".format
+        "Total transfer size", False, lambda report: round(_audit(report, "total-byte-weight")), "{:,} bytes".format
     ),
     "requests": Measure(
         "Requests", False, lambda report: len(report["audits"]["network-requests"]["details"]["items"]), str
@@ -130,6 +138,15 @@ class Outcome(NamedTuple):
     results: dict | None
 
 
+class Measured(NamedTuple):
+    """One page measured on one profile: each number's median and its value in every run, and the versions of
+    the tools that measured it."""
+
+    numbers: dict[str, dict]
+    lighthouse: str | None
+    chrome: str | None
+
+
 def evaluate(
     *,
     lighthouse: list[str],
@@ -143,7 +160,7 @@ def evaluate(
     head_of_main: Callable[[], str],
     read_page: Callable[[str], str],
     pause: Callable[[float], None] = time.sleep,
-    now: Callable[[], datetime] = lambda: datetime.now(timezone.utc),
+    now: Callable[[], datetime] = lambda: datetime.now(UTC),
 ) -> Outcome:
     """Measure each page, judge its numbers, and say what was found.
 
@@ -153,91 +170,60 @@ def evaluate(
     """
     try:
         pages = _pages(address)
-    except CouldNotMeasure as error:
-        return _not_measured(str(error))
-    if commit:
-        try:
+        if commit:
             head = head_of_main()
             if head != commit:
-                return Outcome(
-                    True,
-                    f"## Site eval\n\nNot measured. `main` has moved on from `{commit}`, whose deploy this run "
-                    f"follows, to `{head}`. The run that follows the deploy of `{head}` measures the preview.\n",
-                    [],
-                    None,
+                return _superseded(
+                    f"Not measured. `main` has moved on from `{commit}`, whose deploy this run follows, to `{head}`. "
+                    f"The run that follows the deploy of `{head}` measures the preview."
                 )
             stamp = _newest_board(data)
             for path, page in pages:
                 _wait_until_served(path, page, stamp, commit, read_page, pause)
-        except CouldNotMeasure as error:
-            return _not_measured(str(error))
+    except CouldNotMeasure as error:
+        return _failed(f"{error}, so nothing was measured")
 
     out.mkdir(parents=True, exist_ok=True)
-    measured = {}
-    tools = {}
-    for number, (path, page) in enumerate(pages, start=1):
-        for profile in PROFILES:
-            measured[path, profile] = _measure(lighthouse, page, profile, out / f"{number}-{profile}", tools)
-
+    measured = {
+        (path, profile): _measure(lighthouse, page, profile, out / f"{number}-{profile}")
+        for number, (path, page) in enumerate(pages, start=1)
+        for profile in PROFILES
+    }
     if commit:
         try:
             head = head_of_main()
         except CouldNotMeasure as error:
-            return _not_measured(str(error))
+            return _failed(f"{error} after the measurement, so the numbers were not judged")
         if head != commit:
-            return Outcome(
-                True,
-                f"## Site eval\n\nNot judged. `main` moved on from `{commit}` to `{head}` while the preview was "
-                f"measured, so the numbers may be of either commit's pages. The run that follows the deploy of "
-                f"`{head}` measures the preview again.\n",
-                [],
-                None,
+            return _superseded(
+                f"Not judged. `main` moved on from `{commit}` to `{head}` while the preview was measured, so the "
+                f"numbers may be of either commit's pages. The run that follows the deploy of `{head}` measures the "
+                f"preview again."
             )
 
+    made = [found for found in measured.values() if isinstance(found, Measured)]
     results = {
         "commit": commit or None,
         "measured_at": now().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "run": run,
-        "lighthouse": tools.get("lighthouse"),
-        "chrome": tools.get("chrome"),
+        "lighthouse": made[0].lighthouse if made else None,
+        "chrome": made[0].chrome if made else None,
         "runs": RUNS,
         "base": _base(pages[0][1]),
         "pages": {},
     }
-    problems = []
-    sections = []
+    sections, problems = [], []
     for (path, profile), found in measured.items():
-        where = f"{profile.capitalize()}, `{path}`"
-        heading = f"### `{path}` on {'a phone' if profile == 'phone' else 'a desktop'}"
-        if isinstance(found, CouldNotMeasure):
-            results["pages"].setdefault(path, {})[profile] = {"failure": str(found)}
-            problems.append(f"{where}: could not be measured: {found}")
-            sections.append(f"{heading}\n\nCould not be measured: {found}.\n")
-            continue
-        results["pages"].setdefault(path, {})[profile] = found
-        rows = ["| Measure | This run | Runs | Accepted | Limit | Result |", "| --- | --- | --- | --- | --- | --- |"]
-        for key, measure in MEASURES.items():
-            value = found[key]["median"]
-            runs = found[key]["runs"]
-            limit = limits[profile][key]["limit"]
-            was = accepted.get("pages", {}).get(path, {}).get(profile, {}).get(key, {}).get("median")
-            if limit is None:
-                result = "no limit"
-            elif value >= limit if measure.higher_is_better else value <= limit:
-                result = "pass"
-            else:
-                result = "**fail**"
-                side = "under" if measure.higher_is_better else "over"
-                problems.append(f"{where}: {measure.name} {measure.show(value)} is {side} its limit of {measure.show(limit)}")
-            rows.append(
-                f"| {measure.name} | {measure.show(value)} | {measure.show(min(runs))} to {measure.show(max(runs))} "
-                f"| {'none' if was is None else measure.show(was)} "
-                f"| {'none' if limit is None else ('at least ' if measure.higher_is_better else 'at most ') + measure.show(limit)} "
-                f"| {result} |"
-            )
-        sections.append(heading + "\n\n" + "\n".join(rows) + "\n")
-
-    return Outcome(not problems, _summary(pages, commit, address, results, accepted, sections, problems), problems, results)
+        was = accepted.get("pages", {}).get(path, {}).get(profile, {})
+        section, found_problems = _section(path, profile, found, limits[profile], was)
+        sections.append(section)
+        problems += found_problems
+        numbers = found.numbers if isinstance(found, Measured) else {"failure": str(found)}
+        results["pages"].setdefault(path, {})[profile] = numbers
+    lines = ["## Site eval", "", _opening(pages, commit, address, results, accepted), "", *sections]
+    if problems:
+        lines += ["**Failed:**", "", *(f"- {problem}" for problem in problems), ""]
+    return Outcome(not problems, "\n".join(lines), problems, results)
 
 
 def _pages(address: str) -> list[tuple[str, str]]:
@@ -255,8 +241,15 @@ def _base(address: str) -> str:
     return f"{parts.scheme}://{parts.netloc}"
 
 
-def _not_measured(reason: str) -> Outcome:
-    problem = f"{reason[0].upper()}{reason[1:]}, so nothing was measured"
+def _superseded(text: str) -> Outcome:
+    """Nothing judged, because a newer deploy's run measures the preview instead. That fails nothing."""
+    return Outcome(True, f"## Site eval\n\n{text}\n", [], None)
+
+
+def _failed(problem: str) -> Outcome:
+    """Nothing judged, because the eval could not make its measurement or tell whose pages it measured. That
+    fails the eval."""
+    problem = problem[0].upper() + problem[1:]
     return Outcome(False, f"## Site eval\n\n**Failed:** {problem}.\n", [problem], None)
 
 
@@ -272,6 +265,8 @@ def _newest_board(data: Path) -> tuple[str, str]:
 
 
 class _Stamp(HTMLParser):
+    """Reads the board day and the publish time that a page states in its <meta> tags."""
+
     def __init__(self):
         super().__init__()
         self.meta = {}
@@ -289,7 +284,15 @@ def _states(html: str) -> tuple[str | None, str | None]:
     return stamp.meta.get("rr:board-date"), stamp.meta.get("rr:published-at")
 
 
-def _wait_until_served(path, page, stamp, commit, read_page, pause) -> None:
+def _wait_until_served(
+    path: str,
+    page: str,
+    stamp: tuple[str, str],
+    commit: str,
+    read_page: Callable[[str], str],
+    pause: Callable[[float], None],
+) -> None:
+    """Return once `page` states the board day and publish time in `stamp`, or fail after SERVED_TRIES reads."""
     for attempt in range(1, SERVED_TRIES + 1):
         try:
             if _states(read_page(page)) == stamp:
@@ -302,9 +305,8 @@ def _wait_until_served(path, page, stamp, commit, read_page, pause) -> None:
     raise CouldNotMeasure(f"`{path}` does not state the newest board day of `{commit}`, {day} published at {published}")
 
 
-def _measure(lighthouse: list[str], page: str, profile: str, stem: Path, tools: dict) -> dict | CouldNotMeasure:
-    """The median and each run's value of every number, for one page on one profile, or why they could not be
-    measured. The first run that fails ends the measurement."""
+def _measure(lighthouse: list[str], page: str, profile: str, stem: Path) -> Measured | CouldNotMeasure:
+    """`page` measured RUNS times on `profile`, or why it could not be. The first run that fails ends it."""
     runs = []
     for run in range(1, RUNS + 1):
         try:
@@ -312,14 +314,16 @@ def _measure(lighthouse: list[str], page: str, profile: str, stem: Path, tools: 
             runs.append(_numbers(report))
         except CouldNotMeasure as error:
             return CouldNotMeasure(f"run {run} of {RUNS}: {error}")
-        version = str(report.get("lighthouseVersion"))
-        chrome = CHROME.search(str(report.get("environment", {}).get("hostUserAgent")))
-        tools.setdefault("lighthouse", version if VERSION.fullmatch(version) else None)
-        tools.setdefault("chrome", chrome.group(1) if chrome else None)
-    return {
-        key: {"median": statistics.median_low([numbers[key] for numbers in runs]), "runs": [numbers[key] for numbers in runs]}
-        for key in MEASURES
-    }
+    values = {key: [numbers[key] for numbers in runs] for key in MEASURES}
+    # Every run uses the same Lighthouse and the same Chrome, so the last report names them for all.
+    version = str(report.get("lighthouseVersion"))
+    environment = report.get("environment")
+    chrome = CHROME.search(str(environment.get("hostUserAgent"))) if isinstance(environment, dict) else None
+    return Measured(
+        {key: {"median": statistics.median_low(each), "runs": each} for key, each in values.items()},
+        version if VERSION.fullmatch(version) else None,
+        chrome.group(1) if chrome else None,
+    )
 
 
 def _run_lighthouse(lighthouse: list[str], page: str, profile: str, report_path: Path, log_path: Path) -> dict:
@@ -331,7 +335,9 @@ def _run_lighthouse(lighthouse: list[str], page: str, profile: str, report_path:
     arguments = [*lighthouse, page, f"--output-path={report_path}", *OPTIONS, *PROFILES[profile]]
     with log_path.open("wb") as log:
         try:
-            done = subprocess.run(arguments, stdout=log, stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL, timeout=RUN_TIMEOUT)
+            done = subprocess.run(
+                arguments, stdout=log, stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL, timeout=RUN_TIMEOUT
+            )
         except subprocess.TimeoutExpired:
             raise CouldNotMeasure(f"Lighthouse did not finish within {RUN_TIMEOUT} seconds") from None
         except OSError:
@@ -361,7 +367,45 @@ def _numbers(report: dict) -> dict[str, int | float]:
     return numbers
 
 
-def _summary(pages, commit, address, results, accepted, sections, problems) -> str:
+def _section(
+    path: str, profile: str, found: Measured | CouldNotMeasure, limits: dict, was: dict
+) -> tuple[str, list[str]]:
+    """The summary's section for one page on one profile, and a problem for each number outside its limit.
+    `limits` are the profile's, and `was` the page's accepted numbers on the profile."""
+    where = f"{profile.capitalize()}, `{path}`"
+    heading = f"### `{path}` on a {profile}"
+    if isinstance(found, CouldNotMeasure):
+        return f"{heading}\n\nCould not be measured: {found}.\n", [f"{where}: could not be measured: {found}"]
+    rows = ["| Measure | This run | Runs | Accepted | Limit | Result |", "| --- | --- | --- | --- | --- | --- |"]
+    problems = []
+    for key, measure in MEASURES.items():
+        value, runs = found.numbers[key]["median"], found.numbers[key]["runs"]
+        accepted = was.get(key, {}).get("median")
+        limit = limits[key]["limit"]
+        bound = (
+            "none"
+            if limit is None
+            else f"{'at least' if measure.higher_is_better else 'at most'} {measure.show(limit)}"
+        )
+        if limit is None:
+            result = "no limit"
+        elif measure.within(value, limit):
+            result = "pass"
+        else:
+            result = "**fail**"
+            side = "under" if measure.higher_is_better else "over"
+            problems.append(
+                f"{where}: {measure.name} {measure.show(value)} is {side} its limit of {measure.show(limit)}"
+            )
+        rows.append(
+            f"| {measure.name} | {measure.show(value)} | {measure.show(min(runs))} to {measure.show(max(runs))} "
+            f"| {'none' if accepted is None else measure.show(accepted)} | {bound} | {result} |"
+        )
+    return heading + "\n\n" + "\n".join(rows) + "\n", problems
+
+
+def _opening(pages: list[tuple[str, str]], commit: str, address: str, results: dict, accepted: dict) -> str:
+    """The summary's first paragraph: what was measured, with what, and against which accepted numbers."""
     where = ", ".join(f"`{page}`" for _, page in pages)
     if commit:
         what = f"Measured {where} after the deploy of `{commit}`,"
@@ -369,24 +413,15 @@ def _summary(pages, commit, address, results, accepted, sections, problems) -> s
         what = f"Measured {where}, the address given by hand,"
     else:
         what = f"Measured the preview as it stands, {where},"
-    tools = f"with Lighthouse {results['lighthouse'] or '(version unknown)'} in Chrome {results['chrome'] or '(version unknown)'}."
+    lighthouse, chrome = results["lighthouse"] or "(version unknown)", results["chrome"] or "(version unknown)"
+    tools = f"with Lighthouse {lighthouse} in Chrome {chrome}."
     if not commit and not address:
         tools += " A pull request's own pages reach the preview only once it merges."
     if COMMIT.fullmatch(str(accepted.get("commit"))) and accepted.get("measured_at"):
         against = f"The accepted numbers were measured on {accepted['measured_at'][:10]}, at `{accepted['commit']}`."
     else:
         against = "No numbers are accepted yet."
-    lines = [
-        "## Site eval",
-        "",
-        f"{what} {tools} Each number is the median of {RUNS} runs. {against}",
-        "",
-        *sections,
-    ]
-    if problems:
-        lines += [f"**Failed:** {len(problems)} {'number' if len(problems) == 1 else 'numbers'}.", ""]
-        lines += [f"- {problem}" for problem in problems] + [""]
-    return "\n".join(lines)
+    return f"{what} {tools} Each number is the median of {RUNS} runs. {against}"
 
 
 def head_of_main() -> str:
@@ -417,7 +452,9 @@ def read_page(address: str) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(prog="python evals/site/measure.py", description=__doc__.split("\n\n")[0])
-    parser.add_argument("--out", type=Path, required=True, help="the folder to write results.json, the reports, and the logs into")
+    parser.add_argument(
+        "--out", type=Path, required=True, help="the folder to write results.json, the reports, and the logs into"
+    )
     options = parser.parse_args()
 
     run = None
@@ -441,7 +478,9 @@ def main() -> int:
 
     if outcome.results is not None:
         options.out.mkdir(parents=True, exist_ok=True)
-        (options.out / "results.json").write_text(json.dumps(outcome.results, indent=2) + "\n", encoding="utf-8", newline="\n")
+        (options.out / "results.json").write_text(
+            json.dumps(outcome.results, indent=2) + "\n", encoding="utf-8", newline="\n"
+        )
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8", newline="\n") as summary:
             summary.write(outcome.summary)

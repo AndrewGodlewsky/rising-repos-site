@@ -40,7 +40,9 @@ def main(arguments: list[str]) -> int:
     if "print" in answer:
         print(answer["print"])
     if "report" in answer:
-        (output,) = [argument.removeprefix("--output-path=") for argument in arguments if argument.startswith("--output-path=")]
+        (output,) = [
+            argument.removeprefix("--output-path=") for argument in arguments if argument.startswith("--output-path=")
+        ]
         Path(output).write_text(json.dumps(answer["report"]), encoding="utf-8")
     return answer.get("exit", 0)
 

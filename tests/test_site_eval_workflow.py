@@ -47,7 +47,9 @@ class TheSiteEvalWorkflow(unittest.TestCase):
             self.workflow["on"]["workflow_run"],
             {"workflows": [self.deploy["name"]], "types": ["completed"], "branches": ["main"]},
         )
-        self.assertEqual(self.workflow["on"]["pull_request"], {"paths": [".github/workflows/site-eval.yml", "evals/site/**"]})
+        self.assertEqual(
+            self.workflow["on"]["pull_request"], {"paths": [".github/workflows/site-eval.yml", "evals/site/**"]}
+        )
 
     def test_after_a_deploy_it_measures_only_a_push_to_main_whose_run_succeeded(self):
         self.assertEqual(
@@ -57,7 +59,9 @@ class TheSiteEvalWorkflow(unittest.TestCase):
         )
         # The deployed commit is checked out, so the eval reads that commit's newest board day, and is told which
         # commit it is, so it measures only while that commit is the head of main.
-        self.assertEqual(step_using(self.job, "actions/checkout")["with"]["ref"], "${{ github.event.workflow_run.head_sha }}")
+        self.assertEqual(
+            step_using(self.job, "actions/checkout")["with"]["ref"], "${{ github.event.workflow_run.head_sha }}"
+        )
         self.assertEqual(self.measure["env"]["SITE_EVAL_COMMIT"], "${{ github.event.workflow_run.head_sha }}")
 
     def test_it_holds_no_secret_and_cannot_reach_the_deploy_environment(self):
@@ -85,7 +89,8 @@ class TheSiteEvalWorkflow(unittest.TestCase):
     def test_lighthouse_is_pinned_to_one_version_and_none_of_its_packages_runs_an_install_script(self):
         self.assertRegex(
             self.measure["env"]["SITE_EVAL_LIGHTHOUSE"],
-            r"^npm exec --yes --ignore-scripts --before=\d{4}-\d{2}-\d{2} --package=lighthouse@\d+\.\d+\.\d+ -- lighthouse$",
+            r"^npm exec --yes --ignore-scripts --before=\d{4}-\d{2}-\d{2} "
+            r"--package=lighthouse@\d+\.\d+\.\d+ -- lighthouse$",
         )
 
     def test_the_eval_runs_on_the_python_and_the_uv_the_build_job_uses(self):
@@ -93,7 +98,9 @@ class TheSiteEvalWorkflow(unittest.TestCase):
         self.assertEqual(self.job["runs-on"], build["runs-on"])
         self.assertEqual(self.job["env"]["UV_PYTHON"], build["env"]["UV_PYTHON"])
         self.assertEqual(step_using(self.job, "astral-sh/setup-uv"), step_using(build, "astral-sh/setup-uv"))
-        self.assertEqual(self.measure["run"], 'uv run --no-project python evals/site/measure.py --out "$RUNNER_TEMP/site-eval"\n')
+        self.assertEqual(
+            self.measure["run"], 'uv run --no-project python evals/site/measure.py --out "$RUNNER_TEMP/site-eval"\n'
+        )
 
     def test_it_keeps_each_runs_numbers_and_reports_as_an_artifact_even_when_it_fails(self):
         upload = step_using(self.job, "actions/upload-artifact")
@@ -105,7 +112,8 @@ class TheSiteEvalWorkflow(unittest.TestCase):
         self.assertEqual(
             self.job["concurrency"],
             {
-                "group": "${{ github.event_name == 'workflow_run' && 'site-eval-preview' || format('site-eval-{0}', github.run_id) }}",
+                "group": "${{ github.event_name == 'workflow_run' && 'site-eval-preview' "
+                "|| format('site-eval-{0}', github.run_id) }}",
                 "cancel-in-progress": True,
             },
         )
