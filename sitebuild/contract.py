@@ -5,7 +5,9 @@ schema that is shipped with it, in site-data/contract/, before anything is built
 """
 
 import json
+from collections.abc import Callable, Iterator
 from pathlib import Path
+from typing import NoReturn
 
 import fastjsonschema
 
@@ -28,7 +30,8 @@ def latest_board(data: Path) -> dict:
     return board
 
 
-def _read(path: Path, validate) -> dict:
+def _read(path: Path, validate: Callable[[object], object]) -> dict:
+    """The data file at `path`, once it matches its schema and is in a version the pages read."""
     value = _load(path)
     try:
         validate(value)
@@ -43,7 +46,7 @@ def _read(path: Path, validate) -> dict:
     return value
 
 
-def _validator(path: Path):
+def _validator(path: Path) -> Callable[[object], object]:
     """Compile the schema at `path`, which may refer only within itself.
 
     fastjsonschema turns a schema into Python and fetches any remote document a `$ref` resolves to. The
@@ -61,7 +64,7 @@ def _validator(path: Path):
         raise DataError(f"{path} is not a schema the build can use: {error}") from error
 
 
-def _refs(node):
+def _refs(node: object) -> Iterator[object]:
     """Every `$ref` in a schema, wherever it is."""
     if isinstance(node, dict):
         for key, value in node.items():
@@ -73,7 +76,7 @@ def _refs(node):
             yield from _refs(item)
 
 
-def _refuse(address: str):
+def _refuse(address: str) -> NoReturn:
     raise fastjsonschema.JsonSchemaDefinitionException(f"it refers to {address}, which is outside itself")
 
 
@@ -91,7 +94,7 @@ class _EveryScheme(dict):
 _NO_REMOTE_DOCUMENTS = _EveryScheme()
 
 
-def _load(path: Path):
+def _load(path: Path) -> object:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
     except (OSError, ValueError) as error:

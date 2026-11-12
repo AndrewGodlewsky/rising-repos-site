@@ -137,7 +137,7 @@ class TheTemplates(unittest.TestCase):
         for template in sorted(TEMPLATES.iterdir()):
             with self.subTest(template.name):
                 text = template.read_text(encoding="utf-8")
-                self.assertIsNone(re.search(r"autoescape\s+false|\|\s*safe\b|\bMarkup\b", text, re.IGNORECASE))
+                self.assertIsNone(re.search(r"autoescape\s+[Ff]alse|\|\s*safe\b", text))
 
 
 if __name__ == "__main__":

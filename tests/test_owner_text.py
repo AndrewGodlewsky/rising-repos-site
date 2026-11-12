@@ -29,8 +29,8 @@ class OwnerWrittenText(BuildTest):
         for path, page in self.build_pages().items():
             with self.subTest(path):
                 self.assertEqual(page.links(), expected)
-                addresses = [value for element in page.all() for value in element.attrs.values() if value]
-                self.assertFalse([value for value in addresses if "javascript:" in value.lower()])
+                values = [value for element in page.all() for value in element.attrs.values() if value]
+                self.assertEqual([value for value in values if "javascript:" in value.lower()], [])
 
     def test_text_beyond_ascii_is_shown_as_the_file_has_it(self):
         (row,) = [row for row in self.rows if row["full_name"] == "rising-repos-example/text-beyond-ascii"]

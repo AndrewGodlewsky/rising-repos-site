@@ -2,6 +2,7 @@
 its size limit."""
 
 import re
+import tempfile
 import unittest
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -99,18 +100,6 @@ class PageWeight(BuildTest):
             with self.subTest(path):
                 self.assertEqual([address for address in requests(page) if not on_this_site(address)], [])
 
-    def test_the_check_for_requests_finds_an_address_on_another_site(self):
-        page = Page(
-            '<html><head><link rel="preconnect" href="https://fonts.example">'
-            "<style>@font-face { src: url(https://fonts.example/a.woff2) } @import 'https://cdn.example/x.css';</style>"
-            '</head><body><img srcset="https://img.example/a.png 2x, b.png 1x"><a href="https://github.com/o/n">o/n</a>'
-            "</body></html>"
-        )
-        self.assertEqual(
-            [address for address in requests(page) if not on_this_site(address)],
-            ["https://fonts.example", "https://fonts.example/a.woff2", "https://cdn.example/x.css", "https://img.example/a.png"],
-        )
-
     def test_each_page_of_the_example_is_within_the_size_limit(self):
         for path, page in self.build_pages().items():
             with self.subTest(path):
@@ -123,6 +112,33 @@ class PageWeight(BuildTest):
             with self.subTest(path):
                 self.assertEqual(len(page.rows()), LARGEST_BOARD)
                 self.assertLessEqual(page_weight(self.out, path, page), SIZE_LIMIT)
+
+
+class TheChecks(unittest.TestCase):
+    """The two checks above, on pages written to break them, since the built pages give them nothing to find."""
+
+    def test_the_check_for_requests_finds_each_address_on_another_site_and_no_link(self):
+        page = Page(
+            '<html><head><link rel="preconnect" href="https://fonts.example">'
+            "<style>@font-face { src: url(https://fonts.example/a.woff2) } @import 'https://cdn.example/x.css';</style>"
+            '</head><body><img srcset="https://img.example/a.png 2x, b.png 1x"><a href="https://github.com/o/n">o/n</a>'
+            "</body></html>"
+        )
+        self.assertEqual(
+            [address for address in requests(page) if not on_this_site(address)],
+            ["https://fonts.example", "https://fonts.example/a.woff2", "https://cdn.example/x.css", "https://img.example/a.png"],
+        )
+
+    def test_the_size_counts_each_file_on_this_site_that_a_page_loads(self):
+        out = Path(self.enterContext(tempfile.TemporaryDirectory()))
+        (out / "chart").mkdir()
+        (out / "site.css").write_bytes(b"a" * 100)
+        (out / "chart" / "chart.css").write_bytes(b"b" * 50)
+        html = (
+            '<html><head><link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="chart.css">'
+            '<link rel="icon" href="data:,"></head><body></body></html>'
+        )
+        self.assertEqual(page_weight(out, "chart/index.html", Page(html)), len(html) + 150)
 
 
 if __name__ == "__main__":

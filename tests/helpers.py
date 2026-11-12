@@ -123,15 +123,12 @@ class Element:
         return (self.attrs.get("class") or "").split()
 
 
-class Page(HTMLParser):
-    """A built page, read into a tree of elements."""
+class _TreeBuilder(HTMLParser):
+    """Reads HTML into a tree of elements. An end tag closes every element left open inside its own."""
 
-    def __init__(self, html: str):
+    def __init__(self):
         super().__init__(convert_charrefs=True)
-        self.html = html
         self.document = self._open = Element("#document", {}, None)
-        self.feed(html)
-        self.close()
 
     def handle_starttag(self, tag, attrs):
         element = Element(tag, dict(attrs), self._open)
@@ -151,6 +148,17 @@ class Page(HTMLParser):
 
     def handle_data(self, data):
         self._open.children.append(data)
+
+
+class Page:
+    """A built page, read into a tree of elements."""
+
+    def __init__(self, html: str):
+        self.html = html
+        builder = _TreeBuilder()
+        builder.feed(html)
+        builder.close()
+        self.document = builder.document
 
     def all(self, tag: str | None = None) -> list[Element]:
         return self.document.all(tag)
