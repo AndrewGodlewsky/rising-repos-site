@@ -209,6 +209,38 @@ It refuses an output folder that already holds files, so remove `dist` before
 building again. The local server answers this machine only, and stops with
 Ctrl+C.
 
+## The site eval
+
+After each deploy to the preview, `.github/workflows/site-eval.yml` measures the
+first page with Lighthouse, five times on a phone profile and five on a desktop
+profile: its performance and accessibility scores, its Largest Contentful Paint,
+its Cumulative Layout Shift, its total transfer size, and how many requests it
+makes. It can also be started by hand for any https address.
+[evals/site/README.md](evals/site/README.md) says how it measures, what each
+number means, and how its limits were set.
+
+**Reading the numbers.** A run's summary has a table for each page on each
+profile. Each number is the median of the five runs, with the lowest and the
+highest of them beside it, then the accepted number from
+`evals/site/accepted.json` and the limit from `evals/site/limits.json`. A number
+outside its limit, or one that could not be measured, fails the job and is
+listed under the tables. The job reports and gates nothing: the deploy has
+already happened.
+
+**How a site change reports them.** A pull request's own pages reach the preview
+only when it merges, so:
+
+- Its description gives the numbers before it: the last run on `main` that
+  followed a deploy.
+- The run that follows its deploy gives the numbers after it, and the change's
+  tracking issue links that run. A number that got worse is fixed in a later
+  change, or the tracking issue says why it is right.
+- A change that moves the numbers on purpose, such as a new design or a larger
+  board, replaces `evals/site/accepted.json`, and a limit where one no longer
+  fits, in a pull request that says why.
+- A change to the eval itself is measured on its own pull request, against the
+  preview as it stands.
+
 ## Layout
 
 ```text
@@ -216,6 +248,7 @@ sitebuild/          the generator: python -m sitebuild <folder> [--noindex] [--d
   contract.py       reads the data files and checks each against its schema
   templates/        Jinja2 templates and the stylesheets they include, with autoescaping on for every one
 site-data/          the data files RisingRepos publishes, and their schemas
+evals/site/         the site eval, its limits, and its accepted numbers, which .github/workflows/site-eval.yml runs
 tests/              the tests
   fixtures/         the data contract's example, which the tests build from
 .github/workflows/  deploy.yml: the build job and the deploy job

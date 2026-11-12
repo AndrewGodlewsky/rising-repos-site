@@ -1,8 +1,9 @@
 """The site eval turns Lighthouse's reports into numbers, judges each against its limit, and says in the job's
 summary which number failed or could not be measured.
 
-Each test runs the eval with tests/fake_lighthouse.py in Lighthouse's place, on reports the test makes up, so
-that no test reads the network. What reaches the network in the workflow, main's head and the preview's page,
+Each test runs the eval with tests/fake_lighthouse.py in Lighthouse's place, so that no test reads the network,
+on reports the test makes up or on tests/fixtures/site-eval/phone-report.json: a report that Lighthouse wrote
+for the preview's first page on 2026-11-12, cut down to the parts the eval reads. What reaches the network in the workflow, main's head and the preview's page,
 is handed to the eval as a function, which each test replaces.
 """
 
@@ -23,11 +24,12 @@ from helpers import EXAMPLE, ROOT, read_json
 from evals.site import measure
 
 FAKE = ROOT / "tests" / "fake_lighthouse.py"
+RECORDED = ROOT / "tests" / "fixtures" / "site-eval" / "phone-report.json"
 PREVIEW_PAGE = "https://preview.risingrepos.pages.dev/"
 COMMIT = "a" * 40
 NEWER = "b" * 40
 NOW = datetime(2026, 11, 12, 16, 0, 0, tzinfo=timezone.utc)
-CHROME = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.79 Safari/537.36"
+CHROME = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
 PROFILES = ("phone", "desktop")
 
 LIMITS = {
@@ -152,6 +154,21 @@ class TheNumbers(EvalTest):
             },
         )
 
+    def test_a_report_lighthouse_wrote_for_the_preview_gives_its_numbers(self):
+        self.plan(phone=[read_json(RECORDED)], desktop=[report()])
+        phone = self.evaluate().results["pages"]["/"]["phone"]
+        self.assertEqual(
+            {key: value["median"] for key, value in phone.items()},
+            {
+                "performance": 93,
+                "accessibility": 100,
+                "largest_contentful_paint": 1.54,
+                "cumulative_layout_shift": 0,
+                "transfer_size": 74_384,
+                "requests": 1,
+            },
+        )
+
     def test_each_number_is_the_median_of_five_runs_and_the_summary_gives_their_range(self):
         self.plan(phone=[report(lcp_ms=ms) for ms in (1500, 1100, 1300, 1900, 1200)])
         outcome = self.evaluate()
@@ -189,7 +206,7 @@ class TheNumbers(EvalTest):
                 "measured_at": "2026-11-12T16:00:00Z",
                 "run": "https://github.com/AndrewGodlewsky/rising-repos-site/actions/runs/1",
                 "lighthouse": "13.5.0",
-                "chrome": "156.0.8078.79",
+                "chrome": "156",
                 "runs": 5,
                 "base": "https://preview.risingrepos.pages.dev",
             },
@@ -473,7 +490,7 @@ class TheEvalFolder(unittest.TestCase):
         accepted = read_json(ROOT / "evals" / "site" / "accepted.json")
         self.assertRegex(accepted["commit"], r"^[0-9a-f]{40}$")
         self.assertRegex(accepted["measured_at"], r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
-        self.assertRegex(accepted["run"], r"^https://github\.com/AndrewGodlewsky/rising-repos-site/actions/runs/\d+$")
+        self.assertRegex(accepted["run"], r"^https://github\.com/AndrewGodlewsky/rising-repos-site/actions/runs/\d+/attempts/\d+$")
         self.assertEqual(accepted["base"], measure.PREVIEW)
         self.assertEqual(set(accepted["pages"]), set(measure.PAGES))
         for page in measure.PAGES:

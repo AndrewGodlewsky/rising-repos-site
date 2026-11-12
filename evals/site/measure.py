@@ -75,7 +75,8 @@ nor start a line of the job's log."""
 
 ERROR_CODE = re.compile(r"[A-Z][A-Z0-9_]*")
 VERSION = re.compile(r"[0-9]+(?:\.[0-9]+){1,3}")
-CHROME = re.compile(r"Chrome/([0-9]+(?:\.[0-9]+){3})")
+CHROME = re.compile(r"Chrome/([0-9]+)\.")
+"""Chrome's major version, from the user agent in a report. Chrome reports only its major version there."""
 COMMIT = re.compile(r"[0-9a-f]{40}")
 
 
@@ -421,7 +422,10 @@ def main() -> int:
 
     run = None
     if os.environ.get("GITHUB_RUN_ID"):
-        run = f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
+        run = (
+            f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/actions/runs/"
+            f"{os.environ['GITHUB_RUN_ID']}/attempts/{os.environ['GITHUB_RUN_ATTEMPT']}"
+        )
     accepted = HERE / "accepted.json"
     outcome = evaluate(
         lighthouse=shlex.split(os.environ["SITE_EVAL_LIGHTHOUSE"]),
