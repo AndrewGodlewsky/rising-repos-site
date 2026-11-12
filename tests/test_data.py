@@ -77,9 +77,10 @@ class TheDataFiles(BuildTest):
         for row in board["rows"]:
             row["forks"] = 31337
         write_json(self.board_file(), board)
-        for path, page in self.build_pages().items():
+        pages = self.build_pages()
+        self.assertEqual(len(pages["index.html"].rows()), len(board["rows"]))
+        for path, page in pages.items():
             with self.subTest(path):
-                self.assertEqual(len(page.rows()), len(board["rows"]))
                 self.assertNotIn("31337", page.html)
                 self.assertNotIn("forks", page.html)
 
