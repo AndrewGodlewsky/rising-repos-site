@@ -1,0 +1,19 @@
+[project]
+name = "rising-repos-site"
+version = "0"
+description = "The static pages of risingrepos.com, built by a Python generator with Jinja2 templates"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = ["jinja2>=3.1.6"]
+
+[dependency-groups]
+# The tests read the deploy workflow, which is YAML.
+dev = ["pyyaml>=6.0.3"]
+
+[tool.uv]
+# The generator is run from the checkout and is not installed as a package.
+package = false
+# Every package uv resolves was published before this date, so each is at least
+# 14 days old when it is checked. Move it forward on purpose, then check the new
+# lock file before installing from it (README.md says how).
+exclude-newer = "2026-10-29T00:00:00Z"
