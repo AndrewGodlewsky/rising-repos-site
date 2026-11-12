@@ -1,5 +1,5 @@
 """What the tests share: running the generator as the workflow runs it, a copy of the contract's example to
-change, a reading of a built page, and a reading of a workflow."""
+change, a reading of a built page, and a reading of a workflow file."""
 
 import json
 import re
@@ -15,15 +15,34 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 
+WORKFLOWS = ROOT / ".github" / "workflows"
+FULL_SHA = re.compile(r"^[\w.-]+/[\w.-]+@[0-9a-f]{40}$")
+SECRET = re.compile(r"\bsecrets\b")
+"""A reference to the repository's secrets, anywhere in a workflow."""
+
+
+def load_workflow(name: str) -> dict:
+    """The workflow `.github/workflows/<name>`, as YAML reads it."""
+    workflow = yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))
+    workflow["on"] = workflow.pop(True)  # YAML 1.1 reads the key `on` as true
+    return workflow
+
+
+def step_using(job: dict, action: str) -> dict:
+    (step,) = [step for step in job["steps"] if step.get("uses", "").startswith(action + "@")]
+    return step
+
+
+def step_named(job: dict, name: str) -> dict:
+    (step,) = [step for step in job["steps"] if step.get("name") == name]
+    return step
+
+
 EXAMPLE = ROOT / "tests" / "fixtures" / "contract-example"
 """The data contract's example and schemas, laid out as site-data/ is. site-data/ holds the same files until
 the daily publish replaces them. Every test but one builds from this copy, so that the day's data does not
 change what they check. The one that builds from site-data/ shows that the build reads it when no folder is
 given."""
-
-WORKFLOWS = ROOT / ".github" / "workflows"
-FULL_SHA = re.compile(r"^[\w.-]+/[\w.-]+@[0-9a-f]{40}$")
-SECRET = re.compile(r"\bsecrets\b")
 
 
 def build(out: Path, *options: str) -> subprocess.CompletedProcess:
@@ -45,23 +64,6 @@ def read_json(path: Path):
 def write_json(path: Path, value) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
-
-
-def load_workflow(name: str) -> dict:
-    """The workflow in .github/workflows/ called `name`, read as YAML."""
-    workflow = yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))
-    workflow["on"] = workflow.pop(True)  # YAML 1.1 reads the key `on` as true
-    return workflow
-
-
-def step_using(job: dict, action: str) -> dict:
-    (step,) = [step for step in job["steps"] if step.get("uses", "").startswith(action + "@")]
-    return step
-
-
-def step_named(job: dict, name: str) -> dict:
-    (step,) = [step for step in job["steps"] if step.get("name") == name]
-    return step
 
 
 class BuildTest(unittest.TestCase):
