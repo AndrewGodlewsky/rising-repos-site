@@ -1,5 +1,5 @@
-"""What the tests share: running the generator as the workflow runs it, a copy of the contract's example to
-change, a reading of a built page, and a reading of a workflow file."""
+"""What the tests share: running the generator as deploy.yml's build job runs it, a copy of the contract's
+example to change, a reading of a built page, and a reading of a workflow file."""
 
 import json
 import re
@@ -14,6 +14,10 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
+EXAMPLE = ROOT / "tests" / "fixtures" / "contract-example"
+"""The data contract's example and schemas, laid out as site-data/ is. Every test but one builds from this copy,
+so that the day's data does not change what they check. The one that builds from site-data/ shows that the build
+reads it when no folder is given."""
 
 WORKFLOWS = ROOT / ".github" / "workflows"
 FULL_SHA = re.compile(r"^[\w.-]+/[\w.-]+@[0-9a-f]{40}$")
@@ -38,15 +42,8 @@ def step_named(job: dict, name: str) -> dict:
     return step
 
 
-EXAMPLE = ROOT / "tests" / "fixtures" / "contract-example"
-"""The data contract's example and schemas, laid out as site-data/ is. site-data/ holds the same files until
-the daily publish replaces them. Every test but one builds from this copy, so that the day's data does not
-change what they check. The one that builds from site-data/ shows that the build reads it when no folder is
-given."""
-
-
 def build(out: Path, *options: str) -> subprocess.CompletedProcess:
-    """Run `python -m sitebuild <out> <options>` from the repository, as the workflow does."""
+    """Run `python -m sitebuild <out> <options>` from the repository, as deploy.yml's build job does."""
     return subprocess.run(
         [sys.executable, "-m", "sitebuild", str(out), *options],
         cwd=ROOT,
@@ -137,14 +134,18 @@ class Element:
 
     def text(self) -> str:
         """The text inside the element as a reader sees it: entities decoded, a block set apart from what is
-        around it, and runs of white space made one space."""
+        around it, and runs of white space made one space. The space at the edge of an inline element stays, as
+        in "All<span> board</span> days"."""
+        return " ".join(self._text().split())
+
+    def _text(self) -> str:
         parts = []
         for child in self.children:
             if isinstance(child, str):
                 parts.append(child)
             else:
-                parts.append(f" {child.text()} " if child.tag in BLOCK else child.text())
-        return " ".join("".join(parts).split())
+                parts.append(f" {child._text()} " if child.tag in BLOCK else child._text())
+        return "".join(parts)
 
     def classes(self) -> list[str]:
         return (self.attrs.get("class") or "").split()
@@ -203,8 +204,9 @@ class Page:
         return [(element.attrs.get("href"), element.text()) for element in self.all("a")]
 
     def rows(self) -> list[Element]:
-        """The board's rows, in order. Each design marks the element that holds a row with the class `row`."""
-        return [element for element in self.all() if "row" in element.classes()]
+        """The board's rows, in order: each row in the body of the chart, the one table on a board's page. A page
+        with no board, or a board with no rows, has none."""
+        return [row for table in self.all("table") for body in table.all("tbody") for row in body.all("tr")]
 
     def body_text(self) -> str:
         return self.one("body").text()

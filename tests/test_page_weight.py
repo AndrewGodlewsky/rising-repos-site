@@ -9,6 +9,8 @@ from urllib.parse import urlsplit
 
 from helpers import BuildTest, Page, read_json, write_json
 
+from sitebuild import BOARD, board_day_page
+
 SIZE_LIMIT = 320_000
 """The most bytes a page may take, uncompressed, with its styles and scripts. Issue #39 in RisingRepos set it
 from the largest page measured, the chart design's page of the largest board below at 263,763 bytes, with a
@@ -109,7 +111,8 @@ class PageWeight(BuildTest):
         board = read_json(self.board_file())
         write_json(self.board_file(), {**board, "rows": made_up_rows(LARGEST_BOARD)})
         pages = self.build_pages()
-        self.assertEqual(len(pages["index.html"].rows()), LARGEST_BOARD)
+        self.assertEqual(len(pages[BOARD].rows()), LARGEST_BOARD)
+        self.assertEqual(len(pages[board_day_page("2026-11-09")].rows()), LARGEST_BOARD)
         for path, page in pages.items():
             with self.subTest(path):
                 self.assertLessEqual(page_weight(self.out, path, page), SIZE_LIMIT)

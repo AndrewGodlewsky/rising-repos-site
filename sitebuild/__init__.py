@@ -1,34 +1,84 @@
 """The site's generator: checks the data files against the data contract, then renders the site's pages."""
 
+from collections.abc import Iterator
 from datetime import date, datetime
+from itertools import groupby
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
-from sitebuild.contract import latest_board
+from sitebuild.contract import boards as read_boards
 
 TEMPLATES = Path(__file__).parent / "templates"
 DATA = Path(__file__).resolve().parent.parent / "site-data"
 
+BOARD = "index.html"
+DAYS = "days/index.html"
+BOARD_DAY = "days/{board_day}/index.html"
+NOT_FOUND = "404.html"
+
 PAGES = {
-    "index.html": "board.html",
-    "404.html": "not-found.html",
+    BOARD: "latest.html",
+    DAYS: "days.html",
+    BOARD_DAY: "board.html",
+    NOT_FOUND: "not-found.html",
 }
 """Each page the build writes, by its path in the site, and the template in templates/ that renders it.
-Cloudflare Pages answers an address that holds no page with 404.html and the status 404. A site with no
-404.html at its root is taken for a single-page app, and every such address gets the root page and the
-status 200."""
+
+- `BOARD`, the site's root, is the newest board day's board. It is the one page that states its board day in the
+  data contract's two meta tags, which latest.html adds to board.html, so whatever reads them reads the root.
+- `DAYS` lists every board day, newest first.
+- `BOARD_DAY` is written once for each board day in the index, the newest included, so that each board day keeps
+  one address however many come after it.
+- Cloudflare Pages answers an address that holds no page with `NOT_FOUND` and the status 404. A site with no
+  404.html at its root is taken for a single-page app, and every such address gets the root page and the
+  status 200.
+"""
 
 MONTHS = (
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
 )
+WEEKDAYS = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+
+
+def board_day_page(day: str) -> str:
+    """The path of a board day's own page: '2026-11-09' as 'days/2026-11-09/index.html'."""
+    return BOARD_DAY.format(board_day=day)
+
+
+def address(path: str) -> str:
+    """A page's address on the site, from its path: 'days/index.html' as '/days/'."""
+    return "/" + path.removesuffix("index.html")
+
+
+def day_address(day: str) -> str:
+    """The address of a board day's page: '2026-11-09' as '/days/2026-11-09/'."""
+    return address(board_day_page(day))
 
 
 def long_date(day: str) -> str:
     """'2026-11-09' as '9 November 2026'."""
     value = date.fromisoformat(day)
     return f"{value.day} {MONTHS[value.month - 1]} {value.year}"
+
+
+def short_date(day: str) -> str:
+    """'2026-11-09' as '9 Nov'."""
+    value = date.fromisoformat(day)
+    return f"{value.day} {MONTHS[value.month - 1][:3]}"
+
+
+def day_in_month(day: str) -> str:
+    """'2026-11-09' as 'Monday 9 November'."""
+    value = date.fromisoformat(day)
+    return f"{WEEKDAYS[value.weekday()]} {value.day} {MONTHS[value.month - 1]}"
+
+
+def month_name(month: str) -> str:
+    """'2026-11' as 'November 2026'."""
+    year, number = month.split("-")
+    return f"{MONTHS[int(number) - 1]} {year}"
 
 
 def utc_time(moment: str) -> str:
@@ -52,7 +102,7 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     """
     if out.exists() and (not out.is_dir() or any(out.iterdir())):
         raise FileExistsError(f"{out} already exists and is not an empty folder. Build into a new one.")
-    board = latest_board(data)
+    boards = read_boards(data)
     templates = Environment(
         loader=FileSystemLoader(TEMPLATES),
         autoescape=True,
@@ -61,8 +111,40 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         lstrip_blocks=True,
         keep_trailing_newline=True,
     )
-    templates.filters.update(long_date=long_date, utc_time=utc_time, thousands="{:,}".format, repositories=repositories)
-    pages = {path: templates.get_template(name).render(board=board, noindex=noindex) for path, name in PAGES.items()}
-    out.mkdir(parents=True, exist_ok=True)
+    templates.filters.update(
+        long_date=long_date,
+        short_date=short_date,
+        day_in_month=day_in_month,
+        month_name=month_name,
+        utc_time=utc_time,
+        thousands="{:,}".format,
+        repositories=repositories,
+        day_address=day_address,
+    )
+    common = {"newest": boards[0], "days_address": address(DAYS), "noindex": noindex}
+    pages = {
+        written: templates.get_template(PAGES[page]).render(**context, **common)
+        for written, page, context in _pages(boards)
+    }
     for path, page in pages.items():
+        (out / path).parent.mkdir(parents=True, exist_ok=True)
         (out / path).write_text(page, encoding="utf-8", newline="\n")
+
+
+def _pages(boards: list[dict]) -> Iterator[tuple[str, str, dict]]:
+    """Each page the build writes: its path in the site, its entry in `PAGES`, and what its template is given."""
+    yield BOARD, BOARD, _beside(boards, 0)
+    for number, board in enumerate(boards):
+        yield board_day_page(board["board_day"]), BOARD_DAY, _beside(boards, number)
+    by_month = groupby(boards, key=lambda board: board["board_day"][:7])  # newest first, as the index is
+    yield DAYS, DAYS, {"boards": boards, "months": [(month, list(days)) for month, days in by_month]}
+    yield NOT_FOUND, NOT_FOUND, {}
+
+
+def _beside(boards: list[dict], number: int) -> dict:
+    """What a board's page is given: the board, and the board days before it and after it, when there are."""
+    return {
+        "board": boards[number],
+        "before": boards[number + 1] if number + 1 < len(boards) else None,
+        "after": boards[number - 1] if number > 0 else None,
+    }

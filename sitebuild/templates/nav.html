@@ -1,0 +1,16 @@
+{# The links between board days, which the strip under the band and a board's foot both hold: the board day before,
+   the board day the page shows, the board day after, and the list of every board day. #}
+{% macro board_days(board, before, after, days_address) %}
+{% if before %}
+<a class="before" rel="prev" href="{{ before.board_day|day_address }}"><span class="hidden">The board before, </span><span aria-hidden="true">‹ </span><time datetime="{{ before.board_day }}">{{ before.board_day|short_date }}</time></a>
+{% else %}
+<span class="before end">First board</span>
+{% endif %}
+<span class="here"><time datetime="{{ board.board_day }}">{{ board.board_day|short_date }} {{ board.board_day[:4] }}</time></span>
+{% if after %}
+<a class="after" rel="next" href="{{ after.board_day|day_address }}"><span class="hidden">The board after, </span><time datetime="{{ after.board_day }}">{{ after.board_day|short_date }}</time><span aria-hidden="true"> ›</span></a>
+{% else %}
+<span class="after end">Newest board</span>
+{% endif %}
+<a class="all" href="{{ days_address }}">All<span class="wide"> board</span> days</a>
+{% endmacro %}

@@ -6,6 +6,7 @@ schema that is shipped with it, in site-data/contract/, before anything is built
 
 import json
 from collections.abc import Callable, Iterator
+from datetime import date
 from pathlib import Path
 from typing import NoReturn
 
@@ -19,12 +20,38 @@ class DataError(Exception):
     """A data file or a schema the pages cannot be built from. The message names the file."""
 
 
+def boards(data: Path) -> list[dict]:
+    """The daily board of every board day in the index, newest first, each read and checked with the index.
+
+    The index names every board day a single time, newest first, and the pages rely on that order: the latest
+    page shows the first, and each board day's page links to the board days beside it. The pages count a board's
+    rows from its own file, which they read anyway, and do not read the index's `row_count`, so an index written
+    before the field existed builds too.
+    """
+    path = data / "boards" / "index.json"
+    index = _read(path, _validator(data / "contract" / "index.schema.json"))
+    days = [entry["board_day"] for entry in index["board_days"]]
+    for day in days:
+        try:
+            date.fromisoformat(day)
+        except ValueError:
+            raise DataError(f"{path} lists {day!r}, which is not a date") from None
+    for newer, older in zip(days, days[1:]):
+        if newer <= older:
+            raise DataError(f"{path} lists {newer} before {older}: it must list each board day once, newest first")
+    validate = _validator(data / "contract" / "daily.schema.json")
+    return [_board(data, day, validate) for day in days]
+
+
 def latest_board(data: Path) -> dict:
-    """The daily board of the latest board day: the first in the index, read and checked with the index."""
-    index = _read(data / "boards" / "index.json", _validator(data / "contract" / "index.schema.json"))
-    day = index["board_days"][0]["board_day"]
+    """The daily board of the newest board day, the one the site's root shows. It is the first of `boards`, so it
+    fails wherever the build would. The site eval reads it to know which board day the preview should state."""
+    return boards(data)[0]
+
+
+def _board(data: Path, day: str, validate: Callable[[object], object]) -> dict:
     path = data / "boards" / "days" / day / "daily.json"
-    board = _read(path, _validator(data / "contract" / "daily.schema.json"))
+    board = _read(path, validate)
     if board["board_day"] != day:
         raise DataError(f"{path} holds the board day {board['board_day']}, and its folder is {day}")
     return board

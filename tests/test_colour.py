@@ -13,6 +13,7 @@ TEXT_ON_BACKGROUND = {
     "--visited": "--paper",
     "--field-ink": "--field",
     "--field-muted": "--field",
+    "--field-visited": "--field",
 }
 """Each colour the page sets text in, and the background it sets that text on. README.md's design note says
 what each is for. A new text colour is added here with its background."""
@@ -65,6 +66,22 @@ class TheColours(BuildTest):
                 tokens = self.tokens(style)
                 self.assertGreaterEqual(contrast(tokens["--green"], tokens["--visited"]), VISITED_APART)
                 self.assertRegex(style, r"a:visited\s*\{[^}]*color:\s*var\(--visited\)")
+
+    def test_on_the_field_a_link_is_in_its_ink_and_once_visited_in_a_light_violet_apart_from_it(self):
+        """The band and the strip under it are the field. RisingRepos#43 put links to other board days in the strip,
+        and RisingRepos#111 made the site's name in the band a link."""
+        for path, style in self.styles.items():
+            with self.subTest(path):
+                tokens = self.tokens(style)
+                self.assertGreaterEqual(contrast(tokens["--field-ink"], tokens["--field-visited"]), VISITED_APART)
+                self.assertIn(".band a, .strip a { color: var(--field-ink); }", style)
+                self.assertIn(".band a:visited, .strip a:visited { color: var(--field-visited); }", style)
+                self.assertRegex(style, r"\.site \.home, \.site \.home:visited \{[^}]*color: var\(--field-ink\);")
+
+    def test_a_link_on_the_field_has_a_focus_ring_in_the_fields_ink(self):
+        for path, style in self.styles.items():
+            with self.subTest(path):
+                self.assertIn(".band a:focus-visible, .strip a:focus-visible { outline-color: var(--field-ink); }", style)
 
 
 class TheMeasure(unittest.TestCase):
