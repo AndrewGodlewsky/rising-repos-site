@@ -236,7 +236,10 @@ A repository's link holds the owner and the name, and only the name is
 underlined. A browser lets a visited link change only its colours, so the
 visited state is a change of colour. To see it in an automated browser, whose
 fresh contexts record no visits, force the state on a link with the DevTools
-protocol's `CSS.forcePseudoState` and `visited`.
+protocol's `CSS.forcePseudoState` and `visited`. Ask for the document with
+`DOM.getDocument` once, then force every link: asking again dropped the states
+already forced, in the checks for
+[RisingRepos#43](https://github.com/AndrewGodlewsky/RisingRepos/issues/43).
 
 **The strip.** Under the band, in the same green, a strip of links stays at
 the top of the screen while the page scrolls: the board day before, with an
