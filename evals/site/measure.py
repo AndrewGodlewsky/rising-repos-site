@@ -37,10 +37,9 @@ from pathlib import Path
 from typing import NamedTuple
 from urllib.parse import urlsplit
 
-from sitebuild import contract
+from sitebuild import DATA, contract
 
 HERE = Path(__file__).resolve().parent
-DATA = HERE.parent.parent / "site-data"
 
 PREVIEW = "https://preview.risingrepos.pages.dev"
 PAGES = ("/",)
