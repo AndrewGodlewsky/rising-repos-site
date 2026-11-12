@@ -11,7 +11,7 @@ from helpers import EXAMPLE, BuildTest, read_json, write_json
 
 import sitebuild
 from sitebuild import BOARD
-from sitebuild.contract import SCHEMA_VERSION_NEEDED, DataError
+from sitebuild.contract import SCHEMA_VERSION_NEEDED, DataError, latest_board
 
 COPIED = {
     "contract/daily.schema.json": "4cf53ad662ae30326701501f4d26403bb7acb4421a46dc194a0a1f0e5d159e71",
@@ -127,6 +127,14 @@ class TheDataFiles(BuildTest):
             with self.subTest(path):
                 self.assertNotIn("31,337", page.html)
                 self.assertNotIn("31337", page.html)
+
+    def test_the_latest_board_is_the_first_in_the_index_and_fails_wherever_the_build_does(self):
+        # The site eval reads it to know which board day the preview should state.
+        self.assertEqual(latest_board(self.data)["board_day"], read_json(self.index)["board_days"][0]["board_day"])
+        self.board_file("2026-11-08").unlink()
+        with self.assertRaises(DataError) as raised:
+            latest_board(self.data)
+        self.assertIn(str(self.board_file("2026-11-08")), str(raised.exception))
 
     def test_a_field_added_to_a_row_but_not_to_the_schema_fails_the_build(self):
         board = read_json(self.board_file())

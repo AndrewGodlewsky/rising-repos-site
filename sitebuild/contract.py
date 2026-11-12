@@ -43,6 +43,12 @@ def boards(data: Path) -> list[dict]:
     return [_board(data, day, validate) for day in days]
 
 
+def latest_board(data: Path) -> dict:
+    """The daily board of the newest board day, the one the site's root shows. It is the first of `boards`, so it
+    fails wherever the build would. The site eval reads it to know which board day the preview should state."""
+    return boards(data)[0]
+
+
 def _board(data: Path, day: str, validate: Callable[[object], object]) -> dict:
     path = data / "boards" / "days" / day / "daily.json"
     board = _read(path, validate)

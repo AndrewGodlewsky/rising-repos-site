@@ -5,28 +5,15 @@ So nothing it can change may run in the job that holds the Cloudflare
 credential. Each test below names one thing the workflow has to guarantee.
 """
 
-import re
 import unittest
 
 import yaml
 
-from helpers import SECRET, load_workflow
-
-FULL_SHA = re.compile(r"^[\w.-]+/[\w.-]+@[0-9a-f]{40}$")
+from helpers import FULL_SHA, SECRET, load_workflow, step_named, step_using
 
 
 def actions(job: dict) -> set[str]:
     return {step["uses"].split("@")[0] for step in job["steps"] if "uses" in step}
-
-
-def step_using(job: dict, action: str) -> dict:
-    (step,) = [step for step in job["steps"] if step.get("uses", "").startswith(action + "@")]
-    return step
-
-
-def step_named(job: dict, name: str) -> dict:
-    (step,) = [step for step in job["steps"] if step.get("name") == name]
-    return step
 
 
 class TheWorkflow(unittest.TestCase):
