@@ -21,17 +21,10 @@ addresses serve two different sites:
 - Every page built for the preview carries
   `<meta name="robots" content="noindex">`.
 - Going live is one reviewed change, to the three workflows and to the site
-  eval. In `.github/workflows/deploy.yml`, `PAGES_BRANCH: preview` becomes
-  `PAGES_BRANCH: main`, and the same line drops the `noindex` tag. In
-  `.github/workflows/stale-check.yml`, the address the check reads by default
-  becomes `https://risingrepos.com/` (see "The stale check"). Without that
-  part, the check would go on reading the preview, which no longer changes
-  once boards are uploaded to production, and would post a false alarm every
-  day. The site eval is pointed at the live address too: `PREVIEW` in
-  `evals/site/measure.py`, with `evals/site/accepted.json` measured there, and
-  the default `address` in `.github/workflows/site-eval.yml` (see "The site
-  eval"). Otherwise the eval that follows each deploy waits for a board day the
-  preview no longer shows, and fails.
+  eval. [RUNBOOK.md](RUNBOOK.md) says how it is made: the checks before it,
+  each line it changes and why, what to check once it is made, and how
+  risingrepos.com is moved back to the earlier site. `tests/test_runbook.py`
+  holds the runbook's list of those lines to the files.
 
 ## The pages
 
@@ -460,6 +453,7 @@ tests/              the tests
   deploy.yml        the build job and the deploy job
   stale-check.yml   the daily check that the site is fresh
   site-eval.yml     the site eval
+RUNBOOK.md          going live, and going back
 pyproject.toml      the dependencies, and the date uv resolves them as of
 uv.lock             every package, pinned with its hashes
 .python-version     3.14, for local builds. deploy.yml's build job takes the exact version named in deploy.yml, and stale-check.yml the python3 that its runner has
