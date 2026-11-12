@@ -73,7 +73,7 @@ OPTIONS = (
 """What every run is given besides its address, its report's path, and its profile. Error reporting is off,
 so Lighthouse sends nothing anywhere but to the page it measures."""
 
-ADDRESS = re.compile(r"https://[A-Za-z0-9.-]+(?::[0-9]{1,5})?(?:[/?#][A-Za-z0-9\-._~:/?#\[\]@!$&'()*+,;=%]*)?")
+ADDRESS = re.compile(r"https://[A-Za-z0-9.-]+(?::[0-9]{1,5})?(?:[/?#][A-Za-z0-9\-._~:/?#\[\]@!$&()*+,;=%]*)?")
 """An https address with a host, written only in the characters an address may hold unescaped. None of them is
 a space, a quotation mark, a backtick, or `|`, so an address can neither break out of the summary's code spans
 nor start a line of the job's log."""

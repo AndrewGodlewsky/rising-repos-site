@@ -338,6 +338,8 @@ class TheAddress(EvalTest):
             "https://example.com/a page",
             "https://example.com/\n::warning::made up",
             "https://example.com/`code`",
+            "https://example.com/it's",
+            'https://example.com/a"b',
             "https://example.com/a|b",
             "-https://example.com/",
         ):

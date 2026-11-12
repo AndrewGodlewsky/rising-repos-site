@@ -32,9 +32,10 @@ gh workflow run site-eval.yml --repo AndrewGodlewsky/rising-repos-site --ref mai
 ```
 
 The address must be `https://` with a host, written in the characters an address
-may hold unescaped. Anything else is refused and nothing is measured. In the
-job, `uv run --locked python -m evals.site.measure --out <folder>` runs the
-eval, with the packages the build job installs from `uv.lock`. It reads
+may hold unescaped, apart from `'`, which is written `%27`. Anything else is
+refused and nothing is measured. In the job,
+`uv run --locked python -m evals.site.measure --out <folder>` runs the eval,
+with the packages the build job installs from `uv.lock`. It reads
 Lighthouse's command, the address, and the deployed commit from its environment,
 as its docstring says.
 
