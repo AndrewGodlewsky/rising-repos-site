@@ -8,18 +8,25 @@
 {% endif %}
 {# The page loads nothing but itself, and runs no script. #}
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
-<title>Rising Repos: the daily board for {{ board.board_day|long_date }}</title>
+<title>{% block title %}{% endblock %}</title>
 <meta name="description" content="GitHub repositories gaining stars faster than their own pace predicts, on a new board each day.">
-{# How the deployed site states its board day, as the data contract says. #}
-<meta name="rr:board-date" content="{{ board.board_day }}">
-<meta name="rr:published-at" content="{{ board.published_at }}">
-<meta name="theme-color" content="{% block theme_color %}{% endblock %}">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23172033'/%3E%3Cpath d='M8 22l6-6 4 4 7-9' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+{% block head %}{% endblock %}
+{# The band's colour, which is --field in site.css. #}
+<meta name="theme-color" content="#0f3b2e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f3b2e'/%3E%3Cpath d='M8 22l6-6 4 4 7-9' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
-{% block style %}{% endblock %}
+{% include "site.css" %}
 </style>
 </head>
 <body>
-{% block body %}{% endblock %}
+<header class="band">
+<div class="wrap">
+<p class="site"><strong>Rising Repos</strong> GitHub repositories gaining stars faster than their own pace predicts, on a new board each day.</p>
+{% block band %}{% endblock %}
+</div>
+</header>
+<main class="wrap">
+{% block main %}{% endblock %}
+</main>
 </body>
 </html>
