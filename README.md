@@ -105,9 +105,16 @@ readers' systems already have, in `sitebuild/templates/site.css`.
 
 | Role | What it sets | Stack | Where each named face is |
 | --- | --- | --- | --- |
-| Display: a DIN-style signage face | The site's name, the date, the ranks, the repository names, the star counts, a message's heading | `--display`: `Bahnschrift, "DIN Alternate", "Arial Narrow", "Nimbus Sans Narrow", "DejaVu Sans Condensed", sans-serif-condensed, sans-serif` | Bahnschrift: Windows 10 (version 1709 on) and 11. DIN Alternate: macOS and iOS. Arial Narrow: Microsoft Office on Windows, and macOS. Nimbus Sans Narrow: Linux, with Ghostscript's URW fonts (Debian's `fonts-urw-base35`, Fedora's `urw-base35-nimbus-sans-fonts`). DejaVu Sans Condensed: Linux (Fedora's `dejavu-sans-fonts`, Debian's `fonts-dejavu-extra`). `sans-serif-condensed`: Android's name for Roboto at its condensed width |
-| The display role's cut for the date | The date, condensed | `--display-condensed`: the same stack with `"DIN Condensed"` in place of `"DIN Alternate"` | DIN Condensed: macOS and iOS. Bahnschrift narrows along its own width axis, under `font-stretch: condensed` |
+| Display: a DIN-style signage face | The site's name, the repository names, the star counts, a message's heading | `--display`: `Bahnschrift, "DIN Alternate", "Arial Narrow", "Nimbus Sans Narrow", "DejaVu Sans Condensed", sans-serif-condensed, sans-serif` | Bahnschrift: Windows 10 (version 1709 on) and 11. DIN Alternate: macOS and iOS. Arial Narrow: Microsoft Office on Windows, and macOS. Nimbus Sans Narrow: Linux, with Ghostscript's URW fonts (Debian's `fonts-urw-base35`, Fedora's `urw-base35-nimbus-sans-fonts`). DejaVu Sans Condensed: Linux (Fedora's `dejavu-sans-fonts`, Debian's `fonts-dejavu-extra`). `sans-serif-condensed`: Android's name for Roboto at its condensed width |
+| The display role's cut for the date and the ranks | The date and the ranks, condensed | `--display-condensed`: the same stack with `"DIN Condensed"` in place of `"DIN Alternate"` | DIN Condensed: macOS and iOS. Bahnschrift narrows along its own width axis, under `font-stretch: condensed` |
 | Text: the reader's own interface face | The descriptions, the owner, the language, the column headings, the band's sentences, the footer | `--text`: `system-ui`, then names for browsers older than it | `system-ui` is Segoe UI on Windows, San Francisco on Apple systems, and Roboto on Android |
+
+The ranks take the condensed cut, as the date does, so that they are the same
+narrow figures on every system ([RisingRepos#111](https://github.com/AndrewGodlewsky/RisingRepos/issues/111)): on Windows, Bahnschrift at
+`font-stretch: condensed`, which resolves to Bahnschrift Bold SemiCondensed,
+and on Apple systems, DIN Condensed. Before, they took `--display` with
+`font-stretch: condensed`, which narrowed Bahnschrift but not DIN Alternate,
+which has one width.
 
 Sizes, on a phone and then from 48rem (768 px) up: the date 2.25rem rising to
 4rem; the ranks 1.75rem and 2.25rem, bold; the names 1.375rem and 1.625rem,
@@ -121,7 +128,7 @@ digits line up down the column.
 | Token | Value | Used for | Contrast |
 | --- | --- | --- | --- |
 | `--field` | `#0f3b2e` | The band, the theme colour, and the icon | |
-| `--field-ink` | `#f2f7f4` | The site's name and the date, on the band | 11.50:1 on the band |
+| `--field-ink` | `#f2f7f4` | The site's name, which is a link, and the date, on the band | 11.50:1 on the band |
 | `--field-muted` | `#b6cfc3` | The band's other text | 7.54:1 on the band |
 | `--paper` | `#ffffff` | The page | |
 | `--ink` | `#13201a` | The text and the star counts | 16.81:1 |
@@ -165,6 +172,10 @@ cells' baseline.
 | Visited | Violet, `#551a8b`, text and underline: the colour browsers give a visited link by default |
 | Hover | The underline thickens to 3 px |
 | Keyboard focus | A 2 px green ring, 4 px outside the link |
+
+On the band a link is in `--field-ink`, and so is its focus ring. The site's
+name links to the board from every page. It keeps its ink once visited: it
+would show as visited on every page from a reader's first.
 
 A repository's link holds the owner and the name, and only the name is
 underlined. A browser lets a visited link change only its colours, so the

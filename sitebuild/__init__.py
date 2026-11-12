@@ -10,14 +10,20 @@ from sitebuild.contract import latest_board
 TEMPLATES = Path(__file__).parent / "templates"
 DATA = Path(__file__).resolve().parent.parent / "site-data"
 
+BOARD = "index.html"
+NOT_FOUND = "404.html"
+
 PAGES = {
-    "index.html": "board.html",
-    "404.html": "not-found.html",
+    BOARD: "board.html",
+    NOT_FOUND: "not-found.html",
 }
 """Each page the build writes, by its path in the site, and the template in templates/ that renders it.
-Cloudflare Pages answers an address that holds no page with 404.html and the status 404. A site with no
-404.html at its root is taken for a single-page app, and every such address gets the root page and the
-status 200."""
+
+- `BOARD`, the site's root, is the board.
+- Cloudflare Pages answers an address that holds no page with `NOT_FOUND` and the status 404. A site with no
+  404.html at its root is taken for a single-page app, and every such address gets the root page and the
+  status 200.
+"""
 
 MONTHS = (
     "January", "February", "March", "April", "May", "June",

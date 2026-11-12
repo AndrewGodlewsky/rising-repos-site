@@ -5,10 +5,9 @@ import unittest
 
 from helpers import BuildTest, read_json
 
-MARKUP_ROW = "rising-repos-example/markup-in-description"
+from sitebuild import BOARD
 
-BOARD = "index.html"
-"""The board's page, at the site's root: the one page that shows a row."""
+MARKUP_ROW = "rising-repos-example/markup-in-description"
 
 
 class OwnerWrittenText(BuildTest):
@@ -28,7 +27,7 @@ class OwnerWrittenText(BuildTest):
 
     def test_no_owner_written_value_is_made_a_link_and_each_name_links_to_its_repository_on_github(self):
         expected = [(f"https://github.com/{row['full_name']}", row["full_name"]) for row in self.rows]
-        self.assertEqual(self.page.links(), expected)
+        self.assertEqual([(href, text) for href, text in self.page.links() if not href.startswith(("/", "#"))], expected)
         values = [value for element in self.page.all() for value in element.attrs.values() if value]
         self.assertEqual([value for value in values if "javascript:" in value.lower()], [])
 

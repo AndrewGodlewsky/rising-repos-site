@@ -189,7 +189,8 @@ class Page:
         return [(element.attrs.get("href"), element.text()) for element in self.all("a")]
 
     def rows(self) -> list[Element]:
-        """The board's rows, in order. Each design marks the element that holds a row with the class `row`."""
+        """The board's rows, in order: each element with the class `row`. A page with no board, or a board with no
+        rows, has none."""
         return [element for element in self.all() if "row" in element.classes()]
 
     def body_text(self) -> str:

@@ -1,4 +1,4 @@
-"""The generator, run the way the workflow runs it, on a copy of the data contract's example.
+"""The generator, run the way deploy.yml's build job runs it, on a copy of the data contract's example.
 
 The build writes two pages: the board, at the site's root, and the page for an address that holds no page. A
 test of something every page holds to reads both.
@@ -10,17 +10,9 @@ from urllib.parse import unquote
 
 from helpers import BuildTest, build, read_json, write_json
 
-from sitebuild import TEMPLATES
+from sitebuild import BOARD, NOT_FOUND, PAGES, TEMPLATES
 
 NOINDEX = '<meta name="robots" content="noindex">'
-
-BOARD = "index.html"
-"""The board's page, at the site's root."""
-
-NOT_FOUND = "404.html"
-"""The page for an address that holds none. Cloudflare Pages answers such an address with this page and the
-status 404. A site with no 404.html at its root is taken for a single-page app, and every such address gets the
-root page and the status 200."""
 
 
 class TheBuild(BuildTest):
@@ -28,6 +20,7 @@ class TheBuild(BuildTest):
         self.build_pages()
         written = sorted(path.relative_to(self.out).as_posix() for path in self.out.rglob("*") if path.is_file())
         self.assertEqual(written, [NOT_FOUND, BOARD])
+        self.assertEqual(set(PAGES), {BOARD, NOT_FOUND})
 
     def test_the_board_shows_the_latest_board_day_which_is_the_first_in_the_index(self):
         page = self.build_pages()[BOARD]
@@ -70,6 +63,25 @@ class TheBuild(BuildTest):
                 self.assertTrue(site.text().startswith("Rising Repos"), site.text())
                 self.assertIn("on a new board each day", site.text())
 
+    def test_the_sites_name_links_to_the_root_from_every_page(self):
+        """RisingRepos#111."""
+        for path, page in self.build_pages().items():
+            with self.subTest(path):
+                (site,) = [element for element in page.one("header").all("p") if "site" in element.classes()]
+                self.assertEqual(
+                    [(link.attrs["href"], link.text(), link.classes()) for link in site.all("a")],
+                    [("/", "Rising Repos", ["home"])],
+                )
+
+    def test_the_ranks_take_the_condensed_cut_as_the_date_does_so_they_are_one_width_on_every_system(self):
+        """RisingRepos#111: `--display` with `font-stretch: condensed` narrowed Bahnschrift and not DIN Alternate."""
+        html = self.build_pages()[BOARD].html
+        for selector in ("td.rank", "h1"):
+            with self.subTest(selector):
+                rule = re.findall(rf"(?m)^{re.escape(selector)} \{{([^}}]*)\}}", html)[0]  # its own, outside @media
+                self.assertIn("font-family: var(--display-condensed);", rule)
+                self.assertIn("font-stretch: condensed;", rule)
+
     def test_the_board_states_its_board_day_and_publish_time_in_the_contracts_two_meta_tags_once_each(self):
         page = self.build_pages()[BOARD]
         self.assertEqual(page.meta("rr:board-date"), ["2026-11-09"])
@@ -97,7 +109,7 @@ class TheBuild(BuildTest):
         write_json(self.index, {"schema_version": 1, "board_days": [{"board_day": "2026-11-08"}]})
         page = self.build_pages()[BOARD]
         self.assertEqual(page.rows(), [])
-        self.assertEqual(page.links(), [])
+        self.assertEqual([href for href, _ in page.links() if "github.com" in href], [])
         self.assertIn("No repository made the board on this day.", page.body_text())
         self.assertIn("No repositories.", page.body_text())
         self.assertIn("8 November 2026", page.one("h1").text())
@@ -115,7 +127,9 @@ class TheBuild(BuildTest):
         page = self.build_pages()[NOT_FOUND]
         self.assertIn("not found", page.one("title").text().lower())
         self.assertEqual(page.one("h1").text(), "Page not found")
-        self.assertEqual(page.links(), [("/", "the latest daily board")])
+        self.assertEqual(
+            [(link.attrs["href"], link.text()) for link in page.one("main").all("a")], [("/", "the latest daily board")]
+        )
 
     def test_the_page_for_an_address_that_holds_none_states_no_board_day(self):
         page = self.build_pages()[NOT_FOUND]

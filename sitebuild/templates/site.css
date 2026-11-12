@@ -32,14 +32,18 @@ a { color: var(--green); text-decoration: underline 2px; text-underline-offset: 
 a:visited { color: var(--visited); }
 a:hover { text-decoration-thickness: 3px; }
 a:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; border-radius: 2px; }
+.band a { color: var(--field-ink); }
+.band a:focus-visible { outline-color: var(--field-ink); }
 
 /* The band */
 
 .band { background: var(--field); color: var(--field-ink); }
 .band .wrap { padding-top: 1rem; padding-bottom: 1.25rem; }
 .site { max-width: 34rem; color: var(--field-muted); font-size: 0.9375rem; }
-.site strong {
+/* The site's name goes home from every page, so it would show as visited on all of them: it keeps its ink. */
+.site .home, .site .home:visited {
   display: block;
+  width: fit-content;
   color: var(--field-ink);
   font-family: var(--display);
   font-size: 1.25rem;
@@ -97,7 +101,7 @@ td, tbody th { padding: 1.125rem 0.625rem 1.125rem 0; vertical-align: baseline; 
 .rank { width: 1%; white-space: nowrap; }
 td.rank {
   color: var(--green);
-  font-family: var(--display);
+  font-family: var(--display-condensed);
   font-size: 1.75rem;
   font-stretch: condensed;
   font-variant-numeric: tabular-nums;
@@ -153,7 +157,7 @@ footer { max-width: 40rem; padding: 2.5rem 0 3rem; color: var(--muted); font-siz
     padding-bottom: 1.25rem;
   }
   .site { grid-column: 1 / -1; max-width: none; }
-  .site strong { display: inline; margin-right: 0.5rem; }
+  .site .home, .site .home:visited { display: inline; margin-right: 0.5rem; }
   h1 { grid-column: 1; grid-row: 2 / span 2; margin-top: 1rem; }
   .published { grid-column: 2; grid-row: 2; margin-top: 0; }
   .provisional { grid-column: 2; grid-row: 3; }

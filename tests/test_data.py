@@ -10,6 +10,7 @@ from unittest import mock
 from helpers import EXAMPLE, BuildTest, read_json, write_json
 
 import sitebuild
+from sitebuild import BOARD
 from sitebuild.contract import SCHEMA_VERSION_NEEDED, DataError
 
 COPIED = {
@@ -78,7 +79,7 @@ class TheDataFiles(BuildTest):
             row["forks"] = 31337
         write_json(self.board_file(), board)
         pages = self.build_pages()
-        self.assertEqual(len(pages["index.html"].rows()), len(board["rows"]))
+        self.assertEqual(len(pages[BOARD].rows()), len(board["rows"]))
         for path, page in pages.items():
             with self.subTest(path):
                 self.assertNotIn("31337", page.html)

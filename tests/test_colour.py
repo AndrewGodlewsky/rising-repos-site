@@ -59,6 +59,14 @@ class TheColours(BuildTest):
                 used = set(re.findall(r"(?<![\w-])color:\s*([^;}]+?)\s*[;}]", style))
                 self.assertLessEqual(used, {f"var({token})" for token in TEXT_ON_BACKGROUND} | {"inherit", "currentColor"})
 
+    def test_a_link_on_the_band_is_in_its_ink_with_a_focus_ring_in_the_same_ink(self):
+        """RisingRepos#111 made the site's name in the band a link. `--field-ink` on `--field` is a pair above."""
+        for path, style in self.styles.items():
+            with self.subTest(path):
+                self.assertIn(".band a { color: var(--field-ink); }", style)
+                self.assertIn(".band a:focus-visible { outline-color: var(--field-ink); }", style)
+                self.assertRegex(style, r"\.site \.home, \.site \.home:visited \{[^}]*color: var\(--field-ink\);")
+
     def test_a_visited_link_differs_in_lightness_from_one_not_yet_visited(self):
         for path, style in self.styles.items():
             with self.subTest(path):
