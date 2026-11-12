@@ -1,0 +1,137 @@
+{
+  "commit": "9590590e893d3a0a2f699e042415b1d312c6849f",
+  "measured_at": "2026-11-12T16:53:48Z",
+  "run": "https://github.com/AndrewGodlewsky/rising-repos-site/actions/runs/43263209890/attempts/1",
+  "lighthouse": "13.5.0",
+  "chrome": "157",
+  "runs": 5,
+  "base": "https://preview.risingrepos.pages.dev",
+  "pages": {
+    "/": {
+      "phone": {
+        "performance": {
+          "median": 100,
+          "runs": [
+            100,
+            100,
+            100,
+            100,
+            100
+          ]
+        },
+        "accessibility": {
+          "median": 100,
+          "runs": [
+            100,
+            100,
+            100,
+            100,
+            100
+          ]
+        },
+        "largest_contentful_paint": {
+          "median": 1.36,
+          "runs": [
+            1.37,
+            1.36,
+            1.29,
+            1.36,
+            1.32
+          ]
+        },
+        "cumulative_layout_shift": {
+          "median": 0,
+          "runs": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "transfer_size": {
+          "median": 74389,
+          "runs": [
+            74389,
+            74391,
+            74387,
+            74392,
+            74385
+          ]
+        },
+        "requests": {
+          "median": 1,
+          "runs": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "desktop": {
+        "performance": {
+          "median": 100,
+          "runs": [
+            100,
+            100,
+            100,
+            100,
+            100
+          ]
+        },
+        "accessibility": {
+          "median": 100,
+          "runs": [
+            100,
+            100,
+            100,
+            100,
+            100
+          ]
+        },
+        "largest_contentful_paint": {
+          "median": 0.43,
+          "runs": [
+            0.38,
+            0.45,
+            0.43,
+            0.41,
+            0.43
+          ]
+        },
+        "cumulative_layout_shift": {
+          "median": 0,
+          "runs": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "transfer_size": {
+          "median": 74393,
+          "runs": [
+            74390,
+            74394,
+            74393,
+            74392,
+            74395
+          ]
+        },
+        "requests": {
+          "median": 1,
+          "runs": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    }
+  }
+}
