@@ -4,7 +4,7 @@ The pages of [risingrepos.com](https://risingrepos.com), which lists the GitHub
 repositories gaining stars faster than their own pace predicts. The RisingRepos
 project works out which repositories those are and commits the data here. This
 repository holds the pages: their templates, the generator that builds them,
-and the workflow that uploads them to Cloudflare Pages.
+and the workflow that uploads them to Cloudflare Pages, `deploy.yml`.
 
 ## The rebuild and the preview
 
@@ -288,7 +288,7 @@ uv run --locked python -m sitebuild dist --noindex   # the pages, as the preview
 python -m http.server 8000 --bind 127.0.0.1 --directory dist  # then open http://127.0.0.1:8000/
 ```
 
-The tests are the one command the workflow's build job runs too. They build
+The tests are the one command that `deploy.yml`'s build job runs too. They build
 from `tests/fixtures/`, but for the one test that builds from `site-data/`
 (see "The data"), write only to temporary folders, and reach no other machine:
 the stale check's tests talk only to servers of their own on 127.0.0.1 (see
@@ -315,7 +315,7 @@ tests/              the tests
 .github/workflows/  deploy.yml: the build job and the deploy job. stale-check.yml: the daily check that the site is fresh
 pyproject.toml      the dependencies, and the date uv resolves them as of
 uv.lock             every package, pinned with its hashes
-.python-version     3.14, for local builds. CI uses the exact version in deploy.yml
+.python-version     3.14, for local builds. deploy.yml's build job takes the exact version named in deploy.yml, and stale-check.yml the python3 that its runner has
 ```
 
 ## The stale check

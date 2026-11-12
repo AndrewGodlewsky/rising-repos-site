@@ -1,5 +1,5 @@
-"""What the tests share: running the generator as the workflow runs it, a copy of the contract's example to
-change, a reading of a built page, and a reading of a workflow file."""
+"""What the tests share: running the generator as deploy.yml's build job runs it, a copy of the contract's
+example to change, a reading of a built page, and a reading of a workflow file."""
 
 import json
 import re
@@ -14,6 +14,11 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
+EXAMPLE = ROOT / "tests" / "fixtures" / "contract-example"
+"""The data contract's example and schemas, laid out as site-data/ is. site-data/ holds the same files until
+the daily publish replaces them. Every test but one builds from this copy, so that the day's data does not
+change what they check. The one that builds from site-data/ shows that the build reads it when no folder is
+given."""
 
 SECRET = re.compile(r"\bsecrets\b")
 """A reference to the repository's secrets, anywhere in a workflow."""
@@ -25,15 +30,9 @@ def load_workflow(name: str) -> dict:
     workflow["on"] = workflow.pop(True)  # YAML 1.1 reads the key `on` as true
     return workflow
 
-EXAMPLE = ROOT / "tests" / "fixtures" / "contract-example"
-"""The data contract's example and schemas, laid out as site-data/ is. site-data/ holds the same files until
-the daily publish replaces them. Every test but one builds from this copy, so that the day's data does not
-change what they check. The one that builds from site-data/ shows that the build reads it when no folder is
-given."""
-
 
 def build(out: Path, *options: str) -> subprocess.CompletedProcess:
-    """Run `python -m sitebuild <out> <options>` from the repository, as the workflow does."""
+    """Run `python -m sitebuild <out> <options>` from the repository, as deploy.yml's build job does."""
     return subprocess.run(
         [sys.executable, "-m", "sitebuild", str(out), *options],
         cwd=ROOT,
