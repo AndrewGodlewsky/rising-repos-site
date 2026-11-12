@@ -136,8 +136,8 @@ above and below its content and a hairline between rows, and 0.375rem between
 the name, the description, and the language. A description runs at most 35rem
 wide, about 75 characters a line on a desktop. The band has 1rem above its
 content and 1.25rem below. From 48rem up the site's line takes one line, and
-the board's facts stand beside the date rather than under it, so that four
-rows show on a 1280 by 800 screen.
+the board's facts stand beside the date rather than under it, so that the band
+stays short and the list starts high on the first screen.
 
 **A row, in order of importance.**
 
