@@ -1,5 +1,5 @@
-"""The first page stays light: it carries no script, requests nothing from another site, and stays within
-its size limit."""
+"""Every page stays light: it carries no script, requests nothing from another site, and stays within its
+size limit."""
 
 import re
 import tempfile
@@ -11,8 +11,8 @@ from helpers import BuildTest, Page, read_json, write_json
 
 SIZE_LIMIT = 320_000
 """The most bytes a page may take, uncompressed, with its styles and scripts. Issue #39 in RisingRepos set it
-from the largest page measured, the chart of the largest board below at 263,763 bytes, with a fifth more for
-what later slices add to a row. README.md gives the measurements."""
+from the largest page measured, the chart design's page of the largest board below at 263,763 bytes, with a
+fifth more for what later slices add to a row. README.md gives the measurements."""
 
 LARGEST_BOARD = 316
 """The most rows a daily board of the earlier site held (RisingRepos's data contract, under Size)."""
@@ -108,9 +108,10 @@ class PageWeight(BuildTest):
     def test_each_page_of_the_largest_board_published_is_within_the_size_limit(self):
         board = read_json(self.board_file())
         write_json(self.board_file(), {**board, "rows": made_up_rows(LARGEST_BOARD)})
-        for path, page in self.build_pages().items():
+        pages = self.build_pages()
+        self.assertEqual(len(pages["index.html"].rows()), LARGEST_BOARD)
+        for path, page in pages.items():
             with self.subTest(path):
-                self.assertEqual(len(page.rows()), LARGEST_BOARD)
                 self.assertLessEqual(page_weight(self.out, path, page), SIZE_LIMIT)
 
 
@@ -131,14 +132,14 @@ class TheChecks(unittest.TestCase):
 
     def test_the_size_counts_each_file_on_this_site_that_a_page_loads(self):
         out = Path(self.enterContext(tempfile.TemporaryDirectory()))
-        (out / "chart").mkdir()
+        (out / "day").mkdir()
         (out / "site.css").write_bytes(b"a" * 100)
-        (out / "chart" / "chart.css").write_bytes(b"b" * 50)
+        (out / "day" / "day.css").write_bytes(b"b" * 50)
         html = (
-            '<html><head><link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="chart.css">'
+            '<html><head><link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="day.css">'
             '<link rel="icon" href="data:,"></head><body></body></html>'
         )
-        self.assertEqual(page_weight(out, "chart/index.html", Page(html)), len(html) + 150)
+        self.assertEqual(page_weight(out, "day/index.html", Page(html)), len(html) + 150)
 
 
 if __name__ == "__main__":

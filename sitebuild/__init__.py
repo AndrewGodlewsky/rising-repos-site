@@ -1,4 +1,4 @@
-"""The site's generator: checks the data files against the data contract, then renders the first page."""
+"""The site's generator: checks the data files against the data contract, then renders the site's pages."""
 
 from datetime import date, datetime
 from pathlib import Path
@@ -10,12 +10,14 @@ from sitebuild.contract import latest_board
 TEMPLATES = Path(__file__).parent / "templates"
 DATA = Path(__file__).resolve().parent.parent / "site-data"
 
-DESIGNS = (
-    "register",
-    "chart",
-)
-"""The designs of the first page, each a template and a stylesheet of that name in templates/. The first is
-built at the site's root, and each other one under /<name>/. Issue #71 in RisingRepos keeps one."""
+PAGES = {
+    "index.html": "board.html",
+    "404.html": "not-found.html",
+}
+"""Each page the build writes, by its path in the site, and the template in templates/ that renders it.
+Cloudflare Pages answers an address that holds no page with 404.html and the status 404. A site with no
+404.html at its root is taken for a single-page app, and every such address gets the root page and the
+status 200."""
 
 MONTHS = (
     "January", "February", "March", "April", "May", "June",
@@ -43,8 +45,8 @@ def repositories(count: int) -> str:
 
 
 def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
-    """Check the data files in `data`, then write every design of the first page into `out`, a folder that does
-    not exist yet or is empty. Nothing is written when a file fails its check.
+    """Check the data files in `data`, then write the site's pages into `out`, a folder that does not exist yet
+    or is empty. Nothing is written when a file fails its check.
 
     With `noindex`, every page asks search engines not to index it.
     """
@@ -60,8 +62,7 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         keep_trailing_newline=True,
     )
     templates.filters.update(long_date=long_date, utc_time=utc_time, thousands="{:,}".format, repositories=repositories)
-    pages = {name: templates.get_template(f"{name}.html").render(board=board, noindex=noindex) for name in DESIGNS}
-    for name, page in pages.items():
-        folder = out if name == DESIGNS[0] else out / name
-        folder.mkdir(parents=True, exist_ok=True)
-        (folder / "index.html").write_text(page, encoding="utf-8", newline="\n")
+    pages = {path: templates.get_template(name).render(board=board, noindex=noindex) for path, name in PAGES.items()}
+    out.mkdir(parents=True, exist_ok=True)
+    for path, page in pages.items():
+        (out / path).write_text(page, encoding="utf-8", newline="\n")
