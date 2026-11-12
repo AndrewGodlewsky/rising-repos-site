@@ -64,7 +64,8 @@ variation a real network brings. Each page is measured five times on each
 profile, one run after another, each in a new Chrome. Every number in the
 summary is the median of the five, and the summary gives the lowest and highest
 of the five beside it. The same documentation says the median of five runs is
-about twice as stable as one run.
+about twice as stable as one run. The first run of an eval is often the slowest, while
+the runner is still busy, and the median sets it aside.
 
 | Number | What it means | Better |
 | --- | --- | --- |

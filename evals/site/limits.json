@@ -1,18 +1,54 @@
 {
   "phone": {
-    "performance": {"limit": 90, "reason": "A starting target, until the first measurement sets the limit."},
-    "accessibility": {"limit": 90, "reason": "A starting target, until the first measurement sets the limit."},
-    "largest_contentful_paint": {"limit": 2.5, "reason": "A starting target, until the first measurement sets the limit."},
-    "cumulative_layout_shift": {"limit": 0.1, "reason": "A starting target, until the first measurement sets the limit."},
-    "transfer_size": {"limit": null, "reason": "Recorded with no limit until the first measurement."},
-    "requests": {"limit": null, "reason": "Recorded with no limit until the first measurement."}
+    "performance": {
+      "limit": 95,
+      "reason": "Four evals of the first page on 2026-11-12 had medians of 99 to 100. Single runs fell as low as 79, each the first run of its eval while the runner was still busy, and the median set each aside. 95 leaves room for that noise and for larger boards, and is above the starting target of 90."
+    },
+    "accessibility": {
+      "limit": 100,
+      "reason": "Every run scored 100. The score comes from checks that give the same answer for the same page on every run, so a lower score means a check now fails on the page, and the margin is none."
+    },
+    "largest_contentful_paint": {
+      "limit": 2.0,
+      "reason": "The four evals' medians were 1.33 to 1.45 seconds, and single runs reached 1.59. The limit is the highest median with two fifths more, to a tenth of a second: room for that spread and for a board larger than any yet, which brings more bytes over the slow connection. It is under Google's good threshold of 2.5 seconds."
+    },
+    "cumulative_layout_shift": {
+      "limit": 0.01,
+      "reason": "No run measured any layout shift: the page loads no font, image, or script that could move it. A hundredth allows only a shift too small to see, so a real one fails, such as a font that swaps in or an image without its size. It is a tenth of Google's good threshold of 0.1."
+    },
+    "transfer_size": {
+      "limit": 100000,
+      "reason": "The four evals' medians were 74,386 to 74,393 bytes, compressed. The bytes follow the board's size: the two board days published have 663 and 811 rows. A third more allows a board of about 1,090 rows, and the score decides how many rows a board has. Anything else that adds a quarter of the page's weight, such as a font or an image, is worth a look."
+    },
+    "requests": {
+      "limit": 1,
+      "reason": "Every run made one request, the page itself: its styles are in the page, its icon is a data address, and it loads no script, font, or image. A second request is something new that the page depends on, and the margin is none."
+    }
   },
   "desktop": {
-    "performance": {"limit": 90, "reason": "A starting target, until the first measurement sets the limit."},
-    "accessibility": {"limit": 90, "reason": "A starting target, until the first measurement sets the limit."},
-    "largest_contentful_paint": {"limit": 2.5, "reason": "A starting target, until the first measurement sets the limit."},
-    "cumulative_layout_shift": {"limit": 0.1, "reason": "A starting target, until the first measurement sets the limit."},
-    "transfer_size": {"limit": null, "reason": "Recorded with no limit until the first measurement."},
-    "requests": {"limit": null, "reason": "Recorded with no limit until the first measurement."}
+    "performance": {
+      "limit": 95,
+      "reason": "Every run of the four evals on 2026-11-12 scored 100. The same limit as the phone's: room for runner noise and for larger boards, and above the starting target of 90."
+    },
+    "accessibility": {
+      "limit": 100,
+      "reason": "Every run scored 100. The score comes from checks that give the same answer for the same page on every run, so a lower score means a check now fails on the page, and the margin is none."
+    },
+    "largest_contentful_paint": {
+      "limit": 0.6,
+      "reason": "The four evals' medians were 0.42 to 0.43 seconds, and single runs reached 0.55. The limit is the highest median with two fifths more, to a tenth of a second, as on the phone. It is well under Google's good threshold of 2.5 seconds."
+    },
+    "cumulative_layout_shift": {
+      "limit": 0.01,
+      "reason": "No run measured any layout shift: the page loads no font, image, or script that could move it. A hundredth allows only a shift too small to see, so a real one fails. It is a tenth of Google's good threshold of 0.1."
+    },
+    "transfer_size": {
+      "limit": 100000,
+      "reason": "The four evals' medians were 74,387 to 74,393 bytes, compressed: the same page as the phone's. The same limit, for the same reasons."
+    },
+    "requests": {
+      "limit": 1,
+      "reason": "Every run made one request, the page itself. A second request is something new that the page depends on, and the margin is none."
+    }
   }
 }
