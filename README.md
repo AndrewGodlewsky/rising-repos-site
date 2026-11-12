@@ -211,23 +211,24 @@ Ctrl+C.
 
 ## The site eval
 
-After each deploy to the preview, `.github/workflows/site-eval.yml` measures the
-first page with Lighthouse, five times on a phone profile and five on a desktop
-profile: its performance and accessibility scores, its Largest Contentful Paint,
-its Cumulative Layout Shift, its total transfer size, and how many requests it
-makes. It can also be started by hand for any https address.
-[evals/site/README.md](evals/site/README.md) says how it measures, what each
-number means, and how its limits were set.
+Each time a push to `main` reaches the preview,
+`.github/workflows/site-eval.yml` runs Lighthouse on the first page, five times
+on each of Lighthouse's phone and desktop profiles. It gives six numbers for
+each: Lighthouse's performance score and accessibility score, the Largest
+Contentful Paint, the Cumulative Layout Shift, the bytes the page took to
+transfer, and the requests it made. It can also be started by hand for any https
+address. [evals/site/README.md](evals/site/README.md) says how it measures, what
+each number means, and how its limits were set.
 
 **Reading the numbers.** A run's summary has a table for each page on each
 profile. Each number is the median of the five runs, with the lowest and the
 highest of them beside it, then the accepted number from
 `evals/site/accepted.json` and the limit from `evals/site/limits.json`. A number
 outside its limit, or one that could not be measured, fails the job and is
-listed under the tables. The job reports and gates nothing: the deploy has
-already happened.
+listed under the tables. A failed job holds nothing back: by the time it runs,
+the pages are already on the preview.
 
-**How a site change reports them.** A pull request's own pages reach the preview
+**What a site change reports.** A pull request's own pages reach the preview
 only when it merges, so:
 
 - Its description gives the numbers before it: the last run on `main` that
@@ -237,7 +238,7 @@ only when it merges, so:
   change, or the tracking issue says why it is right.
 - A change that moves the numbers on purpose, such as a new design or a larger
   board, replaces `evals/site/accepted.json`, and a limit where one no longer
-  fits, in a pull request that says why.
+  fits, in a pull request that gives the reason.
 - A change to the eval itself is measured on its own pull request, against the
   preview as it stands.
 

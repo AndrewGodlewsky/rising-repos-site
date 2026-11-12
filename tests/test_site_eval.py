@@ -1,7 +1,7 @@
 """The site eval turns Lighthouse's reports into numbers, judges each against its limit, and says in the job's
 summary which number failed or could not be measured.
 
-Each test runs the eval with tests/fake_lighthouse.py in Lighthouse's place, so that no test reads the network,
+Each test runs the eval with tests/fake_lighthouse.py in Lighthouse's place, so no test touches the network,
 on reports the test makes up or on tests/fixtures/site-eval/phone-report.json: a report that Lighthouse wrote
 for the preview's first page on 2026-11-12, cut down to the parts the eval reads. What reaches the network in
 the workflow, main's head and the preview's page, is handed to the eval as a function, which each test

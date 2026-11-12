@@ -1,7 +1,7 @@
 """The site eval's workflow measures the preview after each deploy, and an address by hand, holding no secret.
 
 It runs code that the daily data push can change, as the build job does, so it holds nothing that code could
-misuse: no secret, no environment, and a token that can only read the repository. Each test below names one
+misuse: no secret, no environment, and a token limited to reading the repository. Each test below names one
 thing the workflow has to guarantee.
 """
 
@@ -64,7 +64,7 @@ class TheSiteEvalWorkflow(unittest.TestCase):
         )
         self.assertEqual(self.measure["env"]["SITE_EVAL_COMMIT"], "${{ github.event.workflow_run.head_sha }}")
 
-    def test_it_holds_no_secret_and_cannot_reach_the_deploy_environment(self):
+    def test_it_holds_no_secret_and_has_no_way_to_the_deploy_environment(self):
         self.assertIsNone(SECRET.search(self.text))
         self.assertNotIn("environment", self.job)
         self.assertEqual(self.workflow["permissions"], {})

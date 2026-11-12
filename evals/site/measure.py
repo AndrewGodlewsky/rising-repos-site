@@ -1,4 +1,4 @@
-"""The site eval: how fast the site's pages load, how heavy they are, and how they score for accessibility.
+"""The site eval: Lighthouse's measure of the site's pages, for their speed, their weight, and their accessibility.
 
 It runs Lighthouse on each page, on a phone profile and a desktop profile, RUNS times each, and takes the
 median of each number. It judges each median against its limit in limits.json, writes a summary that sets the

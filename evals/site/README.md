@@ -1,6 +1,7 @@
 # The site eval
 
-**The question:** is the site's page fast, light, and accessible?
+**What it asks:** does the site's first page load quickly, stay small, and pass
+Lighthouse's accessibility checks?
 
 It measures the preview's pages with
 [Lighthouse](https://github.com/GoogleChrome/lighthouse) from GitHub's runners,
@@ -12,7 +13,7 @@ instead, because it needs the network and a deployed page.
 | --- | --- |
 | `measure.py` | The code: it runs Lighthouse, takes the medians, judges them against the limits, and writes the summary and `results.json` |
 | `limits.json` | The limit for each number on each profile, and the reason for it |
-| `accepted.json` | The last accepted numbers, with the commit whose pages they measured, the run that measured them, and its date |
+| `accepted.json` | The numbers accepted most recently, with the commit whose pages they measured, the run that measured them, and its date |
 | [`.github/workflows/site-eval.yml`](../../.github/workflows/site-eval.yml) | The workflow that runs it |
 
 ## What it runs on, and when
@@ -64,8 +65,8 @@ variation a real network brings. Each page is measured five times on each
 profile, one run after another, each in a new Chrome. Every number in the
 summary is the median of the five, and the summary gives the lowest and highest
 of the five beside it. The same documentation says the median of five runs is
-about twice as stable as one run. The first run of an eval is often the slowest, while
-the runner is still busy, and the median sets it aside.
+about twice as stable as one run. An eval's first run is often its slowest,
+while the runner is still busy, and the median sets it aside.
 
 | Number | What it means | Better |
 | --- | --- | --- |
@@ -93,8 +94,8 @@ job, at a pinned version, in the Chrome that the runner image ships.
 ## The pass mark
 
 `limits.json` holds a limit for each number on each profile, and the reason for
-each. A median outside its limit fails the job. The job reports and does not
-gate anything: by the time it runs, the deploy has happened. The limits were set
+each. A median outside its limit fails the job. A failed job holds nothing back:
+by the time it runs, the pages are already on the preview. The limits were set
 from the first measurement, on 2026-11-12, by the agent that built this eval
 ([RisingRepos#74](https://github.com/AndrewGodlewsky/RisingRepos/issues/74)).
 Whether the live address meets them is checked when the site goes live
@@ -124,14 +125,14 @@ shows why a score is what it is.
 The page's numbers move for reasons that are not faults: the first page's design
 changes, and the number of rows on a board day moves with the score and from day
 to day. So the accepted numbers and the limits change, each in a pull request
-that says why:
+that gives the reason:
 
 - **The accepted numbers.** Copy `results.json` from the run's `site-eval`
   artifact over `accepted.json`. A run that followed a deploy records its
   commit. A run on a pull request measured the preview as it stood, so fill in
   `commit` with the commit whose deploy the preview was serving, and say in the
   pull request how that was known. The pull request names the run, its commit,
-  and its date, and the reviewers see the old and the new numbers in the diff.
+  and its date, and its diff sets the earlier numbers beside the new ones.
 - **A limit.** Change it in `limits.json` with its new reason. A limit is never
   moved only to make a failed run pass: either the page is fixed, or the pull
   request says why the new number is right for the page.
@@ -147,12 +148,12 @@ npm install --package-lock-only --ignore-scripts --before=<date> lighthouse@<ver
 ```
 
 which writes a `package-lock.json` and installs nothing. Check that file with
-RisingRepos's `scripts/run_limits/check_downloads.py`, as
-[the main README](../../README.md#changing-a-pinned-version) says. On 2026-11-12, 13.6.0 failed the check:
-its tree holds versions of `glob` and `minimatch` with known vulnerabilities,
-which no version in that tree's ranges fixes. 13.5.0 with `--before=2026-10-29`
-passed: 113 packages, none failed. Lighthouse needs Node 22.19 or later, and the
-runner image's Node is newer.
+RisingRepos's `scripts/run_limits/check_downloads.py`, as [the main
+README](../../README.md#changing-a-pinned-version) says. On 2026-11-12, 13.6.0
+failed the check: its tree holds versions of `glob` and `minimatch` with known
+vulnerabilities, which no version in that tree's ranges fixes. 13.5.0 with
+`--before=2026-10-29` passed: 113 packages, none failed. Lighthouse needs Node
+22.19 or later, and the runner image's Node is newer.
 
 ## What it does not measure
 
