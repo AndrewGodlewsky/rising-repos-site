@@ -9,7 +9,7 @@
       "reason": "Every run scored 100. The score comes from checks that give the same answer for the same page on every run, so a lower score means a check now fails on the page, and the margin is none."
     },
     "largest_contentful_paint": {
-      "limit": 1.0,
+      "limit": 2.0,
       "reason": "The four evals' medians were 1.33 to 1.45 seconds, and single runs reached 1.59. The limit is the highest median with two fifths more, to a tenth of a second: room for that spread and for a board larger than any yet, which brings more bytes over the slow connection. It is under Google's good threshold of 2.5 seconds."
     },
     "cumulative_layout_shift": {
