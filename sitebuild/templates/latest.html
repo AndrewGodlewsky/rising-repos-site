@@ -1,0 +1,7 @@
+{% extends "board.html" %}
+{# The newest board day's board, at the site's root: the one page that states its board day. #}
+{% block head %}
+{# How the deployed site states its board day, as the data contract says. #}
+<meta name="rr:board-date" content="{{ board.board_day }}">
+<meta name="rr:published-at" content="{{ board.published_at }}">
+{% endblock %}

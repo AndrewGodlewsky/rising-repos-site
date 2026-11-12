@@ -11,18 +11,24 @@
       "const": 1
     },
     "board_days": {
-      "description": "Every board day that has been published, newest first, each once. Each has a folder under site-data/boards/days/.",
+      "description": "Every board day that has been published, newest first, each once, with the number of rows its board holds. Each has a folder under site-data/boards/days/.",
       "type": "array",
       "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["board_day"],
+        "required": ["board_day", "row_count"],
         "properties": {
           "board_day": {
             "description": "The board day, as YYYY-MM-DD: the name of its folder under site-data/boards/days/.",
             "type": "string",
             "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "row_count": {
+            "description": "How many rows the board day's daily.json holds: 0 for an empty board.",
+            "type": "integer",
+            "minimum": 0
           }
         }
       }

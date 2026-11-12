@@ -7,6 +7,7 @@
   --field: #0f3b2e;
   --field-ink: #f2f7f4;
   --field-muted: #b6cfc3;
+  --field-visited: #cfb2f2;
   --paper: #ffffff;
   --ink: #13201a;
   --muted: #50605a;
@@ -16,25 +17,28 @@
   --display: Bahnschrift, "DIN Alternate", "Arial Narrow", "Nimbus Sans Narrow", "DejaVu Sans Condensed", sans-serif-condensed, sans-serif;
   --display-condensed: Bahnschrift, "DIN Condensed", "Arial Narrow", "Nimbus Sans Narrow", "DejaVu Sans Condensed", sans-serif-condensed, sans-serif;
   --text: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --strip: 2.75rem; /* the strip's height, and so a link's in it: a finger's width */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: 5rem; } /* clears the sticky column headings */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: 3.5rem; } /* clears the strip */
 body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1rem/1.5 var(--text); }
-p, h1 { margin: 0; }
+p, h1, h2, ol { margin: 0; }
 
 .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1rem; }
 .hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.wide { display: none; }
 
 /* Links: the green and an underline at rest, violet once visited, a heavier underline on hover, and a ring on
-   keyboard focus */
+   keyboard focus. On the field, the band and the strip, the same in its light ink and a light violet. */
 
 a { color: var(--green); text-decoration: underline 2px; text-underline-offset: 0.28em; }
 a:visited { color: var(--visited); }
 a:hover { text-decoration-thickness: 3px; }
 a:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; border-radius: 2px; }
-.band a { color: var(--field-ink); }
-.band a:focus-visible { outline-color: var(--field-ink); }
+.band a, .strip a { color: var(--field-ink); }
+.band a:visited, .strip a:visited { color: var(--field-visited); }
+.band a:focus-visible, .strip a:focus-visible { outline-color: var(--field-ink); }
 
 /* The band */
 
@@ -71,13 +75,25 @@ h1 {
   line-height: 1.5;
   letter-spacing: 0;
 }
-.published { margin-top: 0.75rem; color: var(--field-muted); }
-.provisional {
-  max-width: 40rem;
-  margin-top: 0.5rem;
-  padding-left: 0.875rem;
-  border-left: 3px solid #7fcfa6;
+.facts { margin-top: 0.75rem; color: var(--field-muted); }
+.facts p + p { margin-top: 0.5rem; }
+.provisional { max-width: 40rem; padding-left: 0.875rem; border-left: 3px solid #7fcfa6; }
+
+/* The strip: the board days before and after this one, and the list of them all, kept in view under the band */
+
+.strip {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--field);
+  box-shadow: inset 0 1px 0 #2f5d4d;
+  color: var(--field-muted);
+  font-size: 0.9375rem;
 }
+.strip .wrap { display: flex; align-items: center; column-gap: 1rem; height: var(--strip); }
+.strip .wrap > * { line-height: var(--strip); white-space: nowrap; }
+.strip .here { color: var(--field-ink); font-weight: 600; }
+.strip .all { margin-left: auto; }
 
 /* The chart. On a phone a row has three lines: its rank and its name, the description across the full row,
    and the language with the total stars. The column headings stay in the page for assistive technology. */
@@ -139,35 +155,58 @@ td.stars::after { content: " stars"; color: var(--muted); font-family: var(--tex
 .message-title { font-family: var(--display); font-size: 2rem; font-weight: 700; line-height: 1.1; }
 .message p + p { max-width: 32rem; margin-top: 0.75rem; color: var(--muted); }
 
-/* The foot: where the board ends, and a way back to the top */
+/* The foot: where the board ends, the same links as the strip, and a way back to the top */
 
 .foot { padding: 2rem 0 3rem; border-top: 2px solid var(--ink); }
 .message + .foot { border-top-color: var(--rule); }
 .foot-title { font-family: var(--display); font-size: 1.375rem; font-weight: 700; line-height: 1.2; }
-.foot-links { margin-top: 0.5rem; line-height: 2.75rem; } /* a finger's height */
+.foot-links { display: flex; flex-wrap: wrap; align-items: center; column-gap: 1.5rem; margin-top: 0.5rem; }
+.foot-links > * { line-height: var(--strip); white-space: nowrap; }
+.foot-links .end { color: var(--muted); }
+.foot-links .here { font-weight: 600; }
 .note { max-width: 40rem; margin-top: 1rem; color: var(--muted); font-size: 0.875rem; }
+
+/* The list of board days */
+
+.month { max-width: 40rem; margin-top: 2rem; }
+.month h2 {
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ink);
+  font-family: var(--display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.days { padding: 0; list-style: none; }
+.days li { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.75rem; border-bottom: 1px solid var(--rule); }
+.days a { padding-block: 0.625rem; font-family: var(--display); font-size: 1.125rem; font-weight: 600; line-height: 1.5; }
+.days .count { margin-left: auto; font-variant-numeric: tabular-nums; }
+.month + .foot { margin-top: 2rem; }
 
 /* A desktop: the site's line on one line, the board's facts beside its date so that the band stays short, and a
    row of four columns, whose description sits under the name */
 
 @media (min-width: 48rem) {
+  html { scroll-padding-top: 6rem; } /* clears the strip and the column headings */
   .wrap { padding: 0 2rem; }
+  .wide { display: inline; }
   .band .wrap {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     column-gap: 3rem;
     align-items: end;
-    padding-top: 1rem;
-    padding-bottom: 1.25rem;
+    padding-top: 0.875rem;
+    padding-bottom: 1rem;
   }
   .site { grid-column: 1 / -1; max-width: none; }
   .site .home, .site .home:visited { display: inline; margin-right: 0.5rem; }
-  h1 { grid-column: 1; grid-row: 2 / span 2; margin-top: 1rem; }
-  .published { grid-column: 2; grid-row: 2; margin-top: 0; }
-  .provisional { grid-column: 2; grid-row: 3; }
+  h1 { grid-column: 1; margin-top: 0.875rem; }
+  .facts { grid-column: 2; margin-top: 0; }
+  .strip .wrap { column-gap: 1.5rem; }
+
   .chart thead {
     position: sticky;
-    top: 0;
+    top: var(--strip);
     z-index: 1;
     display: block;
     width: auto;

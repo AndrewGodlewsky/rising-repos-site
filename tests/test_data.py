@@ -15,14 +15,15 @@ from sitebuild.contract import SCHEMA_VERSION_NEEDED, DataError
 
 COPIED = {
     "contract/daily.schema.json": "4cf53ad662ae30326701501f4d26403bb7acb4421a46dc194a0a1f0e5d159e71",
-    "contract/index.schema.json": "f63e8a66e4b82d419ed1d31528dad5e0b92216f4fe730c63ec3deaae25342922",
-    "boards/index.json": "390bb15c3385a67c7475f8f5f8d8d134007d58fea56be3a5683b2de4b935c5a1",
+    "contract/index.schema.json": "e2f3f9467a029962f69c10d9560a710a4aeb0eefa690a537faf75641d6898815",
+    "boards/index.json": "e748551f487ba07f4bfa048eba037fe9e19209eddcd28b84a24c5bca9e6ae523",
     "boards/days/2026-11-09/daily.json": "6cfa2a2ba8ec13a717c9757d6c027af31acd87b03e3574949c2ec7d99fe2eaab",
     "boards/days/2026-11-08/daily.json": "a2620bcad1c3340204f1dfcf08f42ee5dc4cc9d65f6f07497f3de75862f32dcd",
 }
 """The SHA-256 of each file the example copies, by its path under site-data/: the schemas and the example in
-RisingRepos's src/risingrepos/publishing/contract/ at 03cce1680d211dad9adc229d0d13096b2473c47e, #37's merge.
-A change to the contract reaches this copy by a pull request here that changes these too."""
+RisingRepos's src/risingrepos/publishing/contract/ at 81ba0820c50f736c8b25c2ff0058dadad4dcab05, which gave each
+board day in the index its row count (RisingRepos#43). A change to the contract reaches this copy by a pull
+request here that changes these too."""
 
 
 class TheExample(unittest.TestCase):
@@ -84,6 +85,48 @@ class TheDataFiles(BuildTest):
             with self.subTest(path):
                 self.assertNotIn("31337", page.html)
                 self.assertNotIn("forks", page.html)
+
+    def test_every_board_days_file_is_checked_and_an_older_one_that_does_not_match_fails_the_build(self):
+        board = read_json(self.board_file("2026-11-08"))
+        write_json(self.board_file("2026-11-08"), {**board, "score_provisional": "yes"})
+        self.assertBuildFails(str(self.board_file("2026-11-08")), "score_provisional")
+
+    def test_a_board_day_in_the_index_without_its_file_fails_the_build_and_names_the_file(self):
+        self.board_file("2026-11-08").unlink()
+        self.assertBuildFails(str(self.board_file("2026-11-08")))
+
+    def test_an_index_that_does_not_list_each_board_day_once_newest_first_fails_the_build(self):
+        # A board day listed twice with two row counts: the schema's uniqueItems compares whole entries.
+        for days in (["2026-11-08", "2026-11-09"], ["2026-11-09", "2026-11-09", "2026-11-08"]):
+            with self.subTest(days):
+                entries = [{"board_day": day, "row_count": count} for count, day in enumerate(days)]
+                write_json(self.index, {"schema_version": 1, "board_days": entries})
+                self.assertBuildFails(str(self.index), "newest first")
+
+    def test_an_index_that_lists_a_day_that_is_not_a_date_fails_the_build(self):
+        index = read_json(self.index)
+        write_json(self.index, {**index, "board_days": [*index["board_days"], {"board_day": "2026-02-30", "row_count": 0}]})
+        self.assertBuildFails(str(self.index), "'2026-02-30', which is not a date")
+
+    def test_an_index_from_before_row_count_still_builds_because_the_pages_count_each_boards_own_rows(self):
+        # As site-data/ held it before RisingRepos#43: the schema and the index without row_count.
+        schema = read_json(self.index_schema)
+        entry = schema["properties"]["board_days"]["items"]
+        del entry["properties"]["row_count"]
+        entry["required"].remove("row_count")
+        write_json(self.index_schema, schema)
+        index = read_json(self.index)
+        write_json(self.index, {**index, "board_days": [{"board_day": entry["board_day"]} for entry in index["board_days"]]})
+        pages = self.build_pages()
+        self.assertEqual(len(pages[BOARD].rows()), len(read_json(self.board_file())["rows"]))
+
+    def test_the_pages_do_not_read_row_count_and_count_each_boards_rows_from_its_file(self):
+        index = read_json(self.index)
+        write_json(self.index, {**index, "board_days": [{**entry, "row_count": 31337} for entry in index["board_days"]]})
+        for path, page in self.build_pages().items():
+            with self.subTest(path):
+                self.assertNotIn("31,337", page.html)
+                self.assertNotIn("31337", page.html)
 
     def test_a_field_added_to_a_row_but_not_to_the_schema_fails_the_build(self):
         board = read_json(self.board_file())

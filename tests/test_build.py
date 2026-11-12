@@ -1,7 +1,7 @@
 """The generator, run the way deploy.yml's build job runs it, on a copy of the data contract's example.
 
-The build writes two pages: the board, at the site's root, and the page for an address that holds no page. A
-test of something every page holds to reads both.
+The build writes the newest board at the site's root, a page for each board day, the list of board days, and the
+page for an address that holds no page. A test of something every page holds to reads them all.
 """
 
 import re
@@ -11,23 +11,26 @@ from urllib.parse import unquote
 
 from helpers import BuildTest, build, read_json, write_json
 
-from sitebuild import BOARD, NOT_FOUND, PAGES, TEMPLATES
+from sitebuild import BOARD, BOARD_DAY, DAYS, NOT_FOUND, PAGES, TEMPLATES, board_day_page
 
 NOINDEX = '<meta name="robots" content="noindex">'
 
+NEWEST, OLDER = "2026-11-09", "2026-11-08"
+"""The example's two board days, newest first, as its index lists them."""
+
 
 class TheBuild(BuildTest):
-    def test_the_build_writes_the_board_at_the_root_and_a_page_for_an_address_that_holds_none(self):
+    def test_the_build_writes_each_page_that_pages_names_and_one_for_each_board_day(self):
         self.build_pages()
         written = sorted(path.relative_to(self.out).as_posix() for path in self.out.rglob("*") if path.is_file())
-        self.assertEqual(written, [NOT_FOUND, BOARD])
-        self.assertEqual(set(PAGES), {BOARD, NOT_FOUND})
+        self.assertEqual(written, sorted([BOARD, DAYS, NOT_FOUND, board_day_page(NEWEST), board_day_page(OLDER)]))
+        self.assertEqual(set(PAGES), {BOARD, DAYS, NOT_FOUND, BOARD_DAY})
 
     def test_the_board_shows_the_latest_board_day_which_is_the_first_in_the_index(self):
         page = self.build_pages()[BOARD]
         self.assertIn("Rising Repos", page.one("title").text())
         self.assertIn("9 November 2026", page.one("title").text())
-        self.assertEqual(page.one("h1").all("time")[0].attrs["datetime"], "2026-11-09")
+        self.assertEqual(page.one("h1").all("time")[0].attrs["datetime"], NEWEST)
         self.assertIn("9 November 2026", page.one("h1").text())
 
     def test_the_board_lists_every_row_in_the_files_order_with_its_rank_name_description_language_and_stars(self):
@@ -86,13 +89,21 @@ class TheBuild(BuildTest):
                 self.assertIn("font-family: var(--display-condensed);", rule)
                 self.assertIn("font-stretch: condensed;", rule)
 
-    def test_the_board_states_its_board_day_and_publish_time_in_the_contracts_two_meta_tags_once_each(self):
+    def test_the_root_states_its_board_day_and_publish_time_in_the_contracts_two_meta_tags_once_each(self):
         page = self.build_pages()[BOARD]
-        self.assertEqual(page.meta("rr:board-date"), ["2026-11-09"])
+        self.assertEqual(page.meta("rr:board-date"), [NEWEST])
         self.assertEqual(page.meta("rr:published-at"), ["2026-11-10T00:41:07Z"])
         head = page.html.split("</head>")[0]
-        self.assertIn('<meta name="rr:board-date" content="2026-11-09">', head)
+        self.assertIn(f'<meta name="rr:board-date" content="{NEWEST}">', head)
         self.assertIn('<meta name="rr:published-at" content="2026-11-10T00:41:07Z">', head)
+
+    def test_no_page_but_the_root_states_a_board_day_so_whatever_reads_the_tags_reads_the_root(self):
+        for path, page in self.build_pages().items():
+            if path != BOARD:
+                with self.subTest(path):
+                    self.assertEqual(page.meta("rr:board-date"), [])
+                    self.assertEqual(page.meta("rr:published-at"), [])
+                    self.assertNotIn("rr:", page.html)
 
     def test_the_board_shows_when_the_board_day_was_published_in_utc(self):
         page = self.build_pages()[BOARD]
@@ -110,14 +121,14 @@ class TheBuild(BuildTest):
         self.assertNotIn("provisional", self.build_pages()[BOARD].body_text().lower())
 
     def test_a_board_that_is_empty_says_so_and_states_its_board_day_the_same_way(self):
-        write_json(self.index, {"schema_version": 1, "board_days": [{"board_day": "2026-11-08"}]})
+        write_json(self.index, {"schema_version": 1, "board_days": [{"board_day": OLDER, "row_count": 0}]})
         page = self.build_pages()[BOARD]
         self.assertEqual(page.rows(), [])
         self.assertEqual([href for href, _ in page.links() if "github.com" in href], [])
         self.assertIn("No repository made the board on this day.", page.body_text())
         self.assertIn("No repositories.", page.body_text())
         self.assertIn("8 November 2026", page.one("h1").text())
-        self.assertEqual(page.meta("rr:board-date"), ["2026-11-08"])
+        self.assertEqual(page.meta("rr:board-date"), [OLDER])
         self.assertEqual(page.meta("rr:published-at"), ["2026-11-09T00:38:52Z"])
 
     def test_a_board_of_one_row_counts_it_as_one_repository(self):
@@ -178,6 +189,106 @@ class TheBuild(BuildTest):
         self.assertTrue((self.out / BOARD).is_file())
 
 
+class TheBoardDays(BuildTest):
+    """RisingRepos#43: each board day has its own page, the pages link to the board days beside them, and one page
+    lists them all."""
+
+    def test_each_board_day_has_a_page_of_its_own_with_its_board_and_the_newest_has_the_roots_board(self):
+        pages = self.build_pages()
+        for day in (NEWEST, OLDER):
+            with self.subTest(day):
+                page = pages[board_day_page(day)]
+                self.assertEqual(page.one("h1").all("time")[0].attrs["datetime"], day)
+                self.assertEqual(len(page.rows()), len(read_json(self.board_file(day))["rows"]))
+        self.assertEqual(pages[board_day_page(NEWEST)].one("main").text(), pages[BOARD].one("main").text())
+
+    def test_each_board_links_to_the_board_day_before_it_and_after_it_and_to_the_list_in_the_strip_and_the_foot(self):
+        pages = self.build_pages()
+        expected = {
+            BOARD: [(OLDER, "before"), (None, "all")],
+            board_day_page(NEWEST): [(OLDER, "before"), (None, "all")],
+            board_day_page(OLDER): [(NEWEST, "after"), (None, "all")],
+        }
+        for path, links in expected.items():
+            for part in (self.strip(pages[path]), self.foot(pages[path])):
+                with self.subTest(path, part=part.tag):
+                    shown = [
+                        (link.attrs["href"], link.classes()[0], link.attrs.get("rel"))
+                        for link in part.all("a")
+                        if link.attrs["href"] != "#top"
+                    ]
+                    self.assertEqual(
+                        shown,
+                        [
+                            ("/days/", "all", None) if day is None else (f"/days/{day}/", kind, "prev" if kind == "before" else "next")
+                            for day, kind in links
+                        ],
+                    )
+
+    def test_the_strip_names_the_board_day_shown_and_says_where_the_board_days_end(self):
+        pages = self.build_pages()
+        newest, older = self.strip(pages[board_day_page(NEWEST)]), self.strip(pages[board_day_page(OLDER)])
+        self.assertEqual(newest.attrs["aria-label"], "Board days")
+        self.assertIn("9 Nov 2026", newest.text())
+        self.assertIn("Newest board", newest.text())
+        self.assertIn("8 Nov 2026", older.text())
+        self.assertIn("First board", older.text())
+        self.assertIn("The board before, ‹ 8 Nov", newest.text())
+
+    def test_an_earlier_boards_page_says_so_and_links_to_the_newest(self):
+        pages = self.build_pages()
+        earlier = [element for element in pages[board_day_page(OLDER)].one("header").all("p") if "earlier" in element.classes()]
+        self.assertEqual(len(earlier), 1)
+        self.assertIn("9 November 2026", earlier[0].text())
+        self.assertEqual([link.attrs["href"] for link in earlier[0].all("a")], ["/"])
+        for path in (BOARD, board_day_page(NEWEST)):
+            with self.subTest(path):
+                self.assertNotIn("An earlier board", pages[path].body_text())
+
+    def test_the_list_gives_every_board_day_newest_first_with_a_link_to_its_page_and_its_count_of_repositories(self):
+        page = self.build_pages()[DAYS]
+        items = page.one("main").all("li")
+        self.assertEqual(
+            [(item.all("a")[0].attrs["href"], item.all("time")[0].attrs["datetime"], item.text()) for item in items],
+            [
+                (f"/days/{NEWEST}/", NEWEST, "Monday 9 November 5 repositories"),
+                (f"/days/{OLDER}/", OLDER, "Sunday 8 November No repositories"),
+            ],
+        )
+        self.assertEqual([heading.text() for heading in page.one("main").all("h2")], ["November 2026"])
+        self.assertIn("2 board days, newest first", page.one("header").text())
+
+    def test_the_list_counts_each_board_days_rows_from_its_own_file_and_groups_the_days_by_month(self):
+        write_json(self.board_file("2026-10-31"), {**read_json(self.board_file(OLDER)), "board_day": "2026-10-31"})
+        index = read_json(self.index)
+        write_json(self.index, {**index, "board_days": [*index["board_days"], {"board_day": "2026-10-31", "row_count": 0}]})
+        board = read_json(self.board_file())
+        write_json(self.board_file(), {**board, "rows": board["rows"][:3]})
+        main = self.build_pages()[DAYS].one("main")
+        self.assertEqual([heading.text() for heading in main.all("h2")], ["November 2026", "October 2026"])
+        self.assertEqual([item.text() for item in main.all("li")][0], "Monday 9 November 3 repositories")
+        self.assertEqual(main.all("li")[-1].text(), "Saturday 31 October No repositories")
+
+    def test_three_board_days_link_each_to_the_ones_beside_it(self):
+        write_json(self.board_file("2026-11-07"), {**read_json(self.board_file(OLDER)), "board_day": "2026-11-07"})
+        index = read_json(self.index)
+        write_json(self.index, {**index, "board_days": [*index["board_days"], {"board_day": "2026-11-07", "row_count": 0}]})
+        page = self.build_pages()[board_day_page(OLDER)]
+        self.assertEqual(
+            [(link.attrs["href"], link.attrs.get("rel")) for link in self.strip(page).all("a")],
+            [("/days/2026-11-07/", "prev"), (f"/days/{NEWEST}/", "next"), ("/days/", None)],
+        )
+
+    def strip(self, page):
+        (strip,) = [nav for nav in page.all("nav") if "strip" in nav.classes()]
+        return strip
+
+    def foot(self, page):
+        (footer,) = page.one("main").all("footer")
+        (nav,) = footer.all("nav")
+        return nav
+
+
 class TheRow(BuildTest):
     """RisingRepos#107: a row reads as a row of a table to assistive technology however it is laid out, searching
     the page for owner/name reaches it, and the board ends with a foot."""
@@ -234,12 +345,12 @@ class TheRow(BuildTest):
     def test_a_boards_foot_names_its_board_day_again_and_links_up_to_the_band(self):
         (footer,) = self.page.one("main").all("footer")
         self.assertEqual(footer.all("p")[0].text(), "End of the daily board for 9 November 2026")
-        self.assertEqual(footer.all("time")[0].attrs["datetime"], "2026-11-09")
+        self.assertEqual(footer.all("time")[0].attrs["datetime"], NEWEST)
         self.assertIn(("#top", "Back to the top ↑"), [(link.attrs["href"], link.text()) for link in footer.all("a")])
         self.assertEqual(self.page.one("header").attrs["id"], "top")
 
     def test_an_empty_board_has_the_foot_too(self):
-        write_json(self.index, {"schema_version": 1, "board_days": [{"board_day": "2026-11-08"}]})
+        write_json(self.index, {"schema_version": 1, "board_days": [{"board_day": OLDER, "row_count": 0}]})
         shutil.rmtree(self.out)  # built by setUp
         (footer,) = self.build_pages()[BOARD].one("main").all("footer")
         self.assertIn("End of the daily board for 8 November 2026", footer.text())

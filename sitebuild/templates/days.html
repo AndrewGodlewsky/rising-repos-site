@@ -1,0 +1,36 @@
+{% extends "page.html" %}
+{# Every board day, newest first, by month: each links to its board and gives how many repositories it holds. #}
+{% block title %}Rising Repos: every daily board{% endblock %}
+{% block band %}
+<h1 id="days"><span class="kind">Every daily board</span> Board days</h1>
+<div class="facts">
+<p class="published">{{ boards|length }} board day{{ "" if boards|length == 1 else "s" }}, newest first, from <time datetime="{{ boards[-1].board_day }}">{{ boards[-1].board_day|long_date }}</time> to <time datetime="{{ newest.board_day }}">{{ newest.board_day|long_date }}</time>.</p>
+</div>
+{% endblock %}
+{% block strip %}
+<nav class="strip" aria-label="Board days">
+<div class="wrap">
+<a class="before" href="/"><span aria-hidden="true">‹ </span>The newest board<span class="hidden">, for {{ newest.board_day|long_date }}</span></a>
+<span class="here">All board days</span>
+</div>
+</nav>
+{% endblock %}
+{% block main %}
+{% for month, days_of_month in months %}
+<section class="month" aria-labelledby="month-{{ month }}">
+<h2 id="month-{{ month }}">{{ month|month_name }}</h2>
+<ol class="days">
+{% for board in days_of_month %}
+<li><a href="{{ board.board_day|day_address }}"><time datetime="{{ board.board_day }}">{{ board.board_day|day_in_month }}</time></a> <span class="count">{{ board.rows|length|repositories }}</span></li>
+{% endfor %}
+</ol>
+</section>
+{% endfor %}
+<footer class="foot">
+<p class="foot-title">The first board day is <time datetime="{{ boards[-1].board_day }}">{{ boards[-1].board_day|long_date }}</time></p>
+<nav class="foot-links" aria-label="At the foot">
+<a class="top" href="#top">Back to the top<span aria-hidden="true"> ↑</span></a>
+</nav>
+<p class="note">Star counts are from each board day. Rising Repos is not affiliated with GitHub.</p>
+</footer>
+{% endblock %}
