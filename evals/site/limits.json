@@ -1,0 +1,18 @@
+{
+  "phone": {
+    "performance": {"limit": 90, "reason": "A starting target, until the first measurement sets the limit."},
+    "accessibility": {"limit": 90, "reason": "A starting target, until the first measurement sets the limit."},
+    "largest_contentful_paint": {"limit": 2.5, "reason": "A starting target, until the first measurement sets the limit."},
+    "cumulative_layout_shift": {"limit": 0.1, "reason": "A starting target, until the first measurement sets the limit."},
+    "transfer_size": {"limit": null, "reason": "Recorded with no limit until the first measurement."},
+    "requests": {"limit": null, "reason": "Recorded with no limit until the first measurement."}
+  },
+  "desktop": {
+    "performance": {"limit": 90, "reason": "A starting target, until the first measurement sets the limit."},
+    "accessibility": {"limit": 90, "reason": "A starting target, until the first measurement sets the limit."},
+    "largest_contentful_paint": {"limit": 2.5, "reason": "A starting target, until the first measurement sets the limit."},
+    "cumulative_layout_shift": {"limit": 0.1, "reason": "A starting target, until the first measurement sets the limit."},
+    "transfer_size": {"limit": null, "reason": "Recorded with no limit until the first measurement."},
+    "requests": {"limit": null, "reason": "Recorded with no limit until the first measurement."}
+  }
+}
