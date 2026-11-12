@@ -84,6 +84,12 @@ log line that starts with `::` as a command.
 Lighthouse sends nothing anywhere but to the page it measures: error reporting
 is turned off.
 
+**Why Lighthouse runs in the job.** Google's PageSpeed Insights runs Lighthouse
+on Google's side, so the job would install nothing. On 2026-11-12 it refused a
+request made without a key: such requests share a daily quota, and that quota
+was zero. A key is a secret, and this job holds none. So Lighthouse runs in the
+job, at a pinned version, in the Chrome that the runner image ships.
+
 ## The pass mark
 
 `limits.json` holds a limit for each number on each profile, and the reason for
