@@ -18,7 +18,7 @@
 {% block strip %}
 <nav class="strip" aria-label="Board days">
 <div class="wrap">
-{{ board_days(board, before, after, days) }}
+{{ board_days(board, before, after, days_address) }}
 </div>
 </nav>
 {% endblock %}
@@ -56,7 +56,7 @@
 <footer class="foot">
 <p class="foot-title">End of the daily board for <time datetime="{{ board.board_day }}">{{ board.board_day|long_date }}</time></p>
 <nav class="foot-links" aria-label="Board days, at the foot">
-{{ board_days(board, before, after, days) }}
+{{ board_days(board, before, after, days_address) }}
 <a class="top" href="#top">Back to the top<span aria-hidden="true"> ↑</span></a>
 </nav>
 <p class="note">Star counts are from the board day. Rising Repos is not affiliated with GitHub.</p>

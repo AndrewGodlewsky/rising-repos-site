@@ -279,6 +279,11 @@ class TheBoardDays(BuildTest):
             [("/days/2026-11-07/", "prev"), (f"/days/{NEWEST}/", "next"), ("/days/", None)],
         )
 
+    def test_the_lists_strip_leads_to_the_newest_board_with_a_class_of_its_own(self):
+        """`before` and `after` name the board days either side of a board, and the newest board is neither."""
+        (link,) = self.strip(self.build_pages()[DAYS]).all("a")
+        self.assertEqual((link.attrs["href"], link.classes(), link.attrs.get("rel")), ("/", ["newest"], None))
+
     def strip(self, page):
         (strip,) = [nav for nav in page.all("nav") if "strip" in nav.classes()]
         return strip

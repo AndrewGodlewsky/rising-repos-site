@@ -121,7 +121,7 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         repositories=repositories,
         day_address=day_address,
     )
-    common = {"newest": boards[0], "days": address(DAYS), "noindex": noindex}
+    common = {"newest": boards[0], "days_address": address(DAYS), "noindex": noindex}
     pages = {
         written: templates.get_template(PAGES[page]).render(**context, **common)
         for written, page, context in _pages(boards)
