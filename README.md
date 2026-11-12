@@ -218,11 +218,108 @@ sitebuild/          the generator: python -m sitebuild <folder> [--noindex] [--d
 site-data/          the data files RisingRepos publishes, and their schemas
 tests/              the tests
   fixtures/         the data contract's example, which the tests build from
-.github/workflows/  deploy.yml: the build job and the deploy job
+.github/workflows/  deploy.yml: the build job and the deploy job. stale-check.yml: the daily check that the site is fresh
 pyproject.toml      the dependencies, and the date uv resolves them as of
 uv.lock             every package, pinned with its hashes
 .python-version     3.14, for local builds. CI uses the exact version in deploy.yml
 ```
+
+## The stale check
+
+`.github/workflows/stale-check.yml` reads the site's page once a day and posts
+to Discord when the newest board is too old, when the page cannot be read, or
+when the page states no usable board day. It runs on GitHub, so it reports a
+stale site when the machine that publishes is off. It reads the page's
+`rr:published-at`, when its board day was first published (see "The first
+page"). The board is fresh for 26 hours after that, and too old from then on.
+Its age is counted in hours from that moment, not by the date.
+
+**When it runs.** At 04:41 UTC every day. Each day's board is due by 8:00 pm
+US Eastern, which is 00:00 UTC in summer and 01:00 UTC in winter, so a board
+that was on time passes 26 hours by 02:00 or 03:00 UTC the night after. The
+check runs after both, so a missed day is reported that same night (11:41 pm
+Eastern in winter, 12:41 am in summer), as long as the board before it was up
+by 9:41 pm Eastern in winter or 10:41 pm in summer. It runs at 41 minutes past
+the hour because GitHub delays scheduled runs most, and drops some, at the
+start of an hour.
+
+**At most one alarm a day.** The schedule starts it once a day, and a run
+posts at most one message, so a stale board day is reported at most once a
+day. The check keeps no record and can write nothing anywhere, so this is the
+whole rule. What it gives up:
+
+- When GitHub drops the day's run, that day has no alarm. The next day's run
+  reports the board, a day older.
+- A board that goes stale just after the check is reported by the next day's
+  check, up to a day later.
+- When a board was published later than the times above and the next day is
+  missed, the miss is reported a day late.
+
+A run started by hand posts as well, and so does a scheduled run that is run
+again by hand. Each of those says in its first line that it was started by
+hand.
+
+**What a message says.** Which of the three it found. For a board that is too
+old, its board day, how many hours ago it was published, and the limit. Then
+the address it read, what to check first, and a link to the run. It mentions
+nobody (`allowed_mentions` is empty), and Discord shows no preview of its
+links. The run's log shows the message as it was sent, then Discord's answer
+as an HTTP status: 204 when Discord took it. A board that is fresh posts
+nothing, and the log says how old it is.
+
+**Running it by hand.** From the Actions tab, or with
+`gh workflow run stale-check.yml --repo AndrewGodlewsky/rising-repos-site`
+and `-f <input>=<value>` for each input to change:
+
+| Input | What it is | Default |
+| --- | --- | --- |
+| `address` | The page to read. Only an https address is taken: a host name in lower case, a port if any, and a path of letters, digits, and `. _ ~ / -`, in 200 characters at most | `https://preview.risingrepos.pages.dev/` |
+| `max_age_hours` | The age in hours from which the newest board is too old: a whole number from 0 to 168. 0 makes any board too old, which forces an alarm | `26` |
+
+A scheduled run takes the defaults, from `DEFAULT_ADDRESS` and
+`DEFAULT_MAX_AGE_HOURS` at the top of the workflow. An input it does not take
+fails the run, and nothing is read or posted. At go-live
+([RisingRepos#58](https://github.com/AndrewGodlewsky/RisingRepos/issues/58))
+`DEFAULT_ADDRESS` and the input's default become `https://risingrepos.com/`.
+
+**What the job can reach, and what it reads.** Its token has no permission
+(`permissions: {}`): it reads nothing from this repository. It holds one
+secret, `DISCORD_WEBHOOK_URL`, in the environment of its one step, and no
+deployment environment's secrets. No pull request starts it. It checks out
+nothing and uses no action. All it runs is the script written in the workflow
+file, with the runner image's own `python3 -I`, so no file that the daily data
+push can change runs where the webhook is.
+
+The page is the one thing it reads, and the daily data push can change it, so
+the script trusts nothing on it:
+
+- It reads at most 4,000,000 bytes, over HTTPS only and through no proxy. A
+  redirect to an address that is not https fails, and no file is opened.
+- It takes the content of `rr:board-date` and `rr:published-at` only when the
+  page carries each once, and uses a value only when it has the exact shape
+  the data contract gives it: `YYYY-MM-DD`, and `YYYY-MM-DDTHH:MM:SSZ` in UTC,
+  no more than ten minutes ahead of the runner's clock.
+- A value that fails is reported as "states no usable board day", and is never
+  repeated. Nothing read from the page reaches a shell, a command line, the
+  log, or a file that GitHub reads back, and the message is made only of
+  checked values.
+- An error is named by its HTTP status or by the name of its type, never in
+  its own words, which could repeat the webhook's address. The script never
+  prints that address.
+
+What the check cannot guard against: whoever can change the page can make it
+state a fresh board. The check reports what the page states.
+
+`tests/test_stale_check.py` reads the workflow for each of the above, and runs
+the script as the job does against a stand-in for the site and a stand-in for
+Discord. Both are HTTPS servers on 127.0.0.1, so the tests read no network
+beyond the machine, with a made-up certificate that only the script under test
+is told to trust. GitHub starts a scheduled or manual run only once the
+workflow is on `main`, so the check's first real runs come after the change
+that adds it is merged.
+
+GitHub turns off a scheduled workflow in a public repository after 60 days
+with no activity in it. The daily data commits keep this repository active.
 
 ## Changing a pinned version
 
