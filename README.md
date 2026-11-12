@@ -105,9 +105,9 @@ readers' systems already have, in `sitebuild/templates/site.css`.
 
 | Role | What it sets | Stack | Where each named face is |
 | --- | --- | --- | --- |
-| Display: a DIN-style signage face | The site's name, the repository names, the star counts, a message's heading | `--display`: `Bahnschrift, "DIN Alternate", "Arial Narrow", "Nimbus Sans Narrow", "DejaVu Sans Condensed", sans-serif-condensed, sans-serif` | Bahnschrift: Windows 10 (version 1709 on) and 11. DIN Alternate: macOS and iOS. Arial Narrow: Microsoft Office on Windows, and macOS. Nimbus Sans Narrow: Linux, with Ghostscript's URW fonts (Debian's `fonts-urw-base35`, Fedora's `urw-base35-nimbus-sans-fonts`). DejaVu Sans Condensed: Linux (Fedora's `dejavu-sans-fonts`, Debian's `fonts-dejavu-extra`). `sans-serif-condensed`: Android's name for Roboto at its condensed width |
+| Display: a DIN-style signage face | The site's name, the repository names, the star counts, the line that ends a board, a message's heading | `--display`: `Bahnschrift, "DIN Alternate", "Arial Narrow", "Nimbus Sans Narrow", "DejaVu Sans Condensed", sans-serif-condensed, sans-serif` | Bahnschrift: Windows 10 (version 1709 on) and 11. DIN Alternate: macOS and iOS. Arial Narrow: Microsoft Office on Windows, and macOS. Nimbus Sans Narrow: Linux, with Ghostscript's URW fonts (Debian's `fonts-urw-base35`, Fedora's `urw-base35-nimbus-sans-fonts`). DejaVu Sans Condensed: Linux (Fedora's `dejavu-sans-fonts`, Debian's `fonts-dejavu-extra`). `sans-serif-condensed`: Android's name for Roboto at its condensed width |
 | The display role's cut for the date and the ranks | The date and the ranks, condensed | `--display-condensed`: the same stack with `"DIN Condensed"` in place of `"DIN Alternate"` | DIN Condensed: macOS and iOS. Bahnschrift narrows along its own width axis, under `font-stretch: condensed` |
-| Text: the reader's own interface face | The descriptions, the owner, the language, the column headings, the band's sentences, the footer | `--text`: `system-ui`, then names for browsers older than it | `system-ui` is Segoe UI on Windows, San Francisco on Apple systems, and Roboto on Android |
+| Text: the reader's own interface face | The descriptions, the owner, the language, the column headings, the band's sentences, the link back to the top, the note at the foot | `--text`: `system-ui`, then names for browsers older than it | `system-ui` is Segoe UI on Windows, San Francisco on Apple systems, and Roboto on Android |
 
 The ranks take the condensed cut, as the date does, so that they are the same
 narrow figures on every system ([RisingRepos#111](https://github.com/AndrewGodlewsky/RisingRepos/issues/111)): on Windows, Bahnschrift at
@@ -119,9 +119,10 @@ which has one width.
 Sizes, on a phone and then from 48rem (768 px) up: the date 2.25rem rising to
 4rem; the ranks 1.75rem and 2.25rem, bold; the names 1.375rem and 1.625rem,
 semibold; the star counts 1rem and 1.125rem, regular. The text is 1rem, with
-the owner, the language, and the footer at 0.875rem and the column headings at
-0.8125rem. The ranks and the star counts use tabular figures, so that their
-digits line up down the column.
+the owner, the language, and the note at the foot at 0.875rem and the column
+headings at 0.8125rem. The line that ends a board is 1.375rem, bold. The ranks
+and the star counts use tabular figures, so that their digits line up down the
+column.
 
 **Colour.** One idea: an evergreen field, white paper, and one green.
 
@@ -132,7 +133,7 @@ digits line up down the column.
 | `--field-muted` | `#b6cfc3` | The band's other text | 7.54:1 on the band |
 | `--paper` | `#ffffff` | The page | |
 | `--ink` | `#13201a` | The text and the star counts | 16.81:1 |
-| `--muted` | `#50605a` | The owner, the language, the column headings, and the footer | 6.64:1 |
+| `--muted` | `#50605a` | The owner, the language, the column headings, and the note at the foot | 6.64:1 |
 | `--green` | `#12704b` | The ranks, a link before it is visited, and the focus ring | 6.10:1 |
 | `--visited` | `#551a8b` | A link once visited | 11.01:1, and 1.81:1 against `--green` |
 | `--rule` | `#dae3de` | The line between rows | |
@@ -143,10 +144,11 @@ WCAG AA, 4.5:1, against its background, and `tests/test_colour.py` holds each
 pair. On the paper, green marks the positions and the links, and nothing else.
 
 **Spacing.** The content is at most 68rem wide, with 1rem at each side on a
-phone and 2rem from 48rem up, which is the one breakpoint. A row has 1.125rem
-above and below its content and a hairline between rows, and 0.375rem between
-the name, the description, and the language. A description runs at most 35rem
-wide, about 75 characters a line on a desktop. The band has 1rem above its
+phone and 2rem from 48rem up, which is the one breakpoint. A row has a hairline
+under it: on a phone, 1rem above its content, 1.125rem below, and 0.5rem
+between its lines; from 48rem up, 0.75rem above and below, and 0.25rem between
+the name and the description. A description runs at most 38rem wide, about 80
+characters a line on a desktop. The band has 1rem above its
 content and 1.25rem below. From 48rem up the site's line takes one line, and
 the board's facts stand beside the date rather than under it, so that the band
 stays short and the list starts high on the first screen.
@@ -157,12 +159,31 @@ stays short and the list starts high on the first screen.
 2. The repository's name: the link, large, in the display face.
 3. The description, in the text face.
 4. The total stars, at the right, in the display face at regular weight.
-5. The owner, small and muted above the name and part of its link, and the
-   language, small and muted under the description.
+5. The owner, small and muted just before the name and part of its link, and
+   the language, small and muted.
 
-A row's position, name, and total stars line up on the name's baseline. The
-owner is floated above the name, so the name's line is the first that sets the
-cells' baseline.
+The owner and the name are one run of text, `owner/name`, so that a search of
+the page finds a row by it. The name's link has 0.75rem of padding above and
+below, which makes it a finger's height (46 px on a phone, 50 px on a desktop)
+without moving the lines around it.
+
+From 48rem up a row has four columns: the rank, 4.5rem wide; the name with the
+description under it; the language, 9rem; and the total stars, 7.5rem. The
+rank, the name, the language, and the total stars line up on the name's
+baseline.
+
+On a phone a row is stacked
+([RisingRepos#107](https://github.com/AndrewGodlewsky/RisingRepos/issues/107),
+from the three judges of RisingRepos#71): the rank and the name on the first
+line, the description at the row's full width under them (358 px at 390 px
+wide, where it had 244), and the language and the total stars on the last
+line, the stars at the right with the word "stars" after them, since the
+column headings are out of view. A row averages 167 px on the board for
+2026-11-09, where it averaged 201. The column headings stay in the page for
+assistive technology. The table, its rows, and its cells name their roles
+(`role="table"`, `row`, `columnheader`, `rowheader`, and `cell`), because some
+browsers stop telling assistive technology that a table is one once its
+parts' display changes, as a stacked row's does.
 
 **Links.**
 
@@ -182,6 +203,11 @@ underlined. A browser lets a visited link change only its colours, so the
 visited state is a change of colour. To see it in an automated browser, whose
 fresh contexts record no visits, force the state on a link with the DevTools
 protocol's `CSS.forcePseudoState` and `visited`.
+
+**A board's foot.** Under the last row, a 2 px rule in the ink, then "End of
+the daily board for" its date, in the display face; "Back to the top", which
+leads to the band; and the note on star counts. An empty board has the same
+foot.
 
 **What a later page keeps.**
 

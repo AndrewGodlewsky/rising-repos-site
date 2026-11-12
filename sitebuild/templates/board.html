@@ -15,27 +15,25 @@
 {% endblock %}
 {% block main %}
 {% if board.rows %}
-<table class="chart" aria-labelledby="board">
-<thead>
-<tr><th scope="col" class="rank">Rank</th><th scope="col" class="repository">Repository</th><th scope="col" class="stars">Total stars</th></tr>
+{# Each part of the table names its role, because a phone stacks each row's cells, and some browsers stop telling
+   assistive technology that a table whose display changes is a table. #}
+<table class="chart" role="table" aria-labelledby="board">
+<thead role="rowgroup">
+<tr role="row"><th scope="col" role="columnheader" class="rank">Rank</th><th scope="col" role="columnheader" class="repository">Repository</th><th scope="col" role="columnheader" class="description hidden">Description</th><th scope="col" role="columnheader" class="language">Language</th><th scope="col" role="columnheader" class="stars">Total stars</th></tr>
 </thead>
-<tbody>
+<tbody role="rowgroup">
 {% for row in board.rows %}
 {% set owner, _, name = row.full_name.partition("/") %}
-<tr class="row">
-<td class="rank">{{ row.rank }}</td>
-<th scope="row" class="repository">
-<a href="https://github.com/{{ row.full_name }}"><span class="owner">{{ owner }}/</span><span class="name">{{ name }}</span></a>
+<tr role="row">
+<td class="rank" role="cell">{{ row.rank }}</td>
+<th scope="row" class="repository" role="rowheader"><a href="https://github.com/{{ row.full_name }}"><span class="owner">{{ owner }}/</span><span class="name">{{ name }}</span></a></th>
 {% if row.description %}
-<p class="description" dir="auto">{{ row.description }}</p>
+<td class="description" role="cell" dir="auto">{{ row.description }}</td>
 {% else %}
-<p class="description none">No description</p>
+<td class="description none" role="cell">No description</td>
 {% endif %}
-{% if row.language %}
-<p class="language">{{ row.language }}</p>
-{% endif %}
-</th>
-<td class="stars">{{ row.stars|thousands }}</td>
+<td class="language" role="cell">{{ row.language or "" }}</td>
+<td class="stars" role="cell">{{ row.stars|thousands }}</td>
 </tr>
 {% endfor %}
 </tbody>
@@ -46,7 +44,9 @@
 <p>A repository makes the board when it gains stars faster than its own pace predicts.</p>
 </div>
 {% endif %}
-<footer>
-<p>Star counts are from the board day. Rising Repos is not affiliated with GitHub.</p>
+<footer class="foot">
+<p class="foot-title">End of the daily board for <time datetime="{{ board.board_day }}">{{ board.board_day|long_date }}</time></p>
+<p class="foot-links"><a class="top" href="#top">Back to the top<span aria-hidden="true"> ↑</span></a></p>
+<p class="note">Star counts are from the board day. Rising Repos is not affiliated with GitHub.</p>
 </footer>
 {% endblock %}

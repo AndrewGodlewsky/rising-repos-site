@@ -123,14 +123,18 @@ class Element:
 
     def text(self) -> str:
         """The text inside the element as a reader sees it: entities decoded, a block set apart from what is
-        around it, and runs of white space made one space."""
+        around it, and runs of white space made one space. The space at the edge of an inline element stays, as
+        in "All<span> board</span> days"."""
+        return " ".join(self._text().split())
+
+    def _text(self) -> str:
         parts = []
         for child in self.children:
             if isinstance(child, str):
                 parts.append(child)
             else:
-                parts.append(f" {child.text()} " if child.tag in BLOCK else child.text())
-        return " ".join("".join(parts).split())
+                parts.append(f" {child._text()} " if child.tag in BLOCK else child._text())
+        return "".join(parts)
 
     def classes(self) -> list[str]:
         return (self.attrs.get("class") or "").split()
@@ -189,9 +193,9 @@ class Page:
         return [(element.attrs.get("href"), element.text()) for element in self.all("a")]
 
     def rows(self) -> list[Element]:
-        """The board's rows, in order: each element with the class `row`. A page with no board, or a board with no
-        rows, has none."""
-        return [element for element in self.all() if "row" in element.classes()]
+        """The board's rows, in order: each row in the body of the chart, the one table on a board's page. A page
+        with no board, or a board with no rows, has none."""
+        return [row for table in self.all("table") for body in table.all("tbody") for row in body.all("tr")]
 
     def body_text(self) -> str:
         return self.one("body").text()

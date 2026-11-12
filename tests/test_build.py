@@ -5,6 +5,7 @@ test of something every page holds to reads both.
 """
 
 import re
+import shutil
 import unittest
 from urllib.parse import unquote
 
@@ -47,7 +48,10 @@ class TheBuild(BuildTest):
 
     def test_the_boards_column_headings_say_that_the_number_is_total_stars(self):
         page = self.build_pages()[BOARD]
-        self.assertEqual([heading.text() for heading in page.one("thead").all("th")], ["Rank", "Repository", "Total stars"])
+        self.assertEqual(
+            [heading.text() for heading in page.one("thead").all("th")],
+            ["Rank", "Repository", "Description", "Language", "Total stars"],
+        )
 
     def test_a_row_shows_no_language_when_the_file_has_none(self):
         board = read_json(self.board_file())
@@ -172,6 +176,73 @@ class TheBuild(BuildTest):
         result = build(self.out)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertTrue((self.out / BOARD).is_file())
+
+
+class TheRow(BuildTest):
+    """RisingRepos#107: a row reads as a row of a table to assistive technology however it is laid out, searching
+    the page for owner/name reaches it, and the board ends with a foot."""
+
+    def setUp(self):
+        super().setUp()
+        self.page = self.build_pages()[BOARD]
+        (style,) = self.page.all("style")
+        self.style = style.text()
+        self.phone, _, self.desktop = self.style.partition("@media (min-width: 48rem)")
+
+    def test_the_chart_names_the_role_of_each_part_so_a_stacked_row_is_still_read_as_a_tables(self):
+        (table,) = self.page.all("table")
+        self.assertEqual(table.attrs["role"], "table")
+        self.assertEqual([part.attrs["role"] for part in table.all() if part.tag in ("thead", "tbody")], ["rowgroup"] * 2)
+        for row in table.all("tr"):
+            self.assertEqual(row.attrs["role"], "row")
+            roles = [cell.attrs["role"] for cell in row.all() if cell.tag in ("td", "th")]
+            self.assertIn(roles, (["columnheader"] * 5, ["cell", "rowheader", "cell", "cell", "cell"]))
+
+    def test_the_owner_and_the_name_are_one_run_of_text_so_a_search_for_owner_slash_name_finds_the_row(self):
+        for row in read_json(self.board_file())["rows"]:
+            with self.subTest(row["full_name"]):
+                owner, _, name = row["full_name"].partition("/")
+                self.assertIn(f'<span class="owner">{owner}/</span><span class="name">{name}</span>', self.page.html)
+        for selector in (".owner", ".name", ".repository a"):
+            for rule in re.findall(rf"(?<![\w-]){re.escape(selector)}\s*\{{([^}}]*)\}}", self.style):
+                with self.subTest(selector, rule=rule):
+                    self.assertNotRegex(rule, r"float|display:\s*(block|flex|grid|table)|position:\s*absolute")
+
+    def test_on_a_phone_a_row_is_stacked_with_the_description_at_its_full_width(self):
+        areas = re.search(r"\.chart tbody tr \{[^}]*grid-template-areas:([^;]*);", self.phone).group(1).split('"')[1::2]
+        self.assertEqual(
+            [area.split() for area in areas],
+            [
+                ["rank", "repository", "repository"],
+                ["description", "description", "description"],
+                ["language", "language", "stars"],
+            ],
+        )
+        self.assertRegex(self.phone, r'td\.stars::after \{ content: " stars";')
+
+    def test_on_a_desktop_the_description_sits_under_the_name_beside_the_language_and_the_stars(self):
+        areas = re.search(r"grid-template-areas:([^;]*);", self.desktop).group(1).split('"')[1::2]
+        self.assertEqual(
+            [area.split() for area in areas],
+            [["rank", "repository", "language", "stars"], ["rank", "description", "language", "stars"]],
+        )
+
+    def test_the_name_link_is_padded_to_a_fingers_height_without_moving_the_lines_around_it(self):
+        (rule,) = re.findall(r"(?<![\w-])\.repository a \{([^}]*)\}", self.phone)
+        self.assertIn("padding-block: 0.75rem;", rule)  # 46 px tall at 390 px wide, measured on RisingRepos#43
+
+    def test_a_boards_foot_names_its_board_day_again_and_links_up_to_the_band(self):
+        (footer,) = self.page.one("main").all("footer")
+        self.assertEqual(footer.all("p")[0].text(), "End of the daily board for 9 November 2026")
+        self.assertEqual(footer.all("time")[0].attrs["datetime"], "2026-11-09")
+        self.assertIn(("#top", "Back to the top ↑"), [(link.attrs["href"], link.text()) for link in footer.all("a")])
+        self.assertEqual(self.page.one("header").attrs["id"], "top")
+
+    def test_an_empty_board_has_the_foot_too(self):
+        write_json(self.index, {"schema_version": 1, "board_days": [{"board_day": "2026-11-08"}]})
+        shutil.rmtree(self.out)  # built by setUp
+        (footer,) = self.build_pages()[BOARD].one("main").all("footer")
+        self.assertIn("End of the daily board for 8 November 2026", footer.text())
 
 
 class TheTemplates(unittest.TestCase):
