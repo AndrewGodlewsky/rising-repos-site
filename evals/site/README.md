@@ -114,7 +114,7 @@ profile:
 | Runs | The lowest and the highest of the five |
 | Accepted | The median in `accepted.json`, for the same page and profile |
 | Limit | `at least` for a score, `at most` for the rest |
-| Result | `pass`, `**fail**`, or `no limit` |
+| Result | `pass` or `**fail**` |
 
 Below the tables, each number that failed or could not be measured is listed,
 and the same lines are on the run's page as errors. The artifact `site-eval`

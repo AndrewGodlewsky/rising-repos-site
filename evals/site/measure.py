@@ -385,14 +385,8 @@ def _section(
         value, runs = found.numbers[key]["median"], found.numbers[key]["runs"]
         accepted = was.get(key, {}).get("median")
         limit = limits[key]["limit"]
-        bound = (
-            "none"
-            if limit is None
-            else f"{'at least' if measure.higher_is_better else 'at most'} {measure.show(limit)}"
-        )
-        if limit is None:
-            result = "no limit"
-        elif measure.within(value, limit):
+        bound = f"{'at least' if measure.higher_is_better else 'at most'} {measure.show(limit)}"
+        if measure.within(value, limit):
             result = "pass"
         else:
             result = "**fail**"
@@ -466,12 +460,11 @@ def main() -> int:
             f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/actions/runs/"
             f"{os.environ['GITHUB_RUN_ID']}/attempts/{os.environ['GITHUB_RUN_ATTEMPT']}"
         )
-    accepted = HERE / "accepted.json"
     outcome = evaluate(
         lighthouse=shlex.split(os.environ["SITE_EVAL_LIGHTHOUSE"]),
         out=options.out,
         limits=json.loads((HERE / "limits.json").read_text(encoding="utf-8")),
-        accepted=json.loads(accepted.read_text(encoding="utf-8")) if accepted.exists() else {},
+        accepted=json.loads((HERE / "accepted.json").read_text(encoding="utf-8")),
         address=os.environ.get("SITE_EVAL_ADDRESS", ""),
         commit=os.environ.get("SITE_EVAL_COMMIT", ""),
         run=run,

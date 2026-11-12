@@ -271,17 +271,6 @@ class TheLimits(EvalTest):
         outcome = self.evaluate()
         self.assertTrue(outcome.passed, outcome.problems)
 
-    def test_a_number_with_no_limit_is_recorded_and_fails_nothing(self):
-        limits = json.loads(json.dumps(LIMITS))
-        limits["phone"]["transfer_size"]["limit"] = None
-        self.plan(phone=[report(transfer=9_999_999)], desktop=[report()])
-        outcome = self.evaluate(limits=limits)
-        self.assertTrue(outcome.passed, outcome.problems)
-        self.assertEqual(
-            self.row(outcome, "Total transfer size"),
-            "| Total transfer size | 9,999,999 bytes | 9,999,999 bytes to 9,999,999 bytes | none | none | no limit |",
-        )
-
 
 class AMeasurementThatCouldNotBeMade(EvalTest):
     def assertCouldNotMeasure(self, outcome: "measure.Outcome", reason: str, profile: str = "Phone"):
