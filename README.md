@@ -20,9 +20,14 @@ addresses serve two different sites:
   project's production branch is `main`, so the upload is a preview deployment.
 - Every page built for the preview carries
   `<meta name="robots" content="noindex">`.
-- Going live is one reviewed change to `.github/workflows/deploy.yml`:
-  `PAGES_BRANCH: preview` becomes `PAGES_BRANCH: main`. The same line drops the
-  `noindex` tag.
+- Going live is one reviewed change to two workflows. In
+  `.github/workflows/deploy.yml`, `PAGES_BRANCH: preview` becomes
+  `PAGES_BRANCH: main`, and the same line drops the `noindex` tag. In
+  `.github/workflows/stale-check.yml`, the address the check reads by default
+  becomes `https://risingrepos.com/` (see "The stale check"). Without that
+  second part, the check would go on reading the preview, which no longer
+  changes once boards are uploaded to production, and would post a false alarm
+  every day.
 
 ## The first page
 
@@ -198,7 +203,9 @@ python -m http.server 8000 --bind 127.0.0.1 --directory dist  # then open http:/
 
 The tests are the one command the workflow's build job runs too. They build
 from `tests/fixtures/`, but for the one test that builds from `site-data/`
-(see "The data"), write only to temporary folders, and read no network.
+(see "The data"), write only to temporary folders, and reach no other machine:
+the stale check's tests talk only to servers of their own on 127.0.0.1 (see
+"The stale check").
 They include the search that RisingRepos's regression command makes, for a
 file git would commit that holds a string shaped like a GitHub token or a
 Discord webhook address: `tests/test_tokens.py` fails on one and names the
