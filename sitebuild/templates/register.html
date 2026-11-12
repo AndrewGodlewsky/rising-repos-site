@@ -1,0 +1,49 @@
+{% extends "page.html" %}
+{# The register: the board's facts in a column of their own, beside the ranked list. #}
+{% block theme_color %}#eef2f7{% endblock %}
+{% block style %}{% include "register.css" %}{% endblock %}
+{% block body %}
+<div class="page">
+<header class="facts">
+<div class="facts-inner">
+<p class="site">Rising Repos</p>
+<p class="about">GitHub repositories gaining stars faster than their own pace predicts, on a new board each day.</p>
+<h1 id="board"><span class="kind">Daily board</span> <time datetime="{{ board.board_day }}">{{ board.board_day|long_date }}</time></h1>
+<p class="published">{{ board.rows|length|repositories }}. Published <time datetime="{{ board.published_at }}">{{ board.published_at|utc_time }}</time>.</p>
+{% if board.score_provisional %}
+<p class="provisional"><strong>The score is provisional.</strong> The formula behind this board is still being tested, so its results may change.</p>
+{% endif %}
+</div>
+</header>
+<main class="list">
+{% if board.rows %}
+<ol class="board" aria-labelledby="board">
+{% for row in board.rows %}
+{% set owner, _, name = row.full_name.partition("/") %}
+<li class="row">
+<span class="rank">{{ row.rank }}</span>
+<a class="name" href="https://github.com/{{ row.full_name }}"><span class="owner">{{ owner }}/</span>{{ name }}</a>
+{% if row.description %}
+<p class="description" dir="auto">{{ row.description }}</p>
+{% else %}
+<p class="description none">No description</p>
+{% endif %}
+{% if row.language %}
+<p class="language">{{ row.language }}</p>
+{% endif %}
+<p class="stars"><span class="count">{{ row.stars|thousands }}</span> stars</p>
+</li>
+{% endfor %}
+</ol>
+{% else %}
+<div class="empty">
+<p class="empty-title">No repository made the board on this day.</p>
+<p>A repository makes the board when it gains stars faster than its own pace predicts.</p>
+</div>
+{% endif %}
+<footer>
+<p>Star counts are from the board day. Rising Repos is not affiliated with GitHub.</p>
+</footer>
+</main>
+</div>
+{% endblock %}

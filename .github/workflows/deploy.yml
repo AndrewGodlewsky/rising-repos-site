@@ -97,7 +97,28 @@ jobs:
             exit 1
           fi
 
+      - name: Upload only the newest push
+        # The builds of two pushes run at once, and either can finish first.
+        # Uploads take turns (the concurrency group above), and a run uploads
+        # only while its commit is still the head of main. So an older push's
+        # pages never replace a newer push's: that push's run uploads its own
+        # once its build passes. If that build fails, nothing is uploaded until
+        # main builds again. The repository is public, so git reads main
+        # without a credential. A read that fails fails the job, and nothing is
+        # uploaded.
+        id: newest
+        run: |
+          line=$(git ls-remote --exit-code "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" refs/heads/main)
+          head=${line%%[[:space:]]*}
+          if [ "$head" = "$GITHUB_SHA" ]; then
+            echo "newest=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::Not uploaded: main has moved on to $head from this run's $GITHUB_SHA. The run for $head uploads once its build passes."
+            echo "newest=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Upload to Cloudflare Pages
+        if: steps.newest.outputs.newest == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

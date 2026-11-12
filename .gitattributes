@@ -1,0 +1,5 @@
+# The data files, and the copy of the data contract's example that the tests
+# build from, stay byte for byte as RisingRepos wrote them: git never changes
+# their line endings, on any machine.
+site-data/** -text
+tests/fixtures/** -text

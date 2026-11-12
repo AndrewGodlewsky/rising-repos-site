@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "board_day": "2026-11-09",
+  "published_at": "2026-11-10T00:41:07Z",
+  "score_provisional": true,
+  "rows": [
+    {
+      "rank": 1,
+      "github_id": 900000001,
+      "full_name": "rising-repos-example/markup-in-description",
+      "description": "Made-up row. Its description holds markup, which the site shows as text: <script>alert(\"rr\")</script> <a href=\"javascript:alert(1)\">a link to javascript:</a> & <b>bold</b>",
+      "language": "TypeScript",
+      "stars": 482
+    },
+    {
+      "rank": 2,
+      "github_id": 1300192,
+      "full_name": "octocat/Spoon-Knife",
+      "description": "This repo is for demonstration purposes only.",
+      "language": "HTML",
+      "stars": 13250
+    },
+    {
+      "rank": 3,
+      "github_id": 900000002,
+      "full_name": "rising-repos-example/text-beyond-ascii",
+      "description": "Made-up row. Its description holds text beyond ASCII: 日本語の説明, مرحبا, and an emoji 🚀",
+      "language": "Rust",
+      "stars": 1207
+    },
+    {
+      "rank": 4,
+      "github_id": 1296269,
+      "full_name": "octocat/Hello-World",
+      "description": "My first repository on GitHub!",
+      "language": null,
+      "stars": 3021
+    },
+    {
+      "rank": 5,
+      "github_id": 900000003,
+      "full_name": "rising-repos-example/no-description",
+      "description": null,
+      "language": "Go",
+      "stars": 205
+    }
+  ]
+}

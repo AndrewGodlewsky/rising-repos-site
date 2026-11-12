@@ -105,6 +105,31 @@ class TheWorkflow(unittest.TestCase):
         command = step_named(self.deploy, "Upload to Cloudflare Pages")["run"]
         self.assertIn('--project-name=risingrepos --branch="$PAGES_BRANCH"', command)
 
+    def test_of_two_pushes_to_main_the_older_ones_pages_are_never_uploaded_after_the_newer_ones(self):
+        # The builds of two pushes run at once, and either can finish first. Their uploads take turns, and
+        # each run uploads only while its commit is still the head of main. So the run of an older push that
+        # comes to its turn after a newer push leaves the upload to the newer push's run.
+        self.assertEqual(self.deploy["concurrency"], {"group": "cloudflare-pages-upload", "cancel-in-progress": False})
+        steps = [step.get("name") for step in self.deploy["steps"]]
+        self.assertEqual(steps.index("Upload only the newest push") + 1, steps.index("Upload to Cloudflare Pages"))
+        newest = step_named(self.deploy, "Upload only the newest push")
+        # The whole script, because a one-word change in either branch (newest=true where main has moved on)
+        # uploads every push again.
+        self.assertEqual(
+            newest["run"],
+            'line=$(git ls-remote --exit-code "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" refs/heads/main)\n'
+            "head=${line%%[[:space:]]*}\n"
+            'if [ "$head" = "$GITHUB_SHA" ]; then\n'
+            '  echo "newest=true" >> "$GITHUB_OUTPUT"\n'
+            "else\n"
+            '  echo "::notice::Not uploaded: main has moved on to $head from this run\'s $GITHUB_SHA.'
+            ' The run for $head uploads once its build passes."\n'
+            '  echo "newest=false" >> "$GITHUB_OUTPUT"\n'
+            "fi\n",
+        )
+        upload = step_named(self.deploy, "Upload to Cloudflare Pages")
+        self.assertEqual(upload["if"], f"steps.{newest['id']}.outputs.newest == 'true'")
+
     def test_pages_built_for_an_upload_that_is_not_production_ask_not_to_be_indexed(self):
         command = step_named(self.build, "Build the pages")["run"]
         self.assertIn('if [ "$PAGES_BRANCH" = main ]', command)
