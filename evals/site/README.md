@@ -33,7 +33,8 @@ gh workflow run site-eval.yml --repo AndrewGodlewsky/rising-repos-site --ref mai
 
 The address must be `https://` with a host, written in the characters an address
 may hold unescaped. Anything else is refused and nothing is measured. In the
-job, `python evals/site/measure.py --out <folder>` runs the eval. It reads
+job, `uv run --locked python -m evals.site.measure --out <folder>` runs the
+eval, with the packages the build job installs from `uv.lock`. It reads
 Lighthouse's command, the address, and the deployed commit from its environment,
 as its docstring says.
 
@@ -42,7 +43,8 @@ deploy` measures the preview only while that run's commit is still the head of
 `main`. The deploy job uploads only the head of `main`, so a successful run
 whose commit is still the head uploaded its pages. A deploy that failed is not
 measured at all. Each page must then state, in its `rr:board-date` and
-`rr:published-at` tags, the newest board day in that commit's `site-data/`. The
+`rr:published-at` tags, the newest board day in that commit's `site-data/`,
+which the eval reads with `sitebuild/contract.py`, as the build does. The
 eval reads the page up to ten times, fifteen seconds apart, before it gives up
 and fails. If `main` moves on before the measurement starts, nothing is
 measured, and the run that follows the newer deploy measures instead. If it

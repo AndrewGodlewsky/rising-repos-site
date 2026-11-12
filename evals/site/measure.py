@@ -3,9 +3,10 @@
 It runs Lighthouse on each page, on a phone profile and a desktop profile, RUNS times each, and takes the
 median of each number. It judges each median against its limit in limits.json, writes a summary that sets the
 numbers beside the accepted ones in accepted.json, and fails when a number is outside its limit or could not be
-measured. README.md says what each number means. .github/workflows/site-eval.yml runs it:
+measured. README.md says what each number means. .github/workflows/site-eval.yml runs it from the
+repository's top folder, with the site's locked dependencies:
 
-    python evals/site/measure.py --out <folder>
+    uv run --locked python -m evals.site.measure --out <folder>
 
 It reads these from its environment, which the workflow sets:
 
@@ -14,8 +15,9 @@ It reads these from its environment, which the workflow sets:
     SITE_EVAL_COMMIT      the commit whose deploy to the preview is measured, or nothing
     GITHUB_STEP_SUMMARY   the file the summary is added to, when it runs in a workflow
 
-Into <folder> it writes results.json, in the shape accepted.json has, and each run's report and log. It uses
-only Python's standard library.
+Into <folder> it writes results.json, in the shape accepted.json has, and each run's report and log. After a
+deploy it reads the newest board with sitebuild.contract, as the build does, so it waits for the stamp the build
+put on each page.
 """
 
 import argparse
@@ -34,6 +36,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import NamedTuple
 from urllib.parse import urlsplit
+
+from sitebuild import contract
 
 HERE = Path(__file__).resolve().parent
 DATA = HERE.parent.parent / "site-data"
@@ -177,7 +181,7 @@ def evaluate(
                     f"Not measured. `main` has moved on from `{commit}`, whose deploy this run follows, to `{head}`. "
                     f"The run that follows the deploy of `{head}` measures the preview."
                 )
-            stamp = _newest_board(data)
+            stamp = _board_stamp(data)
             for path, page in pages:
                 _wait_until_served(path, page, stamp, commit, read_page, pause)
     except CouldNotMeasure as error:
@@ -253,15 +257,14 @@ def _failed(problem: str) -> Outcome:
     return Outcome(False, f"## Site eval\n\n**Failed:** {problem}.\n", [problem], None)
 
 
-def _newest_board(data: Path) -> tuple[str, str]:
-    """The board day and the publish time of the newest board day in `data`, which every page states in its
-    <head>, as RisingRepos's data contract says."""
+def _board_stamp(data: Path) -> tuple[str, str]:
+    """The board day and the publish time that the build states in each page's <head>, taken from the board
+    that the build reads from `data`."""
     try:
-        day = json.loads((data / "boards" / "index.json").read_text(encoding="utf-8"))["board_days"][0]["board_day"]
-        board = json.loads((data / "boards" / "days" / day / "daily.json").read_text(encoding="utf-8"))
-        return day, board["published_at"]
-    except (OSError, ValueError, KeyError, IndexError, TypeError) as error:
+        board = contract.latest_board(data)
+    except contract.DataError as error:
         raise CouldNotMeasure("the deployed commit's newest board day could not be read") from error
+    return board["board_day"], board["published_at"]
 
 
 class _Stamp(HTMLParser):
@@ -451,7 +454,7 @@ def read_page(address: str) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(prog="python evals/site/measure.py", description=__doc__.split("\n\n")[0])
+    parser = argparse.ArgumentParser(prog="python -m evals.site.measure", description=__doc__.split("\n\n")[0])
     parser.add_argument(
         "--out", type=Path, required=True, help="the folder to write results.json, the reports, and the logs into"
     )

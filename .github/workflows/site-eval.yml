@@ -68,7 +68,7 @@ jobs:
           # runs. Node and Chrome are the runner image's own.
           SITE_EVAL_LIGHTHOUSE: npm exec --yes --ignore-scripts --before=2026-10-29 --package=lighthouse@13.5.0 -- lighthouse
         run: |
-          uv run --no-project python evals/site/measure.py --out "$RUNNER_TEMP/site-eval"
+          uv run --locked python -m evals.site.measure --out "$RUNNER_TEMP/site-eval"
 
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()

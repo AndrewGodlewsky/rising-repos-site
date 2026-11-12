@@ -10,7 +10,6 @@ replaces.
 
 import json
 import os
-import re
 import shlex
 import subprocess
 import sys
@@ -21,7 +20,8 @@ from pathlib import Path
 from unittest import mock
 
 from evals.site import measure
-from helpers import EXAMPLE, ROOT, read_json
+from helpers import EXAMPLE, ROOT, build, read_json
+from sitebuild import contract
 
 FAKE = ROOT / "tests" / "fake_lighthouse.py"
 RECORDED = ROOT / "tests" / "fixtures" / "site-eval" / "phone-report.json"
@@ -69,8 +69,8 @@ def page_stating(board_day: str, published_at: str) -> str:
 
 
 def newest_board_of_the_example() -> tuple[str, str]:
-    day = read_json(EXAMPLE / "boards" / "index.json")["board_days"][0]["board_day"]
-    return day, read_json(EXAMPLE / "boards" / "days" / day / "daily.json")["published_at"]
+    board = contract.latest_board(EXAMPLE)
+    return board["board_day"], board["published_at"]
 
 
 def never(*_):
@@ -449,6 +449,25 @@ class AfterADeploy(EvalTest):
         self.assertEqual(len(self.pauses), measure.SERVED_TRIES - 1)
         self.assertEqual(self.lighthouse_calls(), [])
 
+    def test_a_page_the_build_wrote_from_the_commits_data_is_measured_on_its_first_reading(self):
+        built = self.folder / "dist"
+        result = build(built, "--data", str(EXAMPLE), "--noindex")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        page = (built / "index.html").read_text(encoding="utf-8")
+        outcome = self.evaluate(
+            commit=COMMIT, head_of_main=lambda: COMMIT, read_page=lambda address: page, data=EXAMPLE
+        )
+        self.assertTrue(outcome.passed, outcome.problems)
+        self.assertEqual(self.pauses, [])
+
+    def test_data_the_build_could_not_read_fails_the_eval_and_measures_nothing(self):
+        outcome = self.evaluate(commit=COMMIT, head_of_main=lambda: COMMIT, data=self.folder / "no-site-data")
+        self.assertFalse(outcome.passed)
+        self.assertEqual(
+            outcome.problems, ["The deployed commit's newest board day could not be read, so nothing was measured"]
+        )
+        self.assertEqual(self.lighthouse_calls(), [])
+
     def test_a_head_of_main_that_cannot_be_read_fails_the_eval(self):
         def unreadable():
             raise measure.CouldNotMeasure("the head of main could not be read")
@@ -480,7 +499,7 @@ class AfterADeploy(EvalTest):
 
 
 class TheCommand(EvalTest):
-    """`python evals/site/measure.py`, as the workflow runs it, with the limits in evals/site/limits.json."""
+    """`python -m evals.site.measure`, as the workflow runs it, with the limits in evals/site/limits.json."""
 
     def run_command(self, *, address: str = "https://example.com/") -> subprocess.CompletedProcess:
         summary = self.folder / "summary.md"
@@ -493,7 +512,8 @@ class TheCommand(EvalTest):
             "GITHUB_STEP_SUMMARY": str(summary),
         }
         return subprocess.run(
-            [sys.executable, str(ROOT / "evals" / "site" / "measure.py"), "--out", str(self.folder / "out")],
+            [sys.executable, "-m", "evals.site.measure", "--out", str(self.folder / "out")],
+            cwd=ROOT,
             env=environment,
             capture_output=True,
             text=True,
@@ -570,11 +590,6 @@ class TheEvalFolder(unittest.TestCase):
                     self.assertEqual(set(numbers), set(measure.MEASURES))
                     for value in numbers.values():
                         self.assertEqual(len(value["runs"]), accepted["runs"])
-
-    def test_the_eval_uses_only_pythons_standard_library(self):
-        source = (ROOT / "evals" / "site" / "measure.py").read_text(encoding="utf-8")
-        imported = set(re.findall(r"(?m)^(?:from|import) ([a-z_]+)", source))
-        self.assertLessEqual(imported, sys.stdlib_module_names | {"__future__"})
 
 
 if __name__ == "__main__":

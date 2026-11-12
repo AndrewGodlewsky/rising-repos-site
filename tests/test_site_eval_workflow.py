@@ -73,13 +73,13 @@ class TheSiteEvalWorkflow(unittest.TestCase):
             r"--package=lighthouse@\d+\.\d+\.\d+ -- lighthouse$",
         )
 
-    def test_the_eval_runs_on_the_python_and_the_uv_the_build_job_uses(self):
+    def test_the_eval_runs_on_the_python_the_uv_and_the_locked_packages_the_build_job_uses(self):
         build = self.deploy["jobs"]["build"]
         self.assertEqual(self.job["runs-on"], build["runs-on"])
         self.assertEqual(self.job["env"]["UV_PYTHON"], build["env"]["UV_PYTHON"])
         self.assertEqual(step_using(self.job, "astral-sh/setup-uv"), step_using(build, "astral-sh/setup-uv"))
         self.assertEqual(
-            self.measure["run"], 'uv run --no-project python evals/site/measure.py --out "$RUNNER_TEMP/site-eval"\n'
+            self.measure["run"], 'uv run --locked python -m evals.site.measure --out "$RUNNER_TEMP/site-eval"\n'
         )
 
     def test_it_keeps_each_runs_numbers_and_reports_as_an_artifact_even_when_it_fails(self):
