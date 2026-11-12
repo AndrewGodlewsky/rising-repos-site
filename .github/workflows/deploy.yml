@@ -1,85 +1,114 @@
 name: Build and deploy
 
-# J §7. Push-triggered production deploy. The hourly watchdog (J §6) is a
-# separate workflow that ticket #17 adds; it joins the same concurrency group.
+# Every pull request and every push to main builds the pages. A push to main
+# also uploads them to Cloudflare Pages.
+#
+# The two jobs are kept apart on purpose. The daily data push can change any
+# file in this repository except a workflow, so nothing it can change may run
+# in the job that holds the Cloudflare credential:
+#
+# - build runs the repository's code. It can only read the repository, holds
+#   no secret, and hands the pages on as an artifact.
+# - deploy never checks out the repository. It downloads the artifact and runs
+#   a wrangler whose version is pinned below, so all it runs is named in this
+#   file.
+#
+# tests/test_workflow.py checks each of these. README.md explains them.
+
 on:
   push:
     branches: [main]
-    paths:
-      - "site-data/**"
-      - "build.py"
-      - "templates/**"
-      - "static/**"
-      - "requirements.txt"
-      - "package-lock.json"
-      - ".github/workflows/deploy.yml"
-  # J §9: re-run build and deploy in two taps from the GitHub mobile app.
-  workflow_dispatch:
-    inputs:
-      deploy_kind:
-        description: "normal blocks on stale data; watchdog publishes it"
-        type: choice
-        options: [normal, watchdog]
-        default: normal
+  pull_request:
 
-# J §6 / REVIEW M32. Without this group a late push racing the watchdog can
-# interleave two deploys and leave the older one live. Latest wins.
-concurrency:
-  group: production
-  cancel-in-progress: true
+permissions: {}
 
-permissions:
-  contents: read
+env:
+  # The Cloudflare Pages branch an upload goes to. The project's production
+  # branch is main, so "preview" makes a preview deployment, served at
+  # https://preview.risingrepos.pages.dev, and leaves risingrepos.com as it is.
+  # Going live is changing this one line to main.
+  PAGES_BRANCH: preview
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      # The newest Python 3.14 that this version of uv installs.
+      UV_PYTHON: "3.14.10"
     steps:
-      # J §10.1: Actions pinned to commit SHAs. GitHub's own Actions are the
-      # largest measured churn in this design — three majors a year.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: "3.13.15"
+          persist-credentials: false
 
-      - name: Install pinned build deps
-        run: pip install --require-hashes --no-deps -r requirements.txt
-
-      # Runs BEFORE the build so a vacuous verifier can never green-light a
-      # deploy: it proves the link checker fails on a planted broken link
-      # (I §9.3) and that the staleness boundaries are what the spec says.
-      - name: Self-check the verifier
-        run: python build.py --selfcheck
-
-      - name: Build and verify
-        run: python build.py --deploy-kind "${{ inputs.deploy_kind || 'normal' }}"
-
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
-          node-version: "24"
-          cache: npm
+          version: "0.13.6"
+          enable-cache: false
 
-      - name: Install wrangler at the pinned version
-        run: npm ci
+      - name: Install the locked dependencies
+        run: uv sync --locked
 
-      - name: Deploy to Cloudflare Pages
-        id: deploy
+      - name: Run the tests
+        run: uv run --locked python -m unittest discover -s tests
+
+      - name: Build the pages
+        # Pages for any upload other than production ask search engines not
+        # to index them.
+        run: |
+          if [ "$PAGES_BRANCH" = main ]; then
+            uv run --locked python -m sitebuild dist
+          else
+            uv run --locked python -m sitebuild dist --noindex
+          fi
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: site
+          path: dist
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment: deploy
+    permissions: {}
+    concurrency:
+      group: cloudflare-pages-upload
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: site
+          path: site
+
+      - name: Refuse code that would run on Cloudflare
+        # A _worker.js in the upload would run on Cloudflare's servers for
+        # every request. The build job's code can be changed by a data push,
+        # so only static files are uploaded.
+        run: |
+          if [ -e site/_worker.js ]; then
+            echo "::error::The build made a _worker.js. Only static files are uploaded."
+            exit 1
+          fi
+
+      - name: Upload to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: npx wrangler pages deploy dist --project-name=risingrepos --branch=main
-
-      # J §8: published — commit, live URL. Outbound only, one channel.
-      - name: Notify Discord
-        if: always()
-        env:
-          WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: |
-          if [ "${{ job.status }}" = "success" ]; then
-            msg="**published** — https://risingrepos.com/ · \`${GITHUB_SHA:0:7}\`"
-          else
-            msg="**deploy FAILED** (${{ job.status }}) — \`${GITHUB_SHA:0:7}\` · $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          fi
-          jq -n --arg c "$msg" '{content:$c}' \
-            | curl -sS -X POST -H 'Content-Type: application/json' -d @- "$WEBHOOK"
+          WRANGLER_SEND_METRICS: "false"
+        # npm resolves wrangler and every package it pulls in as the registry
+        # stood on the --before date, which is the tree that was checked
+        # (README.md says how). No package's install script runs. Node is the
+        # runner image's own.
+        run: >-
+          npm exec --yes --ignore-scripts --before=2026-10-29
+          --package=wrangler@4.155.0 --
+          wrangler pages deploy site
+          --project-name=risingrepos --branch="$PAGES_BRANCH"
+          --commit-hash="$GITHUB_SHA"

@@ -1,103 +1,87 @@
 # rising-repos-site
 
-The static site at [risingrepos.com](https://risingrepos.com): a nightly
-instrument that lists GitHub repositories gaining stars faster than their own
-history predicts. The pipeline (in the wayfinder repo) exports board data into
-`site-data/`; `build.py` renders it into `dist/`, verifies every page, and a
-push to `main` deploys `dist/` to Cloudflare Pages.
+The pages of [risingrepos.com](https://risingrepos.com), which lists the GitHub
+repositories gaining stars faster than their own pace predicts. The RisingRepos
+project works out which repositories those are and commits the data here. This
+repository holds the pages: their templates, the generator that builds them,
+and the workflow that uploads them to Cloudflare Pages.
 
-There is no JavaScript, no external request and no dependency beyond Jinja2.
-`DESIGN.md` holds the design plan (tokens, wireframe, the choices reviewed
-against the brief).
+## The rebuild and the preview
 
-## What the site renders
+The site is being rebuilt, on this repository's `main`. Until it goes live, two
+addresses serve two different sites:
 
-| page | from | shows |
-|---|---|---|
-| `/` | the root files in `site-data/boards/` | the latest board day: header, day strip, daily / weekly / monthly boards |
-| `/days/` | `index.json` | every board day, newest first: rows per board, held star ranges, backfill marks |
-| `/days/YYYY-MM-DD/` | `days/YYYY-MM-DD/` | that day's three boards, with previous / next day links |
+| Address | Serves | Source |
+| --- | --- | --- |
+| <https://risingrepos.com> | The earlier site, from its Cloudflare deployment of 2026-10-16. No push to this repository changes it | The tag `legacy-site` |
+| <https://preview.risingrepos.pages.dev> | The rebuilt site, uploaded on every push to `main` | `main` |
 
-Every page carries `<meta name="rr:board-date">` and `<meta name="rr:build-ts">`
-(ISO 8601) for the staleness monitor. The latest page also applies the staleness
-rule from the root manifest's `generated_at`: under 26 h **fresh**; 26 h to 7 d
-**banner** (boards shown with a notice); over 7 d **dark** (no boards, a notice
-and a link to the archive). A `--deploy-kind normal` build refuses anything but
-fresh; the watchdog passes `--deploy-kind watchdog` to publish the stale state
-on purpose.
+- Each push to `main` is uploaded to the Cloudflare Pages branch `preview`. The
+  project's production branch is `main`, so the upload is a preview deployment.
+- Every page built for the preview carries
+  `<meta name="robots" content="noindex">`.
+- Going live is one reviewed change to `.github/workflows/deploy.yml`:
+  `PAGES_BRANCH: preview` becomes `PAGES_BRANCH: main`. The same line drops the
+  `noindex` tag.
 
-Each row: rank, `owner/repo` (linked to GitHub unless `link_suppressed`), the
-description, the **pace multiple** set large with "+N stars above its own trend"
-beside it, then stars, forks, language, band, days on the board, RS, badges as
-plain words, any correction as an amber note, and a `<details>` with the
-security card line, the structure lines, the score and fork corroboration.
+## The workflow
 
-A board whose crawl was incomplete for a star range shows that range as **held**
-in an amber-bordered disclosure with the exporter's `hold_reason`; a board with
-no rows says why in one sentence. `partial_history` renders as a quiet note that
-part of the lookback was backfilled.
+`.github/workflows/deploy.yml` has two jobs. The daily data push can change any
+file in this repository except a workflow, so nothing it can change runs in the
+job that holds the Cloudflare credential.
 
-## The data contract
+| Job | Runs on | What it does | What it can reach |
+| --- | --- | --- | --- |
+| `build` | Every pull request, and every push to `main` | Checks out the repository, installs what `uv.lock` pins, runs the tests, builds the pages into `dist`, and uploads them as the artifact `site` | Read access to the repository. No secret |
+| `deploy` | A push to `main`, once `build` has passed | Downloads the artifact, refuses it if it holds a `_worker.js`, and uploads it with wrangler | The `deploy` environment's `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, which GitHub gives only to `main`. It never checks out the repository, so it runs nothing from its files |
 
-```
-site-data/boards/
-  manifest.json                     {day, generated_at, boards{bt: {rows, held[], partial_history}}}
-  daily.json weekly.json monthly.json   the LATEST day's boards
-  index.json                        {"latest": "YYYY-MM-DD", "days": [{day, rows{bt:n}, held{bt:[...]}, partial_history{bt:bool}}, ...]}
-  days/YYYY-MM-DD/                  manifest.json + the three board files for every board day
-```
+The deploy job runs wrangler with
+`npm exec --ignore-scripts --before=<date> --package=wrangler@<version>`. The
+version is pinned in the workflow, npm resolves every package that wrangler
+pulls in as the registry stood on that date, and no package's install script
+runs. Node is the runner image's own. Every action in the workflow is pinned to
+a full commit SHA. `tests/test_workflow.py` checks each of these.
 
-Board document: `board_type, day, floor, strata_admitted[], strata_held[],
-hold_reason (str|null), partial_history (bool), rows[], facets{band{...}}`.
+A pull request builds and does not deploy.
 
-Row: `repo_id, rank, name ("owner/repo"|null), description, language, topics[],
-license, homepage, stars, forks, pushed_at, final_display, final_is_capped, rs,
-fork_corroboration, excess_above_trend, pace_multiple, stratum, band,
-consecutive_days, badges[], summary, link_suppressed, corrections[{kind, detail}],
-security{card, link_suppressed, commit_sha}, structure{state, lines[], commit_sha}`.
+## Building locally
 
-Badges `category-withheld` and `no-summary` never render. If `index.json` is
-absent (exports before the history export existed) the build synthesises a
-one-day index from `manifest.json` and serves that day's page from the root
-files, so the site still builds.
+You need [uv](https://docs.astral.sh/uv/).
 
-## Building
-
-```
-pip install -r requirements.txt          # jinja2 + markupsafe, hash-pinned
-python build.py --selfcheck              # proves every verify check can fail, then builds a fixture tree end to end
-python build.py                          # site-data/boards -> dist/, normal deploy rules
-python build.py --deploy-kind watchdog   # publish even if the data is stale or dark
+```sh
+uv sync --locked                                     # the pinned dependencies, into .venv
+uv run --locked python -m unittest discover -s tests
+uv run --locked python -m sitebuild dist --noindex   # the pages, as the preview gets them
+python -m http.server 8000 --directory dist          # then open http://localhost:8000/
 ```
 
-`build.py` exits non-zero and prints the problems when any page fails
-verification: an empty numeric slot, a `None`/`Undefined` in the output, an
-internal link with no file in `dist/`, a row count that differs from the export,
-a held star range without its disclosure, a missing meta tag, a directory index
-with no cache rule in `_headers`, or an archive that omits a day. CI runs
-`--selfcheck` first so a verifier that stopped being able to fail can never
-green-light a deploy.
+The generator refuses a folder that already holds files, so remove `dist`
+before building again.
 
-### Building against fixtures
+## Layout
 
-Real data only arrives nightly; `scripts/fixtures.py` fabricates a full tree
-(20 days by default, deterministic per seed) with held boards, an empty board,
-an all-held board, a partial-history stretch, a link-suppressed row with a
-correction, and null fields:
-
-```
-python scripts/fixtures.py /tmp/rr-fixtures            # --days 20 --seed 7 --age-hours 2
-RR_BOARDS_DIR=/tmp/rr-fixtures python build.py --deploy-kind watchdog
-python -m http.server 8000 --directory dist              # then open http://localhost:8000/
+```text
+sitebuild/          the generator: python -m sitebuild <folder> [--noindex]
+  templates/        Jinja2 templates, with autoescaping on for every one
+tests/              the tests
+.github/workflows/  deploy.yml: the build job and the deploy job
+pyproject.toml      the dependencies, and the date uv resolves them as of
+uv.lock             every package, pinned with its hashes
+.python-version     3.14, for local builds. CI uses the exact version in deploy.yml
 ```
 
-`--age-hours 30` yields the banner state, `--age-hours 200` the dark state.
-`RR_BOARDS_DIR` points the build at any boards tree; the default is
-`site-data/boards`. Never commit fixture output into `site-data/`.
+## Changing a pinned version
 
-## Cache policy
+Each download is checked before it is used, under the RisingRepos project's
+rule: no known vulnerability on [osv.dev](https://osv.dev), and published at
+least 14 days earlier.
 
-`static/_headers` is copied into `dist/` unchanged. Cloudflare's `/*.html` rule
-does not match directory-index requests, so `/` and `/days/*` each have an
-explicit `no-cache, must-revalidate` rule; the build refuses to ship a directory
-index no rule covers.
+- **Python packages.** Move `exclude-newer` in `pyproject.toml` forward, run
+  `uv lock`, and check `uv.lock` with RisingRepos's
+  `scripts/run_limits/check_downloads.py` before running `uv sync`.
+- **wrangler.** In an empty folder, run
+  `npm install --package-lock-only --ignore-scripts --before=<date> wrangler@<version>`,
+  which writes a `package-lock.json` and installs nothing. Check that file the
+  same way, then change the version and `--before` together in `deploy.yml`.
+- **An action, uv, or Python.** Take a release at least 14 days old, look it
+  up on osv.dev, and pin an action to the commit its release tag points at.
