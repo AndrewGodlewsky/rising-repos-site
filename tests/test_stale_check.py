@@ -501,11 +501,15 @@ class TheCheck(unittest.TestCase):
                 self.assertEqual(result.returncode, 1)
                 self.assertIn(f"::error::The alarm was not sent: the request failed with {kind}.", result.stdout)
 
-    def test_a_webhook_that_is_not_set_fails_the_run(self):
-        self.site.answer(200, page(published_at=hours_ago(30)))
+    def test_a_webhook_that_is_not_set_fails_the_run_before_the_page_is_read(self):
+        # The board is fresh, so the run fails on the day the secret goes missing, not on the day an alarm is due.
+        self.site.answer(200, page(published_at=hours_ago(2)))
         result = self.check(DISCORD_WEBHOOK_URL="")
         self.assertEqual(result.returncode, 1)
-        self.assertIn("::error::The alarm was not sent: the secret DISCORD_WEBHOOK_URL is empty.", result.stdout)
+        refusal = "::error::The secret DISCORD_WEBHOOK_URL is empty, so no alarm can be sent. Nothing was read."
+        self.assertIn(refusal, result.stdout)
+        self.assertEqual(self.site.requests, [])
+        self.assertEqual(self.discord.requests, [])
 
 
 if __name__ == "__main__":

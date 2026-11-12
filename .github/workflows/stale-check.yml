@@ -194,12 +194,8 @@ jobs:
               return f"the newest board is too old. {how_old}, and the limit is {limit} hours.", STALE
 
 
-          def post(message):
+          def post(webhook, message):
               """Send `message` to Discord once, and say only how Discord answered."""
-              webhook = os.environ.get("DISCORD_WEBHOOK_URL", "")
-              if not webhook:
-                  print("::error::The alarm was not sent: the secret DISCORD_WEBHOOK_URL is empty.")
-                  return 1
               body = {"content": message, "allowed_mentions": {"parse": []}, "flags": SUPPRESS_EMBEDS}
               try:
                   request = urllib.request.Request(
@@ -232,6 +228,12 @@ jobs:
               if not HOURS.fullmatch(hours) or int(hours) > MOST_HOURS:
                   print(f"::error::The age limit is not a whole number of hours from 0 to {MOST_HOURS}.")
                   return 1
+              # Before the page is read, so that a missing secret fails the next daily run, and is not found first
+              # on the day an alarm has to go out.
+              webhook = os.environ.get("DISCORD_WEBHOOK_URL", "")
+              if not webhook:
+                  print("::error::The secret DISCORD_WEBHOOK_URL is empty, so no alarm can be sent. Nothing was read.")
+                  return 1
               found = check(address, int(hours))
               if found is None:
                   return 0
@@ -252,7 +254,7 @@ jobs:
               )
               print("The alarm, as it is sent to Discord:")
               print(message)
-              return post(message)
+              return post(webhook, message)
 
 
           try:

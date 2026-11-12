@@ -279,7 +279,10 @@ and `-f <input>=<value>` for each input to change:
 
 A scheduled run takes the defaults, from `DEFAULT_ADDRESS` and
 `DEFAULT_MAX_AGE_HOURS` at the top of the workflow. An input it does not take
-fails the run, and nothing is read or posted. At go-live
+fails the run, and nothing is read or posted. So does an empty
+`DISCORD_WEBHOOK_URL`, even while the board is fresh, so that a missing secret
+fails the next daily run and is not found first on the day an alarm is due.
+At go-live
 ([RisingRepos#58](https://github.com/AndrewGodlewsky/RisingRepos/issues/58))
 `DEFAULT_ADDRESS` and the input's default become `https://risingrepos.com/`.
 
