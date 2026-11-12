@@ -16,7 +16,6 @@ import html
 import http.server
 import json
 import os
-import re
 import secrets
 import ssl
 import subprocess
@@ -29,10 +28,8 @@ from pathlib import Path
 
 import yaml
 
-from helpers import ROOT
+from helpers import SECRET, load_workflow
 
-WORKFLOW = ROOT / ".github" / "workflows" / "stale-check.yml"
-SECRET = re.compile(r"\bsecrets\b")
 RUN = "https://github.com/AndrewGodlewsky/rising-repos-site/actions/runs/123456789"
 """The run's address in each alarm, from the GITHUB_ variables each test gives the script."""
 
@@ -59,12 +56,6 @@ iEHPc+3AlCpeyijpmGFP2yKdmQKhRANCAAQ5fs0836p7QJD95srmdJy8aOstOvUk
 ffpq/iqUaB/+GT4+LxIsk7neZMXS7xYRVU3BTkgkP/tgOnGm+kYD81wB
 -----END PRIVATE KEY-----
 """
-
-
-def load() -> dict:
-    workflow = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
-    workflow["on"] = workflow.pop(True)  # YAML 1.1 reads the key `on` as true
-    return workflow
 
 
 def the_step(workflow: dict) -> dict:
@@ -141,7 +132,7 @@ class StandIn:
 
 class TheWorkflow(unittest.TestCase):
     def setUp(self):
-        self.workflow = load()
+        self.workflow = load_workflow("stale-check.yml")
         self.job = self.workflow["jobs"]["check"]
         self.step = the_step(self.workflow)
 
@@ -221,7 +212,7 @@ class TheCheck(unittest.TestCase):
         self.tls.mkdir()
         (self.tls / "certificate.pem").write_text(CERTIFICATE, encoding="ascii", newline="\n")
         (self.tls / "key.pem").write_text(KEY, encoding="ascii", newline="\n")
-        workflow = load()
+        workflow = load_workflow("stale-check.yml")
         step = the_step(workflow)
         self.script = temporary / "stale-check.py"
         self.script.write_text(step["run"], encoding="utf-8", newline="\n")
