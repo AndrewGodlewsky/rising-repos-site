@@ -15,15 +15,28 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 
+WORKFLOWS = ROOT / ".github" / "workflows"
+FULL_SHA = re.compile(r"^[\w.-]+/[\w.-]+@[0-9a-f]{40}$")
 SECRET = re.compile(r"\bsecrets\b")
 """A reference to the repository's secrets, anywhere in a workflow."""
 
 
 def load_workflow(name: str) -> dict:
     """The workflow `.github/workflows/<name>`, as YAML reads it."""
-    workflow = yaml.safe_load((ROOT / ".github" / "workflows" / name).read_text(encoding="utf-8"))
+    workflow = yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))
     workflow["on"] = workflow.pop(True)  # YAML 1.1 reads the key `on` as true
     return workflow
+
+
+def step_using(job: dict, action: str) -> dict:
+    (step,) = [step for step in job["steps"] if step.get("uses", "").startswith(action + "@")]
+    return step
+
+
+def step_named(job: dict, name: str) -> dict:
+    (step,) = [step for step in job["steps"] if step.get("name") == name]
+    return step
+
 
 EXAMPLE = ROOT / "tests" / "fixtures" / "contract-example"
 """The data contract's example and schemas, laid out as site-data/ is. site-data/ holds the same files until

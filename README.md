@@ -20,14 +20,18 @@ addresses serve two different sites:
   project's production branch is `main`, so the upload is a preview deployment.
 - Every page built for the preview carries
   `<meta name="robots" content="noindex">`.
-- Going live is one reviewed change to two workflows. In
-  `.github/workflows/deploy.yml`, `PAGES_BRANCH: preview` becomes
+- Going live is one reviewed change, to the three workflows and to the site
+  eval. In `.github/workflows/deploy.yml`, `PAGES_BRANCH: preview` becomes
   `PAGES_BRANCH: main`, and the same line drops the `noindex` tag. In
   `.github/workflows/stale-check.yml`, the address the check reads by default
   becomes `https://risingrepos.com/` (see "The stale check"). Without that
-  second part, the check would go on reading the preview, which no longer
-  changes once boards are uploaded to production, and would post a false alarm
-  every day.
+  part, the check would go on reading the preview, which no longer changes
+  once boards are uploaded to production, and would post a false alarm every
+  day. The site eval is pointed at the live address too: `PREVIEW` in
+  `evals/site/measure.py`, with `evals/site/accepted.json` measured there, and
+  the default `address` in `.github/workflows/site-eval.yml` (see "The site
+  eval"). Otherwise the eval that follows each deploy waits for a board day the
+  preview no longer shows, and fails.
 
 ## The first page
 
@@ -303,6 +307,39 @@ It refuses an output folder that already holds files, so remove `dist` before
 building again. The local server answers this machine only, and stops with
 Ctrl+C.
 
+## The site eval
+
+Each time a push to `main` reaches the preview,
+`.github/workflows/site-eval.yml` runs Lighthouse on the first page, five times
+on each of Lighthouse's phone and desktop profiles. It gives six numbers for
+each: Lighthouse's performance score and accessibility score, the Largest
+Contentful Paint, the Cumulative Layout Shift, the bytes the page took to
+transfer, and the requests it made. It can also be started by hand for any https
+address. [evals/site/README.md](evals/site/README.md) says how it measures, what
+each number means, and how its limits were set.
+
+**Reading the numbers.** A run's summary has a table for each page on each
+profile. Each number is the median of the five runs, with the lowest and the
+highest of them beside it, then the accepted number from
+`evals/site/accepted.json` and the limit from `evals/site/limits.json`. A number
+outside its limit, or one that could not be measured, fails the job and is
+listed under the tables. A failed job holds nothing back: by the time it runs,
+the pages are already on the preview.
+
+**What a site change reports.** A pull request's own pages reach the preview
+only when it merges, so:
+
+- The evidence on its tracking issue gives the numbers before it: the last run
+  on `main` that followed a deploy.
+- The run that follows its deploy gives the numbers after it, and the change's
+  tracking issue links that run. A number that got worse is fixed in a later
+  change, or the tracking issue says why it is right.
+- A change that moves the numbers on purpose, such as a new design or a larger
+  board, replaces `evals/site/accepted.json`, and a limit where one no longer
+  fits, in a pull request that gives the reason.
+- A change to the eval itself is measured on its own pull request, against the
+  preview as it stands.
+
 ## Layout
 
 ```text
@@ -310,9 +347,13 @@ sitebuild/          the generator: python -m sitebuild <folder> [--noindex] [--d
   contract.py       reads the data files and checks each against its schema
   templates/        Jinja2 templates and the stylesheets they include, with autoescaping on for every one
 site-data/          the data files RisingRepos publishes, and their schemas
+evals/site/         the site eval, its limits, and its accepted numbers, which .github/workflows/site-eval.yml runs
 tests/              the tests
   fixtures/         the data contract's example, which the tests build from
-.github/workflows/  deploy.yml: the build job and the deploy job. stale-check.yml: the daily check that the site is fresh
+.github/workflows/  the workflows
+  deploy.yml        the build job and the deploy job
+  stale-check.yml   the daily check that the site is fresh
+  site-eval.yml     the site eval
 pyproject.toml      the dependencies, and the date uv resolves them as of
 uv.lock             every package, pinned with its hashes
 .python-version     3.14, for local builds. CI uses the exact version in deploy.yml

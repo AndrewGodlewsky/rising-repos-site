@@ -1,0 +1,53 @@
+{
+  "lighthouseVersion": "13.5.0",
+  "requestedUrl": "https://preview.risingrepos.pages.dev/",
+  "fetchTime": "2026-11-12T16:43:20.056Z",
+  "environment": {
+    "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+  },
+  "configSettings": {
+    "formFactor": "mobile",
+    "throttlingMethod": "simulate"
+  },
+  "categories": {
+    "performance": {
+      "id": "performance",
+      "score": 0.93
+    },
+    "accessibility": {
+      "id": "accessibility",
+      "score": 1
+    }
+  },
+  "audits": {
+    "largest-contentful-paint": {
+      "id": "largest-contentful-paint",
+      "numericValue": 1544.0720000000001,
+      "numericUnit": "millisecond"
+    },
+    "cumulative-layout-shift": {
+      "id": "cumulative-layout-shift",
+      "numericValue": 0,
+      "numericUnit": "unitless"
+    },
+    "total-byte-weight": {
+      "id": "total-byte-weight",
+      "numericValue": 74384,
+      "numericUnit": "byte"
+    },
+    "network-requests": {
+      "id": "network-requests",
+      "details": {
+        "type": "table",
+        "items": [
+          {
+            "url": "https://preview.risingrepos.pages.dev/",
+            "resourceType": "Document",
+            "transferSize": 74384,
+            "statusCode": 200
+          }
+        ]
+      }
+    }
+  }
+}
