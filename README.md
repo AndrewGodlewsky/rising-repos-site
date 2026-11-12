@@ -95,8 +95,8 @@ What every page holds to, each checked by a test in `tests/`:
   about 5,550 bytes to a board's page and 3,800 to the not-found page, which
   were 9,953 and 7,171 bytes before.
   A real board is longer than the earlier site's: the board for 2026-11-09
-  holds 811 rows in 407,009 bytes, and the longest of the 25 board days the
-  development database held on 2026-11-12, 1,294 rows, takes 640,737 bytes.
+  holds 811 rows in 406,970 bytes, and the longest of the 25 board days the
+  development database held on 2026-11-12, 1,294 rows, takes 640,698 bytes.
   The limit holds for the 316 rows that `tests/test_page_weight.py` builds.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
   is where the limits that a longer board meets are weighed.
