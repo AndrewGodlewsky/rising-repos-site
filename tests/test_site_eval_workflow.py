@@ -7,37 +7,17 @@ thing the workflow has to guarantee.
 
 import re
 import unittest
-from pathlib import Path
 
-import yaml
+from helpers import FULL_SHA, SECRET, WORKFLOWS, load_workflow, step_named, step_using
 
-WORKFLOWS = Path(__file__).resolve().parent.parent / ".github" / "workflows"
-FULL_SHA = re.compile(r"^[\w.-]+/[\w.-]+@[0-9a-f]{40}$")
-SECRET = re.compile(r"\bsecrets\b")
 EXPRESSION = re.compile(r"\$\{\{")
-
-
-def load(name: str) -> dict:
-    workflow = yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))
-    workflow["on"] = workflow.pop(True)  # YAML 1.1 reads the key `on` as true
-    return workflow
-
-
-def step_using(job: dict, action: str) -> dict:
-    (step,) = [step for step in job["steps"] if step.get("uses", "").startswith(action + "@")]
-    return step
-
-
-def step_named(job: dict, name: str) -> dict:
-    (step,) = [step for step in job["steps"] if step.get("name") == name]
-    return step
 
 
 class TheSiteEvalWorkflow(unittest.TestCase):
     def setUp(self):
         self.text = (WORKFLOWS / "site-eval.yml").read_text(encoding="utf-8")
-        self.workflow = load("site-eval.yml")
-        self.deploy = load("deploy.yml")
+        self.workflow = load_workflow("site-eval.yml")
+        self.deploy = load_workflow("deploy.yml")
         (self.job,) = self.workflow["jobs"].values()
         self.measure = step_named(self.job, "Measure")
 

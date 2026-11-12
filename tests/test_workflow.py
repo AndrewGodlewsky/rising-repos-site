@@ -5,40 +5,20 @@ So nothing it can change may run in the job that holds the Cloudflare
 credential. Each test below names one thing the workflow has to guarantee.
 """
 
-import re
 import unittest
-from pathlib import Path
 
 import yaml
 
-WORKFLOW = Path(__file__).resolve().parent.parent / ".github" / "workflows" / "deploy.yml"
-FULL_SHA = re.compile(r"^[\w.-]+/[\w.-]+@[0-9a-f]{40}$")
-SECRET = re.compile(r"\bsecrets\b")
-
-
-def load() -> dict:
-    workflow = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
-    workflow["on"] = workflow.pop(True)  # YAML 1.1 reads the key `on` as true
-    return workflow
+from helpers import FULL_SHA, SECRET, load_workflow, step_named, step_using
 
 
 def actions(job: dict) -> set[str]:
     return {step["uses"].split("@")[0] for step in job["steps"] if "uses" in step}
 
 
-def step_using(job: dict, action: str) -> dict:
-    (step,) = [step for step in job["steps"] if step.get("uses", "").startswith(action + "@")]
-    return step
-
-
-def step_named(job: dict, name: str) -> dict:
-    (step,) = [step for step in job["steps"] if step.get("name") == name]
-    return step
-
-
 class TheWorkflow(unittest.TestCase):
     def setUp(self):
-        self.workflow = load()
+        self.workflow = load_workflow("deploy.yml")
         self.build = self.workflow["jobs"]["build"]
         self.deploy = self.workflow["jobs"]["deploy"]
 
