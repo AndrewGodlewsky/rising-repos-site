@@ -4,7 +4,10 @@
   "description": "site-data/boards/days/<board day>/daily.json, in version 1 of the RisingRepos data contract. The contract's README.md, in the RisingRepos repository at src/risingrepos/publishing/contract/, says how the files are laid out and how the contract changes. Every field is listed here and no other may appear. A field whose description starts with 'Untrusted' holds text a repository's owner wrote.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "board_day", "published_at", "score_provisional", "partial_days", "rows"],
+  "required": [
+    "schema_version", "board_day", "published_at", "score_provisional", "partial_days", "rows",
+    "formula_version"
+  ],
   "properties": {
     "schema_version": {
       "description": "The contract's version. It rises when a field is removed or changes what it holds.",
@@ -23,6 +26,11 @@
     "score_provisional": {
       "description": "True while the score that ranked this board is provisional. The page then says so.",
       "type": "boolean"
+    },
+    "formula_version": {
+      "description": "The version of the scoring formula that ranked this board, a whole number. It rises whenever the formula changes, and every board day is then scored and published again, so the board days published together carry the same version. The page states it.",
+      "type": "integer",
+      "minimum": 1
     },
     "partial_days": {
       "description": "The partial snapshot days that the scores which ranked this board read, newest first, and none when they read none. Some repositories are missing from a partial day, so a repository absent from it has no reading that day, and its history reaches back to the snapshot before. The list holds each partial day that falls within the history of a repository on the board, from the oldest snapshot it reads to the board day, whether the repository has a reading that day or reaches back across it, and the board day itself when it is partial, because a repository missing from the board day is not scored and so cannot be on its board. The page then says so.",

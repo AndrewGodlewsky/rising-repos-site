@@ -111,6 +111,8 @@ class TheBuild(BuildTest):
         self.assertEqual(published.text(), "10 November 2026 at 00:41 UTC")
 
     def test_the_board_says_its_ranking_is_provisional_while_the_file_says_so_and_names_no_score(self):
+        board = read_json(self.board_file())
+        write_json(self.board_file(), {**board, "score_provisional": True})
         page = self.build_pages()[BOARD]
         self.assertIn("The ranking is provisional.", page.body_text())
         self.assertNotIn("score", page.body_text().lower())
@@ -119,6 +121,31 @@ class TheBuild(BuildTest):
         board = read_json(self.board_file())
         write_json(self.board_file(), {**board, "score_provisional": False})
         self.assertNotIn("provisional", self.build_pages()[BOARD].body_text().lower())
+
+    def test_the_board_names_which_version_of_the_ranking_formula_ordered_it(self):
+        """RisingRepos#47. The example's boards were ranked by version 2."""
+        pages = self.build_pages()
+        for path in (BOARD, board_day_page(NEWEST), board_day_page(OLDER)):
+            with self.subTest(path):
+                (note,) = [p for p in pages[path].one("header").all("p") if "formula" in p.classes()]
+                self.assertEqual(note.text(), "Ordered by version 2 of the ranking formula.")
+                self.assertEqual(note.all("strong"), [])
+
+    def test_a_board_whose_file_names_no_formula_version_builds_and_says_nothing_of_one(self):
+        """As site-data/ holds its files until RisingRepos#47's closeout publishes them again: the schema and every
+        board day's file without the field."""
+        schema = read_json(self.daily_schema)
+        del schema["properties"]["formula_version"]
+        schema["required"].remove("formula_version")
+        write_json(self.daily_schema, schema)
+        for day in (NEWEST, OLDER):
+            board = read_json(self.board_file(day))
+            del board["formula_version"]
+            write_json(self.board_file(day), board)
+        for path, page in self.build_pages().items():
+            with self.subTest(path):
+                self.assertEqual([p for p in page.all("p") if "formula" in p.classes()], [])
+                self.assertNotIn("formula", page.body_text())
 
     def partial_notes(self, page) -> list:
         """The band's notes on partial days: each <p class="partial"> in the board's facts."""
@@ -131,7 +158,8 @@ class TheBuild(BuildTest):
         self.assertEqual(
             recent.text(),
             "A recent snapshot missed some repositories. The ranking measures each repository's recent pace over "
-            "7 November 2026, so one missing then may be placed higher or lower than a full snapshot would place it.",
+            "7 November 2026, so one missing then may be left off this board, or placed higher or lower than a full "
+            "snapshot would place it.",
         )
         self.assertEqual([strong.text() for strong in recent.all("strong")], ["A recent snapshot missed some repositories."])
         self.assertEqual(earlier.classes(), ["partial"])
