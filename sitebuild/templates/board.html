@@ -7,6 +7,14 @@
 <h1 id="board"><span class="kind">Daily board</span> <time datetime="{{ board.board_day }}">{{ board.board_day|long_date }}</time></h1>
 <div class="facts">
 <p class="published">{{ board.rows|length|repositories }}. Published <time datetime="{{ board.published_at }}">{{ board.published_at|utc_time }}</time>.</p>
+{# When the day's update began and how long it took to publish this board, from the file (RisingRepos#51), and for a
+   board published days after its day, that it was made later. A file without the field says nothing here. #}
+{% if job %}
+<p class="update">The day's update began {{ "at" if job.same_day else "on" }} <time datetime="{{ job.started }}">{{ job.began }}</time> and took {{ job.took }} to publish this board.</p>
+{% endif %}
+{% if late %}
+<p class="late">This board was made after its day, from the star counts recorded on {{ board.board_day|long_date }}.</p>
+{% endif %}
 {% if board.board_day != newest.board_day %}
 <p class="earlier">An earlier board. The newest is <a href="/">the board for {{ newest.board_day|long_date }}</a>.</p>
 {% endif %}

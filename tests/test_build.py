@@ -11,7 +11,7 @@ from urllib.parse import unquote
 
 from helpers import BuildTest, build, read_json, write_json
 
-from sitebuild import BOARD, BOARD_DAY, DAYS, NOT_FOUND, PAGES, TEMPLATES, board_day_page
+from sitebuild import BOARD, BOARD_DAY, DAYS, NOT_FOUND, PAGES, TEMPLATES, board_day_page, took
 
 NOINDEX = '<meta name="robots" content="noindex">'
 
@@ -218,6 +218,90 @@ class TheBuild(BuildTest):
             with self.subTest(path):
                 self.assertEqual([p for p in page.all("p") if "partial" in p.classes()], [])
                 self.assertNotIn("snapshot", page.body_text())
+
+    def facts(self, page, kind: str) -> list:
+        """The band's facts of one kind: each <p class="`kind`"> in the board's header."""
+        return [element for element in page.one("header").all("p") if kind in element.classes()]
+
+    def test_a_board_says_when_the_days_update_began_and_how_long_it_took_to_publish_it(self):
+        """RisingRepos#51. The example's newest board was published at 00:41:07, and its update began at 00:28:44."""
+        (update,) = self.facts(self.build_pages()[BOARD], "update")
+        self.assertEqual(
+            update.text(), "The day's update began at 00:28 UTC and took 12 minutes to publish this board."
+        )
+        self.assertEqual([time.attrs["datetime"] for time in update.all("time")], ["2026-11-10T00:28:44Z"])
+
+    def test_an_update_that_began_on_another_day_than_the_publish_names_its_date(self):
+        board = read_json(self.board_file())
+        write_json(self.board_file(), {**board, "daily_job_started_at": "2026-11-09T22:35:00Z"})
+        (update,) = self.facts(self.build_pages()[BOARD], "update")
+        self.assertEqual(
+            update.text(),
+            "The day's update began on 9 November 2026 at 22:35 UTC and took 2 hours and 6 minutes to publish this "
+            "board.",
+        )
+
+    def test_how_long_an_update_took_is_said_in_words(self):
+        for seconds, words in (
+            (0, "less than a minute"),
+            (59, "less than a minute"),
+            (60, "1 minute"),
+            (119, "1 minute"),
+            (59 * 60, "59 minutes"),
+            (3600, "1 hour"),
+            (3660, "1 hour and 1 minute"),
+            (2 * 3600 + 5 * 60 + 59, "2 hours and 5 minutes"),
+            (49 * 3600, "49 hours"),
+        ):
+            with self.subTest(seconds):
+                self.assertEqual(took(seconds), words)
+
+    def test_a_board_that_no_update_published_says_nothing_about_one(self):
+        """The example's older board was published by hand: its field is null."""
+        self.assertIsNone(read_json(self.board_file(OLDER))["daily_job_started_at"])
+        page = self.build_pages()[board_day_page(OLDER)]
+        self.assertEqual(self.facts(page, "update"), [])
+        self.assertNotIn("update", page.body_text())
+
+    def test_an_update_that_would_have_begun_after_the_publish_says_nothing(self):
+        board = read_json(self.board_file())
+        write_json(self.board_file(), {**board, "daily_job_started_at": "2026-11-10T00:41:08Z"})
+        self.assertEqual(self.facts(self.build_pages()[BOARD], "update"), [])
+
+    def test_a_board_whose_file_predates_the_update_field_builds_and_says_nothing_about_an_update(self):
+        """As site-data/ holds its files until RisingRepos#51's closeout publishes them again."""
+        schema = read_json(self.daily_schema)
+        del schema["properties"]["daily_job_started_at"]
+        schema["required"].remove("daily_job_started_at")
+        write_json(self.daily_schema, schema)
+        for day in (NEWEST, OLDER):
+            board = read_json(self.board_file(day))
+            del board["daily_job_started_at"]
+            write_json(self.board_file(day), board)
+        for path, page in self.build_pages().items():
+            with self.subTest(path):
+                self.assertEqual([p for p in page.all("p") if "update" in p.classes()], [])
+                self.assertNotIn("update", page.body_text())
+
+    def test_a_board_published_two_days_or_more_after_its_day_says_it_was_made_after_its_day(self):
+        """As the boards made from the archive's earlier days were. The example's are published the next day."""
+        for path, page in self.build_pages().items():
+            with self.subTest(path):
+                self.assertEqual([p for p in page.all("p") if "late" in p.classes()], [])
+        board = read_json(self.board_file(OLDER))
+        for published, late in (("2026-11-09T23:59:59Z", False), ("2026-11-10T00:00:00Z", True)):
+            with self.subTest(published):
+                write_json(self.board_file(OLDER), {**board, "published_at": published})
+                shutil.rmtree(self.out, ignore_errors=True)
+                notes = self.facts(self.build_pages()[board_day_page(OLDER)], "late")
+                if late:
+                    (note,) = notes
+                    self.assertEqual(
+                        note.text(),
+                        "This board was made after its day, from the star counts recorded on 8 November 2026.",
+                    )
+                else:
+                    self.assertEqual(notes, [])
 
     def test_a_board_that_is_empty_says_so_and_states_its_board_day_the_same_way(self):
         write_json(self.index, {"schema_version": 1, "board_days": [{"board_day": OLDER, "row_count": 0}]})
