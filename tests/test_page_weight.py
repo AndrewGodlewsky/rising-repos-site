@@ -1,13 +1,15 @@
 """Every page stays light: it carries no script, requests nothing from another site, and stays within its
 size limit."""
 
+import gzip
+import random
 import re
 import tempfile
 import unittest
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from helpers import BuildTest, Page, read_json
+from helpers import ROOT, BuildTest, Page, read_json
 
 from sitebuild import BOARD, board_day_page
 
@@ -18,6 +20,13 @@ fifth more for what later slices add to a row. README.md gives the measurements.
 
 LARGEST_BOARD = 316
 """The most rows a daily board of the earlier site held (RisingRepos's data contract, under Size)."""
+
+LONGEST_BOARD = 713
+"""The rows of the longest board the root is held to the site eval's transfer limit with: the most rows a board of
+RisingRepos's formula 2 held across the snapshot archive, 475, and half as many again.
+AndrewGodlewsky/RisingRepos#122 gives the reason."""
+
+TRANSFER_LIMITS = ROOT / "evals" / "site" / "limits.json"
 
 LOADS = {"src", "srcset", "imagesrcset", "poster", "data", "background", "action", "formaction", "manifest", "ping"}
 """The attributes whose address a browser fetches, or sends something to, without following a link."""
@@ -81,6 +90,35 @@ def made_up_rows(count: int) -> list[dict]:
     ]
 
 
+def ordinary_rows(count: int) -> list[dict]:
+    """Rows as long as a board's rows are on average, of text that compresses no better than theirs: a description
+    of 105 characters, the mean on formula 2's boards, and a name of about 25, each word between 2 and 9 letters
+    drawn at random. A fixed seed gives every run the same rows."""
+    chance = random.Random(122)
+    languages = ["Python", "TypeScript", "JavaScript", "Go", "Rust", "Java", "C++", "C", "Shell", "Kotlin", None]
+
+    def word() -> str:
+        return "".join(chance.choice("abcdefghijklmnopqrstuvwxyz") for _ in range(chance.randint(2, 9)))
+
+    def description() -> str:
+        words = [word()]
+        while len(" ".join(words)) < 104:
+            words.append(word())
+        return " ".join(words)[:104].strip().capitalize() + "."
+
+    return [
+        {
+            "rank": rank,
+            "github_id": 900000000 + rank,
+            "full_name": f"{word()}-{word()}/{word()}-{word()}",
+            "description": description(),
+            "language": chance.choice(languages),
+            "stars": chance.randrange(200, 200_000),
+        }
+        for rank in range(1, count + 1)
+    ]
+
+
 class PageWeight(BuildTest):
     def test_no_page_carries_a_script_and_each_page_forbids_one(self):
         for path, page in self.build_pages().items():
@@ -116,6 +154,18 @@ class PageWeight(BuildTest):
         for path, page in pages.items():
             with self.subTest(path):
                 self.assertLessEqual(page_weight(self.out, path, page), SIZE_LIMIT)
+
+    def test_the_root_of_the_longest_board_expected_is_within_the_site_evals_transfer_limit_with_gzip(self):
+        """AndrewGodlewsky/RisingRepos#122. The root is the one request the site eval measures, and gzip at level 6
+        compresses it a little less than the preview's server does."""
+        limits = read_json(TRANSFER_LIMITS)
+        limit = min(limits[profile]["transfer_size"]["limit"] for profile in ("phone", "desktop"))
+        board = read_json(self.board_file())
+        self.write_board({**board, "rows": ordinary_rows(LONGEST_BOARD)})
+        pages = self.build_pages()
+        self.assertEqual(len(pages[BOARD].rows()), LONGEST_BOARD)
+        compressed = gzip.compress((self.out / BOARD).read_bytes(), compresslevel=6, mtime=0)
+        self.assertLess(len(compressed), limit)
 
 
 class TheChecks(unittest.TestCase):

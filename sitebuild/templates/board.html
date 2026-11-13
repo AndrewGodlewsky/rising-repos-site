@@ -7,6 +7,12 @@
 <h1 id="board"><span class="kind">Daily board</span> <time datetime="{{ board.board_day }}">{{ board.board_day|long_date }}</time></h1>
 <div class="facts">
 <p class="published">{{ board.rows|length|repositories }}. Published <time datetime="{{ board.published_at }}">{{ board.published_at|utc_time }}</time>.</p>
+{# Which version of the ranking formula ordered this board. The number goes up with each new formula, after which
+   all the board days are ordered anew (RisingRepos#47). A file from before the field names none, and the page says
+   nothing of one. #}
+{% if "formula_version" in board %}
+<p class="formula">Ordered by version {{ board.formula_version }} of the ranking formula.</p>
+{% endif %}
 {% if board.board_day != newest.board_day %}
 <p class="earlier">An earlier board. The newest is <a href="/">the board for {{ newest.board_day|long_date }}</a>.</p>
 {% endif %}
@@ -14,12 +20,12 @@
 <p class="provisional"><strong>The ranking is provisional.</strong> The formula that orders this board is still being tested, so the order may change.</p>
 {% endif %}
 {# What the file says about the partial days its ranking read: days whose snapshot missed some repositories.
-   One the ranking reads for a recent pace can move a repository's place, so it is set apart as the provisional
+   One the ranking reads for a recent pace can move a repository's place or leave it off, so it is set apart as the provisional
    note is. One it reads only further back is stated plainly. A file without the field says nothing here. #}
 {% if partial and partial.own %}
 <p class="partial recent"><strong>This day's snapshot missed some repositories.</strong> A repository it missed could not be ranked, so it is not on this board.{% if partial.recent %} The recent pace the ranking measures also runs over {{ partial.recent|long_dates }}, whose snapshot{{ "s" if partial.recent|length > 1 else "" }} missed some too.{% endif %}</p>
 {% elif partial and partial.recent %}
-<p class="partial recent"><strong>{{ "Recent snapshots" if partial.recent|length > 1 else "A recent snapshot" }} missed some repositories.</strong> The ranking measures each repository's recent pace over {{ partial.recent|long_dates }}, so one missing then may be placed higher or lower than a full snapshot would place it.</p>
+<p class="partial recent"><strong>{{ "Recent snapshots" if partial.recent|length > 1 else "A recent snapshot" }} missed some repositories.</strong> The ranking measures each repository's recent pace over {{ partial.recent|long_dates }}, so one missing then may be left off this board, or placed higher or lower than a full snapshot would place it.</p>
 {% endif %}
 {% if partial and partial.earlier %}
 <p class="partial">Among the earlier days the ranking draws on, {{ partial.earlier|long_dates }} {{ "had snapshots" if partial.earlier|length > 1 else "had a snapshot" }} that missed some repositories.</p>
