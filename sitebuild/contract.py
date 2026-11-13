@@ -30,6 +30,8 @@ def boards(data: Path) -> list[dict]:
     """
     path = data / "boards" / "index.json"
     index = _read(path, _validator(data / "contract" / "index.schema.json"))
+    # The index as a whole first, its dates and their order, so that a fault in it is named before any board day's
+    # file is read; then each board day's file, with its count.
     days = [entry["board_day"] for entry in index["board_days"]]
     for day in days:
         try:
@@ -40,7 +42,7 @@ def boards(data: Path) -> list[dict]:
         if newer <= older:
             raise DataError(f"{path} lists {newer} before {older}: it must list each board day once, newest first")
     validate = _validator(data / "contract" / "daily.schema.json")
-    boards = []
+    read = []
     for entry in index["board_days"]:
         if "row_count" not in entry:  # only where the schema shipped with the index does not require it
             raise DataError(f"{path} lists {entry['board_day']} without its row_count")
@@ -50,8 +52,8 @@ def boards(data: Path) -> list[dict]:
                 f"{path} gives {entry['board_day']} {entry['row_count']} rows, "
                 f"and its file holds {len(board['rows'])}"
             )
-        boards.append(board)
-    return boards
+        read.append(board)
+    return read
 
 
 def latest_board(data: Path) -> dict:
