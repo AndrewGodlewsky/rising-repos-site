@@ -34,7 +34,9 @@ order the data file gives them. The site computes no score and no rank. A
 board's page states its board day and when it was published, says so when the
 board is empty, says the ranking is provisional while the data file says the
 score is, and names the days of incomplete snapshots that its ranking leaned on
-when the data file lists them. The build writes these pages, which `PAGES` in
+when the data file lists them. It also says when the day's update began and how
+long that took, and, for a board put out days late, that it came after its day.
+The build writes these pages, which `PAGES` in
 `sitebuild/__init__.py` lists:
 
 | Address | Page |
@@ -90,7 +92,9 @@ What every page holds to, each checked by a test in `tests/`:
   were 9,953 and 7,171 bytes before. The notes on partial days
   ([RisingRepos#45](https://github.com/AndrewGodlewsky/RisingRepos/issues/45))
   add 108 bytes of styles to every page, and the example's two notes 381 more
-  to its newest board's page.
+  to its newest board's page. The line on the day's update
+  ([RisingRepos#51](https://github.com/AndrewGodlewsky/RisingRepos/issues/51))
+  adds no styles, and 146 bytes to the example's newest board's page.
   A real board is longer than the earlier site's: the board for 2026-11-09
   holds 811 rows in 406,970 bytes, and the longest of the 25 board days the
   development database held on 2026-11-12, 1,294 rows, takes 640,698 bytes.
@@ -286,6 +290,19 @@ The notes are words, not a badge or a colour, so they read the same to a
 screen reader, and they stay in the band, beside the date they qualify, rather
 than over the rows. They add no colour: the rule is the provisional note's.
 
+**The day's update.** Right under the line with the publish time, a plain line
+gives the time the update began, in UTC, and how long it ran before this board
+went out, in words: "The day's update began at 22:35 UTC and took 12 minutes to
+publish this board." When the update began on an earlier day than the publish,
+the line gives that date too. It reads `daily_job_started_at`
+([RisingRepos#51](https://github.com/AndrewGodlewsky/RisingRepos/issues/51)),
+and a board whose file has no such time, because it was put out by hand or
+before the field existed, gets no line: the page does not guess. A board put out
+two days or more after its own day, as the boards rebuilt from the archive's
+earlier days were, gets one more plain line, "This board was made after its
+day", which names the day whose star counts it uses, so its publish date is
+not read as the date of its numbers. Neither line has a rule, bold, or colour.
+
 **The list of board days.** At `/days/`, the band's title is "Board days",
 with how many there are and the first and the last. Under it each month is a
 heading over its board days, newest first: each day is a link, "Monday 9
@@ -366,6 +383,8 @@ against the schema shipped with it before it writes a page:
   board day again, and they build as before, with no note on partial days. A
   site built before the pages read the field builds the newer files too: they
   match the schema shipped with them, and the field is one it ignores.
+- `daily_job_started_at`, added for RisingRepos#51, is read the same way: a
+  file without it, or with null in it, builds with no line on the update.
 - The schemas are checked with fastjsonschema, the validator that RisingRepos's
   ADR 0013 chose, at the version RisingRepos's `pyproject.toml` pins. It turns
   a schema into Python, and it fetches whatever document a `$ref` points to
@@ -383,8 +402,8 @@ day's files that fail their schema fail the tests as well as the build. The
 token search (below) reads every file git would commit, `site-data/` included,
 so a day's file that holds a string shaped like a credential fails the tests.
 A test holds the copy in `tests/fixtures/` to the bytes of the contract in
-RisingRepos commit `24541fe35c0182de1047db5757c5fc15a0288929`, whose schema
-says which partial days a board day's file lists. A change to the contract
+RisingRepos commit `9f3947f74424012a3338ce99ef8de2d4e406e54a`, whose schema
+says when the daily job that published a board day began. A change to the contract
 reaches it, and that test, by a pull request here.
 `.gitattributes` keeps git from changing the line endings of either copy.
 

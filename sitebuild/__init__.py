@@ -122,6 +122,56 @@ def partial_days(board: dict) -> dict | None:
     }
 
 
+MADE_LATE = 2
+"""How many days after its board day, by the date in UTC, a board's publish time must fall for its page to say that
+the board was made after its day. The daily job publishes a board on its day, or early on the next."""
+
+
+def daily_job(board: dict) -> dict | None:
+    """When the day's update that published a board began, and how long it took to publish it, from the file's
+    `daily_job_started_at` (RisingRepos#51).
+
+    None when the file does not say: one published before the data contract had the field, or a board that no daily
+    run published, whose field is null, or one whose update would have begun after its publish time. The page then
+    says nothing about the update. Otherwise `started` is the field, `same_day` whether it falls on the publish
+    time's day in UTC, `began` the time it began, with its date when it is not the same day, and `took` how long it
+    took, in words.
+    """
+    started = board.get("daily_job_started_at")
+    if not started:
+        return None
+    began, published = datetime.fromisoformat(started), datetime.fromisoformat(board["published_at"])
+    if began > published:
+        return None
+    same_day = began.date() == published.date()
+    return {
+        "started": started,
+        "same_day": same_day,
+        "began": f"{began:%H:%M} UTC" if same_day else utc_time(started),
+        "took": took(int((published - began).total_seconds())),
+    }
+
+
+def took(seconds: int) -> str:
+    """59 seconds as 'less than a minute', 60 as '1 minute', 125 minutes as '2 hours and 5 minutes'."""
+    hours, minutes = divmod(seconds // 60, 60)
+    if not hours:
+        if not minutes:
+            return "less than a minute"
+        return "1 minute" if minutes == 1 else f"{minutes} minutes"
+    spent = "1 hour" if hours == 1 else f"{hours} hours"
+    if not minutes:
+        return spent
+    return f"{spent} and " + ("1 minute" if minutes == 1 else f"{minutes} minutes")
+
+
+def made_late(board: dict) -> bool:
+    """Whether a board was published `MADE_LATE` days or more after its board day, as the boards made from the
+    archive's earlier days were."""
+    published = datetime.fromisoformat(board["published_at"]).date()
+    return (published - date.fromisoformat(board["board_day"])).days >= MADE_LATE
+
+
 def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     """Check the data files in `data`, then write the site's pages into `out`, a folder that does not exist yet
     or is empty. Nothing is written when a file fails its check.
@@ -171,11 +221,13 @@ def _pages(boards: list[dict]) -> Iterator[tuple[str, str, dict]]:
 
 
 def _beside(boards: list[dict], number: int) -> dict:
-    """What a board's page is given: the board, what it says about partial days, and the board days before it and
-    after it, when there are."""
+    """What a board's page is given: the board, what it says about partial days and about the day's update, whether
+    it was made after its day, and the board days before it and after it, when there are."""
     return {
         "board": boards[number],
         "partial": partial_days(boards[number]),
+        "job": daily_job(boards[number]),
+        "late": made_late(boards[number]),
         "before": boards[number + 1] if number + 1 < len(boards) else None,
         "after": boards[number - 1] if number > 0 else None,
     }
