@@ -108,8 +108,19 @@ class TheDataFiles(BuildTest):
         write_json(self.index, {**index, "board_days": [*index["board_days"], {"board_day": "2026-02-30", "row_count": 0}]})
         self.assertBuildFails(str(self.index), "'2026-02-30', which is not a date")
 
-    def test_an_index_from_before_row_count_still_builds_because_the_pages_count_each_boards_own_rows(self):
-        # As site-data/ held it before RisingRepos#43: the schema and the index without row_count.
+    def test_an_index_whose_row_count_differs_from_its_board_days_file_fails_the_build_and_names_both(self):
+        """RisingRepos#115. The example's older board has no rows, and its newer one five."""
+        index = read_json(self.index)
+        for day, wrong, held in (("2026-11-08", 3, 0), ("2026-11-09", 4, 5)):
+            with self.subTest(day):
+                entries = [{**entry, "row_count": wrong} if entry["board_day"] == day else entry for entry in index["board_days"]]
+                write_json(self.index, {**index, "board_days": entries})
+                stderr = self.assertBuildFails(str(self.index), day)
+                self.assertIn(f"gives {day} {wrong} rows, and its file holds {held}", stderr)
+
+    def test_an_index_without_row_count_fails_the_build_even_where_its_schema_lets_it(self):
+        # As site-data/ held it before RisingRepos#43: the schema and the index without row_count. The schema
+        # the publish ships has required it since, so only a schema from before then would let the index in.
         schema = read_json(self.index_schema)
         entry = schema["properties"]["board_days"]["items"]
         del entry["properties"]["row_count"]
@@ -117,16 +128,15 @@ class TheDataFiles(BuildTest):
         write_json(self.index_schema, schema)
         index = read_json(self.index)
         write_json(self.index, {**index, "board_days": [{"board_day": entry["board_day"]} for entry in index["board_days"]]})
-        pages = self.build_pages()
-        self.assertEqual(len(pages[BOARD].rows()), len(read_json(self.board_file())["rows"]))
+        self.assertBuildFails(str(self.index), "lists 2026-11-09 without its row_count")
 
-    def test_the_pages_do_not_read_row_count_and_count_each_boards_rows_from_its_file(self):
+    def test_the_example_index_gives_each_board_day_the_rows_its_file_holds_and_builds(self):
         index = read_json(self.index)
-        write_json(self.index, {**index, "board_days": [{**entry, "row_count": 31337} for entry in index["board_days"]]})
-        for path, page in self.build_pages().items():
-            with self.subTest(path):
-                self.assertNotIn("31,337", page.html)
-                self.assertNotIn("31337", page.html)
+        self.assertEqual(
+            [entry["row_count"] for entry in index["board_days"]],
+            [len(read_json(self.board_file(entry["board_day"]))["rows"]) for entry in index["board_days"]],
+        )
+        self.assertEqual(len(self.build_pages()[BOARD].rows()), index["board_days"][0]["row_count"])
 
     def test_the_latest_board_is_the_first_in_the_index_and_fails_wherever_the_build_does(self):
         # The site eval reads it to know which board day the preview should state.

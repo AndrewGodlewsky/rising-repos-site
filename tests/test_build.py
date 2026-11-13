@@ -232,7 +232,7 @@ class TheBuild(BuildTest):
 
     def test_a_board_of_one_row_counts_it_as_one_repository(self):
         board = read_json(self.board_file())
-        write_json(self.board_file(), {**board, "rows": board["rows"][:1]})
+        self.write_board({**board, "rows": board["rows"][:1]})
         page = self.build_pages()[BOARD]
         self.assertIn("1 repository", page.body_text())
         self.assertNotIn("1 repositories", page.body_text())
@@ -362,7 +362,7 @@ class TheBoardDays(BuildTest):
         index = read_json(self.index)
         write_json(self.index, {**index, "board_days": [*index["board_days"], {"board_day": "2026-10-31", "row_count": 0}]})
         board = read_json(self.board_file())
-        write_json(self.board_file(), {**board, "rows": board["rows"][:3]})
+        self.write_board({**board, "rows": board["rows"][:3]})
         main = self.build_pages()[DAYS].one("main")
         self.assertEqual([heading.text() for heading in main.all("h2")], ["November 2026", "October 2026"])
         self.assertEqual([item.text() for item in main.all("li")][0], "Monday 9 November 3 repositories")

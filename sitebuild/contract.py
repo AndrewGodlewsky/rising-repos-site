@@ -24,9 +24,9 @@ def boards(data: Path) -> list[dict]:
     """The daily board of every board day in the index, newest first, each read and checked with the index.
 
     The index names every board day a single time, newest first, and the pages rely on that order: the latest
-    page shows the first, and each board day's page links to the board days beside it. The pages count a board's
-    rows from its own file, which they read anyway, and do not read the index's `row_count`, so an index written
-    before the field existed builds too.
+    page shows the first, and each board day's page links to the board days beside it. Each entry's `row_count`
+    must be the number of rows in its board day's file (RisingRepos#115). The pages count a board's rows from the
+    file, which they read anyway, so the check is what holds the index's count true for whatever else reads it.
     """
     path = data / "boards" / "index.json"
     index = _read(path, _validator(data / "contract" / "index.schema.json"))
@@ -40,7 +40,18 @@ def boards(data: Path) -> list[dict]:
         if newer <= older:
             raise DataError(f"{path} lists {newer} before {older}: it must list each board day once, newest first")
     validate = _validator(data / "contract" / "daily.schema.json")
-    return [_board(data, day, validate) for day in days]
+    boards = []
+    for entry in index["board_days"]:
+        if "row_count" not in entry:  # only where the schema shipped with the index does not require it
+            raise DataError(f"{path} lists {entry['board_day']} without its row_count")
+        board = _board(data, entry["board_day"], validate)
+        if entry["row_count"] != len(board["rows"]):
+            raise DataError(
+                f"{path} gives {entry['board_day']} {entry['row_count']} rows, "
+                f"and its file holds {len(board['rows'])}"
+            )
+        boards.append(board)
+    return boards
 
 
 def latest_board(data: Path) -> dict:

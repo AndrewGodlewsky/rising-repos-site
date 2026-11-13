@@ -349,9 +349,13 @@ against the schema shipped with it before it writes a page:
   each board day to the ones beside it in that order. An index that does not
   fails the build. The schema's `uniqueItems` alone would let one board day in
   twice with two row counts.
-- The pages count a board's rows from its own file, and do not read the
-  index's `row_count`, so an index written before the field existed builds
-  too.
+- The index's `row_count` for each board day must be the number of rows in
+  that board day's file. A count that differs stops the build, and its message
+  gives the board day, the count in the index, and the rows in the file. An
+  entry with no count stops it too
+  ([RisingRepos#115](https://github.com/AndrewGodlewsky/RisingRepos/issues/115)).
+  The pages count a board's rows from its file, so the check is what keeps the
+  index's count true for anything else that reads it.
 - The pages need `schema_version` 1 or later, which `sitebuild/contract.py`
   states. A file below it fails the build.
 - A field the pages do not read is ignored. RisingRepos adds a field to the
