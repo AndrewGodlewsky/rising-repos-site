@@ -63,6 +63,14 @@ def long_date(day: str) -> str:
     return f"{value.day} {MONTHS[value.month - 1]} {value.year}"
 
 
+def long_dates(days: list[str]) -> str:
+    """['2026-11-09'] as '9 November 2026', two days joined by 'and', and three as 'A, B, and C'."""
+    dates = [long_date(day) for day in days]
+    if len(dates) < 3:
+        return " and ".join(dates)
+    return ", ".join(dates[:-1]) + ", and " + dates[-1]
+
+
 def short_date(day: str) -> str:
     """'2026-11-09' as '9 Nov'."""
     value = date.fromisoformat(day)
@@ -94,6 +102,26 @@ def repositories(count: int) -> str:
     return "1 repository" if count == 1 else f"{count:,} repositories"
 
 
+def partial_days(board: dict) -> dict | None:
+    """What a board's page says about the partial snapshot days its ranking read: days on which the collector's
+    snapshot missed some repositories (RisingRepos#45).
+
+    None when the board's file does not say, as a file published before the data contract had `partial_days`
+    does not. The page then says nothing about partial days: it neither names one nor says there was none.
+    Otherwise `own` is whether the board day is itself one, `recent` lists the other days over which the ranking
+    measures a recent pace, and `earlier` the days it reads only further back, each newest first, as the file
+    lists them.
+    """
+    if "partial_days" not in board:
+        return None
+    days = board["partial_days"]
+    return {
+        "own": any(day["snapshot_day"] == board["board_day"] for day in days),
+        "recent": [day["snapshot_day"] for day in days if day["recent"] and day["snapshot_day"] != board["board_day"]],
+        "earlier": [day["snapshot_day"] for day in days if not day["recent"]],
+    }
+
+
 def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     """Check the data files in `data`, then write the site's pages into `out`, a folder that does not exist yet
     or is empty. Nothing is written when a file fails its check.
@@ -113,6 +141,7 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     )
     templates.filters.update(
         long_date=long_date,
+        long_dates=long_dates,
         short_date=short_date,
         day_in_month=day_in_month,
         month_name=month_name,
@@ -142,9 +171,11 @@ def _pages(boards: list[dict]) -> Iterator[tuple[str, str, dict]]:
 
 
 def _beside(boards: list[dict], number: int) -> dict:
-    """What a board's page is given: the board, and the board days before it and after it, when there are."""
+    """What a board's page is given: the board, what it says about partial days, and the board days before it and
+    after it, when there are."""
     return {
         "board": boards[number],
+        "partial": partial_days(boards[number]),
         "before": boards[number + 1] if number + 1 < len(boards) else None,
         "after": boards[number - 1] if number > 0 else None,
     }

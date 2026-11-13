@@ -87,6 +87,17 @@ class BuildTest(unittest.TestCase):
     def board_file(self, day: str = "2026-11-09") -> Path:
         return self.data / "boards" / "days" / day / "daily.json"
 
+    def write_board(self, board: dict) -> None:
+        """Write `board` as its board day's file, and give its entry in the index the rows it now holds, as a
+        publish does: the build checks the index's `row_count` against the file (RisingRepos#115)."""
+        write_json(self.board_file(board["board_day"]), board)
+        index = read_json(self.index)
+        entries = [
+            {**entry, "row_count": len(board["rows"])} if entry["board_day"] == board["board_day"] else entry
+            for entry in index["board_days"]
+        ]
+        write_json(self.index, {**index, "board_days": entries})
+
     def build_data(self, *options: str) -> subprocess.CompletedProcess:
         return build(self.out, "--data", str(self.data), *options)
 

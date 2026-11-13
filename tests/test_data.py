@@ -14,16 +14,16 @@ from sitebuild import BOARD
 from sitebuild.contract import SCHEMA_VERSION_NEEDED, DataError, latest_board
 
 COPIED = {
-    "contract/daily.schema.json": "4cf53ad662ae30326701501f4d26403bb7acb4421a46dc194a0a1f0e5d159e71",
+    "contract/daily.schema.json": "7b2de9f63cd06263c09164f6fb40d1ced32ad4c48d596366a74d4a8565f8b610",
     "contract/index.schema.json": "e2f3f9467a029962f69c10d9560a710a4aeb0eefa690a537faf75641d6898815",
     "boards/index.json": "e748551f487ba07f4bfa048eba037fe9e19209eddcd28b84a24c5bca9e6ae523",
-    "boards/days/2026-11-09/daily.json": "6cfa2a2ba8ec13a717c9757d6c027af31acd87b03e3574949c2ec7d99fe2eaab",
-    "boards/days/2026-11-08/daily.json": "a2620bcad1c3340204f1dfcf08f42ee5dc4cc9d65f6f07497f3de75862f32dcd",
+    "boards/days/2026-11-09/daily.json": "d28235418a647c3711414d8ccc20c56cfd96958e1fba354af35be36a7b73aae1",
+    "boards/days/2026-11-08/daily.json": "3a59db12eef94cc6c4d008d6c2b469e91965f4eedadb19507f233b0747912212",
 }
 """The SHA-256 of each file the example copies, by its path under site-data/: the schemas and the example in
-RisingRepos's src/risingrepos/publishing/contract/ at 81ba0820c50f736c8b25c2ff0058dadad4dcab05, which gave each
-board day in the index its row count (RisingRepos#43). A change to the contract reaches this copy by a pull
-request here that changes these too."""
+RisingRepos's src/risingrepos/publishing/contract/ at 24541fe35c0182de1047db5757c5fc15a0288929, where each board
+day's file lists every partial day that the histories behind its ranking span (RisingRepos#45). A change to the contract
+reaches this copy by a pull request here that changes these too."""
 
 
 class TheExample(unittest.TestCase):
@@ -108,8 +108,19 @@ class TheDataFiles(BuildTest):
         write_json(self.index, {**index, "board_days": [*index["board_days"], {"board_day": "2026-02-30", "row_count": 0}]})
         self.assertBuildFails(str(self.index), "'2026-02-30', which is not a date")
 
-    def test_an_index_from_before_row_count_still_builds_because_the_pages_count_each_boards_own_rows(self):
-        # As site-data/ held it before RisingRepos#43: the schema and the index without row_count.
+    def test_an_index_whose_row_count_differs_from_its_board_days_file_fails_the_build_and_names_both(self):
+        """RisingRepos#115. The example's older board has no rows, and its newer one five."""
+        index = read_json(self.index)
+        for day, wrong, held in (("2026-11-08", 3, 0), ("2026-11-09", 4, 5)):
+            with self.subTest(day):
+                entries = [{**entry, "row_count": wrong} if entry["board_day"] == day else entry for entry in index["board_days"]]
+                write_json(self.index, {**index, "board_days": entries})
+                stderr = self.assertBuildFails(str(self.index), day)
+                self.assertIn(f"gives {day} {wrong} rows, and its file holds {held}", stderr)
+
+    def test_an_index_without_row_count_fails_the_build_even_where_its_schema_lets_it(self):
+        # As site-data/ held it before RisingRepos#43: the schema and the index without row_count. The schema
+        # the publish ships has required it since, so only a schema from before then would let the index in.
         schema = read_json(self.index_schema)
         entry = schema["properties"]["board_days"]["items"]
         del entry["properties"]["row_count"]
@@ -117,16 +128,15 @@ class TheDataFiles(BuildTest):
         write_json(self.index_schema, schema)
         index = read_json(self.index)
         write_json(self.index, {**index, "board_days": [{"board_day": entry["board_day"]} for entry in index["board_days"]]})
-        pages = self.build_pages()
-        self.assertEqual(len(pages[BOARD].rows()), len(read_json(self.board_file())["rows"]))
+        self.assertBuildFails(str(self.index), "lists 2026-11-09 without its row_count")
 
-    def test_the_pages_do_not_read_row_count_and_count_each_boards_rows_from_its_file(self):
+    def test_the_example_index_gives_each_board_day_the_rows_its_file_holds_and_builds(self):
         index = read_json(self.index)
-        write_json(self.index, {**index, "board_days": [{**entry, "row_count": 31337} for entry in index["board_days"]]})
-        for path, page in self.build_pages().items():
-            with self.subTest(path):
-                self.assertNotIn("31,337", page.html)
-                self.assertNotIn("31337", page.html)
+        self.assertEqual(
+            [entry["row_count"] for entry in index["board_days"]],
+            [len(read_json(self.board_file(entry["board_day"]))["rows"]) for entry in index["board_days"]],
+        )
+        self.assertEqual(len(self.build_pages()[BOARD].rows()), index["board_days"][0]["row_count"])
 
     def test_the_latest_board_is_the_first_in_the_index_and_fails_wherever_the_build_does(self):
         # The site eval reads it to know which board day the preview should state.

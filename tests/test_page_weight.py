@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from helpers import BuildTest, Page, read_json, write_json
+from helpers import BuildTest, Page, read_json
 
 from sitebuild import BOARD, board_day_page
 
@@ -109,7 +109,7 @@ class PageWeight(BuildTest):
 
     def test_each_page_of_the_largest_board_published_is_within_the_size_limit(self):
         board = read_json(self.board_file())
-        write_json(self.board_file(), {**board, "rows": made_up_rows(LARGEST_BOARD)})
+        self.write_board({**board, "rows": made_up_rows(LARGEST_BOARD)})
         pages = self.build_pages()
         self.assertEqual(len(pages[BOARD].rows()), LARGEST_BOARD)
         self.assertEqual(len(pages[board_day_page("2026-11-09")].rows()), LARGEST_BOARD)

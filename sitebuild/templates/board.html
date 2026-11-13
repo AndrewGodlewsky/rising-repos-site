@@ -13,6 +13,17 @@
 {% if board.score_provisional %}
 <p class="provisional"><strong>The ranking is provisional.</strong> The formula that orders this board is still being tested, so the order may change.</p>
 {% endif %}
+{# What the file says about the partial days its ranking read: days whose snapshot missed some repositories.
+   One the ranking reads for a recent pace can move a repository's place, so it is set apart as the provisional
+   note is. One it reads only further back is stated plainly. A file without the field says nothing here. #}
+{% if partial and partial.own %}
+<p class="partial recent"><strong>This day's snapshot missed some repositories.</strong> A repository it missed could not be ranked, so it is not on this board.{% if partial.recent %} The recent pace the ranking measures also runs over {{ partial.recent|long_dates }}, whose snapshot{{ "s" if partial.recent|length > 1 else "" }} missed some too.{% endif %}</p>
+{% elif partial and partial.recent %}
+<p class="partial recent"><strong>{{ "Recent snapshots" if partial.recent|length > 1 else "A recent snapshot" }} missed some repositories.</strong> The ranking measures each repository's recent pace over {{ partial.recent|long_dates }}, so one missing then may be placed higher or lower than a full snapshot would place it.</p>
+{% endif %}
+{% if partial and partial.earlier %}
+<p class="partial">Among the earlier days the ranking draws on, {{ partial.earlier|long_dates }} {{ "had snapshots" if partial.earlier|length > 1 else "had a snapshot" }} that missed some repositories.</p>
+{% endif %}
 </div>
 {% endblock %}
 {% block strip %}

@@ -24,9 +24,12 @@ than outside one, so each step below names both.
 | A step in Cloudflare's dashboard, or one that turns this repository's deploy workflow off or on | The user | The user |
 | Going back | The user decides it and makes its dashboard steps. An agent never begins it on its own | The same |
 
-No agent can sign in to Cloudflare's dashboard. The one Cloudflare token an
-agent holds can only read the Pages project. The token that uploads is a secret
-of this repository's `deploy` environment, which only the deploy job reads.
+Agents keep out of Cloudflare's dashboard because the project's rules give
+every step there to the user, as the table says; nothing technical has been
+shown to stop one. The one Cloudflare token an agent holds was created to read
+the Pages project and nothing more, and no write has been tried with it. The
+token that uploads is a secret of this repository's `deploy` environment, which
+only the deploy job reads.
 
 ## Where things stand
 
@@ -46,7 +49,7 @@ read with GET requests and the token that can only read.
 | The same addresses on the preview | 404, with this site's not-found page | The same, 22:25 |
 | The preview's `noindex` mark | Two parts. Cloudflare adds the header `x-robots-tag: noindex` to an answer from a preview address, and the build puts `<meta name="robots" content="noindex">` in each page of an upload that is not production | `curl -sI` and `curl -s` on the preview, 22:21 |
 | Always Online | **Unknown.** The switch belongs to the zone `risingrepos.com`, which is out of the read-only token's sight | The API: `GET /zones?name=risingrepos.com` came back with an empty list, 22:22 |
-| The rollback action in the dashboard | **Unknown.** The API answers about deployments, and nothing about the dashboard's menus | |
+| The rollback action in the dashboard | **Unknown.** The API answers about deployments, and nothing about the dashboard's menus | Not read: only the dashboard shows it. Check 3 before the switch is where it is read |
 
 **A reading of the live page that can be compared.** Cloudflare adds a script to
 each answer, and one line of it is different every time, so two fetches of the
@@ -143,7 +146,9 @@ What each one does:
 - **The site eval's two lines** are the address a run by hand measures by
   default, and the address it measures after each deploy. Left on the preview,
   the measurement after each deploy would keep looking for a board day that
-  never appears there, and fail. The name `PREVIEW` can change with its value.
+  never appears there, and fail. Only the value of `PREVIEW` changes, never
+  its name: the table holds the whole line, so a renamed line matches neither
+  side and fails the test, and going back must find the name where it was.
 - **`accepted.json`'s `base`** is held to the address in `measure.py` by
   `tests/test_site_eval.py`, so the two move together. Its numbers were
   measured on the preview, and the limits in `evals/site/limits.json` were set
@@ -154,9 +159,8 @@ What each one does:
 The tests that hold these lines today change in the same pull request:
 `tests/test_workflow.py`, `tests/test_stale_check.py`,
 `tests/test_site_eval_workflow.py`, and `tests/test_site_eval.py`. So do the
-words around them: the comments over `PAGES_BRANCH` and `DEFAULT_ADDRESS`, of
-which the first still calls going live a change of one line;
-`measure.py`'s docstrings; `evals/site/README.md`; and this repository's
+words around them: the comments over `PAGES_BRANCH` and `DEFAULT_ADDRESS`,
+which are rewritten with the lines under them; `measure.py`'s docstrings; `evals/site/README.md`; and this repository's
 `README.md`, under "The rebuild and the preview" and "The stale check".
 
 **In the RisingRepos repository**, in a pull request of its own:
@@ -255,6 +259,20 @@ decides.
    Once the daily job is installed, its time is in the list in RisingRepos's
    `architecture.md` of what runs on the machine.
 
+**If check 2 or check 3 goes unanswered.** Only the user can take these two
+readings, since both live in the dashboard. In a run, the agent sends its
+request for them once this runbook is on `main`, and sends it again when the
+switch is due; it first went out on 2026-11-12. If either reading fails, the
+switch stops, like any other failed check. If all the other checks have passed
+and one of the readings, or both, has not come back, the agent makes the call
+alone, on the evidence open to it: check 1 has confirmed, through the API, that
+the deployment to return to finished as a production deployment with no error,
+and the rollback page of Cloudflare's documentation, cited above, lets any
+production deployment that built cleanly be picked. On
+[RisingRepos#58](https://github.com/AndrewGodlewsky/RisingRepos/issues/58) it
+writes down which of checks 2 and 3 went unread, and the reason it switched or
+held off.
+
 ## The switch
 
 1. **Open the two pull requests.**
@@ -320,9 +338,11 @@ decides.
    Who: the agent, in a run; outside one, the user or an agent they ask.
    A page of the earlier site that this site lacks may still be served, at
    that one address, for as long as seven days, by the data centers that
-   cached it. The same address with a query string added, such as `?v=1`, answers from
-   the new deployment. A week after the switch, check one such address again
-   without the query string: it answers 404.
+   cached it. On the preview, the same address with a query string added,
+   such as `?v=1`, answered from the newest deployment
+   ([RisingRepos#71](https://github.com/AndrewGodlewsky/RisingRepos/issues/71));
+   nobody has measured that on production. A week after the switch, check one
+   such address again without the query string: it answers 404.
 
 ## When something looks wrong after the switch
 
@@ -366,21 +386,28 @@ this repository's deploy workflow off and on again.
 3. **Check it.**
    Who: the agent, or the user.
    risingrepos.com and www.risingrepos.com state the `rr:board-date` of check 4
-   before the switch, 2026-10-16 today, and give the same hash. Until step 4
-   is merged, the stale check reads risingrepos.com, where the earlier site
-   states no publish time, so it posts an alarm each day, and a publish's
-   read-back of risingrepos.com fails, though its data still reaches this
-   repository.
+   before the switch, 2026-10-16 today, and give the same hash. The stale
+   check then alarms every day, and every publish's read-back fails though its
+   data still reaches this repository, and both go on until the preview is
+   uploaded to again, which cannot happen before step 5. Until step 4 they
+   read risingrepos.com, where the earlier site states no publish time; from
+   step 4 they read the preview, which was last uploaded to before the switch.
 4. **Put the lines of the switch back.**
    Who: an agent, once the user has asked for the way back, in a run or out of
    one.
    A pull request in this repository moves every line of the table back to
    "Before go-live", and one in RisingRepos puts the read-back's address back.
    Because they undo a change that went live, the user approves each one.
+   **Build and deploy** is still disabled, and a disabled workflow starts for
+   nothing, pull requests included, so no `build` check runs on the one here.
+   Whoever opens it runs the tests on its branch by hand and posts what they
+   print on it. The RisingRepos pull request waits for step 5.
 5. **Start the uploads again.**
    Who: the user, in a run or out of one.
    Once the pull request in this repository is merged, enable **Build and
-   deploy** again. The next push to `main` uploads to the preview.
+   deploy** again. The next push to `main` uploads to the preview. Once that
+   upload has finished, merge the RisingRepos pull request of step 4: the
+   read-back then finds the preview current.
 
 For as long as seven days after the rollback, a page of this site that the
 earlier one lacks, such as a board day after 2026-10-16, may still be served
