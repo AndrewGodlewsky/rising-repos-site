@@ -259,19 +259,19 @@ decides.
    Once the daily job is installed, its time is in the list in RisingRepos's
    `architecture.md` of what runs on the machine.
 
-**If checks 2 and 3 go unanswered.** Only the user can take these two
+**If check 2 or check 3 goes unanswered.** Only the user can take these two
 readings, since both live in the dashboard. In a run, the agent sends its
 request for them once this runbook is on `main`, and sends it again when the
 switch is due; it first went out on 2026-11-12. If either reading fails, the
 switch stops, like any other failed check. If all the other checks have passed
-and neither reading has come back, the agent makes the call alone, on the
-evidence open to it: check 1 has confirmed, through the API, that the deployment
-to return to finished as a production deployment with no error, and the
-rollback page of Cloudflare's documentation, cited above, lets any production
-deployment that built cleanly be picked. On
+and one of the readings, or both, has not come back, the agent makes the call
+alone, on the evidence open to it: check 1 has confirmed, through the API, that
+the deployment to return to finished as a production deployment with no error,
+and the rollback page of Cloudflare's documentation, cited above, lets any
+production deployment that built cleanly be picked. On
 [RisingRepos#58](https://github.com/AndrewGodlewsky/RisingRepos/issues/58) it
-writes down that checks 2 and 3 went unread, and the reason it switched or held
-off.
+writes down which of checks 2 and 3 went unread, and the reason it switched or
+held off.
 
 ## The switch
 
