@@ -77,7 +77,9 @@ h1 {
 }
 .facts { margin-top: 0.75rem; color: var(--field-muted); }
 .facts p + p { margin-top: 0.5rem; }
-.provisional { max-width: 40rem; padding-left: 0.875rem; border-left: 3px solid #7fcfa6; }
+.provisional, .partial { max-width: 40rem; }
+/* A note on what may move the order has a rule at its left. */
+.provisional, .partial.recent { padding-left: 0.875rem; border-left: 3px solid #7fcfa6; }
 
 /* The strip: the board days before and after this one, and the list of them all, kept in view under the band */
 

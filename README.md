@@ -32,8 +32,9 @@ A daily board is one ranked list. Each row shows its rank, the repository's
 name linked to GitHub, its description, its language, and its stars, in the
 order the data file gives them. The site computes no score and no rank. A
 board's page states its board day and when it was published, says so when the
-board is empty, and says the ranking is provisional while the data file says
-the score is. The build writes these pages, which `PAGES` in
+board is empty, says the ranking is provisional while the data file says the
+score is, and names the days of incomplete snapshots that its ranking leaned on
+when the data file lists them. The build writes these pages, which `PAGES` in
 `sitebuild/__init__.py` lists:
 
 | Address | Page |
@@ -73,8 +74,8 @@ What every page holds to, each checked by a test in `tests/`:
 
   | Board | A board's page | The list of board days | The not-found page |
   | --- | --- | --- | --- |
-  | The data contract's example, 5 rows | 15,506 bytes | 12,136 bytes | 10,978 bytes |
-  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens | 291,064 bytes | 12,138 bytes | 10,978 bytes |
+  | The data contract's example, 5 rows | 15,995 bytes | 12,244 bytes | 11,086 bytes |
+  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens | 291,553 bytes | 12,246 bytes | 11,086 bytes |
 
   316 rows is the largest board the earlier site published. The limit was set
   from the largest page measured before
@@ -86,7 +87,10 @@ What every page holds to, each checked by a test in `tests/`:
   note), which adds about 66 bytes to a row: 820 bytes a made-up row became
   886. The strip, the foot, the site's name as a link, and their styles add
   about 5,550 bytes to a board's page and 3,800 to the not-found page, which
-  were 9,953 and 7,171 bytes before.
+  were 9,953 and 7,171 bytes before. The notes on partial days
+  ([RisingRepos#45](https://github.com/AndrewGodlewsky/RisingRepos/issues/45))
+  add 108 bytes of styles to every page, and the example's two notes 381 more
+  to its newest board's page.
   A real board is longer than the earlier site's: the board for 2026-11-09
   holds 811 rows in 406,970 bytes, and the longest of the 25 board days the
   development database held on 2026-11-12, 1,294 rows, takes 640,698 bytes.
@@ -157,7 +161,8 @@ tabular figures, so that their digits line up down the column.
 | `--rule` | `#dae3de` | The line between rows | |
 
 The contrast is against white unless the table says otherwise. The provisional
-note on the band has a rule of `#7fcfa6` at its left, and a line of `#2f5d4d`
+note on the band, and the note on a recent partial day, have a rule of `#7fcfa6`
+at their left, and a line of `#2f5d4d`
 parts the strip from the band. Every text colour meets
 WCAG AA, 4.5:1, against its background, and `tests/test_colour.py` holds each
 pair. On the paper, green marks the positions and the links, and nothing else.
@@ -256,6 +261,31 @@ An empty board has the same foot.
 band, beside its facts, and links to the newest. Only the root states a board
 day in the data contract's tags ([RisingRepos#43](https://github.com/AndrewGodlewsky/RisingRepos/issues/43)).
 
+**Partial days.** A partial day is a snapshot day on which the collector
+missed some of the repositories it should have read
+([RisingRepos#45](https://github.com/AndrewGodlewsky/RisingRepos/issues/45)).
+When a board's file lists the partial days its ranking read, the band's facts
+end with a note on them, in the field's muted text, after the provisional note:
+
+- A partial day used for a repository's recent pace, which can move a
+  repository up or down this board, gets a note set off the way the
+  provisional note is, with the same rule at its left and a bold first
+  sentence: "A recent snapshot missed some repositories." It names the day and
+  says what it can do to a repository missing from it. When the partial day is
+  the board day itself, the note says instead that a repository the day missed
+  could not be ranked, so it is not on the board.
+- A partial day read only further back, for the pace a recent climb is held
+  against, gets one plain line in the facts, with no rule and nothing in bold.
+  It is a fact about the data, not a warning, and most marked boards have only
+  this.
+- A board whose ranking read no partial day has neither. Nor does a board whose
+  file predates the field: it is not known which partial days it read, and the
+  page does not guess.
+
+The notes are words, not a badge or a colour, so they read the same to a
+screen reader, and they stay in the band, beside the date they qualify, rather
+than over the rows. They add no colour: the rule is the provisional note's.
+
 **The list of board days.** At `/days/`, the band's title is "Board days",
 with how many there are and the first and the last. Under it each month is a
 heading over its board days, newest first: each day is a link, "Monday 9
@@ -326,6 +356,12 @@ against the schema shipped with it before it writes a page:
   states. A file below it fails the build.
 - A field the pages do not read is ignored. RisingRepos adds a field to the
   schema and to the files in one publish, so the files still match.
+- `partial_days`, which RisingRepos added to each board day's file for
+  RisingRepos#45, is read when a file has it and not required when it does not:
+  `site-data/` holds files from before the field until a publish writes every
+  board day again, and they build as before, with no note on partial days. A
+  site built before the pages read the field builds the newer files too: they
+  match the schema shipped with them, and the field is one it ignores.
 - The schemas are checked with fastjsonschema, the validator that RisingRepos's
   ADR 0013 chose, at the version RisingRepos's `pyproject.toml` pins. It turns
   a schema into Python, and it fetches whatever document a `$ref` points to
@@ -343,8 +379,8 @@ day's files that fail their schema fail the tests as well as the build. The
 token search (below) reads every file git would commit, `site-data/` included,
 so a day's file that holds a string shaped like a credential fails the tests.
 A test holds the copy in `tests/fixtures/` to the bytes of the contract in
-RisingRepos commit `81ba0820c50f736c8b25c2ff0058dadad4dcab05`, which gave each
-board day in the index its row count. A change to the contract reaches it, and
+RisingRepos commit `b189fe74e99a3f538dc6a888ad1a9c5bc53db3c9`, which added each
+board day's partial days. A change to the contract reaches it, and
 that test, by a pull request here.
 `.gitattributes` keeps git from changing the line endings of either copy.
 

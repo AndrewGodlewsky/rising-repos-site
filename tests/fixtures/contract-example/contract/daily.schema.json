@@ -4,7 +4,7 @@
   "description": "site-data/boards/days/<board day>/daily.json, in version 1 of the RisingRepos data contract. The contract's README.md, in the RisingRepos repository at src/risingrepos/publishing/contract/, says how the files are laid out and how the contract changes. Every field is listed here and no other may appear. A field whose description starts with 'Untrusted' holds text a repository's owner wrote.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "board_day", "published_at", "score_provisional", "rows"],
+  "required": ["schema_version", "board_day", "published_at", "score_provisional", "partial_days", "rows"],
   "properties": {
     "schema_version": {
       "description": "The contract's version. It rises when a field is removed or changes what it holds.",
@@ -23,6 +23,26 @@
     "score_provisional": {
       "description": "True while the score that ranked this board is provisional. The page then says so.",
       "type": "boolean"
+    },
+    "partial_days": {
+      "description": "The partial snapshot days that the scores which ranked this board read, newest first, and none when they read none. Some repositories are missing from a partial day, so a repository absent from it has no reading that day, and its history reaches back to the snapshot before. The list holds each partial day in the history of a repository on the board, and the board day itself when it is partial, because a repository missing from the board day is not scored and so cannot be on its board. The page then says so.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["snapshot_day", "recent"],
+        "properties": {
+          "snapshot_day": {
+            "description": "The partial snapshot day, as YYYY-MM-DD, on or before the board day.",
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "recent": {
+            "description": "True when the day is among those that the recent pace of a repository on the board is measured over, its snapshot on the board day and the two before it, and true for the board day itself. False when the scores read it only for a baseline, the pace a recent one is measured against.",
+            "type": "boolean"
+          }
+        }
+      }
     },
     "rows": {
       "description": "The board, in rank order. An empty board has no rows.",

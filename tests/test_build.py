@@ -120,6 +120,105 @@ class TheBuild(BuildTest):
         write_json(self.board_file(), {**board, "score_provisional": False})
         self.assertNotIn("provisional", self.build_pages()[BOARD].body_text().lower())
 
+    def partial_notes(self, page) -> list:
+        """The band's notes on partial days: each <p class="partial"> in the board's facts."""
+        return [element for element in page.one("header").all("p") if "partial" in element.classes()]
+
+    def test_a_board_whose_ranking_read_partial_days_names_each_and_sets_a_recent_one_apart(self):
+        """RisingRepos#45. The example's newest board read 7 November for a recent pace and 27 October further back."""
+        recent, earlier = self.partial_notes(self.build_pages()[BOARD])
+        self.assertEqual(recent.classes(), ["partial", "recent"])
+        self.assertEqual(
+            recent.text(),
+            "A recent snapshot missed some repositories. The ranking measures each repository's recent pace over "
+            "7 November 2026, so one missing then may be placed higher or lower than a full snapshot would place it.",
+        )
+        self.assertEqual([strong.text() for strong in recent.all("strong")], ["A recent snapshot missed some repositories."])
+        self.assertEqual(earlier.classes(), ["partial"])
+        self.assertEqual(
+            earlier.text(),
+            "Among the earlier days the ranking draws on, 27 October 2026 had a snapshot that missed some repositories.",
+        )
+        self.assertEqual(earlier.all("strong"), [])
+
+    def test_two_recent_partial_days_are_named_in_one_note(self):
+        board = read_json(self.board_file())
+        days = [{"snapshot_day": "2026-11-08", "recent": True}, {"snapshot_day": "2026-11-07", "recent": True}]
+        write_json(self.board_file(), {**board, "partial_days": days})
+        (note,) = self.partial_notes(self.build_pages()[BOARD])
+        self.assertEqual(note.classes(), ["partial", "recent"])
+        self.assertTrue(
+            note.text().startswith(
+                "Recent snapshots missed some repositories. The ranking measures each repository's recent pace over "
+                "8 November 2026 and 7 November 2026, so"
+            ),
+            note.text(),
+        )
+
+    def test_a_board_whose_ranking_read_partial_days_only_further_back_says_so_in_a_plain_line(self):
+        board = read_json(self.board_file())
+        for days, named in (
+            (["2026-10-27", "2026-06-12"], "27 October 2026 and 12 June 2026"),
+            (["2026-10-27", "2026-09-26", "2026-06-12"], "27 October 2026, 26 September 2026, and 12 June 2026"),
+        ):
+            with self.subTest(len(days)):
+                partial = [{"snapshot_day": day, "recent": False} for day in days]
+                write_json(self.board_file(), {**board, "partial_days": partial})
+                shutil.rmtree(self.out, ignore_errors=True)
+                (note,) = self.partial_notes(self.build_pages()[BOARD])
+                self.assertEqual(note.classes(), ["partial"])
+                self.assertEqual(note.all("strong"), [])
+                self.assertEqual(
+                    note.text(),
+                    f"Among the earlier days the ranking draws on, {named} had snapshots that missed some repositories.",
+                )
+
+    def test_a_board_day_whose_own_snapshot_is_partial_says_that_a_repository_it_missed_is_not_on_the_board(self):
+        # As 2026-07-31's board was: its own snapshot partial, and no row on it.
+        board = read_json(self.board_file(OLDER))
+        for days, after in (
+            ([{"snapshot_day": OLDER, "recent": True}], ""),
+            (
+                [{"snapshot_day": OLDER, "recent": True}, {"snapshot_day": "2026-11-07", "recent": True}],
+                " The recent pace the ranking measures also runs over 7 November 2026, whose snapshot missed some too.",
+            ),
+        ):
+            with self.subTest(len(days)):
+                write_json(self.board_file(OLDER), {**board, "partial_days": days})
+                shutil.rmtree(self.out, ignore_errors=True)
+                page = self.build_pages()[board_day_page(OLDER)]
+                (note,) = self.partial_notes(page)
+                self.assertEqual(note.classes(), ["partial", "recent"])
+                self.assertEqual(
+                    note.text(),
+                    "This day's snapshot missed some repositories. A repository it missed could not be ranked, so it is "
+                    "not on this board." + after,
+                )
+                self.assertIn("No repository made the board on this day.", page.body_text())
+
+    def test_a_board_whose_ranking_read_no_partial_day_has_no_note_on_them(self):
+        """The example's older board lists none."""
+        self.assertEqual(read_json(self.board_file(OLDER))["partial_days"], [])
+        page = self.build_pages()[board_day_page(OLDER)]
+        self.assertEqual(self.partial_notes(page), [])
+        self.assertNotIn("snapshot", page.body_text())
+
+    def test_a_board_whose_file_predates_partial_days_builds_and_says_nothing_about_them(self):
+        """As site-data/ holds its files until RisingRepos#45's closeout publishes them again: the schema and every
+        board day's file without the field. Such a file neither names a partial day nor says there was none."""
+        schema = read_json(self.daily_schema)
+        del schema["properties"]["partial_days"]
+        schema["required"].remove("partial_days")
+        write_json(self.daily_schema, schema)
+        for day in (NEWEST, OLDER):
+            board = read_json(self.board_file(day))
+            del board["partial_days"]
+            write_json(self.board_file(day), board)
+        for path, page in self.build_pages().items():
+            with self.subTest(path):
+                self.assertEqual([p for p in page.all("p") if "partial" in p.classes()], [])
+                self.assertNotIn("snapshot", page.body_text())
+
     def test_a_board_that_is_empty_says_so_and_states_its_board_day_the_same_way(self):
         write_json(self.index, {"schema_version": 1, "board_days": [{"board_day": OLDER, "row_count": 0}]})
         page = self.build_pages()[BOARD]
