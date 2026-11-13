@@ -383,9 +383,9 @@ day's files that fail their schema fail the tests as well as the build. The
 token search (below) reads every file git would commit, `site-data/` included,
 so a day's file that holds a string shaped like a credential fails the tests.
 A test holds the copy in `tests/fixtures/` to the bytes of the contract in
-RisingRepos commit `b189fe74e99a3f538dc6a888ad1a9c5bc53db3c9`, which added each
-board day's partial days. A change to the contract reaches it, and
-that test, by a pull request here.
+RisingRepos commit `24541fe35c0182de1047db5757c5fc15a0288929`, whose schema
+says which partial days a board day's file lists. A change to the contract
+reaches it, and that test, by a pull request here.
 `.gitattributes` keeps git from changing the line endings of either copy.
 
 ## The workflow

@@ -14,16 +14,16 @@ from sitebuild import BOARD
 from sitebuild.contract import SCHEMA_VERSION_NEEDED, DataError, latest_board
 
 COPIED = {
-    "contract/daily.schema.json": "3060007bb632a5f20f27553db39cbae9b8037be908b46835c36ab939cd0ba39d",
+    "contract/daily.schema.json": "7b2de9f63cd06263c09164f6fb40d1ced32ad4c48d596366a74d4a8565f8b610",
     "contract/index.schema.json": "e2f3f9467a029962f69c10d9560a710a4aeb0eefa690a537faf75641d6898815",
     "boards/index.json": "e748551f487ba07f4bfa048eba037fe9e19209eddcd28b84a24c5bca9e6ae523",
     "boards/days/2026-11-09/daily.json": "d28235418a647c3711414d8ccc20c56cfd96958e1fba354af35be36a7b73aae1",
     "boards/days/2026-11-08/daily.json": "3a59db12eef94cc6c4d008d6c2b469e91965f4eedadb19507f233b0747912212",
 }
 """The SHA-256 of each file the example copies, by its path under site-data/: the schemas and the example in
-RisingRepos's src/risingrepos/publishing/contract/ at b189fe74e99a3f538dc6a888ad1a9c5bc53db3c9, which gave each
-board day's file the partial days its ranking read (RisingRepos#45). A change to the contract reaches this copy by a pull
-request here that changes these too."""
+RisingRepos's src/risingrepos/publishing/contract/ at 24541fe35c0182de1047db5757c5fc15a0288929, where each board
+day's file lists every partial day that the histories behind its ranking span (RisingRepos#45). A change to the contract
+reaches this copy by a pull request here that changes these too."""
 
 
 class TheExample(unittest.TestCase):
