@@ -79,8 +79,13 @@ jobs:
     environment: deploy
     permissions: {}
     concurrency:
+      # Uploads take turns here. GitHub's default lets one deploy job wait,
+      # and cancels it when another arrives, so the newest push's could be the
+      # one cancelled. queue: max lets up to 100 wait, and cancels none of
+      # them. GitHub refuses it beside cancel-in-progress: true.
       group: cloudflare-pages-upload
       cancel-in-progress: false
+      queue: max
     steps:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
@@ -98,12 +103,13 @@ jobs:
           fi
 
       - name: Upload only the newest push
-        # The builds of two pushes run at once, and either can finish first.
-        # Uploads take turns (the concurrency group above), and a run uploads
-        # only while its commit is still the head of main. So an older push's
-        # pages never replace a newer push's: that push's run uploads its own
-        # once its build passes. If that build fails, nothing is uploaded until
-        # main builds again. The repository is public, so git reads main
+        # Pushes close together build at once, and their builds can finish in
+        # any order. Uploads take turns (the concurrency group above), every
+        # deploy job gets its turn, and a run uploads its pages only if its
+        # commit is still the head of main. So an older push's pages never
+        # replace a newer push's, and the run for the newest commit uploads its
+        # own once its build passes. If that build fails, nothing is uploaded
+        # until main builds again. The repository is public, so git reads main
         # without a credential. A read that fails fails the job, and nothing is
         # uploaded.
         id: newest
@@ -113,7 +119,7 @@ jobs:
           if [ "$head" = "$GITHUB_SHA" ]; then
             echo "newest=true" >> "$GITHUB_OUTPUT"
           else
-            echo "::notice::Not uploaded: main has moved on to $head from this run's $GITHUB_SHA. The run for $head uploads once its build passes."
+            echo "::notice::Not uploaded: main has moved on to $head from this run's $GITHUB_SHA. The run for the newest commit on main uploads that commit's pages once its build passes."
             echo "newest=false" >> "$GITHUB_OUTPUT"
           fi
 
