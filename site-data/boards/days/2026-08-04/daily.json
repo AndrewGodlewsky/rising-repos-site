@@ -3,6 +3,24 @@
   "board_day": "2026-08-04",
   "published_at": "2026-11-13T00:34:42Z",
   "score_provisional": true,
+  "partial_days": [
+    {
+      "snapshot_day": "2026-07-31",
+      "recent": false
+    },
+    {
+      "snapshot_day": "2026-06-27",
+      "recent": false
+    },
+    {
+      "snapshot_day": "2026-06-26",
+      "recent": false
+    },
+    {
+      "snapshot_day": "2026-06-12",
+      "recent": false
+    }
+  ],
   "rows": [
     {
       "rank": 1,
@@ -4270,6 +4288,14 @@
     },
     {
       "rank": 534,
+      "github_id": 284335610,
+      "full_name": "awawa-dev/HyperHDR",
+      "description": "Next-gen open source ambient lighting system featuring a high-precision floating-point color pipeline breaking legacy RGB 24-bit limits. Includes advanced smoothing with inertia and adaptive temporal dithering for perfectly fluid, stable output to LEDs from any SDR or HDR video source. Supports Windows, macOS and Linux (x86/ARM). ",
+      "language": "C++",
+      "stars": 2064
+    },
+    {
+      "rank": 535,
       "github_id": 43653150,
       "full_name": "scottbez1/splitflap",
       "description": "DIY split-flap display",
@@ -4277,7 +4303,7 @@
       "stars": 3978
     },
     {
-      "rank": 535,
+      "rank": 536,
       "github_id": 51669870,
       "full_name": "djadmin/awesome-bug-bounty",
       "description": "A comprehensive curated list of available Bug Bounty & Disclosure Programs and Write-ups.",
@@ -4285,7 +4311,7 @@
       "stars": 5802
     },
     {
-      "rank": 536,
+      "rank": 537,
       "github_id": 60769447,
       "full_name": "Financial-Times/chart-doctor",
       "description": "Sample files to accompany the FT's Chart Doctor column",
@@ -4293,7 +4319,7 @@
       "stars": 3316
     },
     {
-      "rank": 537,
+      "rank": 538,
       "github_id": 200321698,
       "full_name": "rui314/chibicc",
       "description": "A small C compiler",
@@ -4301,7 +4327,7 @@
       "stars": 11789
     },
     {
-      "rank": 538,
+      "rank": 539,
       "github_id": 288428676,
       "full_name": "MudBlazor/MudBlazor",
       "description": "Blazor Component Library based on Material Design principles. Do more with Blazor, utilizing CSS and keeping JavaScript to a bare minimum.",
@@ -4309,7 +4335,7 @@
       "stars": 10527
     },
     {
-      "rank": 539,
+      "rank": 540,
       "github_id": 351486934,
       "full_name": "gravitl/netmaker",
       "description": "Netmaker makes networks with WireGuard. Netmaker automates fast, secure, and distributed virtual networks.",
@@ -4317,7 +4343,7 @@
       "stars": 11737
     },
     {
-      "rank": 540,
+      "rank": 541,
       "github_id": 487717864,
       "full_name": "bitbrain/beehave",
       "description": "🐝 behavior tree AI for Godot Engine",
@@ -4325,7 +4351,7 @@
       "stars": 3214
     },
     {
-      "rank": 541,
+      "rank": 542,
       "github_id": 1191558200,
       "full_name": "FANzR-arch/Numerologist_skills",
       "description": "🔮 An engineering framework to stop LLM hallucinations in Chinese astrology. / 给“赛博半仙”戴上紧箍咒：减少幻觉、固定排盘步骤的奇门遁甲与紫微斗数 AI skills。",
@@ -4333,7 +4359,7 @@
       "stars": 914
     },
     {
-      "rank": 542,
+      "rank": 543,
       "github_id": 1213975621,
       "full_name": "Quorinex/Freebuff2API",
       "description": "🚀 OpenAI-compatible Freebuff proxy with dynamic free-agent tracking, token rotation, and ready-to-use Docker deployment.",
@@ -4341,7 +4367,7 @@
       "stars": 566
     },
     {
-      "rank": 543,
+      "rank": 544,
       "github_id": 1217614,
       "full_name": "xbmc/xbmc",
       "description": "Kodi is an award-winning free and open source home theater/media center software and entertainment hub for digital media. With its beautiful interface and powerful skinning engine, it's available for Android, BSD, Linux, macOS, iOS, tvOS and Windows.",
@@ -4349,7 +4375,7 @@
       "stars": 21044
     },
     {
-      "rank": 544,
+      "rank": 545,
       "github_id": 47508644,
       "full_name": "pterodactyl/panel",
       "description": "Pterodactyl® is a free, open-source game server management panel built with PHP, React, and Go. Designed with security in mind, Pterodactyl runs all game servers in isolated Docker containers while exposing a beautiful and intuitive UI to end users.",
@@ -4357,7 +4383,7 @@
       "stars": 9099
     },
     {
-      "rank": 545,
+      "rank": 546,
       "github_id": 729255101,
       "full_name": "OpenCloudGaming/OpenNOW",
       "description": "Custom GeForce Now Client Named OpenNOW",
@@ -4365,20 +4391,12 @@
       "stars": 2250
     },
     {
-      "rank": 546,
+      "rank": 547,
       "github_id": 1178594584,
       "full_name": "LingyiChen-AI/AIComicBuilder",
       "description": "  AI-powered animated comic generator — transform scripts into fully animated videos with AI-driven character design,    storyboarding, and video synthesis.  ",
       "language": "TypeScript",
       "stars": 1726
-    },
-    {
-      "rank": 547,
-      "github_id": 284335610,
-      "full_name": "awawa-dev/HyperHDR",
-      "description": "Next-gen open source ambient lighting system featuring a high-precision floating-point color pipeline breaking legacy RGB 24-bit limits. Includes advanced smoothing with inertia and adaptive temporal dithering for perfectly fluid, stable output to LEDs from any SDR or HDR video source. Supports Windows, macOS and Linux (x86/ARM). ",
-      "language": "C++",
-      "stars": 2064
     },
     {
       "rank": 548,
@@ -5758,14 +5776,6 @@
     },
     {
       "rank": 720,
-      "github_id": 604752123,
-      "full_name": "LinkSheet/LinkSheet",
-      "description": "Link handling for modern Android",
-      "language": "Kotlin",
-      "stars": 2049
-    },
-    {
-      "rank": 721,
       "github_id": 161886347,
       "full_name": "xxlllq/system_architect",
       "description": ":100: 2026年系统架构设计师（软考高级）备考资料。",
@@ -5773,7 +5783,7 @@
       "stars": 8670
     },
     {
-      "rank": 722,
+      "rank": 721,
       "github_id": 28751632,
       "full_name": "0xAX/linux-insides",
       "description": "A book-in-progress about the Linux kernel and its insides.",
@@ -5781,7 +5791,7 @@
       "stars": 32820
     },
     {
-      "rank": 723,
+      "rank": 722,
       "github_id": 525592995,
       "full_name": "invoke-ai/InvokeAI",
       "description": "Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create visual media using the latest AI-driven technologies. The solution offers an industry leading WebUI, and serves as the foundation for multiple commercial products.",
@@ -5789,7 +5799,7 @@
       "stars": 27769
     },
     {
-      "rank": 724,
+      "rank": 723,
       "github_id": 752925682,
       "full_name": "QwenLM/Qwen3",
       "description": "Qwen3 is the large language model series developed by Qwen team, Alibaba Cloud.",
@@ -5797,7 +5807,7 @@
       "stars": 27474
     },
     {
-      "rank": 725,
+      "rank": 724,
       "github_id": 1028432181,
       "full_name": "awslabs/cli-agent-orchestrator",
       "description": "Multi-agent orchestration for AI coding CLIs — Claude Code, Kiro, Codex, and more, coordinated in isolated tmux sessions",
@@ -5805,7 +5815,7 @@
       "stars": 992
     },
     {
-      "rank": 726,
+      "rank": 725,
       "github_id": 1200062837,
       "full_name": "DaoYiSec/SecSkills",
       "description": "收集整理渗透测试、漏洞扫描、代码审计、CTF、逆向、安全研究 等网络安全相关的 Skills和MCP",
@@ -5813,7 +5823,7 @@
       "stars": 804
     },
     {
-      "rank": 727,
+      "rank": 726,
       "github_id": 1275653543,
       "full_name": "fancydirty/mediary-scout",
       "description": "Agent-driven media library for your cloud drives (Quark 夸克 / 115 / 光鸭 GuangYa / 123网盘 / 天翼 Tianyi)",
@@ -5821,7 +5831,7 @@
       "stars": 1241
     },
     {
-      "rank": 728,
+      "rank": 727,
       "github_id": 1248816982,
       "full_name": "AutoArk/open-audio-opd",
       "description": "Industrial audio online policy distillation (OPD) training stack for ASR and TTS, distilling compact audio models from stronger   teacher models.",
@@ -5829,7 +5839,7 @@
       "stars": 709
     },
     {
-      "rank": 729,
+      "rank": 728,
       "github_id": 123235,
       "full_name": "connectbot/connectbot",
       "description": "ConnectBot is the first SSH client for Android.",
@@ -5837,7 +5847,7 @@
       "stars": 3367
     },
     {
-      "rank": 730,
+      "rank": 729,
       "github_id": 14579099,
       "full_name": "plotly/plotly.py",
       "description": "The interactive graphing library for Python :sparkles:",
@@ -5845,7 +5855,7 @@
       "stars": 18717
     },
     {
-      "rank": 731,
+      "rank": 730,
       "github_id": 19606299,
       "full_name": "platformio/platformio-core",
       "description": "Your Gateway to Embedded Software Development Excellence :alien:",
@@ -5853,7 +5863,7 @@
       "stars": 9381
     },
     {
-      "rank": 732,
+      "rank": 731,
       "github_id": 36781769,
       "full_name": "arvidn/libtorrent",
       "description": "an efficient feature complete C++ bittorrent implementation",
@@ -5861,7 +5871,7 @@
       "stars": 6006
     },
     {
-      "rank": 733,
+      "rank": 732,
       "github_id": 74073233,
       "full_name": "keon/algorithms",
       "description": "Minimal examples of data structures and algorithms in Python",
@@ -5869,7 +5879,7 @@
       "stars": 25531
     },
     {
-      "rank": 734,
+      "rank": 733,
       "github_id": 81339842,
       "full_name": "cncf/mentoring",
       "description": "👩🏿‍🎓👨🏽‍🎓👩🏻‍🎓CNCF Mentoring + LFX + Summer of Code",
@@ -5877,7 +5887,7 @@
       "stars": 3047
     },
     {
-      "rank": 735,
+      "rank": 734,
       "github_id": 88659041,
       "full_name": "HbmMods/Hbm-s-Nuclear-Tech-GIT",
       "description": "A flaming wreck of a minecraft mod about nuclear technology that is somehow still in development.",
@@ -5885,7 +5895,7 @@
       "stars": 924
     },
     {
-      "rank": 736,
+      "rank": 735,
       "github_id": 121380371,
       "full_name": "thedevs-network/kutt",
       "description": "Free Modern URL Shortener.",
@@ -5893,7 +5903,7 @@
       "stars": 11009
     },
     {
-      "rank": 737,
+      "rank": 736,
       "github_id": 122663163,
       "full_name": "pyodide/pyodide",
       "description": "Pyodide is a Python distribution for the browser and Node.js based on WebAssembly",
@@ -5901,7 +5911,7 @@
       "stars": 14775
     },
     {
-      "rank": 738,
+      "rank": 737,
       "github_id": 125159715,
       "full_name": "vasturiano/react-force-graph",
       "description": "React component for 2D, 3D, VR and AR force directed graphs",
@@ -5909,7 +5919,7 @@
       "stars": 3259
     },
     {
-      "rank": 739,
+      "rank": 738,
       "github_id": 152297176,
       "full_name": "qdm12/ddns-updater",
       "description": "Container to update DNS records periodically with WebUI for many DNS providers",
@@ -5917,7 +5927,7 @@
       "stars": 3170
     },
     {
-      "rank": 740,
+      "rank": 739,
       "github_id": 172165671,
       "full_name": "pdeljanov/Symphonia",
       "description": "Pure Rust multimedia format demuxing, tag reading, and audio decoding library",
@@ -5925,7 +5935,7 @@
       "stars": 3337
     },
     {
-      "rank": 741,
+      "rank": 740,
       "github_id": 178976529,
       "full_name": "bentoml/BentoML",
       "description": "The easiest way to serve AI apps and models - Build Model Inference APIs, Job queues, LLM apps, Multi-model pipelines, and more!",
@@ -5933,7 +5943,7 @@
       "stars": 8758
     },
     {
-      "rank": 742,
+      "rank": 741,
       "github_id": 221512407,
       "full_name": "neovim/nvim-lspconfig",
       "description": "Quickstart configs for Nvim LSP",
@@ -5941,7 +5951,7 @@
       "stars": 13831
     },
     {
-      "rank": 743,
+      "rank": 742,
       "github_id": 241524703,
       "full_name": "maxgoedjen/secretive",
       "description": "Protect your SSH keys with your Mac's Secure Enclave",
@@ -5949,7 +5959,7 @@
       "stars": 8725
     },
     {
-      "rank": 744,
+      "rank": 743,
       "github_id": 247875738,
       "full_name": "zeldaret/oot",
       "description": "Decompilation of The Legend of Zelda: Ocarina of Time",
@@ -5957,7 +5967,7 @@
       "stars": 5460
     },
     {
-      "rank": 745,
+      "rank": 744,
       "github_id": 252174341,
       "full_name": "jackind424/onex",
       "description": "onex is a hacking tool installer and package manager for hackers. Onex is a library of all hacking tools for Termux and other Linux distributions. onex can install any third party tool or any hacking tool for you. https://github.com/jackind424/onex",
@@ -5965,7 +5975,7 @@
       "stars": 912
     },
     {
-      "rank": 746,
+      "rank": 745,
       "github_id": 279592699,
       "full_name": "harvester/harvester",
       "description": "Open source hyperconverged infrastructure (HCI) software",
@@ -5973,7 +5983,7 @@
       "stars": 5120
     },
     {
-      "rank": 747,
+      "rank": 746,
       "github_id": 316912509,
       "full_name": "ggerganov/ggwave",
       "description": "Tiny data-over-sound library",
@@ -5981,7 +5991,7 @@
       "stars": 7781
     },
     {
-      "rank": 748,
+      "rank": 747,
       "github_id": 341052382,
       "full_name": "GrimAnticheat/Grim",
       "description": "Fully async, multithreaded, predictive, open source, 3.01 reach, 1.005 timer, 0.01% speed, 99.99% antikb, \"bypassable\" 1.8-1.21 minecraft anticheat.",
@@ -5989,7 +5999,7 @@
       "stars": 1697
     },
     {
-      "rank": 749,
+      "rank": 748,
       "github_id": 370557198,
       "full_name": "bytedance/sonic",
       "description": "A blazingly fast JSON serializing & deserializing library",
@@ -5997,7 +6007,7 @@
       "stars": 9568
     },
     {
-      "rank": 750,
+      "rank": 749,
       "github_id": 495836457,
       "full_name": "t3-oss/create-t3-app",
       "description": "The best way to start a full-stack, typesafe Next.js app ",
@@ -6005,7 +6015,7 @@
       "stars": 29072
     },
     {
-      "rank": 751,
+      "rank": 750,
       "github_id": 536650310,
       "full_name": "nas5w/interview-guide",
       "description": "An opinionated, actionable guide for software engineering interviews.",
@@ -6013,7 +6023,7 @@
       "stars": 4301
     },
     {
-      "rank": 752,
+      "rank": 751,
       "github_id": 633686625,
       "full_name": "apache/fory",
       "description": "A blazingly fast multi-language serialization framework for idiomatic domain objects, schema IDL, and cross-language data exchange.",
@@ -6021,7 +6031,7 @@
       "stars": 4443
     },
     {
-      "rank": 753,
+      "rank": 752,
       "github_id": 654905384,
       "full_name": "princeton-vl/infinigen",
       "description": "Infinite Photorealistic Worlds using Procedural Generation",
@@ -6029,7 +6039,7 @@
       "stars": 7171
     },
     {
-      "rank": 754,
+      "rank": 753,
       "github_id": 668453226,
       "full_name": "imfing/hextra",
       "description": "🔯 Modern, batteries-included Hugo theme for creating beautiful doc, blog and static websites",
@@ -6037,7 +6047,7 @@
       "stars": 2302
     },
     {
-      "rank": 755,
+      "rank": 754,
       "github_id": 748178964,
       "full_name": "Uotan-Dev/UotanToolboxNT",
       "description": "现代化 Android & OpenHarmony 工具箱 | A Modern Toolbox for Android & OpenHarmony Devices",
@@ -6045,7 +6055,7 @@
       "stars": 2637
     },
     {
-      "rank": 756,
+      "rank": 755,
       "github_id": 796274918,
       "full_name": "OpenHUTB/hutb",
       "description": "人车模拟器（Human-vehicle Simulator）",
@@ -6053,7 +6063,7 @@
       "stars": 561
     },
     {
-      "rank": 757,
+      "rank": 756,
       "github_id": 903999320,
       "full_name": "agentjido/jido",
       "description": "🤖 Autonomous agent framework for Elixir. Built for distributed, autonomous behavior and dynamic workflows.",
@@ -6061,7 +6071,7 @@
       "stars": 1790
     },
     {
-      "rank": 758,
+      "rank": 757,
       "github_id": 925457982,
       "full_name": "cognizant-ai-lab/neuro-san-studio",
       "description": "A playground for neuro-san",
@@ -6069,7 +6079,7 @@
       "stars": 851
     },
     {
-      "rank": 759,
+      "rank": 758,
       "github_id": 938987885,
       "full_name": "agiresearch/A-mem",
       "description": "A-MEM: Agentic Memory for LLM Agents",
@@ -6077,7 +6087,7 @@
       "stars": 1137
     },
     {
-      "rank": 760,
+      "rank": 759,
       "github_id": 984933258,
       "full_name": "elm1nst3r/GHOST-osint-crm",
       "description": "GHOST - Global Human Operations & Surveillance Tracking:  Open-source investigation management platform for tracking people, connections, and intelligence data. Because Excel spreadsheets are for accountants, not investigators. Non-commercial license.",
@@ -6085,7 +6095,7 @@
       "stars": 666
     },
     {
-      "rank": 761,
+      "rank": 760,
       "github_id": 994110247,
       "full_name": "kane50613/takumi",
       "description": "Render JSX & HTML to image, SVG or PDF. 170+ CSS properties supported. Drop-in next/og replacement.",
@@ -6093,7 +6103,7 @@
       "stars": 2566
     },
     {
-      "rank": 762,
+      "rank": 761,
       "github_id": 1044232198,
       "full_name": "High-Logic/Genie-TTS",
       "description": "GPT-SoVITS ONNX Inference Engine & Model Converter",
@@ -6101,7 +6111,7 @@
       "stars": 1700
     },
     {
-      "rank": 763,
+      "rank": 762,
       "github_id": 1091349815,
       "full_name": "facebookresearch/omnilingual-asr",
       "description": "Omnilingual ASR Open-Source Multilingual SpeechRecognition for 1600+ Languages",
@@ -6109,7 +6119,7 @@
       "stars": 2881
     },
     {
-      "rank": 764,
+      "rank": 763,
       "github_id": 1093903598,
       "full_name": "caiovicentino/polymarket-mcp-server",
       "description": "🤖 AI-Powered MCP Server for Polymarket - Enable Claude to trade prediction markets with 45 tools, real-time monitoring, and enterprise-grade safety features",
@@ -6117,7 +6127,7 @@
       "stars": 627
     },
     {
-      "rank": 765,
+      "rank": 764,
       "github_id": 1118171324,
       "full_name": "ResearAI/AutoFigure",
       "description": null,
@@ -6125,7 +6135,7 @@
       "stars": 1790
     },
     {
-      "rank": 766,
+      "rank": 765,
       "github_id": 1141315266,
       "full_name": "Timmoth/RackPeek",
       "description": "CLI tool to discover, manage, and document your IT infrastructure and home lab.",
@@ -6133,7 +6143,7 @@
       "stars": 1651
     },
     {
-      "rank": 767,
+      "rank": 766,
       "github_id": 1188016963,
       "full_name": "ivov/lisette",
       "description": "A little language inspired by Rust that compiles to Go",
@@ -6141,7 +6151,7 @@
       "stars": 1462
     },
     {
-      "rank": 768,
+      "rank": 767,
       "github_id": 1191068397,
       "full_name": "juntoku9/claude_immigration_attorney",
       "description": "Claude code environment for laywers ",
@@ -6149,7 +6159,7 @@
       "stars": 735
     },
     {
-      "rank": 769,
+      "rank": 768,
       "github_id": 1273015953,
       "full_name": "shy3130/tickflow-stock-panel",
       "description": "TSP自托管、零运维的 A 股「选股 + 监控 + 回测」量化工作台 | 基于 TickFlow 数据源  | LLM能力驱使策略定制+个股分析+复盘 | 自由接入第三方数据源与个性化扩展数据 | 个人开源 ,非TickFlow官方项目",
@@ -6157,7 +6167,7 @@
       "stars": 2556
     },
     {
-      "rank": 770,
+      "rank": 769,
       "github_id": 527600676,
       "full_name": "maotoumao/MusicFree",
       "description": "插件化、定制化、无广告的免费音乐播放器",
@@ -6165,12 +6175,20 @@
       "stars": 25890
     },
     {
-      "rank": 771,
+      "rank": 770,
       "github_id": 1269576423,
       "full_name": "localai-org/depth-anything.cpp",
       "description": "A from-scratch C++17/ggml port of Depth Anything 3 (ByteDance)",
       "language": "C++",
       "stars": 1011
+    },
+    {
+      "rank": 771,
+      "github_id": 604752123,
+      "full_name": "LinkSheet/LinkSheet",
+      "description": "Link handling for modern Android",
+      "language": "Kotlin",
+      "stars": 2049
     },
     {
       "rank": 772,

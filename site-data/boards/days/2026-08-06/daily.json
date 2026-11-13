@@ -3,6 +3,24 @@
   "board_day": "2026-08-06",
   "published_at": "2026-11-13T00:34:42Z",
   "score_provisional": true,
+  "partial_days": [
+    {
+      "snapshot_day": "2026-07-31",
+      "recent": false
+    },
+    {
+      "snapshot_day": "2026-06-27",
+      "recent": false
+    },
+    {
+      "snapshot_day": "2026-06-26",
+      "recent": false
+    },
+    {
+      "snapshot_day": "2026-06-12",
+      "recent": false
+    }
+  ],
   "rows": [
     {
       "rank": 1,
@@ -4790,14 +4808,6 @@
     },
     {
       "rank": 599,
-      "github_id": 190160360,
-      "full_name": "pixiv/three-vrm",
-      "description": "Use VRM on Three.js",
-      "language": "TypeScript",
-      "stars": 2086
-    },
-    {
-      "rank": 600,
       "github_id": 1216785679,
       "full_name": "esengine/DeepSeek-Reasonix",
       "description": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.",
@@ -4805,7 +4815,7 @@
       "stars": 32560
     },
     {
-      "rank": 601,
+      "rank": 600,
       "github_id": 849406496,
       "full_name": "Fincept-Corporation/FinceptTerminal",
       "description": "FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic data tools, designed for interactive exploration and data-driven decision-making in a user-friendly environment.",
@@ -4813,7 +4823,7 @@
       "stars": 29939
     },
     {
-      "rank": 602,
+      "rank": 601,
       "github_id": 11730342,
       "full_name": "vuejs/vue",
       "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
@@ -4821,7 +4831,7 @@
       "stars": 210232
     },
     {
-      "rank": 603,
+      "rank": 602,
       "github_id": 1066856689,
       "full_name": "xindoo/agentic-design-patterns",
       "description": "谷歌新书Agent设计模式(agentic design patterns)最佳中文版，持续优化。附：在线阅读、pdf和epub电子书下载。 ",
@@ -4829,7 +4839,7 @@
       "stars": 7430
     },
     {
-      "rank": 604,
+      "rank": 603,
       "github_id": 135050219,
       "full_name": "TGSAN/CMWTAT_Digital_Edition",
       "description": "CloudMoe Windows 10/11 Activation Toolkit get digital license, the best open source Win 10/11 activator in GitHub. GitHub 上最棒的开源 Win10/Win11 数字权利（数字许可证）激活工具！",
@@ -4837,12 +4847,20 @@
       "stars": 19259
     },
     {
-      "rank": 605,
+      "rank": 604,
       "github_id": 449649393,
       "full_name": "keploy/keploy",
       "description": "Open-source platform for creating safe, isolated production sandboxes for API, integration, and E2E testing.",
       "language": "Go",
       "stars": 18385
+    },
+    {
+      "rank": 605,
+      "github_id": 190160360,
+      "full_name": "pixiv/three-vrm",
+      "description": "Use VRM on Three.js",
+      "language": "TypeScript",
+      "stars": 2086
     },
     {
       "rank": 606,

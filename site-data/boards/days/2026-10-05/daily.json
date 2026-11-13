@@ -3,6 +3,16 @@
   "board_day": "2026-10-05",
   "published_at": "2026-11-13T00:34:42Z",
   "score_provisional": true,
+  "partial_days": [
+    {
+      "snapshot_day": "2026-09-26",
+      "recent": false
+    },
+    {
+      "snapshot_day": "2026-09-19",
+      "recent": false
+    }
+  ],
   "rows": [
     {
       "rank": 1,
@@ -1518,14 +1528,6 @@
     },
     {
       "rank": 190,
-      "github_id": 948855680,
-      "full_name": "shinshin86/aituber-onair",
-      "description": "Open source TypeScript toolkit for building Neuro-sama-style AI VTubers and AI characters that chat, speak, remember, and react to live viewers.",
-      "language": "TypeScript",
-      "stars": 258
-    },
-    {
-      "rank": 191,
       "github_id": 288394937,
       "full_name": "pAulseperformance/awesome-pinescript",
       "description": "A Comprehensive Collection of Everything Related to Tradingview Pine Script. ",
@@ -1533,7 +1535,7 @@
       "stars": 1912
     },
     {
-      "rank": 192,
+      "rank": 191,
       "github_id": 981108483,
       "full_name": "fqscfqj/Y2A-Auto",
       "description": "YouTube到AcFun和bilibili自动化搬运工具，支持AI翻译、字幕生成、内容审核、智能监控",
@@ -1541,7 +1543,7 @@
       "stars": 3461
     },
     {
-      "rank": 193,
+      "rank": 192,
       "github_id": 1030716792,
       "full_name": "varunsalian/debrify",
       "description": "Your personal media hub — browse, stream, and organize media from your own services and servers, with a cinematic built-in player. Android, Android TV, iOS, Windows, macOS, and Linux.",
@@ -1549,7 +1551,7 @@
       "stars": 589
     },
     {
-      "rank": 194,
+      "rank": 193,
       "github_id": 1042420164,
       "full_name": "LAMDA-NeSy/Lab-RoadMap",
       "description": "面向新同学进组的学习指南",
@@ -1557,7 +1559,7 @@
       "stars": 294
     },
     {
-      "rank": 195,
+      "rank": 194,
       "github_id": 133442384,
       "full_name": "denoland/deno",
       "description": "A modern runtime for JavaScript and TypeScript.",
@@ -1565,7 +1567,7 @@
       "stars": 108656
     },
     {
-      "rank": 196,
+      "rank": 195,
       "github_id": 190845267,
       "full_name": "n64decomp/sm64",
       "description": "A Super Mario 64 decompilation, brought to you by a bunch of clever folks.",
@@ -1573,7 +1575,7 @@
       "stars": 8817
     },
     {
-      "rank": 197,
+      "rank": 196,
       "github_id": 1179957871,
       "full_name": "ScrapingBee/ai-web-scraper",
       "description": "Effortlessly extract data with our AI scraper API. Simplify data extraction, get clean JSON outputs and adapt to page changes. Try it free today!",
@@ -1581,7 +1583,7 @@
       "stars": 927
     },
     {
-      "rank": 198,
+      "rank": 197,
       "github_id": 1264123054,
       "full_name": "keyuchen21/agentic-engineering-handbook",
       "description": "The definitive OpenAI, Claude, MCP, Harness, Evals, and Production Agent Systems learning roadmap.",
@@ -1589,7 +1591,7 @@
       "stars": 531
     },
     {
-      "rank": 199,
+      "rank": 198,
       "github_id": 1011137032,
       "full_name": "ggml-org/Llama-macOS",
       "description": "A cosy home for your LLMs.",
@@ -1597,7 +1599,7 @@
       "stars": 1546
     },
     {
-      "rank": 200,
+      "rank": 199,
       "github_id": 131510015,
       "full_name": "andreasfertig/cppinsights",
       "description": "C++ Insights - See your source code with the eyes of a compiler",
@@ -1605,7 +1607,7 @@
       "stars": 4661
     },
     {
-      "rank": 201,
+      "rank": 200,
       "github_id": 4164482,
       "full_name": "django/django",
       "description": "The Web framework for perfectionists with deadlines.",
@@ -1613,7 +1615,7 @@
       "stars": 91324
     },
     {
-      "rank": 202,
+      "rank": 201,
       "github_id": 707441527,
       "full_name": "livekit/agents",
       "description": "A framework for building realtime voice AI agents 🤖🎙️📹 ",
@@ -1621,12 +1623,20 @@
       "stars": 14613
     },
     {
-      "rank": 203,
+      "rank": 202,
       "github_id": 1329849289,
       "full_name": "lexmount/moli",
       "description": "Best headless browser for AI agents. Lite, Fast, High-Compatibility. Built in Rust",
       "language": "Rust",
       "stars": 9069
+    },
+    {
+      "rank": 203,
+      "github_id": 948855680,
+      "full_name": "shinshin86/aituber-onair",
+      "description": "Open source TypeScript toolkit for building Neuro-sama-style AI VTubers and AI characters that chat, speak, remember, and react to live viewers.",
+      "language": "TypeScript",
+      "stars": 258
     },
     {
       "rank": 204,
@@ -1830,14 +1840,6 @@
     },
     {
       "rank": 229,
-      "github_id": 1238783354,
-      "full_name": "Fangx-AI/one-person-company-journal",
-      "description": "一个普通人用 AI 和互联网做一人公司的真实公开记录",
-      "language": "TypeScript",
-      "stars": 254
-    },
-    {
-      "rank": 230,
       "github_id": 1348483831,
       "full_name": "crmne/spotifast",
       "description": "Spotify, native and fast. One lightweight Rust app for your whole library, local playback, and Spotify Connect on Linux, macOS, and Windows.",
@@ -1845,7 +1847,7 @@
       "stars": 5378
     },
     {
-      "rank": 231,
+      "rank": 230,
       "github_id": 1350323171,
       "full_name": "LAMDA-NeSy/Research-Starter-Kit",
       "description": "从0开始，掌握做科研、写论文的基本流程。",
@@ -1853,7 +1855,7 @@
       "stars": 4126
     },
     {
-      "rank": 232,
+      "rank": 231,
       "github_id": 873328,
       "full_name": "getsentry/sentry",
       "description": "Developer-first error tracking and performance monitoring",
@@ -1861,7 +1863,7 @@
       "stars": 45476
     },
     {
-      "rank": 233,
+      "rank": 232,
       "github_id": 930255337,
       "full_name": "0x676e67/wreq-python",
       "description": "An ergonomic, privacy-aware Python HTTP Client",
@@ -1869,7 +1871,7 @@
       "stars": 1470
     },
     {
-      "rank": 234,
+      "rank": 233,
       "github_id": 1062196393,
       "full_name": "MatheuZSecurity/Singularity",
       "description": "Stealthy Linux Kernel Rootkit",
@@ -1877,7 +1879,7 @@
       "stars": 1790
     },
     {
-      "rank": 235,
+      "rank": 234,
       "github_id": 1163231820,
       "full_name": "meow-rs/meow-rs",
       "description": "A high-performance Rust implementation of the mihomo (Clash Meta) proxy kernel.",
@@ -1885,7 +1887,7 @@
       "stars": 546
     },
     {
-      "rank": 236,
+      "rank": 235,
       "github_id": 1278717907,
       "full_name": "hanlinwenyuan/hlwy-ai-checker",
       "description": "检查第三方AI API是否掺假以及渠道一致|基于llm指纹的AI模型识别",
@@ -1893,7 +1895,7 @@
       "stars": 696
     },
     {
-      "rank": 237,
+      "rank": 236,
       "github_id": 1229284184,
       "full_name": "WenyuChiou/awesome-agentic-ai-zh",
       "description": "A trilingual (繁中 / English / 简中) learning roadmap for agentic AI: from LLM basics to multi-agent systems, with 240+ curated resources and hands-on examples. 中文 AI agent 學習地圖。",
@@ -1901,7 +1903,7 @@
       "stars": 7400
     },
     {
-      "rank": 238,
+      "rank": 237,
       "github_id": 85541218,
       "full_name": "ascoders/weekly",
       "description": "前端精读周刊。帮你理解最前沿、实用的技术。",
@@ -1909,7 +1911,7 @@
       "stars": 31292
     },
     {
-      "rank": 239,
+      "rank": 238,
       "github_id": 1065047674,
       "full_name": "cubewhy/skid-homework",
       "description": "Ergonomically designed, AI-powered homework solver. | 符合人体工程学设计、人工智能驱动的作业助手 | 平庸者的苦工到此为止，这是来自外星的效率补丁 (by Gemini)",
@@ -1917,7 +1919,7 @@
       "stars": 1748
     },
     {
-      "rank": 240,
+      "rank": 239,
       "github_id": 50734768,
       "full_name": "kubermatic/kubermatic",
       "description": "Kubermatic Kubernetes Platform - the Central Kubernetes Management Platform For Any Infrastructure ",
@@ -1925,7 +1927,7 @@
       "stars": 1318
     },
     {
-      "rank": 241,
+      "rank": 240,
       "github_id": 97249406,
       "full_name": "denysdovhan/wtfjs",
       "description": "🤪 A list of funny and tricky JavaScript examples",
@@ -1933,7 +1935,7 @@
       "stars": 37693
     },
     {
-      "rank": 242,
+      "rank": 241,
       "github_id": 241222739,
       "full_name": "gedeck/practical-statistics-for-data-scientists",
       "description": "Code repository for O'Reilly book",
@@ -1941,7 +1943,7 @@
       "stars": 3402
     },
     {
-      "rank": 243,
+      "rank": 242,
       "github_id": 529878640,
       "full_name": "featbit/featbit",
       "description": "Enterprise-grade feature flag platform that you can self-host. Get started - free.",
@@ -1949,7 +1951,7 @@
       "stars": 1919
     },
     {
-      "rank": 244,
+      "rank": 243,
       "github_id": 840533937,
       "full_name": "lablup/all-smi",
       "description": "Command-line utility for monitoring GPU hardware.",
@@ -1957,7 +1959,7 @@
       "stars": 305
     },
     {
-      "rank": 245,
+      "rank": 244,
       "github_id": 863306657,
       "full_name": "NSRingo/WeatherKit",
       "description": " iRingo: 🌤 WeatherKit",
@@ -1965,7 +1967,7 @@
       "stars": 388
     },
     {
-      "rank": 246,
+      "rank": 245,
       "github_id": 901950528,
       "full_name": "business-science/ai-data-science-team",
       "description": "An AI-powered data science team of agents to help you perform common data science tasks 10X faster.",
@@ -1973,7 +1975,7 @@
       "stars": 5445
     },
     {
-      "rank": 247,
+      "rank": 246,
       "github_id": 1025852881,
       "full_name": "bartolli/codanna",
       "description": "Local code intelligence MCP server and CLI for AI coding agents",
@@ -1981,7 +1983,7 @@
       "stars": 754
     },
     {
-      "rank": 248,
+      "rank": 247,
       "github_id": 1053282248,
       "full_name": "cedardb/DOOMQL",
       "description": "A multiplayer DOOM-like in pure SQL",
@@ -1989,7 +1991,7 @@
       "stars": 428
     },
     {
-      "rank": 249,
+      "rank": 248,
       "github_id": 1067640195,
       "full_name": "SakuraMathcraft/LaTeXSnipper",
       "description": "Formula Recognition & Office Editing | Handwriting & PDF to LaTeX/Markdown | Secure API Integrations.",
@@ -1997,7 +1999,7 @@
       "stars": 1003
     },
     {
-      "rank": 250,
+      "rank": 249,
       "github_id": 1141720197,
       "full_name": "rivet-dev/agents",
       "description": "A durable process per agent, with memory that survives restarts",
@@ -2005,7 +2007,7 @@
       "stars": 1593
     },
     {
-      "rank": 251,
+      "rank": 250,
       "github_id": 1147015603,
       "full_name": "BrianRWagner/ai-marketing-claude-code-skills",
       "description": "Marketing frameworks that AI actually executes. Designed for Claude Code, but could be used for OpenClaw, etc. ",
@@ -2013,7 +2015,7 @@
       "stars": 439
     },
     {
-      "rank": 252,
+      "rank": 251,
       "github_id": 1160191060,
       "full_name": "ModinMobileSTS/SlayTheAmethystModded",
       "description": "A modded Slay the Spire experience on Android.",
@@ -2021,7 +2023,7 @@
       "stars": 395
     },
     {
-      "rank": 253,
+      "rank": 252,
       "github_id": 1181240525,
       "full_name": "dolthub/doltlite",
       "description": "DoltLite - Version Controlled SQLite ",
@@ -2029,7 +2031,7 @@
       "stars": 295
     },
     {
-      "rank": 254,
+      "rank": 253,
       "github_id": 1190517891,
       "full_name": "lubludrova/rl-handbook",
       "description": "A comprehensive guide to Reinforcement Learning",
@@ -2037,7 +2039,7 @@
       "stars": 211
     },
     {
-      "rank": 255,
+      "rank": 254,
       "github_id": 1213526705,
       "full_name": "SeraphimSerapis/tool-eval-bench",
       "description": "Tool-calling quality benchmark for LLM serving stacks. 80+ deterministic scenarios testing multi-turn orchestration, safety boundaries, and structured output. Supports vLLM, SGLang, and llama.cpp.",
@@ -2045,7 +2047,7 @@
       "stars": 366
     },
     {
-      "rank": 256,
+      "rank": 255,
       "github_id": 1231210975,
       "full_name": "professorpalmer/Puppetmaster",
       "description": "Provider-neutral control plane for durable-state agent swarms: subprocess workers, leases, artifacts, memory, and deterministic stitching.",
@@ -2053,7 +2055,7 @@
       "stars": 467
     },
     {
-      "rank": 257,
+      "rank": 256,
       "github_id": 1239811673,
       "full_name": "nkzw-tech/codiff",
       "description": "a fast local diff viewer",
@@ -2061,7 +2063,7 @@
       "stars": 1399
     },
     {
-      "rank": 258,
+      "rank": 257,
       "github_id": 1276641245,
       "full_name": "Zhenyu98/codex-chatgpt-bridge",
       "description": "A safe bridge for Codex and ChatGPT to hand off coding work, save tokens, and keep local execution under control.",
@@ -2069,7 +2071,7 @@
       "stars": 271
     },
     {
-      "rank": 259,
+      "rank": 258,
       "github_id": 1339813167,
       "full_name": "RongleCat/awesome-grok-bot",
       "description": "Curated bilingual list of Grok Bot resources — always-on AI teammates with their own cloud computer.",
@@ -2077,7 +2079,7 @@
       "stars": 382
     },
     {
-      "rank": 260,
+      "rank": 259,
       "github_id": 156369540,
       "full_name": "YerongAI/Office-Tool",
       "description": "Office Tool Plus localization projects.",
@@ -2085,7 +2087,7 @@
       "stars": 14419
     },
     {
-      "rank": 261,
+      "rank": 260,
       "github_id": 743533748,
       "full_name": "slavakurilyak/awesome-ai-agents",
       "description": "Awesome list of 300+ agentic AI resources",
@@ -2093,7 +2095,7 @@
       "stars": 2344
     },
     {
-      "rank": 262,
+      "rank": 261,
       "github_id": 849139885,
       "full_name": "lmnr-ai/lmnr",
       "description": "Laminar - open-source observability platform purpose-built for AI agents. YC S24.",
@@ -2101,7 +2103,7 @@
       "stars": 3313
     },
     {
-      "rank": 263,
+      "rank": 262,
       "github_id": 1061527529,
       "full_name": "Soul-AILab/SoulX-Podcast",
       "description": "SoulX-Podcast is an inference codebase by the Soul AI team for generating high-fidelity podcasts from text.",
@@ -2109,7 +2111,7 @@
       "stars": 3584
     },
     {
-      "rank": 264,
+      "rank": 263,
       "github_id": 1304927496,
       "full_name": "MaySudo/Misceo",
       "description": "Local Anthropic-compatible AI gateway with cheap-first routing, quality gates, safe model handoffs, and an embedded cost dashboard.",
@@ -2117,7 +2119,7 @@
       "stars": 408
     },
     {
-      "rank": 265,
+      "rank": 264,
       "github_id": 1361439328,
       "full_name": "Edge0-AI/Edge0",
       "description": "Run 35B MoE models in ~2.5 GB of RAM. Weights stream from SSD; a trained router predicts loads a step ahead. Mac, iPhone, Android, Windows supported",
@@ -2125,12 +2127,20 @@
       "stars": 3085
     },
     {
-      "rank": 266,
+      "rank": 265,
       "github_id": 1231148626,
       "full_name": "antirez/ds4",
       "description": "DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm",
       "language": "C",
       "stars": 23564
+    },
+    {
+      "rank": 266,
+      "github_id": 1238783354,
+      "full_name": "Fangx-AI/one-person-company-journal",
+      "description": "一个普通人用 AI 和互联网做一人公司的真实公开记录",
+      "language": "TypeScript",
+      "stars": 254
     },
     {
       "rank": 267,

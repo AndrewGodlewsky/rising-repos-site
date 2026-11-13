@@ -3,6 +3,20 @@
   "board_day": "2026-07-29",
   "published_at": "2026-11-13T00:34:42Z",
   "score_provisional": true,
+  "partial_days": [
+    {
+      "snapshot_day": "2026-06-27",
+      "recent": false
+    },
+    {
+      "snapshot_day": "2026-06-26",
+      "recent": false
+    },
+    {
+      "snapshot_day": "2026-06-12",
+      "recent": false
+    }
+  ],
   "rows": [
     {
       "rank": 1,
@@ -3014,14 +3028,6 @@
     },
     {
       "rank": 377,
-      "github_id": 1153178500,
-      "full_name": "jgravelle/jcodemunch-mcp",
-      "description": "Cut AI token costs 95%+ on code exploration. The leading MCP server for precise, symbol-level GitHub code retrieval via tree-sitter AST. Works with Claude Code, Cursor & any MCP client. 313B+ tokens saved.",
-      "language": "Python",
-      "stars": 2397
-    },
-    {
-      "rank": 378,
       "github_id": 54794355,
       "full_name": "Orbmu2k/nvidiaProfileInspector",
       "description": null,
@@ -3029,7 +3035,7 @@
       "stars": 6899
     },
     {
-      "rank": 379,
+      "rank": 378,
       "github_id": 1135148452,
       "full_name": "NVlabs/FastGen",
       "description": "NVIDIA FastGen: Fast Generation from Diffusion Models",
@@ -3037,7 +3043,7 @@
       "stars": 881
     },
     {
-      "rank": 380,
+      "rank": 379,
       "github_id": 1084247901,
       "full_name": "sahaj-b/ghostty-cursor-shaders",
       "description": "Custom cursor shaders for ghostty (trails and ripple/pulse effects)",
@@ -3045,7 +3051,7 @@
       "stars": 1016
     },
     {
-      "rank": 381,
+      "rank": 380,
       "github_id": 185632238,
       "full_name": "czy0729/Bangumi",
       "description": ":electron: An unofficial https://bgm.tv ui first app client for Android and iOS, built with React Native. 一个无广告、以爱好为驱动、不以盈利为目的、专门做 ACG 的类似豆瓣的追番记录，bgm.tv 第三方客户端。为移动端重新设计，内置大量加强的网页端难以实现的功能，且提供了相当的自定义选项。 目前已适配 iOS / Android。",
@@ -3053,7 +3059,7 @@
       "stars": 5788
     },
     {
-      "rank": 382,
+      "rank": 381,
       "github_id": 35515847,
       "full_name": "firehol/blocklist-ipsets",
       "description": "ipsets dynamically updated with firehol's update-ipsets.sh script",
@@ -3061,7 +3067,7 @@
       "stars": 3884
     },
     {
-      "rank": 383,
+      "rank": 382,
       "github_id": 112927375,
       "full_name": "kiwix/kiwix-desktop",
       "description": "Kiwix for Windows and GNU/Linux desktops",
@@ -3069,7 +3075,7 @@
       "stars": 1400
     },
     {
-      "rank": 384,
+      "rank": 383,
       "github_id": 175748733,
       "full_name": "SSHeRun/CS-Xmind-Note",
       "description": "计算机专业课（408）思维导图和笔记：计算机组成原理（第五版 王爱英），数据结构（王道），计算机网络（第七版 谢希仁），操作系统（第四版 汤小丹）",
@@ -3077,7 +3083,7 @@
       "stars": 10571
     },
     {
-      "rank": 385,
+      "rank": 384,
       "github_id": 859366716,
       "full_name": "dlvhdr/diffnav",
       "description": "A git diff pager based on delta but with a file tree, à la GitHub.",
@@ -3085,7 +3091,7 @@
       "stars": 1490
     },
     {
-      "rank": 386,
+      "rank": 385,
       "github_id": 1024600124,
       "full_name": "vllm-project/recipes",
       "description": "Common recipes to run vLLM",
@@ -3093,12 +3099,20 @@
       "stars": 940
     },
     {
-      "rank": 387,
+      "rank": 386,
       "github_id": 1153657100,
       "full_name": "NVIDIA/DreamDojo",
       "description": "Official Codebase for \"DreamDojo: A Generalist Robot World Model from Large-Scale Human Videos\" (ICML 2026)",
       "language": "Python",
       "stars": 1023
+    },
+    {
+      "rank": 387,
+      "github_id": 1153178500,
+      "full_name": "jgravelle/jcodemunch-mcp",
+      "description": "Cut AI token costs 95%+ on code exploration. The leading MCP server for precise, symbol-level GitHub code retrieval via tree-sitter AST. Works with Claude Code, Cursor & any MCP client. 313B+ tokens saved.",
+      "language": "Python",
+      "stars": 2397
     },
     {
       "rank": 388,
@@ -4182,14 +4196,6 @@
     },
     {
       "rank": 523,
-      "github_id": 429554022,
-      "full_name": "esp-rs/esp-hal",
-      "description": "no_std Hardware Abstraction Layers for ESP32 microcontrollers",
-      "language": "Rust",
-      "stars": 2026
-    },
-    {
-      "rank": 524,
       "github_id": 957053334,
       "full_name": "lharries/whatsapp-mcp",
       "description": "WhatsApp MCP server",
@@ -4197,7 +4203,7 @@
       "stars": 5954
     },
     {
-      "rank": 525,
+      "rank": 524,
       "github_id": 86894350,
       "full_name": "Idnan/bash-guide",
       "description": "A guide to learn bash",
@@ -4205,7 +4211,7 @@
       "stars": 12348
     },
     {
-      "rank": 526,
+      "rank": 525,
       "github_id": 14716368,
       "full_name": "invoiceninja/invoiceninja",
       "description": "A source-available invoice, quote, project and time-tracking app built with Laravel",
@@ -4213,7 +4219,7 @@
       "stars": 9941
     },
     {
-      "rank": 527,
+      "rank": 526,
       "github_id": 16752620,
       "full_name": "gogs/gogs",
       "description": "The painless way to host your own Git service",
@@ -4221,7 +4227,7 @@
       "stars": 47704
     },
     {
-      "rank": 528,
+      "rank": 527,
       "github_id": 144590177,
       "full_name": "coder/websocket",
       "description": "Minimal and idiomatic WebSocket library for Go",
@@ -4229,7 +4235,7 @@
       "stars": 5365
     },
     {
-      "rank": 529,
+      "rank": 528,
       "github_id": 287630568,
       "full_name": "nickname76/russian-swears",
       "description": "Dictionary of russian swear words. Словарь мата русского языка.",
@@ -4237,7 +4243,7 @@
       "stars": 525
     },
     {
-      "rank": 530,
+      "rank": 529,
       "github_id": 372193147,
       "full_name": "orhun/git-cliff",
       "description": "A highly customizable Changelog Generator that follows Conventional Commit specifications ⛰️ ",
@@ -4245,7 +4251,7 @@
       "stars": 12066
     },
     {
-      "rank": 531,
+      "rank": 530,
       "github_id": 384673180,
       "full_name": "cherry-embedded/CherryUSB",
       "description": "CherryUSB is a tiny and beautiful, high performance and portable USB host and device stack for embedded system with USB IP",
@@ -4253,7 +4259,7 @@
       "stars": 1974
     },
     {
-      "rank": 532,
+      "rank": 531,
       "github_id": 603648688,
       "full_name": "alisolanki/Welcome-to-Open-Source",
       "description": "Make your first PR request! And enter the world of Open Source Contributions 🍉",
@@ -4261,7 +4267,7 @@
       "stars": 3842
     },
     {
-      "rank": 533,
+      "rank": 532,
       "github_id": 845810091,
       "full_name": "magicyuan876/mineru-tianshu",
       "description": "天枢 - 企业级 AI 一站式数据预处理平台 | PDF/Office转Markdown | 支持MCP协议AI助手集成 | Vue3+FastAPI全栈方案 | 文档解析 | 多模态信息提取",
@@ -4269,7 +4275,7 @@
       "stars": 739
     },
     {
-      "rank": 534,
+      "rank": 533,
       "github_id": 946010740,
       "full_name": "vas3k/TaxHacker",
       "description": "Self-hosted AI accounting app. LLM analyzer for receipts, invoices, transactions with custom prompts and categories",
@@ -4277,7 +4283,7 @@
       "stars": 6558
     },
     {
-      "rank": 535,
+      "rank": 534,
       "github_id": 1030251938,
       "full_name": "Silentely/eSIM-Tools",
       "description": "专为已有 Giffgaff 和 Simyo 号码的用户设计的现代化 eSIM 管理工具集，支持将物理 SIM 卡转换为 eSIM、设备更换和二维码生成。(A modern set of eSIM management tools designed specifically for users who already have Giffgaff and Simyo numbers, offering support for converting physical SIM cards to eSIMs, device replacements, and QR code generation.)",
@@ -4285,7 +4291,7 @@
       "stars": 2054
     },
     {
-      "rank": 536,
+      "rank": 535,
       "github_id": 1167296906,
       "full_name": "kostja94/marketing-skills",
       "description": "Agent Skills for Marketing — SEO, Social, Influencer & More. 160+ open-source skills for SEO, content, 40+ page types, paid ads, channels, and strategies. Add project context; get tailored, production-ready output. Cursor, Claude Code, OpenClaw — no lock-in.",
@@ -4293,7 +4299,7 @@
       "stars": 776
     },
     {
-      "rank": 537,
+      "rank": 536,
       "github_id": 1178594584,
       "full_name": "LingyiChen-AI/AIComicBuilder",
       "description": "  AI-powered animated comic generator — transform scripts into fully animated videos with AI-driven character design,    storyboarding, and video synthesis.  ",
@@ -4301,7 +4307,7 @@
       "stars": 1695
     },
     {
-      "rank": 538,
+      "rank": 537,
       "github_id": 141734943,
       "full_name": "sngyai/Sequoia-X",
       "description": "A股自动选股系统 — 多种技术形态自动扫描，收盘后自动运行并推送飞书",
@@ -4309,7 +4315,7 @@
       "stars": 5235
     },
     {
-      "rank": 539,
+      "rank": 538,
       "github_id": 6836299,
       "full_name": "sullo/nikto",
       "description": "Nikto web server scanner",
@@ -4317,7 +4323,7 @@
       "stars": 10594
     },
     {
-      "rank": 540,
+      "rank": 539,
       "github_id": 378744594,
       "full_name": "modrinth/code",
       "description": "The Modrinth monorepo containing all code which powers Modrinth!",
@@ -4325,7 +4331,7 @@
       "stars": 2264
     },
     {
-      "rank": 541,
+      "rank": 540,
       "github_id": 12484808,
       "full_name": "idank/explainshell",
       "description": "match command-line arguments to their help text",
@@ -4333,7 +4339,7 @@
       "stars": 14141
     },
     {
-      "rank": 542,
+      "rank": 541,
       "github_id": 86683265,
       "full_name": "EastWorld/wechat-app-mall",
       "description": "微信小程序商城，微信小程序微店",
@@ -4341,7 +4347,7 @@
       "stars": 21717
     },
     {
-      "rank": 543,
+      "rank": 542,
       "github_id": 258012772,
       "full_name": "opulo-inc/lumenpnp",
       "description": "The LumenPnP is an open source pick and place machine.",
@@ -4349,7 +4355,7 @@
       "stars": 3563
     },
     {
-      "rank": 544,
+      "rank": 543,
       "github_id": 325572537,
       "full_name": "nvim-lualine/lualine.nvim",
       "description": "A blazing fast and easy to configure neovim statusline plugin written in pure lua.",
@@ -4357,7 +4363,7 @@
       "stars": 8068
     },
     {
-      "rank": 545,
+      "rank": 544,
       "github_id": 526497574,
       "full_name": "unfoldadmin/django-unfold",
       "description": "Modern Django Admin",
@@ -4365,7 +4371,7 @@
       "stars": 3594
     },
     {
-      "rank": 546,
+      "rank": 545,
       "github_id": 806336991,
       "full_name": "google-gemma/cookbook",
       "description": "A collection of guides and examples for the Gemma open models from Google.",
@@ -4373,7 +4379,7 @@
       "stars": 3939
     },
     {
-      "rank": 547,
+      "rank": 546,
       "github_id": 1047738091,
       "full_name": "HKUSTDial/awesome-data-agents",
       "description": "Continuously updated paper list on advancements in Data Agents. Companion repo to our paper \"A Survey of Data Agents: Emerging Paradigm or Overstated Hype?\"",
@@ -4381,7 +4387,7 @@
       "stars": 663
     },
     {
-      "rank": 548,
+      "rank": 547,
       "github_id": 1161720369,
       "full_name": "nikaiw/VMkatz",
       "description": "Extract Windows credentials directly from VM memory snapshots and virtual disks",
@@ -4389,7 +4395,7 @@
       "stars": 1463
     },
     {
-      "rank": 549,
+      "rank": 548,
       "github_id": 289605524,
       "full_name": "nonebot/nonebot2",
       "description": "跨平台 Python 异步聊天机器人框架 / Asynchronous multi-platform chatbot framework written in Python",
@@ -4397,7 +4403,7 @@
       "stars": 7646
     },
     {
-      "rank": 550,
+      "rank": 549,
       "github_id": 472575717,
       "full_name": "HarbourMasters/Shipwright",
       "description": null,
@@ -4405,7 +4411,7 @@
       "stars": 5163
     },
     {
-      "rank": 551,
+      "rank": 550,
       "github_id": 908746124,
       "full_name": "WildKernels/GKI_KernelSU_SUSFS",
       "description": "GKI2 5.10+ Kernels with Wild KSU & SUSFS",
@@ -4413,7 +4419,7 @@
       "stars": 1494
     },
     {
-      "rank": 552,
+      "rank": 551,
       "github_id": 959136800,
       "full_name": "ling-drag0n/CloudPaste",
       "description": "🌩️ Serverless 自托管的文件管理与文本分享工具/网盘，支持多存储聚合管理和WebDAV 服务挂载。兼容 S3、WebDAV、OneDrive、Google Drive、Telegram、HF、GitHub 等。内置   Markdown 编辑器、30+文件格式预览。支持 Cloudflare Workers 或 Docker 部署。",
@@ -4421,7 +4427,7 @@
       "stars": 2567
     },
     {
-      "rank": 553,
+      "rank": 552,
       "github_id": 161848789,
       "full_name": "spocky/miproja1",
       "description": null,
@@ -4429,7 +4435,7 @@
       "stars": 1685
     },
     {
-      "rank": 554,
+      "rank": 553,
       "github_id": 1179074781,
       "full_name": "deepcoldy/botmux",
       "description": "Bridge Feishu/Lark to AI coding CLIs — Claude Code, Codex, Gemini, OpenCode… every DM, group or topic spawns its own live-streaming CLI session",
@@ -4437,12 +4443,20 @@
       "stars": 876
     },
     {
-      "rank": 555,
+      "rank": 554,
       "github_id": 429536908,
       "full_name": "shuding/cobe",
       "description": "5KB WebGL globe lib.",
       "language": "TypeScript",
       "stars": 5526
+    },
+    {
+      "rank": 555,
+      "github_id": 429554022,
+      "full_name": "esp-rs/esp-hal",
+      "description": "no_std Hardware Abstraction Layers for ESP32 microcontrollers",
+      "language": "Rust",
+      "stars": 2026
     },
     {
       "rank": 556,
