@@ -21,7 +21,7 @@ from unittest import mock
 
 from evals.site import measure
 from helpers import EXAMPLE, ROOT, build, read_json
-from sitebuild import contract
+from sitebuild import BOARD, contract
 
 FAKE = ROOT / "tests" / "fake_lighthouse.py"
 RECORDED = ROOT / "tests" / "fixtures" / "site-eval" / "phone-report.json"
@@ -444,7 +444,7 @@ class AfterADeploy(EvalTest):
         built = self.folder / "dist"
         result = build(built, "--data", str(EXAMPLE), "--noindex")
         self.assertEqual(result.returncode, 0, result.stderr)
-        page = (built / "index.html").read_text(encoding="utf-8")
+        page = (built / BOARD).read_text(encoding="utf-8")
         outcome = self.evaluate(
             commit=COMMIT, head_of_main=lambda: COMMIT, read_page=lambda address: page, data=EXAMPLE
         )
