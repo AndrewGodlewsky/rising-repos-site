@@ -366,17 +366,24 @@ pulls in as the registry stood on that date, and no package's install script
 runs. Node is the runner image's own. Every action in the workflow is pinned to
 a full commit SHA. `tests/test_workflow.py` checks each of these.
 
-**Two pushes close together.** Their builds run at the same time, and either
-can finish first. Their uploads take turns, in the concurrency group
-`cloudflare-pages-upload`, and just before it uploads, a run reads the head of
-`main` with `git ls-remote`, which needs no credential because the repository
-is public. If `main` has moved past the run's commit, the run uploads nothing
-and says so in a notice in its log, and the newer push's run uploads its own
-pages once its build passes. So the pages of an older push never replace those
-of a newer one, whichever build finishes first. If the newer push's build
-fails, neither push uploads, and the preview keeps the pages it had until a
-push to `main` builds or the failed run is re-run. If `main` cannot be read,
-the job fails and nothing is uploaded.
+**Pushes close together.** However many there are, their builds run at the
+same time and can finish in any order. Their uploads take turns, in the
+concurrency group `cloudflare-pages-upload`, and just before it uploads, a run
+reads the head of `main` with `git ls-remote`, which needs no credential
+because the repository is public. If `main` has moved past the run's commit,
+the run uploads nothing and says so in a notice in its log. The group has
+`queue: max`, so each deploy job that arrives waits for its turn, and none is
+cancelled to make room for another. Without it, GitHub would let only one wait
+and cancel it when the next arrived, and the one cancelled could be the newest
+push's, leaving nothing to upload it. So the newest push's run gets its turn,
+finds `main` at its commit, and uploads its pages once its build passes, and
+the pages of an older push never replace those of a newer one, whichever build
+finishes first. If the newest push's build fails, nothing uploads it, and the
+preview keeps the pages it had until a push to `main` builds or the failed run
+is re-run. If `main` cannot be read, the job fails and nothing is uploaded.
+GitHub keeps at most 100 jobs waiting in a group and cancels one that arrives
+when the group is full, which would take more than 100 pushes during one
+upload.
 
 A pull request builds and does not deploy.
 

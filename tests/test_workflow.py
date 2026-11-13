@@ -89,7 +89,9 @@ class TheWorkflow(unittest.TestCase):
         # The builds of two pushes run at once, and either can finish first. Their uploads take turns, and
         # each run uploads only while its commit is still the head of main. So the run of an older push that
         # comes to its turn after a newer push leaves the upload to the newer push's run.
-        self.assertEqual(self.deploy["concurrency"], {"group": "cloudflare-pages-upload", "cancel-in-progress": False})
+        # The group's whole block but its queue, which the next test holds.
+        turns = {key: value for key, value in self.deploy["concurrency"].items() if key != "queue"}
+        self.assertEqual(turns, {"group": "cloudflare-pages-upload", "cancel-in-progress": False})
         steps = [step.get("name") for step in self.deploy["steps"]]
         self.assertEqual(steps.index("Upload only the newest push") + 1, steps.index("Upload to Cloudflare Pages"))
         newest = step_named(self.deploy, "Upload only the newest push")
@@ -103,12 +105,19 @@ class TheWorkflow(unittest.TestCase):
             '  echo "newest=true" >> "$GITHUB_OUTPUT"\n'
             "else\n"
             '  echo "::notice::Not uploaded: main has moved on to $head from this run\'s $GITHUB_SHA.'
-            ' The run for $head uploads once its build passes."\n'
+            ' The run for the newest commit on main uploads that commit\'s pages once its build passes."\n'
             '  echo "newest=false" >> "$GITHUB_OUTPUT"\n'
             "fi\n",
         )
         upload = step_named(self.deploy, "Upload to Cloudflare Pages")
         self.assertEqual(upload["if"], f"steps.{newest['id']}.outputs.newest == 'true'")
+
+    def test_of_three_or_more_pushes_to_main_the_newest_ones_pages_are_uploaded_whatever_order_their_builds_finish_in(self):
+        # By default GitHub lets one job wait in a group, and cancels it when another arrives. Of three pushes, the
+        # newest one's deploy job can be the one waiting and an older one's the next to arrive: the newest is then
+        # cancelled, and the older one skips, since main has moved on. With queue: max every deploy job waits for its
+        # turn, so the newest one's comes, and main is still at its commit then, whichever job runs first.
+        self.assertEqual(self.deploy["concurrency"].get("queue"), "max")
 
     def test_pages_built_for_an_upload_that_is_not_production_ask_not_to_be_indexed(self):
         command = step_named(self.build, "Build the pages")["run"]
