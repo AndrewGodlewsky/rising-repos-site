@@ -36,6 +36,8 @@ board is empty, says the ranking is provisional while the data file says the
 score is, and names the days of incomplete snapshots that its ranking leaned on
 when the data file lists them. It also says when the day's update began and how
 long that took, and, for a board put out days late, that it came after its day.
+Where the data file numbers the formula behind the ranking, the page gives the
+number as well.
 The build writes these pages, which `PAGES` in
 `sitebuild/__init__.py` lists:
 
@@ -72,12 +74,12 @@ What every page holds to, each checked by a test in `tests/`:
   address. Its type comes from the reader's own fonts, through font stacks, so
   no font file is fetched or committed. Its styles are in the page.
 - **Its size.** A page, with its styles and scripts, stays within **320,000
-  bytes**. Measured on 2026-11-12, without `--noindex`:
+  bytes**. Measured on 2026-11-14, without `--noindex`:
 
   | Board | A board's page | The list of board days | The not-found page |
   | --- | --- | --- | --- |
-  | The data contract's example, 5 rows | 15,995 bytes | 12,244 bytes | 11,086 bytes |
-  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens | 291,553 bytes | 12,246 bytes | 11,086 bytes |
+  | The data contract's example, 5 rows | 16,040 bytes | 12,244 bytes | 11,086 bytes |
+  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens | 291,598 bytes | 12,246 bytes | 11,086 bytes |
 
   316 rows is the largest board the earlier site published. The limit was set
   from the largest page measured before
@@ -95,12 +97,30 @@ What every page holds to, each checked by a test in `tests/`:
   to its newest board's page. The line on the day's update
   ([RisingRepos#51](https://github.com/AndrewGodlewsky/RisingRepos/issues/51))
   adds no styles, and 146 bytes to the example's newest board's page.
+  The formula's number ([RisingRepos#47](https://github.com/AndrewGodlewsky/RisingRepos/issues/47))
+  costs 52 bytes on a board's page and needs no styles. The example's boards
+  now come from a formula that is not provisional, so they also drop that
+  note: on balance, each of their pages is 101 bytes lighter than before.
   A real board is longer than the earlier site's: the board for 2026-11-09
   holds 811 rows in 406,970 bytes, and the longest of the 25 board days the
   development database held on 2026-11-12, 1,294 rows, takes 640,698 bytes.
+  Both came from the provisional formula. Formula 2 lists fewer: across its
+  board days from 29 July to 13 November 2026 the longest is 12 August, with
+  475 rows, and that day's page weighs 250,083 bytes when built with
+  `--noindex`.
   The limit holds for the 316 rows that `tests/test_page_weight.py` builds.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
   is where the limits that a longer board meets are weighed.
+- **The root on the wire.** The site eval gives the root a budget of 100,000
+  transferred bytes in each of its two profiles, phone and desktop
+  (see `evals/site/limits.json`). A test in `tests/test_page_weight.py` fills
+  the newest board with 713 invented rows, gzips the built root at level 6,
+  and checks the result against the smaller budget. On 2026-11-14 it came to 82,611
+  bytes. Each invented row carries 105 characters of description in random
+  letters, which pack worse than a real description's words, so the test
+  errs on the heavy side. The count is formula 2's longest board so far, 475
+  rows, raised by half for boards still to come
+  ([AndrewGodlewsky/RisingRepos#122](https://github.com/AndrewGodlewsky/RisingRepos/issues/122)).
 
 ### The design note
 
@@ -303,6 +323,14 @@ earlier days were, gets one more plain line, "This board was made after its
 day", which names the day whose star counts it uses, so its publish date is
 not read as the date of its numbers. Neither line has a rule, bold, or colour.
 
+**The formula's number.** When the file numbers the formula that ranked the
+board, a plain line among the facts says so: "Ranked by formula version 2."
+Whenever that formula changes, every board day is ranked again and its number
+goes up, so a reader who saw a different order for a day can tell why
+([RisingRepos#47](https://github.com/AndrewGodlewsky/RisingRepos/issues/47)). It reads `formula_version`, and a file
+that lacks it gets no line. Like the publish time, it is a plain fact, with
+no rule, bold, or colour.
+
 **The list of board days.** At `/days/`, the band's title is "Board days",
 with how many there are and the first and the last. Under it each month is a
 heading over its board days, newest first: each day is a link, "Monday 9
@@ -385,6 +413,8 @@ against the schema shipped with it before it writes a page:
   match the schema shipped with them, and the field is one it ignores.
 - `daily_job_started_at`, added for RisingRepos#51, is read the same way: a
   file without it, or with null in it, builds with no line on the update.
+- `formula_version` (RisingRepos#47) is optional to the pages in the same
+  way, and a file that lacks it gets no line naming the formula.
 - The schemas are checked with fastjsonschema, the validator that RisingRepos's
   ADR 0013 chose, at the version RisingRepos's `pyproject.toml` pins. It turns
   a schema into Python, and it fetches whatever document a `$ref` points to
@@ -402,8 +432,9 @@ day's files that fail their schema fail the tests as well as the build. The
 token search (below) reads every file git would commit, `site-data/` included,
 so a day's file that holds a string shaped like a credential fails the tests.
 A test holds the copy in `tests/fixtures/` to the bytes of the contract in
-RisingRepos commit `9f3947f74424012a3338ce99ef8de2d4e406e54a`, whose schema
-says when the daily job that published a board day began. A change to the contract
+RisingRepos commit `aab5b1a4d1b8512f405fca1e485d2ab14a4d3de4`, whose schema
+says when the daily job that published a board day began, and numbers the
+formula that ranked it. A change to the contract
 reaches it, and that test, by a pull request here.
 `.gitattributes` keeps git from changing the line endings of either copy.
 
