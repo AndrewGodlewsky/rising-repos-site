@@ -14,16 +14,16 @@ from sitebuild import BOARD
 from sitebuild.contract import SCHEMA_VERSION_NEEDED, DataError, latest_board
 
 COPIED = {
-    "contract/daily.schema.json": "491a5a78a81404a6a08a180e6e6bdc14296170c3f8715b58b3ff9bb9992645e0",
+    "contract/daily.schema.json": "bf884c847c4cd7845048718cea0e1b6485d46ba1e1fe7a4f6d18c2a44f21d08b",
     "contract/index.schema.json": "e2f3f9467a029962f69c10d9560a710a4aeb0eefa690a537faf75641d6898815",
     "boards/index.json": "e748551f487ba07f4bfa048eba037fe9e19209eddcd28b84a24c5bca9e6ae523",
-    "boards/days/2026-11-09/daily.json": "66e6f54425de6caec254df43d07ead702e2de4580bb3c8f396fb1d06c52032f0",
-    "boards/days/2026-11-08/daily.json": "3620e26d9a6280d9a613f9a31252065faeeba02e11e64dd4f2db2bb20518c53b",
+    "boards/days/2026-11-09/daily.json": "d0e7bd477a2dcbdad39a7b9a6793abbb37c28dabbe303ba05fe8eb7bf01fccb4",
+    "boards/days/2026-11-08/daily.json": "e79dd9292e11b3d02e0200fb1ccdb3773657ec06122c6ffb383761d8ff2d774a",
 }
 """The SHA-256 of each file the example copies, by its path under site-data/: the schemas and the example in
-RisingRepos's src/risingrepos/publishing/contract/ at 9f3947f74424012a3338ce99ef8de2d4e406e54a, which gives a board
-the start time of the update behind it (RisingRepos#51). A change to the contract reaches this copy by a pull request
-here that changes these too."""
+RisingRepos's src/risingrepos/publishing/contract/ at aab5b1a4d1b8512f405fca1e485d2ab14a4d3de4, which gives a board
+the start time of the update behind it (RisingRepos#51) and the number of the formula that ranked it (RisingRepos#47).
+A change to the contract reaches this copy by a pull request here that changes these too."""
 
 
 class TheExample(unittest.TestCase):

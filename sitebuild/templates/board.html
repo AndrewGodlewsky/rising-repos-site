@@ -15,6 +15,12 @@
 {% if late %}
 <p class="late">This board was made after its day, from the star counts recorded on {{ board.board_day|long_date }}.</p>
 {% endif %}
+{# The number of the scoring formula behind this board's order, as the file gives it (RisingRepos#47). All board days
+   are ranked again whenever that formula changes, so the number tells an old reading of a day from a new one. A file
+   older than the field gives no number, and nothing is said. #}
+{% if "formula_version" in board %}
+<p class="formula">Ranked by formula version {{ board.formula_version }}.</p>
+{% endif %}
 {% if board.board_day != newest.board_day %}
 <p class="earlier">An earlier board. The newest is <a href="/">the board for {{ newest.board_day|long_date }}</a>.</p>
 {% endif %}
@@ -27,7 +33,10 @@
 {% if partial and partial.own %}
 <p class="partial recent"><strong>This day's snapshot missed some repositories.</strong> A repository it missed could not be ranked, so it is not on this board.{% if partial.recent %} The recent pace the ranking measures also runs over {{ partial.recent|long_dates }}, whose snapshot{{ "s" if partial.recent|length > 1 else "" }} missed some too.{% endif %}</p>
 {% elif partial and partial.recent %}
-<p class="partial recent"><strong>{{ "Recent snapshots" if partial.recent|length > 1 else "A recent snapshot" }} missed some repositories.</strong> The ranking measures each repository's recent pace over {{ partial.recent|long_dates }}, so one missing then may be placed higher or lower than a full snapshot would place it.</p>
+{# The note allows for both: a repository moved up or down by the gap, and one the formula leaves off the board
+   altogether, which a newer formula may do (RisingRepos#47). #}
+{% set title = "A recent snapshot" if partial.recent|length == 1 else "Recent snapshots" %}
+<p class="partial recent"><strong>{{ title }} missed some repositories.</strong> The ranking's recent pace takes in {{ partial.recent|long_dates }}, and a repository missing then may sit higher or lower here than a full snapshot would put it, or be left out.</p>
 {% endif %}
 {% if partial and partial.earlier %}
 <p class="partial">Among the earlier days the ranking draws on, {{ partial.earlier|long_dates }} {{ "had snapshots" if partial.earlier|length > 1 else "had a snapshot" }} that missed some repositories.</p>
