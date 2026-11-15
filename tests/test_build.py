@@ -11,12 +11,15 @@ from urllib.parse import unquote
 
 from helpers import BuildTest, build, read_json, write_json
 
-from sitebuild import BOARD, BOARD_DAY, DAYS, HOW_IT_WORKS, NOT_FOUND, PAGES, TEMPLATES, board_day_page, took
+from sitebuild import BOARD, BOARD_DAY, DAYS, HOW_IT_WORKS, NOT_FOUND, PAGES, TEMPLATES, board_day_page, daily_job, took
 
 NOINDEX = '<meta name="robots" content="noindex">'
 
 NEWEST, OLDER = "2026-11-09", "2026-11-08"
 """The example's two board days, newest first, as its index lists them."""
+
+HOLD_FIELDS = ("state", "holds", "missed_stars", "unranked")
+"""The fields that AndrewGodlewsky/RisingRepos#13 added, which a file published before them lacks."""
 
 
 class TheBuild(BuildTest):
@@ -158,8 +161,13 @@ class TheBuild(BuildTest):
         """The band's notes on partial days: each <p class="partial"> in the board's facts."""
         return [element for element in page.one("header").all("p") if "partial" in element.classes()]
 
-    def test_a_board_whose_ranking_read_partial_days_names_each_and_sets_a_recent_one_apart(self):
-        """RisingRepos#45. The example's newest board read 7 November for a recent pace and 27 October further back."""
+    def test_a_board_whose_file_predates_holds_sets_a_recent_partial_day_apart_as_one_that_may_have_moved_a_row(self):
+        """RisingRepos#45, for a file older than AndrewGodlewsky/RisingRepos#13's fields, which says nothing of what a
+        recent partial day did: such a board read 7 November for a recent pace and 27 October further back."""
+        self.drop_fields(*HOLD_FIELDS)
+        board = read_json(self.board_file())
+        days = [{"snapshot_day": "2026-11-07", "recent": True}, {"snapshot_day": "2026-10-27", "recent": False}]
+        write_json(self.board_file(), {**board, "partial_days": days})
         recent, earlier = self.partial_notes(self.build_pages()[BOARD])
         self.assertEqual(recent.classes(), ["partial", "recent"])
         self.assertEqual(
@@ -171,11 +179,12 @@ class TheBuild(BuildTest):
         self.assertEqual(earlier.classes(), ["partial"])
         self.assertEqual(
             earlier.text(),
-            "Among the earlier days the ranking draws on, 27 October 2026 had a snapshot that missed some repositories.",
+            "The ranking draws on 1 earlier day whose snapshot missed some repositories, on 27 October 2026.",
         )
         self.assertEqual(earlier.all("strong"), [])
 
     def test_two_recent_partial_days_are_named_in_one_note(self):
+        self.drop_fields(*HOLD_FIELDS)
         board = read_json(self.board_file())
         days = [{"snapshot_day": "2026-11-08", "recent": True}, {"snapshot_day": "2026-11-07", "recent": True}]
         write_json(self.board_file(), {**board, "partial_days": days})
@@ -189,11 +198,15 @@ class TheBuild(BuildTest):
             note.text(),
         )
 
-    def test_a_board_whose_ranking_read_partial_days_only_further_back_says_so_in_a_plain_line(self):
+    def test_a_board_whose_ranking_read_partial_days_only_further_back_gives_their_count_and_span_in_a_plain_line(self):
+        """AndrewGodlewsky/RisingRepos#13: a single day and several dozen are worded alike, as a board of
+        early August 2026 reads 64, rather than a list of every date."""
         board = read_json(self.board_file())
-        for days, named in (
-            (["2026-10-27", "2026-06-12"], "27 October 2026 and 12 June 2026"),
-            (["2026-10-27", "2026-09-26", "2026-06-12"], "27 October 2026, 26 September 2026, and 12 June 2026"),
+        sixty = [f"2026-{month:02d}-{day:02d}" for month in (7, 6) for day in range(30, 0, -1)]
+        for days, said in (
+            (["2026-10-27"], "1 earlier day whose snapshot missed some repositories, on 27 October 2026"),
+            (["2026-10-27", "2026-06-12"], "2 earlier days whose snapshots missed some repositories, from 12 June 2026 to 27 October 2026"),
+            (sixty, "60 earlier days whose snapshots missed some repositories, from 1 June 2026 to 30 July 2026"),
         ):
             with self.subTest(len(days)):
                 partial = [{"snapshot_day": day, "recent": False} for day in days]
@@ -202,13 +215,12 @@ class TheBuild(BuildTest):
                 (note,) = self.partial_notes(self.build_pages()[BOARD])
                 self.assertEqual(note.classes(), ["partial"])
                 self.assertEqual(note.all("strong"), [])
-                self.assertEqual(
-                    note.text(),
-                    f"Among the earlier days the ranking draws on, {named} had snapshots that missed some repositories.",
-                )
+                self.assertEqual(note.text(), f"The ranking draws on {said}.")
 
     def test_a_board_day_whose_own_snapshot_is_partial_says_that_a_repository_it_missed_is_not_on_the_board(self):
-        # As 2026-07-31's board was: its own snapshot partial, and no row on it.
+        """As 2026-07-31's board was before AndrewGodlewsky/RisingRepos#13: its own snapshot partial, no row on it,
+        and a file that says nothing of holds. A file that does is in tests/test_held.py."""
+        self.drop_fields(*HOLD_FIELDS)
         board = read_json(self.board_file(OLDER))
         for days, after in (
             ([{"snapshot_day": OLDER, "recent": True}], ""),
@@ -239,15 +251,9 @@ class TheBuild(BuildTest):
 
     def test_a_board_whose_file_predates_partial_days_builds_and_says_nothing_about_them(self):
         """As site-data/ holds its files until RisingRepos#45's closeout publishes them again: the schema and every
-        board day's file without the field. Such a file neither names a partial day nor says there was none."""
-        schema = read_json(self.daily_schema)
-        del schema["properties"]["partial_days"]
-        schema["required"].remove("partial_days")
-        write_json(self.daily_schema, schema)
-        for day in (NEWEST, OLDER):
-            board = read_json(self.board_file(day))
-            del board["partial_days"]
-            write_json(self.board_file(day), board)
+        board day's file without the field. Such a file neither names a partial day nor says there was none. It is
+        older than the holds too (AndrewGodlewsky/RisingRepos#13)."""
+        self.drop_fields("partial_days", *HOLD_FIELDS)
         for path, page in self.build_pages().items():
             with self.subTest(path):
                 self.assertEqual([p for p in page.all("p") if "partial" in p.classes()], [])
@@ -297,10 +303,31 @@ class TheBuild(BuildTest):
         self.assertEqual(self.facts(page, "update"), [])
         self.assertNotIn("update", page.body_text())
 
-    def test_an_update_that_would_have_begun_after_the_publish_says_nothing(self):
+    def test_a_file_whose_update_began_after_its_publish_fails_the_build_and_one_that_began_on_the_second_builds(self):
+        """AndrewGodlewsky/RisingRepos#133: the contract gives the start no later than `published_at`, to the second,
+        as RisingRepos's publish counts it, so a file that breaks that is refused rather than shown with no line."""
         board = read_json(self.board_file())
+        write_json(self.board_file(), {**board, "daily_job_started_at": "2026-11-10T00:41:07Z"})
+        (update,) = self.facts(self.build_pages()[BOARD], "update")
+        self.assertEqual(update.text(), "The day's update began at 00:41 UTC and took less than a minute to publish this board.")
+        shutil.rmtree(self.out)
         write_json(self.board_file(), {**board, "daily_job_started_at": "2026-11-10T00:41:08Z"})
-        self.assertEqual(self.facts(self.build_pages()[BOARD], "update"), [])
+        message = self.assertBuildFails(str(self.board_file()), "2026-11-10T00:41:08Z", "published_at")
+        self.assertIn("no later than the publish", message)
+
+    def test_the_days_update_is_given_to_the_page_as_plain_values_which_board_html_words(self):
+        """AndrewGodlewsky/RisingRepos#133: `daily_job` words nothing, and the template chooses "at" or "on" once."""
+        board = read_json(self.board_file())
+        self.assertEqual(
+            daily_job(board), {"started": "2026-11-10T00:28:44Z", "same_day": True, "seconds": 743}
+        )
+        self.assertEqual(
+            daily_job({**board, "daily_job_started_at": "2026-11-09T22:35:00Z"}),
+            {"started": "2026-11-09T22:35:00Z", "same_day": False, "seconds": 7567},
+        )
+        self.assertIsNone(daily_job({**board, "daily_job_started_at": None}))
+        template = (TEMPLATES / "board.html").read_text(encoding="utf-8")
+        self.assertEqual(template.count("job.same_day"), 1)
 
     def test_a_board_whose_file_predates_the_update_field_builds_and_says_nothing_about_an_update(self):
         """As site-data/ holds its files until RisingRepos#51's closeout publishes them again."""

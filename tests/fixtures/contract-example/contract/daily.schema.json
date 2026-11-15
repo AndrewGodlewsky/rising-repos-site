@@ -7,7 +7,23 @@
   "required": [
     "schema_version", "board_day", "published_at", "score_provisional", "partial_days", "rows",
     "daily_job_started_at",
-    "formula_version"
+    "formula_version",
+    "state", "holds", "missed_stars", "unranked"
+  ],
+  "allOf": [
+    {
+      "if": {"required": ["state"], "properties": {"state": {"const": "held"}}},
+      "then": {"properties": {"holds": {"minItems": 1}, "missed_stars": {"minItems": 1}}},
+      "else": {"properties": {"holds": {"maxItems": 0}, "missed_stars": {"maxItems": 0}}}
+    },
+    {
+      "if": {"required": ["state"], "properties": {"state": {"const": "empty"}}},
+      "then": {"properties": {"rows": {"maxItems": 0}}}
+    },
+    {
+      "if": {"required": ["state"], "properties": {"state": {"const": "rows"}}},
+      "then": {"properties": {"rows": {"minItems": 1}}}
+    }
   ],
   "properties": {
     "schema_version": {
@@ -25,7 +41,7 @@
       "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
     },
     "daily_job_started_at": {
-      "description": "When the daily job started work on this board day, in UTC, as YYYY-MM-DDTHH:MM:SSZ: the start of its first run for the snapshot day of the same date that started before `published_at`. A run that failed and the runs after it count, so the time from this to `published_at` is how long the day's job took to publish the board. Null when no run of the daily job started before the board day was first published, as for a board day published by hand.",
+      "description": "When the daily job started work on this board day, in UTC, as YYYY-MM-DDTHH:MM:SSZ: the start of its first run for the snapshot day of the same date whose start, counted to the second, is no later than `published_at`. A run that failed and the runs after it count, so the time from this to `published_at` is how long the day's job took to publish the board. Null when no run of the daily job had started by `published_at`, counted to the second in the same way, as for a board day published by hand.",
       "type": ["string", "null"],
       "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
     },
@@ -58,8 +74,79 @@
         }
       }
     },
+    "state": {
+      "description": "Which of three kinds of board this is. 'rows': it holds no star band, and `rows` lists the repositories that rose. 'empty': it holds no star band and no repository rose, so `rows` is empty. 'held': it holds at least one star band, which `holds` names, and `rows` lists only the repositories that rose in the other bands, which may be none.",
+      "enum": ["rows", "empty", "held"]
+    },
+    "holds": {
+      "description": "The star bands this board leaves out, lowest first, and none when it leaves none out. A band is held when this board day's own snapshot missed some of the star counts the band spans, which `missed_stars` gives, so that the band is never ranked from only part of its repositories. A repository is in the band its star count on the board day falls in, and a count under the lowest band's least is in the lowest band. A board day whose snapshot was complete holds nothing.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["least_stars", "most_stars"],
+        "properties": {
+          "least_stars": {
+            "description": "The fewest stars a repository in the band has.",
+            "type": "integer",
+            "minimum": 0
+          },
+          "most_stars": {
+            "description": "The most stars a repository in the band has, or null for the top band, which has no limit.",
+            "type": ["integer", "null"],
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "missed_stars": {
+      "description": "The star counts this board day's own snapshot missed, as runs of counts, lowest first: those at or above the day's star floor in which the collector did not read every repository it should have. Empty when the board day's snapshot was complete.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["least_stars", "most_stars"],
+        "properties": {
+          "least_stars": {
+            "description": "The first star count of the run.",
+            "type": "integer",
+            "minimum": 0
+          },
+          "most_stars": {
+            "description": "The last star count of the run, or null when it runs on through every count above `least_stars`.",
+            "type": ["integer", "null"],
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "unranked": {
+      "description": "Each day before the board day that the ranking cannot rank a repository without a snapshot of, when that day's snapshot was partial or missing, newest first, and none when no such day was. Which days the ranking needs is set by the formula `formula_version` names.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["snapshot_day", "status", "repositories"],
+        "properties": {
+          "snapshot_day": {
+            "description": "The day, as YYYY-MM-DD, before the board day.",
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "status": {
+            "description": "'partial' when that day's snapshot missed some repositories, and 'missing' when no snapshot of that day was kept at all.",
+            "enum": ["partial", "missing"]
+          },
+          "repositories": {
+            "description": "How many repositories were left unranked for want of a snapshot on that day: each has a snapshot on the board day and history enough to be ranked, and none on that day. On a missing day that is every such repository, and none could be ranked.",
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
     "rows": {
-      "description": "The board, in rank order. An empty board has no rows.",
+      "description": "The board, in rank order. An empty board has no rows, and a board that holds a star band has none from that band.",
       "type": "array",
       "items": {
         "type": "object",

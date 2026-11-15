@@ -77,9 +77,9 @@ h1 {
 }
 .facts { margin-top: 0.75rem; color: var(--field-muted); }
 .facts p + p { margin-top: 0.5rem; }
-.provisional, .partial { max-width: 40rem; }
-/* A note on what may move the order has a rule at its left. */
-.provisional, .partial.recent { padding-left: 0.875rem; border-left: 3px solid #7fcfa6; }
+.provisional, .partial, .held, .unranked { max-width: 40rem; }
+/* A note on what may move the order, or on what left repositories off it, has a rule at its left. */
+.provisional, .partial.recent, .held, .unranked { padding-left: 0.875rem; border-left: 3px solid #7fcfa6; }
 
 /* The notice of an old board, under the site's line and over the date. It is hidden as built, and its script fills
    it and shows it once the newest board is 26 hours old. The page's own pair, ink on paper, sets it apart from the

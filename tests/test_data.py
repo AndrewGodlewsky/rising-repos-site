@@ -14,17 +14,19 @@ from sitebuild import BOARD
 from sitebuild.contract import SCHEMA_VERSION_NEEDED, DataError, latest_board
 
 COPIED = {
-    "contract/daily.schema.json": "46953cbf7291a6d4453fcca03c76a298cc940b20e3d3c3affbdbdc682f3475eb",
+    "contract/daily.schema.json": "8a52fec5776f69858112160265ff8fd814417ccb5185d6459e30b5af9430d2ba",
     "contract/index.schema.json": "e2f3f9467a029962f69c10d9560a710a4aeb0eefa690a537faf75641d6898815",
     "boards/index.json": "e748551f487ba07f4bfa048eba037fe9e19209eddcd28b84a24c5bca9e6ae523",
-    "boards/days/2026-11-09/daily.json": "c862a8963b6213d3ffb6f531ac01a4c04fa27d8d5bddca0ad5b8d8ff610bf118",
-    "boards/days/2026-11-08/daily.json": "e79dd9292e11b3d02e0200fb1ccdb3773657ec06122c6ffb383761d8ff2d774a",
+    "boards/days/2026-11-09/daily.json": "ec2395108d69116b308ab24d3cb644269c4b0ebec68e119a0f23f564259aedd1",
+    "boards/days/2026-11-08/daily.json": "1e7a3e8fd40de20b972c71ee6b8500774cc15c7d5f3bcefbc4c55348eda52a74",
 }
 """The SHA-256 of each file the example copies, by its path under site-data/: the schemas and the example in
-RisingRepos's src/risingrepos/publishing/contract/ at 46529db4b65c953d2375fc2db6daf250bebfa9a6, which gives a board
+RisingRepos's src/risingrepos/publishing/contract/ at 9bf9a8af769beba64ef9a62e829de0c5013c3ead, which gives a board
 the start time of the update behind it (RisingRepos#51), the number of the formula that ranked it (RisingRepos#47),
-and, for each row, its score and the figures behind it (AndrewGodlewsky/RisingRepos#49). A change to the
-contract reaches this copy by a pull request here that changes these too."""
+for each row, its score and the figures behind it (AndrewGodlewsky/RisingRepos#49), and the board's state, the star
+bands it holds back with the counts its own day's snapshot missed, and the earlier days its ranking lacked
+(AndrewGodlewsky/RisingRepos#13). A change to the contract reaches this copy by a pull request here that changes
+these too."""
 
 
 class TheExample(unittest.TestCase):

@@ -37,7 +37,9 @@ and rounds the numbers the file gives. A
 board's page states its board day and when it was published, says so when the
 board is empty, says the ranking is provisional while the data file says the
 score is, and names the days of incomplete snapshots that its ranking leaned on
-when the data file lists them. It also says when the day's update began and how
+when the data file lists them. Where the data file says so, it names the star
+bands the board holds back and the repositories that could not be ranked, and
+why. It also says when the day's update began and how
 long that took, and, for a board put out days late, that it came after its day.
 Where the data file numbers the formula behind the ranking, the page gives the
 number as well. Opened once the newest board is 26 hours old, every page but
@@ -95,8 +97,8 @@ What every page holds to, each checked by a test in `tests/`:
 
   | Board | A board's page | The list of board days | The not-found page |
   | --- | --- | --- | --- |
-  | The data contract's example, 5 rows | 20,571 bytes | 15,698 bytes | 12,737 bytes |
-  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens, and each row's reason the longest the site has written, 200 bytes | 381,086 bytes | 15,700 bytes | 12,737 bytes |
+  | The data contract's example, 5 rows | 20,911 bytes | 15,772 bytes | 12,811 bytes |
+  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens, and each row's reason the longest the site has written, 200 bytes | 381,378 bytes | 15,774 bytes | 12,811 bytes |
 
   316 rows is the largest board the earlier site published. The limit was set
   from the largest page measured before
@@ -134,6 +136,12 @@ What every page holds to, each checked by a test in `tests/`:
   14 November 2026, 251 rows, went from 144,848 bytes to 195,415, and from
   32,674 to 37,133 gzipped at level 6, built from the day's files with and
   without the numbers.
+  The notes on what a board left off
+  ([AndrewGodlewsky/RisingRepos#13](https://github.com/AndrewGodlewsky/RisingRepos/issues/13))
+  add 74 bytes of styles to every page. The example's newest board is held
+  and lacked a day, and its root went from 20,619 bytes to 20,911, and the
+  316 made-up rows' from 381,086 to 381,378, measured the same way on
+  2026-11-15 before and after.
   A real board is longer than the earlier site's: the board for 2026-11-09
   holds 811 rows in 406,970 bytes, and the longest of the 25 board days the
   development database held on 2026-11-12, 1,294 rows, takes 640,698 bytes.
@@ -149,8 +157,10 @@ What every page holds to, each checked by a test in `tests/`:
   (see `evals/site/limits.json`). A test in `tests/test_page_weight.py` fills
   the newest board with 713 invented rows, gzips the built root at level 6,
   and checks the result against the smaller budget. On 2026-11-15 it came to
-  98,670 bytes with zlib 1.3.1, which the workflow's Python uses, and 95,940
-  with the zlib-ng that Python 3.14 uses on Windows: the two differ by about
+  98,776 bytes with zlib 1.3.1, which the workflow's Python uses, where it
+  came to 98,670 before the notes on what a board left off and the example's
+  held board (AndrewGodlewsky/RisingRepos#13). The zlib-ng that Python 3.14
+  uses on Windows gave 95,940 for the earlier page: the two differ by about
   3%, so a size measured on Windows reads low. It was 83,659 by the second
   before each row gave its reason (AndrewGodlewsky/RisingRepos#49), and 1,048
   less before the notice of an old board. With the score written a second
@@ -161,7 +171,7 @@ What every page holds to, each checked by a test in `tests/`:
   letters, which pack worse than a real description's words, so the test
   errs on the heavy side. Its numbers are drawn to the spread of formula 2's
   rows to 14 November 2026, which `typical_numbers` in the test gives. A board
-  of 713 rows leaves about 1,300 bytes of the budget, so the next thing a row
+  of 713 rows leaves about 1,200 bytes of the budget, so the next thing a row
   gains needs weighing against it, in
   [AndrewGodlewsky/RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64). The count is formula 2's longest board so far, 475
   rows, raised by half for boards still to come
@@ -321,8 +331,9 @@ and tells from them which of four kinds the row is:
 **How it works.** The site's line ends with a link, "How it works", to
 `/how-it-works/`, which says in a few plain sentences how the formula that
 `DESCRIBED_FORMULA` in `sitebuild/__init__.py` names ranks a board: the two
-recent days against the twelve before them, the floor, who makes the board,
-what must hold before a repository has a score, and that no gain is set aside. It
+recent days against the twelve before them, the floor, who makes the board
+and when a star band is held back from it, what must hold before a repository
+has a score, and that no gain is set aside. It
 names that formula under its title, and when the newest board was ranked by
 another, it says so first, set off as the provisional note is. Its text is at
 most 40rem wide, under headings in the display face at 1.375rem. It carries
@@ -374,26 +385,55 @@ An empty board has the same foot.
 band, beside its facts, and links to the newest. Only the root states a board
 day in the data contract's tags ([RisingRepos#43](https://github.com/AndrewGodlewsky/RisingRepos/issues/43)).
 
-**Partial days.** A partial day is a snapshot day on which the collector
-missed some of the repositories it should have read
+**What a board left off, and partial days.** A partial day is a snapshot day
+on which the collector missed some of the repositories it should have read
 ([RisingRepos#45](https://github.com/AndrewGodlewsky/RisingRepos/issues/45)).
-When a board's file lists the partial days its ranking read, the band's facts
-end with a note on them, in the field's muted text, after the provisional note:
+Each board day's file now names the rows its board went without, and the cause
+([AndrewGodlewsky/RisingRepos#13](https://github.com/AndrewGodlewsky/RisingRepos/issues/13)),
+and the band's facts end with a note on each, in the field's muted text, after
+the provisional note. Three kinds are kept apart, since each says something
+different about the rows:
 
-- A partial day used for a repository's recent pace, which can move a
-  repository up or down this board, gets a note set off the way the
-  provisional note is, with the same rule at its left and a bold first
-  sentence: "A recent snapshot missed some repositories." It names the day and
-  says what it can do to a repository missing from it. When the partial day is
-  the board day itself, the note says instead that a repository the day missed
-  could not be ranked, so it is not on the board.
-- A partial day read only further back, for the pace a recent climb is held
-  against, gets one plain line in the facts, with no rule and nothing in bold.
-  It is a fact about the data, not a warning, and most marked boards have only
-  this.
-- A board whose ranking read no partial day has neither. Nor does a board whose
-  file predates the field: it is not known which partial days it read, and the
-  page does not guess.
+- **A star band held back.** When the board day's own snapshot missed some
+  star counts, RisingRepos leaves off every row of each star band they fall in,
+  rather than rank a band from part of its repositories. The note is set off
+  the way the provisional note is, with the same rule at its left and a bold
+  first sentence that counts the bands: "One star band is held back." It names
+  the star counts the snapshot missed and each band held, as the file gives
+  them.
+- **Repositories that could not be ranked.** When a day the ranking needs is
+  partial or missing, the file says how many repositories it kept from the
+  ranking, and the note, set off the same way, starts with that count in bold:
+  "2,183 repositories could not be ranked." A missing day's starts "No
+  repository could be ranked." A partial day that kept none from it gets a
+  plain line instead.
+- **The partial days the ranking drew on.** A recent day that the file does not
+  name as one the ranking lacked gets one plain line, which says that the
+  recent pace takes it in and guesses at nothing more
+  ([AndrewGodlewsky/RisingRepos#137](https://github.com/AndrewGodlewsky/RisingRepos/issues/137)).
+  The days read only further back, for the pace a recent climb is held against,
+  get one plain line too, with their count and the span they fall in, so that
+  a single day and several dozen are worded alike. Neither has a rule or
+  anything in bold: each is a fact about the data, not a warning.
+
+A board whose file predates these fields says of its partial days what it did
+before them: a recent partial day gets a note that says what it may have done
+to a repository missing from it, and a board day that is itself partial gets
+one saying that a repository it missed could not be ranked. A board whose
+ranking read no partial day, held nothing, and lacked no day has no note.
+Nor does a board whose file predates `partial_days`: it is not known which
+partial days it read, and the page does not guess.
+
+When a board lists no row, the message under the band says why, so that a
+board held back, or one whose ranking lacked a day, never reads as a day on
+which nothing rose: "No repository is on this board" for a held board, "No
+repository could be ranked on this day" two days after a missing day, "No
+repository that could be ranked made the board on this day" after a partial
+one, and "No repository made the board on this day" otherwise. The facts also
+carry the board's state from the file, `rows`, `empty`, or `held`, in their
+`data-state`, for a reader of the page rather than of its words. The site
+decides none of this: RisingRepos names each band held, each day lacked, and
+each count.
 
 The notes are words, not a badge or a colour, so they read the same to a
 screen reader, and they stay in the band, beside the date they qualify, rather
@@ -406,7 +446,11 @@ publish this board." When the update began on an earlier day than the publish,
 the line gives that date too. It reads `daily_job_started_at`
 ([RisingRepos#51](https://github.com/AndrewGodlewsky/RisingRepos/issues/51)),
 and a board whose file has no such time, because it was put out by hand or
-before the field existed, gets no line: the page does not guess. A board put out
+before the field existed, gets no line: the page does not guess. `daily_job`
+gives the template plain values, the start, whether it fell on the publish's
+own day, and the seconds it ran, and `board.html` words them in one place. A
+file whose start comes after its publish fails the build (see "The data"). A
+board put out
 two days or more after its own day, as the boards rebuilt from the archive's
 earlier days were, gets one more plain line, "This board was made after its
 day", which names the day whose star counts it uses, so its publish date is
@@ -560,7 +604,15 @@ against the schema shipped with it before it writes a page:
   site built before the pages read the field builds the newer files too: they
   match the schema shipped with them, and the field is one it ignores.
 - `daily_job_started_at`, added for RisingRepos#51, is read the same way: a
-  file without it, or with null in it, builds with no line on the update.
+  file without it, or with null in it, builds with no line on the update. A
+  file whose start comes after its own `published_at`, compared to the second
+  as both are written, fails the build and is named: the contract gives the
+  start as no later than the publish, which a schema cannot say of two fields
+  (AndrewGodlewsky/RisingRepos#133).
+- `state`, `holds`, `missed_stars`, and `unranked`
+  (AndrewGodlewsky/RisingRepos#13) are optional to the pages the same way: a
+  board whose file lacks them names no state and no hold, and says of its
+  partial days what it said before them.
 - `formula_version` (RisingRepos#47) is optional to the pages in the same
   way, and a file that lacks it gets no line naming the formula.
 - The seven figures behind a row's score (AndrewGodlewsky/RisingRepos#49),
@@ -584,9 +636,12 @@ day's files that fail their schema fail the tests as well as the build. The
 token search (below) reads every file git would commit, `site-data/` included,
 so a day's file that holds a string shaped like a credential fails the tests.
 A test holds the copy in `tests/fixtures/` to the bytes of the contract in
-RisingRepos commit `46529db4b65c953d2375fc2db6daf250bebfa9a6`, whose schema
+RisingRepos commit `9bf9a8af769beba64ef9a62e829de0c5013c3ead`, whose schema
 says when the daily job that published a board day began, numbers the formula
-that ranked it, and gives each row its score and the figures behind it.
+that ranked it, gives each row its score and the figures behind it, and gives
+the board's state, the star bands it holds back, and the days its ranking
+lacked. Its newest board is held and its older one empty, so the tests render
+both.
 A change to the contract
 reaches it, and that test, by a pull request here.
 `.gitattributes` keeps git from changing the line endings of either copy.
