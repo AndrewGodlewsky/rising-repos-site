@@ -1,5 +1,7 @@
 """The site's generator: checks the data files against the data contract, then renders the site's pages."""
 
+import base64
+import hashlib
 from collections.abc import Iterator
 from datetime import date, datetime
 from itertools import groupby
@@ -33,7 +35,14 @@ PAGES = {
 - Cloudflare Pages answers an address that holds no page with `NOT_FOUND` and the status 404. A site with no
   404.html at its root is taken for a single-page app, and every such address gets the root page and the
   status 200.
+
+page.html names the templates whose pages carry the notice of an old board: every one but not-found.html.
 """
+
+SCRIPT = "old-board.js"
+"""The site's one script, in templates/: the notice of an old board (AndrewGodlewsky/RisingRepos#56). old-board.html
+puts its text in the page, and the build puts the hash of that text in the page's Content-Security-Policy, which lets
+this script run and no other."""
 
 MONTHS = (
     "January", "February", "March", "April", "May", "June",
@@ -172,6 +181,11 @@ def made_late(board: dict) -> bool:
     return (published - date.fromisoformat(board["board_day"])).days >= MADE_LATE
 
 
+def script_hash(text: str) -> str:
+    """How a Content-Security-Policy names an inline script of exactly `text`: 'sha256-' and its digest in base64."""
+    return "sha256-" + base64.b64encode(hashlib.sha256(text.encode("utf-8")).digest()).decode("ascii")
+
+
 def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     """Check the data files in `data`, then write the site's pages into `out`, a folder that does not exist yet
     or is empty. Nothing is written when a file fails its check.
@@ -200,9 +214,15 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         repositories=repositories,
         day_address=day_address,
     )
-    common = {"newest": boards[0], "days_address": address(DAYS), "noindex": noindex}
+    common = {
+        "newest": boards[0],
+        "days_address": address(DAYS),
+        "noindex": noindex,
+        "script_hash": script_hash(templates.get_template(SCRIPT).render()),
+    }
+    # Each template is told its own name, which page.html reads to decide whether the page carries the notice.
     pages = {
-        written: templates.get_template(PAGES[page]).render(**context, **common)
+        written: templates.get_template(PAGES[page]).render(**context, **common, template=PAGES[page])
         for written, page, context in _pages(boards)
     }
     for path, page in pages.items():

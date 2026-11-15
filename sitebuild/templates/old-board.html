@@ -1,0 +1,16 @@
+{# The notice of an old board (AndrewGodlewsky/RisingRepos#56), and its script, old-board.js.
+
+   As built, the notice is hidden and holds no words, so that with scripts turned off the page is the fresh page. It
+   carries the newest board's day, written by the same filter as every other date on the page, and its publish time,
+   whichever board the page shows. The script measures the board's age from that time by the reader's clock, and
+   writes the day as it finds it. Below 26 hours, with the clock set behind the publish time, or with a time not in
+   the exact shape written here, it changes nothing. From 26 hours it fills the notice and shows it. From 7 days it
+   also sets data-withheld on the root element, and the stylesheet hides what <main> holds: the board, or the list
+   of board days. It writes its own words, the day as the build wrote it, and the numbers it works out, only as
+   text, and reads nothing else from the page.
+
+   The two come right after the site's line, before the date, the strip, and the main content, so the script runs
+   before any of those is parsed, and a notice it shows moves nothing already on the screen. page.html lets the
+   script run by the hash of its text, which the build works out. #}
+<p class="old-board" id="old-board" data-newest-board-day="{{ newest.board_day|long_date }}" data-newest-published-at="{{ newest.published_at }}" hidden><strong id="old-board-title"></strong> <span id="old-board-text"></span></p>
+<script>{% include "old-board.js" %}</script>

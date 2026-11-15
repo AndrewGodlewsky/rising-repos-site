@@ -1,5 +1,5 @@
-"""Every page stays light: it carries no script, requests nothing from another site, and stays within its
-size limit."""
+"""Every page stays light: it carries no script but the site's own, requests nothing from another site, and stays
+within its size limit."""
 
 import gzip
 import random
@@ -122,20 +122,22 @@ def typical_rows(count: int) -> list[dict]:
 
 
 class PageWeight(BuildTest):
-    def test_no_page_carries_a_script_and_each_page_forbids_one(self):
+    def test_no_page_carries_a_script_but_the_sites_own_and_each_page_forbids_every_other(self):
+        """The site's one script is the notice of an old board, inline, and the policy lets it run by its hash alone.
+        tests/test_old_board.py checks the hash, and that the not-found page carries none."""
         for path, page in self.build_pages().items():
             with self.subTest(path):
-                self.assertEqual(page.all("script"), [])
+                self.assertLessEqual(len(page.all("script")), 1)
+                self.assertEqual([script.attrs for script in page.all("script")], [{}] * len(page.all("script")))
                 attributes = [(name, value or "") for element in page.all() for name, value in element.attrs.items()]
                 self.assertEqual([name for name, _ in attributes if name.startswith("on")], [])
                 self.assertEqual([value for _, value in attributes if value.strip().lower().startswith("javascript:")], [])
-                (policy,) = [
-                    element.attrs["content"]
-                    for element in page.all("meta")
-                    if element.attrs.get("http-equiv") == "Content-Security-Policy"
-                ]
-                self.assertTrue(policy.startswith("default-src 'none';"), policy)
-                self.assertNotIn("script-src", policy)
+                self.assertTrue(page.policy().startswith("default-src 'none';"), page.policy())
+                if page.all("script"):
+                    (source,) = page.directives()["script-src"]  # one source: the script's hash
+                    self.assertRegex(source, r"^'sha256-[A-Za-z0-9+/]{43}='$")
+                else:
+                    self.assertNotIn("script-src", page.directives())
 
     def test_no_page_requests_anything_from_another_site(self):
         for path, page in self.build_pages().items():

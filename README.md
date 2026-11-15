@@ -37,7 +37,9 @@ score is, and names the days of incomplete snapshots that its ranking leaned on
 when the data file lists them. It also says when the day's update began and how
 long that took, and, for a board put out days late, that it came after its day.
 Where the data file numbers the formula behind the ranking, the page gives the
-number as well.
+number as well. Opened once the newest board is 26 hours old, every page but
+the not-found page says how old it is, without a new build, and from 7 days
+old it shows no board (see "The notice of an old board" in the design note).
 The build writes these pages, which `PAGES` in
 `sitebuild/__init__.py` lists:
 
@@ -61,25 +63,36 @@ What every page holds to, each checked by a test in `tests/`:
   `<meta name="rr:published-at">` with the file's `published_at`, once each,
   as the data contract says. No other page carries either, so the read-back
   after a publish and the checks of a stale site, which read them, read the
-  root.
+  root. The pages that carry the notice of an old board, the root among them,
+  also give the newest board's day, written out as the page writes dates, and
+  its publish time in the notice's `data-newest-board-day` and
+  `data-newest-published-at`, which only the notice's script reads.
 - **Owner-written text.** A repository's owner wrote its name, description, and
   language. Each is escaped where it is shown: Jinja2's autoescaping is on for
   every template, and no template marks a value as safe. None of them is made a
   link. A row's name links to `https://github.com/<full_name>`, and the data
   contract lets `full_name` hold only letters, digits, `-`, `_`, `.`, and one
   `/`.
-- **No script.** The page carries none. Its Content-Security-Policy, in a
-  `<meta>` tag, forbids every script and every request but the page itself.
+- **One script, the site's own.** Every board day's page, the root among
+  them, and the list carry one script, the notice of an old board
+  (`sitebuild/templates/old-board.js`), written in the page. The not-found page
+  carries none. The Content-Security-Policy, in a `<meta>` tag, forbids every
+  request but the page itself, and every script but that one: its `script-src`
+  names the SHA-256 of the script's exact text, which the build works out each
+  time. No page lets scripts run through `'unsafe-inline'`, and no element has
+  an event-handler attribute. With scripts turned off a page is as it was
+  built.
 - **Nothing from another site.** The page requests nothing from another
   address. Its type comes from the reader's own fonts, through font stacks, so
-  no font file is fetched or committed. Its styles are in the page.
+  no font file is fetched or committed. Its styles and its script are in the
+  page.
 - **Its size.** A page, with its styles and scripts, stays within **320,000
-  bytes**. Measured on 2026-11-14, without `--noindex`:
+  bytes**. Measured on 2026-11-15, without `--noindex`:
 
   | Board | A board's page | The list of board days | The not-found page |
   | --- | --- | --- | --- |
-  | The data contract's example, 5 rows | 16,040 bytes | 12,244 bytes | 11,086 bytes |
-  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens | 291,598 bytes | 12,246 bytes | 11,086 bytes |
+  | The data contract's example, 5 rows | 18,535 bytes | 14,739 bytes | 11,778 bytes |
+  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens | 294,093 bytes | 14,741 bytes | 11,778 bytes |
 
   316 rows is the largest board the earlier site published. The limit was set
   from the largest page measured before
@@ -101,6 +114,10 @@ What every page holds to, each checked by a test in `tests/`:
   costs 52 bytes on a board's page and needs no styles. The example's boards
   now come from a formula that is not provisional, so they also drop that
   note: on balance, each of their pages is 101 bytes lighter than before.
+  The notice of an old board
+  ([AndrewGodlewsky/RisingRepos#56](https://github.com/AndrewGodlewsky/RisingRepos/issues/56))
+  adds 692 bytes of styles to every page, and its hidden element and its
+  script 1,803 more to each page that carries them.
   A real board is longer than the earlier site's: the board for 2026-11-09
   holds 811 rows in 406,970 bytes, and the longest of the 25 board days the
   development database held on 2026-11-12, 1,294 rows, takes 640,698 bytes.
@@ -115,8 +132,8 @@ What every page holds to, each checked by a test in `tests/`:
   transferred bytes in each of its two profiles, phone and desktop
   (see `evals/site/limits.json`). A test in `tests/test_page_weight.py` fills
   the newest board with 713 invented rows, gzips the built root at level 6,
-  and checks the result against the smaller budget. On 2026-11-14 it came to 82,611
-  bytes. Each invented row carries 105 characters of description in random
+  and checks the result against the smaller budget. On 2026-11-15 it came to 83,659
+  bytes, 1,048 more than before the notice of an old board. Each invented row carries 105 characters of description in random
   letters, which pack worse than a real description's words, so the test
   errs on the heavy side. The count is formula 2's longest board so far, 475
   rows, raised by half for boards still to come
@@ -177,8 +194,8 @@ tabular figures, so that their digits line up down the column.
 | `--field-ink` | `#f2f7f4` | The site's name, the date, and a link before it is visited, on the band and the strip | 11.50:1 on the band |
 | `--field-muted` | `#b6cfc3` | The band's and the strip's other text | 7.54:1 on the band |
 | `--field-visited` | `#cfb2f2` | A link on the band or the strip once visited | 6.71:1 on the band, and 1.72:1 against `--field-ink` |
-| `--paper` | `#ffffff` | The page | |
-| `--ink` | `#13201a` | The text and the star counts | 16.81:1 |
+| `--paper` | `#ffffff` | The page, and the notice of an old board on the band | |
+| `--ink` | `#13201a` | The text, the star counts, and the words of the notice of an old board | 16.81:1 |
 | `--muted` | `#50605a` | The owner, the language, the column headings, the note at the foot, and the foot's word where there is no board day before or after | 6.64:1 |
 | `--green` | `#12704b` | The ranks, a link before it is visited, and the focus ring | 6.10:1 |
 | `--visited` | `#551a8b` | A link once visited | 11.01:1, and 1.81:1 against `--green` |
@@ -274,7 +291,8 @@ first. The list's strip leads to the newest board instead. The column headings
 stick under the strip, and `scroll-padding-top` clears both: 3.5rem on a
 phone, 6rem from 48rem up. The strip has room on its right for what later
 slices put there, such as the switch between daily, weekly, and monthly
-boards and the notice of an old board.
+boards. The notice of an old board needs more than one line, so it sits in the
+band instead (see below).
 
 **A board's foot.** Under the last row, a 2 px rule in the ink, then "End of
 the daily board for" its date, in the display face; the strip's links again,
@@ -331,6 +349,64 @@ goes up, so a reader who saw a different order for a day can tell why
 that lacks it gets no line. Like the publish time, it is a plain fact, with
 no rule, bold, or colour.
 
+**The notice of an old board.** A page is built only when something is
+pushed here, so when the publishing stops, no build runs to say so, and the
+newest board goes on looking current
+([AndrewGodlewsky/RisingRepos#56](https://github.com/AndrewGodlewsky/RisingRepos/issues/56)).
+So every board day's page, the root among them, and the list of board days
+carry a short script, `sitebuild/templates/old-board.js`, which works out each
+time the page is opened how long ago the newest board was published, by the
+reader's own clock. Every one of those pages measures from the newest board,
+so an earlier board day's page and the list say the same as the root.
+
+| The newest board's age | What the page shows |
+| --- | --- |
+| Younger than 26 hours, or a clock set behind its publish time | Nothing new: the page exactly as it was built |
+| 26 hours or more, but less than 7 days | A notice under the site's line: "**The newest board is 3 days old.** It is the board for 10 November 2026. A board is due every day, and none has come out since." |
+| 7 days or more | The notice reads "**No board is shown: the newest is 10 days old.** It is the board for 3 November 2026. When a week passes with no new board, the site stops showing its boards, so that an old ranking is not taken for a current one.", and what `<main>` holds, the board or the list, is hidden |
+
+- 26 hours exactly counts as old, as it does for the stale check (see "The
+  stale check"). The age is in whole hours under two days, and in whole days
+  from then on. The build writes the board day into the notice with the same
+  filter as every other date on the page, so the script works out only the
+  age.
+- The notice is a box in the page's own pair, ink on paper, up to 40rem wide,
+  with its first sentence in bold, between the site's line and the date. It is
+  words, not a colour or a badge, so it reads the same to a screen reader.
+- **Nothing moves.** The notice and the script come right after the site's
+  line, so the script runs before the browser has read the date, the strip,
+  or the board, and a notice it shows pushes down nothing already painted.
+  From 7 days the script sets `data-withheld` on `<html>`, and the stylesheet
+  hides what `<main>` holds, which has not been read yet either. `<main>`
+  itself stays, so the page keeps its main landmark. On a fresh page the
+  hidden notice takes no room: the band, the strip, and the rows sit exactly
+  where they did before the notice existed, at a phone's width and a
+  desktop's.
+- **With scripts turned off**, or in a browser that refuses the script, the
+  page is the fresh page: the notice stays hidden, and the built page holds
+  none of its words, so nothing on it would be false on a fresh day.
+- **What the script touches.** It reads the notice's two `data-` attributes
+  and the clock. It writes only its own words, the board day as the build
+  wrote it, and the numbers it works out, as text (`textContent`), shows the
+  notice, and sets the one attribute on the root. It reads nothing an owner
+  wrote, makes no request, which the page's policy would refuse in any case,
+  stores nothing, and sets no cookie. A publish time that is not in the exact
+  shape the page writes it, or that names no real moment, leaves the page as
+  built.
+- **Which pages.** One line near the top of `sitebuild/templates/page.html`
+  names the templates whose pages carry the notice. To keep the notice to the
+  root alone, make that list `("latest.html",)`. The not-found page carries
+  none, and its policy still forbids every script.
+- **Its tests.** `tests/test_old_board.py` takes the script's text from a
+  built page and runs it under Node, through `tests/run_page_script.js`, with
+  the clock passed in. It runs it on the root, on board days' pages, and on
+  the list: a second short of 26 hours and at 26 exactly, a second short of 7
+  days and at 7 exactly, at 10 and 400 days, with the clock set behind the
+  publish time, and with malformed publish times. It also checks that the
+  policy names the hash of the script's exact text, so a script whose text
+  no longer matches its hash fails the tests rather than being refused by
+  readers' browsers.
+
 **The list of board days.** At `/days/`, the band's title is "Board days",
 with how many there are and the first and the last. Under it each month is a
 heading over its board days, newest first: each day is a link, "Monday 9
@@ -357,7 +433,8 @@ November", with its count of repositories at the right. The list is at most
 
 The look is in `sitebuild/templates/site.css`, which
 `sitebuild/templates/page.html` includes in every page. `page.html` also holds
-the `<head>`, the band's first line, and the strip's place. `board.html`,
+the `<head>`, the band's first line, the strip's place, and the place of the
+notice of an old board, which `old-board.html` holds with its script. `board.html`,
 `days.html`, and `not-found.html` fill the rest of the band, the strip, and the
 page below it. `latest.html` is `board.html` with the data contract's two tags
 in its `<head>`, for the root, and `nav.html` holds the links between board
@@ -479,7 +556,10 @@ A pull request builds and does not deploy.
 
 ## Building locally
 
-You need [uv](https://docs.astral.sh/uv/).
+You need [uv](https://docs.astral.sh/uv/), and [Node](https://nodejs.org/)
+on the `PATH` for the tests of the page's script. They install nothing for it,
+and fail without it. `deploy.yml`'s build job uses the Node that GitHub's
+runner image already has.
 
 ```sh
 uv sync --locked                                     # the pinned dependencies, into .venv
@@ -546,6 +626,7 @@ site-data/          the data files RisingRepos publishes, and their schemas
 evals/site/         the site eval, its limits, and its accepted numbers, which .github/workflows/site-eval.yml runs
 tests/              the tests
   fixtures/         the data contract's example, which the tests build from
+  run_page_script.js  runs a built page's script under Node, with the clock passed in, for test_old_board.py
 .github/workflows/  the workflows
   deploy.yml        the build job and the deploy job
   stale-check.yml   the daily check that the site is fresh

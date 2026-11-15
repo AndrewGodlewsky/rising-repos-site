@@ -145,8 +145,8 @@ class Element:
 
     def text(self) -> str:
         """The text inside the element as a reader sees it: entities decoded, a block set apart from what is
-        around it, and runs of white space made one space. The space at the edge of an inline element stays, as
-        in "All<span> board</span> days"."""
+        around it, runs of white space made one space, and the code of a script inside it left out. The space at
+        the edge of an inline element stays, as in "All<span> board</span> days"."""
         return " ".join(self._text().split())
 
     def _text(self) -> str:
@@ -154,6 +154,8 @@ class Element:
         for child in self.children:
             if isinstance(child, str):
                 parts.append(child)
+            elif child.tag == "script":
+                continue  # a script's text is code, which no reader sees
             else:
                 parts.append(f" {child._text()} " if child.tag in BLOCK else child._text())
         return "".join(parts)
@@ -209,6 +211,24 @@ class Page:
     def meta(self, name: str) -> list[str]:
         """The content of each <meta name="<name>">."""
         return [element.attrs.get("content") for element in self.all("meta") if element.attrs.get("name") == name]
+
+    def policy(self) -> str:
+        """The page's Content-Security-Policy: the content of its one <meta http-equiv>."""
+        (policy,) = [
+            element.attrs["content"]
+            for element in self.all("meta")
+            if element.attrs.get("http-equiv") == "Content-Security-Policy"
+        ]
+        return policy
+
+    def directives(self) -> dict[str, list[str]]:
+        """The page's policy, each directive by name, in order, with its sources. A directive named twice fails, since
+        a browser keeps the first and ignores the second."""
+        parts = [part.split() for part in self.policy().split(";") if part.strip()]
+        directives = {name: sources for name, *sources in parts}
+        if len(directives) != len(parts):
+            raise AssertionError(f"a directive is named twice: {self.policy()}")
+        return directives
 
     def links(self) -> list[tuple[str, str]]:
         """Each link on the page, in order: its address and its text."""
