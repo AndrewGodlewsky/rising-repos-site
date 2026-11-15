@@ -98,6 +98,18 @@ class BuildTest(unittest.TestCase):
         ]
         write_json(self.index, {**index, "board_days": entries})
 
+    def drop_fields(self, *names: str) -> None:
+        """Make the copy as a publish before the contract had `names` made it: the daily schema without them, and
+        each board day's file without them, as site-data/ holds its files until a publish writes every board day
+        again with a new field."""
+        schema = read_json(self.daily_schema)
+        for name in names:
+            del schema["properties"][name]
+            schema["required"].remove(name)
+        write_json(self.daily_schema, schema)
+        for path in (self.data / "boards" / "days").glob("*/daily.json"):
+            write_json(path, {key: value for key, value in read_json(path).items() if key not in names})
+
     def build_data(self, *options: str) -> subprocess.CompletedProcess:
         return build(self.out, "--data", str(self.data), *options)
 

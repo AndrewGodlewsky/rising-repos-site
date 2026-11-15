@@ -5,12 +5,15 @@
 {% block title %}Rising Repos: the daily board for {{ board.board_day|long_date }}{% endblock %}
 {% block band %}
 <h1 id="board"><span class="kind">Daily board</span> <time datetime="{{ board.board_day }}">{{ board.board_day|long_date }}</time></h1>
-<div class="facts">
+{# The board's state, as its file names it (AndrewGodlewsky/RisingRepos#13), for whatever reads the page rather than
+   its words: rows, empty, or held. A file older than the field gives none. #}
+<div class="facts"{% if "state" in board %} data-state="{{ board.state }}"{% endif %}>
 <p class="published">{{ board.rows|length|repositories }}. Published <time datetime="{{ board.published_at }}">{{ board.published_at|utc_time }}</time>.</p>
 {# When the day's update began and how long it took to publish this board, from the file (RisingRepos#51), and for a
-   board published days after its day, that it was made later. A file without the field says nothing here. #}
+   board published days after its day, that it was made later. A file without the field says nothing here. The one
+   place that words the start: its time alone on the publish's own day, and its date as well on another. #}
 {% if job %}
-<p class="update">The day's update began {{ "at" if job.same_day else "on" }} <time datetime="{{ job.started }}">{{ job.began }}</time> and took {{ job.took }} to publish this board.</p>
+<p class="update">The day's update began {% if job.same_day %}at <time datetime="{{ job.started }}">{{ job.started|clock }}</time>{% else %}on <time datetime="{{ job.started }}">{{ job.started|utc_time }}</time>{% endif %} and took {{ job.seconds|took }} to publish this board.</p>
 {% endif %}
 {% if late %}
 <p class="late">This board was made after its day, from the star counts recorded on {{ board.board_day|long_date }}.</p>
@@ -27,19 +30,46 @@
 {% if board.score_provisional %}
 <p class="provisional"><strong>The ranking is provisional.</strong> The formula that orders this board is still being tested, so the order may change.</p>
 {% endif %}
-{# What the file says about the partial days its ranking read: days whose snapshot missed some repositories.
-   One the ranking reads for a recent pace can move a repository's place, so it is set apart as the provisional
-   note is. One it reads only further back is stated plainly. A file without the field says nothing here. #}
-{% if partial and partial.own %}
+{# What the board left off, and why, from the file (AndrewGodlewsky/RisingRepos#13), in three kinds kept apart: the
+   star bands it holds back because this day's own snapshot missed some of their star counts; the repositories that
+   could not be ranked because a day the ranking needs is partial or missing; and the partial days the ranking drew
+   on. The first two left repositories off, so each is set apart as the provisional note is. The site decides none of
+   them: the file names each band held, each day lacked, and how many repositories that day kept from the ranking. #}
+{% if before_holds %}
+{# A file published before the holds and the days the ranking lacked (`before_holds`) takes the notes it had then.
+   This block goes, with that function, once site-data/ holds no such file. A board day that was itself partial says
+   only that, and names the recent days too. Otherwise the note on a recent day allows for both: a repository moved up
+   or down by the gap, and one left off the board altogether (RisingRepos#47). #}
+{% if before_holds.own %}
 <p class="partial recent"><strong>This day's snapshot missed some repositories.</strong> A repository it missed could not be ranked, so it is not on this board.{% if partial.recent %} The recent pace the ranking measures also runs over {{ partial.recent|long_dates }}, whose snapshot{{ "s" if partial.recent|length > 1 else "" }} missed some too.{% endif %}</p>
 {% elif partial and partial.recent %}
-{# The note allows for both: a repository moved up or down by the gap, and one the formula leaves off the board
-   altogether, which a newer formula may do (RisingRepos#47). #}
 {% set title = "A recent snapshot" if partial.recent|length == 1 else "Recent snapshots" %}
 <p class="partial recent"><strong>{{ title }} missed some repositories.</strong> The ranking's recent pace takes in {{ partial.recent|long_dates }}, and a repository missing then may sit higher or lower here than a full snapshot would put it, or be left out.</p>
 {% endif %}
+{% else %}
+{% if held %}
+{% set one = held.bands|length == 1 %}
+<p class="held"><strong>{{ "One star band is" if one else held.bands|length ~ " star bands are" }} held back.</strong> This day's snapshot missed repositories of {{ held.missed|listed }} stars, so the board leaves out every repository of {{ held.bands|listed("or") }} stars rather than rank {{ "that band from part of its" if one else "those bands from part of their" }} repositories.</p>
+{% endif %}
+{# Each day the ranking lacked, by its kind (`lacked_days`). #}
+{% for day in lacked %}
+{% if day.kind == "missing" %}
+<p class="unranked"><strong>No repository could be ranked.</strong> The ranking needs each repository's stars on {{ day.day|long_date }}, and no snapshot was kept that day{% if day.repositories %}, so none of the {{ day.repositories|repositories }} it could otherwise have ranked is on this board{% endif %}.</p>
+{% elif day.kind == "unranked" %}
+<p class="unranked"><strong>{{ day.repositories|repositories }} could not be ranked.</strong> The ranking needs each repository's stars on {{ day.day|long_date }}, and that day's snapshot missed {{ "it" if day.repositories == 1 else "them" }}, so {{ "it is" if day.repositories == 1 else "they are" }} not on this board.</p>
+{% else %}
+<p class="partial">The ranking needs each repository's stars on {{ day.day|long_date }}, whose snapshot missed some repositories, though none it could otherwise have ranked.</p>
+{% endif %}
+{% endfor %}
+{% if partial and partial.recent %}
+{# A recent day the file names no repository left unranked by: said as a fact, with no guess at what it did. #}
+<p class="partial">The ranking's recent pace takes in {{ partial.recent|long_dates }}, whose snapshot{{ "s" if partial.recent|length > 1 else "" }} missed some repositories.</p>
+{% endif %}
+{% endif %}
+{# The days the ranking reads only further back, as a count and a span, in one sentence however many there are. #}
 {% if partial and partial.earlier %}
-<p class="partial">Among the earlier days the ranking draws on, {{ partial.earlier|long_dates }} {{ "had snapshots" if partial.earlier|length > 1 else "had a snapshot" }} that missed some repositories.</p>
+{% set one = partial.earlier == 1 %}
+<p class="partial">The ranking draws on {{ partial.earlier }} earlier {{ "day whose snapshot" if one else "days whose snapshots" }} missed some repositories, {{ "on " ~ partial.newest|long_date if one else "from " ~ partial.oldest|long_date ~ " to " ~ partial.newest|long_date }}.</p>
 {% endif %}
 </div>
 {% endblock %}
@@ -84,9 +114,21 @@
 </tbody>
 </table>
 {% else %}
+{# Why the board lists nothing (`why_none`). The notes in the band say what each was. #}
 <div class="message">
+{% if why_none == "held" %}
+<p class="message-title">No repository is on this board.</p>
+<p>It holds back the star {{ "band" if held.bands|length == 1 else "bands" }} named above.</p>
+{% elif why_none == "missing" %}
+<p class="message-title">No repository could be ranked on this day.</p>
+<p>A day the ranking needs has no snapshot, as the note above says.</p>
+{% elif why_none == "unranked" %}
+<p class="message-title">No repository that could be ranked made the board on this day.</p>
+<p>The note above says how many could not be. A repository makes the board when it gains stars faster than its own pace predicts.</p>
+{% else %}
 <p class="message-title">No repository made the board on this day.</p>
 <p>A repository makes the board when it gains stars faster than its own pace predicts.</p>
+{% endif %}
 </div>
 {% endif %}
 <footer class="foot">

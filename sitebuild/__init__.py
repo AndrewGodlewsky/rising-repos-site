@@ -83,12 +83,16 @@ def long_date(day: str) -> str:
     return f"{value.day} {MONTHS[value.month - 1]} {value.year}"
 
 
+def listed(items: list[str], last: str = "and") -> str:
+    """['A'] as 'A', two joined by `last`, as 'A and B', and three as 'A, B, and C'."""
+    if len(items) < 3:
+        return f" {last} ".join(items)
+    return ", ".join(items[:-1]) + f", {last} " + items[-1]
+
+
 def long_dates(days: list[str]) -> str:
     """['2026-11-09'] as '9 November 2026', two days joined by 'and', and three as 'A, B, and C'."""
-    dates = [long_date(day) for day in days]
-    if len(dates) < 3:
-        return " and ".join(dates)
-    return ", ".join(dates[:-1]) + ", and " + dates[-1]
+    return listed([long_date(day) for day in days])
 
 
 def short_date(day: str) -> str:
@@ -112,7 +116,12 @@ def month_name(month: str) -> str:
 def utc_time(moment: str) -> str:
     """'2026-11-10T00:41:07Z' as '10 November 2026 at 00:41 UTC'."""
     value = datetime.fromisoformat(moment)
-    return f"{long_date(value.date().isoformat())} at {value:%H:%M} UTC"
+    return f"{long_date(value.date().isoformat())} at {clock(moment)}"
+
+
+def clock(moment: str) -> str:
+    """'2026-11-10T00:41:07Z' as '00:41 UTC'."""
+    return f"{datetime.fromisoformat(moment):%H:%M} UTC"
 
 
 def repositories(count: int) -> str:
@@ -128,17 +137,101 @@ def partial_days(board: dict) -> dict | None:
 
     None when the board's file does not say, as a file published before the data contract had `partial_days`
     does not. The page then says nothing about partial days: it neither names one nor says there was none.
-    Otherwise `own` is whether the board day is itself one, `recent` lists the other days over which the ranking
-    measures a recent pace, and `earlier` the days it reads only further back, each newest first, as the file
-    lists them.
+    Otherwise `recent` lists, newest first as the file does, the other days over which the ranking measures a recent
+    pace, but for any the file names as a day the ranking lacked (`lacked_days`), whose own note states it. `earlier`
+    is how many days the ranking reads only further back, and `oldest` and `newest` the span they fall in, so that the
+    page words one day and many alike.
     """
     if "partial_days" not in board:
         return None
     days = board["partial_days"]
+    lacked = {day["snapshot_day"] for day in board.get("unranked", [])}
+    earlier = [day["snapshot_day"] for day in days if not day["recent"]]
     return {
-        "own": any(day["snapshot_day"] == board["board_day"] for day in days),
-        "recent": [day["snapshot_day"] for day in days if day["recent"] and day["snapshot_day"] != board["board_day"]],
-        "earlier": [day["snapshot_day"] for day in days if not day["recent"]],
+        "recent": [
+            day["snapshot_day"]
+            for day in days
+            if day["recent"] and day["snapshot_day"] != board["board_day"] and day["snapshot_day"] not in lacked
+        ],
+        "earlier": len(earlier),
+        "oldest": min(earlier, default=None),
+        "newest": max(earlier, default=None),
+    }
+
+
+def before_holds(board: dict) -> dict | None:
+    """What the page of a file published before the data contract had a board's `state`, `holds`, `missed_stars`, and
+    `unranked` (AndrewGodlewsky/RisingRepos#13) needs to word its recent partial days as it did before them: `own`,
+    whether the board day was itself partial. Such a file does not say what a recent day did, so its page says what
+    the day may have done.
+
+    None for a file that has those fields, which come together: its page takes the notes of `holds` and `lacked_days`
+    instead. Each board day is published again with them, and this and its one block in board.html can go once no
+    file in site-data/ lacks them.
+    """
+    if "state" in board:
+        return None
+    return {"own": any(day["snapshot_day"] == board["board_day"] for day in board.get("partial_days", []))}
+
+
+def lacked_days(board: dict) -> list[dict]:
+    """Each day the board's ranking needed and lacked, as its file names it (`unranked`,
+    AndrewGodlewsky/RisingRepos#13), with its `kind`, told once here for the notes in the band and for the message
+    under a board with no row:
+
+    - "missing": no snapshot was kept that day, so no repository could be ranked;
+    - "unranked": its snapshot was partial and missed `repositories` that the ranking could otherwise have ranked;
+    - "partial": its snapshot was partial but missed none of those.
+
+    Empty for a file older than the field.
+    """
+    return [
+        {
+            "day": day["snapshot_day"],
+            "repositories": day["repositories"],
+            "kind": "missing" if day["status"] == "missing" else "unranked" if day["repositories"] else "partial",
+        }
+        for day in board.get("unranked", [])
+    ]
+
+
+def why_none(board: dict, lacked: list[dict]) -> str | None:
+    """Why a board that lists no row lists none, as the message under it says, so that a board held back, or one whose
+    ranking lacked a day, never reads as a day on which nothing rose (AndrewGodlewsky/RisingRepos#13): "held" when it
+    holds a star band; otherwise "missing" or "unranked" when one of the days its ranking lacked (`lacked`, as
+    `lacked_days` gives them) is of that kind, a missing day first; and "none" when nothing kept a repository off, as
+    for a file older than those fields. None for a board that lists rows."""
+    if board["rows"]:
+        return None
+    if board.get("state") == "held":
+        return "held"
+    kinds = {day["kind"] for day in lacked}
+    return next((kind for kind in ("missing", "unranked") if kind in kinds), "none")
+
+
+def star_run(run: dict) -> str:
+    """A run of star counts as a file gives it, in words: 1,000 to 2,999; 30,000 or more, for a run with no most;
+    and 281, for a run of one count."""
+    least, most = run["least_stars"], run["most_stars"]
+    if most is None:
+        return f"{least:,} or more"
+    return f"{least:,}" if most == least else f"{least:,} to {most:,}"
+
+
+def holds(board: dict) -> dict | None:
+    """What a board's page says about the star bands its board holds back (AndrewGodlewsky/RisingRepos#13): each
+    band whose rows are left off, as `bands`, and each run of star counts the board day's own snapshot missed, as
+    `missed`, which is why, both lowest first in words, as the file gives them.
+
+    None when the board holds none, and when its file is older than the field: the page then says nothing of a
+    hold. The site decides no hold. RisingRepos decides each from its record of the board day's snapshot, and the
+    file names the bands and the counts.
+    """
+    if board.get("state") != "held":
+        return None
+    return {
+        "bands": [star_run(band) for band in board["holds"]],
+        "missed": [star_run(run) for run in board["missed_stars"]],
     }
 
 
@@ -216,26 +309,23 @@ the board was made after its day. The daily job publishes a board on its day, or
 
 def daily_job(board: dict) -> dict | None:
     """When the day's update that published a board began, and how long it took to publish it, from the file's
-    `daily_job_started_at` (RisingRepos#51).
+    `daily_job_started_at` (RisingRepos#51), as plain values: board.html words them.
 
     None when the file does not say: one published before the data contract had the field, or a board that no daily
-    run published, whose field is null, or one whose update would have begun after its publish time. The page then
-    says nothing about the update. Otherwise `started` is the field, `same_day` whether it falls on the publish
-    time's day in UTC, `began` the time it began, with its date when it is not the same day, and `took` how long it
-    took, in words.
+    run published, whose field is null. The page then says nothing about the update. Otherwise `started` is the
+    field, `same_day` whether it falls on the publish time's day in UTC, and `seconds` how long the update ran
+    before the publish. A start after the publish time never reaches here: the contract gives the field as no later
+    than `published_at`, to the second, and the build refuses a file that breaks that (`contract`), so `seconds` is
+    never below 0.
     """
     started = board.get("daily_job_started_at")
     if not started:
         return None
     began, published = datetime.fromisoformat(started), datetime.fromisoformat(board["published_at"])
-    if began > published:
-        return None
-    same_day = began.date() == published.date()
     return {
         "started": started,
-        "same_day": same_day,
-        "began": f"{began:%H:%M} UTC" if same_day else utc_time(started),
-        "took": took(int((published - began).total_seconds())),
+        "same_day": began.date() == published.date(),
+        "seconds": int((published - began).total_seconds()),
     }
 
 
@@ -288,6 +378,9 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         day_in_month=day_in_month,
         month_name=month_name,
         utc_time=utc_time,
+        clock=clock,
+        took=took,
+        listed=listed,
         thousands="{:,}".format,
         repositories=repositories,
         day_address=day_address,
@@ -322,13 +415,21 @@ def _pages(boards: list[dict]) -> Iterator[tuple[str, str, dict]]:
 
 
 def _beside(boards: list[dict], number: int) -> dict:
-    """What a board's page is given: the board, what it says about partial days and about the day's update, whether
-    it was made after its day, and the board days before it and after it, when there are."""
+    """What a board's page is given: the board, what it says about the bands it holds back, the days its ranking
+    lacked, why it lists no row when it lists none, its partial days, which notes a file older than the holds takes,
+    and the day's update, whether it was made after its day, and the board days before it and after it, when there
+    are."""
+    board = boards[number]
+    lacked = lacked_days(board)
     return {
-        "board": boards[number],
-        "partial": partial_days(boards[number]),
-        "job": daily_job(boards[number]),
-        "late": made_late(boards[number]),
+        "board": board,
+        "held": holds(board),
+        "lacked": lacked,
+        "why_none": why_none(board, lacked),
+        "partial": partial_days(board),
+        "before_holds": before_holds(board),
+        "job": daily_job(board),
+        "late": made_late(board),
         "before": boards[number + 1] if number + 1 < len(boards) else None,
         "after": boards[number - 1] if number > 0 else None,
     }

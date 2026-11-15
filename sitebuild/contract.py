@@ -6,7 +6,7 @@ schema that is shipped with it, in site-data/contract/, before anything is built
 
 import json
 from collections.abc import Callable, Iterator
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 from typing import NoReturn
 
@@ -63,10 +63,20 @@ def latest_board(data: Path) -> dict:
 
 
 def _board(data: Path, day: str, validate: Callable[[object], object]) -> dict:
+    """A board day's file, once it matches its schema, sits in its own day's folder, and, where it gives one, gives a
+    start of the daily job no later than its publish time. The contract's description of `daily_job_started_at`
+    says the start is at or before `published_at`, counted to the second as both are written, which a schema cannot
+    say of two fields, so the build holds the file to it here (AndrewGodlewsky/RisingRepos#133)."""
     path = data / "boards" / "days" / day / "daily.json"
     board = _read(path, validate)
     if board["board_day"] != day:
         raise DataError(f"{path} holds the board day {board['board_day']}, and its folder is {day}")
+    started = board.get("daily_job_started_at")
+    if started and datetime.fromisoformat(started) > datetime.fromisoformat(board["published_at"]):
+        raise DataError(
+            f"{path} says the daily job started at {started}, after its published_at, {board['published_at']}: "
+            "the contract gives a start no later than the publish"
+        )
     return board
 
 
