@@ -145,8 +145,8 @@ class Element:
 
     def text(self) -> str:
         """The text inside the element as a reader sees it: entities decoded, a block set apart from what is
-        around it, and runs of white space made one space. The space at the edge of an inline element stays, as
-        in "All<span> board</span> days"."""
+        around it, runs of white space made one space, and the code of a script inside it left out. The space at
+        the edge of an inline element stays, as in "All<span> board</span> days"."""
         return " ".join(self._text().split())
 
     def _text(self) -> str:
@@ -154,6 +154,8 @@ class Element:
         for child in self.children:
             if isinstance(child, str):
                 parts.append(child)
+            elif child.tag == "script":
+                continue  # a script's text is code, which no reader sees
             else:
                 parts.append(f" {child._text()} " if child.tag in BLOCK else child._text())
         return "".join(parts)

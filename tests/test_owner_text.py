@@ -5,7 +5,7 @@ import unittest
 
 from helpers import BuildTest, read_json
 
-from sitebuild import BOARD
+from sitebuild import BOARD, SCRIPT, TEMPLATES
 
 MARKUP_ROW = "rising-repos-example/markup-in-description"
 
@@ -18,11 +18,15 @@ class OwnerWrittenText(BuildTest):
         self.page = self.build_pages()[BOARD]
 
     def test_markup_in_a_description_appears_as_text(self):
+        """The description holds a script element and a <b>. Neither becomes one: the page's only script is the
+        site's own, the notice of an old board, whose text is that of the template it comes from."""
         (row,) = [element for element in self.page.rows() if MARKUP_ROW in element.text()]
         self.assertIn(self.markup["description"], row.text())
         body = self.page.one("body")
-        self.assertEqual([element.tag for element in body.elements() if element.tag in ("script", "b")], [])
-        self.assertNotIn("<script", self.page.html.lower())
+        self.assertEqual([element.tag for element in body.elements() if element.tag in ("script", "b")], ["script"])
+        (script,) = body.all("script")
+        self.assertEqual("".join(script.children), (TEMPLATES / SCRIPT).read_text(encoding="utf-8"))
+        self.assertEqual(self.page.html.lower().count("<script"), 1)
         self.assertNotIn("<b>", self.page.html.lower())
 
     def test_no_owner_written_value_is_made_a_link_and_each_name_links_to_its_repository_on_github(self):

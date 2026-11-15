@@ -81,6 +81,14 @@ h1 {
 /* A note on what may move the order has a rule at its left. */
 .provisional, .partial.recent { padding-left: 0.875rem; border-left: 3px solid #7fcfa6; }
 
+/* The notice of an old board, under the site's line and over the date. It is hidden as built, and its script fills
+   it and shows it once the newest board is 26 hours old. The page's own pair, ink on paper, sets it apart from the
+   band. From 7 days the script marks the root element, and what <main> holds, the board or the list of board days,
+   is hidden. <main> itself stays, so the page keeps its main landmark. */
+
+.old-board { max-width: 40rem; margin-top: 1rem; padding: 0.75rem 1rem; background: var(--paper); color: var(--ink); }
+:root[data-withheld] main > * { display: none; }
+
 /* The strip: the board days before and after this one, and the list of them all, kept in view under the band */
 
 .strip {
@@ -204,6 +212,7 @@ td.stars::after { content: " stars"; color: var(--muted); font-family: var(--tex
   .site .home, .site .home:visited { display: inline; margin-right: 0.5rem; }
   h1 { grid-column: 1; margin-top: 0.875rem; }
   .facts { grid-column: 2; margin-top: 0; }
+  .old-board { grid-column: 1 / -1; } /* a row of its own, between the site's line and the date */
   .strip .wrap { column-gap: 1.5rem; }
 
   .chart thead {
