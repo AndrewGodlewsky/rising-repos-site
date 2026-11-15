@@ -15,5 +15,41 @@
       "recent": true
     }
   ],
+  "state": "held",
+  "holds": [
+    {
+      "least_stars": 200,
+      "most_stars": 999
+    },
+    {
+      "least_stars": 1000,
+      "most_stars": 2999
+    },
+    {
+      "least_stars": 3000,
+      "most_stars": 9999
+    },
+    {
+      "least_stars": 10000,
+      "most_stars": 29999
+    },
+    {
+      "least_stars": 30000,
+      "most_stars": null
+    }
+  ],
+  "missed_stars": [
+    {
+      "least_stars": 309,
+      "most_stars": null
+    }
+  ],
+  "unranked": [
+    {
+      "snapshot_day": "2026-07-29",
+      "status": "partial",
+      "repositories": 0
+    }
+  ],
   "rows": []
 }
