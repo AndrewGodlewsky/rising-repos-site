@@ -187,29 +187,27 @@ def why(row: dict) -> dict | None:
     )
     span = "1 day" if days == 1 else f"{days} days"
     floor = f"{figure(divisor, 2)} star{'' if divisor == 1 else 's'} a day"
-    total = f"Score {figure(score, 2)} = {stars:,} stars ÷ {span}"
+    total = f"Score {figure(score, 2)} = {stars:,} stars ÷ {span} ÷ {figure(divisor, 2)}"
     if baseline >= divisor:
         pace = f"{times(score)}× its usual pace"
         detail = f"That multiple is its score: {stars:,} stars ÷ {span} ÷ its usual {figure(baseline, 2)} a day"
     elif baseline >= 0:
         pace = f"its usual pace was under {floor}"
-        detail = f"{total} ÷ {figure(divisor, 2)}: its usual {figure(baseline, 2)} a day counts as {floor}"
+        detail = f"{total}: its usual {figure(baseline, 2)} a day counts as {floor}"
     else:
         pace = "it had been losing stars"
-        detail = f"{total} ÷ {figure(divisor, 2)}: it lost {figure(-baseline, 2)} a day before, which counts as {floor}"
+        detail = f"{total}: it lost {figure(-baseline, 2)} a day before, which counts as {floor}"
     left_out = row["days_left_out"]
-    if left_out:
-        line = f"+{stars:,} in {span} · {pace}"
-        detail += (
-            ". A recent day that lost too many stars to be believed is left out"
-            if left_out == 1
-            else f". {left_out} recent days that lost too many stars to be believed are left out"
-        )
-    elif baseline < 0:
-        line = f"+{stars:,} in {span} · {pace}"
+    # The excess is the stars above its own trend only when it covers every recent day and the pace was not falling.
+    if left_out or baseline < 0:
+        gained = f"+{stars:,} in {span}"
     else:
-        line = f"+{figure(row['excess'], 0)} above its own trend · {pace}"
-    return {"line": line, "detail": detail + "."}
+        gained = f"+{figure(row['excess'], 0)} above its own trend"
+    if left_out == 1:
+        detail += ". A recent day that lost too many stars to be believed is left out"
+    elif left_out:
+        detail += f". {left_out} recent days that lost too many stars to be believed are left out"
+    return {"line": f"{gained} · {pace}", "detail": detail + "."}
 
 
 MADE_LATE = 2
