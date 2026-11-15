@@ -212,6 +212,24 @@ class Page:
         """The content of each <meta name="<name>">."""
         return [element.attrs.get("content") for element in self.all("meta") if element.attrs.get("name") == name]
 
+    def policy(self) -> str:
+        """The page's Content-Security-Policy: the content of its one <meta http-equiv>."""
+        (policy,) = [
+            element.attrs["content"]
+            for element in self.all("meta")
+            if element.attrs.get("http-equiv") == "Content-Security-Policy"
+        ]
+        return policy
+
+    def directives(self) -> dict[str, list[str]]:
+        """The page's policy, each directive by name, in order, with its sources. A directive named twice fails, since
+        a browser keeps the first and ignores the second."""
+        parts = [part.split() for part in self.policy().split(";") if part.strip()]
+        directives = {name: sources for name, *sources in parts}
+        if len(directives) != len(parts):
+            raise AssertionError(f"a directive is named twice: {self.policy()}")
+        return directives
+
     def links(self) -> list[tuple[str, str]]:
         """Each link on the page, in order: its address and its text."""
         return [(element.attrs.get("href"), element.text()) for element in self.all("a")]

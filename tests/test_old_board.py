@@ -20,7 +20,7 @@ from datetime import datetime, timedelta, timezone
 
 from helpers import ROOT, BuildTest, Page, read_json
 
-from sitebuild import BOARD, DAYS, NOT_FOUND, board_day_page
+from sitebuild import BOARD, DAYS, NOT_FOUND, board_day_page, long_date
 
 NODE = shutil.which("node")
 RUNNER = ROOT / "tests" / "run_page_script.js"
@@ -65,20 +65,6 @@ def script_of(page: Page) -> str:
     """The text of the page's one script element, exactly as the page holds it."""
     (text,) = re.findall(r"<script>(.*?)</script>", page.html, flags=re.DOTALL)
     return text
-
-
-def policy_of(page: Page) -> str:
-    (policy,) = [
-        element.attrs["content"]
-        for element in page.all("meta")
-        if element.attrs.get("http-equiv") == "Content-Security-Policy"
-    ]
-    return policy
-
-
-def directives(policy: str) -> dict[str, list[str]]:
-    """A policy's directives, by name, each with its sources."""
-    return {name: sources for name, *sources in (part.split() for part in policy.split(";") if part.strip())}
 
 
 def by_id(page: Page, name: str):
@@ -165,11 +151,12 @@ class TheNotice(BuildTest):
         self.assertEqual("data-withheld" in outcome["root"], hides_boards)
 
     def test_each_page_with_a_board_or_the_list_carries_the_newest_boards_day_and_publish_time_for_the_script(self):
-        """An earlier board day's page and the list measure from the newest board too."""
+        """An earlier board day's page and the list measure from the newest board too. The build writes the day as it
+        writes every other date on the page, and the script puts it in the notice unchanged."""
         for path in CARRIERS:
             with self.subTest(path):
                 notice = by_id(self.pages[path], NOTICE)
-                self.assertEqual(notice.attrs["data-newest-board-day"], NEWEST)
+                self.assertEqual(notice.attrs["data-newest-board-day"], long_date(NEWEST))
                 self.assertEqual(notice.attrs["data-newest-published-at"], "2026-11-10T00:41:07Z")
                 self.assertIn("hidden", notice.attrs)
                 self.assertEqual(notice.text(), "")
@@ -211,34 +198,35 @@ class TheNotice(BuildTest):
                 with self.subTest(path, age=words):
                     self.assertNotice(outcome, withheld(words), hides_boards=True)
 
-    def test_a_malformed_or_impossible_publish_time_or_board_day_changes_nothing(self):
+    def test_a_malformed_or_impossible_publish_time_changes_nothing(self):
+        """The last value is a moment that Date.parse reads and that reads back as the same text, in a shape the page
+        never writes: a year of six digits, and no seconds."""
         built = {key: value or "" for key, value in by_id(self.pages[BOARD], NOTICE).attrs.items()}
-        unreadable = {
-            "data-newest-published-at": [
-                "",
-                "not a time",
-                "2026-11-10 00:41:07Z",
-                "2026-11-10T00:41:07+00:00",
-                "2026-11-10T00:41:07.000Z",
-                "2026-11-10T00:41Z",
-                "2026-13-10T00:41:07Z",
-                "2026-02-30T00:41:07Z",
-                "2026-11-10T24:00:00Z",
-            ],
-            "data-newest-board-day": ["", "9 November 2026", "2026-11-9", "2026-13-09", "2026-11-31"],
-        }
-        notices = []  # each value in place of the page's own, and each attribute left out (None)
-        for name, values in unreadable.items():
-            for value in [*values, None]:
-                attributes = {key: text for key, text in built.items() if key != name}
-                if value is not None:
-                    attributes[name] = value
-                notices.append((name, value, attributes))
+        name = "data-newest-published-at"
+        unreadable = [
+            "",
+            "Z",
+            "not a time",
+            "2026-11-10 00:41:07Z",
+            "2026-11-10T00:41:07+00:00",
+            "2026-11-10T00:41:07.000Z",
+            "2026-11-10T00:41Z",
+            "2026-13-10T00:41:07Z",
+            "2026-02-30T00:41:07Z",
+            "2026-11-10T24:00:00Z",
+            "-000001-01-01T00:00Z",
+        ]
+        notices = []  # each value in place of the page's own, and the attribute left out (None)
+        for value in [*unreadable, None]:
+            attributes = {key: text for key, text in built.items() if key != name}
+            if value is not None:
+                attributes[name] = value
+            notices.append((value, attributes))
         for path in CARRIERS:
             page = self.pages[path]
-            outcomes = run_with(page, [(PUBLISHED + 30 * DAY, attributes) for _, _, attributes in notices])
-            for (name, value, attributes), outcome in zip(notices, outcomes, strict=True):
-                with self.subTest(path, name=name, value=value):
+            outcomes = run_with(page, [(PUBLISHED + 30 * DAY, attributes) for _, attributes in notices])
+            for (value, attributes), outcome in zip(notices, outcomes, strict=True):
+                with self.subTest(path, value=value):
                     self.assertIsNone(outcome["error"])
                     self.assertEqual(outcome["elements"][NOTICE]["attributes"], attributes)
                     self.assertEqual([outcome["elements"][part]["text"] for part in (TITLE, TEXT)], ["", ""])
@@ -271,7 +259,7 @@ class ThePolicy(BuildTest):
     def assertScriptAllowed(self, page: Page):
         """The policy's `script-src` names one source: the SHA-256 of the exact text of the page's one script."""
         digest = base64.b64encode(hashlib.sha256(script_of(page).encode("utf-8")).digest()).decode("ascii")
-        self.assertEqual(directives(policy_of(page))["script-src"], [f"'sha256-{digest}'"])
+        self.assertEqual(page.directives()["script-src"], [f"'sha256-{digest}'"])
 
     def test_each_page_with_a_board_or_the_list_carries_one_script_and_the_same_one(self):
         scripts = set()
@@ -291,14 +279,14 @@ class ThePolicy(BuildTest):
     def test_the_policy_is_otherwise_as_it_was(self):
         for path in CARRIERS:
             with self.subTest(path):
-                policy = policy_of(self.pages[path])
+                policy = self.pages[path].policy()
                 self.assertEqual(re.sub(r" script-src [^;]*;", "", policy), POLICY)
                 self.assertTrue(policy.startswith("default-src 'none'; script-src 'sha256-"), policy)
 
     def test_the_not_found_page_has_no_script_and_a_policy_that_forbids_every_script(self):
         page = self.pages[NOT_FOUND]
         self.assertEqual(page.all("script"), [])
-        self.assertEqual(policy_of(page), POLICY)
+        self.assertEqual(page.policy(), POLICY)
         self.assertEqual([element for element in page.all() if element.attrs.get("id") == NOTICE], [])
 
     def test_a_script_changed_without_its_hash_in_the_policy_fails_the_check(self):
@@ -308,7 +296,7 @@ class ThePolicy(BuildTest):
         page = self.pages[BOARD]
         changed = Page(page.html.replace("<script>", "<script> ", 1))
         self.assertNotEqual(script_of(changed), script_of(page))
-        self.assertEqual(policy_of(changed), policy_of(page))
+        self.assertEqual(changed.policy(), page.policy())
         with self.assertRaises(AssertionError):
             self.assertScriptAllowed(changed)
 

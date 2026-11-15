@@ -64,9 +64,9 @@ What every page holds to, each checked by a test in `tests/`:
   as the data contract says. No other page carries either, so the read-back
   after a publish and the checks of a stale site, which read them, read the
   root. The pages that carry the notice of an old board, the root among them,
-  also give the newest board's day and publish time in the notice's
-  `data-newest-board-day` and `data-newest-published-at`, which only the
-  notice's script reads.
+  also give the newest board's day, written out as the page writes dates, and
+  its publish time in the notice's `data-newest-board-day` and
+  `data-newest-published-at`, which only the notice's script reads.
 - **Owner-written text.** A repository's owner wrote its name, description, and
   language. Each is escaped where it is shown: Jinja2's autoescaping is on for
   every template, and no template marks a value as safe. None of them is made a
@@ -91,8 +91,8 @@ What every page holds to, each checked by a test in `tests/`:
 
   | Board | A board's page | The list of board days | The not-found page |
   | --- | --- | --- | --- |
-  | The data contract's example, 5 rows | 18,869 bytes | 15,073 bytes | 11,778 bytes |
-  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens | 294,427 bytes | 15,075 bytes | 11,778 bytes |
+  | The data contract's example, 5 rows | 18,535 bytes | 14,739 bytes | 11,778 bytes |
+  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens | 294,093 bytes | 14,741 bytes | 11,778 bytes |
 
   316 rows is the largest board the earlier site published. The limit was set
   from the largest page measured before
@@ -117,7 +117,7 @@ What every page holds to, each checked by a test in `tests/`:
   The notice of an old board
   ([AndrewGodlewsky/RisingRepos#56](https://github.com/AndrewGodlewsky/RisingRepos/issues/56))
   adds 692 bytes of styles to every page, and its hidden element and its
-  script 2,137 more to each page that carries them.
+  script 1,803 more to each page that carries them.
   A real board is longer than the earlier site's: the board for 2026-11-09
   holds 811 rows in 406,970 bytes, and the longest of the 25 board days the
   development database held on 2026-11-12, 1,294 rows, takes 640,698 bytes.
@@ -132,8 +132,8 @@ What every page holds to, each checked by a test in `tests/`:
   transferred bytes in each of its two profiles, phone and desktop
   (see `evals/site/limits.json`). A test in `tests/test_page_weight.py` fills
   the newest board with 713 invented rows, gzips the built root at level 6,
-  and checks the result against the smaller budget. On 2026-11-15 it came to 83,813
-  bytes, 1,202 more than before the notice of an old board. Each invented row carries 105 characters of description in random
+  and checks the result against the smaller budget. On 2026-11-15 it came to 83,659
+  bytes, 1,048 more than before the notice of an old board. Each invented row carries 105 characters of description in random
   letters, which pack worse than a real description's words, so the test
   errs on the heavy side. The count is formula 2's longest board so far, 475
   rows, raised by half for boards still to come
@@ -367,7 +367,9 @@ so an earlier board day's page and the list say the same as the root.
 
 - 26 hours exactly counts as old, as it does for the stale check (see "The
   stale check"). The age is in whole hours under two days, and in whole days
-  from then on. The board day is written as the rest of the page writes dates.
+  from then on. The build writes the board day into the notice with the same
+  filter as every other date on the page, so the script works out only the
+  age.
 - The notice is a box in the page's own pair, ink on paper, up to 40rem wide,
   with its first sentence in bold, between the site's line and the date. It is
   words, not a colour or a badge, so it reads the same to a screen reader.
@@ -384,12 +386,13 @@ so an earlier board day's page and the list say the same as the root.
   page is the fresh page: the notice stays hidden, and the built page holds
   none of its words, so nothing on it would be false on a fresh day.
 - **What the script touches.** It reads the notice's two `data-` attributes
-  and the clock. It writes only its own words and the numbers it works out,
-  as text (`textContent`), shows the notice, and sets the one attribute on the
-  root. It reads nothing an owner wrote, makes no request, which the page's
-  policy would refuse in any case, stores nothing, and sets no cookie. A day or
-  a publish time that is not in the exact shape the page writes it, or that
-  names no real day, leaves the page as built.
+  and the clock. It writes only its own words, the board day as the build
+  wrote it, and the numbers it works out, as text (`textContent`), shows the
+  notice, and sets the one attribute on the root. It reads nothing an owner
+  wrote, makes no request, which the page's policy would refuse in any case,
+  stores nothing, and sets no cookie. A publish time that is not in the exact
+  shape the page writes it, or that names no real moment, leaves the page as
+  built.
 - **Which pages.** One line near the top of `sitebuild/templates/page.html`
   names the templates whose pages carry the notice. To keep the notice to the
   root alone, make that list `("latest.html",)`. The not-found page carries
@@ -399,7 +402,7 @@ so an earlier board day's page and the list say the same as the root.
   the clock passed in. It runs it on the root, on board days' pages, and on
   the list: a second short of 26 hours and at 26 exactly, a second short of 7
   days and at 7 exactly, at 10 and 400 days, with the clock set behind the
-  publish time, and with malformed days and times. It also checks that the
+  publish time, and with malformed publish times. It also checks that the
   policy names the hash of the script's exact text, so a script whose text
   no longer matches its hash fails the tests rather than being refused by
   readers' browsers.

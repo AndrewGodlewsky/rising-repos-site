@@ -132,18 +132,12 @@ class PageWeight(BuildTest):
                 attributes = [(name, value or "") for element in page.all() for name, value in element.attrs.items()]
                 self.assertEqual([name for name, _ in attributes if name.startswith("on")], [])
                 self.assertEqual([value for _, value in attributes if value.strip().lower().startswith("javascript:")], [])
-                (policy,) = [
-                    element.attrs["content"]
-                    for element in page.all("meta")
-                    if element.attrs.get("http-equiv") == "Content-Security-Policy"
-                ]
-                self.assertTrue(policy.startswith("default-src 'none';"), policy)
-                script_src = [part.split()[1:] for part in policy.split(";") if part.split()[:1] == ["script-src"]]
+                self.assertTrue(page.policy().startswith("default-src 'none';"), page.policy())
                 if page.all("script"):
-                    ((source,),) = script_src  # one directive, with one source: the script's hash
+                    (source,) = page.directives()["script-src"]  # one source: the script's hash
                     self.assertRegex(source, r"^'sha256-[A-Za-z0-9+/]{43}='$")
                 else:
-                    self.assertEqual(script_src, [])
+                    self.assertNotIn("script-src", page.directives())
 
     def test_no_page_requests_anything_from_another_site(self):
         for path, page in self.build_pages().items():
