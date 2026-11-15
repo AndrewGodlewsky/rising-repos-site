@@ -584,7 +584,7 @@ day's files that fail their schema fail the tests as well as the build. The
 token search (below) reads every file git would commit, `site-data/` included,
 so a day's file that holds a string shaped like a credential fails the tests.
 A test holds the copy in `tests/fixtures/` to the bytes of the contract in
-RisingRepos commit `9b386efbedb5ca0ca2aaca21c9c42793d9b5f452`, whose schema
+RisingRepos commit `088949e7e516e92b4e1e8aacdc34eb8eef374434`, whose schema
 says when the daily job that published a board day began, numbers the formula
 that ranked it, and gives each row its score and the figures behind it.
 A change to the contract
