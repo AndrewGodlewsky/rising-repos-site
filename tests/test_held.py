@@ -73,10 +73,7 @@ class HeldBands(Notes):
             "leaves out every repository of 200 to 999, 1,000 to 2,999, 3,000 to 9,999, 10,000 to 29,999, or "
             "30,000 or more stars rather than rank those bands from part of their repositories.",
         )
-        self.assertEqual(
-            self.message(page),
-            "No repository is on this board. It holds back the star bands named above, and lists none from any other.",
-        )
+        self.assertEqual(self.message(page), "No repository is on this board. It holds back the star bands named above.")
         self.assertEqual(self.notes(page, "recent"), [], "the hold says what the board day's own snapshot did")
         self.assertEqual(self.state(page), "held")
 

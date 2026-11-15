@@ -419,7 +419,10 @@ different about the rows:
 A board whose file predates these fields says of its partial days what it did
 before them: a recent partial day gets a note that says what it may have done
 to a repository missing from it, and a board day that is itself partial gets
-one saying that a repository it missed could not be ranked. A board whose
+one saying that a repository it missed could not be ranked. The generator
+gives those older notes one function and one block of the board's template,
+set apart from the path a newer file takes, so that both can be deleted once
+every board day has been published again with the fields. A board whose
 ranking read no partial day, held nothing, and lacked no day has no note.
 Nor does a board whose file predates `partial_days`: it is not known which
 partial days it read, and the page does not guess.
