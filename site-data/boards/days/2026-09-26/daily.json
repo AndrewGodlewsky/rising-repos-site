@@ -3,7 +3,8 @@
   "board_day": "2026-09-26",
   "published_at": "2026-11-14T22:32:14Z",
   "daily_job_started_at": null,
-  "score_provisional": true,
+  "score_provisional": false,
+  "formula_version": 2,
   "partial_days": [
     {
       "snapshot_day": "2026-09-26",
@@ -22,22 +23,6 @@
       "description": "Amiga Minimig ported to the Tang Nano 20k FPGA",
       "language": "Verilog",
       "stars": 217
-    },
-    {
-      "rank": 2,
-      "github_id": 1082481292,
-      "full_name": "cloud-gouv/bureautix-example",
-      "description": null,
-      "language": "Nix",
-      "stars": 213
-    },
-    {
-      "rank": 3,
-      "github_id": 1169355653,
-      "full_name": "mobrava/Clipbara",
-      "description": "Free, open-source clipboard manager for macOS. Native card-style UI with Pinboards, Quick Look, and 100% local storage.",
-      "language": "Swift",
-      "stars": 213
     }
   ]
 }

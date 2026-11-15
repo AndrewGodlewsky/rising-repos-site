@@ -3,10 +3,15 @@
   "board_day": "2026-11-14",
   "published_at": "2026-11-14T22:40:26Z",
   "daily_job_started_at": "2026-11-14T22:40:22Z",
-  "score_provisional": true,
+  "score_provisional": false,
+  "formula_version": 2,
   "partial_days": [
     {
       "snapshot_day": "2026-10-27",
+      "recent": false
+    },
+    {
+      "snapshot_day": "2026-09-26",
       "recent": false
     }
   ],
@@ -29,14 +34,6 @@
     },
     {
       "rank": 3,
-      "github_id": 1283291297,
-      "full_name": "LUC4N3X/Levyra-deepsound",
-      "description": "Made for listening, not logging in. Levyra is an open-source music player for Android and Windows, bringing music discovery, synced lyrics, radio and beautiful artwork together. No ads, no tracking, just music ♫",
-      "language": "Kotlin",
-      "stars": 1845
-    },
-    {
-      "rank": 4,
       "github_id": 1284692613,
       "full_name": "JayPokale/Chisle",
       "description": "Cut your AI coding agent's token bill on three axes: terse prose, YAGNI-first code, and tool-output compression. Claude Code, Pi, Cursor, Codex, Gemini + 4 more. Zero deps, published benchmarks including the runs it loses.",
@@ -44,15 +41,7 @@
       "stars": 1043
     },
     {
-      "rank": 5,
-      "github_id": 1261084877,
-      "full_name": "Check-Risk-WAF/Check-Risk-WAF",
-      "description": "Check Risk WAF is an all-in-one Web Application Firewall with Anti-Bot and Anti-DDoS protection at L3, L4, and L7. Available on-premises or as SaaS, it protects web apps against OWASP Top 10 attacks, CWE vulnerabilities, botnets, and DoS/DDoS. Free and unlimited for everyone, forever for personal, non-commercial use.",
-      "language": null,
-      "stars": 1866
-    },
-    {
-      "rank": 6,
+      "rank": 4,
       "github_id": 644016278,
       "full_name": "0xKayala/NucleiFuzzer",
       "description": "NucleiFuzzer is a robust automation tool that efficiently detects web application vulnerabilities, including XSS, SQLi, SSRF, and Open Redirects, leveraging advanced scanning and URL enumeration techniques",
@@ -60,7 +49,7 @@
       "stars": 1977
     },
     {
-      "rank": 7,
+      "rank": 5,
       "github_id": 1384275032,
       "full_name": "Continuum-AI-Corp/scuttle",
       "description": "Tiny post-quantum encryption for sensitive data. Write-only by design. ML-KEM-768 + X25519 + AES-256-GCM. Please break it.",
@@ -68,7 +57,15 @@
       "stars": 580
     },
     {
-      "rank": 8,
+      "rank": 6,
+      "github_id": 1234519867,
+      "full_name": "devaccuracy/ledgerforge",
+      "description": "The ledger for AI-native money movement. An open-source double-entry ledger for wallets, payouts, marketplaces and billing, with exact integer money, a verifiable audit chain, server-enforced spending limits and approvals for AI agents, and an MCP server. Apache 2.0.",
+      "language": "Go",
+      "stars": 310
+    },
+    {
+      "rank": 7,
       "github_id": 1334430510,
       "full_name": "Endokelp/Endoplexity",
       "description": "Agentic browser control driven by your own Claude / Cursor subscriptions",
@@ -76,7 +73,7 @@
       "stars": 499
     },
     {
-      "rank": 9,
+      "rank": 8,
       "github_id": 1382503730,
       "full_name": "Parcha-ai/agentrun",
       "description": "AgentRun is an open-source platform that supercharges your agents. It adds self-improvement, durable execution and a control plane on top of your favorite agent harness. Your agents become smarter, more fault tolerant and use fewer tokens with every run.",
@@ -84,7 +81,7 @@
       "stars": 982
     },
     {
-      "rank": 10,
+      "rank": 9,
       "github_id": 1330508221,
       "full_name": "FSECDEV/LEAKSFORUMS",
       "description": "A series of leaks from hacker forums ",
@@ -92,7 +89,7 @@
       "stars": 444
     },
     {
-      "rank": 11,
+      "rank": 10,
       "github_id": 1123270732,
       "full_name": "Anurella/reset-css",
       "description": "A collection of styles that reset the styles of certain elements in the browser",
@@ -100,12 +97,20 @@
       "stars": 1349
     },
     {
-      "rank": 12,
+      "rank": 11,
       "github_id": 1087414875,
       "full_name": "openai/apps-sdk-ui",
       "description": null,
       "language": "TypeScript",
       "stars": 1060
+    },
+    {
+      "rank": 12,
+      "github_id": 1155787322,
+      "full_name": "tonhowtf/omniget",
+      "description": "A local MCP server that gives your coding agent a desktop toolbox: downloads from YouTube, torrents and every site yt-dlp supports, media conversion, files, chats and system cleanup. One line connects Claude Code, Codex, Cursor or Gemini CLI, and sensitive actions wait for your click. Free and open source for Windows, macOS and Linux.",
+      "language": "Rust",
+      "stars": 14438
     },
     {
       "rank": 13,
@@ -309,14 +314,6 @@
     },
     {
       "rank": 38,
-      "github_id": 1232141497,
-      "full_name": "menglimi/astrbot_plugin_private_companion",
-      "description": "面向 AstrBot 的拟人化整合插件。它会让 bot 拥有连续的拟人状态、每天的生活日程、重要日期、日记和低频主动消息。包含60+实用功能且具有完善的拓展管理页面。",
-      "language": "Python",
-      "stars": 428
-    },
-    {
-      "rank": 39,
       "github_id": 1238992253,
       "full_name": "tryatlas/atlas",
       "description": "Source control for agents. Use multiple coding agents, track their changes and query them in one place",
@@ -324,7 +321,7 @@
       "stars": 9426
     },
     {
-      "rank": 40,
+      "rank": 39,
       "github_id": 1274967178,
       "full_name": "dengxibo/sumatrapdf-plus",
       "description": "SumatraPDF fork: Chinese EPUB/MOBI, smart PDF dark mode, OCR, TTS, offline dictionary.",
@@ -332,7 +329,7 @@
       "stars": 992
     },
     {
-      "rank": 41,
+      "rank": 40,
       "github_id": 122493604,
       "full_name": "minimaxir/hacker-news-undocumented",
       "description": "Some of the hidden norms about Hacker News not otherwise covered in the Guidelines and the FAQ.",
@@ -340,7 +337,7 @@
       "stars": 3827
     },
     {
-      "rank": 42,
+      "rank": 41,
       "github_id": 1366823287,
       "full_name": "DioxusLabs/rustd",
       "description": "a rust compiler daemon for up to 25x faster cargo builds",
@@ -348,7 +345,7 @@
       "stars": 240
     },
     {
-      "rank": 43,
+      "rank": 42,
       "github_id": 944098278,
       "full_name": "mortennordbye/homelab",
       "description": "GitOps-managed homelab using Kubernetes (Talos), ArgoCD, and Terraform for infrastructure as code.",
@@ -356,7 +353,7 @@
       "stars": 356
     },
     {
-      "rank": 44,
+      "rank": 43,
       "github_id": 1131516434,
       "full_name": "echoVic/boss-skill",
       "description": "Boss Skill - BMAD 全自动研发流水线（多 Agent 编排）",
@@ -364,7 +361,7 @@
       "stars": 582
     },
     {
-      "rank": 45,
+      "rank": 44,
       "github_id": 800610523,
       "full_name": "marq24/ha-evcc",
       "description": "Home Assistant integration for evcc☀️🚘- optimized charging of electric vehicles, connecting your EV charger with your PV system. Please note, that this integration is not official and not supported by the evcc developers. Please consider becoming a monthly sponsor for this project - TIA",
@@ -372,7 +369,7 @@
       "stars": 533
     },
     {
-      "rank": 46,
+      "rank": 45,
       "github_id": 301513440,
       "full_name": "oxidecomputer/propolis",
       "description": "VMM userspace for illumos bhyve",
@@ -380,7 +377,7 @@
       "stars": 313
     },
     {
-      "rank": 47,
+      "rank": 46,
       "github_id": 1227817920,
       "full_name": "LifetimeLabsHQ/PrivacyNotes.app",
       "description": "End-to-end encrypted notes, tasks, files, passwords, journal and bookmarks. Keyed by a 12-word BIP-39 phrase: no email, no password, no account to leak. The full client source for web, desktop and mobile is published, along with the encryption (XChaCha20-Poly1305, HKDF-SHA256, Ed25519) and the threat model, so the privacy claims are falsifiable.",
@@ -388,7 +385,7 @@
       "stars": 662
     },
     {
-      "rank": 48,
+      "rank": 47,
       "github_id": 1238646835,
       "full_name": "Ingar30/reviewer",
       "description": null,
@@ -396,7 +393,7 @@
       "stars": 265
     },
     {
-      "rank": 49,
+      "rank": 48,
       "github_id": 1201253077,
       "full_name": "VectifyAI/OpenKB",
       "description": "OpenKB: Open LLM Knowledge Base",
@@ -404,7 +401,7 @@
       "stars": 4964
     },
     {
-      "rank": 50,
+      "rank": 49,
       "github_id": 497356715,
       "full_name": "thegeekyb0y/learnpython",
       "description": "Python Resources for Everyone",
@@ -412,7 +409,7 @@
       "stars": 1061
     },
     {
-      "rank": 51,
+      "rank": 50,
       "github_id": 69609,
       "full_name": "internetarchive/openlibrary",
       "description": "One webpage for every book ever published!",
@@ -420,7 +417,7 @@
       "stars": 6901
     },
     {
-      "rank": 52,
+      "rank": 51,
       "github_id": 1165855406,
       "full_name": "open-gitagent/opengap",
       "description": "A framework-agnostic, git-native standard for defining AI agents",
@@ -428,7 +425,7 @@
       "stars": 3014
     },
     {
-      "rank": 53,
+      "rank": 52,
       "github_id": 880414192,
       "full_name": "tailscale/tailcat",
       "description": "like netcat, but over Tailscale's data plane, without Tailscale's control plane",
@@ -436,7 +433,7 @@
       "stars": 9811
     },
     {
-      "rank": 54,
+      "rank": 53,
       "github_id": 916945194,
       "full_name": "0xemmkty/QuantMuse",
       "description": "A comprehensive quantitative trading system with AI-powered analysis, real-time data processing, and advanced risk management",
@@ -444,7 +441,7 @@
       "stars": 3014
     },
     {
-      "rank": 55,
+      "rank": 54,
       "github_id": 1033618518,
       "full_name": "liliang-cn/cortexdb",
       "description": "Local-first AI agent memory with a knowledge graph, ontology constraints, and traceable reasoning—all in one SQLite file.",
@@ -452,7 +449,7 @@
       "stars": 508
     },
     {
-      "rank": 56,
+      "rank": 55,
       "github_id": 1267239286,
       "full_name": "buynao/aipath",
       "description": "Interactive AI General Education Course — 30 Lessons, Zero Math",
@@ -460,7 +457,7 @@
       "stars": 548
     },
     {
-      "rank": 57,
+      "rank": 56,
       "github_id": 1377399471,
       "full_name": "v-modal/awesome-jev-tools",
       "description": "A curated list of tools  built for Jev — TypeSafe AI's System One model for typed decisions.",
@@ -468,15 +465,7 @@
       "stars": 760
     },
     {
-      "rank": 58,
-      "github_id": 1435333593,
-      "full_name": "benderandrew069/deepseek-api-pricing-2026",
-      "description": "DeepSeek API pricing guide for models, cache hits, and peak hours (2026).",
-      "language": null,
-      "stars": 662
-    },
-    {
-      "rank": 59,
+      "rank": 57,
       "github_id": 1207219415,
       "full_name": "ModernRelay/omnigraph",
       "description": "Object-storage native graph database with branching and typed ontology",
@@ -484,7 +473,7 @@
       "stars": 2401
     },
     {
-      "rank": 60,
+      "rank": 58,
       "github_id": 543516398,
       "full_name": "martin-olivier/airgorah",
       "description": "A WiFi security auditing software",
@@ -492,7 +481,7 @@
       "stars": 5765
     },
     {
-      "rank": 61,
+      "rank": 59,
       "github_id": 1306727670,
       "full_name": "zeronsh/zeron",
       "description": "A native control plane for Claude Code, Codex, Cursor, Devin and other coding agents.",
@@ -500,7 +489,7 @@
       "stars": 3660
     },
     {
-      "rank": 62,
+      "rank": 60,
       "github_id": 903680048,
       "full_name": "rush-db/rushdb",
       "description": "RushDB is a self-describing, graph-native database that helps AI agents reason over data with confidence: progressively introspect what's queryable—without guesswork.",
@@ -508,7 +497,7 @@
       "stars": 353
     },
     {
-      "rank": 63,
+      "rank": 61,
       "github_id": 1057387662,
       "full_name": "Far-Beyond-Pulsar/Pulsar-Native",
       "description": "The next-generation game engine that you deserve implemented in rust https://pulsarnative.com/ Developer_Blogs: https://pulsarnative.com/blog/ Research: https://pulsarnative.com/Research/ UI-Framework: https://pulsarnative.com/UI/ Discord_Server: https://discord.gg/BXyZDMeUJc Formerly_Twitter: https://x.com/PulsarEngineRS",
@@ -516,7 +505,7 @@
       "stars": 430
     },
     {
-      "rank": 64,
+      "rank": 62,
       "github_id": 1278676884,
       "full_name": "NVIDIA/SkillEvaluator",
       "description": "Multi-tier framework for evaluating AI agent skills with quality gates, semantic overlap detection, synthetic evaluation dataset generation, and live agent evaluation that measures how skills affect agent behavior.",
@@ -524,7 +513,7 @@
       "stars": 1229
     },
     {
-      "rank": 65,
+      "rank": 63,
       "github_id": 543101941,
       "full_name": "dream-num/univer",
       "description": "Build your own AI office with Univer Office SDK. Bring editing, calculation, collaboration, and file processing into your product for people and AI agents. Built on an extensible open-source core.",
@@ -532,7 +521,7 @@
       "stars": 24421
     },
     {
-      "rank": 66,
+      "rank": 64,
       "github_id": 1143633223,
       "full_name": "GoogleChrome/modern-web-guidance-src",
       "description": "Keep your coding agent up to date with the latest web best practices",
@@ -540,7 +529,7 @@
       "stars": 5872
     },
     {
-      "rank": 67,
+      "rank": 65,
       "github_id": 709027512,
       "full_name": "getmaxun/maxun",
       "description": "Turn any website into a structured API. Extract, automate, search and monitor the web.",
@@ -548,7 +537,7 @@
       "stars": 18418
     },
     {
-      "rank": 68,
+      "rank": 66,
       "github_id": 1123956658,
       "full_name": "backnotprop/plannotator",
       "description": "The workspace to stay in the loop and on top of agents - shape, decide, plan, annotate, review code, share with team, and send all feedback to agents with one click. ",
@@ -556,7 +545,7 @@
       "stars": 11034
     },
     {
-      "rank": 69,
+      "rank": 67,
       "github_id": 1179992305,
       "full_name": "pashov/ai-web3-security",
       "description": null,
@@ -564,7 +553,7 @@
       "stars": 654
     },
     {
-      "rank": 70,
+      "rank": 68,
       "github_id": 1425045498,
       "full_name": "EricJujianZou/rederive",
       "description": "Learn a codebase by re-deriving its design decisions yourself. A Claude Code skill.",
@@ -572,7 +561,7 @@
       "stars": 783
     },
     {
-      "rank": 71,
+      "rank": 69,
       "github_id": 1083086048,
       "full_name": "anshlambagit/Data_Engineer_Roadmap",
       "description": null,
@@ -580,15 +569,7 @@
       "stars": 1421
     },
     {
-      "rank": 72,
-      "github_id": 103370157,
-      "full_name": "hellzerg/optimizer",
-      "description": "The finest Windows Optimizer",
-      "language": "C#",
-      "stars": 18253
-    },
-    {
-      "rank": 73,
+      "rank": 70,
       "github_id": 468711303,
       "full_name": "b23r0/rust-raknet",
       "description": "A high-performance asynchronous networking library written in Rust, implementing a Reliable UDP protocol for real-time messaging.",
@@ -596,7 +577,7 @@
       "stars": 250
     },
     {
-      "rank": 74,
+      "rank": 71,
       "github_id": 1193520331,
       "full_name": "cdppcorp/KESE-KIT",
       "description": "KISA 주요정보통신기반시설 기술적 취약점 분석 평가방법 상세가이드 기반 Skills",
@@ -604,15 +585,7 @@
       "stars": 405
     },
     {
-      "rank": 75,
-      "github_id": 1397906178,
-      "full_name": "GanyuanRan/Autoloom",
-      "description": "AI coding with Aegis governance built into execution: baseline-aware changes, evidence-backed delivery. Free desktop client, your choice of model. 将哲科思维融入 AI 开发执行，让变更有依据、交付有证据。用创意编织现实。",
-      "language": "JavaScript",
-      "stars": 284
-    },
-    {
-      "rank": 76,
+      "rank": 72,
       "github_id": 445044283,
       "full_name": "wpzzz/blocked-sites-in-south-korea",
       "description": null,
@@ -620,7 +593,7 @@
       "stars": 7979
     },
     {
-      "rank": 77,
+      "rank": 73,
       "github_id": 1133203393,
       "full_name": "cporter202/vibe-coding-for-dummies",
       "description": "A beginner-friendly guide to building real software using vibe coding. Learn how to ship apps without traditional coding by using Firebase Studio, GitHub, and Cursor. No gatekeeping. No fluff. Just building.  👉 For daily lessons and real-world builds, join the Vibe Coding with Chris skool community.",
@@ -628,7 +601,7 @@
       "stars": 683
     },
     {
-      "rank": 78,
+      "rank": 74,
       "github_id": 1279885619,
       "full_name": "Cyber-note/Full-Bug-Bounty-Hunting-Methodology-2026",
       "description": "How To approach recon on real targets — from passive enumeration to origin IP discovery. Covers tools, automation, and the logic behind each phase.",
@@ -636,7 +609,7 @@
       "stars": 465
     },
     {
-      "rank": 79,
+      "rank": 75,
       "github_id": 1246488073,
       "full_name": "ModinMobileSTS/Sts2MobileLauncher",
       "description": "an unofficial sts2 mobile launcher that support mods,optimized mobile control",
@@ -644,7 +617,7 @@
       "stars": 580
     },
     {
-      "rank": 80,
+      "rank": 76,
       "github_id": 648136016,
       "full_name": "microsoft/zerotrustassessment",
       "description": "Repository for the Zero Trust Assessment project",
@@ -652,7 +625,7 @@
       "stars": 466
     },
     {
-      "rank": 81,
+      "rank": 77,
       "github_id": 1054793726,
       "full_name": "ChromeDevTools/chrome-devtools-mcp",
       "description": "Chrome DevTools for coding agents",
@@ -660,7 +633,7 @@
       "stars": 56231
     },
     {
-      "rank": 82,
+      "rank": 78,
       "github_id": 1179824727,
       "full_name": "FunplayAI/funplay-unity-mcp",
       "description": "The Most Advanced MCP Server for Unity Editor with execute_code, prompts/resources, input simulation, screenshots, and play mode automation.",
@@ -668,7 +641,7 @@
       "stars": 317
     },
     {
-      "rank": 83,
+      "rank": 79,
       "github_id": 1411223682,
       "full_name": "sorrycc/Mayoi",
       "description": "A small, fast code editor written in Go, with a native GPU-drawn UI (no webview, no Electron)",
@@ -676,7 +649,7 @@
       "stars": 475
     },
     {
-      "rank": 84,
+      "rank": 80,
       "github_id": 1189825116,
       "full_name": "GoogleChrome/modern-web-guidance",
       "description": "Keep your coding agent up to date with the latest web best practices",
@@ -684,7 +657,7 @@
       "stars": 14769
     },
     {
-      "rank": 85,
+      "rank": 81,
       "github_id": 13069638,
       "full_name": "bbidulock/icewm",
       "description": "A window manager designed for speed, usability, and consistency",
@@ -692,15 +665,7 @@
       "stars": 710
     },
     {
-      "rank": 86,
-      "github_id": 1168349769,
-      "full_name": "Sec-Link/Argus-Agentic-SOC-Platform",
-      "description": "An open source AI-native agentic SOC platform",
-      "language": "Python",
-      "stars": 1200
-    },
-    {
-      "rank": 87,
+      "rank": 82,
       "github_id": 1331177017,
       "full_name": "Sn3akyy1/lucid",
       "description": "A dynamic desktop shell for Hyprland",
@@ -708,7 +673,7 @@
       "stars": 351
     },
     {
-      "rank": 88,
+      "rank": 83,
       "github_id": 1394398089,
       "full_name": "fulldiagnose/antigravity-fixer",
       "description": "Fix Antigravity 'not eligible' error - diagnose, clean credentials, auto-fix",
@@ -716,7 +681,7 @@
       "stars": 453
     },
     {
-      "rank": 89,
+      "rank": 84,
       "github_id": 1337185304,
       "full_name": "eugeniosegala/MAKO",
       "description": "Next-generation, Vulkan-powered graphics layer for Linux gaming, bringing frame generation, scaling and more,  to Steam Deck, Steam Machine and desktop Linux.",
@@ -724,7 +689,7 @@
       "stars": 802
     },
     {
-      "rank": 90,
+      "rank": 85,
       "github_id": 684046299,
       "full_name": "OpenTenBase/OpenTenBase",
       "description": "OpenTenBase is an enterprise-level distributed HTAP open source database. ",
@@ -732,23 +697,7 @@
       "stars": 692
     },
     {
-      "rank": 91,
-      "github_id": 186016586,
-      "full_name": "franciscop/ola",
-      "description": "🌊 Smooth animation library for interpolating numbers",
-      "language": "JavaScript",
-      "stars": 1828
-    },
-    {
-      "rank": 92,
-      "github_id": 383777434,
-      "full_name": "chakra-ui/zag",
-      "description": "Build your design system in React, Solid, Vue, Svelte or Vanilla. Powered by finite state machines",
-      "language": "TypeScript",
-      "stars": 5277
-    },
-    {
-      "rank": 93,
+      "rank": 86,
       "github_id": 1386278131,
       "full_name": "crow-hq/llm-wiki-v2",
       "description": "Turn your documents into a Markdown wiki you can read, that answers with citations. Works with any LLM provider, Ollama included. CROW: 99.5% right note read vs 79%, 1.6× faster ingest, 63% fewer LLM tokens, no scaling limit.",
@@ -756,7 +705,7 @@
       "stars": 274
     },
     {
-      "rank": 94,
+      "rank": 87,
       "github_id": 1241960226,
       "full_name": "alibaba/open-code-review",
       "description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
@@ -764,7 +713,7 @@
       "stars": 51355
     },
     {
-      "rank": 95,
+      "rank": 88,
       "github_id": 1198734563,
       "full_name": "datawhalechina/llm-algo-leetcode",
       "description": "LLM algorithm practice lab with theory, solutions, and test cases.《大模型算法与系统教程》面向大模型入门到进阶的算法实战教程，覆盖原理讲解、答案解析、测试用例与 CUDA/Triton 实战。",
@@ -772,7 +721,7 @@
       "stars": 771
     },
     {
-      "rank": 96,
+      "rank": 89,
       "github_id": 956472076,
       "full_name": "mcp-use/mcp-use",
       "description": "The fullstack MCP framework to develop MCP Apps for ChatGPT / Claude & MCP Servers for AI Agents.",
@@ -780,23 +729,7 @@
       "stars": 10962
     },
     {
-      "rank": 97,
-      "github_id": 62994219,
-      "full_name": "antirez/kilo",
-      "description": "A text editor in less than 1000 LOC with syntax highlight and search.",
-      "language": "C",
-      "stars": 9238
-    },
-    {
-      "rank": 98,
-      "github_id": 430744346,
-      "full_name": "dmtrKovalenko/fframes",
-      "description": "programmatic video rendering framework that is actually fast",
-      "language": "Rust",
-      "stars": 3105
-    },
-    {
-      "rank": 99,
+      "rank": 90,
       "github_id": 486393153,
       "full_name": "stjude/learngenomics.dev",
       "description": "A guided, intuitive introduction to genomics for software engineers. Curated by the community.",
@@ -804,15 +737,7 @@
       "stars": 485
     },
     {
-      "rank": 100,
-      "github_id": 1267280589,
-      "full_name": "arvin341az-glitch/RVG",
-      "description": "Multi-protocol proxy management panel built with Python & FastAPI, deployable on Railway.",
-      "language": "Python",
-      "stars": 4348
-    },
-    {
-      "rank": 101,
+      "rank": 91,
       "github_id": 710965375,
       "full_name": "kanbn/kan",
       "description": "The open source Trello alternative.",
@@ -820,23 +745,7 @@
       "stars": 5997
     },
     {
-      "rank": 102,
-      "github_id": 7122594,
-      "full_name": "directus/directus",
-      "description": "The flexible backend for all your projects 🐰 Turn your DB into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more.",
-      "language": "TypeScript",
-      "stars": 38720
-    },
-    {
-      "rank": 103,
-      "github_id": 83657016,
-      "full_name": "snaptoken/kilo-tutorial",
-      "description": "build your own text editor",
-      "language": null,
-      "stars": 1016
-    },
-    {
-      "rank": 104,
+      "rank": 92,
       "github_id": 519202557,
       "full_name": "0xD0GF00D/DocumentSASS",
       "description": "Unofficial description of the CUDA assembly (SASS) instruction sets.",
@@ -844,7 +753,7 @@
       "stars": 279
     },
     {
-      "rank": 105,
+      "rank": 93,
       "github_id": 1179479840,
       "full_name": "BazaarPlusPlus/BazaarPlusPlus",
       "description": "A BepInEx mod for The Bazaar.",
@@ -852,7 +761,7 @@
       "stars": 340
     },
     {
-      "rank": 106,
+      "rank": 94,
       "github_id": 1182417781,
       "full_name": "yunus-0x/meridian",
       "description": null,
@@ -860,7 +769,7 @@
       "stars": 804
     },
     {
-      "rank": 107,
+      "rank": 95,
       "github_id": 1268025800,
       "full_name": "cporter202/stock-market-signal-automation",
       "description": "Build your own data-driven market edge with swing-trade signal webhooks, dashboards, alerts, AI agents, and automation examples.",
@@ -868,7 +777,7 @@
       "stars": 365
     },
     {
-      "rank": 108,
+      "rank": 96,
       "github_id": 1340608833,
       "full_name": "patterniha/Free-Configs",
       "description": null,
@@ -876,7 +785,7 @@
       "stars": 480
     },
     {
-      "rank": 109,
+      "rank": 97,
       "github_id": 849218164,
       "full_name": "tailscale-dev/ScaleTail",
       "description": "Ready-to-run Docker Compose stacks for 120+ self-hosted apps, each with a Tailscale sidecar and automatic HTTPS",
@@ -884,7 +793,7 @@
       "stars": 2265
     },
     {
-      "rank": 110,
+      "rank": 98,
       "github_id": 1098655755,
       "full_name": "SamsungLabs/LittleBit",
       "description": "Official implementation of LittleBit (NeurIPS 2025) and its follow-up LittleBit-2 (ICML 2026)",
@@ -892,7 +801,7 @@
       "stars": 358
     },
     {
-      "rank": 111,
+      "rank": 99,
       "github_id": 382496361,
       "full_name": "louislam/uptime-kuma",
       "description": "A fancy self-hosted monitoring tool",
@@ -900,39 +809,7 @@
       "stars": 94192
     },
     {
-      "rank": 112,
-      "github_id": 1296269,
-      "full_name": "octocat/Hello-World",
-      "description": "My first repository on GitHub!",
-      "language": null,
-      "stars": 3986
-    },
-    {
-      "rank": 113,
-      "github_id": 42366054,
-      "full_name": "ValveResourceFormat/ValveResourceFormat",
-      "description": "Source 2 Viewer is an all-in-one tool to browse VPK archives, view, extract, and decompile Source 2 assets, including maps, models, materials, textures, sounds, and more.",
-      "language": "C#",
-      "stars": 2574
-    },
-    {
-      "rank": 114,
-      "github_id": 163348245,
-      "full_name": "lorin/resilience-engineering",
-      "description": "Resilience engineering papers",
-      "language": null,
-      "stars": 3095
-    },
-    {
-      "rank": 115,
-      "github_id": 296670766,
-      "full_name": "hackerschoice/gsocket",
-      "description": "Connect like there is no firewall. Securely.",
-      "language": "C",
-      "stars": 1965
-    },
-    {
-      "rank": 116,
+      "rank": 100,
       "github_id": 1192464649,
       "full_name": "simple10/agents-observe",
       "description": "Real-time observability of claude code sessions & multi-agents.",
@@ -940,7 +817,7 @@
       "stars": 735
     },
     {
-      "rank": 117,
+      "rank": 101,
       "github_id": 1304895218,
       "full_name": "getkern/kern",
       "description": "Rootless container runtime with no daemon. Runs agent tool calls and LLM-generated code in kernel-enforced containers.",
@@ -948,7 +825,7 @@
       "stars": 482
     },
     {
-      "rank": 118,
+      "rank": 102,
       "github_id": 1176239066,
       "full_name": "securo-finance/securo",
       "description": "Open-source personal finance manager. Self-hosted, privacy-first.",
@@ -956,7 +833,7 @@
       "stars": 4507
     },
     {
-      "rank": 119,
+      "rank": 103,
       "github_id": 808207942,
       "full_name": "anthropics/courses",
       "description": "Anthropic's educational courses",
@@ -964,23 +841,7 @@
       "stars": 23078
     },
     {
-      "rank": 120,
-      "github_id": 11303194,
-      "full_name": "drawcall/Proton",
-      "description": "Javascript particle animation library",
-      "language": "JavaScript",
-      "stars": 2494
-    },
-    {
-      "rank": 121,
-      "github_id": 406346103,
-      "full_name": "Project-HAMi/HAMi",
-      "description": "Heterogeneous GPU Sharing on Kubernetes",
-      "language": "Go",
-      "stars": 5010
-    },
-    {
-      "rank": 122,
+      "rank": 104,
       "github_id": 657701319,
       "full_name": "Azure/AzureNamingTool",
       "description": "The Azure Naming Tool is a .NET 10 Blazor application with a RESTful API for generating and validating Azure resource names. Features include SQLite database support, drag-and-drop configuration, Azure tenant validation, and API V2 with bulk operations.",
@@ -988,7 +849,7 @@
       "stars": 624
     },
     {
-      "rank": 123,
+      "rank": 105,
       "github_id": 1051662726,
       "full_name": "reposwarm/reposwarm",
       "description": "Open-source multi-repo architecture discovery for AI coding agents. Analyze repositories, generate standardized .arch.md files, and keep them in a central results hub for agent context, onboarding and architecture reviews. GitHub, GitLab, CodeCommit, Azure DevOps and Bitbucket. Apache-2.0.",
@@ -996,15 +857,7 @@
       "stars": 294
     },
     {
-      "rank": 124,
-      "github_id": 1146647912,
-      "full_name": "hzm0321/real-time-fund",
-      "description": "基金实时估值查看",
-      "language": "JavaScript",
-      "stars": 1774
-    },
-    {
-      "rank": 125,
+      "rank": 106,
       "github_id": 1261690244,
       "full_name": "DrizzleTime/Skiff",
       "description": "Skiff is a local cross-platform disk cleanup tool for inspecting caches, applications, duplicate files, and large files before removal.",
@@ -1012,15 +865,7 @@
       "stars": 312
     },
     {
-      "rank": 126,
-      "github_id": 1252321383,
-      "full_name": "filtalgo/Filtmall-Shopping-Skill",
-      "description": "Agent-native shopping for extreme value: verifiable same-product price evidence, checkout, orders, delivery, and after-sales.",
-      "language": "Python",
-      "stars": 1178
-    },
-    {
-      "rank": 127,
+      "rank": 107,
       "github_id": 291498455,
       "full_name": "roflcoopter/viseron",
       "description": "Self-hosted, local only NVR and AI Computer Vision software.  With features such as object detection, motion detection, face recognition and more, it gives you the power to keep an eye on your home, office or any other place you want to monitor.",
@@ -1028,7 +873,7 @@
       "stars": 3725
     },
     {
-      "rank": 128,
+      "rank": 108,
       "github_id": 956105401,
       "full_name": "sonicnext-dev/MarathonRecomp",
       "description": "An unofficial PC port of the Xbox 360 version of Sonic the Hedgehog (2006) created through the process of static recompilation",
@@ -1036,7 +881,7 @@
       "stars": 804
     },
     {
-      "rank": 129,
+      "rank": 109,
       "github_id": 806879762,
       "full_name": "nolly-studio/cult-ui",
       "description": "Animated components for design engineers. 150+ free shadcn/ui components, built with Tailwind CSS and Motion. MIT licensed.",
@@ -1044,7 +889,7 @@
       "stars": 7396
     },
     {
-      "rank": 130,
+      "rank": 110,
       "github_id": 1219854771,
       "full_name": "nvbangg/awesome-morphe",
       "description": "Explore all Morphe resources, patch bundles and community projects.",
@@ -1052,7 +897,7 @@
       "stars": 516
     },
     {
-      "rank": 131,
+      "rank": 111,
       "github_id": 1360317501,
       "full_name": "achimala/dream-loop",
       "description": "Agent skill for impressive 3D visuals using Blender + image gen + subagent critic",
@@ -1060,7 +905,7 @@
       "stars": 2221
     },
     {
-      "rank": 132,
+      "rank": 112,
       "github_id": 1115426732,
       "full_name": "Gentleman-Programming/gentleman-guardian-angel",
       "description": "😇 Gentleman Guardian Angel (gga) - Provider-agnostic code review using AI. Use Claude, Gemini, Codex, Ollama to enforce your coding standards.",
@@ -1068,31 +913,7 @@
       "stars": 1330
     },
     {
-      "rank": 133,
-      "github_id": 1024717607,
-      "full_name": "madong-code/madong-admin",
-      "description": "Standard PHP Webman admin backend skeleton, with RBAC, CRUD generator, workflow and Vue3 Vben frontend.",
-      "language": "PHP",
-      "stars": 806
-    },
-    {
-      "rank": 134,
-      "github_id": 1774600,
-      "full_name": "jeremyckahn/shifty",
-      "description": "The fastest TypeScript animation engine on the web",
-      "language": "TypeScript",
-      "stars": 1567
-    },
-    {
-      "rank": 135,
-      "github_id": 76678740,
-      "full_name": "alfredfrancis/ai-chatbot-framework",
-      "description": "A lean, self-hosted AI agent that everyone can use. Each person gets an assistant with its own private computer, their files, skills, app connections and scheduled jobs.",
-      "language": "Python",
-      "stars": 2182
-    },
-    {
-      "rank": 136,
+      "rank": 113,
       "github_id": 1368589288,
       "full_name": "musicastudio/FSVR",
       "description": "Software reconstruction of the 1998 Yamaha FS1R synthesizer",
@@ -1100,7 +921,7 @@
       "stars": 342
     },
     {
-      "rank": 137,
+      "rank": 114,
       "github_id": 1050582591,
       "full_name": "ruixenui/ruixen.com",
       "description": "Ruixen UI – A modern, flexible, and customizable UI component library built for speed, scalability, and developer happiness.",
@@ -1108,7 +929,7 @@
       "stars": 279
     },
     {
-      "rank": 138,
+      "rank": 115,
       "github_id": 642065600,
       "full_name": "Anil-matcha/open-genjutsu",
       "description": "Local-first AI video recasting with draft review, explicit HD approval, and source-audio restoration.",
@@ -1116,7 +937,7 @@
       "stars": 1096
     },
     {
-      "rank": 139,
+      "rank": 116,
       "github_id": 984933258,
       "full_name": "elm1nst3r/GHOST-osint-crm",
       "description": "GHOST - Global Human Operations & Surveillance Tracking:  Open-source investigation management platform for tracking people, connections, and intelligence data. Because Excel spreadsheets are for accountants, not investigators. Non-commercial license.",
@@ -1124,15 +945,7 @@
       "stars": 951
     },
     {
-      "rank": 140,
-      "github_id": 163639063,
-      "full_name": "seanprashad/leetcode-patterns",
-      "description": "A pattern-based approach to learn technical interview questions",
-      "language": "TypeScript",
-      "stars": 14359
-    },
-    {
-      "rank": 141,
+      "rank": 117,
       "github_id": 662668284,
       "full_name": "free-explorers/veshell",
       "description": "Veshell is an innovative not-desktop environment for Linux made with modern technologies like Flutter and Rust.",
@@ -1140,7 +953,7 @@
       "stars": 689
     },
     {
-      "rank": 142,
+      "rank": 118,
       "github_id": 1303867222,
       "full_name": "veriqta/VERIQTA-PRESS",
       "description": null,
@@ -1148,7 +961,7 @@
       "stars": 528
     },
     {
-      "rank": 143,
+      "rank": 119,
       "github_id": 1295287038,
       "full_name": "GC-STEM/it140-m3-assignment",
       "description": "IT 140 Module Three assignment repository for designing a Python paycheck calculator with flowcharts and pseudocode. Uses an SDLC workflow to practice requirements analysis, decision branching, software design, and optional Python construction and testing.",
@@ -1156,7 +969,7 @@
       "stars": 582
     },
     {
-      "rank": 144,
+      "rank": 120,
       "github_id": 250829308,
       "full_name": "lartpang/MINet",
       "description": "CVPR2020, Multi-scale Interactive Network for Salient Object Detection",
@@ -1164,7 +977,7 @@
       "stars": 317
     },
     {
-      "rank": 145,
+      "rank": 121,
       "github_id": 1422314797,
       "full_name": "iam567/rich4-renew-app",
       "description": "大富翁4 重制版 App 源码（Vite + TypeScript + Capacitor iOS）",
@@ -1172,15 +985,7 @@
       "stars": 582
     },
     {
-      "rank": 146,
-      "github_id": 95995403,
-      "full_name": "lmcinnes/umap",
-      "description": "Uniform Manifold Approximation and Projection",
-      "language": "Python",
-      "stars": 8328
-    },
-    {
-      "rank": 147,
+      "rank": 122,
       "github_id": 1320258866,
       "full_name": "dulaiduwang003/Pavise-Game",
       "description": "Open-source Windows game resource manager. Suppresses background processes, gives games exclusive CPU cores, steers device interrupts off game cores, applies per-game GPU driver, memory and power policies, and restores every change after play. No injection, no telemetry. GPL-3.0.",
@@ -1188,7 +993,7 @@
       "stars": 1836
     },
     {
-      "rank": 148,
+      "rank": 123,
       "github_id": 1299769220,
       "full_name": "openai/codex-security",
       "description": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm: https://www.npmjs.com/package/@openai/codex-security",
@@ -1196,7 +1001,7 @@
       "stars": 13520
     },
     {
-      "rank": 149,
+      "rank": 124,
       "github_id": 1284449744,
       "full_name": "avenoxai/avenoxbeyin",
       "description": "Your AI second brain in one command — open-source Obsidian + Claude Code system with persistent cross-session memory. avenox.lol/beyin.md",
@@ -1204,7 +1009,7 @@
       "stars": 464
     },
     {
-      "rank": 150,
+      "rank": 125,
       "github_id": 159969464,
       "full_name": "xeokit/xeokit-sdk",
       "description": "3D BIM IFC Viewer SDK for AEC engineering applications. Open Source JavaScript Toolkit based on pure WebGL for top performance, real-world coordinates and full double precision",
@@ -1212,15 +1017,7 @@
       "stars": 965
     },
     {
-      "rank": 151,
-      "github_id": 801692911,
-      "full_name": "Kin69/EasyNotes",
-      "description": "EasyNotes: Jetpack Compose MVVM for seamless note-taking. Effortless creation, editing, and organization.",
-      "language": "Kotlin",
-      "stars": 1093
-    },
-    {
-      "rank": 152,
+      "rank": 126,
       "github_id": 948140489,
       "full_name": "agnt-gg/agnt",
       "description": "The local-first operating system for building, running, and improving AI agents, workflows, and autonomous goals.",
@@ -1228,7 +1025,7 @@
       "stars": 578
     },
     {
-      "rank": 153,
+      "rank": 127,
       "github_id": 965337009,
       "full_name": "executeautomation/mcp-database-server",
       "description": "MCP Database Server is a new MCP Server which helps connect with Sqlite, SqlServer and Posgresql Databases",
@@ -1236,7 +1033,7 @@
       "stars": 404
     },
     {
-      "rank": 154,
+      "rank": 128,
       "github_id": 1133241492,
       "full_name": "gnoviawan/troupe",
       "description": "Troupe any Agents in one UI for Claude, ChatGPT, Antigravity and 30+ more",
@@ -1244,7 +1041,7 @@
       "stars": 319
     },
     {
-      "rank": 155,
+      "rank": 129,
       "github_id": 1194218201,
       "full_name": "arcee-ai/nac",
       "description": "Give AI agents ambitious work without losing the plot. nac is an open-source harness for long-running tasks, using a central orchestrator, threads, and structured episodes to stay aligned with your intent.",
@@ -1252,23 +1049,7 @@
       "stars": 312
     },
     {
-      "rank": 156,
-      "github_id": 1264531337,
-      "full_name": "alchaincyf/fanbox",
-      "description": "vibe coding 的驾驶舱：左边文件，右边/下边终端，中间看清每一次改动。 / The cockpit for vibe coding: browse files on the left, command agents on the right, watch every change in between.",
-      "language": "JavaScript",
-      "stars": 1082
-    },
-    {
-      "rank": 157,
-      "github_id": 41609775,
-      "full_name": "diesel-rs/diesel",
-      "description": "A safe, extensible ORM and Query Builder for Rust",
-      "language": "Rust",
-      "stars": 14249
-    },
-    {
-      "rank": 158,
+      "rank": 130,
       "github_id": 1135847870,
       "full_name": "google-labs-code/stitch-skills",
       "description": "A library of Agent Skills designed to work with the Stitch MCP server. Each skill follows the Agent Skills open standard, for compatibility with coding agents such as Antigravity, Gemini CLI, Claude Code, Cursor.",
@@ -1276,55 +1057,7 @@
       "stars": 8863
     },
     {
-      "rank": 159,
-      "github_id": 232260475,
-      "full_name": "SnosMe/awakened-poe-trade",
-      "description": ":heavy_dollar_sign: :hammer: Path of Exile app for price checking",
-      "language": "TypeScript",
-      "stars": 2621
-    },
-    {
-      "rank": 160,
-      "github_id": 1166946564,
-      "full_name": "apple/python-apple-fm-sdk",
-      "description": "Python bindings for access to the on-device model at the core of Apple Intelligence through the Foundation Models framework",
-      "language": "Python",
-      "stars": 1388
-    },
-    {
-      "rank": 161,
-      "github_id": 1066783258,
-      "full_name": "BDiff/BDiff",
-      "description": "BDiff is a block-aware and accurate text-based difference tool.",
-      "language": "Python",
-      "stars": 540
-    },
-    {
-      "rank": 162,
-      "github_id": 1501185,
-      "full_name": "CreateJS/TweenJS",
-      "description": "A simple but powerful tweening / animation library for Javascript. Part of the CreateJS suite of libraries.",
-      "language": "JavaScript",
-      "stars": 3551
-    },
-    {
-      "rank": 163,
-      "github_id": 32592337,
-      "full_name": "thednp/kute.js",
-      "description": "KUTE.js is a JavaScript animation engine for modern browsers. ",
-      "language": "JavaScript",
-      "stars": 2656
-    },
-    {
-      "rank": 164,
-      "github_id": 71383857,
-      "full_name": "twosigma/flint",
-      "description": "A Time Series Library for Apache Spark",
-      "language": "Scala",
-      "stars": 1196
-    },
-    {
-      "rank": 165,
+      "rank": 131,
       "github_id": 149579867,
       "full_name": "iamtraction/ZOD",
       "description": "This is a decompression bomb (also known as zip of death or zip bomb) designed to crash or render useless the program or system reading it.",
@@ -1332,7 +1065,7 @@
       "stars": 957
     },
     {
-      "rank": 166,
+      "rank": 132,
       "github_id": 151776282,
       "full_name": "deshaw/pyflyby",
       "description": "A set of productivity tools for Python. Learn more at https://www.deshaw.com/library/desco-quansight-improving-jupyter-efficiency",
@@ -1340,15 +1073,7 @@
       "stars": 509
     },
     {
-      "rank": 167,
-      "github_id": 362361564,
-      "full_name": "ljinkai/weekly",
-      "description": "独立开发产品变现周刊，每周五发布。",
-      "language": null,
-      "stars": 3841
-    },
-    {
-      "rank": 168,
+      "rank": 133,
       "github_id": 706790096,
       "full_name": "NUS-HPC-AI-Lab/Neural-Network-Diffusion",
       "description": "We introduce a novel approach for parameter generation, named neural network parameter diffusion (p-diff), which employs a standard latent diffusion model to synthesize a new set of parameters",
@@ -1356,7 +1081,7 @@
       "stars": 916
     },
     {
-      "rank": 169,
+      "rank": 134,
       "github_id": 748870020,
       "full_name": "InvoiceShelf/InvoiceShelf",
       "description": "Open Source Invoicing Solution for Individuals & Businesses",
@@ -1364,7 +1089,7 @@
       "stars": 2011
     },
     {
-      "rank": 170,
+      "rank": 135,
       "github_id": 909666349,
       "full_name": "karimz1/imgcompress",
       "description": "Imgcompress is a self-hosted image processing toolbox that handles compression, format conversion, and AI background removal in a single web interface. It supports over 70 input formats (including PSD, HEIC, and RAW) and can output common formats or generate PDFs, all without sending files to external services.",
@@ -1372,7 +1097,7 @@
       "stars": 363
     },
     {
-      "rank": 171,
+      "rank": 136,
       "github_id": 1042203078,
       "full_name": "P90-RushB/AgentArk",
       "description": "A General-Purpose Environment Framework for Scalable Multimodal Agent Evaluation and RL",
@@ -1380,7 +1105,7 @@
       "stars": 276
     },
     {
-      "rank": 172,
+      "rank": 137,
       "github_id": 1113373470,
       "full_name": "n2ns/antigravity-panel",
       "description": "Quota monitor & cache manager for Google Antigravity IDE: Gemini/Claude/GPT quota and weekly limits, usage trends with runway prediction, conversation context window monitor, Brain/Code Tracker cache cleanup, auto-accept mode, AI commit message generator. 15 languages.",
@@ -1388,7 +1113,7 @@
       "stars": 767
     },
     {
-      "rank": 173,
+      "rank": 138,
       "github_id": 1147114646,
       "full_name": "mirarr-app/network-checker",
       "description": "Sets of tools to help bypass DPI",
@@ -1396,7 +1121,7 @@
       "stars": 903
     },
     {
-      "rank": 174,
+      "rank": 139,
       "github_id": 1150205195,
       "full_name": "pardnchiu/Agenvoy",
       "description": "A local AI agent harness in Go that runs 24/7 with auto-built tools, MCP, and Ollama",
@@ -1404,7 +1129,7 @@
       "stars": 603
     },
     {
-      "rank": 175,
+      "rank": 140,
       "github_id": 1248486524,
       "full_name": "xm486/YukiHub",
       "description": "YukiHub is a Galgame management tool for Android that supports synchronization of local games, shortcuts, and play records. The project uses the GPL-3.0 open-source license.",
@@ -1412,7 +1137,7 @@
       "stars": 581
     },
     {
-      "rank": 176,
+      "rank": 141,
       "github_id": 1299249091,
       "full_name": "Aletheore/Aletheore",
       "description": "Open source (AGPL-3.0) evidence-grounded repository audit CLI - deterministic scanner, MCP server, live dashboard, and a GitHub Action that posts PR diffs.",
@@ -1420,7 +1145,7 @@
       "stars": 478
     },
     {
-      "rank": 177,
+      "rank": 142,
       "github_id": 1361583010,
       "full_name": "MoshiurRahmanAdib/Conflux-Icon-Theme",
       "description": "A beautiful, modern, and neutral Linux icon theme that makes all icons feel at home together.",
@@ -1428,7 +1153,7 @@
       "stars": 278
     },
     {
-      "rank": 178,
+      "rank": 143,
       "github_id": 1301096983,
       "full_name": "amoghmunikote/cmpunlocker",
       "description": "A tool to unlobotomize your NVIDIA card!",
@@ -1436,7 +1161,7 @@
       "stars": 901
     },
     {
-      "rank": 179,
+      "rank": 144,
       "github_id": 902186690,
       "full_name": "VonChange/utao",
       "description": "油桃TV 电视浏览器 可看各大卫视CCTV直播 无需电视VIP 适配爱奇艺等主流视频平台",
@@ -1444,7 +1169,7 @@
       "stars": 4600
     },
     {
-      "rank": 180,
+      "rank": 145,
       "github_id": 1158230536,
       "full_name": "TeamAIQ/Colab-notebooks",
       "description": "Collection of Free Google Colab and Kaggle notebooks for AI tools.",
@@ -1452,7 +1177,7 @@
       "stars": 638
     },
     {
-      "rank": 181,
+      "rank": 146,
       "github_id": 916009087,
       "full_name": "rowboatlabs/rowboat",
       "description": "Your agent team, in one group chat.",
@@ -1460,15 +1185,7 @@
       "stars": 18248
     },
     {
-      "rank": 182,
-      "github_id": 182211614,
-      "full_name": "reddelexc/hackerone-reports",
-      "description": "Top disclosed reports from HackerOne",
-      "language": "Python",
-      "stars": 6694
-    },
-    {
-      "rank": 183,
+      "rank": 147,
       "github_id": 194985543,
       "full_name": "IgorMundstein/WinMemoryCleaner",
       "description": "This free RAM cleaner uses native Windows features to optimize memory areas. It's a compact, portable, and smart application.",
@@ -1476,23 +1193,7 @@
       "stars": 5350
     },
     {
-      "rank": 184,
-      "github_id": 35515847,
-      "full_name": "firehol/blocklist-ipsets",
-      "description": "ipsets dynamically updated with firehol's update-ipsets.sh script",
-      "language": "Shell",
-      "stars": 3983
-    },
-    {
-      "rank": 185,
-      "github_id": 509475567,
-      "full_name": "ShisatoYano/AutonomousVehicleControlBeginnersGuide",
-      "description": "Learn autonomous driving by building it: Python simulations and an open textbook where the system grows one stage at a time. Swap and compare localization, planning and control algorithms in the same system.",
-      "language": "Python",
-      "stars": 1954
-    },
-    {
-      "rank": 186,
+      "rank": 148,
       "github_id": 1401219750,
       "full_name": "openqodex/openqodex",
       "description": "Open source AI code review for coding agents. A separate reviewer checks every change your agent writes before you push, in Claude Code, Codex, Cursor and Cline. No account or key of its own.",
@@ -1500,23 +1201,7 @@
       "stars": 1188
     },
     {
-      "rank": 187,
-      "github_id": 319882935,
-      "full_name": "Hackl0us/GeoIP2-CN",
-      "description": "小巧精悍、准确、实用 GeoIP2 数据库",
-      "language": "Go",
-      "stars": 7455
-    },
-    {
-      "rank": 188,
-      "github_id": 337414495,
-      "full_name": "nhost/nhost",
-      "description": "The Open Source Firebase Alternative with GraphQL.",
-      "language": "Go",
-      "stars": 9388
-    },
-    {
-      "rank": 189,
+      "rank": 149,
       "github_id": 527397449,
       "full_name": "winstonyym/urbanity",
       "description": "A network-based python package to understand and model urban complexity",
@@ -1524,7 +1209,7 @@
       "stars": 244
     },
     {
-      "rank": 190,
+      "rank": 150,
       "github_id": 622102745,
       "full_name": "Hound-Media-Server/hound",
       "description": "All-in-one Media Server—Find, watch, track, and manage your media",
@@ -1532,31 +1217,7 @@
       "stars": 490
     },
     {
-      "rank": 191,
-      "github_id": 784266290,
-      "full_name": "argoproj-labs/gitops-promoter",
-      "description": "GitOps Environment Promotion tool that lets you focus on the \"what,\" not the \"how\"",
-      "language": "Go",
-      "stars": 794
-    },
-    {
-      "rank": 192,
-      "github_id": 844738531,
-      "full_name": "instantdb/instant",
-      "description": "Instant is the best backend for AI-coded apps.  You get auth, permissions, storage, presence, and streams — everything you need to ship apps your users will love.",
-      "language": "TypeScript",
-      "stars": 10572
-    },
-    {
-      "rank": 193,
-      "github_id": 1004995740,
-      "full_name": "winfunc/opcode",
-      "description": "A powerful GUI app and Toolkit for Claude Code - Create custom agents, manage interactive Claude Code sessions, run secure background agents, and more.",
-      "language": "TypeScript",
-      "stars": 22449
-    },
-    {
-      "rank": 194,
+      "rank": 151,
       "github_id": 1101565931,
       "full_name": "xanderchinxyz/OpenGhost",
       "description": "An aesthetic Pepper's Ghost Display",
@@ -1564,7 +1225,7 @@
       "stars": 415
     },
     {
-      "rank": 195,
+      "rank": 152,
       "github_id": 1163665991,
       "full_name": "BryanHoo/FeedFuse",
       "description": null,
@@ -1572,7 +1233,7 @@
       "stars": 552
     },
     {
-      "rank": 196,
+      "rank": 153,
       "github_id": 1265380989,
       "full_name": "sandeco/mira-animator",
       "description": "Agentes e templates para criação de slides animados com D3.js em HTML",
@@ -1580,7 +1241,7 @@
       "stars": 246
     },
     {
-      "rank": 197,
+      "rank": 154,
       "github_id": 1311085469,
       "full_name": "ThinkFlowLab/agentdescent",
       "description": "Gradient descent, but the parameters are agents — a parallel, asynchronous framework for self-evolving agents (skills, prompts, harnesses). Diffs are the gradients; the aggregator is the optimizer.",
@@ -1588,7 +1249,7 @@
       "stars": 215
     },
     {
-      "rank": 198,
+      "rank": 155,
       "github_id": 1333398773,
       "full_name": "smontlouis/bible-strong-avatar-lab",
       "description": null,
@@ -1596,7 +1257,7 @@
       "stars": 1153
     },
     {
-      "rank": 199,
+      "rank": 156,
       "github_id": 1198251684,
       "full_name": "H-mmer/pentest-agents",
       "description": "Bug bounty agent framework for Claude Code, Codex, Gemini, Cursor, Windsurf, Copilot, and OpenClaw — 48 agents, 26 commands, 19 CLI tools, 2 MCP servers, autonomous hunt loops, exploit chain builder.",
@@ -1604,7 +1265,7 @@
       "stars": 1110
     },
     {
-      "rank": 200,
+      "rank": 157,
       "github_id": 1196304209,
       "full_name": "suyuan2022/suyuan-skill",
       "description": "夙愿反复打磨的精品 Skill",
@@ -1612,7 +1273,7 @@
       "stars": 553
     },
     {
-      "rank": 201,
+      "rank": 158,
       "github_id": 948019708,
       "full_name": "UniClipboard/UniClipboard",
       "description": "Real-time clipboard sync across all your devices — local-first, peer-to-peer, and end-to-end encrypted. No account. No cloud dependency. No central server.",
@@ -1620,15 +1281,7 @@
       "stars": 2036
     },
     {
-      "rank": 202,
-      "github_id": 437453799,
-      "full_name": "OIerDb-ng/OIerDb",
-      "description": "A database for Chinese OI participants.",
-      "language": "TypeScript",
-      "stars": 1030
-    },
-    {
-      "rank": 203,
+      "rank": 159,
       "github_id": 1206531299,
       "full_name": "heartleo/zlib",
       "description": "A command-line tool for Z-Library. Search, download, send to Kindle and WeRead, and integrate with AI agents.",
@@ -1636,7 +1289,7 @@
       "stars": 1946
     },
     {
-      "rank": 204,
+      "rank": 160,
       "github_id": 1361439328,
       "full_name": "Edge0-AI/Edge0",
       "description": "Device-native foundation models: 145B on a laptop, 35B on a phone. Latent MoE, SSD-streamed weights, a router that predicts loads a step ahead. Mac, iPhone, Android, Windows.",
@@ -1644,15 +1297,7 @@
       "stars": 11425
     },
     {
-      "rank": 205,
-      "github_id": 147919799,
-      "full_name": "yandexdataschool/nlp_course",
-      "description": "YSDA course in Natural Language Processing",
-      "language": "Jupyter Notebook",
-      "stars": 10787
-    },
-    {
-      "rank": 206,
+      "rank": 161,
       "github_id": 1306774368,
       "full_name": "MobAI-App/simslim",
       "description": "Run more iOS simulators on one Mac by disabling background daemons a simulator doesn't need",
@@ -1660,7 +1305,7 @@
       "stars": 3754
     },
     {
-      "rank": 207,
+      "rank": 162,
       "github_id": 1126805411,
       "full_name": "NORMAL-EX/LetRecovery",
       "description": "一款免费开源的 Windows 系统重装工具",
@@ -1668,7 +1313,7 @@
       "stars": 2554
     },
     {
-      "rank": 208,
+      "rank": 163,
       "github_id": 538444958,
       "full_name": "A-poc/RedTeam-Tools",
       "description": "Tools and Techniques for Red Team / Penetration Testing",
@@ -1676,15 +1321,7 @@
       "stars": 10124
     },
     {
-      "rank": 209,
-      "github_id": 61231339,
-      "full_name": "raysan5/raygui",
-      "description": "A simple and easy-to-use immediate-mode gui library",
-      "language": "C",
-      "stars": 5281
-    },
-    {
-      "rank": 210,
+      "rank": 164,
       "github_id": 1231387029,
       "full_name": "RareSense/Nova3D",
       "description": "Design workspace for programmable 3D. Nova builds assets and worlds as editable, versioned programs: parametric, articulated and simulation-ready, compiled to CAD tools, 3D applications and robotics simulators.",
@@ -1692,7 +1329,7 @@
       "stars": 763
     },
     {
-      "rank": 211,
+      "rank": 165,
       "github_id": 1149257427,
       "full_name": "dotnet/skills",
       "description": "Repository for skills to assist AI coding agents with .NET and C#",
@@ -1700,7 +1337,7 @@
       "stars": 6179
     },
     {
-      "rank": 212,
+      "rank": 166,
       "github_id": 509050256,
       "full_name": "ninxsoft/Mist",
       "description": "A Mac utility that automatically downloads macOS Firmwares / Installers.",
@@ -1708,31 +1345,7 @@
       "stars": 5388
     },
     {
-      "rank": 213,
-      "github_id": 746824024,
-      "full_name": "Point72/csp",
-      "description": "csp is a high performance reactive stream processing library, written in C++ and Python",
-      "language": "Python",
-      "stars": 475
-    },
-    {
-      "rank": 214,
-      "github_id": 913301149,
-      "full_name": "svatostop/anthrax-ai",
-      "description": null,
-      "language": "C++",
-      "stars": 499
-    },
-    {
-      "rank": 215,
-      "github_id": 1310162837,
-      "full_name": "RongleCat/grok-app",
-      "description": "Open-source Grok App — desktop workbench (GUI) for the local Grok Build CLI: sessions, projects, media, automations. Tauri 2.",
-      "language": "TypeScript",
-      "stars": 1538
-    },
-    {
-      "rank": 216,
+      "rank": 167,
       "github_id": 1296688895,
       "full_name": "Helldez/BigMoeOnEdge",
       "description": "Run MoE models bigger than your RAM. Frontier-size MoE on a phone, laptop, edge. Lossless, on stock llama.cpp. An adaptive streaming optimizer. Any hardware, any OS, any model, any quantization, behind a local OpenAI-compatible server.",
@@ -1740,7 +1353,7 @@
       "stars": 850
     },
     {
-      "rank": 217,
+      "rank": 168,
       "github_id": 1223203605,
       "full_name": "konaxia548/bili-ticket-go",
       "description": "b站 bilibili 会员购 抢票 蹲票 工具 脚本 程序 自动抢票软件 辅助工具 | Web UI 可视化 | 高性能 多账号 并发 | 星铁land | bw | cp cp32 | comicup | bilibiliworld | bilibili world | bw2026 | 支持hot project (ctoken) | 鹰角 嘉年华 绝区零 zzz fes | bw2026 可用",
@@ -1748,55 +1361,7 @@
       "stars": 303
     },
     {
-      "rank": 218,
-      "github_id": 2136580,
-      "full_name": "imagej/ImageJ",
-      "description": "Public domain software for processing and analyzing scientific images",
-      "language": "Java",
-      "stars": 809
-    },
-    {
-      "rank": 219,
-      "github_id": 3276212,
-      "full_name": "imagej/imagej2",
-      "description": "Open scientific N-dimensional image processing :microscope: :sparkler:",
-      "language": "Java",
-      "stars": 1428
-    },
-    {
-      "rank": 220,
-      "github_id": 114193084,
-      "full_name": "browserutils/kooky",
-      "description": "Go code to read cookies from browser cookie stores.",
-      "language": "Go",
-      "stars": 307
-    },
-    {
-      "rank": 221,
-      "github_id": 225626078,
-      "full_name": "pnlpal/dictionariez",
-      "description": "📚 A customizable dictionary extension that supports double-click lookups in 20+ languages, 1000+ dictionaries, text-to-speech, translation and Anki integration.",
-      "language": "JavaScript",
-      "stars": 697
-    },
-    {
-      "rank": 222,
-      "github_id": 653824912,
-      "full_name": "vimpop/UCraft",
-      "description": "A minecraft server implementation written in C for machines with limited resources. ",
-      "language": "C",
-      "stars": 533
-    },
-    {
-      "rank": 223,
-      "github_id": 753951348,
-      "full_name": "servo/stylo",
-      "description": "CSS engine that powers Servo and Firefox",
-      "language": "Rust",
-      "stars": 361
-    },
-    {
-      "rank": 224,
+      "rank": 169,
       "github_id": 794771817,
       "full_name": "Neo-Kitchenfox/Geckium",
       "description": "Chrome 1 - 58 theme for Firefox 115+",
@@ -1804,63 +1369,7 @@
       "stars": 692
     },
     {
-      "rank": 225,
-      "github_id": 823447754,
-      "full_name": "0xfdf/toraniko",
-      "description": "A multi-factor equity risk model for quantitative trading.",
-      "language": "Python",
-      "stars": 993
-    },
-    {
-      "rank": 226,
-      "github_id": 890972577,
-      "full_name": "ScrollPrize/villa",
-      "description": "The Vesuvius Challenge monorepo",
-      "language": "Python",
-      "stars": 382
-    },
-    {
-      "rank": 227,
-      "github_id": 1002344408,
-      "full_name": "xiao-zaiyi/illa-helper",
-      "description": "浸入式学语言助手 (Immersive Language Learning Assistant)",
-      "language": "TypeScript",
-      "stars": 2920
-    },
-    {
-      "rank": 228,
-      "github_id": 1113749056,
-      "full_name": "caigg188/LDStatusPro",
-      "description": "一款功能强大的 Linux.do 社区增强工具以及相关综合服务开源项目。包含论坛辅助脚本、LD 士多前端源码、LDStatusPro官网源码等。",
-      "language": "Vue",
-      "stars": 1233
-    },
-    {
-      "rank": 229,
-      "github_id": 1175442678,
-      "full_name": "zqiren/Orbital",
-      "description": "Context is yours. Agents are replaceable.",
-      "language": "Python",
-      "stars": 986
-    },
-    {
-      "rank": 230,
-      "github_id": 1196282614,
-      "full_name": "mahonzhan/awesome-coding-plan",
-      "description": "各厂家 Coding Plan 实际价值对比",
-      "language": "SCSS",
-      "stars": 2944
-    },
-    {
-      "rank": 231,
-      "github_id": 1330983832,
-      "full_name": "google-research/pointdit",
-      "description": "[ICML'26] PointDiT: Pixel-Space Diffusion for Monocular Geometry Estimation",
-      "language": "Python",
-      "stars": 254
-    },
-    {
-      "rank": 232,
+      "rank": 170,
       "github_id": 1284174979,
       "full_name": "YTwsy/OpenSurge-for-Mac",
       "description": "Surge-style whole-home gateway and control plane for macOS with IPv4/IPv6 support— mihomo TUN, dnsmasq-powered DHCP/DNS, per-device routing, and an agent-friendly validation workspace.",
@@ -1868,7 +1377,7 @@
       "stars": 2677
     },
     {
-      "rank": 233,
+      "rank": 171,
       "github_id": 1112791885,
       "full_name": "Ozark-Connect/NetworkOptimizer",
       "description": "Self-hosted optimization, monitoring (NMS), and security audit tool for UniFi Networks. Includes Wi-Fi Optimizer for wireless health scoring and channel optimization, advanced DNS/VLAN/firewall security checks, config optimization suggestions, centralized WAN and LAN speed test server w/ L2 tracing, CM, ONT, SFP, 5G modem stats +more.​​​​​​​​​​​​​",
@@ -1876,7 +1385,7 @@
       "stars": 1283
     },
     {
-      "rank": 234,
+      "rank": 172,
       "github_id": 1256617996,
       "full_name": "Floxu1/UAC-SNI-Spoofer-Android",
       "description": "Android SNI spoofing VPN tool with VLESS/Trojan config runner, SNI scanner, auto best-ping config selection, Xray, tun2socks, and live logs.",
@@ -1884,7 +1393,7 @@
       "stars": 683
     },
     {
-      "rank": 235,
+      "rank": 173,
       "github_id": 979392131,
       "full_name": "ag-ui-protocol/ag-ui",
       "description": "AG-UI: the Agent-User Interaction Protocol. Bring Agents into Frontend Applications.",
@@ -1892,31 +1401,7 @@
       "stars": 17309
     },
     {
-      "rank": 236,
-      "github_id": 464415161,
-      "full_name": "getlago/lago",
-      "description": "Open Source Metering and Usage Based Billing API ⭐️ Consumption tracking, Subscription management, Pricing iterations, Payment orchestration & Revenue analytics",
-      "language": "Go",
-      "stars": 10854
-    },
-    {
-      "rank": 237,
-      "github_id": 639599253,
-      "full_name": "feldera/feldera",
-      "description": "The Feldera Incremental Computation Engine",
-      "language": "Rust",
-      "stars": 2176
-    },
-    {
-      "rank": 238,
-      "github_id": 1159334324,
-      "full_name": "piomin/claude-ai-spring-boot",
-      "description": "Claude Code template for Spring Boot and cloud native ecosystem",
-      "language": null,
-      "stars": 1464
-    },
-    {
-      "rank": 239,
+      "rank": 174,
       "github_id": 1288899009,
       "full_name": "OpenMinis/iCTRL",
       "description": "An AI-friendly iOS/iPadOS automation testing tool built on XCUITest, but more than a testing tool: agents like Codex, Claude Code, Hermes, OpenClaw and Minis can operate your iPhone or iPad wirelessly through an encrypted JSON-RPC 2.0 API (tap, type, read the screen, launch apps, and more).",
@@ -1924,7 +1409,7 @@
       "stars": 610
     },
     {
-      "rank": 240,
+      "rank": 175,
       "github_id": 582248876,
       "full_name": "chocoford/ExcalidrawZ",
       "description": "Excalidraw app for mac. Powered by pure SwiftUI.",
@@ -1932,7 +1417,7 @@
       "stars": 1898
     },
     {
-      "rank": 241,
+      "rank": 176,
       "github_id": 474541254,
       "full_name": "nikivanov/mural",
       "description": "Mural - a low cost wall plotter",
@@ -1940,7 +1425,7 @@
       "stars": 621
     },
     {
-      "rank": 242,
+      "rank": 177,
       "github_id": 1432002655,
       "full_name": "sloemo01/diorama",
       "description": "Playbook and Three.js code kit for detailed dioramas: classic pixel art, stroked toon or pixel + stroke; two intake gates for look and model sourcing; free orbit, palette snap and ink; animated toy-scale cast; per-entity frame QA.",
@@ -1948,7 +1433,7 @@
       "stars": 506
     },
     {
-      "rank": 243,
+      "rank": 178,
       "github_id": 1229774092,
       "full_name": "elementalsouls/Claude-BugHunter",
       "description": "A Claude Code skill bundle for bug hunting and external red-team work - 82 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.",
@@ -1956,39 +1441,7 @@
       "stars": 5831
     },
     {
-      "rank": 244,
-      "github_id": 395283401,
-      "full_name": "kubescape/kubescape",
-      "description": "Kubescape is an open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters. It includes risk analysis, security, compliance, and misconfiguration scanning, saving Kubernetes users and administrators precious time, effort, and resources.",
-      "language": "Go",
-      "stars": 11899
-    },
-    {
-      "rank": 245,
-      "github_id": 15122806,
-      "full_name": "google/benchmark",
-      "description": "A microbenchmark support library",
-      "language": "C++",
-      "stars": 10517
-    },
-    {
-      "rank": 246,
-      "github_id": 311688903,
-      "full_name": "FoxxMD/multi-scrobbler",
-      "description": "Scrobble plays from multiple sources to multiple clients",
-      "language": "TypeScript",
-      "stars": 1317
-    },
-    {
-      "rank": 247,
-      "github_id": 721287807,
-      "full_name": "MlgmXyysd/Xiaomi-HyperOS-BootLoader-Bypass",
-      "description": "A PoC that exploits a vulnerability to bypass the Xiaomi HyperOS community restrictions of BootLoader unlocked account bindings.",
-      "language": "PHP",
-      "stars": 4836
-    },
-    {
-      "rank": 248,
+      "rank": 179,
       "github_id": 1410924984,
       "full_name": "GabrieleLozupone/kokon",
       "description": "Edit photos by describing the change, on your own GPU. A free, open-source alternative to Nano Banana and ChatGPT image editing: photos stay on your computer, no daily limit. One installer for Windows, Mac and Linux sets up the best open model (Qwen-Image 2.1). MCP server for AI agents.",
@@ -1996,15 +1449,7 @@
       "stars": 408
     },
     {
-      "rank": 249,
-      "github_id": 1254102663,
-      "full_name": "liyue-aigc/female-portrait-director",
-      "description": "A modular Codex Skill for directing and expanding detailed AI female portrait prompts.",
-      "language": null,
-      "stars": 1716
-    },
-    {
-      "rank": 250,
+      "rank": 180,
       "github_id": 1402653178,
       "full_name": "10291124jcjc-dotcom/ai-character-swap",
       "description": null,
@@ -2012,7 +1457,7 @@
       "stars": 260
     },
     {
-      "rank": 251,
+      "rank": 181,
       "github_id": 931354511,
       "full_name": "oomol-lab/pdf-craft",
       "description": "PDF craft can convert PDF files into various other formats. This project will focus on processing PDF files of scanned books.",
@@ -2020,7 +1465,7 @@
       "stars": 6698
     },
     {
-      "rank": 252,
+      "rank": 182,
       "github_id": 1293290940,
       "full_name": "s0ld13rr/pentestcode",
       "description": "PentestCode - Multi-agent AI penetration testing system with persistent engagement state, strategic coordination, and parallel autonomous operations.",
@@ -2028,7 +1473,7 @@
       "stars": 993
     },
     {
-      "rank": 253,
+      "rank": 183,
       "github_id": 1306128367,
       "full_name": "andrewyng/openworker",
       "description": null,
@@ -2036,215 +1481,7 @@
       "stars": 19206
     },
     {
-      "rank": 254,
-      "github_id": 17035121,
-      "full_name": "analogdevicesinc/hdl",
-      "description": "HDL libraries and projects",
-      "language": "Tcl",
-      "stars": 2068
-    },
-    {
-      "rank": 255,
-      "github_id": 28641272,
-      "full_name": "lume/lume",
-      "description": "GPU-powered 3D HTML. ✨🧊 <lume-box size=\"1 2 3\">",
-      "language": "TypeScript",
-      "stars": 1537
-    },
-    {
-      "rank": 256,
-      "github_id": 34359697,
-      "full_name": "google/earthengine-api",
-      "description": "Python and JavaScript bindings for calling the Earth Engine API.",
-      "language": "JavaScript",
-      "stars": 3490
-    },
-    {
-      "rank": 257,
-      "github_id": 124257233,
-      "full_name": "pmndrs/react-spring",
-      "description": "✌️ A spring physics based React animation library",
-      "language": "TypeScript",
-      "stars": 29286
-    },
-    {
-      "rank": 258,
-      "github_id": 181352945,
-      "full_name": "Findomain/Findomain",
-      "description": "The fastest and complete solution for domain recognition. Supports screenshoting, port scan, HTTP check, data import from other tools, subdomain monitoring, alerts via Discord, Slack and Telegram, multiple API Keys for sources and much more.",
-      "language": "Rust",
-      "stars": 3824
-    },
-    {
-      "rank": 259,
-      "github_id": 223824546,
-      "full_name": "chiphuyen/machine-learning-systems-design",
-      "description": "A booklet on machine learning systems design with exercises. NOT the repo for the book \"Designing Machine Learning Systems\", which is `dmls-book`",
-      "language": "HTML",
-      "stars": 10734
-    },
-    {
-      "rank": 260,
-      "github_id": 288394937,
-      "full_name": "pAulseperformance/awesome-pinescript",
-      "description": "A Comprehensive Collection of Everything Related to Tradingview Pine Script. ",
-      "language": null,
-      "stars": 1965
-    },
-    {
-      "rank": 261,
-      "github_id": 334380185,
-      "full_name": "neil-pan-s/one-quant-doc",
-      "description": "缠中说禅-缠论技术分析 实时自动笔段画线、中枢标识 递归分析整体走势 作为买卖分析参考",
-      "language": "Python",
-      "stars": 615
-    },
-    {
-      "rank": 262,
-      "github_id": 335557022,
-      "full_name": "LSPosed/DisableFlagSecure",
-      "description": null,
-      "language": "Java",
-      "stars": 1414
-    },
-    {
-      "rank": 263,
-      "github_id": 425159471,
-      "full_name": "dibingfa/flash-linux0.11-talk",
-      "description": "你管这破玩意叫操作系统源码 — 像小说一样品读 Linux 0.11 核心代码",
-      "language": "HTML",
-      "stars": 22699
-    },
-    {
-      "rank": 264,
-      "github_id": 704051214,
-      "full_name": "lucahammer/tweetXer",
-      "description": "Delete all your Tweets for free",
-      "language": "JavaScript",
-      "stars": 1359
-    },
-    {
-      "rank": 265,
-      "github_id": 732431229,
-      "full_name": "founded-labs/react-native-reusables",
-      "description": "Bringing shadcn/ui to React Native. Beautifully crafted components with Nativewind/Uniwind, open source, and almost as easy to use.",
-      "language": "TypeScript",
-      "stars": 8732
-    },
-    {
-      "rank": 266,
-      "github_id": 797178571,
-      "full_name": "liebharc/homr",
-      "description": "homr is an Optical Music Recognition (OMR) software designed to transform camera pictures of sheet music into machine-readable MusicXML format.",
-      "language": "Jupyter Notebook",
-      "stars": 478
-    },
-    {
-      "rank": 267,
-      "github_id": 830442059,
-      "full_name": "OpenTenBase/TXSQL",
-      "description": null,
-      "language": "C++",
-      "stars": 460
-    },
-    {
-      "rank": 268,
-      "github_id": 980905149,
-      "full_name": "VoidenHQ/voiden",
-      "description": "Design, Test and Document APIs in plain Markdown. Compose Requests with API blocks. Reuse, Replace & Version everything just like code. Offline, Truly Git Native, No Lock-in.",
-      "language": "TypeScript",
-      "stars": 1815
-    },
-    {
-      "rank": 269,
-      "github_id": 1002632705,
-      "full_name": "Exaphis/mutube",
-      "description": "Remove ads and add SponsorBlock on Apple TV.",
-      "language": "Python",
-      "stars": 613
-    },
-    {
-      "rank": 270,
-      "github_id": 1005308815,
-      "full_name": "samqin123/MoonTV",
-      "description": null,
-      "language": "TypeScript",
-      "stars": 2140
-    },
-    {
-      "rank": 271,
-      "github_id": 1031796362,
-      "full_name": "baochip/baochip-1x",
-      "description": "Baochip 1x Silicon",
-      "language": "SystemVerilog",
-      "stars": 499
-    },
-    {
-      "rank": 272,
-      "github_id": 1109308402,
-      "full_name": "Jamonygr/azure-landing-zone-lab",
-      "description": "Learn Azure infrastructure with this hands-on Terraform lab. Deploys a complete enterprise environment with hub-spoke networking, firewall, VPN, identity services, and production workloads. Great for training, certifications, and PoCs.",
-      "language": "HCL",
-      "stars": 247
-    },
-    {
-      "rank": 273,
-      "github_id": 1122120089,
-      "full_name": "tronghieuit/v-tts",
-      "description": "The lightest Vietnamese Text-to-Speech with Multi-Speaker TTS and Zero-Shot Voice Cloning.",
-      "language": "Python",
-      "stars": 404
-    },
-    {
-      "rank": 274,
-      "github_id": 1170023059,
-      "full_name": "CodeBySonu95/VoxSherpa-TTS",
-      "description": "🎙️ VoxSherpa TTS   Offline Neural Text-to-Speech Engine for Android  ⚡ Sherpa-ONNX powered   🔊 Natural voice synthesis   📱 Fully offline processing   🚀 No cloud • No limits",
-      "language": "Java",
-      "stars": 298
-    },
-    {
-      "rank": 275,
-      "github_id": 1170160142,
-      "full_name": "1345695/edcloudwasm",
-      "description": "edcloud_wasm",
-      "language": "JavaScript",
-      "stars": 233
-    },
-    {
-      "rank": 276,
-      "github_id": 1184935822,
-      "full_name": "Hainrixz/whatsapp-agentkit",
-      "description": "Construye tu agente de WhatsApp con IA en menos de 30 minutos. Claude Code te entrevista y escribe todo el código. Zernio o Meta Cloud API. Sin saber programar.",
-      "language": "Python",
-      "stars": 566
-    },
-    {
-      "rank": 277,
-      "github_id": 1304960085,
-      "full_name": "guardana/guardana",
-      "description": "Open-source AI security verification for model artifacts, live endpoints, MCP servers, and recorded agent traces. Reproducible evidence for release decisions.",
-      "language": "Python",
-      "stars": 224
-    },
-    {
-      "rank": 278,
-      "github_id": 1315148422,
-      "full_name": "dondai44423/bladebro",
-      "description": "A Fully free agentic browser driver for AI , few tools, full control, real stealth, top-tier token efficiency.",
-      "language": "Rust",
-      "stars": 358
-    },
-    {
-      "rank": 279,
-      "github_id": 1340676550,
-      "full_name": "wangmiaozero/pi-harness",
-      "description": "The operational superset of Pi Coding Agent — everything Pi, plus observability, governance, recovery, evaluation and multi-agent orchestration. Pi Coding Agent 的运维超集——完整继承 Pi 的核心能力，并进一步扩展可观测性、治理、故障恢复、评估和多 Agent 编排。",
-      "language": "TypeScript",
-      "stars": 385
-    },
-    {
-      "rank": 280,
+      "rank": 184,
       "github_id": 322921248,
       "full_name": "LibreTranslate/LibreTranslate",
       "description": "Free and Open Source Machine Translation API. Self-hosted, offline capable and easy to setup.",
@@ -2252,7 +1489,7 @@
       "stars": 17708
     },
     {
-      "rank": 281,
+      "rank": 185,
       "github_id": 1286259422,
       "full_name": "laobamac/MirageWallpaper",
       "description": "The most perfect live wallpaper engine for macOS, supporting web/video/scene wallpaper",
@@ -2260,15 +1497,7 @@
       "stars": 644
     },
     {
-      "rank": 282,
-      "github_id": 729255101,
-      "full_name": "OpenCloudGaming/OpenNOW",
-      "description": "Custom GeForce Now Client Named OpenNOW",
-      "language": "Rust",
-      "stars": 3580
-    },
-    {
-      "rank": 283,
+      "rank": 186,
       "github_id": 1118297842,
       "full_name": "antithesishq/bombadil",
       "description": "Property-based testing for web and terminal UIs",
@@ -2276,15 +1505,7 @@
       "stars": 1738
     },
     {
-      "rank": 284,
-      "github_id": 1170037043,
-      "full_name": "wuyoscar/Internal-Safety-Collapse",
-      "description": "[NeurIPS 2026] Safety failures in coding agents and frontier LLMs. Reproducible workspaces for studying when AI agents generate unsafe data during task completion.",
-      "language": "Python",
-      "stars": 2620
-    },
-    {
-      "rank": 285,
+      "rank": 187,
       "github_id": 1229492049,
       "full_name": "KevRojo/Dulus",
       "description": "Dulus Ai — Agentic AI, 100% cache hit rate, Dulus is made to save you money [Gui, Web, Cli, Telegram, 2,000 MCP, 100K Skills . LiteLLM (100+ providers), local models via Ollama, /lang in 34 languages, Mesa Redonda, I create the first utility coin that can be used 100% as AI quota or Fuel, is called $Dulus",
@@ -2292,15 +1513,7 @@
       "stars": 671
     },
     {
-      "rank": 286,
-      "github_id": 723084306,
-      "full_name": "0xeb/TheBigPromptLibrary",
-      "description": "A collection of prompts, system prompts and LLM instructions",
-      "language": "HTML",
-      "stars": 5534
-    },
-    {
-      "rank": 287,
+      "rank": 188,
       "github_id": 1265617033,
       "full_name": "Sentient-OS-Labs/sentient-os",
       "description": "An on-device LLM understands your entire life, then proactively offers to get your work done through computer use.",
@@ -2308,15 +1521,7 @@
       "stars": 748
     },
     {
-      "rank": 288,
-      "github_id": 1277578741,
-      "full_name": "bozhouDev/codex-orange-book",
-      "description": "Codex 橙皮书：从安装到实战案例的全链路 Codex 使用指南（非官方开源，含可下载 PDF）",
-      "language": "HTML",
-      "stars": 3525
-    },
-    {
-      "rank": 289,
+      "rank": 189,
       "github_id": 1401738352,
       "full_name": "NahumLitvin/prismantis",
       "description": "Colorful, themeable Claude Code replies: tables, code, diagrams, charts and tool rows in 15 themes, with copy buttons. A Claude Code mod.",
@@ -2324,7 +1529,7 @@
       "stars": 397
     },
     {
-      "rank": 290,
+      "rank": 190,
       "github_id": 1392386925,
       "full_name": "zzhahn/a_stock_level2_data",
       "description": "A股level2行情数据接口 level2行情 level2数据 level2接口 level2实时行情 L2实时行情 level2实时 L2实时 实时level2 实时L2 实时行情 level2行情数据 level2数据接口 股票level2 A股level2 L2行情 L2数据 L2接口 逐笔成交 逐笔成交明细 逐笔委托 委托明细 十档盘口 盘口数据 委托队列 订单簿 集合竞价 实时行情接口 行情数据接口 毫秒级行情 低延迟行情 资金流向 龙虎榜 K线 无界面服务器 AI Agent 自动取数 | A-share Level-2 realtime market data API: level2 quotes, tick trades, order book, order queue",
@@ -2332,7 +1537,7 @@
       "stars": 280
     },
     {
-      "rank": 291,
+      "rank": 191,
       "github_id": 1174789082,
       "full_name": "block/buzz",
       "description": "A hive mind communication platform",
@@ -2340,31 +1545,7 @@
       "stars": 37441
     },
     {
-      "rank": 292,
-      "github_id": 136556542,
-      "full_name": "shinnytech/tqsdk-python",
-      "description": "天勤量化开发包, 期货量化, 实时行情/历史数据/实盘交易",
-      "language": "Python",
-      "stars": 5142
-    },
-    {
-      "rank": 293,
-      "github_id": 1072233476,
-      "full_name": "weebzone/Telegram-Stremio",
-      "description": "Self-hosted server that turns your Telegram channels into a multi-user Stremio & Nuvio addon: web panel, catalogs, tokens, subscriptions. Updates: t.me/TGMediaServer",
-      "language": "Python",
-      "stars": 687
-    },
-    {
-      "rank": 294,
-      "github_id": 1169252093,
-      "full_name": "HelpCode-ai/anythingmcp",
-      "description": "Enterprise Agent Harness & MCP Gateway: connect APIs, databases, file servers and 600+ connectors (SAP, Odoo, Etsy…) to Claude, ChatGPT, Microsoft Copilot and your agents. Memory, skills, knowledge graph, SSO/RBAC, audit log and governance built in. Your AI company brain.",
-      "language": "TypeScript",
-      "stars": 789
-    },
-    {
-      "rank": 295,
+      "rank": 192,
       "github_id": 1182333024,
       "full_name": "cx330-TXY/CxChanger",
       "description": "低成本预热式换热端多材料打印",
@@ -2372,7 +1553,7 @@
       "stars": 401
     },
     {
-      "rank": 296,
+      "rank": 193,
       "github_id": 1078459577,
       "full_name": "Euro-Office/DesktopEditors",
       "description": null,
@@ -2380,7 +1561,7 @@
       "stars": 914
     },
     {
-      "rank": 297,
+      "rank": 194,
       "github_id": 1244617222,
       "full_name": "teamchong/pxpipe",
       "description": "cut Claude Code token usage by rendering text context as images",
@@ -2388,15 +1569,7 @@
       "stars": 7772
     },
     {
-      "rank": 298,
-      "github_id": 217676469,
-      "full_name": "AhmadIbrahiim/Website-downloader",
-      "description": "💡  Download the complete source code of any website (including all assets). [ Javascripts, Stylesheets, Images ]  using Node.js  ",
-      "language": "HTML",
-      "stars": 6121
-    },
-    {
-      "rank": 299,
+      "rank": 195,
       "github_id": 1287084556,
       "full_name": "karatektus/pl_mail",
       "description": "Self-hosted, Gmail-style mail client. Multi-account IMAP, threaded conversations, real-time push via IMAP IDLE + Mercure. Built with Symfony, FrankenPHP, Hotwire Turbo. Clone and docker compose up.",
@@ -2404,55 +1577,7 @@
       "stars": 623
     },
     {
-      "rank": 300,
-      "github_id": 307905007,
-      "full_name": "glideapps/glide-data-grid",
-      "description": "🚀 Glide Data Grid is a no compromise, outrageously fast react data grid with rich rendering, first class accessibility, and full TypeScript support.",
-      "language": "TypeScript",
-      "stars": 5444
-    },
-    {
-      "rank": 301,
-      "github_id": 718343288,
-      "full_name": "MCRcortex/voxy",
-      "description": "An LoD rendering mod for minecraft",
-      "language": "Java",
-      "stars": 1380
-    },
-    {
-      "rank": 302,
-      "github_id": 166658783,
-      "full_name": "mxssl/sre-interview-prep-guide",
-      "description": "Site Reliability Engineer Interview Preparation Guide",
-      "language": null,
-      "stars": 9254
-    },
-    {
-      "rank": 303,
-      "github_id": 361972841,
-      "full_name": "EFForg/apkeep",
-      "description": "A command-line tool for downloading APK files from various sources",
-      "language": "Rust",
-      "stars": 2180
-    },
-    {
-      "rank": 304,
-      "github_id": 604115244,
-      "full_name": "emby-keeper/emby-keeper",
-      "description": "Embykeeper 是一个用于 Emby 签到和保号的自动执行工具",
-      "language": "Python",
-      "stars": 1436
-    },
-    {
-      "rank": 305,
-      "github_id": 1124961034,
-      "full_name": "SakuraForgot/FluentYTDL",
-      "description": "A Windows desktop downloader for YouTube and X, built with PySide6, yt-dlp, and FFmpeg.",
-      "language": "Python",
-      "stars": 451
-    },
-    {
-      "rank": 306,
+      "rank": 196,
       "github_id": 1340166486,
       "full_name": "edisonmbli/refactoring-ui-skill",
       "description": "Unofficial Claude Skill derived from the book Refactoring UI — a design rulebook and diagnostic layer for web UI. 151 tracked rules, design token generation, and Tailwind mappings.",
@@ -2460,7 +1585,7 @@
       "stars": 445
     },
     {
-      "rank": 307,
+      "rank": 197,
       "github_id": 1155716213,
       "full_name": "Hidashimora/free-vpn-anti-rkn",
       "description": "Бесплатные VPN-конфиги без лагов 🚀",
@@ -2468,319 +1593,7 @@
       "stars": 1251
     },
     {
-      "rank": 308,
-      "github_id": 7248956,
-      "full_name": "ValveSoftware/steam-for-linux",
-      "description": "Issue tracking for the Steam for Linux beta client",
-      "language": null,
-      "stars": 4926
-    },
-    {
-      "rank": 309,
-      "github_id": 39468142,
-      "full_name": "klauspost/compress",
-      "description": "Optimized Go Compression Packages",
-      "language": "Go",
-      "stars": 5726
-    },
-    {
-      "rank": 310,
-      "github_id": 44867148,
-      "full_name": "tabulator-tables/tabulator",
-      "description": "Interactive Tables and Data Grids for JavaScript",
-      "language": "JavaScript",
-      "stars": 7813
-    },
-    {
-      "rank": 311,
-      "github_id": 67031040,
-      "full_name": "upx/upx",
-      "description": "UPX - the Ultimate Packer for eXecutables",
-      "language": "C++",
-      "stars": 17998
-    },
-    {
-      "rank": 312,
-      "github_id": 74260508,
-      "full_name": "docsifyjs/docsify",
-      "description": "🃏 A magical documentation site generator.",
-      "language": "JavaScript",
-      "stars": 31592
-    },
-    {
-      "rank": 313,
-      "github_id": 83155939,
-      "full_name": "Siilwyn/awesome-pixel-art",
-      "description": "Curated list of everything awesome around pixel art.",
-      "language": null,
-      "stars": 1288
-    },
-    {
-      "rank": 314,
-      "github_id": 149661467,
-      "full_name": "bazelbuild/bazelisk",
-      "description": "A user-friendly launcher for Bazel.",
-      "language": "Go",
-      "stars": 2737
-    },
-    {
-      "rank": 315,
-      "github_id": 169060349,
-      "full_name": "PixelGuys/Cubyz",
-      "description": "Voxel sandbox game with a large render distance, procedurally generated content and some cool graphical effects.",
-      "language": "Zig",
-      "stars": 3764
-    },
-    {
-      "rank": 316,
-      "github_id": 173843857,
-      "full_name": "netnr/kms",
-      "description": "KMS 激活服务，slmgr 命令激活 Windows 系统、Office",
-      "language": "HTML",
-      "stars": 3368
-    },
-    {
-      "rank": 317,
-      "github_id": 213170770,
-      "full_name": "EFeru/hoverboard-firmware-hack-FOC",
-      "description": "With Field Oriented Control (FOC)",
-      "language": "C",
-      "stars": 1850
-    },
-    {
-      "rank": 318,
-      "github_id": 246203193,
-      "full_name": "betrusted-io/xous-core",
-      "description": "The Xous microkernel",
-      "language": "Rust",
-      "stars": 1014
-    },
-    {
-      "rank": 319,
-      "github_id": 261039653,
-      "full_name": "ingram-projects/animxyz",
-      "description": "The first truly composable CSS animation library. Built for Vue, React, SCSS, and CSS, AnimXYZ will bring your website to life.",
-      "language": "CSS",
-      "stars": 2507
-    },
-    {
-      "rank": 320,
-      "github_id": 333037528,
-      "full_name": "Tinkoff/career",
-      "description": "Информация о внутренней кухне Тинькофф, включая подготовку к собеседованию",
-      "language": null,
-      "stars": 920
-    },
-    {
-      "rank": 321,
-      "github_id": 338818430,
-      "full_name": "upgundecha/howtheysre",
-      "description": "A curated collection of publicly available resources on how technology and tech-savvy organizations around the world practice Site Reliability Engineering (SRE)",
-      "language": "JavaScript",
-      "stars": 9844
-    },
-    {
-      "rank": 322,
-      "github_id": 340310640,
-      "full_name": "Androz2091/discord-data-package-explorer",
-      "description": "🌀 What's really in your Discord Data package? ",
-      "language": "Svelte",
-      "stars": 866
-    },
-    {
-      "rank": 323,
-      "github_id": 341376624,
-      "full_name": "mattdesl/gifenc",
-      "description": "fast GIF encoding",
-      "language": "JavaScript",
-      "stars": 351
-    },
-    {
-      "rank": 324,
-      "github_id": 343535217,
-      "full_name": "LSPosed/LSPatch",
-      "description": "LSPatch: A non-root Xposed framework extending from LSPosed",
-      "language": "Java",
-      "stars": 9471
-    },
-    {
-      "rank": 325,
-      "github_id": 344554014,
-      "full_name": "TomSchimansky/CustomTkinter",
-      "description": "A modern and customizable python UI-library based on Tkinter",
-      "language": "Python",
-      "stars": 13614
-    },
-    {
-      "rank": 326,
-      "github_id": 384850341,
-      "full_name": "ibhagwan/fzf-lua",
-      "description": "Improved fzf.vim written in lua",
-      "language": "Lua",
-      "stars": 4497
-    },
-    {
-      "rank": 327,
-      "github_id": 581144624,
-      "full_name": "antmicro/jetson-orin-baseboard",
-      "description": "Baseboard targetting the NVIDIA Jetson Orin Nano and  Jetson Orin NX",
-      "language": null,
-      "stars": 314
-    },
-    {
-      "rank": 328,
-      "github_id": 630793451,
-      "full_name": "focus-editor/focus",
-      "description": "A simple and fast text editor",
-      "language": "Jai",
-      "stars": 2725
-    },
-    {
-      "rank": 329,
-      "github_id": 645433724,
-      "full_name": "bytewax/awesome-public-real-time-datasets",
-      "description": "A list of publicly available datasets with real-time data maintained by the team at bytewax.io",
-      "language": null,
-      "stars": 2982
-    },
-    {
-      "rank": 330,
-      "github_id": 648453190,
-      "full_name": "rive-app/rive-runtime",
-      "description": "Low-level C++ runtime and renderer for Rive, the agent-native 2D and 3D engine for games, apps, and interactive UI.",
-      "language": "C++",
-      "stars": 1262
-    },
-    {
-      "rank": 331,
-      "github_id": 681022285,
-      "full_name": "kagisearch/smallweb",
-      "description": "Kagi Small Web",
-      "language": "Python",
-      "stars": 1741
-    },
-    {
-      "rank": 332,
-      "github_id": 737321443,
-      "full_name": "StockpileLabs/awesome-solana-oss",
-      "description": "Compilation of awesome open-source Solana repositories on GitHub!",
-      "language": null,
-      "stars": 431
-    },
-    {
-      "rank": 333,
-      "github_id": 740625207,
-      "full_name": "OHF-Voice/micro-wake-word",
-      "description": "A TensorFlow based wake word detection training framework using synthetic sample generation suitable for certain microcontrollers.",
-      "language": "Python",
-      "stars": 973
-    },
-    {
-      "rank": 334,
-      "github_id": 742558696,
-      "full_name": "terremoth/awesome-m5stack-cardputer",
-      "description": "Awesome M5Stack Cardputer",
-      "language": null,
-      "stars": 799
-    },
-    {
-      "rank": 335,
-      "github_id": 825297666,
-      "full_name": "evilsocket/cake",
-      "description": "Distributed inference for mobile, desktop and server.",
-      "language": "Rust",
-      "stars": 3141
-    },
-    {
-      "rank": 336,
-      "github_id": 873223485,
-      "full_name": "KOWX712/Tricky-Addon-Update-Target-List",
-      "description": "A KSU WebUI to configure Tricky Store target.txt",
-      "language": "TypeScript",
-      "stars": 3533
-    },
-    {
-      "rank": 337,
-      "github_id": 956053274,
-      "full_name": "TheOrcDev/8bitcn-ui",
-      "description": "A set of retro-designed, accessible components and a code distribution platform. Open Source. Open Code.",
-      "language": "TypeScript",
-      "stars": 2079
-    },
-    {
-      "rank": 338,
-      "github_id": 1005479459,
-      "full_name": "eylenburg/linoffice",
-      "description": "Microsoft Office Launcher for Linux",
-      "language": "Shell",
-      "stars": 954
-    },
-    {
-      "rank": 339,
-      "github_id": 1038413113,
-      "full_name": "ChesterRa/cccc",
-      "description": "Coordinate your coding agents like a group chat — read receipts, delivery tracking, and remote ops from your phone. One pip install, zero infrastructure. A production‑minded orchestrator for 24/7 workflow",
-      "language": "Rust",
-      "stars": 1320
-    },
-    {
-      "rank": 340,
-      "github_id": 1076398944,
-      "full_name": "OminousIndustries/PhoneDriver",
-      "description": "Android Phone Control With Qwen3-VL",
-      "language": "Python",
-      "stars": 1654
-    },
-    {
-      "rank": 341,
-      "github_id": 1140713799,
-      "full_name": "izwi-ai/izwi",
-      "description": "Voice AI runtime. Local first transcription, speaker diarization, TTS, and voice cloning with an OpenAI compatible API.",
-      "language": "Rust",
-      "stars": 464
-    },
-    {
-      "rank": 342,
-      "github_id": 1148290190,
-      "full_name": "pocketpaw/pocketpaw",
-      "description": "Your AI agent in 30 seconds. Not 30 hours. Self-hosted, open-source personal AI with desktop installer, multi-agent Command Center(Deep Work), and 7-layer security. Anthropic, OpenAI, or Ollama.",
-      "language": "Python",
-      "stars": 927
-    },
-    {
-      "rank": 343,
-      "github_id": 1177464662,
-      "full_name": "JunWan666/openclaw-termux-zh",
-      "description": "本项目是基于mithun50维护的上游仓库(openclaw-termux)整合汉化而来并二次开发添加优化的 OpenClaw Android 中文版本。",
-      "language": "Dart",
-      "stars": 218
-    },
-    {
-      "rank": 344,
-      "github_id": 1267521793,
-      "full_name": "tmchow/illo-skill",
-      "description": "illo skill — an AI agent skill that turns ideas and articles into original print-style editorial illustrations, starring a recurring mascot. 30+ characters packs, with ability to create your own.",
-      "language": "Python",
-      "stars": 432
-    },
-    {
-      "rank": 345,
-      "github_id": 1274335260,
-      "full_name": "zuorn/Tydora",
-      "description": "Let Your Ideas Flow — Tydora is a modern desktop Markdown editor combining WYSIWYG editing, bidirectional links, mind maps, and an infinite canvas — empowering deep thinking and effortless expression.",
-      "language": "TypeScript",
-      "stars": 239
-    },
-    {
-      "rank": 346,
-      "github_id": 1277675818,
-      "full_name": "bikini/exploitarium",
-      "description": "A single archive of public exploit PoCs and vulnerability research writeups. At the time I post these, none have been reported. Feel free to report them yourself and take credit for the CVE if handed out lulz. Please do not abuse these. I do this so to allure people into the field, and I've always found this is the most efficient way.",
-      "language": "Python",
-      "stars": 5197
-    },
-    {
-      "rank": 347,
+      "rank": 198,
       "github_id": 1285348092,
       "full_name": "galaxy-io/filament",
       "description": "Pluggable data replication with checkpointing, batching, and integrity events",
@@ -2788,31 +1601,7 @@
       "stars": 312
     },
     {
-      "rank": 348,
-      "github_id": 1298160216,
-      "full_name": "mohammadrezwankhan/matlab-simulink-energy-lab",
-      "description": "Run reduced-order battery, thermal, converter and BESS control models with transparent equations and repeatable testing.",
-      "language": "MATLAB",
-      "stars": 325
-    },
-    {
-      "rank": 349,
-      "github_id": 1334525377,
-      "full_name": "sudoingX/qwen38-mtp",
-      "description": "One llama.cpp flag unlocks +33-39% decode speed for Qwen3.8-27B on consumer GPUs. The MTP head already ships inside your GGUF. Recipe, paired benchmarks, probe tool.",
-      "language": "Python",
-      "stars": 378
-    },
-    {
-      "rank": 350,
-      "github_id": 1363417187,
-      "full_name": "yi1108/printfilm",
-      "description": "PRINTFILM: AI short-video marketing and AI short-drama creation platform",
-      "language": "Python",
-      "stars": 7444
-    },
-    {
-      "rank": 351,
+      "rank": 199,
       "github_id": 1289076020,
       "full_name": "openrung/openrung-mobile-app",
       "description": "Internet access is a right, not a privilege. 互聯網本非特權。Доступ к интернету — право, а не привилегия. دسترسی به اینترنت حق است، نه امتیاز.",
@@ -2820,7 +1609,7 @@
       "stars": 270
     },
     {
-      "rank": 352,
+      "rank": 200,
       "github_id": 1378921346,
       "full_name": "N3urda/hongguoTV",
       "description": "安卓 TV 红果短剧客户端",
@@ -2828,7 +1617,7 @@
       "stars": 1025
     },
     {
-      "rank": 353,
+      "rank": 201,
       "github_id": 1274723381,
       "full_name": "ashhart/TensorFold",
       "description": "LLM Inference Engine for Metal, CUDA and Vulkan.",
@@ -2836,7 +1625,7 @@
       "stars": 2141
     },
     {
-      "rank": 354,
+      "rank": 202,
       "github_id": 1214814133,
       "full_name": "techjarves/Uncensored-Local-AI-Multiplatform",
       "description": "A cross-platform Flutter app that runs uncensored, 100% offline open-source AI models (GGUF) directly on your Android, iOS, or PC. No cloud, no filters, total privacy.",
@@ -2844,23 +1633,7 @@
       "stars": 1614
     },
     {
-      "rank": 355,
-      "github_id": 847006902,
-      "full_name": "kunifujiwara/VoxCity",
-      "description": "Python framework for integrating geospatial data, 3D city modeling, and urban simulation.",
-      "language": "Python",
-      "stars": 604
-    },
-    {
-      "rank": 356,
-      "github_id": 925366947,
-      "full_name": "aws/api-models-aws",
-      "description": "API Models for all public AWS Services",
-      "language": "Python",
-      "stars": 257
-    },
-    {
-      "rank": 357,
+      "rank": 203,
       "github_id": 1085043404,
       "full_name": "pnnbao97/VieNeu-TTS",
       "description": "Vietnamese TTS with instant voice cloning • On-device • Real-time CPU inference • 48kHz audio quality • Chuyển văn bản thành giọng nói tiếng Việt • Text to speech tiếng Việt • TTS tiếng Việt ",
@@ -2868,7 +1641,7 @@
       "stars": 3331
     },
     {
-      "rank": 358,
+      "rank": 204,
       "github_id": 1191904384,
       "full_name": "elder-plinius/G0DM0D3",
       "description": "LIBERATED AI CHAT",
@@ -2876,31 +1649,7 @@
       "stars": 12362
     },
     {
-      "rank": 359,
-      "github_id": 174888045,
-      "full_name": "andkret/Cookbook",
-      "description": "The Data Engineering Cookbook",
-      "language": "Python",
-      "stars": 15548
-    },
-    {
-      "rank": 360,
-      "github_id": 357631421,
-      "full_name": "OpenIPC/firmware",
-      "description": "Alternative IP Camera firmware from an open community",
-      "language": "C",
-      "stars": 2286
-    },
-    {
-      "rank": 361,
-      "github_id": 655783613,
-      "full_name": "openstatusHQ/openstatus",
-      "description": "Open-source status page, incident response and uptime monitoring",
-      "language": "TypeScript",
-      "stars": 9267
-    },
-    {
-      "rank": 362,
+      "rank": 205,
       "github_id": 604092636,
       "full_name": "meta/bpfilter",
       "description": "eBPF-based packet filtering framework",
@@ -2908,7 +1657,7 @@
       "stars": 403
     },
     {
-      "rank": 363,
+      "rank": 206,
       "github_id": 1277836173,
       "full_name": "dama-cyber/Casting-Workflow",
       "description": null,
@@ -2916,7 +1665,7 @@
       "stars": 710
     },
     {
-      "rank": 364,
+      "rank": 207,
       "github_id": 1261204838,
       "full_name": "mjmirza/app-store-compliance",
       "description": "Avoid common App Store and Google Play rejections. Open playbook and pre-submission guard with 117 documented rejection patterns and fixes, privacy manifest and Data safety checks, 95 tracked deadlines (EU AI Act, DSA, COPPA, age laws), and a skill for AI coding agents.",
@@ -2924,23 +1673,7 @@
       "stars": 445
     },
     {
-      "rank": 365,
-      "github_id": 1334586481,
-      "full_name": "yjh051108/dsh-routing-suite",
-      "description": "dsh-routing-suite — injector + router-standard kit: install the runtime injector first, then the task-aware reasoning-mode router preset (measured P1-P23).",
-      "language": "JavaScript",
-      "stars": 7027
-    },
-    {
-      "rank": 366,
-      "github_id": 1138419884,
-      "full_name": "cporter202/social-media-scraping-apis",
-      "description": "A curated collection of social media scraping APIs and tools for Instagram, LinkedIn, Twitter/X, TikTok, YouTube, Facebook, and more. Extract posts, profiles, videos, comments, and engagement metrics.",
-      "language": "JavaScript",
-      "stars": 2787
-    },
-    {
-      "rank": 367,
+      "rank": 208,
       "github_id": 1227920501,
       "full_name": "stemdeckapp/stemdeck",
       "description": "Stemdeck is an modern stem extraction platform for musicians,producers and hobbyists, designed to isolate vocals, drums, bass, piano and guitar  for practice, transcription, remixing, and creative audio workflows through a modern and interactive interface",
@@ -2948,47 +1681,7 @@
       "stars": 4459
     },
     {
-      "rank": 368,
-      "github_id": 17728164,
-      "full_name": "hashicorp/terraform",
-      "description": "Terraform enables you to safely and predictably create, change, and improve infrastructure. It is a source-available tool that codifies APIs into declarative configuration files that can be shared amongst team members, treated as code, edited, reviewed, and versioned.",
-      "language": "Go",
-      "stars": 50234
-    },
-    {
-      "rank": 369,
-      "github_id": 32374513,
-      "full_name": "pcqpcq/open-source-android-apps",
-      "description": "Open-Source Android Apps",
-      "language": "Python",
-      "stars": 10595
-    },
-    {
-      "rank": 370,
-      "github_id": 55058317,
-      "full_name": "threat9/routersploit",
-      "description": "Exploitation Framework for Embedded Devices",
-      "language": "Python",
-      "stars": 13306
-    },
-    {
-      "rank": 371,
-      "github_id": 439824270,
-      "full_name": "rejetto/hfs",
-      "description": "HFS is a web file server for your computer. Share folders or even a single file thanks to the virtual file system.",
-      "language": "TypeScript",
-      "stars": 4002
-    },
-    {
-      "rank": 372,
-      "github_id": 1078820335,
-      "full_name": "JiGuroLGC/BetterVia",
-      "description": "让Via变得更好 / Make Via Better",
-      "language": "JavaScript",
-      "stars": 1424
-    },
-    {
-      "rank": 373,
+      "rank": 209,
       "github_id": 1256516598,
       "full_name": "vacuula/vacuula",
       "description": "custom server for the undead robot vacuum cleaners - revive your Neato with the power of Vacuula",
@@ -2996,15 +1689,7 @@
       "stars": 255
     },
     {
-      "rank": 374,
-      "github_id": 1162971794,
-      "full_name": "vava-nessa/free-coding-models",
-      "description": "Find, benchmark and install in CLI 170+ FREE coding LLM models across 15+ providers in real time",
-      "language": "HTML",
-      "stars": 2920
-    },
-    {
-      "rank": 375,
+      "rank": 210,
       "github_id": 1342935078,
       "full_name": "bojieli/ai-infra-book",
       "description": "《深入理解 AI Infra：量化分析与系统设计》（李博杰 著）开源书稿：从硬件约束和模型架构出发，量化推导 LLM 推理与训练系统设计。含全书正文、PDF、配套计算工具与实验",
@@ -3012,7 +1697,7 @@
       "stars": 7713
     },
     {
-      "rank": 376,
+      "rank": 211,
       "github_id": 1062897,
       "full_name": "github/gitignore",
       "description": "A collection of useful .gitignore templates",
@@ -3020,7 +1705,7 @@
       "stars": 176337
     },
     {
-      "rank": 377,
+      "rank": 212,
       "github_id": 670251454,
       "full_name": "nasa/spaceapps",
       "description": null,
@@ -3028,7 +1713,7 @@
       "stars": 1350
     },
     {
-      "rank": 378,
+      "rank": 213,
       "github_id": 971999086,
       "full_name": "maillab/cloud-mail",
       "description": "An all-in-one email service platform powered by Cloudflare  | 基于 Cloudflare 的一站式邮箱服务平台  | Cloudflare Email 邮箱 Mail",
@@ -3036,79 +1721,7 @@
       "stars": 15911
     },
     {
-      "rank": 379,
-      "github_id": 16843182,
-      "full_name": "cypht-org/cypht",
-      "description": "Cypht: Lightweight Open Source webmail aggregator [PHP, JS].  Supports IMAP/SMTP, JMAP and EWS (Exchange Web Services)",
-      "language": "PHP",
-      "stars": 1803
-    },
-    {
-      "rank": 380,
-      "github_id": 368392080,
-      "full_name": "cyao2q/files",
-      "description": "TVBox开源版,盒子软件分享",
-      "language": "JavaScript",
-      "stars": 3185
-    },
-    {
-      "rank": 381,
-      "github_id": 589830814,
-      "full_name": "easychen/CookieCloud",
-      "description": "CookieCloud是一个和自架服务器同步浏览器Cookie和LocalStorage的小工具，支持端对端加密，可设定同步时间间隔。本仓库包含了插件和服务器端源码。CookieCloud is a small tool for synchronizing browser cookies and LocalStorage with a self-hosted server. It supports end-to-end encryption and allows for setting the synchronization interval. This repository contains both the plugin and the server-side source code",
-      "language": "JavaScript",
-      "stars": 3227
-    },
-    {
-      "rank": 382,
-      "github_id": 1154057975,
-      "full_name": "Tools-cx-app/meta-magic_mount-rs",
-      "description": "An implementation of a metamodule using Magic Mount, Based on MKSU, Template is from meta-overlay.",
-      "language": "Rust",
-      "stars": 612
-    },
-    {
-      "rank": 383,
-      "github_id": 1350208775,
-      "full_name": "openclaw/openclaw-enterprise",
-      "description": "The Enterprise-grade Control Plane for modern agentic workloads",
-      "language": "TypeScript",
-      "stars": 469
-    },
-    {
-      "rank": 384,
-      "github_id": 9746477,
-      "full_name": "sonic-pi-net/sonic-pi",
-      "description": "Code. Music. Live.",
-      "language": "C++",
-      "stars": 12270
-    },
-    {
-      "rank": 385,
-      "github_id": 1080456626,
-      "full_name": "nkzw-tech/fate",
-      "description": "A modern data client for the web.",
-      "language": "TypeScript",
-      "stars": 1173
-    },
-    {
-      "rank": 386,
-      "github_id": 1297479643,
-      "full_name": "Henglie/EBCTFCodeBox",
-      "description": "跨平台 CTF 编解码工具箱/密码学工具箱,几百个算法全在浏览器本地运行,零外发。支持一把梭智能解码、配方链、图形编码图鉴、隐写分析与全 Unicode 显示。",
-      "language": "JavaScript",
-      "stars": 352
-    },
-    {
-      "rank": 387,
-      "github_id": 1335279198,
-      "full_name": "Sui-IB/InternalBeyond-Mobile",
-      "description": "【Project-IBⅡ】一个单文件PWA个人Agent应用，兼备多种工作技能与创意玩法，可同时对接多位自定义Agent助手，每一位Agent都具备与用户的长期独立记忆。用户数据与记忆支持完整的数据导入和导出，公开透明。支持导入其他官端的聊天记录，如ChatGPT/Claude等，不依赖任何网络服务器。",
-      "language": "HTML",
-      "stars": 483
-    },
-    {
-      "rank": 388,
+      "rank": 214,
       "github_id": 1314859463,
       "full_name": "BlizzHacker/romarr",
       "description": "Find, verify and organize your game library. Native Windows and Docker, DAT checks, ROM Hub plugins, and optional RomM/Cartridge integration.",
@@ -3116,7 +1729,7 @@
       "stars": 351
     },
     {
-      "rank": 389,
+      "rank": 215,
       "github_id": 1390752752,
       "full_name": "xiaodou-official/xiaodou-open-platform",
       "description": "个人支付接口：小豆支付开放平台——个人可申请的支付宝、微信支付接口。个人支付接口无需营业执照，身份证+银行卡即可接入；RSA2 签名、webhook 验签、持牌机构清算、次日中午前到账。China individual payment API: Alipay + WeChat Pay.",
@@ -3124,7 +1737,7 @@
       "stars": 436
     },
     {
-      "rank": 390,
+      "rank": 216,
       "github_id": 1173738644,
       "full_name": "michaelshimeles/rstack",
       "description": "Agent skills and an AGENTS.md workflow template — isolate in worktrees, build to a service layer, prove with evidence, ship with before/after proof and Greptile review loops. For Claude Code, Cursor, and Codex.",
@@ -3132,15 +1745,7 @@
       "stars": 1516
     },
     {
-      "rank": 391,
-      "github_id": 784773119,
-      "full_name": "Anil-matcha/awesome-muse-connectors",
-      "description": "A source-backed catalog of Meta Muse integrations and community connector skills, with capability, authentication, and permission notes.",
-      "language": "Python",
-      "stars": 1462
-    },
-    {
-      "rank": 392,
+      "rank": 217,
       "github_id": 1288848940,
       "full_name": "yynxxxxx/Codex-X",
       "description": "OpenAI Codex 桌面端/CLI 的可视化管理工具，具有Provider/API 切换、会话同步、提示词注入、Skills/MCP 管理、TOML 配置可视化的跨平台工具。",
@@ -3148,7 +1753,7 @@
       "stars": 4485
     },
     {
-      "rank": 393,
+      "rank": 218,
       "github_id": 771350543,
       "full_name": "Canner/WrenAI",
       "description": "GenBI (Generative BI) for AI agents, an open-source, governed text-to-SQL through an open context layer that turns natural-language questions into trusted dashboards, charts, and SQL across 20+ data sources, such as BigQuery, Snowflake, PostgreSQL, ClickHouse, Amazon Redshift, Databricks and more.",
@@ -3156,39 +1761,7 @@
       "stars": 18225
     },
     {
-      "rank": 394,
-      "github_id": 352051262,
-      "full_name": "youki-dev/youki",
-      "description": "A container runtime written in Rust",
-      "language": "Rust",
-      "stars": 7686
-    },
-    {
-      "rank": 395,
-      "github_id": 435123691,
-      "full_name": "gokadzev/Musify",
-      "description": "Unlock the full potential of music: Stream effortlessly with one app!",
-      "language": "Dart",
-      "stars": 4445
-    },
-    {
-      "rank": 396,
-      "github_id": 833984877,
-      "full_name": "kvcache-ai/ktransformers",
-      "description": "A Flexible Framework for Experiencing Heterogeneous LLM Inference/Fine-tune Optimizations",
-      "language": "Python",
-      "stars": 19671
-    },
-    {
-      "rank": 397,
-      "github_id": 1159082648,
-      "full_name": "software-mansion/react-native-bottom-sheet",
-      "description": "Provides bottom-sheet components for React Native.",
-      "language": "Kotlin",
-      "stars": 473
-    },
-    {
-      "rank": 398,
+      "rank": 219,
       "github_id": 1263712651,
       "full_name": "yuexps/Antigravity-Hans",
       "description": "反重力/Antigravity汉化，为 Google Antigravity 及 Antigravity IDE 提供的中文汉化工具。",
@@ -3196,23 +1769,15 @@
       "stars": 338
     },
     {
-      "rank": 399,
-      "github_id": 206300925,
-      "full_name": "PathOfBuildingCommunity/PathOfBuilding",
-      "description": "Offline build planner for Path of Exile.",
-      "language": "Lua",
-      "stars": 5510
+      "rank": 220,
+      "github_id": 996524615,
+      "full_name": "misaka10032w/Han1meViewer",
+      "description": "hanime1的三方客户端，提高了一些播放体验",
+      "language": "Kotlin",
+      "stars": 1531
     },
     {
-      "rank": 400,
-      "github_id": 1129437678,
-      "full_name": "Soju06/codex-lb",
-      "description": "Codex/ChatGPT multiple account load balancer & proxy with usage tracking, dashboard, and OpenCode-compatible endpoints",
-      "language": "Python",
-      "stars": 3442
-    },
-    {
-      "rank": 401,
+      "rank": 221,
       "github_id": 1008713177,
       "full_name": "QwenLM/qwen-code",
       "description": "An open-source AI coding agent that lives in your terminal.",
@@ -3220,7 +1785,7 @@
       "stars": 30288
     },
     {
-      "rank": 402,
+      "rank": 222,
       "github_id": 161840815,
       "full_name": "goldmansachs/gs-quant",
       "description": "Python toolkit for quantitative finance",
@@ -3228,423 +1793,7 @@
       "stars": 14124
     },
     {
-      "rank": 403,
-      "github_id": 17620347,
-      "full_name": "dotnet/aspnetcore",
-      "description": "ASP.NET Core is a cross-platform .NET framework for building modern cloud-based web applications on Windows, Mac, or Linux.",
-      "language": "C#",
-      "stars": 38524
-    },
-    {
-      "rank": 404,
-      "github_id": 865403475,
-      "full_name": "northpolesec/santa",
-      "description": "A binary and file access authorization system for macOS.",
-      "language": "Objective-C++",
-      "stars": 875
-    },
-    {
-      "rank": 405,
-      "github_id": 1354515658,
-      "full_name": "Yean-Sec/StrikeAgent_AtkBrain-Flash",
-      "description": "由夜安团队研发的AI Agent渗透测试平台，引入分形覆叠的概念，强调自监督，自循环，自进化（分形）首创寻宝机制、三段式上升结构（覆叠），此项目主要探索在可控环境（CTF）下的能力",
-      "language": "Rust",
-      "stars": 734
-    },
-    {
-      "rank": 406,
-      "github_id": 842037,
-      "full_name": "nim-lang/Nim",
-      "description": "Nim is a statically typed compiled systems programming language. It combines successful concepts from mature languages like Python, Ada and Modula. Its design focuses on efficiency, expressiveness, and elegance (in that order of priority).",
-      "language": "Nim",
-      "stars": 18310
-    },
-    {
-      "rank": 407,
-      "github_id": 12732573,
-      "full_name": "junegunn/vim-plug",
-      "description": ":hibiscus: Minimalist Vim Plugin Manager",
-      "language": "Vim Script",
-      "stars": 35785
-    },
-    {
-      "rank": 408,
-      "github_id": 13862423,
-      "full_name": "pyocd/pyOCD",
-      "description": "Open source Python library for programming and debugging Arm Cortex-M microcontrollers",
-      "language": "Python",
-      "stars": 1489
-    },
-    {
-      "rank": 409,
-      "github_id": 14895592,
-      "full_name": "twosigma/beakerx",
-      "description": "Beaker Extensions for Jupyter Notebook",
-      "language": "Jupyter Notebook",
-      "stars": 2906
-    },
-    {
-      "rank": 410,
-      "github_id": 24420506,
-      "full_name": "v8/v8",
-      "description": "The official mirror of the V8 Git repository",
-      "language": "C++",
-      "stars": 25330
-    },
-    {
-      "rank": 411,
-      "github_id": 50259821,
-      "full_name": "nerves-project/nerves",
-      "description": "Craft and deploy bulletproof embedded software in Elixir",
-      "language": "Elixir",
-      "stars": 2514
-    },
-    {
-      "rank": 412,
-      "github_id": 61825895,
-      "full_name": "rednaga/APKiD",
-      "description": "Android Application Identifier for Packers, Protectors, Obfuscators and Oddities - PEiD for Android",
-      "language": "YARA",
-      "stars": 2623
-    },
-    {
-      "rank": 413,
-      "github_id": 63582643,
-      "full_name": "dkrivoruchko/ScreenStream",
-      "description": "ScreenStream Android App",
-      "language": "Kotlin",
-      "stars": 2586
-    },
-    {
-      "rank": 414,
-      "github_id": 99598595,
-      "full_name": "parcel-bundler/parcel",
-      "description": "The zero configuration build tool for the web. 📦🚀",
-      "language": "Rust",
-      "stars": 44023
-    },
-    {
-      "rank": 415,
-      "github_id": 134396625,
-      "full_name": "avito-tech/playbook",
-      "description": "AvitoTech team playbook",
-      "language": null,
-      "stars": 2993
-    },
-    {
-      "rank": 416,
-      "github_id": 179523363,
-      "full_name": "digimezzo/dopamine",
-      "description": "The audio player that keeps it simple",
-      "language": "TypeScript",
-      "stars": 2437
-    },
-    {
-      "rank": 417,
-      "github_id": 188584527,
-      "full_name": "lonePatient/awesome-pretrained-chinese-nlp-models",
-      "description": "Awesome Pretrained Chinese NLP Models，高质量中文预训练模型&大模型&多模态模型&大语言模型集合",
-      "language": "Python",
-      "stars": 5619
-    },
-    {
-      "rank": 418,
-      "github_id": 195709752,
-      "full_name": "sc1341/InstagramOSINT",
-      "description": "An Instagram Open Source Intelligence Tool - Archive",
-      "language": "Python",
-      "stars": 1713
-    },
-    {
-      "rank": 419,
-      "github_id": 197481906,
-      "full_name": "yihong0618/gitblog",
-      "description": "People Die, but Long Live GitHub",
-      "language": "Python",
-      "stars": 1641
-    },
-    {
-      "rank": 420,
-      "github_id": 203602838,
-      "full_name": "Zeecka/AperiSolve",
-      "description": "Steganalysis web platform",
-      "language": "Python",
-      "stars": 870
-    },
-    {
-      "rank": 421,
-      "github_id": 221571611,
-      "full_name": "python-kasa/python-kasa",
-      "description": "🏠🤖 Python API for TP-Link smarthome products",
-      "language": "Python",
-      "stars": 1795
-    },
-    {
-      "rank": 422,
-      "github_id": 239002506,
-      "full_name": "kubie-org/kubie",
-      "description": "A more powerful alternative to kubectx and kubens",
-      "language": "Rust",
-      "stars": 2667
-    },
-    {
-      "rank": 423,
-      "github_id": 249512698,
-      "full_name": "GoogleChrome/web-vitals",
-      "description": "Essential metrics for a healthy site.",
-      "language": "JavaScript",
-      "stars": 8682
-    },
-    {
-      "rank": 424,
-      "github_id": 279848748,
-      "full_name": "rahuldkjain/github-profile-readme-generator",
-      "description": "🚀 Generate GitHub profile README easily with the latest add-ons like visitors count, GitHub stats, etc using minimal UI.",
-      "language": "TypeScript",
-      "stars": 24481
-    },
-    {
-      "rank": 425,
-      "github_id": 333478800,
-      "full_name": "LiteLDev/LeviLamina",
-      "description": "The modding system for Minecraft: Bedrock Edition.",
-      "language": "C++",
-      "stars": 1722
-    },
-    {
-      "rank": 426,
-      "github_id": 372630017,
-      "full_name": "pcodec/pcodec",
-      "description": "Lossless codec for numerical data",
-      "language": "Rust",
-      "stars": 531
-    },
-    {
-      "rank": 427,
-      "github_id": 401115811,
-      "full_name": "h4r5h1t/webcopilot",
-      "description": "An automation tool that enumerates subdomains then filters out xss, sqli, open redirect, lfi, ssrf and rce parameters and then scans for vulnerabilities.",
-      "language": "Shell",
-      "stars": 1303
-    },
-    {
-      "rank": 428,
-      "github_id": 447462104,
-      "full_name": "Ttanasart-pt/Pixel-Composer",
-      "description": "Node base VFX editor for pixel art.",
-      "language": "Game Maker Language",
-      "stars": 1450
-    },
-    {
-      "rank": 429,
-      "github_id": 615731791,
-      "full_name": "RandomNinjaAtk/arr-scripts",
-      "description": "Extended Container Scripts - Automation scripts to make life easier!",
-      "language": "Shell",
-      "stars": 1490
-    },
-    {
-      "rank": 430,
-      "github_id": 618514446,
-      "full_name": "gptme/gptme",
-      "description": "Your agent in your terminal, equipped with local tools: writes code, uses the terminal, browses the web. Make your own persistent autonomous agent on top!",
-      "language": "Python",
-      "stars": 4478
-    },
-    {
-      "rank": 431,
-      "github_id": 694066978,
-      "full_name": "Alan-CRL/Inkeys",
-      "description": "Inkeys is a free, open-source Windows app for desktop annotation, free-form whiteboarding, and slide markup—featuring smooth, responsive ink, smart drawing tools, and a sleek, customizable interface.",
-      "language": "C++",
-      "stars": 1213
-    },
-    {
-      "rank": 432,
-      "github_id": 763825934,
-      "full_name": "parthsarthi03/raptor",
-      "description": "The official implementation of RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval",
-      "language": "Python",
-      "stars": 1787
-    },
-    {
-      "rank": 433,
-      "github_id": 765938063,
-      "full_name": "microsoft/openvmm",
-      "description": "Home of OpenVMM and OpenHCL",
-      "language": "Rust",
-      "stars": 1972
-    },
-    {
-      "rank": 434,
-      "github_id": 811353065,
-      "full_name": "shub39/Grit",
-      "description": "🔨 A Simple todo list and habit tracker for Android ",
-      "language": "Kotlin",
-      "stars": 1234
-    },
-    {
-      "rank": 435,
-      "github_id": 815899373,
-      "full_name": "PranshulGG/WeatherMaster",
-      "description": "A Weather app for android with multiple sources 🌦🌞☔",
-      "language": "Kotlin",
-      "stars": 3165
-    },
-    {
-      "rank": 436,
-      "github_id": 871954550,
-      "full_name": "gtibo/Godot-Plush-Character",
-      "description": "3D Godot Plush Character in Godot 4.x",
-      "language": "GDScript",
-      "stars": 255
-    },
-    {
-      "rank": 437,
-      "github_id": 889054647,
-      "full_name": "danmindru/rare-big-deal",
-      "description": "🎁 App deals for Black Friday/Cyber Monday etc. Free to submit yours!",
-      "language": "MDX",
-      "stars": 390
-    },
-    {
-      "rank": 438,
-      "github_id": 926717974,
-      "full_name": "hakaioffsec/beerus-android",
-      "description": "BEERUS Framework for Android",
-      "language": "C",
-      "stars": 651
-    },
-    {
-      "rank": 439,
-      "github_id": 985572194,
-      "full_name": "RayLabsHQ/gitea-mirror",
-      "description": "Gitea Mirror auto-syncs GitHub repos to your self-hosted Gitea/Forgejo, with a sleek Web UI and easy Docker deployment.",
-      "language": "TypeScript",
-      "stars": 1521
-    },
-    {
-      "rank": 440,
-      "github_id": 994252890,
-      "full_name": "11cafe/jaaz",
-      "description": "The world's first open-source multimodal creative assistant  This is a substitute for Canva and Manus that prioritizes privacy and is usable locally.",
-      "language": "TypeScript",
-      "stars": 6744
-    },
-    {
-      "rank": 441,
-      "github_id": 1004056914,
-      "full_name": "smart-mcp-proxy/mcpproxy-go",
-      "description": "Supercharge AI Agents, Safely",
-      "language": "Go",
-      "stars": 420
-    },
-    {
-      "rank": 442,
-      "github_id": 1014394578,
-      "full_name": "disler/claude-code-hooks-mastery",
-      "description": "Master Claude Code Hooks",
-      "language": "Python",
-      "stars": 3982
-    },
-    {
-      "rank": 443,
-      "github_id": 1015697718,
-      "full_name": "ages2001/Universal-Windows-Installer",
-      "description": "A lightweight Linux-based installer for multiple Windows NT versions, supporting partitioning, formatting, and sysprepped image deployment. Installs in seconds on both modern and legacy systems.",
-      "language": "Shell",
-      "stars": 249
-    },
-    {
-      "rank": 444,
-      "github_id": 1058934766,
-      "full_name": "LoredCast/filewizard",
-      "description": "File Converter, OCR, Transcription & TTS WebUI",
-      "language": "Python",
-      "stars": 1128
-    },
-    {
-      "rank": 445,
-      "github_id": 1061125458,
-      "full_name": "QwenLM/Qwen3-Omni",
-      "description": "Qwen3-omni is a natively end-to-end, omni-modal LLM developed by the Qwen team at Alibaba Cloud, capable of understanding text, audio, images, and video, as well as generating speech in real time.",
-      "language": "Jupyter Notebook",
-      "stars": 4109
-    },
-    {
-      "rank": 446,
-      "github_id": 1068168978,
-      "full_name": "ml-explore/mlx-swift-lm",
-      "description": "LLMs and VLMs with MLX Swift",
-      "language": "Swift",
-      "stars": 870
-    },
-    {
-      "rank": 447,
-      "github_id": 1104731314,
-      "full_name": "xenos1337/AirPlayServer",
-      "description": "A fast, modern AirPlay receiver for Windows with real-time video mirroring, audio playback, and automatic device discovery. Supports 30/60 FPS streaming, hardware-accelerated rendering, adjustable quality presets, and a smooth, low-latency playback pipeline.",
-      "language": "C",
-      "stars": 233
-    },
-    {
-      "rank": 448,
-      "github_id": 1111226316,
-      "full_name": "jpomykala/NotchPrompter",
-      "description": "Super simple-to-use, always-on-top floating text prompter for macOS. Perfect for quick videos or keeping important text visible while you work.",
-      "language": "HTML",
-      "stars": 687
-    },
-    {
-      "rank": 449,
-      "github_id": 1155816493,
-      "full_name": "spacedriveapp/spacebot",
-      "description": "An AI agent for teams, communities, and multi-user environments.",
-      "language": "Rust",
-      "stars": 2435
-    },
-    {
-      "rank": 450,
-      "github_id": 1165671069,
-      "full_name": "Aryan-Raj3112/episteme",
-      "description": "A multi-platform document and e-book reader.",
-      "language": "Kotlin",
-      "stars": 1349
-    },
-    {
-      "rank": 451,
-      "github_id": 1189953139,
-      "full_name": "spf13/go-skills",
-      "description": null,
-      "language": null,
-      "stars": 709
-    },
-    {
-      "rank": 452,
-      "github_id": 1197183235,
-      "full_name": "Leonxlnx/agentic-ai-prompt-research",
-      "description": "Research into how agentic AI coding assistants work. Reconstructed prompt patterns, agent coordination, and security classification",
-      "language": null,
-      "stars": 2572
-    },
-    {
-      "rank": 453,
-      "github_id": 1207340595,
-      "full_name": "run-llama/ParseBench",
-      "description": "ParseBench - A Document Parsing Benchmark for AI Agents",
-      "language": "Python",
-      "stars": 638
-    },
-    {
-      "rank": 454,
-      "github_id": 1244786250,
-      "full_name": "anthropics/ClaudeForFoundationModels",
-      "description": "Claude support for Apple Foundation Models",
-      "language": "Swift",
-      "stars": 363
-    },
-    {
-      "rank": 455,
+      "rank": 223,
       "github_id": 1248716248,
       "full_name": "liominsb/Antigravity-Chinese-Localization",
       "description": "antigravity一键汉化",
@@ -3652,103 +1801,7 @@
       "stars": 955
     },
     {
-      "rank": 456,
-      "github_id": 1248774202,
-      "full_name": "text2future/flowix",
-      "description": "A tool for exploring AI agent workspaces.",
-      "language": "TypeScript",
-      "stars": 511
-    },
-    {
-      "rank": 457,
-      "github_id": 1257030504,
-      "full_name": "ln-dev7/logos-apps",
-      "description": "🎨 A free, open collection of 15,000+ clean SVG logos for apps, tools & tech brands.",
-      "language": "HTML",
-      "stars": 282
-    },
-    {
-      "rank": 458,
-      "github_id": 1261501126,
-      "full_name": "VortXTV/VortX",
-      "description": "Native streaming for Apple TV, iPhone, iPad and Apple-silicon Mac, with an Android phone/TV preview. Encrypted account sync, add-ons and personal media.",
-      "language": "Swift",
-      "stars": 266
-    },
-    {
-      "rank": 459,
-      "github_id": 1262534926,
-      "full_name": "apple/foundation-models-utilities",
-      "description": "Emerging and experimental patterns for building with the Foundation Models framework",
-      "language": "Swift",
-      "stars": 568
-    },
-    {
-      "rank": 460,
-      "github_id": 1281046422,
-      "full_name": "xiaofan4122/Elevator-LIO",
-      "description": "Elevator-LIO  Official implementation",
-      "language": "C++",
-      "stars": 301
-    },
-    {
-      "rank": 461,
-      "github_id": 1296607973,
-      "full_name": "matrixmapai/openabcode",
-      "description": "OpenABCode is a coding agent that dynamically routes development tasks to the best-suited models",
-      "language": "TypeScript",
-      "stars": 444
-    },
-    {
-      "rank": 462,
-      "github_id": 1301251513,
-      "full_name": "inbjo/MirrorProxy",
-      "description": "All-in-one mirror acceleration,The project uses an adapter-based proxy core and already ships adapters for GitHub, Docker/OCI, Composer, npm, PyPI, Cargo, Go modules, major language repositories, developer-tool distribution services, and operating system mirrors. ",
-      "language": "Rust",
-      "stars": 319
-    },
-    {
-      "rank": 463,
-      "github_id": 1323692802,
-      "full_name": "pengchujin/tower",
-      "description": "塔台 — 原生 SwiftUI iOS App，在本机管理机场订阅与自有节点，生成 Surge / Clash / Shadowrocket / Loon / Quantumult X 配置",
-      "language": "Swift",
-      "stars": 860
-    },
-    {
-      "rank": 464,
-      "github_id": 1328501958,
-      "full_name": "ItusiAI/Open-Magiviz",
-      "description": "Magiviz：开源的 AI 视频创作引擎，把一整个剧组交给每一个开发者与创作者",
-      "language": "TypeScript",
-      "stars": 619
-    },
-    {
-      "rank": 465,
-      "github_id": 1348932500,
-      "full_name": "brayonpi/hexstellar",
-      "description": "Turn any AI agent into a computational researcher. HexStellar Cortex delivers software-accelerated optimization, quantum computing, scientific computing, decision intelligence, and verifiable execution through a Python CLI and API—with certainty labels, verification receipts, examples, and a free sandbox. Start instantly: pip install hexstellar",
-      "language": "Python",
-      "stars": 1357
-    },
-    {
-      "rank": 466,
-      "github_id": 1370720584,
-      "full_name": "FSECDEV/Threat-Intelligence-Hackers-Forums",
-      "description": "A directory of hacker forums",
-      "language": null,
-      "stars": 404
-    },
-    {
-      "rank": 467,
-      "github_id": 1412939352,
-      "full_name": "eyalgolan/statecraft-israel",
-      "description": "A Civilization-style strategy game about governing Israel from 15 May 1948. Real ministers, real map, every fact sourced. Unity + deterministic C# sim.",
-      "language": "C#",
-      "stars": 699
-    },
-    {
-      "rank": 468,
+      "rank": 224,
       "github_id": 1140724419,
       "full_name": "wszqkzqk/PvZ-Portable",
       "description": "A cross-platform reimplementation of Plants vs. Zombies by the community. Aiming to bring 100% authentic experience of GOTY edition.",
@@ -3756,7 +1809,7 @@
       "stars": 912
     },
     {
-      "rank": 469,
+      "rank": 225,
       "github_id": 1212912877,
       "full_name": "microsoft/microsoft-ui-reactor",
       "description": "Reactor is an experimental set of extensions to WinUI",
@@ -3764,15 +1817,7 @@
       "stars": 896
     },
     {
-      "rank": 470,
-      "github_id": 1414125200,
-      "full_name": "mempage4k/glue5",
-      "description": "A native runtime for GTA V’s WebAssembly build, running on iOS, macOS, Android and Windows without JIT compilation.",
-      "language": "Rust",
-      "stars": 298
-    },
-    {
-      "rank": 471,
+      "rank": 226,
       "github_id": 1148744000,
       "full_name": "MengTo/Skills",
       "description": "Agent skills for designers and builders using Codex, Claude, Cursor, and other AI coding agents",
@@ -3780,15 +1825,7 @@
       "stars": 7514
     },
     {
-      "rank": 472,
-      "github_id": 127918080,
-      "full_name": "je-suis-tm/quant-trading",
-      "description": "Python quantitative trading strategies including VIX Calculator, Pattern Recognition, Commodity Trading Advisor, Monte Carlo, Options Straddle, Shooting Star, London Breakout, Heikin-Ashi, Pair Trading, RSI, Bollinger Bands, Parabolic SAR, Dual Thrust, Awesome, MACD",
-      "language": "Python",
-      "stars": 11275
-    },
-    {
-      "rank": 473,
+      "rank": 227,
       "github_id": 1130311831,
       "full_name": "yuaotian/antigravity-proxy",
       "description": "🚀 Transparent proxy injector for Antigravity. Force SOCKS5/HTTP proxy without TUN mode on Windows. | 专为 Antigravity 打造的免 TUN 强制代理工具，支持 DLL 注入与进程流量劫持。",
@@ -3796,79 +1833,7 @@
       "stars": 4846
     },
     {
-      "rank": 474,
-      "github_id": 53370988,
-      "full_name": "GoogleChrome/lighthouse",
-      "description": "Automated auditing, performance metrics, and best practices for the web.",
-      "language": "JavaScript",
-      "stars": 31090
-    },
-    {
-      "rank": 475,
-      "github_id": 79764891,
-      "full_name": "tuyafeng/Via",
-      "description": "Via is a simple browser, and this repository is set for localization.",
-      "language": null,
-      "stars": 3985
-    },
-    {
-      "rank": 476,
-      "github_id": 460514332,
-      "full_name": "lwthiker/curl-impersonate",
-      "description": "curl-impersonate: A special build of curl that can impersonate Chrome & Firefox",
-      "language": "Python",
-      "stars": 7190
-    },
-    {
-      "rank": 477,
-      "github_id": 736363011,
-      "full_name": "olimorris/codecompanion.nvim",
-      "description": "✨ AI Coding, Vim Style",
-      "language": "Lua",
-      "stars": 6941
-    },
-    {
-      "rank": 478,
-      "github_id": 869636668,
-      "full_name": "Crustack/NotallyX",
-      "description": "Minimalistic Android note taking App | Notally, but eXtended.",
-      "language": "Kotlin",
-      "stars": 805
-    },
-    {
-      "rank": 479,
-      "github_id": 934553284,
-      "full_name": "PrimeIntellect-ai/prime-rl",
-      "description": "Agentic RL Training at Scale",
-      "language": "Python",
-      "stars": 2244
-    },
-    {
-      "rank": 480,
-      "github_id": 1136609655,
-      "full_name": "PegaProx/project-pegaprox",
-      "description": "The ultimate datacenter management solution for Proxmox VE and XCP-NG. Unified multi-cluster control, intelligent load balancing, and seamless cross-cluster VM migrations — all in one beautiful interface.",
-      "language": "Python",
-      "stars": 1727
-    },
-    {
-      "rank": 481,
-      "github_id": 1290023012,
-      "full_name": "ZimengXiong/tinyTouch",
-      "description": "authenticate, sudo, login with your fingerprint wire(less)ly without having to spend $149 at the cost of some security",
-      "language": "Python",
-      "stars": 1651
-    },
-    {
-      "rank": 482,
-      "github_id": 358446986,
-      "full_name": "waydroid/waydroid",
-      "description": "Waydroid uses a container-based approach to boot a full Android system on a regular GNU/Linux system like Ubuntu.",
-      "language": "Python",
-      "stars": 12534
-    },
-    {
-      "rank": 483,
+      "rank": 228,
       "github_id": 1287568859,
       "full_name": "grft-dev/graftcode",
       "description": "Connect any code. Call as dependency. The official repository for Graftcode: the integration-free development layer that lets you call methods across languages and runtimes on remote services as if they were local. Eliminate integration layer code entirely.",
@@ -3876,7 +1841,7 @@
       "stars": 1163
     },
     {
-      "rank": 484,
+      "rank": 229,
       "github_id": 1395546904,
       "full_name": "wanvfx/ProxyNodeHub",
       "description": "ProxyNodeHub 用于发现 GitHub 上活跃的免费节点仓库：分析活跃度、去重分散的节点、直接给出可用的订阅链接。点一次「搜索并分析」，剩下的梳理工作全部由它完成。",
@@ -3884,7 +1849,7 @@
       "stars": 641
     },
     {
-      "rank": 485,
+      "rank": 230,
       "github_id": 1293128596,
       "full_name": "bkingfilm/lapian-notes",
       "description": "AI 辅助的电影拉片工具：AI 拆出剧情泳道时间轴、结构树、情绪曲线，边播边写拉片笔记，免费开源全本地 | AI-assisted film breakdown notebook: story-lane timeline, structure tree, emotion curve. Free, open source, fully local.",
@@ -3892,15 +1857,7 @@
       "stars": 790
     },
     {
-      "rank": 486,
-      "github_id": 614933136,
-      "full_name": "withastro/starlight",
-      "description": "🌟 Build beautiful, accessible, high-performance documentation websites with Astro",
-      "language": "TypeScript",
-      "stars": 9584
-    },
-    {
-      "rank": 487,
+      "rank": 231,
       "github_id": 1404197626,
       "full_name": "openfilm/openfilm",
       "description": "The open source AI video agent: turns any coding agent into a video agent, with an editor to change anything it makes.",
@@ -3908,7 +1865,7 @@
       "stars": 7068
     },
     {
-      "rank": 488,
+      "rank": 232,
       "github_id": 1145914675,
       "full_name": "first-fluke/oh-my-agent",
       "description": "Agent skills and specialist teams for Claude Code, Codex, Cursor and other coding agents. Load one skill or install domain presets, project hooks and parallel workflows with test gates.",
@@ -3916,7 +1873,7 @@
       "stars": 1462
     },
     {
-      "rank": 489,
+      "rank": 233,
       "github_id": 1414283666,
       "full_name": "SAMS0N1TE/lr2021-sdr",
       "description": "Experimental LR2021 raw I/Q capture library and tools in C.",
@@ -3924,23 +1881,7 @@
       "stars": 313
     },
     {
-      "rank": 490,
-      "github_id": 307018731,
-      "full_name": "DenverCoder1/github-readme-streak-stats",
-      "description": "🔥 Stay motivated and show off your contribution streak! 🌟 Display your total contributions, current streak, and longest streak on your GitHub profile README",
-      "language": "PHP",
-      "stars": 7213
-    },
-    {
-      "rank": 491,
-      "github_id": 679553008,
-      "full_name": "partcad/partcad",
-      "description": "Package manager for things. Start designing modular hardware! PartCAD is the standard for documenting manufacturable physical products (a.k.a. Digital Thread or TDP). It comes with a set of tools to maintain product information and to facilitate efficient and effective workflows at all product lifecycle phases, boosted by AI.",
-      "language": "Python",
-      "stars": 540
-    },
-    {
-      "rank": 492,
+      "rank": 234,
       "github_id": 1289743790,
       "full_name": "simonlin1212/Vibe-Research",
       "description": "Vibe-Research：A 股、美股、港股的投研工作台 · 自选与持仓、每日复盘、产业资讯、产业研究、个股深挖、回测、研报库，168 个数据端点。支持 Claude Code、Codex、WorkBuddy 订阅或任意模型 API。 | A research workbench for China A-shares, US and HK stocks.",
@@ -3948,7 +1889,7 @@
       "stars": 3711
     },
     {
-      "rank": 493,
+      "rank": 235,
       "github_id": 764024387,
       "full_name": "galaxy-s10/billd-desk",
       "description": "基于Vue3 + WebRTC + Nodejs + Flutter搭建的远程桌面控制、游戏串流",
@@ -3956,7 +1897,7 @@
       "stars": 9349
     },
     {
-      "rank": 494,
+      "rank": 236,
       "github_id": 1309225833,
       "full_name": "espkvm/espkvm",
       "description": "IP-KVM on the ESP32-P4: HDMI capture, USB keyboard and mouse, and a browser console over HTTPS",
@@ -3964,47 +1905,7 @@
       "stars": 613
     },
     {
-      "rank": 495,
-      "github_id": 148821256,
-      "full_name": "luau-lang/luau",
-      "description": "A small, fast, and embeddable programming language based on Lua with a gradual type system.",
-      "language": "C++",
-      "stars": 6108
-    },
-    {
-      "rank": 496,
-      "github_id": 918287261,
-      "full_name": "c2g-dev/city2graph",
-      "description": "Transform geospatial relations into graphs for Graph Neural Networks and spatial network analysis",
-      "language": "Python",
-      "stars": 1988
-    },
-    {
-      "rank": 497,
-      "github_id": 1148878535,
-      "full_name": "HughYau/AcademicForge",
-      "description": "One Forge, All Skills: A curated skill collection for academic writing and research.  点开即用，按需配置的一站式学术研究skills平台。",
-      "language": "Python",
-      "stars": 2651
-    },
-    {
-      "rank": 498,
-      "github_id": 1299518666,
-      "full_name": "Retro-Diffusion/pixel-art-fixer",
-      "description": "Convert images into pixel art",
-      "language": "Python",
-      "stars": 528
-    },
-    {
-      "rank": 499,
-      "github_id": 1155766506,
-      "full_name": "razzant/ouroboros",
-      "description": "Ouroboros — self-creating AI agent. Born Feb 16, 2026.",
-      "language": "Python",
-      "stars": 1659
-    },
-    {
-      "rank": 500,
+      "rank": 237,
       "github_id": 1361547222,
       "full_name": "imexlovery/video-report-agent",
       "description": "A Python video-to-report pipeline and reusable agent Skill for generating structured, source-traceable HTML reports.",
@@ -4012,15 +1913,7 @@
       "stars": 342
     },
     {
-      "rank": 501,
-      "github_id": 93835782,
-      "full_name": "veltman/flubber",
-      "description": "Tools for smoother shape animations.",
-      "language": "JavaScript",
-      "stars": 6979
-    },
-    {
-      "rank": 502,
+      "rank": 238,
       "github_id": 1063641074,
       "full_name": "a2ui-project/a2ui",
       "description": "Open-source generative UI framework: agents stream layout data, and apps render it with native components in React, Angular, Lit, Flutter, SwiftUI and Jetpack Compose.",
@@ -4028,7 +1921,7 @@
       "stars": 17358
     },
     {
-      "rank": 503,
+      "rank": 239,
       "github_id": 1289484140,
       "full_name": "flyl1u/fly-island",
       "description": "A lightweight PC Dynamic Island that integrates QQ, WeChat, and email notifications, clipboard history, quick translation, a Codex status light, media controls, daily to-dos, and more. | 轻量的PC灵动岛，集成QQ、微信及邮箱通知、剪贴历史、快捷翻译、Agent状态灯、媒体控制、每日待办等功能",
@@ -4036,71 +1929,7 @@
       "stars": 696
     },
     {
-      "rank": 504,
-      "github_id": 15830664,
-      "full_name": "mkdocs/mkdocs",
-      "description": "Project documentation with Markdown.",
-      "language": "Python",
-      "stars": 22551
-    },
-    {
-      "rank": 505,
-      "github_id": 172680589,
-      "full_name": "zhkl0228/unidbg",
-      "description": "Allows you to emulate an Android native library, and an experimental  iOS emulation",
-      "language": "Java",
-      "stars": 5321
-    },
-    {
-      "rank": 506,
-      "github_id": 497617084,
-      "full_name": "Idov31/Nidhogg",
-      "description": "Windows rootkit for Intel x64 with 25+ features, demonstrating rootkit techniques compatible with all Windows 10 and Windows 11 versions.",
-      "language": "C++",
-      "stars": 2563
-    },
-    {
-      "rank": 507,
-      "github_id": 611618121,
-      "full_name": "LiLittleCat/awesome-free-chatgpt",
-      "description": "🆓免费的 ChatGPT 镜像网站列表，持续更新。List of free ChatGPT mirror sites, continuously updated. ",
-      "language": "Python",
-      "stars": 21365
-    },
-    {
-      "rank": 508,
-      "github_id": 916045259,
-      "full_name": "trailofbits/buttercup",
-      "description": "Buttercup finds and patches software vulnerabilities",
-      "language": "Python",
-      "stars": 1756
-    },
-    {
-      "rank": 509,
-      "github_id": 1152524572,
-      "full_name": "Moonfin-Client/Plugin",
-      "description": "Companion server plugin for all Moonfin clients",
-      "language": "C#",
-      "stars": 473
-    },
-    {
-      "rank": 510,
-      "github_id": 1342876750,
-      "full_name": "totec448-spec/chat-on-steroids",
-      "description": "Cross-platform local MCP capabilities for ChatGPT with Chrome integration, Goal, Compact & Resume, and durable multi-agent workflows.",
-      "language": "TypeScript",
-      "stars": 5184
-    },
-    {
-      "rank": 511,
-      "github_id": 1351879111,
-      "full_name": "Human-Agent-Society/reef",
-      "description": "Infrastructure for continually self‑improving agents",
-      "language": "Python",
-      "stars": 7820
-    },
-    {
-      "rank": 512,
+      "rank": 240,
       "github_id": 1277597194,
       "full_name": "Kiterlin/anti-defensive-writing",
       "description": "Codex skill for removing defensive writing and strengthening prose.",
@@ -4108,95 +1937,7 @@
       "stars": 2072
     },
     {
-      "rank": 513,
-      "github_id": 1131905324,
-      "full_name": "ivg-design/SidebarFavorites",
-      "description": "Add custom folders to macOS Finder sidebar Favorites with custom SF Symbol icons",
-      "language": "Swift",
-      "stars": 235
-    },
-    {
-      "rank": 514,
-      "github_id": 1318473907,
-      "full_name": "daxiaamu/Guise_Reborn",
-      "description": "New Guise",
-      "language": "Kotlin",
-      "stars": 329
-    },
-    {
-      "rank": 515,
-      "github_id": 1346702053,
-      "full_name": "stew675/llama-cpp-rdna-boosts",
-      "description": "A set of performant RDNA/HIP patches against llama.cpp focusing on high speed inferencing with numerics assurance",
-      "language": "Shell",
-      "stars": 250
-    },
-    {
-      "rank": 516,
-      "github_id": 1099232644,
-      "full_name": "wzh4869/AppPorts",
-      "description": "📦 A macOS utility to seamlessly migrate applications to external storage and reclaim local disk space.【一款 macOS 工具，无缝迁移应用到外部存储并自动建立链接，释放宝贵的本地空间】",
-      "language": "Swift",
-      "stars": 2241
-    },
-    {
-      "rank": 517,
-      "github_id": 1425063138,
-      "full_name": "opentrap/opentrap",
-      "description": "A free, open-source alternative to Burp Suite: an intercepting proxy and web app security testing suite with Repeater, Intruder, Collaborator and a built-in OWASP ZAP scanner. Linux, AGPL-3.0.",
-      "language": "Java",
-      "stars": 776
-    },
-    {
-      "rank": 518,
-      "github_id": 16752620,
-      "full_name": "gogs/gogs",
-      "description": "The painless way to host your own Git service",
-      "language": "Go",
-      "stars": 47937
-    },
-    {
-      "rank": 519,
-      "github_id": 505180529,
-      "full_name": "Rabbit-Spec/Surge",
-      "description": "Surge自用配置以及模块和脚本",
-      "language": "JavaScript",
-      "stars": 3778
-    },
-    {
-      "rank": 520,
-      "github_id": 560210016,
-      "full_name": "Stapxs/Stapxs-QQ-Lite-2.0",
-      "description": "一个兼容 OneBot 协议的第三方 QQ 客户端。 Web、全平台实现！",
-      "language": "Vue",
-      "stars": 1377
-    },
-    {
-      "rank": 521,
-      "github_id": 599118825,
-      "full_name": "HQarroum/docker-android",
-      "description": "🤖 A minimal and customizable Docker image running the Android emulator as a service.",
-      "language": "Shell",
-      "stars": 7411
-    },
-    {
-      "rank": 522,
-      "github_id": 1399145083,
-      "full_name": "facebookresearch/swe-sweep",
-      "description": "How many bugs can LMs find & fix in large codebases?",
-      "language": "Python",
-      "stars": 239
-    },
-    {
-      "rank": 523,
-      "github_id": 1150800542,
-      "full_name": "romainsimon/paperasse",
-      "description": "🇫🇷  Skills pour agents IA spécialisés dans la bureaucratie française : Comptable, Notaire, ...",
-      "language": "JavaScript",
-      "stars": 2601
-    },
-    {
-      "rank": 524,
+      "rank": 241,
       "github_id": 1402608128,
       "full_name": "soyjxck/dod3-recomp",
       "description": "Drakengard 3 (PS3) static recompilation using ps3recomp",
@@ -4204,7 +1945,7 @@
       "stars": 333
     },
     {
-      "rank": 525,
+      "rank": 242,
       "github_id": 1246346594,
       "full_name": "jianshuo/ccglass",
       "description": "See what your coding agent (Claude Code, Codex, Kimi) sends to the model — local proxy + web dashboard",
@@ -4212,31 +1953,7 @@
       "stars": 946
     },
     {
-      "rank": 526,
-      "github_id": 697196736,
-      "full_name": "eooce/nodejs-argo",
-      "description": "nodejs-argo是一个强大的Argo隧道部署工具，专为PaaS平台和游戏玩具平台设计。它支持多种代理协议(VLESS、VMess、Trojan)等，有直连协议(Socks5、Hysteria2、Reality)可选开启，并集成了哪吒探针功能",
-      "language": "JavaScript",
-      "stars": 8471
-    },
-    {
-      "rank": 527,
-      "github_id": 70344882,
-      "full_name": "anyblades/blades",
-      "description": "A modern, direct fork of Pico CSS. Switch `pico.css` to `blades.css` with the same ⁠‑⁠⁠‑⁠pico‑⁠* vars, and voilà! ✨",
-      "language": "CSS",
-      "stars": 487
-    },
-    {
-      "rank": 528,
-      "github_id": 720733456,
-      "full_name": "Gentleman-Programming/Gentleman.Dots",
-      "description": "My personal configuration for LazyVim !",
-      "language": "Shell",
-      "stars": 2127
-    },
-    {
-      "rank": 529,
+      "rank": 243,
       "github_id": 1329713712,
       "full_name": "zion-sati/NetWasm",
       "description": "Compile C# and .NET CIL to small standalone Wasm with WASI (AOT with built-in Runtime and Precise GC)",
@@ -4244,7 +1961,7 @@
       "stars": 350
     },
     {
-      "rank": 530,
+      "rank": 244,
       "github_id": 1169612059,
       "full_name": "Gabberflast/academic-pptx-skill",
       "description": "A Claude Skill for creating academic presentations (conference talks, seminar slides, thesis defenses, grant briefings). Enforces action titles, structured argument, exhibit discipline, citation standards, and communication-first design. Works alongside Anthropic's built-in PPTX skill.",
@@ -4252,23 +1969,7 @@
       "stars": 1563
     },
     {
-      "rank": 531,
-      "github_id": 302473170,
-      "full_name": "Inochi2D/inochi2d",
-      "description": "Inochi2D SDK - Bring your characters to life",
-      "language": "D",
-      "stars": 1870
-    },
-    {
-      "rank": 532,
-      "github_id": 612344730,
-      "full_name": "ChatGPTNextWeb/NextChat",
-      "description": "✨ Zero-config AI chat assistant. No API key needed — sign up and instantly chat with GPT-5, Claude 4, Gemini 2.5, DeepSeek & 100+ top models. Pay-as-you-go saves you more. Available on Web, iOS, macOS, Android, Linux, Windows.",
-      "language": "TypeScript",
-      "stars": 88964
-    },
-    {
-      "rank": 533,
+      "rank": 245,
       "github_id": 1262530182,
       "full_name": "apple/coreai-models",
       "description": "Model export recipes, Python primitives, and Swift runtime utilities for on-device AI",
@@ -4276,7 +1977,7 @@
       "stars": 2345
     },
     {
-      "rank": 534,
+      "rank": 246,
       "github_id": 1374472673,
       "full_name": "kuafuai/andee",
       "description": "Andee lives on your phone or Mac and uses any app like you do—no integrations, no root, any model; memory and passwords never leave your device | Andee 住进你的手机或 Mac，像你一样操作任何 App——无需集成、无需 Root、支持任意模型，记忆和密码绝不离开设备。",
@@ -4284,7 +1985,7 @@
       "stars": 6133
     },
     {
-      "rank": 535,
+      "rank": 247,
       "github_id": 1410961834,
       "full_name": "BaaRai/ARTEX",
       "description": "ARTEX - AI autonomous penetration testing system (English translation)",
@@ -4292,791 +1993,7 @@
       "stars": 3227
     },
     {
-      "rank": 536,
-      "github_id": 205423,
-      "full_name": "apache/httpd",
-      "description": "Apache HTTP Server",
-      "language": "C",
-      "stars": 4054
-    },
-    {
-      "rank": 537,
-      "github_id": 901277,
-      "full_name": "pelicanmapping/osgearth",
-      "description": "3D Maps & Terrain SDK (C++)",
-      "language": "C",
-      "stars": 1826
-    },
-    {
-      "rank": 538,
-      "github_id": 1217831,
-      "full_name": "perkeep/perkeep",
-      "description": "Perkeep (née Camlistore) is your personal storage system for life: a way of storing, syncing, sharing, modelling and backing up content.",
-      "language": "Go",
-      "stars": 7270
-    },
-    {
-      "rank": 539,
-      "github_id": 3342046,
-      "full_name": "RDFLib/rdflib",
-      "description": "RDFLib is a Python library for working with RDF, a simple yet powerful language for representing information.",
-      "language": "Python",
-      "stars": 2558
-    },
-    {
-      "rank": 540,
-      "github_id": 6780767,
-      "full_name": "aws/aws-cli",
-      "description": "Universal Command Line Interface for Amazon Web Services",
-      "language": "Python",
-      "stars": 17364
-    },
-    {
-      "rank": 541,
-      "github_id": 8231466,
-      "full_name": "MediaBrowser/Emby",
-      "description": "Emby Server is a personal media server with apps on just about every device.",
-      "language": "C#",
-      "stars": 5021
-    },
-    {
-      "rank": 542,
-      "github_id": 9214660,
-      "full_name": "JACoders/OpenJK",
-      "description": "Community effort to maintain and improve Jedi Academy (SP & MP) + Jedi Outcast (SP only) released by Raven Software",
-      "language": "C++",
-      "stars": 2338
-    },
-    {
-      "rank": 543,
-      "github_id": 15008072,
-      "full_name": "sindresorhus/quick-look-plugins",
-      "description": "List of useful Quick Look plugins for developers",
-      "language": null,
-      "stars": 18811
-    },
-    {
-      "rank": 544,
-      "github_id": 19028976,
-      "full_name": "nasa-gibs/worldview",
-      "description": "Interactive interface for browsing global, full-resolution satellite imagery",
-      "language": "JavaScript",
-      "stars": 1970
-    },
-    {
-      "rank": 545,
-      "github_id": 22711802,
-      "full_name": "wine-mirror/wine",
-      "description": null,
-      "language": "C",
-      "stars": 4287
-    },
-    {
-      "rank": 546,
-      "github_id": 26921116,
-      "full_name": "haifengl/smile",
-      "description": "Statistical Machine Intelligence & Learning Engine",
-      "language": "Java",
-      "stars": 6436
-    },
-    {
-      "rank": 547,
-      "github_id": 27796175,
-      "full_name": "shazow/ssh-chat",
-      "description": "Chat over SSH.",
-      "language": "Go",
-      "stars": 5919
-    },
-    {
-      "rank": 548,
-      "github_id": 31341340,
-      "full_name": "kern/filepizza",
-      "description": ":pizza: Peer-to-peer file transfers in your browser",
-      "language": "TypeScript",
-      "stars": 10282
-    },
-    {
-      "rank": 549,
-      "github_id": 32838108,
-      "full_name": "google/mozc-devices",
-      "description": "Circuit diagrams and firmware source code for Gboard DIY keyboards",
-      "language": "C++",
-      "stars": 2996
-    },
-    {
-      "rank": 550,
-      "github_id": 38874172,
-      "full_name": "boopathi/react-svg-loader",
-      "description": "A loader for webpack, rollup, babel that loads svg as a React Component",
-      "language": "TypeScript",
-      "stars": 651
-    },
-    {
-      "rank": 551,
-      "github_id": 47250070,
-      "full_name": "panva/node-oidc-provider",
-      "description": "OpenID Certified™ OAuth 2.0 Authorization Server implementation for Node.js",
-      "language": "JavaScript",
-      "stars": 3855
-    },
-    {
-      "rank": 552,
-      "github_id": 51669870,
-      "full_name": "djadmin/awesome-bug-bounty",
-      "description": "A comprehensive curated list of available Bug Bounty & Disclosure Programs and Write-ups.",
-      "language": null,
-      "stars": 5981
-    },
-    {
-      "rank": 553,
-      "github_id": 54452622,
-      "full_name": "apache/guacamole-client",
-      "description": "The Apache Guacamole web application, official extensions, and JavaScript library.",
-      "language": "Java",
-      "stars": 1757
-    },
-    {
-      "rank": 554,
-      "github_id": 55906763,
-      "full_name": "npgsql/efcore.pg",
-      "description": "Entity Framework Core provider for PostgreSQL",
-      "language": "C#",
-      "stars": 1851
-    },
-    {
-      "rank": 555,
-      "github_id": 65589448,
-      "full_name": "vpinball/vpinball",
-      "description": "Visual Pinball - An open source pinball table editor and simulator.",
-      "language": "C++",
-      "stars": 1072
-    },
-    {
-      "rank": 556,
-      "github_id": 66327465,
-      "full_name": "AlexStocks/getty",
-      "description": "a netty like asynchronous network I/O library based on tcp/udp/websocket; a bidirectional RPC framework based on JSON/Protobuf; a microservice framework based on zookeeper/etcd",
-      "language": "Go",
-      "stars": 957
-    },
-    {
-      "rank": 557,
-      "github_id": 78859695,
-      "full_name": "systemd/casync",
-      "description": "Content-Addressable Data Synchronization Tool",
-      "language": "C",
-      "stars": 1626
-    },
-    {
-      "rank": 558,
-      "github_id": 79821807,
-      "full_name": "yandexdataschool/Practical_RL",
-      "description": "A course in reinforcement learning in the wild",
-      "language": "Jupyter Notebook",
-      "stars": 6614
-    },
-    {
-      "rank": 559,
-      "github_id": 80669528,
-      "full_name": "ddev/ddev",
-      "description": "Docker-based local PHP+Node.js web development environments",
-      "language": "Go",
-      "stars": 3955
-    },
-    {
-      "rank": 560,
-      "github_id": 96284790,
-      "full_name": "prasathmani/tinyfilemanager",
-      "description": "Single-file PHP file manager, browser and manage your files efficiently and easily with tinyfilemanager",
-      "language": "PHP",
-      "stars": 6012
-    },
-    {
-      "rank": 561,
-      "github_id": 102637400,
-      "full_name": "BernardoGiordano/Checkpoint",
-      "description": "Fast and simple homebrew save management framework for 3DS and Switch.",
-      "language": "C++",
-      "stars": 3129
-    },
-    {
-      "rank": 562,
-      "github_id": 104957153,
-      "full_name": "nestjs/awesome-nestjs",
-      "description": "A curated list of awesome things related to NestJS 😎",
-      "language": null,
-      "stars": 13198
-    },
-    {
-      "rank": 563,
-      "github_id": 141853509,
-      "full_name": "pkalogiros/AudioMass",
-      "description": "Free full-featured web-based audio & waveform editing tool",
-      "language": "JavaScript",
-      "stars": 3055
-    },
-    {
-      "rank": 564,
-      "github_id": 143965255,
-      "full_name": "apache/dubbo-go",
-      "description": "Go Implementation For Apache Dubbo .",
-      "language": "Go",
-      "stars": 4981
-    },
-    {
-      "rank": 565,
-      "github_id": 146576102,
-      "full_name": "YouROK/TorrServer",
-      "description": "Torrent stream server",
-      "language": "Go",
-      "stars": 3227
-    },
-    {
-      "rank": 566,
-      "github_id": 149898430,
-      "full_name": "TheSpeedX/PROXY-List",
-      "description": "Get PROXY List  that gets updated everyday",
-      "language": null,
-      "stars": 5890
-    },
-    {
-      "rank": 567,
-      "github_id": 152095243,
-      "full_name": "zhw2590582/ArtPlayer",
-      "description": ":art: ArtPlayer.js is a modern and full featured HTML5 video player",
-      "language": "JavaScript",
-      "stars": 4167
-    },
-    {
-      "rank": 568,
-      "github_id": 155576567,
-      "full_name": "piglei/one-python-craftsman",
-      "description": "来自一位 Pythonista 的编程经验分享，内容涵盖编码技巧、最佳实践与思维模式等方面。",
-      "language": null,
-      "stars": 7346
-    },
-    {
-      "rank": 569,
-      "github_id": 173382880,
-      "full_name": "AutoRecon/AutoRecon",
-      "description": "AutoRecon is a multi-threaded network reconnaissance tool which performs automated enumeration of services.",
-      "language": "Python",
-      "stars": 6152
-    },
-    {
-      "rank": 570,
-      "github_id": 178079595,
-      "full_name": "opencost/opencost",
-      "description": "Cost monitoring for Kubernetes workloads and cloud costs",
-      "language": "Go",
-      "stars": 6821
-    },
-    {
-      "rank": 571,
-      "github_id": 181598222,
-      "full_name": "VeNoMouS/cloudscraper",
-      "description": "A Python module to bypass Cloudflare's anti-bot page.",
-      "language": "Python",
-      "stars": 6820
-    },
-    {
-      "rank": 572,
-      "github_id": 182299236,
-      "full_name": "actions/toolkit",
-      "description": "The GitHub ToolKit for developing GitHub Actions.",
-      "language": "TypeScript",
-      "stars": 5913
-    },
-    {
-      "rank": 573,
-      "github_id": 186178030,
-      "full_name": "labwc/labwc",
-      "description": "A Wayland window-stacking compositor",
-      "language": "C",
-      "stars": 2912
-    },
-    {
-      "rank": 574,
-      "github_id": 202429703,
-      "full_name": "firebase/flutterfire",
-      "description": "🔥 A collection of Firebase plugins for Flutter apps.",
-      "language": "Dart",
-      "stars": 9276
-    },
-    {
-      "rank": 575,
-      "github_id": 205812745,
-      "full_name": "mitesh77/Best-Flutter-UI-Templates",
-      "description": "completely free for everyone. Its build-in Flutter Dart.",
-      "language": "Dart",
-      "stars": 22868
-    },
-    {
-      "rank": 576,
-      "github_id": 213749542,
-      "full_name": "str4d/rage",
-      "description": "A simple, secure and modern file encryption tool (and Rust library) with small explicit keys, no config options, and UNIX-style composability.",
-      "language": "Rust",
-      "stars": 3722
-    },
-    {
-      "rank": 577,
-      "github_id": 220875250,
-      "full_name": "201206030/novel",
-      "description": "novel 是一套基于时下最新 Java 技术栈 Spring Boot 3 + Vue 3 开发的前后端分离学习型小说项目，配备保姆级教程手把手教你从零开始开发上线一套生产级别的 Java 系统，由小说门户系统、作家后台管理系统、平台后台管理系统等多个子系统构成。包括小说推荐、作品检索、小说排行榜、小说阅读、小说评论、会员中心、作家专区、充值订阅、新闻发布等功能。",
-      "language": "Java",
-      "stars": 5857
-    },
-    {
-      "rank": 578,
-      "github_id": 222258954,
-      "full_name": "dstotijn/hetty",
-      "description": "An HTTP toolkit for security research.",
-      "language": "Go",
-      "stars": 12546
-    },
-    {
-      "rank": 579,
-      "github_id": 228824550,
-      "full_name": "coding-kitties/investing-algorithm-framework",
-      "description": "Framework for quantitative trading. Complete framework for development, backtesting, and deploying automated trading algorithms and trading bots.",
-      "language": "Python",
-      "stars": 2247
-    },
-    {
-      "rank": 580,
-      "github_id": 229694643,
-      "full_name": "fenixsoft/awesome-fenix",
-      "description": "讨论如何构建一套可靠的大型分布式系统",
-      "language": "JavaScript",
-      "stars": 9479
-    },
-    {
-      "rank": 581,
-      "github_id": 234250873,
-      "full_name": "apache/dubbo-go-pixiu",
-      "description": "Based on the proxy gateway service of dubbo-go, it solves the problem that the external protocol calls the internal Dubbo cluster. At present, it supports HTTP and gRPC[developing].",
-      "language": "Go",
-      "stars": 574
-    },
-    {
-      "rank": 582,
-      "github_id": 236637683,
-      "full_name": "tangyudi/Ai-Learn",
-      "description": "人工智能学习路线图，整理近200个实战案例与项目，免费提供配套教材，零基础入门，就业实战！包括：Python，数学，机器学习，数据分析，深度学习，计算机视觉，自然语言处理，PyTorch tensorflow machine-learning,deep-learning data-analysis data-mining mathematics data-science artificial-intelligence python tensorflow tensorflow2 caffe keras pytorch algorithm numpy pandas matplotlib seaborn nlp cv等热门领域",
-      "language": null,
-      "stars": 13470
-    },
-    {
-      "rank": 583,
-      "github_id": 238514517,
-      "full_name": "tsparticles/tsparticles",
-      "description": "tsParticles - Easily create highly customizable JavaScript particles effects, confetti explosions and fireworks animations and use them as animated backgrounds for your website. Ready to use components available for React.js, Vue.js (2.x and 3.x), Angular, Svelte, jQuery, Preact, Inferno, Solid, Riot and Web Components.",
-      "language": "TypeScript",
-      "stars": 9095
-    },
-    {
-      "rank": 584,
-      "github_id": 241095326,
-      "full_name": "flwrlabs/flower",
-      "description": "Flower: A Friendly Federated AI Framework",
-      "language": "Python",
-      "stars": 7210
-    },
-    {
-      "rank": 585,
-      "github_id": 247117413,
-      "full_name": "RafaelBarbosatec/bonfire",
-      "description": "(RPG maker) Create RPG-style or similar games more simply with Flame.",
-      "language": "Dart",
-      "stars": 1498
-    },
-    {
-      "rank": 586,
-      "github_id": 292085252,
-      "full_name": "QuantumLeaps/modern-embedded-programming-course",
-      "description": "Companion repository to the \"Modern Embedded Systems Programming\" video course.",
-      "language": "C",
-      "stars": 1558
-    },
-    {
-      "rank": 587,
-      "github_id": 294419498,
-      "full_name": "obytes/react-native-template-obytes",
-      "description": "📱 A template for your next React Native project: Expo, PNPM, TypeScript, TailwindCSS, Husky, EAS, GitHub Actions, Env Vars, expo-router, react-query, react-hook-form.",
-      "language": "TypeScript",
-      "stars": 4370
-    },
-    {
-      "rank": 588,
-      "github_id": 323279421,
-      "full_name": "LinwoodDev/Butterfly",
-      "description": "🎨 Powerful, minimalistic, cross-platform, opensource note-taking app",
-      "language": "Dart",
-      "stars": 2102
-    },
-    {
-      "rank": 589,
-      "github_id": 331380723,
-      "full_name": "raspberrypi/pico-sdk",
-      "description": null,
-      "language": "C",
-      "stars": 5024
-    },
-    {
-      "rank": 590,
-      "github_id": 343714504,
-      "full_name": "tuxera/ntfs-3g",
-      "description": "NTFS-3G Safe Read/Write NTFS Driver",
-      "language": "C",
-      "stars": 1541
-    },
-    {
-      "rank": 591,
-      "github_id": 351544978,
-      "full_name": "nefarius/HidHide",
-      "description": "Gaming Input Peripherals Device Firewall for Windows.",
-      "language": "C++",
-      "stars": 1589
-    },
-    {
-      "rank": 592,
-      "github_id": 364474335,
-      "full_name": "google/zx",
-      "description": "A tool for writing better scripts",
-      "language": "JavaScript",
-      "stars": 45850
-    },
-    {
-      "rank": 593,
-      "github_id": 402643958,
-      "full_name": "argyleink/open-props",
-      "description": "CSS custom properties to help accelerate adaptive and consistent design.",
-      "language": "HTML",
-      "stars": 5577
-    },
-    {
-      "rank": 594,
-      "github_id": 426414439,
-      "full_name": "sceneview/sceneview",
-      "description": "3D & AR SDK for Jetpack Compose (Filament, ARCore), Compose Multiplatform, SwiftUI (RealityKit, ARKit) and the web, with Flutter and React Native bridges. The maintained successor to Google Sceneform. Opens glTF/GLB and USDZ, at real size in AR. Assistant-ready: MCP server, AGENTS.md and llms.txt.",
-      "language": "Kotlin",
-      "stars": 1370
-    },
-    {
-      "rank": 595,
-      "github_id": 436810562,
-      "full_name": "yijixiuxin/chanlun-pro",
-      "description": "基于缠中说禅所讲缠论理论，以便量化分析市场行情的工具",
-      "language": "Python",
-      "stars": 1098
-    },
-    {
-      "rank": 596,
-      "github_id": 481230318,
-      "full_name": "squidowl/halloy",
-      "description": "IRC application written in Rust",
-      "language": "Rust",
-      "stars": 4619
-    },
-    {
-      "rank": 597,
-      "github_id": 499804228,
-      "full_name": "apalis-dev/apalis",
-      "description": "Type-safe, extensible, and high-performance background processing library for Rust",
-      "language": "Rust",
-      "stars": 1505
-    },
-    {
-      "rank": 598,
-      "github_id": 542170506,
-      "full_name": "maxlerebourg/crowdsec-bouncer-traefik-plugin",
-      "description": "Traefik plugin for Crowdsec - WAF and IP protection",
-      "language": "Go",
-      "stars": 960
-    },
-    {
-      "rank": 599,
-      "github_id": 553679728,
-      "full_name": "facebookexperimental/hermit",
-      "description": "Hermit launches linux x86_64 programs in a special, hermetically isolated sandbox to control their execution. Hermit translates normal, nondeterministic behavior, into deterministic, repeatable behavior. This can be used for various applications, including replay-debugging, reproducible artifacts, chaos mode concurrency testing and bug analysis.",
-      "language": "Rust",
-      "stars": 1432
-    },
-    {
-      "rank": 600,
-      "github_id": 575770340,
-      "full_name": "veryl-lang/veryl",
-      "description": "Veryl: A Modern Hardware Description Language",
-      "language": "Rust",
-      "stars": 1065
-    },
-    {
-      "rank": 601,
-      "github_id": 581555871,
-      "full_name": "BeichenDream/GodPotato",
-      "description": null,
-      "language": "C#",
-      "stars": 2390
-    },
-    {
-      "rank": 602,
-      "github_id": 587091294,
-      "full_name": "obsidianmd/obsidian-developer-docs",
-      "description": null,
-      "language": "JavaScript",
-      "stars": 565
-    },
-    {
-      "rank": 603,
-      "github_id": 593867048,
-      "full_name": "xpipe-io/xpipe",
-      "description": "Access your entire server infrastructure from your local desktop",
-      "language": "Java",
-      "stars": 14657
-    },
-    {
-      "rank": 604,
-      "github_id": 596072364,
-      "full_name": "AudileTeam/Audile",
-      "description": "An open-source Android app for music recognition that integrates AudD, ACRCloud, and Shazam to perform song identification.",
-      "language": "Kotlin",
-      "stars": 1408
-    },
-    {
-      "rank": 605,
-      "github_id": 630566794,
-      "full_name": "apple/swift-openapi-generator",
-      "description": "Generate Swift client and server code from an OpenAPI document.",
-      "language": "Swift",
-      "stars": 2006
-    },
-    {
-      "rank": 606,
-      "github_id": 634967102,
-      "full_name": "N0rz3/Inspector",
-      "description": "Osint tool (👁️ phone-number tracker) ",
-      "language": "Python",
-      "stars": 252
-    },
-    {
-      "rank": 607,
-      "github_id": 641888311,
-      "full_name": "ocsjs/ocs-desktop",
-      "description": "OCS桌面端 用户脚本一键启动器，用户管理器/开发者一键开启以及重新启用 electron + vue3 + typescript",
-      "language": "TypeScript",
-      "stars": 237
-    },
-    {
-      "rank": 608,
-      "github_id": 645524681,
-      "full_name": "ppkantorski/Ultrahand-Overlay",
-      "description": "The fully craft-able Nintendo Switch overlay executor.",
-      "language": "C++",
-      "stars": 711
-    },
-    {
-      "rank": 609,
-      "github_id": 685127633,
-      "full_name": "shoelace-style/webawesome",
-      "description": "Build better with Web Awesome, the open source library of web components from Font Awesome. Upgrade to Pro and ship websites faster!",
-      "language": "TypeScript",
-      "stars": 1400
-    },
-    {
-      "rank": 610,
-      "github_id": 687878380,
-      "full_name": "airscholar/e2e-data-engineering",
-      "description": "An end-to-end data engineering pipeline that orchestrates data ingestion, processing, and storage using Apache Airflow, Python, Apache Kafka, Apache Zookeeper, Apache Spark, and Cassandra. All components are containerized with Docker for easy deployment and scalability.",
-      "language": "Python",
-      "stars": 378
-    },
-    {
-      "rank": 611,
-      "github_id": 695699314,
-      "full_name": "Kosinkadink/ComfyUI-VideoHelperSuite",
-      "description": "Nodes related to video workflows",
-      "language": "Python",
-      "stars": 1920
-    },
-    {
-      "rank": 612,
-      "github_id": 718994637,
-      "full_name": "resemble-ai/resemble-enhance",
-      "description": "AI powered speech denoising and enhancement",
-      "language": "Python",
-      "stars": 2499
-    },
-    {
-      "rank": 613,
-      "github_id": 736642992,
-      "full_name": "didjdk/adbhelper",
-      "description": null,
-      "language": null,
-      "stars": 1460
-    },
-    {
-      "rank": 614,
-      "github_id": 741722115,
-      "full_name": "LeoHaoVIP/AListLiteAndroid",
-      "description": "OpenList 即装即用 · 一款专为 Android 打造的 AList 安卓服务端 | 支持 Android 5.0",
-      "language": "JavaScript",
-      "stars": 1440
-    },
-    {
-      "rank": 615,
-      "github_id": 745512695,
-      "full_name": "Xposed-Modules-Repo/com.close.hook.ads",
-      "description": "AdClose",
-      "language": null,
-      "stars": 569
-    },
-    {
-      "rank": 616,
-      "github_id": 773409684,
-      "full_name": "katorlys/rweb.site",
-      "description": "Free `rweb.site` subdomain for personal websites, open-source projects and more.",
-      "language": "HTML",
-      "stars": 362
-    },
-    {
-      "rank": 617,
-      "github_id": 796471870,
-      "full_name": "MercuryWorkshop/scramjet",
-      "description": "Scramjet is a versatile web proxy designed to bypass internet censorship.",
-      "language": "TypeScript",
-      "stars": 605
-    },
-    {
-      "rank": 618,
-      "github_id": 814950657,
-      "full_name": "deepseek-ai/DeepSeek-Coder-V2",
-      "description": "DeepSeek-Coder-V2: Breaking the Barrier of Closed-Source Models in Code Intelligence",
-      "language": null,
-      "stars": 7040
-    },
-    {
-      "rank": 619,
-      "github_id": 826947998,
-      "full_name": "agarwalvishal/claude-chat-exporter",
-      "description": "One-click, privacy-first exporter for Claude.ai chats — clean Markdown with artifacts and attachments, ready for Obsidian and RAG.",
-      "language": "JavaScript",
-      "stars": 750
-    },
-    {
-      "rank": 620,
-      "github_id": 828229996,
-      "full_name": "LaurenzV/krilla",
-      "description": "A high-level, ergonomic Rust library for creating PDF documents.",
-      "language": "Rust",
-      "stars": 484
-    },
-    {
-      "rank": 621,
-      "github_id": 910336786,
-      "full_name": "import-ai/omnibox",
-      "description": "Anywhere, anything to memory, memory to anything.",
-      "language": "Python",
-      "stars": 1556
-    },
-    {
-      "rank": 622,
-      "github_id": 927235400,
-      "full_name": "barebaric/rayforge",
-      "description": "A software for laser cutters and engravers",
-      "language": "Python",
-      "stars": 337
-    },
-    {
-      "rank": 623,
-      "github_id": 936374955,
-      "full_name": "x402-foundation/x402",
-      "description": "A payments protocol for the internet. Built on HTTP.",
-      "language": "TypeScript",
-      "stars": 6807
-    },
-    {
-      "rank": 624,
-      "github_id": 952272279,
-      "full_name": "lin-snow/Ech0",
-      "description": "Ech0 – An open-source, self-hosted lightweight publishing platform for personal idea sharing.",
-      "language": "Go",
-      "stars": 2097
-    },
-    {
-      "rank": 625,
-      "github_id": 960828308,
-      "full_name": "HChenX/SuperLyric",
-      "description": "歌词获取器 | Super Lyric Getter",
-      "language": "Kotlin",
-      "stars": 558
-    },
-    {
-      "rank": 626,
-      "github_id": 991528882,
-      "full_name": "a2aproject/a2a-samples",
-      "description": "Samples using the Agent2Agent (A2A) Protocol",
-      "language": "Jupyter Notebook",
-      "stars": 1835
-    },
-    {
-      "rank": 627,
-      "github_id": 1005890033,
-      "full_name": "bscott/subtrackr",
-      "description": "Self-hosted Subscription Tracker",
-      "language": "Go",
-      "stars": 489
-    },
-    {
-      "rank": 628,
-      "github_id": 1022666888,
-      "full_name": "sazardev/goca",
-      "description": "Goca is a powerful CLI code generator for Go that helps you create Clean Architecture projects following best practices.",
-      "language": "Go",
-      "stars": 312
-    },
-    {
-      "rank": 629,
-      "github_id": 1030580992,
-      "full_name": "atlassian/atlassian-mcp-server",
-      "description": "Official remote MCP server for Atlassian. Securely connect Jira, Confluence, Jira Service Management, Bitbucket, and Compass to Claude, ChatGPT, Cursor, VS Code, and other AI tools using OAuth 2.1 or API tokens.",
-      "language": "Python",
-      "stars": 1163
-    },
-    {
-      "rank": 630,
-      "github_id": 1031196988,
-      "full_name": "Vijayabaskar56/tancn",
-      "description": "Tanstack Builder for Form and Table",
-      "language": "TypeScript",
-      "stars": 681
-    },
-    {
-      "rank": 631,
-      "github_id": 1040702651,
-      "full_name": "kamilstanuch/Autocrop-vertical",
-      "description": "Smart video converter using YOLOv8 and FFmpeg to convert horizontal video to vertical 9:16 format for social media.",
-      "language": "Python",
-      "stars": 456
-    },
-    {
-      "rank": 632,
-      "github_id": 1044405251,
-      "full_name": "hyper-elements/hyper-elements",
-      "description": "React components for emails, web pages, PDFs and images, plus a local JavaScript library and CLI to check existing HTML emails and preview Outlook, Gmail and Apple Mail. No React required for HTML email testing.",
-      "language": "TypeScript",
-      "stars": 440
-    },
-    {
-      "rank": 633,
-      "github_id": 1057738950,
-      "full_name": "Chasmical/flag-emojis-for-windows",
-      "description": "This font adds flag emojis to Windows 8-11, while keeping all Win11's original emojis! 🇬🇧🧑‍💻🇯🇵😎🇰🇷💀🇨🇳🤖🇫🇷✨🇪🇸🐛🇮🇹",
-      "language": "C#",
-      "stars": 282
-    },
-    {
-      "rank": 634,
+      "rank": 248,
       "github_id": 1057909657,
       "full_name": "patrickjaja/claude-desktop-extra",
       "description": "Unofficial Linux packages for Claude Desktop AI assistant with automated updates.",
@@ -5084,295 +2001,7 @@
       "stars": 760
     },
     {
-      "rank": 635,
-      "github_id": 1060388111,
-      "full_name": "V1ck3s/octo-fiesta",
-      "description": "A Subsonic API proxy server that transparently integrates multiple music streaming providers as sources.",
-      "language": "C#",
-      "stars": 907
-    },
-    {
-      "rank": 636,
-      "github_id": 1066846574,
-      "full_name": "switchangel/strudel-scripts",
-      "description": "my custom strudel scripts that haven't made it in to strudel for whatever reason",
-      "language": "JavaScript",
-      "stars": 538
-    },
-    {
-      "rank": 637,
-      "github_id": 1077940951,
-      "full_name": "michalparkola/tapestry-skills",
-      "description": "Claude Code skills to download sources (articles, PDFs, YouTube video transcripts)",
-      "language": "Shell",
-      "stars": 582
-    },
-    {
-      "rank": 638,
-      "github_id": 1081626993,
-      "full_name": "YihongSun/TubeletGraph",
-      "description": "[NeurIPS 2025] Tracking and Understanding Object Transformations",
-      "language": "Jupyter Notebook",
-      "stars": 235
-    },
-    {
-      "rank": 639,
-      "github_id": 1100328089,
-      "full_name": "Tencent-Hunyuan/HunyuanVideo-1.5",
-      "description": "HunyuanVideo-1.5: A leading lightweight video generation model",
-      "language": "Python",
-      "stars": 4604
-    },
-    {
-      "rank": 640,
-      "github_id": 1100945668,
-      "full_name": "Dicklesworthstone/coding_agent_session_search",
-      "description": "Unified TUI and CLI to index and search your local coding agent session history across 30+ providers (Codex, Claude Code, Gemini, Cursor, Aider, Copilot, and more) into one searchable timeline. Hybrid search plus robot/JSON output for agents.",
-      "language": "Rust",
-      "stars": 1211
-    },
-    {
-      "rank": 641,
-      "github_id": 1104481835,
-      "full_name": "Tongyi-MAI/Z-Image",
-      "description": null,
-      "language": "Python",
-      "stars": 12153
-    },
-    {
-      "rank": 642,
-      "github_id": 1117252410,
-      "full_name": "aloshdenny/reverse-SynthID",
-      "description": "reverse engineering Gemini's SynthID detection",
-      "language": "Python",
-      "stars": 5080
-    },
-    {
-      "rank": 643,
-      "github_id": 1119817914,
-      "full_name": "inventory69/simple-notes-sync",
-      "description": "📝 Minimalist offline note-taking app with automatic Wi-Fi synchronisation via WebDAV without many permissions 🛡️",
-      "language": "Kotlin",
-      "stars": 231
-    },
-    {
-      "rank": 644,
-      "github_id": 1130455544,
-      "full_name": "spring-ai-community/spring-ai-agent-utils",
-      "description": "A Spring AI library that brings Claude Code-inspired tools and agent skills to your AI applications.",
-      "language": "Java",
-      "stars": 686
-    },
-    {
-      "rank": 645,
-      "github_id": 1133238996,
-      "full_name": "guanyang/open-agent-hub",
-      "description": "A lightweight, zero-dependency CLI tool to manage and activate capabilities for AI coding assistants (such as Claude Code, Cursor, Trae, etc.).",
-      "language": "TypeScript",
-      "stars": 1003
-    },
-    {
-      "rank": 646,
-      "github_id": 1135960664,
-      "full_name": "Gentleman-Programming/Gentleman-Skills",
-      "description": "Community-driven AI agent skills for Claude Code, OpenCode, and other AI assistants. Curated patterns and community contributions.",
-      "language": null,
-      "stars": 674
-    },
-    {
-      "rank": 647,
-      "github_id": 1136875744,
-      "full_name": "shadcnspace/shadcnspace",
-      "description": "Open-source shadcn/ui blocks, components, Templates and layouts built with React, Tailwind, Radix UI and Base UI.",
-      "language": "TypeScript",
-      "stars": 805
-    },
-    {
-      "rank": 648,
-      "github_id": 1143589800,
-      "full_name": "currents-dev/playwright-best-practices-skill",
-      "description": "AI Skill for Playwright Best Practices—made by Currents.dev",
-      "language": null,
-      "stars": 431
-    },
-    {
-      "rank": 649,
-      "github_id": 1152342066,
-      "full_name": "django-control-room/dj-control-room",
-      "description": "The control room for your Django app",
-      "language": "Python",
-      "stars": 596
-    },
-    {
-      "rank": 650,
-      "github_id": 1160532945,
-      "full_name": "parthbuilds-community/FitMart",
-      "description": "Full-stack MERN fitness e-commerce platform with complete Admin dashboard, Razorpay payments, workout tracker, exercise library, AI chatbot, BMI and calorie calculators, nearby gym finder and transactional emails. Built for real-world use and open-source contribution.",
-      "language": "JavaScript",
-      "stars": 391
-    },
-    {
-      "rank": 651,
-      "github_id": 1168426240,
-      "full_name": "Rose22/openlumara",
-      "description": "handwritten harness for AI, not vibecoded, everything is a module/plugin, tailor made for use with local models, tiny system prompt (around 1k by default), support for exclusive llamacpp features, strong security, strict zero-trust-in-the-ai policy (the code hard limits the ai, no amount of prompt engineering will bypass it)",
-      "language": "Python",
-      "stars": 540
-    },
-    {
-      "rank": 652,
-      "github_id": 1170544822,
-      "full_name": "heyixuan2/bambu-studio-ai",
-      "description": "Bambu Lab AI (Bambu Studio AI): agent skill for 3D printing on Bambu Lab. Finds models on MakerWorld & Printables, generates or designs them in CAD, checks printability, hands them to Bambu Studio and reads printer/AMS status. For Claude Code, Codex, Cursor, Gemini CLI and any SKILL.md agent. Featured in 我的拓竹 Skill 大赏.",
-      "language": "Python",
-      "stars": 271
-    },
-    {
-      "rank": 653,
-      "github_id": 1174698179,
-      "full_name": "NarkAgni/dhruva",
-      "description": "A clean and customizable dock for GNOME Shell",
-      "language": "JavaScript",
-      "stars": 255
-    },
-    {
-      "rank": 654,
-      "github_id": 1177091238,
-      "full_name": "calfonso/rusternetes",
-      "description": "kubernetes, reimplemented in Rust",
-      "language": "Rust",
-      "stars": 800
-    },
-    {
-      "rank": 655,
-      "github_id": 1178495230,
-      "full_name": "Cedriccmh/claude-code-skill-scrapling",
-      "description": "Claude Code skill for web scraping with scrapling - auto Fetcher selection, Cloudflare bypass, site patterns",
-      "language": "Python",
-      "stars": 488
-    },
-    {
-      "rank": 656,
-      "github_id": 1182403562,
-      "full_name": "MoonshotAI/Attention-Residuals",
-      "description": null,
-      "language": null,
-      "stars": 3576
-    },
-    {
-      "rank": 657,
-      "github_id": 1183588247,
-      "full_name": "nilbuild/diffity",
-      "description": "Mac app to review the code written by you or your agent with Claude in the loop.",
-      "language": "TypeScript",
-      "stars": 911
-    },
-    {
-      "rank": 658,
-      "github_id": 1194317971,
-      "full_name": "MSL135/GODMOD3",
-      "description": null,
-      "language": "TypeScript",
-      "stars": 590
-    },
-    {
-      "rank": 659,
-      "github_id": 1195159291,
-      "full_name": "sleep3r/mtproto.zig",
-      "description": "Keep the people you love connected — a tiny self-hosted Telegram proxy that hides in plain HTTPS",
-      "language": "Zig",
-      "stars": 2215
-    },
-    {
-      "rank": 660,
-      "github_id": 1202077262,
-      "full_name": "HU-UH/awesome-design-md",
-      "description": "55个精选网站设计系统 DESIGN.md，可给AI Agent使用生成匹配UI",
-      "language": "HTML",
-      "stars": 475
-    },
-    {
-      "rank": 661,
-      "github_id": 1203856939,
-      "full_name": "CodelyTV/agent-harness",
-      "description": "Our agent harness: Skills, plugins, hooks, and utilities to improve the quality of your agent.",
-      "language": "Shell",
-      "stars": 316
-    },
-    {
-      "rank": 662,
-      "github_id": 1207028050,
-      "full_name": "spencerpauly/awesome-cursor-skills",
-      "description": "A curated list of awesome skills for Cursor",
-      "language": "Python",
-      "stars": 890
-    },
-    {
-      "rank": 663,
-      "github_id": 1217625581,
-      "full_name": "hari161008/Everlasting-Android-Tweak-New-Repo",
-      "description": "Everlasting Android Tweak is the true heart of Android, powerful, feature rich toolkit designed to unlock the full potential of your Android device. It provides you many advanced gestures, customization, system controls, and smart utilities to enhance and personalize your device experience.",
-      "language": "Kotlin",
-      "stars": 276
-    },
-    {
-      "rank": 664,
-      "github_id": 1224552621,
-      "full_name": "Nutlope/inspo",
-      "description": "Real websites for your coding agent to learn design from, searchable over MCP.",
-      "language": "TypeScript",
-      "stars": 1034
-    },
-    {
-      "rank": 665,
-      "github_id": 1229924553,
-      "full_name": "handsomeZR-netizen/mathmodel-skill",
-      "description": "三竞赛 (CUMCM/MCM/电工杯) 数学建模 skill — harness-agnostic, 同时支持 Claude Code 与 Codex CLI, 全程问答式 (Friendly Mode), 10 阶段 + 4 反馈层 + per-Qi 加权聚合 + 题型 dim 加权 + empirical 实测分位锚定",
-      "language": "Python",
-      "stars": 304
-    },
-    {
-      "rank": 666,
-      "github_id": 1231330338,
-      "full_name": "mykolaharmash/notelet",
-      "description": "SwiftUI component for displaying rich release notes inside an app",
-      "language": "Swift",
-      "stars": 567
-    },
-    {
-      "rank": 667,
-      "github_id": 1247158186,
-      "full_name": "anelkabag/bag-ui",
-      "description": "BagUI is an open-source shadcn/ui registry with production-ready components, blocks, templates, and animations for React, Next.js, and Tailwind CSS. Copy, customize, and build faster.",
-      "language": "TypeScript",
-      "stars": 521
-    },
-    {
-      "rank": 668,
-      "github_id": 1261717201,
-      "full_name": "opentikz/opentikz",
-      "description": "TikZ for paper diagrams, without hand-writing TikZ — copyable icons, editable templates, and a Claude Code skill",
-      "language": "TeX",
-      "stars": 244
-    },
-    {
-      "rank": 669,
-      "github_id": 1270203502,
-      "full_name": "clearcotelabs/clearcote-browser",
-      "description": "Open-source stealth Chromium with engine-level fingerprint spoofing - de-Googled, drop-in Playwright, fully buildable and verifiable from source.",
-      "language": "Python",
-      "stars": 263
-    },
-    {
-      "rank": 670,
-      "github_id": 1276907097,
-      "full_name": "shadcn-labs/editorcn",
-      "description": "Beautiful rich text editor components for React, built on Tiptap. 100% Free, Zero config, one command setup.",
-      "language": "TypeScript",
-      "stars": 377
-    },
-    {
-      "rank": 671,
+      "rank": 249,
       "github_id": 1283138527,
       "full_name": "threerocks/hand-drawn-styles",
       "description": "Claude Code skill：把内容套进内置手绘画风配方,产出可直接复制的生图提示词。内置儿童涂色/极简线条/蜡笔童涂/吉卜力/小豆人涂鸦 5 种已验证画风。",
@@ -5380,23 +2009,7 @@
       "stars": 2714
     },
     {
-      "rank": 672,
-      "github_id": 1289448348,
-      "full_name": "Bitpainter75/FerrumPix",
-      "description": "FerrumPix is a desktop photo management and editing application for Linux,  Windows and macOS.",
-      "language": "Visual Basic .NET",
-      "stars": 757
-    },
-    {
-      "rank": 673,
-      "github_id": 1310057619,
-      "full_name": "slvDev/esp32-ai",
-      "description": null,
-      "language": "Python",
-      "stars": 4675
-    },
-    {
-      "rank": 674,
+      "rank": 250,
       "github_id": 1310865330,
       "full_name": "zju3dv/InfiniSplat",
       "description": "InfiniSplat Series: Feed-Forward 3D Gaussian Reconstruction",
@@ -5404,71 +2017,7 @@
       "stars": 648
     },
     {
-      "rank": 675,
-      "github_id": 1314624489,
-      "full_name": "omacom/omarchy-plugin-marketplace",
-      "description": "Community-curated marketplace for Omarchy plugins",
-      "language": "JavaScript",
-      "stars": 385
-    },
-    {
-      "rank": 676,
-      "github_id": 1337733621,
-      "full_name": "Spielewoy/autoprompt-skill",
-      "description": "Autoprompt is a coding-agent skill that cuts failures by 45% on agentic coding tasks.",
-      "language": "JavaScript",
-      "stars": 1237
-    },
-    {
-      "rank": 677,
-      "github_id": 1357755622,
-      "full_name": "TaoLiveAIGC/TaoMate-H3",
-      "description": null,
-      "language": "Python",
-      "stars": 843
-    },
-    {
-      "rank": 678,
-      "github_id": 1363904291,
-      "full_name": "Vodiwalker/vodiwalker_panel",
-      "description": null,
-      "language": "Python",
-      "stars": 1385
-    },
-    {
-      "rank": 679,
-      "github_id": 1376032408,
-      "full_name": "mihawk-99/PS5_RetroArch",
-      "description": "🎮 RetroArch Homebrew for the PS5 that supports 35 cores & 44 systems.",
-      "language": "C++",
-      "stars": 440
-    },
-    {
-      "rank": 680,
-      "github_id": 1377280043,
-      "full_name": "kua8/Nectar",
-      "description": "A notch and a dock for Windows: physics-animated, reactive, and built to replace your taskbar.",
-      "language": "Rust",
-      "stars": 244
-    },
-    {
-      "rank": 681,
-      "github_id": 1403705886,
-      "full_name": "BrinooTk/PS5X360",
-      "description": "Experimental Xbox 360 emulator for PlayStation 5, built on Xenia Canary with native audio, DualSense input and RADV Vulkan graphics.",
-      "language": "C++",
-      "stars": 415
-    },
-    {
-      "rank": 682,
-      "github_id": 1412918852,
-      "full_name": "Atoll92/agent-standup",
-      "description": "Your Claude Code, Codex and Mistral Vibe sessions as a live, animated team call: who is working, who waits on whom, who needs you. VS Code extension, terminal command, desktop app. Runs locally, zero tokens.",
-      "language": "HTML",
-      "stars": 372
-    },
-    {
-      "rank": 683,
+      "rank": 251,
       "github_id": 1421560441,
       "full_name": "Romeroc751700/chatgpt-plus-pro-codex-cn-guide",
       "description": "ChatGPT Pro100（10x，原5x）/Pro200（20x）国内购买与续费指南：Pro100 的 Work／Codex 套餐内用量翻倍、售价不变；本人账号、支付宝、自助或人工办理及30天订阅保障。含中文、English、Русский。",
