@@ -117,6 +117,7 @@ h1 {
   grid-template-areas:
     "rank repository repository"
     "description description description"
+    "why why why"
     "language language stars";
   column-gap: 0.75rem;
   align-items: baseline;
@@ -127,6 +128,7 @@ h1 {
 .chart .rank { grid-area: rank; }
 .chart .repository { grid-area: repository; }
 .chart .description { grid-area: description; }
+.chart .why { grid-area: why; }
 .chart .language { grid-area: language; }
 .chart .stars { grid-area: stars; }
 td.rank {
@@ -156,6 +158,11 @@ td.rank {
 .repository a:hover .name { text-decoration-thickness: 3px; }
 td.description { margin-top: 0.5rem; overflow-wrap: anywhere; }
 td.description.none { color: var(--muted); font-style: italic; }
+/* Why the repository is here: a line in plain quantities, which opens on its score and the sum behind it. The
+   marker before it shows that it opens, and the line is a finger's height to tap. */
+td.why { margin-top: 0.5rem; color: var(--muted); font-size: 0.875rem; }
+.why summary { width: fit-content; padding-block: 0.25rem; color: var(--ink); font-size: 0.9375rem; font-variant-numeric: tabular-nums; cursor: pointer; }
+.why summary:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 2px; }
 td.language { margin-top: 0.5rem; color: var(--muted); font-size: 0.875rem; }
 td.stars { margin-top: 0.5rem; font-family: var(--display); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
 /* Without the column headings in view, a phone says what the number is. */
@@ -192,6 +199,12 @@ td.stars::after { content: " stars"; color: var(--muted); font-family: var(--tex
 .days a { padding-block: 0.625rem; font-family: var(--display); font-size: 1.125rem; font-weight: 600; line-height: 1.5; }
 .days .count { margin-left: auto; font-variant-numeric: tabular-nums; }
 .month + .foot { margin-top: 2rem; }
+
+/* How it works */
+
+.prose { max-width: 40rem; padding: 1.5rem 0 2rem; }
+.prose h2 { margin-top: 1.75rem; font-family: var(--display); font-size: 1.375rem; font-weight: 700; line-height: 1.2; }
+.prose h2 + p, .prose p + p { margin-top: 0.5rem; }
 
 /* A desktop: the site's line on one line, the board's facts beside its date so that the band stays short, and a
    row of four columns, whose description sits under the name */
@@ -230,7 +243,7 @@ td.stars::after { content: " stars"; color: var(--muted); font-family: var(--tex
   }
   .chart thead tr, .chart tbody tr {
     grid-template-columns: 4.5rem minmax(0, 1fr) 9rem 7.5rem;
-    grid-template-areas: "rank repository language stars" "rank description language stars";
+    grid-template-areas: "rank repository language stars" "rank description language stars" "rank why language stars";
     column-gap: 1.25rem;
   }
   thead tr { display: grid; }
@@ -240,6 +253,7 @@ td.stars::after { content: " stars"; color: var(--muted); font-family: var(--tex
   td.rank { font-size: 2.25rem; text-align: right; }
   .repository a { font-size: 1.625rem; }
   td.description { max-width: 38rem; margin-top: 0.25rem; }
+  td.why { max-width: 38rem; margin-top: 0.25rem; }
   td.language, td.stars { margin-top: 0; }
   td.stars { font-size: 1.125rem; }
   td.stars::after { content: none; }

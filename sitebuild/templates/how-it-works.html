@@ -1,0 +1,46 @@
+{% extends "page.html" %}
+{# How a board is ranked, in a few plain sentences, for the formula `described` names (DESCRIBED_FORMULA). The numbers
+   here are that formula's, which RisingRepos's src/risingrepos/scoring.py holds. When the newest board was ranked by
+   another formula, the page says so first, so that it is never taken for that formula's description. #}
+{% block title %}Rising Repos: how the boards are ranked{% endblock %}
+{% block band %}
+<h1 id="how"><span class="kind">How it works</span> Ranking the boards</h1>
+<div class="facts">
+<p class="formula">How formula version {{ described }} ranks a board.</p>
+{% if "formula_version" in newest and newest.formula_version != described %}
+<p class="provisional"><strong>The newest board was ranked by formula version {{ newest.formula_version }}, which this page does not describe.</strong> It describes version {{ described }}.</p>
+{% endif %}
+</div>
+{% endblock %}
+{% block strip %}
+<nav class="strip" aria-label="Board days">
+<div class="wrap">
+<a class="newest" href="/"><span aria-hidden="true">‹ </span>The newest board<span class="hidden">, for {{ newest.board_day|long_date }}</span></a>
+<a class="all" href="{{ days_address }}">All board days</a>
+</div>
+</nav>
+{% endblock %}
+{% block main %}
+<article class="prose">
+<p>Once a day, Rising Repos records how many stars each repository it follows has on GitHub. A board day's board lists the repositories whose stars came in faster over the two days up to that day than their own pace before them, the highest score first.</p>
+<h2>Two days against the twelve before</h2>
+<p>A repository's recent pace is the stars it gained over the board day and the day before it, as stars a day. Its usual pace is how many stars a day it took across the twelve days before those two. Its score is the first divided by the second: a repository that gained 520 stars in two days, 260 a day, after gaining 30 a day, scores about 8.7, and its row says it is at 8.7× its usual pace. How far it is above its own trend is what those two days brought beyond its usual pace: here 460 stars.</p>
+<h2>A floor of 1 star a day</h2>
+<p>A usual pace under 1 star a day counts as 1, so that a quiet repository is not given an endless multiple of almost nothing. Its score is then its recent pace in stars a day. Its row gives no multiple, since its own pace was lower than the one it was divided by, and says that its usual pace was under 1 star a day, or that it had been losing stars.</p>
+<h2>Who makes the board</h2>
+<p>A repository makes the board when its score is 3 or more and it gained enough stars above its own trend over the two days: at least 10 for a repository with fewer than 1,000 stars, 20 for one with fewer than 10,000, and 50 for a larger one. A score has no top, so a row can show 1,000× its usual pace or more.</p>
+<h2>Before a repository can be scored</h2>
+<p>It needs its star count for the board day and for two days earlier, and its first count must be fourteen or more days older than the board day, for its usual pace to cover all twelve days. If the rule on losses, below, sets some of its days aside, at least one of the two recent days and seven of the twelve before them must be left. A repository missing from either of the two days is not on that day's board, and a board says which days' counts missed some repositories.</p>
+<h2>Every gain counts</h2>
+<p>Nothing is filtered out. Every gain is counted whole, however large and whatever caused it: a large project that has hardly moved for a fortnight and then gains about 100 stars in a day is listed too, because 100 stars is many times the pace it had. Only a loss is set aside. A step from one count to the next that lost more than 150 stars, and more than 3% of the repository's stars, is taken for a fault in the count, and both paces leave its stars and its days out. A row whose recent pace keeps one day for that reason says so.</p>
+<h2>What a row shows</h2>
+<p>Each row gives the stars above its own trend and its multiple of its usual pace, or the stars it gained when those would not be true. Open the line for its score and the sum it came from: its stars over the recent days, divided by the days, divided by its usual pace or by the floor. The numbers come with each board's data, as the ranking worked them out, and this site only rounds them.</p>
+</article>
+<footer class="foot">
+<nav class="foot-links" aria-label="At the foot">
+<a href="/">The newest board</a>
+<a class="top" href="#top">Back to the top<span aria-hidden="true"> ↑</span></a>
+</nav>
+<p class="note">Rising Repos is not affiliated with GitHub.</p>
+</footer>
+{% endblock %}
