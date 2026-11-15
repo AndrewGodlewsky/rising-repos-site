@@ -168,7 +168,9 @@ def why(row: dict) -> dict | None:
     which of these the row is.
 
     - Its usual pace, its baseline, was no lower than the divisor its recent pace took: the line gives the stars it
-      gained above that pace and its score as a multiple of it.
+      gained above that pace and its score as a multiple of it, and the detail names that multiple as the score and
+      gives its sum without writing the score a second time. Each figure costs the root's transfer budget about 2.5
+      bytes a row gzipped, and a row that wrote it twice took the site eval's 713-row test over 100,000 bytes.
     - Its usual pace was under that, the floor, and at least nothing: a multiple of the floor is no multiple of the
       repository's own pace, so the line says the pace was under the floor and gives no multiple.
     - It had been losing stars: the line gives the stars it gained, since its gain above a falling pace is not what
@@ -187,7 +189,8 @@ def why(row: dict) -> dict | None:
     floor = f"{figure(divisor, 2)} star{'' if divisor == 1 else 's'} a day"
     total = f"Score {figure(score, 2)} = {stars:,} stars ÷ {span}"
     if baseline >= divisor:
-        pace, detail = f"{times(score)}× its usual pace", f"{total} ÷ its usual {figure(baseline, 2)} a day"
+        pace = f"{times(score)}× its usual pace"
+        detail = f"That multiple is its score: {stars:,} stars ÷ {span} ÷ its usual {figure(baseline, 2)} a day"
     elif baseline >= 0:
         pace = f"its usual pace was under {floor}"
         detail = f"{total} ÷ {figure(divisor, 2)}: its usual {figure(baseline, 2)} a day counts as {floor}"

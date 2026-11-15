@@ -90,7 +90,7 @@ LONGEST_NUMBERS = {
 }
 """The numbers of the row whose reason is the longest the site wrote for any of formula 2's 31,195 rows from 29 July
 to 14 November 2026, 200 bytes (AndrewGodlewsky/RisingRepos#49): a repository that had been losing stars, and whose
-recent pace keeps one day. Its line and its detail each take the longest of the four ways a row is worded."""
+recent pace keeps one day, whose expanded view writes its score out and says why a day is missing."""
 
 
 def made_up_rows(count: int) -> list[dict]:

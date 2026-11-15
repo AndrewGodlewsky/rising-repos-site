@@ -124,22 +124,22 @@ What every page holds to, each checked by a test in `tests/`:
   script 1,803 more to each page that carries them.
   Each row's reason
   ([AndrewGodlewsky/RisingRepos#49](https://github.com/AndrewGodlewsky/RisingRepos/issues/49))
-  adds 72 bytes of markup to a row and its words, 104 bytes at the median of
+  adds 72 bytes of markup to a row and its words, 119 bytes at the median of
   formula 2's rows and 200 at most, and the link to the page on how a board is
   ranked and the styles of both add about 960 bytes to every page. The limit
   was 320,000 until then, and the 316 made-up rows came to 294,093 bytes, so no
   wording of a reason with an expanded view fitted in what was left: #49
   raised it to the 381,086 bytes they now take with about a twentieth more,
   the agent's decision recorded there. The page for the newest board day,
-  14 November 2026, 251 rows, went from 144,848 bytes to 192,829, and from
-  32,779 to 37,487 gzipped at level 6, built from the day's files with and
+  14 November 2026, 251 rows, went from 144,848 bytes to 195,415, and from
+  32,674 to 37,133 gzipped at level 6, built from the day's files with and
   without the numbers.
   A real board is longer than the earlier site's: the board for 2026-11-09
   holds 811 rows in 406,970 bytes, and the longest of the 25 board days the
   development database held on 2026-11-12, 1,294 rows, takes 640,698 bytes.
   Both came from the provisional formula. Formula 2 lists fewer: across its
   board days from 29 July to 14 November 2026 the longest is 12 August, with
-  475 rows, and that day's page weighs 343,184 bytes with each row's reason,
+  475 rows, and that day's page weighs 347,922 bytes with each row's reason,
   where it weighed 252,579 without, both built with `--noindex`.
   The limit holds for the 316 rows that `tests/test_page_weight.py` builds.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
@@ -148,15 +148,20 @@ What every page holds to, each checked by a test in `tests/`:
   transferred bytes in each of its two profiles, phone and desktop
   (see `evals/site/limits.json`). A test in `tests/test_page_weight.py` fills
   the newest board with 713 invented rows, gzips the built root at level 6,
-  and checks the result against the smaller budget. On 2026-11-15 it came to 98,204
-  bytes: 83,659 before each row gave its reason, which adds about 20 bytes a
-  row gzipped (AndrewGodlewsky/RisingRepos#49), and 1,048 more than that before
-  the notice of an old board. The newest board's root, built from the day's
-  real files, gained 18 bytes a row. Each invented row carries 105 characters of description in random
+  and checks the result against the smaller budget. On 2026-11-15 it came to
+  98,670 bytes with zlib 1.3.1, which the workflow's Python uses, and 95,940
+  with the zlib-ng that Python 3.14 uses on Windows: the two differ by about
+  3%, so a size measured on Windows reads low. It was 83,659 by the second
+  before each row gave its reason (AndrewGodlewsky/RisingRepos#49), and 1,048
+  less before the notice of an old board. With the score written a second
+  time in each row's expanded view, the workflow measured 100,844, over the
+  budget, so a row above the floor names its multiple as its score instead.
+  The newest board's root, built from the day's real files, gained 18 bytes a
+  row gzipped. Each invented row carries 105 characters of description in random
   letters, which pack worse than a real description's words, so the test
   errs on the heavy side. Its numbers are drawn to the spread of formula 2's
   rows to 14 November 2026, which `typical_numbers` in the test gives. A board
-  of 713 rows leaves under 2,000 bytes of the budget, so the next thing a row
+  of 713 rows leaves about 1,300 bytes of the budget, so the next thing a row
   gains needs weighing against it, in
   [AndrewGodlewsky/RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64). The count is formula 2's longest board so far, 475
   rows, raised by half for boards still to come
@@ -287,8 +292,9 @@ parts' display changes, as a stacked row's does.
 **Why a row is on the board.** Under the description, one line says in plain
 quantities why the repository is there, and a triangle before it shows that it
 opens: a `<details>` whose `<summary>` is the line, so a click, a tap, or the
-keyboard opens it with no script. Opened, it shows the row's score and the sum
-that gives it, in the muted text at 0.875rem. The line is padded to 30 px, a
+keyboard opens it with no script. Opened, it shows the sum that gives the row's
+score, in the muted text at 0.875rem, with the score written out where the line
+gives no multiple, and the multiple named as the score where it does. The line is padded to 30 px, a
 target a finger finds, and takes tabular figures. `why` in
 `sitebuild/__init__.py` words it from the numbers the file gives the row
 ([AndrewGodlewsky/RisingRepos#49](https://github.com/AndrewGodlewsky/RisingRepos/issues/49)),
@@ -296,18 +302,18 @@ and tells from them which of four kinds the row is:
 
 | The row | Its line | Opened |
 | --- | --- | --- |
-| Its usual pace was at least the floor of 1 star a day | `+266 above its own trend · 60× its usual pace` | `Score 60 = 270 stars ÷ 2 days ÷ its usual 2.25 a day.` |
+| Its usual pace was at least the floor of 1 star a day | `+266 above its own trend · 60× its usual pace` | `That multiple is its score: 270 stars ÷ 2 days ÷ its usual 2.25 a day.` |
 | Its usual pace was under the floor | `+157 above its own trend · its usual pace was under 1 star a day` | `Score 79 = 158 stars ÷ 2 days ÷ 1: its usual 0.58 a day counts as 1 star a day.` |
 | It had been losing stars | `+87 in 2 days · it had been losing stars` | `Score 43.5 = 87 stars ÷ 2 days ÷ 1: it lost 4.04 a day before, which counts as 1 star a day.` |
-| The loss rule left a recent day out | `+487 in 1 day · 16× its usual pace` | `Score 15.67 = 487 stars ÷ 1 day ÷ its usual 31.08 a day. A recent day that lost too many stars to be believed is left out.` |
+| The loss rule left a recent day out | `+487 in 1 day · 16× its usual pace` | `That multiple is its score: 487 stars ÷ 1 day ÷ its usual 31.08 a day. A recent day that lost too many stars to be believed is left out.` |
 
 - A multiple of the floor is no multiple of the repository's own pace, so a
   row under the floor gives none. A row that had been losing stars, or whose
   recent pace keeps one day, gives the stars it gained, since the stars above
   its own trend that the file carries are not that there.
 - A multiple has no cap: a row can say `1,286× its usual pace`. It takes one
-  decimal place under 10 and none from 10. The score takes two decimal places,
-  and every number is rounded half up, as a reader rounds, and parts its
+  decimal place under 10 and none from 10. A score written out takes two
+  decimal places, and every number is rounded half up, as a reader rounds, and parts its
   thousands with commas.
 - A file published before the numbers gives no row a reason, and its board
   has no column for one.

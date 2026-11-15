@@ -22,12 +22,12 @@ EXAMPLE_REASONS = {
     ),
     "octocat/Spoon-Knife": (
         "+615 above its own trend · 26× its usual pace",
-        "Score 25.6 = 640 stars ÷ 2 days ÷ its usual 12.5 a day.",
+        "That multiple is its score: 640 stars ÷ 2 days ÷ its usual 12.5 a day.",
     ),
     "rising-repos-example/text-beyond-ascii": (
         "+150 in 1 day · 20× its usual pace",
-        "Score 20 = 150 stars ÷ 1 day ÷ its usual 7.5 a day. A recent day that lost too many stars to be believed is"
-        " left out.",
+        "That multiple is its score: 150 stars ÷ 1 day ÷ its usual 7.5 a day. A recent day that lost too many stars to"
+        " be believed is left out.",
     ),
     "octocat/Hello-World": (
         "+30 in 2 days · it had been losing stars",
@@ -35,7 +35,7 @@ EXAMPLE_REASONS = {
     ),
     "rising-repos-example/no-description": (
         "+11 above its own trend · 4× its usual pace",
-        "Score 4 = 14 stars ÷ 2 days ÷ its usual 1.75 a day.",
+        "That multiple is its score: 14 stars ÷ 2 days ÷ its usual 1.75 a day.",
     ),
 }
 """What each row of the example's newest board says, by its name: its line, and its expanded view."""
@@ -77,7 +77,8 @@ class TheReason(BuildTest):
         """Above the floor, the line gives the stars above its own trend and its multiple of its usual pace. Under the
         floor it gives no multiple, which would be of the floor and not of the repository's pace. After losing stars,
         and with a recent day left out, it gives the stars gained, since the stars above its own trend are not what
-        the file counts there. Each opens on its score, and the sum that gives it from the stars and the days."""
+        the file counts there. Each opens on the sum that gives its score from the stars and the days: with the score
+        written out where the line gives no multiple, and naming the multiple as the score where it does."""
         self.assertEqual(reasons(self.build_pages()[BOARD]), EXAMPLE_REASONS)
 
     def test_each_board_days_page_gives_the_same_reasons_as_the_root(self):
@@ -108,7 +109,7 @@ class TheReason(BuildTest):
         )
         line, opened = reasons(self.build_pages()[BOARD])["rising-repos-example/markup-in-description"]
         self.assertEqual(line, "+4,711 above its own trend · 1,286× its usual pace")
-        self.assertEqual(opened, "Score 1,285.91 = 4,715 stars ÷ 2 days ÷ its usual 1.83 a day.")
+        self.assertEqual(opened, "That multiple is its score: 4,715 stars ÷ 2 days ÷ its usual 1.83 a day.")
 
     def test_the_page_works_out_no_score_and_shows_the_numbers_its_file_gives(self):
         """A score the file gives that its stars do not give is shown as the file gives it: the site only rounds."""
