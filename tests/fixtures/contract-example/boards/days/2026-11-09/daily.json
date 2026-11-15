@@ -22,7 +22,14 @@
       "full_name": "rising-repos-example/markup-in-description",
       "description": "Made-up row. Its description holds markup, which the site shows as text: <script>alert(\"rr\")</script> <a href=\"javascript:alert(1)\">a link to javascript:</a> & <b>bold</b>",
       "language": "TypeScript",
-      "stars": 482
+      "stars": 482,
+      "score": 48.0,
+      "recent_stars": 96,
+      "recent_days": 2,
+      "days_left_out": 0,
+      "baseline": 0.25,
+      "divided_by": 1.0,
+      "excess": 95.5
     },
     {
       "rank": 2,
@@ -30,7 +37,14 @@
       "full_name": "octocat/Spoon-Knife",
       "description": "This repo is for demonstration purposes only.",
       "language": "HTML",
-      "stars": 13250
+      "stars": 13250,
+      "score": 25.6,
+      "recent_stars": 640,
+      "recent_days": 2,
+      "days_left_out": 0,
+      "baseline": 12.5,
+      "divided_by": 12.5,
+      "excess": 615.0
     },
     {
       "rank": 3,
@@ -38,7 +52,14 @@
       "full_name": "rising-repos-example/text-beyond-ascii",
       "description": "Made-up row. Its description holds text beyond ASCII: 日本語の説明, مرحبا, and an emoji 🚀",
       "language": "Rust",
-      "stars": 1207
+      "stars": 1207,
+      "score": 20.0,
+      "recent_stars": 150,
+      "recent_days": 1,
+      "days_left_out": 1,
+      "baseline": 7.5,
+      "divided_by": 7.5,
+      "excess": 285.0
     },
     {
       "rank": 4,
@@ -46,7 +67,14 @@
       "full_name": "octocat/Hello-World",
       "description": "My first repository on GitHub!",
       "language": null,
-      "stars": 3021
+      "stars": 3021,
+      "score": 15.0,
+      "recent_stars": 30,
+      "recent_days": 2,
+      "days_left_out": 0,
+      "baseline": -0.5,
+      "divided_by": 1.0,
+      "excess": 30.0
     },
     {
       "rank": 5,
@@ -54,7 +82,14 @@
       "full_name": "rising-repos-example/no-description",
       "description": null,
       "language": "Go",
-      "stars": 205
+      "stars": 205,
+      "score": 4.0,
+      "recent_stars": 14,
+      "recent_days": 2,
+      "days_left_out": 0,
+      "baseline": 1.75,
+      "divided_by": 1.75,
+      "excess": 10.5
     }
   ]
 }

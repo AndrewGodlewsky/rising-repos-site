@@ -53,10 +53,13 @@
 {% block main %}
 {% if board.rows %}
 {# Each part of the table names its role, because a phone stacks each row's cells, and some browsers stop telling
-   assistive technology that a table whose display changes is a table. #}
+   assistive technology that a table whose display changes is a table. A file older than the rows' numbers
+   (RisingRepos#49) gives no row a reason, and then the board has no column for one. Its schema gives the numbers to
+   every row or to none, so the first row answers for the board, for the heading and for each row's cell. #}
+{% set explained = "score" in board.rows[0] %}
 <table class="chart" role="table" aria-labelledby="board">
 <thead role="rowgroup">
-<tr role="row"><th scope="col" role="columnheader" class="rank">Rank</th><th scope="col" role="columnheader" class="repository">Repository</th><th scope="col" role="columnheader" class="description hidden">Description</th><th scope="col" role="columnheader" class="language">Language</th><th scope="col" role="columnheader" class="stars">Total stars</th></tr>
+<tr role="row"><th scope="col" role="columnheader" class="rank">Rank</th><th scope="col" role="columnheader" class="repository">Repository</th><th scope="col" role="columnheader" class="description hidden">Description</th>{% if explained %}<th scope="col" role="columnheader" class="why hidden">Why it is on the board</th>{% endif %}<th scope="col" role="columnheader" class="language">Language</th><th scope="col" role="columnheader" class="stars">Total stars</th></tr>
 </thead>
 <tbody role="rowgroup">
 {% for row in board.rows %}
@@ -68,6 +71,11 @@
 <td class="description" role="cell" dir="auto">{{ row.description }}</td>
 {% else %}
 <td class="description none" role="cell">No description</td>
+{% endif %}
+{# Why the repository is here, in plain quantities, and its score and the sum behind it once the row is opened. #}
+{% if explained %}
+{% set reason = row|why %}
+<td class="why" role="cell"><details><summary>{{ reason.line }}</summary>{{ reason.detail }}</details></td>
 {% endif %}
 <td class="language" role="cell">{{ row.language or "" }}</td>
 <td class="stars" role="cell">{{ row.stars|thousands }}</td>
