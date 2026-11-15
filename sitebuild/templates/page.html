@@ -1,5 +1,6 @@
 {# The pages that carry the notice of an old board, named by the template that renders each: every board day's page,
-   the root among them, and the list of board days. The not-found page does not. To keep the notice to the root
+   the root among them, and the list of board days. The not-found page and the page on how a board is ranked do
+   not: the notice hides what an old board's page holds, and that page holds no board. To keep the notice to the root
    alone, make this ("latest.html",). #}
 {% set notice = template in ("latest.html", "board.html", "days.html") %}
 <!doctype html>
@@ -26,7 +27,7 @@
 <body>
 <header class="band" id="top">
 <div class="wrap">
-<p class="site"><a class="home" href="/">Rising Repos</a> GitHub repositories gaining stars faster than their own pace predicts, on a new board each day.</p>
+<p class="site"><a class="home" href="/">Rising Repos</a> GitHub repositories gaining stars faster than their own pace predicts, on a new board each day. <a class="how" href="{{ how_address }}">How it works</a></p>
 {% if notice %}
 {% include "old-board.html" %}
 {% endif %}

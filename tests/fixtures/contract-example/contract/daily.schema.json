@@ -64,7 +64,10 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["rank", "github_id", "full_name", "description", "language", "stars"],
+        "required": [
+          "rank", "github_id", "full_name", "description", "language", "stars",
+          "score", "recent_stars", "recent_days", "days_left_out", "baseline", "divided_by", "excess"
+        ],
         "properties": {
           "rank": {
             "description": "The row's place on the board: 1 for the first row, and one more for each row after it.",
@@ -96,6 +99,37 @@
             "description": "The repository's star count on the board day.",
             "type": "integer",
             "minimum": 0
+          },
+          "score": {
+            "description": "The score that put the row on the board and gave it its rank: `recent_stars` divided by `recent_days`, then by `divided_by`. It and the six fields after it are as the formula that ranked the board, which `formula_version` names, worked them out. The RisingRepos repository's scoring module, src/risingrepos/scoring.py, gives the rule of the formula in use.",
+            "type": "number"
+          },
+          "recent_stars": {
+            "description": "The stars the repository gained over the recent days the score counted, which end on the board day.",
+            "type": "integer"
+          },
+          "recent_days": {
+            "description": "How many days `recent_stars` were gained over: the recent days the formula measures, less `days_left_out`.",
+            "type": "integer",
+            "minimum": 1
+          },
+          "days_left_out": {
+            "description": "How many of the recent days the score left out, because the repository lost more stars on them than the formula takes for real. 0 when it counted every one. Then `stars` less `recent_stars` is not the star count at the start of the recent days.",
+            "type": "integer",
+            "minimum": 0
+          },
+          "baseline": {
+            "description": "The repository's own pace before the recent days, in stars a day, as measured: what the score holds the recent pace against. It can be less than `divided_by`, nothing, or less than nothing for a repository that was losing stars.",
+            "type": "number"
+          },
+          "divided_by": {
+            "description": "What the score divided the recent pace by, in stars a day: `baseline`, or the least the formula divides by where `baseline` is less, so that a repository that gained almost nothing before is not scored as if it had.",
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "excess": {
+            "description": "The stars the recent pace gained above `baseline` over the recent days the formula measures, a baseline less than nothing taken as nothing. Where `days_left_out` is not 0, the days counted stand in, at their own pace, for the days left out.",
+            "type": "number"
           }
         }
       }

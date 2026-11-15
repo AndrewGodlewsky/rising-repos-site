@@ -13,10 +13,15 @@ from helpers import ROOT, BuildTest, Page, read_json
 
 from sitebuild import BOARD, board_day_page
 
-SIZE_LIMIT = 320_000
-"""The most bytes a page may take, uncompressed, with its styles and scripts. Issue #39 in RisingRepos set it
-from the largest page measured, the chart design's page of the largest board below at 263,763 bytes, with a
-fifth more for what later slices add to a row. README.md gives the measurements."""
+SIZE_LIMIT = 410_000
+"""The most bytes a page may take, uncompressed, with its styles and scripts. Issue #39 in RisingRepos set it at
+320,000 from the largest page measured, the chart design's page of the largest board below at 263,763 bytes, with a
+fifth more for what later slices add to a row, such as the stars gained that day. The slices before
+AndrewGodlewsky/RisingRepos#49 spent 30,330 bytes of that fifth, and the reason each row gives there needs 86,993 more
+on the largest board, which no wording of it with an expanded view fits in what was left. #49 raised it, the agent's
+decision recorded there, to the 381,086 bytes that board's page then took with about a twentieth more: the limits a
+longer board meets are weighed in AndrewGodlewsky/RisingRepos#64, and the root's transfer budget below is the site
+eval's own. README.md gives the measurements."""
 
 LARGEST_BOARD = 316
 """The most rows a daily board of the earlier site held (RisingRepos's data contract, under Size)."""
@@ -74,9 +79,23 @@ def page_weight(out: Path, path: str, page: Page) -> int:
     )
 
 
+LONGEST_NUMBERS = {
+    "baseline": -3.4166666666666665,
+    "divided_by": 1.0,
+    "recent_stars": 200,
+    "recent_days": 1,
+    "days_left_out": 1,
+    "excess": 400.0,
+    "score": 200.0,
+}
+"""The numbers of the row whose reason is the longest the site wrote for any of formula 2's 31,195 rows from 29 July
+to 14 November 2026, 200 bytes (AndrewGodlewsky/RisingRepos#49): a repository that had been losing stars, and whose
+recent pace keeps one day. Its line and its detail each take the longest of the four ways a row is worded."""
+
+
 def made_up_rows(count: int) -> list[dict]:
     """Rows as long as the contract lets a row be in practice: a description of the most characters it may hold,
-    with characters that escaping makes longer."""
+    with characters that escaping makes longer, and the numbers whose reason is the longest the site has written."""
     description = ("A made-up row of the largest board, with <markup> & characters escaping lengthens. " * 5)[:349]
     return [
         {
@@ -86,9 +105,40 @@ def made_up_rows(count: int) -> list[dict]:
             "description": description + "…",
             "language": "Jupyter Notebook",
             "stars": 123456 + rank,
+            **LONGEST_NUMBERS,
         }
         for rank in range(1, count + 1)
     ]
+
+
+def typical_numbers(draw: random.Random) -> dict:
+    """A rising row's numbers as formula 2 works them out, drawn at random to the spread its 31,195 rows from 29 July
+    to 14 November 2026 had (AndrewGodlewsky/RisingRepos#49). Three in four had a baseline of a star a day or more, at
+    a median of 4.7, 30 at the 90th percentile, and 199 at the 99th; a fifth one under it; one in 27 one below
+    nothing; and one in 1,250 a recent day left out. Their scores had a median of 6.9, 24.5 at the 90th percentile,
+    and 102 at the 99th. Each baseline is a whole number of stars over 12 days, which leaves the long decimals the
+    files carry."""
+    kind = draw.random()
+    if kind < 0.75:
+        baseline = max(round(10 ** abs(draw.gauss(0, 0.95)) * 12), 12) / 12
+    elif kind < 0.963:
+        baseline = draw.randint(0, 11) / 12
+    else:
+        baseline = -draw.randint(1, 72) / 12
+    divided_by = max(baseline, 1.0)
+    left_out = int(draw.random() < 0.0008)
+    days = 2 - left_out
+    recent_stars = round(3 * 10 ** abs(draw.gauss(0, 0.6)) * divided_by * days)
+    pace = recent_stars / days
+    return {
+        "baseline": baseline,
+        "divided_by": divided_by,
+        "recent_stars": recent_stars,
+        "recent_days": days,
+        "days_left_out": left_out,
+        "excess": (pace - max(baseline, 0)) * 2,
+        "score": recent_stars / days / divided_by,
+    }
 
 
 def typical_rows(count: int) -> list[dict]:
@@ -116,6 +166,7 @@ def typical_rows(count: int) -> list[dict]:
             "description": text(105),
             "language": draw.choice(languages),
             "stars": draw.randrange(200, 250_000),
+            **typical_numbers(draw),
         }
         for rank in range(1, count + 1)
     ]

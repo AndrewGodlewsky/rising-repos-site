@@ -4,6 +4,7 @@ import base64
 import hashlib
 from collections.abc import Iterator
 from datetime import date, datetime
+from decimal import ROUND_HALF_UP, Decimal
 from itertools import groupby
 from pathlib import Path
 
@@ -17,12 +18,14 @@ DATA = Path(__file__).resolve().parent.parent / "site-data"
 BOARD = "index.html"
 DAYS = "days/index.html"
 BOARD_DAY = "days/{board_day}/index.html"
+HOW_IT_WORKS = "how-it-works/index.html"
 NOT_FOUND = "404.html"
 
 PAGES = {
     BOARD: "latest.html",
     DAYS: "days.html",
     BOARD_DAY: "board.html",
+    HOW_IT_WORKS: "how-it-works.html",
     NOT_FOUND: "not-found.html",
 }
 """Each page the build writes, by its path in the site, and the template in templates/ that renders it.
@@ -32,17 +35,25 @@ PAGES = {
 - `DAYS` lists every board day, newest first.
 - `BOARD_DAY` is written once for each board day in the index, the newest included, so that each board day keeps
   one address however many come after it.
+- `HOW_IT_WORKS` says in a few plain sentences how the boards are ranked, for the formula `DESCRIBED_FORMULA`
+  names. Every page links to it from the site's line.
 - Cloudflare Pages answers an address that holds no page with `NOT_FOUND` and the status 404. A site with no
   404.html at its root is taken for a single-page app, and every such address gets the root page and the
   status 200.
 
-page.html names the templates whose pages carry the notice of an old board: every one but not-found.html.
+page.html names the templates whose pages carry the notice of an old board: every one but not-found.html and
+how-it-works.html, whose text the notice's hiding of an old board would hide.
 """
 
 SCRIPT = "old-board.js"
 """The site's one script, in templates/: the notice of an old board (AndrewGodlewsky/RisingRepos#56). old-board.html
 puts its text in the page, and the build puts the hash of that text in the page's Content-Security-Policy, which lets
 this script run and no other."""
+
+DESCRIBED_FORMULA = 2
+"""The version of the scoring formula that how-it-works.html describes. Its page says so, and says plainly when the
+newest board was ranked by another, so that a new formula in RisingRepos never leaves the page describing the wrong
+one unnoticed."""
 
 MONTHS = (
     "January", "February", "March", "April", "May", "June",
@@ -131,6 +142,73 @@ def partial_days(board: dict) -> dict | None:
     }
 
 
+def rounded(value: float, places: int) -> Decimal:
+    """`value` to `places` decimal places, a half rounded up, as a reader rounds: 10.5 to none as 11, and 8.125 to
+    two as 8.13. It rounds the number as JSON wrote it, not its nearest binary fraction, which may lie below it."""
+    return Decimal(repr(value)).quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP)
+
+
+def figure(value: float, places: int) -> str:
+    """A number to at most `places` decimal places, with thousands parted by commas and no zero at the end:
+    260.0 as '260', 30.1667 to two places as '30.17', and 1285.909 to two places as '1,285.91'."""
+    text = f"{rounded(value, places):,}"
+    return text.rstrip("0").rstrip(".") if "." in text else text
+
+
+def times(score: float) -> str:
+    """A score as a multiple of a usual pace, without a cap: to one decimal place under 10, and a whole number from
+    10, which needs no decimal to read. 8.63 as '8.6', 4.0 as '4', 9.96 as '10', and 1285.9 as '1,286'."""
+    return figure(score, 1) if rounded(score, 1) < 10 else figure(score, 0)
+
+
+def why(row: dict) -> dict | None:
+    """Why a row's repository is on its board, in words, from the numbers its file gives the row as its score worked
+    them out (AndrewGodlewsky/RisingRepos#49): `line` for the row, and `detail`, the score and the sum it came from,
+    for the row's expanded view. The site works out no score: it rounds what it shows, and tells from the numbers
+    which of these the row is.
+
+    - Its usual pace, its baseline, was no lower than the divisor its recent pace took: the line gives the stars it
+      gained above that pace and its score as a multiple of it.
+    - Its usual pace was under that, the floor, and at least nothing: a multiple of the floor is no multiple of the
+      repository's own pace, so the line says the pace was under the floor and gives no multiple.
+    - It had been losing stars: the line gives the stars it gained, since its gain above a falling pace is not what
+      the excess counts.
+    - The loss rule left a recent day out: the line gives the stars of the days kept, since the excess is measured
+      as if over every recent day, and the detail says that a day was left out.
+
+    None for a row of a file published before the data contract had the numbers, which then says nothing about why.
+    """
+    if "score" not in row:
+        return None
+    score, stars, days, baseline, divisor = (
+        row[name] for name in ("score", "recent_stars", "recent_days", "baseline", "divided_by")
+    )
+    span = "1 day" if days == 1 else f"{days} days"
+    floor = f"{figure(divisor, 2)} star{'' if divisor == 1 else 's'} a day"
+    total = f"Score {figure(score, 2)} = {stars:,} stars ÷ {span}"
+    if baseline >= divisor:
+        pace, detail = f"{times(score)}× its usual pace", f"{total} ÷ its usual {figure(baseline, 2)} a day"
+    elif baseline >= 0:
+        pace = f"its usual pace was under {floor}"
+        detail = f"{total} ÷ {figure(divisor, 2)}: its usual {figure(baseline, 2)} a day counts as {floor}"
+    else:
+        pace = "it had been losing stars"
+        detail = f"{total} ÷ {figure(divisor, 2)}: it lost {figure(-baseline, 2)} a day before, which counts as {floor}"
+    left_out = row["days_left_out"]
+    if left_out:
+        line = f"+{stars:,} in {span} · {pace}"
+        detail += (
+            ". A recent day that lost too many stars to be believed is left out"
+            if left_out == 1
+            else f". {left_out} recent days that lost too many stars to be believed are left out"
+        )
+    elif baseline < 0:
+        line = f"+{stars:,} in {span} · {pace}"
+    else:
+        line = f"+{figure(row['excess'], 0)} above its own trend · {pace}"
+    return {"line": line, "detail": detail + "."}
+
+
 MADE_LATE = 2
 """How many days after its board day, by the date in UTC, a board's publish time must fall for its page to say that
 the board was made after its day. The daily job publishes a board on its day, or early on the next."""
@@ -213,10 +291,12 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         thousands="{:,}".format,
         repositories=repositories,
         day_address=day_address,
+        why=why,
     )
     common = {
         "newest": boards[0],
         "days_address": address(DAYS),
+        "how_address": address(HOW_IT_WORKS),
         "noindex": noindex,
         "script_hash": script_hash(templates.get_template(SCRIPT).render()),
     }
@@ -237,6 +317,7 @@ def _pages(boards: list[dict]) -> Iterator[tuple[str, str, dict]]:
         yield board_day_page(board["board_day"]), BOARD_DAY, _beside(boards, number)
     by_month = groupby(boards, key=lambda board: board["board_day"][:7])  # newest first, as the index is
     yield DAYS, DAYS, {"boards": boards, "months": [(month, list(days)) for month, days in by_month]}
+    yield HOW_IT_WORKS, HOW_IT_WORKS, {"described": DESCRIBED_FORMULA}
     yield NOT_FOUND, NOT_FOUND, {}
 
 

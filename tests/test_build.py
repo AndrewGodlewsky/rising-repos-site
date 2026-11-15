@@ -11,7 +11,7 @@ from urllib.parse import unquote
 
 from helpers import BuildTest, build, read_json, write_json
 
-from sitebuild import BOARD, BOARD_DAY, DAYS, NOT_FOUND, PAGES, TEMPLATES, board_day_page, took
+from sitebuild import BOARD, BOARD_DAY, DAYS, HOW_IT_WORKS, NOT_FOUND, PAGES, TEMPLATES, board_day_page, took
 
 NOINDEX = '<meta name="robots" content="noindex">'
 
@@ -23,8 +23,10 @@ class TheBuild(BuildTest):
     def test_the_build_writes_each_page_that_pages_names_and_one_for_each_board_day(self):
         self.build_pages()
         written = sorted(path.relative_to(self.out).as_posix() for path in self.out.rglob("*") if path.is_file())
-        self.assertEqual(written, sorted([BOARD, DAYS, NOT_FOUND, board_day_page(NEWEST), board_day_page(OLDER)]))
-        self.assertEqual(set(PAGES), {BOARD, DAYS, NOT_FOUND, BOARD_DAY})
+        self.assertEqual(
+            written, sorted([BOARD, DAYS, HOW_IT_WORKS, NOT_FOUND, board_day_page(NEWEST), board_day_page(OLDER)])
+        )
+        self.assertEqual(set(PAGES), {BOARD, DAYS, HOW_IT_WORKS, NOT_FOUND, BOARD_DAY})
 
     def test_the_board_shows_the_latest_board_day_which_is_the_first_in_the_index(self):
         page = self.build_pages()[BOARD]
@@ -53,7 +55,7 @@ class TheBuild(BuildTest):
         page = self.build_pages()[BOARD]
         self.assertEqual(
             [heading.text() for heading in page.one("thead").all("th")],
-            ["Rank", "Repository", "Description", "Language", "Total stars"],
+            ["Rank", "Repository", "Description", "Why it is on the board", "Language", "Total stars"],
         )
 
     def test_a_row_shows_no_language_when_the_file_has_none(self):
@@ -70,14 +72,15 @@ class TheBuild(BuildTest):
                 self.assertTrue(site.text().startswith("Rising Repos"), site.text())
                 self.assertIn("on a new board each day", site.text())
 
-    def test_the_sites_name_links_to_the_root_from_every_page(self):
-        """RisingRepos#111."""
+    def test_the_sites_name_links_to_the_root_and_its_line_to_how_it_works_from_every_page(self):
+        """RisingRepos#111, and AndrewGodlewsky/RisingRepos#49: the page that says how a board is ranked is the
+        site's own, not a README."""
         for path, page in self.build_pages().items():
             with self.subTest(path):
                 (site,) = [element for element in page.one("header").all("p") if "site" in element.classes()]
                 self.assertEqual(
                     [(link.attrs["href"], link.text(), link.classes()) for link in site.all("a")],
-                    [("/", "Rising Repos", ["home"])],
+                    [("/", "Rising Repos", ["home"]), ("/how-it-works/", "How it works", ["how"])],
                 )
 
     def test_the_ranks_take_the_condensed_cut_as_the_date_does_so_they_are_one_width_on_every_system(self):
@@ -111,12 +114,14 @@ class TheBuild(BuildTest):
         self.assertEqual(published.text(), "10 November 2026 at 00:41 UTC")
 
     def test_the_board_says_its_ranking_is_provisional_while_the_file_says_so_and_names_no_score(self):
-        """The example's boards are not provisional since RisingRepos#47, so the test marks the file itself."""
+        """The example's boards are not provisional since RisingRepos#47, so the test marks the file itself. The note
+        names no score; since AndrewGodlewsky/RisingRepos#49 each row's expanded view gives its own."""
         board = read_json(self.board_file())
         write_json(self.board_file(), {**board, "score_provisional": True})
         page = self.build_pages()[BOARD]
-        self.assertIn("The ranking is provisional.", page.body_text())
-        self.assertNotIn("score", page.body_text().lower())
+        (note,) = [element for element in page.one("header").all("p") if "provisional" in element.classes()]
+        self.assertTrue(note.text().startswith("The ranking is provisional."), note.text())
+        self.assertNotIn("score", note.text().lower())
 
     def test_the_board_says_nothing_about_a_provisional_ranking_once_the_file_says_it_is_not(self):
         board = read_json(self.board_file())
@@ -143,6 +148,8 @@ class TheBuild(BuildTest):
             del board["formula_version"]
             write_json(self.board_file(day), board)
         for path, page in self.build_pages().items():
+            if path == HOW_IT_WORKS:
+                continue  # it describes the formula it names, whatever the files say (AndrewGodlewsky/RisingRepos#49)
             with self.subTest(path):
                 self.assertEqual([p for p in page.all("p") if "formula" in p.classes()], [])
                 self.assertNotIn("formula version", page.body_text())
@@ -522,7 +529,7 @@ class TheRow(BuildTest):
         for row in table.all("tr"):
             self.assertEqual(row.attrs["role"], "row")
             roles = [cell.attrs["role"] for cell in row.all() if cell.tag in ("td", "th")]
-            self.assertIn(roles, (["columnheader"] * 5, ["cell", "rowheader", "cell", "cell", "cell"]))
+            self.assertIn(roles, (["columnheader"] * 6, ["cell", "rowheader", "cell", "cell", "cell", "cell"]))
 
     def test_the_owner_and_the_name_are_one_run_of_text_so_a_search_for_owner_slash_name_finds_the_row(self):
         for row in read_json(self.board_file())["rows"]:
@@ -541,6 +548,7 @@ class TheRow(BuildTest):
             [
                 ["rank", "repository", "repository"],
                 ["description", "description", "description"],
+                ["why", "why", "why"],
                 ["language", "language", "stars"],
             ],
         )
@@ -550,7 +558,11 @@ class TheRow(BuildTest):
         areas = re.search(r"grid-template-areas:([^;]*);", self.desktop).group(1).split('"')[1::2]
         self.assertEqual(
             [area.split() for area in areas],
-            [["rank", "repository", "language", "stars"], ["rank", "description", "language", "stars"]],
+            [
+                ["rank", "repository", "language", "stars"],
+                ["rank", "description", "language", "stars"],
+                ["rank", "why", "language", "stars"],
+            ],
         )
 
     def test_the_name_link_is_padded_to_a_fingers_height_without_moving_the_lines_around_it(self):

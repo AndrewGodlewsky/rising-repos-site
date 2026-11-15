@@ -30,7 +30,10 @@ addresses serve two different sites:
 
 A daily board is one ranked list. Each row shows its rank, the repository's
 name linked to GitHub, its description, its language, and its stars, in the
-order the data file gives them. The site computes no score and no rank. A
+order the data file gives them, and gives the figures that put it there, which
+a reader can set against its stars, with its score a click away (see "Why a row is on the
+board" in the design note). The site computes no score and no rank: it words
+and rounds the numbers the file gives. A
 board's page states its board day and when it was published, says so when the
 board is empty, says the ranking is provisional while the data file says the
 score is, and names the days of incomplete snapshots that its ranking leaned on
@@ -48,6 +51,7 @@ The build writes these pages, which `PAGES` in
 | `/` | The newest board day's board |
 | `/days/` | Every board day, newest first, by month, each with its count of repositories |
 | `/days/<board day>/` | Each board day's board, the newest included, so that a board day keeps one address |
+| `/how-it-works/` | How a board is ranked, in a few plain sentences, which the site's line on every page links to |
 | Any other | `404.html`, the page for an address that holds none, which links to `/` and states no board day |
 
 Each board's page links to the board day before it and the board day after
@@ -86,13 +90,13 @@ What every page holds to, each checked by a test in `tests/`:
   address. Its type comes from the reader's own fonts, through font stacks, so
   no font file is fetched or committed. Its styles and its script are in the
   page.
-- **Its size.** A page, with its styles and scripts, stays within **320,000
+- **Its size.** A page, with its styles and scripts, stays within **410,000
   bytes**. Measured on 2026-11-15, without `--noindex`:
 
   | Board | A board's page | The list of board days | The not-found page |
   | --- | --- | --- | --- |
-  | The data contract's example, 5 rows | 18,535 bytes | 14,739 bytes | 11,778 bytes |
-  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens | 294,093 bytes | 14,741 bytes | 11,778 bytes |
+  | The data contract's example, 5 rows | 20,571 bytes | 15,698 bytes | 12,737 bytes |
+  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens, and each row's reason the longest the site has written, 200 bytes | 381,086 bytes | 15,700 bytes | 12,737 bytes |
 
   316 rows is the largest board the earlier site published. The limit was set
   from the largest page measured before
@@ -118,13 +122,25 @@ What every page holds to, each checked by a test in `tests/`:
   ([AndrewGodlewsky/RisingRepos#56](https://github.com/AndrewGodlewsky/RisingRepos/issues/56))
   adds 692 bytes of styles to every page, and its hidden element and its
   script 1,803 more to each page that carries them.
+  Each row's reason
+  ([AndrewGodlewsky/RisingRepos#49](https://github.com/AndrewGodlewsky/RisingRepos/issues/49))
+  adds 72 bytes of markup to a row and its words, 104 bytes at the median of
+  formula 2's rows and 200 at most, and the link to the page on how a board is
+  ranked and the styles of both add about 960 bytes to every page. The limit
+  was 320,000 until then, and the 316 made-up rows came to 294,093 bytes, so no
+  wording of a reason with an expanded view fitted in what was left: #49
+  raised it to the 381,086 bytes they now take with about a twentieth more,
+  the agent's decision recorded there. The page for the newest board day,
+  14 November 2026, 251 rows, went from 144,848 bytes to 192,829, and from
+  32,779 to 37,487 gzipped at level 6, built from the day's files with and
+  without the numbers.
   A real board is longer than the earlier site's: the board for 2026-11-09
   holds 811 rows in 406,970 bytes, and the longest of the 25 board days the
   development database held on 2026-11-12, 1,294 rows, takes 640,698 bytes.
   Both came from the provisional formula. Formula 2 lists fewer: across its
-  board days from 29 July to 13 November 2026 the longest is 12 August, with
-  475 rows, and that day's page weighs 250,083 bytes when built with
-  `--noindex`.
+  board days from 29 July to 14 November 2026 the longest is 12 August, with
+  475 rows, and that day's page weighs 343,184 bytes with each row's reason,
+  where it weighed 252,579 without, both built with `--noindex`.
   The limit holds for the 316 rows that `tests/test_page_weight.py` builds.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
   is where the limits that a longer board meets are weighed.
@@ -132,10 +148,17 @@ What every page holds to, each checked by a test in `tests/`:
   transferred bytes in each of its two profiles, phone and desktop
   (see `evals/site/limits.json`). A test in `tests/test_page_weight.py` fills
   the newest board with 713 invented rows, gzips the built root at level 6,
-  and checks the result against the smaller budget. On 2026-11-15 it came to 83,659
-  bytes, 1,048 more than before the notice of an old board. Each invented row carries 105 characters of description in random
+  and checks the result against the smaller budget. On 2026-11-15 it came to 98,204
+  bytes: 83,659 before each row gave its reason, which adds about 20 bytes a
+  row gzipped (AndrewGodlewsky/RisingRepos#49), and 1,048 more than that before
+  the notice of an old board. The newest board's root, built from the day's
+  real files, gained 18 bytes a row. Each invented row carries 105 characters of description in random
   letters, which pack worse than a real description's words, so the test
-  errs on the heavy side. The count is formula 2's longest board so far, 475
+  errs on the heavy side. Its numbers are drawn to the spread of formula 2's
+  rows to 14 November 2026, which `typical_numbers` in the test gives. A board
+  of 713 rows leaves under 2,000 bytes of the budget, so the next thing a row
+  gains needs weighing against it, in
+  [AndrewGodlewsky/RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64). The count is formula 2's longest board so far, 475
   rows, raised by half for boards still to come
   ([AndrewGodlewsky/RisingRepos#122](https://github.com/AndrewGodlewsky/RisingRepos/issues/122)).
 
@@ -195,8 +218,8 @@ tabular figures, so that their digits line up down the column.
 | `--field-muted` | `#b6cfc3` | The band's and the strip's other text | 7.54:1 on the band |
 | `--field-visited` | `#cfb2f2` | A link on the band or the strip once visited | 6.71:1 on the band, and 1.72:1 against `--field-ink` |
 | `--paper` | `#ffffff` | The page, and the notice of an old board on the band | |
-| `--ink` | `#13201a` | The text, the star counts, and the words of the notice of an old board | 16.81:1 |
-| `--muted` | `#50605a` | The owner, the language, the column headings, the note at the foot, and the foot's word where there is no board day before or after | 6.64:1 |
+| `--ink` | `#13201a` | The text, the star counts, a row's reason, and the words of the notice of an old board | 16.81:1 |
+| `--muted` | `#50605a` | The owner, the language, the column headings, a row's score and sum once its reason is opened, the note at the foot, and the foot's word where there is no board day before or after | 6.64:1 |
 | `--green` | `#12704b` | The ranks, a link before it is visited, and the focus ring | 6.10:1 |
 | `--visited` | `#551a8b` | A link once visited | 11.01:1, and 1.81:1 against `--green` |
 | `--rule` | `#dae3de` | The line between rows | |
@@ -223,15 +246,19 @@ each link in it and in a board's foot.
 At 1280 by 800, on the board for 2026-11-09, the band ends at 163 px, the strip
 at 207, and the column headings at 242, and the first four rows end at 357,
 471, 609, and 795: four whole rows on the first screen. The fourth holds a
-description of five lines.
+description of five lines. Each row's reason adds a line of about 35 px, so
+on the board for 2026-11-14 three rows and the start of a fourth are on the
+first screen.
 
 **A row, in order of importance.**
 
 1. The rank: the largest thing in the row, green, in the display face.
 2. The repository's name: the link, large, in the display face.
 3. The description, in the text face.
-4. The total stars, at the right, in the display face at regular weight.
-5. The owner, small and muted just before the name and part of its link, and
+4. Why it is on the board: one line under the description, in the text face
+   at 0.9375rem in the ink, which opens on its score (below).
+5. The total stars, at the right, in the display face at regular weight.
+6. The owner, small and muted just before the name and part of its link, and
    the language, small and muted.
 
 The owner and the name are one run of text, `owner/name`, so that a search of
@@ -256,6 +283,44 @@ assistive technology. The table, its rows, and its cells name their roles
 (`role="table"`, `row`, `columnheader`, `rowheader`, and `cell`), because some
 browsers stop telling assistive technology that a table is one once its
 parts' display changes, as a stacked row's does.
+
+**Why a row is on the board.** Under the description, one line says in plain
+quantities why the repository is there, and a triangle before it shows that it
+opens: a `<details>` whose `<summary>` is the line, so a click, a tap, or the
+keyboard opens it with no script. Opened, it shows the row's score and the sum
+that gives it, in the muted text at 0.875rem. The line is padded to 30 px, a
+target a finger finds, and takes tabular figures. `why` in
+`sitebuild/__init__.py` words it from the numbers the file gives the row
+([AndrewGodlewsky/RisingRepos#49](https://github.com/AndrewGodlewsky/RisingRepos/issues/49)),
+and tells from them which of four kinds the row is:
+
+| The row | Its line | Opened |
+| --- | --- | --- |
+| Its usual pace was at least the floor of 1 star a day | `+266 above its own trend · 60× its usual pace` | `Score 60 = 270 stars ÷ 2 days ÷ its usual 2.25 a day.` |
+| Its usual pace was under the floor | `+157 above its own trend · its usual pace was under 1 star a day` | `Score 79 = 158 stars ÷ 2 days ÷ 1: its usual 0.58 a day counts as 1 star a day.` |
+| It had been losing stars | `+87 in 2 days · it had been losing stars` | `Score 43.5 = 87 stars ÷ 2 days ÷ 1: it lost 4.04 a day before, which counts as 1 star a day.` |
+| The loss rule left a recent day out | `+487 in 1 day · 16× its usual pace` | `Score 15.67 = 487 stars ÷ 1 day ÷ its usual 31.08 a day. A recent day that lost too many stars to be believed is left out.` |
+
+- A multiple of the floor is no multiple of the repository's own pace, so a
+  row under the floor gives none. A row that had been losing stars, or whose
+  recent pace keeps one day, gives the stars it gained, since the stars above
+  its own trend that the file carries are not that there.
+- A multiple has no cap: a row can say `1,286× its usual pace`. It takes one
+  decimal place under 10 and none from 10. The score takes two decimal places,
+  and every number is rounded half up, as a reader rounds, and parts its
+  thousands with commas.
+- A file published before the numbers gives no row a reason, and its board
+  has no column for one.
+
+**How it works.** The site's line ends with a link, "How it works", to
+`/how-it-works/`, which says in a few plain sentences how the formula that
+`DESCRIBED_FORMULA` in `sitebuild/__init__.py` names ranks a board: the two
+recent days against the twelve before them, the floor, who makes the board,
+what must hold before a repository has a score, and that no gain is set aside. It
+names that formula under its title, and when the newest board was ranked by
+another, it says so first, set off as the provisional note is. Its text is at
+most 40rem wide, under headings in the display face at 1.375rem. It carries
+no notice of an old board, which would hide its text.
 
 **Links.**
 
@@ -435,7 +500,7 @@ The look is in `sitebuild/templates/site.css`, which
 `sitebuild/templates/page.html` includes in every page. `page.html` also holds
 the `<head>`, the band's first line, the strip's place, and the place of the
 notice of an old board, which `old-board.html` holds with its script. `board.html`,
-`days.html`, and `not-found.html` fill the rest of the band, the strip, and the
+`days.html`, `how-it-works.html`, and `not-found.html` fill the rest of the band, the strip, and the
 page below it. `latest.html` is `board.html` with the data contract's two tags
 in its `<head>`, for the root, and `nav.html` holds the links between board
 days that the strip and a board's foot share. `PAGES` in `sitebuild/__init__.py` lists each
@@ -492,6 +557,10 @@ against the schema shipped with it before it writes a page:
   file without it, or with null in it, builds with no line on the update.
 - `formula_version` (RisingRepos#47) is optional to the pages in the same
   way, and a file that lacks it gets no line naming the formula.
+- The seven figures behind a row's score (AndrewGodlewsky/RisingRepos#49),
+  `baseline`, `divided_by`, `excess`, `recent_days`, `recent_stars`,
+  `days_left_out`, and `score` itself, are optional the same way: a board whose rows lack them builds with no reason on any row.
+  A site built before the pages read them builds the newer files too.
 - The schemas are checked with fastjsonschema, the validator that RisingRepos's
   ADR 0013 chose, at the version RisingRepos's `pyproject.toml` pins. It turns
   a schema into Python, and it fetches whatever document a `$ref` points to
@@ -509,9 +578,10 @@ day's files that fail their schema fail the tests as well as the build. The
 token search (below) reads every file git would commit, `site-data/` included,
 so a day's file that holds a string shaped like a credential fails the tests.
 A test holds the copy in `tests/fixtures/` to the bytes of the contract in
-RisingRepos commit `aab5b1a4d1b8512f405fca1e485d2ab14a4d3de4`, whose schema
-says when the daily job that published a board day began, and numbers the
-formula that ranked it. A change to the contract
+RisingRepos commit `9b386efbedb5ca0ca2aaca21c9c42793d9b5f452`, whose schema
+says when the daily job that published a board day began, numbers the formula
+that ranked it, and gives each row its score and the figures behind it.
+A change to the contract
 reaches it, and that test, by a pull request here.
 `.gitattributes` keeps git from changing the line endings of either copy.
 

@@ -53,14 +53,17 @@
 {% block main %}
 {% if board.rows %}
 {# Each part of the table names its role, because a phone stacks each row's cells, and some browsers stop telling
-   assistive technology that a table whose display changes is a table. #}
+   assistive technology that a table whose display changes is a table. A file older than the rows' numbers
+   (RisingRepos#49) gives no row a reason, and then the board has no column for one. #}
+{% set explained = board.rows[0]|why %}
 <table class="chart" role="table" aria-labelledby="board">
 <thead role="rowgroup">
-<tr role="row"><th scope="col" role="columnheader" class="rank">Rank</th><th scope="col" role="columnheader" class="repository">Repository</th><th scope="col" role="columnheader" class="description hidden">Description</th><th scope="col" role="columnheader" class="language">Language</th><th scope="col" role="columnheader" class="stars">Total stars</th></tr>
+<tr role="row"><th scope="col" role="columnheader" class="rank">Rank</th><th scope="col" role="columnheader" class="repository">Repository</th><th scope="col" role="columnheader" class="description hidden">Description</th>{% if explained %}<th scope="col" role="columnheader" class="why hidden">Why it is on the board</th>{% endif %}<th scope="col" role="columnheader" class="language">Language</th><th scope="col" role="columnheader" class="stars">Total stars</th></tr>
 </thead>
 <tbody role="rowgroup">
 {% for row in board.rows %}
 {% set owner, _, name = row.full_name.partition("/") %}
+{% set reason = row|why %}
 <tr role="row">
 <td class="rank" role="cell">{{ row.rank }}</td>
 <th scope="row" class="repository" role="rowheader"><a href="https://github.com/{{ row.full_name }}"><span class="owner">{{ owner }}/</span><span class="name">{{ name }}</span></a></th>
@@ -68,6 +71,10 @@
 <td class="description" role="cell" dir="auto">{{ row.description }}</td>
 {% else %}
 <td class="description none" role="cell">No description</td>
+{% endif %}
+{# Why the repository is here, in plain quantities, and its score and the sum behind it once the row is opened. #}
+{% if reason %}
+<td class="why" role="cell"><details><summary>{{ reason.line }}</summary>{{ reason.detail }}</details></td>
 {% endif %}
 <td class="language" role="cell">{{ row.language or "" }}</td>
 <td class="stars" role="cell">{{ row.stars|thousands }}</td>
