@@ -193,8 +193,8 @@ class TheWorkflow(unittest.TestCase):
         self.assertEqual(inputs["address"]["default"], self.workflow["env"]["DEFAULT_ADDRESS"])
         self.assertEqual(inputs["max_age_hours"]["default"], self.workflow["env"]["DEFAULT_MAX_AGE_HOURS"])
 
-    def test_it_reads_the_preview_until_go_live_and_the_site_is_fresh_for_26_hours(self):
-        self.assertEqual(self.workflow["env"]["DEFAULT_ADDRESS"], "https://preview.risingrepos.pages.dev/")
+    def test_it_reads_the_live_site_since_go_live_and_the_site_is_fresh_for_26_hours(self):
+        self.assertEqual(self.workflow["env"]["DEFAULT_ADDRESS"], "https://risingrepos.com/")
         self.assertEqual(self.workflow["env"]["DEFAULT_MAX_AGE_HOURS"], "26")
 
     def test_the_script_keeps_to_the_grammar_of_python_3_12_which_the_runner_image_has(self):
@@ -410,7 +410,13 @@ class TheCheck(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         content = self.alarm()["content"]
         self.assertIn("the newest board is too old. Board day 2026-11-09 was published 2.0 hours ago", content)
-        self.assertIn("and the limit is 1 hours.", content)
+        self.assertIn("and the limit is 1 hour.", content)
+
+    def test_a_limit_of_1_reads_as_1_hour_in_the_log_of_a_fresh_board_too(self):
+        self.site.answer(200, page(published_at=hours_ago(0)))
+        result = self.check(hours="1")
+        self.assertPostsNothing(result)
+        self.assertIn(", under the limit of 1 hour. Read: ", result.stdout)
 
     def test_a_limit_of_0_makes_any_board_too_old(self):
         self.site.answer(200, page(published_at=hours_ago(0)))

@@ -3,7 +3,7 @@
 **What it asks:** does the site's first page load quickly, stay small, and pass
 Lighthouse's accessibility checks?
 
-It measures the preview's pages with
+It measures the live site's pages with
 [Lighthouse](https://github.com/GoogleChrome/lighthouse) from GitHub's runners,
 so nothing runs on anyone's own machine, and it keeps the numbers. A test in
 `tests/` answers pass or fail on every push. This eval answers with numbers
@@ -20,9 +20,9 @@ instead, because it needs the network and a deployed page.
 
 | The workflow runs | It measures | Its summary says |
 | --- | --- | --- |
-| After each run of `Build and deploy` for a push to `main` that succeeded | Each page in `PAGES` in `measure.py` on the preview, <https://preview.risingrepos.pages.dev>. Today that is the first page, `/` | `Measured … after the deploy of <commit>` |
+| After each run of `Build and deploy` for a push to `main` that succeeded | Each page in `PAGES` in `measure.py` on the live site, <https://risingrepos.com>, the address `PREVIEW` in `measure.py` holds. Today that is the first page, `/` | `Measured … after the deploy of <commit>` |
 | By hand, for an https address | That one page | `… the address given by hand` |
-| On a pull request that changes the workflow or this folder | The preview as it stands, with the pull request's code and limits | `Measured the preview as it stands` |
+| On a pull request that changes the workflow or this folder | The live site as it stands, with the pull request's code and limits | `Measured the site as it stands` |
 
 To start it by hand, open the workflow under Actions and choose **Run
 workflow**, or run:
@@ -40,7 +40,7 @@ Lighthouse's command, the address, and the deployed commit from its environment,
 as its docstring says.
 
 **After a deploy, how it knows what it measures.** A run that follows `Build and
-deploy` measures the preview only while that run's commit is still the head of
+deploy` measures the site only while that run's commit is still the head of
 `main`. The deploy job uploads only the head of `main`, so a successful run
 whose commit is still the head uploaded its pages. A deploy that failed is not
 measured at all. Each page must then state, in its `rr:board-date` and
@@ -98,11 +98,16 @@ job, at a pinned version, in the Chrome that the runner image ships.
 
 `limits.json` holds a limit for each number on each profile, and the reason for
 each. A median outside its limit fails the job. A failed job holds nothing back:
-by the time it runs, the pages are already on the preview. The limits were set
-from the first measurement, on 2026-11-12, by the agent that built this eval
-([RisingRepos#74](https://github.com/AndrewGodlewsky/RisingRepos/issues/74)).
-Whether the live address meets them is checked when the site goes live
-([RisingRepos#58](https://github.com/AndrewGodlewsky/RisingRepos/issues/58)).
+by the time it runs, the pages are already live. The limits were set from the
+first measurement, of the preview on 2026-11-12, by the agent that built this
+eval ([RisingRepos#74](https://github.com/AndrewGodlewsky/RisingRepos/issues/74)).
+Since go-live the eval measures risingrepos.com against those same limits, and
+[RisingRepos#58](https://github.com/AndrewGodlewsky/RisingRepos/issues/58)
+records its first run there. `accepted.json` still holds that measurement of
+the preview. Only its `base` moved to the live address, together with
+`PREVIEW`, which a test keeps it equal to.
+[RisingRepos#113](https://github.com/AndrewGodlewsky/RisingRepos/issues/113)
+replaces its numbers from a run on the live site.
 
 ## Reading a run
 
@@ -132,8 +137,8 @@ that gives the reason:
 
 - **The accepted numbers.** Copy `results.json` from the run's `site-eval`
   artifact over `accepted.json`. A run that followed a deploy records its
-  commit. A run on a pull request measured the preview as it stood, so fill in
-  `commit` with the commit whose deploy the preview was serving, and say in the
+  commit. A run on a pull request measured the site as it stood, so fill in
+  `commit` with the commit whose deploy the site was serving, and say in the
   pull request how that was known. The pull request names the run, its commit,
   and its date, and its diff sets the earlier numbers beside the new ones.
 - **A limit.** Change it in `limits.json` with its new reason. A limit is never
@@ -163,5 +168,5 @@ vulnerabilities, which no version in that tree's ranges fixes. 13.5.0 with
 - Real visitors. Every number is from a simulated load on GitHub's runner.
 - Pages other than those in `PAGES`. A change that adds a page to the site adds
   it there.
-- A pull request's own pages. They reach the preview only when it merges, so the
+- A pull request's own pages. They reach the site only when it merges, so the
   run after its deploy is the first to measure them.

@@ -6,25 +6,30 @@ project works out which repositories those are and commits the data here. This
 repository holds the pages: their templates, the generator that builds them,
 and the workflow that uploads them to Cloudflare Pages, `deploy.yml`.
 
-## The rebuild and the preview
+## The live site and the preview
 
-The site is being rebuilt, on this repository's `main`. Until it goes live, two
-addresses serve two different sites:
+What this repository's `main` builds is live at risingrepos.com. It took the
+place of the earlier site, kept under the tag `legacy-site`, during an
+unattended run of the RisingRepos project in November 2026. The record of
+that switch is on
+[AndrewGodlewsky/RisingRepos#58](https://github.com/AndrewGodlewsky/RisingRepos/issues/58).
 
 | Address | Serves | Source |
 | --- | --- | --- |
-| <https://risingrepos.com> | The earlier site, from its Cloudflare deployment of 2026-10-16. No push to this repository changes it | The tag `legacy-site` |
-| <https://preview.risingrepos.pages.dev> | The rebuilt site, uploaded on every push to `main` | `main` |
+| <https://risingrepos.com> | This site, uploaded again on every push to `main` | `main` |
+| <https://preview.risingrepos.pages.dev> | The last upload made before go-live. No push reaches it now | `main` as it stood before go-live |
 
-- Each push to `main` is uploaded to the Cloudflare Pages branch `preview`. The
-  project's production branch is `main`, so the upload is a preview deployment.
-- Every page built for the preview carries
-  `<meta name="robots" content="noindex">`.
-- Going live is one reviewed change, to the three workflows and to the site
-  eval. [RUNBOOK.md](RUNBOOK.md) says how it is made: the checks before it,
-  each line it changes and why, what to check once it is made, and how
-  risingrepos.com is moved back to the earlier site. `tests/test_runbook.py`
-  holds the runbook's list of those lines to the files.
+- Each push to `main` is uploaded to the Cloudflare Pages branch `main`. That
+  is the project's production branch, so every upload is a production
+  deployment, and the newest one is what risingrepos.com serves.
+- A production build leaves `<meta name="robots" content="noindex">` out of
+  its pages. Only a build made with `--noindex`, as each upload to the preview
+  was, puts it in.
+- Going live was one reviewed change, to the three workflows and to the site
+  eval. [RUNBOOK.md](RUNBOOK.md) gives the checks made before it, every line
+  it moved and why, what is looked at once it is made, and how risingrepos.com
+  can be returned to the earlier site. `tests/test_runbook.py` holds the
+  runbook's list of those lines to the files.
 
 ## The pages
 
@@ -58,7 +63,7 @@ The build writes these pages, which `PAGES` in
 
 Each board's page links to the board day before it and the board day after
 it, and to `/days/`. The addresses are the earlier site's, so a link to one of
-its board days still leads to that board day once the site goes live. Each
+its board days still leads to that board day on the live site. Each
 build writes every page again: from the 25 board days the development database
 held on 2026-11-12, 28 pages and 11.6 MB, in under a second.
 
@@ -679,9 +684,9 @@ and cancel it when the next arrived, and the one cancelled could be the newest
 push's, leaving nothing to upload it. So the newest push's run gets its turn,
 finds `main` at its commit, and uploads its pages once its build passes, and
 the pages of an older push never replace those of a newer one, whichever build
-finishes first. If the newest push's build fails, nothing uploads it, and the
-preview keeps the pages it had until a push to `main` builds or the failed run
-is re-run. If `main` cannot be read, the job fails and nothing is uploaded.
+finishes first. If the newest push's build fails, nothing uploads it, and
+risingrepos.com keeps the pages it had until a push to `main` builds or the
+failed run is re-run. If `main` cannot be read, the job fails and nothing is uploaded.
 GitHub keeps at most 100 jobs waiting in a group and cancels one that arrives
 when the group is full, which would take more than 100 pushes during one
 upload.
@@ -698,7 +703,7 @@ runner image already has.
 ```sh
 uv sync --locked                                     # the pinned dependencies, into .venv
 uv run --locked python -m unittest discover -s tests # the tests
-uv run --locked python -m sitebuild dist --noindex   # the pages, as the preview gets them
+uv run --locked python -m sitebuild dist             # the pages, as risingrepos.com gets them
 python -m http.server 8000 --bind 127.0.0.1 --directory dist  # then open http://127.0.0.1:8000/
 ```
 
@@ -719,7 +724,7 @@ Ctrl+C.
 
 ## The site eval
 
-Each time a push to `main` reaches the preview,
+Each time a push to `main` reaches risingrepos.com,
 `.github/workflows/site-eval.yml` runs Lighthouse on the first page, five times
 on each of Lighthouse's phone and desktop profiles. It gives six numbers for
 each: Lighthouse's performance score and accessibility score, the Largest
@@ -734,9 +739,9 @@ highest of them beside it, then the accepted number from
 `evals/site/accepted.json` and the limit from `evals/site/limits.json`. A number
 outside its limit, or one that could not be measured, fails the job and is
 listed under the tables. A failed job holds nothing back: by the time it runs,
-the pages are already on the preview.
+the pages are already live.
 
-**What a site change reports.** A pull request's own pages reach the preview
+**What a site change reports.** A pull request's own pages reach the site
 only when it merges, so:
 
 - The evidence on its tracking issue gives the numbers before it: the last run
@@ -748,7 +753,7 @@ only when it merges, so:
   board, replaces `evals/site/accepted.json`, and a limit where one no longer
   fits, in a pull request that gives the reason.
 - A change to the eval itself is measured on its own pull request, against the
-  preview as it stands.
+  live site as it stands.
 
 ## Layout
 
@@ -821,7 +826,7 @@ and `-f <input>=<value>` for each input to change:
 
 | Input | What it is | Default |
 | --- | --- | --- |
-| `address` | The page to read. Only an https address is taken: a host name in lower case, a port if any, and a path of letters, digits, and `. _ ~ / -`, in 200 characters at most | `https://preview.risingrepos.pages.dev/` |
+| `address` | The page to read. Only an https address is taken: a host name in lower case, a port if any, and a path of letters, digits, and `. _ ~ / -`, in 200 characters at most | `https://risingrepos.com/` |
 | `max_age_hours` | The age in hours from which the newest board is too old: a whole number from 0 to 168. 0 makes any board too old, which forces an alarm | `26` |
 
 A scheduled run takes the defaults, from `DEFAULT_ADDRESS` and
@@ -829,9 +834,10 @@ A scheduled run takes the defaults, from `DEFAULT_ADDRESS` and
 fails the run, and nothing is read or posted. So does an empty
 `DISCORD_WEBHOOK_URL`, even while the board is fresh, so that a missing secret
 fails the next daily run and is not found first on the day an alarm is due.
-At go-live
-([RisingRepos#58](https://github.com/AndrewGodlewsky/RisingRepos/issues/58))
-`DEFAULT_ADDRESS` and the input's default become `https://risingrepos.com/`.
+`DEFAULT_ADDRESS` and the input's default have been `https://risingrepos.com/`
+since go-live
+([RisingRepos#58](https://github.com/AndrewGodlewsky/RisingRepos/issues/58)).
+Before it, both named the preview.
 
 **What the job can reach, and what it reads.** Its token has no permission
 (`permissions: {}`): it reads nothing from this repository. It holds one

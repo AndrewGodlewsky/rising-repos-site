@@ -4,7 +4,7 @@ summary which number failed or could not be measured.
 Each test runs the eval with tests/fake_lighthouse.py in Lighthouse's place, so no test touches the network,
 on reports the test makes up or on tests/fixtures/site-eval/phone-report.json: a report that Lighthouse wrote
 for the preview's first page on 2026-11-12, cut down to the parts the eval reads. What reaches the network in
-the workflow, main's head and the preview's page, is handed to the eval as a function, which each test
+the workflow, main's head and the site's page, is handed to the eval as a function, which each test
 replaces.
 """
 
@@ -25,7 +25,7 @@ from sitebuild import BOARD, contract
 
 FAKE = ROOT / "tests" / "fake_lighthouse.py"
 RECORDED = ROOT / "tests" / "fixtures" / "site-eval" / "phone-report.json"
-PREVIEW_PAGE = "https://preview.risingrepos.pages.dev/"
+SITE_PAGE = "https://risingrepos.com/"
 COMMIT = "a" * 40
 NEWER = "b" * 40
 NOW = datetime(2026, 11, 12, 16, 0, 0, tzinfo=UTC)
@@ -56,7 +56,7 @@ def report(*, performance=0.98, accessibility=1.0, lcp_ms=1234.0, cls=0.0, trans
             "largest-contentful-paint": {"numericValue": lcp_ms},
             "cumulative-layout-shift": {"numericValue": cls},
             "total-byte-weight": {"numericValue": transfer},
-            "network-requests": {"details": {"items": [{"url": PREVIEW_PAGE}] * requests}},
+            "network-requests": {"details": {"items": [{"url": SITE_PAGE}] * requests}},
         },
     }
 
@@ -183,11 +183,11 @@ class TheNumbers(EvalTest):
         self.assertEqual(outcome.results["runs"], 5)
         self.assertEqual(len(self.lighthouse_calls()), 10)
 
-    def test_lighthouse_measures_the_previews_first_page_on_a_phone_and_on_a_desktop_without_error_reporting(self):
+    def test_lighthouse_measures_the_sites_first_page_on_a_phone_and_on_a_desktop_without_error_reporting(self):
         self.evaluate()
         calls = self.lighthouse_calls()
         for arguments in calls:
-            self.assertEqual(arguments[0], PREVIEW_PAGE)
+            self.assertEqual(arguments[0], SITE_PAGE)
             for option in (
                 "--output=json",
                 "--only-categories=performance,accessibility",
@@ -214,7 +214,7 @@ class TheNumbers(EvalTest):
                 "lighthouse": "13.5.0",
                 "chrome": "156",
                 "runs": 5,
-                "base": "https://preview.risingrepos.pages.dev",
+                "base": "https://risingrepos.com",
             },
         )
 
@@ -352,17 +352,17 @@ class TheAddress(EvalTest):
                 self.assertNotIn(address.strip(), outcome.summary)
                 self.assertEqual(self.lighthouse_calls(), [])
 
-    def test_an_address_given_by_hand_is_measured_in_place_of_the_preview_and_compared_by_its_path(self):
+    def test_an_address_given_by_hand_is_measured_in_place_of_the_sites_and_compared_by_its_path(self):
         accepted = self.evaluate().results
         self.calls.unlink()
-        outcome = self.evaluate(address="https://risingrepos.com/", accepted=accepted, out=self.folder / "by-hand")
+        outcome = self.evaluate(address="https://www.risingrepos.com/", accepted=accepted, out=self.folder / "by-hand")
         self.assertTrue(outcome.passed, outcome.problems)
-        self.assertEqual({arguments[0] for arguments in self.lighthouse_calls()}, {"https://risingrepos.com/"})
-        self.assertEqual(outcome.results["base"], "https://risingrepos.com")
+        self.assertEqual({arguments[0] for arguments in self.lighthouse_calls()}, {"https://www.risingrepos.com/"})
+        self.assertEqual(outcome.results["base"], "https://www.risingrepos.com")
         self.assertEqual(
             self.row(outcome, "Performance score"), "| Performance score | 98 | 98 to 98 | 98 | at least 90 | pass |"
         )
-        self.assertIn("Measured `https://risingrepos.com/`, the address given by hand,", outcome.summary)
+        self.assertIn("Measured `https://www.risingrepos.com/`, the address given by hand,", outcome.summary)
 
     def test_the_summary_shows_an_address_as_code_so_that_none_of_it_is_read_as_markdown(self):
         outcome = self.evaluate(address="https://example.com/a_b*c*[x](https://example.org)")
@@ -373,8 +373,8 @@ class TheAddress(EvalTest):
 
 
 class AfterADeploy(EvalTest):
-    """After a deploy the eval is given the deployed commit. It measures the preview only while that commit is
-    the head of main, which shows that the deploy uploaded its pages, and once the preview states that commit's
+    """After a deploy the eval is given the deployed commit. It measures the site only while that commit is
+    the head of main, which shows that the deploy uploaded its pages, and once the site states that commit's
     newest board day."""
 
     def test_nothing_is_measured_once_main_has_moved_on_from_the_deployed_commit(self):
@@ -388,7 +388,7 @@ class AfterADeploy(EvalTest):
         )
         self.assertEqual(self.lighthouse_calls(), [])
 
-    def test_the_numbers_are_not_judged_when_main_moves_on_while_the_preview_is_measured(self):
+    def test_the_numbers_are_not_judged_when_main_moves_on_while_the_site_is_measured(self):
         heads = iter([COMMIT, NEWER])
         self.plan(phone=[report(lcp_ms=9000.0)])
         outcome = self.evaluate(
@@ -401,15 +401,15 @@ class AfterADeploy(EvalTest):
         self.assertEqual(outcome.problems, [])
         self.assertIsNone(outcome.results)
         self.assertIn(
-            f"Not judged. `main` moved on from `{COMMIT}` to `{NEWER}` while the preview was measured", outcome.summary
+            f"Not judged. `main` moved on from `{COMMIT}` to `{NEWER}` while the site was measured", outcome.summary
         )
 
-    def test_the_preview_is_measured_once_it_states_the_commits_newest_board_day(self):
+    def test_the_site_is_measured_once_it_states_the_commits_newest_board_day(self):
         day, published = newest_board_of_the_example()
         answers = iter([OSError("made up"), page_stating(day, "2026-01-01T00:00:00Z"), page_stating(day, published)])
 
         def read_page(address):
-            self.assertEqual(address, PREVIEW_PAGE)
+            self.assertEqual(address, SITE_PAGE)
             answer = next(answers)
             if isinstance(answer, Exception):
                 raise answer
@@ -419,9 +419,9 @@ class AfterADeploy(EvalTest):
         self.assertTrue(outcome.passed, outcome.problems)
         self.assertEqual(len(self.pauses), 2)
         self.assertEqual(outcome.results["commit"], COMMIT)
-        self.assertIn(f"Measured `{PREVIEW_PAGE}` after the deploy of `{COMMIT}`,", outcome.summary)
+        self.assertIn(f"Measured `{SITE_PAGE}` after the deploy of `{COMMIT}`,", outcome.summary)
 
-    def test_a_preview_that_never_states_the_commits_newest_board_day_is_not_measured_and_fails_the_eval(self):
+    def test_a_site_that_never_states_the_commits_newest_board_day_is_not_measured_and_fails_the_eval(self):
         day, published = newest_board_of_the_example()
         outcome = self.evaluate(
             commit=COMMIT,

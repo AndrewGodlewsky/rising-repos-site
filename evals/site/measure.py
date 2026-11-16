@@ -11,8 +11,8 @@ repository's top folder, with the site's locked dependencies:
 It reads these from its environment, which the workflow sets:
 
     SITE_EVAL_LIGHTHOUSE  the command that runs Lighthouse, pinned to one version
-    SITE_EVAL_ADDRESS     an https address to measure in place of the preview's pages, or nothing
-    SITE_EVAL_COMMIT      the commit whose deploy to the preview is measured, or nothing
+    SITE_EVAL_ADDRESS     an https address to measure in place of the site's pages, or nothing
+    SITE_EVAL_COMMIT      the commit whose deploy is measured, or nothing
     GITHUB_STEP_SUMMARY   the file the summary is added to, when it runs in a workflow
 
 Into <folder> it writes results.json, in the shape accepted.json has, and each run's report and log. After a
@@ -41,9 +41,12 @@ from sitebuild import DATA, contract
 
 HERE = Path(__file__).resolve().parent
 
-PREVIEW = "https://preview.risingrepos.pages.dev"
+PREVIEW = "https://risingrepos.com"
+"""Where each deploy uploads the pages, and so where the eval measures them when it is given no address: the live
+site since go-live. The name is the one it had before, when it held the preview's address, and it stays so that
+going back finds the line where RUNBOOK.md says it is."""
 PAGES = ("/",)
-"""The pages measured on the preview, by their path. A change that adds a page to the site adds it here."""
+"""The pages measured at PREVIEW, by their path. A change that adds a page to the site adds it here."""
 
 RUNS = 5
 """Lighthouse runs for each page on each profile. Lighthouse's documentation on variability says that the
@@ -56,7 +59,7 @@ RUN_TIMEOUT = 180
 SERVED_TRIES = 10
 SERVED_PAUSE = 15
 """After a deploy, how many times the eval reads each page, SERVED_PAUSE seconds apart, before it gives up
-waiting for the preview to state the deployed commit's newest board day."""
+waiting for the site to state the deployed commit's newest board day."""
 
 PROFILES = {"phone": (), "desktop": ("--preset=desktop",)}
 """Lighthouse's own two profiles. With no preset it emulates a mid-range phone on a slow 4G connection, and
@@ -167,8 +170,8 @@ def evaluate(
 ) -> Outcome:
     """Measure each page, judge its numbers, and say what was found.
 
-    With an `address`, that page alone is measured. Otherwise each of PAGES is measured on the preview. With a
-    `commit`, the preview is measured as that commit's deploy: only while `head_of_main()` is that commit, which
+    With an `address`, that page alone is measured. Otherwise each of PAGES is measured at PREVIEW. With a
+    `commit`, the site is measured as that commit's deploy: only while `head_of_main()` is that commit, which
     shows that its deploy uploaded its pages, and only once each page states that commit's newest board day.
     """
     try:
@@ -178,7 +181,7 @@ def evaluate(
             if head != commit:
                 return _superseded(
                     f"Not measured. `main` has moved on from `{commit}`, whose deploy this run follows, to `{head}`. "
-                    f"The run that follows the deploy of `{head}` measures the preview."
+                    f"The run that follows the deploy of `{head}` measures the site."
                 )
             stamp = _board_stamp(data)
             for path, page in pages:
@@ -199,9 +202,9 @@ def evaluate(
             return _failed(f"{error} after the measurement, so the numbers were not judged")
         if head != commit:
             return _superseded(
-                f"Not judged. `main` moved on from `{commit}` to `{head}` while the preview was measured, so the "
+                f"Not judged. `main` moved on from `{commit}` to `{head}` while the site was measured, so the "
                 f"numbers may be of either commit's pages. The run that follows the deploy of `{head}` measures the "
-                f"preview again."
+                f"site again."
             )
 
     made = [found for found in measured.values() if isinstance(found, Measured)]
@@ -245,7 +248,7 @@ def _base(address: str) -> str:
 
 
 def _superseded(text: str) -> Outcome:
-    """Nothing judged, because a newer deploy's run measures the preview instead. That fails nothing."""
+    """Nothing judged, because a newer deploy's run measures the site instead. That fails nothing."""
     return Outcome(True, f"## Site eval\n\n{text}\n", [], None)
 
 
@@ -408,11 +411,11 @@ def _opening(pages: list[tuple[str, str]], commit: str, address: str, results: d
     elif address:
         what = f"Measured {where}, the address given by hand,"
     else:
-        what = f"Measured the preview as it stands, {where},"
+        what = f"Measured the site as it stands, {where},"
     lighthouse, chrome = results["lighthouse"] or "(version unknown)", results["chrome"] or "(version unknown)"
     tools = f"with Lighthouse {lighthouse} in Chrome {chrome}."
     if not commit and not address:
-        tools += " A pull request's own pages reach the preview only once it merges."
+        tools += " A pull request's own pages reach the site only once it merges."
     if COMMIT.fullmatch(str(accepted.get("commit"))) and accepted.get("measured_at"):
         against = f"The accepted numbers were measured on {accepted['measured_at'][:10]}, at `{accepted['commit']}`."
     else:
@@ -440,7 +443,7 @@ def head_of_main() -> str:
 
 
 def read_page(address: str) -> str:
-    """The page at `address`, as the preview serves it."""
+    """The page at `address`, as the site serves it."""
     request = urllib.request.Request(address, headers={"User-Agent": "rising-repos-site site eval"})
     with urllib.request.urlopen(request, timeout=30) as response:
         return response.read(10_000_000).decode("utf-8", errors="replace")
