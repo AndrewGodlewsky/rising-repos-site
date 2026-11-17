@@ -141,6 +141,13 @@ score changes. Under each table the summary names every request it did not
 count, in which runs, and for what reason. The reports in the artifact keep the
 whole rows.
 
+**What it found once it asked.**
+[Run 44025134536](https://github.com/AndrewGodlewsky/rising-repos-site/actions/runs/44025134536),
+on the pull request that brought in this rule, measured the live site on
+2026-11-17. In all ten reports the audit listed the analytics script's exact
+address, so Requests was 1 on both profiles, and the summary named the script
+under each table. Its other numbers were close to those of the run before.
+
 ## The pass mark
 
 `limits.json` holds a limit for each number on each profile, and the reason for

@@ -6,8 +6,10 @@ on reports the test makes up or on one that Lighthouse wrote, cut down to the pa
 tests/fixtures/site-eval/phone-report.json, for the preview's first page on 2026-11-12, and
 tests/fixtures/site-eval/live-phone-report.json, for the live first page on 2026-11-17, in the eval's first
 run there (run 44019660473, its report 1-phone-1.json), with both of its network rows as Lighthouse wrote
-them. What reaches the network in the workflow, main's head and the site's page, is handed to the eval as a
-function, which each test replaces.
+them. That run did not ask for the inspector-issues audit, so tests/fixtures/site-eval/live-phone-issues.json
+holds that audit alone, from the first run that asked for it at the same address (run 44025134536, its report
+1-phone-1.json). What reaches the network in the workflow, main's head and the site's page, is handed to the
+eval as a function, which each test replaces.
 """
 
 import json
@@ -28,6 +30,7 @@ from sitebuild import BOARD, contract
 FAKE = ROOT / "tests" / "fake_lighthouse.py"
 RECORDED = ROOT / "tests" / "fixtures" / "site-eval" / "phone-report.json"
 LIVE = ROOT / "tests" / "fixtures" / "site-eval" / "live-phone-report.json"
+LIVE_ISSUES = ROOT / "tests" / "fixtures" / "site-eval" / "live-phone-issues.json"
 SITE_PAGE = "https://risingrepos.com/"
 TAG = "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
 """The address of the analytics script that the host adds to the live page, as LIVE's second row gives it."""
@@ -383,13 +386,16 @@ class TheRequestsCounted(EvalTest):
                 )
         self.assertNotIn("Not counted", outcome.summary)
 
-    def test_the_first_live_runs_rows_give_one_request_once_the_audit_lists_the_tag_as_refused(self):
-        self.plan(phone=[live(issues=policy_issues(TAG))])
+    def test_the_first_live_runs_rows_give_one_request_with_the_audit_a_later_run_there_recorded(self):
+        self.plan(phone=[live(issues=read_json(LIVE_ISSUES))])
         outcome = self.evaluate()
         for profile in PROFILES:
             with self.subTest(profile):
                 self.assertEqual(outcome.results["pages"]["/"][profile]["requests"]["median"], 1)
                 self.assertIn(f"- `{TAG}`, in every run: {self.LEFT_OUT}.", self.section(outcome, profile))
+
+    def test_the_made_up_audit_is_the_one_lighthouse_wrote_for_the_live_page(self):
+        self.assertEqual(policy_issues(TAG), read_json(LIVE_ISSUES))
 
     def test_the_summary_names_each_request_left_out_and_says_why(self):
         other = "https://example.com/widget.js"
