@@ -37,7 +37,7 @@ from pathlib import Path
 from typing import NamedTuple
 from urllib.parse import urlsplit
 
-from sitebuild import DATA, contract
+from sitebuild import DATA, contract, listed
 
 HERE = Path(__file__).resolve().parent
 
@@ -149,7 +149,7 @@ def _requests(report: dict) -> Requests:
     if not isinstance(rows, list):
         raise TypeError("the network rows are not a list")
     refused = _refused_by_policy(report)
-    not_counted = [row["url"] for row in rows if _never_sent(row, refused)]
+    not_counted = [row["url"] for row in rows if _left_out(row, refused)]
     return Requests(len(rows) - len(not_counted), not_counted)
 
 
@@ -167,16 +167,17 @@ def _refused_by_policy(report: dict) -> set[str]:
         if not isinstance(item, dict) or item.get("issueType") != REFUSED_BY_POLICY:
             continue
         sub_items = item.get("subItems")
-        listed = sub_items.get("items") if isinstance(sub_items, dict) else None
-        if not isinstance(listed, list):
+        entries = sub_items.get("items") if isinstance(sub_items, dict) else None
+        if not isinstance(entries, list):
             continue
-        addresses = [sub_item.get("url") if isinstance(sub_item, dict) else None for sub_item in listed]
+        addresses = [sub_item.get("url") if isinstance(sub_item, dict) else None for sub_item in entries]
         refused.update(address for address in addresses if isinstance(address, str))
     return refused
 
 
-def _never_sent(row: object, refused: set[str]) -> bool:
-    """Whether `row` is a request that the page's policy refused, as `_requests` tells it."""
+def _left_out(row: object, refused: set[str]) -> bool:
+    """Whether `row` is left out of Requests, as `_requests` tells it: the page's policy refused it, and the
+    summary can print its address."""
     if not isinstance(row, dict):
         return False
     address = row.get("url")
@@ -501,9 +502,7 @@ def _in_runs(runs: list[int]) -> str:
     """Which of the RUNS runs `runs`, their numbers, are, in words."""
     if len(runs) == RUNS:
         return "in every run"
-    if len(runs) == 1:
-        return f"in run {runs[0]}"
-    return f"in runs {', '.join(str(run) for run in runs[:-1])} and {runs[-1]}"
+    return f"in {'run' if len(runs) == 1 else 'runs'} {listed([str(run) for run in runs])}"
 
 
 def _opening(pages: list[tuple[str, str]], commit: str, address: str, results: dict, accepted: dict) -> str:

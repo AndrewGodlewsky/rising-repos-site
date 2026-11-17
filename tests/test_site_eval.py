@@ -417,7 +417,7 @@ class TheRequestsCounted(EvalTest):
         for runs, words in (
             ([unread, refused, unread, unread, unread], "in run 2"),
             ([refused, unread, refused, unread, unread], "in runs 1 and 3"),
-            ([refused, refused, unread, refused, unread], "in runs 1, 2 and 4"),
+            ([refused, refused, unread, refused, unread], "in runs 1, 2, and 4"),
         ):
             with self.subTest(words):
                 self.calls.unlink(missing_ok=True)
