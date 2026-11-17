@@ -439,12 +439,10 @@ this repository's deploy workflow off and on again.
    Who: the user, in a run or out of one.
    Once the pull request in this repository is merged, enable **Build and
    deploy** again. The next push to `main` uploads to the preview. Once that
-   upload has finished, merge the RisingRepos pull request of step 4, then
+   upload has finished, merge the RisingRepos pull request of step 4. Then
    bring the copy of RisingRepos that the scheduled task runs up to date, as
-   that pull request's description says, before the task's next start. The
-   merge alone does not move the read-back: the task sets no address, so the
-   default in its own copy decides it. From that update on, the read-back
-   finds the preview current.
+   RisingRepos's `README.md` says, before the task's next start: from then on
+   each publish reads back the preview.
 
 For as long as seven days after the rollback, a page of this site that the
 earlier one lacks, such as a board day after 2026-10-16, may still be served
