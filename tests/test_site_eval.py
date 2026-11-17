@@ -31,7 +31,9 @@ FAKE = ROOT / "tests" / "fake_lighthouse.py"
 RECORDED = ROOT / "tests" / "fixtures" / "site-eval" / "phone-report.json"
 LIVE = ROOT / "tests" / "fixtures" / "site-eval" / "live-phone-report.json"
 LIVE_ISSUES = ROOT / "tests" / "fixtures" / "site-eval" / "live-phone-issues.json"
-SITE_PAGE = "https://risingrepos.com/"
+DEPLOYED_SITE = "https://risingrepos.com"
+"""What measure.DEPLOYED_SITE should hold, written out so that the tests check the eval's address, not echo it."""
+SITE_PAGE = DEPLOYED_SITE + "/"
 TAG = "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
 """The address of the analytics script that the host adds to the live page, as LIVE's second row gives it."""
 COMMIT = "a" * 40
@@ -820,7 +822,7 @@ class TheEvalFolder(unittest.TestCase):
         self.assertRegex(
             accepted["run"], r"^https://github\.com/AndrewGodlewsky/rising-repos-site/actions/runs/\d+/attempts/\d+$"
         )
-        self.assertEqual(accepted["base"], measure.PREVIEW)
+        self.assertEqual(accepted["base"], measure.DEPLOYED_SITE)
         self.assertEqual(set(accepted["pages"]), set(measure.PAGES))
         for page in measure.PAGES:
             for profile in PROFILES:

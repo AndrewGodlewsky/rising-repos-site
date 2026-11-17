@@ -140,7 +140,7 @@ sets the Pages branch, is a row here.
 | `.github/workflows/stale-check.yml` | `default: https://preview.risingrepos.pages.dev/` | `default: https://risingrepos.com/` |
 | `.github/workflows/stale-check.yml` | `DEFAULT_ADDRESS: https://preview.risingrepos.pages.dev/` | `DEFAULT_ADDRESS: https://risingrepos.com/` |
 | `.github/workflows/site-eval.yml` | `default: https://preview.risingrepos.pages.dev/` | `default: https://risingrepos.com/` |
-| `evals/site/measure.py` | `PREVIEW = "https://preview.risingrepos.pages.dev"` | `PREVIEW = "https://risingrepos.com"` |
+| `evals/site/measure.py` | `DEPLOYED_SITE = "https://preview.risingrepos.pages.dev"` | `DEPLOYED_SITE = "https://risingrepos.com"` |
 | `evals/site/accepted.json` | `"base": "https://preview.risingrepos.pages.dev",` | `"base": "https://risingrepos.com",` |
 
 What each one does:
@@ -157,9 +157,7 @@ What each one does:
 - **The site eval's two lines** are the address a run by hand measures by
   default, and the address it measures after each deploy. Left on the preview,
   the measurement after each deploy would keep looking for a board day that
-  never appears there, and fail. Only the value of `PREVIEW` changes, never
-  its name: the table holds the whole line, so a renamed line matches neither
-  side and fails the test, and going back must find the name where it was.
+  never appears there, and fail.
 - **`accepted.json`'s `base`** is held to the address in `measure.py` by
   `tests/test_site_eval.py`, so the two move together. Its numbers were
   measured on the preview, and the limits in `evals/site/limits.json` were set
@@ -419,10 +417,14 @@ this repository's deploy workflow off and on again.
    risingrepos.com and www.risingrepos.com state the `rr:board-date` of check 4
    before the switch, 2026-10-16 today, and give the same hash. The stale
    check then alarms every day, and every publish's read-back fails though its
-   data still reaches this repository, and both go on until the preview is
-   uploaded to again, which cannot happen before step 5. Until step 4 they
-   read risingrepos.com, where the earlier site states no publish time; from
-   step 4 they read the preview, which was last uploaded to before the switch.
+   data still reaches this repository. Both start out reading risingrepos.com,
+   where the earlier site states no publish time, and each moves to the
+   preview at its own point. The stale check moves when this repository's pull
+   request of step 4 is merged, and goes on alarming there until step 5
+   uploads to the preview again, since its last upload came before the switch.
+   The read-back moves in step 5, when the copy of RisingRepos that the
+   scheduled task runs is updated after that upload, so the first preview it
+   reads is already current.
 4. **Put the lines of the switch back.**
    Who: an agent, once the user has asked for the way back, in a run or out of
    one.
@@ -437,8 +439,10 @@ this repository's deploy workflow off and on again.
    Who: the user, in a run or out of one.
    Once the pull request in this repository is merged, enable **Build and
    deploy** again. The next push to `main` uploads to the preview. Once that
-   upload has finished, merge the RisingRepos pull request of step 4: the
-   read-back then finds the preview current.
+   upload has finished, merge the RisingRepos pull request of step 4. Then
+   bring the copy of RisingRepos that the scheduled task runs up to date, as
+   RisingRepos's `README.md` says, before the task's next start: from then on
+   each publish reads back the preview.
 
 For as long as seven days after the rollback, a page of this site that the
 earlier one lacks, such as a board day after 2026-10-16, may still be served
