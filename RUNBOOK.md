@@ -140,7 +140,7 @@ sets the Pages branch, is a row here.
 | `.github/workflows/stale-check.yml` | `default: https://preview.risingrepos.pages.dev/` | `default: https://risingrepos.com/` |
 | `.github/workflows/stale-check.yml` | `DEFAULT_ADDRESS: https://preview.risingrepos.pages.dev/` | `DEFAULT_ADDRESS: https://risingrepos.com/` |
 | `.github/workflows/site-eval.yml` | `default: https://preview.risingrepos.pages.dev/` | `default: https://risingrepos.com/` |
-| `evals/site/measure.py` | `PREVIEW = "https://preview.risingrepos.pages.dev"` | `PREVIEW = "https://risingrepos.com"` |
+| `evals/site/measure.py` | `DEPLOYED_SITE = "https://preview.risingrepos.pages.dev"` | `DEPLOYED_SITE = "https://risingrepos.com"` |
 | `evals/site/accepted.json` | `"base": "https://preview.risingrepos.pages.dev",` | `"base": "https://risingrepos.com",` |
 
 What each one does:
@@ -157,9 +157,7 @@ What each one does:
 - **The site eval's two lines** are the address a run by hand measures by
   default, and the address it measures after each deploy. Left on the preview,
   the measurement after each deploy would keep looking for a board day that
-  never appears there, and fail. Only the value of `PREVIEW` changes, never
-  its name: the table holds the whole line, so a renamed line matches neither
-  side and fails the test, and going back must find the name where it was.
+  never appears there, and fail.
 - **`accepted.json`'s `base`** is held to the address in `measure.py` by
   `tests/test_site_eval.py`, so the two move together. Its numbers were
   measured on the preview, and the limits in `evals/site/limits.json` were set

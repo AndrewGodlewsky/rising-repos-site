@@ -41,12 +41,11 @@ from sitebuild import DATA, contract, listed
 
 HERE = Path(__file__).resolve().parent
 
-PREVIEW = "https://risingrepos.com"
+DEPLOYED_SITE = "https://risingrepos.com"
 """Where each deploy uploads the pages, and so where the eval measures them when it is given no address: the live
-site since go-live. The name is the one it had before, when it held the preview's address, and it stays so that
-going back finds the line where RUNBOOK.md says it is."""
+site since go-live."""
 PAGES = ("/",)
-"""The pages measured at PREVIEW, by their path. A change that adds a page to the site adds it here."""
+"""The pages measured at DEPLOYED_SITE, by their path. A change that adds a page to the site adds it here."""
 
 RUNS = 5
 """Lighthouse runs for each page on each profile. Lighthouse's documentation on variability says that the
@@ -255,7 +254,7 @@ def evaluate(
 ) -> Outcome:
     """Measure each page, judge its numbers, and say what was found.
 
-    With an `address`, that page alone is measured. Otherwise each of PAGES is measured at PREVIEW. With a
+    With an `address`, that page alone is measured. Otherwise each of PAGES is measured at DEPLOYED_SITE. With a
     `commit`, the site is measured as that commit's deploy: only while `head_of_main()` is that commit, which
     shows that its deploy uploaded its pages, and only once each page states that commit's newest board day.
     """
@@ -320,7 +319,7 @@ def evaluate(
 def _pages(address: str) -> list[tuple[str, str]]:
     """The pages to measure, each as its path and its address."""
     if not address:
-        return [(path, PREVIEW + path) for path in PAGES]
+        return [(path, DEPLOYED_SITE + path) for path in PAGES]
     if not ADDRESS.fullmatch(address):
         raise CouldNotMeasure("the address given is not an https address")
     parts = urlsplit(address)

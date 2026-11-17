@@ -20,7 +20,7 @@ instead, because it needs the network and a deployed page.
 
 | The workflow runs | It measures | Its summary says |
 | --- | --- | --- |
-| After each run of `Build and deploy` for a push to `main` that succeeded | Each page in `PAGES` in `measure.py` on the live site, <https://risingrepos.com>, the address `PREVIEW` in `measure.py` holds. Today that is the first page, `/` | `Measured … after the deploy of <commit>` |
+| After each run of `Build and deploy` for a push to `main` that succeeded | Each page in `PAGES` in `measure.py` on the live site, <https://risingrepos.com>, the address `DEPLOYED_SITE` in `measure.py` holds. Today that is the first page, `/` | `Measured … after the deploy of <commit>` |
 | By hand, for an https address | That one page | `… the address given by hand` |
 | On a pull request that changes the workflow or this folder | The live site as it stands, with the pull request's code and limits | `Measured the site as it stands` |
 
@@ -160,8 +160,8 @@ Since go-live the eval measures risingrepos.com against those same limits, and
 records its first run there, which failed on its count of requests, as
 [Requests the page never sent](#requests-the-page-never-sent) explains.
 `accepted.json` still holds that measurement of the preview. Only its `base`
-moved to the live address, together with `PREVIEW`, which a test keeps it equal
-to. [RisingRepos#113](https://github.com/AndrewGodlewsky/RisingRepos/issues/113)
+moved to the live address, together with `DEPLOYED_SITE`, which a test keeps it
+equal to. [RisingRepos#113](https://github.com/AndrewGodlewsky/RisingRepos/issues/113)
 replaces its numbers from a run on the live site.
 
 ## Reading a run
