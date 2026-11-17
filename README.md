@@ -729,7 +729,7 @@ Each time a push to `main` reaches risingrepos.com,
 on each of Lighthouse's phone and desktop profiles. It gives six numbers for
 each: Lighthouse's performance score and accessibility score, the Largest
 Contentful Paint, the Cumulative Layout Shift, the bytes the page took to
-transfer, and the requests it made. It can also be started by hand for any https
+transfer, and the requests it sent. It can also be started by hand for any https
 address. [evals/site/README.md](evals/site/README.md) says how it measures, what
 each number means, and how its limits were set.
 

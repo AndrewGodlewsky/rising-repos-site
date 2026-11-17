@@ -2,10 +2,14 @@
 summary which number failed or could not be measured.
 
 Each test runs the eval with tests/fake_lighthouse.py in Lighthouse's place, so no test touches the network,
-on reports the test makes up or on tests/fixtures/site-eval/phone-report.json: a report that Lighthouse wrote
-for the preview's first page on 2026-11-12, cut down to the parts the eval reads. What reaches the network in
-the workflow, main's head and the site's page, is handed to the eval as a function, which each test
-replaces.
+on reports the test makes up or on one that Lighthouse wrote, cut down to the parts the eval reads:
+tests/fixtures/site-eval/phone-report.json, for the preview's first page on 2026-11-12, and
+tests/fixtures/site-eval/live-phone-report.json, for the live first page on 2026-11-17, in the eval's first
+run there (run 44019660473, its report 1-phone-1.json), with both of its network rows as Lighthouse wrote
+them. That run did not ask for the inspector-issues audit, so tests/fixtures/site-eval/live-phone-issues.json
+holds that audit alone, from the first run that asked for it at the same address (run 44025134536, its report
+1-phone-1.json). What reaches the network in the workflow, main's head and the site's page, is handed to the
+eval as a function, which each test replaces.
 """
 
 import json
@@ -25,7 +29,11 @@ from sitebuild import BOARD, contract
 
 FAKE = ROOT / "tests" / "fake_lighthouse.py"
 RECORDED = ROOT / "tests" / "fixtures" / "site-eval" / "phone-report.json"
+LIVE = ROOT / "tests" / "fixtures" / "site-eval" / "live-phone-report.json"
+LIVE_ISSUES = ROOT / "tests" / "fixtures" / "site-eval" / "live-phone-issues.json"
 SITE_PAGE = "https://risingrepos.com/"
+TAG = "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+"""The address of the analytics script that the host adds to the live page, as LIVE's second row gives it."""
 COMMIT = "a" * 40
 NEWER = "b" * 40
 NOW = datetime(2026, 11, 12, 16, 0, 0, tzinfo=UTC)
@@ -46,9 +54,12 @@ LIMITS = {
 """Limits for the tests, the same on both profiles: the ones in evals/site/limits.json move with the page."""
 
 
-def report(*, performance=0.98, accessibility=1.0, lcp_ms=1234.0, cls=0.0, transfer=74_512, requests=1) -> dict:
-    """A Lighthouse report with only the parts the eval reads, holding the numbers given."""
-    return {
+def report(
+    *, performance=0.98, accessibility=1.0, lcp_ms=1234.0, cls=0.0, transfer=74_512, requests=1, rows=None, issues=None
+) -> dict:
+    """A Lighthouse report with only the parts the eval reads, holding the numbers given. `rows` replaces the
+    `requests` rows of network-requests, and `issues`, when given, is the report's inspector-issues audit."""
+    made = {
         "lighthouseVersion": "13.5.0",
         "environment": {"hostUserAgent": CHROME},
         "categories": {"performance": {"score": performance}, "accessibility": {"score": accessibility}},
@@ -56,9 +67,63 @@ def report(*, performance=0.98, accessibility=1.0, lcp_ms=1234.0, cls=0.0, trans
             "largest-contentful-paint": {"numericValue": lcp_ms},
             "cumulative-layout-shift": {"numericValue": cls},
             "total-byte-weight": {"numericValue": transfer},
-            "network-requests": {"details": {"items": [{"url": SITE_PAGE}] * requests}},
+            "network-requests": {"details": {"items": [{"url": SITE_PAGE}] * requests if rows is None else rows}},
         },
     }
+    if issues is not None:
+        made["audits"]["inspector-issues"] = issues
+    return made
+
+
+def answered(url: str, resource_type: str, *, status: int = 200, transfer: int = 2_000, size: int = 6_000) -> dict:
+    """A network row as Lighthouse writes one for a request that the page sent and that was answered."""
+    return {
+        "url": url,
+        "protocol": "h2",
+        "transferSize": transfer,
+        "resourceSize": size,
+        "statusCode": status,
+        "mimeType": "application/octet-stream",
+        "resourceType": resource_type,
+    }
+
+
+def unanswered(url: str, resource_type: str = "Script") -> dict:
+    """A network row as Lighthouse writes one for a request that ended before any answer came: no status, no
+    protocol, and no bytes. A request the page's policy refused and one that failed on the network both look so."""
+    return {
+        "url": url,
+        "protocol": "",
+        "transferSize": 0,
+        "resourceSize": 0,
+        "statusCode": -1,
+        "mimeType": "",
+        "resourceType": resource_type,
+    }
+
+
+def policy_issues(*refused: str) -> dict:
+    """Lighthouse's inspector-issues audit in the form its source gives it (core/audits/dobetterweb/
+    inspector-issues.js at v13.5.0), when Chrome said the page's content security policy refused each address in
+    `refused`."""
+    sub_items = {"type": "subitems", "items": [{"url": address} for address in refused]}
+    return {
+        "id": "inspector-issues",
+        "score": 0 if refused else 1,
+        "scoreDisplayMode": "binary",
+        "details": {
+            "type": "table",
+            "items": [{"issueType": "Content security policy", "subItems": sub_items}] if refused else [],
+        },
+    }
+
+
+def live(*, issues: dict | None = None) -> dict:
+    """LIVE's report, which holds no inspector-issues audit, with `issues` as that audit when it is given."""
+    recorded = read_json(LIVE)
+    if issues is not None:
+        recorded["audits"]["inspector-issues"] = issues
+    return recorded
 
 
 def page_stating(board_day: str, published_at: str) -> str:
@@ -196,6 +261,12 @@ class TheNumbers(EvalTest):
                 self.assertIn(option, arguments)
         self.assertEqual(["--preset=desktop" in arguments for arguments in calls], [False] * 5 + [True] * 5)
 
+    def test_each_run_also_asks_lighthouse_for_inspector_issues_outside_its_two_categories(self):
+        self.evaluate()
+        for arguments in self.lighthouse_calls():
+            self.assertIn("--only-categories=performance,accessibility", arguments)
+            self.assertIn("--only-audits=inspector-issues", arguments)
+
     def test_the_results_record_the_commit_the_date_the_run_and_the_tools(self):
         outcome = self.evaluate(
             commit=COMMIT,
@@ -272,6 +343,176 @@ class TheLimits(EvalTest):
         self.assertTrue(outcome.passed, outcome.problems)
 
 
+class TheRequestsCounted(EvalTest):
+    """Requests is how many requests the page sent. The eval drops a network row only if the report's
+    inspector-issues audit names that very address as refused by the page's content security policy, and the row
+    shows no answer and no bytes. Any other row counts, whatever its host, and so does a row or an audit that the
+    eval cannot read as that rule needs."""
+
+    PAGE = answered(SITE_PAGE, "Document", transfer=39_939, size=213_544)
+    LEFT_OUT = (
+        "Lighthouse's `inspector-issues` audit lists it as refused by the page's content security policy, and its "
+        "row shows no answer and no bytes"
+    )
+
+    def requests(self, rows, issues=None) -> int:
+        """The median of Requests on the phone, for five runs that each report `rows` and `issues`, once it is
+        checked that the summary names no request as not counted."""
+        self.calls.unlink(missing_ok=True)
+        self.plan(phone=[report(rows=rows, issues=issues)], desktop=[report()])
+        outcome = self.evaluate()
+        self.assertNotIn("Not counted", outcome.summary)
+        return outcome.results["pages"]["/"]["phone"]["requests"]["median"]
+
+    def section(self, outcome: "measure.Outcome", profile: str) -> str:
+        heading = f"### `/` on {'a phone' if profile == 'phone' else 'a desktop'}"
+        return outcome.summary.split(heading, 1)[1].split("###", 1)[0]
+
+    def test_the_first_live_runs_rows_give_two_requests_as_its_reports_hold_no_inspector_issues_audit(self):
+        self.plan(phone=[live()])
+        outcome = self.evaluate()
+        for profile in PROFILES:
+            with self.subTest(profile):
+                self.assertEqual(
+                    {key: value["median"] for key, value in outcome.results["pages"]["/"][profile].items()},
+                    {
+                        "performance": 98,
+                        "accessibility": 100,
+                        "largest_contentful_paint": 1.78,
+                        "cumulative_layout_shift": 0,
+                        "transfer_size": 39_939,
+                        "requests": 2,
+                    },
+                )
+        self.assertNotIn("Not counted", outcome.summary)
+
+    def test_the_first_live_runs_rows_give_one_request_with_the_audit_a_later_run_there_recorded(self):
+        self.plan(phone=[live(issues=read_json(LIVE_ISSUES))])
+        outcome = self.evaluate()
+        for profile in PROFILES:
+            with self.subTest(profile):
+                self.assertEqual(outcome.results["pages"]["/"][profile]["requests"]["median"], 1)
+                self.assertIn(f"- `{TAG}`, in every run: {self.LEFT_OUT}.", self.section(outcome, profile))
+
+    def test_the_made_up_audit_is_the_one_lighthouse_wrote_for_the_live_page(self):
+        self.assertEqual(policy_issues(TAG), read_json(LIVE_ISSUES))
+
+    def test_the_summary_names_each_request_left_out_and_says_why(self):
+        other = "https://example.com/widget.js"
+        rows = [self.PAGE, unanswered(TAG), unanswered(other)]
+        self.plan(phone=[report(rows=rows, issues=policy_issues(TAG, other))], desktop=[report()])
+        outcome = self.evaluate()
+        phone = self.section(outcome, "phone")
+        self.assertIn("| Requests | 1 | 1 to 1 | none | at most 2 | pass |", phone)
+        self.assertIn(
+            "\nNot counted in Requests, because the page never sent them:\n\n"
+            f"- `{TAG}`, in every run: {self.LEFT_OUT}.\n"
+            f"- `{other}`, in every run: {self.LEFT_OUT}.\n",
+            phone,
+        )
+        self.assertNotIn("Not counted", self.section(outcome, "desktop"))
+
+    def test_the_summary_says_in_which_runs_a_request_was_left_out(self):
+        refused, unread = live(issues=policy_issues(TAG)), live()
+        for runs, words in (
+            ([unread, refused, unread, unread, unread], "in run 2"),
+            ([refused, unread, refused, unread, unread], "in runs 1 and 3"),
+            ([refused, refused, unread, refused, unread], "in runs 1, 2, and 4"),
+        ):
+            with self.subTest(words):
+                self.calls.unlink(missing_ok=True)
+                self.plan(phone=runs, desktop=[report()])
+                outcome = self.evaluate()
+                self.assertIn(f"- `{TAG}`, {words}: {self.LEFT_OUT}.", self.section(outcome, "phone"))
+
+    def test_a_script_that_was_sent_counts(self):
+        self.assertEqual(self.requests([self.PAGE, answered("https://cdn.example.com/app.js", "Script")]), 2)
+
+    def test_an_image_that_was_sent_counts(self):
+        self.assertEqual(self.requests([self.PAGE, answered("https://images.example.org/board.png", "Image")]), 2)
+
+    def test_a_request_to_cloudflares_analytics_host_that_was_sent_counts(self):
+        self.assertEqual(self.requests([self.PAGE, answered(TAG, "Script")], policy_issues()), 2)
+
+    def test_a_request_that_broke_only_a_report_only_policy_and_was_answered_counts(self):
+        # Chrome reports such a request as a policy issue too, but sends it, so its row has an answer.
+        self.assertEqual(self.requests([self.PAGE, answered(TAG, "Script")], policy_issues(TAG)), 2)
+
+    def test_a_request_that_failed_on_the_network_counts(self):
+        failed = unanswered("https://api.example.com/data.json", "Fetch")
+        self.assertEqual(self.requests([self.PAGE, failed]), 2)
+        self.assertEqual(self.requests([self.PAGE, failed], policy_issues(TAG)), 2)
+
+    def test_only_the_exact_address_the_audit_lists_is_left_out(self):
+        for listed in ("https://static.cloudflareinsights.com", TAG + "/", TAG + "?v=2", TAG.upper()):
+            with self.subTest(listed):
+                self.assertEqual(self.requests([self.PAGE, unanswered(TAG)], policy_issues(listed)), 2)
+
+    def test_a_row_lacking_a_field_or_holding_an_odd_one_counts(self):
+        refused = unanswered(TAG)
+
+        def without(field: str) -> dict:
+            return {key: value for key, value in refused.items() if key != field}
+
+        for name, row in (
+            ("no status", without("statusCode")),
+            ("a status written as text", {**refused, "statusCode": "-1"}),
+            ("a status that is a fraction", {**refused, "statusCode": -1.5}),
+            ("no transfer size", without("transferSize")),
+            ("a transfer size written as text", {**refused, "transferSize": "0"}),
+            ("a transfer size that is false", {**refused, "transferSize": False}),
+            ("a resource size of null", {**refused, "resourceSize": None}),
+            ("some bytes transferred", {**refused, "transferSize": 120}),
+            ("some bytes of resource", {**refused, "resourceSize": 64}),
+            ("no address", without("url")),
+            ("an address that is a number", {**refused, "url": 5}),
+            ("a row that is a list", [TAG]),
+            ("a row that is text", TAG),
+            ("a row of null", None),
+        ):
+            with self.subTest(name):
+                self.assertEqual(self.requests([self.PAGE, row], policy_issues(TAG)), 2)
+
+    def test_a_refused_request_whose_address_the_summary_could_not_print_counts(self):
+        for address in (
+            "http://static.example.com/a.js",
+            "https://example.com/a b.js",
+            "https://example.com/`a`.js",
+            "https://example.com/a.js\n::warning::made up",
+            "https://example.com/a|b.js",
+            "https://example.com/it's.js",
+        ):
+            with self.subTest(address):
+                self.assertEqual(self.requests([self.PAGE, unanswered(address)], policy_issues(address)), 2)
+
+    def test_an_inspector_issues_audit_that_failed_or_is_shaped_otherwise_leaves_nothing_out(self):
+        listed = policy_issues(TAG)
+        row = listed["details"]["items"][0]
+
+        def items(*made_up) -> dict:
+            return {**listed, "details": {"type": "table", "items": list(made_up)}}
+
+        def sub_items(made_up) -> dict:
+            return items({**row, "subItems": {"type": "subitems", "items": made_up}})
+
+        for name, issues in (
+            ("an audit that failed", {"id": "inspector-issues", "score": None, "scoreDisplayMode": "error"}),
+            ("details of null", {**listed, "details": None}),
+            ("items that are not a list", {**listed, "details": {"type": "table", "items": {"0": row}}}),
+            ("an item that is text", items("Content security policy")),
+            ("another issue type", items({**row, "issueType": "Mixed content"})),
+            ("no sub-items", items({"issueType": "Content security policy"})),
+            ("sub-items that are a list", items({**row, "subItems": [{"url": TAG}]})),
+            ("sub-items whose items are not a list", sub_items(TAG)),
+            ("a sub-item that is text", sub_items([TAG])),
+            ("a sub-item address that is a list", sub_items([{"url": [TAG]}])),
+            ("an audit that is text", "made up"),
+            ("an audit that is a list", [listed]),
+        ):
+            with self.subTest(name):
+                self.assertEqual(self.requests([self.PAGE, unanswered(TAG)], issues), 2)
+
+
 class AMeasurementThatCouldNotBeMade(EvalTest):
     def assertCouldNotMeasure(self, outcome: "measure.Outcome", reason: str, profile: str = "Phone"):
         self.assertFalse(outcome.passed)
@@ -308,6 +549,13 @@ class AMeasurementThatCouldNotBeMade(EvalTest):
         del incomplete["audits"]["largest-contentful-paint"]["numericValue"]
         self.plan(phone=[incomplete], desktop=[report()])
         self.assertCouldNotMeasure(self.evaluate(), "run 1 of 5: the report holds no Largest Contentful Paint")
+
+    def test_network_rows_that_are_not_a_list_fail_the_eval_and_name_the_requests(self):
+        for rows in ("made up", {"0": {"url": SITE_PAGE}}):
+            with self.subTest(rows=rows):
+                self.calls.unlink(missing_ok=True)
+                self.plan(phone=[report(rows=rows)], desktop=[report()])
+                self.assertCouldNotMeasure(self.evaluate(), "run 1 of 5: the report holds no Requests")
 
     def test_a_report_without_a_score_fails_the_eval_and_names_the_score(self):
         self.plan(phone=[report(performance=None)], desktop=[report()])

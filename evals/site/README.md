@@ -78,7 +78,7 @@ while the runner is still busy, and the median sets it aside.
 | Largest Contentful Paint | Seconds until the largest text block or image in view is painted. Google calls 2.5 s or less good | Lower |
 | Cumulative Layout Shift | How much content in view moves after it is shown, in the load's largest burst of movement. Google calls 0.1 or less good | Lower |
 | Total transfer size | The bytes of every request the load made, as they crossed the network: compressed | Lower |
-| Requests | How many requests the load made | Lower |
+| Requests | How many requests the page sent. One that the page's own content security policy refused is not counted, and the summary names it: see [Requests the page never sent](#requests-the-page-never-sent) | Lower |
 
 A run that Lighthouse could not finish, or whose report lacks a number, fails
 the eval and the summary says which run and why. What Lighthouse prints goes to
@@ -94,6 +94,60 @@ request made without a key: such requests share a daily quota, and that quota
 was zero. A key is a secret, and this job holds none. So Lighthouse runs in the
 job, at a pinned version, in the Chrome that the runner image ships.
 
+## Requests the page never sent
+
+**What the host adds at risingrepos.com.** Cloudflare serves the live site, and
+puts two scripts at the end of each page it hands to a browser: the module
+script of its Web Analytics, from `static.cloudflareinsights.com`, and an inline
+script for its bot check, which would load more from
+`/cdn-cgi/challenge-platform/`. The built pages hold neither, and every run on
+the preview counted one request, the page. The page's content security policy,
+in its `<meta>` tag, lets only the page's own script run, by its hash. So
+Chrome refuses both: the inline script never runs, and the module script is
+never fetched.
+
+**What the first measurement there found.**
+[Run 44019660473](https://github.com/AndrewGodlewsky/rising-repos-site/actions/runs/44019660473),
+after the deploy of `0519dab` on 2026-11-17, failed on Requests alone: 2 on
+both profiles, against a limit of 1. Each of its ten reports has two rows in
+`network-requests`: the page, and the analytics script with status -1, no
+protocol, and 0 bytes. Every other number was within its limit. Those reports
+held the two categories and nothing else, so nothing in them said why the
+script had no answer.
+
+**Why the row alone does not settle it.** In Lighthouse 13.5.0 a request's row
+keeps the values it starts with until an answer comes, and records no reason
+when the request ends without one. A request the policy refused, and one that
+failed on the network (a name that does not resolve, a connection refused or
+reset), give the same row. The second kind was sent, and the page depends on
+it.
+
+**How the eval tells them apart.** Each run also asks Lighthouse for its
+`inspector-issues` audit, which names each address that Chrome says the page's
+content security policy blocked. The eval drops a row from Requests only if
+each of these is true:
+
+- that audit lists the row's exact address;
+- the row has status -1, a transfer size of 0, and a resource size of 0;
+- the address is an https address that the summary can print.
+
+A failure on the network is never listed by the audit, and a request that broke
+only a report-only policy was still sent, so its row has an answer: both count.
+So does every other row, including one that lacks a field or holds one of an
+unexpected kind. When the audit is missing, failed, or holds something else,
+nothing is dropped. An audit asked for with `--only-audits` beside
+`--only-categories` goes into the report and into neither category, so neither
+score changes. Under each table the summary names every request it did not
+count, in which runs, and for what reason. The reports in the artifact keep the
+whole rows.
+
+**What it found once it asked.**
+[Run 44025134536](https://github.com/AndrewGodlewsky/rising-repos-site/actions/runs/44025134536),
+on the pull request that brought in this rule, measured the live site on
+2026-11-17. In all ten reports the audit listed the analytics script's exact
+address, so Requests was 1 on both profiles, and the summary named the script
+under each table. Its other numbers were close to those of the run before.
+
 ## The pass mark
 
 `limits.json` holds a limit for each number on each profile, and the reason for
@@ -103,10 +157,11 @@ first measurement, of the preview on 2026-11-12, by the agent that built this
 eval ([RisingRepos#74](https://github.com/AndrewGodlewsky/RisingRepos/issues/74)).
 Since go-live the eval measures risingrepos.com against those same limits, and
 [RisingRepos#58](https://github.com/AndrewGodlewsky/RisingRepos/issues/58)
-records its first run there. `accepted.json` still holds that measurement of
-the preview. Only its `base` moved to the live address, together with
-`PREVIEW`, which a test keeps it equal to.
-[RisingRepos#113](https://github.com/AndrewGodlewsky/RisingRepos/issues/113)
+records its first run there, which failed on its count of requests, as
+[Requests the page never sent](#requests-the-page-never-sent) explains.
+`accepted.json` still holds that measurement of the preview. Only its `base`
+moved to the live address, together with `PREVIEW`, which a test keeps it equal
+to. [RisingRepos#113](https://github.com/AndrewGodlewsky/RisingRepos/issues/113)
 replaces its numbers from a run on the live site.
 
 ## Reading a run
@@ -122,9 +177,11 @@ profile:
 | Limit | `at least` for a score, `at most` for the rest |
 | Result | `pass` or `**fail**` |
 
-Below the tables, each number that failed or could not be measured is listed,
-and the same lines are on the run's page as errors. The artifact `site-eval`
-keeps `results.json` and every report and log for 90 days. A report opens in the
+Under a table, a list names each request that Requests did not count, with the
+runs concerned and the reason. Below the tables, each number that failed or
+could not be measured is listed, and the same lines are on the run's page as
+errors. The artifact `site-eval` keeps `results.json` and every report and log
+for 90 days. A report opens in the
 [Lighthouse viewer](https://googlechrome.github.io/lighthouse/viewer/), which
 shows why a score is what it is.
 
@@ -162,6 +219,11 @@ failed the check: its tree holds versions of `glob` and `minimatch` with known
 vulnerabilities, which no version in that tree's ranges fixes. 13.5.0 with
 `--before=2026-10-29` passed: 113 packages, none failed. Lighthouse needs Node
 22.19 or later, and the runner image's Node is newer.
+
+A new version can also change how `inspector-issues` writes its items, which
+`_requests` in `measure.py` reads. If it does, the eval drops nothing from
+Requests, and a request the page's policy refused fails the eval again, until
+the code reads the new form.
 
 ## What it does not measure
 
