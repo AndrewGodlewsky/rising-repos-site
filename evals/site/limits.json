@@ -22,7 +22,7 @@
     },
     "requests": {
       "limit": 1,
-      "reason": "Every run made one request, the page itself: its styles are in the page, its icon is a data address, and it loads no script, font, or image. A second request is something new that the page depends on, and the margin is none."
+      "reason": "What is counted is the requests the page sent. One that the page's own content security policy refused never left the browser, so it is not counted, and the summary names it: at the live address, the analytics script the host adds to each page. On the preview every run made one request, the page itself: its styles are in the page, its icon is a data address, and it loads no script, font, or image. A second request is something new that the page depends on, and the margin is none."
     }
   },
   "desktop": {
@@ -48,7 +48,7 @@
     },
     "requests": {
       "limit": 1,
-      "reason": "Every run made one request, the page itself. A second request is something new that the page depends on, and the margin is none."
+      "reason": "What is counted is the requests the page sent, as on the phone: one that the page's own content security policy refused is named in the summary and not counted. On the preview every run made one request, the page itself. A second request is something new that the page depends on, and the margin is none."
     }
   }
 }

@@ -1,0 +1,83 @@
+{
+  "lighthouseVersion": "13.5.0",
+  "requestedUrl": "https://risingrepos.com/",
+  "fetchTime": "2026-11-17T04:48:46.752Z",
+  "environment": {
+    "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+  },
+  "configSettings": {
+    "formFactor": "mobile",
+    "throttlingMethod": "simulate"
+  },
+  "categories": {
+    "performance": {
+      "id": "performance",
+      "score": 0.98
+    },
+    "accessibility": {
+      "id": "accessibility",
+      "score": 1
+    }
+  },
+  "audits": {
+    "largest-contentful-paint": {
+      "id": "largest-contentful-paint",
+      "numericValue": 1780.8139999999999,
+      "numericUnit": "millisecond"
+    },
+    "cumulative-layout-shift": {
+      "id": "cumulative-layout-shift",
+      "numericValue": 0,
+      "numericUnit": "unitless"
+    },
+    "total-byte-weight": {
+      "id": "total-byte-weight",
+      "numericValue": 39939,
+      "numericUnit": "byte"
+    },
+    "network-requests": {
+      "id": "network-requests",
+      "details": {
+        "type": "table",
+        "items": [
+          {
+            "url": "https://risingrepos.com/",
+            "sessionTargetType": "page",
+            "protocol": "h2",
+            "cache": "none",
+            "rendererStartTime": 0,
+            "networkRequestTime": 6.697999999989406,
+            "networkEndTime": 192.16200000001118,
+            "finished": true,
+            "transferSize": 39939,
+            "resourceSize": 213544,
+            "statusCode": 200,
+            "mimeType": "text/html",
+            "resourceType": "Document",
+            "priority": "VeryHigh",
+            "experimentalFromMainFrame": true,
+            "entity": "risingrepos.com"
+          },
+          {
+            "url": "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092",
+            "sessionTargetType": "page",
+            "protocol": "",
+            "cache": "none",
+            "rendererStartTime": 226.28800000000047,
+            "networkRequestTime": 226.28800000000047,
+            "networkEndTime": 226.29299999999057,
+            "finished": true,
+            "transferSize": 0,
+            "resourceSize": 0,
+            "statusCode": -1,
+            "mimeType": "",
+            "resourceType": "Script",
+            "priority": "High",
+            "experimentalFromMainFrame": true,
+            "entity": "Cloudflare"
+          }
+        ]
+      }
+    }
+  }
+}

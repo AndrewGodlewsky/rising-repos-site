@@ -69,12 +69,16 @@ which removes much of the variation a real network brings."""
 OPTIONS = (
     "--output=json",
     "--only-categories=performance,accessibility",
+    "--only-audits=inspector-issues",
     "--chrome-flags=--headless",
     "--no-enable-error-reporting",
     "--quiet",
 )
 """What every run is given besides its address, its report's path, and its profile. Error reporting is off,
-so Lighthouse sends nothing anywhere but to the page it measures."""
+so Lighthouse sends nothing anywhere but to the page it measures. The `inspector-issues` audit is the one
+asked for outside the two categories: it says which addresses the page's own content security policy refused,
+which `_requests` reads. Lighthouse puts an audit asked for with `--only-audits` into the report and into none
+of the categories that `--only-categories` keeps, so neither score changes."""
 
 ADDRESS = re.compile(r"https://[A-Za-z0-9.-]+(?::[0-9]{1,5})?(?:[/?#][A-Za-z0-9\-._~:/?#\[\]@!$&()*+,;=%]*)?")
 """An https address with a host, written only in the characters an address may hold unescaped. None of them is
@@ -86,6 +90,15 @@ VERSION = re.compile(r"[0-9]+(?:\.[0-9]+){1,3}")
 CHROME = re.compile(r"Chrome/([0-9]+)\.")
 """Chrome's major version, from the user agent in a report, which holds no other part of it."""
 COMMIT = re.compile(r"[0-9a-f]{40}")
+
+REFUSED_BY_POLICY = "Content security policy"
+"""The issue type under which the `inspector-issues` audit lists each address that the page's content security
+policy refused. Lighthouse writes it as a plain string, never translated."""
+WHY_NOT_COUNTED = (
+    "Lighthouse's `inspector-issues` audit lists it as refused by the page's content security policy, and its row "
+    "shows no answer and no bytes"
+)
+"""Why the summary says a request was left out of Requests: the two things `_requests` needs to see."""
 
 
 class CouldNotMeasure(Exception):
@@ -110,6 +123,78 @@ def _audit(report: dict, audit: str) -> float:
     return report["audits"][audit]["numericValue"]
 
 
+class Requests(NamedTuple):
+    """One report's requests: how many the page sent, and the address of each row not counted, in the rows'
+    order."""
+
+    sent: int
+    not_counted: list[str]
+
+
+def _requests(report: dict) -> Requests:
+    """How many requests the page sent, and the address of each network row not counted because it was never sent.
+
+    Lighthouse makes a row for every request that Chrome reports, and Chrome reports one that the page's own
+    content security policy refused before it left the browser. The row gives no reason: a request refused so,
+    and one that failed on the network before any answer, both have status -1, no protocol, and no bytes. So the
+    eval drops a row only when the report shows both halves. The `inspector-issues` audit names that very address
+    as refused by the policy, which a failure on the network never causes. And the row shows no answer and no
+    bytes, which a request that broke only a report-only policy, and was sent, does not.
+
+    Every other row counts, including one that lacks a field or holds one of an unexpected kind, and one whose
+    address the summary could not print: the summary names each row it drops. Rows that are not a list cannot be
+    counted at all, and raise TypeError.
+    """
+    rows = report["audits"]["network-requests"]["details"]["items"]
+    if not isinstance(rows, list):
+        raise TypeError("the network rows are not a list")
+    refused = _refused_by_policy(report)
+    not_counted = [row["url"] for row in rows if _never_sent(row, refused)]
+    return Requests(len(rows) - len(not_counted), not_counted)
+
+
+def _refused_by_policy(report: dict) -> set[str]:
+    """Each address that the report's `inspector-issues` audit lists as refused by the page's content security
+    policy. An audit that is missing, failed, or shaped otherwise lists none."""
+    try:
+        items = report["audits"]["inspector-issues"]["details"]["items"]
+    except (KeyError, TypeError):
+        return set()
+    if not isinstance(items, list):
+        return set()
+    refused = set()
+    for item in items:
+        if not isinstance(item, dict) or item.get("issueType") != REFUSED_BY_POLICY:
+            continue
+        sub_items = item.get("subItems")
+        listed = sub_items.get("items") if isinstance(sub_items, dict) else None
+        if not isinstance(listed, list):
+            continue
+        addresses = [sub_item.get("url") if isinstance(sub_item, dict) else None for sub_item in listed]
+        refused.update(address for address in addresses if isinstance(address, str))
+    return refused
+
+
+def _never_sent(row: object, refused: set[str]) -> bool:
+    """Whether `row` is a request that the page's policy refused, as `_requests` tells it."""
+    if not isinstance(row, dict):
+        return False
+    address = row.get("url")
+    return (
+        isinstance(address, str)
+        and ADDRESS.fullmatch(address) is not None
+        and address in refused
+        and _is_number(row.get("statusCode"), -1)
+        and _is_number(row.get("transferSize"), 0)
+        and _is_number(row.get("resourceSize"), 0)
+    )
+
+
+def _is_number(value: object, number: int) -> bool:
+    """Whether `value` is the JSON number `number`. A true or a false is not, though Python takes one as 1 or 0."""
+    return type(value) in (int, float) and value == number
+
+
 MEASURES = {
     "performance": Measure("Performance score", True, lambda report: _score(report, "performance"), str),
     "accessibility": Measure("Accessibility score", True, lambda report: _score(report, "accessibility"), str),
@@ -128,13 +213,11 @@ MEASURES = {
     "transfer_size": Measure(
         "Total transfer size", False, lambda report: round(_audit(report, "total-byte-weight")), "{:,} bytes".format
     ),
-    "requests": Measure(
-        "Requests", False, lambda report: len(report["audits"]["network-requests"]["details"]["items"]), str
-    ),
+    "requests": Measure("Requests", False, lambda report: _requests(report).sent, str),
 }
 """What the eval reports for each page on each profile, by the key limits.json and accepted.json use. A score is
-out of 100, Largest Contentful Paint is in seconds, and the transfer size is in bytes as they crossed the
-network, compressed."""
+out of 100, Largest Contentful Paint is in seconds, the transfer size is in bytes as they crossed the network,
+compressed, and Requests counts the requests the page sent, as `_requests` tells them."""
 
 
 class Outcome(NamedTuple):
@@ -145,12 +228,13 @@ class Outcome(NamedTuple):
 
 
 class Measured(NamedTuple):
-    """One page measured on one profile: each number's median and its value in every run, and the versions of
-    the tools that measured it."""
+    """One page measured on one profile: each number's median and its value in every run, the versions of the
+    tools that measured it, and each request that Requests left out, with the runs it was left out of."""
 
     numbers: dict[str, dict]
     lighthouse: str | None
     chrome: str | None
+    not_counted: dict[str, list[int]]
 
 
 def evaluate(
@@ -312,13 +396,16 @@ def _wait_until_served(
 
 def _measure(lighthouse: list[str], page: str, profile: str, stem: Path) -> Measured | CouldNotMeasure:
     """`page` measured RUNS times on `profile`, or why it could not be. The first run that fails ends it."""
-    runs = []
+    runs, not_counted = [], {}
     for run in range(1, RUNS + 1):
         try:
             report = _run_lighthouse(lighthouse, page, profile, Path(f"{stem}-{run}.json"), Path(f"{stem}-{run}.log"))
             runs.append(_numbers(report))
         except CouldNotMeasure as error:
             return CouldNotMeasure(f"run {run} of {RUNS}: {error}")
+        # _numbers has read the report's requests, so reading them again cannot fail.
+        for address in _requests(report).not_counted:
+            not_counted.setdefault(address, []).append(run)
     values = {key: [numbers[key] for numbers in runs] for key in MEASURES}
     # Every run uses the same Lighthouse and the same Chrome, so the last report names them for all.
     version = str(report.get("lighthouseVersion"))
@@ -328,6 +415,7 @@ def _measure(lighthouse: list[str], page: str, profile: str, stem: Path) -> Meas
         {key: {"median": statistics.median_low(each), "runs": each} for key, each in values.items()},
         version if VERSION.fullmatch(version) else None,
         chrome.group(1) if chrome else None,
+        not_counted,
     )
 
 
@@ -400,7 +488,22 @@ def _section(
             f"| {measure.name} | {measure.show(value)} | {measure.show(min(runs))} to {measure.show(max(runs))} "
             f"| {'none' if accepted is None else measure.show(accepted)} | {bound} | {result} |"
         )
-    return heading + "\n\n" + "\n".join(rows) + "\n", problems
+    section = heading + "\n\n" + "\n".join(rows) + "\n"
+    if found.not_counted:
+        section += "\nNot counted in Requests, because the page never sent them:\n\n" + "".join(
+            f"- `{address}`, {_in_runs(left_out_in)}: {WHY_NOT_COUNTED}.\n"
+            for address, left_out_in in found.not_counted.items()
+        )
+    return section, problems
+
+
+def _in_runs(runs: list[int]) -> str:
+    """Which of the RUNS runs `runs`, their numbers, are, in words."""
+    if len(runs) == RUNS:
+        return "in every run"
+    if len(runs) == 1:
+        return f"in run {runs[0]}"
+    return f"in runs {', '.join(str(run) for run in runs[:-1])} and {runs[-1]}"
 
 
 def _opening(pages: list[tuple[str, str]], commit: str, address: str, results: dict, accepted: dict) -> str:
