@@ -3,11 +3,12 @@ name: Site eval
 # Measures the site's pages with Lighthouse, on a phone and on a desktop, and fails when a number is outside
 # its limit in evals/site/limits.json or could not be measured. evals/site/README.md says what it measures.
 #
-# - After each run of "Build and deploy" for a push to main that succeeded, it measures the preview, while
+# - After each run of "Build and deploy" for a push to main that succeeded, it measures the live site, while
 #   that run's commit is still the head of main. A run whose commit is still the head uploaded its pages,
 #   because its deploy job uploads only the head of main.
 # - Started by hand, it measures the https address it is given.
-# - A pull request that changes the eval measures the preview as it stands, with the eval's new code and limits.
+# - A pull request that changes the eval measures the live site as it stands, with the eval's new code and
+#   limits.
 #
 # The job runs code that the daily data push can change, as the build job does, so it holds no secret, has no
 # environment, and can only read the repository. tests/test_site_eval_workflow.py checks each of these.
@@ -22,7 +23,7 @@ on:
       address:
         description: The https address of the page to measure
         required: true
-        default: https://preview.risingrepos.pages.dev/
+        default: https://risingrepos.com/
         type: string
   pull_request:
     paths:
@@ -41,7 +42,7 @@ jobs:
     # The measurements that follow deploys take turns, and a newer one cancels an older one, whose pages the
     # newer deploy has replaced. A run started by hand or for a pull request waits for nothing.
     concurrency:
-      group: ${{ github.event_name == 'workflow_run' && 'site-eval-preview' || format('site-eval-{0}', github.run_id) }}
+      group: ${{ github.event_name == 'workflow_run' && 'site-eval-after-deploy' || format('site-eval-{0}', github.run_id) }}
       cancel-in-progress: true
     env:
       UV_PYTHON: "3.14.10"

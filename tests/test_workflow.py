@@ -80,8 +80,8 @@ class TheWorkflow(unittest.TestCase):
         self.assertEqual(self.deploy["if"], "github.event_name == 'push' && github.ref == 'refs/heads/main'")
         self.assertNotIn("if", self.build)
 
-    def test_uploads_go_to_the_preview_until_go_live(self):
-        self.assertEqual(self.workflow["env"]["PAGES_BRANCH"], "preview")
+    def test_uploads_go_to_the_production_branch_since_go_live(self):
+        self.assertEqual(self.workflow["env"]["PAGES_BRANCH"], "main")
         command = step_named(self.deploy, "Upload to Cloudflare Pages")["run"]
         self.assertIn('--project-name=risingrepos --branch="$PAGES_BRANCH"', command)
 

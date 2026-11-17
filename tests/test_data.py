@@ -142,7 +142,7 @@ class TheDataFiles(BuildTest):
         self.assertEqual(len(self.build_pages()[BOARD].rows()), index["board_days"][0]["row_count"])
 
     def test_the_latest_board_is_the_first_in_the_index_and_fails_wherever_the_build_does(self):
-        # The site eval reads it to know which board day the preview should state.
+        # The site eval reads it to know which board day the site should state.
         self.assertEqual(latest_board(self.data)["board_day"], read_json(self.index)["board_days"][0]["board_day"])
         self.board_file("2026-11-08").unlink()
         with self.assertRaises(DataError) as raised:

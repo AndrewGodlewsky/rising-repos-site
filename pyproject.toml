@@ -11,7 +11,7 @@ dependencies = [
 ]
 
 [dependency-groups]
-# The tests read the deploy workflow, which is YAML.
+# The tests read the workflows, which are YAML.
 dev = ["pyyaml>=6.0.3"]
 
 [tool.uv]

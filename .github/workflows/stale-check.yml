@@ -34,7 +34,7 @@ on:
       address:
         description: The page to read. It must be an https address
         type: string
-        default: https://preview.risingrepos.pages.dev/
+        default: https://risingrepos.com/
       max_age_hours:
         description: How many hours after its publish the newest board is too old, a whole number from 0 to 168. 0 makes any board too old
         type: string
@@ -44,10 +44,12 @@ on:
 permissions: {}
 
 env:
-  # A scheduled run has no inputs, and takes these. Until go-live the check
-  # reads the preview. Going live (RisingRepos#58) changes this address, and
-  # the default of the input above, to https://risingrepos.com/.
-  DEFAULT_ADDRESS: https://preview.risingrepos.pages.dev/
+  # A scheduled run has no inputs, and takes these. The check reads the live
+  # site, as the input above does by default. Before go-live
+  # (AndrewGodlewsky/RisingRepos#58) both read the preview, which no upload
+  # reaches any more, so a check left there would find its board older each
+  # day.
+  DEFAULT_ADDRESS: https://risingrepos.com/
   # The site is fresh for 26 hours after its newest board's publish.
   DEFAULT_MAX_AGE_HOURS: "26"
 
@@ -188,10 +190,12 @@ jobs:
                   f"Board day {board_day} was published {math.floor(age * 10) / 10:.1f} hours ago, "
                   f"at {published:%Y-%m-%dT%H:%M:%SZ}"
               )
+              # A whole number of hours, so only a limit of exactly 1 reads as one hour.
+              limit_in_hours = "1 hour" if limit == 1 else f"{limit} hours"
               if age < limit:
-                  print(f"Fresh. {how_old}, under the limit of {limit} hours. Read: {address}. Nothing was posted.")
+                  print(f"Fresh. {how_old}, under the limit of {limit_in_hours}. Read: {address}. Nothing was posted.")
                   return None
-              return f"the newest board is too old. {how_old}, and the limit is {limit} hours.", STALE
+              return f"the newest board is too old. {how_old}, and the limit is {limit_in_hours}.", STALE
 
 
           def post(webhook, message):

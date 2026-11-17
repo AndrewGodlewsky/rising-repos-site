@@ -23,11 +23,14 @@ on:
 permissions: {}
 
 env:
-  # The Cloudflare Pages branch an upload goes to. The project's production
-  # branch is main, so "preview" makes a preview deployment, served at
-  # https://preview.risingrepos.pages.dev, and leaves risingrepos.com as it is.
-  # Going live is changing this one line to main.
-  PAGES_BRANCH: preview
+  # The Cloudflare Pages branch an upload goes to. It is the project's
+  # production branch, main, so each upload becomes the deployment that
+  # risingrepos.com serves, and the build leaves the noindex tag out. Until
+  # go-live it was "preview", which made a preview deployment at
+  # https://preview.risingrepos.pages.dev and left the earlier site in place.
+  # Two other workflows and the eval changed their addresses in the same
+  # commit as this line. RUNBOOK.md lists every one, and how to put each back.
+  PAGES_BRANCH: main
 
 jobs:
   build:

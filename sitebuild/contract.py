@@ -58,7 +58,7 @@ def boards(data: Path) -> list[dict]:
 
 def latest_board(data: Path) -> dict:
     """The daily board of the newest board day, the one the site's root shows. It is the first of `boards`, so it
-    fails wherever the build would. The site eval reads it to know which board day the preview should state."""
+    fails wherever the build would. The site eval reads it to know which board day the site should state."""
     return boards(data)[0]
 
 

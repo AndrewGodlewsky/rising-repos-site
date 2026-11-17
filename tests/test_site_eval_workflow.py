@@ -1,4 +1,4 @@
-"""The site eval's workflow measures the preview after each deploy, and an address by hand, holding no secret.
+"""The site eval's workflow measures the site after each deploy, and an address by hand, holding no secret.
 
 It runs code that the daily data push can change, as the build job does, so it holds nothing that code could
 misuse: no secret, no environment, and a token limited to reading the repository. Each test below names one
@@ -57,7 +57,7 @@ class TheSiteEvalWorkflow(unittest.TestCase):
             {
                 "description": "The https address of the page to measure",
                 "required": True,
-                "default": "https://preview.risingrepos.pages.dev/",
+                "default": "https://risingrepos.com/",
                 "type": "string",
             },
         )
@@ -92,7 +92,7 @@ class TheSiteEvalWorkflow(unittest.TestCase):
         self.assertEqual(
             self.job["concurrency"],
             {
-                "group": "${{ github.event_name == 'workflow_run' && 'site-eval-preview' "
+                "group": "${{ github.event_name == 'workflow_run' && 'site-eval-after-deploy' "
                 "|| format('site-eval-{0}', github.run_id) }}",
                 "cancel-in-progress": True,
             },
