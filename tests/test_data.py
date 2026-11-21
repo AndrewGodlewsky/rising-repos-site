@@ -2,6 +2,7 @@
 each one against the schema that is shipped with it."""
 
 import hashlib
+import shutil
 import tempfile
 import unittest
 from pathlib import Path
@@ -14,19 +15,29 @@ from sitebuild import BOARD
 from sitebuild.contract import SCHEMA_VERSION_NEEDED, DataError, latest_board
 
 COPIED = {
-    "contract/daily.schema.json": "8a52fec5776f69858112160265ff8fd814417ccb5185d6459e30b5af9430d2ba",
+    "contract/daily.schema.json": "841e0cf6e300eae9c1c40c53932bb73e0d324b5263ab03ae64fb6aef4403fe51",
     "contract/index.schema.json": "e2f3f9467a029962f69c10d9560a710a4aeb0eefa690a537faf75641d6898815",
     "boards/index.json": "e748551f487ba07f4bfa048eba037fe9e19209eddcd28b84a24c5bca9e6ae523",
-    "boards/days/2026-11-09/daily.json": "ec2395108d69116b308ab24d3cb644269c4b0ebec68e119a0f23f564259aedd1",
-    "boards/days/2026-11-08/daily.json": "1e7a3e8fd40de20b972c71ee6b8500774cc15c7d5f3bcefbc4c55348eda52a74",
+    "boards/days/2026-11-09/daily.json": "724d54ff6ab6fb94349276c87f04ab18b0b242932118a7d704da750d5d46b2af",
+    "boards/days/2026-11-08/daily.json": "38bacddaceee99fc026c79fed87d696d0927f1be3fb2cce3a198f72263045f06",
 }
 """The SHA-256 of each file the example copies, by its path under site-data/: the schemas and the example in
-RisingRepos's src/risingrepos/publishing/contract/ at 9bf9a8af769beba64ef9a62e829de0c5013c3ead, which gives a board
+RisingRepos's src/risingrepos/publishing/contract/ at 0fd590ccbb8fb9087cfd4cdabf1f09fa6ce948c9, which gives a board
 the start time of the update behind it (RisingRepos#51), the number of the formula that ranked it (RisingRepos#47),
 for each row, its score and the figures behind it (AndrewGodlewsky/RisingRepos#49), and the board's state, the star
 bands it holds back with the counts its own day's snapshot missed, and the earlier days its ranking lacked
-(AndrewGodlewsky/RisingRepos#13). A change to the contract reaches this copy by a pull request here that changes
-these too."""
+(AndrewGodlewsky/RisingRepos#13). For the redesign (AndrewGodlewsky/RisingRepos#192) it also gives the star bands,
+and for each row its star history, its gains over 1, 7, and 30 days, its license, and when its repository was created
+and last pushed to. A change to the contract reaches this copy by a pull request here that changes these too."""
+
+
+REDESIGN_FIELDS = ("star_bands",)
+"""The field of a board day that AndrewGodlewsky/RisingRepos#196 added for the redesign (#192 there)."""
+
+REDESIGN_ROW_FIELDS = (
+    "star_history", "gained_1_day", "gained_7_days", "gained_30_days", "license", "created_at", "pushed_at",
+)
+"""The fields of a row that AndrewGodlewsky/RisingRepos#193, #194, #195, and #197 added for the redesign."""
 
 
 class TheExample(unittest.TestCase):
@@ -88,6 +99,17 @@ class TheDataFiles(BuildTest):
             with self.subTest(path):
                 self.assertNotIn("31337", page.html)
                 self.assertNotIn("forks", page.html)
+
+    def test_a_board_day_file_from_before_the_fields_for_the_redesign_builds_the_same_pages_as_one_with_them(self):
+        """AndrewGodlewsky/RisingRepos#192: site-data/ holds files without them until a publish writes every board day
+        again, and a site built from either has the same pages, since the pages read none of them yet."""
+        with_them = {path: page.html for path, page in self.build_pages().items()}
+        shutil.rmtree(self.out)
+        self.drop_fields(*REDESIGN_FIELDS)
+        self.drop_row_fields(*REDESIGN_ROW_FIELDS)
+        self.assertNotIn("star_history", self.daily_schema.read_text(encoding="utf-8"))
+        self.assertNotIn("star_history", self.board_file().read_text(encoding="utf-8"))
+        self.assertEqual({path: page.html for path, page in self.build_pages().items()}, with_them)
 
     def test_every_board_days_file_is_checked_and_an_older_one_that_does_not_match_fails_the_build(self):
         board = read_json(self.board_file("2026-11-08"))

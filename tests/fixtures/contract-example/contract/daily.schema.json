@@ -8,7 +8,8 @@
     "schema_version", "board_day", "published_at", "score_provisional", "partial_days", "rows",
     "daily_job_started_at",
     "formula_version",
-    "state", "holds", "missed_stars", "unranked"
+    "state", "holds", "missed_stars", "unranked",
+    "star_bands"
   ],
   "allOf": [
     {
@@ -78,8 +79,30 @@
       "description": "Which of three kinds of board this is. 'rows': it holds no star band, and `rows` lists the repositories that rose. 'empty': it holds no star band and no repository rose, so `rows` is empty. 'held': it holds at least one star band, which `holds` names, and `rows` lists only the repositories that rose in the other bands, which may be none.",
       "enum": ["rows", "empty", "held"]
     },
+    "star_bands": {
+      "description": "The star bands this board day's ranking used, lowest first, each by its fewest and its most stars as `holds` gives a band, and the last with no most. They cover every star count once: each band's least is one more than the most of the band before it. A repository is in the band its star count on the board day falls in, and a count under the lowest band's least is in the lowest band. Every band that `holds` names is one of them. They are the bands when this file was written, so they can differ between board days: they are the same in every board day's file until the bands change, and a file written before a change keeps its own until its board day is published again. The site names a row's band and filters by band from these, each board day from its own file, and keeps no limits of its own.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["least_stars", "most_stars"],
+        "properties": {
+          "least_stars": {
+            "description": "The fewest stars a repository in the band has.",
+            "type": "integer",
+            "minimum": 0
+          },
+          "most_stars": {
+            "description": "The most stars a repository in the band has, or null for the top band, which has no limit.",
+            "type": ["integer", "null"],
+            "minimum": 0
+          }
+        }
+      }
+    },
     "holds": {
-      "description": "The star bands this board leaves out, lowest first, and none when it leaves none out. A band is held when this board day's own snapshot missed some of the star counts the band spans, which `missed_stars` gives, so that the band is never ranked from only part of its repositories. A repository is in the band its star count on the board day falls in, and a count under the lowest band's least is in the lowest band. A board day whose snapshot was complete holds nothing.",
+      "description": "The star bands this board leaves out, lowest first, and none when it leaves none out. A band is held when this board day's own snapshot missed some of the star counts the band spans, which `missed_stars` gives, so that the band is never ranked from only part of its repositories. Each is one of `star_bands`, which says which band a repository is in. A board day whose snapshot was complete holds nothing.",
       "type": "array",
       "items": {
         "type": "object",
@@ -152,8 +175,9 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "rank", "github_id", "full_name", "description", "language", "stars",
-          "score", "recent_stars", "recent_days", "days_left_out", "baseline", "divided_by", "excess"
+          "rank", "github_id", "full_name", "description", "language", "license", "created_at", "pushed_at", "stars",
+          "score", "recent_stars", "recent_days", "days_left_out", "baseline", "divided_by", "excess",
+          "star_history", "gained_1_day", "gained_7_days", "gained_30_days"
         ],
         "properties": {
           "rank": {
@@ -181,6 +205,21 @@
             "description": "Untrusted: GitHub detects it from the owner's files, and the owner can override it. GitHub's name for the repository's main language. Null when GitHub names none, and never an empty string.",
             "type": ["string", "null"],
             "minLength": 1
+          },
+          "license": {
+            "description": "Untrusted: GitHub identifies it from a license file the owner chose. GitHub's SPDX id for the repository's license on the board day, such as MIT or Apache-2.0, and NOASSERTION for a license file GitHub could not identify. Null when GitHub found no license, or gave none for this snapshot, and never an empty string. It holds only letters, digits, '.', '-', and '+'. A fact shown beside the score: it changes no score and no rank.",
+            "type": ["string", "null"],
+            "pattern": "^[A-Za-z0-9.+-]+$"
+          },
+          "created_at": {
+            "description": "When the repository was created, in UTC, as YYYY-MM-DDTHH:MM:SSZ, as GitHub gave it on the board day. Null when this snapshot holds none. A fact shown beside the score: it changes no score and no rank.",
+            "type": ["string", "null"],
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+          },
+          "pushed_at": {
+            "description": "When the repository was last pushed to, in UTC, as YYYY-MM-DDTHH:MM:SSZ, as GitHub gave it on the board day. Null when it was never pushed to, or this snapshot holds none. A fact shown beside the score: it changes no score and no rank.",
+            "type": ["string", "null"],
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
           },
           "stars": {
             "description": "The repository's star count on the board day.",
@@ -217,6 +256,28 @@
           "excess": {
             "description": "The stars the recent pace gained above `baseline` over the recent days the formula measures, a baseline less than nothing taken as nothing. Where `days_left_out` is not 0, the days counted stand in, at their own pace, for the days left out.",
             "type": "number"
+          },
+          "star_history": {
+            "description": "The repository's star count on each of the 31 snapshot days from 30 days before the board day to the board day, oldest first, so that the last is `stars`. A count is null when RisingRepos holds no snapshot of the repository for that day, as for a partial day that missed it, a missing day, or a day before it reached the star floor, and is never 0 or another day's count in its place. The counts are matched to the repository by `github_id`, so a repository that was renamed keeps them. A fact shown beside the score: it changes no score and no rank.",
+            "type": "array",
+            "minItems": 31,
+            "maxItems": 31,
+            "items": {
+              "type": ["integer", "null"],
+              "minimum": 0
+            }
+          },
+          "gained_1_day": {
+            "description": "The stars the repository gained on the board day: `stars` less its count on the day before, the last count of `star_history` less the one before it. 0 when it gained none, and below 0 when it lost stars. Null when that day's count is. A fact shown beside the score: it changes no score and no rank.",
+            "type": ["integer", "null"]
+          },
+          "gained_7_days": {
+            "description": "The stars the repository gained over the last 7 days: `stars` less its count 7 days before the board day, as `star_history` holds it. 0 or below as for `gained_1_day`, and null when that day's count is. A fact shown beside the score: it changes no score and no rank.",
+            "type": ["integer", "null"]
+          },
+          "gained_30_days": {
+            "description": "The stars the repository gained over the last 30 days: `stars` less its count 30 days before the board day, the first count of `star_history`. 0 or below as for `gained_1_day`, and null when that day's count is. A fact shown beside the score: it changes no score and no rank.",
+            "type": ["integer", "null"]
           }
         }
       }

@@ -627,6 +627,16 @@ against the schema shipped with it before it writes a page:
   `baseline`, `divided_by`, `excess`, `recent_days`, `recent_stars`,
   `days_left_out`, and `score` itself, are optional the same way: a board whose rows lack them builds with no reason on any row.
   A site built before the pages read them builds the newer files too.
+- The fields that RisingRepos added for the site's redesign
+  (AndrewGodlewsky/RisingRepos#192) are read by no page yet: `star_bands`
+  (AndrewGodlewsky/RisingRepos#196), and in each row `star_history`
+  (AndrewGodlewsky/RisingRepos#193), `gained_1_day`, `gained_7_days`, and
+  `gained_30_days` (AndrewGodlewsky/RisingRepos#194 and #195), and `license`,
+  `created_at`, and `pushed_at` (AndrewGodlewsky/RisingRepos#197). A file
+  without them builds the same pages as one with them, which a test in
+  `tests/test_data.py` shows. The contract marks `license` untrusted, as it
+  does a description, since the repository's owner chose the file GitHub names
+  it from.
 - The schemas are checked with fastjsonschema, the validator that RisingRepos's
   ADR 0013 chose, at the version RisingRepos's `pyproject.toml` pins. It turns
   a schema into Python, and it fetches whatever document a `$ref` points to
@@ -644,12 +654,13 @@ day's files that fail their schema fail the tests as well as the build. The
 token search (below) reads every file git would commit, `site-data/` included,
 so a day's file that holds a string shaped like a credential fails the tests.
 A test holds the copy in `tests/fixtures/` to the bytes of the contract in
-RisingRepos commit `9bf9a8af769beba64ef9a62e829de0c5013c3ead`, whose schema
+RisingRepos commit `0fd590ccbb8fb9087cfd4cdabf1f09fa6ce948c9`, whose schema
 says when the daily job that published a board day began, numbers the formula
 that ranked it, gives each row its score and the figures behind it, and gives
 the board's state, the star bands it holds back, and the days its ranking
-lacked. Its newest board is held and its older one empty, so the tests render
-both.
+lacked. It also carries the fields added for the redesign (above), which no
+page reads yet. Its newest board is held and its older one empty, so the tests
+render both.
 A change to the contract
 reaches it, and that test, by a pull request here.
 `.gitattributes` keeps git from changing the line endings of either copy.
