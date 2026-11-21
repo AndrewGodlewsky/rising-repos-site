@@ -110,6 +110,20 @@ class BuildTest(unittest.TestCase):
         for path in (self.data / "boards" / "days").glob("*/daily.json"):
             write_json(path, {key: value for key, value in read_json(path).items() if key not in names})
 
+    def drop_row_fields(self, *names: str) -> None:
+        """As `drop_fields`, for fields of a row: the daily schema's row without them, and each row of every board
+        day's file without them."""
+        schema = read_json(self.daily_schema)
+        row = schema["properties"]["rows"]["items"]
+        for name in names:
+            del row["properties"][name]
+            row["required"].remove(name)
+        write_json(self.daily_schema, schema)
+        for path in (self.data / "boards" / "days").glob("*/daily.json"):
+            board = read_json(path)
+            rows = [{key: value for key, value in row.items() if key not in names} for row in board["rows"]]
+            write_json(path, {**board, "rows": rows})
+
     def build_data(self, *options: str) -> subprocess.CompletedProcess:
         return build(self.out, "--data", str(self.data), *options)
 

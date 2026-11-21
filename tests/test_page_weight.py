@@ -93,20 +93,44 @@ to 14 November 2026, 200 bytes (AndrewGodlewsky/RisingRepos#49): a repository th
 recent pace keeps one day, whose expanded view writes its score out and says why a day is missing."""
 
 
+LICENSES = ["MIT", "Apache-2.0", None, "GPL-3.0", "NOASSERTION"]
+
+
+def with_unshown_fields(row: dict) -> dict:
+    """`row` with the fields that AndrewGodlewsky/RisingRepos#193 to #197 added to a row, which the pages do not show
+    yet: the star history of a repository that gained its recent pace on each of the 31 days, as far as its stars
+    allow, the gains that history gives, a license, and when the repository was created and last pushed to. They are
+    worked out from the row, not drawn, so a seeded generator draws the rows it drew before them."""
+    per_day = min(row["recent_stars"] // row["recent_days"], row["stars"] // 31)
+    history = [row["stars"] - per_day * (30 - day) for day in range(31)]
+    return {
+        **row,
+        "license": LICENSES[row["rank"] % len(LICENSES)],
+        "created_at": "2024-03-01T09:30:00Z",
+        "pushed_at": "2026-11-09T18:47:03Z",
+        "star_history": history,
+        "gained_1_day": history[30] - history[29],
+        "gained_7_days": history[30] - history[23],
+        "gained_30_days": history[30] - history[0],
+    }
+
+
 def made_up_rows(count: int) -> list[dict]:
     """Rows as long as the contract lets a row be in practice: a description of the most characters it may hold,
     with characters that escaping makes longer, and the numbers whose reason is the longest the site has written."""
     description = ("A made-up row of the largest board, with <markup> & characters escaping lengthens. " * 5)[:349]
     return [
-        {
-            "rank": rank,
-            "github_id": 900000000 + rank,
-            "full_name": f"rising-repos-example/a-made-up-repository-of-the-largest-board-{rank:03d}",
-            "description": description + "…",
-            "language": "Jupyter Notebook",
-            "stars": 123456 + rank,
-            **LONGEST_NUMBERS,
-        }
+        with_unshown_fields(
+            {
+                "rank": rank,
+                "github_id": 900000000 + rank,
+                "full_name": f"rising-repos-example/a-made-up-repository-of-the-largest-board-{rank:03d}",
+                "description": description + "…",
+                "language": "Jupyter Notebook",
+                "stars": 123456 + rank,
+                **LONGEST_NUMBERS,
+            }
+        )
         for rank in range(1, count + 1)
     ]
 
@@ -159,15 +183,17 @@ def typical_rows(count: int) -> list[dict]:
         return " ".join(words)[: length - 1].rstrip().capitalize() + "."
 
     return [
-        {
-            "rank": rank,
-            "github_id": 700000000 + rank,
-            "full_name": f"{word()}-{word()}/{word()}-{word()}",
-            "description": text(105),
-            "language": draw.choice(languages),
-            "stars": draw.randrange(200, 250_000),
-            **typical_numbers(draw),
-        }
+        with_unshown_fields(
+            {
+                "rank": rank,
+                "github_id": 700000000 + rank,
+                "full_name": f"{word()}-{word()}/{word()}-{word()}",
+                "description": text(105),
+                "language": draw.choice(languages),
+                "stars": draw.randrange(200, 250_000),
+                **typical_numbers(draw),
+            }
+        )
         for rank in range(1, count + 1)
     ]
 
