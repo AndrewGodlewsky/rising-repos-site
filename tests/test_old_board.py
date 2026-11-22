@@ -1,12 +1,14 @@
-"""The notice of an old board (AndrewGodlewsky/RisingRepos#56).
+"""The page's one script: the notice of an old board (AndrewGodlewsky/RisingRepos#56), and the theme.
 
-Every board day's page, the root among them, and the list of board days carry one script. It compares the newest
-board's publish time with the reader's clock when the page is opened, so it needs no new build: from 26 hours the page
-says how old the newest board is, and from 7 days it shows no board and says why. Younger than 26 hours, or with scripts
-turned off, the page is as it was built.
+Every board day's page, the root among them, the list of board days, and the Baseline page carry the notice. It
+compares the newest board's publish time with the reader's clock when the page is opened, so it needs no new build:
+from 26 hours the page says how old the newest board is, and from 7 days it shows no board and says why. Younger than
+26 hours, or with scripts turned off, the page is as it was built.
 
-These tests lift the script out of a built page, exactly as the page holds it, and hand it to Node with a clock of
-their choosing (tests/run_page_script.js). Without Node they fail, never skip.
+Each page carries one script, the site's own, in its head (AndrewGodlewsky/RisingRepos#199): the theme on every page,
+then the notice on the pages that carry it, then a board's filters, or the Baseline page's readout. These tests lift
+that script out of a built page, exactly as the page holds it, and hand it to Node with a clock and a browser of their
+choosing (tests/run_page_script.js). Without Node they fail, never skip.
 """
 
 import base64
@@ -20,7 +22,7 @@ from datetime import datetime, timedelta, timezone
 
 from helpers import ROOT, BuildTest, Page, read_json
 
-from sitebuild import BOARD, DAYS, NOT_FOUND, board_day_page, long_date
+from sitebuild import BASELINE, BOARD, DAYS, HOW_IT_WORKS, NOT_FOUND, TEMPLATES, board_day_page, long_date
 
 NODE = shutil.which("node")
 RUNNER = ROOT / "tests" / "run_page_script.js"
@@ -31,9 +33,22 @@ NEWEST, OLDER = "2026-11-09", "2026-11-08"
 PUBLISHED = datetime(2026, 11, 10, 0, 41, 7, tzinfo=timezone.utc)
 """When the example's newest board was published: the moment every page's script measures from."""
 
-CARRIERS = (BOARD, board_day_page(NEWEST), board_day_page(OLDER), DAYS)
+CARRIERS = (BOARD, board_day_page(NEWEST), board_day_page(OLDER), DAYS, BASELINE)
 """The pages that carry the notice, as the example builds them: the root, the newest and the earlier board day's
-pages, and the list."""
+pages, the list, and the Baseline page, which shows the newest board's chart."""
+
+PARTS = {
+    BOARD: ("theme.js", "old-board.js", "filters.js"),
+    board_day_page(NEWEST): ("theme.js", "old-board.js", "filters.js"),
+    board_day_page(OLDER): ("theme.js", "old-board.js"),
+    DAYS: ("theme.js", "old-board.js"),
+    BASELINE: ("theme.js", "old-board.js", "baseline.js"),
+    HOW_IT_WORKS: ("theme.js",),
+    NOT_FOUND: ("theme.js",),
+}
+"""The parts of each page's one script, in order, as the example builds them: the theme on every page; the notice
+where the page carries it; a board's filters where the board has rows, which the example's earlier board has not; and
+the Baseline page's readout."""
 
 NOTICE, TITLE, TEXT = "old-board", "old-board-title", "old-board-text"
 """The ids of the notice and of its two parts: the bold sentence, and the rest."""
@@ -50,13 +65,28 @@ TOUCHES = {
     "document.documentElement",
     "root.setAttribute(data-withheld)",
 }
-"""Everything the script may read or write, as tests/run_page_script.js records it: the notice's two attributes, the
-text of its two parts, its hidden attribute, and one attribute on the root element. It reads no other value, so none an
-owner wrote, and it writes text, never markup."""
+"""Everything the notice's part may read or write, as tests/run_page_script.js records it: the notice's two
+attributes, the text of its two parts, its hidden attribute, and one attribute on the root element. It reads no other
+value, so none an owner wrote, and it writes text, never markup."""
 
-POLICY = "default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'"
-"""Each page's Content-Security-Policy before the script: the not-found page's still, and every other page's but for
-the one directive that lets the script run."""
+THEME_TOUCHES = {
+    "document.documentElement",
+    "root.setAttribute(data-js)",
+    "localStorage.getItem(theme)",
+    "root.setAttribute(data-theme)",
+    "window.matchMedia",
+    "window.matchMedia((prefers-color-scheme: dark))",
+    "document.addEventListener(DOMContentLoaded)",
+}
+"""Everything the script's other parts touch while the page loads: the theme marks the root element as running the
+script (data-js), reads the theme kept in this browser and the browser's own colour scheme, applies a kept theme
+(data-theme), and waits for the page to be parsed to wire its switch, as a board's filters and the Baseline page's
+readout wait too. Nothing else runs before the page is parsed."""
+
+POLICY = "default-src 'none'; style-src 'unsafe-inline'; font-src data:; img-src data:; base-uri 'none'; form-action 'none'"
+"""Each page's Content-Security-Policy but for the directive that lets its one script run, and, on a board with rows,
+the one that lets it fetch the board day's history from the site's own address: no request but the page, and its
+type inside it as data: addresses."""
 
 HOUR, DAY, SECOND = timedelta(hours=1), timedelta(days=1), timedelta(seconds=1)
 
@@ -72,35 +102,41 @@ def by_id(page: Page, name: str):
     return element
 
 
-def stand_ins(page: Page) -> dict:
+def stand_ins(page: Page, names=(NOTICE, TITLE, TEXT)) -> dict:
     """The elements the script may look up, as the built page has them, each by its id: its attributes and its text."""
     return {
         name: {
             "attributes": {key: value or "" for key, value in by_id(page, name).attrs.items()},
             "text": by_id(page, name).text(),
         }
-        for name in (NOTICE, TITLE, TEXT)
+        for name in names
     }
 
 
-def run(page: Page, *moments: datetime) -> list[dict]:
+def loaded(page: Page) -> dict:
+    """The root element's attributes once the script has run on a fresh page: the page's own, and the mark the theme
+    sets so that the stylesheet shows the controls that need the script."""
+    return {**page.one("html").attrs, "data-js": ""}
+
+
+def run(page: Page, *moments: datetime, **browser) -> list[dict]:
     """Run the page's script under Node once for each of `moments`, with the clock at that moment, and return what each
-    run did."""
-    return run_with(page, [(moment, None) for moment in moments])
+    run did. `browser` is the rest of each run, as tests/run_page_script.js reads it."""
+    return run_with(page, [(moment, None) for moment in moments], **browser)
 
 
-def run_with(page: Page, cases: list[tuple[datetime, dict | None]]) -> list[dict]:
+def run_with(page: Page, cases: list[tuple[datetime, dict | None]], names=(NOTICE, TITLE, TEXT), **browser) -> list[dict]:
     """Run the page's script under Node once for each case: the clock's moment, and attributes that replace the
     notice's, as a page that held others would have them, or None to keep the page's own."""
     if NODE is None:
         raise AssertionError("Node is needed to run the page's script, and none is on the PATH.")
-    root = {"attributes": dict(page.one("html").attrs)}
+    root = {"attributes": {key: value or "" for key, value in page.one("html").attrs.items()}}
     runs = []
     for moment, notice in cases:
-        elements = stand_ins(page)
+        elements = stand_ins(page, names)
         if notice is not None:
             elements[NOTICE]["attributes"] = notice
-        runs.append({"now": round(moment.timestamp() * 1000), "elements": elements, "root": root})
+        runs.append({"now": round(moment.timestamp() * 1000), "elements": elements, "root": root, **browser})
     result = subprocess.run(
         [NODE, str(RUNNER)],
         input=json.dumps({"script": script_of(page), "runs": runs}),
@@ -135,24 +171,25 @@ class TheNotice(BuildTest):
         self.pages = self.build_pages()
 
     def assertAsBuilt(self, page: Page, outcomes: list[dict]):
-        """Each run left the page as it was built: the notice hidden and empty, and the root as it was."""
+        """Each run left the page as it was built: the notice hidden and empty, and the root as it was, but for the
+        theme's mark."""
         for outcome in outcomes:
             self.assertIsNone(outcome["error"])
             self.assertEqual(outcome["elements"], stand_ins(page))
-            self.assertEqual(outcome["root"], dict(page.one("html").attrs))
-            self.assertLessEqual(set(outcome["operations"]), TOUCHES)
+            self.assertEqual(outcome["root"], loaded(page))
+            self.assertLessEqual(set(outcome["operations"]), TOUCHES | THEME_TOUCHES)
 
     def assertNotice(self, outcome: dict, words: dict, *, hides_boards: bool):
         self.assertIsNone(outcome["error"])
-        self.assertLessEqual(set(outcome["operations"]), TOUCHES)
+        self.assertLessEqual(set(outcome["operations"]), TOUCHES | THEME_TOUCHES)
         elements = outcome["elements"]
         self.assertNotIn("hidden", elements[NOTICE]["attributes"])
         self.assertEqual({name: elements[name]["text"] for name in (TITLE, TEXT)}, words)
         self.assertEqual("data-withheld" in outcome["root"], hides_boards)
 
     def test_each_page_with_a_board_or_the_list_carries_the_newest_boards_day_and_publish_time_for_the_script(self):
-        """An earlier board day's page and the list measure from the newest board too. The build writes the day as it
-        writes every other date on the page, and the script puts it in the notice unchanged."""
+        """An earlier board day's page, the list, and the Baseline page measure from the newest board too. The build
+        writes the day as it writes every other date on the page, and the script puts it in the notice unchanged."""
         for path in CARRIERS:
             with self.subTest(path):
                 notice = by_id(self.pages[path], NOTICE)
@@ -230,27 +267,116 @@ class TheNotice(BuildTest):
                     self.assertIsNone(outcome["error"])
                     self.assertEqual(outcome["elements"][NOTICE]["attributes"], attributes)
                     self.assertEqual([outcome["elements"][part]["text"] for part in (TITLE, TEXT)], ["", ""])
-                    self.assertEqual(outcome["root"], dict(page.one("html").attrs))
-                    self.assertLessEqual(set(outcome["operations"]), TOUCHES)
+                    self.assertEqual(outcome["root"], loaded(page))
+                    self.assertLessEqual(set(outcome["operations"]), TOUCHES | THEME_TOUCHES)
 
-    def test_the_script_reads_only_the_notices_two_attributes_and_writes_only_its_text_and_one_attribute(self):
-        """It inserts no value an owner wrote, makes no request, stores nothing, and sets no cookie: the context it
-        runs in has no way to make a request, and a script that reached for one would throw."""
+    def test_the_notice_is_filled_the_moment_the_parser_reaches_it_when_the_script_runs_before_it(self):
+        """The script runs in the head, before the notice is parsed. It watches the document, and fills and shows the
+        notice once the parser has inserted it, as it does when the notice is already there, then stops watching."""
+        watching = ["new MutationObserver", "MutationObserver.observe", "MutationObserver.disconnect"]
+        for path in CARRIERS:
+            page = self.pages[path]
+            for age, words, hides in ((30 * HOUR, stale("30 hours"), False), (10 * DAY, withheld("10 days"), True)):
+                with self.subTest(path, age=age):
+                    (late,) = run(page, PUBLISHED + age, late=True)
+                    (at_once,) = run(page, PUBLISHED + age)
+                    self.assertEqual([op for op in late["operations"] if "MutationObserver" in op], watching)
+                    late["operations"] = [op for op in late["operations"] if op not in watching]
+                    self.assertNotice(late, words, hides_boards=hides)
+                    self.assertEqual((late["elements"], late["root"]), (at_once["elements"], at_once["root"]))
+            with self.subTest(path, age="fresh"):
+                (late,) = run(page, PUBLISHED + HOUR, late=True)
+                self.assertIsNone(late["error"])
+                self.assertEqual(late["elements"], stand_ins(page))
+                self.assertEqual([op for op in late["operations"] if "MutationObserver" in op], watching)
+
+    def test_the_script_reads_only_what_it_needs_and_writes_only_the_notices_text_and_the_roots_attributes(self):
+        """It inserts no value an owner wrote, makes no request as the page loads, and keeps nothing but the reader's
+        theme: the context it runs in has no way to make a request, and a script that reached for one would throw."""
         page = self.pages[BOARD]
         outcomes = run(page, PUBLISHED, PUBLISHED + 30 * HOUR, PUBLISHED + 10 * DAY)
         for outcome in outcomes:
             self.assertIsNone(outcome["error"])
-            self.assertLessEqual(set(outcome["operations"]), TOUCHES)
+            self.assertLessEqual(set(outcome["operations"]), TOUCHES | THEME_TOUCHES)
         self.assertEqual(
             sorted(set(outcomes[-1]["operations"])),
-            sorted(TOUCHES),
-            "a run from 7 days should touch each thing the script may touch",
+            sorted(TOUCHES | THEME_TOUCHES - {"root.setAttribute(data-theme)"}),
+            "a run from 7 days should touch each thing the script may touch as the page loads, with no theme kept",
         )
-        self.assertNotRegex(script_of(page), r"innerHTML|outerHTML|insertAdjacentHTML|document\.write|cookie|Storage")
+        for path in CARRIERS:
+            with self.subTest(path):
+                text = script_of(self.pages[path])
+                self.assertNotRegex(text, r"innerHTML|outerHTML|insertAdjacentHTML|document\.write|cookie|sessionStorage|eval\(")
+                # It keeps one thing, the reader's theme: every call to localStorage names that key and no other.
+                self.assertEqual(re.findall(r"localStorage\.\w+\(\s*([^,)]*)", text), ['"theme"'] * 3)
+
+    def test_the_one_request_a_board_may_make_is_its_own_board_days_history_from_the_sites_own_address(self):
+        """A reader who opens a row fetches that board day's history.json, once. The policy lets the page fetch only
+        from its own address (connect-src 'self'), and only a board with rows may."""
+        page = self.pages[BOARD]
+        self.assertEqual(re.findall(r"\bfetch\(([^,]*),", script_of(page)), ['table.getAttribute("data-history")'])
+        (table,) = page.all("table")
+        self.assertEqual(table.attrs["data-history"], f"/days/{NEWEST}/history.json")
+        for path, page in self.pages.items():
+            with self.subTest(path):
+                self.assertEqual("fetch(" in script_of(page), "filters.js" in PARTS[path])
+
+
+class TheTheme(BuildTest):
+    """The theme follows the browser's own setting until the reader presses the switch. A choice is kept in this
+    browser alone, and is set before the page is first drawn, so the page never flashes the other theme. A press back to
+    the browser's own setting clears the kept choice. Without the script the switch is hidden and the page follows the
+    browser by the stylesheet alone."""
+
+    def setUp(self):
+        super().setUp()
+        self.pages = self.build_pages()
+
+    def opened(self, path: str, **browser) -> dict:
+        page = self.pages[path]
+        (outcome,) = run_with(page, [(PUBLISHED, None)], names=(NOTICE, TITLE, TEXT, "theme"), **browser)
+        self.assertIsNone(outcome["error"])
+        return outcome
+
+    def test_a_kept_choice_is_set_on_the_root_before_the_page_is_parsed_and_nothing_else_is(self):
+        for stored, theme in (("dark", "dark"), ("light", "light"), (None, None), ("blue", None), ("", None)):
+            with self.subTest(stored):
+                (outcome,) = run(self.pages[BOARD], PUBLISHED, stored=stored, late=True)
+                self.assertIsNone(outcome["error"])
+                self.assertEqual(outcome["root"].get("data-theme"), theme)
+                self.assertEqual(outcome["root"]["data-js"], "")
+
+    def test_the_switch_says_whether_the_page_is_dark_and_a_press_keeps_the_other_theme(self):
+        for dark in (False, True):
+            with self.subTest(dark=dark):
+                shown = self.opened(BOARD, dark=dark, ready=True)
+                self.assertEqual(shown["elements"]["theme"]["attributes"]["aria-pressed"], "true" if dark else "false")
+                pressed = self.opened(BOARD, dark=dark, ready=True, clicks=["theme"])
+                self.assertEqual(pressed["stored"], "light" if dark else "dark")
+                self.assertEqual(pressed["root"]["data-theme"], "light" if dark else "dark")
+                self.assertEqual(pressed["elements"]["theme"]["attributes"]["aria-pressed"], "false" if dark else "true")
+
+    def test_a_press_back_to_the_browsers_own_setting_clears_the_kept_choice(self):
+        for dark in (False, True):
+            with self.subTest(dark=dark):
+                back = self.opened(BOARD, dark=dark, ready=True, clicks=["theme", "theme"])
+                self.assertIsNone(back["stored"])
+                self.assertNotIn("data-theme", back["root"])
+                self.assertEqual(back["elements"]["theme"]["attributes"]["aria-pressed"], "true" if dark else "false")
+
+    def test_every_page_carries_the_switch_for_the_script_to_show_and_the_stylesheet_hides_it_without_the_script(self):
+        for path, page in self.pages.items():
+            with self.subTest(path):
+                button = by_id(page, "theme")
+                self.assertEqual((button.tag, button.attrs["aria-pressed"]), ("button", "false"))
+                self.assertIn("js-only", button.classes())
+                self.assertEqual(button.text(), "Dark theme")
+                self.assertIn(":root:not([data-js]) .js-only { display: none !important; }", page.one("style").text())
 
 
 class ThePolicy(BuildTest):
-    """The Content-Security-Policy lets the one script run by the hash of its text, and nothing else in it changes."""
+    """The Content-Security-Policy lets the page's one script run by the hash of its text, and nothing else in it
+    changes."""
 
     def setUp(self):
         super().setUp()
@@ -261,33 +387,40 @@ class ThePolicy(BuildTest):
         digest = base64.b64encode(hashlib.sha256(script_of(page).encode("utf-8")).digest()).decode("ascii")
         self.assertEqual(page.directives()["script-src"], [f"'sha256-{digest}'"])
 
-    def test_each_page_with_a_board_or_the_list_carries_one_script_and_the_same_one(self):
-        scripts = set()
-        for path in CARRIERS:
+    def test_each_page_carries_one_script_the_sites_own_parts_that_it_uses_and_no_other(self):
+        """AndrewGodlewsky/RisingRepos#199 made the theme, the notice, and a board's filters one script a page, each
+        page carrying only the parts it uses, in the order site.js includes them."""
+        self.assertEqual(set(PARTS), set(self.pages))
+        for path, parts in PARTS.items():
             with self.subTest(path):
                 page = self.pages[path]
                 self.assertEqual(len(page.all("script")), 1)
                 self.assertEqual(page.one("script").attrs, {})  # inline, so it requests nothing
-                scripts.add(script_of(page))
-        self.assertEqual(len(scripts), 1)
+                expected = "".join((TEMPLATES / part).read_text(encoding="utf-8").replace("\r\n", "\n") for part in parts)
+                self.assertEqual(script_of(page), expected)
 
     def test_the_policy_lets_the_script_run_by_the_hash_of_its_exact_text(self):
-        for path in CARRIERS:
+        for path, page in self.pages.items():
             with self.subTest(path):
-                self.assertScriptAllowed(self.pages[path])
+                self.assertScriptAllowed(page)
 
-    def test_the_policy_is_otherwise_as_it_was(self):
-        for path in CARRIERS:
+    def test_the_policy_is_otherwise_as_it_was_and_only_a_board_with_rows_may_fetch_from_its_own_address(self):
+        for path, page in self.pages.items():
             with self.subTest(path):
-                policy = self.pages[path].policy()
-                self.assertEqual(re.sub(r" script-src [^;]*;", "", policy), POLICY)
+                policy = page.policy()
+                fetches = "filters.js" in PARTS[path]
+                self.assertEqual(" connect-src 'self';" in policy, fetches)
+                self.assertEqual(re.sub(r" (script|connect)-src [^;]*;", "", policy), POLICY)
                 self.assertTrue(policy.startswith("default-src 'none'; script-src 'sha256-"), policy)
 
-    def test_the_not_found_page_has_no_script_and_a_policy_that_forbids_every_script(self):
-        page = self.pages[NOT_FOUND]
-        self.assertEqual(page.all("script"), [])
-        self.assertEqual(page.policy(), POLICY)
-        self.assertEqual([element for element in page.all() if element.attrs.get("id") == NOTICE], [])
+    def test_the_not_found_page_and_how_it_works_carry_the_theme_alone_and_no_notice(self):
+        """The notice hides what an old board's page holds, and neither page holds a board."""
+        for path in (NOT_FOUND, HOW_IT_WORKS):
+            with self.subTest(path):
+                page = self.pages[path]
+                self.assertEqual(PARTS[path], ("theme.js",))
+                self.assertEqual([element for element in page.all() if element.attrs.get("id") == NOTICE], [])
+                self.assertNotIn("old-board", script_of(page))
 
     def test_a_script_changed_without_its_hash_in_the_policy_fails_the_check(self):
         """The build computes the hash, so a change to the script's text alone keeps them in step. A change that put
@@ -319,7 +452,11 @@ class WithoutScripts(BuildTest):
 
     def test_with_scripts_off_the_list_holds_every_board_day_and_no_notice(self):
         page = self.pages[DAYS]
-        self.assertEqual(len(page.one("main").all("li")), len(read_json(self.index)["board_days"]))
+        days = [entry["board_day"] for entry in read_json(self.index)["board_days"]]
+        self.assertEqual(
+            sorted(link.attrs["href"] for link in page.one("main").all("a") if link.attrs["href"].startswith("/days/2")),
+            sorted(f"/days/{day}/" for day in days),
+        )
         self.assertNoNotice(page)
 
     def assertNoNotice(self, page: Page):
@@ -341,28 +478,36 @@ class WithoutScripts(BuildTest):
                 self.assertNotRegex(style, r"data-withheld\] main\s*\{")
                 main = page.one("main")
                 inside = set(main.all())
-                # The list's days, a board's rows, or, for the example's earlier board, which has none, its message.
-                held = page.all("li") if path == DAYS else page.rows() or [page.one("main").all("div")[0]]
+                # The list's days, a board's rows, the Baseline page's chart, or, for the example's earlier board,
+                # which has none, its message.
+                held = (
+                    [link for link in main.all("a") if link.attrs["href"].startswith("/days/2")] if path == DAYS
+                    else page.all("figure") if path == BASELINE
+                    else page.rows() or [element for element in main.all("div") if "message" in element.classes()]
+                )
                 self.assertTrue(held)
                 self.assertLessEqual(set(held), inside, "the board's rows, or the list, should be in <main>")
                 self.assertNotIn(by_id(page, NOTICE), inside)
 
-    def test_the_script_runs_right_after_the_notice_and_before_anything_that_its_notice_could_move(self):
-        """The notice comes right after the site's line, and the script right after the notice, so everything the
-        notice could push down, the date, the board's facts, the strip, and the main content, is parsed after the
-        script has run, and nothing on the screen moves when the notice is shown."""
+    def test_the_script_is_in_the_head_and_the_notice_before_everything_it_could_move(self):
+        """The script runs in the head, before the notice is parsed, and fills the notice as the parser inserts it
+        (above). The notice comes right after the site's bar, before the date, the strip, and the main content, so
+        everything the notice could push down is parsed after it is filled, and nothing on the screen moves when it
+        is shown."""
         for path in CARRIERS:
             with self.subTest(path):
                 page = self.pages[path]
-                notice, script = by_id(page, NOTICE), page.one("script")
-                band = page.one("header").all()[0]  # the band's .wrap
-                parts = [child for child in band.children if not isinstance(child, str)]
-                self.assertEqual(parts[1:3], [notice, script])
-                self.assertEqual(parts[0].classes(), ["site"])
+                head, body = page.html.split("<body>", 1)
+                self.assertIn("<script>", head)
+                self.assertNotIn("<script", body)
                 order = page.all()
+                notice, site = by_id(page, NOTICE), page.one("header")
+                self.assertEqual(site.classes(), ["site"])
+                after_site = order[order.index(site) + len(site.all()) + 1:]  # what follows the bar and all it holds
+                self.assertIs([element for element in after_site if element.tag in ("p", "nav", "main", "h1")][0], notice)
                 (strip,) = [nav for nav in page.all("nav") if "strip" in nav.classes()]
                 for later in (page.one("h1"), strip, page.one("main")):
-                    self.assertLess(order.index(script), order.index(later))
+                    self.assertLess(order.index(notice), order.index(later))
 
 
 if __name__ == "__main__":

@@ -175,15 +175,21 @@ class Element:
         the edge of an inline element stays, as in "All<span> board</span> days"."""
         return " ".join(self._text().split())
 
-    def _text(self) -> str:
+    def heard(self) -> str:
+        """The text as a screen reader reads it: as `text`, without what aria-hidden hides, such as a calendar
+        day's number beside the date the screen reader is given in words."""
+        return " ".join(self._text(hidden=False).split())
+
+    def _text(self, hidden: bool = True) -> str:
         parts = []
         for child in self.children:
             if isinstance(child, str):
                 parts.append(child)
-            elif child.tag == "script":
+            elif child.tag == "script" or (not hidden and child.attrs.get("aria-hidden") == "true"):
                 continue  # a script's text is code, which no reader sees
             else:
-                parts.append(f" {child._text()} " if child.tag in BLOCK else child._text())
+                text = child._text(hidden)
+                parts.append(f" {text} " if child.tag in BLOCK else text)
         return "".join(parts)
 
     def classes(self) -> list[str]:

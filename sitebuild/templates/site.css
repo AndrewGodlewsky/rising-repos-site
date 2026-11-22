@@ -447,7 +447,6 @@ caption.part-title { display: table-caption; caption-side: top; }
   }
   .chart.plain thead tr, .chart.plain tbody tr { grid-template-areas: "rank repository language language stars" ". description language language stars"; }
   .chart thead th { display: block; padding: 10px 0; color: var(--text-3); font-size: 13px; font-weight: 400; text-align: left; }
-  .chart thead .de, .chart thead .wy { display: none; }
   .chart thead .rk { grid-area: rank; }
   .chart thead .re { grid-area: repository; }
   .chart thead .language { grid-area: language; }

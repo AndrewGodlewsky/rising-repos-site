@@ -304,7 +304,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fact("Language", why[2] || "not given");
     if (entry.about) fact("Licence", entry.about[0] || "None given");
     var latest = on[on.length - 1];
-    fact("Star band", bandNames[bandOf(latest[2])]);
+    if (bandNames.length) fact("Star band", bandNames[bandOf(latest[2])]);
     if (entry.about && entry.about[1]) fact("Created", long(entry.about[1].slice(0, 10)));
     if (entry.about && entry.about[2]) fact("Last pushed", long(entry.about[2].slice(0, 10)));
     fact("First on a board", entry.first === days[days.length - 1] ? "This board" : long(entry.first));

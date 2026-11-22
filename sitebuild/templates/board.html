@@ -69,7 +69,8 @@
 <button type="button" data-kind="" aria-pressed="true">All <span class="num" id="count-all">{{ board.rows|length }}</span></button>
 {% if history.new is not none %}<button type="button" data-kind="new" aria-pressed="false" aria-describedby="new-means">New <span class="num" id="count-new">{{ history.new }}</span></button>{% endif %}
 </div>
-<div class="segments js-only" id="bands" role="group" aria-label="Star band">
+{# A file from before `star_bands` gives no bands, and the group is hidden: the script still finds it. #}
+<div class="segments js-only" id="bands" role="group" aria-label="Star band"{% if not bands %} hidden{% endif %}>
 <button type="button" data-band="" aria-pressed="true">All stars</button>
 {# A band the board holds back has no row on it: its button stays for the script, which tells a row's band from
    every band's limits, and is hidden, so the page offers no filter that would show nothing. #}
@@ -100,7 +101,7 @@
 {% set explained = "score" in board.rows[0] %}
 <table class="chart{% if not explained %} plain{% endif %}" role="table" aria-labelledby="board" data-history="{{ history_address }}">
 <thead role="rowgroup">
-<tr role="row"><th scope="col" role="columnheader" class="rk">Rank</th><th scope="col" role="columnheader" class="re">Repository</th><th scope="col" role="columnheader" class="de sr">Description</th>{% if explained %}<th scope="col" role="columnheader" class="wy sr">More: why it is on the board</th>{% endif %}{% if not explained %}<th scope="col" role="columnheader" class="language">Language</th>{% endif %}{% if explained %}{% if gains %}<th scope="col" role="columnheader" class="gr">Stars gained<span class="sub">on the board day</span></th>{% else %}<th scope="col" role="columnheader" class="gr">Stars a day<span class="sub">over the last 2 days</span></th>{% endif %}<th scope="col" role="columnheader" class="pc">Against its own pace<span class="sub">the last 14 days</span></th>{% endif %}<th scope="col" role="columnheader" class="st">Total stars</th></tr>
+<tr role="row"><th scope="col" role="columnheader" class="rk">Rank</th><th scope="col" role="columnheader" class="re">Repository</th><th scope="col" role="columnheader" class="de sr">Description</th>{% if explained %}<th scope="col" role="columnheader" class="wy sr">More: why it is on the board</th>{% endif %}{% if not explained %}<th scope="col" role="columnheader" class="language">Language</th>{% endif %}{% if explained %}{% if gains %}<th scope="col" role="columnheader" class="gr">Stars gained<span class="sub"> on the board day</span></th>{% else %}<th scope="col" role="columnheader" class="gr">Stars a day<span class="sub"> over the last 2 days</span></th>{% endif %}<th scope="col" role="columnheader" class="pc">Against its own pace<span class="sub"> the last 14 days</span></th>{% endif %}<th scope="col" role="columnheader" class="st">Total stars</th></tr>
 </thead>
 <tbody role="rowgroup">
 {% for row in board.rows %}

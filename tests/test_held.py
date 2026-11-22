@@ -24,13 +24,21 @@ EVERY_BAND = [
 
 
 class Notes(BuildTest):
+    def parts(self, page) -> list:
+        """What a board says of itself: the notes that change how it reads, above its rows, and About this board,
+        its plain facts, at its foot (AndrewGodlewsky/RisingRepos#199)."""
+        return [element for element in page.one("main").all() if {"notes", "about"} & set(element.classes())]
+
     def notes(self, page, kind: str) -> list:
-        """The band's notes of one kind: each <p class="`kind`"> in the board's header."""
-        return [element for element in page.one("header").all("p") if kind in element.classes()]
+        """What it says of one kind: each <p class="`kind`"> in those."""
+        return [element for part in self.parts(page) for element in part.all("p") if kind in element.classes()]
+
+    def said(self, page) -> str:
+        return " ".join(part.text() for part in self.parts(page))
 
     def state(self, page) -> str | None:
-        (facts,) = [element for element in page.one("header").all("div") if "facts" in element.classes()]
-        return facts.attrs.get("data-state")
+        (about,) = [element for element in page.all("section") if "about" in element.classes()]
+        return about.attrs.get("data-state")
 
     def message(self, page) -> str:
         (message,) = [element for element in page.all("div") if "message" in element.classes()]
@@ -176,15 +184,15 @@ class RecentPartialDays(Notes):
         self.assertEqual(
             line.text(), "The ranking's recent pace takes in 7 November 2026, whose snapshot missed some repositories."
         )
-        self.assertNotIn("may", page.one("header").text())
-        self.assertNotIn("left out", page.one("header").text())
+        self.assertNotIn("may", self.said(page))
+        self.assertNotIn("left out", self.said(page))
 
     def test_a_recent_partial_day_that_the_file_names_as_lacked_is_said_once_as_the_repositories_it_kept_off(self):
         """The example's newest board reads 7 November for its recent pace, and its file names that day as one that
         kept 2,183 repositories from the ranking: the page says that, and not that a repository may have moved."""
-        header = self.build_pages()[BOARD].one("header")
-        self.assertEqual(header.text().count("7 November 2026"), 1)
-        self.assertNotIn("may sit higher or lower", header.text())
+        said = self.said(self.build_pages()[BOARD])
+        self.assertEqual(said.count("7 November 2026"), 1)
+        self.assertNotIn("may sit higher or lower", said)
 
     def test_a_board_whose_file_predates_the_fields_names_no_state_and_no_hold(self):
         self.drop_fields(*HOLD_FIELDS)

@@ -1,5 +1,7 @@
 """A row explains its place on the board with figures that anyone can set against its star count, and opens on its
 score and the sum behind it; a page explains in plain sentences how a board is ranked (AndrewGodlewsky/RisingRepos#49).
+Since AndrewGodlewsky/RisingRepos#199 the page holds each row's line, in the disclosure that opens it, and the sum
+comes with the rest of what an opened row shows, in its board day's history.json.
 
 The example's newest board has one row for each way the page words a row: a usual pace at the floor or over it, a usual
 pace under the floor, a falling one, and a row whose recent pace kept one day.
@@ -10,7 +12,7 @@ import unittest
 
 from helpers import BuildTest, read_json, write_json
 
-from sitebuild import BOARD, DESCRIBED_FORMULA, HOW_IT_WORKS, figure, times
+from sitebuild import BOARD, DESCRIBED_FORMULA, HOW_IT_WORKS, TEMPLATES, board_day_page, figure, times
 
 NUMBERS = ("baseline", "divided_by", "excess", "recent_days", "recent_stars", "days_left_out", "score")
 """The fields a row's reason is read from, as the data contract names them."""
@@ -38,25 +40,28 @@ EXAMPLE_REASONS = {
         "That multiple is its score: 14 stars ÷ 2 days ÷ its usual 1.75 a day.",
     ),
 }
-"""What each row of the example's newest board says, by its name: its line, and its expanded view."""
+"""What each row of the example's newest board says, by its name: its line, and the sum its opened view adds."""
 
 
-def reasons(page) -> dict[str, tuple[str, str]]:
-    """Each row's reason, by the repository's name: the text of its line, and of what opening the line shows."""
+def reasons(page, history: dict) -> dict[str, tuple[str, str]]:
+    """Each row's reason, by the repository's name: the text of its line, which the page holds, and the sum behind
+    it, which the board day's history gives the opened row."""
     found = {}
-    for row in page.rows():
+    for row, entry in zip(page.rows(), history["rows"], strict=True):
         (link,) = row.all("a")
-        (cell,) = [cell for cell in row.all("td") if "why" in cell.classes()]
-        (details,) = cell.all("details")
-        (summary,) = details.all("summary")
-        opened = " ".join("".join(part for part in details.children if isinstance(part, str)).split())
-        found[link.text()] = (summary.text(), opened)
+        (line,) = [p for p in row.all("p") if "ln" in p.classes()]
+        found[link.text()] = (line.text(), entry["why"][0])
     return found
 
 
 class TheReason(BuildTest):
     def newest(self) -> dict:
         return read_json(self.board_file())
+
+    def shown(self, path: str = BOARD) -> dict[str, tuple[str, str]]:
+        """Build, and read each row's reason on the page at `path`, a page of the newest board."""
+        page = self.build_pages()[path]
+        return reasons(page, read_json(self.out / board_day_page("2026-11-09").replace("index.html", "history.json")))
 
     def with_numbers(self, numbers: dict) -> dict:
         """The example's newest board with its first row given `numbers`, written as its file."""
@@ -85,20 +90,22 @@ class TheReason(BuildTest):
         and with a recent day left out, it gives the stars gained, since the stars above its own trend are not what
         the file counts there. Each opens on the sum that gives its score from the stars and the days: with the score
         written out where the line gives no multiple, and naming the multiple as the score where it does."""
-        self.assertEqual(reasons(self.build_pages()[BOARD]), EXAMPLE_REASONS)
+        self.assertEqual(self.shown(), EXAMPLE_REASONS)
 
     def test_each_board_days_page_gives_the_same_reasons_as_the_root(self):
-        pages = self.build_pages()
-        self.assertEqual(reasons(pages["days/2026-11-09/index.html"]), EXAMPLE_REASONS)
+        self.assertEqual(self.shown(board_day_page("2026-11-09")), EXAMPLE_REASONS)
 
     def test_the_line_opens_without_a_script_and_from_the_keyboard(self):
-        """A <details> opens on its <summary>, a control a browser gives a keyboard and assistive technology itself."""
+        """A <details> opens on its <summary>, a control a browser gives a keyboard and assistive technology itself,
+        named for its row. Without the script it opens on the line; the script adds the rest once its file is in."""
         for row in self.build_pages()[BOARD].rows():
-            (cell,) = [cell for cell in row.all("td") if "why" in cell.classes()]
+            (cell,) = [cell for cell in row.all("td") if "wy" in cell.classes()]
             self.assertEqual(cell.attrs["role"], "cell")
             (details,) = cell.all("details")
             self.assertEqual(details.children[0].tag, "summary")
+            self.assertEqual(details.children[0].text(), f"More on {row.all('a')[0].text()}")
             self.assertNotIn("open", details.attrs)
+            self.assertEqual(len([p for p in details.all("p") if "ln" in p.classes()]), 1)
 
     def test_a_large_multiple_is_given_in_full_without_a_cap(self):
         """The highest score of formula 2 to 14 November 2026, on 5 October."""
@@ -113,21 +120,21 @@ class TheReason(BuildTest):
                 "excess": 4711.333333333333,
             }
         )
-        line, opened = reasons(self.build_pages()[BOARD])["rising-repos-example/markup-in-description"]
+        line, opened = self.shown()["rising-repos-example/markup-in-description"]
         self.assertEqual(line, "+4,711 above its own trend · 1,286× its usual pace")
         self.assertEqual(opened, "That multiple is its score: 4,715 stars ÷ 2 days ÷ its usual 1.83 a day.")
 
     def test_the_page_works_out_no_score_and_shows_the_numbers_its_file_gives(self):
         """A score the file gives that its stars do not give is shown as the file gives it: the site only rounds."""
         self.with_numbers({"score": 99.25, "excess": 1234.5})
-        line, opened = reasons(self.build_pages()[BOARD])["rising-repos-example/markup-in-description"]
+        line, opened = self.shown()["rising-repos-example/markup-in-description"]
         self.assertEqual(line, "+1,235 above its own trend · its usual pace was under 1 star a day")
         self.assertTrue(opened.startswith("Score 99.25 = 96 stars ÷ 2 days ÷ 1:"), opened)
 
     def test_a_row_whose_usual_pace_is_under_the_floor_gives_no_multiple(self):
         """However far it is above it: a multiple of the floor is no multiple of the repository's own pace."""
         self.with_numbers({"score": 640.0, "recent_stars": 1280, "baseline": 0.9166666666666666, "excess": 1278.1666666666667})
-        line, _ = reasons(self.build_pages()[BOARD])["rising-repos-example/markup-in-description"]
+        line, _ = self.shown()["rising-repos-example/markup-in-description"]
         self.assertEqual(line, "+1,278 above its own trend · its usual pace was under 1 star a day")
         self.assertNotIn("×", line)
 
@@ -147,8 +154,8 @@ class TheReason(BuildTest):
         page = self.build_pages()[BOARD]
         self.assertEqual(len(page.rows()), len(board["rows"]))
         self.assertEqual(page.all("details"), [])
-        self.assertEqual([cell for cell in page.all("td") if "why" in cell.classes()], [])
-        self.assertNotIn("Why it is on the board", [heading.text() for heading in page.one("thead").all("th")])
+        self.assertEqual([cell for cell in page.all("td") if "wy" in cell.classes()], [])
+        self.assertEqual([heading.text() for heading in page.one("thead").all("th") if "why" in heading.text()], [])
         self.assertNotIn("its usual pace", page.body_text())
 
 
@@ -199,7 +206,7 @@ class HowItWorks(BuildTest):
                 self.assertIn(words, text)
 
     def test_it_names_the_formula_it_describes(self):
-        (line,) = [p for p in self.page().one("header").all("p") if "formula" in p.classes()]
+        (line,) = [p for p in self.page().one("main").all("p") if "formula" in p.classes()]
         self.assertEqual(line.text(), f"How formula version {DESCRIBED_FORMULA} ranks a board.")
 
     def test_it_says_first_when_the_newest_board_was_ranked_by_a_formula_it_does_not_describe(self):
@@ -214,12 +221,15 @@ class HowItWorks(BuildTest):
             f" describe. It describes version {DESCRIBED_FORMULA}.",
         )
 
-    def test_it_leads_back_to_the_boards_and_carries_no_script(self):
+    def test_it_leads_back_to_the_boards_and_its_one_script_is_the_theme_alone(self):
+        """The theme switch, in the site's bar, is on every page. The page runs nothing else and fetches nothing."""
         page = self.page()
         self.assertIn(("/", "The newest board"), page.links())
-        self.assertIn(("/days/", "All board days"), page.links())
-        self.assertEqual(page.all("script"), [])
-        self.assertNotIn("script-src", page.directives())
+        self.assertIn(("/days/", "History"), page.links())
+        (script,) = page.all("script")
+        theme = (TEMPLATES / "theme.js").read_text(encoding="utf-8").replace("\r\n", "\n")
+        self.assertEqual("".join(script.children), theme)
+        self.assertNotIn("connect-src", page.directives())
 
 
 if __name__ == "__main__":

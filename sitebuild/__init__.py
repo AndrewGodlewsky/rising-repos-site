@@ -9,7 +9,6 @@ import shutil
 from collections.abc import Iterator
 from datetime import date, datetime
 from decimal import ROUND_HALF_UP, Decimal
-from itertools import groupby
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
@@ -48,7 +47,9 @@ PAGES = {
 - `BOARD_DAY` is written once for each board day in the index, the newest included, so that each board day keeps
   one address however many come after it.
 - `HOW_IT_WORKS` says in a few plain sentences how the boards are ranked, for the formula `DESCRIBED_FORMULA`
-  names. Every page links to it from the site's line.
+  names, and what the site is set in.
+- `BASELINE` draws each repository on the newest board by its baseline against its recent pace, and lists them.
+- Every page links to the list, to Baseline, and to How it works from the site's bar.
 - Cloudflare Pages answers an address that holds no page with `NOT_FOUND` and the status 404. A site with no
   404.html at its root is taken for a single-page app, and every such address gets the root page and the
   status 200.
@@ -310,11 +311,12 @@ def why(row: dict) -> dict:
 
 
 def growth(row: dict) -> dict:
-    """The growth column: the multiple the ranking itself uses, its recent pace over its baseline, in the file's own
-    numbers, or, where the file gives no honest multiple, what it does give. `multiple` is the score written as a
-    multiple ('130×') when the repository's baseline was at least the floor it was divided by; otherwise None, and
-    `pace` is its score, its recent stars a day, since a baseline under the floor counts as the floor of 1, with `note`
-    saying why. The site computes nothing: it rounds the score the file gives, as `times` and `figure` do."""
+    """A row's growth, as the Baseline page's table and an opened row give it: the multiple the ranking itself uses,
+    its recent pace over its baseline, in the file's own numbers, or, where the file gives no honest multiple, what it
+    does give. `multiple` is the score written as a multiple ('130×') when the repository's baseline was at least the
+    floor it was divided by; otherwise None, and `pace` is its score, its recent stars a day, since a baseline under
+    the floor counts as the floor of 1, with `note` saying why. The site computes nothing: it rounds the score the
+    file gives, as `times` and `figure` do."""
     score, baseline, divisor = row["score"], row["baseline"], row["divided_by"]
     if baseline >= divisor:
         return {"multiple": f"{times(score)}×", "pace": None, "note": None}
@@ -481,28 +483,15 @@ def made_late(board: dict) -> bool:
     return (published - date.fromisoformat(board["board_day"])).days >= MADE_LATE
 
 
-STAR_BANDS = (
-    (0, "Under 1k", 1_000),
-    (1, "1k–3k", 3_000),
-    (2, "3k–10k", 10_000),
-    (3, "10k–30k", 30_000),
-    (4, "30k+", None),
-)
-"""RisingRepos's five star bands (its GLOSSARY.md, and AndrewGodlewsky/RisingRepos#34), as the board's filter names
-them: each band's number, its label, and the star count it stops below. The first band starts at the star floor of
-200; a row under it, which the floor should rule out, is counted in the first band rather than dropped."""
-
-
 def bands_of(board: dict) -> list[tuple[int, str, int | None]]:
-    """The star bands as the board's filter names them: from the file's `star_bands` when it gives them
-    (AndrewGodlewsky/RisingRepos#196, in the form `holds` uses: each band's `least_stars` and `most_stars`, lowest
-    first), and from STAR_BANDS when it does not. Each band's number, its label, and the star count it stops below.
+    """The star bands as the board's filter names them, from the file's `star_bands` (AndrewGodlewsky/RisingRepos#196,
+    in the form `holds` uses: each band's `least_stars` and `most_stars`, lowest first): each band's number, its label,
+    and the star count it stops below. The contract has the site keep no limits of its own, so a file from before the
+    field gives none, and its board has no band filter.
 
     Each band is worded from its own limits, the lowest too: the file's lowest band starts at the star floor, so it
     reads "200–1k", from its least to where the next begins, as every band but the top one does."""
-    given = board.get("star_bands")
-    if not given:
-        return list(STAR_BANDS)
+    given = board.get("star_bands", [])
 
     def short(stars: int) -> str:
         return f"{stars // 1000}k" if stars % 1000 == 0 and stars >= 1000 else f"{stars:,}"
@@ -806,33 +795,30 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         "top": TOP,
         "font_faces": font_faces(),
     }
+    history = History(boards)
     # Each template is told its own name, which page.html reads to decide whether the page carries the notice.
     pages = {
         written: templates.get_template(PAGES[page]).render(**context, **common, template=PAGES[page])
-        for written, page, context in _pages(boards)
+        for written, page, context in _pages(boards, history)
     }
     for path, page in pages.items():
         (out / path).parent.mkdir(parents=True, exist_ok=True)
         (out / path).write_text(unquoted(page), encoding="utf-8", newline="\n")
     shutil.copytree(STATIC, out / "static")
     # Each board day's history of its rows, which its expanded rows fetch on first opening.
-    history = History(boards)
     for number, board in enumerate(boards):
         if board["rows"]:
             (out / board_day_page(board["board_day"])).with_name("history.json").write_text(
                 json.dumps(history_file(boards, history, number), separators=(",", ":")), encoding="utf-8")
 
 
-def _pages(boards: list[dict]) -> Iterator[tuple[str, str, dict]]:
+def _pages(boards: list[dict], history: History) -> Iterator[tuple[str, str, dict]]:
     """Each page the build writes: its path in the site, its entry in `PAGES`, and what its template is given."""
-    history = History(boards)
     yield BOARD, BOARD, _beside(boards, 0, history)
     for number, board in enumerate(boards):
         yield board_day_page(board["board_day"]), BOARD_DAY, _beside(boards, number, history)
-    by_month = groupby(boards, key=lambda board: board["board_day"][:7])  # newest first, as the index is
     yield DAYS, DAYS, {
         "boards": boards,
-        "months": [(month, list(days)) for month, days in by_month],
         "calendar": calendar(boards, history),
         "ramp": RAMP,
     }
