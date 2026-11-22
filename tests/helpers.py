@@ -13,6 +13,8 @@ from pathlib import Path
 
 import yaml
 
+from sitebuild import environment
+
 ROOT = Path(__file__).resolve().parent.parent
 EXAMPLE = ROOT / "tests" / "fixtures" / "contract-example"
 """The data contract's example and schemas, laid out as site-data/ is. Every test but one builds from this copy,
@@ -52,6 +54,12 @@ def build(out: Path, *options: str) -> subprocess.CompletedProcess:
         encoding="utf-8",
         timeout=60,
     )
+
+
+def shipped(name: str) -> str:
+    """A part of the page's script, templates/`name`, as the build writes it into a page: without its Jinja comments,
+    which hold its notes."""
+    return environment().get_template(name).render()
 
 
 def read_json(path: Path):

@@ -5,7 +5,7 @@ link."""
 import re
 import unittest
 
-from helpers import BuildTest, read_json
+from helpers import BuildTest, read_json, shipped
 
 from sitebuild import BOARD, TEMPLATES, board_day_page
 
@@ -29,7 +29,7 @@ class OwnerWrittenText(BuildTest):
         self.assertEqual(cell.text(), self.markup["description"])
         self.assertEqual(cell.all(), [])
         (script,) = self.page.all("script")
-        expected = "".join((TEMPLATES / part).read_text(encoding="utf-8").replace("\r\n", "\n") for part in SCRIPT_PARTS)
+        expected = "".join(shipped(part) for part in SCRIPT_PARTS)
         self.assertEqual("".join(script.children), expected)
         self.assertEqual(self.page.html.lower().count("<script"), 1)
         # The one <b> a board may carry is its own mark beside a new repository's name, and this board has none.

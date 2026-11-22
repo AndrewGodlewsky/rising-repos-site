@@ -10,9 +10,9 @@ pace under the floor, a falling one, and a row whose recent pace kept one day.
 import shutil
 import unittest
 
-from helpers import BuildTest, read_json, write_json
+from helpers import BuildTest, read_json, shipped, write_json
 
-from sitebuild import BOARD, DESCRIBED_FORMULA, HOW_IT_WORKS, TEMPLATES, board_day_page, figure, times
+from sitebuild import BOARD, DESCRIBED_FORMULA, HOW_IT_WORKS, board_day_page, figure, times
 
 NUMBERS = ("baseline", "divided_by", "excess", "recent_days", "recent_stars", "days_left_out", "score")
 """The fields a row's reason is read from, as the data contract names them."""
@@ -227,8 +227,7 @@ class HowItWorks(BuildTest):
         self.assertIn(("/", "The newest board"), page.links())
         self.assertIn(("/days/", "History"), page.links())
         (script,) = page.all("script")
-        theme = (TEMPLATES / "theme.js").read_text(encoding="utf-8").replace("\r\n", "\n")
-        self.assertEqual("".join(script.children), theme)
+        self.assertEqual("".join(script.children), shipped("theme.js"))
         self.assertNotIn("connect-src", page.directives())
 
 

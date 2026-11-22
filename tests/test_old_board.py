@@ -20,9 +20,9 @@ import subprocess
 import unittest
 from datetime import datetime, timedelta, timezone
 
-from helpers import ROOT, BuildTest, Page, read_json
+from helpers import ROOT, BuildTest, Page, read_json, shipped
 
-from sitebuild import BASELINE, BOARD, DAYS, HOW_IT_WORKS, NOT_FOUND, TEMPLATES, board_day_page, long_date
+from sitebuild import BASELINE, BOARD, DAYS, HOW_IT_WORKS, NOT_FOUND, board_day_page, long_date
 
 NODE = shutil.which("node")
 RUNNER = ROOT / "tests" / "run_page_script.js"
@@ -396,7 +396,7 @@ class ThePolicy(BuildTest):
                 page = self.pages[path]
                 self.assertEqual(len(page.all("script")), 1)
                 self.assertEqual(page.one("script").attrs, {})  # inline, so it requests nothing
-                expected = "".join((TEMPLATES / part).read_text(encoding="utf-8").replace("\r\n", "\n") for part in parts)
+                expected = "".join(shipped(part) for part in parts)
                 self.assertEqual(script_of(page), expected)
 
     def test_the_policy_lets_the_script_run_by_the_hash_of_its_exact_text(self):

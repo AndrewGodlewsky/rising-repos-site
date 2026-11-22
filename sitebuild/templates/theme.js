@@ -1,10 +1,10 @@
-// The light and dark switch, in every page's head so that a reader's choice applies before the page is first drawn.
-// It also marks the root element (data-js), so that the stylesheet shows the controls that need the script from the
-// first frame, rather than the script showing them later and moving what is under them.
-// The site follows the browser's own setting until a reader presses the switch; their choice is then kept in this
-// browser's localStorage, under "theme", and nothing leaves it. A press that comes back to the browser's own setting
-// clears the kept choice, so the site follows the browser again, with no third state on the switch. Without this
-// script the switch is not shown and the site follows the browser.
+{# The light and dark switch, in every page's head so that a reader's choice applies before the page is first drawn.
+   It also marks the root element (data-js), so that the stylesheet shows the controls that need the script from the
+   first frame, rather than the script showing them later and moving what is under them.
+   The site follows the browser's own setting until a reader presses the switch; their choice is then kept in this
+   browser's localStorage, under "theme", and nothing leaves it. A press that comes back to the browser's own setting
+   clears the kept choice, so the site follows the browser again, with no third state on the switch. Without this
+   script the switch is not shown and the site follows the browser. #}
 (function () {
   var root = document.documentElement;
   root.setAttribute("data-js", "");

@@ -747,6 +747,20 @@ def script_hash(text: str) -> str:
     return "sha256-" + base64.b64encode(hashlib.sha256(text.encode("utf-8")).digest()).decode("ascii")
 
 
+def environment() -> Environment:
+    """The templates, as the build renders them: every value escaped, an undefined name an error, and a line that
+    holds only a tag or a comment left out whole. The notes on the stylesheet and the scripts are Jinja comments, so
+    they stay in the templates and no page carries them."""
+    return Environment(
+        loader=FileSystemLoader(TEMPLATES),
+        autoescape=True,
+        undefined=StrictUndefined,
+        trim_blocks=True,
+        lstrip_blocks=True,
+        keep_trailing_newline=True,
+    )
+
+
 def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     """Check the data files in `data`, then write the site's pages into `out`, a folder that does not exist yet
     or is empty. Nothing is written when a file fails its check.
@@ -756,14 +770,7 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     if out.exists() and (not out.is_dir() or any(out.iterdir())):
         raise FileExistsError(f"{out} already exists and is not an empty folder. Build into a new one.")
     boards = read_boards(data)
-    templates = Environment(
-        loader=FileSystemLoader(TEMPLATES),
-        autoescape=True,
-        undefined=StrictUndefined,
-        trim_blocks=True,
-        lstrip_blocks=True,
-        keep_trailing_newline=True,
-    )
+    templates = environment()
     templates.filters.update(
         long_date=long_date,
         long_dates=long_dates,

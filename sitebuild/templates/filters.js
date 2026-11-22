@@ -1,14 +1,14 @@
-// The board's search, filters, order, and opened rows. Without this script the page is the whole board, by rank,
-// and a row's chevron opens it on its reason line. It reads the page: each row's name, description, total stars,
-// growth figure, and New mark from its own cells, and its language and how many of the last 14 boards listed it from
-// its data- attributes. The All and New buttons count what the search and the other filters leave. When a reader
-// first opens a row it fetches the board day's history.json from the site's own address, once, and opens the row
-// only when the file is in, so its detail arrives in one step and nothing under it moves twice: the sum behind its
-// reason, the drawing of its own pace against what it gained, its facts, its last 30 board days, and the boards it
-// was on. If the file cannot be had, the row opens on its reason line and says the rest could not be loaded. It
-// writes only text, elements, classes, and attributes, stores nothing but the view in the address, and a new order
-// moves rows without renumbering one: each keeps the rank its file gives it.
-// It waits for the page to be parsed, since it runs from the one script in the head.
+{# The board's search, filters, order, and opened rows. Without this script the page is the whole board, by rank,
+   and a row's chevron opens it on its reason line. It reads the page: each row's name, description, total stars,
+   growth figure, and New mark from its own cells, and its language and how many of the last 14 boards listed it from
+   its data- attributes. The All and New buttons count what the search and the other filters leave. When a reader
+   first opens a row it fetches the board day's history.json from the site's own address, once, and opens the row
+   only when the file is in, so its detail arrives in one step and nothing under it moves twice: the sum behind its
+   reason, the drawing of its own pace against what it gained, its facts, its last 30 board days, and the boards it
+   was on. If the file cannot be had, the row opens on its reason line and says the rest could not be loaded. It
+   writes only text, elements, classes, and attributes, stores nothing but the view in the address, and a new order
+   moves rows without renumbering one: each keeps the rank its file gives it.
+   It waits for the page to be parsed, since it runs from the one script in the head. #}
 document.addEventListener("DOMContentLoaded", function () {
   var table = document.querySelector("table.chart");
   var q = document.getElementById("q");
@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var shown = document.getElementById("shown");
   var none = document.getElementById("none-shown");
   if (!table || !q || !kinds || !bands || !language || !sort || !shown) return;
-  // The star bands, from their buttons: where each stops (data-below, none for the top band), its name in a row's
-  // facts ("30k or more" for "30k+"), and its name in the address ("30k-plus").
+  {# The star bands, from their buttons: where each stops (data-below, none for the top band), its name in a row's
+     facts ("30k or more" for "30k+"), and its name in the address ("30k-plus"). #}
   var bandButtonsByNumber = [].slice.call(bands.querySelectorAll("button[data-below]"));
   var below = bandButtonsByNumber.map(function (b) { return b.getAttribute("data-below") ? Number(b.getAttribute("data-below")) : Infinity; });
   var bandNames = bandButtonsByNumber.map(function (b) { return b.textContent.replace(/\+$/, " or more"); });
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var rows = [].slice.call(table.querySelectorAll("tbody tr")).map(function (row, i) {
     var stars = Number(row.querySelector(".st").textContent.replace(/\D/g, ""));
     var grew = row.querySelector("td.gr");
-    // The language: in the row's data-l, or in its own cell on a board whose file predates the rows' numbers.
+    {# The language: in the row's data-l, or in its own cell on a board whose file predates the rows' numbers. #}
     var cell = row.querySelector("td.language");
     var written = row.getAttribute("data-l") || (cell ? cell.textContent : "");
     var description = row.querySelector(".de");
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var bandButtons = [].slice.call(bands.querySelectorAll("button"));
   var kind = "";
   var band = "";
-  // Each order; ties keep rank order.
+  {# Each order; ties keep rank order. #}
   var orders = {
     rank: function () { return 0; },
     gained: function (a, b) { return b.daily - a.daily; },
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (fits) count++;
       if (others) { all++; if (row.fresh) fresh++; }
     });
-    // The buttons say what the search and the other filters leave: with Rust chosen, the Rust rows and the new ones.
+    {# The buttons say what the search and the other filters leave: with Rust chosen, the Rust rows and the new ones. #}
     var countAll = document.getElementById("count-all");
     var countNew = document.getElementById("count-new");
     if (countAll) countAll.textContent = all;
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var order = orders[sort.value] || orders.rank;
     rows.slice().sort(function (a, b) { return order(a, b) || a.index - b.index; })
       .forEach(function (row) { body.appendChild(row.element); });
-    // Said to a screen reader only: the buttons carry the counts on the screen.
+    {# Said to a screen reader only: the buttons carry the counts on the screen. #}
     shown.textContent = (count === rows.length ? "All " + count + " shown" : count + " of " + rows.length + " shown") +
       (sort.value !== "rank" ? ", " + sort.options[sort.selectedIndex].text.toLowerCase().replace(/ first$/, "") + " first; each keeps its rank" : "");
     if (none) none.hidden = count > 0;
@@ -87,9 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function press(buttons, name, value) {
     buttons.forEach(function (button) { button.setAttribute("aria-pressed", button.getAttribute(name) === value ? "true" : "false"); });
   }
-  // The view is kept in the address's query, so that it can be shared, bookmarked, and walked with Back and
-  // Forward: show=new, band=1k-3k, lang=Rust, sort=gained, and q=the search, each left out at its default. The
-  // server sends the same page whatever the query says, and a value the page does not know is ignored.
+  {# The view is kept in the address's query, so that it can be shared, bookmarked, and walked with Back and
+     Forward: show=new, band=1k-3k, lang=Rust, sort=gained, and q=the search, each left out at its default. The
+     server sends the same page whatever the query says, and a value the page does not know is ignored. #}
   function read() {
     var query = new URLSearchParams(location.search);
     kind = query.get("show") === "new" && kindButtons.some(function (b) { return b.getAttribute("data-kind") === "new"; }) ? "new" : "";
@@ -126,13 +126,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   group(kindButtons, "data-kind", function (value) { kind = value; });
   group(bandButtons, "data-band", function (value) { band = value; });
-  // A search starts a new entry in the history, and its typing then refines that entry.
+  {# A search starts a new entry in the history, and its typing then refines that entry. #}
   q.addEventListener("input", function () { var started = !new URLSearchParams(location.search).get("q"); apply(); write(started); });
   language.addEventListener("change", function () { apply(); write(true); });
   sort.addEventListener("change", function () { apply(); write(true); });
   window.addEventListener("popstate", function () { read(); apply(); });
 
-  // An opened row's history, from the board day's history.json, fetched once on first opening.
+  {# An opened row's history, from the board day's history.json, fetched once on first opening. #}
   var history = null;
   function load() {
     if (!history) {
@@ -148,11 +148,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function short(day) { return Number(day.slice(8)) + " " + months[Number(day.slice(5, 7)) - 1]; }
   function long(day) { return short(day) + " " + day.slice(0, 4); }
   function figure(n) { return n.toLocaleString("en-GB"); }
-  // A gain as the facts give it: "+1,234", "0", or "-56" for a loss, and "Not known" when the file has no count.
+  {# A gain as the facts give it: "+1,234", "0", or "-56" for a loss, and "Not known" when the file has no count. #}
   function signed(n) { return n === null || n === undefined ? "Not known" : (n > 0 ? "+" : "") + figure(n); }
-  // The day `n` days before `day`, as "2026-10-21".
+  {# The day `n` days before `day`, as "2026-10-21". #}
   function before(day, n) { var d = new Date(day + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() - n); return d.toISOString().slice(0, 10); }
-  // A path through `points`, each [x, y] or null, broken where a point is null, so that a missing day is a gap.
+  {# A path through `points`, each [x, y] or null, broken where a point is null, so that a missing day is a gap. #}
   function trace(points) {
     var d = "", pen = false;
     points.forEach(function (point) {
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     return d;
   }
-  // A rate as the row's growth cell rounds it: whole from 10, to one place below.
+  {# A rate as the row's growth cell rounds it: whole from 10, to one place below. #}
   function rate(n) { return n >= 9.95 ? figure(Math.round(n)) : String(Math.round(n * 10) / 10); }
   function make(tag, className, text) {
     var element = document.createElement(tag);
@@ -171,8 +171,8 @@ document.addEventListener("DOMContentLoaded", function () {
     return element;
   }
   var SVG = "http://www.w3.org/2000/svg";
-  // A figure of the opened row, named by its caption through aria-labelledby, so that its name does not rest on a
-  // browser taking it from the figcaption.
+  {# A figure of the opened row, named by its caption through aria-labelledby, so that its name does not rest on a
+     browser taking it from the figcaption. #}
   var captions = 0;
   function figureOf(className, title) {
     var box = make("figure", className);
@@ -188,12 +188,12 @@ document.addEventListener("DOMContentLoaded", function () {
     return element;
   }
 
-  // Its own pace against what it gained, as How it works draws its worked example, from the row's own numbers over
-  // the ranking's 14 days. Where the file gives the row's daily star counts, the line of what it gained is its real
-  // count day by day, broken where a day has none, and the dashed line of its own pace runs through its count before
-  // the recent days. Where it does not, the file gives two averages, not a count for each day, so each run is
-  // straight: the dashed line of its own pace over the 12 days before and on through the recent days, and the line
-  // of what it gained over those. Either way the part between the two over the recent days is shaded and named.
+  {# Its own pace against what it gained, as How it works draws its worked example, from the row's own numbers over
+     the ranking's 14 days. Where the file gives the row's daily star counts, the line of what it gained is its real
+     count day by day, broken where a day has none, and the dashed line of its own pace runs through its count before
+     the recent days. Where it does not, the file gives two averages, not a count for each day, so each run is
+     straight: the dashed line of its own pace over the 12 days before and on through the recent days, and the line
+     of what it gained over those. Either way the part between the two over the recent days is shaded and named. #}
   function drawing(pace, counts) {
     var baseline = pace[0], gained = pace[1], days = pace[2], above = pace[3];
     var end = 12 + days;
@@ -253,8 +253,8 @@ document.addEventListener("DOMContentLoaded", function () {
     return box;
   }
 
-  // Its total stars over the 31 days the file gives, as a line broken where a day has no count, with the first and
-  // last counts at its ends. Null when the file gives fewer than two counts.
+  {# Its total stars over the 31 days the file gives, as a line broken where a day has no count, with the first and
+     last counts at its ends. Null when the file gives fewer than two counts. #}
   function month(counts, day) {
     var known = counts.filter(function (n) { return n !== null; });
     if (known.length < 2) return null;
@@ -285,7 +285,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var listed = {};
     on.forEach(function (e) { listed[e[0]] = e; });
 
-    // The sum behind its reason, under the reason line, and the facts, all from the file.
+    {# The sum behind its reason, under the reason line, and the facts, all from the file. #}
     var why = entry.why || ["", "", null];
     opened.querySelector(".rs").appendChild(make("p", "su", why[0]));
     var facts = make("dl", "fa");
@@ -319,8 +319,8 @@ document.addEventListener("DOMContentLoaded", function () {
       opened.appendChild(line);
     }
 
-    // The running 30 board days, oldest first: a day a board listed it carries its rank that day and links to that
-    // board; the others are quiet. The table under it says the same in words, so the strip is hidden from readers.
+    {# The running 30 board days, oldest first: a day a board listed it carries its rank that day and links to that
+       board; the others are quiet. The table under it says the same in words, so the strip is hidden from readers. #}
     var run = figureOf("run", "Its rank on the last " + days.length + " board days");
     var strip = make("div", "run-days");
     strip.setAttribute("aria-hidden", "true");
@@ -369,8 +369,8 @@ document.addEventListener("DOMContentLoaded", function () {
     wrap.appendChild(list);
     opened.appendChild(wrap);
   }
-  // A row opens once its detail is drawn, or once the file has failed, never before: the browser's own opening is
-  // held back, and the row is opened here.
+  {# A row opens once its detail is drawn, or once the file has failed, never before: the browser's own opening is
+     held back, and the row is opened here. #}
   function open(details) {
     if (details.getAttribute("data-drawn")) { details.open = true; return; }
     if (details.getAttribute("aria-busy")) return;
@@ -400,8 +400,8 @@ document.addEventListener("DOMContentLoaded", function () {
     open(details);
   });
 
-  // A click anywhere on a row's own line opens or closes it, as its chevron does; a link, a control, or a click in
-  // what it opened keeps its own job, and so does selecting text.
+  {# A click anywhere on a row's own line opens or closes it, as its chevron does; a link, a control, or a click in
+     what it opened keeps its own job, and so does selecting text. #}
   body.addEventListener("click", function (event) {
     var target = event.target;
     if (target.closest("a, summary, button, input, select, .op")) return;

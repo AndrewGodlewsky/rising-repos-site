@@ -1,7 +1,7 @@
-// The Baseline page's readout: the dot nearest the pointer names its repository, and a click goes to its line in the
-// table. It reads the chart's paths, which the build writes one dot to a row in the board's order, and the table's
-// rows; it writes only text and attributes, makes no request, and stores nothing.
-// It waits for the page to be parsed, since it runs from the one script in the head.
+{# The Baseline page's readout: the dot nearest the pointer names its repository, and a click goes to its line in the
+   table. It reads the chart's paths, which the build writes one dot to a row in the board's order, and the table's
+   rows; it writes only text and attributes, makes no request, and stores nothing.
+   It waits for the page to be parsed, since it runs from the one script in the head. #}
 document.addEventListener("DOMContentLoaded", function () {
   var svg = document.querySelector(".plot svg");
   var readout = document.getElementById("readout");

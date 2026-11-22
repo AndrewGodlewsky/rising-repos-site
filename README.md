@@ -34,38 +34,46 @@ that switch is on
 ## The pages
 
 A daily board is one ranked list. Each row shows its rank, the repository's
-name linked to GitHub, its description, its language, and its stars, in the
-order the data file gives them, and gives the figures that put it there, which
-a reader can set against its stars, with its score a click away (see "Why a row is on the
-board" in the design note). The site computes no score and no rank: it words
-and rounds the numbers the file gives. A
-board's page states its board day and when it was published, says so when the
-board is empty, says the ranking is provisional while the data file says the
-score is, and names the days of incomplete snapshots that its ranking leaned on
-when the data file lists them. Where the data file says so, it names the star
-bands the board holds back and the repositories that could not be ranked, and
-why. It also says when the day's update began and how
-long that took, and, for a board put out days late, that it came after its day.
-Where the data file numbers the formula behind the ranking, the page gives the
-number as well. Opened once the newest board is 26 hours old, every page but
-the not-found page says how old it is, without a new build, and from 7 days
-old it shows no board (see "The notice of an old board" in the design note).
-The build writes these pages, which `PAGES` in
+name linked to GitHub, its description, the stars it gained on the board day,
+a small drawing of that pace against its own, and its total stars, in the
+order the data file gives them. Its chevron opens it on the reason it is on the
+board, which a reader can set against its stars, and, once the page's script
+has the board day's `history.json`, on its score and the sum behind it, its
+facts, and its last 30 board days (see "A row" and "An opened row" in the
+design note). The site computes no score and no rank: it words and rounds the
+numbers the file gives.
+
+Above the rows, a board's page says what changes how it reads: that it is an
+earlier board, that its ranking is provisional while the data file says the
+score is, which star bands it holds back, and how many repositories could not
+be ranked, and why. At its foot, About this board gives its plain facts: how
+many repositories and when it was published, when the day's update began and
+how long that took, that a board put out days late came after its day, what
+New means on it, the formula that ranked it, and the days of incomplete
+snapshots that its ranking leaned on. Each comes from the data file, only when
+the file says so. Opened once the newest board is 26 hours old, every page but
+the not-found page and How it works says how old it is, without a new build,
+and from 7 days old it shows no board (see "The notice of an old board" in the
+design note). The build writes these pages, which `PAGES` in
 `sitebuild/__init__.py` lists:
 
 | Address | Page |
 | --- | --- |
 | `/` | The newest board day's board |
-| `/days/` | Every board day, newest first, by month, each with its count of repositories |
+| `/days/` | History: every board day as month calendars, newest first, each day with its count of repositories |
 | `/days/<board day>/` | Each board day's board, the newest included, so that a board day keeps one address |
-| `/how-it-works/` | How a board is ranked, in a few plain sentences, which the site's line on every page links to |
-| Any other | `404.html`, the page for an address that holds none, which links to `/` and states no board day |
+| `/days/<board day>/history.json` | What an opened row of that board shows beyond its line, for each board with rows, fetched on the first opening |
+| `/baseline/` | Baseline: each repository on the newest board, placed by its baseline against its recent pace, with every one in a table |
+| `/how-it-works/` | How a board is ranked, in a few plain sentences, with the worked example drawn, and what the site is set in |
+| `/static/fonts/OFL.txt` | The fonts' licence and IBM's copyright notice, which the licence asks to travel with them |
+| Any other | `404.html`, the page for an address that holds none, which links to `/` and to `/days/` and states no board day |
 
 Each board's page links to the board day before it and the board day after
-it, and to `/days/`. The addresses are the earlier site's, so a link to one of
-its board days still leads to that board day on the live site. Each
-build writes every page again: from the 25 board days the development database
-held on 2026-11-12, 28 pages and 11.6 MB, in under a second.
+it, and the site's bar on every page links to History, Baseline, and How it
+works. The addresses are the earlier site's, so a link to one of its board
+days still leads to that board day on the live site. Each build writes every
+page again: from the 115 board days in `site-data/` on 21 November 2026, 120
+pages, 111 history files, and the licence, in about 10 seconds.
 
 What every page holds to, each checked by a test in `tests/`:
 
@@ -78,490 +86,453 @@ What every page holds to, each checked by a test in `tests/`:
   also give the newest board's day, written out as the page writes dates, and
   its publish time in the notice's `data-newest-board-day` and
   `data-newest-published-at`, which only the notice's script reads.
-- **Owner-written text.** A repository's owner wrote its name, description, and
-  language. Each is escaped where it is shown: Jinja2's autoescaping is on for
-  every template, and no template marks a value as safe. None of them is made a
-  link. A row's name links to `https://github.com/<full_name>`, and the data
+- **Owner-written text.** A repository's owner wrote its name, description,
+  language, and the licence file GitHub names its licence from. Each is escaped
+  where the page shows it: Jinja2's autoescaping is on for every template, and
+  no template marks a value as safe. The language is also a row's `data-l` and
+  an option of the language filter, each one attribute value or one option's
+  text. `history.json` holds a licence and an earlier name as JSON strings, and
+  the script writes every value it reads from the file as text
+  (`textContent`), into elements of a fixed set of tags. None of them is made
+  a link. A row's name links to `https://github.com/<full_name>`, and the data
   contract lets `full_name` hold only letters, digits, `-`, `_`, `.`, and one
   `/`.
-- **One script, the site's own.** Every board day's page, the root among
-  them, and the list carry one script, the notice of an old board
-  (`sitebuild/templates/old-board.js`), written in the page. The not-found page
-  carries none. The Content-Security-Policy, in a `<meta>` tag, forbids every
-  request but the page itself, and every script but that one: its `script-src`
-  names the SHA-256 of the script's exact text, which the build works out each
-  time. No page lets scripts run through `'unsafe-inline'`, and no element has
-  an event-handler attribute. With scripts turned off a page is as it was
-  built.
+- **One script, the site's own.** Every page carries one script,
+  `sitebuild/templates/site.js`, written in the page, made of the parts it
+  uses: the theme, on every page; the notice of an old board, on every board
+  day's page, the root among them, History, and Baseline; a board's filters
+  and opened rows, on a board with rows; and the chart's readout, on Baseline.
+  The Content-Security-Policy, in a `<meta>` tag, lets that one script run, by
+  the SHA-256 of its exact text, which the build works out each time. It
+  forbids every request but the page itself, and on a board with rows, a
+  fetch from the site's own address, for `history.json`. No page lets scripts
+  run through `'unsafe-inline'`, and no element has an event-handler
+  attribute. With scripts turned off a page is whole: the board lists every
+  row, a row opens on its reason line, and no control shows that would do
+  nothing.
 - **Nothing from another site.** The page requests nothing from another
-  address. Its type comes from the reader's own fonts, through font stacks, so
-  no font file is fetched or committed. Its styles and its script are in the
-  page.
-- **Its size.** A page, with its styles and scripts, stays within **410,000
-  bytes**. Measured on 2026-11-15, without `--noindex`:
+  address. Its type is inside it: the four faces are `data:` addresses in its
+  stylesheet, so no font file is fetched or published. Its styles, its script,
+  and its icon are in the page too. The script stores one thing in the
+  browser, the reader's choice of theme, under `theme` in `localStorage`, and
+  sends nothing anywhere.
+- **Its size.** A page, with its styles, its script, and its type, stays
+  within **500,000 bytes**. Measured on 2026-11-21, without `--noindex`:
 
-  | Board | A board's page | The list of board days | The not-found page |
-  | --- | --- | --- | --- |
-  | The data contract's example, 5 rows | 20,911 bytes | 15,772 bytes | 12,811 bytes |
-  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens, and each row's reason the longest the site has written, 200 bytes | 381,378 bytes | 15,774 bytes | 12,811 bytes |
+  | Board | A board's page | History | Baseline | How it works | The not-found page |
+  | --- | --- | --- | --- | --- | --- |
+  | The data contract's example, 5 rows | 98,317 bytes | 73,401 bytes | 78,415 bytes | 74,336 bytes | 69,300 bytes |
+  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens, and each row's reason the longest the site has written, 200 bytes | 481,991 bytes | | | | |
+  | `site-data/` on 2026-11-21: the root, 264 rows, and the longest board, 12 August 2026, 475 rows | 309,880 and 479,621 bytes | 105,125 bytes | 137,720 bytes | | |
 
-  316 rows is the largest board the earlier site published. The limit was set
-  from the largest page measured before
-  [RisingRepos#71](https://github.com/AndrewGodlewsky/RisingRepos/issues/71)
-  kept one design, 263,763 bytes, with a fifth more for what later slices add
-  to a row, such as the stars gained that day.
-  [RisingRepos#107](https://github.com/AndrewGodlewsky/RisingRepos/issues/107)
-  gave each cell its own role and the language its own cell (see the design
-  note), which adds about 66 bytes to a row: 820 bytes a made-up row became
-  886. The strip, the foot, the site's name as a link, and their styles add
-  about 5,550 bytes to a board's page and 3,800 to the not-found page, which
-  were 9,953 and 7,171 bytes before. The notes on partial days
-  ([RisingRepos#45](https://github.com/AndrewGodlewsky/RisingRepos/issues/45))
-  add 108 bytes of styles to every page, and the example's two notes 381 more
-  to its newest board's page. The line on the day's update
-  ([RisingRepos#51](https://github.com/AndrewGodlewsky/RisingRepos/issues/51))
-  adds no styles, and 146 bytes to the example's newest board's page.
-  The formula's number ([RisingRepos#47](https://github.com/AndrewGodlewsky/RisingRepos/issues/47))
-  costs 52 bytes on a board's page and needs no styles. The example's boards
-  now come from a formula that is not provisional, so they also drop that
-  note: on balance, each of their pages is 101 bytes lighter than before.
-  The notice of an old board
-  ([AndrewGodlewsky/RisingRepos#56](https://github.com/AndrewGodlewsky/RisingRepos/issues/56))
-  adds 692 bytes of styles to every page, and its hidden element and its
-  script 1,803 more to each page that carries them.
-  Each row's reason
-  ([AndrewGodlewsky/RisingRepos#49](https://github.com/AndrewGodlewsky/RisingRepos/issues/49))
-  adds 72 bytes of markup to a row and its words, 119 bytes at the median of
-  formula 2's rows and 200 at most, and the link to the page on how a board is
-  ranked and the styles of both add about 960 bytes to every page. The limit
-  was 320,000 until then, and the 316 made-up rows came to 294,093 bytes, so no
-  wording of a reason with an expanded view fitted in what was left: #49
-  raised it to the 381,086 bytes they now take with about a twentieth more,
-  the agent's decision recorded there. The page for the newest board day,
-  14 November 2026, 251 rows, went from 144,848 bytes to 195,415, and from
-  32,674 to 37,133 gzipped at level 6, built from the day's files with and
-  without the numbers.
-  The notes on what a board left off
-  ([AndrewGodlewsky/RisingRepos#13](https://github.com/AndrewGodlewsky/RisingRepos/issues/13))
-  add 74 bytes of styles to every page. The example's newest board is held
-  and lacked a day, and its root went from 20,619 bytes to 20,911, and the
-  316 made-up rows' from 381,086 to 381,378, measured the same way on
-  2026-11-15 before and after.
-  A real board is longer than the earlier site's: the board for 2026-11-09
-  holds 811 rows in 406,970 bytes, and the longest of the 25 board days the
-  development database held on 2026-11-12, 1,294 rows, takes 640,698 bytes.
-  Both came from the provisional formula. Formula 2 lists fewer: across its
-  board days from 29 July to 14 November 2026 the longest is 12 August, with
-  475 rows, and that day's page weighs 347,922 bytes with each row's reason,
-  where it weighed 252,579 without, both built with `--noindex`.
-  The limit holds for the 316 rows that `tests/test_page_weight.py` builds.
+  The four faces are 34,916 bytes of every page. The script is 1,264 bytes
+  where it is the theme alone, 2,948 with the notice of an old board, and
+  21,566 on a board with rows, with its filters and opened rows. A made-up row
+  above is 1,226 bytes of markup, and a row of `typical_rows` in the test
+  about 800. What an opened row shows beyond its line is in `history.json`,
+  not in the page: 222,708 bytes for the longest history in `site-data/`, 20
+  August 2026. The notes on the stylesheet and the
+  scripts are Jinja comments, which no page carries: as CSS and JS comments
+  they took 9,531 bytes of a board's page.
+  [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
+  raised the limit from 410,000, which the 316 made-up rows had reached at
+  381,378 bytes. Past about 500 real rows, a long board's later rows in a
+  second file is the next step.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
   is where the limits that a longer board meets are weighed.
 - **The root on the wire.** The site eval gives the root a budget of 100,000
   transferred bytes in each of its two profiles, phone and desktop
-  (see `evals/site/limits.json`). A test in `tests/test_page_weight.py` fills
-  the newest board with 713 invented rows, gzips the built root at level 6,
-  and checks the result against the smaller budget. On 2026-11-15 it came to
-  98,776 bytes with zlib 1.3.1, which the workflow's Python uses, where it
-  came to 98,670 before the notes on what a board left off and the example's
-  held board (AndrewGodlewsky/RisingRepos#13). The zlib-ng that Python 3.14
-  uses on Windows gave 95,940 for the earlier page: the two differ by about
-  3%, so a size measured on Windows reads low. It was 83,659 by the second
-  before each row gave its reason (AndrewGodlewsky/RisingRepos#49), and 1,048
-  less before the notice of an old board. With the score written a second
-  time in each row's expanded view, the workflow measured 100,844, over the
-  budget, so a row above the floor names its multiple as its score instead.
-  The newest board's root, built from the day's real files, gained 18 bytes a
-  row gzipped. Each invented row carries 105 characters of description in random
-  letters, which pack worse than a real description's words, so the test
-  errs on the heavy side. Its numbers are drawn to the spread of formula 2's
-  rows to 14 November 2026, which `typical_numbers` in the test gives. A board
-  of 713 rows leaves about 1,200 bytes of the budget, so the next thing a row
-  gains needs weighing against it, in
-  [AndrewGodlewsky/RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64). The count is formula 2's longest board so far, 475
-  rows, raised by half for boards still to come
+  (see `evals/site/limits.json`), and the root of 21 November 2026, 264 rows,
+  takes 81,755 bytes gzipped at level 6. A test in
+  `tests/test_page_weight.py` fills the newest board with 713 invented rows,
+  gzips the built root at level 6, and checks the result against 150,000
+  bytes, a budget of its own since
+  [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199).
+  On 2026-11-21 it came to 145,571 bytes with zlib 1.3.1, which the workflow's
+  Python uses, and 142,431 with the zlib-ng that Python 3.14 uses on Windows,
+  so a size measured on Windows reads about 2% low. The type takes about
+  28,600 of those bytes. Before the notes on the stylesheet and the scripts
+  became Jinja comments the root came to 149,615. Each invented row carries
+  105 characters of description in random letters, which pack worse than a
+  real description's words, so the test errs on the heavy side. Its numbers
+  are drawn to the spread of formula 2's rows to 14 November 2026, which
+  `typical_numbers` in the test gives. The count is formula 2's longest board
+  so far, 475 rows, raised by half for boards still to come
   ([AndrewGodlewsky/RisingRepos#122](https://github.com/AndrewGodlewsky/RisingRepos/issues/122)).
 
 ### The design note
 
 The site has one look. It was chosen in
-[RisingRepos#71](https://github.com/AndrewGodlewsky/RisingRepos/issues/71),
-from two designs built for this page, and the record of why is there. A ticket
-that adds a page designs what it adds to this note, and a change to the look
-changes this note in the same pull request.
+[AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199),
+from three redesigns built for it, and the record of why is there. It took the
+place of the look chosen in
+[RisingRepos#71](https://github.com/AndrewGodlewsky/RisingRepos/issues/71).
+A ticket that adds a page designs what it adds to this note, and a change to
+the look changes this note in the same pull request.
 
 **What the look is for.** People come back each day to see what is rising.
 The page is quick to take in and easy to find one's way around, clean and
 current, and pleasant to use. It has a character of its own rather than a
 stock look, and it reads as made with care. Its affordances are plain: how a
-thing on the page looks shows what it does, before anyone tries it. The look
-was designed from nothing, and takes nothing from the earlier site.
+thing on the page looks shows what it does, before anyone tries it.
 
-**The idea.** The board is set like a record chart. A deep evergreen band at
-the top carries the site's name and the board's date, and a slim strip of the
-same green under it leads to the board days on either side. Under them, each
-position is set large beside its repository, below column headings that stay
-in view, with the strip, while the list scrolls.
+**The idea.** The definition of a rising repository is a fact about two
+paces, so the site draws it. Every repository on a board is a point: its usual
+pace across, its pace over the last two days up, both on log scales, and "N×
+its usual pace" is a family of parallel diagonals. How far above the dashed
+diagonal of its own pace a repository sits is its score. Around that, the
+chrome is a quiet logbook: warm paper and graphite ink in the light theme,
+graphite paper and light ink in the dark, one evergreen pen, and a second
+colour, amber, kept for what is new. The dashed line of a repository's own
+pace is the one recurring mark: in the site's mark, in each row's small
+drawing, in an opened row's drawing, on Baseline, and in How it works' worked
+example.
 
-**Type.** Two roles, each in its own family, so that the two are plainly
-different. No font file is fetched: each role is a stack of faces that
-readers' systems already have, in `sitebuild/templates/site.css`.
+**Type.** Two families, Rising Sans and Rising Mono, at 400 and 500, inside
+each page. They are IBM Plex Sans and IBM Plex Mono, by IBM Corp., under the
+SIL Open Font License 1.1, cut to the characters the site's own text uses and
+renamed, as the licence asks of a modified version. `sitebuild/fonts/subset.py`
+makes them from the files in `sitebuild/fonts/source/`, and How it works names
+them under "The type" and links to the licence. Text an owner wrote, in any
+script, falls back to the reader's own faces. Until a face is in, the text is
+set in "Rising Sans fallback": Arial, Liberation Sans, or Arimo, with its size
+and line metrics matched to Rising Sans, so that nothing moves when the face
+arrives.
 
-| Role | What it sets | Stack | Where each named face is |
+| Role | Family | Where |
+| --- | --- | --- |
+| Text | Rising Sans, `--sans` | Everything that is words: the names, the descriptions, the bars, the notes, the headings |
+| Figures | Rising Mono, `--mono`, with tabular figures | The ranks, the day's gain, the total stars, the counts on History, the chart's ticks and labels, the figures of an opened row |
+
+The body is 15 px, the description 14 px, a repository's name 16 px (17 px from
+768 px up) at 500, and its owner 14 px. A page's title is 36 px, and 56 px from
+768 px up. A board's date, its title, is 20 px in the day bar, and 28 px from
+768 px up.
+
+**Colour.** Each colour has one job. The tokens are on `:root` in
+`sitebuild/templates/site.css`; the dark theme sets them again.
+
+| Token | Light | Dark | Its job |
 | --- | --- | --- | --- |
-| Display: a DIN-style signage face | The site's name, the repository names, the star counts, the board days in the list and the months over them, the line that ends a board, a message's heading | `--display`: `Bahnschrift, "DIN Alternate", "Arial Narrow", "Nimbus Sans Narrow", "DejaVu Sans Condensed", sans-serif-condensed, sans-serif` | Bahnschrift: Windows 10 (version 1709 on) and 11. DIN Alternate: macOS and iOS. Arial Narrow: Microsoft Office on Windows, and macOS. Nimbus Sans Narrow: Linux, with Ghostscript's URW fonts (Debian's `fonts-urw-base35`, Fedora's `urw-base35-nimbus-sans-fonts`). DejaVu Sans Condensed: Linux (Fedora's `dejavu-sans-fonts`, Debian's `fonts-dejavu-extra`). `sans-serif-condensed`: Android's name for Roboto at its condensed width |
-| The display role's cut for the date and the ranks | The date and the ranks, condensed | `--display-condensed`: the same stack with `"DIN Condensed"` in place of `"DIN Alternate"` | DIN Condensed: macOS and iOS. Bahnschrift narrows along its own width axis, under `font-stretch: condensed` |
-| Text: the reader's own interface face | The descriptions, the owner, the language, the column headings, the band's sentences, the strip, the links in a board's foot, the counts in the list, the note at the foot | `--text`: `system-ui`, then names for browsers older than it | `system-ui` is Segoe UI on Windows, San Francisco on Apple systems, and Roboto on Android |
+| `--bg` | `#f7f6f2` | `#121311` | The page, and the browser's own bar (`theme-color`) |
+| `--surface` | `#ffffff` | `#181a17` | A control, a card, an opened row, the notice of an old board |
+| `--raised` | `#efeee8` | `#22241f` | A note above the rows, and a control under the pointer |
+| `--text` | `#1b1a16` | `#ecebe5` | The text: 16.10:1 on the page, 15.60:1 in the dark |
+| `--text-2` | `#55524a` | `#b0ada3` | The descriptions, the owner, the bars' links, the facts: 7.21:1, 8.30:1 |
+| `--text-3` | `#6b675d` | `#939087` | The quietest text: the ranks past the top ten, the headings over the figures, a visited repository: 5.22:1, 5.84:1 |
+| `--accent` | `#12704b` | `#5cc896` | Evergreen: what a repository gained, the top ten ranks, a pressed filter, the focus ring, a link under the pointer: 5.64:1, 9.01:1 |
+| `--on-accent` | `#ffffff` | `#0f1a14` | A top-three rank on the accent: 6.10:1, 8.62:1 |
+| `--new` | `#8a4b08` | `#f0b45e` | Amber: the New mark, the New filter: 6.79:1 on a control, 9.50:1 |
+| `--shade-1` to `--shade-4` | `#eef2ee` to `#9fcbb0` | `#1b221d` to `#285e42` | History's ramp, by a board's count of repositories |
 
-The ranks take the condensed cut, as the date does, so that they are the same
-narrow figures on every system ([RisingRepos#111](https://github.com/AndrewGodlewsky/RisingRepos/issues/111)): on Windows, Bahnschrift at
-`font-stretch: condensed`, which resolves to Bahnschrift Bold SemiCondensed,
-and on Apple systems, DIN Condensed. Before, they took `--display` with
-`font-stretch: condensed`, which narrowed Bahnschrift but not DIN Alternate,
-which has one width.
+The tints, `--accent-soft`, `--gain-soft`, and `--new-soft`, are the accent and
+amber at 8% to 20%, and `--line`, `--line-strong`, and `--dot` the ink at 10%
+to 32%. Every text colour meets WCAG AA, 4.5:1, against each background it is
+set on, tints included, as the browser paints them; the lines and the focus
+ring that carry meaning meet 3:1; and `tests/test_colour.py` holds each pair,
+in both themes. The lowest is `--text-3` on a row under the pointer, 4.66:1. A
+visited repository dims from the ink to `--text-3`, 3.09:1 apart, so a reader
+who comes back each day sees which ones they have opened. No colour but the
+two hues and the neutrals is set, and the test holds that too.
 
-Sizes, on a phone and then from 48rem (768 px) up: the date 2.25rem rising to
-4rem; the ranks 1.75rem and 2.25rem, bold; the names 1.375rem and 1.625rem,
-semibold; the star counts 1rem and 1.125rem, regular. The text is 1rem, with
-the owner, the language, and the note at the foot at 0.875rem, the strip at
-0.9375rem, and the column headings at 0.8125rem. A month's heading in the list
-and the line that ends a board are 1.375rem, bold, and a board day in the list
-1.125rem, semibold. The ranks, the star counts, and the counts in the list use
-tabular figures, so that their digits line up down the column.
+**The theme.** The site follows the browser's own setting, light or dark. The
+switch at the right of the site's bar turns it the other way, and the choice
+is kept in this browser, under `theme` in `localStorage`. A press that comes
+back to the browser's own setting clears the kept choice, so the site follows
+the browser again, with no third state on the switch. The theme's script runs
+in the `<head>`, so a kept choice applies before the page is first drawn.
+Without the script the switch is not shown and the site follows the browser.
 
-**Colour.** One idea: an evergreen field, white paper, and one green.
+**The site's bar.** On every page: the mark and "Rising Repos", which links to
+the newest board; History, Baseline, and How it works, the one the page is
+marked `aria-current`; and the theme switch. On a phone the three links take a
+line of their own under the name. Baseline's name is `BASELINE_NAME` in
+`sitebuild/__init__.py`, so that renaming the page is one change.
 
-| Token | Value | Used for | Contrast |
-| --- | --- | --- | --- |
-| `--field` | `#0f3b2e` | The band, the theme colour, and the icon | |
-| `--field-ink` | `#f2f7f4` | The site's name, the date, and a link before it is visited, on the band and the strip | 11.50:1 on the band |
-| `--field-muted` | `#b6cfc3` | The band's and the strip's other text | 7.54:1 on the band |
-| `--field-visited` | `#cfb2f2` | A link on the band or the strip once visited | 6.71:1 on the band, and 1.72:1 against `--field-ink` |
-| `--paper` | `#ffffff` | The page, and the notice of an old board on the band | |
-| `--ink` | `#13201a` | The text, the star counts, a row's reason, and the words of the notice of an old board | 16.81:1 |
-| `--muted` | `#50605a` | The owner, the language, the column headings, a row's score and sum once its reason is opened, the note at the foot, and the foot's word where there is no board day before or after | 6.64:1 |
-| `--green` | `#12704b` | The ranks, a link before it is visited, and the focus ring | 6.10:1 |
-| `--visited` | `#551a8b` | A link once visited | 11.01:1, and 1.81:1 against `--green` |
-| `--rule` | `#dae3de` | The line between rows | |
+**The day bar.** Under the site's bar, a bar that stays at the top of the
+screen while the page scrolls: the board day before, with an arrow before it;
+the board's date, which is the page's `<h1>`; and the board day after, with an
+arrow after it. An earlier board's bar also leads to the newest, from 768 px
+up. Where there is no board day before, it says "First board". Each date is
+short, "8 Nov", and a screen reader hears "The board before" or "The board
+after" first, and "The daily board for" before the date. History's,
+Baseline's, and How it works' bars lead back to the newest board instead. The
+bar is 52 px tall, and 64 px from 768 px up, and `scroll-padding-top` clears
+it, and the column headings under it on a desktop.
 
-The contrast is against white unless the table says otherwise. The provisional
-note on the band, and the note on a recent partial day, have a rule of `#7fcfa6`
-at their left, and a line of `#2f5d4d`
-parts the strip from the band. Every text colour meets
-WCAG AA, 4.5:1, against its background, and `tests/test_colour.py` holds each
-pair. On the paper, green marks the positions and the links, and nothing else.
+**The notes above the rows.** What changes how a board reads is said in the
+open, above its rows: an earlier board, a provisional ranking, a star band
+held back, and repositories that could not be ranked. Each is words on the
+raised surface, with a rule in the ink at its left and its first sentence at
+500, so it reads the same to a screen reader. The kinds are kept apart, since
+each says something different about the rows:
 
-**Spacing.** The content is at most 68rem wide, with 1rem at each side on a
-phone and 2rem from 48rem up, which is the one breakpoint. A row has a hairline
-under it: on a phone, 1rem above its content, 1.125rem below, and 0.5rem
-between its lines; from 48rem up, 0.75rem above and below, and 0.25rem between
-the name and the description. A description runs at most 38rem wide, about 80
-characters a line on a desktop. The band has 1rem above its content and
-1.25rem below on a phone, and 0.875rem and 1rem from 48rem up. From 48rem up
-the site's line takes one line, and the board's facts stand beside the date
-rather than under it, so that the band stays short and the list starts high
-on the first screen. The strip is 2.75rem tall, a finger's width, and so is
-each link in it and in a board's foot.
+- **A star band held back.** When the board day's own snapshot missed some
+  star counts, RisingRepos leaves off every row of each star band they fall
+  in, rather than rank a band from part of its repositories. The note counts
+  the bands, "One star band is held back.", and names the star counts the
+  snapshot missed and each band held, as the file gives them.
+- **Repositories that could not be ranked.** When a day the ranking needs is
+  partial or missing, the file says how many repositories it kept from the
+  ranking, and the note starts with that count: "2,183 repositories could not
+  be ranked." A missing day's starts "No repository could be ranked."
+- **The partial days the ranking drew on** are plain facts, in About this
+  board: a recent day that the file does not name as one the ranking lacked
+  ([AndrewGodlewsky/RisingRepos#137](https://github.com/AndrewGodlewsky/RisingRepos/issues/137)),
+  a partial day that kept none from it, and the days read only further back,
+  with their count and the span they fall in, so that a single day and several
+  dozen are worded alike.
 
-At 1280 by 800, on the board for 2026-11-09, the band ends at 163 px, the strip
-at 207, and the column headings at 242, and the first four rows end at 357,
-471, 609, and 795: four whole rows on the first screen. The fourth holds a
-description of five lines. Each row's reason adds a line of about 35 px, so
-on the board for 2026-11-14 three rows and the start of a fourth are on the
-first screen.
+A board whose file predates these fields
+([AndrewGodlewsky/RisingRepos#13](https://github.com/AndrewGodlewsky/RisingRepos/issues/13))
+says of its partial days what it did before them, in a note above the rows.
+The generator gives those older notes one function and one block of the
+board's template, set apart from the path a newer file takes, so that both can
+be deleted once every board day has been published again with the fields.
 
-**A row, in order of importance.**
+When a board lists no row, its message says why, so that a board held back,
+or one whose ranking lacked a day, never reads as a day on which nothing rose:
+"No repository is on this board" for a held board, "No repository could be
+ranked on this day" two days after a missing day, "No repository that could
+be ranked made the board on this day" after a partial one, and "No repository
+made the board on this day" otherwise. About this board carries the board's
+state from the file, `rows`, `empty`, or `held`, in its `data-state`, for a
+reader of the page rather than of its words. The site decides none of this.
 
-1. The rank: the largest thing in the row, green, in the display face.
-2. The repository's name: the link, large, in the display face.
-3. The description, in the text face.
-4. Why it is on the board: one line under the description, in the text face
-   at 0.9375rem in the ink, which opens on its score (below).
-5. The total stars, at the right, in the display face at regular weight.
-6. The owner, small and muted just before the name and part of its link, and
-   the language, small and muted.
+**The filter.** Over the rows, where the page's script runs: All or New, each
+with its count; the star bands, from the file's `star_bands`; the language; the
+order (by rank, most stars gained, most often on the last 14 boards, fewest
+stars first, most stars first); and a search of the names and the
+descriptions. A band the board holds back has no row, so its button is
+hidden. A file from before `star_bands` gives no bands, and its board no band
+filter: the contract has the site keep no limits of its own. The filter says
+how many rows it shows, to a screen reader, and when none match, says so. Its
+state is in the address (`?show=new&band=1k-3k&lang=Rust&sort=gained&q=…`),
+so a filtered board can be linked to. The controls are marked `js-only`, which
+the stylesheet shows only once the script has marked the root element, in the
+`<head>`, so they are in place from the first frame and move nothing, and
+without the script the page shows the whole board and no control.
 
-The owner and the name are one run of text, `owner/name`, so that a search of
-the page finds a row by it. The name's link has 0.75rem of padding above and
-below, which makes it a finger's height (46 px on a phone, 50 px on a desktop)
-without moving the lines around it.
+**New.** A repository is New when its name, in any case, was on none of the
+boards before this one, back to the first; a renamed or moved repository is
+New under its new name, and its opened row still lists the boards it was on
+before, which follow it by its GitHub id. New is not told when the board
+before held a band back or listed nothing, since a repository missing from it
+may have been kept off, and About this board says so. `History` in
+`sitebuild/__init__.py` works it out at build time by comparing lists: the
+site computes no score and no rank.
 
-From 48rem up a row has four columns: the rank, 4.5rem wide; the name with the
-description under it; the language, 9rem; and the total stars, 7.5rem. The
-rank, the name, the language, and the total stars line up on the name's
-baseline.
+**A row.** On a phone a row is stacked: the rank and the name on the first
+line; the description at the row's full width, cut to one line; then the day's
+gain with "on the day" after it, the drawing of its pace, and the total stars
+at the right; and the chevron under the rank. From 768 px up a row has five
+columns, under headings that stay in view under the day bar: the rank, 48 px;
+the name with the description under it; the day's gain, 112 px; its pace,
+120 px; and the total stars, 96 px. The top three ranks are set on the accent,
+the top ten in it, and the rest in `--text-3`. A New repository has an amber
+"New" after its name. The owner and the name are one run of text,
+`owner/name`, so that a search of the page finds a row by it. The table, its
+rows, and its cells name their roles (`role="table"`, `row`, `columnheader`,
+`rowheader`, and `cell`), because some browsers stop telling assistive
+technology that a table is one once its parts' display changes, as a stacked
+row's does, and every cell keeps its column's heading, the description's and
+the reason's for a screen reader only. A file older than the rows' numbers
+gives no row a reason, and the board then shows the language in their place.
 
-On a phone a row is stacked
-([RisingRepos#107](https://github.com/AndrewGodlewsky/RisingRepos/issues/107),
-from the three judges of RisingRepos#71): the rank and the name on the first
-line, the description at the row's full width under them (358 px at 390 px
-wide, where it had 244), and the language and the total stars on the last
-line, the stars at the right with the word "stars" after them, since the
-column headings are out of view. A row averages 167 px on the board for
-2026-11-09, where it averaged 201. The column headings stay in the page for
-assistive technology. The table, its rows, and its cells name their roles
-(`role="table"`, `row`, `columnheader`, `rowheader`, and `cell`), because some
-browsers stop telling assistive technology that a table is one once its
-parts' display changes, as a stacked row's does.
+The day's gain is `gained_1_day`, signed: "+147", "0", "-600" for a loss, and
+"–" when the file has no count for the day before. A file from before the
+field gives the stars a day over the recent days instead, "+148", as the board
+did before. The drawing is the row's own pace against what it gained, on one
+log scale for every row, so that two rows compare: the dashed level of its
+usual pace, the level of its last two days, and the part between in the
+accent. A screen reader hears it in words: "Usual 0.25 a day, then 48 a day".
 
-**Why a row is on the board.** Under the description, one line says in plain
-quantities why the repository is there, and a triangle before it shows that it
-opens: a `<details>` whose `<summary>` is the line, so a click, a tap, or the
-keyboard opens it with no script. Opened, it shows the sum that gives the row's
-score, in the muted text at 0.875rem, with the score written out where the line
-gives no multiple, and the multiple named as the score where it does. The line is padded to 30 px, a
-target a finger finds, and takes tabular figures. `why` in
-`sitebuild/__init__.py` words it from the numbers the file gives the row
-([AndrewGodlewsky/RisingRepos#49](https://github.com/AndrewGodlewsky/RisingRepos/issues/49)),
-and tells from them which of four kinds the row is:
+**An opened row.** The chevron is a `<details>` whose `<summary>` is named "More
+on" the repository, so a click, a tap, or the keyboard opens it with no
+script, on its reason line:
 
-| The row | Its line | Opened |
+| The row | Its line | The sum, once opened |
 | --- | --- | --- |
 | Its usual pace was at least the floor of 1 star a day | `+266 above its own trend · 60× its usual pace` | `That multiple is its score: 270 stars ÷ 2 days ÷ its usual 2.25 a day.` |
 | Its usual pace was under the floor | `+157 above its own trend · its usual pace was under 1 star a day` | `Score 79 = 158 stars ÷ 2 days ÷ 1: its usual 0.58 a day counts as 1 star a day.` |
 | It had been losing stars | `+87 in 2 days · it had been losing stars` | `Score 43.5 = 87 stars ÷ 2 days ÷ 1: it lost 4.04 a day before, which counts as 1 star a day.` |
 | The loss rule left a recent day out | `+487 in 1 day · 16× its usual pace` | `That multiple is its score: 487 stars ÷ 1 day ÷ its usual 31.08 a day. A recent day that lost too many stars to be believed is left out.` |
 
-- A multiple of the floor is no multiple of the repository's own pace, so a
-  row under the floor gives none. A row that had been losing stars, or whose
-  recent pace keeps one day, gives the stars it gained, since the stars above
-  its own trend that the file carries are not that there.
-- A multiple has no cap: a row can say `1,286× its usual pace`. It takes one
-  decimal place under 10 and none from 10. A score written out takes two
-  decimal places, and every number is rounded half up, as a reader rounds, and parts its
-  thousands with commas.
-- A file published before the numbers gives no row a reason, and its board
-  has no column for one.
+`why` in `sitebuild/__init__.py` words both from the numbers the file gives
+the row ([AndrewGodlewsky/RisingRepos#49](https://github.com/AndrewGodlewsky/RisingRepos/issues/49)).
+A multiple of the floor is no multiple of the repository's own pace, so a row
+under the floor gives none, and a row that had been losing stars, or whose
+recent pace keeps one day, gives the stars it gained. A multiple has no cap:
+a row can say `1,286× its usual pace`. It takes one decimal place under 10 and
+none from 10. Every number is rounded half up, as a reader rounds, and parts
+its thousands with commas.
 
-**How it works.** The site's line ends with a link, "How it works", to
-`/how-it-works/`, which says in a few plain sentences how the formula that
+With the script, the first opening of a row fetches the board day's
+`history.json` once, and every row of the board then opens on the rest: the
+sum; its facts (its multiple, its gains over 7 and 30 days, its language, its
+licence, its star band, when it was created and last pushed to, its first
+board, a name it was listed under before, how many of the last boards it was
+on, and its best rank on them); a drawing of its stars day by day over the
+last 14 days against the dashed line of its usual pace, with the part of the
+two recent days above its own trend shaded; its stars over the last 30 days, from `star_history`, with a gap where a day has no count; its
+last 30 board days, each a link to that board, carrying its rank there; and a
+table of the boards it was on. Each part says what it is in a caption, for a
+screen reader. A row's figures are worded as its line words them, so the two
+never disagree, and a fact the file does not give is left out, never guessed.
+
+**About this board, and the foot.** Under the rows, About this board gives the
+board's plain facts in `--text-2`, each a line: its count of repositories and
+when it was published, in UTC; when the day's update began and how long it
+ran, in words ("The day's update began at 22:35 UTC and took 12 minutes to
+publish this board."), with the date when it began on an earlier day; "This
+board was made after its day", for a board put out two days or more after its
+day; what New means on it, or that it cannot be told; "Ranked by formula
+version 2.", with a link to How it works; the partial days its ranking drew
+on; and a link to Baseline. Each reads its field
+([RisingRepos#51](https://github.com/AndrewGodlewsky/RisingRepos/issues/51),
+[RisingRepos#47](https://github.com/AndrewGodlewsky/RisingRepos/issues/47)),
+and a file without the field gets no line: the page does not guess.
+`daily_job` gives the template plain values, and `board.html` words them in
+one place. A file whose start comes after its publish fails the build (see
+"The data"). Then the foot: "End of the daily board for" its date, the board
+days before and after again, and "Back to the top". An empty board has both.
+At the foot of every page, the colophon says what the site is and that it is
+not affiliated with GitHub.
+
+**An earlier board.** A board day's page that is not the newest says so first,
+above its rows, and links to the newest. Only the root states a board day in
+the data contract's tags
+([RisingRepos#43](https://github.com/AndrewGodlewsky/RisingRepos/issues/43)).
+
+**History.** At `/days/`, every board day as month calendars, newest month
+first and Monday first, two months a row from 1,100 px up. Each board day is a
+cell that links to its board, with its count of repositories, how many of them
+were new (from 768 px up, where the cell has room; a screen reader hears it at
+any width), and a shade on a fixed ramp by that count, the same every month:
+under 200, 200 to 274, 275 to 349, and 350 or more. The newest is outlined in
+the accent and marked `aria-current="date"`. A day between the first board and
+the newest that has no board is hatched, and a screen reader hears "no board".
+
+**Baseline.** At `/baseline/`, the newest board's chart: each repository a dot,
+placed by its baseline, the stars a day it gained over the twelve days before,
+across, against its recent pace, up, both on log scales, with the diagonals of
+its own pace, dashed, and of 3×, 10×, 100×, and 1,000×. The top ten are in the
+accent, and the first five are labelled with their ranks. With the script,
+the dot nearest the pointer names its repository, its rank, and its growth in
+a readout, and a click on it goes to its line in the table. Under the chart,
+the table gives every repository in words, so the chart holds nothing a
+screen reader cannot reach. `pace_chart` in `sitebuild/__init__.py` places the
+dots from the file's own numbers: the usual pace is the divisor the file
+gives, and the recent pace its recent stars over its recent days.
+
+**How it works.** The page says in a few plain sentences how the formula that
 `DESCRIBED_FORMULA` in `sitebuild/__init__.py` names ranks a board: the two
-recent days against the twelve before them, the floor, who makes the board
-and when a star band is held back from it, what must hold before a repository
-has a score, and that no gain is set aside. It
-names that formula under its title, and when the newest board was ranked by
-another, it says so first, set off as the provisional note is. Its text is at
-most 40rem wide, under headings in the display face at 1.375rem. It carries
-no notice of an old board, which would hide its text.
+recent days against the twelve before them, the floor, who makes the board and
+when a star band is held back from it, what must hold before a repository has
+a score, and that no gain is set aside. Its worked example is drawn: twelve
+days at a usual 30 stars a day, then 520 stars in two days, with the part above
+the dashed line of its own pace marked as "+460 above its own trend". It names
+the formula under its title, and when the newest board was ranked by another,
+it says so first. It carries no notice of an old board, which would hide its
+text. Under "The type", it names the fonts and links to their licence.
 
-**Links.**
-
-| State | How it looks |
-| --- | --- |
-| At rest | Green, with a 2 px underline in the same green, offset 0.28em in the name's own size so that it clears the descenders |
-| Visited | Violet, `#551a8b`, text and underline: the colour browsers give a visited link by default |
-| Hover | The underline thickens to 3 px |
-| Keyboard focus | A 2 px green ring, 4 px outside the link |
-
-On the band and the strip a link is in `--field-ink`, a light violet,
-`--field-visited`, once visited, and its focus ring is in `--field-ink`. The
-site's name, which links to the newest board from every page, keeps its ink
-once visited: it would show as visited on every page from a reader's first.
-
-A repository's link holds the owner and the name, and only the name is
-underlined. A browser lets a visited link change only its colours, so the
+**Links and focus.** A link in running text is underlined in a quiet line,
+which takes the accent under the pointer. A repository's link underlines only
+the name. A browser lets a visited link change only its colours, so the
 visited state is a change of colour. To see it in an automated browser, whose
 fresh contexts record no visits, force the state on a link with the DevTools
-protocol's `CSS.forcePseudoState` and `visited`. Ask for the document with
-`DOM.getDocument` once, then force every link: asking again dropped the states
-already forced, in the checks for
-[RisingRepos#43](https://github.com/AndrewGodlewsky/RisingRepos/issues/43).
+protocol's `CSS.forcePseudoState` and `visited`. Every control, link, and
+`<summary>` shows a 2 px ring in the accent when the keyboard reaches it.
 
-**The strip.** Under the band, in the same green, a strip of links stays at
-the top of the screen while the page scrolls: the board day before, with an
-arrow before it; the board day the page shows, in the field's ink and bold;
-the board day after, with an arrow after it; and "All board days", at the
-right ("All days" on a phone). Where there is no board day before or after, it
-says "First board" or "Newest board" in the muted green. Each date is short,
-"8 Nov", and a screen reader hears "The board before" or "The board after"
-first. The list's strip leads to the newest board instead. The column headings
-stick under the strip, and `scroll-padding-top` clears both: 3.5rem on a
-phone, 6rem from 48rem up. The strip has room on its right for what later
-slices put there, such as the switch between daily, weekly, and monthly
-boards. The notice of an old board needs more than one line, so it sits in the
-band instead (see below).
-
-**A board's foot.** Under the last row, a 2 px rule in the ink, then "End of
-the daily board for" its date, in the display face; the strip's links again,
-with "Back to the top", which leads to the band; and the note on star counts.
-An empty board has the same foot.
-
-**An earlier board.** A board day's page that is not the newest says so on the
-band, beside its facts, and links to the newest. Only the root states a board
-day in the data contract's tags ([RisingRepos#43](https://github.com/AndrewGodlewsky/RisingRepos/issues/43)).
-
-**What a board left off, and partial days.** A partial day is a snapshot day
-on which the collector missed some of the repositories it should have read
-([RisingRepos#45](https://github.com/AndrewGodlewsky/RisingRepos/issues/45)).
-Each board day's file now names the rows its board went without, and the cause
-([AndrewGodlewsky/RisingRepos#13](https://github.com/AndrewGodlewsky/RisingRepos/issues/13)),
-and the band's facts end with a note on each, in the field's muted text, after
-the provisional note. Three kinds are kept apart, since each says something
-different about the rows:
-
-- **A star band held back.** When the board day's own snapshot missed some
-  star counts, RisingRepos leaves off every row of each star band they fall in,
-  rather than rank a band from part of its repositories. The note is set off
-  the way the provisional note is, with the same rule at its left and a bold
-  first sentence that counts the bands: "One star band is held back." It names
-  the star counts the snapshot missed and each band held, as the file gives
-  them.
-- **Repositories that could not be ranked.** When a day the ranking needs is
-  partial or missing, the file says how many repositories it kept from the
-  ranking, and the note, set off the same way, starts with that count in bold:
-  "2,183 repositories could not be ranked." A missing day's starts "No
-  repository could be ranked." A partial day that kept none from it gets a
-  plain line instead.
-- **The partial days the ranking drew on.** A recent day that the file does not
-  name as one the ranking lacked gets one plain line, which says that the
-  recent pace takes it in and guesses at nothing more
-  ([AndrewGodlewsky/RisingRepos#137](https://github.com/AndrewGodlewsky/RisingRepos/issues/137)).
-  The days read only further back, for the pace a recent climb is held against,
-  get one plain line too, with their count and the span they fall in, so that
-  a single day and several dozen are worded alike. Neither has a rule or
-  anything in bold: each is a fact about the data, not a warning.
-
-A board whose file predates these fields says of its partial days what it did
-before them: a recent partial day gets a note that says what it may have done
-to a repository missing from it, and a board day that is itself partial gets
-one saying that a repository it missed could not be ranked. The generator
-gives those older notes one function and one block of the board's template,
-set apart from the path a newer file takes, so that both can be deleted once
-every board day has been published again with the fields. A board whose
-ranking read no partial day, held nothing, and lacked no day has no note.
-Nor does a board whose file predates `partial_days`: it is not known which
-partial days it read, and the page does not guess.
-
-When a board lists no row, the message under the band says why, so that a
-board held back, or one whose ranking lacked a day, never reads as a day on
-which nothing rose: "No repository is on this board" for a held board, "No
-repository could be ranked on this day" two days after a missing day, "No
-repository that could be ranked made the board on this day" after a partial
-one, and "No repository made the board on this day" otherwise. The facts also
-carry the board's state from the file, `rows`, `empty`, or `held`, in their
-`data-state`, for a reader of the page rather than of its words. The site
-decides none of this: RisingRepos names each band held, each day lacked, and
-each count.
-
-The notes are words, not a badge or a colour, so they read the same to a
-screen reader, and they stay in the band, beside the date they qualify, rather
-than over the rows. They add no colour: the rule is the provisional note's.
-
-**The day's update.** Right under the line with the publish time, a plain line
-gives the time the update began, in UTC, and how long it ran before this board
-went out, in words: "The day's update began at 22:35 UTC and took 12 minutes to
-publish this board." When the update began on an earlier day than the publish,
-the line gives that date too. It reads `daily_job_started_at`
-([RisingRepos#51](https://github.com/AndrewGodlewsky/RisingRepos/issues/51)),
-and a board whose file has no such time, because it was put out by hand or
-before the field existed, gets no line: the page does not guess. `daily_job`
-gives the template plain values, the start, whether it fell on the publish's
-own day, and the seconds it ran, and `board.html` words them in one place. A
-file whose start comes after its publish fails the build (see "The data"). A
-board put out
-two days or more after its own day, as the boards rebuilt from the archive's
-earlier days were, gets one more plain line, "This board was made after its
-day", which names the day whose star counts it uses, so its publish date is
-not read as the date of its numbers. Neither line has a rule, bold, or colour.
-
-**The formula's number.** When the file numbers the formula that ranked the
-board, a plain line among the facts says so: "Ranked by formula version 2."
-Whenever that formula changes, every board day is ranked again and its number
-goes up, so a reader who saw a different order for a day can tell why
-([RisingRepos#47](https://github.com/AndrewGodlewsky/RisingRepos/issues/47)). It reads `formula_version`, and a file
-that lacks it gets no line. Like the publish time, it is a plain fact, with
-no rule, bold, or colour.
+**Forced colours and motion.** In forced colours, the drawings made of
+backgrounds take system colours, Baseline's legend keeps the page's, as its
+chart's dots do, and History's cells, which lose their shades, keep an edge,
+the newest one's in the highlight. With reduced motion, nothing transitions.
 
 **The notice of an old board.** A page is built only when something is
 pushed here, so when the publishing stops, no build runs to say so, and the
 newest board goes on looking current
 ([AndrewGodlewsky/RisingRepos#56](https://github.com/AndrewGodlewsky/RisingRepos/issues/56)).
-So every board day's page, the root among them, and the list of board days
-carry a short script, `sitebuild/templates/old-board.js`, which works out each
-time the page is opened how long ago the newest board was published, by the
-reader's own clock. Every one of those pages measures from the newest board,
-so an earlier board day's page and the list say the same as the root.
+So every board day's page, the root among them, History, and Baseline carry
+the notice's part of the page's script, `sitebuild/templates/old-board.js`,
+which works out each time the page is opened how long ago the newest board
+was published, by the reader's own clock. Every one of those pages measures
+from the newest board, so an earlier board day's page says the same as the
+root.
 
 | The newest board's age | What the page shows |
 | --- | --- |
 | Younger than 26 hours, or a clock set behind its publish time | Nothing new: the page exactly as it was built |
-| 26 hours or more, but less than 7 days | A notice under the site's line: "**The newest board is 3 days old.** It is the board for 10 November 2026. A board is due every day, and none has come out since." |
-| 7 days or more | The notice reads "**No board is shown: the newest is 10 days old.** It is the board for 3 November 2026. When a week passes with no new board, the site stops showing its boards, so that an old ranking is not taken for a current one.", and what `<main>` holds, the board or the list, is hidden |
+| 26 hours or more, but less than 7 days | A notice under the site's bar: "**The newest board is 3 days old.** It is the board for 10 November 2026. A board is due every day, and none has come out since." |
+| 7 days or more | The notice reads "**No board is shown: the newest is 10 days old.** It is the board for 3 November 2026. When a week passes with no new board, the site stops showing its boards, so that an old ranking is not taken for a current one.", and what `<main>` holds is hidden |
 
 - 26 hours exactly counts as old, as it does for the stale check (see "The
   stale check"). The age is in whole hours under two days, and in whole days
   from then on. The build writes the board day into the notice with the same
   filter as every other date on the page, so the script works out only the
   age.
-- The notice is a box in the page's own pair, ink on paper, up to 40rem wide,
-  with its first sentence in bold, between the site's line and the date. It is
-  words, not a colour or a badge, so it reads the same to a screen reader.
-- **Nothing moves.** The notice and the script come right after the site's
-  line, so the script runs before the browser has read the date, the strip,
-  or the board, and a notice it shows pushes down nothing already painted.
-  From 7 days the script sets `data-withheld` on `<html>`, and the stylesheet
-  hides what `<main>` holds, which has not been read yet either. `<main>`
-  itself stays, so the page keeps its main landmark. On a fresh page the
-  hidden notice takes no room: the band, the strip, and the rows sit exactly
-  where they did before the notice existed, at a phone's width and a
-  desktop's.
+- The notice is a box on the surface, up to 640 px wide, with its first
+  sentence at 500, between the site's bar and the day bar. It is words, not a
+  colour or a badge, so it reads the same to a screen reader.
+- **Nothing moves.** The page's one script is in the `<head>`, and the notice
+  right after the site's bar, so the script runs before the browser has read
+  the notice, the day bar, or the board. It watches for the notice as the page
+  is read, and a notice it shows pushes down nothing already painted. From 7
+  days it sets `data-withheld` on `<html>`, and the stylesheet hides what
+  `<main>` holds, which has not been read yet either. `<main>` itself stays,
+  so the page keeps its main landmark. On a fresh page the hidden notice takes
+  no room.
 - **With scripts turned off**, or in a browser that refuses the script, the
   page is the fresh page: the notice stays hidden, and the built page holds
   none of its words, so nothing on it would be false on a fresh day.
-- **What the script touches.** It reads the notice's two `data-` attributes
-  and the clock. It writes only its own words, the board day as the build
-  wrote it, and the numbers it works out, as text (`textContent`), shows the
-  notice, and sets the one attribute on the root. It reads nothing an owner
-  wrote, makes no request, which the page's policy would refuse in any case,
-  stores nothing, and sets no cookie. A publish time that is not in the exact
-  shape the page writes it, or that names no real moment, leaves the page as
-  built.
+- **What it touches.** It reads the notice's two `data-` attributes and the
+  clock. It writes only its own words, the board day as the build wrote it,
+  and the numbers it works out, as text (`textContent`), shows the notice, and
+  sets the one attribute on the root. It reads nothing an owner wrote and
+  makes no request. A publish time that is not in the exact shape the page
+  writes it, or that names no real moment, leaves the page as built.
 - **Which pages.** One line near the top of `sitebuild/templates/page.html`
   names the templates whose pages carry the notice. To keep the notice to the
-  root alone, make that list `("latest.html",)`. The not-found page carries
-  none, and its policy still forbids every script.
+  root alone, make that list `("latest.html",)`.
 - **Its tests.** `tests/test_old_board.py` takes the script's text from a
   built page and runs it under Node, through `tests/run_page_script.js`, with
-  the clock passed in. It runs it on the root, on board days' pages, and on
-  the list: a second short of 26 hours and at 26 exactly, a second short of 7
-  days and at 7 exactly, at 10 and 400 days, with the clock set behind the
-  publish time, and with malformed publish times. It also checks that the
-  policy names the hash of the script's exact text, so a script whose text
-  no longer matches its hash fails the tests rather than being refused by
-  readers' browsers.
-
-**The list of board days.** At `/days/`, the band's title is "Board days",
-with how many there are and the first and the last. Under it each month is a
-heading over its board days, newest first: each day is a link, "Monday 9
-November", with its count of repositories at the right. The list is at most
-40rem wide, and each line is a finger's height.
+  the clock passed in, and with the page's elements found only once the
+  script has run, as a script in the `<head>` meets them. It runs it on every
+  page that carries it: a second short of 26 hours and at 26 exactly, a second
+  short of 7 days and at 7 exactly, at 10 and 400 days, with the clock set
+  behind the publish time, and with malformed publish times. It runs the
+  theme's part too: a kept choice, a press, and a press back to the browser's
+  own setting. It also checks that the policy names the hash of the script's
+  exact text, so a script whose text no longer matches its hash fails the
+  tests rather than being refused by readers' browsers.
 
 **What a later page keeps.**
 
-- The band at the top, with the site's line, and the page's title where the
-  date is, in the display face. The band stays short: on a desktop, what the
-  page is for starts on the first screen.
-- The two roles in their families. No font file, and no third family.
-- The colours in the table. A new text colour comes with a background that
-  gives it 4.5:1, and a line in `tests/test_colour.py`.
-- An underline means a link. A link looks like one before it is touched, and
-  shows once it has been visited.
+- The site's bar, and a bar of its own under it for the page's place, which on
+  a board is the day bar with the date as its heading.
+- Rising Sans for words and Rising Mono for figures, inside the page. No font
+  file, and no third family.
+- The colours in the table, each with its one job: the accent for what a
+  repository gained and the board's top, amber for what is new, the neutrals
+  for the rest. A new text colour comes with a background that gives it
+  4.5:1, in both themes, and a line in `tests/test_colour.py`.
+- An underline means a link, and a visited repository dims.
 - Tabular figures for any number in a column.
-- The strip, under the band, and column headings that stay in view under it,
-  with a `scroll-padding-top` on the page that keeps a focused link clear of
-  them.
-- A page that reads at a phone's width (390 px) and a desktop's (1280 px), with
-  five rows, with hundreds, and with none. The site does not follow the
-  reader's dark mode yet.
+- A drawing comes with its figures in words, for a screen reader.
+- A page that reads at a phone's width (390 px) and a desktop's (1440 px), in
+  both themes, with five rows, with hundreds, and with none, and that is whole
+  with scripts off.
 
 The look is in `sitebuild/templates/site.css`, which
 `sitebuild/templates/page.html` includes in every page. `page.html` also holds
-the `<head>`, the band's first line, the strip's place, and the place of the
-notice of an old board, which `old-board.html` holds with its script. `board.html`,
-`days.html`, `how-it-works.html`, and `not-found.html` fill the rest of the band, the strip, and the
-page below it. `latest.html` is `board.html` with the data contract's two tags
-in its `<head>`, for the root, and `nav.html` holds the links between board
-days that the strip and a board's foot share. `PAGES` in `sitebuild/__init__.py` lists each
+the `<head>` with the page's one script, `site.js`, the site's bar, the
+notice of an old board's place, which `old-board.html` holds, the place of the
+page's own bar, and the colophon. `board.html`, `days.html`, `baseline.html`,
+`how-it-works.html`, and `not-found.html` fill the rest. `latest.html` is
+`board.html` with the data contract's two tags in its `<head>`, for the root,
+and `nav.html` holds the links between board days that the day bar and a
+board's foot share. The script's parts are `theme.js`, `old-board.js`,
+`filters.js`, and `baseline.js`. `PAGES` in `sitebuild/__init__.py` lists each
 page the build writes, with its template.
 
 ## The data
@@ -628,15 +599,20 @@ against the schema shipped with it before it writes a page:
   `days_left_out`, and `score` itself, are optional the same way: a board whose rows lack them builds with no reason on any row.
   A site built before the pages read them builds the newer files too.
 - The fields that RisingRepos added for the site's redesign
-  (AndrewGodlewsky/RisingRepos#192) are read by no page yet: `star_bands`
-  (AndrewGodlewsky/RisingRepos#196), and in each row `star_history`
-  (AndrewGodlewsky/RisingRepos#193), `gained_1_day`, `gained_7_days`, and
+  (AndrewGodlewsky/RisingRepos#192) are read since the redesign
+  (AndrewGodlewsky/RisingRepos#199): `star_bands`
+  (AndrewGodlewsky/RisingRepos#196), the bands a board's filter offers; in each
+  row `gained_1_day` (AndrewGodlewsky/RisingRepos#194), the growth column; and
+  `star_history` (AndrewGodlewsky/RisingRepos#193), `gained_7_days` and
   `gained_30_days` (AndrewGodlewsky/RisingRepos#194 and #195), and `license`,
-  `created_at`, and `pushed_at` (AndrewGodlewsky/RisingRepos#197). A file
-  without them builds the same pages as one with them, which a test in
-  `tests/test_data.py` shows. The contract marks `license` untrusted, as it
-  does a description, since the repository's owner chose the file GitHub names
-  it from.
+  `created_at`, and `pushed_at` (AndrewGodlewsky/RisingRepos#197), which the
+  board day's `history.json` gives an opened row. They are optional the same
+  way: a file without them builds, its growth column gives the stars a day, its
+  board has no band filter, since the contract has the site keep no limits of
+  its own, and its opened rows show none of them. A test in
+  `tests/test_data.py` shows that only that board's pages change. The contract
+  marks `license` untrusted, as it does a description, since the repository's
+  owner chose the file GitHub names it from: the page writes it as text.
 - The schemas are checked with fastjsonschema, the validator that RisingRepos's
   ADR 0013 chose, at the version RisingRepos's `pyproject.toml` pins. It turns
   a schema into Python, and it fetches whatever document a `$ref` points to
@@ -658,8 +634,8 @@ RisingRepos commit `0fd590ccbb8fb9087cfd4cdabf1f09fa6ce948c9`, whose schema
 says when the daily job that published a board day began, numbers the formula
 that ranked it, gives each row its score and the figures behind it, and gives
 the board's state, the star bands it holds back, and the days its ranking
-lacked. It also carries the fields added for the redesign (above), which no
-page reads yet. Its newest board is held and its older one empty, so the tests
+lacked. It also carries the fields added for the redesign (above). Its newest
+board is held and its older one empty, so the tests
 render both.
 A change to the contract
 reaches it, and that test, by a pull request here.
@@ -771,7 +747,9 @@ only when it merges, so:
 ```text
 sitebuild/          the generator: python -m sitebuild <folder> [--noindex] [--data <folder>]
   contract.py       reads the data files and checks each against its schema
-  templates/        Jinja2 templates and the stylesheets they include, with autoescaping on for every one
+  templates/        Jinja2 templates, the stylesheet, and the parts of the page's one script, with autoescaping on for every one
+  fonts/            Rising Sans and Rising Mono, which the build puts inside each page; subset.py cuts them from IBM Plex's files in source/
+  static/           files served as they are, under /static/: the fonts' licence
 site-data/          the data files RisingRepos publishes, and their schemas
 evals/site/         the site eval, its limits, and its accepted numbers, which .github/workflows/site-eval.yml runs
 tests/              the tests

@@ -1,8 +1,8 @@
-/* Rising Repos, set like an instrument's daily log: quiet paper and graphite chrome, and a few inks that each mean
+{# Rising Repos, set like an instrument's daily log: quiet paper and graphite chrome, and a few inks that each mean
    one thing: evergreen for what a repository gained and the board's top, and amber
    for what is new. The dashed line of a repository's own pace is the site's one
    signature: it is in every row, the opened row's drawing, the Baseline chart, and the worked example. Links stay
-   in the text's own colour, so that colour always means one of those things. */
+   in the text's own colour, so that colour always means one of those things. #}
 
 {# The four faces, inside the page: sitebuild/__init__.py's font_faces. Rising Sans and Rising Mono are
    modified versions of IBM Plex Sans and IBM Plex Mono, renamed as the SIL Open Font License asks of a modified
@@ -37,9 +37,9 @@
   --sans: "Rising Sans", "Rising Sans fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "Rising Mono", ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --bar: 52px; /* the day bar's height: on a board its date is the page's heading */
+  --bar: 52px; {# the day bar's height: on a board its date is the page's heading #}
 }
-/* Dark: by the browser's setting, unless the reader chose light with the switch; or by the reader's choice. */
+{# Dark: by the browser's setting, unless the reader chose light with the switch; or by the reader's choice. #}
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
@@ -90,7 +90,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 [hidden] { display: none !important; }
-/* What needs the page's script, shown only where the script has marked the root element, in the head. */
+{# What needs the page's script, shown only where the script has marked the root element, in the head. #}
 :root:not([data-js]) .js-only { display: none !important; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(var(--bar) + 16px); }
 body { margin: 0; background: var(--bg); color: var(--text); font: 400 15px/1.6 var(--sans); }
@@ -100,13 +100,13 @@ ol, ul { padding: 0; list-style: none; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 
-/* Links: a link in running text is underlined, quiet at rest and in the accent on hover. A visited repository dims
-   to the muted text, so a reader who comes back each day sees which ones they have already opened. */
+{# Links: a link in running text is underlined, quiet at rest and in the accent on hover. A visited repository dims
+   to the muted text, so a reader who comes back each day sees which ones they have already opened. #}
 a { color: inherit; text-decoration: underline 1px var(--line-strong); text-underline-offset: 0.25em; transition: color 150ms var(--ease), text-decoration-color 150ms var(--ease); }
 a:hover { color: var(--accent); text-decoration-color: currentColor; }
 a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
-/* The site's bar: the mark and the name, three quiet links, and the theme switch */
+{# The site's bar: the mark and the name, three quiet links, and the theme switch #}
 .site { border-bottom: 1px solid var(--line); }
 .site .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; padding-top: 10px; padding-bottom: 6px; }
 .site .theme { margin-left: auto; }
@@ -122,13 +122,13 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 .theme svg { width: 16px; height: 16px; }
 .theme:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-/* The notice of an old board: hidden as built; its script fills and shows it once the newest board is 26 hours
-   old. From 7 days the script marks the root element, and what <main> holds is hidden. */
+{# The notice of an old board: hidden as built; its script fills and shows it once the newest board is 26 hours
+   old. From 7 days the script marks the root element, and what <main> holds is hidden. #}
 .old-board { max-width: 640px; margin-top: 16px; padding: 12px 16px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface); }
 .old-board strong { font-weight: 500; }
 :root[data-withheld] main > * { display: none; }
 
-/* The day bar: the board days on either side, kept in view while the list scrolls */
+{# The day bar: the board days on either side, kept in view while the list scrolls #}
 .strip { position: sticky; top: 0; z-index: 3; background: var(--bg); border-bottom: 1px solid var(--line); font-size: 14px; }
 .strip .wrap { display: flex; align-items: center; gap: 4px; height: var(--bar); }
 .strip .wrap > a, .strip .wrap > span { display: inline-block; height: 32px; line-height: 32px; padding: 0 8px; border-radius: 8px; white-space: nowrap; }
@@ -139,20 +139,20 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 .strip .end { color: var(--text-3); }
 .strip .latest { display: none !important; }
 
-/* A page's title block */
+{# A page's title block #}
 .head { padding: 32px 0 24px; }
 .kind { color: var(--text-2); font-size: 14px; }
 h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
 .lede { max-width: 640px; margin-top: 12px; color: var(--text-2); font-size: 18px; line-height: 1.5; }
 
-/* Notes that change how the board reads: what it held back, what could not be ranked, a provisional order. Words on
-   a raised surface with a rule in the ink, so they read the same to a screen reader. */
+{# Notes that change how the board reads: what it held back, what could not be ranked, a provisional order. Words on
+   a raised surface with a rule in the ink, so they read the same to a screen reader. #}
 .notes { display: grid; gap: 8px; max-width: 760px; margin-top: 24px; }
 .notes:empty { display: none; }
 .provisional, .held, .unranked, .partial.recent, .earlier { padding: 12px 16px; border-left: 2px solid var(--text); border-radius: 0 8px 8px 0; background: var(--raised); color: var(--text-2); }
 .notes strong, .earlier strong { color: var(--text); font-weight: 500; }
 
-/* The Baseline page's card, which holds its chart */
+{# The Baseline page's card, which holds its chart #}
 .card { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
 .pace { padding: 20px 16px 16px; }
 .card h2 { font-size: 15px; font-weight: 500; line-height: 1.4; }
@@ -163,8 +163,8 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 .legend i.lead { background: var(--accent); }
 .legend i.own { width: 16px; height: 0; border-radius: 0; border-top: 1.5px dashed var(--text-3); background: none; }
 
-/* The plot. The SVG stretches to the box; its dots are zero-length strokes with round caps and its lines keep their
-   width, so both stay true at any shape. Every label is HTML placed by percentage, at its own size. */
+{# The plot. The SVG stretches to the box; its dots are zero-length strokes with round caps and its lines keep their
+   width, so both stay true at any shape. Every label is HTML placed by percentage, at its own size. #}
 .plot { position: relative; height: 260px; margin: 28px 8px 48px 40px; }
 .plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .plot .grid line { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
@@ -186,7 +186,7 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 
 .card .caption.small { margin-top: 0; color: var(--text-3); font-size: 13px; }
 
-/* The board: a toolbar of filters, then the ranked list */
+{# The board: a toolbar of filters, then the ranked list #}
 .board { margin-top: 24px; }
 .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding-bottom: 16px; }
 .toolbar h2 { margin-right: auto; font-size: 20px; font-weight: 500; }
@@ -206,9 +206,9 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 .toolbar input[type="search"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .filtered-none { padding: 24px 0; color: var(--text-2); border-top: 1px solid var(--line); }
 
-/* The ranked list. A table, whose parts name their roles, because a phone stacks each row's cells. A closed row is
+{# The ranked list. A table, whose parts name their roles, because a phone stacks each row's cells. A closed row is
    two lines and a line of figures on a phone, and two lines on a desktop: its name, and its description cut to one
-   line. Its chevron, under the rank, opens it on everything else. */
+   line. Its chevron, under the rank, opens it on everything else. #}
 .chart { width: 100%; border-collapse: collapse; }
 .chart thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .chart tbody tr {
@@ -236,15 +236,15 @@ th.re { grid-area: repository; min-width: 0; overflow-wrap: anywhere; line-heigh
 .re a:hover .nm { text-decoration-color: currentColor; }
 .re a:visited, .re a:visited .ow { color: var(--text-3); }
 .re .new { margin-left: 8px; padding: 1px 6px; border-radius: 6px; background: var(--new-soft); color: var(--new); font: 500 12px/1.4 var(--sans); white-space: nowrap; vertical-align: 1px; }
-/* The description on one line, and whole once the row is open. */
+{# The description on one line, and whole once the row is open. #}
 td.de { grid-area: description; min-width: 0; max-width: 720px; margin-top: 2px; overflow: hidden; color: var(--text-2); font-size: 14px; line-height: 1.5; text-overflow: ellipsis; white-space: nowrap; }
 .chart tbody tr:has(details[open]) td.de { overflow: visible; overflow-wrap: anywhere; white-space: normal; }
 td.de.none { color: var(--text-3); }
 td.gr { grid-area: growth; margin-top: 6px; color: var(--accent); font: 500 14px/1.5 var(--mono); font-variant-numeric: tabular-nums; }
 td.gr::after { content: " a day"; color: var(--text-3); font: 400 13px/1.5 var(--sans); }
 td.gr.g::after { content: " on the day"; }
-/* The row's own pace against what it gained, small: the dashed level of its usual pace, the level of its last two
-   days, and the part between in the green, on one log scale for every row. */
+{# The row's own pace against what it gained, small: the dashed level of its usual pace, the level of its last two
+   days, and the part between in the green, on one log scale for every row. #}
 td.pc { --w: 64px; --h: 24px; grid-area: own; align-self: center; margin-top: 6px; }
 td.pc::before {
   content: "";
@@ -264,7 +264,7 @@ td.st { grid-area: stars; margin-top: 6px; color: var(--text-2); font: 400 13px/
 td.language { grid-area: language; margin-top: 6px; color: var(--text-3); font-size: 13px; }
 .chart thead .sub { display: block; color: var(--text-3); font-size: 12px; }
 
-/* The disclosure: its summary is the chevron under the rank; what it opens spans the row. */
+{# The disclosure: its summary is the chevron under the rank; what it opens spans the row. #}
 td.wy { grid-area: why; color: var(--text-2); font-size: 14px; }
 td.wy summary { position: absolute; left: 0; top: 38px; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 6px; color: var(--text-3); cursor: pointer; list-style: none; transition: background-color 150ms var(--ease), color 150ms var(--ease); }
 td.wy summary::-webkit-details-marker { display: none; }
@@ -282,7 +282,7 @@ caption.part-title { display: table-caption; caption-side: top; }
 .fa dd { margin: 0; color: var(--text); font-size: 14px; }
 .more-wait { color: var(--text-3); }
 
-/* The opened row's drawings: its own pace against what it gained, and its stars over 30 days. */
+{# The opened row's drawings: its own pace against what it gained, and its stars over 30 days. #}
 .drawing-plot { position: relative; height: 160px; margin: 8px 0 22px; }
 .drawing-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .drawing .floor { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
@@ -300,7 +300,7 @@ caption.part-title { display: table-caption; caption-side: top; }
 .month-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .month-line .stars { fill: none; stroke: var(--accent); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 
-/* The running 30 board days: a day on a board is green and carries its rank; a top-ten day is the full green. */
+{# The running 30 board days: a day on a board is green and carries its rank; a top-ten day is the full green. #}
 .run-days { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 2px; }
 .run-days > * { display: flex; align-items: center; justify-content: center; height: 28px; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--line); color: var(--text); font: 500 11px/1 var(--mono); font-variant-numeric: tabular-nums; text-decoration: none; }
 .run-days a.on { background: var(--shade-3); box-shadow: none; transition: box-shadow 150ms var(--ease); }
@@ -309,10 +309,10 @@ caption.part-title { display: table-caption; caption-side: top; }
 .run-days a.on.top:hover { color: var(--on-accent); }
 .run-axis { display: flex; justify-content: space-between; margin-top: 6px; color: var(--text-3); font: 400 11px/1 var(--mono); }
 
-/* The boards it was on, as a table. */
+{# The boards it was on, as a table. #}
 .more-days-wrap { overflow-x: auto; }
 .more-days { border-collapse: collapse; font-size: 13px; }
-/* The board's table rules reach this table inside a row too: put it back to an ordinary table. */
+{# The board's table rules reach this table inside a row too: put it back to an ordinary table. #}
 .chart .more-days thead { position: static; display: table-header-group; width: auto; height: auto; overflow: visible; clip-path: none; white-space: nowrap; background: none; border: 0; }
 .chart .more-days tr, .chart .more-days thead tr, .chart .more-days tbody tr { display: table-row; padding: 0; border: 0; background: none; box-shadow: none; cursor: auto; }
 .chart .more-days th, .chart .more-days td { display: table-cell; padding: 6px 16px 6px 0; font-size: 13px; }
@@ -326,13 +326,13 @@ caption.part-title { display: table-caption; caption-side: top; }
 .message-title { font-size: 20px; font-weight: 500; }
 .message p + p { margin-top: 8px; color: var(--text-2); }
 
-/* About this board: the board's plain facts and what New means, in the open at its foot */
+{# About this board: the board's plain facts and what New means, in the open at its foot #}
 .about { max-width: 760px; margin-top: 40px; padding: 24px 0; border-top: 1px solid var(--line); }
 .about h2 { font-size: 15px; font-weight: 500; }
 .about .lines p { margin-top: 8px; color: var(--text-2); font-size: 14px; line-height: 1.5; }
 .about .lines strong { color: var(--text); font-weight: 500; }
 
-/* A board's foot, and the site's */
+{# A board's foot, and the site's #}
 .foot { margin-top: 0; padding: 24px 0 8px; border-top: 1px solid var(--line); }
 .foot-title { font-size: 15px; font-weight: 500; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 8px; font-size: 14px; }
@@ -343,8 +343,8 @@ caption.part-title { display: table-caption; caption-side: top; }
 .colophon { margin-top: 48px; padding: 24px 0 40px; border-top: 1px solid var(--line); color: var(--text-3); font-size: 13px; }
 .colophon p + p { margin-top: 4px; }
 
-/* The board days, as month calendars: each day a cell shaded on a fixed four-step ramp by its count of
-   repositories, with how many were new under it. A day with no board is a blank cell; the newest is outlined. */
+{# The board days, as month calendars: each day a cell shaded on a fixed four-step ramp by its count of
+   repositories, with how many were new under it. A day with no board is a blank cell; the newest is outlined. #}
 .ramp-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 20px; color: var(--text-2); font-size: 13px; }
 .ramp-legend .ramp-title { color: var(--text); }
 .ramp-legend span { display: inline-flex; align-items: center; gap: 8px; }
@@ -367,12 +367,12 @@ caption.part-title { display: table-caption; caption-side: top; }
 .cal a.newest { box-shadow: inset 0 0 0 2px var(--accent); }
 .cal .date { color: var(--text); font-size: 12px; line-height: 1.3; }
 .cal .count { margin-top: auto; color: var(--text); font: 500 14px/1.2 var(--mono); font-variant-numeric: tabular-nums; }
-/* The new counts, and the note that names them, show where a cell has room for them; a screen reader hears each
-   count in its cell at any width. */
+{# The new counts, and the note that names them, show where a cell has room for them; a screen reader hears each
+   count in its cell at any width. #}
 .fresh-note { display: none; }
 .cal .fresh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-/* The Baseline page: the chart, and every repository in it as a table */
+{# The Baseline page: the chart, and every repository in it as a table #}
 .figures { margin-top: 40px; }
 .figures h2 { padding-bottom: 12px; font-size: 20px; font-weight: 500; }
 .numbers { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -385,7 +385,7 @@ caption.part-title { display: table-caption; caption-side: top; }
 .numbers tr.flash { background: var(--accent-soft); }
 .figures .note { margin-top: 16px; }
 
-/* How it works */
+{# How it works #}
 .prose { max-width: 680px; padding-bottom: 16px; }
 .prose h2 { margin-top: 40px; font-size: 20px; font-weight: 500; line-height: 1.3; }
 .prose h2 + p, .prose p + p { margin-top: 12px; }
@@ -476,9 +476,9 @@ caption.part-title { display: table-caption; caption-side: top; }
 @media (min-width: 1100px) {
   .months { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px; row-gap: 40px; }
 }
-/* Forced colours drop backgrounds and shadows. The drawings made of them take system colours instead; the Baseline
+{# Forced colours drop backgrounds and shadows. The drawings made of them take system colours instead; the Baseline
    legend keeps the page's colours, as its chart's dots do; and the cells of History's calendar, which lose their
-   shades, keep an edge, the newest one's in the highlight. */
+   shades, keep an edge, the newest one's in the highlight. #}
 @media (forced-colors: active) {
   .legend i { forced-color-adjust: none; }
   td.pc::before, .days14 i { forced-color-adjust: none; --accent: Highlight; --gain-soft: GrayText; --text-3: CanvasText; --dot: CanvasText; }
