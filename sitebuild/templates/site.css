@@ -1,7 +1,7 @@
 {# Rising Repos, set like an instrument's daily log: quiet paper and graphite chrome, and a few inks that each mean
-   one thing: evergreen for what a repository gained and the board's top, and amber
-   for what is new. The dashed line of a repository's own pace is the site's one
-   signature: it is in every row, the opened row's drawing, the Baseline chart, and the worked example. Links stay
+   one thing: evergreen for what a repository gained and the board's top, amber
+   for what is new, and a deep red for a loss. The dashed line of a repository's own pace is the site's
+   one signature: it is in every row, the opened row's drawing, the Baseline chart, and the worked example. Links stay
    in the text's own colour, so that colour always means one of those things. #}
 
 {# The four faces, inside the page: sitebuild/__init__.py's font_faces. Rising Sans and Rising Mono are
@@ -29,6 +29,7 @@
   --on-accent: #ffffff;
   --new: #8a4b08;
   --new-soft: rgba(214, 140, 40, 0.18);
+  --loss: #a8201a;
   --dot: rgba(27, 26, 22, 0.3);
   --shade-1: #eef2ee;
   --shade-2: #d8e8dd;
@@ -57,6 +58,7 @@
     --on-accent: #0f1a14;
     --new: #f0b45e;
     --new-soft: rgba(240, 180, 94, 0.16);
+    --loss: #f07a6e;
     --dot: rgba(236, 235, 229, 0.32);
     --shade-1: #1b221d;
     --shade-2: #1e3326;
@@ -66,7 +68,7 @@
 }
 :root[data-theme="light"] { color-scheme: light; }
 :root[data-theme="dark"] {
-    color-scheme: dark;
+  color-scheme: dark;
   --bg: #121311;
   --surface: #181a17;
   --raised: #22241f;
@@ -81,6 +83,7 @@
   --on-accent: #0f1a14;
   --new: #f0b45e;
   --new-soft: rgba(240, 180, 94, 0.16);
+  --loss: #f07a6e;
   --dot: rgba(236, 235, 229, 0.32);
   --shade-1: #1b221d;
   --shade-2: #1e3326;
@@ -243,6 +246,11 @@ td.de.none { color: var(--text-3); }
 td.gr { grid-area: growth; margin-top: 6px; color: var(--accent); font: 500 14px/1.5 var(--mono); font-variant-numeric: tabular-nums; }
 td.gr::after { content: " a day"; color: var(--text-3); font: 400 13px/1.5 var(--sans); }
 td.gr.g::after { content: " on the day"; }
+{# A loss, in the red and written with the true minus, the same wherever an opened row gives one. A gain of 0, and a
+   day the file has no count for, are not a gain, so they are not in the green: the second rule sets them in the
+   second ink, and is the one place to change for another. #}
+td.gr.loss, .more-days td.gain.loss, .fa dd.loss { color: var(--loss); }
+td.gr.nil, .more-days td.gain.nil { color: var(--text-2); }
 {# The row's own pace against what it gained, small: the dashed level of its usual pace, the level of its last two
    days, and the part between in the green, on one log scale for every row. #}
 td.pc { --w: 64px; --h: 24px; grid-area: own; align-self: center; margin-top: 6px; }

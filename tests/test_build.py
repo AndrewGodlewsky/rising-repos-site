@@ -6,12 +6,14 @@ page for an address that holds no page, and the fonts' licence. A test of someth
 all.
 """
 
+import json
 import re
 import shutil
+import subprocess
 import unittest
 from datetime import date
 
-from helpers import BuildTest, build, read_json, write_json
+from helpers import BuildTest, build, read_json, shipped, write_json
 
 from sitebuild import (
     BASELINE,
@@ -27,10 +29,14 @@ from sitebuild import (
     board_day_page,
     calendar,
     daily_job,
+    gain_class,
     gained,
     per_day,
     took,
 )
+
+NODE = shutil.which("node")
+"""Node runs a part of the page's script; the GitHub runner image has it, as tests/test_old_board.py says."""
 
 NOINDEX = '<meta name="robots" content="noindex">'
 
@@ -753,9 +759,45 @@ class TheGrowthColumn(BuildTest):
     otherwise the stars a day of its recent days, as the board did before."""
 
     def test_the_stars_a_row_gained_on_its_day_are_signed_and_a_day_without_a_count_is_a_dash(self):
-        for gain, shown in ((147, "+147"), (1234, "+1,234"), (0, "0"), (-600, "-600"), (None, "–")):
+        """A loss takes the true minus, which the site's type draws as wide as the plus, not the hyphen."""
+        for gain, shown in ((147, "+147"), (1234, "+1,234"), (0, "0"), (-600, "−600"), (-1234, "−1,234"), (None, "–")):
             with self.subTest(gain):
                 self.assertEqual(gained({"gained_1_day": gain}), shown)
+        self.assertEqual("−", "\N{MINUS SIGN}")
+
+    def test_a_loss_is_in_the_red_and_a_gain_of_0_or_no_count_in_the_second_ink(self):
+        """AndrewGodlewsky/RisingRepos#199: the green is for what a repository gained, so a loss takes the red, whose
+        one job it is, and a gain of 0 and the dash of no count take the second ink, by one rule that is the place to
+        change them. The stylesheet sets each by the cell's class, and sets a loss the same way where an opened row
+        gives one: its gains over 7 and 30 days, and the stars a day in its table of the boards it was on."""
+        board = read_json(self.board_file())
+        gains = [147, -600, 0, None, 12]
+        self.write_board({**board, "rows": [{**row, "gained_1_day": gain} for row, gain in zip(board["rows"], gains, strict=True)]})
+        page = self.build_pages()[BOARD]
+        cells = [[cell for cell in row.all("td") if "gr" in cell.classes()][0] for row in page.rows()]
+        self.assertEqual([cell.text() for cell in cells], ["+147", "−600", "0", "–", "+12"])
+        self.assertEqual([sorted(set(cell.classes()) - {"gr", "g"}) for cell in cells], [[], ["loss"], ["nil"], ["nil"], []])
+        style = "".join(page.one("style").children)
+        self.assertIn("td.gr.loss, .more-days td.gain.loss, .fa dd.loss { color: var(--loss); }", style)
+        self.assertIn("td.gr.nil, .more-days td.gain.nil { color: var(--text-2); }", style)
+
+    def test_an_opened_row_writes_and_marks_a_gain_as_the_board_does(self):
+        """The opened row's gains are written by filters.js, which the build does not run: its own helpers, run here
+        under Node, give each gain the board's figure and class. The facts give "Not known" for no count, where the
+        board's cell gives a dash. The facts are in the ink, so only a loss takes a class there."""
+        self.assertIsNotNone(NODE, "Node is needed to run the page's script, and none is on the PATH.")
+        script = shipped("filters.js")
+        helpers = re.search(r"(?m)^  function figure\(.*\n(?:  function \w+\(.*\n)*?  function gainKind\(.*\n", script).group(0)
+        cases = [147, 1234, 0, -600, -1234, None]
+        program = helpers + f"process.stdout.write(JSON.stringify({json.dumps(cases)}.map(function (n) {{ return [signed(n), gainKind(n)]; }})));"
+        result = subprocess.run([NODE, "-e", program], capture_output=True, text=True, encoding="utf-8", timeout=60)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        expected = [[gained({"gained_1_day": n}) if n is not None else "Not known", gain_class(n).strip()] for n in cases]
+        self.assertEqual(json.loads(result.stdout), expected)
+        self.assertIn('fact("Gained in 7 days", signed(entry.gains[0]), gainKind(entry.gains[0]) === "loss" ? "loss" : "");', script)
+        self.assertIn('fact("Gained in 30 days", signed(entry.gains[1]), gainKind(entry.gains[1]) === "loss" ? "loss" : "");', script)
+        self.assertIn('make("td", "num gain " + gainKind(pace), pace === null ? "—" : sign(pace, rate(Math.abs(pace))))', script)
+        self.assertIn('parseFloat(grew.textContent.replace(/[+,]/g, "").replace("\N{MINUS SIGN}", "-"))', script)
 
     def test_a_board_whose_file_gives_the_days_gains_shows_them_and_orders_by_them(self):
         rows = read_json(self.board_file())["rows"]
@@ -779,6 +821,15 @@ class TheGrowthColumn(BuildTest):
     def test_stars_a_day_are_whole_from_ten_and_to_one_place_below(self):
         self.assertEqual(per_day({"recent_stars": 295, "recent_days": 2}), "+148")
         self.assertEqual(per_day({"recent_stars": 13, "recent_days": 2}), "+6.5")
+
+    def test_stars_a_day_are_signed_as_a_days_gain_is_since_the_contract_does_not_bar_a_loss(self):
+        self.assertEqual(per_day({"recent_stars": 0, "recent_days": 2}), "0")
+        self.assertEqual(per_day({"recent_stars": -13, "recent_days": 2}), "−6.5")
+        self.drop_row_fields("gained_1_day", "gained_7_days", "gained_30_days", "star_history")
+        board = read_json(self.board_file())
+        self.write_board({**board, "rows": [{**board["rows"][0], "recent_stars": -13}, *board["rows"][1:]]})
+        cell = [cell for cell in self.build_pages()[BOARD].rows()[0].all("td") if "gr" in cell.classes()][0]
+        self.assertEqual((cell.text(), sorted(cell.classes())), ("−6.5", ["gr", "loss"]))
 
 
 class TheBands(BuildTest):

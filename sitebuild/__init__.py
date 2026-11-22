@@ -327,21 +327,43 @@ def growth(row: dict) -> dict:
     }
 
 
+MINUS = "\N{MINUS SIGN}"
+"""What a loss is written with: the true minus, which the site's type draws as wide as the plus and the figures, not
+the hyphen. filters.js writes the gains an opened row gives the same way."""
+
+
+def signed(number: float, written: str) -> str:
+    """A gain as the site writes it: `written`, the figure without its sign, after a plus for a gain and the true
+    minus for a loss, and bare for 0."""
+    return ("+" if number > 0 else MINUS if number < 0 else "") + written
+
+
+def gain_class(number: float | None) -> str:
+    """The class a gain's cell takes beside its own (AndrewGodlewsky/RisingRepos#199): ' loss' for a loss, which the
+    stylesheet sets in the red, and ' nil' for 0 or no count, which it sets in the second ink, since the green is for
+    what a repository gained. Nothing for a gain."""
+    if number is None or number == 0:
+        return " nil"
+    return " loss" if number < 0 else ""
+
+
 def gained(row: dict) -> str:
     """The growth column when the board's file gives `gained_1_day` (RisingRepos#194): the stars the repository gained
-    on the board day, as '+147', '0', or '-600' for a loss, and '–' when the file has no count for the day before."""
+    on the board day, as '+147', '0', or '−600' for a loss, and '–' when the file has no count for the day before."""
     gain = row.get("gained_1_day")
     if gain is None:
         return "–"
-    return f"+{gain:,}" if gain > 0 else f"{gain:,}"
+    return signed(gain, f"{abs(gain):,}")
 
 
 def per_day(row: dict) -> str:
     """The growth column when the board's file has no `gained_1_day`: the stars a day the repository gained over its
     recent days, the board day and the day before, or the one of them the loss rule kept, as '+148'. The same unit on
     every row, which its total over the two days would not be when a day is left out. Whole from 10, to one place
-    below, as `times` rounds: 295 in 2 days as '+148', and 13 in 2 days as '+6.5'."""
-    return "+" + times(row["recent_stars"] / row["recent_days"])
+    below, as `times` rounds: 295 in 2 days as '+148', and 13 in 2 days as '+6.5'. The contract does not bar a loss
+    over the recent days, which is written as a loss is on the board day."""
+    pace = row["recent_stars"] / row["recent_days"]
+    return signed(pace, times(abs(pace)))
 
 
 PACE_SCALE = (0.5, 5000)
@@ -793,6 +815,8 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         growth=growth,
         per_day=per_day,
         gained=gained,
+        gained_class=lambda row: gain_class(row.get("gained_1_day")),
+        per_day_class=lambda row: gain_class(row["recent_stars"] / row["recent_days"]),
         own_pace=own_pace,
         baseline_figure=lambda value: figure(value, 2),
         script_hash=lambda text: script_hash(str(text)),

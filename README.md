@@ -121,13 +121,13 @@ What every page holds to, each checked by a test in `tests/`:
 
   | Board | A board's page | History | Baseline | How it works | The not-found page |
   | --- | --- | --- | --- | --- | --- |
-  | The data contract's example, 5 rows | 98,317 bytes | 73,401 bytes | 78,415 bytes | 74,336 bytes | 69,300 bytes |
-  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens, and each row's reason the longest the site has written, 200 bytes | 481,991 bytes | | | | |
-  | `site-data/` on 2026-11-21: the root, 264 rows, and the longest board, 12 August 2026, 475 rows | 309,880 and 479,621 bytes | 105,125 bytes | 137,720 bytes | | |
+  | The data contract's example, 5 rows | 98,971 bytes | 73,639 bytes | 78,653 bytes | 74,574 bytes | 69,538 bytes |
+  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens, and each row's reason the longest the site has written, 200 bytes | 482,638 bytes | | | | |
+  | `site-data/` on 2026-11-21: the root, 264 rows, and the longest board, 12 August 2026, 475 rows | 310,553 and 480,324 bytes | 105,363 bytes | 137,958 bytes | | |
 
-  The four faces are 34,916 bytes of every page. The script is 1,264 bytes
+  The four faces are 34,964 bytes of every page. The script is 1,264 bytes
   where it is the theme alone, 2,948 with the notice of an old board, and
-  21,566 on a board with rows, with its filters and opened rows. A made-up row
+  21,975 on a board with rows, with its filters and opened rows. A made-up row
   above is 1,226 bytes of markup, and a row of `typical_rows` in the test
   about 800. What an opened row shows beyond its line is in `history.json`,
   not in the page: 222,708 bytes for the longest history in `site-data/`, 20
@@ -143,15 +143,15 @@ What every page holds to, each checked by a test in `tests/`:
 - **The root on the wire.** The site eval gives the root a budget of 100,000
   transferred bytes in each of its two profiles, phone and desktop
   (see `evals/site/limits.json`), and the root of 21 November 2026, 264 rows,
-  takes 81,755 bytes gzipped at level 6. A test in
+  takes 81,993 bytes gzipped at level 6. A test in
   `tests/test_page_weight.py` fills the newest board with 713 invented rows,
   gzips the built root at level 6, and checks the result against 150,000
   bytes, a budget of its own since
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199).
-  On 2026-11-21 it came to 145,571 bytes with zlib 1.3.1, which the workflow's
-  Python uses, and 142,431 with the zlib-ng that Python 3.14 uses on Windows,
+  On 2026-11-21 it came to 145,779 bytes with zlib 1.3.1, which the workflow's
+  Python uses, and 142,657 with the zlib-ng that Python 3.14 uses on Windows,
   so a size measured on Windows reads about 2% low. The type takes about
-  28,600 of those bytes. Before the notes on the stylesheet and the scripts
+  28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries
   105 characters of description in random letters, which pack worse than a
   real description's words, so the test errs on the heavy side. Its numbers
@@ -182,11 +182,11 @@ pace across, its pace over the last two days up, both on log scales, and "N×
 its usual pace" is a family of parallel diagonals. How far above the dashed
 diagonal of its own pace a repository sits is its score. Around that, the
 chrome is a quiet logbook: warm paper and graphite ink in the light theme,
-graphite paper and light ink in the dark, one evergreen pen, and a second
-colour, amber, kept for what is new. The dashed line of a repository's own
-pace is the one recurring mark: in the site's mark, in each row's small
-drawing, in an opened row's drawing, on Baseline, and in How it works' worked
-example.
+graphite paper and light ink in the dark, one evergreen pen, amber kept for
+what is new, and a deep red kept for a loss. The dashed line of a
+repository's own pace is the one recurring mark: in the site's mark, in each
+row's small drawing, in an opened row's drawing, on Baseline, and in How it
+works' worked example.
 
 **Type.** Two families, Rising Sans and Rising Mono, at 400 and 500, inside
 each page. They are IBM Plex Sans and IBM Plex Mono, by IBM Corp., under the
@@ -218,11 +218,12 @@ The body is 15 px, the description 14 px, a repository's name 16 px (17 px from
 | `--surface` | `#ffffff` | `#181a17` | A control, a card, an opened row, the notice of an old board |
 | `--raised` | `#efeee8` | `#22241f` | A note above the rows, and a control under the pointer |
 | `--text` | `#1b1a16` | `#ecebe5` | The text: 16.10:1 on the page, 15.60:1 in the dark |
-| `--text-2` | `#55524a` | `#b0ada3` | The descriptions, the owner, the bars' links, the facts: 7.21:1, 8.30:1 |
+| `--text-2` | `#55524a` | `#b0ada3` | The descriptions, the owner, the bars' links, a gain of 0 or a day with no count where a gain is green: 7.21:1, 8.30:1 |
 | `--text-3` | `#6b675d` | `#939087` | The quietest text: the ranks past the top ten, the headings over the figures, a visited repository: 5.22:1, 5.84:1 |
 | `--accent` | `#12704b` | `#5cc896` | Evergreen: what a repository gained, the top ten ranks, a pressed filter, the focus ring, a link under the pointer: 5.64:1, 9.01:1 |
 | `--on-accent` | `#ffffff` | `#0f1a14` | A top-three rank on the accent: 6.10:1, 8.62:1 |
 | `--new` | `#8a4b08` | `#f0b45e` | Amber: the New mark, the New filter: 6.79:1 on a control, 9.50:1 |
+| `--loss` | `#a8201a` | `#f07a6e` | Deep red: a loss, and nothing else, written with the true minus, in the growth column and in an opened row's gains over 7 and 30 days and its table of days: 6.73:1, 6.84:1 |
 | `--shade-1` to `--shade-4` | `#eef2ee` to `#9fcbb0` | `#1b221d` to `#285e42` | History's ramp, by a board's count of repositories |
 
 The tints, `--accent-soft`, `--gain-soft`, and `--new-soft`, are the accent and
@@ -233,7 +234,7 @@ ring that carry meaning meet 3:1; and `tests/test_colour.py` holds each pair,
 in both themes. The lowest is `--text-3` on a row under the pointer, 4.66:1. A
 visited repository dims from the ink to `--text-3`, 3.09:1 apart, so a reader
 who comes back each day sees which ones they have opened. No colour but the
-two hues and the neutrals is set, and the test holds that too.
+three hues and the neutrals is set, and the test holds that too.
 
 **The theme.** The site follows the browser's own setting, light or dark. The
 switch at the right of the site's bar turns it the other way, and the choice
@@ -339,13 +340,15 @@ row's does, and every cell keeps its column's heading, the description's and
 the reason's for a screen reader only. A file older than the rows' numbers
 gives no row a reason, and the board then shows the language in their place.
 
-The day's gain is `gained_1_day`, signed: "+147", "0", "-600" for a loss, and
-"–" when the file has no count for the day before. A file from before the
-field gives the stars a day over the recent days instead, "+148", as the board
-did before. The drawing is the row's own pace against what it gained, on one
-log scale for every row, so that two rows compare: the dashed level of its
-usual pace, the level of its last two days, and the part between in the
-accent. A screen reader hears it in words: "Usual 0.25 a day, then 48 a day".
+The day's gain is `gained_1_day`, signed: "+147" in the accent, "0" in
+`--text-2`, "−600" for a loss in `--loss`, with the true minus, which the
+site's type draws as wide as the plus, and "–" in `--text-2` when the file has
+no count for the day before. A file from before the field gives the stars a
+day over the recent days instead, "+148", as the board did before. The
+drawing is the row's own pace against what it gained, on one log scale for
+every row, so that two rows compare: the dashed level of its usual pace, the
+level of its last two days, and the part between in the accent. A screen
+reader hears it in words: "Usual 0.25 a day, then 48 a day".
 
 **An opened row.** The chevron is a `<details>` whose `<summary>` is named "More
 on" the repository, so a click, a tap, or the keyboard opens it with no
@@ -513,9 +516,9 @@ root.
 - Rising Sans for words and Rising Mono for figures, inside the page. No font
   file, and no third family.
 - The colours in the table, each with its one job: the accent for what a
-  repository gained and the board's top, amber for what is new, the neutrals
-  for the rest. A new text colour comes with a background that gives it
-  4.5:1, in both themes, and a line in `tests/test_colour.py`.
+  repository gained and the board's top, amber for what is new, the red for a
+  loss, the neutrals for the rest. A new text colour comes with a background
+  that gives it 4.5:1, in both themes, and a line in `tests/test_colour.py`.
 - An underline means a link, and a visited repository dims.
 - Tabular figures for any number in a column.
 - A drawing comes with its figures in words, for a screen reader.

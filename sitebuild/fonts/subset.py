@@ -34,8 +34,9 @@ from fontTools import subset
 from fontTools.ttLib import TTFont
 
 HERE = Path(__file__).resolve().parent
-# Beyond ASCII: no-break space, middle dot, », ×, ÷, en dash, em dash, ellipsis, ‹, ›, and the up arrow.
-CHARACTERS = "U+0020-007E,U+00A0,U+00B7,U+00BB,U+00D7,U+00F7,U+2013,U+2014,U+2026,U+2039,U+203A,U+2191"
+# Beyond ASCII: no-break space, middle dot, », ×, ÷, en dash, em dash, ellipsis, ‹, ›, the up arrow, and the minus
+# sign, which a loss is written with, as wide as the plus and the figures.
+CHARACTERS = "U+0020-007E,U+00A0,U+00B7,U+00BB,U+00D7,U+00F7,U+2013,U+2014,U+2026,U+2039,U+203A,U+2191,U+2212"
 # What each file is made from, in source/, and the family it is renamed to.
 FILES = {
     "rising-sans-400": ("rising-sans-latin-400.woff2", "IBM Plex Sans", "Rising Sans"),

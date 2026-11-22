@@ -121,14 +121,15 @@
    language are in history.json with the rest, and filters.js shows them all in one step when the file is in. The
    row's language is also in data-l, for the language filter. The class names are cut short, since each
    row repeats them: rk rank, re repository, ow owner, nm name, de description, wy why, op opened, rs reason,
-   ln line, su sum, fa facts, gr growth, pc own pace, st stars, and sr for words only a screen reader reads. #}
+   ln line, su sum, fa facts, gr growth, pc own pace, st stars, and sr for words only a screen reader reads. A
+   growth cell is also loss for a loss, and nil for 0 or no count. #}
 {% set reason = row|why %}
 <td class="wy" role="cell"><details><summary><span class="sr">More on {{ row.full_name }}</span></summary>
 <div class="op">
 <div class="rs"><p class="ln">{{ reason.line }}</p></div>
 </div>
 </details></td>
-{% if gains %}<td class="gr g" role="cell">{{ row|gained }}</td>{% else %}<td class="gr" role="cell">{{ row|per_day }}</td>{% endif %}
+{% if gains %}<td class="gr g{{ row|gained_class }}" role="cell">{{ row|gained }}</td>{% else %}<td class="gr{{ row|per_day_class }}" role="cell">{{ row|per_day }}</td>{% endif %}
 {% set pace = row|own_pace %}
 <td class="pc" role="cell" style="{{ pace.style }}"><span class="sr">{{ pace.text }}</span></td>
 {% else %}

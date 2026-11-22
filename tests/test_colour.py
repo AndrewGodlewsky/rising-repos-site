@@ -21,6 +21,7 @@ accent painted over the page."""
 TEXT_ON_BACKGROUND = [
     *[(text, surface) for text in TEXT for surface in SURFACES],
     *[("--accent", surface) for surface in SURFACES],
+    *[("--loss", surface) for surface in SURFACES],
     ("--accent", "--gain-soft over --surface"),
     ("--new", "--surface"),
     ("--new", "--new-soft over --bg"),
@@ -32,6 +33,8 @@ TEXT_ON_BACKGROUND = [
 """Each text colour the page sets, and each background it sets that text on:
 
 - the inks, and the accent (a gain, a rank of the top ten, a link under the pointer), on every surface;
+- the red, for a loss: in the growth column on the page and on a row under the pointer, and in an opened row's
+  facts and table of days on its card;
 - the accent on its own tint over a control: a filter that is pressed;
 - amber, for New: the New button's count, and the New mark and a pressed New button on amber's tint;
 - the ink on the accent: a top-three rank, and a top-ten day of the 30-day strip;
@@ -47,7 +50,7 @@ LINES_ON_BACKGROUND = [
 """What carries meaning without being text, each at WCAG's 3:1 for a graphic: the focus ring and what the board gained
 in its drawings, in the accent, and the dashed line of a repository's own pace, in the third ink, on a card."""
 
-INKS = {f"var({token})" for token in (*TEXT, "--accent", "--new", "--on-accent")}
+INKS = {f"var({token})" for token in (*TEXT, "--accent", "--new", "--loss", "--on-accent")}
 
 VISITED_APART = 1.5
 """The least contrast between a visited repository's name and one not yet visited. A visited repository dims from
@@ -153,23 +156,27 @@ class TheColours(BuildTest):
                 for theme, tokens in self.themes(style).items():
                     self.assertGreaterEqual(contrast(tokens["--text"], tokens["--text-3"]), VISITED_APART, theme)
 
-    def test_the_two_hues_each_have_one_job_and_no_other_hue_is_set(self):
+    def test_the_three_hues_each_have_one_job_and_no_other_hue_is_set(self):
         """Evergreen for what a repository gained and the board's top, with History's ramp in its steps; amber for
-        new; and the neutral ramp for everything else (AndrewGodlewsky/RisingRepos#199). A neutral is warm or cool by
-        a few points, so a colour counts as a hue once its channels lie more than 24 apart."""
+        new; a deep red for a loss and nothing else; and the neutral ramp for everything else
+        (AndrewGodlewsky/RisingRepos#199). A neutral is warm or cool by a few points, so a colour counts as a hue once
+        its channels lie more than 24 apart."""
         greens = {"--accent", "--accent-soft", "--gain-soft", "--shade-3", "--shade-4"}
         faint = {"--shade-1", "--shade-2"}  # the ramp's two lightest steps, each a faint green or a neutral by this test
         ambers = {"--new", "--new-soft"}
+        reds = {"--loss"}
         for path, style in self.styles.items():
             for theme, tokens in self.themes(style).items():
                 with self.subTest(path, theme=theme):
                     hues = {name: self.hue(value) for name, value in tokens.items() if self.hue(value) is not None}
-                    self.assertLessEqual(set(hues), greens | faint | ambers)
-                    self.assertLessEqual(greens | ambers, set(hues))
-                    for name in set(hues) - ambers:
+                    self.assertLessEqual(set(hues), greens | faint | ambers | reds)
+                    self.assertLessEqual(greens | ambers | reds, set(hues))
+                    for name in set(hues) - ambers - reds:
                         self.assertTrue(130 <= hues[name] <= 170, (name, hues[name]))
                     for name in ambers:
                         self.assertTrue(25 <= hues[name] <= 45, (name, hues[name]))
+                    for name in reds:
+                        self.assertTrue(hues[name] <= 15 or hues[name] >= 345, (name, hues[name]))
 
     @staticmethod
     def hue(colour: str) -> float | None:

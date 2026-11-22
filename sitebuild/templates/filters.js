@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function bandOf(stars) { var band = 0; while (stars >= below[band]) band++; return band; }
   var rows = [].slice.call(table.querySelectorAll("tbody tr")).map(function (row, i) {
     var stars = Number(row.querySelector(".st").textContent.replace(/\D/g, ""));
+    {# Its gain, read back from its growth cell for the "Most stars gained" order: a loss is written with the true
+       minus, which parseFloat does not read, so it becomes the hyphen first, and the dash of no count reads as 0. #}
     var grew = row.querySelector("td.gr");
     {# The language: in the row's data-l, or in its own cell on a board whose file predates the rows' numbers. #}
     var cell = row.querySelector("td.language");
@@ -41,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
       text: (row.querySelector(".re").textContent + " " +
         (description.classList.contains("none") ? "" : description.textContent)).toLowerCase(),
       stars: stars,
-      daily: grew ? parseFloat(grew.textContent.replace(/[+,]/g, "")) || 0 : 0,
+      daily: grew ? parseFloat(grew.textContent.replace(/[+,]/g, "").replace("−", "-")) || 0 : 0,
       often: Number(row.getAttribute("data-o")) || 0,
       fresh: !!row.querySelector(".re .new")
     };
@@ -148,8 +150,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function short(day) { return Number(day.slice(8)) + " " + months[Number(day.slice(5, 7)) - 1]; }
   function long(day) { return short(day) + " " + day.slice(0, 4); }
   function figure(n) { return n.toLocaleString("en-GB"); }
-  {# A gain as the facts give it: "+1,234", "0", or "-56" for a loss, and "Not known" when the file has no count. #}
-  function signed(n) { return n === null || n === undefined ? "Not known" : (n > 0 ? "+" : "") + figure(n); }
+  {# A gain as the site writes it, as sitebuild/__init__.py's `signed` does: "+1,234", "0", or "−56" with the true
+     minus for a loss, `written` being the figure without its sign. "loss" is the class that sets a loss in the red,
+     and "nil" the one that sets 0, or no count, in the second ink where a gain is in the green. #}
+  function sign(n, written) { return (n > 0 ? "+" : n < 0 ? "−" : "") + written; }
+  function signed(n) { return n === null || n === undefined ? "Not known" : sign(n, figure(Math.abs(n))); }
+  function gainKind(n) { return n === null || n === undefined || n === 0 ? "nil" : n < 0 ? "loss" : ""; }
   {# The day `n` days before `day`, as "2026-10-21". #}
   function before(day, n) { var d = new Date(day + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() - n); return d.toISOString().slice(0, 10); }
   {# A path through `points`, each [x, y] or null, broken where a point is null, so that a missing day is a gap. #}
@@ -290,16 +296,17 @@ document.addEventListener("DOMContentLoaded", function () {
     opened.querySelector(".rs").appendChild(make("p", "su", why[0]));
     var facts = make("dl", "fa");
     opened.appendChild(facts);
-    function fact(term, value) {
+    function fact(term, value, className) {
       var pair = make("div");
       pair.appendChild(make("dt", "", term));
-      pair.appendChild(make("dd", "", value));
+      pair.appendChild(make("dd", className, value));
       facts.appendChild(pair);
     }
     fact("Multiple", why[1]);
     if (entry.gains) {
-      fact("Gained in 7 days", signed(entry.gains[0]));
-      fact("Gained in 30 days", signed(entry.gains[1]));
+      {# A fact is in the ink, so only a loss takes a colour of its own here. #}
+      fact("Gained in 7 days", signed(entry.gains[0]), gainKind(entry.gains[0]) === "loss" ? "loss" : "");
+      fact("Gained in 30 days", signed(entry.gains[1]), gainKind(entry.gains[1]) === "loss" ? "loss" : "");
     }
     fact("Language", why[2] || "not given");
     if (entry.about) fact("Licence", entry.about[0] || "None given");
@@ -362,7 +369,8 @@ document.addEventListener("DOMContentLoaded", function () {
       tr.appendChild(th);
       tr.appendChild(make("td", "num", String(e[1])));
       tr.appendChild(make("td", "num", figure(e[2])));
-      tr.appendChild(make("td", "num gain", e[3] === null ? "—" : "+" + rate(e[3] / e[4])));
+      var pace = e[3] === null ? null : e[3] / e[4];
+      tr.appendChild(make("td", "num gain " + gainKind(pace), pace === null ? "—" : sign(pace, rate(Math.abs(pace)))));
       tr.appendChild(make("td", "num", e[5] !== null ? e[5] + "×" : "—"));
     });
     var wrap = make("div", "more-days-wrap");
