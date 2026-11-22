@@ -390,8 +390,8 @@ def history_file(boards: list[dict], history: "History", number: int) -> dict:
     stars, its recent stars, its recent days, its multiple of its baseline as the growth column writes it or None, its
     score as stars a day]. A day it was off the board has no entry, so the chart leaves a gap, never a zero. A row
     with a score also gives `pace`, for its drawing, and `why`, the detail its opened row shows; `was`, its earlier
-    name, when it has been renamed within the window; and, from a file that carries them, `stars`, `gains`, and
-    `about`."""
+    name, when it has been renamed or moved since an earlier board, however long before the window; and, from a file
+    that carries them, `stars`, `gains`, and `about`."""
     span = list(range(min(len(boards), number + HISTORY_WINDOW) - 1, number - 1, -1))  # oldest first
     by_id = [{row["github_id"]: row for row in boards[at]["rows"]} for at in span]
     rows = []
@@ -409,9 +409,7 @@ def history_file(boards: list[dict], history: "History", number: int) -> dict:
             elif seen:
                 on.append([place, seen["rank"], seen["stars"], None, None, None, None])
         entry = {"first": boards[history.first[row["github_id"]]]["board_day"], "on": on}
-        # Its name on the latest earlier board that listed it under another, when it has been renamed or moved.
-        was = next((listed[row["github_id"]]["full_name"] for listed in reversed(by_id[:-1])
-                    if row["github_id"] in listed and listed[row["github_id"]]["full_name"] != row["full_name"]), None)
+        was = history.was(number, row)
         if was:
             entry["was"] = was
         if "score" in row:
@@ -621,6 +619,7 @@ class History:
     def __init__(self, boards: list[dict]):
         self.boards = boards  # newest first, as the index is
         self.ids = [{row["github_id"] for row in board["rows"]} for board in boards]
+        self.names = [{row["github_id"]: row["full_name"] for row in board["rows"]} for board in boards]
         self.first: dict[int, int] = {}
         self.first_named: dict[str, int] = {}
         for number in range(len(boards) - 1, -1, -1):  # oldest first, so the first number kept is the oldest board
@@ -629,6 +628,12 @@ class History:
             for row in boards[number]["rows"]:
                 self.first_named.setdefault(row["full_name"].lower(), number)
         self._rows: dict[int, dict] = {}
+
+    def was(self, number: int, row: dict) -> str | None:
+        """The name that `row`, on the board at `number`, had on the latest earlier board that listed it under another,
+        at any distance, when it has been renamed or moved since: what its opened row says it was listed as before."""
+        github_id, name = row["github_id"], row["full_name"]
+        return next((names[github_id] for names in self.names[number + 1:] if names.get(github_id, name) != name), None)
 
     def known(self, number: int) -> bool:
         """Whether what is new on the board at `number` can be told: there is a board before it, and it is

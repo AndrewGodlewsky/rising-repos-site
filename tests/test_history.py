@@ -79,6 +79,25 @@ class TheHistoryFile(Boards):
         self.assertEqual([on[0] for on in entry["on"]], [0, 1])
         self.assertEqual(entry["first"], OLDER)
 
+    def test_a_rename_older_than_the_thirty_board_days_is_still_named(self):
+        """A renamed repository is New, and its opened row gives the name it had before, however long ago
+        (AndrewGodlewsky/RisingRepos#199). Of the 125 renames across site-data/'s boards on 21 November 2026, 67 came
+        back more than 29 boards after the name before."""
+        boards = [
+            {"board_day": f"2026-{10 + (40 - number) // 31:02d}-{(40 - number) % 31 + 1:02d}",
+             "rows": [{"rank": 1, "github_id": 7, "full_name": "o/new" if number < 5 else "o/old", "stars": 500}]
+             if number in (0, 1, 38) else []}
+            for number in range(40)
+        ]
+        history = History(boards)
+        (entry,) = history_file(boards, history, 0)["rows"]
+        self.assertEqual(entry["was"], "o/old")
+        self.assertEqual([on[0] for on in entry["on"]], [28, 29])  # the boards in the window, by its id
+        self.assertEqual(entry["first"], boards[38]["board_day"])
+        (entry,) = history_file(boards, history, 1)["rows"]
+        self.assertEqual(entry["was"], "o/old")
+        self.assertIsNone(history.was(38, boards[38]["rows"][0]))
+
     def test_it_covers_the_last_thirty_board_days_and_a_row_off_a_board_has_no_entry_for_it(self):
         """So the chart leaves a gap, never a zero."""
         boards = [
