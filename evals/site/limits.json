@@ -14,15 +14,15 @@
     },
     "cumulative_layout_shift": {
       "limit": 0.01,
-      "reason": "No run measured any layout shift: the page loads no font, image, or script that could move it. A hundredth allows only a shift too small to see, so a real one fails, such as a font that swaps in or an image without its size. It is a tenth of Google's good threshold of 0.1."
+      "reason": "No run measured any layout shift. Since AndrewGodlewsky/RisingRepos#199 the page holds its own type, with a fallback face matched to its measures, and its one script marks the page before it is first drawn, so the controls that need the script are in place from the first frame. A hundredth allows only a shift too small to see, so a real one fails, such as a face that swaps in at another size or an image without its size. It is a tenth of Google's good threshold of 0.1."
     },
     "transfer_size": {
       "limit": 100000,
-      "reason": "The four evals' medians were 74,386 to 74,393 bytes, compressed. The bytes follow the board's size: the two board days published have 663 and 811 rows. A third more allows a board of about 1,090 rows, and the score decides how many rows a board has. Anything else that adds a quarter of the page's weight, such as a font or an image, is worth a look."
+      "reason": "The four evals' medians were 74,386 to 74,393 bytes, compressed. The bytes follow the board's size: the two board days published then had 663 and 811 rows. AndrewGodlewsky/RisingRepos#199 put the site's type inside each page, about 28,100 bytes gzipped, and kept this limit: the root of 21 November 2026, 264 rows, is 80,871 bytes gzipped at level 6. Its data: addresses are in the page's own bytes, so they are not counted a second time. Anything else that adds a quarter of the page's weight, such as an image, is worth a look."
     },
     "requests": {
       "limit": 1,
-      "reason": "What is counted is the requests the page sent. One that the page's own content security policy refused never left the browser, so it is not counted, and the summary names it: at the live address, the analytics script the host adds to each page. On the preview every run made one request, the page itself: its styles are in the page, its icon is a data address, and it loads no script, font, or image. A second request is something new that the page depends on, and the margin is none."
+      "reason": "What is counted is the requests the page sent. One that the page's own content security policy refused never left the browser, so it is not counted, and the summary names it: at the live address, the analytics script the host adds to each page. A data: address is not counted either, since the page holds its bytes: its icon, and since AndrewGodlewsky/RisingRepos#199 its four faces. On the preview every run made one request, the page itself: its styles, its script, and its type are in the page, and it loads no image. A second request is something new that the page depends on, and the margin is none."
     }
   },
   "desktop": {
@@ -40,7 +40,7 @@
     },
     "cumulative_layout_shift": {
       "limit": 0.01,
-      "reason": "No run measured any layout shift: the page loads no font, image, or script that could move it. A hundredth allows only a shift too small to see, so a real one fails. It is a tenth of Google's good threshold of 0.1."
+      "reason": "No run measured any layout shift, as on the phone, and for the same reasons. A hundredth allows only a shift too small to see, so a real one fails. It is a tenth of Google's good threshold of 0.1."
     },
     "transfer_size": {
       "limit": 100000,
@@ -48,7 +48,7 @@
     },
     "requests": {
       "limit": 1,
-      "reason": "What is counted is the requests the page sent, as on the phone: one that the page's own content security policy refused is named in the summary and not counted. On the preview every run made one request, the page itself. A second request is something new that the page depends on, and the margin is none."
+      "reason": "What is counted is the requests the page sent, as on the phone: one that the page's own content security policy refused is named in the summary and not counted, and nor is a data: address. On the preview every run made one request, the page itself. A second request is something new that the page depends on, and the margin is none."
     }
   }
 }

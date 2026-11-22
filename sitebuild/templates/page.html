@@ -1,8 +1,10 @@
 {# The pages that carry the notice of an old board, named by the template that renders each: every board day's page,
    the root among them, and the list of board days. The not-found page and the page on how a board is ranked do
    not: the notice hides what an old board's page holds, and that page holds no board. To keep the notice to the root
-   alone, make this ("latest.html",). #}
-{% set notice = template in ("latest.html", "board.html", "days.html") %}
+   alone, make this ("latest.html",). A board's page also carries the filter over its list. #}
+{% set notice = template in ("latest.html", "board.html", "days.html", "baseline.html") %}
+{% set filtering = template in ("latest.html", "board.html") %}
+{% set section = "how" if template == "how-it-works.html" else "days" if template == "days.html" else "baseline" if template == "baseline.html" else "board" %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,32 +13,52 @@
 {% if noindex %}
 <meta name="robots" content="noindex">
 {% endif %}
-{# The page loads nothing but itself. The one script it may run is the notice's, which the policy names by the hash
-   of its text. #}
-<meta http-equiv="Content-Security-Policy" content="default-src 'none';{% if notice %} script-src '{{ script_hash }}';{% endif %} style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+{# The page loads nothing but itself, with its type inside it as data: addresses. The scripts it may run are named by
+   the hash of their text: the page's one script, site.js. A board with rows may also fetch its board day's
+   history.json from the site's own address, when a reader first opens a row. #}
+{% set script %}{% include "site.js" %}{% endset %}
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src '{{ script|script_hash }}';{% if filtering and board.rows %} connect-src 'self';{% endif %} style-src 'unsafe-inline'; font-src data:; img-src data:; base-uri 'none'; form-action 'none'">
 <title>{% block title %}{% endblock %}</title>
 <meta name="description" content="GitHub repositories gaining stars faster than their own pace predicts, on a new board each day.">
 {% block head %}{% endblock %}
-{# The band's colour, which is --field in site.css. #}
-<meta name="theme-color" content="#0f3b2e">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f3b2e'/%3E%3Cpath d='M8 22l6-6 4 4 7-9' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121311" media="(prefers-color-scheme: dark)">
+{# The mark: a rising line on a 16 grid, a level run, a 45-degree rise, and a right-angled head, in one stroke. #}
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231b1a16'/%3E%3Cg fill='none' stroke='%235cc896' stroke-width='4' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='M4 24h8l14-14' stroke-linecap='butt'/%3E%3Cpath d='M16 10h10v10'/%3E%3C/g%3E%3C/svg%3E">
+{# The page's one script: the reader's theme, applied before the page is first drawn, and what else the page uses. #}
+<script>{{ script }}</script>
 <style>
 {% include "site.css" %}
 </style>
 </head>
 <body>
-<header class="band" id="top">
+<header class="site" id="top">
 <div class="wrap">
-<p class="site"><a class="home" href="/">Rising Repos</a> GitHub repositories gaining stars faster than their own pace predicts, on a new board each day. <a class="how" href="{{ how_address }}">How it works</a></p>
-{% if notice %}
-{% include "old-board.html" %}
-{% endif %}
-{% block band %}{% endblock %}
+<a class="home" href="/"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M2 12h4l7-7" stroke-linecap="butt"/><path d="M8 5h5v5"/></svg>Rising Repos</a>
+<nav aria-label="Site">
+<a href="{{ days_address }}"{% if section == "days" %} aria-current="page"{% endif %}>History</a>
+<a href="{{ baseline_address }}"{% if section == "baseline" %} aria-current="page"{% endif %}>{{ baseline_name }}</a>
+<a class="how" href="{{ how_address }}"{% if section == "how" %} aria-current="page"{% endif %}>How it works</a>
+</nav>
+{# The light and dark switch: shown only where the page's script runs (.js-only), which it needs. Pressed means dark. #}
+<button type="button" class="theme js-only" id="theme" aria-pressed="false"><span class="sr">Dark theme</span><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 2a6 6 0 0 1 0 12z" fill="currentColor"/></svg></button>
 </div>
 </header>
+{% if notice %}
+<div class="wrap">
+{% include "old-board.html" %}
+</div>
+{% endif %}
 {% block strip %}{% endblock %}
 <main class="wrap">
+{% block band %}{% endblock %}
 {% block main %}{% endblock %}
 </main>
+<footer class="colophon">
+<div class="wrap">
+<p>Rising Repos lists the GitHub repositories gaining stars faster than their own pace predicts, on a new board each day.</p>
+<p>Star counts are from each board day. Rising Repos is not affiliated with GitHub.</p>
+</div>
+</footer>
 </body>
 </html>

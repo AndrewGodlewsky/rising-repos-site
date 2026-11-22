@@ -9,8 +9,7 @@
    of board days. It writes its own words, the day as the build wrote it, and the numbers it works out, only as
    text, and reads nothing else from the page.
 
-   The two come right after the site's line, before the date, the strip, and the main content, so the script runs
-   before any of those is parsed, and a notice it shows moves nothing already on the screen. page.html lets the
-   script run by the hash of its text, which the build works out. #}
+   The notice comes right after the site's line, before the date, the strip, and the main content. Its script is part
+   of the page's one script, in the head (site.js), which fills it the moment it is parsed, before any of those can
+   be drawn, so a notice it shows moves nothing already on the screen. #}
 <p class="old-board" id="old-board" data-newest-board-day="{{ newest.board_day|long_date }}" data-newest-published-at="{{ newest.published_at }}" hidden><strong id="old-board-title"></strong> <span id="old-board-text"></span></p>
-<script>{% include "old-board.js" %}</script>

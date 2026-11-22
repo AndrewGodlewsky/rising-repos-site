@@ -78,7 +78,7 @@ while the runner is still busy, and the median sets it aside.
 | Largest Contentful Paint | Seconds until the largest text block or image in view is painted. Google calls 2.5 s or less good | Lower |
 | Cumulative Layout Shift | How much content in view moves after it is shown, in the load's largest burst of movement. Google calls 0.1 or less good | Lower |
 | Total transfer size | The bytes of every request the load made, as they crossed the network: compressed | Lower |
-| Requests | How many requests the page sent. One that the page's own content security policy refused is not counted, and the summary names it: see [Requests the page never sent](#requests-the-page-never-sent) | Lower |
+| Requests | How many requests the page sent. One that the page's own content security policy refused is not counted, nor a `data:` address, whose bytes the page holds itself, and the summary says what it left out: see [Requests the page never sent](#requests-the-page-never-sent) | Lower |
 
 A run that Lighthouse could not finish, or whose report lacks a number, fails
 the eval and the summary says which run and why. What Lighthouse prints goes to
@@ -140,6 +140,17 @@ nothing is dropped. An audit asked for with `--only-audits` beside
 score changes. Under each table the summary names every request it did not
 count, in which runs, and for what reason. The reports in the artifact keep the
 whole rows.
+
+**The page's own type.** Since
+[AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
+the site's four faces are inside each page, as `data:` addresses in its
+stylesheet. Lighthouse lists each as a row of `network-requests`, with the
+protocol `data` and the font's bytes as its transfer size, though no request
+for it left the browser. Its own total transfer size leaves such addresses
+out for that reason. So does the eval's Requests: it drops every row whose
+address has the scheme `data`, and the summary counts them under each table.
+A row that opens on a reader's click fetches its board day's `history.json`,
+which a load that clicks nothing never asks for.
 
 **What it found once it asked.**
 [Run 44025134536](https://github.com/AndrewGodlewsky/rising-repos-site/actions/runs/44025134536),

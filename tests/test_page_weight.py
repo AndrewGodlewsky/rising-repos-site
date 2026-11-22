@@ -1,5 +1,6 @@
 """Every page stays light: it carries no script but the site's own, requests nothing from another site, and stays
-within its size limit."""
+within its size limit. A board's opened rows read its history.json, which the page fetches once, on the first opening,
+so that file is not part of the page's weight."""
 
 import gzip
 import random
@@ -13,15 +14,14 @@ from helpers import ROOT, BuildTest, Page, read_json
 
 from sitebuild import BOARD, board_day_page
 
-SIZE_LIMIT = 410_000
-"""The most bytes a page may take, uncompressed, with its styles and scripts. Issue #39 in RisingRepos set it at
-320,000 from the largest page measured, the chart design's page of the largest board below at 263,763 bytes, with a
-fifth more for what later slices add to a row, such as the stars gained that day. The slices before
-AndrewGodlewsky/RisingRepos#49 spent 30,330 bytes of that fifth, and the reason each row gives there needs 86,993 more
-on the largest board, which no wording of it with an expanded view fits in what was left. #49 raised it, the agent's
-decision recorded there, to the 381,086 bytes that board's page then took with about a twentieth more: the limits a
-longer board meets are weighed in AndrewGodlewsky/RisingRepos#64, and the root's transfer budget below is the site
-eval's own. README.md gives the measurements."""
+SIZE_LIMIT = 500_000
+"""The most bytes a page may take, uncompressed, with its styles, its script, and its type. Issue #39 in RisingRepos
+set it at 320,000 from the largest page measured, the chart design's page of the largest board below at 263,763 bytes,
+with a fifth more for what later slices add to a row. AndrewGodlewsky/RisingRepos#49 raised it to 410,000 for each
+row's reason. AndrewGodlewsky/RisingRepos#199 raised it to 500,000, as decided there, for the redesign's type
+inside each page, its filter and script, and each row's figures: the largest board below measured 479,955 bytes, and
+the real board of the most rows, 475 on 12 August 2026, 476,623. Past about 500 real rows, a long board's later rows in
+a second file is the next step. README.md gives the measurements."""
 
 LARGEST_BOARD = 316
 """The most rows a daily board of the earlier site held (RisingRepos's data contract, under Size)."""
@@ -30,6 +30,14 @@ WIRE_ROWS = 713
 """The board length that the root's transfer size is tested at: 475 rows, the longest board formula 2 made over the
 whole snapshot archive (12 August 2026), with half as many again for longer boards to come. The choice is recorded on
 AndrewGodlewsky/RisingRepos#122."""
+
+WIRE_BUDGET = 150_000
+"""The most bytes the root of a `WIRE_ROWS` board may take gzipped. AndrewGodlewsky/RisingRepos#122 held it to the
+site eval's transfer limit, 100,000. AndrewGodlewsky/RisingRepos#199 gave it its own, 150,000, as decided there: the
+redesign's root of 713 rows measured 144,789 bytes with zlib 1.3.1, which the workflow's Python uses, and the type
+takes about 28,000 of a page's gzipped bytes. The zlib-ng of Python 3.14 on Windows packs it to 141,600, so a size
+measured there reads about 2% low. The eval's limit, in evals/site/limits.json, stays 100,000 for the real root it
+measures: 80,871 bytes with zlib 1.3.1 for the 264 rows of 21 November 2026."""
 
 EVAL_LIMITS = ROOT / "evals" / "site" / "limits.json"
 """The site eval's limits, read here rather than copied, so that a change there is a change here."""
@@ -96,11 +104,12 @@ recent pace keeps one day, whose expanded view writes its score out and says why
 LICENSES = ["MIT", "Apache-2.0", None, "GPL-3.0", "NOASSERTION"]
 
 
-def with_unshown_fields(row: dict) -> dict:
-    """`row` with the fields that AndrewGodlewsky/RisingRepos#193 to #197 added to a row, which the pages do not show
-    yet: the star history of a repository that gained its recent pace on each of the 31 days, as far as its stars
-    allow, the gains that history gives, a license, and when the repository was created and last pushed to. They are
-    worked out from the row, not drawn, so a seeded generator draws the rows it drew before them."""
+def with_redesign_fields(row: dict) -> dict:
+    """`row` with the fields that AndrewGodlewsky/RisingRepos#193 to #197 added to a row: the star history of a
+    repository that gained its recent pace on each of the 31 days, as far as its stars allow, the gains that history
+    gives, a license, and when the repository was created and last pushed to. The page shows the day's gain; the rest
+    is in the board day's history.json. They are worked out from the row, not drawn, so a seeded generator draws the
+    rows it drew before them."""
     per_day = min(row["recent_stars"] // row["recent_days"], row["stars"] // 31)
     history = [row["stars"] - per_day * (30 - day) for day in range(31)]
     return {
@@ -120,7 +129,7 @@ def made_up_rows(count: int) -> list[dict]:
     with characters that escaping makes longer, and the numbers whose reason is the longest the site has written."""
     description = ("A made-up row of the largest board, with <markup> & characters escaping lengthens. " * 5)[:349]
     return [
-        with_unshown_fields(
+        with_redesign_fields(
             {
                 "rank": rank,
                 "github_id": 900000000 + rank,
@@ -183,7 +192,7 @@ def typical_rows(count: int) -> list[dict]:
         return " ".join(words)[: length - 1].rstrip().capitalize() + "."
 
     return [
-        with_unshown_fields(
+        with_redesign_fields(
             {
                 "rank": rank,
                 "github_id": 700000000 + rank,
@@ -200,8 +209,8 @@ def typical_rows(count: int) -> list[dict]:
 
 class PageWeight(BuildTest):
     def test_no_page_carries_a_script_but_the_sites_own_and_each_page_forbids_every_other(self):
-        """The site's one script is the notice of an old board, inline, and the policy lets it run by its hash alone.
-        tests/test_old_board.py checks the hash, and that the not-found page carries none."""
+        """The site's one script is site.js, inline, and the policy lets it run by its hash alone.
+        tests/test_old_board.py checks the hash, and which parts of it each page carries."""
         for path, page in self.build_pages().items():
             with self.subTest(path):
                 self.assertLessEqual(len(page.all("script")), 1)
@@ -215,6 +224,17 @@ class PageWeight(BuildTest):
                     self.assertRegex(source, r"^'sha256-[A-Za-z0-9+/]{43}='$")
                 else:
                     self.assertNotIn("script-src", page.directives())
+
+    def test_no_page_carries_the_notes_on_its_stylesheet_or_its_script(self):
+        """They are Jinja comments, which the build leaves out (AndrewGodlewsky/RisingRepos#199): as CSS and JS
+        comments they took 9,531 bytes of a board's page, and 4,044 of the long board's root gzipped below."""
+        for path, page in self.build_pages().items():
+            with self.subTest(path):
+                (style,) = page.all("style")
+                self.assertNotIn("/*", "".join(style.children))
+                for script in page.all("script"):
+                    self.assertNotRegex("".join(script.children), r"(?m)^\s*//|\s//\s")  # a note on its own line or after code
+                self.assertNotIn("{#", page.html)
 
     def test_no_page_requests_anything_from_another_site(self):
         for path, page in self.build_pages().items():
@@ -236,18 +256,17 @@ class PageWeight(BuildTest):
             with self.subTest(path):
                 self.assertLessEqual(page_weight(self.out, path, page), SIZE_LIMIT)
 
-    def test_a_long_boards_root_stays_under_the_site_evals_transfer_budget_once_gzipped(self):
-        """AndrewGodlewsky/RisingRepos#122. The eval measures what the root costs to transfer, in its phone profile
-        and its desktop profile, and this holds the root to the lower budget. gzip at level 6 packs it a little less
-        tightly than the server does."""
+    def test_a_long_boards_root_stays_within_its_transfer_budget_once_gzipped(self):
+        """AndrewGodlewsky/RisingRepos#122 and #199. gzip at level 6 packs it a little less tightly than the server
+        does. The budget is above the eval's own limit, which a root of the real board meets."""
         limits = read_json(EVAL_LIMITS)
-        limit = min(limits[profile]["transfer_size"]["limit"] for profile in ("phone", "desktop"))
+        self.assertGreaterEqual(WIRE_BUDGET, max(limits[profile]["transfer_size"]["limit"] for profile in ("phone", "desktop")))
         board = read_json(self.board_file())
         self.write_board({**board, "rows": typical_rows(WIRE_ROWS)})
         pages = self.build_pages()
         self.assertEqual(len(pages[BOARD].rows()), WIRE_ROWS)
         packed = gzip.compress((self.out / BOARD).read_bytes(), compresslevel=6, mtime=0)
-        self.assertLess(len(packed), limit)
+        self.assertLess(len(packed), WIRE_BUDGET)
 
 
 class TheChecks(unittest.TestCase):

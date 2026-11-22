@@ -13,6 +13,8 @@ from pathlib import Path
 
 import yaml
 
+from sitebuild import environment
+
 ROOT = Path(__file__).resolve().parent.parent
 EXAMPLE = ROOT / "tests" / "fixtures" / "contract-example"
 """The data contract's example and schemas, laid out as site-data/ is. Every test but one builds from this copy,
@@ -52,6 +54,12 @@ def build(out: Path, *options: str) -> subprocess.CompletedProcess:
         encoding="utf-8",
         timeout=60,
     )
+
+
+def shipped(name: str) -> str:
+    """A part of the page's script, templates/`name`, as the build writes it into a page: without its Jinja comments,
+    which hold its notes."""
+    return environment().get_template(name).render()
 
 
 def read_json(path: Path):
@@ -175,15 +183,21 @@ class Element:
         the edge of an inline element stays, as in "All<span> board</span> days"."""
         return " ".join(self._text().split())
 
-    def _text(self) -> str:
+    def heard(self) -> str:
+        """The text as a screen reader reads it: as `text`, without what aria-hidden hides, such as a calendar
+        day's number beside the date the screen reader is given in words."""
+        return " ".join(self._text(hidden=False).split())
+
+    def _text(self, hidden: bool = True) -> str:
         parts = []
         for child in self.children:
             if isinstance(child, str):
                 parts.append(child)
-            elif child.tag == "script":
+            elif child.tag == "script" or (not hidden and child.attrs.get("aria-hidden") == "true"):
                 continue  # a script's text is code, which no reader sees
             else:
-                parts.append(f" {child._text()} " if child.tag in BLOCK else child._text())
+                text = child._text(hidden)
+                parts.append(f" {text} " if child.tag in BLOCK else text)
         return "".join(parts)
 
     def classes(self) -> list[str]:

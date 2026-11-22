@@ -2,10 +2,14 @@
 {# The page for an address that holds none. It states no board day, so nothing that reads one takes it for the board. #}
 {% block title %}Rising Repos: page not found{% endblock %}
 {% block band %}
-<h1>Page not found</h1>
+<div class="head">
+<p class="kind">Page not found</p>
+<h1>There is no page at this address</h1>
+<p class="lede">It may be a board day that was never published, or a link that was mistyped.</p>
+</div>
 {% endblock %}
 {% block main %}
 <div class="message">
-<p>There is no page at this address. Go to <a href="/">the latest daily board</a>.</p>
+<p>Go to <a href="/">the latest daily board</a>, or find a day in <a href="{{ days_address }}">every board day</a>.</p>
 </div>
 {% endblock %}

@@ -4,19 +4,19 @@
    another formula, the page says so first, so that it is never taken for that formula's description. #}
 {% block title %}Rising Repos: how the boards are ranked{% endblock %}
 {% block band %}
-<h1 id="how"><span class="kind">How it works</span> Ranking the boards</h1>
-<div class="facts">
-<p class="formula">How formula version {{ described }} ranks a board.</p>
+<div class="head">
+<p class="kind">How it works</p>
+<h1 id="how">How a board is ranked</h1>
+<p class="lede formula">How formula version {{ described }} ranks a board.</p>
 {% if "formula_version" in newest and newest.formula_version != described %}
-<p class="provisional"><strong>The newest board was ranked by formula version {{ newest.formula_version }}, which this page does not describe.</strong> It describes version {{ described }}.</p>
+<div class="notes"><p class="provisional"><strong>The newest board was ranked by formula version {{ newest.formula_version }}, which this page does not describe.</strong> It describes version {{ described }}.</p></div>
 {% endif %}
 </div>
 {% endblock %}
 {% block strip %}
 <nav class="strip" aria-label="Board days">
 <div class="wrap">
-<a class="newest" href="/"><span aria-hidden="true">‹ </span>The newest board<span class="hidden">, for {{ newest.board_day|long_date }}</span></a>
-<a class="all" href="{{ days_address }}">All board days</a>
+<a class="newest" href="/"><span aria-hidden="true">‹&nbsp;</span>The newest board<span class="sr">, for {{ newest.board_day|long_date }}</span></a>
 </div>
 </nav>
 {% endblock %}
@@ -25,6 +25,17 @@
 <p>Once a day, Rising Repos records how many stars each repository it follows has on GitHub. A board day's board lists the repositories whose stars came in faster over the two days up to that day than their own pace before them, the highest score first.</p>
 <h2>Two days against the twelve before</h2>
 <p>A repository's recent pace is the stars it gained over the board day and the day before it, as stars a day. Its usual pace is how many stars a day it took across the twelve days before those two. Its score is the first divided by the second: a repository that gained 520 stars in two days, 260 a day, after gaining 30 a day, scores about 8.7, and its row says it is at 8.7× its usual pace. How far it is above its own trend is what those two days brought beyond its usual pace: here 460 stars.</p>
+<figure class="card example" aria-labelledby="example-title">
+<h2 id="example-title">The worked example, drawn</h2>
+<p class="caption">Twelve days at its usual 30 stars a day, then 520 stars in two days. The part of the two days above the dashed line of its own pace is how far it is above its own trend.</p>
+<div class="days14" role="img" aria-label="Twelve short columns of 30 stars a day, then two tall columns of 260 stars a day, most of each above the dashed line of its usual pace.">
+{% for day in range(12) %}<i style="height:10%"></i>{% endfor %}
+<i class="recent" style="height:86.67%;--over:88.46%"></i><i class="recent" style="height:86.67%;--over:88.46%"></i>
+<span class="own" style="bottom:10%"><span>usual pace, 30 a day</span></span>
+<span class="over" style="top:13.33%">+460 above its own trend · 8.7×</span>
+</div>
+<div class="days14-axis" aria-hidden="true"><span>12 days before</span><span>The two recent days</span></div>
+</figure>
 <h2>A floor of 1 star a day</h2>
 <p>A usual pace under 1 star a day counts as 1, so that a quiet repository is not given an endless multiple of almost nothing. Its score is then its recent pace in stars a day. Its row gives no multiple, since its own pace was lower than the one it was divided by, and says that its usual pace was under 1 star a day, or that it had been losing stars.</p>
 <h2>Who makes the board</h2>
@@ -35,12 +46,15 @@
 <p>Nothing is filtered out. Every gain is counted whole, however large and whatever caused it: a large project that has hardly moved for a fortnight and then gains about 100 stars in a day is listed too, because 100 stars is many times the pace it had. Only a loss is set aside. A step from one count to the next that lost more than 150 stars, and more than 3% of the repository's stars, is taken for a fault in the count, and both paces leave its stars and its days out. A row whose recent pace keeps one day for that reason says so.</p>
 <h2>What a row shows</h2>
 <p>Each row gives the stars above its own trend and its multiple of its usual pace, or the stars it gained when those would not be true. Open the line for its score and the sum it came from: its stars over the recent days, divided by the days, divided by its usual pace or by the floor. The numbers come with each board's data, as the ranking worked them out, and this site only rounds them.</p>
+{# The licence asks that a modified font keep IBM's notice and licence, and not use the reserved name:
+   the site's type is named Rising Sans and Rising Mono, and this says where it comes from, as acknowledgement. #}
+<h2>The type</h2>
+<p>The site is set in modified versions of IBM Plex Sans and IBM Plex Mono, by IBM Corp., cut to the characters it uses and renamed, as the SIL Open Font License asks of a modified version. <a href="/static/fonts/OFL.txt">The licence and IBM's copyright notice</a> are published with the site.</p>
 </article>
 <footer class="foot">
 <nav class="foot-links" aria-label="At the foot">
 <a href="/">The newest board</a>
 <a class="top" href="#top">Back to the top<span aria-hidden="true"> ↑</span></a>
 </nav>
-<p class="note">Rising Repos is not affiliated with GitHub.</p>
 </footer>
 {% endblock %}

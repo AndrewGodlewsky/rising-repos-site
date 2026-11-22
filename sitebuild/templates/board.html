@@ -1,45 +1,33 @@
 {% extends "page.html" %}
 {% from "nav.html" import board_days %}
-{# A board day's board, set like a record chart, under the band that carries its date, at the board day's own
-   address. latest.html is the same board at the site's root. #}
+{# A board day's board at the board day's own address; latest.html is the same board at the site's root. The page
+   reads top to bottom as: the day bar, whose date is the page's heading; any note that changes how the
+   board reads, in the open; the filter bar and the ranked list; and at the foot, the board's plain facts and what
+   New means. #}
 {% block title %}Rising Repos: the daily board for {{ board.board_day|long_date }}{% endblock %}
+{% block strip %}
+<nav class="strip" aria-label="Board days">
+<div class="wrap">
+{{ board_days(board, before, after, newest, heading=True) }}
+</div>
+</nav>
+{% endblock %}
 {% block band %}
-<h1 id="board"><span class="kind">Daily board</span> <time datetime="{{ board.board_day }}">{{ board.board_day|long_date }}</time></h1>
-{# The board's state, as its file names it (AndrewGodlewsky/RisingRepos#13), for whatever reads the page rather than
-   its words: rows, empty, or held. A file older than the field gives none. #}
-<div class="facts"{% if "state" in board %} data-state="{{ board.state }}"{% endif %}>
-<p class="published">{{ board.rows|length|repositories }}. Published <time datetime="{{ board.published_at }}">{{ board.published_at|utc_time }}</time>.</p>
-{# When the day's update began and how long it took to publish this board, from the file (RisingRepos#51), and for a
-   board published days after its day, that it was made later. A file without the field says nothing here. The one
-   place that words the start: its time alone on the publish's own day, and its date as well on another. #}
-{% if job %}
-<p class="update">The day's update began {% if job.same_day %}at <time datetime="{{ job.started }}">{{ job.started|clock }}</time>{% else %}on <time datetime="{{ job.started }}">{{ job.started|utc_time }}</time>{% endif %} and took {{ job.seconds|took }} to publish this board.</p>
-{% endif %}
-{% if late %}
-<p class="late">This board was made after its day, from the star counts recorded on {{ board.board_day|long_date }}.</p>
-{% endif %}
-{# The number of the scoring formula behind this board's order, as the file gives it (RisingRepos#47). All board days
-   are ranked again whenever that formula changes, so the number tells an old reading of a day from a new one. A file
-   older than the field gives no number, and nothing is said. #}
-{% if "formula_version" in board %}
-<p class="formula">Ranked by formula version {{ board.formula_version }}.</p>
-{% endif %}
+{# The notes that change how the board reads: an earlier board, a provisional ranking, bands held back, and
+   repositories that could not be ranked. Each board that has one shows it here, in the open, above the rows. #}
+{% set notes %}
 {% if board.board_day != newest.board_day %}
 <p class="earlier">An earlier board. The newest is <a href="/">the board for {{ newest.board_day|long_date }}</a>.</p>
 {% endif %}
 {% if board.score_provisional %}
 <p class="provisional"><strong>The ranking is provisional.</strong> The formula that orders this board is still being tested, so the order may change.</p>
 {% endif %}
-{# What the board left off, and why, from the file (AndrewGodlewsky/RisingRepos#13), in three kinds kept apart: the
-   star bands it holds back because this day's own snapshot missed some of their star counts; the repositories that
-   could not be ranked because a day the ranking needs is partial or missing; and the partial days the ranking drew
-   on. The first two left repositories off, so each is set apart as the provisional note is. The site decides none of
-   them: the file names each band held, each day lacked, and how many repositories that day kept from the ranking. #}
+{# What the board left off, and why, from the file (AndrewGodlewsky/RisingRepos#13). The star bands it holds back,
+   and the repositories that could not be ranked, left repositories off, so each is a note here. The partial days
+   the ranking merely drew on are plain facts, in the board's foot. The site decides none of them. #}
 {% if before_holds %}
 {# A file published before the holds and the days the ranking lacked (`before_holds`) takes the notes it had then.
-   This block goes, with that function, once site-data/ holds no such file. A board day that was itself partial says
-   only that, and names the recent days too. Otherwise the note on a recent day allows for both: a repository moved up
-   or down by the gap, and one left off the board altogether (RisingRepos#47). #}
+   This block goes, with that function, once site-data/ holds no such file. #}
 {% if before_holds.own %}
 <p class="partial recent"><strong>This day's snapshot missed some repositories.</strong> A repository it missed could not be ranked, so it is not on this board.{% if partial.recent %} The recent pace the ranking measures also runs over {{ partial.recent|long_dates }}, whose snapshot{{ "s" if partial.recent|length > 1 else "" }} missed some too.{% endif %}</p>
 {% elif partial and partial.recent %}
@@ -51,70 +39,110 @@
 {% set one = held.bands|length == 1 %}
 <p class="held"><strong>{{ "One star band is" if one else held.bands|length ~ " star bands are" }} held back.</strong> This day's snapshot missed repositories of {{ held.missed|listed }} stars, so the board leaves out every repository of {{ held.bands|listed("or") }} stars rather than rank {{ "that band from part of its" if one else "those bands from part of their" }} repositories.</p>
 {% endif %}
-{# Each day the ranking lacked, by its kind (`lacked_days`). #}
 {% for day in lacked %}
 {% if day.kind == "missing" %}
 <p class="unranked"><strong>No repository could be ranked.</strong> The ranking needs each repository's stars on {{ day.day|long_date }}, and no snapshot was kept that day{% if day.repositories %}, so none of the {{ day.repositories|repositories }} it could otherwise have ranked is on this board{% endif %}.</p>
 {% elif day.kind == "unranked" %}
 <p class="unranked"><strong>{{ day.repositories|repositories }} could not be ranked.</strong> The ranking needs each repository's stars on {{ day.day|long_date }}, and that day's snapshot missed {{ "it" if day.repositories == 1 else "them" }}, so {{ "it is" if day.repositories == 1 else "they are" }} not on this board.</p>
-{% else %}
-<p class="partial">The ranking needs each repository's stars on {{ day.day|long_date }}, whose snapshot missed some repositories, though none it could otherwise have ranked.</p>
 {% endif %}
 {% endfor %}
-{% if partial and partial.recent %}
-{# A recent day the file names no repository left unranked by: said as a fact, with no guess at what it did. #}
-<p class="partial">The ranking's recent pace takes in {{ partial.recent|long_dates }}, whose snapshot{{ "s" if partial.recent|length > 1 else "" }} missed some repositories.</p>
 {% endif %}
+{% endset %}
+{% if notes|trim %}
+<div class="notes">
+{{ notes }}</div>
 {% endif %}
-{# The days the ranking reads only further back, as a count and a span, in one sentence however many there are. #}
-{% if partial and partial.earlier %}
-{% set one = partial.earlier == 1 %}
-<p class="partial">The ranking draws on {{ partial.earlier }} earlier {{ "day whose snapshot" if one else "days whose snapshots" }} missed some repositories, {{ "on " ~ partial.newest|long_date if one else "from " ~ partial.oldest|long_date ~ " to " ~ partial.newest|long_date }}.</p>
-{% endif %}
-</div>
-{% endblock %}
-{% block strip %}
-<nav class="strip" aria-label="Board days">
-<div class="wrap">
-{{ board_days(board, before, after, days_address) }}
-</div>
-</nav>
 {% endblock %}
 {% block main %}
+{# The growth column gives the stars gained on the board day when the file carries them (RisingRepos#194), and the
+   stars a day over the recent days when it does not. #}
+{% set gains = board.rows and "gained_1_day" in board.rows[0] %}
+<section class="board" aria-labelledby="list-title">
+<div class="toolbar">
+<h2 id="list-title" class="sr">The board</h2>
+{% if board.rows %}
+{# The filter: shown only where the page's script runs, by the stylesheet's .js-only, which reads the mark the script
+   sets on the root element in the head, before the first paint. So the controls are in place from the first frame and
+   move nothing when the script is ready, and without the script the page shows the whole board and no control that
+   does nothing. #}
+<div class="segments js-only" id="kinds" role="group" aria-label="All or new">
+<button type="button" data-kind="" aria-pressed="true">All <span class="num" id="count-all">{{ board.rows|length }}</span></button>
+{% if history.new is not none %}<button type="button" data-kind="new" aria-pressed="false" aria-describedby="new-means">New <span class="num" id="count-new">{{ history.new }}</span></button>{% endif %}
+</div>
+{# A file from before `star_bands` gives no bands, and the group is hidden: the script still finds it. #}
+<div class="segments js-only" id="bands" role="group" aria-label="Star band"{% if not bands %} hidden{% endif %}>
+<button type="button" data-band="" aria-pressed="true">All stars</button>
+{# A band the board holds back has no row on it: its button stays for the script, which tells a row's band from
+   every band's limits, and is hidden, so the page offers no filter that would show nothing. #}
+{% for band in bands %}<button type="button" data-band="{{ band.number }}" data-below="{{ band.below or '' }}" data-word="{{ band.word }}" aria-pressed="false"{% if band.number in held_bands %} hidden{% endif %}>{{ band.label }}</button>{% endfor %}
+</div>
+<label class="sr" for="language" id="language-label">Language</label>
+<select class="js-only" id="language">
+<option value="">All languages</option>
+{% for language in languages %}<option>{{ language }}</option>{% endfor %}
+</select>
+<label class="sr" for="sort">Order</label>
+<select class="js-only" id="sort">
+<option value="rank">By rank</option>
+<option value="gained">{{ "Most stars gained" if gains else "Most stars a day" }}</option>
+<option value="often">Most often in 14 boards</option>
+<option value="small">Fewest stars first</option>
+<option value="large">Most stars first</option>
+</select>
+<label class="sr" for="q">Search by name or description</label>
+<input class="js-only" type="search" id="q" placeholder="Search" autocomplete="off" spellcheck="false">
+<p class="sr" id="shown" aria-live="polite"></p>
+{% endif %}
+</div>
 {% if board.rows %}
 {# Each part of the table names its role, because a phone stacks each row's cells, and some browsers stop telling
    assistive technology that a table whose display changes is a table. A file older than the rows' numbers
-   (RisingRepos#49) gives no row a reason, and then the board has no column for one. Its schema gives the numbers to
-   every row or to none, so the first row answers for the board, for the heading and for each row's cell. #}
+   (RisingRepos#49) gives no row a reason, and then the board has no column for one. #}
 {% set explained = "score" in board.rows[0] %}
-<table class="chart" role="table" aria-labelledby="board">
+<table class="chart{% if not explained %} plain{% endif %}" role="table" aria-labelledby="board" data-history="{{ history_address }}">
 <thead role="rowgroup">
-<tr role="row"><th scope="col" role="columnheader" class="rank">Rank</th><th scope="col" role="columnheader" class="repository">Repository</th><th scope="col" role="columnheader" class="description hidden">Description</th>{% if explained %}<th scope="col" role="columnheader" class="why hidden">Why it is on the board</th>{% endif %}<th scope="col" role="columnheader" class="language">Language</th><th scope="col" role="columnheader" class="stars">Total stars</th></tr>
+<tr role="row"><th scope="col" role="columnheader" class="rk">Rank</th><th scope="col" role="columnheader" class="re">Repository</th><th scope="col" role="columnheader" class="de sr">Description</th>{% if explained %}<th scope="col" role="columnheader" class="wy sr">More: why it is on the board</th>{% endif %}{% if not explained %}<th scope="col" role="columnheader" class="language">Language</th>{% endif %}{% if explained %}{% if gains %}<th scope="col" role="columnheader" class="gr">Stars gained<span class="sub"> on the board day</span></th>{% else %}<th scope="col" role="columnheader" class="gr">Stars a day<span class="sub"> over the last 2 days</span></th>{% endif %}<th scope="col" role="columnheader" class="pc">Against its own pace<span class="sub"> the last 14 days</span></th>{% endif %}<th scope="col" role="columnheader" class="st">Total stars</th></tr>
 </thead>
 <tbody role="rowgroup">
 {% for row in board.rows %}
 {% set owner, _, name = row.full_name.partition("/") %}
-<tr role="row">
-<td class="rank" role="cell">{{ row.rank }}</td>
-<th scope="row" class="repository" role="rowheader"><a href="https://github.com/{{ row.full_name }}"><span class="owner">{{ owner }}/</span><span class="name">{{ name }}</span></a></th>
+{% set mark = history.marks[loop.index0] %}
+<tr role="row" data-o="{{ mark.on }}"{% if explained and row.language %} data-l="{{ row.language }}"{% endif %}>
+<td class="rk{% if loop.index <= 3 %} podium{% endif %}{% if loop.index <= top %} lead{% endif %}" role="cell">{{ row.rank }}</td>
+<th scope="row" class="re" role="rowheader"><a href="https://github.com/{{ row.full_name }}"><span class="ow">{{ owner }}/</span><span class="nm">{{ name }}</span></a>{% if mark.status == "new" %} <b class="new">New</b>{% endif %}</th>
 {% if row.description %}
-<td class="description" role="cell" dir="auto">{{ row.description }}</td>
+<td class="de" role="cell" dir="auto">{{ row.description }}</td>
 {% else %}
-<td class="description none" role="cell">No description</td>
+<td class="de none" role="cell">No description</td>
 {% endif %}
-{# Why the repository is here, in plain quantities, and its score and the sum behind it once the row is opened. #}
 {% if explained %}
+{# The row opens on its reason: the chevron is the disclosure's summary, so it opens with scripts off too,
+   on the reason line, which is all the page holds of it. The sum behind it, the multiple, and the
+   language are in history.json with the rest, and filters.js shows them all in one step when the file is in. The
+   row's language is also in data-l, for the language filter. The class names are cut short, since each
+   row repeats them: rk rank, re repository, ow owner, nm name, de description, wy why, op opened, rs reason,
+   ln line, su sum, fa facts, gr growth, pc own pace, st stars, and sr for words only a screen reader reads. A
+   growth cell is also loss for a loss, and nil for 0 or no count. #}
 {% set reason = row|why %}
-<td class="why" role="cell"><details><summary>{{ reason.line }}</summary>{{ reason.detail }}</details></td>
-{% endif %}
+<td class="wy" role="cell"><details><summary><span class="sr">More on {{ row.full_name }}</span></summary>
+<div class="op">
+<div class="rs"><p class="ln">{{ reason.line }}</p></div>
+</div>
+</details></td>
+{% if gains %}<td class="gr g{{ row|gained_class }}" role="cell">{{ row|gained }}</td>{% else %}<td class="gr{{ row|per_day_class }}" role="cell">{{ row|per_day }}</td>{% endif %}
+{% set pace = row|own_pace %}
+<td class="pc" role="cell" style="{{ pace.style }}"><span class="sr">{{ pace.text }}</span></td>
+{% else %}
 <td class="language" role="cell">{{ row.language or "" }}</td>
-<td class="stars" role="cell">{{ row.stars|thousands }}</td>
+{% endif %}
+<td class="st" role="cell">{{ row.stars|thousands }}</td>
 </tr>
 {% endfor %}
 </tbody>
 </table>
+<p class="filtered-none" id="none-shown" hidden>No repository on this board matches the search and filters.</p>
 {% else %}
-{# Why the board lists nothing (`why_none`). The notes in the band say what each was. #}
+{# Why the board lists nothing (`why_none`). The notes above say what each was. #}
 <div class="message">
 {% if why_none == "held" %}
 <p class="message-title">No repository is on this board.</p>
@@ -131,12 +159,47 @@
 {% endif %}
 </div>
 {% endif %}
+{# The board's plain facts and what New means, at the foot. The board's state, as its file names it
+   (AndrewGodlewsky/RisingRepos#13), is in data-state for whatever reads the page rather than its words. #}
+<section class="about" aria-labelledby="about-title"{% if "state" in board %} data-state="{{ board.state }}"{% endif %}>
+<h2 id="about-title">About this board</h2>
+<div class="lines">
+<p class="published">{{ board.rows|length|repositories }}. Published <time datetime="{{ board.published_at }}">{{ board.published_at|utc_time }}</time>.</p>
+{% if job %}
+<p class="update">The day's update began {% if job.same_day %}at <time datetime="{{ job.started }}">{{ job.started|clock }}</time>{% else %}on <time datetime="{{ job.started }}">{{ job.started|utc_time }}</time>{% endif %} and took {{ job.seconds|took }} to publish this board.</p>
+{% endif %}
+{% if late %}
+<p class="late">This board was made after its day, from the star counts recorded on {{ board.board_day|long_date }}.</p>
+{% endif %}
+{% if history.new is not none %}
+<p id="new-means"><strong>{{ history.new }} new.</strong> New means under a name on none of the boards before this one, back to the first on {{ history.since|long_date }}. A repository renamed or moved since counts as new, and its opened row still lists the boards it was on before.</p>
+{% elif board.rows and history.since != board.board_day %}
+<p id="new-means">What is new on this board cannot be told: the board before it held a star band back or listed no repository, so one missing from it may have been kept off.</p>
+{% endif %}
+{% if "formula_version" in board %}
+<p class="formula">Ranked by formula version {{ board.formula_version }}. <a href="{{ how_address }}">How it ranks</a></p>
+{% endif %}
+{% if not before_holds %}
+{% for day in lacked if day.kind == "partial" %}
+<p class="partial">The ranking needs each repository's stars on {{ day.day|long_date }}, whose snapshot missed some repositories, though none it could otherwise have ranked.</p>
+{% endfor %}
+{% if partial and partial.recent %}
+<p class="partial">The ranking's recent pace takes in {{ partial.recent|long_dates }}, whose snapshot{{ "s" if partial.recent|length > 1 else "" }} missed some repositories.</p>
+{% endif %}
+{% endif %}
+{% if partial and partial.earlier %}
+{% set one = partial.earlier == 1 %}
+<p class="partial">The ranking draws on {{ partial.earlier }} earlier {{ "day whose snapshot" if one else "days whose snapshots" }} missed some repositories, {{ "on " ~ partial.newest|long_date if one else "from " ~ partial.oldest|long_date ~ " to " ~ partial.newest|long_date }}.</p>
+{% endif %}
+<p><a href="{{ baseline_address }}">Each repository on the newest board against its baseline</a>, as a chart</p>
+</div>
+</section>
 <footer class="foot">
 <p class="foot-title">End of the daily board for <time datetime="{{ board.board_day }}">{{ board.board_day|long_date }}</time></p>
 <nav class="foot-links" aria-label="Board days, at the foot">
-{{ board_days(board, before, after, days_address) }}
+{{ board_days(board, before, after) }}
 <a class="top" href="#top">Back to the top<span aria-hidden="true"> ↑</span></a>
 </nav>
-<p class="note">Star counts are from the board day. Rising Repos is not affiliated with GitHub.</p>
 </footer>
+</section>
 {% endblock %}
