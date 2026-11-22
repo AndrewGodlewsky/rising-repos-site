@@ -1,16 +1,21 @@
 {# The links between board days, which the strip under the band and a board's foot both hold: the board day before,
-   the board day the page shows, the board day after, and the list of every board day. #}
-{% macro board_days(board, before, after, days_address) %}
+   the board day the page shows, and the board day after. The list of every board day, History, is in the site's
+   bar on every page. #}
+{% macro board_days(board, before, after, newest=None, heading=False) %}
 {% if before %}
-<a class="before" rel="prev" href="{{ before.board_day|day_address }}"><span class="hidden">The board before, </span><span aria-hidden="true">‹ </span><time datetime="{{ before.board_day }}">{{ before.board_day|short_date }}</time></a>
+<a class="before" rel="prev" href="{{ before.board_day|day_address }}"><span class="sr">The board before, </span><span aria-hidden="true">‹ </span><time datetime="{{ before.board_day }}">{{ before.board_day|short_date }}</time></a>
 {% else %}
 <span class="before end">First board</span>
 {% endif %}
-<span class="here"><time datetime="{{ board.board_day }}">{{ board.board_day|short_date }} {{ board.board_day[:4] }}</time></span>
-{% if after %}
-<a class="after" rel="next" href="{{ after.board_day|day_address }}"><span class="hidden">The board after, </span><time datetime="{{ after.board_day }}">{{ after.board_day|short_date }}</time><span aria-hidden="true"> ›</span></a>
+{% if heading %}
+<h1 class="here" id="board"><span class="sr">The daily board for </span><time datetime="{{ board.board_day }}">{{ board.board_day|short_date }} {{ board.board_day[:4] }}</time></h1>
 {% else %}
-<span class="after end">Newest board</span>
+<span class="here"><time datetime="{{ board.board_day }}">{{ board.board_day|short_date }} {{ board.board_day[:4] }}</time></span>
 {% endif %}
-<a class="all" href="{{ days_address }}">All<span class="wide"> board</span> days</a>
+{% if after %}
+<a class="after" rel="next" href="{{ after.board_day|day_address }}"><span class="sr">The board after, </span><time datetime="{{ after.board_day }}">{{ after.board_day|short_date }}</time><span aria-hidden="true"> ›</span></a>
+{% endif %}
+{% if newest and after %}
+<a class="latest" href="/"><span class="sr">The newest board, </span><span aria-hidden="true">Latest: </span><time datetime="{{ newest.board_day }}">{{ newest.board_day|short_date }}</time><span aria-hidden="true"> »</span></a>
+{% endif %}
 {% endmacro %}

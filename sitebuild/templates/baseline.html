@@ -1,0 +1,67 @@
+{% extends "page.html" %}
+{# The Baseline page: the newest board's repositories, each placed by its baseline against its recent pace, kept off the
+   board's own page. The table under the chart gives every dot in words, and is what the
+   chart's readout points to. The chart is the newest board's only: an earlier board's rows keep their own figures in
+   their expanded view. #}
+{% block title %}Rising Repos: each repository against its baseline{% endblock %}
+{% block strip %}
+<nav class="strip" aria-label="Board days">
+<div class="wrap">
+<a class="newest" href="/"><span aria-hidden="true">‹&nbsp;</span>The board for {{ board.board_day|short_date }}</a>
+<span class="here">{{ baseline_name }}</span>
+</div>
+</nav>
+{% endblock %}
+{% block band %}
+<div class="head">
+<p class="kind">The newest daily board, <time datetime="{{ board.board_day }}">{{ board.board_day|long_date }}</time></p>
+<h1 id="baseline">Against the baseline</h1>
+<p class="lede">Each of the {{ board.rows|length|thousands }} repositories on the board, placed by the pace it usually keeps, its baseline, against the pace of its last two days</p>
+</div>
+{% endblock %}
+{% block main %}
+{% if chart %}
+<figure class="card pace" aria-labelledby="pace-title">
+<h2 id="pace-title">Each repository against its own pace</h2>
+<p class="caption">Across, its baseline: the stars a day it gained over the twelve days before. Up, the stars a day it gained over its last two. The further above the dashed line of its own pace, the higher it ranks.</p>
+<div class="legend" aria-hidden="true"><span><i class="lead"></i>Top {{ top }}</span><span><i></i>The rest of the board</span><span><i class="own"></i>Its own pace</span></div>
+<div class="plot">
+<span class="axis y" aria-hidden="true">Recent pace, stars a day</span>
+<svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="A chart of the {{ chart.count }} repositories on the board, each placed by its baseline against its recent pace. The table below gives every one.">
+<g class="grid">
+{% for tick in chart.yticks %}<line x1="0" x2="100" y1="{{ tick.at }}" y2="{{ tick.at }}"/>{% endfor %}
+{% for tick in chart.xticks %}<line y1="0" y2="100" x1="{{ tick.at }}" x2="{{ tick.at }}"/>{% endfor %}
+</g>
+{% for guide in chart.guides %}<line class="guide{% if guide.multiple == 1 %} own{% endif %}" x1="{{ guide.x1 }}" y1="{{ guide.y1 }}" x2="{{ guide.x2 }}" y2="{{ guide.y2 }}"/>{% endfor %}
+<path class="dot" d="{{ chart.rest }}"/>
+<path class="dot lead" d="{{ chart.lead }}"/>
+<path class="dot here" id="here" d=""/>
+</svg>
+{% for tick in chart.yticks %}<span class="tick y" style="top:{{ tick.at }}%" aria-hidden="true">{{ tick.text }}</span>{% endfor %}
+{% for tick in chart.xticks %}<span class="tick x" style="left:{{ tick.at }}%" aria-hidden="true">{{ tick.text }}</span>{% endfor %}
+{% for guide in chart.guides %}<span class="glabel{% if guide.multiple == 1 %} own{% endif %}" style="left:{{ guide.x2 }}%;top:{{ guide.y2 }}%;{% if guide.x2 > 80 %}transform:translate(-100%,-100%){% endif %}" aria-hidden="true">{{ guide.label }}</span>{% endfor %}
+{% for label in chart.labels %}<span class="rk" style="left:{{ label.left }}%;top:{{ label.top }}%" aria-hidden="true">{{ label.text }}</span>{% endfor %}
+<span class="axis x" aria-hidden="true">Baseline, stars a day</span>
+<span class="readout" id="readout" aria-hidden="true" hidden></span>
+</div>
+{% if chart.floor %}
+<p class="caption small">The {{ chart.floor }} on the left edge had a baseline under 1 star a day, which the ranking counts as 1.</p>
+{% endif %}
+</figure>
+<section class="figures" aria-labelledby="figures-title">
+<h2 id="figures-title">Every repository in the chart</h2>
+<table class="numbers" aria-labelledby="figures-title">
+<thead><tr><th scope="col">Rank</th><th scope="col">Repository</th><th scope="col" class="n">Baseline, a day</th><th scope="col" class="n">Recent, a day</th><th scope="col" class="n">Growth</th></tr></thead>
+<tbody>
+{% for row in board.rows %}
+{% set grew = row|growth %}
+<tr id="b-{{ loop.index }}"><td class="num">{{ row.rank }}</td><th scope="row"><a href="https://github.com/{{ row.full_name }}">{{ row.full_name }}</a></th><td class="n num">{{ row.baseline|baseline_figure }}</td><td class="n num">{{ (row.recent_stars / row.recent_days)|baseline_figure }}</td><td class="n num">{{ grew.multiple or "—" }}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+<p class="note">Growth is the ranking's own multiple, the recent pace over the baseline. A repository whose baseline was under 1 star a day, or falling, has none: the ranking divides its recent pace by the floor of 1 instead.</p>
+</section>
+{% else %}
+<div class="message"><p class="message-title">The newest board has no repository to place.</p></div>
+{% endif %}
+{% endblock %}

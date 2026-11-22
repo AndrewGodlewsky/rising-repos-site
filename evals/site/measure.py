@@ -98,6 +98,11 @@ WHY_NOT_COUNTED = (
     "shows no answer and no bytes"
 )
 """Why the summary says a request was left out of Requests: the two things `_requests` needs to see."""
+WHY_IN_PAGE = (
+    "the page holds their bytes itself, as it holds its type, so no request for them left the browser, and "
+    "Lighthouse's total transfer size leaves them out for the same reason"
+)
+"""Why the summary says the rows for `data:` addresses were left out of Requests."""
 
 
 class CouldNotMeasure(Exception):
@@ -123,11 +128,12 @@ def _audit(report: dict, audit: str) -> float:
 
 
 class Requests(NamedTuple):
-    """One report's requests: how many the page sent, and the address of each row not counted, in the rows'
-    order."""
+    """One report's requests: how many the page sent, the address of each row not counted because the page's
+    policy refused it, in the rows' order, and how many rows were for `data:` addresses, which are not requests."""
 
     sent: int
     not_counted: list[str]
+    in_page: int
 
 
 def _requests(report: dict) -> Requests:
@@ -140,16 +146,32 @@ def _requests(report: dict) -> Requests:
     as refused by the policy, which a failure on the network never causes. And the row shows no answer and no
     bytes, which a request that broke only a report-only policy, and was sent, does not.
 
+    Lighthouse also makes a row for each `data:` address the page uses, such as each of the fonts its stylesheet
+    holds. Its bytes are in the page, so no request for it leaves the browser, and the eval drops every such row
+    (`_in_page`), as Lighthouse's own total transfer size does.
+
     Every other row counts, including one that lacks a field or holds one of an unexpected kind, and one whose
-    address the summary could not print: the summary names each row it drops. Rows that are not a list cannot be
-    counted at all, and raise TypeError.
+    address the summary could not print: the summary names each row it drops, and counts the `data:` ones. Rows
+    that are not a list cannot be counted at all, and raise TypeError.
     """
     rows = report["audits"]["network-requests"]["details"]["items"]
     if not isinstance(rows, list):
         raise TypeError("the network rows are not a list")
     refused = _refused_by_policy(report)
-    not_counted = [row["url"] for row in rows if _left_out(row, refused)]
-    return Requests(len(rows) - len(not_counted), not_counted)
+    in_page = sum(1 for row in rows if _in_page(row))
+    not_counted = [row["url"] for row in rows if not _in_page(row) and _left_out(row, refused)]
+    return Requests(len(rows) - len(not_counted) - in_page, not_counted, in_page)
+
+
+def _in_page(row: object) -> bool:
+    """Whether `row` is for a `data:` address, whose bytes are in the page: what follows the address's scheme is
+    the content. Lighthouse 13 writes such a row with the protocol `data`, and its total-byte-weight audit leaves
+    it out of the total transfer size as a request that never reaches the network. A row whose address is not
+    text is not one, and counts."""
+    if not isinstance(row, dict):
+        return False
+    address = row.get("url")
+    return isinstance(address, str) and address[:5].lower() == "data:"
 
 
 def _refused_by_policy(report: dict) -> set[str]:
@@ -229,12 +251,14 @@ class Outcome(NamedTuple):
 
 class Measured(NamedTuple):
     """One page measured on one profile: each number's median and its value in every run, the versions of the
-    tools that measured it, and each request that Requests left out, with the runs it was left out of."""
+    tools that measured it, each request that Requests left out, with the runs it was left out of, and each count
+    of `data:` rows it left out, with the runs that had that many."""
 
     numbers: dict[str, dict]
     lighthouse: str | None
     chrome: str | None
     not_counted: dict[str, list[int]]
+    in_page: dict[int, list[int]]
 
 
 def evaluate(
@@ -396,7 +420,7 @@ def _wait_until_served(
 
 def _measure(lighthouse: list[str], page: str, profile: str, stem: Path) -> Measured | CouldNotMeasure:
     """`page` measured RUNS times on `profile`, or why it could not be. The first run that fails ends it."""
-    runs, not_counted = [], {}
+    runs, not_counted, in_page = [], {}, {}
     for run in range(1, RUNS + 1):
         try:
             report = _run_lighthouse(lighthouse, page, profile, Path(f"{stem}-{run}.json"), Path(f"{stem}-{run}.log"))
@@ -404,8 +428,11 @@ def _measure(lighthouse: list[str], page: str, profile: str, stem: Path) -> Meas
         except CouldNotMeasure as error:
             return CouldNotMeasure(f"run {run} of {RUNS}: {error}")
         # _numbers has read the report's requests, so reading them again cannot fail.
-        for address in _requests(report).not_counted:
+        requests = _requests(report)
+        for address in requests.not_counted:
             not_counted.setdefault(address, []).append(run)
+        if requests.in_page:
+            in_page.setdefault(requests.in_page, []).append(run)
     values = {key: [numbers[key] for numbers in runs] for key in MEASURES}
     # Every run uses the same Lighthouse and the same Chrome, so the last report names them for all.
     version = str(report.get("lighthouseVersion"))
@@ -416,6 +443,7 @@ def _measure(lighthouse: list[str], page: str, profile: str, stem: Path) -> Meas
         version if VERSION.fullmatch(version) else None,
         chrome.group(1) if chrome else None,
         not_counted,
+        in_page,
     )
 
 
@@ -489,10 +517,13 @@ def _section(
             f"| {'none' if accepted is None else measure.show(accepted)} | {bound} | {result} |"
         )
     section = heading + "\n\n" + "\n".join(rows) + "\n"
-    if found.not_counted:
+    if found.not_counted or found.in_page:
         section += "\nNot counted in Requests, because the page never sent them:\n\n" + "".join(
             f"- `{address}`, {_in_runs(left_out_in)}: {WHY_NOT_COUNTED}.\n"
             for address, left_out_in in found.not_counted.items()
+        ) + "".join(
+            f"- {count} `data:` {'address' if count == 1 else 'addresses'}, {_in_runs(left_out_in)}: {WHY_IN_PAGE}.\n"
+            for count, left_out_in in found.in_page.items()
         )
     return section, problems
 

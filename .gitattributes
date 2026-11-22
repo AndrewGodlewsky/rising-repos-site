@@ -3,3 +3,5 @@
 # their line endings, on any machine.
 site-data/** -text
 tests/fixtures/** -text
+# The fonts' licence travels as IBM wrote it, byte for byte, its one trailing space included.
+sitebuild/static/fonts/OFL.txt -text -whitespace

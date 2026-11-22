@@ -1,260 +1,493 @@
-/* The site's look: the board set like a record chart. A deep evergreen band carries the date in a condensed
-   signage face, and the positions are set large in the same face. The text is in each reader's interface
-   face, so the two families are plainly different. README.md's design note says how to keep to it. */
+/* Rising Repos, set like an instrument's daily log: quiet paper and graphite chrome, and a few inks that each mean
+   one thing: evergreen for what a repository gained and the board's top, and amber
+   for what is new. The dashed line of a repository's own pace is the site's one
+   signature: it is in every row, the opened row's drawing, the Baseline chart, and the worked example. Links stay
+   in the text's own colour, so that colour always means one of those things. */
+
+{# The four faces, inside the page: sitebuild/__init__.py's font_faces. Rising Sans and Rising Mono are
+   modified versions of IBM Plex Sans and IBM Plex Mono, renamed as the SIL Open Font License asks of a modified
+   version (sitebuild/fonts/subset.py). The fallback face is Arial, or Liberation Sans or Arimo, which share
+   its metrics, scaled to Rising Sans: its size adjusted to its widths, and its ascent and descent to its own, so a
+   letter the files lack, such as an accented letter in owner-written text, is drawn at the same size and moves no
+   line. Arial has no 500, so it draws such a letter at 400 in a 500 word. #}
+{{ font_faces }}
+@font-face { font-family: "Rising Sans fallback"; src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo"); size-adjust: 100.92%; ascent-override: 101.57%; descent-override: 27.25%; line-gap-override: 0%; }
 
 :root {
-  color-scheme: light;
-  --field: #0f3b2e;
-  --field-ink: #f2f7f4;
-  --field-muted: #b6cfc3;
-  --field-visited: #cfb2f2;
-  --paper: #ffffff;
-  --ink: #13201a;
-  --muted: #50605a;
-  --green: #12704b;
-  --visited: #551a8b;
-  --rule: #dae3de;
-  --display: Bahnschrift, "DIN Alternate", "Arial Narrow", "Nimbus Sans Narrow", "DejaVu Sans Condensed", sans-serif-condensed, sans-serif;
-  --display-condensed: Bahnschrift, "DIN Condensed", "Arial Narrow", "Nimbus Sans Narrow", "DejaVu Sans Condensed", sans-serif-condensed, sans-serif;
-  --text: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --strip: 2.75rem; /* the strip's height, and so a link's in it: a finger's width */
+  color-scheme: light dark;
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --raised: #efeee8;
+  --line: rgba(27, 26, 22, 0.1);
+  --line-strong: rgba(27, 26, 22, 0.22);
+  --text: #1b1a16;
+  --text-2: #55524a;
+  --text-3: #6b675d;
+  --accent: #12704b;
+  --accent-soft: rgba(18, 112, 75, 0.08);
+  --gain-soft: rgba(18, 112, 75, 0.16);
+  --on-accent: #ffffff;
+  --new: #8a4b08;
+  --new-soft: rgba(214, 140, 40, 0.18);
+  --dot: rgba(27, 26, 22, 0.3);
+  --shade-1: #eef2ee;
+  --shade-2: #d8e8dd;
+  --shade-3: #bddbc8;
+  --shade-4: #9fcbb0;
+  --sans: "Rising Sans", "Rising Sans fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "Rising Mono", ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --bar: 52px; /* the day bar's height: on a board its date is the page's heading */
+}
+/* Dark: by the browser's setting, unless the reader chose light with the switch; or by the reader's choice. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #121311;
+    --surface: #181a17;
+    --raised: #22241f;
+    --line: rgba(236, 235, 229, 0.1);
+    --line-strong: rgba(236, 235, 229, 0.24);
+    --text: #ecebe5;
+    --text-2: #b0ada3;
+    --text-3: #939087;
+    --accent: #5cc896;
+    --accent-soft: rgba(92, 200, 150, 0.08);
+    --gain-soft: rgba(92, 200, 150, 0.2);
+    --on-accent: #0f1a14;
+    --new: #f0b45e;
+    --new-soft: rgba(240, 180, 94, 0.16);
+    --dot: rgba(236, 235, 229, 0.32);
+    --shade-1: #1b221d;
+    --shade-2: #1e3326;
+    --shade-3: #22492f;
+    --shade-4: #285e42;
+  }
+}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] {
+    color-scheme: dark;
+  --bg: #121311;
+  --surface: #181a17;
+  --raised: #22241f;
+  --line: rgba(236, 235, 229, 0.1);
+  --line-strong: rgba(236, 235, 229, 0.24);
+  --text: #ecebe5;
+  --text-2: #b0ada3;
+  --text-3: #939087;
+  --accent: #5cc896;
+  --accent-soft: rgba(92, 200, 150, 0.08);
+  --gain-soft: rgba(92, 200, 150, 0.2);
+  --on-accent: #0f1a14;
+  --new: #f0b45e;
+  --new-soft: rgba(240, 180, 94, 0.16);
+  --dot: rgba(236, 235, 229, 0.32);
+  --shade-1: #1b221d;
+  --shade-2: #1e3326;
+  --shade-3: #22492f;
+  --shade-4: #285e42;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: 3.5rem; } /* clears the strip */
-body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1rem/1.5 var(--text); }
-p, h1, h2, ol { margin: 0; }
+[hidden] { display: none !important; }
+/* What needs the page's script, shown only where the script has marked the root element, in the head. */
+:root:not([data-js]) .js-only { display: none !important; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(var(--bar) + 16px); }
+body { margin: 0; background: var(--bg); color: var(--text); font: 400 15px/1.6 var(--sans); }
+p, h1, h2, h3, ol, ul, figure { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 
-.wrap { max-width: 68rem; margin: 0 auto; padding: 0 1rem; }
-.hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.wide { display: none; }
+/* Links: a link in running text is underlined, quiet at rest and in the accent on hover. A visited repository dims
+   to the muted text, so a reader who comes back each day sees which ones they have already opened. */
+a { color: inherit; text-decoration: underline 1px var(--line-strong); text-underline-offset: 0.25em; transition: color 150ms var(--ease), text-decoration-color 150ms var(--ease); }
+a:hover { color: var(--accent); text-decoration-color: currentColor; }
+a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
-/* Links: the green and an underline at rest, violet once visited, a heavier underline on hover, and a ring on
-   keyboard focus. On the field, the band and the strip, the same in its light ink and a light violet. */
+/* The site's bar: the mark and the name, three quiet links, and the theme switch */
+.site { border-bottom: 1px solid var(--line); }
+.site .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; padding-top: 10px; padding-bottom: 6px; }
+.site .theme { margin-left: auto; }
+.site nav { order: 3; flex: 1 1 100%; }
+.home { display: inline-flex; flex: none; white-space: nowrap; align-items: center; gap: 8px; color: var(--text); font-size: 16px; font-weight: 500; text-decoration: none; }
+.home svg { width: 20px; height: 20px; }
+.site nav { display: flex; gap: 20px; font-size: 14px; white-space: nowrap; }
+.site nav a { display: inline-block; padding: 6px 0; }
+.site nav a { color: var(--text-2); text-decoration: none; }
+.site nav a:hover, .site nav a[aria-current] { color: var(--text); }
+.theme { display: inline-flex; flex: none; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 0; border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--text-2); cursor: pointer; transition: background-color 150ms var(--ease), color 150ms var(--ease); }
+.theme:hover { background: var(--raised); color: var(--text); }
+.theme svg { width: 16px; height: 16px; }
+.theme:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-a { color: var(--green); text-decoration: underline 2px; text-underline-offset: 0.28em; }
-a:visited { color: var(--visited); }
-a:hover { text-decoration-thickness: 3px; }
-a:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; border-radius: 2px; }
-.band a, .strip a { color: var(--field-ink); }
-.band a:visited, .strip a:visited { color: var(--field-visited); }
-.band a:focus-visible, .strip a:focus-visible { outline-color: var(--field-ink); }
-
-/* The band */
-
-.band { background: var(--field); color: var(--field-ink); }
-.band .wrap { padding-top: 1rem; padding-bottom: 1.25rem; }
-.site { max-width: 34rem; color: var(--field-muted); font-size: 0.9375rem; }
-/* The site's name goes home from every page, so it would show as visited on all of them: it keeps its ink. */
-.site .home, .site .home:visited {
-  display: block;
-  width: fit-content;
-  color: var(--field-ink);
-  font-family: var(--display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-}
-h1 {
-  margin-top: 1.25rem;
-  font-family: var(--display-condensed);
-  font-size: clamp(2.25rem, 1.25rem + 4vw, 4rem);
-  font-stretch: condensed;
-  font-weight: 700;
-  line-height: 0.92;
-  letter-spacing: -0.01em;
-}
-.kind {
-  display: block;
-  margin-bottom: 0.375rem;
-  color: var(--field-muted);
-  font-family: var(--text);
-  font-size: 1rem;
-  font-stretch: normal;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: 0;
-}
-.facts { margin-top: 0.75rem; color: var(--field-muted); }
-.facts p + p { margin-top: 0.5rem; }
-.provisional, .partial, .held, .unranked { max-width: 40rem; }
-/* A note on what may move the order, or on what left repositories off it, has a rule at its left. */
-.provisional, .partial.recent, .held, .unranked { padding-left: 0.875rem; border-left: 3px solid #7fcfa6; }
-
-/* The notice of an old board, under the site's line and over the date. It is hidden as built, and its script fills
-   it and shows it once the newest board is 26 hours old. The page's own pair, ink on paper, sets it apart from the
-   band. From 7 days the script marks the root element, and what <main> holds, the board or the list of board days,
-   is hidden. <main> itself stays, so the page keeps its main landmark. */
-
-.old-board { max-width: 40rem; margin-top: 1rem; padding: 0.75rem 1rem; background: var(--paper); color: var(--ink); }
+/* The notice of an old board: hidden as built; its script fills and shows it once the newest board is 26 hours
+   old. From 7 days the script marks the root element, and what <main> holds is hidden. */
+.old-board { max-width: 640px; margin-top: 16px; padding: 12px 16px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface); }
+.old-board strong { font-weight: 500; }
 :root[data-withheld] main > * { display: none; }
 
-/* The strip: the board days before and after this one, and the list of them all, kept in view under the band */
+/* The day bar: the board days on either side, kept in view while the list scrolls */
+.strip { position: sticky; top: 0; z-index: 3; background: var(--bg); border-bottom: 1px solid var(--line); font-size: 14px; }
+.strip .wrap { display: flex; align-items: center; gap: 4px; height: var(--bar); }
+.strip .wrap > a, .strip .wrap > span { display: inline-block; height: 32px; line-height: 32px; padding: 0 8px; border-radius: 8px; white-space: nowrap; }
+.strip a { color: var(--text-2); text-decoration: none; transition: background-color 150ms var(--ease), color 150ms var(--ease); }
+.strip a:hover { background: var(--raised); color: var(--text); }
+.strip .here { color: var(--text); font-weight: 500; }
+.strip h1.here { margin: 0 4px; padding: 0 4px; font-size: 20px; line-height: 32px; letter-spacing: -0.01em; white-space: nowrap; }
+.strip .end { color: var(--text-3); }
+.strip .latest { display: none !important; }
 
-.strip {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background: var(--field);
-  box-shadow: inset 0 1px 0 #2f5d4d;
-  color: var(--field-muted);
-  font-size: 0.9375rem;
-}
-.strip .wrap { display: flex; align-items: center; column-gap: 1rem; height: var(--strip); }
-.strip .wrap > * { line-height: var(--strip); white-space: nowrap; }
-.strip .here { color: var(--field-ink); font-weight: 600; }
-.strip .all { margin-left: auto; }
+/* A page's title block */
+.head { padding: 32px 0 24px; }
+.kind { color: var(--text-2); font-size: 14px; }
+h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+.lede { max-width: 640px; margin-top: 12px; color: var(--text-2); font-size: 18px; line-height: 1.5; }
 
-/* The chart. On a phone a row has three lines: its rank and its name, the description across the full row,
-   and the language with the total stars. The column headings stay in the page for assistive technology. */
+/* Notes that change how the board reads: what it held back, what could not be ranked, a provisional order. Words on
+   a raised surface with a rule in the ink, so they read the same to a screen reader. */
+.notes { display: grid; gap: 8px; max-width: 760px; margin-top: 24px; }
+.notes:empty { display: none; }
+.provisional, .held, .unranked, .partial.recent, .earlier { padding: 12px 16px; border-left: 2px solid var(--text); border-radius: 0 8px 8px 0; background: var(--raised); color: var(--text-2); }
+.notes strong, .earlier strong { color: var(--text); font-weight: 500; }
 
-.chart { display: block; }
+/* The Baseline page's card, which holds its chart */
+.card { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.pace { padding: 20px 16px 16px; }
+.card h2 { font-size: 15px; font-weight: 500; line-height: 1.4; }
+.card .caption { max-width: 560px; margin-top: 4px; color: var(--text-2); font-size: 14px; line-height: 1.5; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 12px; color: var(--text-2); font-size: 13px; }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.legend i { width: 8px; height: 8px; border-radius: 50%; background: var(--dot); }
+.legend i.lead { background: var(--accent); }
+.legend i.own { width: 16px; height: 0; border-radius: 0; border-top: 1.5px dashed var(--text-3); background: none; }
+
+/* The plot. The SVG stretches to the box; its dots are zero-length strokes with round caps and its lines keep their
+   width, so both stay true at any shape. Every label is HTML placed by percentage, at its own size. */
+.plot { position: relative; height: 260px; margin: 28px 8px 48px 40px; }
+.plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.plot .grid line { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.plot .guide { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.plot .guide.own { stroke: var(--text-3); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.plot .dot { stroke: var(--dot); stroke-width: 7; stroke-linecap: round; vector-effect: non-scaling-stroke; transition: opacity 160ms var(--ease), stroke 160ms var(--ease); }
+.plot .dot.lead { stroke: var(--accent); stroke-width: 10; }
+.plot .dot.here { stroke: var(--text); stroke-width: 12; }
+.plot .readout { position: absolute; z-index: 1; transform: translate(12px, -50%); padding: 4px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); color: var(--text); font: 400 12px/1.4 var(--mono); white-space: pre; pointer-events: none; }
+.plot .readout.flip { transform: translate(calc(-100% - 12px), -50%); }
+.plot .tick, .plot .rk, .plot .glabel, .plot .axis { position: absolute; color: var(--text-3); font: 400 11px/1 var(--mono); white-space: nowrap; pointer-events: none; }
+.plot .tick.y { left: -8px; transform: translate(-100%, -50%); }
+.plot .tick.x { top: calc(100% + 8px); transform: translateX(-50%); }
+.plot .axis.y { top: -24px; left: -40px; color: var(--text-2); font-family: var(--sans); font-size: 12px; }
+.plot .axis.x { top: calc(100% + 26px); right: 0; color: var(--text-2); font-family: var(--sans); font-size: 12px; }
+.plot .glabel { transform: translate(4px, -100%); padding-bottom: 2px; }
+.plot .glabel.own { color: var(--text-2); }
+.plot .rk { transform: translate(10px, -50%); text-shadow: 0 0 2px var(--surface), 0 0 4px var(--surface), 0 0 6px var(--surface); color: var(--accent); font-weight: 500; font-size: 12px; }
+
+.card .caption.small { margin-top: 0; color: var(--text-3); font-size: 13px; }
+
+/* The board: a toolbar of filters, then the ranked list */
+.board { margin-top: 24px; }
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding-bottom: 16px; }
+.toolbar h2 { margin-right: auto; font-size: 20px; font-weight: 500; }
+.segments { display: flex; flex-wrap: wrap; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.segments button, .toolbar select { height: 32px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; color: var(--text-2); font: 400 13px/1 var(--sans); cursor: pointer; transition: background-color 150ms var(--ease), color 150ms var(--ease), transform 120ms var(--ease); }
+.segments button:hover { color: var(--text); }
+.segments button[aria-pressed="true"] { background: var(--gain-soft); color: var(--accent); font-weight: 500; }
+.segments button[data-kind="new"][aria-pressed="true"] { background: var(--new-soft); color: var(--new); }
+.segments [data-kind="new"] .num, .segments [data-kind="new"][aria-pressed="true"] .num { color: var(--new); }
+.segments button:active { transform: scale(0.97); }
+.segments .num { margin-left: 4px; color: var(--text-3); font-size: 12px; }
+.segments button[aria-pressed="true"] .num { color: inherit; }
+.toolbar select { padding-right: 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); height: 38px; }
+.toolbar input[type="search"] { order: -1; flex: 1 1 100%; height: 38px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); font: 400 14px/1 var(--sans); transition: border-color 150ms var(--ease); }
+.toolbar input[type="search"]::placeholder { color: var(--text-3); opacity: 1; }
+.toolbar input[type="search"]:hover { border-color: var(--line-strong); }
+.toolbar input[type="search"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.filtered-none { padding: 24px 0; color: var(--text-2); border-top: 1px solid var(--line); }
+
+/* The ranked list. A table, whose parts name their roles, because a phone stacks each row's cells. A closed row is
+   two lines and a line of figures on a phone, and two lines on a desktop: its name, and its description cut to one
+   line. Its chevron, under the rank, opens it on everything else. */
+.chart { width: 100%; border-collapse: collapse; }
 .chart thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.chart tbody { display: block; }
 .chart tbody tr {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(2.5rem, max-content) minmax(0, 1fr) auto;
-  grid-template-areas:
-    "rank repository repository"
-    "description description description"
-    "why why why"
-    "language language stars";
-  column-gap: 0.75rem;
-  align-items: baseline;
-  padding: 1rem 0 1.125rem;
-  border-bottom: 1px solid var(--rule);
+  grid-template-columns: 40px minmax(0, 1fr) 64px auto;
+  grid-template-areas: "rank repository repository repository" ". description description description" ". growth own stars" ". why why why";
+  column-gap: 8px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
 }
-.chart tbody tr > * { display: block; padding: 0; }
-.chart .rank { grid-area: rank; }
-.chart .repository { grid-area: repository; }
-.chart .description { grid-area: description; }
-.chart .why { grid-area: why; }
-.chart .language { grid-area: language; }
-.chart .stars { grid-area: stars; }
-td.rank {
-  color: var(--green);
-  font-family: var(--display-condensed);
-  font-size: 1.75rem;
-  font-stretch: condensed;
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  line-height: 1;
-  white-space: nowrap;
+.chart.plain tbody tr { grid-template-areas: "rank repository repository repository" ". description description description" ". language language stars"; }
+.chart.clickable tbody tr { cursor: pointer; }
+.chart.clickable tbody tr:hover { background: var(--accent-soft); box-shadow: -16px 0 0 var(--accent-soft), 16px 0 0 var(--accent-soft); }
+.chart tbody tr:has(details[open]) { cursor: auto; background: none; box-shadow: none; }
+.chart tbody tr.flash { background: var(--accent-soft); box-shadow: -16px 0 0 var(--accent-soft), 16px 0 0 var(--accent-soft); }
+.chart td, .chart th { display: block; padding: 0; text-align: left; font-weight: 400; }
+td.rk { grid-area: rank; align-self: start; padding-top: 2px; color: var(--text-3); font: 500 14px/1.4 var(--mono); font-variant-numeric: tabular-nums; }
+td.rk.lead { color: var(--accent); }
+td.rk.podium { justify-self: start; min-width: 24px; padding: 2px 4px 0; border-radius: 6px; background: var(--accent); color: var(--on-accent); text-align: center; }
+th.re { grid-area: repository; min-width: 0; overflow-wrap: anywhere; line-height: 1.4; }
+.re a { text-decoration: none; }
+.ow { color: var(--text-2); font-size: 14px; }
+.nm { font-size: 16px; font-weight: 500; text-decoration: underline 1px var(--line-strong); text-underline-offset: 0.25em; transition: text-decoration-color 150ms var(--ease); }
+.re a:hover .nm { text-decoration-color: currentColor; }
+.re a:visited, .re a:visited .ow { color: var(--text-3); }
+.re .new { margin-left: 8px; padding: 1px 6px; border-radius: 6px; background: var(--new-soft); color: var(--new); font: 500 12px/1.4 var(--sans); white-space: nowrap; vertical-align: 1px; }
+/* The description on one line, and whole once the row is open. */
+td.de { grid-area: description; min-width: 0; max-width: 720px; margin-top: 2px; overflow: hidden; color: var(--text-2); font-size: 14px; line-height: 1.5; text-overflow: ellipsis; white-space: nowrap; }
+.chart tbody tr:has(details[open]) td.de { overflow: visible; overflow-wrap: anywhere; white-space: normal; }
+td.de.none { color: var(--text-3); }
+td.gr { grid-area: growth; margin-top: 6px; color: var(--accent); font: 500 14px/1.5 var(--mono); font-variant-numeric: tabular-nums; }
+td.gr::after { content: " a day"; color: var(--text-3); font: 400 13px/1.5 var(--sans); }
+td.gr.g::after { content: " on the day"; }
+/* The row's own pace against what it gained, small: the dashed level of its usual pace, the level of its last two
+   days, and the part between in the green, on one log scale for every row. */
+td.pc { --w: 64px; --h: 24px; grid-area: own; align-self: center; margin-top: 6px; }
+td.pc::before {
+  content: "";
+  display: block;
+  width: var(--w);
+  height: var(--h);
+  background:
+    linear-gradient(var(--accent), var(--accent)) calc(var(--w) * 6 / 7) calc(var(--r) * var(--h) - 1px) / calc((var(--e, 1) - 6 / 7) * var(--w)) 2px no-repeat,
+    linear-gradient(var(--gain-soft), var(--gain-soft)) calc(var(--w) * 6 / 7) calc(var(--r) * var(--h)) / calc((var(--e, 1) - 6 / 7) * var(--w)) calc((var(--u) - var(--r)) * var(--h)) no-repeat,
+    repeating-linear-gradient(90deg, var(--text-3) 0 3px, transparent 3px 5px) 0 calc(var(--u) * var(--h)) / var(--w) 1px no-repeat;
 }
-.repository { font-weight: 400; text-align: left; }
-/* The owner and the name are one run of text, so that searching the page for owner/name reaches its row. The
-   link's padding makes it a finger's height without moving the lines around it. */
-.repository a {
-  padding-block: 0.75rem;
-  font-family: var(--display);
-  font-size: 1.375rem;
-  font-weight: 600;
-  line-height: 1.2;
-  overflow-wrap: anywhere;
-  text-decoration: none;
-}
-.owner { color: var(--muted); font-family: var(--text); font-size: 0.875rem; font-weight: 400; }
-.name { text-decoration: underline 2px; text-underline-offset: 0.28em; } /* in the name's own size, clear of its descenders */
-.repository a:hover .name { text-decoration-thickness: 3px; }
-td.description { margin-top: 0.5rem; overflow-wrap: anywhere; }
-td.description.none { color: var(--muted); font-style: italic; }
-/* Why the repository is here: a line in plain quantities, which opens on its score and the sum behind it. The
-   marker before it shows that it opens, and the line is a finger's height to tap. */
-td.why { margin-top: 0.5rem; color: var(--muted); font-size: 0.875rem; }
-.why summary { width: fit-content; padding-block: 0.25rem; color: var(--ink); font-size: 0.9375rem; font-variant-numeric: tabular-nums; cursor: pointer; }
-.why summary:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 2px; }
-td.language { margin-top: 0.5rem; color: var(--muted); font-size: 0.875rem; }
-td.stars { margin-top: 0.5rem; font-family: var(--display); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
-/* Without the column headings in view, a phone says what the number is. */
-td.stars::after { content: " stars"; color: var(--muted); font-family: var(--text); font-size: 0.875rem; }
+.drawing svg { display: block; overflow: visible; }
+.drawing .above { fill: var(--gain-soft); stroke: none; }
+.drawing .own { fill: none; stroke: var(--text-3); stroke-width: 1.25; stroke-dasharray: 3 2; vector-effect: non-scaling-stroke; }
+.drawing .gained { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: butt; vector-effect: non-scaling-stroke; }
+td.st { grid-area: stars; margin-top: 6px; color: var(--text-2); font: 400 13px/1.6 var(--mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+td.language { grid-area: language; margin-top: 6px; color: var(--text-3); font-size: 13px; }
+.chart thead .sub { display: block; color: var(--text-3); font-size: 12px; }
 
-.message { padding: 3rem 0 1rem; }
-.message-title { font-family: var(--display); font-size: 2rem; font-weight: 700; line-height: 1.1; }
-.message p + p { max-width: 32rem; margin-top: 0.75rem; color: var(--muted); }
+/* The disclosure: its summary is the chevron under the rank; what it opens spans the row. */
+td.wy { grid-area: why; color: var(--text-2); font-size: 14px; }
+td.wy summary { position: absolute; left: 0; top: 38px; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 6px; color: var(--text-3); cursor: pointer; list-style: none; transition: background-color 150ms var(--ease), color 150ms var(--ease); }
+td.wy summary::-webkit-details-marker { display: none; }
+td.wy summary::before { content: ""; width: 7px; height: 7px; margin-top: -3px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform 160ms var(--ease); }
+td.wy summary:hover, .chart.clickable tbody tr:hover td.wy summary { background: var(--raised); color: var(--text); }
+td.wy details[open] summary { color: var(--accent); }
+td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg); }
+.op { display: grid; gap: 20px; margin: 12px 0 8px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); cursor: auto; }
+.rs .ln { color: var(--text); font-size: 15px; font-weight: 500; }
+.rs .su { margin-top: 4px; color: var(--text-2); }
+.part-title { display: block; margin-bottom: 10px; color: var(--text); font-size: 13px; font-weight: 500; text-align: left; }
+caption.part-title { display: table-caption; caption-side: top; }
+.fa { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; margin: 0; align-content: start; }
+.fa dt { color: var(--text-3); font-size: 12px; }
+.fa dd { margin: 0; color: var(--text); font-size: 14px; }
+.more-wait { color: var(--text-3); }
 
-/* The foot: where the board ends, the same links as the strip, and a way back to the top */
+/* The opened row's drawings: its own pace against what it gained, and its stars over 30 days. */
+.drawing-plot { position: relative; height: 160px; margin: 8px 0 22px; }
+.drawing-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.drawing .floor { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.drawing .mark-days { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.drawing .gained { stroke-width: 2.5; }
+.drawing .ends { fill: none; stroke: var(--accent); stroke-width: 8; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.drawing .tag { position: absolute; padding: 1px 4px; border-radius: 4px; background: var(--surface); white-space: nowrap; font: 400 12px/1.2 var(--mono); pointer-events: none; }
+.drawing .tag.got { transform: translate(calc(-100% - 10px), -50%); color: var(--accent); font-weight: 500; }
+.drawing .tag.own { transform: translate(calc(-100% - 10px), 4px); color: var(--text-2); }
+.drawing .tag.usual { transform: translateY(calc(-100% - 6px)); color: var(--text-3); }
+.drawing-axis { display: grid; grid-template-columns: 12fr 2fr; color: var(--text-3); font: 400 11px/1 var(--mono); }
+.drawing-axis span + span { justify-self: end; white-space: nowrap; }
+.drawing-note { margin-top: 8px; color: var(--text-3); font-size: 12px; line-height: 1.5; }
+.month-plot { position: relative; height: 64px; margin: 8px 0 6px; }
+.month-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.month-line .stars { fill: none; stroke: var(--accent); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 
-.foot { padding: 2rem 0 3rem; border-top: 2px solid var(--ink); }
-.message + .foot { border-top-color: var(--rule); }
-.foot-title { font-family: var(--display); font-size: 1.375rem; font-weight: 700; line-height: 1.2; }
-.foot-links { display: flex; flex-wrap: wrap; align-items: center; column-gap: 1.5rem; margin-top: 0.5rem; }
-.foot-links > * { line-height: var(--strip); white-space: nowrap; }
-.foot-links .end { color: var(--muted); }
-.foot-links .here { font-weight: 600; }
-.note { max-width: 40rem; margin-top: 1rem; color: var(--muted); font-size: 0.875rem; }
+/* The running 30 board days: a day on a board is green and carries its rank; a top-ten day is the full green. */
+.run-days { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 2px; }
+.run-days > * { display: flex; align-items: center; justify-content: center; height: 28px; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--line); color: var(--text); font: 500 11px/1 var(--mono); font-variant-numeric: tabular-nums; text-decoration: none; }
+.run-days a.on { background: var(--shade-3); box-shadow: none; transition: box-shadow 150ms var(--ease); }
+.run-days a.on.top { background: var(--accent); color: var(--on-accent); }
+.run-days a.on:hover { box-shadow: inset 0 0 0 1px var(--text); color: var(--text); }
+.run-days a.on.top:hover { color: var(--on-accent); }
+.run-axis { display: flex; justify-content: space-between; margin-top: 6px; color: var(--text-3); font: 400 11px/1 var(--mono); }
 
-/* The list of board days */
+/* The boards it was on, as a table. */
+.more-days-wrap { overflow-x: auto; }
+.more-days { border-collapse: collapse; font-size: 13px; }
+/* The board's table rules reach this table inside a row too: put it back to an ordinary table. */
+.chart .more-days thead { position: static; display: table-header-group; width: auto; height: auto; overflow: visible; clip-path: none; white-space: nowrap; background: none; border: 0; }
+.chart .more-days tr, .chart .more-days thead tr, .chart .more-days tbody tr { display: table-row; padding: 0; border: 0; background: none; box-shadow: none; cursor: auto; }
+.chart .more-days th, .chart .more-days td { display: table-cell; padding: 6px 16px 6px 0; font-size: 13px; }
+.more-days th, .more-days td { padding: 6px 16px 6px 0; border-top: 1px solid var(--line); text-align: left; font-weight: 400; white-space: nowrap; }
+.more-days thead th { border-top: 0; color: var(--text-3); }
+.more-days tbody th { color: var(--text); }
+.more-days td { color: var(--text-2); font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.more-days td.gain { color: var(--accent); }
 
-.month { max-width: 40rem; margin-top: 2rem; }
-.month h2 {
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--ink);
-  font-family: var(--display);
-  font-size: 1.375rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-.days { padding: 0; list-style: none; }
-.days li { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.75rem; border-bottom: 1px solid var(--rule); }
-.days a { padding-block: 0.625rem; font-family: var(--display); font-size: 1.125rem; font-weight: 600; line-height: 1.5; }
-.days .count { margin-left: auto; font-variant-numeric: tabular-nums; }
-.month + .foot { margin-top: 2rem; }
+.message { max-width: 640px; padding: 32px 0; border-top: 1px solid var(--line); }
+.message-title { font-size: 20px; font-weight: 500; }
+.message p + p { margin-top: 8px; color: var(--text-2); }
+
+/* About this board: the board's plain facts and what New means, in the open at its foot */
+.about { max-width: 760px; margin-top: 40px; padding: 24px 0; border-top: 1px solid var(--line); }
+.about h2 { font-size: 15px; font-weight: 500; }
+.about .lines p { margin-top: 8px; color: var(--text-2); font-size: 14px; line-height: 1.5; }
+.about .lines strong { color: var(--text); font-weight: 500; }
+
+/* A board's foot, and the site's */
+.foot { margin-top: 0; padding: 24px 0 8px; border-top: 1px solid var(--line); }
+.foot-title { font-size: 15px; font-weight: 500; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 8px; font-size: 14px; }
+.foot-links > * { display: inline-flex; align-items: center; min-height: 44px; }
+.foot-links .end, .foot-links .here { color: var(--text-3); }
+.foot-links a { color: var(--text-2); }
+.note { max-width: 640px; color: var(--text-3); font-size: 13px; }
+.colophon { margin-top: 48px; padding: 24px 0 40px; border-top: 1px solid var(--line); color: var(--text-3); font-size: 13px; }
+.colophon p + p { margin-top: 4px; }
+
+/* The board days, as month calendars: each day a cell shaded on a fixed four-step ramp by its count of
+   repositories, with how many were new under it. A day with no board is a blank cell; the newest is outlined. */
+.ramp-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 20px; color: var(--text-2); font-size: 13px; }
+.ramp-legend .ramp-title { color: var(--text); }
+.ramp-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.ramp-legend i { width: 14px; height: 14px; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--line); }
+.ramp-legend i.newest-key { box-shadow: inset 0 0 0 2px var(--accent); }
+.ramp-note { max-width: 640px; margin-top: 8px; color: var(--text-3); font-size: 13px; }
+.shade-0 { background: var(--surface); }
+.shade-1 { background: var(--shade-1); }
+.shade-2 { background: var(--shade-2); }
+.shade-3 { background: var(--shade-3); }
+.shade-4 { background: var(--shade-4); }
+.months { display: grid; gap: 40px; margin-top: 8px; }
+.month h2 { padding-bottom: 8px; font-size: 20px; font-weight: 500; }
+.cal { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 4px; margin: 0 -4px; }
+.cal th { padding: 0 0 4px 4px; color: var(--text-3); font-size: 12px; font-weight: 400; text-align: left; }
+.cal td { padding: 0; vertical-align: top; }
+.cal a, .cal .gap { display: flex; flex-direction: column; min-height: 56px; padding: 6px; border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line); text-decoration: none; transition: box-shadow 150ms var(--ease); }
+.cal .gap { background: transparent; box-shadow: inset 0 0 0 1px var(--line); background-image: repeating-linear-gradient(-45deg, transparent 0 6px, var(--line) 6px 7px); }
+.cal a:hover { box-shadow: inset 0 0 0 1px var(--text); color: var(--text); }
+.cal a.newest { box-shadow: inset 0 0 0 2px var(--accent); }
+.cal .date { color: var(--text); font-size: 12px; line-height: 1.3; }
+.cal .count { margin-top: auto; color: var(--text); font: 500 14px/1.2 var(--mono); font-variant-numeric: tabular-nums; }
+/* The new counts, and the note that names them, show where a cell has room for them; a screen reader hears each
+   count in its cell at any width. */
+.fresh-note { display: none; }
+.cal .fresh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* The Baseline page: the chart, and every repository in it as a table */
+.figures { margin-top: 40px; }
+.figures h2 { padding-bottom: 12px; font-size: 20px; font-weight: 500; }
+.numbers { width: 100%; border-collapse: collapse; font-size: 14px; }
+.numbers th, .numbers td { padding: 8px 8px 8px 0; border-top: 1px solid var(--line); text-align: left; font-weight: 400; vertical-align: baseline; }
+.numbers thead th { border-top: 0; color: var(--text-3); font-size: 13px; }
+.numbers tbody th { overflow-wrap: anywhere; }
+.numbers tbody th a { text-decoration-color: var(--line-strong); }
+.numbers .num { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--text-2); }
+.numbers .n { text-align: right; padding-right: 0; padding-left: 8px; }
+.numbers tr.flash { background: var(--accent-soft); }
+.figures .note { margin-top: 16px; }
 
 /* How it works */
+.prose { max-width: 680px; padding-bottom: 16px; }
+.prose h2 { margin-top: 40px; font-size: 20px; font-weight: 500; line-height: 1.3; }
+.prose h2 + p, .prose p + p { margin-top: 12px; }
+.prose p { color: var(--text-2); font-size: 16px; line-height: 1.7; }
+.prose > p:first-child { color: var(--text); font-size: 18px; }
+.example { margin: 32px 0 8px; padding: 20px 16px 16px; }
+.days14 { position: relative; display: grid; grid-template-columns: repeat(14, 1fr); align-items: end; gap: 4px; height: 180px; margin: 32px 0 8px; border-bottom: 1px solid var(--line-strong); }
+.days14 i { position: relative; display: block; border-radius: 2px 2px 0 0; background: var(--dot); }
+.days14 i.recent { background: linear-gradient(var(--accent) 0 0) top / 100% var(--over) no-repeat, var(--dot); }
+.days14 .own { position: absolute; left: 0; right: 0; border-top: 1.5px dashed var(--text-3); }
+.days14 .own span, .days14 .over { position: absolute; color: var(--text-2); font: 400 11px/1 var(--mono); white-space: nowrap; }
+.days14 .own span { left: 0; top: -18px; background: var(--surface); padding-right: 4px; }
+.days14 .over { right: 0; transform: translateY(-100%); padding-bottom: 6px; color: var(--accent); font-weight: 500; }
+.days14-axis { display: flex; justify-content: space-between; color: var(--text-3); font: 400 11px/1 var(--mono); }
 
-.prose { max-width: 40rem; padding: 1.5rem 0 2rem; }
-.prose h2 { margin-top: 1.75rem; font-family: var(--display); font-size: 1.375rem; font-weight: 700; line-height: 1.2; }
-.prose h2 + p, .prose p + p { margin-top: 0.5rem; }
-
-/* A desktop: the site's line on one line, the board's facts beside its date so that the band stays short, and a
-   row of four columns, whose description sits under the name */
-
-@media (min-width: 48rem) {
-  html { scroll-padding-top: 6rem; } /* clears the strip and the column headings */
-  .wrap { padding: 0 2rem; }
-  .wide { display: inline; }
-  .band .wrap {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    column-gap: 3rem;
-    align-items: end;
-    padding-top: 0.875rem;
-    padding-bottom: 1rem;
-  }
-  .site { grid-column: 1 / -1; max-width: none; }
-  .site .home, .site .home:visited { display: inline; margin-right: 0.5rem; }
-  h1 { grid-column: 1; margin-top: 0.875rem; }
-  .facts { grid-column: 2; margin-top: 0; }
-  .old-board { grid-column: 1 / -1; } /* a row of its own, between the site's line and the date */
-  .strip .wrap { column-gap: 1.5rem; }
-
+@media (min-width: 768px) {
+  :root { --bar: 64px; }
+  html { scroll-padding-top: calc(var(--bar) + 56px); }
+  .wrap { padding: 0 32px; }
+  .numbers th, .numbers td { padding-right: 12px; }
+  .numbers .n { padding-right: 0; padding-left: 12px; }
+  .toolbar input[type="search"] { order: 0; flex: 1 1 160px; max-width: 280px; margin-left: auto; }
+  .strip h1.here { font-size: 28px; line-height: 40px; letter-spacing: -0.02em; }
+  .strip .wrap { gap: 8px; }
+  .site .wrap { flex-wrap: nowrap; height: 56px; padding-top: 0; padding-bottom: 0; }
+  .site nav { order: 0; flex: none; margin-left: auto; }
+  .site .theme { order: 1; margin-left: 4px; }
+  .head { padding: 48px 0 32px; }
+  h1 { font-size: 56px; letter-spacing: -0.03em; }
+  .pace { padding: 24px 24px 20px; }
+  .plot { height: 320px; margin: 32px 8px 48px 48px; }
+  .op { grid-template-columns: minmax(0, 1fr) 280px; grid-template-areas: "reason facts" "drawing facts" "run run" "days days"; column-gap: 32px; row-gap: 24px; max-width: 960px; padding: 20px 24px; }
+  .op .rs { grid-area: reason; }
+  .op .fa { grid-area: facts; grid-template-columns: 1fr; gap: 12px; padding-left: 24px; border-left: 1px solid var(--line); }
+  .op .drawing { grid-area: drawing; }
+  .op .run { grid-area: run; }
+  .op.m { grid-template-areas: "reason facts" "drawing facts" "month facts" "run run" "days days"; grid-template-rows: auto auto 1fr; }
+  .op .month-line { grid-area: month; }
+  .op .more-days-wrap { grid-area: days; }
+  .drawing-plot { height: 180px; }
+  .run-days { grid-template-columns: repeat(30, minmax(0, 1fr)); }
   .chart thead {
     position: sticky;
-    top: var(--strip);
-    z-index: 1;
+    top: var(--bar);
+    z-index: 2;
     display: block;
     width: auto;
     height: auto;
     overflow: visible;
     clip-path: none;
-    white-space: normal;
-    background: var(--paper);
-    box-shadow: inset 0 -2px 0 var(--ink);
+    background: var(--bg);
+    border-bottom: 1px solid var(--line-strong);
   }
+  .chart thead tr { display: grid; }
   .chart thead tr, .chart tbody tr {
-    grid-template-columns: 4.5rem minmax(0, 1fr) 9rem 7.5rem;
-    grid-template-areas: "rank repository language stars" "rank description language stars" "rank why language stars";
-    column-gap: 1.25rem;
+    grid-template-columns: 48px minmax(0, 1fr) 112px 120px 96px;
+    grid-template-areas: "rank repository growth own stars" ". description growth own stars" ". why why why why";
+    column-gap: 16px;
   }
-  thead tr { display: grid; }
-  thead th { padding: 0.5rem 0; color: var(--muted); font-size: 0.8125rem; font-weight: 600; text-align: left; }
-  thead .rank, thead .stars { text-align: right; }
-  .chart tbody tr { padding: 0.75rem 0; }
-  td.rank { font-size: 2.25rem; text-align: right; }
-  .repository a { font-size: 1.625rem; }
-  td.description { max-width: 38rem; margin-top: 0.25rem; }
-  td.why { max-width: 38rem; margin-top: 0.25rem; }
-  td.language, td.stars { margin-top: 0; }
-  td.stars { font-size: 1.125rem; }
-  td.stars::after { content: none; }
+  .chart.plain thead tr, .chart.plain tbody tr { grid-template-areas: "rank repository language language stars" ". description language language stars"; }
+  .chart thead th { display: block; padding: 10px 0; color: var(--text-3); font-size: 13px; font-weight: 400; text-align: left; }
+  .chart thead .de, .chart thead .wy { display: none; }
+  .chart thead .rk { grid-area: rank; }
+  .chart thead .re { grid-area: repository; }
+  .chart thead .language { grid-area: language; }
+  .chart thead .pc { grid-area: own; }
+  .chart thead .gr { grid-area: growth; }
+  td.gr { margin-top: 0; padding-top: 1px; align-self: start; font-size: 15px; }
+  td.gr::after, td.gr.g::after { content: none; }
+  td.pc { align-self: start; margin-top: 0; padding-top: 4px; }
+  td.pc { --w: 96px; --h: 32px; }
+  .chart thead .st { grid-area: stars; text-align: right; }
+  .chart tbody tr { padding: 12px 0; transition: background-color 400ms var(--ease), box-shadow 400ms var(--ease); }
+  .chart tbody tr:first-child { border-top: 0; }
+  td.rk { font-size: 15px; text-align: right; }
+  td.rk.podium { justify-self: end; }
+  td.wy summary { left: 20px; top: 42px; }
+  td.language, td.st { margin-top: 0; padding-top: 2px; font-size: 14px; }
+  .strip .latest { display: inline-block !important; margin-left: auto; }
+  td.st::after { content: none; }
+  .nm { font-size: 17px; }
+  .cal a, .cal .gap { min-height: 76px; padding: 8px; }
+  .cal .date { font-size: 13px; }
+  .cal .count { margin-top: 8px; font-size: 20px; }
+  .fresh-note { display: inline; }
+  .cal .fresh { position: static; width: auto; height: auto; overflow: visible; clip-path: none; color: var(--text); font-size: 12px; line-height: 1.4; }
+  .example { padding: 24px; }
 }
+@media (min-width: 1100px) {
+  .months { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px; row-gap: 40px; }
+}
+/* Forced colours drop backgrounds and shadows. The drawings made of them take system colours instead; the Baseline
+   legend keeps the page's colours, as its chart's dots do; and the cells of History's calendar, which lose their
+   shades, keep an edge, the newest one's in the highlight. */
+@media (forced-colors: active) {
+  .legend i { forced-color-adjust: none; }
+  td.pc::before, .days14 i { forced-color-adjust: none; --accent: Highlight; --gain-soft: GrayText; --text-3: CanvasText; --dot: CanvasText; }
+  .cal a, .cal .gap, .ramp-legend i.newest-key { outline: 1px solid CanvasText; outline-offset: -1px; }
+  .cal a.newest, .ramp-legend i.newest-key { outline: 2px solid Highlight; outline-offset: -2px; }
+  .ramp-legend .ramp-title, .ramp-legend span:has(> i[class^="shade"]) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+.prose .card h2 { margin-top: 0; font-size: 15px; }

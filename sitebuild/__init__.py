@@ -2,6 +2,10 @@
 
 import base64
 import hashlib
+import json
+import math
+import re
+import shutil
 from collections.abc import Iterator
 from datetime import date, datetime
 from decimal import ROUND_HALF_UP, Decimal
@@ -9,16 +13,23 @@ from itertools import groupby
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
+from markupsafe import Markup
 
 from sitebuild.contract import boards as read_boards
 
 TEMPLATES = Path(__file__).parent / "templates"
+STATIC = Path(__file__).parent / "static"
+"""Files served as they are, under /static/. The type is inside each page, so the fonts' folder holds only
+OFL.txt: the copyright notice and the SIL Open Font License, which the licence asks to travel with the fonts."""
 DATA = Path(__file__).resolve().parent.parent / "site-data"
 
 BOARD = "index.html"
 DAYS = "days/index.html"
 BOARD_DAY = "days/{board_day}/index.html"
 HOW_IT_WORKS = "how-it-works/index.html"
+BASELINE = "baseline/index.html"
+BASELINE_NAME = "Baseline"
+"""The Baseline page's name, as the site's bar and the page's own strip show it: change it here to rename the page."""
 NOT_FOUND = "404.html"
 
 PAGES = {
@@ -26,6 +37,7 @@ PAGES = {
     DAYS: "days.html",
     BOARD_DAY: "board.html",
     HOW_IT_WORKS: "how-it-works.html",
+    BASELINE: "baseline.html",
     NOT_FOUND: "not-found.html",
 }
 """Each page the build writes, by its path in the site, and the template in templates/ that renders it.
@@ -44,11 +56,6 @@ PAGES = {
 page.html names the templates whose pages carry the notice of an old board: every one but not-found.html and
 how-it-works.html, whose text the notice's hiding of an old board would hide.
 """
-
-SCRIPT = "old-board.js"
-"""The site's one script, in templates/: the notice of an old board (AndrewGodlewsky/RisingRepos#56). old-board.html
-puts its text in the page, and the build puts the hash of that text in the page's Content-Security-Policy, which lets
-this script run and no other."""
 
 DESCRIBED_FORMULA = 2
 """The version of the scoring formula that how-it-works.html describes. Its page says so, and says plainly when the
@@ -302,6 +309,131 @@ def why(row: dict) -> dict:
     return {"line": f"{gained} · {pace}", "detail": detail + "."}
 
 
+def growth(row: dict) -> dict:
+    """The growth column: the multiple the ranking itself uses, its recent pace over its baseline, in the file's own
+    numbers, or, where the file gives no honest multiple, what it does give. `multiple` is the score written as a
+    multiple ('130×') when the repository's baseline was at least the floor it was divided by; otherwise None, and
+    `pace` is its score, its recent stars a day, since a baseline under the floor counts as the floor of 1, with `note`
+    saying why. The site computes nothing: it rounds the score the file gives, as `times` and `figure` do."""
+    score, baseline, divisor = row["score"], row["baseline"], row["divided_by"]
+    if baseline >= divisor:
+        return {"multiple": f"{times(score)}×", "pace": None, "note": None}
+    return {
+        "multiple": None,
+        "pace": f"{figure(score, 1)} a day",
+        "note": "baseline under 1 a day" if baseline >= 0 else "it had been losing stars",
+    }
+
+
+def gained(row: dict) -> str:
+    """The growth column when the board's file gives `gained_1_day` (RisingRepos#194): the stars the repository gained
+    on the board day, as '+147', '0', or '-600' for a loss, and '–' when the file has no count for the day before."""
+    gain = row.get("gained_1_day")
+    if gain is None:
+        return "–"
+    return f"+{gain:,}" if gain > 0 else f"{gain:,}"
+
+
+def per_day(row: dict) -> str:
+    """The growth column when the board's file has no `gained_1_day`: the stars a day the repository gained over its
+    recent days, the board day and the day before, or the one of them the loss rule kept, as '+148'. The same unit on
+    every row, which its total over the two days would not be when a day is left out. Whole from 10, to one place
+    below, as `times` rounds: 295 in 2 days as '+148', and 13 in 2 days as '+6.5'."""
+    return "+" + times(row["recent_stars"] / row["recent_days"])
+
+
+PACE_SCALE = (0.5, 5000)
+"""The stars a day the row's small chart spans, bottom to top, on a log scale: the same for every row of every board,
+so that two rows' charts compare. A pace under the bottom, a falling one among them, sits on the bottom."""
+
+
+def own_pace(row: dict) -> dict:
+    """A row's own pace against what it gained, small, as the worked example of How it works draws it: across the 14
+    days, the dashed level of its usual pace, its baseline a day, as it would have gone on; over its recent days, the
+    last two or the one the loss rule kept, the level of its recent pace; and the part between shaded. Both levels are
+    stars a day on one log scale, `PACE_SCALE`, shared by every row, so the gap reads as its multiple and the height as
+    its size. The file gives averages for the two windows, not a count for each day, so each is one level.
+
+    The stylesheet draws it from `style`, two custom properties of the cell: `--u` and `--r`, how far down the box
+    each level sits, from 0 to 1, and `--e`, where the recent run ends, when a day was left out. Two numbers cost a
+    row about a sixth of what an SVG of the same drawing does."""
+    baseline, gained, days = row["baseline"], row["recent_stars"], row["recent_days"]
+    low, high = (math.log10(value) for value in PACE_SCALE)
+
+    def down(pace: float) -> str:
+        at = (math.log10(min(max(pace, PACE_SCALE[0]), PACE_SCALE[1])) - low) / (high - low)
+        return f"{0.05 + (1 - at) * 0.9:.2f}"
+
+    style = f"--u:{down(baseline)};--r:{down(gained / days)}"
+    if days != 2:
+        style += f";--e:{(12 + days) / 14:.3f}"
+    return {"style": style, "text": f"Usual {figure(baseline, 2)} a day, then {figure(gained / days, 1)} a day"}
+
+
+HISTORY_WINDOW = 30
+"""How many board days the expanded row's chart covers, its own board included."""
+
+
+ABOUT = ("license", "created_at", "pushed_at")
+"""The facts the data contract gives each row since AndrewGodlewsky/RisingRepos#197, by its names: its licence as an
+SPDX id, which the owner chose and the contract marks untrusted, when it was created, and when it was last pushed to.
+The opened row shows them from the history file, as text."""
+
+
+def history_file(boards: list[dict], history: "History", number: int) -> dict:
+    """What a board's expanded rows draw from, as the file `days/<board day>/history.json`, which the board's script
+    fetches from the site's own address when a reader first opens a row. `days` are the last `HISTORY_WINDOW` board
+    days, oldest first, ending with this one. `rows`, in the board's order, give each row's `first` board day, and in
+    `on` one entry for each of those board days whose board listed it: [the day's place in `days`, its rank, its total
+    stars, its recent stars, its recent days, its multiple of its baseline as the growth column writes it or None, its
+    score as stars a day]. A day it was off the board has no entry, so the chart leaves a gap, never a zero. A row
+    with a score also gives `pace`, for its drawing, and `why`, the detail its opened row shows; `was`, its earlier
+    name, when it has been renamed within the window; and, from a file that carries them, `stars`, `gains`, and
+    `about`."""
+    span = list(range(min(len(boards), number + HISTORY_WINDOW) - 1, number - 1, -1))  # oldest first
+    by_id = [{row["github_id"]: row for row in boards[at]["rows"]} for at in span]
+    rows = []
+    about = any(name in row for row in boards[number]["rows"] for name in ABOUT)
+    for row in boards[number]["rows"]:
+        on = []
+        for place, listed in enumerate(by_id):
+            seen = listed.get(row["github_id"])
+            if seen and "score" in seen:
+                # Both figures as the row's growth cell words them, so the two never disagree: the multiple by
+                # `times`, and otherwise the score as stars a day to one place.
+                multiple = times(seen["score"]) if seen["baseline"] >= seen["divided_by"] else None
+                on.append([place, seen["rank"], seen["stars"], seen["recent_stars"], seen["recent_days"],
+                           multiple, figure(seen["score"], 1)])
+            elif seen:
+                on.append([place, seen["rank"], seen["stars"], None, None, None, None])
+        entry = {"first": boards[history.first[row["github_id"]]]["board_day"], "on": on}
+        # Its name on the latest earlier board that listed it under another, when it has been renamed or moved.
+        was = next((listed[row["github_id"]]["full_name"] for listed in reversed(by_id[:-1])
+                    if row["github_id"] in listed and listed[row["github_id"]]["full_name"] != row["full_name"]), None)
+        if was:
+            entry["was"] = was
+        if "score" in row:
+            # The opened row's drawing of its own pace against what it gained: [baseline a day, recent stars,
+            # recent days, stars above its own trend or None when a day was left out or the pace was falling].
+            kept = not row["days_left_out"] and row["baseline"] >= 0
+            entry["pace"] = [float(figure(row["baseline"], 2).replace(",", "")), row["recent_stars"],
+                             row["recent_days"], int(rounded(row["excess"], 0)) if kept else None]
+            # The opened row's detail, which the page leaves out: [the sum behind its reason, its multiple or why
+            # it has none, its language or None], each worded as `why` and `growth` word them.
+            grew = growth(row)
+            entry["why"] = [why(row)["detail"], grew["multiple"] or "None: " + grew["note"], row["language"]]
+        # From the files that carry them (RisingRepos#193 to #197): its star count on each of the 31 days to the board
+        # day, oldest first, null where there is none; its gains over 7 and 30 days; and its licence, creation, and
+        # last push, null where the file gives none, when any row of the board gives any of the three.
+        if "star_history" in row:
+            entry["stars"] = row["star_history"]
+            entry["gains"] = [row.get("gained_7_days"), row.get("gained_30_days")]
+        if about:
+            entry["about"] = [row.get(name) for name in ABOUT]
+        rows.append(entry)
+    return {"days": [boards[at]["board_day"] for at in span], "rows": rows}
+
+
 MADE_LATE = 2
 """How many days after its board day, by the date in UTC, a board's publish time must fall for its page to say that
 the board was made after its day. The daily job publishes a board on its day, or early on the next."""
@@ -349,6 +481,278 @@ def made_late(board: dict) -> bool:
     return (published - date.fromisoformat(board["board_day"])).days >= MADE_LATE
 
 
+STAR_BANDS = (
+    (0, "Under 1k", 1_000),
+    (1, "1k–3k", 3_000),
+    (2, "3k–10k", 10_000),
+    (3, "10k–30k", 30_000),
+    (4, "30k+", None),
+)
+"""RisingRepos's five star bands (its GLOSSARY.md, and AndrewGodlewsky/RisingRepos#34), as the board's filter names
+them: each band's number, its label, and the star count it stops below. The first band starts at the star floor of
+200; a row under it, which the floor should rule out, is counted in the first band rather than dropped."""
+
+
+def bands_of(board: dict) -> list[tuple[int, str, int | None]]:
+    """The star bands as the board's filter names them: from the file's `star_bands` when it gives them
+    (AndrewGodlewsky/RisingRepos#196, in the form `holds` uses: each band's `least_stars` and `most_stars`, lowest
+    first), and from STAR_BANDS when it does not. Each band's number, its label, and the star count it stops below.
+
+    Each band is worded from its own limits, the lowest too: the file's lowest band starts at the star floor, so it
+    reads "200–1k", from its least to where the next begins, as every band but the top one does."""
+    given = board.get("star_bands")
+    if not given:
+        return list(STAR_BANDS)
+
+    def short(stars: int) -> str:
+        return f"{stars // 1000}k" if stars % 1000 == 0 and stars >= 1000 else f"{stars:,}"
+
+    bands = []
+    for number, band in enumerate(given):
+        below = None if band["most_stars"] is None else band["most_stars"] + 1
+        if below is None:
+            label = f"{short(band['least_stars'])}+"
+        else:
+            label = f"{short(band['least_stars'])}–{short(below)}"
+        bands.append((number, label, below))
+    return bands
+
+
+def held_bands(board: dict, bands: list[tuple[int, str, int | None]]) -> set[int]:
+    """The numbers of the bands in `bands` that the board holds back (`holds`, AndrewGodlewsky/RisingRepos#13), each
+    matched by where it stops. A held band has no row on the board, so its filter would show nothing: the page keeps
+    its button for the script, which tells a row's band from every band's limits, and hides it from the reader."""
+    stops = {None if hold["most_stars"] is None else hold["most_stars"] + 1 for hold in board.get("holds", [])}
+    return {number for number, _, below in bands if below in stops}
+
+
+TOP = 10
+"""How many rows at the head of a board take the accent, in the pace chart and at their rank in the list."""
+
+LABELLED = 5
+"""How many of those the pace chart names by rank beside their dot."""
+
+
+def _ticks(low: float, high: float) -> list[float]:
+    """The powers of ten from `low` to `high` inclusive, for a log axis: 1, 10, 100, 1000. Always at least one
+    decade, so that a board whose rows all sit at one pace still has an axis."""
+    first = int(math.floor(math.log10(low)))
+    last = max(int(math.ceil(math.log10(high))), first + 1)
+    return [10.0**power for power in range(first, last + 1)]
+
+
+def pace_chart(rows: list[dict]) -> dict | None:
+    """The board's one chart: every row placed by its usual pace (across) against its recent pace (up), both in stars
+    a day on log scales, so that a row's score, recent pace ÷ usual pace, is how far above the diagonal of its own pace
+    it sits. The diagonals of 3×, 10×, 100×, and 1,000× are drawn as guides.
+
+    The site computes no score: the usual pace is the divisor the file gives (`divided_by`, the baseline or the floor
+    of 1 star a day), and the recent pace is the file's score times that divisor, which is the file's recent stars over
+    its recent days. Positions are percentages of the plot, so the page can stretch the chart to any shape and keep
+    its dots round and its labels at their own size. None for a board with no rows, or rows without the numbers.
+    """
+    if not rows or "score" not in rows[0]:
+        return None
+    points = [(row["divided_by"], row["score"] * row["divided_by"]) for row in rows]
+    xs, ys = _ticks(min(x for x, _ in points), max(x for x, _ in points)), _ticks(1, max(y for _, y in points))
+    x0, x1, y0, y1 = math.log10(xs[0]), math.log10(xs[-1]), math.log10(ys[0]), math.log10(ys[-1])
+    # A little room inside the frame, so that the dots at the floor and at the top clear the axes.
+    x0, x1 = x0 - (x1 - x0) * 0.03, x1 + (x1 - x0) * 0.01
+
+    def left(x: float) -> float:
+        return round((math.log10(x) - x0) / (x1 - x0) * 100, 2)
+
+    def top(y: float) -> float:
+        return round((y1 - math.log10(y)) / (y1 - y0) * 100, 2)
+
+    dots = [{"left": left(x), "top": top(y), "rank": row["rank"]} for row, (x, y) in zip(rows, points)]
+    # The labelled dots, by rank. Dots that sit close together share one label, "1, 2", placed at the first of them,
+    # so that no label lands on another or drifts from its dot.
+    labels: list[dict] = []
+    for dot in dots[:LABELLED]:
+        near = next((label for label in labels
+                     if abs(label["left"] - dot["left"]) < 6 and abs(label["top"] - dot["top"]) < 6), None)
+        if near:
+            near["text"] += f", {dot['rank']}"
+        else:
+            labels.append({"text": str(dot["rank"]), "left": dot["left"], "top": dot["top"]})
+    guides = []
+    for multiple in (1, 3, 10, 100, 1000):
+        # The diagonal y = multiple · x, clipped to the plot: in log space, a line of slope 1.
+        shift = math.log10(multiple)
+        start, end = max(x0, y0 - shift), min(x1, y1 - shift)
+        if start >= end:
+            continue
+        guides.append(
+            {
+                "multiple": multiple,
+                "x1": left(10**start), "y1": top(10 ** (start + shift)),
+                "x2": left(10**end), "y2": top(10 ** (end + shift)),
+                "label": "own pace" if multiple == 1 else f"{multiple:,}×",
+            }
+        )
+    return {
+        # Every dot as one path, in the board's order, the top rows in their own: a zero-length stroke with a round
+        # cap is a dot, placed to a tenth of a percent. One path costs about 12 bytes a row, where an element for each
+        # dot cost several times that. baseline.js reads the dots back from these, in order.
+        "lead": "".join(f"M{round(dot['left'], 1):g} {round(dot['top'], 1):g}h0" for dot in dots[:TOP]),
+        "rest": "".join(f"M{round(dot['left'], 1):g} {round(dot['top'], 1):g}h0" for dot in dots[TOP:]),
+        "count": len(dots),
+        "labels": labels,
+        "guides": guides,
+        "xticks": [{"at": left(x), "text": f"{x:,.0f}"} for x in xs],
+        "yticks": [{"at": top(y), "text": f"{y:,.0f}"} for y in ys],
+        "floor": sum(1 for x, _ in points if x == 1),
+    }
+
+
+WINDOW = 14
+"""How many board days the "Most often" order counts, its own board included: two weeks of boards."""
+
+RAMP = (200, 275, 350)
+"""The board days calendar's fixed ramp: a board of fewer rows than the first step
+takes the first shade, and each step after takes the next. Fixed, so that a shade means the same count every month."""
+
+
+def comparable(board: dict) -> bool:
+    """Whether a board can stand as the board before when telling what is new: it listed its rows as usual. A held
+    board left whole star bands off and an empty one listed nothing, so a repository missing from either may have been
+    kept off rather than not rising, and the page does not guess which."""
+    return board.get("state", "rows" if board["rows"] else "empty") == "rows"
+
+
+class History:
+    """What the boards say about each other, worked out once at build time from the lists the files hold. New goes by
+    name: a repository whose name, in any case, was on no earlier board is new, so a renamed or transferred one is new
+    under its new name. Everything else follows a repository by its GitHub id, which a rename or a transfer keeps, so
+    its run, its return, and its history stay whole: specula-org/Specula, on boards from August, came back as
+    specular-org/Specular, which is new and still lists its earlier boards. The site computes no score and no rank: it
+    compares lists."""
+
+    def __init__(self, boards: list[dict]):
+        self.boards = boards  # newest first, as the index is
+        self.ids = [{row["github_id"] for row in board["rows"]} for board in boards]
+        self.first: dict[int, int] = {}
+        self.first_named: dict[str, int] = {}
+        for number in range(len(boards) - 1, -1, -1):  # oldest first, so the first number kept is the oldest board
+            for github_id in self.ids[number]:
+                self.first.setdefault(github_id, number)
+            for row in boards[number]["rows"]:
+                self.first_named.setdefault(row["full_name"].lower(), number)
+        self._rows: dict[int, dict] = {}
+
+    def known(self, number: int) -> bool:
+        """Whether what is new on the board at `number` can be told: there is a board before it, and it is
+        comparable."""
+        return number + 1 < len(self.boards) and comparable(self.boards[number + 1])
+
+    def rows(self, number: int) -> dict:
+        """For the board at `number`: each row's recent presence, in the board's order (`marks`); how many rows are
+        new (`new`, None when that cannot be told); how many boards the window covers (`window`); and the first board
+        day the site holds (`since`). A mark holds `on`, how many of those boards listed it, by which the board's
+        "Most often in 14 boards" order sorts; and `status`: "new" when its name was on no earlier board, "still" when
+        it was on the board before too, with `run` boards in a row, or "back" after a gap, with `last`, the board day it
+        was last on. The status is None when it cannot be told."""
+        if number in self._rows:
+            return self._rows[number]
+        span = list(range(min(len(self.boards), number + WINDOW) - 1, number - 1, -1))  # oldest first
+        known = self.known(number)
+        marks, new = [], 0
+        for row in self.boards[number]["rows"]:
+            github_id = row["github_id"]
+            seen = [github_id in self.ids[at] for at in span]
+            mark = {"on": sum(seen), "status": None, "run": 0, "last": None}
+            if known and self.first_named[row["full_name"].lower()] == number:
+                mark["status"] = "new"
+                new += 1
+            elif number + 1 < len(self.boards) and github_id in self.ids[number + 1]:
+                run = 0
+                while number + run < len(self.boards) and github_id in self.ids[number + run]:
+                    run += 1
+                mark.update(status="still", run=run)
+            elif known:
+                # Back after a gap: last on a board by its GitHub id or, for a name another repository held, by name.
+                name = row["full_name"].lower()
+                last = next(at for at in range(number + 1, len(self.boards)) if github_id in self.ids[at] or
+                            any(other["full_name"].lower() == name for other in self.boards[at]["rows"]))
+                mark.update(status="back", last=self.boards[last]["board_day"])
+            marks.append(mark)
+        result = {"marks": marks, "new": new if known else None, "window": len(span),
+                  "since": self.boards[-1]["board_day"]}
+        self._rows[number] = result
+        return result
+
+
+def calendar(boards: list[dict], history: History) -> list[dict]:
+    """The board days as month calendars, newest month first: each month's weeks from Monday, and each day a cell
+    holding its board, its count of rows, its shade on the fixed `RAMP` (0 for a board with none), and how many of its
+    rows were new (None when that cannot be told); a cell with no count for a day between the first board and the
+    newest that has none; and None outside them."""
+    by_day = {board["board_day"]: number for number, board in enumerate(boards)}
+    months = sorted({board["board_day"][:7] for board in boards}, reverse=True)
+    oldest, newest = boards[-1]["board_day"], boards[0]["board_day"]
+    result = []
+    for month in months:
+        year, number = (int(part) for part in month.split("-"))
+        first = date(year, number, 1)
+        following = date(year + number // 12, number % 12 + 1, 1)
+        cells: list[dict | None] = [None] * first.weekday()
+        day = first
+        while day < following:
+            iso = day.isoformat()
+            if iso in by_day:
+                at = by_day[iso]
+                count = len(boards[at]["rows"])
+                cells.append({
+                    "day": iso,
+                    "date": day.day,
+                    "count": count,
+                    "shade": (1 + sum(count >= step for step in RAMP)) if count else 0,
+                    "new": history.rows(at)["new"],
+                    "newest": at == 0,
+                })
+            elif oldest <= iso <= newest:
+                cells.append({"day": iso, "date": day.day, "count": None})
+            else:
+                cells.append(None)
+            day = date.fromordinal(day.toordinal() + 1)
+        cells += [None] * (-len(cells) % 7)
+        result.append({"month": month, "weeks": [cells[at:at + 7] for at in range(0, len(cells), 7)]})
+    return result
+
+
+FONTS = Path(__file__).parent / "fonts"
+# Modified versions of IBM Plex Sans and IBM Plex Mono, renamed by sitebuild/fonts/subset.py.
+FACES = [("Rising Sans", 400, "rising-sans-400"), ("Rising Sans", 500, "rising-sans-500"),
+         ("Rising Mono", 400, "rising-mono-400"), ("Rising Mono", 500, "rising-mono-500")]
+
+
+def font_faces() -> Markup:
+    """The four faces' @font-face rules, each file inside the page as a data: URI, so a page is one request
+    and no font file is fetched or published. The files are sitebuild/fonts/subset.py's, cut to the site's own
+    characters."""
+    rules = []
+    for family, weight, name in FACES:
+        data = base64.b64encode((FONTS / f"{name}.woff2").read_bytes()).decode("ascii")
+        rules.append(f'@font-face {{ font-family: "{family}"; src: url(data:font/woff2;base64,{data}) format("woff2"); '
+                     f"font-weight: {weight}; font-display: swap; }}")
+    return Markup("\n".join(rules))
+
+
+TAG = re.compile(r"<[a-z][^<>]*>")
+BARE = re.compile(r'(\s[a-z][a-z-]*)="([A-Za-z0-9_.:-]+)"(?!/)')  # not before "/>", which would join the value
+
+
+def unquoted(page: str) -> str:
+    """The page with the quotes taken off each attribute value in <body> that needs none: a value of
+    letters, digits, and _ . : - only, which HTML reads the same with or without quotes, so the page's elements are
+    exactly as before. Only the tags change, never text, and the head, with its policy, style, and script, is left as
+    written. Each row repeats its attributes, so this cuts about 16 KB from a 274-row board, if only some 300 bytes
+    gzipped."""
+    head, body = page.split("<body>", 1)
+    return head + "<body>" + TAG.sub(lambda tag: BARE.sub(r"\1=\2", tag.group(0)), body)
+
+
 def script_hash(text: str) -> str:
     """How a Content-Security-Policy names an inline script of exactly `text`: 'sha256-' and its digest in base64."""
     return "sha256-" + base64.b64encode(hashlib.sha256(text.encode("utf-8")).digest()).decode("ascii")
@@ -385,13 +789,22 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         repositories=repositories,
         day_address=day_address,
         why=why,
+        growth=growth,
+        per_day=per_day,
+        gained=gained,
+        own_pace=own_pace,
+        baseline_figure=lambda value: figure(value, 2),
+        script_hash=lambda text: script_hash(str(text)),
     )
     common = {
         "newest": boards[0],
         "days_address": address(DAYS),
         "how_address": address(HOW_IT_WORKS),
         "noindex": noindex,
-        "script_hash": script_hash(templates.get_template(SCRIPT).render()),
+        "baseline_address": address(BASELINE),
+        "baseline_name": BASELINE_NAME,
+        "top": TOP,
+        "font_faces": font_faces(),
     }
     # Each template is told its own name, which page.html reads to decide whether the page carries the notice.
     pages = {
@@ -400,27 +813,42 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     }
     for path, page in pages.items():
         (out / path).parent.mkdir(parents=True, exist_ok=True)
-        (out / path).write_text(page, encoding="utf-8", newline="\n")
+        (out / path).write_text(unquoted(page), encoding="utf-8", newline="\n")
+    shutil.copytree(STATIC, out / "static")
+    # Each board day's history of its rows, which its expanded rows fetch on first opening.
+    history = History(boards)
+    for number, board in enumerate(boards):
+        if board["rows"]:
+            (out / board_day_page(board["board_day"])).with_name("history.json").write_text(
+                json.dumps(history_file(boards, history, number), separators=(",", ":")), encoding="utf-8")
 
 
 def _pages(boards: list[dict]) -> Iterator[tuple[str, str, dict]]:
     """Each page the build writes: its path in the site, its entry in `PAGES`, and what its template is given."""
-    yield BOARD, BOARD, _beside(boards, 0)
+    history = History(boards)
+    yield BOARD, BOARD, _beside(boards, 0, history)
     for number, board in enumerate(boards):
-        yield board_day_page(board["board_day"]), BOARD_DAY, _beside(boards, number)
+        yield board_day_page(board["board_day"]), BOARD_DAY, _beside(boards, number, history)
     by_month = groupby(boards, key=lambda board: board["board_day"][:7])  # newest first, as the index is
-    yield DAYS, DAYS, {"boards": boards, "months": [(month, list(days)) for month, days in by_month]}
+    yield DAYS, DAYS, {
+        "boards": boards,
+        "months": [(month, list(days)) for month, days in by_month],
+        "calendar": calendar(boards, history),
+        "ramp": RAMP,
+    }
     yield HOW_IT_WORKS, HOW_IT_WORKS, {"described": DESCRIBED_FORMULA}
+    yield BASELINE, BASELINE, {"board": boards[0], "chart": pace_chart(boards[0]["rows"])}
     yield NOT_FOUND, NOT_FOUND, {}
 
 
-def _beside(boards: list[dict], number: int) -> dict:
+def _beside(boards: list[dict], number: int, history: History) -> dict:
     """What a board's page is given: the board, what it says about the bands it holds back, the days its ranking
     lacked, why it lists no row when it lists none, its partial days, which notes a file older than the holds takes,
     and the day's update, whether it was made after its day, and the board days before it and after it, when there
     are."""
     board = boards[number]
     lacked = lacked_days(board)
+    bands = bands_of(board)
     return {
         "board": board,
         "held": holds(board),
@@ -432,4 +860,9 @@ def _beside(boards: list[dict], number: int) -> dict:
         "late": made_late(board),
         "before": boards[number + 1] if number + 1 < len(boards) else None,
         "after": boards[number - 1] if number > 0 else None,
+        "history_address": day_address(board["board_day"]) + "history.json",
+        "languages": sorted({row["language"] for row in board["rows"] if row.get("language")}, key=str.casefold),
+        "history": history.rows(number),
+        "bands": bands,
+        "held_bands": held_bands(board, bands),
     }

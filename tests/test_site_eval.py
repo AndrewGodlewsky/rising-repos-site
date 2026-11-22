@@ -487,6 +487,75 @@ class TheRequestsCounted(EvalTest):
             with self.subTest(address):
                 self.assertEqual(self.requests([self.PAGE, unanswered(address)], policy_issues(address)), 2)
 
+    IN_PAGE = (
+        "the page holds their bytes itself, as it holds its type, so no request for them left the browser, and "
+        "Lighthouse's total transfer size leaves them out for the same reason"
+    )
+
+    @staticmethod
+    def font(size: int) -> dict:
+        """A network row as Lighthouse 13.3.0 wrote one for each of the four fonts inside the redesigned page
+        (AndrewGodlewsky/RisingRepos#199), built and served on this machine: its address cut short, and its
+        timings left out, as the eval reads neither. Its bytes are the font's, though nothing was sent."""
+        return {
+            "url": "data:font/woff2;base64,d09GMgABAAAAAB5oAA8AAAAARuQAAB4KAAMzd",
+            "protocol": "data",
+            "transferSize": size,
+            "resourceSize": size,
+            "statusCode": 200,
+            "mimeType": "font/woff2",
+            "resourceType": "Font",
+        }
+
+    def test_a_row_for_a_data_address_is_no_request_and_the_summary_counts_those_left_out(self):
+        """The page carries its four fonts as data: addresses, which Lighthouse lists as rows of their own. The
+        limit's reason is the requests the page sent, and none of those was."""
+        fonts = [self.font(size) for size in (7784, 8172, 5056, 5172)]
+        self.plan(phone=[report(rows=[self.PAGE, *fonts], issues=policy_issues())], desktop=[report()])
+        outcome = self.evaluate()
+        self.assertEqual(outcome.results["pages"]["/"]["phone"]["requests"]["median"], 1)
+        phone = self.section(outcome, "phone")
+        self.assertIn("| Requests | 1 | 1 to 1 | none | at most 2 | pass |", phone)
+        self.assertIn(
+            "\nNot counted in Requests, because the page never sent them:\n\n"
+            f"- 4 `data:` addresses, in every run: {self.IN_PAGE}.\n",
+            phone,
+        )
+        self.assertNotIn("Not counted", self.section(outcome, "desktop"))
+
+    def test_a_data_address_beside_a_refused_request_is_counted_apart_and_one_is_named_in_the_singular(self):
+        self.plan(
+            phone=[report(rows=[self.PAGE, self.font(7784), unanswered(TAG)], issues=policy_issues(TAG))],
+            desktop=[report()],
+        )
+        outcome = self.evaluate()
+        self.assertEqual(outcome.results["pages"]["/"]["phone"]["requests"]["median"], 1)
+        self.assertIn(
+            f"- `{TAG}`, in every run: {self.LEFT_OUT}.\n- 1 `data:` address, in every run: {self.IN_PAGE}.\n",
+            self.section(outcome, "phone"),
+        )
+
+    def test_the_summary_says_in_which_runs_how_many_data_addresses_were_left_out(self):
+        four = report(rows=[self.PAGE, *[self.font(5056)] * 4])
+        none = report(rows=[self.PAGE])
+        self.plan(phone=[four, four, none, four, four], desktop=[report()])
+        outcome = self.evaluate()
+        self.assertIn(f"- 4 `data:` addresses, in runs 1, 2, 4, and 5: {self.IN_PAGE}.", self.section(outcome, "phone"))
+
+    def test_only_an_address_whose_scheme_is_data_is_left_out_as_in_the_page(self):
+        font = self.font(7784)
+        self.calls.unlink(missing_ok=True)
+        self.plan(phone=[report(rows=[self.PAGE, {**font, "url": "DATA:font/woff2;base64,d09G"}])], desktop=[report()])
+        self.assertEqual(self.evaluate().results["pages"]["/"]["phone"]["requests"]["median"], 1)
+        for name, row in (
+            ("a data address inside an https one", {**font, "url": "https://example.com/data:font/woff2"}),
+            ("the protocol data with an https address", {**font, "url": "https://example.com/a.woff2"}),
+            ("an address that is a number", {**font, "url": 5}),
+            ("no address", {key: value for key, value in font.items() if key != "url"}),
+        ):
+            with self.subTest(name):
+                self.assertEqual(self.requests([self.PAGE, row]), 2)
+
     def test_an_inspector_issues_audit_that_failed_or_is_shaped_otherwise_leaves_nothing_out(self):
         listed = policy_issues(TAG)
         row = listed["details"]["items"][0]
