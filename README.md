@@ -123,7 +123,7 @@ What every page holds to, each checked by a test in `tests/`:
   | --- | --- | --- | --- | --- | --- |
   | The data contract's example, 5 rows | 95,658 bytes | 73,639 bytes | 78,655 bytes | 74,574 bytes | 69,538 bytes |
   | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens, and each row's reason the longest the site has written, 200 bytes | 479,955 bytes | | | | |
-  | `site-data/` on 2026-11-21: the root, 264 rows, and the longest board, 12 August 2026, 475 rows | 307,254 and 477,029 bytes | 105,363 bytes | 137,974 bytes | | |
+  | `site-data/` on 2026-11-21: the root, 264 rows, and the longest board, 12 August 2026, 475 rows | 307,030 and 476,623 bytes | 105,363 bytes | 137,974 bytes | | |
 
   The four faces are 34,964 bytes of every page. The script is 1,264 bytes
   where it is the theme alone, 2,948 with the notice of an old board, and
@@ -144,13 +144,13 @@ What every page holds to, each checked by a test in `tests/`:
 - **The root on the wire.** The site eval gives the root a budget of 100,000
   transferred bytes in each of its two profiles, phone and desktop
   (see `evals/site/limits.json`), and the root of 21 November 2026, 264 rows,
-  takes 80,897 bytes gzipped at level 6. A test in
+  takes 80,871 bytes gzipped at level 6. A test in
   `tests/test_page_weight.py` fills the newest board with 713 invented rows,
   gzips the built root at level 6, and checks the result against 150,000
   bytes, a budget of its own since
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199).
-  On 2026-11-22 it came to 144,812 bytes with zlib 1.3.1, which the workflow's
-  Python uses, and 141,671 with the zlib-ng that Python 3.14 uses on Windows,
+  On 2026-11-22 it came to 144,789 bytes with zlib 1.3.1, which the workflow's
+  Python uses, and 141,600 with the zlib-ng that Python 3.14 uses on Windows,
   so a size measured on Windows reads about 2% low. The type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries

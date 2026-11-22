@@ -90,6 +90,19 @@ class TheHistoryFile(Boards):
         # A day left out, or a falling pace, is not above its own trend: it gives what it gained instead.
         self.assertEqual([entry["said"][0].endswith("above its own trend") for entry in entries], [True, True, False, False, True])
 
+    def test_the_rows_own_pace_cell_and_its_opened_table_write_its_paces_alike(self):
+        """The closed row's own-pace cell, which a screen reader reads, gives the usual pace as the drawing does and the
+        recent pace as the table of days and the growth column write stars a day, whole from 10."""
+        rows = self.newest_rows()
+        page = self.build_pages()[BOARD]
+        cells = [[cell for cell in row.all("td") if "pc" in cell.classes()][0].text() for row in page.rows()]
+        entries = self.history()["rows"]
+        self.assertEqual(cells, [f"Usual {figure(row['baseline'], 2)} a day, then {per_day(row).lstrip('+')} a day"
+                                 for row in rows])
+        self.assertEqual([entry["said"][2] for entry in entries],
+                         [f"Usual pace, {figure(row['baseline'], 2)} a day" for row in rows])
+        self.assertEqual([entry["on"][-1][3] for entry in entries], [per_day(row) for row in rows])
+
     def test_a_falling_pace_is_written_with_the_true_minus_and_its_own_pace_takes_no_plus(self):
         """AndrewGodlewsky/RisingRepos#199: every figure below 0 takes the true minus."""
         (row,) = [row for row in self.newest_rows() if row["baseline"] < 0]

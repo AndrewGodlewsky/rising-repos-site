@@ -389,7 +389,8 @@ def own_pace(row: dict) -> dict:
 
     The stylesheet draws it from `style`, two custom properties of the cell: `--u` and `--r`, how far down the box
     each level sits, from 0 to 1, and `--e`, where the recent run ends, when a day was left out. Two numbers cost a
-    row about a sixth of what an SVG of the same drawing does."""
+    row about a sixth of what an SVG of the same drawing does. Its `text` gives the usual pace to two places, and the
+    recent pace as the growth column writes stars a day, so an opened row's table of days says the same."""
     baseline, gained, days = row["baseline"], row["recent_stars"], row["recent_days"]
     low, high = (math.log10(value) for value in PACE_SCALE)
 
@@ -400,7 +401,7 @@ def own_pace(row: dict) -> dict:
     style = f"--u:{down(baseline)};--r:{down(gained / days)}"
     if days != 2:
         style += f";--e:{(12 + days) / 14:.3f}"
-    return {"style": style, "text": f"Usual {figure(baseline, 2)} a day, then {figure(gained / days, 1)} a day"}
+    return {"style": style, "text": f"Usual {figure(baseline, 2)} a day, then {times(gained / days)} a day"}
 
 
 HISTORY_WINDOW = 30

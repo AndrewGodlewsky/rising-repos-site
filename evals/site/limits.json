@@ -18,7 +18,7 @@
     },
     "transfer_size": {
       "limit": 100000,
-      "reason": "The four evals' medians were 74,386 to 74,393 bytes, compressed. The bytes follow the board's size: the two board days published then had 663 and 811 rows. AndrewGodlewsky/RisingRepos#199 put the site's type inside each page, about 28,100 bytes gzipped, and kept this limit: the root of 21 November 2026, 264 rows, is 80,897 bytes gzipped at level 6. Its data: addresses are in the page's own bytes, so they are not counted a second time. Anything else that adds a quarter of the page's weight, such as an image, is worth a look."
+      "reason": "The four evals' medians were 74,386 to 74,393 bytes, compressed. The bytes follow the board's size: the two board days published then had 663 and 811 rows. AndrewGodlewsky/RisingRepos#199 put the site's type inside each page, about 28,100 bytes gzipped, and kept this limit: the root of 21 November 2026, 264 rows, is 80,871 bytes gzipped at level 6. Its data: addresses are in the page's own bytes, so they are not counted a second time. Anything else that adds a quarter of the page's weight, such as an image, is worth a look."
     },
     "requests": {
       "limit": 1,
