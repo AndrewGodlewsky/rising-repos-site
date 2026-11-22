@@ -121,17 +121,18 @@ What every page holds to, each checked by a test in `tests/`:
 
   | Board | A board's page | History | Baseline | How it works | The not-found page |
   | --- | --- | --- | --- | --- | --- |
-  | The data contract's example, 5 rows | 98,971 bytes | 73,639 bytes | 78,653 bytes | 74,574 bytes | 69,538 bytes |
-  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens, and each row's reason the longest the site has written, 200 bytes | 482,638 bytes | | | | |
-  | `site-data/` on 2026-11-21: the root, 264 rows, and the longest board, 12 August 2026, 475 rows | 310,553 and 480,324 bytes | 105,363 bytes | 137,958 bytes | | |
+  | The data contract's example, 5 rows | 95,658 bytes | 73,639 bytes | 78,655 bytes | 74,574 bytes | 69,538 bytes |
+  | 316 made-up rows, each description the longest the contract allows (350 characters) and holding characters that escaping lengthens, and each row's reason the longest the site has written, 200 bytes | 479,955 bytes | | | | |
+  | `site-data/` on 2026-11-21: the root, 264 rows, and the longest board, 12 August 2026, 475 rows | 307,254 and 477,029 bytes | 105,363 bytes | 137,974 bytes | | |
 
   The four faces are 34,964 bytes of every page. The script is 1,264 bytes
   where it is the theme alone, 2,948 with the notice of an old board, and
-  21,975 on a board with rows, with its filters and opened rows. A made-up row
+  18,573 on a board with rows, with its filters and opened rows. A made-up row
   above is 1,226 bytes of markup, and a row of `typical_rows` in the test
   about 800. What an opened row shows beyond its line is in `history.json`,
-  not in the page: 222,708 bytes for the longest history in `site-data/`, 20
-  August 2026. The notes on the stylesheet and the
+  not in the page, every word and figure of it written by the build: 489,953
+  bytes, 74,795 gzipped, for the longest history in `site-data/`, 20 August
+  2026, which a reader's first opening of a row fetches. The notes on the stylesheet and the
   scripts are Jinja comments, which no page carries: as CSS and JS comments
   they took 9,531 bytes of a board's page.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
@@ -143,13 +144,13 @@ What every page holds to, each checked by a test in `tests/`:
 - **The root on the wire.** The site eval gives the root a budget of 100,000
   transferred bytes in each of its two profiles, phone and desktop
   (see `evals/site/limits.json`), and the root of 21 November 2026, 264 rows,
-  takes 81,993 bytes gzipped at level 6. A test in
+  takes 80,897 bytes gzipped at level 6. A test in
   `tests/test_page_weight.py` fills the newest board with 713 invented rows,
   gzips the built root at level 6, and checks the result against 150,000
   bytes, a budget of its own since
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199).
-  On 2026-11-21 it came to 145,779 bytes with zlib 1.3.1, which the workflow's
-  Python uses, and 142,657 with the zlib-ng that Python 3.14 uses on Windows,
+  On 2026-11-22 it came to 144,812 bytes with zlib 1.3.1, which the workflow's
+  Python uses, and 141,671 with the zlib-ng that Python 3.14 uses on Windows,
   so a size measured on Windows reads about 2% low. The type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries
@@ -344,7 +345,9 @@ The day's gain is `gained_1_day`, signed: "+147" in the accent, "0" in
 `--text-2`, "−600" for a loss in `--loss`, with the true minus, which the
 site's type draws as wide as the plus, and "–" in `--text-2` when the file has
 no count for the day before. A file from before the field gives the stars a
-day over the recent days instead, "+148", as the board did before. The
+day over the recent days instead, "+148", as the board did before. Every
+figure below 0 on the site takes the true minus, a pace that was falling as
+well as a loss, and only a loss takes the red. The
 drawing is the row's own pace against what it gained, on one log scale for
 every row, so that two rows compare: the dashed level of its usual pace, the
 level of its last two days, and the part between in the accent. A screen
@@ -380,8 +383,10 @@ last 14 days against the dashed line of its usual pace, with the part of the
 two recent days above its own trend shaded; its stars over the last 30 days, from `star_history`, with a gap where a day has no count; its
 last 30 board days, each a link to that board, carrying its rank there; and a
 table of the boards it was on. Each part says what it is in a caption, for a
-screen reader. A row's figures are worded as its line words them, so the two
-never disagree, and a fact the file does not give is left out, never guessed.
+screen reader. The build words every figure and word of it in `history.json`,
+as it words the row's line, so the two never disagree, and the script places
+them and writes no figure of its own. A fact the file does not give is left
+out, never guessed.
 
 **About this board, and the foot.** Under the rows, About this board gives the
 board's plain facts in `--text-2`, each a line: its count of repositories and

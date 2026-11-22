@@ -103,8 +103,8 @@ class TheDataFiles(BuildTest):
     def test_a_board_day_file_from_before_the_fields_for_the_redesign_builds_and_changes_only_what_reads_them(self):
         """AndrewGodlewsky/RisingRepos#192: every board day in site-data/ has been published again with them, and a
         file written before them still builds. Its board gives the stars a day for the day's gain and offers no band
-        filter (tests/test_build.py), its history leaves out the star counts, the gains, and the facts of the
-        repository, and every page that reads none of them is the same as one built with them."""
+        filter (tests/test_build.py), its history leaves out the star counts and their line, the gains, the band, and
+        the facts of the repository, and every page that reads none of them is the same as one built with them."""
         history = self.out / "days" / "2026-11-09" / "history.json"
         with_them = {path: page.html for path, page in self.build_pages().items()}
         history_with_them = read_json(history)
@@ -116,13 +116,16 @@ class TheDataFiles(BuildTest):
         without = {path: page.html for path, page in self.build_pages().items()}
         self.assertEqual(set(without), set(with_them))
         self.assertEqual({path for path in without if without[path] != with_them[path]}, {BOARD, "days/2026-11-09/index.html"})
-        unread = ("stars", "gains", "about")
-        self.assertEqual(
-            read_json(history),
-            {**history_with_them,
-             "rows": [{key: value for key, value in entry.items() if key not in unread} for entry in history_with_them["rows"]]},
-        )
-        self.assertTrue(all(set(unread) <= set(entry) for entry in history_with_them["rows"]))
+        unread = ("stars", "month")
+        untold = {"Gained in 7 days", "Gained in 30 days", "Licence", "Star band", "Created", "Last pushed"}
+
+        def without_them(entry: dict) -> dict:
+            kept = {key: value for key, value in entry.items() if key not in unread}
+            return {**kept, "facts": [fact for fact in entry["facts"] if fact[0] not in untold]}
+
+        self.assertEqual(read_json(history), {**history_with_them, "rows": [without_them(entry) for entry in history_with_them["rows"]]})
+        self.assertTrue(all("stars" in entry for entry in history_with_them["rows"]))
+        self.assertEqual({fact[0] for entry in history_with_them["rows"] for fact in entry["facts"]} & untold, untold)
 
     def test_every_board_days_file_is_checked_and_an_older_one_that_does_not_match_fails_the_build(self):
         board = read_json(self.board_file("2026-11-08"))

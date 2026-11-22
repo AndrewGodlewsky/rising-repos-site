@@ -74,7 +74,7 @@
 <button type="button" data-band="" aria-pressed="true">All stars</button>
 {# A band the board holds back has no row on it: its button stays for the script, which tells a row's band from
    every band's limits, and is hidden, so the page offers no filter that would show nothing. #}
-{% for number, label, below in bands %}<button type="button" data-band="{{ number }}" data-below="{{ below or '' }}" aria-pressed="false"{% if number in held_bands %} hidden{% endif %}>{{ label }}</button>{% endfor %}
+{% for band in bands %}<button type="button" data-band="{{ band.number }}" data-below="{{ band.below or '' }}" data-word="{{ band.word }}" aria-pressed="false"{% if band.number in held_bands %} hidden{% endif %}>{{ band.label }}</button>{% endfor %}
 </div>
 <label class="sr" for="language" id="language-label">Language</label>
 <select class="js-only" id="language">

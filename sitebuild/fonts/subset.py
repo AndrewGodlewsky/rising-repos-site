@@ -23,8 +23,12 @@ the files the site's design was drawn in, renamed once by this script's `--renam
 untouched. IBM's own release files (github.com/IBM/plex, Sans 3.006 and Mono 2.005 on 21 November 2026) are another
 build, whose outlines, some widths, and vertical metrics differ, so the site keeps these.
 
-It needs fontTools and brotli, which the build does not: `python -m pip install fonttools brotli`, then, from the
-repository's root, `python sitebuild/fonts/subset.py`. The files in fonts/ were made with fontTools 4.63.0.
+It needs fontTools and brotli, which the build does not, so it runs in an environment of its own that uv makes for the
+run and installs nothing into: from the repository's root,
+`uv run --no-project --with fonttools==4.63.0 --with brotli==1.2.1 python sitebuild/fonts/subset.py`, which makes the
+files in fonts/ byte for byte. Those two versions were checked on 22 November 2026 under the rule in README.md
+("Changing a pinned version"), with RisingRepos's `scripts/run_limits/check_downloads.py`: no known vulnerability on
+osv.dev, and published at least 14 days before. A change to either is checked the same way first.
 """
 
 import sys

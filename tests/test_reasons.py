@@ -50,7 +50,7 @@ def reasons(page, history: dict) -> dict[str, tuple[str, str]]:
     for row, entry in zip(page.rows(), history["rows"], strict=True):
         (link,) = row.all("a")
         (line,) = [p for p in row.all("p") if "ln" in p.classes()]
-        found[link.text()] = (line.text(), entry["why"][0])
+        found[link.text()] = (line.text(), entry["sum"])
     return found
 
 

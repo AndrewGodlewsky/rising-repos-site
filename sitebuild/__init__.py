@@ -7,9 +7,10 @@ import math
 import re
 import shutil
 from collections.abc import Iterator
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from decimal import ROUND_HALF_UP, Decimal
 from pathlib import Path
+from typing import NamedTuple
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 from markupsafe import Markup
@@ -249,10 +250,16 @@ def rounded(value: float, places: int) -> Decimal:
     return Decimal(repr(value)).quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP)
 
 
+MINUS = "\N{MINUS SIGN}"
+"""What a figure below 0 is written with (AndrewGodlewsky/RisingRepos#199): the true minus, which the site's type
+draws as wide as the plus and the figures, not the hyphen. A loss takes it, and so does a pace that was falling."""
+
+
 def figure(value: float, places: int) -> str:
-    """A number to at most `places` decimal places, with thousands parted by commas and no zero at the end:
-    260.0 as '260', 30.1667 to two places as '30.17', and 1285.909 to two places as '1,285.91'."""
-    text = f"{rounded(value, places):,}"
+    """A number to at most `places` decimal places, with thousands parted by commas, no zero at the end, and the true
+    minus below 0: 260.0 as '260', 30.1667 to two places as '30.17', 1285.909 to two places as '1,285.91', and -3.421
+    to two places as '−3.42'."""
+    text = f"{rounded(value, places):,}".replace("-", MINUS)
     return text.rstrip("0").rstrip(".") if "." in text else text
 
 
@@ -287,10 +294,11 @@ def why(row: dict) -> dict:
     )
     span = "1 day" if days == 1 else f"{days} days"
     floor = f"{figure(divisor, 2)} star{'' if divisor == 1 else 's'} a day"
-    total = f"Score {figure(score, 2)} = {stars:,} stars ÷ {span} ÷ {figure(divisor, 2)}"
+    written = minus(stars, f"{abs(stars):,}")
+    total = f"Score {figure(score, 2)} = {written} stars ÷ {span} ÷ {figure(divisor, 2)}"
     if baseline >= divisor:
         pace = f"{times(score)}× its usual pace"
-        detail = f"That multiple is its score: {stars:,} stars ÷ {span} ÷ its usual {figure(baseline, 2)} a day"
+        detail = f"That multiple is its score: {written} stars ÷ {span} ÷ its usual {figure(baseline, 2)} a day"
     elif baseline >= 0:
         pace = f"its usual pace was under {floor}"
         detail = f"{total}: its usual {figure(baseline, 2)} a day counts as {floor}"
@@ -300,7 +308,7 @@ def why(row: dict) -> dict:
     left_out = row["days_left_out"]
     # The excess is the stars above its own trend only when it covers every recent day and the pace was not falling.
     if left_out or baseline < 0:
-        gained = f"+{stars:,} in {span}"
+        gained = f"{signed(stars, f'{abs(stars):,}')} in {span}"
     else:
         gained = f"+{figure(row['excess'], 0)} above its own trend"
     if left_out == 1:
@@ -327,15 +335,16 @@ def growth(row: dict) -> dict:
     }
 
 
-MINUS = "\N{MINUS SIGN}"
-"""What a loss is written with: the true minus, which the site's type draws as wide as the plus and the figures, not
-the hyphen. filters.js writes the gains an opened row gives the same way."""
+def minus(number: float, written: str) -> str:
+    """A count that may fall below 0 as the site writes it, as `figure` writes a figure: `written`, the count without
+    its sign, after the true minus when `number` is below 0, and bare otherwise."""
+    return (MINUS if number < 0 else "") + written
 
 
 def signed(number: float, written: str) -> str:
     """A gain as the site writes it: `written`, the figure without its sign, after a plus for a gain and the true
     minus for a loss, and bare for 0."""
-    return ("+" if number > 0 else MINUS if number < 0 else "") + written
+    return ("+" if number > 0 else "") + minus(number, written)
 
 
 def gain_class(number: float | None) -> str:
@@ -404,56 +413,130 @@ SPDX id, which the owner chose and the contract marks untrusted, when it was cre
 The opened row shows them from the history file, as text."""
 
 
+def day_name(day: str) -> str:
+    """A day as an opened row names it: '2026-11-09' as '9 Nov 2026'."""
+    return f"{short_date(day)} {day[:4]}"
+
+
+def band_name(bands: list["Band"], stars: int) -> str:
+    """The name of the band in `bands` that `stars` falls in, as a row's facts give it."""
+    return next(band.name for band in bands if band.below is None or stars < band.below)
+
+
+def facts(row: dict, on: list[list], days: list[str], first: str, was: str | None, about: bool,
+          bands: list["Band"]) -> list:
+    """An opened row's facts, each [term, value], or [term, value, 'loss'] for a gain that is a loss, which the
+    stylesheet sets in the red: every one worded here, from the file, as the board words the same figures. `on` is the
+    row's entries in its history and `days` the board days they are placed in; `first` is the first board that listed
+    it and `was` its earlier name, as `History` finds them; `about` says whether the board gives a licence, creation, or
+    last push for any row, and `bands` are the board's star bands."""
+    told = []
+    if "score" in row:
+        grew = growth(row)
+        told.append(["Multiple", grew["multiple"] or "None: " + grew["note"]])
+    if "star_history" in row:
+        for count, name in ((7, "gained_7_days"), (30, "gained_30_days")):
+            gain = row.get(name)
+            said = [f"Gained in {count} days", "Not known" if gain is None else signed(gain, f"{abs(gain):,}")]
+            told.append([*said, "loss"] if gain is not None and gain < 0 else said)
+    told.append(["Language", row.get("language") or "not given"])
+    if about:
+        told.append(["Licence", row.get("license") or "None given"])
+    if bands:
+        told.append(["Star band", band_name(bands, row["stars"])])
+    for name, term in (("created_at", "Created"), ("pushed_at", "Last pushed")):
+        if about and row.get(name):
+            told.append([term, day_name(row[name][:10])])
+    told.append(["First on a board", "This board" if first == days[-1] else day_name(first)])
+    if was:
+        told.append(["Listed before as", was])
+    told.append([f"On the last {len(days)} boards", f"{len(on)} of {len(days)}"])
+    told.append(["Best rank in them", str(min(entry[1] for entry in on))])
+    return told
+
+
+def drawing_words(row: dict) -> tuple[list, list[str]]:
+    """What an opened row's drawing of its own pace against what it gained is drawn from and labelled with: the numbers
+    its lines take, [its baseline a day, to two places, its recent stars, its recent days], and its words, [the label at
+    the end of what it gained, the label at the end of its own pace, the label of its usual pace, and the whole of it
+    in a sentence for a screen reader]. A row whose recent pace kept one day, or that had been losing stars, is not
+    above its own trend, so it gives what it gained instead. A pace that was falling takes the true minus, as every
+    figure below 0 does, and its own pace then no plus."""
+    baseline = float(rounded(row["baseline"], 2))
+    gained, days = row["recent_stars"], row["recent_days"]
+    kept = not row["days_left_out"] and row["baseline"] >= 0
+    above = f"{rounded(row['excess'], 0):,}" if kept else None
+    over = "1 day" if days == 1 else f"{days} days"
+    got = f"+{above} above its own trend" if above else f"{signed(gained, f'{abs(gained):,}')} in {over}"
+    usual, own = figure(baseline, 2), times(days * baseline)
+    sentence = (f"Over the 12 days before, its usual pace was {usual} stars a day. Over "
+                f"{'the day kept' if days == 1 else 'the last 2 days'} it gained {minus(gained, f'{abs(gained):,}')}, "
+                f"where its own pace would have given {own}" + (f": {above} above its own trend." if above else "."))
+    own_label = f"At its own pace: {'' if baseline < 0 else '+'}{own}"
+    return [baseline, gained, days], [got, own_label, f"Usual pace, {usual} a day", sentence]
+
+
+def month_words(counts: list[int | None], day: str) -> list[str] | None:
+    """The words of an opened row's line of its stars over the 31 days `counts` gives, to the board day `day`: [its
+    first count and the day of it, its last count and the board day, and the whole of it in a sentence for a screen
+    reader]. None when fewer than two days have a count, since there is no line to draw."""
+    known = [count for count in counts if count is not None]
+    if len(known) < 2:
+        return None
+    first = next(at for at, count in enumerate(counts) if count is not None)
+    start = (date.fromisoformat(day) - timedelta(days=len(counts) - 1 - first)).isoformat()
+    missing = len(counts) - len(known)
+    uncounted = f", with {missing} {'day' if missing == 1 else 'days'} uncounted." if missing else "."
+    return [f"{short_date(start)}: {counts[first]:,}", f"{short_date(day)}: {known[-1]:,}",
+            f"From {counts[first]:,} stars on {day_name(start)} to {known[-1]:,} on {day_name(day)}{uncounted}"]
+
+
 def history_file(boards: list[dict], history: "History", number: int) -> dict:
-    """What a board's expanded rows draw from, as the file `days/<board day>/history.json`, which the board's script
-    fetches from the site's own address when a reader first opens a row. `days` are the last `HISTORY_WINDOW` board
-    days, oldest first, ending with this one. `rows`, in the board's order, give each row's `first` board day, and in
-    `on` one entry for each of those board days whose board listed it: [the day's place in `days`, its rank, its total
-    stars, its recent stars, its recent days, its multiple of its baseline as the growth column writes it or None, its
-    score as stars a day]. A day it was off the board has no entry, so the chart leaves a gap, never a zero. A row
-    with a score also gives `pace`, for its drawing, and `why`, the detail its opened row shows; `was`, its earlier
-    name, when it has been renamed or moved since an earlier board, however long before the window; and, from a file
-    that carries them, `stars`, `gains`, and `about`."""
+    """What a board's opened rows show beyond their line, as the file `days/<board day>/history.json`, which the
+    board's script fetches from the site's own address when a reader first opens a row. Every word and figure the row
+    shows is written here, as the board writes the same ones, and the script places it: it keeps numbers only where it
+    draws a line.
+
+    `days` are the last `HISTORY_WINDOW` board days, oldest first, ending with this one, for the addresses of their
+    boards, and `dates` name each as [its short name, its long name]. `rows`, in the board's order, give in `on` one
+    entry for each of those board days whose board listed the row: [the day's place in `days`, its rank, its total
+    stars, its stars a day over its recent days, the class that colours those (AndrewGodlewsky/RisingRepos#199), and
+    its multiple], each figure as the board writes it and '—' where that board gave none. A day it was off the board has
+    no entry, so the strip leaves it quiet, never a zero. Each row gives its `facts`, as `facts` words them, and a row
+    with a score gives `sum`, the sum behind its reason, and `pace` and `said`, the numbers and the words of its
+    drawing, from `drawing_words`. From a file that carries them (RisingRepos#193 to #197), `stars` is its star count
+    on each of the 31 days to the board day, oldest first, null where there is none, and `month` the words of its line,
+    from `month_words`."""
     span = list(range(min(len(boards), number + HISTORY_WINDOW) - 1, number - 1, -1))  # oldest first
-    by_id = [{row["github_id"]: row for row in boards[at]["rows"]} for at in span]
-    rows = []
+    days = [boards[at]["board_day"] for at in span]
+    by_id = [history.by_id[at] for at in span]
     about = any(name in row for row in boards[number]["rows"] for name in ABOUT)
+    bands = bands_of(boards[number])
+    rows = []
     for row in boards[number]["rows"]:
         on = []
         for place, listed in enumerate(by_id):
             seen = listed.get(row["github_id"])
-            if seen and "score" in seen:
-                # Both figures as the row's growth cell words them, so the two never disagree: the multiple by
-                # `times`, and otherwise the score as stars a day to one place.
-                multiple = times(seen["score"]) if seen["baseline"] >= seen["divided_by"] else None
-                on.append([place, seen["rank"], seen["stars"], seen["recent_stars"], seen["recent_days"],
-                           multiple, figure(seen["score"], 1)])
-            elif seen:
-                on.append([place, seen["rank"], seen["stars"], None, None, None, None])
-        entry = {"first": boards[history.first[row["github_id"]]]["board_day"], "on": on}
-        was = history.was(number, row)
-        if was:
-            entry["was"] = was
+            if not seen:
+                continue
+            if "score" in seen:
+                pace = seen["recent_stars"] / seen["recent_days"]
+                on.append([place, seen["rank"], f"{seen['stars']:,}", per_day(seen), gain_class(pace).strip(),
+                           growth(seen)["multiple"] or "—"])
+            else:
+                on.append([place, seen["rank"], f"{seen['stars']:,}", "—", "nil", "—"])
+        first = boards[history.first[row["github_id"]]]["board_day"]
+        entry = {"on": on, "facts": facts(row, on, days, first, history.was(number, row), about, bands)}
         if "score" in row:
-            # The opened row's drawing of its own pace against what it gained: [baseline a day, recent stars,
-            # recent days, stars above its own trend or None when a day was left out or the pace was falling].
-            kept = not row["days_left_out"] and row["baseline"] >= 0
-            entry["pace"] = [float(figure(row["baseline"], 2).replace(",", "")), row["recent_stars"],
-                             row["recent_days"], int(rounded(row["excess"], 0)) if kept else None]
-            # The opened row's detail, which the page leaves out: [the sum behind its reason, its multiple or why
-            # it has none, its language or None], each worded as `why` and `growth` word them.
-            grew = growth(row)
-            entry["why"] = [why(row)["detail"], grew["multiple"] or "None: " + grew["note"], row["language"]]
-        # From the files that carry them (RisingRepos#193 to #197): its star count on each of the 31 days to the board
-        # day, oldest first, null where there is none; its gains over 7 and 30 days; and its licence, creation, and
-        # last push, null where the file gives none, when any row of the board gives any of the three.
+            entry["sum"] = why(row)["detail"]
+            entry["pace"], entry["said"] = drawing_words(row)
         if "star_history" in row:
             entry["stars"] = row["star_history"]
-            entry["gains"] = [row.get("gained_7_days"), row.get("gained_30_days")]
-        if about:
-            entry["about"] = [row.get(name) for name in ABOUT]
+            month = month_words(row["star_history"], days[-1])
+            if month:
+                entry["month"] = month
         rows.append(entry)
-    return {"days": [boards[at]["board_day"] for at in span], "rows": rows}
+    return {"days": days, "dates": [[short_date(day), day_name(day)] for day in days], "rows": rows}
 
 
 MADE_LATE = 2
@@ -503,11 +586,23 @@ def made_late(board: dict) -> bool:
     return (published - date.fromisoformat(board["board_day"])).days >= MADE_LATE
 
 
-def bands_of(board: dict) -> list[tuple[int, str, int | None]]:
+class Band(NamedTuple):
+    """A star band as the board offers it: its number, lowest first; its `label` on its button, '1k–3k' or '30k+';
+    the star count it stops `below`, None for the top band; the `word` that names it in the board's address,
+    '1k-3k' or '30k-plus', which a reader may have shared, so it is made from the band's limits, not from its label;
+    and its `name` in a row's facts, '1k–3k' or '30k or more'."""
+
+    number: int
+    label: str
+    below: int | None
+    word: str
+    name: str
+
+
+def bands_of(board: dict) -> list[Band]:
     """The star bands as the board's filter names them, from the file's `star_bands` (AndrewGodlewsky/RisingRepos#196,
-    in the form `holds` uses: each band's `least_stars` and `most_stars`, lowest first): each band's number, its label,
-    and the star count it stops below. The contract has the site keep no limits of its own, so a file from before the
-    field gives none, and its board has no band filter.
+    in the form `holds` uses: each band's `least_stars` and `most_stars`, lowest first). The contract has the site
+    keep no limits of its own, so a file from before the field gives none, and its board has no band filter.
 
     Each band is worded from its own limits, the lowest too: the file's lowest band starts at the star floor, so it
     reads "200–1k", from its least to where the next begins, as every band but the top one does."""
@@ -519,20 +614,21 @@ def bands_of(board: dict) -> list[tuple[int, str, int | None]]:
     bands = []
     for number, band in enumerate(given):
         below = None if band["most_stars"] is None else band["most_stars"] + 1
+        least = short(band["least_stars"])
         if below is None:
-            label = f"{short(band['least_stars'])}+"
+            bands.append(Band(number, f"{least}+", below, f"{least}-plus", f"{least} or more"))
         else:
-            label = f"{short(band['least_stars'])}–{short(below)}"
-        bands.append((number, label, below))
+            label = f"{least}–{short(below)}"
+            bands.append(Band(number, label, below, f"{least}-{short(below)}", label))
     return bands
 
 
-def held_bands(board: dict, bands: list[tuple[int, str, int | None]]) -> set[int]:
+def held_bands(board: dict, bands: list[Band]) -> set[int]:
     """The numbers of the bands in `bands` that the board holds back (`holds`, AndrewGodlewsky/RisingRepos#13), each
     matched by where it stops. A held band has no row on the board, so its filter would show nothing: the page keeps
     its button for the script, which tells a row's band from every band's limits, and hides it from the reader."""
     stops = {None if hold["most_stars"] is None else hold["most_stars"] + 1 for hold in board.get("holds", [])}
-    return {number for number, _, below in bands if below in stops}
+    return {band.number for band in bands if band.below in stops}
 
 
 TOP = 10
@@ -640,12 +736,12 @@ class History:
 
     def __init__(self, boards: list[dict]):
         self.boards = boards  # newest first, as the index is
-        self.ids = [{row["github_id"] for row in board["rows"]} for board in boards]
-        self.names = [{row["github_id"]: row["full_name"] for row in board["rows"]} for board in boards]
+        self.by_id = [{row["github_id"]: row for row in board["rows"]} for board in boards]
+        self.named = [{row["full_name"].lower() for row in board["rows"]} for board in boards]
         self.first: dict[int, int] = {}
         self.first_named: dict[str, int] = {}
         for number in range(len(boards) - 1, -1, -1):  # oldest first, so the first number kept is the oldest board
-            for github_id in self.ids[number]:
+            for github_id in self.by_id[number]:
                 self.first.setdefault(github_id, number)
             for row in boards[number]["rows"]:
                 self.first_named.setdefault(row["full_name"].lower(), number)
@@ -655,7 +751,8 @@ class History:
         """The name that `row`, on the board at `number`, had on the latest earlier board that listed it under another,
         at any distance, when it has been renamed or moved since: what its opened row says it was listed as before."""
         github_id, name = row["github_id"], row["full_name"]
-        return next((names[github_id] for names in self.names[number + 1:] if names.get(github_id, name) != name), None)
+        earlier = (listed[github_id]["full_name"] for listed in self.by_id[number + 1:] if github_id in listed)
+        return next((was for was in earlier if was != name), None)
 
     def known(self, number: int) -> bool:
         """Whether what is new on the board at `number` can be told: there is a board before it, and it is
@@ -676,21 +773,21 @@ class History:
         marks, new = [], 0
         for row in self.boards[number]["rows"]:
             github_id = row["github_id"]
-            seen = [github_id in self.ids[at] for at in span]
+            seen = [github_id in self.by_id[at] for at in span]
             mark = {"on": sum(seen), "status": None, "run": 0, "last": None}
             if known and self.first_named[row["full_name"].lower()] == number:
                 mark["status"] = "new"
                 new += 1
-            elif number + 1 < len(self.boards) and github_id in self.ids[number + 1]:
+            elif number + 1 < len(self.boards) and github_id in self.by_id[number + 1]:
                 run = 0
-                while number + run < len(self.boards) and github_id in self.ids[number + run]:
+                while number + run < len(self.boards) and github_id in self.by_id[number + run]:
                     run += 1
                 mark.update(status="still", run=run)
             elif known:
                 # Back after a gap: last on a board by its GitHub id or, for a name another repository held, by name.
                 name = row["full_name"].lower()
-                last = next(at for at in range(number + 1, len(self.boards)) if github_id in self.ids[at] or
-                            any(other["full_name"].lower() == name for other in self.boards[at]["rows"]))
+                last = next(at for at in range(number + 1, len(self.boards))
+                            if github_id in self.by_id[at] or name in self.named[at])
                 mark.update(status="back", last=self.boards[last]["board_day"])
             marks.append(mark)
         result = {"marks": marks, "new": new if known else None, "window": len(span),

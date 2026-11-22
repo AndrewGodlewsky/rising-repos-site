@@ -6,14 +6,12 @@ page for an address that holds no page, and the fonts' licence. A test of someth
 all.
 """
 
-import json
 import re
 import shutil
-import subprocess
 import unittest
 from datetime import date
 
-from helpers import BuildTest, build, read_json, shipped, write_json
+from helpers import BuildTest, build, read_json, write_json
 
 from sitebuild import (
     BASELINE,
@@ -34,9 +32,6 @@ from sitebuild import (
     per_day,
     took,
 )
-
-NODE = shutil.which("node")
-"""Node runs a part of the page's script; the GitHub runner image has it, as tests/test_old_board.py says."""
 
 NOINDEX = '<meta name="robots" content="noindex">'
 
@@ -782,21 +777,31 @@ class TheGrowthColumn(BuildTest):
         self.assertIn("td.gr.nil, .more-days td.gain.nil { color: var(--text-2); }", style)
 
     def test_an_opened_row_writes_and_marks_a_gain_as_the_board_does(self):
-        """The opened row's gains are written by filters.js, which the build does not run: its own helpers, run here
-        under Node, give each gain the board's figure and class. The facts give "Not known" for no count, where the
-        board's cell gives a dash. The facts are in the ink, so only a loss takes a class there."""
-        self.assertIsNotNone(NODE, "Node is needed to run the page's script, and none is on the PATH.")
-        script = shipped("filters.js")
-        helpers = re.search(r"(?m)^  function figure\(.*\n(?:  function \w+\(.*\n)*?  function gainKind\(.*\n", script).group(0)
-        cases = [147, 1234, 0, -600, -1234, None]
-        program = helpers + f"process.stdout.write(JSON.stringify({json.dumps(cases)}.map(function (n) {{ return [signed(n), gainKind(n)]; }})));"
-        result = subprocess.run([NODE, "-e", program], capture_output=True, text=True, encoding="utf-8", timeout=60)
-        self.assertEqual(result.returncode, 0, result.stderr)
-        expected = [[gained({"gained_1_day": n}) if n is not None else "Not known", gain_class(n).strip()] for n in cases]
-        self.assertEqual(json.loads(result.stdout), expected)
-        self.assertIn('fact("Gained in 7 days", signed(entry.gains[0]), gainKind(entry.gains[0]) === "loss" ? "loss" : "");', script)
-        self.assertIn('fact("Gained in 30 days", signed(entry.gains[1]), gainKind(entry.gains[1]) === "loss" ? "loss" : "");', script)
-        self.assertIn('make("td", "num gain " + gainKind(pace), pace === null ? "—" : sign(pace, rate(Math.abs(pace))))', script)
+        """The history file words an opened row's gains as the board words its own, and gives each its class, which
+        the script sets as it is: the facts give "Not known" for no count, where the board's cell gives a dash, and are
+        in the ink, so only a loss takes a class there. The script reads no figure back but the board's own, for its
+        order, which takes the true minus as a loss."""
+        board = read_json(self.board_file())
+        rows = [{**row, "gained_7_days": gain, "gained_30_days": month}
+                for row, gain, month in zip(board["rows"], [147, -252, 0, None, 12], [1234, -1234, 0, None, 12], strict=True)]
+        rows[1]["recent_stars"] = -13
+        self.write_board({**board, "rows": rows})
+        self.build_pages()
+        history = read_json(self.out / history_file(NEWEST))
+        facts = [[fact for fact in entry["facts"] if fact[0].startswith("Gained in")] for entry in history["rows"]]
+        self.assertEqual(facts, [
+            [["Gained in 7 days", "+147"], ["Gained in 30 days", "+1,234"]],
+            [["Gained in 7 days", "\N{MINUS SIGN}252", "loss"], ["Gained in 30 days", "\N{MINUS SIGN}1,234", "loss"]],
+            [["Gained in 7 days", "0"], ["Gained in 30 days", "0"]],
+            [["Gained in 7 days", "Not known"], ["Gained in 30 days", "Not known"]],
+            [["Gained in 7 days", "+12"], ["Gained in 30 days", "+12"]],
+        ])
+        self.assertEqual(history["rows"][1]["on"][-1][3:5], ["\N{MINUS SIGN}6.5", "loss"])
+        self.assertEqual([entry["on"][-1][3:5] for entry in history["rows"]],
+                         [[per_day(row), gain_class(row["recent_stars"]).strip()] for row in rows])
+        script = (TEMPLATES / "filters.js").read_text(encoding="utf-8")
+        self.assertIn('make("dd", fact[2], fact[1])', script)
+        self.assertIn('make("td", "num gain " + e[4], e[3])', script)
         self.assertIn('parseFloat(grew.textContent.replace(/[+,]/g, "").replace("\N{MINUS SIGN}", "-"))', script)
 
     def test_a_board_whose_file_gives_the_days_gains_shows_them_and_orders_by_them(self):
@@ -832,6 +837,56 @@ class TheGrowthColumn(BuildTest):
         self.assertEqual((cell.text(), sorted(cell.classes())), ("−6.5", ["gr", "loss"]))
 
 
+def strings(value) -> list[str]:
+    """Every string in a value read from JSON, at any depth."""
+    if isinstance(value, str):
+        return [value]
+    inside = value.values() if isinstance(value, dict) else value if isinstance(value, list) else []
+    return [text for part in inside for text in strings(part)]
+
+
+class TheSigns(BuildTest):
+    """AndrewGodlewsky/RisingRepos#199: a figure below 0 is written with the true minus, never the hyphen, wherever
+    the site writes it, and a sign stands alone: no page writes a plus beside a minus."""
+
+    HYPHEN_FIGURE = re.compile(r"(?<![\w\N{EN DASH}-])-(?=\d)")
+    """A hyphen-minus before a digit that is no part of a word or a date, as in "-3.42", not "2026-11-09"."""
+
+    TWO_SIGNS = re.compile("[+][-\N{MINUS SIGN}]|[-\N{MINUS SIGN}][+]")
+
+    def words(self, page) -> list[str]:
+        """What a page gives a reader in words: its text, without its stylesheet and its script, and the titles and
+        labels its elements carry."""
+        texts = [page.one("body").text()]
+        texts += [element.attrs[name] for element in page.all() for name in ("title", "aria-label")
+                  if element.attrs.get(name)]
+        return texts
+
+    def test_no_page_and_no_opened_row_writes_a_figure_with_the_hyphen_or_a_plus_beside_a_minus(self):
+        """With losses on the day and over 7 and 30 days, a loss over the recent days, and the example's own falling
+        pace, on the board and on an older one an opened row lists."""
+        board = read_json(self.board_file())
+        rows = [{**row, "gained_1_day": gain, "gained_7_days": gain, "gained_30_days": gain}
+                for row, gain in zip(board["rows"], [147, -600, 0, None, -12], strict=True)]
+        rows[1]["recent_stars"] = -13
+        self.assertTrue(any(row["baseline"] < 0 for row in rows))
+        self.write_board({**board, "rows": rows})
+        older = read_json(self.board_file(OLDER))
+        self.write_board({**older, "state": "rows", "rows": [{**row, "rank": rank} for rank, row in enumerate(rows, 1)]})
+        pages = self.build_pages()
+        found = []
+        for path, page in pages.items():
+            for text in self.words(page):
+                found += [(path, match) for match in self.HYPHEN_FIGURE.findall(text) + self.TWO_SIGNS.findall(text)]
+        for day in (NEWEST, OLDER):
+            for text in strings(read_json(self.out / history_file(day))):
+                found += [(day, match) for match in self.HYPHEN_FIGURE.findall(text) + self.TWO_SIGNS.findall(text)]
+        self.assertEqual(found, [])
+        shown = " ".join(self.words(pages[BOARD]) + self.words(pages[BASELINE]))
+        self.assertIn("Usual \N{MINUS SIGN}", shown)
+        self.assertIn("\N{MINUS SIGN}600", shown)
+
+
 class TheBands(BuildTest):
     """The board's star bands, which its filter offers, are the file's own (AndrewGodlewsky/RisingRepos#196): the
     contract has the site keep no limits of its own."""
@@ -841,11 +896,15 @@ class TheBands(BuildTest):
         return group, [button for button in group.all("button") if "data-below" in button.attrs]
 
     def test_each_band_the_file_gives_is_a_button_worded_from_its_own_limits(self):
+        """Its word in the board's address too, which a reader may have shared, so the build makes it from the limits
+        and the script reads it from the button, never from the label."""
         _, buttons = self.buttons(self.build_pages()[BOARD])
         self.assertEqual(
-            [(button.text(), button.attrs["data-below"]) for button in buttons],
-            [("200–1k", "1000"), ("1k–3k", "3000"), ("3k–10k", "10000"), ("10k–30k", "30000"), ("30k+", "")],
+            [(button.text(), button.attrs["data-below"], button.attrs["data-word"]) for button in buttons],
+            [("200–1k", "1000", "200-1k"), ("1k–3k", "3000", "1k-3k"), ("3k–10k", "10000", "3k-10k"),
+             ("10k–30k", "30000", "10k-30k"), ("30k+", "", "30k-plus")],
         )
+        self.assertIn('return b.getAttribute("data-word");', (TEMPLATES / "filters.js").read_text(encoding="utf-8"))
 
     def test_bands_the_file_changes_are_the_bands_the_board_offers(self):
         board = read_json(self.board_file())
@@ -853,8 +912,8 @@ class TheBands(BuildTest):
                  {"least_stars": 3000, "most_stars": None}]
         write_json(self.board_file(), {**board, "star_bands": bands})
         _, buttons = self.buttons(self.build_pages()[BOARD])
-        self.assertEqual([(button.text(), button.attrs["data-below"]) for button in buttons],
-                         [("200–1,500", "1500"), ("1,500–3k", "3000"), ("3k+", "")])
+        self.assertEqual([(button.text(), button.attrs["data-below"], button.attrs["data-word"]) for button in buttons],
+                         [("200–1,500", "1500", "200-1,500"), ("1,500–3k", "3000", "1,500-3k"), ("3k+", "", "3k-plus")])
 
     def test_a_band_the_board_holds_back_keeps_its_button_hidden_so_no_filter_shows_nothing(self):
         """The example's newest board holds back 1k–3k. The script tells a row's band from every band's limits, so the

@@ -19,12 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
   var shown = document.getElementById("shown");
   var none = document.getElementById("none-shown");
   if (!table || !q || !kinds || !bands || !language || !sort || !shown) return;
-  {# The star bands, from their buttons: where each stops (data-below, none for the top band), its name in a row's
-     facts ("30k or more" for "30k+"), and its name in the address ("30k-plus"). #}
+  {# The star bands, from their buttons: where each stops (data-below, none for the top band), and its word in the
+     address (data-word, "30k-plus"), which the build makes from the band's limits. #}
   var bandButtonsByNumber = [].slice.call(bands.querySelectorAll("button[data-below]"));
   var below = bandButtonsByNumber.map(function (b) { return b.getAttribute("data-below") ? Number(b.getAttribute("data-below")) : Infinity; });
-  var bandNames = bandButtonsByNumber.map(function (b) { return b.textContent.replace(/\+$/, " or more"); });
-  var bandWords = bandButtonsByNumber.map(function (b) { return b.textContent.toLowerCase().replace("–", "-").replace("+", "-plus").replace(/ /g, "-"); });
+  var bandWords = bandButtonsByNumber.map(function (b) { return b.getAttribute("data-word"); });
   function bandOf(stars) { var band = 0; while (stars >= below[band]) band++; return band; }
   var rows = [].slice.call(table.querySelectorAll("tbody tr")).map(function (row, i) {
     var stars = Number(row.querySelector(".st").textContent.replace(/\D/g, ""));
@@ -91,12 +90,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   {# The view is kept in the address's query, so that it can be shared, bookmarked, and walked with Back and
      Forward: show=new, band=1k-3k, lang=Rust, sort=gained, and q=the search, each left out at its default. The
-     server sends the same page whatever the query says, and a value the page does not know is ignored. #}
+     server sends the same page whatever the query says, and a value the page does not know is ignored, as is a
+     band the board holds back. #}
   function read() {
     var query = new URLSearchParams(location.search);
     kind = query.get("show") === "new" && kindButtons.some(function (b) { return b.getAttribute("data-kind") === "new"; }) ? "new" : "";
     var number = bandWords.indexOf(query.get("band"));
-    band = number >= 0 && !bandButtonsByNumber[number].hidden ? String(number) : "";  // not a band the board holds back
+    band = number >= 0 && !bandButtonsByNumber[number].hidden ? String(number) : "";
     var wanted = (query.get("lang") || "").toLowerCase();
     language.value = "";
     [].forEach.call(language.options, function (option) { if (option.value && option.value.toLowerCase() === wanted) language.value = option.value; });
@@ -146,18 +146,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     return history;
   }
-  var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  function short(day) { return Number(day.slice(8)) + " " + months[Number(day.slice(5, 7)) - 1]; }
-  function long(day) { return short(day) + " " + day.slice(0, 4); }
-  function figure(n) { return n.toLocaleString("en-GB"); }
-  {# A gain as the site writes it, as sitebuild/__init__.py's `signed` does: "+1,234", "0", or "−56" with the true
-     minus for a loss, `written` being the figure without its sign. "loss" is the class that sets a loss in the red,
-     and "nil" the one that sets 0, or no count, in the second ink where a gain is in the green. #}
-  function sign(n, written) { return (n > 0 ? "+" : n < 0 ? "−" : "") + written; }
-  function signed(n) { return n === null || n === undefined ? "Not known" : sign(n, figure(Math.abs(n))); }
-  function gainKind(n) { return n === null || n === undefined || n === 0 ? "nil" : n < 0 ? "loss" : ""; }
-  {# The day `n` days before `day`, as "2026-10-21". #}
-  function before(day, n) { var d = new Date(day + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() - n); return d.toISOString().slice(0, 10); }
+  {# Every word and figure an opened row shows comes worded in the file, as the board words the same ones
+     (sitebuild/__init__.py's history_file): the script places them, and keeps numbers only for the lines it draws. #}
   {# A path through `points`, each [x, y] or null, broken where a point is null, so that a missing day is a gap. #}
   function trace(points) {
     var d = "", pen = false;
@@ -168,8 +158,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     return d;
   }
-  {# A rate as the row's growth cell rounds it: whole from 10, to one place below. #}
-  function rate(n) { return n >= 9.95 ? figure(Math.round(n)) : String(Math.round(n * 10) / 10); }
   function make(tag, className, text) {
     var element = document.createElement(tag);
     if (className) element.className = className;
@@ -199,11 +187,13 @@ document.addEventListener("DOMContentLoaded", function () {
      count day by day, broken where a day has none, and the dashed line of its own pace runs through its count before
      the recent days. Where it does not, the file gives two averages, not a count for each day, so each run is
      straight: the dashed line of its own pace over the 12 days before and on through the recent days, and the line
-     of what it gained over those. Either way the part between the two over the recent days is shaded and named. #}
-  function drawing(pace, counts) {
-    var baseline = pace[0], gained = pace[1], days = pace[2], above = pace[3];
+     of what it gained over those. Either way the part between the two over the recent days is shaded and named.
+     `pace` is what its lines are drawn from, and `said` its three labels and its sentence for a screen reader; `real`
+     is the 15 counts from 14 days before the board day to the board day. #}
+  function drawing(pace, said, counts) {
+    var baseline = pace[0], gained = pace[1], days = pace[2];
     var end = 12 + days;
-    var real = counts ? counts.slice(16) : null;  // the 15 counts from 14 days before the board day to the board day
+    var real = counts ? counts.slice(16) : null;
     if (real && (real[12] === null || real[end] === null)) real = null;
     var start, own, got, values;
     if (real) {
@@ -240,9 +230,9 @@ document.addEventListener("DOMContentLoaded", function () {
       tag.setAttribute("aria-hidden", "true");
       plot.appendChild(tag);
     }
-    label("tag got", above !== null ? "+" + figure(above) + " above its own trend" : "+" + figure(gained) + " in " + (days === 1 ? "1 day" : days + " days"), x(end), y(got));
-    label("tag own", "At its own pace: +" + rate(days * baseline), x(end), y(own));
-    label("tag usual", "Usual pace, " + rate(baseline) + " a day", 0, y(from));
+    label("tag got", said[0], x(end), y(got));
+    label("tag own", said[1], x(end), y(own));
+    label("tag usual", said[2], 0, y(from));
     box.appendChild(plot);
     var axis = make("div", "drawing-axis");
     axis.setAttribute("aria-hidden", "true");
@@ -252,18 +242,15 @@ document.addEventListener("DOMContentLoaded", function () {
     box.appendChild(make("p", "drawing-note", real
       ? "Its stars, day by day, where a gap is a day with no count. The dashed line is its usual pace, carried on from its count before the recent days."
       : "Stars gained, added up. The file gives each window's average a day, not each day's count, so each run is a straight line."));
-    var words = make("p", "sr", "Over the 12 days before, its usual pace was " + rate(baseline) + " stars a day. Over " +
-      (days === 1 ? "the day kept" : "the last 2 days") + " it gained " + figure(gained) + ", where its own pace would have given " +
-      rate(days * baseline) + (above !== null ? ": " + figure(above) + " above its own trend." : "."));
-    box.appendChild(words);
+    box.appendChild(make("p", "sr", said[3]));
     return box;
   }
 
-  {# Its total stars over the 31 days the file gives, as a line broken where a day has no count, with the first and
-     last counts at its ends. Null when the file gives fewer than two counts. #}
-  function month(counts, day) {
+  {# Its total stars over the 31 days the file gives, as a line broken where a day has no count, with `words`, the
+     first and last counts at its ends and its sentence for a screen reader. The file gives `words` only where two
+     days or more have a count. #}
+  function month(counts, words) {
     var known = counts.filter(function (n) { return n !== null; });
-    if (known.length < 2) return null;
     var low = Math.min.apply(null, known), high = Math.max.apply(null, known);
     function y(value) { return high === low ? 50 : 92 - (value - low) / (high - low) * 84; }
     var box = figureOf("month-line", "Its stars over the last 30 days");
@@ -272,58 +259,37 @@ document.addEventListener("DOMContentLoaded", function () {
     svg.appendChild(shape("path", { "class": "stars", d: trace(counts.map(function (n, i) { return n === null ? null : [i / 30 * 100, y(n)]; })) }));
     plot.appendChild(svg);
     box.appendChild(plot);
-    var first = counts.findIndex(function (n) { return n !== null; });
     var axis = make("div", "run-axis");
     axis.setAttribute("aria-hidden", "true");
-    axis.appendChild(make("span", "", short(before(day, 30 - first)) + ": " + figure(counts[first])));
-    axis.appendChild(make("span", "", short(day) + ": " + figure(known[known.length - 1])));
+    axis.appendChild(make("span", "", words[0]));
+    axis.appendChild(make("span", "", words[1]));
     box.appendChild(axis);
-    var missing = counts.length - known.length;
-    box.appendChild(make("p", "sr", "From " + figure(counts[first]) + " stars on " + long(before(day, 30 - first)) + " to " +
-      figure(known[known.length - 1]) + " on " + long(day) + (missing ? ", with " + missing + (missing === 1 ? " day" : " days") + " uncounted." : ".")));
+    box.appendChild(make("p", "sr", words[2]));
     return box;
   }
 
   function draw(row, data, opened) {
     var entry = data.rows[row.index];
-    var days = data.days;
+    var days = data.days, dates = data.dates;
     var on = entry.on;
     var listed = {};
     on.forEach(function (e) { listed[e[0]] = e; });
 
-    {# The sum behind its reason, under the reason line, and the facts, all from the file. #}
-    var why = entry.why || ["", "", null];
-    opened.querySelector(".rs").appendChild(make("p", "su", why[0]));
+    {# The sum behind its reason, under the reason line, and its facts, each a term and its value, and a loss's class. #}
+    opened.querySelector(".rs").appendChild(make("p", "su", entry.sum));
     var facts = make("dl", "fa");
     opened.appendChild(facts);
-    function fact(term, value, className) {
+    entry.facts.forEach(function (fact) {
       var pair = make("div");
-      pair.appendChild(make("dt", "", term));
-      pair.appendChild(make("dd", className, value));
+      pair.appendChild(make("dt", "", fact[0]));
+      pair.appendChild(make("dd", fact[2], fact[1]));
       facts.appendChild(pair);
-    }
-    fact("Multiple", why[1]);
-    if (entry.gains) {
-      {# A fact is in the ink, so only a loss takes a colour of its own here. #}
-      fact("Gained in 7 days", signed(entry.gains[0]), gainKind(entry.gains[0]) === "loss" ? "loss" : "");
-      fact("Gained in 30 days", signed(entry.gains[1]), gainKind(entry.gains[1]) === "loss" ? "loss" : "");
-    }
-    fact("Language", why[2] || "not given");
-    if (entry.about) fact("Licence", entry.about[0] || "None given");
-    var latest = on[on.length - 1];
-    if (bandNames.length) fact("Star band", bandNames[bandOf(latest[2])]);
-    if (entry.about && entry.about[1]) fact("Created", long(entry.about[1].slice(0, 10)));
-    if (entry.about && entry.about[2]) fact("Last pushed", long(entry.about[2].slice(0, 10)));
-    fact("First on a board", entry.first === days[days.length - 1] ? "This board" : long(entry.first));
-    if (entry.was) fact("Listed before as", entry.was);
-    fact("On the last " + days.length + " boards", on.length + " of " + days.length);
-    fact("Best rank in them", String(Math.min.apply(null, on.map(function (e) { return e[1]; }))));
+    });
 
-    if (entry.pace) opened.insertBefore(drawing(entry.pace, entry.stars), facts);
-    var line = entry.stars && month(entry.stars, days[days.length - 1]);
-    if (line) {
+    if (entry.pace) opened.insertBefore(drawing(entry.pace, entry.said, entry.stars), facts);
+    if (entry.month) {
       opened.classList.add("m");
-      opened.appendChild(line);
+      opened.appendChild(month(entry.stars, entry.month));
     }
 
     {# The running 30 board days, oldest first: a day a board listed it carries its rank that day and links to that
@@ -338,18 +304,18 @@ document.addEventListener("DOMContentLoaded", function () {
         cell = make("a", e[1] <= 10 ? "on top" : "on", String(e[1]));
         cell.href = "/days/" + day + "/";
         cell.tabIndex = -1;
-        cell.title = long(day) + ": rank " + e[1];
+        cell.title = dates[place][1] + ": rank " + e[1];
       } else {
         cell = make("span", "", "");
-        cell.title = long(day) + ": not on the board";
+        cell.title = dates[place][1] + ": not on the board";
       }
       strip.appendChild(cell);
     });
     run.appendChild(strip);
     var axis = make("div", "run-axis");
     axis.setAttribute("aria-hidden", "true");
-    axis.appendChild(make("span", "", short(days[0])));
-    axis.appendChild(make("span", "", short(days[days.length - 1])));
+    axis.appendChild(make("span", "", dates[0][0]));
+    axis.appendChild(make("span", "", dates[dates.length - 1][0]));
     run.appendChild(axis);
     opened.appendChild(run);
 
@@ -363,15 +329,14 @@ document.addEventListener("DOMContentLoaded", function () {
     on.slice().reverse().forEach(function (e) {
       var tr = rowsBody.insertRow();
       var th = make("th"); th.scope = "row";
-      var link = make("a", "", long(days[e[0]]));
+      var link = make("a", "", dates[e[0]][1]);
       link.href = "/days/" + days[e[0]] + "/";
       th.appendChild(link);
       tr.appendChild(th);
       tr.appendChild(make("td", "num", String(e[1])));
-      tr.appendChild(make("td", "num", figure(e[2])));
-      var pace = e[3] === null ? null : e[3] / e[4];
-      tr.appendChild(make("td", "num gain " + gainKind(pace), pace === null ? "—" : sign(pace, rate(Math.abs(pace)))));
-      tr.appendChild(make("td", "num", e[5] !== null ? e[5] + "×" : "—"));
+      tr.appendChild(make("td", "num", e[2]));
+      tr.appendChild(make("td", "num gain " + e[4], e[3]));
+      tr.appendChild(make("td", "num", e[5]));
     });
     var wrap = make("div", "more-days-wrap");
     wrap.appendChild(list);

@@ -75,9 +75,9 @@ class TheHistoryFile(BuildTest):
     def test_the_history_file_holds_owner_text_as_strings_and_the_script_writes_text_alone(self):
         self.build_pages()
         history = read_json(self.out / board_day_page("2026-11-09").replace("index.html", "history.json"))
-        licences = [entry["about"][0] for entry in history["rows"]]
-        self.assertEqual(licences, [row["license"] for row in read_json(self.board_file())["rows"]])
-        self.assertTrue(all(value is None or isinstance(value, str) for value in licences))
+        licences = [fact[1] for entry in history["rows"] for fact in entry["facts"] if fact[0] == "Licence"]
+        self.assertEqual(licences, [row["license"] or "None given" for row in read_json(self.board_file())["rows"]])
+        self.assertTrue(all(isinstance(value, str) for value in licences))
         script = (TEMPLATES / "filters.js").read_text(encoding="utf-8")
         self.assertNotRegex(script, r"innerHTML|outerHTML|insertAdjacentHTML|document\.write")
         self.assertIn("element.textContent = text", script)
