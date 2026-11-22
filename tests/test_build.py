@@ -27,9 +27,12 @@ from sitebuild import (
     board_day_page,
     calendar,
     daily_job,
+    figure,
     gain_class,
     gained,
     per_day,
+    signed,
+    times,
     took,
 )
 
@@ -854,6 +857,9 @@ class TheSigns(BuildTest):
 
     TWO_SIGNS = re.compile("[+][-\N{MINUS SIGN}]|[-\N{MINUS SIGN}][+]")
 
+    SIGNED_ZERO = re.compile("[+\N{MINUS SIGN}]0(?![.,0-9])")
+    """A figure that rounds to 0 with a sign, "+0" or "−0": a 0 is written bare."""
+
     def words(self, page) -> list[str]:
         """What a page gives a reader in words: its text, without its stylesheet and its script, and the titles and
         labels its elements carry."""
@@ -862,29 +868,40 @@ class TheSigns(BuildTest):
                   if element.attrs.get(name)]
         return texts
 
+    def test_a_figure_takes_the_sign_of_what_it_rounds_to_and_a_gain_a_plus_only_above_0(self):
+        """One rule, in `figure`, which `times` and every count go through, and `signed`, which reads the figure."""
+        self.assertEqual([figure(-3.421, 2), figure(-0.004, 2), figure(-0.5, 0), figure(0.004, 2)],
+                         ["\N{MINUS SIGN}3.42", "0", "\N{MINUS SIGN}1", "0"])
+        self.assertEqual([times(-12.34), times(12.34), times(-0.04)], ["\N{MINUS SIGN}12", "12", "0"])
+        self.assertEqual([signed(figure(147, 0)), signed(figure(-600, 0)), signed(figure(0, 0)), signed(times(0.04))],
+                         ["+147", "\N{MINUS SIGN}600", "0", "0"])
+
     def test_no_page_and_no_opened_row_writes_a_figure_with_the_hyphen_or_a_plus_beside_a_minus(self):
-        """With losses on the day and over 7 and 30 days, a loss over the recent days, and the example's own falling
-        pace, on the board and on an older one an opened row lists."""
+        """With losses on the day and over 7 and 30 days, a loss over the recent days, the example's own falling pace,
+        and an own pace that rounds to 0 from above and from below, on the board and on an older one an opened row
+        lists. No figure that rounds to 0 takes a sign either."""
         board = read_json(self.board_file())
         rows = [{**row, "gained_1_day": gain, "gained_7_days": gain, "gained_30_days": gain}
                 for row, gain in zip(board["rows"], [147, -600, 0, None, -12], strict=True)]
         rows[1]["recent_stars"] = -13
         self.assertTrue(any(row["baseline"] < 0 for row in rows))
+        (falling,) = [row for row in rows if row["baseline"] < 0]
+        falling["baseline"], rows[0]["baseline"] = -0.02, 0.02
         self.write_board({**board, "rows": rows})
         older = read_json(self.board_file(OLDER))
         self.write_board({**older, "state": "rows", "rows": [{**row, "rank": rank} for rank, row in enumerate(rows, 1)]})
         pages = self.build_pages()
-        found = []
-        for path, page in pages.items():
-            for text in self.words(page):
-                found += [(path, match) for match in self.HYPHEN_FIGURE.findall(text) + self.TWO_SIGNS.findall(text)]
-        for day in (NEWEST, OLDER):
-            for text in strings(read_json(self.out / history_file(day))):
-                found += [(day, match) for match in self.HYPHEN_FIGURE.findall(text) + self.TWO_SIGNS.findall(text)]
+        texts = [(path, text) for path, page in pages.items() for text in self.words(page)]
+        histories = [read_json(self.out / history_file(day)) for day in (NEWEST, OLDER)]
+        texts += [(day, text) for day, history in zip((NEWEST, OLDER), histories, strict=True) for text in strings(history)]
+        found = [(where, match) for where, text in texts
+                 for pattern in (self.HYPHEN_FIGURE, self.TWO_SIGNS, self.SIGNED_ZERO) for match in pattern.findall(text)]
         self.assertEqual(found, [])
         shown = " ".join(self.words(pages[BOARD]) + self.words(pages[BASELINE]))
-        self.assertIn("Usual \N{MINUS SIGN}", shown)
+        self.assertIn("Usual \N{MINUS SIGN}0.02 a day", shown)
         self.assertIn("\N{MINUS SIGN}600", shown)
+        own = [entry["said"][1] for entry in histories[0]["rows"]]
+        self.assertEqual([own[0], own[rows.index(falling)]], ["At its own pace: 0", "At its own pace: 0"])
 
 
 class TheBands(BuildTest):

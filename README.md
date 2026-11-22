@@ -130,8 +130,8 @@ What every page holds to, each checked by a test in `tests/`:
   18,573 on a board with rows, with its filters and opened rows. A made-up row
   above is 1,226 bytes of markup, and a row of `typical_rows` in the test
   about 800. What an opened row shows beyond its line is in `history.json`,
-  not in the page, every word and figure of it written by the build: 489,953
-  bytes, 74,795 gzipped, for the longest history in `site-data/`, 20 August
+  not in the page, every word and figure of it written by the build: 489,926
+  bytes, 74,788 gzipped, for the longest history in `site-data/`, 20 August
   2026, which a reader's first opening of a row fetches. The notes on the stylesheet and the
   scripts are Jinja comments, which no page carries: as CSS and JS comments
   they took 9,531 bytes of a board's page.

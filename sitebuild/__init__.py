@@ -258,22 +258,26 @@ draws as wide as the plus and the figures, not the hyphen. A loss takes it, and 
 def figure(value: float, places: int) -> str:
     """A number to at most `places` decimal places, with thousands parted by commas, no zero at the end, and the true
     minus below 0: 260.0 as '260', 30.1667 to two places as '30.17', 1285.909 to two places as '1,285.91', and -3.421
-    to two places as '−3.42'."""
-    text = f"{rounded(value, places):,}".replace("-", MINUS)
+    to two places as '−3.42'. The sign is the rounded figure's, so one that rounds to 0 takes none: -0.004 to two
+    places is '0'. Every figure the site writes, a gain's or a loss's among them, takes its sign here."""
+    number = rounded(value, places)
+    text = f"{abs(number) if number == 0 else number:,}".replace("-", MINUS)
     return text.rstrip("0").rstrip(".") if "." in text else text
 
 
 def times(score: float) -> str:
     """A score as a multiple of a usual pace, without a cap: to one decimal place under 10, and a whole number from
-    10, which needs no decimal to read. 8.63 as '8.6', 4.0 as '4', 9.96 as '10', and 1285.9 as '1,286'."""
-    return figure(score, 1) if rounded(score, 1) < 10 else figure(score, 0)
+    10, which needs no decimal to read. 8.63 as '8.6', 4.0 as '4', 9.96 as '10', and 1285.9 as '1,286'. Its places go
+    by size, so a figure below 0 takes them as the same figure above 0 does: -12.34 as '−12'."""
+    return figure(score, 1) if abs(rounded(score, 1)) < 10 else figure(score, 0)
 
 
 def why(row: dict) -> dict:
     """Why a row's repository is on its board, in words, from the numbers its file gives the row as its score worked
     them out (AndrewGodlewsky/RisingRepos#49): `line` for the row, and `detail`, the score and the sum it came from,
-    for the row's expanded view. The site works out no score: it rounds what it shows, and tells from the numbers
-    which of these the row is.
+    for the row's expanded view, with `gained`, the line's first half, and `above`, the stars above its own trend or
+    None, which the opened row's drawing labels itself with. The site works out no score: it rounds what it shows, and
+    tells from the numbers which of these the row is.
 
     - Its usual pace, its baseline, was no lower than the divisor its recent pace took: the line gives the stars it
       gained above that pace and its score as a multiple of it, and the detail names that multiple as the score and
@@ -294,7 +298,7 @@ def why(row: dict) -> dict:
     )
     span = "1 day" if days == 1 else f"{days} days"
     floor = f"{figure(divisor, 2)} star{'' if divisor == 1 else 's'} a day"
-    written = minus(stars, f"{abs(stars):,}")
+    written = figure(stars, 0)
     total = f"Score {figure(score, 2)} = {written} stars ÷ {span} ÷ {figure(divisor, 2)}"
     if baseline >= divisor:
         pace = f"{times(score)}× its usual pace"
@@ -307,15 +311,13 @@ def why(row: dict) -> dict:
         detail = f"{total}: it lost {figure(-baseline, 2)} a day before, which counts as {floor}"
     left_out = row["days_left_out"]
     # The excess is the stars above its own trend only when it covers every recent day and the pace was not falling.
-    if left_out or baseline < 0:
-        gained = f"{signed(stars, f'{abs(stars):,}')} in {span}"
-    else:
-        gained = f"+{figure(row['excess'], 0)} above its own trend"
+    above = None if left_out or baseline < 0 else figure(row["excess"], 0)
+    gained = f"{signed(written)} in {span}" if above is None else f"{signed(above)} above its own trend"
     if left_out == 1:
         detail += ". A recent day that lost too many stars to be believed is left out"
     elif left_out:
         detail += f". {left_out} recent days that lost too many stars to be believed are left out"
-    return {"line": f"{gained} · {pace}", "detail": detail + "."}
+    return {"line": f"{gained} · {pace}", "detail": detail + ".", "gained": gained, "above": above}
 
 
 def growth(row: dict) -> dict:
@@ -335,16 +337,10 @@ def growth(row: dict) -> dict:
     }
 
 
-def minus(number: float, written: str) -> str:
-    """A count that may fall below 0 as the site writes it, as `figure` writes a figure: `written`, the count without
-    its sign, after the true minus when `number` is below 0, and bare otherwise."""
-    return (MINUS if number < 0 else "") + written
-
-
-def signed(number: float, written: str) -> str:
-    """A gain as the site writes it: `written`, the figure without its sign, after a plus for a gain and the true
-    minus for a loss, and bare for 0."""
-    return ("+" if number > 0 else "") + minus(number, written)
+def signed(written: str) -> str:
+    """A gain as the site writes it, from the figure `figure` or `times` wrote: a plus before a figure above 0, and a
+    loss and 0 as the figure is, with its true minus or bare. A gain that rounds to 0 is '0', never '+0'."""
+    return written if written == "0" or written.startswith(MINUS) else "+" + written
 
 
 def gain_class(number: float | None) -> str:
@@ -362,7 +358,7 @@ def gained(row: dict) -> str:
     gain = row.get("gained_1_day")
     if gain is None:
         return "–"
-    return signed(gain, f"{abs(gain):,}")
+    return signed(figure(gain, 0))
 
 
 def per_day(row: dict) -> str:
@@ -371,8 +367,12 @@ def per_day(row: dict) -> str:
     every row, which its total over the two days would not be when a day is left out. Whole from 10, to one place
     below, as `times` rounds: 295 in 2 days as '+148', and 13 in 2 days as '+6.5'. The contract does not bar a loss
     over the recent days, which is written as a loss is on the board day."""
-    pace = row["recent_stars"] / row["recent_days"]
-    return signed(pace, times(abs(pace)))
+    return signed(times(row["recent_stars"] / row["recent_days"]))
+
+
+def per_day_class(row: dict) -> str:
+    """The class of `per_day`'s cell, as `gain_class` gives it: a board's growth column, and an opened row's table."""
+    return gain_class(row["recent_stars"] / row["recent_days"])
 
 
 PACE_SCALE = (0.5, 5000)
@@ -437,7 +437,7 @@ def facts(row: dict, on: list[list], days: list[str], first: str, was: str | Non
     if "star_history" in row:
         for count, name in ((7, "gained_7_days"), (30, "gained_30_days")):
             gain = row.get(name)
-            said = [f"Gained in {count} days", "Not known" if gain is None else signed(gain, f"{abs(gain):,}")]
+            said = [f"Gained in {count} days", "Not known" if gain is None else signed(figure(gain, 0))]
             told.append([*said, "loss"] if gain is not None and gain < 0 else said)
     told.append(["Language", row.get("language") or "not given"])
     if about:
@@ -459,21 +459,18 @@ def drawing_words(row: dict) -> tuple[list, list[str]]:
     """What an opened row's drawing of its own pace against what it gained is drawn from and labelled with: the numbers
     its lines take, [its baseline a day, to two places, its recent stars, its recent days], and its words, [the label at
     the end of what it gained, the label at the end of its own pace, the label of its usual pace, and the whole of it
-    in a sentence for a screen reader]. A row whose recent pace kept one day, or that had been losing stars, is not
-    above its own trend, so it gives what it gained instead. A pace that was falling takes the true minus, as every
-    figure below 0 does, and its own pace then no plus."""
+    in a sentence for a screen reader]. Its first label is the first half of the row's line, from `why`: a row whose
+    recent pace kept one day, or that had been losing stars, is not above its own trend, so it gives what it gained.
+    Every figure takes its sign as `figure` and `signed` give it."""
     baseline = float(rounded(row["baseline"], 2))
     gained, days = row["recent_stars"], row["recent_days"]
-    kept = not row["days_left_out"] and row["baseline"] >= 0
-    above = f"{rounded(row['excess'], 0):,}" if kept else None
-    over = "1 day" if days == 1 else f"{days} days"
-    got = f"+{above} above its own trend" if above else f"{signed(gained, f'{abs(gained):,}')} in {over}"
+    reason = why(row)
     usual, own = figure(baseline, 2), times(days * baseline)
     sentence = (f"Over the 12 days before, its usual pace was {usual} stars a day. Over "
-                f"{'the day kept' if days == 1 else 'the last 2 days'} it gained {minus(gained, f'{abs(gained):,}')}, "
-                f"where its own pace would have given {own}" + (f": {above} above its own trend." if above else "."))
-    own_label = f"At its own pace: {'' if baseline < 0 else '+'}{own}"
-    return [baseline, gained, days], [got, own_label, f"Usual pace, {usual} a day", sentence]
+                f"{'the day kept' if days == 1 else 'the last 2 days'} it gained {figure(gained, 0)}, where its own pace "
+                f"would have given {own}" + (f": {reason['above']} above its own trend." if reason["above"] else "."))
+    return [baseline, gained, days], [reason["gained"], f"At its own pace: {signed(own)}", f"Usual pace, {usual} a day",
+                                      sentence]
 
 
 def month_words(counts: list[int | None], day: str) -> list[str] | None:
@@ -520,8 +517,7 @@ def history_file(boards: list[dict], history: "History", number: int) -> dict:
             if not seen:
                 continue
             if "score" in seen:
-                pace = seen["recent_stars"] / seen["recent_days"]
-                on.append([place, seen["rank"], f"{seen['stars']:,}", per_day(seen), gain_class(pace).strip(),
+                on.append([place, seen["rank"], f"{seen['stars']:,}", per_day(seen), per_day_class(seen).strip(),
                            growth(seen)["multiple"] or "—"])
             else:
                 on.append([place, seen["rank"], f"{seen['stars']:,}", "—", "nil", "—"])
@@ -913,7 +909,7 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         per_day=per_day,
         gained=gained,
         gained_class=lambda row: gain_class(row.get("gained_1_day")),
-        per_day_class=lambda row: gain_class(row["recent_stars"] / row["recent_days"]),
+        per_day_class=per_day_class,
         own_pace=own_pace,
         baseline_figure=lambda value: figure(value, 2),
         script_hash=lambda text: script_hash(str(text)),
