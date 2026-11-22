@@ -767,6 +767,8 @@ tests/              the tests
   deploy.yml        the build job and the deploy job
   stale-check.yml   the daily check that the site is fresh
   site-eval.yml     the site eval
+AGENTS.md           how an agent works here, and what to read before each kind of change
+CLAUDE.md           imports AGENTS.md, for Claude Code
 RUNBOOK.md          going live, and going back
 pyproject.toml      the dependencies, and the date uv resolves them as of
 uv.lock             every package, pinned with its hashes
