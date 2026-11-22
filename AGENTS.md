@@ -13,7 +13,8 @@ are changing.
   pages, and the deploy job uploads them to risingrepos.com
   (`.github/workflows/deploy.yml`).
 - A push to any other branch runs no workflow. A pull request runs the tests and
-  the build, and uploads nothing. No branch gets a preview deployment: look at
+  the build, and deploys nothing. One that changes the site eval also runs the
+  eval, against the live site. No branch gets a preview deployment: look at
   other work by building it locally.
 - The repository is public, and a push is public at once. Pushed history is
   never rewritten, so read each commit, with `git log -p origin/main..HEAD`,
@@ -37,8 +38,8 @@ The site is one part of the RisingRepos project. Its repository,
   written here, in a file, a commit, a PR, a review, or a comment, names a
   RisingRepos issue by its number and says what it decided in other words. It
   quotes neither the issue nor its owner, and holds no path on anyone's
-  machine and no personal e-mail address. A commit's address is its author's
-  GitHub noreply address.
+  machine and no personal e-mail address. Commit with your GitHub noreply
+  address. The publishing job commits under its own.
 - `site-data/` is RisingRepos's output. Its publishing job commits each board
   day straight to `main` here, as `Publish board day <date>`. A change to the
   data contract (`site-data/contract/` and `sitebuild/contract.py`) lands in
@@ -77,16 +78,18 @@ pass. Run the whole suite before each commit.
 ## Where a change most often goes wrong
 
 - **A page has little room left.** `tests/test_page_weight.py` holds a page to
-  500,000 bytes and the longest root to 150,000 gzipped, and README.md, "The
-  pages", under "Its size", gives the last measurements: 479,955 and 144,789.
-  Markup added to a board's row is multiplied by every row, so measure before
-  and after. A gzipped size measured on Windows reads about 2% lower than the
-  workflow's.
+  500,000 bytes and the root of a 713-row board to 150,000 gzipped, and both
+  are within about 4% of their limits. README.md, "The pages", under "Its
+  size" and "The root on the wire", gives the last measurements. Markup added
+  to a board's row is multiplied by every row, so measure before and after. A
+  gzipped size measured on Windows reads about 2% lower than the workflow's.
 - **The page requests nothing.** Its styles, its one script, its icon, and its
   type are inside it, and its Content-Security-Policy allows that script by
-  the hash of its text. A second script, an inline event handler, or a file
-  fetched from anywhere but the board day's own `history.json` is refused by
-  the browser, and fails `tests/test_page_weight.py` or the policy's tests in
+  the hash of its text. A second script, an inline event handler, or a request
+  to another site is refused by the browser. The policy lets a board with rows
+  fetch from the site's own address, which the script uses for the board day's
+  `history.json` alone. A change that breaks this fails
+  `tests/test_page_weight.py` or the policy's tests in
   `tests/test_old_board.py`.
 - **The type is a renamed cut of IBM Plex.** The licence reserves the name
   "Plex" to the original, so the files here are Rising Sans and Rising Mono.
