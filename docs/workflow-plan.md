@@ -511,6 +511,12 @@ Largest Contentful Paint, 2.05 s against a limit of 2.00 s, and the owner has
 accepted raising that limit (RisingRepos#210). Until it is raised, the eval
 cannot tell a feature that slowed the page from one that did not.
 
+The eval that followed the board day of 22 November 2026 failed on both
+profiles: 2.11 s on the phone, and 0.62 s against a limit of 0.60 s on the
+desktop. The two evals before it failed on the phone alone, at 2.05 s. Step 1
+of section 13 was written for the phone's limit, and now has the desktop's to
+look at as well, with why the figure rose from one board day to the next.
+
 ## 11. The standards and the rest of the context (new)
 
 Agreed on 22 November 2026 (D14 to D16), and written that day: `STANDARDS.md`
@@ -657,7 +663,9 @@ The owner agreed the order of the checks and the evals in it on 22 November
 
 **Before the first feature**
 
-1. **The eval is made green.** The phone's limit is raised, as accepted.
+1. **The eval is made green.** The phone's limit is raised, as accepted. The
+   desktop's has failed since, so it is looked at in the same step
+   (section 10).
 2. **The context and the check command.** `STANDARDS.md`, the first decision
    records, `GLOSSARY.md`, the test that holds them to the files, and
    `STYLE.md` are written (section 11). Still to do: the one command; the
@@ -1030,7 +1038,8 @@ since each feature fits until one does not: the longest board's page against
 README.md gives the last measurements: 476,623 bytes on 21 November 2026, and
 144,789 on 22 November.
 
-The eval fails today on the phone's Largest Contentful Paint, and is made
+The eval fails today on Largest Contentful Paint: on the phone, and since
+the board day of 22 November 2026 on the desktop too (section 10). It is made
 green first (section 13, step 1).
 
 **2. Did the feature break anything? (new)**
