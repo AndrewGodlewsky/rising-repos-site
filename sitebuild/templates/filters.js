@@ -34,12 +34,14 @@ document.addEventListener("DOMContentLoaded", function () {
     var cell = row.querySelector("td.language");
     var written = row.getAttribute("data-l") || (cell ? cell.textContent : "");
     var description = row.querySelector(".de");
+    {# The search reads the name, which is the link's text, and the description. The cell's own text would bring
+       the New mark with it, and a search for "new" would then show every new row. #}
     return {
       element: row,
       index: i,
       band: String(bandOf(stars)),
       language: written,
-      text: (row.querySelector(".re").textContent + " " +
+      text: (row.querySelector(".re a").textContent + " " +
         (description.classList.contains("none") ? "" : description.textContent)).toLowerCase(),
       stars: stars,
       daily: grew ? parseFloat(grew.textContent.replace(/[+,]/g, "").replace("−", "-")) || 0 : 0,
