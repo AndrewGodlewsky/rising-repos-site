@@ -1,0 +1,170 @@
+"""`confirm`: see that a merged feature is live, works, and left the site within its limits. Also the reading of
+the two workflows' runs, which `pickup` shares to judge whether the site is healthy.
+
+Every merge is a deploy (docs/adr/0006), so a merge is not the end of a feature: its pages have to be uploaded,
+the owner's tests have to pass on the live site, and the site eval that follows the deploy has to pass
+(docs/workflow-plan.md, section 10). This script reads each of the three and judges none of them. When one fails,
+the agent puts the site back with `revert` before it asks the owner anything.
+
+Progress goes to the error stream, so that what is printed is the one JSON object.
+"""
+
+import argparse
+import json
+import sys
+import time
+
+from sitework import issue, rules, shell
+
+DEPLOY = "Build and deploy"
+EVAL = "Site eval"
+JOB, UPLOAD = "deploy", "Upload to Cloudflare Pages"
+"""The two workflows, and the job and the step that upload the pages, by the names .github/workflows/deploy.yml
+and site-eval.yml give them."""
+
+RUN = "databaseId,headSha,status,conclusion,createdAt,updatedAt,url"
+
+WAIT = 20
+LOOKS = 60
+"""A run is looked at every 20 seconds, 60 times, which is 20 minutes."""
+LIVE_WAIT = 60
+LIVE_TRIES = 11
+"""The owner's tests are tried once, and then once a minute for 10 minutes: a cache can serve the old page for a
+while after a deploy."""
+
+sleep = time.sleep
+"""The wait between two looks. A test replaces it, so that no test waits."""
+
+
+def deploy_run(commit: str | None = None) -> dict | None:
+    """The run of "Build and deploy" for the push of `commit` to main, or with no commit the newest run for any
+    push to main. None when there is none yet. Only a push counts: a pull request from a fork's own main also
+    names main as its branch."""
+    pushes = ["--workflow", DEPLOY, "--branch", "main", "--event", "push"]
+    which = ["--commit", commit] if commit else []
+    runs = shell.gh_json("run", "list", *pushes, *which, "--limit", "1", "--json", RUN)
+    return runs[0] if runs else None
+
+
+def eval_after(deploy: dict) -> dict | None:
+    """The run of "Site eval" that followed a deploy's run: the first one made for the deploy's commit once that
+    run had finished. None when there is none yet. The eval's workflow starts a run when a deploy's run completes,
+    and a run of the eval does not name the run it follows, so it is told by its commit and by when it was made."""
+    followed = ["--workflow", EVAL, "--event", "workflow_run", "--commit", deploy["headSha"]]
+    runs = shell.gh_json("run", "list", *followed, "--limit", "20", "--json", RUN)
+    after = [run for run in runs if run["createdAt"] >= deploy["updatedAt"]]
+    return min(after, key=lambda run: run["createdAt"]) if after else None
+
+
+def uploaded(run: dict) -> bool:
+    """Whether a deploy's run uploaded its pages. Its deploy job uploads only while its commit is the head of
+    main, and leaves the step out when a newer push has arrived."""
+    jobs = shell.gh_json("run", "view", str(run["databaseId"]), "--json", "jobs")["jobs"]
+    steps = [step for job in jobs if job["name"] == JOB for step in job["steps"] if step["name"] == UPLOAD]
+    return any(step["conclusion"] == "success" for step in steps)
+
+
+def say(progress: str) -> None:
+    print(progress, file=sys.stderr, flush=True)
+
+
+def deployed(merge: str) -> tuple[dict, dict | None]:
+    """Wait for the deploy that uploads the merge, and give its result with its run. When the merge's own run left
+    the upload to a newer push, the run that uploads the merge is the one for the newer head of main, which
+    holds the merge because main is never rewritten."""
+    commit = merge
+    for _ in range(LOOKS):
+        run = deploy_run(commit)
+        if run is None or run["status"] != "completed":
+            say(f"The deploy of {commit[:7]} has not finished.")
+            sleep(WAIT)
+            continue
+        report = {"run": run["databaseId"], "commit": commit, "result": run["conclusion"]}
+        if run["conclusion"] != "success":
+            return report, run
+        if uploaded(run):
+            say(f"The deploy of {commit[:7]} uploaded its pages: {run['url']}")
+            return report, run
+        head = shell.git("ls-remote", "origin", "refs/heads/main").split()[0]
+        if head == commit:
+            return report | {"result": "not uploaded"}, run
+        say(f"The deploy of {commit[:7]} left its upload to a newer push, so the run for {head[:7]} is followed.")
+        commit = head
+    return {"run": None, "commit": commit, "result": "not finished"}, None
+
+
+def live() -> dict:
+    """Run the owner's tests against the live site, until they pass or the tries run out."""
+    # The live address has one owner, the eval, where RUNBOOK.md's table and tests/test_runbook.py hold it. It is
+    # imported here and not above because the eval's module brings the generator with it, which `pickup` has no
+    # use for when it reads the runs through this module.
+    from evals.site.measure import DEPLOYED_SITE
+
+    folder = rules.OWNERS_TESTS.rstrip("/")
+    for tries in range(1, LIVE_TRIES + 1):
+        try:
+            # The address goes to this one command, so that nothing run later reads the live site by mistake.
+            shell.run(
+                sys.executable, "-m", "unittest", "discover", "-s", folder, "-t", ".", env={"SITE": DEPLOYED_SITE}
+            )
+        except shell.Failed as error:
+            failure = error
+        else:
+            say(f"The owner's tests pass on {DEPLOYED_SITE}.")
+            return {"result": "passed", "tries": tries}
+        if tries < LIVE_TRIES:
+            say(f"The owner's tests do not pass on {DEPLOYED_SITE} yet. Try {tries} of {LIVE_TRIES}.")
+            sleep(LIVE_WAIT)
+    say(f"The owner's tests fail on {DEPLOYED_SITE}:\n{failure}")
+    return {"result": "failed", "tries": LIVE_TRIES}
+
+
+def measured(deploy: dict) -> dict:
+    """Wait for the site eval that followed the deploy's run, and give its result."""
+    run = None
+    for _ in range(LOOKS):
+        run = eval_after(deploy)
+        if run and run["status"] == "completed":
+            say(f"The site eval that followed the deploy finished: {run['url']}")
+            return {"run": run["databaseId"], "result": run["conclusion"]}
+        say("The site eval that follows the deploy has not finished.")
+        sleep(WAIT)
+    return {"run": run["databaseId"] if run else None, "result": "not finished"}
+
+
+def confirm(number: int) -> int:
+    pull = issue.merged(number)
+    if pull is None:
+        print(f"#{number} has no pull request that merged, so there is nothing to confirm.")
+        return 1
+    merge = pull["mergeCommit"]["oid"]
+    deploy, run = deployed(merge)
+    report = {
+        "issue": number,
+        "merge": merge,
+        "deploy": deploy,
+        "live": {"result": "not run"},
+        "eval": {"run": None, "result": "not run"},
+    }
+    if deploy["result"] == "success":
+        report["live"] = live()
+        report["eval"] = measured(run)
+    wanted = {"deploy": "success", "live": "passed", "eval": "success"}
+    report["failed"] = [step for step, result in wanted.items() if report[step]["result"] != result]
+    print(json.dumps(report, indent=2))
+    return 1 if report["failed"] else 0
+
+
+def main(command: str, arguments: list[str]) -> int:
+    parser = argparse.ArgumentParser(
+        prog=f"python -m sitework {command}",
+        description="See that a merged feature was uploaded, passes the owner's tests on the live site, and passed "
+        "the site eval. Exit 0 when all three hold, and 1 when one does not.",
+    )
+    parser.add_argument("issue", type=int, help="the issue's number")
+    options = parser.parse_args(arguments)
+    try:
+        return confirm(options.issue)
+    except shell.Failed as error:
+        print(error, file=sys.stderr)
+        return 1

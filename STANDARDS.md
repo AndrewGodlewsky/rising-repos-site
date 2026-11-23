@@ -440,19 +440,31 @@ build of a public site keeps the fewest outside packages
 
 Held by the reviewer.
 
-**C10. A feature leaves the guards as they are.** The guards are a workflow,
-a pinned version, the policy that lets the script run, a limit of the site
-eval, and a limit or an assertion of a test. A change that has to move one
-says so, and waits for the owner. A test is never skipped or loosened so that
-a change passes, and one is removed only when another test holds what it
-held.
+**C10. A feature leaves the guards as they are.** The guards are what judges
+a feature: a workflow, a pinned version, the policy that lets the script run,
+a limit of the site eval, a limit or an assertion of a test, the owner's
+tests, these standards, and the feature workflow's own scripts and documents.
+`GUARDED` in `sitework/rules.py` lists their paths, and
+`python -m sitework guard` names each one a change touches. A change that has
+to move one says so, and waits for the owner, who allows it on the issue. A
+test is never skipped or loosened so that a change passes, and one is removed
+only when another test holds what it held.
 
-Held by the reviewer.
+Held by
+`tests/test_sitework_guard.py::TheGuard::test_every_guarded_path_is_named_with_why_it_is_guarded`,
+`tests/test_sitework_guard.py::TheGuard::test_a_change_to_the_policy_is_named`,
+`tests/test_sitework_guard.py::TheGuard::test_one_of_the_owners_tests_that_lost_a_line_is_named`,
+`tests/test_sitework_guard.py::TheGuard::test_a_path_the_owner_allowed_is_not_named_and_the_rest_still_are`,
+for the paths the guard names, and the reviewer, for one of the agents' tests
+that a change loosened or removed.
 
 **C11. A test is named as the sentence it proves, and proves it on what the
-build writes.** Every test but the one that shows the build reads
-`site-data/` builds from the tests' own copy of the data contract's example.
-The tests write only to temporary folders, and reach no other machine.
+build writes.** A test of one case builds from the tests' own copy of the
+data contract's example, so that the day's data does not change what it
+checks. Two build from `site-data/`: the one that shows the build reads it
+when no folder is given, and `tests/test_published_boards.py`, whose checks
+any row passes whatever its data (C19). The tests write only to temporary
+folders, and reach no other machine.
 
 Held by the reviewer.
 
@@ -502,16 +514,27 @@ Held by the reviewer.
 is taken out, its check is as wide as what its name claims, and its data
 holds a case where right code and wrong code differ. A review of the redesign
 took one line of a fix out and saw every test still pass (#26).
+`python -m sitework new-tests` runs each test a change adds on the code as it
+was before the change, and passes only when each one fails there.
 
-Held by the reviewer. A check could hold the first of these, by running a new
-test on the commit before.
+Held by
+`tests/test_sitework_new_tests.py::TheNewTests::test_a_new_test_that_passes_on_the_code_before_proves_nothing_whatever_the_others_do`,
+for the first of these, and the reviewer, for the other two.
 
 **C19. A change to a row's words or figures is tried on every published
 board, and not only on the example.** The example has five rows. The reviews
 of the redesign found what the tests had missed by running every row in
-`site-data/` (#26).
+`site-data/` (#26). `tests/test_published_boards.py` builds from `site-data/`
+and holds every page and every row to what the other tests hold of the
+example. A check of a row's new word or figure is added there, written so
+that any row passes it whatever its data.
 
-Held by the reviewer. A check could hold this.
+Held by
+`tests/test_published_boards.py::EveryPublishedBoard::test_each_board_lists_its_files_rows_in_order_with_the_rank_name_description_language_and_stars_of_each`,
+`tests/test_published_boards.py::EveryPublishedBoard::test_each_row_writes_its_usual_pace_and_its_recent_pace_one_way_in_its_cell_and_in_its_opened_view`,
+`tests/test_published_boards.py::EveryPublishedBoard::test_no_page_and_no_opened_row_shows_a_templates_marks_or_a_value_that_was_never_filled_in`,
+for what a row shows today, and the reviewer, for whether a change to a row
+added its check there.
 
 **C20. A change that is meant to leave the pages alone is shown to.** The
 build before it and the build after it are the same, byte for byte. Two
@@ -531,9 +554,11 @@ happen.**
 Held by the reviewer.
 
 **C23. A change leaves no whitespace error.** `git diff --check` prints
-nothing.
+nothing. `python -m sitework check` runs it on a branch's change, before the
+tests.
 
-Held by the reviewer. A check could hold this.
+Held by
+`tests/test_sitework_check.py::TheCheck::test_it_runs_every_check_of_a_change_the_cheapest_first`.
 
 ## Changing them
 
