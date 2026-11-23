@@ -3,15 +3,63 @@ from, so the board treats each as text that anyone could have written: escaped w
 link."""
 
 import re
+import shutil
 import unittest
 
-from helpers import BuildTest, read_json, shipped
+from helpers import BuildTest, Element, Page, read_json, shipped, write_json
 
-from sitebuild import BOARD, TEMPLATES, board_day_page
+from sitebuild import BASELINE, BOARD, TEMPLATES, board_day_page
 
 MARKUP_ROW = "rising-repos-example/markup-in-description"
 SCRIPT_PARTS = ("theme.js", "old-board.js", "filters.js")
 """The parts of the root's one script, the site's own, as site.js includes them on a board with rows."""
+
+GITHUB = "https://github.com/"
+"""Where a row's name leads, with the name after it: the one address off the site that a page links to."""
+
+OWNER = "rising-repos-example"
+"""The owner of every made-up repository below. A name's first "/" parts its owner from the rest, and this has none."""
+
+HOSTILE = {
+    "markup, with a link to another site": '<b>bold</b> and <a href="https://example.com/">a link</a>',
+    "a script element": "<script>alert(1)</script>",
+    "an end tag that would close its cell and open another": "</td><td>a cell of its own",
+    "quotes of both kinds that would end an attribute and start a handler": '" onmouseover="alert(1)" \' x=\'',
+    "an entity, which is to be shown as it was written": "&lt;b&gt; &amp; &#60;i&#62;",
+    "a javascript: address": "javascript:alert(1)",
+    "a data: address that holds a page": "data:text/html,<script>alert(1)</script>",
+    "the start of a comment, which would take in the rest of the page": "<!--",
+    "a template's own marks": "{{ 7 * 7 }}{% include 'site.js' %}",
+    "a very long word with no space": "W" * 300,
+    "characters that turn the text round, and characters of no width": (
+        "\N{RIGHT-TO-LEFT OVERRIDE}\N{RIGHT-TO-LEFT ISOLATE}abc\N{POP DIRECTIONAL ISOLATE}"
+        "\N{ZERO WIDTH SPACE}\N{ZERO WIDTH JOINER}\N{ZERO WIDTH NO-BREAK SPACE}"
+    ),
+    "a line break": "one line\nand another",
+    "white space alone": " \t ",
+}
+"""Text written to break a page, each by what it tries (docs/workflow-plan.md, section 6). `HostileText` puts each in
+every field of a row that a repository's owner controls. The list is fixed and short, so that it can be read: a new
+kind of text is a new line here."""
+
+
+def exact_text(element: Element) -> str:
+    """The text inside the element exactly as the page holds it, entities decoded: every space and line break that
+    `Element.text` makes one space, since a text written to break a page is to be shown as it was written."""
+    return "".join(child if isinstance(child, str) else exact_text(child) for child in element.children)
+
+
+def tree(page: Page) -> list[tuple[str, dict]]:
+    """Every element of the page, in order, as its tag and its attributes, but for the values of the two attributes
+    that carry what an owner wrote: a row's language, in its data-l, and where its name leads on GitHub."""
+
+    def owners(name: str, value: str | None) -> bool:
+        return name == "data-l" or (name == "href" and value.startswith(GITHUB))
+
+    return [
+        (element.tag, {name: "an owner's" if owners(name, value) else value for name, value in element.attrs.items()})
+        for element in page.all()
+    ]
 
 
 class OwnerWrittenText(BuildTest):
@@ -90,6 +138,94 @@ class TheHistoryFile(BuildTest):
             sorted(set(re.findall(r'make\("([a-z0-9]+)"', script))),
             ["a", "caption", "dd", "div", "dl", "dt", "figcaption", "figure", "p", "span", "table", "td", "th"],
         )
+
+
+class HostileText(BuildTest):
+    """Each text of `HOSTILE`, on a made-up board that has one row for each: the row holds the text as its
+    description, its language, its licence, and its name, after `OWNER` and a "/".
+
+    The contract's schema lets a name hold only the characters of a GitHub name, and a licence those of an SPDX id, so
+    the build refuses most of these texts there before it writes a page. The schema comes with the data, so the pages
+    do not lean on it: the copy's schema here lets any name and any licence through, and the page has to show each as
+    text all the same."""
+
+    def setUp(self):
+        super().setUp()
+        schema = read_json(self.daily_schema)
+        row = schema["properties"]["rows"]["items"]["properties"]
+        for name in ("full_name", "license"):
+            del row[name]["pattern"]
+        write_json(self.daily_schema, schema)
+
+    def built(self, texts: list[str]) -> dict[str, Page]:
+        """Build with the example's newest board made of one row for each of `texts`, each a copy of the example's
+        first row but for its rank, its id, and the four fields that hold the text."""
+        board = read_json(self.board_file())
+        rows = [
+            {
+                **board["rows"][0],
+                "rank": rank,
+                "github_id": 990000000 + rank,
+                "full_name": f"{OWNER}/{text}",
+                "description": text,
+                "language": text,
+                "license": text,
+            }
+            for rank, text in enumerate(texts, start=1)
+        ]
+        self.write_board({**board, "rows": rows})
+        shutil.rmtree(self.out, ignore_errors=True)
+        return self.build_pages()
+
+    def test_each_hostile_text_is_shown_as_it_was_written_wherever_its_row_shows_it(self):
+        """On the board, at the root and on its board day's page: as the text of its description's cell, which holds
+        no element; as the text of the row's one link, which leads to GitHub and nowhere else, and of the disclosure
+        that names the row; as the value of its data-l; and as one language in the filter's list. On the Baseline
+        page, as the text of its row's link. In the board day's history, as the strings an opened row shows for its
+        language and its licence, which the script writes as text (`TheHistoryFile`)."""
+        day = board_day_page("2026-11-09")
+        pages = self.built(list(HOSTILE.values()))
+        history = read_json(self.out / day.replace("index.html", "history.json"))
+        for path in (BOARD, day):
+            page = pages[path]
+            (languages,) = [select for select in page.all("select") if select.attrs.get("id") == "language"]
+            listed = [exact_text(option) for option in languages.all("option")]
+            for (tries, text), row, entry in zip(HOSTILE.items(), page.rows(), history["rows"], strict=True):
+                with self.subTest(path, tries=tries):
+                    name = f"{OWNER}/{text}"
+                    (cell,) = [cell for cell in row.all("td") if "de" in cell.classes()]
+                    (link,) = row.all("a")
+                    (summary,) = row.all("summary")
+                    self.assertEqual(cell.all(), [])
+                    self.assertEqual(exact_text(cell), text)
+                    self.assertEqual((link.attrs["href"], exact_text(link)), (GITHUB + name, name))
+                    self.assertEqual(exact_text(summary), f"More on {name}")
+                    self.assertEqual(row.attrs["data-l"], text)
+                    self.assertIn(text, listed)
+                    facts = {fact[0]: fact[1] for fact in entry["facts"]}
+                    self.assertEqual((facts["Language"], facts["Licence"]), (text, text))
+        for (tries, text), row in zip(HOSTILE.items(), pages[BASELINE].rows(), strict=True):
+            with self.subTest(BASELINE, tries=tries):
+                name = f"{OWNER}/{text}"
+                (link,) = row.all("a")
+                self.assertEqual((link.attrs["href"], exact_text(link)), (GITHUB + name, name))
+
+    def test_no_hostile_text_becomes_an_element_an_attribute_or_a_link_and_each_row_keeps_every_cell(self):
+        """Each page built with the hostile texts has, element for element, the tags and the attributes of the page
+        built with plain words in their place, but for the values of the two attributes that carry a row's language
+        and its name, which the test above holds. So no text made an element, an attribute, or a link, in its row or
+        anywhere else on a page, and each row has the cells it had. Nor does the source of a page hold a text as it
+        was written, where the text has a character that HTML sets apart: each such character is escaped."""
+        plain = self.built([f"plain-{number}" for number in range(len(HOSTILE))])
+        hostile = self.built(list(HOSTILE.values()))
+        self.assertEqual(list(hostile), list(plain))
+        for path, page in hostile.items():
+            with self.subTest(path):
+                self.assertEqual(tree(page), tree(plain[path]))
+                self.assertEqual(len(page.rows()), len(plain[path].rows()))
+                for tries, text in HOSTILE.items():
+                    if set(text) & set("<>&\"'"):
+                        self.assertEqual(page.html.count(text), plain[path].html.count(text), tries)
 
 
 if __name__ == "__main__":

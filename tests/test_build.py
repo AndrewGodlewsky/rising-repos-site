@@ -919,17 +919,25 @@ def strings(value) -> list[str]:
     return [text for part in inside for text in strings(part)]
 
 
+HYPHEN_FIGURE = re.compile(r"(?<![\w\N{EN DASH}-])-(?=\d)")
+"""A hyphen-minus before a digit that is no part of a word or a date, as in "-3.42", not "2026-11-09"."""
+
+TWO_SIGNS = re.compile("[+][-\N{MINUS SIGN}]|[-\N{MINUS SIGN}][+]")
+
+SIGNED_ZERO = re.compile("[+\N{MINUS SIGN}]0(?![.,0-9])")
+"""A figure that rounds to 0 with a sign, "+0" or "−0": a 0 is written bare."""
+
+
+def wrong_signs(text: str) -> list[str]:
+    """Each place where `text` writes a figure's sign as the site does not: a hyphen for a minus, a plus beside a
+    minus, or a sign on a 0. `TheSigns` holds the example's pages to it, and tests/test_published_boards.py every
+    page built from site-data/."""
+    return [match for pattern in (HYPHEN_FIGURE, TWO_SIGNS, SIGNED_ZERO) for match in pattern.findall(text)]
+
+
 class TheSigns(BuildTest):
     """AndrewGodlewsky/RisingRepos#199: a figure below 0 is written with the true minus, never the hyphen, wherever
     the site writes it, and a sign stands alone: no page writes a plus beside a minus."""
-
-    HYPHEN_FIGURE = re.compile(r"(?<![\w\N{EN DASH}-])-(?=\d)")
-    """A hyphen-minus before a digit that is no part of a word or a date, as in "-3.42", not "2026-11-09"."""
-
-    TWO_SIGNS = re.compile("[+][-\N{MINUS SIGN}]|[-\N{MINUS SIGN}][+]")
-
-    SIGNED_ZERO = re.compile("[+\N{MINUS SIGN}]0(?![.,0-9])")
-    """A figure that rounds to 0 with a sign, "+0" or "−0": a 0 is written bare."""
 
     def words(self, page) -> list[str]:
         """What a page gives a reader in words: its text, without its stylesheet and its script, and the titles and
@@ -976,12 +984,7 @@ class TheSigns(BuildTest):
         texts += [
             (day, text) for day, history in zip((NEWEST, OLDER), histories, strict=True) for text in strings(history)
         ]
-        found = [
-            (where, match)
-            for where, text in texts
-            for pattern in (self.HYPHEN_FIGURE, self.TWO_SIGNS, self.SIGNED_ZERO)
-            for match in pattern.findall(text)
-        ]
+        found = [(where, match) for where, text in texts for match in wrong_signs(text)]
         self.assertEqual(found, [])
         shown = " ".join(self.words(pages[BOARD]) + self.words(pages[BASELINE]))
         self.assertIn("Usual \N{MINUS SIGN}0.02 a day", shown)

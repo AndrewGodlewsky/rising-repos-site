@@ -169,6 +169,31 @@ def withheld(age: str) -> dict:
     }
 
 
+def assert_one_script_of_the_sites_own_parts(test: unittest.TestCase, page: Page, parts: tuple[str, ...]) -> None:
+    """The page carries one script, written in it, whose text is `parts`, each a part of the site's own script as the
+    build writes it, in that order, and nothing more. `ThePolicy` holds this of the example's pages, and
+    tests/test_published_boards.py of every page built from site-data/, as it holds the two checks below."""
+    test.assertEqual(len(page.all("script")), 1)
+    test.assertEqual(page.one("script").attrs, {})  # inline, so it requests nothing
+    expected = "".join(shipped(part) for part in parts)
+    test.assertEqual(script_of(page), expected)
+
+
+def assert_script_allowed(test: unittest.TestCase, page: Page) -> None:
+    """The policy's `script-src` names one source: the SHA-256 of the exact text of the page's one script."""
+    digest = base64.b64encode(hashlib.sha256(script_of(page).encode("utf-8")).digest()).decode("ascii")
+    test.assertEqual(page.directives()["script-src"], [f"'sha256-{digest}'"])
+
+
+def assert_policy_is_otherwise_as_it_was(test: unittest.TestCase, page: Page, *, fetches: bool) -> None:
+    """The page's policy is `POLICY` but for the directive that lets its script run and, only where `fetches` says
+    the page may fetch from the site's own address, the one that lets it."""
+    policy = page.policy()
+    test.assertEqual(" connect-src 'self';" in policy, fetches)
+    test.assertEqual(re.sub(r" (script|connect)-src [^;]*;", "", policy), POLICY)
+    test.assertTrue(policy.startswith("default-src 'none'; script-src 'sha256-"), policy)
+
+
 class TheNotice(BuildTest):
     def setUp(self):
         super().setUp()
@@ -390,36 +415,23 @@ class ThePolicy(BuildTest):
         super().setUp()
         self.pages = self.build_pages()
 
-    def assertScriptAllowed(self, page: Page):
-        """The policy's `script-src` names one source: the SHA-256 of the exact text of the page's one script."""
-        digest = base64.b64encode(hashlib.sha256(script_of(page).encode("utf-8")).digest()).decode("ascii")
-        self.assertEqual(page.directives()["script-src"], [f"'sha256-{digest}'"])
-
     def test_each_page_carries_one_script_the_sites_own_parts_that_it_uses_and_no_other(self):
         """AndrewGodlewsky/RisingRepos#199 made the theme, the notice, and a board's filters one script a page, each
         page carrying only the parts it uses, in the order site.js includes them."""
         self.assertEqual(set(PARTS), set(self.pages))
         for path, parts in PARTS.items():
             with self.subTest(path):
-                page = self.pages[path]
-                self.assertEqual(len(page.all("script")), 1)
-                self.assertEqual(page.one("script").attrs, {})  # inline, so it requests nothing
-                expected = "".join(shipped(part) for part in parts)
-                self.assertEqual(script_of(page), expected)
+                assert_one_script_of_the_sites_own_parts(self, self.pages[path], parts)
 
     def test_the_policy_lets_the_script_run_by_the_hash_of_its_exact_text(self):
         for path, page in self.pages.items():
             with self.subTest(path):
-                self.assertScriptAllowed(page)
+                assert_script_allowed(self, page)
 
     def test_the_policy_is_otherwise_as_it_was_and_only_a_board_with_rows_may_fetch_from_its_own_address(self):
         for path, page in self.pages.items():
             with self.subTest(path):
-                policy = page.policy()
-                fetches = "filters.js" in PARTS[path]
-                self.assertEqual(" connect-src 'self';" in policy, fetches)
-                self.assertEqual(re.sub(r" (script|connect)-src [^;]*;", "", policy), POLICY)
-                self.assertTrue(policy.startswith("default-src 'none'; script-src 'sha256-"), policy)
+                assert_policy_is_otherwise_as_it_was(self, page, fetches="filters.js" in PARTS[path])
 
     def test_the_not_found_page_and_how_it_works_carry_the_theme_alone_and_no_notice(self):
         """The notice hides what an old board's page holds, and neither page holds a board."""
@@ -439,7 +451,7 @@ class ThePolicy(BuildTest):
         self.assertNotEqual(script_of(changed), script_of(page))
         self.assertEqual(changed.policy(), page.policy())
         with self.assertRaises(AssertionError):
-            self.assertScriptAllowed(changed)
+            assert_script_allowed(self, changed)
 
 
 class WithoutScripts(BuildTest):

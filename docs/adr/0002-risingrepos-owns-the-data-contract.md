@@ -25,9 +25,11 @@ repository keeping its own copy, because copies drift apart.
 - What the site does work out, it works out at build time by comparing the
   lists the files hold: which repositories are New, and which boards a
   repository was on.
-- Every test but one builds from the tests' own copy of the contract's
+- A test of one case builds from the tests' own copy of the contract's
   example, and one test holds that copy to the bytes of a named RisingRepos
   commit. A change to the contract reaches the copy by a pull request here.
+  The tests of every published board build from `site-data/` itself, and
+  check only what any row passes whatever its data.
 - A schema is code to the validator, which would fetch whatever a schema
   refers to. So the build refuses a schema that refers outside itself, and
   never fetches a reference.
