@@ -30,7 +30,7 @@ def run(
     *command: str,
     cwd: Path | None = None,
     check: bool = True,
-    stdin: str | None = None,
+    stdin: str | Path | None = None,
     env: dict[str, str] | None = None,
 ) -> str:
     """Run `command` in `cwd`, which is the repository when none is given, and give what it printed, without the
@@ -39,17 +39,24 @@ def run(
 
     What a command prints is read as UTF-8, which is what git and gh write. A Python that is piped writes the
     machine's own encoding on Windows unless it is told otherwise, so each command is told, and a byte that is
-    still not UTF-8 is replaced and never stops the script that reads it."""
-    done = subprocess.run(
-        command,
-        cwd=cwd or ROOT,
-        input=stdin,
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-        env={**os.environ, "PYTHONUTF8": "1", **(env or {})},
-    )
+    still not UTF-8 is replaced and never stops the script that reads it.
+
+    `stdin` is what the command reads as its standard input. Text is written to it as UTF-8, with each line's end
+    as the machine writes one. A file is handed to the command as it is, so that the command reads the file's own
+    bytes: that is how what one command wrote reaches another with no byte replaced and no line's end rewritten
+    on the way."""
+    with contextlib.ExitStack() as opened:
+        reads = {"stdin": opened.enter_context(stdin.open("rb"))} if isinstance(stdin, Path) else {"input": stdin}
+        done = subprocess.run(
+            command,
+            cwd=cwd or ROOT,
+            **reads,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            env={**os.environ, "PYTHONUTF8": "1", **(env or {})},
+        )
     if check and done.returncode != 0:
         raise Failed(
             f"{' '.join(command)}: exit {done.returncode}\n{done.stdout}{done.stderr}".strip(), done.returncode

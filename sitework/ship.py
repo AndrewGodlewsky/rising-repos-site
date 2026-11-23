@@ -3,8 +3,10 @@
 No person takes part in a merge, and a merge is a deploy, so this script is the gate (docs/workflow-plan.md,
 section 9). It prints a line for each condition, `holds:` or `fails:`, and merges only when every one holds. It
 merges exactly the commit it judged: GitHub refuses the merge when the pull request's head is no longer that
-commit. With `--revert` it merges the pull request that reverts the feature, which no reviewer reads, so that a
-broken page does not stay live while a question waits.
+commit. GitHub holds a merge to nothing of main, so the script reads main once more just before it merges, and
+merges nothing when main has moved since the conditions were judged. With `--revert` it merges the pull request
+that reverts the feature, which no reviewer reads, so that a broken page does not stay live while a question
+waits. That pull request has to hold exactly the revert of the feature's merge, and nothing else.
 """
 
 import argparse
@@ -20,7 +22,9 @@ from sitework import issue, rules, shell
 SCRIPTS = __package__
 """The folder of the workflow's scripts, which is also the name they are run by."""
 
-COMMIT = re.compile(r"[0-9a-f]{7,40}")
+COMMIT = re.compile(r"[0-9a-f]{40}")
+"""A commit by its whole name. A review names the commit it passed this way and no shorter, because a head whose
+name begins with a few given digits can be made on purpose, and would then count as the commit that was read."""
 
 
 def checks(rollup: list[dict], head: str) -> tuple[bool, str]:
@@ -41,16 +45,24 @@ def checks(rollup: list[dict], head: str) -> tuple[bool, str]:
 
 def reviewed(said: list[dict], head: str) -> tuple[bool, str]:
     """The newest review passed the head, or a commit that carries the same change, so that a branch brought up
-    to main does not need a second review."""
+    to main does not need a second review.
+
+    The review also has to be of the plan as it now is. The plan is one comment that is edited in place, and
+    `criteria` holds the change to whatever it says today, so a plan edited after the review could turn a proof
+    into something only looked at, and the review would still read as a pass. GitHub writes both moments as UTC
+    in one form, so they compare as text."""
     reviews = issue.of_kind(said, "review")
     if not reviews:
         return False, "the issue has no review comment"
     verdict, commit = (issue.value(reviews[-1]["body"], name) for name in ("Verdict", "Commit"))
     if verdict != "pass":
         return False, f"the newest review's verdict is {verdict or 'not given'}, and not pass"
+    plans = issue.of_kind(said, "plan")
+    if plans and plans[-1]["updated_at"] > reviews[-1]["created_at"]:
+        return False, "the plan was edited after the newest review, which passed the plan as it was before"
     if not commit or not COMMIT.fullmatch(commit):
-        return False, "the newest review passed, and names no commit"
-    if head.startswith(commit):
+        return False, "the newest review passed, and names no commit by all of its 40 hex digits"
+    if commit == head:
         return True, f"the newest review passed {head[:7]}"
     if patch_id(commit) == patch_id(head):
         return True, f"the newest review passed {commit[:7]}, and {head[:7]} carries the same change"
@@ -60,10 +72,17 @@ def reviewed(said: list[dict], head: str) -> tuple[bool, str]:
 def patch_id(commit: str) -> str:
     """What names a commit's change whatever it is based on: git's patch id of the diff from where the commit left
     main. White space is kept, because in Python a line's indentation is part of what it means, and the ids git
-    gives without it are the same for a line moved into or out of a block."""
+    gives without it are the same for a line moved into or out of a block.
+
+    Git writes the diff to a file and reads it back from that file, so the diff is never text in between. Read
+    as text, a byte that is not UTF-8 is replaced and a line's end is rewritten, and two changes that differ only
+    there would share one id. A file that is not text is in the diff as well, with the whole names of what it
+    held before and after, so that a change to one is part of the id too."""
     base = shell.git("merge-base", "origin/main", commit)
-    diff = shell.git("diff", "--full-index", base, commit)
-    return shell.run("git", "patch-id", "--verbatim", stdin=diff + "\n").split(" ")[0]
+    with tempfile.TemporaryDirectory() as folder:
+        diff = Path(folder) / "change.diff"
+        shell.git("diff", "--full-index", "--binary", f"--output={diff}", base, commit)
+        return shell.run("git", "patch-id", "--verbatim", stdin=diff).split(" ")[0]
 
 
 def approved(the_issue: dict) -> tuple[bool, str]:
@@ -78,21 +97,26 @@ def approved(the_issue: dict) -> tuple[bool, str]:
 
 def allowed(said: list[dict]) -> list[str]:
     """The patterns of the guarded paths the owner lets this issue's change touch: those on each line of the
-    owner's own comments that begins `Allowed:`, with commas between them."""
+    owner's own comments that begins `Allowed:`, with commas between them.
+
+    The patterns reach `guard` as the words after `--allow`, where one that begins with a dash would be read as
+    an option of the command and not as a pattern. Such a pattern is left out, and allows nothing."""
     lines = [line.strip() for comment in issue.owners_own(said) for line in comment["body"].splitlines()]
     named = [line[len(rules.ALLOWED) :].split(",") for line in lines if line.startswith(rules.ALLOWED)]
-    return [pattern.strip() for patterns in named for pattern in patterns if pattern.strip()]
+    patterns = [pattern.strip() for found in named for pattern in found]
+    return [pattern for pattern in patterns if pattern and not pattern.startswith("-")]
 
 
 def guarded(base: str, head: str, patterns: list[str]) -> tuple[bool, str]:
     """`guard` passes, as main's copy of it reads the change. The branch's own copy could have been loosened by
-    the change it judges, so the scripts are taken out of main into a temporary folder and run from there. Until
-    main holds the scripts, the copy the head holds is all there is."""
-    on_main = bool(shell.git("ls-tree", "--name-only", "origin/main", SCRIPTS))
-    whose = "main's copy of guard" if on_main else f"the branch's copy of guard, since main has no {SCRIPTS}/ yet,"
+    the change it judges, so the scripts are taken out of main into a temporary folder and run from there. A main
+    that holds no scripts has no guard to ask, and the condition fails there: the copy the head holds is never
+    run, since that would let a branch be judged by its own guard."""
+    if not shell.git("ls-tree", "--name-only", "origin/main", SCRIPTS):
+        return False, f"main holds no guard to read the change, since it has no {SCRIPTS}/"
     with tempfile.TemporaryDirectory() as folder:
         archive, copy = Path(folder) / "scripts.tar", Path(folder) / "copy"
-        shell.git("archive", f"--output={archive}", "origin/main" if on_main else head, SCRIPTS)
+        shell.git("archive", f"--output={archive}", "origin/main", SCRIPTS)
         with tarfile.open(archive) as held:
             held.extractall(copy, filter="data")
         change = ["--repository", str(shell.ROOT), "--base", base, "--head", head]
@@ -100,8 +124,36 @@ def guarded(base: str, head: str, patterns: list[str]) -> tuple[bool, str]:
         try:
             shell.run(sys.executable, "-m", SCRIPTS, "guard", *change, *allow, cwd=copy)
         except shell.Failed as error:
-            return False, f"{whose} does not pass the change:\n{error}"
-    return True, f"{whose} finds no guarded path that the owner has not allowed"
+            return False, f"main's copy of guard does not pass the change:\n{error}"
+    return True, "main's copy of guard finds no guarded path that the owner has not allowed"
+
+
+def reverts(number: int, main: str, head: str) -> tuple[bool, str]:
+    """The pull request holds exactly what reverting the feature's merge on the head of main gives, and nothing
+    else. No reviewer reads a revert, so without this the lane would merge whatever was pushed to the branch a
+    revert is expected on.
+
+    This stands where `guard` does for a feature, and `guard` is not run on a revert. The merge that is undone
+    passed `guard`, so undoing exactly that merge takes nothing from what judges a feature. And `guard` would
+    refuse the revert of a feature whose reviewer added one of the owner's tests, since the revert takes those
+    lines out again, and the broken page would stay live for it.
+
+    The revert is made in a worktree of its own and is never committed: the tree git would commit is all that
+    the pull request's tree is held against."""
+    pull = issue.merged(number)
+    if pull is None:
+        return False, f"#{number} has no pull request that merged, so there is nothing for {head[:7]} to revert"
+    merge = pull["mergeCommit"]["oid"]
+    revert = f"the revert of #{number}'s merge, {merge[:7]}, on the head of main, {main[:7]}"
+    with shell.worktree(main) as tree:
+        try:
+            shell.git("revert", "-m", "1", "--no-commit", merge, cwd=tree)
+        except shell.Failed as error:
+            return False, f"{revert}, cannot be made, so there is nothing to hold {head[:7]} against:\n{error}"
+        reverted = shell.git("write-tree", cwd=tree)
+    if shell.git("rev-parse", f"{head}^{{tree}}") != reverted:
+        return False, f"{head[:7]} holds something other than {revert}"
+    return True, f"{head[:7]} holds exactly {revert}"
 
 
 def checkout(head: str) -> tuple[bool, str]:
@@ -141,7 +193,8 @@ def ship(number: int, reverting: bool) -> int:
     main = shell.git("rev-parse", "origin/main")
     base = shell.git("merge-base", "origin/main", head)
     the_issue = issue.read(number)
-    said = issue.comments(number, issue.owner())
+    # A revert turns on no comment: it needs no review, and nothing the owner allowed is asked about.
+    said = [] if reverting else issue.comments(number, issue.owner())
 
     def conditions() -> Iterator[tuple[bool, str]]:
         yield checks(read["statusCheckRollup"], head)
@@ -150,17 +203,28 @@ def ship(number: int, reverting: bool) -> int:
         contains = "contains" if base == main else "does not contain"
         yield base == main, f"{head[:7]} {contains} the head of main, {main[:7]}"
         yield approved(the_issue)
+        if reverting:
+            yield reverts(number, main, head)
+            return
         yield guarded(base, head, allowed(said))
-        if not reverting:
-            yield checkout(head)
-            yield passes("new-tests", "--base", base, "--head", head)
-            yield passes("criteria", "--issue", str(number))
+        yield checkout(head)
+        yield passes("new-tests", "--base", base, "--head", head)
+        yield passes("criteria", "--issue", str(number))
 
     every = True
     for holds, what in conditions():
         print(f"{'holds' if holds else 'fails'}: {what}", flush=True)
         every = every and holds
     if not every:
+        print("Nothing was merged.")
+        return 1
+    # The conditions take a while to judge, and a board day is pushed to main every day. GitHub holds a merge to
+    # the pull request's head and to nothing of main, so main is read from GitHub once more, as late as it can
+    # be. A push in the moment between this and the merge is still not seen.
+    now = shell.git("ls-remote", "origin", "refs/heads/main").split("\t")[0]
+    if now != main:
+        moved = f"main moved from {main[:7]} to {now[:7] or 'no commit'} while the conditions were judged"
+        print(f"fails: {moved}, so none of them saw what a merge would now be made onto. Run it again.")
         print("Nothing was merged.")
         return 1
     of = "the revert of " if reverting else ""

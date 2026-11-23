@@ -46,6 +46,15 @@ class RunningACommand(unittest.TestCase):
             shell.run(sys.executable, "-c", "import sys; print(sys.stdin.read())", stdin="a plan"), "a plan"
         )
 
+    def test_a_file_passed_as_standard_input_reaches_the_command_byte_for_byte(self):
+        # A byte that is not UTF-8, a line that ends in CRLF, and one that ends in LF: what text passed as
+        # standard input would have had replaced or rewritten on the way.
+        held = bytes([0x62, 0xBD, 0x0D, 0x0A, 0x62, 0x0A])
+        file = Path(self.enterContext(tempfile.TemporaryDirectory())) / "held"
+        file.write_bytes(held)
+        read = "import sys; print(sys.stdin.buffer.read().hex())"
+        self.assertEqual(shell.run(sys.executable, "-c", read, stdin=file), held.hex())
+
 
 class ATemporaryWorktree(unittest.TestCase):
     def setUp(self):
