@@ -18,6 +18,11 @@ from sitework import issue, notify, shell
 
 OWNER = "the-owner"
 ADDRESS = "https://github.com/the-owner/the-site/issues/27"
+ROW = ("description", "language", "topics")
+DAYS = ("2026-11-21", "2026-11-22")
+SCHEMA = "git show origin/main:site-data/contract/daily.schema.json"
+INDEX = "git show origin/main:site-data/boards/index.json"
+BOARD = "git show origin/main:site-data/boards/days/%s/daily.json"
 
 
 class Shell:
@@ -44,7 +49,15 @@ class Shell:
 
     def changes(self) -> list[str]:
         """The commands that were run and change something: every one but a reading."""
-        reads = ("gh repo view", "gh issue view", "gh pr list", "gh api repos/", "git ls-remote")
+        reads = (
+            "gh repo view",
+            "gh issue view",
+            "gh pr list",
+            "gh api repos/",
+            "git ls-remote",
+            "git fetch",
+            "git show",
+        )
         return [line for line in self.ran if not line.startswith(reads)]
 
 
@@ -73,7 +86,9 @@ def pull(number: int, branch: str, state: str = "MERGED", fork: bool = False) ->
 
 
 class IssueTest(unittest.TestCase):
-    """A test with the stand-in in place, issue #27 to work on, and a file of text to post."""
+    """A test with the stand-in in place, issue #27 to work on, a file of text to post, and the data on main: a
+    daily schema whose rows have a description, a language, and topics, and two board days. Every row holds a
+    description, the newer board day's rows hold a language too, and no row holds topics."""
 
     def setUp(self):
         self.answers = {
@@ -92,6 +107,11 @@ class IssueTest(unittest.TestCase):
             "gh issue close 27": "",
             "gh pr list": [pull(40, "agent/27-stop-clipping")],
             "git ls-remote origin refs/heads/agent/27-stop-clipping": "",
+            "git fetch origin main": "",
+            SCHEMA: {"properties": {"rows": {"items": {"properties": {name: {} for name in ROW}}}}},
+            INDEX: {"schema_version": 1, "board_days": [{"board_day": day, "row_count": 1} for day in DAYS]},
+            BOARD % DAYS[0]: {"board_day": DAYS[0], "rows": [{"description": "A tool."}]},
+            BOARD % DAYS[1]: {"board_day": DAYS[1], "rows": [{"description": "A tool.", "language": "Go"}]},
         }
         self.shell = Shell(self.answers)
         self.enterContext(mock.patch.object(shell, "run", self.shell))
@@ -186,7 +206,7 @@ class Stop(IssueTest):
         self.assertIn("gh issue edit 27 --remove-label in-progress --add-label needs-owner", self.shell.ran)
 
     def test_a_stop_for_data_names_the_risingrepos_issue_and_the_field_and_swaps_in_progress_for_blocked_on_data(self):
-        code, _ = self.run_command("stop", "27", "--data", "215", "--field", "license")
+        code, _ = self.run_command("stop", "27", "--data", "215", "--field", "homepage")
         self.assertEqual(code, 0)
         self.assertEqual(
             self.shell.changes(),
@@ -198,12 +218,35 @@ class Stop(IssueTest):
         body = self.shell.stdin["gh issue comment 27 --body-file -"]
         self.assertTrue(body.startswith("Site workflow: waiting on data\n\n"), body)
         self.assertIn("RisingRepos#215", body)
-        self.assertIn("Field: license", body.splitlines())
+        self.assertIn("Field: homepage", body.splitlines())
         self.assertIn("What the comment says.", body)
 
     def test_a_stop_for_data_sends_the_owner_no_message(self):
-        self.run_command("stop", "27", "--data", "215", "--field", "license")
+        self.run_command("stop", "27", "--data", "215", "--field", "homepage")
         self.assertEqual(self.told, [])
+
+    def test_a_stop_for_data_whose_field_is_already_in_the_schema_and_the_newest_board_is_refused(self):
+        for field in ("description", "language"):
+            with self.subTest(field=field):
+                code, printed = self.run_command("stop", "27", "--data", "215", "--field", field)
+                self.assertEqual(code, 1)
+                self.assertEqual(self.shell.changes(), [])
+                self.assertEqual(self.told, [])
+                for part in (f"`{field}`", "already", "more exact"):
+                    self.assertIn(part, printed)
+
+    def test_a_stop_for_data_whose_field_the_schema_holds_and_the_newest_board_does_not_goes_ahead(self):
+        code, _ = self.run_command("stop", "27", "--data", "215", "--field", "topics")
+        self.assertEqual(code, 0)
+        self.assertIn("gh issue edit 27 --remove-label in-progress --add-label blocked-on-data", self.shell.ran)
+
+    def test_a_stop_for_data_reads_the_data_as_main_holds_it_on_origin_after_a_fetch(self):
+        self.run_command("stop", "27", "--data", "215", "--field", "language")
+        self.assertEqual(self.shell.ran, ["git fetch origin main", SCHEMA, INDEX, BOARD % "2026-11-22"])
+
+    def test_a_stop_for_the_owner_reads_none_of_the_data(self):
+        self.run_command("stop", "27", "--stage", "check")
+        self.assertEqual([line for line in self.shell.ran if line.startswith("git")], [])
 
     def test_a_stop_for_data_that_names_no_field_is_refused_and_changes_nothing(self):
         code, _ = self.run_command("stop", "27", "--data", "215")
@@ -286,6 +329,30 @@ class Reading(IssueTest):
         self.assertEqual([comment["id"] for comment in issue.of_kind(comments, "review")], [7003])
         self.assertEqual([comment["id"] for comment in issue.owners_own(comments)], [7002])
 
+    def test_a_comment_whose_first_line_is_nearly_the_workflows_is_not_the_owners_own(self):
+        nearly = [
+            "Site workflow: Review",
+            "**Site workflow: review**",
+            "Site workflow: look back",
+            "> Site workflow: plan",
+            "## site workflow: stopped",
+            "  SITE WORKFLOW: review",
+            "- `Site workflow: review`",
+            "1. Site workflow: review",
+            "\n\n_Site workflow:review_",
+        ]
+        comments = [said(f"{first}\n\nAllowed: pyproject.toml", number=number) for number, first in enumerate(nearly)]
+        self.assertEqual(issue.owners_own(comments), [])
+        self.assertEqual(issue.of_kind(comments, "review"), [])
+
+    def test_a_comment_that_names_the_workflows_first_line_anywhere_but_at_its_start_is_the_owners_own(self):
+        comments = [
+            said("I read the Site workflow: review comment.\n\nAllowed: pyproject.toml", number=1),
+            said("Yes, go on.\nSite workflow: review", number=2),
+            said("", number=3),
+        ]
+        self.assertEqual([comment["id"] for comment in issue.owners_own(comments)], [7001, 7002, 7003])
+
     def test_a_value_is_the_rest_of_the_first_line_that_begins_with_its_name(self):
         body = "Site workflow: review\r\n\r\nVerdict: pass\r\nCommit: abc1234\r\nVerdict: later"
         self.assertEqual(issue.value(body, "Verdict"), "pass")
@@ -303,6 +370,21 @@ class Reading(IssueTest):
         self.assertEqual([found["number"] for found in issue.feature(pulls, 27)], [40])
         self.assertEqual([found["number"] for found in issue.revert(pulls, 27)], [41])
 
+    def test_a_pull_request_older_than_the_issue_is_not_the_issues(self):
+        pulls = [
+            pull(1, "agent/38-preview-site"),
+            pull(2, "agent/38-revert"),
+            pull(38, "agent/38-its-own-number"),
+            pull(45, "agent/38-wrap-the-table"),
+            pull(46, "agent/38-revert"),
+        ]
+        self.assertEqual([found["number"] for found in issue.feature(pulls, 38)], [45])
+        self.assertEqual([found["number"] for found in issue.revert(pulls, 38)], [46])
+
+    def test_an_issue_whose_only_merged_pull_request_is_older_than_it_has_none(self):
+        self.answers["gh pr list --state merged"] = [pull(1, "agent/38-preview-site")]
+        self.assertIsNone(issue.merged(38))
+
     def test_the_merged_pull_request_is_the_features_newest_that_merged(self):
         self.answers["gh pr list --state merged"] = [
             pull(40, "agent/27-stop-clipping"),
@@ -311,6 +393,21 @@ class Reading(IssueTest):
             pull(45, "agent/28-latest-jump"),
         ]
         self.assertEqual(issue.merged(27)["number"], 43)
+
+    def test_the_merged_revert_is_the_newest_merged_pull_request_that_reverts_the_feature(self):
+        self.answers["gh pr list --state merged"] = [
+            pull(40, "agent/27-stop-clipping"),
+            pull(41, "agent/27-revert"),
+            pull(43, "agent/27-stop-clipping-again"),
+            pull(44, "agent/27-revert"),
+            pull(45, "agent/28-revert"),
+            pull(46, "agent/27-revert", fork=True),
+        ]
+        self.assertEqual(issue.reverted(27)["number"], 44)
+
+    def test_an_issue_whose_feature_merged_and_was_not_reverted_has_no_merged_revert(self):
+        self.answers["gh pr list --state merged"] = [pull(40, "agent/27-stop-clipping"), pull(45, "agent/28-revert")]
+        self.assertIsNone(issue.reverted(27))
 
     def test_only_a_pull_request_into_main_is_asked_for(self):
         issue.pulls("open")

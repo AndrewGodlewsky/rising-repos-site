@@ -19,9 +19,15 @@ from sitework import confirm, shell
 
 MERGE = "a" * 40
 NEWER = "b" * 40
+NEWEST = "d" * 40
+NOTES = "9" * 40
+REVERT = "e" * 40
 DEPLOYS = "gh run list --workflow Build and deploy --branch main --event push"
 EVALS = "gh run list --workflow Site eval --event workflow_run"
 OWNERS_TESTS = f"{sys.executable} -m unittest discover -s owner_tests -t ."
+FETCH = "git fetch --quiet origin main"
+DEPLOYING = "git log --first-parent -1 --format=%H origin/main -- . :(exclude)docs/workflow-notes"
+"""The line that asks git for the newest commit on main that changes more than the notes."""
 
 
 class InTurn:
@@ -75,6 +81,19 @@ def run(number: int, commit: str = MERGE, conclusion: str = "success", made: str
     }
 
 
+def pull(number: int, branch: str, merge: str, merged: str) -> dict:
+    """A pull request that merged, as `gh pr list` gives one."""
+    return {
+        "number": number,
+        "state": "MERGED",
+        "headRefName": branch,
+        "headRefOid": f"{number:040x}",
+        "isCrossRepository": False,
+        "mergeCommit": {"oid": merge},
+        "mergedAt": f"2026-11-22T{merged}Z",
+    }
+
+
 def jobs(upload: str | None) -> dict:
     """A deploy run's jobs, as `gh run view` gives them. With no `upload`, the deploy job ran no step."""
     steps = [
@@ -96,17 +115,7 @@ class ConfirmTest(unittest.TestCase):
 
     def setUp(self):
         self.answers = {
-            "gh pr list --state merged": [
-                {
-                    "number": 40,
-                    "state": "MERGED",
-                    "headRefName": "agent/27-stop-clipping",
-                    "headRefOid": "c" * 40,
-                    "isCrossRepository": False,
-                    "mergeCommit": {"oid": MERGE},
-                    "mergedAt": "2026-11-22T11:59:58Z",
-                }
-            ],
+            "gh pr list --state merged": [pull(40, "agent/27-stop-clipping", MERGE, "11:59:58")],
             f"{DEPLOYS} --commit {MERGE}": [run(500)],
             "gh run view 500": jobs("success"),
             f"{EVALS} --commit {MERGE}": [run(600, made="12:02:03", done="12:04:30")],
@@ -191,9 +200,10 @@ class Confirm(ConfirmTest):
         self.assertIn("deploy", report["failed"])
         self.assertEqual(self.shell.count(OWNERS_TESTS), 0)
 
-    def test_when_the_upload_was_left_to_a_newer_push_the_run_for_the_newer_head_of_main_is_followed(self):
+    def test_when_the_upload_was_left_to_a_newer_push_the_run_for_that_push_is_followed(self):
         self.answers["gh run view 500"] = jobs("skipped")
-        self.answers["git ls-remote origin refs/heads/main"] = f"{NEWER}\trefs/heads/main"
+        self.answers[FETCH] = ""
+        self.answers[DEPLOYING] = NEWER
         self.answers[f"{DEPLOYS} --commit {NEWER}"] = InTurn([run(510, NEWER, "")], [run(510, NEWER, done="12:05:00")])
         self.answers["gh run view 510"] = jobs("success")
         self.answers[f"{EVALS} --commit {NEWER}"] = [run(610, NEWER, made="12:05:02", done="12:07:30")]
@@ -203,9 +213,39 @@ class Confirm(ConfirmTest):
         self.assertEqual(report["deploy"], {"run": 510, "commit": NEWER, "result": "success"})
         self.assertEqual(report["eval"], {"run": 610, "result": "success"})
 
-    def test_a_run_for_the_head_of_main_whose_upload_did_not_run_fails_the_deploy(self):
+    def test_when_the_head_of_main_is_a_commit_of_the_notes_the_newest_commit_that_changes_more_is_followed(self):
+        # The head of main is asked of nothing, so a commit of the notes there, which has no run, is never the
+        # one followed. The two answers for it are what a script that followed the head would be given.
+        self.answers["gh run view 500"] = jobs("skipped")
+        self.answers["git ls-remote origin refs/heads/main"] = f"{NOTES}\trefs/heads/main"
+        self.answers[f"{DEPLOYS} --commit {NOTES}"] = []
+        self.answers[FETCH] = ""
+        self.answers[DEPLOYING] = NEWER
+        self.answers[f"{DEPLOYS} --commit {NEWER}"] = [run(510, NEWER, done="12:05:00")]
+        self.answers["gh run view 510"] = jobs("success")
+        self.answers[f"{EVALS} --commit {NEWER}"] = [run(610, NEWER, made="12:05:02", done="12:07:30")]
+        code, report, _ = self.run_command("27")
+        self.assertEqual(code, 0)
+        self.assertEqual(report["deploy"], {"run": 510, "commit": NEWER, "result": "success"})
+        self.assertEqual(self.slept, [])
+        self.assertEqual([line for line in self.shell.ran if line.startswith("git")], [FETCH, DEPLOYING])
+
+    def test_a_run_that_left_its_upload_to_a_push_of_the_notes_alone_fails_the_deploy_and_waits_for_no_run(self):
+        # A script that followed the head of main would wait 20 minutes here, for a run that is never made.
+        self.answers["gh run view 500"] = jobs("skipped")
+        self.answers["git ls-remote origin refs/heads/main"] = f"{NOTES}\trefs/heads/main"
+        self.answers[f"{DEPLOYS} --commit {NOTES}"] = []
+        self.answers[FETCH] = ""
+        self.answers[DEPLOYING] = MERGE
+        code, report, _ = self.run_command("27")
+        self.assertEqual(code, 1)
+        self.assertEqual(report["deploy"], {"run": 500, "commit": MERGE, "result": "not uploaded"})
+        self.assertEqual(self.slept, [])
+
+    def test_a_run_for_the_newest_push_whose_upload_did_not_run_fails_the_deploy(self):
         self.answers["gh run view 500"] = jobs(None)
-        self.answers["git ls-remote origin refs/heads/main"] = f"{MERGE}\trefs/heads/main"
+        self.answers[FETCH] = ""
+        self.answers[DEPLOYING] = MERGE
         code, report, _ = self.run_command("27")
         self.assertEqual(code, 1)
         self.assertEqual(report["deploy"], {"run": 500, "commit": MERGE, "result": "not uploaded"})
@@ -259,12 +299,123 @@ class Confirm(ConfirmTest):
         self.assertEqual(sum(self.slept), 20 * 60)
         self.assertEqual(report["eval"], {"run": 600, "result": "not finished"})
 
+    def test_an_eval_that_measured_nothing_is_not_read_and_the_eval_of_the_newest_deploy_to_main_is_waited_for(self):
+        for ended in ("cancelled", "skipped"):
+            with self.subTest(ended=ended):
+                self.slept.clear()
+                self.answers[f"{EVALS} --commit {MERGE}"] = [
+                    run(600, conclusion=ended, made="12:02:03", done="12:03:01")
+                ]
+                self.answers[DEPLOYS] = [run(510, NEWER, made="12:01:00", done="12:02:58")]
+                running = run(610, NEWER, "", made="12:03:00", done="12:03:00")
+                self.answers[f"{EVALS} --commit {NEWER}"] = InTurn(
+                    [], [running], [run(610, NEWER, made="12:03:00", done="12:05:30")]
+                )
+                code, report, printed = self.run_command("27")
+                self.assertEqual(code, 0)
+                self.assertEqual(report["deploy"], {"run": 500, "commit": MERGE, "result": "success"})
+                self.assertEqual(report["eval"], {"run": 610, "result": "success"})
+                self.assertEqual(self.slept, [20, 20])
+                for part in (ended, "actions/runs/600", NEWER[:7], "actions/runs/610"):
+                    self.assertIn(part, printed)
+
+    def test_the_eval_of_the_newest_deploy_that_failed_fails_and_is_the_run_that_is_named(self):
+        self.answers[f"{EVALS} --commit {MERGE}"] = [run(600, conclusion="cancelled", made="12:02:03", done="12:03:01")]
+        self.answers[DEPLOYS] = [run(510, NEWER, made="12:01:00", done="12:02:58")]
+        self.answers[f"{EVALS} --commit {NEWER}"] = [run(610, NEWER, "failure", made="12:03:00", done="12:05:30")]
+        code, report, _ = self.run_command("27")
+        self.assertEqual(code, 1)
+        self.assertEqual(report["eval"], {"run": 610, "result": "failure"})
+        self.assertEqual(report["failed"], ["eval"])
+
+    def test_when_the_newest_deploys_eval_was_cancelled_in_its_turn_the_deploy_that_is_then_newest_is_followed(self):
+        self.answers[f"{EVALS} --commit {MERGE}"] = [run(600, conclusion="cancelled", made="12:02:03", done="12:03:01")]
+        self.answers[DEPLOYS] = InTurn(
+            [run(510, NEWER, made="12:01:00", done="12:02:58")], [run(511, NEWEST, made="12:02:00", done="12:04:00")]
+        )
+        self.answers[f"{EVALS} --commit {NEWER}"] = [run(610, NEWER, "cancelled", made="12:03:00", done="12:04:02")]
+        self.answers[f"{EVALS} --commit {NEWEST}"] = [run(611, NEWEST, made="12:04:01", done="12:06:30")]
+        code, report, _ = self.run_command("27")
+        self.assertEqual(code, 0)
+        self.assertEqual(report["eval"], {"run": 611, "result": "success"})
+
+    def test_an_eval_that_measured_nothing_after_the_newest_deploy_itself_is_reported_as_it_ended(self):
+        self.answers[f"{EVALS} --commit {MERGE}"] = [run(600, conclusion="cancelled", made="12:02:03", done="12:03:01")]
+        self.answers[DEPLOYS] = [run(500)]
+        code, report, _ = self.run_command("27")
+        self.assertEqual(code, 1)
+        self.assertEqual(report["eval"], {"run": 600, "result": "cancelled"})
+        self.assertEqual(self.slept, [])
+
+    def test_an_eval_that_measured_is_read_without_asking_for_the_newest_deploy(self):
+        for ended in ("success", "failure", "timed_out"):
+            with self.subTest(ended=ended):
+                self.answers[f"{EVALS} --commit {MERGE}"] = [
+                    run(600, conclusion=ended, made="12:02:03", done="12:04:30")
+                ]
+                _, report, _ = self.run_command("27")
+                self.assertEqual(report["eval"], {"run": 600, "result": ended})
+        self.assertEqual([line for line in self.shell.ran if line.startswith(f"{DEPLOYS} --limit")], [])
+
     def test_an_issue_with_no_merged_pull_request_exits_1_and_waits_for_nothing(self):
         self.answers["gh pr list --state merged"] = []
         code, report, printed = self.run_command("27")
         self.assertEqual(code, 1)
         self.assertIsNone(report)
         self.assertIn("#27", printed)
+        self.assertEqual(self.shell.count("gh run"), 0)
+
+
+class ConfirmARevert(ConfirmTest):
+    """The feature's merge failed its eval and was reverted, and the revert's merge was uploaded and measured in
+    its turn. An older revert of the feature merged before it."""
+
+    def setUp(self):
+        super().setUp()
+        self.answers["gh pr list --state merged"] += [
+            pull(39, "agent/27-revert", "f" * 40, "09:00:00"),
+            pull(41, "agent/27-revert", REVERT, "12:30:00"),
+        ]
+        self.answers[f"{EVALS} --commit {MERGE}"] = [run(600, conclusion="failure", made="12:02:03", done="12:04:30")]
+        self.answers[f"{DEPLOYS} --commit {REVERT}"] = [run(520, REVERT, made="12:30:02", done="12:32:00")]
+        self.answers["gh run view 520"] = jobs("success")
+        self.answers[f"{EVALS} --commit {REVERT}"] = [run(620, REVERT, made="12:32:03", done="12:34:30")]
+
+    def test_with_revert_the_merge_of_the_newest_merged_revert_is_followed_through_the_same_three_steps(self):
+        code, report, _ = self.run_command("27", "--revert")
+        self.assertEqual(code, 0)
+        self.assertEqual(
+            report,
+            {
+                "issue": 27,
+                "merge": REVERT,
+                "deploy": {"run": 520, "commit": REVERT, "result": "success"},
+                "live": {"result": "passed", "tries": 1},
+                "eval": {"run": 620, "result": "success"},
+                "failed": [],
+            },
+        )
+        self.assertEqual(self.shell.count(OWNERS_TESTS), 1)
+
+    def test_with_revert_a_revert_whose_own_deploy_failed_is_not_confirmed_by_the_features_deploy(self):
+        self.answers[f"{DEPLOYS} --commit {REVERT}"] = [run(520, REVERT, "failure")]
+        code, report, _ = self.run_command("27", "--revert")
+        self.assertEqual(code, 1)
+        self.assertEqual(report["deploy"], {"run": 520, "commit": REVERT, "result": "failure"})
+        self.assertEqual(report["failed"], ["deploy", "live", "eval"])
+
+    def test_without_revert_the_features_merge_is_still_the_one_followed(self):
+        code, report, _ = self.run_command("27")
+        self.assertEqual(code, 1)
+        self.assertEqual((report["merge"], report["eval"]), (MERGE, {"run": 600, "result": "failure"}))
+
+    def test_with_revert_and_no_merged_revert_it_says_so_and_exits_1(self):
+        self.answers["gh pr list --state merged"] = [pull(40, "agent/27-stop-clipping", MERGE, "11:59:58")]
+        code, report, printed = self.run_command("27", "--revert")
+        self.assertEqual(code, 1)
+        self.assertIsNone(report)
+        self.assertIn("#27", printed)
+        self.assertIn("reverts", printed)
         self.assertEqual(self.shell.count("gh run"), 0)
 
 

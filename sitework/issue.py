@@ -1,5 +1,6 @@
 """`comment`, `stop`, and `close`: the workflow's comments and labels on an issue. Also the reading of an issue,
-its comments, and its pull requests that the other scripts share.
+its comments, and its pull requests that the other scripts share, and of the data on main that an issue can wait
+for.
 
 Agents act under the owner's account, so who wrote a comment does not tell the owner's words from an agent's
 (docs/workflow-plan.md, D10). Each comment the workflow writes begins with a fixed first line
@@ -11,6 +12,7 @@ one from a branch of any name.
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -20,9 +22,20 @@ REPOSITORY = "repos/{owner}/{repo}"
 """This repository in a path of GitHub's API. `gh api` fills in the two names itself."""
 
 REVERT = "revert"
-"""The slug of the branch that reverts a feature's merge. No feature's branch has it."""
+"""The slug of the branch that reverts a feature's merge. No feature's branch has it: `pickup.branch` gives the
+one title that would make it another slug."""
 
 PULL = "number,state,headRefName,headRefOid,isCrossRepository,mergeCommit,mergedAt"
+
+SCHEMA = "site-data/contract/daily.schema.json"
+INDEX = "site-data/boards/index.json"
+BOARD = "site-data/boards/days/{day}/daily.json"
+"""The daily schema, the list of board days, and a board day's file. `sitebuild.contract` reads the same three
+from a folder. Here they are read as main holds them on origin, which the checkout this runs in may be behind."""
+
+BEFORE_THE_WORDS = re.compile(r"(?:[\W_]+|\d+[.)])*")
+"""What Markdown can put before the first word of a line: the marks of a heading, a quotation, a list, emphasis,
+or code, a numbered list's number, and the spaces among them."""
 
 
 def owner() -> str:
@@ -50,9 +63,22 @@ def of_kind(comments: list[dict], kind: str) -> list[dict]:
     return [comment for comment in comments if rules.kind_of(comment["body"]) == kind]
 
 
+def says_it_is_the_workflows(body: str) -> bool:
+    """Whether a comment's first line says the workflow wrote it, however that line is written: with Markdown's
+    marks and spaces before it, and in any case. The scripts write the line one way, and `sitework.rules.kind_of`
+    knows that way alone. An agent that writes a comment by hand can miss it, with `Site workflow: Review`, with
+    `**Site workflow: review**`, or with a kind the workflow does not have, and such a comment is still an
+    agent's."""
+    lines = body.strip().splitlines()
+    first = lines[0] if lines else ""
+    return first[BEFORE_THE_WORDS.match(first).end() :].lower().startswith(rules.FIRST_LINE.strip().lower())
+
+
 def owners_own(comments: list[dict]) -> list[dict]:
-    """The owner's own comments among the owner's account's: those the workflow did not write."""
-    return [comment for comment in comments if rules.kind_of(comment["body"]) is None]
+    """The owner's own comments among the owner's account's: those whose first line does not say the workflow
+    wrote them. The owner's own words can allow a guarded path and answer a stop, so a comment that only nearly
+    begins as the workflow's do is left out here too, though it is none of the workflow's kinds."""
+    return [comment for comment in comments if not says_it_is_the_workflows(comment["body"])]
 
 
 def value(body: str, name: str) -> str | None:
@@ -63,6 +89,30 @@ def value(body: str, name: str) -> str | None:
         if line.strip().startswith(start):
             return line.strip()[len(start) :].strip()
     return None
+
+
+def arrived(field: str) -> bool:
+    """Whether `field` is now a key somewhere in the daily schema and in the newest board day's file. `pickup`
+    asks it of the field an issue waits for, and `stop` asks it before an issue is made to wait. Both ask here,
+    so that a field one of them finds is a field the other finds."""
+    shell.git("fetch", "origin", "main")
+    if not holds(on_main(SCHEMA), field):
+        return False
+    newest = max(day["board_day"] for day in on_main(INDEX)["board_days"])
+    return holds(on_main(BOARD.format(day=newest)), field)
+
+
+def on_main(path: str):
+    return json.loads(shell.git("show", f"origin/main:{path}"))
+
+
+def holds(value, key: str) -> bool:
+    """Whether `key` is a key of this JSON value, or of any object inside it."""
+    if isinstance(value, dict):
+        return key in value or any(holds(inner, key) for inner in value.values())
+    if isinstance(value, list):
+        return any(holds(inner, key) for inner in value)
+    return False
 
 
 def post(number: int, kind: str, text: str) -> str:
@@ -91,29 +141,44 @@ def branch_start(number: int) -> str:
     return rules.BRANCH.format(issue=number, slug="")
 
 
+def can_be_of(pull: dict, number: int) -> bool:
+    """Whether a pull request can be the issue's at all: it is from one of this repository's own branches, and
+    it was opened after the issue. An issue and a pull request take their numbers from one sequence here, and a
+    pull request is opened after its issue, so one whose number is not higher than the issue's is older than the
+    issue. The name of the branch alone does not tell, because the repository's first pull requests are on
+    branches named for the numbers of issues in RisingRepos, such as `agent/38-preview-site`, and this
+    repository's own issues reach those numbers in time."""
+    return pull["number"] > number and not pull["isCrossRepository"]
+
+
 def feature(pulls: list[dict], number: int) -> list[dict]:
-    """The feature's pull requests among `pulls`: those from this repository's own branches `agent/<number>-...`,
-    but for the branch that reverts it."""
+    """The feature's pull requests among `pulls`: those from this repository's own branches `agent/<number>-...`
+    that were opened after the issue, but for the branch that reverts it."""
     start = branch_start(number)
     return [
         pull
         for pull in pulls
-        if pull["headRefName"].startswith(start)
-        and pull["headRefName"] != start + REVERT
-        and not pull["isCrossRepository"]
+        if pull["headRefName"].startswith(start) and pull["headRefName"] != start + REVERT and can_be_of(pull, number)
     ]
 
 
 def revert(pulls: list[dict], number: int) -> list[dict]:
     """The pull requests among `pulls` that revert the feature's merge."""
     branch = branch_start(number) + REVERT
-    return [pull for pull in pulls if pull["headRefName"] == branch and not pull["isCrossRepository"]]
+    return [pull for pull in pulls if pull["headRefName"] == branch and can_be_of(pull, number)]
 
 
 def merged(number: int) -> dict | None:
     """The feature's pull request that merged, the newest when a feature was merged more than once. None when
     none has."""
     found = feature(pulls("merged"), number)
+    return max(found, key=lambda pull: pull["mergedAt"]) if found else None
+
+
+def reverted(number: int) -> dict | None:
+    """The pull request that reverts the feature and merged, the newest when a feature was reverted more than
+    once. None when none has. `merged` leaves it out, so this is how the merge that put the site back is found."""
+    found = revert(pulls("merged"), number)
     return max(found, key=lambda pull: pull["mergedAt"]) if found else None
 
 
@@ -131,9 +196,21 @@ def comment(options: argparse.Namespace, text: str) -> int:
 
 
 def stop(options: argparse.Namespace, text: str) -> int:
-    """Stop the issue for the owner, or for data it waits on (docs/workflow-plan.md, sections 12 and 14)."""
+    """Stop the issue for the owner, or for data it waits on (docs/workflow-plan.md, sections 12 and 14).
+
+    An issue that waits on data is taken up again when its field has arrived, and a field has arrived when its
+    name is a key anywhere in the daily schema and the newest board day's file. A name that is there already,
+    as `description` is, would have arrived before the issue ever waited: every run would take the issue up, find
+    nothing new, and stop it again. So such a name is refused here, before anything on GitHub changes."""
     number = str(options.issue)
     if options.data is not None:
+        if arrived(options.field):
+            print(
+                f"#{number} is not stopped, and nothing was changed. `{options.field}` is already a name in the "
+                "daily schema and in the newest board day's file, so the next run would take the issue up again "
+                "with nothing new to read. Give a more exact name, which is in neither of them yet."
+            )
+            return 1
         waiting = f"Waiting on RisingRepos#{options.data}.\nField: {options.field}\n\n{text}"
         print(post(options.issue, "waiting on data", waiting))
         shell.gh("issue", "edit", number, "--remove-label", rules.IN_PROGRESS, "--add-label", rules.BLOCKED_ON_DATA)

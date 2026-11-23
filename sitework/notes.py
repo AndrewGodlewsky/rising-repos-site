@@ -25,7 +25,7 @@ import sys
 import time
 from pathlib import Path
 
-from sitework import rules, shell
+from sitework import confirm, rules, shell
 from sitework.digest import FIGURES, FIGURES_HEADING, FIGURES_RULE
 
 RUN = rules.NOTES + "runs/{issue}.md"
@@ -109,8 +109,10 @@ def write_notes(tree: Path, issue: int, notes: str, digest: str, row: str) -> No
 
 
 def deploy_runs(commit: str) -> list[dict]:
-    """Each run of the deploy workflow that GitHub holds for `commit` on main, with its status, how it ended,
-    and when it was made."""
+    """Each run of the deploy workflow that GitHub holds for the push of `commit` to main, with its status, how
+    it ended, and when it was made. Only a push counts, as in `confirm.deploy_run`: a pull request from a fork's
+    own main also names main as its branch, and its run uploads nothing. Counted here, a stranger's run could
+    hold the notes back, or stand in for a deploy that failed."""
     return shell.gh_json(
         "run",
         "list",
@@ -118,6 +120,8 @@ def deploy_runs(commit: str) -> list[dict]:
         DEPLOY,
         "--branch",
         "main",
+        "--event",
+        "push",
         "--commit",
         commit,
         "--json",
@@ -146,11 +150,9 @@ def push(issue: int, notes: str, digest: str, row: str) -> int:
     for _ in range(2):
         shell.git("fetch", "--quiet", "origin", "main")
         head = shell.git("rev-parse", "origin/main")
-        # The newest commit a push to main ended on that changes more than the notes. `--first-parent` keeps to
-        # the commits main itself was pushed to: a merge's run is the merge's own, and not its branch's.
-        deploying = shell.git(
-            "log", "--first-parent", "-1", "--format=%H", head, "--", ".", f":(exclude){rules.NOTES.rstrip('/')}"
-        )
+        # The head itself may be a commit of notes, which no run was made for. `confirm` finds the commit beneath
+        # it that a run was made for, and it is asked here so that both scripts follow the same one.
+        deploying = confirm.deploy_commit(head)
         ended = deploy_end(deploying)
         if ended != "success":
             why = (

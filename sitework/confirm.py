@@ -4,7 +4,9 @@ the two workflows' runs, which `pickup` shares to judge whether the site is heal
 Every merge is a deploy (docs/adr/0006), so a merge is not the end of a feature: its pages have to be uploaded,
 the owner's tests have to pass on the live site, and the site eval that follows the deploy has to pass
 (docs/workflow-plan.md, section 10). This script reads each of the three and judges none of them. When one fails,
-the agent puts the site back with `revert` before it asks the owner anything.
+the agent puts the site back with `revert` before it asks the owner anything. The revert's merge is a deploy as
+well, so `--revert` reads the same three for it: the feature's own deploy and eval say nothing of whether the
+site was put back.
 
 Progress goes to the error stream, so that what is printed is the one JSON object.
 """
@@ -23,6 +25,11 @@ JOB, UPLOAD = "deploy", "Upload to Cloudflare Pages"
 and site-eval.yml give them."""
 
 RUN = "databaseId,headSha,status,conclusion,createdAt,updatedAt,url"
+
+UNMEASURED = ("cancelled", "skipped")
+"""How a run of the eval ends when it did not measure the site. The eval's workflow cancels a running eval when
+the eval of the next deploy starts, and skips its one job after a deploy that failed. Neither says anything
+against the pages."""
 
 WAIT = 20
 LOOKS = 60
@@ -68,10 +75,23 @@ def say(progress: str) -> None:
     print(progress, file=sys.stderr, flush=True)
 
 
+def deploy_commit(head: str) -> str:
+    """The newest commit that a run of "Build and deploy" was made for, at `head` or beneath it on main: the
+    newest one that changes more than the notes. The deploy workflow starts no run for a push of the notes alone,
+    so the head of main can be a commit that no run will ever be made for. `--first-parent` keeps to the commits
+    main itself was pushed to: a merge's run is the merge's own, and not its branch's. `notes` asks here as
+    well, for the deploy its own push waits for, so that the two scripts never follow different commits."""
+    return shell.git(
+        "log", "--first-parent", "-1", "--format=%H", head, "--", ".", f":(exclude){rules.NOTES.rstrip('/')}"
+    )
+
+
 def deployed(merge: str) -> tuple[dict, dict | None]:
     """Wait for the deploy that uploads the merge, and give its result with its run. When the merge's own run left
-    the upload to a newer push, the run that uploads the merge is the one for the newer head of main, which
-    holds the merge because main is never rewritten."""
+    the upload to a newer push, the run that uploads the merge is the one for the newest commit on main that a
+    run was made for, which holds the merge because main is never rewritten. That commit is not always the head
+    of main: a push of the notes alone moves the head and starts no run, and a wait for its run would never
+    end."""
     commit = merge
     for _ in range(LOOKS):
         run = deploy_run(commit)
@@ -85,11 +105,12 @@ def deployed(merge: str) -> tuple[dict, dict | None]:
         if uploaded(run):
             say(f"The deploy of {commit[:7]} uploaded its pages: {run['url']}")
             return report, run
-        head = shell.git("ls-remote", "origin", "refs/heads/main").split()[0]
-        if head == commit:
+        shell.git("fetch", "--quiet", "origin", "main")
+        newest = deploy_commit("origin/main")
+        if newest == commit:
             return report | {"result": "not uploaded"}, run
-        say(f"The deploy of {commit[:7]} left its upload to a newer push, so the run for {head[:7]} is followed.")
-        commit = head
+        say(f"The deploy of {commit[:7]} left its upload to a newer push, so the run for {newest[:7]} is followed.")
+        commit = newest
     return {"run": None, "commit": commit, "result": "not finished"}, None
 
 
@@ -120,22 +141,42 @@ def live() -> dict:
 
 
 def measured(deploy: dict) -> dict:
-    """Wait for the site eval that followed the deploy's run, and give its result."""
+    """Wait for the site eval that followed the deploy's run, and give its result with the run that was read.
+
+    An eval that did not measure the site is not read as a failure of the change: a revert would then take out
+    a feature that did nothing wrong. Such an eval was most often cancelled for the eval of a newer deploy, whose
+    pages hold the merge as well, because main is never rewritten. So the eval of the newest deploy to main is
+    waited for in its place, as `deployed` follows a newer push. When the newest deploy is the one already
+    followed, no other eval measures these pages, and the result is how this one ended."""
     run = None
     for _ in range(LOOKS):
         run = eval_after(deploy)
         if run and run["status"] == "completed":
-            say(f"The site eval that followed the deploy finished: {run['url']}")
-            return {"run": run["databaseId"], "result": run["conclusion"]}
-        say("The site eval that follows the deploy has not finished.")
+            newest = deploy_run() if run["conclusion"] in UNMEASURED else None
+            if newest is None or newest["databaseId"] == deploy["databaseId"]:
+                say(f"The site eval that followed the deploy of {deploy['headSha'][:7]} finished: {run['url']}")
+                return {"run": run["databaseId"], "result": run["conclusion"]}
+            say(
+                f"The site eval that followed the deploy of {deploy['headSha'][:7]} ended as {run['conclusion']} "
+                f"and measured nothing ({run['url']}), so the eval that follows the newest deploy to main, of "
+                f"{newest['headSha'][:7]}, is read in its place."
+            )
+            deploy = newest
+            continue
+        say(f"The site eval that follows the deploy of {deploy['headSha'][:7]} has not finished.")
         sleep(WAIT)
     return {"run": run["databaseId"] if run else None, "result": "not finished"}
 
 
-def confirm(number: int) -> int:
-    pull = issue.merged(number)
+def confirm(number: int, reverting: bool = False) -> int:
+    """Follow the merge of the feature's pull request, or with `reverting` the merge of the pull request that
+    reverts it, through the three steps. `issue.merged` never gives a revert, so without the choice a second
+    `confirm` would follow the feature's merge again: a revert whose own deploy failed would read as confirmed,
+    and one that mended the site would read as failed."""
+    pull = issue.reverted(number) if reverting else issue.merged(number)
     if pull is None:
-        print(f"#{number} has no pull request that merged, so there is nothing to confirm.")
+        what = "merged pull request that reverts it" if reverting else "pull request that merged"
+        print(f"#{number} has no {what}, so there is nothing to confirm.")
         return 1
     merge = pull["mergeCommit"]["oid"]
     deploy, run = deployed(merge)
@@ -162,9 +203,12 @@ def main(command: str, arguments: list[str]) -> int:
         "the site eval. Exit 0 when all three hold, and 1 when one does not.",
     )
     parser.add_argument("issue", type=int, help="the issue's number")
+    parser.add_argument(
+        "--revert", action="store_true", help="follow the merge of the pull request that reverts the feature"
+    )
     options = parser.parse_args(arguments)
     try:
-        return confirm(options.issue)
+        return confirm(options.issue, options.revert)
     except shell.Failed as error:
         print(error, file=sys.stderr)
         return 1

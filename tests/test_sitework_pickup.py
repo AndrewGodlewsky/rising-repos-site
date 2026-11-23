@@ -16,7 +16,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-from sitework import notify, pickup, shell
+from sitework import issue, notify, pickup, shell
 
 OWNER = "the-owner"
 HEAD = "d" * 40
@@ -491,6 +491,12 @@ class TheNextNewIdea(PickupTest):
                 _, printed = self.run_command()
                 self.assertEqual(printed["issue"], 28)
 
+    def test_a_pull_request_older_than_the_idea_does_not_keep_it_from_being_picked_up(self):
+        self.answers["gh pr list"] = [pull(1, "agent/27-preview-site", "MERGED"), pull(2, "agent/27-revert", "MERGED")]
+        _, printed = self.run_command()
+        self.assertEqual((printed["issue"], printed["take_up"]), (27, "new"))
+        self.assertIsNone(printed["facts"]["pull_request"])
+
     def test_a_pull_request_from_a_fork_does_not_keep_an_idea_from_being_picked_up(self):
         self.answers["gh pr list"] = [pull(40, "agent/27-from-a-fork", fork=True)]
         _, printed = self.run_command()
@@ -523,6 +529,21 @@ class WhatItPrints(PickupTest):
     def test_a_new_ideas_branch_is_agent_its_number_and_a_short_slug_of_its_title(self):
         _, printed = self.run_command()
         self.assertEqual(printed["branch"], "agent/27-stop-clipping-the-board-history")
+
+    def test_an_idea_titled_revert_is_not_given_the_branch_that_reverts_a_feature(self):
+        for title in ("Revert", "Revert!", "  revert  "):
+            with self.subTest(title=title):
+                self.answers["gh issue list"] = [idea(27, title)]
+                _, printed = self.run_command()
+                self.assertNotEqual(printed["branch"], "agent/27-revert")
+                on_it = [pull(40, printed["branch"])]
+                self.assertEqual(issue.feature(on_it, 27), on_it)
+                self.assertEqual(issue.revert(on_it, 27), [])
+
+    def test_an_idea_whose_title_only_begins_with_revert_keeps_the_slug_of_its_title(self):
+        self.answers["gh issue list"] = [idea(27, "Revert the sort to stars")]
+        _, printed = self.run_command()
+        self.assertEqual(printed["branch"], "agent/27-revert-the-sort-to-stars")
 
     def test_the_facts_of_a_new_idea_are_its_labels_and_nothing_done_yet(self):
         _, printed = self.run_command()

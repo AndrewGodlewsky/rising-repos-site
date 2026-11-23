@@ -16,7 +16,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-from sitework import digest, notes, shell
+from sitework import confirm, digest, notes, shell
 
 REAL_RUN = shell.run
 WRITE_NOTES = notes.write_notes
@@ -388,6 +388,19 @@ class TheDeploy(PushTest):
         self.assertEqual(self.main()[0], 0)
         self.runs.assert_called_once_with(self.first)
 
+    def test_the_commit_whose_deploy_it_waits_for_is_the_one_confirm_finds_beneath_the_head_of_main(self):
+        with mock.patch.object(confirm, "deploy_commit", return_value="c" * 40) as found:
+            self.assertEqual(self.main()[0], 0)
+        found.assert_called_once_with(self.first)
+        self.runs.assert_called_once_with("c" * 40)
+
+    def test_the_commit_confirm_follows_beneath_a_commit_of_the_notes_is_the_newest_that_changes_more(self):
+        page = self.push_from_elsewhere({"sitebuild/page.py": "page = 4\n"}, "Change the page")
+        told = self.push_from_elsewhere({"docs/workflow-notes/runs/5.md": "notes\n"}, "Add the notes of the run on #5")
+        self.git("fetch", "--quiet", "origin", "main", cwd=self.checkout)
+        self.assertEqual(self.git("rev-parse", "origin/main", cwd=self.checkout), told)
+        self.assertEqual(confirm.deploy_commit("origin/main"), page)
+
     def test_a_merge_is_asked_about_by_the_merges_own_commit_which_is_the_one_that_was_pushed(self):
         self.git("pull", "--quiet", "origin", "main", cwd=self.elsewhere)
         self.git("checkout", "--quiet", "-b", "agent/5-a-feature", cwd=self.elsewhere)
@@ -414,6 +427,13 @@ class TheLook(unittest.TestCase):
         self.assertEqual(command[:3], ("gh", "run", "list"))
         for option, value in (("--workflow", "deploy.yml"), ("--branch", "main"), ("--commit", "abc123")):
             self.assertEqual(command[command.index(option) + 1], value)
+
+    def test_only_a_run_for_a_push_is_asked_for_and_never_one_for_a_pull_request_from_a_forks_main(self):
+        with mock.patch.object(shell, "run", return_value="[]") as asked:
+            self.assertEqual(notes.deploy_runs("abc123"), [])
+        command = asked.call_args.args
+        self.assertIn("--event", command)
+        self.assertEqual(command[command.index("--event") + 1], "push")
 
 
 if __name__ == "__main__":

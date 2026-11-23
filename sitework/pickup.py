@@ -32,12 +32,6 @@ TOLD = "sitework-told"
 """The file under git's common directory that holds the run the owner was last told of. There it is in no commit,
 and every worktree of the repository shares it."""
 
-SCHEMA = "site-data/contract/daily.schema.json"
-INDEX = "site-data/boards/index.json"
-BOARD = "site-data/boards/days/{day}/daily.json"
-"""The daily schema, the list of board days, and a board day's file. `sitebuild.contract` reads the same three
-from a folder. Here they are read as main holds them on origin, which the checkout this runs in may be behind."""
-
 SLUG_WORDS = 5
 
 Comments = Callable[[int], list[dict]]
@@ -144,7 +138,7 @@ def answered(opened: list[dict], comments: Comments) -> Taken | None:
         if rules.BLOCKED_ON_DATA in marks:
             waits = issue.of_kind(said, "waiting on data")
             field = issue.value(waits[-1]["body"], "Field") if waits else None
-            if field and arrived(field):
+            if field and issue.arrived(field):
                 return Taken(
                     one, "data arrived", f"The field {field} is in the daily schema and the newest board.", said
                 )
@@ -153,28 +147,6 @@ def answered(opened: list[dict], comments: Comments) -> Taken | None:
             if kinds and kinds[-1] == "stopped":
                 return Taken(one, "answered", "It was stopped for the owner, who has removed needs-owner.", said)
     return None
-
-
-def arrived(field: str) -> bool:
-    """Whether `field` is now a key somewhere in the daily schema and in the newest board day's file."""
-    shell.git("fetch", "origin", "main")
-    if not holds(on_main(SCHEMA), field):
-        return False
-    newest = max(day["board_day"] for day in on_main(INDEX)["board_days"])
-    return holds(on_main(BOARD.format(day=newest)), field)
-
-
-def on_main(path: str):
-    return json.loads(shell.git("show", f"origin/main:{path}"))
-
-
-def holds(value, key: str) -> bool:
-    """Whether `key` is a key of this JSON value, or of any object inside it."""
-    if isinstance(value, dict):
-        return key in value or any(holds(inner, key) for inner in value.values())
-    if isinstance(value, list):
-        return any(holds(inner, key) for inner in value)
-    return False
 
 
 def new_idea(opened: list[dict], owner: str, comments: Comments, pulls: list[dict]) -> Taken:
@@ -222,7 +194,13 @@ def branch(taken: Taken) -> str:
     picked = issue.of_kind(taken.said, "picked up")
     named = issue.value(picked[-1]["body"], "Branch") if picked else None
     words = re.findall(r"[a-z0-9]+", taken.issue["title"].lower())[:SLUG_WORDS]
-    return named or rules.BRANCH.format(issue=taken.issue["number"], slug="-".join(words))
+    slug = "-".join(words)
+    # An issue titled just "Revert" would get the slug of the branch that reverts a feature. The scripts would
+    # then take the feature's own branch for the one that reverts it, and `ship --revert` merges that one with
+    # no review. So that one slug is given a word before it, and no feature's branch has the revert's name.
+    if slug == issue.REVERT:
+        slug = f"idea-{slug}"
+    return named or rules.BRANCH.format(issue=taken.issue["number"], slug=slug)
 
 
 def facts(taken: Taken, pulls: list[dict]) -> dict:
