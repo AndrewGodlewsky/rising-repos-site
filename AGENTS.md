@@ -61,6 +61,14 @@ python -m http.server 8000 --bind 127.0.0.1 --directory dist  # then open http:/
 The test command is the one the build job runs, so it is the check a PR has to
 pass. Run the whole suite before each commit.
 
+## When a piece of work is done
+
+Commit it and push its branch, without waiting to be asked, so that finished
+work does not sit on one machine alone. Run the whole suite first, and read
+each commit before it is pushed, since a push is public at once. The work goes
+to its own branch and never straight to `main`: a push there is a deploy, and
+work reaches `main` through a pull request.
+
 ## Read before you act
 
 | Before you | Read |
