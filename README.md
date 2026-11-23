@@ -134,7 +134,9 @@ What every page holds to, each checked by a test in `tests/`:
   bytes, 74,788 gzipped, for the longest history in `site-data/`, 20 August
   2026, which a reader's first opening of a row fetches. The notes on the stylesheet and the
   scripts are Jinja comments, which no page carries: as CSS and JS comments
-  they took 9,531 bytes of a board's page.
+  they took 9,531 bytes of a board's page. Two fixes of 23 November 2026 have
+  since added 25 bytes to every page, and 2 more to a board with rows, so
+  the example's root is now 95,685 bytes.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
