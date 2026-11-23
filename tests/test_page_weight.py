@@ -217,7 +217,9 @@ class PageWeight(BuildTest):
                 self.assertEqual([script.attrs for script in page.all("script")], [{}] * len(page.all("script")))
                 attributes = [(name, value or "") for element in page.all() for name, value in element.attrs.items()]
                 self.assertEqual([name for name, _ in attributes if name.startswith("on")], [])
-                self.assertEqual([value for _, value in attributes if value.strip().lower().startswith("javascript:")], [])
+                self.assertEqual(
+                    [value for _, value in attributes if value.strip().lower().startswith("javascript:")], []
+                )
                 self.assertTrue(page.policy().startswith("default-src 'none';"), page.policy())
                 if page.all("script"):
                     (source,) = page.directives()["script-src"]  # one source: the script's hash
@@ -233,7 +235,9 @@ class PageWeight(BuildTest):
                 (style,) = page.all("style")
                 self.assertNotIn("/*", "".join(style.children))
                 for script in page.all("script"):
-                    self.assertNotRegex("".join(script.children), r"(?m)^\s*//|\s//\s")  # a note on its own line or after code
+                    self.assertNotRegex(
+                        "".join(script.children), r"(?m)^\s*//|\s//\s"
+                    )  # a note on its own line or after code
                 self.assertNotIn("{#", page.html)
 
     def test_no_page_requests_anything_from_another_site(self):
@@ -260,7 +264,9 @@ class PageWeight(BuildTest):
         """AndrewGodlewsky/RisingRepos#122 and #199. gzip at level 6 packs it a little less tightly than the server
         does. The budget is above the eval's own limit, which a root of the real board meets."""
         limits = read_json(EVAL_LIMITS)
-        self.assertGreaterEqual(WIRE_BUDGET, max(limits[profile]["transfer_size"]["limit"] for profile in ("phone", "desktop")))
+        self.assertGreaterEqual(
+            WIRE_BUDGET, max(limits[profile]["transfer_size"]["limit"] for profile in ("phone", "desktop"))
+        )
         board = read_json(self.board_file())
         self.write_board({**board, "rows": typical_rows(WIRE_ROWS)})
         pages = self.build_pages()
@@ -281,7 +287,12 @@ class TheChecks(unittest.TestCase):
         )
         self.assertEqual(
             [address for address in requests(page) if not on_this_site(address)],
-            ["https://fonts.example", "https://fonts.example/a.woff2", "https://cdn.example/x.css", "https://img.example/a.png"],
+            [
+                "https://fonts.example",
+                "https://fonts.example/a.woff2",
+                "https://cdn.example/x.css",
+                "https://img.example/a.png",
+            ],
         )
 
     def test_the_size_counts_each_file_on_this_site_that_a_page_loads(self):

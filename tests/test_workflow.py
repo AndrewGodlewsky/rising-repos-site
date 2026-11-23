@@ -8,7 +8,6 @@ credential. Each test below names one thing the workflow has to guarantee.
 import unittest
 
 import yaml
-
 from helpers import FULL_SHA, SECRET, load_workflow, step_named, step_using
 
 
@@ -56,7 +55,9 @@ class TheWorkflow(unittest.TestCase):
         steps = [step.get("name") for step in self.deploy["steps"]]
         check = step_named(self.deploy, "Refuse code that would run on Cloudflare")["run"]
         self.assertIn("site/_worker.js", check)
-        self.assertLess(steps.index("Refuse code that would run on Cloudflare"), steps.index("Upload to Cloudflare Pages"))
+        self.assertLess(
+            steps.index("Refuse code that would run on Cloudflare"), steps.index("Upload to Cloudflare Pages")
+        )
 
     def test_the_cloudflare_credential_comes_from_the_deploy_environment_and_only_the_deploy_job_has_it(self):
         self.assertEqual(self.deploy["environment"], "deploy")
@@ -104,15 +105,17 @@ class TheWorkflow(unittest.TestCase):
             'if [ "$head" = "$GITHUB_SHA" ]; then\n'
             '  echo "newest=true" >> "$GITHUB_OUTPUT"\n'
             "else\n"
-            '  echo "::notice::Not uploaded: main has moved on to $head from this run\'s $GITHUB_SHA.'
-            ' The run for the newest commit on main uploads that commit\'s pages once its build passes."\n'
+            "  echo \"::notice::Not uploaded: main has moved on to $head from this run's $GITHUB_SHA."
+            " The run for the newest commit on main uploads that commit's pages once its build passes.\"\n"
             '  echo "newest=false" >> "$GITHUB_OUTPUT"\n'
             "fi\n",
         )
         upload = step_named(self.deploy, "Upload to Cloudflare Pages")
         self.assertEqual(upload["if"], f"steps.{newest['id']}.outputs.newest == 'true'")
 
-    def test_of_three_or_more_pushes_to_main_the_newest_ones_pages_are_uploaded_whatever_order_their_builds_finish_in(self):
+    def test_of_three_or_more_pushes_to_main_the_newest_ones_pages_are_uploaded_whatever_order_their_builds_finish_in(
+        self,
+    ):
         # By default GitHub lets one job wait in a group, and cancels it when another arrives. Of three pushes, the
         # newest one's deploy job can be the one waiting and an older one's the next to arrive: the newest is then
         # cancelled, and the older one skips, since main has moved on. With queue: max every deploy job waits for its

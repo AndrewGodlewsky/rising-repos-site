@@ -179,7 +179,7 @@ def _refused_by_policy(report: dict) -> set[str]:
     policy. An audit that is missing, failed, or shaped otherwise lists none."""
     try:
         items = report["audits"]["inspector-issues"]["details"]["items"]
-    except (KeyError, TypeError):
+    except KeyError, TypeError:
         return set()
     if not isinstance(items, list):
         return set()
@@ -465,7 +465,7 @@ def _run_lighthouse(lighthouse: list[str], page: str, profile: str, report_path:
             raise CouldNotMeasure("Lighthouse could not be started") from None
     try:
         report = json.loads(report_path.read_text(encoding="utf-8"))
-    except (OSError, ValueError):
+    except OSError, ValueError:
         report = None
     error = report.get("runtimeError") if isinstance(report, dict) else None
     if isinstance(error, dict):
@@ -518,12 +518,17 @@ def _section(
         )
     section = heading + "\n\n" + "\n".join(rows) + "\n"
     if found.not_counted or found.in_page:
-        section += "\nNot counted in Requests, because the page never sent them:\n\n" + "".join(
-            f"- `{address}`, {_in_runs(left_out_in)}: {WHY_NOT_COUNTED}.\n"
-            for address, left_out_in in found.not_counted.items()
-        ) + "".join(
-            f"- {count} `data:` {'address' if count == 1 else 'addresses'}, {_in_runs(left_out_in)}: {WHY_IN_PAGE}.\n"
-            for count, left_out_in in found.in_page.items()
+        section += (
+            "\nNot counted in Requests, because the page never sent them:\n\n"
+            + "".join(
+                f"- `{address}`, {_in_runs(left_out_in)}: {WHY_NOT_COUNTED}.\n"
+                for address, left_out_in in found.not_counted.items()
+            )
+            + "".join(
+                f"- {count} `data:` {'address' if count == 1 else 'addresses'}, "
+                f"{_in_runs(left_out_in)}: {WHY_IN_PAGE}.\n"
+                for count, left_out_in in found.in_page.items()
+            )
         )
     return section, problems
 
@@ -566,7 +571,7 @@ def head_of_main() -> str:
             text=True,
             timeout=60,
         )
-    except (OSError, subprocess.TimeoutExpired):
+    except OSError, subprocess.TimeoutExpired:
         done = None
     head = done.stdout.split()[0] if done and done.returncode == 0 and done.stdout.split() else ""
     if not COMMIT.fullmatch(head):

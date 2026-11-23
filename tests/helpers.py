@@ -135,7 +135,7 @@ class BuildTest(unittest.TestCase):
     def build_data(self, *options: str) -> subprocess.CompletedProcess:
         return build(self.out, "--data", str(self.data), *options)
 
-    def build_pages(self, *options: str) -> dict[str, "Page"]:
+    def build_pages(self, *options: str) -> dict[str, Page]:
         """Build from the copy, expect success, and read every page the build wrote, by its path in the site."""
         result = self.build_data(*options)
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -156,13 +156,38 @@ class BuildTest(unittest.TestCase):
 
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 BLOCK = {
-    "address", "article", "aside", "blockquote", "br", "dd", "div", "dl", "dt", "footer", "h1", "h2", "h3",
-    "h4", "header", "hr", "li", "main", "nav", "ol", "p", "section", "table", "td", "th", "tr", "ul",
+    "address",
+    "article",
+    "aside",
+    "blockquote",
+    "br",
+    "dd",
+    "div",
+    "dl",
+    "dt",
+    "footer",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "header",
+    "hr",
+    "li",
+    "main",
+    "nav",
+    "ol",
+    "p",
+    "section",
+    "table",
+    "td",
+    "th",
+    "tr",
+    "ul",
 }
 
 
 class Element:
-    def __init__(self, tag: str, attrs: dict[str, str | None], parent: "Element | None"):
+    def __init__(self, tag: str, attrs: dict[str, str | None], parent: Element | None):
         self.tag, self.attrs, self.parent = tag, attrs, parent
         self.children: list[Element | str] = []
 
@@ -173,7 +198,7 @@ class Element:
             if isinstance(child, Element):
                 yield from child.elements()
 
-    def all(self, tag: str | None = None) -> list["Element"]:
+    def all(self, tag: str | None = None) -> list[Element]:
         """Every element inside this one, or every one with the tag `tag`, in document order."""
         return [element for element in self.elements() if element is not self and tag in (None, element.tag)]
 

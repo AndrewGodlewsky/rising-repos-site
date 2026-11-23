@@ -102,7 +102,7 @@ def standards() -> list[Standard]:
     text = STANDARDS.read_text(encoding="utf-8")
     leads = list(LEAD.finditer(text))
     found = []
-    for lead, after in zip(leads, [*leads[1:], None]):
+    for lead, after in zip(leads, [*leads[1:], None], strict=True):
         body = text[lead.start() : after.start() if after else len(text)]
         found.append(Standard(lead.group(1) + lead.group(2), re.split(r"^## ", body, flags=re.MULTILINE)[0]))
     return found
@@ -209,7 +209,8 @@ class TheStandards(unittest.TestCase):
                 )
                 self.assertTrue(
                     CODE.search(held[0]) or "the reviewer" in held[0],
-                    f"{standard.number} names nothing that holds it. Name a test, a limit of the site eval, or the reviewer.",
+                    f"{standard.number} names nothing that holds it. "
+                    "Name a test, a limit of the site eval, or the reviewer.",
                 )
 
     def test_each_test_and_each_limit_a_standard_names_exists(self):
@@ -327,7 +328,10 @@ class TheChecks(unittest.TestCase):
     """The checks above find what they look for, so that none passes because it read nothing."""
 
     def test_a_named_test_is_found_only_when_its_file_its_class_and_its_name_all_match(self):
-        this = "tests/test_context.py::TheChecks::test_a_named_test_is_found_only_when_its_file_its_class_and_its_name_all_match"
+        this = (
+            "tests/test_context.py::TheChecks::"
+            "test_a_named_test_is_found_only_when_its_file_its_class_and_its_name_all_match"
+        )
         self.assertIsNone(what_is_wrong_with(this))
         self.assertIn("is not a file", what_is_wrong_with(this.replace("test_context.py", "test_gone.py")))
         self.assertIn("has no class", what_is_wrong_with(this.replace("TheChecks", "TheGone")))
@@ -370,7 +374,10 @@ class TheChecks(unittest.TestCase):
         )
 
     def test_a_path_that_is_gone_is_named_though_its_folder_is_gone_too(self):
-        self.assertEqual(paths_named("See `gone/file.py`, `tests/gone.py`, `main`, and `site.css`."), ["gone/file.py", "tests/gone.py"])
+        self.assertEqual(
+            paths_named("See `gone/file.py`, `tests/gone.py`, `main`, and `site.css`."),
+            ["gone/file.py", "tests/gone.py"],
+        )
 
 
 if __name__ == "__main__":

@@ -133,7 +133,9 @@ class TheReason(BuildTest):
 
     def test_a_row_whose_usual_pace_is_under_the_floor_gives_no_multiple(self):
         """However far it is above it: a multiple of the floor is no multiple of the repository's own pace."""
-        self.with_numbers({"score": 640.0, "recent_stars": 1280, "baseline": 0.9166666666666666, "excess": 1278.1666666666667})
+        self.with_numbers(
+            {"score": 640.0, "recent_stars": 1280, "baseline": 0.9166666666666666, "excess": 1278.1666666666667}
+        )
         line, _ = self.shown()["rising-repos-example/markup-in-description"]
         self.assertEqual(line, "+1,278 above its own trend · its usual pace was under 1 star a day")
         self.assertNotIn("×", line)

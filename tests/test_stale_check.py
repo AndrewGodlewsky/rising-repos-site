@@ -27,7 +27,6 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import yaml
-
 from helpers import SECRET, load_workflow
 
 RUN = "https://github.com/AndrewGodlewsky/rising-repos-site/actions/runs/123456789"

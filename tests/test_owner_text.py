@@ -38,7 +38,9 @@ class OwnerWrittenText(BuildTest):
 
     def test_no_owner_written_value_is_made_a_link_and_each_name_links_to_its_repository_on_github(self):
         expected = [(f"https://github.com/{row['full_name']}", row["full_name"]) for row in self.rows]
-        self.assertEqual([(href, text) for href, text in self.page.links() if not href.startswith(("/", "#"))], expected)
+        self.assertEqual(
+            [(href, text) for href, text in self.page.links() if not href.startswith(("/", "#"))], expected
+        )
         values = [value for element in self.page.all() for value in element.attrs.values() if value]
         self.assertEqual([value for value in values if "javascript:" in value.lower()], [])
 
@@ -64,7 +66,9 @@ class OwnerWrittenLanguage(BuildTest):
         self.assertNotIn("onmouseover", row.attrs)
         self.assertIn(self.LANGUAGE, [option.text() for option in page.all("option")])
         self.assertEqual(page.html.lower().count("<script"), 1)
-        self.assertEqual([element for element in page.all() if any(name.startswith("on") for name in element.attrs)], [])
+        self.assertEqual(
+            [element for element in page.all() if any(name.startswith("on") for name in element.attrs)], []
+        )
 
 
 class TheHistoryFile(BuildTest):

@@ -38,7 +38,7 @@ def boards(data: Path) -> list[dict]:
             date.fromisoformat(day)
         except ValueError:
             raise DataError(f"{path} lists {day!r}, which is not a date") from None
-    for newer, older in zip(days, days[1:]):
+    for newer, older in zip(days, days[1:], strict=False):
         if newer <= older:
             raise DataError(f"{path} lists {newer} before {older}: it must list each board day once, newest first")
     validate = _validator(data / "contract" / "daily.schema.json")
@@ -49,8 +49,7 @@ def boards(data: Path) -> list[dict]:
         board = _board(data, entry["board_day"], validate)
         if entry["row_count"] != len(board["rows"]):
             raise DataError(
-                f"{path} gives {entry['board_day']} {entry['row_count']} rows, "
-                f"and its file holds {len(board['rows'])}"
+                f"{path} gives {entry['board_day']} {entry['row_count']} rows, and its file holds {len(board['rows'])}"
             )
         read.append(board)
     return read

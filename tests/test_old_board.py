@@ -18,7 +18,7 @@ import re
 import shutil
 import subprocess
 import unittest
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from helpers import ROOT, BuildTest, Page, read_json, shipped
 
@@ -30,7 +30,7 @@ RUNNER = ROOT / "tests" / "run_page_script.js"
 NEWEST, OLDER = "2026-11-09", "2026-11-08"
 """The example's two board days, newest first."""
 
-PUBLISHED = datetime(2026, 11, 10, 0, 41, 7, tzinfo=timezone.utc)
+PUBLISHED = datetime(2026, 11, 10, 0, 41, 7, tzinfo=UTC)
 """When the example's newest board was published: the moment every page's script measures from."""
 
 CARRIERS = (BOARD, board_day_page(NEWEST), board_day_page(OLDER), DAYS, BASELINE)
@@ -83,7 +83,9 @@ script (data-js), reads the theme kept in this browser and the browser's own col
 (data-theme), and waits for the page to be parsed to wire its switch, as a board's filters and the Baseline page's
 readout wait too. Nothing else runs before the page is parsed."""
 
-POLICY = "default-src 'none'; style-src 'unsafe-inline'; font-src data:; img-src data:; base-uri 'none'; form-action 'none'"
+POLICY = (
+    "default-src 'none'; style-src 'unsafe-inline'; font-src data:; img-src data:; base-uri 'none'; form-action 'none'"
+)
 """Each page's Content-Security-Policy but for the directive that lets its one script run, and, on a board with rows,
 the one that lets it fetch the board day's history from the site's own address: no request but the page, and its
 type inside it as data: addresses."""
@@ -125,7 +127,9 @@ def run(page: Page, *moments: datetime, **browser) -> list[dict]:
     return run_with(page, [(moment, None) for moment in moments], **browser)
 
 
-def run_with(page: Page, cases: list[tuple[datetime, dict | None]], names=(NOTICE, TITLE, TEXT), **browser) -> list[dict]:
+def run_with(
+    page: Page, cases: list[tuple[datetime, dict | None]], names=(NOTICE, TITLE, TEXT), **browser
+) -> list[dict]:
     """Run the page's script under Node once for each case: the clock's moment, and attributes that replace the
     notice's, as a page that held others would have them, or None to keep the page's own."""
     if NODE is None:
@@ -222,7 +226,7 @@ class TheNotice(BuildTest):
         for path in CARRIERS:
             page = self.pages[path]
             outcomes = run(page, *(PUBLISHED + age for age in cases))
-            for outcome, words in zip(outcomes, cases.values()):
+            for outcome, words in zip(outcomes, cases.values(), strict=True):
                 with self.subTest(path, age=words):
                     self.assertNotice(outcome, stale(words), hides_boards=False)
 
@@ -231,7 +235,7 @@ class TheNotice(BuildTest):
         for path in CARRIERS:
             page = self.pages[path]
             outcomes = run(page, *(PUBLISHED + age for age in cases))
-            for outcome, words in zip(outcomes, cases.values()):
+            for outcome, words in zip(outcomes, cases.values(), strict=True):
                 with self.subTest(path, age=words):
                     self.assertNotice(outcome, withheld(words), hides_boards=True)
 
@@ -306,7 +310,9 @@ class TheNotice(BuildTest):
         for path in CARRIERS:
             with self.subTest(path):
                 text = script_of(self.pages[path])
-                self.assertNotRegex(text, r"innerHTML|outerHTML|insertAdjacentHTML|document\.write|cookie|sessionStorage|eval\(")
+                self.assertNotRegex(
+                    text, r"innerHTML|outerHTML|insertAdjacentHTML|document\.write|cookie|sessionStorage|eval\("
+                )
                 # It keeps one thing, the reader's theme: every call to localStorage names that key and no other.
                 self.assertEqual(re.findall(r"localStorage\.\w+\(\s*([^,)]*)", text), ['"theme"'] * 3)
 
@@ -354,7 +360,9 @@ class TheTheme(BuildTest):
                 pressed = self.opened(BOARD, dark=dark, ready=True, clicks=["theme"])
                 self.assertEqual(pressed["stored"], "light" if dark else "dark")
                 self.assertEqual(pressed["root"]["data-theme"], "light" if dark else "dark")
-                self.assertEqual(pressed["elements"]["theme"]["attributes"]["aria-pressed"], "false" if dark else "true")
+                self.assertEqual(
+                    pressed["elements"]["theme"]["attributes"]["aria-pressed"], "false" if dark else "true"
+                )
 
     def test_a_press_back_to_the_browsers_own_setting_clears_the_kept_choice(self):
         for dark in (False, True):
@@ -454,7 +462,9 @@ class WithoutScripts(BuildTest):
         page = self.pages[DAYS]
         days = [entry["board_day"] for entry in read_json(self.index)["board_days"]]
         self.assertEqual(
-            sorted(link.attrs["href"] for link in page.one("main").all("a") if link.attrs["href"].startswith("/days/2")),
+            sorted(
+                link.attrs["href"] for link in page.one("main").all("a") if link.attrs["href"].startswith("/days/2")
+            ),
             sorted(f"/days/{day}/" for day in days),
         )
         self.assertNoNotice(page)
@@ -481,8 +491,10 @@ class WithoutScripts(BuildTest):
                 # The list's days, a board's rows, the Baseline page's chart, or, for the example's earlier board,
                 # which has none, its message.
                 held = (
-                    [link for link in main.all("a") if link.attrs["href"].startswith("/days/2")] if path == DAYS
-                    else page.all("figure") if path == BASELINE
+                    [link for link in main.all("a") if link.attrs["href"].startswith("/days/2")]
+                    if path == DAYS
+                    else page.all("figure")
+                    if path == BASELINE
                     else page.rows() or [element for element in main.all("div") if "message" in element.classes()]
                 )
                 self.assertTrue(held)
@@ -503,8 +515,10 @@ class WithoutScripts(BuildTest):
                 order = page.all()
                 notice, site = by_id(page, NOTICE), page.one("header")
                 self.assertEqual(site.classes(), ["site"])
-                after_site = order[order.index(site) + len(site.all()) + 1:]  # what follows the bar and all it holds
-                self.assertIs([element for element in after_site if element.tag in ("p", "nav", "main", "h1")][0], notice)
+                after_site = order[order.index(site) + len(site.all()) + 1 :]  # what follows the bar and all it holds
+                self.assertIs(
+                    [element for element in after_site if element.tag in ("p", "nav", "main", "h1")][0], notice
+                )
                 (strip,) = [nav for nav in page.all("nav") if "strip" in nav.classes()]
                 for later in (page.one("h1"), strip, page.one("main")):
                     self.assertLess(order.index(notice), order.index(later))

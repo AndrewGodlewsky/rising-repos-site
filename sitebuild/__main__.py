@@ -9,7 +9,9 @@ from sitebuild.contract import DataError
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(prog="python -m sitebuild", description="Build the site's pages into a new folder.")
+    parser = argparse.ArgumentParser(
+        prog="python -m sitebuild", description="Build the site's pages into a new folder."
+    )
     parser.add_argument("out", type=Path, help="the folder to write the pages into. It must be new or empty")
     parser.add_argument(
         "--noindex",

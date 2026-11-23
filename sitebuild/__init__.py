@@ -65,8 +65,18 @@ newest board was ranked by another, so that a new formula in RisingRepos never l
 one unnoticed."""
 
 MONTHS = (
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
 )
 WEEKDAYS = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 
@@ -419,13 +429,14 @@ def day_name(day: str) -> str:
     return f"{short_date(day)} {day[:4]}"
 
 
-def band_name(bands: list["Band"], stars: int) -> str:
+def band_name(bands: list[Band], stars: int) -> str:
     """The name of the band in `bands` that `stars` falls in, as a row's facts give it."""
     return next(band.name for band in bands if band.below is None or stars < band.below)
 
 
-def facts(row: dict, on: list[list], days: list[str], first: str, was: str | None, about: bool,
-          bands: list["Band"]) -> list:
+def facts(
+    row: dict, on: list[list], days: list[str], first: str, was: str | None, about: bool, bands: list[Band]
+) -> list:
     """An opened row's facts, each [term, value], or [term, value, 'loss'] for a gain that is a loss, which the
     stylesheet sets in the red: every one worded here, from the file, as the board words the same figures. `on` is the
     row's entries in its history and `days` the board days they are placed in; `first` is the first board that listed
@@ -467,11 +478,17 @@ def drawing_words(row: dict) -> tuple[list, list[str]]:
     gained, days = row["recent_stars"], row["recent_days"]
     reason = why(row)
     usual, own = figure(baseline, 2), times(days * baseline)
-    sentence = (f"Over the 12 days before, its usual pace was {usual} stars a day. Over "
-                f"{'the day kept' if days == 1 else 'the last 2 days'} it gained {figure(gained, 0)}, where its own pace "
-                f"would have given {own}" + (f": {reason['above']} above its own trend." if reason["above"] else "."))
-    return [baseline, gained, days], [reason["gained"], f"At its own pace: {signed(own)}", f"Usual pace, {usual} a day",
-                                      sentence]
+    sentence = (
+        f"Over the 12 days before, its usual pace was {usual} stars a day. Over "
+        f"{'the day kept' if days == 1 else 'the last 2 days'} it gained {figure(gained, 0)}, where its own pace "
+        f"would have given {own}" + (f": {reason['above']} above its own trend." if reason["above"] else ".")
+    )
+    return [baseline, gained, days], [
+        reason["gained"],
+        f"At its own pace: {signed(own)}",
+        f"Usual pace, {usual} a day",
+        sentence,
+    ]
 
 
 def month_words(counts: list[int | None], day: str) -> list[str] | None:
@@ -485,11 +502,14 @@ def month_words(counts: list[int | None], day: str) -> list[str] | None:
     start = (date.fromisoformat(day) - timedelta(days=len(counts) - 1 - first)).isoformat()
     missing = len(counts) - len(known)
     uncounted = f", with {missing} {'day' if missing == 1 else 'days'} uncounted." if missing else "."
-    return [f"{short_date(start)}: {counts[first]:,}", f"{short_date(day)}: {known[-1]:,}",
-            f"From {counts[first]:,} stars on {day_name(start)} to {known[-1]:,} on {day_name(day)}{uncounted}"]
+    return [
+        f"{short_date(start)}: {counts[first]:,}",
+        f"{short_date(day)}: {known[-1]:,}",
+        f"From {counts[first]:,} stars on {day_name(start)} to {known[-1]:,} on {day_name(day)}{uncounted}",
+    ]
 
 
-def history_file(boards: list[dict], history: "History", number: int) -> dict:
+def history_file(boards: list[dict], history: History, number: int) -> dict:
     """What a board's opened rows show beyond their line, as the file `days/<board day>/history.json`, which the
     board's script fetches from the site's own address when a reader first opens a row. Every word and figure the row
     shows is written here, as the board writes the same ones, and the script places it: it keeps numbers only where it
@@ -518,8 +538,16 @@ def history_file(boards: list[dict], history: "History", number: int) -> dict:
             if not seen:
                 continue
             if "score" in seen:
-                on.append([place, seen["rank"], f"{seen['stars']:,}", per_day(seen), per_day_class(seen).strip(),
-                           growth(seen)["multiple"] or "—"])
+                on.append(
+                    [
+                        place,
+                        seen["rank"],
+                        f"{seen['stars']:,}",
+                        per_day(seen),
+                        per_day_class(seen).strip(),
+                        growth(seen)["multiple"] or "—",
+                    ]
+                )
             else:
                 on.append([place, seen["rank"], f"{seen['stars']:,}", "—", "nil", "—"])
         first = boards[history.first[row["github_id"]]]["board_day"]
@@ -667,13 +695,15 @@ def pace_chart(rows: list[dict]) -> dict | None:
     def top(y: float) -> float:
         return round((y1 - math.log10(y)) / (y1 - y0) * 100, 2)
 
-    dots = [{"left": left(x), "top": top(y), "rank": row["rank"]} for row, (x, y) in zip(rows, points)]
+    dots = [{"left": left(x), "top": top(y), "rank": row["rank"]} for row, (x, y) in zip(rows, points, strict=True)]
     # The labelled dots, by rank. Dots that sit close together share one label, "1, 2", placed at the first of them,
     # so that no label lands on another or drifts from its dot.
     labels: list[dict] = []
     for dot in dots[:LABELLED]:
-        near = next((label for label in labels
-                     if abs(label["left"] - dot["left"]) < 6 and abs(label["top"] - dot["top"]) < 6), None)
+        near = next(
+            (label for label in labels if abs(label["left"] - dot["left"]) < 6 and abs(label["top"] - dot["top"]) < 6),
+            None,
+        )
         if near:
             near["text"] += f", {dot['rank']}"
         else:
@@ -688,8 +718,10 @@ def pace_chart(rows: list[dict]) -> dict | None:
         guides.append(
             {
                 "multiple": multiple,
-                "x1": left(10**start), "y1": top(10 ** (start + shift)),
-                "x2": left(10**end), "y2": top(10 ** (end + shift)),
+                "x1": left(10**start),
+                "y1": top(10 ** (start + shift)),
+                "x2": left(10**end),
+                "y2": top(10 ** (end + shift)),
                 "label": "own pace" if multiple == 1 else f"{multiple:,}×",
             }
         )
@@ -748,7 +780,7 @@ class History:
         """The name that `row`, on the board at `number`, had on the latest earlier board that listed it under another,
         at any distance, when it has been renamed or moved since: what its opened row says it was listed as before."""
         github_id, name = row["github_id"], row["full_name"]
-        earlier = (listed[github_id]["full_name"] for listed in self.by_id[number + 1:] if github_id in listed)
+        earlier = (listed[github_id]["full_name"] for listed in self.by_id[number + 1 :] if github_id in listed)
         return next((was for was in earlier if was != name), None)
 
     def known(self, number: int) -> bool:
@@ -783,12 +815,19 @@ class History:
             elif known:
                 # Back after a gap: last on a board by its GitHub id or, for a name another repository held, by name.
                 name = row["full_name"].lower()
-                last = next(at for at in range(number + 1, len(self.boards))
-                            if github_id in self.by_id[at] or name in self.named[at])
+                last = next(
+                    at
+                    for at in range(number + 1, len(self.boards))
+                    if github_id in self.by_id[at] or name in self.named[at]
+                )
                 mark.update(status="back", last=self.boards[last]["board_day"])
             marks.append(mark)
-        result = {"marks": marks, "new": new if known else None, "window": len(span),
-                  "since": self.boards[-1]["board_day"]}
+        result = {
+            "marks": marks,
+            "new": new if known else None,
+            "window": len(span),
+            "since": self.boards[-1]["board_day"],
+        }
         self._rows[number] = result
         return result
 
@@ -813,28 +852,34 @@ def calendar(boards: list[dict], history: History) -> list[dict]:
             if iso in by_day:
                 at = by_day[iso]
                 count = len(boards[at]["rows"])
-                cells.append({
-                    "day": iso,
-                    "date": day.day,
-                    "count": count,
-                    "shade": (1 + sum(count >= step for step in RAMP)) if count else 0,
-                    "new": history.rows(at)["new"],
-                    "newest": at == 0,
-                })
+                cells.append(
+                    {
+                        "day": iso,
+                        "date": day.day,
+                        "count": count,
+                        "shade": (1 + sum(count >= step for step in RAMP)) if count else 0,
+                        "new": history.rows(at)["new"],
+                        "newest": at == 0,
+                    }
+                )
             elif oldest <= iso <= newest:
                 cells.append({"day": iso, "date": day.day, "count": None})
             else:
                 cells.append(None)
             day = date.fromordinal(day.toordinal() + 1)
         cells += [None] * (-len(cells) % 7)
-        result.append({"month": month, "weeks": [cells[at:at + 7] for at in range(0, len(cells), 7)]})
+        result.append({"month": month, "weeks": [cells[at : at + 7] for at in range(0, len(cells), 7)]})
     return result
 
 
 FONTS = Path(__file__).parent / "fonts"
 # Modified versions of IBM Plex Sans and IBM Plex Mono, renamed by sitebuild/fonts/subset.py.
-FACES = [("Rising Sans", 400, "rising-sans-400"), ("Rising Sans", 500, "rising-sans-500"),
-         ("Rising Mono", 400, "rising-mono-400"), ("Rising Mono", 500, "rising-mono-500")]
+FACES = [
+    ("Rising Sans", 400, "rising-sans-400"),
+    ("Rising Sans", 500, "rising-sans-500"),
+    ("Rising Mono", 400, "rising-mono-400"),
+    ("Rising Mono", 500, "rising-mono-500"),
+]
 
 
 def font_faces() -> Markup:
@@ -844,8 +889,10 @@ def font_faces() -> Markup:
     rules = []
     for family, weight, name in FACES:
         data = base64.b64encode((FONTS / f"{name}.woff2").read_bytes()).decode("ascii")
-        rules.append(f'@font-face {{ font-family: "{family}"; src: url(data:font/woff2;base64,{data}) format("woff2"); '
-                     f"font-weight: {weight}; font-display: swap; }}")
+        rules.append(
+            f'@font-face {{ font-family: "{family}"; src: url(data:font/woff2;base64,{data}) format("woff2"); '
+            f"font-weight: {weight}; font-display: swap; }}"
+        )
     return Markup("\n".join(rules))
 
 
@@ -939,7 +986,8 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     for number, board in enumerate(boards):
         if board["rows"]:
             (out / board_day_page(board["board_day"])).with_name("history.json").write_text(
-                json.dumps(history_file(boards, history, number), separators=(",", ":")), encoding="utf-8")
+                json.dumps(history_file(boards, history, number), separators=(",", ":")), encoding="utf-8"
+            )
 
 
 def _pages(boards: list[dict], history: History) -> Iterator[tuple[str, str, dict]]:
@@ -947,11 +995,15 @@ def _pages(boards: list[dict], history: History) -> Iterator[tuple[str, str, dic
     yield BOARD, BOARD, _beside(boards, 0, history)
     for number, board in enumerate(boards):
         yield board_day_page(board["board_day"]), BOARD_DAY, _beside(boards, number, history)
-    yield DAYS, DAYS, {
-        "boards": boards,
-        "calendar": calendar(boards, history),
-        "ramp": RAMP,
-    }
+    yield (
+        DAYS,
+        DAYS,
+        {
+            "boards": boards,
+            "calendar": calendar(boards, history),
+            "ramp": RAMP,
+        },
+    )
     yield HOW_IT_WORKS, HOW_IT_WORKS, {"described": DESCRIBED_FORMULA}
     yield BASELINE, BASELINE, {"board": boards[0], "chart": pace_chart(boards[0]["rows"])}
     yield NOT_FOUND, NOT_FOUND, {}
