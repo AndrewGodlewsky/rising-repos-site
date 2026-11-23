@@ -16,13 +16,40 @@ has found something a reader would notice.
 
 ## The rule
 
-- A feature's change may add lines to this folder, and may take none away.
+- A feature's change may add to this folder, and changes nothing that is
+  here. `python -m sitework guard` holds this.
 - When a feature adds something a reader can do, the reviewer adds a sentence
   and its test for it, and changes none that is here. The agent that builds a
   feature does not write here.
 - The owner reads what was added.
 - A feature that fails one of these tests mends its code. A feature that is
   meant to change what a sentence says waits for the owner.
+
+**What that means for a file of Python.** A line that is added can take a
+test away: a `return` at the head of a test, a skip, a second definition of
+a helper under the first. So the guard reads such a file for what it means,
+and not for its lines.
+
+- Each statement at the top of a file, and each member of a class there,
+  stays as it was and where it was, with its decorators and its body. A
+  comment, a line's layout, and the docstring that begins a file or a class
+  may change.
+- What a change adds has a name the file, or the class, did not have, since
+  a second definition would take the first one's place. At the top of a file
+  it adds only an import of names, a function, a class, an assignment to a
+  name, a docstring, or the two lines that run the file as a program. A name
+  may be added to an import the file has.
+- The made-up boards stay as they are too, since every other sentence is
+  tested on them. A new scenario that needs a board of another kind makes
+  one under a new name. One that needs the boards here changed waits for
+  the owner, who allows it on the issue.
+
+In a file that is not Python, as this one is not, a change may add lines and
+may take none away.
+
+No rule of this kind is whole: a statement that is allowed can still run
+code when its file is read. So the reviewer reads what a change added here,
+and the owner reads it after.
 
 ## The sentences
 
@@ -212,5 +239,5 @@ holds whatever is behind that command.
 - Wait with `expect(...)`, and never for a fixed time.
 - Name no repository and no board day. If the scenario cannot start from
   whatever board a live site shows, mark it `@needs_made_up_boards`, and add
-  what it needs to `made_up.py`.
+  what it needs to `made_up.py` under a new name, as the rule above asks.
 - Against a live site a scenario only reads.

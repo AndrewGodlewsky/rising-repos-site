@@ -16,10 +16,14 @@ from sitework import altered, guard, rules, shell
 RUN_ONE = """\
 import os, sys, unittest
 sys.path[:0] = [os.path.abspath(folder) for folder in sys.argv[2:]]
-unittest.main(module=None, argv=sys.argv[:2])
+result = unittest.main(module=None, argv=sys.argv[:2], exit=False).result
+passed = result.wasSuccessful() and result.testsRun and not result.skipped and not result.expectedFailures
+sys.exit(0 if passed else 1)
 """
 """A program that runs the one test named by its first argument, with each folder after it put on the path first,
-as `unittest discover -s` puts the folder it is given."""
+as `unittest discover -s` puts the folder it is given. It exits with 0 only when the test ran and passed. unittest's
+own exit is 0 as well after a test that was skipped, and after one that failed as it was expected to, and neither
+of those shows that what the test is about is so."""
 
 
 def say(words: str) -> None:
@@ -42,7 +46,8 @@ def command(test: str) -> list[str]:
 
 
 def passes(test: str, checkout: Path | None = None) -> bool:
-    """Whether the test passes when run in `checkout`, which is this repository when none is given."""
+    """Whether the test passes when run in `checkout`, which is this repository when none is given. A test that
+    was skipped did not pass."""
     try:
         shell.run(*command(test), cwd=checkout)
     except shell.Failed:

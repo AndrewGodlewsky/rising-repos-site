@@ -453,7 +453,9 @@ only when another test holds what it held.
 Held by
 `tests/test_sitework_guard.py::TheGuard::test_every_guarded_path_is_named_with_why_it_is_guarded`,
 `tests/test_sitework_guard.py::TheGuard::test_a_change_to_the_policy_is_named`,
-`tests/test_sitework_guard.py::TheGuard::test_one_of_the_owners_tests_that_lost_a_line_is_named`,
+`tests/test_sitework_guard.py::TheGuard::test_one_of_the_owners_tests_that_changed_moved_or_lost_a_statement_is_named`,
+`tests/test_sitework_guard.py::TheGuard::test_a_return_added_to_one_of_the_owners_tests_is_named`,
+`tests/test_sitework_guard.py::TheGuard::test_a_file_or_a_folder_that_a_change_adds_at_the_top_of_the_repository_is_named`,
 `tests/test_sitework_guard.py::TheGuard::test_a_path_the_owner_allowed_is_not_named_and_the_rest_still_are`,
 for the paths the guard names, and the reviewer, for one of the agents' tests
 that a change loosened or removed.

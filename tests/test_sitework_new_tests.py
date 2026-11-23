@@ -89,6 +89,13 @@ class TheNewTests(RepositoryTest):
             ),
         )
 
+    def test_a_new_test_that_is_skipped_on_the_code_before_did_not_pass_there(self):
+        # A skipped test did not pass, so it is not said to pass before. It proves nothing after the change either,
+        # and `criteria` is what says so, of a test that a criterion names.
+        skipped = '\n    @unittest.skip("the code is not there yet")\n    def test_it_triples(self):\n        pass\n'
+        self.commit({"product.py": PRODUCT + TRIPLE, SUMS: TESTS + skipped})
+        self.assertEqual(self.new_tests(), (0, [f"fails before: {SUMS}::Doubling::test_it_triples"]))
+
     def test_a_test_under_a_new_class_is_new_though_its_name_is_not(self):
         again = "\n\nclass DoublingAgain(unittest.TestCase):\n    def test_it_doubles_a_number(self):\n        pass\n"
         self.commit({SUMS: TESTS + again})

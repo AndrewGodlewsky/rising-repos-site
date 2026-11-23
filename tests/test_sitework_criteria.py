@@ -28,8 +28,29 @@ class Sums(unittest.TestCase):
 
     def test_two_and_two_make_five(self):
         self.assertEqual(2 + 2, 5)
+
+    @unittest.skip("it is switched off")
+    def test_it_is_switched_off(self):
+        self.assertEqual(2 + 2, 4)
+
+    def test_it_skips_itself(self):
+        self.skipTest("there is nothing to start from")
+
+    @unittest.expectedFailure
+    def test_it_is_expected_to_fail(self):
+        self.assertEqual(2 + 2, 5)
+
+
+class Idle(unittest.TestCase):
+    def run(self, result=None):
+        return result
+
+    def test_it_is_never_run(self):
+        self.assertEqual(2 + 2, 5)
 """
-"""The agents' tests at HEAD: one that passes, and one that fails."""
+"""The agents' tests at HEAD: one that passes, one that fails, and four that do neither. Two are skipped, one fails
+as it is expected to, and one is in a class that runs none of its tests. unittest exits with 0 after each of the
+four."""
 
 READER = "owner_tests/test_reader.py"
 FINDS = f"{READER}::AReader::test_a_reader_finds_the_board"
@@ -121,6 +142,21 @@ class TheCriteria(RepositoryTest):
         self.assertEqual(
             (code, lines), (1, [f"1: not proven: {FIVE} fails", f"2: {LOOKED_AT}", f"3: proven by {FINDS}"])
         )
+
+    def test_a_test_that_is_skipped_is_not_proven(self):
+        # unittest ends such a run with "OK (skipped=1)" and exits with 0, though the test showed nothing.
+        for name in ("test_it_is_switched_off", "test_it_skips_itself"):
+            with self.subTest(name=name):
+                code, lines = self.criteria({**PROVEN, 1: f"`{SUMS}::Sums::{name}`"})
+                self.assertEqual((code, lines[0]), (1, f"1: not proven: {SUMS}::Sums::{name} fails"))
+
+    def test_a_test_that_fails_as_it_was_expected_to_is_not_proven(self):
+        code, lines = self.criteria({**PROVEN, 1: f"`{SUMS}::Sums::test_it_is_expected_to_fail`"})
+        self.assertEqual((code, lines[0]), (1, f"1: not proven: {SUMS}::Sums::test_it_is_expected_to_fail fails"))
+
+    def test_a_test_that_was_never_run_is_not_proven(self):
+        code, lines = self.criteria({**PROVEN, 1: f"`{SUMS}::Idle::test_it_is_never_run`"})
+        self.assertEqual((code, lines[0]), (1, f"1: not proven: {SUMS}::Idle::test_it_is_never_run fails"))
 
     def test_every_test_a_row_names_has_to_pass(self):
         self.assertEqual(self.criteria({**PROVEN, 1: f"`{FOUR}` and `{FINDS}`"})[1][0], f"1: proven by {FOUR}, {FINDS}")

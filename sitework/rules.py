@@ -24,8 +24,9 @@ BRANCH = "agent/{issue}-{slug}"
 """A feature's branch, made from origin/main."""
 
 OWNERS_TESTS = "owner_tests/"
-"""The owner's tests. A change may add lines here, which is how the reviewer adds a test for something new, and
-may take none away."""
+"""The owner's tests. A change may add to them, which is how the reviewer adds a test for something new, and may
+change nothing that is there. `sitework.guard` holds a file of Python there by what it means, since a line that is
+added can switch a test off, and any other file by its lines."""
 
 NOTES = "docs/workflow-notes/"
 """The look back's notes. A push to main that changes nothing else deploys nothing."""
@@ -36,7 +37,9 @@ lets that issue's change touch, as patterns with commas between them."""
 
 GUARDED = {
     "a workflow": (".github/**",),
-    "a dependency": ("pyproject.toml", "uv.lock", ".python-version"),
+    "a dependency": ("pyproject.toml", "uv.lock", ".python-version", "uv.toml"),
+    "the settings of the lint and the format": ("ruff.toml", ".ruff.toml", "*/ruff.toml", "*/.ruff.toml"),
+    "how git reads and compares a file": (".gitattributes", "*/.gitattributes"),
     "a size limit": ("tests/test_page_weight.py",),
     "the site eval and its limits": ("evals/**",),
     "a check that holds the guards": (
@@ -65,7 +68,13 @@ GUARDED = {
 """The guarded paths: what judges a feature, which a feature's change leaves alone unless the owner allowed it.
 Each reason a path is guarded, with the patterns of the paths it covers. A pattern is matched against the whole
 path as `fnmatch` matches, so its `*` crosses a `/`. The owner's tests and the policy are guarded more narrowly
-than a pattern can say, and have their own names."""
+than a pattern can say, and have their own names. So has what a change adds at the top of the repository, which
+no pattern can list, and `sitework.guard` names it.
+
+A `ruff.toml` or a `.ruff.toml` holds the lint's and the format's settings in place of `pyproject.toml`, and a
+`uv.toml` those that say how the dependencies are resolved. Ruff takes its settings for a file from the nearest
+folder that holds some, and git takes a folder's `.gitattributes` for what is under it, so those two are guarded
+in every folder and not at the top alone."""
 
 POLICY_IN = "sitebuild/templates/**"
 """Where the policy that lets a page's script run is written: a `<meta>` of a template. That element's text is
