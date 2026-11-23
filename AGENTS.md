@@ -61,6 +61,14 @@ python -m http.server 8000 --bind 127.0.0.1 --directory dist  # then open http:/
 The test command is the one the build job runs, so it is the check a PR has to
 pass. Run the whole suite before each commit.
 
+## Before you start a branch
+
+Fetch from GitHub first, every time, and start the branch from the newest
+`origin/main`, so that the work begins from what is on GitHub and not from
+what this machine last saw. The publishing job pushes a board day to `main`
+each day, so a copy that was current yesterday is behind today. Before taking
+up a branch that already exists, pull it.
+
 ## When a piece of work is done
 
 Commit it and push its branch, without waiting to be asked, so that finished
