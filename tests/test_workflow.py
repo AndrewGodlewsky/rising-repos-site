@@ -10,9 +10,17 @@ import unittest
 import yaml
 from helpers import FULL_SHA, SECRET, load_workflow, step_named, step_using
 
+from sitework import rules
+
 
 def actions(job: dict) -> set[str]:
     return {step["uses"].split("@")[0] for step in job["steps"] if "uses" in step}
+
+
+def uploads(job: dict) -> dict[str, dict]:
+    """Each artifact the job uploads, by its name: the step that uploads it."""
+    steps = [step for step in job["steps"] if step.get("uses", "").startswith("actions/upload-artifact@")]
+    return {step["with"]["name"]: step for step in steps}
 
 
 class TheWorkflow(unittest.TestCase):
@@ -37,10 +45,27 @@ class TheWorkflow(unittest.TestCase):
         self.assertNotIn("environment", self.build)
 
     def test_the_build_job_hands_its_output_to_the_deploy_job_as_an_artifact(self):
-        upload = step_using(self.build, "actions/upload-artifact")["with"]
+        upload = uploads(self.build)["site"]["with"]
         download = step_using(self.deploy, "actions/download-artifact")["with"]
         self.assertEqual(upload["path"], "dist")
         self.assertEqual(download["name"], upload["name"])
+
+    def test_the_build_job_runs_every_check_before_it_builds_the_pages(self):
+        steps = [step.get("name") for step in self.build["steps"]]
+        self.assertEqual(
+            step_named(self.build, "Run the checks")["run"], "uv run --locked python -m sitework check --suite"
+        )
+        self.assertLess(steps.index("Run the checks"), steps.index("Build the pages"))
+
+    def test_the_pictures_are_taken_and_kept_on_a_pull_request_alone_and_no_upload_waits_for_them(self):
+        pictures = step_named(self.build, "Take the pictures")
+        kept = uploads(self.build)["pictures"]
+        for step in (pictures, kept):
+            self.assertEqual(step["if"], "github.event_name == 'pull_request'")
+        self.assertIn("python -m sitework pictures", pictures["run"])
+        self.assertEqual(kept["with"]["path"], "pictures")
+        steps = self.build["steps"]
+        self.assertLess(steps.index(uploads(self.build)["site"]), steps.index(pictures))
 
     def test_the_deploy_job_does_not_check_out_the_repository(self):
         self.assertEqual(actions(self.deploy), {"actions/download-artifact"})
@@ -75,11 +100,16 @@ class TheWorkflow(unittest.TestCase):
         self.assertIsNone(SECRET.search(yaml.safe_dump(self.workflow.get("env", {}))))
 
     def test_a_push_to_main_deploys_and_a_pull_request_only_builds(self):
-        self.assertEqual(self.workflow["on"]["push"], {"branches": ["main"]})
+        self.assertEqual(self.workflow["on"]["push"]["branches"], ["main"])
         self.assertIn("pull_request", self.workflow["on"])
         self.assertEqual(set(self.workflow["on"]), {"push", "pull_request"})
         self.assertEqual(self.deploy["if"], "github.event_name == 'push' && github.ref == 'refs/heads/main'")
         self.assertNotIn("if", self.build)
+
+    def test_a_push_that_changes_only_the_workflows_notes_starts_no_run_and_nothing_else_is_left_out(self):
+        self.assertEqual(self.workflow["on"]["push"]["paths-ignore"], [rules.NOTES + "**"])
+        self.assertEqual(set(self.workflow["on"]["push"]), {"branches", "paths-ignore"})
+        self.assertIsNone(self.workflow["on"]["pull_request"])
 
     def test_uploads_go_to_the_production_branch_since_go_live(self):
         self.assertEqual(self.workflow["env"]["PAGES_BRANCH"], "main")
