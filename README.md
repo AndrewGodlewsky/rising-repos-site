@@ -661,7 +661,7 @@ job that holds the Cloudflare credential.
 
 | Job | Runs on | What it does | What it can reach |
 | --- | --- | --- | --- |
-| `build` | Every pull request, and every push to `main` | Checks out the repository, installs what `uv.lock` pins, runs the tests, builds the pages into `dist`, and uploads them as the artifact `site` | Read access to the repository. No secret |
+| `build` | Every pull request, and every push to `main` but one that changes only `docs/workflow-notes/` | Checks out the repository, installs what `uv.lock` pins, runs the checks (`python -m sitework check --suite`), builds the pages into `dist`, and uploads them as the artifact `site`. On a pull request it also keeps a picture of each kind of page the pull request altered, as the artifact `pictures` | Read access to the repository. No secret |
 | `deploy` | A push to `main`, once `build` has passed | Downloads the artifact, refuses it if it holds a `_worker.js`, leaves the upload to a newer push if `main` has moved on, and uploads it with wrangler | The `deploy` environment's `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, which GitHub gives only to `main`. It never checks out the repository, so it runs nothing from its files |
 
 The deploy job runs wrangler with
@@ -692,6 +692,21 @@ upload.
 
 A pull request builds and does not deploy.
 
+**The checks.** `python -m sitework check --suite` runs the lint, the format,
+the agents' tests, and the owner's tests, the cheapest first, and stops at the
+first that fails. The owner's tests drive the Chrome that the runner's image
+already holds, so the job downloads no browser.
+
+**A push of the notes.** The feature workflow keeps the notes of its runs in
+`docs/workflow-notes/`, and `deploy.yml` leaves that folder out with
+`paths-ignore`: GitHub starts no run for a push when every path it changes
+matches. Their pages would be the ones already live. Because a run uploads
+only while its commit is the head of `main`, notes pushed on top of a commit
+whose run has not finished would leave that commit's pages unuploaded. So
+`sitework/notes.py`, the one thing that pushes there, waits for the run of the
+newest commit that changes a page, and refuses a commit that touches any
+other path.
+
 ## Building locally
 
 You need [uv](https://docs.astral.sh/uv/), and [Node](https://nodejs.org/)
@@ -701,13 +716,17 @@ runner image already has.
 
 ```sh
 uv sync --locked                                     # the pinned dependencies, into .venv
-uv run --locked python -m unittest discover -s tests # the tests
+uv run --locked python -m sitework check             # every check a change has to pass
+uv run --locked python -m unittest discover -s tests # the agents' tests alone
 uv run --locked python -m sitebuild dist             # the pages, as risingrepos.com gets them
 python -m http.server 8000 --bind 127.0.0.1 --directory dist  # then open http://127.0.0.1:8000/
 ```
 
-The tests are the one command that `deploy.yml`'s build job runs too. They build
-from `tests/fixtures/`, but for the one test that builds from `site-data/`
+`deploy.yml`'s build job runs the check command too, with `--suite`, which
+leaves out the steps that need a branch's history ("The feature workflow"
+says what each step is). The owner's tests need Chrome on the machine, and
+download no browser. The agents' tests build
+from `tests/fixtures/`, but for the tests that build from `site-data/`
 (see "The data"), write only to temporary folders, and reach no other machine:
 the stale check's tests talk only to servers of their own on 127.0.0.1 (see
 "The stale check").
@@ -754,6 +773,67 @@ only when it merges, so:
 - A change to the eval itself is measured on its own pull request, against the
   live site as it stands.
 
+## The feature workflow
+
+An idea for the site arrives here as an issue labelled `site-idea`, and the
+owner approves it with `approved`. From there one agent takes it to a feature
+that is live on risingrepos.com, with nobody driving each step, and stops
+only for a named reason.
+[docs/workflow/README.md](docs/workflow/README.md) is what that agent
+follows, stage by stage. [docs/workflow-plan.md](docs/workflow-plan.md) says
+why each part is so, which decisions are still the owner's to change, and
+what was read and not tried.
+
+| Stage | Who | What lets it move on |
+| --- | --- | --- |
+| Pick up | A script | The site is healthy, and an approved idea is waiting |
+| Shape | The agent | A plan on the issue, with a verdict of go |
+| Build | The agent | Every criterion of the plan has a test that passes |
+| Check | A command | Every check passes, on the machine and on the pull request |
+| Review | One fresh agent | A verdict of pass on the checked commit |
+| Ship | A script | Every condition of the merge holds |
+| Confirm | A script and the agent | The feature works on the live site, and the site eval is within its limits |
+| Look back | A script and one fresh agent | Nothing waits on it |
+
+**The scripts.** `sitework/` holds them, one module to a command or two, and
+`python -m sitework` lists the commands. No agent is in any of them: a script
+decides whatever a script can, so that an agent's judgement is spent only
+where nothing else serves. They reach git and GitHub's CLI through one
+function, which each test replaces, so no test reaches GitHub.
+
+**Two kinds of tests.** The owner's tests, in `owner_tests/`, are plain
+sentences about what a reader can do on the site, each driven through a real
+browser from outside, so that a feature changes a page round them and leaves
+them standing. A feature may add lines to that folder and takes none away.
+The agents' tests, in `tests/`, hold a page's exact markup, and an agent
+changes them as a feature needs. A feature that fails one of the owner's
+tests has broken something a reader would notice, and mends its code.
+
+**What a feature leaves alone.** `python -m sitework guard` names each
+guarded path a change touches: a workflow, a dependency, the site eval and
+its limits, the page-size limits, the policy that lets a page's script run,
+the type, the standards, the decision records, the workflow's own scripts
+and documents, and a line taken from the owner's tests. The ship script asks
+the copy of that command on `main`, and not the branch's, so a branch cannot
+loosen its own guard. The owner lets one issue's change touch a guarded path
+with a line on that issue.
+
+**What a run leaves behind.** The plan, the review, and what shipped are
+comments on the idea's issue, each beginning `Site workflow:`. A run acts
+under the owner's account, so that first line is what tells a run's words
+from the owner's own. The notes of each run are in `docs/workflow-notes/`:
+a digest a script makes from the run's record, and a few lines from a fresh
+agent on how the run could have cost less.
+
+**Starting a run.** A person starts each run for now: a new Orca workspace
+on this repository, and one line to its agent, "Follow
+docs/workflow/README.md." The run finds its own issue, so the line names
+none. `python -m sitework pickup`, without `--claim`, says what a run would
+take up and changes nothing.
+
+**Not built yet.** The scheduled run in Orca, which starts a run by itself,
+comes last.
+
 ## The standards, the decisions, and the glossary
 
 This file says how each part works. Four more documents hold what an agent
@@ -789,7 +869,9 @@ sitebuild/          the generator: python -m sitebuild <folder> [--noindex] [--d
   static/           files served as they are, under /static/: the fonts' licence
 site-data/          the data files RisingRepos publishes, and their schemas
 evals/site/         the site eval, its limits, and its accepted numbers, which .github/workflows/site-eval.yml runs
-tests/              the tests
+sitework/           the feature workflow's scripts: python -m sitework <command>
+owner_tests/        the owner's tests: what a reader can do on the site, driven through a real browser
+tests/              the agents' tests
   fixtures/         the data contract's example, which the tests build from
   run_page_script.js  runs a built page's script under Node, with the clock passed in, for test_old_board.py
 .github/workflows/  the workflows
@@ -802,6 +884,10 @@ STANDARDS.md        what the site, a page, and a change are held to, and what ho
 GLOSSARY.md         the words this repository uses, for the domain and for the parts of a page
 STYLE.md            the style guide: what a new part of a page reaches for. A guide, and not a rule
 docs/adr/           the decisions about the site that are hard to undo, each with its reasons
+docs/workflow/      what a run of the feature workflow follows, and the briefs of its two fresh agents
+docs/workflow-notes/  the notes of each run, and the lessons a run reads at its start. A push of them deploys nothing
+docs/workflow-plan.md  why the feature workflow is as it is, and what is still open
+docs/research/      what was read for the plan, with the source of each claim
 RUNBOOK.md          going live, and going back
 GOING-PRIVATE.md    what making this repository private would take, and where it would break. Not done
 pyproject.toml      the dependencies, and the date uv resolves them as of

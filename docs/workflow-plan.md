@@ -1,10 +1,14 @@
 # The site's feature workflow: a plan
 
-A draft for discussion, written on 22 and 23 November 2026. Of what it
-describes, only the context of section 11 is written. Nothing else is built.
-Each section and each open decision has a number, so that a comment can name
-the part it is about. When the plan is agreed, the workflow's own documents
-take its place and this file is removed.
+Written on 22 and 23 November 2026, and built from on the 23rd. Steps 1 to 5
+of section 13 are built. No feature has gone through the workflow yet, and
+nothing starts a run by itself. Each section and each open decision has a
+number, so that a comment can name the part it is about.
+
+A run follows [docs/workflow/README.md](workflow/README.md), and not this
+file. Where the two differ, that document and the scripts are right. This
+file says why each part is so, and the scripts cite its sections for their
+reasons, so it stays while they do.
 
 Where a line says "today", it was read from this repository at commit
 `4665ccb`. "New" marks what does not exist yet.
@@ -513,16 +517,19 @@ reverts its own merge, which the check must pass and no reviewer reads, and
 the ship script merges it. Then it stops (section 14), and says what it saw.
 A broken page does not stay live while a question waits (D5).
 
-**What has to be true first.** The site eval fails today on the phone's
-Largest Contentful Paint, 2.05 s against a limit of 2.00 s, and the owner has
-accepted raising that limit (RisingRepos#210). Until it is raised, the eval
-cannot tell a feature that slowed the page from one that did not.
+**What has to be true first.** The site eval has to pass, or it cannot tell a
+feature that slowed the page from one that did not. After the redesign it
+failed on the phone's Largest Contentful Paint: 2.05 s, 2.05 s, and 2.11 s in
+the three evals of 22 November 2026, against a limit of 2.00 s. The owner had
+accepted a higher limit (RisingRepos#210), and step 1 of section 13 set it to
+2.5 s, which is Google's line for a good paint.
 
-The eval that followed the board day of 22 November 2026 failed on both
-profiles: 2.11 s on the phone, and 0.62 s against a limit of 0.60 s on the
-desktop. The two evals before it failed on the phone alone, at 2.05 s. Step 1
-of section 13 was written for the phone's limit, and now has the desktop's to
-look at as well, with why the figure rose from one board day to the next.
+The third of those evals failed on the desktop too, at 0.62 s against 0.60 s.
+The first measured exactly 0.60 s, and the board had fewer rows on the third
+than on the first, 252 against 264, so the figure did not rise with the
+board: it sits at its limit, and the runner's noise carries it over. Whether
+that limit moves is the owner's to decide, and until it does the eval can
+fail on it.
 
 ## 11. The standards and the rest of the context (new)
 
@@ -670,15 +677,15 @@ The owner agreed the order of the checks and the evals in it on 22 November
 
 **Before the first feature**
 
-1. **The eval is made green.** The phone's limit is raised, as accepted. The
-   desktop's has failed since, so it is looked at in the same step
+1. **The eval is made green.** The phone's limit is raised to 2.5 s, as
+   accepted. The desktop's sits at its limit, and waits for the owner
    (section 10).
 2. **The context and the check command.** `STANDARDS.md`, the first decision
    records, `GLOSSARY.md`, the test that holds them to the files, and
-   `STYLE.md` are written (section 11). Still to do: the one command; the
-   lint and the format, with the one tidy change they need first; the checks
-   run on every published board; the list of hostile text; and the pull
-   request's job (section 6).
+   `STYLE.md` (section 11). Then the one command; the lint and the format,
+   with the one tidy change they needed first; the checks run on every
+   published board; the list of hostile text; and the pull request's job
+   (section 6).
 3. **The owner's tests** (D19): their folder, the first scenarios in a real
    browser with the failure and clock cases (section 7), and the pictures.
    The owner reads the list first. Standard C10 and the glossary are brought
@@ -723,9 +730,11 @@ The owner agreed the order of the checks and the evals in it on 22 November
    Hypothesis, if running every published board leaves the functions that
    word a figure thinly tried.
 
-Each is its own pull request or more, and goes through the checks that exist
-when it is made. Steps 1 to 5, 8, and 9 build the workflow or change what
-judges a feature, so the workflow cannot carry them: the owner directs those.
+Steps 1 to 5, 8, and 9 build the workflow or change what judges a feature,
+so the workflow cannot carry them: the owner directs those. Steps 1 to 5
+were built together on one branch on 23 November 2026, and reach `main` in
+one pull request, since each leans on the others: the pull request's job
+runs the check command, which runs the owner's tests.
 
 ## 14. Stops, and labels
 
@@ -1054,7 +1063,7 @@ desktop one, as the median of the eval's runs. Each number has a limit in
 | --- | --- | --- |
 | Performance score | 95 or more | 95 or more |
 | Accessibility score | 100 | 100 |
-| Largest Contentful Paint | 2.0 seconds or less | 0.6 seconds or less |
+| Largest Contentful Paint | 2.5 seconds or less | 0.6 seconds or less |
 | Cumulative layout shift | 0.01 or less | 0.01 or less |
 | Bytes transferred | 100,000 or fewer | 100,000 or fewer |
 | Requests | 1 | 1 |
@@ -1065,9 +1074,9 @@ since each feature fits until one does not: the longest board's page against
 README.md gives the last measurements: 476,623 bytes on 21 November 2026, and
 144,789 on 22 November.
 
-The eval fails today on Largest Contentful Paint: on the phone, and since
-the board day of 22 November 2026 on the desktop too (section 10). It is made
-green first (section 13, step 1).
+The phone's limit for Largest Contentful Paint was 2.0 seconds until step 1
+of section 13 raised it. The desktop's paint sits at its limit, and can still
+fail the eval (section 10).
 
 **2. Did the feature break anything? (new)**
 

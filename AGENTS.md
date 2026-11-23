@@ -9,42 +9,58 @@ are changing.
 
 ## What a push does
 
-- A push to `main` is a production deploy. The build job tests and builds the
+- A push to `main` is a production deploy. The build job checks and builds the
   pages, and the deploy job uploads them to risingrepos.com
-  (`.github/workflows/deploy.yml`).
-- A push to any other branch runs no workflow. A pull request runs the tests and
-  the build, and deploys nothing. One that changes the site eval also runs the
-  eval, against the live site. No branch gets a preview deployment: look at
-  other work by building it locally.
+  (`.github/workflows/deploy.yml`). The one push that deploys nothing is one
+  that changes only `docs/workflow-notes/`, which starts no run.
+- A push to any other branch runs no workflow. A pull request runs the checks
+  and the build, keeps a picture of each kind of page it altered, and deploys
+  nothing. One that changes the site eval also runs the eval, against the live
+  site. No branch gets a preview deployment: look at other work by building it
+  locally.
 - The repository is public, and a push is public at once. Pushed history is
   never rewritten, so read each commit, with `git log -p origin/main..HEAD`,
   before it is pushed, and each PR body, review, and comment before it is
   posted.
 
-## The project this repository serves
+## How work is tracked here
+
+This repository runs its own feature work, and its own issues are the tracker.
+
+- An idea for the site is an issue here labelled `site-idea`, and the owner
+  approves one with `approved`.
+  [docs/workflow/README.md](docs/workflow/README.md) is how an approved idea
+  goes from its issue to the live site, stage by stage, with nobody driving
+  each step. Follow it for any issue that carries both labels.
+- A feature is delivered on a branch named `agent/<issue>-<slug>`, through a
+  PR. Its commits and its PR cite the issue here: `Refs #<n>`.
+- A feature leaves alone what judges it: a workflow, a dependency, a limit,
+  the standards, the owner's tests, and the feature workflow's own scripts and
+  documents. That document lists them under "The guarded paths". A change to
+  one of them is not a feature. The owner directs it, and no run of the
+  feature workflow carries it.
+
+## RisingRepos, which owns the data
 
 The site is one part of the RisingRepos project. Its repository,
-`AndrewGodlewsky/RisingRepos`, is private, and holds the issues, the project's
-own decisions, and the agent process for both repositories. Read its
-`AGENTS.md` before starting a task here. A path below written
-`RisingRepos: <path>` is in a checkout of it.
+`AndrewGodlewsky/RisingRepos`, is private. This repository holds its own
+rules and decisions, and turns to that one only for what it owns, which is
+chiefly the data. A path below written `RisingRepos: <path>` is in a checkout
+of it.
 
-- Site work is tracked by an issue in RisingRepos and delivered here, on a
-  branch named `agent/<issue>-<slug>`, through a PR. The procedure is
-  RisingRepos: `docs/agents/git-workflow.md`, "Work in the site repository".
-- Commits and PRs here cite that tracker in full:
-  `Refs AndrewGodlewsky/RisingRepos#<n>`.
+- `site-data/` is RisingRepos's output. Its publishing job commits each board
+  day straight to `main` here, as `Publish board day <date>`. A change to the
+  data contract (`site-data/contract/` and `sitebuild/contract.py`) lands in
+  both repositories, in an order that keeps each one working (RisingRepos:
+  `docs/adr/0004-the-site-stays-in-its-own-repository.md`).
+- A feature that needs a figure the site does not receive files an issue
+  there, and waits for the data (docs/workflow/README.md, under "Shape").
 - Because RisingRepos is private and this repository is public, what is
   written here, in a file, a commit, a PR, a review, or a comment, names a
   RisingRepos issue by its number and says what it decided in other words. It
   quotes neither the issue nor its owner, and holds no path on anyone's
   machine and no personal e-mail address. Commit with your GitHub noreply
   address. The publishing job commits under its own.
-- `site-data/` is RisingRepos's output. Its publishing job commits each board
-  day straight to `main` here, as `Publish board day <date>`. A change to the
-  data contract (`site-data/contract/` and `sitebuild/contract.py`) lands in
-  both repositories, in an order that keeps each one working (RisingRepos:
-  `docs/adr/0004-the-site-stays-in-its-own-repository.md`).
 - Name the domain in the words [GLOSSARY.md](GLOSSARY.md) defines (board,
   board day, star band, hold, publish). They are RisingRepos's words, defined
   here in this repository's own wording.
@@ -53,13 +69,28 @@ own decisions, and the agent process for both repositories. Read its
 
 ```sh
 uv sync --locked                                      # the pinned dependencies, into .venv
-uv run --locked python -m unittest discover -s tests  # every test: about 4½ minutes, and needs Node on the PATH
+uv run --locked python -m sitework check              # every check a change has to pass, the cheapest first
+uv run --locked python -m unittest discover -s tests  # the agents' tests alone. They need Node on the PATH
+uv run --locked python -m unittest discover -s owner_tests -t .  # the owner's tests alone, in the machine's Chrome
+uv run --locked ruff format .                         # lay the Python out as the format check asks
 uv run --locked python -m sitebuild dist              # the pages; it refuses a dist/ that already holds files
 python -m http.server 8000 --bind 127.0.0.1 --directory dist  # then open http://127.0.0.1:8000/
 ```
 
-The test command is the one the build job runs, so it is the check a PR has to
-pass. Run the whole suite before each commit.
+The build job runs `python -m sitework check --suite`: the lint, the format,
+and both kinds of tests. So the check command is what a PR has to pass. Run
+it before each commit.
+
+## The two kinds of tests
+
+- **The agents' tests**, in `tests/`, hold a page's exact markup and how each
+  part is built. Write, change, and remove them as a change needs. Every one
+  still has to pass.
+- **The owner's tests**, in `owner_tests/`, are plain sentences about what a
+  reader can do on the site, driven through a real browser.
+  [owner_tests/README.md](owner_tests/README.md) lists them. A change may add
+  lines to that folder and takes none away. One that fails means a reader
+  lost something: mend the code, never the test.
 
 ## Before you start a branch
 
@@ -88,7 +119,8 @@ work reaches `main` through a pull request.
 | Change what a page says or shows, what its script does, or add a page | README.md, "The pages" |
 | Show text a repository's owner wrote, or read a value from the address or the browser's storage | [STANDARDS.md](STANDARDS.md), P5, P21, and P22: that text and those values are not trusted. P1 and P2 hold what a page may run and request |
 | Change how the data files are read or checked | README.md, "The data" |
-| Edit a workflow | The comment at the top of that workflow, then README.md, "The workflow". A workflow is a security surface (RisingRepos: `docs/agents/review.md`, "Security surfaces") |
+| Take an approved idea from its issue to the live site | [docs/workflow/README.md](docs/workflow/README.md), and nothing here replaces it |
+| Edit a workflow | The comment at the top of that workflow, then README.md, "The workflow". A workflow is a guarded path, which a feature leaves alone, and [STANDARDS.md](STANDARDS.md), C7 and C8, hold what its jobs may run |
 | Add or change a line of a workflow or of the eval's code that names risingrepos.com or the preview, or sets the Pages branch | RUNBOOK.md, "The lines the switch changes". `tests/test_runbook.py` holds that table to the files |
 | Change the site eval or its limits | [evals/site/README.md](evals/site/README.md) |
 | Change the stale check | README.md, "The stale check" |

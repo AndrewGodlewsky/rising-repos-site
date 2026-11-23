@@ -249,6 +249,56 @@ The guide to what a new part of a page reaches for first: the parts to start
 from and the values in use, kept in STYLE.md. It guides, and does not bind.
 _Avoid_: design note (the record of what each part is), design system, rules
 
+### How a feature is made
+
+**Idea**:
+A change proposed for the site, as an issue here labelled `site-idea`. The
+owner approves one, and only then is it built.
+_Avoid_: ticket, task, request
+
+**Feature workflow**:
+The stages that take an approved idea from its issue to a feature live on
+the site, with nobody driving each step: docs/workflow/README.md.
+_Avoid_: pipeline, workflow on its own (a workflow is one of GitHub's, in
+.github/workflows/)
+
+**Run**:
+One agent's pass through the feature workflow for one idea, from picking the
+issue up to the look back.
+_Avoid_: job (a job belongs to a workflow of GitHub's), session
+
+**Owner's tests**:
+The plain sentences about what a reader can do on the site and what the site
+promises, each held by a test that drives the built site in a browser. A
+feature may add to them and takes nothing from them.
+_Avoid_: acceptance tests, end-to-end tests
+
+**Agents' tests**:
+Every other test: the ones that hold a page's exact markup and how each part
+is built. An agent changes them as a feature needs.
+_Avoid_: unit tests
+
+**Check**:
+The one command that runs everything a change has to pass: the lint, the
+format, the guarded paths, and both kinds of tests.
+_Avoid_: CI, pipeline
+
+**Guarded path**:
+A file that judges a feature, and that a feature therefore leaves alone: a
+workflow, a limit, the standards, the owner's tests, the feature workflow's
+own scripts.
+_Avoid_: protected file, locked file
+
+**Stop**:
+A run handing its issue to the owner with a question, for one of the named
+reasons, and going on to the next issue.
+_Avoid_: block, failure, escalation
+
+**Look back**:
+The last stage of a run: a script digests the run's record, and a fresh
+agent notes how the run could have cost less or done better.
+_Avoid_: retrospective, post-mortem
+
 ### People
 
 **Reader**:
