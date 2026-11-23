@@ -89,7 +89,7 @@ it before each commit.
 - **The owner's tests**, in `owner_tests/`, are plain sentences about what a
   reader can do on the site, driven through a real browser.
   [owner_tests/README.md](owner_tests/README.md) lists them. A change may add
-  lines to that folder and takes none away. One that fails means a reader
+  to that folder and changes nothing that is there. One that fails means a reader
   lost something: mend the code, never the test.
 
 ## Before you start a branch

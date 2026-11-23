@@ -496,6 +496,39 @@ agents' test that a change removed stops nothing here: the agent that builds
 may remove one (section 5), and it is on the list the reviewer reads
 (section 8).
 
+**What a review of the gates changed.** On 23 November 2026, before any
+feature ran, one fresh agent read the scripts as an adversary. The scripts
+now differ from this section and the next in these ways:
+
+- The owner's tests are held by what a file of Python means, and not by its
+  lines. A `return` or a skip added to a test takes it away and removes no
+  line.
+- A new file or folder at the top of the repository is guarded, with the
+  settings of the lint and how git reads a file, since Python and each tool
+  read the folder a check is run from.
+- The merge of a revert is held to being exactly the revert of the feature's
+  merge, in the guard's place. The guard would refuse the revert of a
+  feature whose reviewer added one of the owner's tests, and the broken page
+  would stay live.
+- Nothing merges when `main` moved while the conditions were judged, when
+  the plan was edited after the review, or when the review names its commit
+  by fewer than its 40 digits. Two changes are the same only when git's
+  patch id of their bytes is.
+- A pull request is an issue's only when its number is the higher one. The
+  repository's first pull requests are on branches numbered for RisingRepos's
+  issues, and this repository's own issues reach those numbers in time.
+- A test that was skipped proves no criterion.
+- After a revert, Confirm follows the revert's own deploy. An eval that was
+  cancelled measured nothing, and is no failure of the change.
+
+Three things it found are left as they are. A run acts with the owner's own
+access to GitHub, so the scripts hold an agent that follows them, and
+nothing here holds one that does not: a rule on GitHub's side for `main`
+would. An eval that `main` moved past ends as a pass without measuring, and
+Confirm cannot tell that from a pass. And a statement the owner's tests may
+gain can still run code when its file is read, which the reviewer and the
+owner read for.
+
 ## 10. Confirm
 
 1. **The deploy.** Wait for the run of "Build and deploy" for the merge, and

@@ -40,7 +40,9 @@ test among the owner's tests, from the plan and the built site.
 [owner_tests/README.md](../../owner_tests/README.md) says how one is written.
 
 1. Add the sentence to that README and the test beside the others. Add
-   lines only: change and remove nothing that is there.
+   only: change, move, and remove nothing that is there, in the tests,
+   their helpers, and the made-up boards. That README, under "The rule",
+   says what the guard holds you to.
 2. Commit it on the feature's branch, push, and run
    `uv run --locked python -m sitework check --issue <issue>`.
 3. A feature for which no passing test can be written does not do what the

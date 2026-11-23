@@ -804,7 +804,9 @@ function, which each test replaces, so no test reaches GitHub.
 **Two kinds of tests.** The owner's tests, in `owner_tests/`, are plain
 sentences about what a reader can do on the site, each driven through a real
 browser from outside, so that a feature changes a page round them and leaves
-them standing. A feature may add lines to that folder and takes none away.
+them standing. A feature may add to that folder and changes nothing that is
+there: the guard reads a file of Python there for what it means, since an
+added `return` or skip takes a test away as surely as a removed line.
 The agents' tests, in `tests/`, hold a page's exact markup, and an agent
 changes them as a feature needs. A feature that fails one of the owner's
 tests has broken something a reader would notice, and mends its code.
@@ -813,7 +815,9 @@ tests has broken something a reader would notice, and mends its code.
 guarded path a change touches: a workflow, a dependency, the site eval and
 its limits, the page-size limits, the policy that lets a page's script run,
 the type, the standards, the decision records, the workflow's own scripts
-and documents, and a line taken from the owner's tests. The ship script asks
+and documents, the settings of the lint and the format, a new file or folder
+at the top of the repository, which every check is run from, and anything in
+the owner's tests that a change did more than add to. The ship script asks
 the copy of that command on `main`, and not the branch's, so a branch cannot
 loosen its own guard. The owner lets one issue's change touch a guarded path
 with a line on that issue.
