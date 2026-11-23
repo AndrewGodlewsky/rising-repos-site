@@ -24,8 +24,8 @@ are changing.
 ## The project this repository serves
 
 The site is one part of the RisingRepos project. Its repository,
-`AndrewGodlewsky/RisingRepos`, is private, and holds the issues, the decisions
-(`docs/adr/`), and the agent process for both repositories. Read its
+`AndrewGodlewsky/RisingRepos`, is private, and holds the issues, the project's
+own decisions, and the agent process for both repositories. Read its
 `AGENTS.md` before starting a task here. A path below written
 `RisingRepos: <path>` is in a checkout of it.
 
@@ -45,8 +45,9 @@ The site is one part of the RisingRepos project. Its repository,
   data contract (`site-data/contract/` and `sitebuild/contract.py`) lands in
   both repositories, in an order that keeps each one working (RisingRepos:
   `docs/adr/0004-the-site-stays-in-its-own-repository.md`).
-- Name the domain in RisingRepos's words (board, board day, star band, hold,
-  publish), as RisingRepos: `GLOSSARY.md` defines them.
+- Name the domain in the words [GLOSSARY.md](GLOSSARY.md) defines (board,
+  board day, star band, hold, publish). They are RisingRepos's words, defined
+  here in this repository's own wording.
 
 ## Build and test
 
@@ -64,8 +65,12 @@ pass. Run the whole suite before each commit.
 
 | Before you | Read |
 | --- | --- |
-| Change how a page looks: its markup, `site.css`, a colour, a size, a face | README.md, "The design note". A change to the look rewrites the note in the same PR, and `tests/test_colour.py` holds every colour pair the note lists |
+| Plan a change, or review one | [STANDARDS.md](STANDARDS.md): every standard the change touches. Each says whether a test or the reviewer holds it |
+| Build against how the site is made, or wonder why it is made so | The record in [docs/adr/](docs/adr/README.md). A change that goes against a record waits for the owner |
+| Name a thing in an issue, a comment, or the code: a board, a row, a part of a page | [GLOSSARY.md](GLOSSARY.md) |
+| Change how a page looks: its markup, `site.css`, a colour, a size, a face | [STYLE.md](STYLE.md), the style guide, for what a new part reaches for. It guides, and does not bind. Then README.md, "The design note". A change to the look rewrites the note in the same PR, and `tests/test_colour.py` holds every colour pair the note lists |
 | Change what a page says or shows, what its script does, or add a page | README.md, "The pages" |
+| Show text a repository's owner wrote, or read a value from the address or the browser's storage | [STANDARDS.md](STANDARDS.md), P5, P21, and P22: that text and those values are not trusted. P1 and P2 hold what a page may run and request |
 | Change how the data files are read or checked | README.md, "The data" |
 | Edit a workflow | The comment at the top of that workflow, then README.md, "The workflow". A workflow is a security surface (RisingRepos: `docs/agents/review.md`, "Security surfaces") |
 | Add or change a line of a workflow or of the eval's code that names risingrepos.com or the preview, or sets the Pages branch | RUNBOOK.md, "The lines the switch changes". `tests/test_runbook.py` holds that table to the files |
@@ -73,7 +78,7 @@ pass. Run the whole suite before each commit.
 | Change the stale check | README.md, "The stale check" |
 | Move a pinned version: a Python package, uv, an action, wrangler, or Lighthouse | README.md, "Changing a pinned version" |
 | Touch the type: a face, a character the site's own text newly uses, a font file | The docstring of `sitebuild/fonts/subset.py`, then README.md, "The design note", under "Type" |
-| Handle a credential: the Cloudflare token or the Discord webhook | RisingRepos: `docs/agents/secrets.md` |
+| Handle a credential: the Cloudflare token or the Discord webhook | [STANDARDS.md](STANDARDS.md), C6, for the rule. RisingRepos: `docs/agents/secrets.md` for how a value is stored, handed to a command, and checked |
 
 ## Where a change most often goes wrong
 
@@ -107,3 +112,5 @@ pass. Run the whole suite before each commit.
 - A commit subject is one plain sentence in the imperative, with no type
   prefix: "Count only the requests the page sent in the site eval".
 - Prose uses British spelling: colour, practise.
+- [STANDARDS.md](STANDARDS.md), part 3, holds these three rules and the rest
+  that a change to the code or the words is held to.

@@ -169,7 +169,9 @@ from three redesigns built for it, and the record of why is there. It took the
 place of the look chosen in
 [RisingRepos#71](https://github.com/AndrewGodlewsky/RisingRepos/issues/71).
 A ticket that adds a page designs what it adds to this note, and a change to
-the look changes this note in the same pull request.
+the look changes this note in the same pull request. [STYLE.md](STYLE.md),
+the style guide, says what a new part reaches for first, and this note
+records what each part is.
 
 **What the look is for.** People come back each day to see what is rising.
 The page is quick to take in and easy to find one's way around, clean and
@@ -750,6 +752,31 @@ only when it merges, so:
 - A change to the eval itself is measured on its own pull request, against the
   live site as it stands.
 
+## The standards, the decisions, and the glossary
+
+This file says how each part works. Four more documents hold what an agent
+or a person needs before changing the site:
+
+| Document | What it holds |
+| --- | --- |
+| [STANDARDS.md](STANDARDS.md) | The rules every change is held to, in three parts: what belongs on the site, what a page promises, and how the code and the words are written. Each says what holds it: a test, a limit of the site eval, or the reviewer |
+| [docs/adr/](docs/adr/README.md) | The decisions about the site that are hard to undo and would surprise a newcomer, each with its reasons and the tests that would fail if it were undone |
+| [GLOSSARY.md](GLOSSARY.md) | The words for the domain and for the parts of a page |
+| [STYLE.md](STYLE.md) | The style guide: what a new part of a page reaches for first, so that it reads as one with the rest. It guides, and does not bind |
+
+A test stops a wrong change. These documents hold what no test can: a
+judgement, a reason, a name. They are written down so that whoever plans a
+change, an agent working alone above all, has them before any code is
+written.
+
+`tests/test_context.py` keeps the first three true to the files. It fails when a
+standard or a decision record names a test that is gone, when a standard
+names nothing that holds it, when the records' numbers skip one, when a term
+of the glossary is used nowhere in the pages, the code, the tests, or the
+documents, and when AGENTS.md names a path, or a part of a document, that is
+not there. It shows that a named test exists, and not that the test proves
+the rule: that is judged when the line is written.
+
 ## Layout
 
 ```text
@@ -769,7 +796,12 @@ tests/              the tests
   site-eval.yml     the site eval
 AGENTS.md           how an agent works here, and what to read before each kind of change
 CLAUDE.md           imports AGENTS.md, for Claude Code
+STANDARDS.md        what the site, a page, and a change are held to, and what holds each
+GLOSSARY.md         the words this repository uses, for the domain and for the parts of a page
+STYLE.md            the style guide: what a new part of a page reaches for. A guide, and not a rule
+docs/adr/           the decisions about the site that are hard to undo, each with its reasons
 RUNBOOK.md          going live, and going back
+GOING-PRIVATE.md    what making this repository private would take, and where it would break. Not done
 pyproject.toml      the dependencies, and the date uv resolves them as of
 uv.lock             every package, pinned with its hashes
 .python-version     3.14, for local builds. deploy.yml's build job takes the exact version named in deploy.yml, and stale-check.yml the python3 that its runner has
