@@ -479,11 +479,18 @@ workflow that exists today then builds and uploads it. No person takes part.
 
 **The guarded paths.** A feature's diff should not change what judges it. So
 the script stops (section 14) when the diff changes a workflow, a dependency,
-one of the owner's tests, a size limit or a limit of the site eval, the policy beyond the script's hash,
-the type, the standards, the look back's notes, or this workflow's own documents, or removes a test
-or a check, unless the plan's comment records that the owner allowed it for
-this issue. Shape asks that question before any code is written, so a stop
-here means the build left its plan. Each is told from the diff's paths.
+a size limit or a limit of the site eval, the policy beyond the script's
+hash, the type, the standards, the look back's notes, or this workflow's own
+scripts and documents, or removes a check, unless a comment of the owner's on
+the issue allows that path. Shape asks that question before any code is
+written, so a stop here means the build left its plan. Each is told from the
+diff's paths.
+
+The owner's tests are guarded more closely: a change may add lines to their
+folder, which is how the reviewer adds a test, and may take none away. An
+agents' test that a change removed stops nothing here: the agent that builds
+may remove one (section 5), and it is on the list the reviewer reads
+(section 8).
 
 ## 10. Confirm
 
@@ -765,6 +772,25 @@ withdrawn by the owner.
 
 ## 15. Decisions still open
 
+**What the build starts from.** On 23 November 2026 the owner had a
+recommendation on each open decision before them, and told the build to
+start. None was answered one by one, so each is taken as recommended and
+stays the owner's to change:
+
+- D4: the pull request's job keeps the pictures, and the "Shipped" note
+  links them.
+- D5: a change that breaks the live site is reverted first, and the owner is
+  asked second.
+- D7: RisingRepos's agents change nothing here but `site-data/`. That part
+  is decided in RisingRepos, and nothing here enforces it.
+- D10: the owner answers a stop with a comment on the issue and removes
+  `needs-owner`. Every comment the workflow writes begins with a fixed first
+  line, and a comment without one is the owner's.
+- D11: the list of stops in section 14 stands as written, and is judged by
+  the third eval once four features have gone through.
+- Section 9 stops on a line taken from the owner's tests or a check removed,
+  and not on an agents' test removed.
+
 - **D1. Settled on 22 November 2026: there is no switch.** The workflow merges
   and deploys by itself from the first feature, and the owner merges nothing.
   It stops only for a reason in section 14.
@@ -880,8 +906,9 @@ withdrawn by the owner.
     passed (section 8), as the owner agreed on 23 November 2026.
   - Sections 4, 5, 7, 9, and 14 say this now. Standard C10 and the glossary
     name the two kinds once the owner's tests exist (section 13, step 3),
-    since a standard says only what is there. Section 9 still stops a change
-    that removes any test, which is looked at again with Ship.
+    since a standard says only what is there. Section 9 stops a change
+    that takes a line from the owner's tests, and not one that removes an
+    agents' test.
 
   The first draft of the owner's list, which the owner reads before the
   folder is closed. No test drives a browser today
