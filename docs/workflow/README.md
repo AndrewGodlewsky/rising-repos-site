@@ -12,7 +12,9 @@ step here leaves a choice open.
 
 ## Start a run
 
-1. `git fetch origin`.
+1. `git fetch origin`, and stand on the newest `main`:
+   `git switch --detach origin/main`. The scripts are run from the checkout,
+   and a checkout that is behind runs old scripts, or has none.
 2. `sitework pickup --claim`. It prints one JSON object, and its exit code
    says what to do:
 
@@ -35,6 +37,16 @@ step here leaves a choice open.
 As each stage begins, run `sitework stage <name>`, with the stage's name in
 lower case: `shape`, `build`, `check`, `review`, `ship`, `confirm`, `mend`, or
 `look back`. The digest tells the stages apart by it.
+
+Two things hold for every stage:
+
+- Write a file that a command is given, such as the plan or a stop's words,
+  outside the repository's folder. `sitework ship` merges only from a
+  checkout that holds nothing uncommitted, so that what it judged is what
+  it merges.
+- `sitework check` takes about six minutes, and `sitework confirm` up to a
+  quarter of an hour. Give each the time it needs: a command that was cut
+  short has not failed.
 
 ## What the run trusts
 
@@ -225,6 +237,12 @@ when every one holds.
    for no mend: a deploy that is `not uploaded` or `not finished`, or an
    eval that ended `cancelled` or `skipped`. Run the command again. When
    it still does not settle, stop for the owner.
+5. A failure on something the change cannot have caused calls for no mend
+   either: a number the change does not touch, measured on a slow runner,
+   or a fault in a part of a page the change left alone. Measure once
+   more: `gh run rerun <the eval's run>` for the eval, and then
+   `sitework confirm <issue>` again. When it fails the same way twice,
+   leave the feature live, and stop for the owner with what was measured.
 
 ## Mend
 
@@ -296,7 +314,7 @@ The run goes on by itself until one of these is true. Nothing else stops it.
 | Check | The only way past a failing check is to loosen it. Two different attempts at a failing check have not passed it |
 | Review | The verdict is still `changes needed` after the one second look |
 | Ship | A condition of the merge does not hold, and the run cannot make it hold inside the plan |
-| Confirm | A result that measured nothing does not settle |
+| Confirm | A result that measured nothing does not settle. The live site or the eval failed twice on something the change did not cause |
 | Mend | The one mend did not put the fault right, or a reader cannot read the board. The site is put back first |
 | Any | A security control refused an action. Look for no way round it |
 
