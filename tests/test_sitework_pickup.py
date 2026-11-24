@@ -425,7 +425,9 @@ class IsSomethingInFlight(PickupTest):
     def test_claiming_an_issue_that_is_in_progress_already_adds_no_label_and_posts_picked_up(self):
         self.answers["orca worktree ps --json"] = orca("/work/Site-Feature", "done")
         self.run_command("--claim")
-        self.assertEqual(self.shell.changes(), ["gh issue comment 28 --body-file -"])
+        self.assertEqual(
+            self.shell.changes(), ["gh issue edit 28 --add-assignee the-owner", "gh issue comment 28 --body-file -"]
+        )
 
 
 class HasAStoppedIssueBeenAnswered(PickupTest):
@@ -527,7 +529,7 @@ class HasAStoppedIssueBeenAnswered(PickupTest):
         self.assertEqual(
             self.shell.changes(),
             [
-                "gh issue edit 30 --add-label in-progress --remove-label blocked-on-data",
+                "gh issue edit 30 --add-label in-progress --remove-label blocked-on-data --add-assignee the-owner",
                 "gh issue comment 30 --body-file -",
             ],
         )
@@ -743,11 +745,13 @@ class Claim(PickupTest):
         self.assertEqual(code, 0)
         self.assertEqual(self.shell.changes(), [])
 
-    def test_claim_adds_in_progress_and_posts_picked_up_with_the_branchs_name(self):
+    def test_claim_adds_in_progress_assigns_the_issue_to_the_owner_and_posts_picked_up_with_the_branchs_name(self):
+        # The owner's list of assigned issues is how the owner sees what a run is at work on.
         code, printed = self.run_command("--claim")
         self.assertEqual(code, 0)
         self.assertEqual(
-            self.shell.changes(), ["gh issue edit 27 --add-label in-progress", "gh issue comment 27 --body-file -"]
+            self.shell.changes(),
+            ["gh issue edit 27 --add-label in-progress --add-assignee the-owner", "gh issue comment 27 --body-file -"],
         )
         body = self.shell.stdin["gh issue comment 27 --body-file -"]
         self.assertTrue(body.startswith("Site workflow: picked up\n\n"), body)

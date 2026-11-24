@@ -272,6 +272,15 @@ def comment(options: argparse.Namespace, text: str) -> int:
     return 0
 
 
+def set_aside(number: str, label: str) -> None:
+    """Mark an issue that a run has stopped work on: `label` in the place of `in-progress`, and the issue off
+    the list of those assigned to the owner, which holds what a run is at work on (`pickup.claim` puts an issue
+    on it). The label says what the issue waits for."""
+    shell.gh(
+        "issue", "edit", number, "--remove-label", rules.IN_PROGRESS, "--add-label", label, "--remove-assignee", owner()
+    )
+
+
 def stop(options: argparse.Namespace, text: str) -> int:
     """Stop the issue for the owner, or for data it waits on (docs/workflow-plan.md, sections 12 and 14).
 
@@ -290,11 +299,11 @@ def stop(options: argparse.Namespace, text: str) -> int:
             return 1
         waiting = f"Waiting on RisingRepos#{options.data}.\nField: {options.field}\n\n{text}"
         print(post(options.issue, "waiting on data", waiting))
-        shell.gh("issue", "edit", number, "--remove-label", rules.IN_PROGRESS, "--add-label", rules.BLOCKED_ON_DATA)
+        set_aside(number, rules.BLOCKED_ON_DATA)
         return 0
     issue = read(options.issue)
     print(post(options.issue, "stopped", f"Stage: {options.stage}\n\n{text}"))
-    shell.gh("issue", "edit", number, "--remove-label", rules.IN_PROGRESS, "--add-label", rules.NEEDS_OWNER)
+    set_aside(number, rules.NEEDS_OWNER)
     tell(issue, f"stopped at {options.stage} and waits for your answer")
     return 0
 

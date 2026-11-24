@@ -192,14 +192,15 @@ class Comment(IssueTest):
 
 
 class Stop(IssueTest):
-    def test_a_stop_posts_the_stopped_comment_swaps_in_progress_for_needs_owner_and_tells_the_owner(self):
+    def test_a_stop_posts_the_stopped_comment_swaps_in_progress_for_needs_owner_unassigns_and_tells_the_owner(self):
+        # A stopped issue is no longer one a run is at work on, so it leaves the owner's list of assigned issues.
         code, _ = self.run_command("stop", "27", "--stage", "check")
         self.assertEqual(code, 0)
         self.assertEqual(
             self.shell.changes(),
             [
                 "gh issue comment 27 --body-file -",
-                "gh issue edit 27 --remove-label in-progress --add-label needs-owner",
+                "gh issue edit 27 --remove-label in-progress --add-label needs-owner --remove-assignee the-owner",
             ],
         )
         self.assertEqual(
@@ -216,7 +217,10 @@ class Stop(IssueTest):
         self.assertEqual(code, 0)
         self.assertIn("warning", printed)
         self.assertIn("not sent: no credential store", printed)
-        self.assertIn("gh issue edit 27 --remove-label in-progress --add-label needs-owner", self.shell.ran)
+        self.assertIn(
+            "gh issue edit 27 --remove-label in-progress --add-label needs-owner --remove-assignee the-owner",
+            self.shell.ran,
+        )
 
     def test_a_stop_for_data_names_the_risingrepos_issue_and_the_field_and_swaps_in_progress_for_blocked_on_data(self):
         code, _ = self.run_command("stop", "27", "--data", "215", "--field", "homepage")
@@ -225,7 +229,7 @@ class Stop(IssueTest):
             self.shell.changes(),
             [
                 "gh issue comment 27 --body-file -",
-                "gh issue edit 27 --remove-label in-progress --add-label blocked-on-data",
+                "gh issue edit 27 --remove-label in-progress --add-label blocked-on-data --remove-assignee the-owner",
             ],
         )
         body = self.shell.stdin["gh issue comment 27 --body-file -"]
@@ -251,7 +255,10 @@ class Stop(IssueTest):
     def test_a_stop_for_data_whose_field_the_schema_holds_and_the_newest_board_does_not_goes_ahead(self):
         code, _ = self.run_command("stop", "27", "--data", "215", "--field", "topics")
         self.assertEqual(code, 0)
-        self.assertIn("gh issue edit 27 --remove-label in-progress --add-label blocked-on-data", self.shell.ran)
+        self.assertIn(
+            "gh issue edit 27 --remove-label in-progress --add-label blocked-on-data --remove-assignee the-owner",
+            self.shell.ran,
+        )
 
     def test_a_stop_for_data_reads_the_data_as_main_holds_it_on_origin_after_a_fetch(self):
         self.run_command("stop", "27", "--data", "215", "--field", "language")
@@ -278,7 +285,10 @@ class Stop(IssueTest):
             self.shell.stdin["gh issue comment 27 --body-file -"],
             "Site workflow: stopped\n\nStage: mend\n\nWhat the comment says.\n",
         )
-        self.assertIn("gh issue edit 27 --remove-label in-progress --add-label needs-owner", self.shell.ran)
+        self.assertIn(
+            "gh issue edit 27 --remove-label in-progress --add-label needs-owner --remove-assignee the-owner",
+            self.shell.ran,
+        )
         (message,) = self.told
         self.assertIn("stopped at mend", message)
 

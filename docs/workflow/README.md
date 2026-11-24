@@ -201,7 +201,12 @@ a guarded path. The pull request's job runs every test.
 3. Wait for the pull request's own job: `gh pr checks <number> --watch`.
 
 A check that fails some of the time is a fault. Fix it when it is one of the
-agents' tests. Stop for the owner when it is one of the owner's tests.
+agents' tests. When it is one of the owner's tests, and it failed in the pull
+request's job on a page or a part the change does not touch, run the job
+again once: `gh run rerun <run> --failed`. When it then passes, go on, and
+write the test, the run, and what it printed into the run's file of faults,
+which the look back files for the owner. Stop for the owner when it fails a
+second time, or when the test is one the change added.
 
 ## Review
 
@@ -330,7 +335,7 @@ The run goes on by itself until one of these is true. Nothing else stops it.
 | --- | --- |
 | Shape | A reason under "Needs the owner" |
 | Build | A criterion cannot be met as the plan has it. The work has to leave the plan in a way Shape would have stopped for |
-| Check | The only way past a failing check is to loosen it. Two different attempts at a failing check have not passed it |
+| Check | The only way past a failing check is to loosen it. Two different attempts at a failing check have not passed it. One of the owner's tests that the change does not touch failed in the pull request's job a second time |
 | Review | The verdict is still `changes needed` after the one second look |
 | Ship | A condition of the merge does not hold, and the run cannot make it hold inside the plan |
 | Confirm | A result that measured nothing does not settle. The live site or the eval failed twice on something the change did not cause |
@@ -341,7 +346,8 @@ To stop: push the work, so that nothing is lost. Write one file that says
 the stage, what was seen, what was tried, the question for the owner, and
 what the run would choose. Then
 `sitework stop <issue> --stage <stage> --file <file>`, which posts it, swaps
-`in-progress` for `needs-owner`, and tells the owner. Then go on to the look
+`in-progress` for `needs-owner`, takes the issue off the owner's list of
+assigned issues, and tells the owner. Then go on to the look
 back, and end the run there. A stopped issue holds nothing up: the next run
 takes the next issue.
 
@@ -385,3 +391,13 @@ merge.
 | `needs-owner` | A question is waiting | `sitework stop` | The owner, by answering and removing it |
 | `blocked-on-data` | Waiting on a RisingRepos issue | `sitework stop --data` | A run that finds the field has arrived |
 | `workflow feedback` | One thing a run taught about the workflow itself. It is no idea, and no run takes it up | The look back, with `sitework feedback` | The owner, by closing the issue |
+
+**Where an issue stands.** The scripts keep three things true, so that the
+owner sees it on GitHub without asking:
+
+- **Being worked on**: open, labelled `in-progress`, and assigned to the
+  owner. `sitework pickup --claim` does both, so the issues assigned to the
+  owner are the ones a run is at work on.
+- **Waiting**: open, with `needs-owner` or `blocked-on-data` in the place of
+  `in-progress`, and assigned to nobody. `sitework stop` does that.
+- **Done**: closed, by `sitework close`, with the owner's name left on it.
