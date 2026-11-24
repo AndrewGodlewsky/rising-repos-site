@@ -41,15 +41,34 @@ As each stage begins, run `sitework stage <name>`, with the stage's name in
 lower case: `shape`, `build`, `check`, `review`, `ship`, `confirm`, `mend`, or
 `look back`. The digest tells the stages apart by it.
 
-Three things hold for every stage:
+Five things hold for every stage:
 
 - Write a file that a command is given, such as the plan or a stop's words,
   outside the repository's folder. `sitework ship` merges only from a
   checkout that holds nothing uncommitted, so that what it judged is what
   it merges.
-- `sitework check` takes up to six minutes, and `sitework confirm` about seven,
-  or longer when a run on GitHub is slow. Give each the time it needs: a
-  command that was cut short has not failed.
+- `sitework check` takes six to thirteen minutes on the machine, and
+  `sitework confirm` about seven, or longer when a run on GitHub is slow.
+  Neither fits the time a shell gives a command in the foreground, and a
+  fresh agent's shell gives less. So start each in the background, with
+  what it prints written to a file outside the repository's folder, and
+  wait once for it to end. Do not look at the file while it runs: every
+  look is a message that reads the whole context again. A command that was
+  cut short has not failed.
+- Wait for a pull request's job with `sitework job`, in the foreground. It
+  takes about four minutes, and prints how each check ended.
+- Read round the lines a search finds, and not the whole file: the
+  stylesheet, the script, STANDARDS.md, and the owner's tests are each long,
+  and everything read is read again by every message after it. Each
+  command says what it takes and what it prints with
+  `sitework <command> --help`, so nothing in `sitework/` needs opening to
+  learn it.
+- A script of your own that opens a built page imports from the checkout:
+  `chrome`, `served`, and `published` in `sitework/layout.py` serve a built
+  site and open it in the machine's Chrome. Run it from the top of the
+  checkout, with the checkout on Python's path:
+  `PYTHONPATH=. uv run --locked python <file>`. Keep the file outside the
+  repository's folder.
 - Keep one file, outside the repository's folder, of each fault of the
   workflow's own that the run meets: a command that failed or misled, an
   instruction that was wrong or missing, a check that held back right
@@ -198,15 +217,18 @@ a guarded path. The pull request's job runs every test.
 1. Run it until it passes. Mend the code, and never the check.
 2. Push the branch, and open the pull request against `main`, with
    `Refs #<issue>` and a link to the plan's comment in its body.
-3. Wait for the pull request's own job: `gh pr checks <number> --watch`.
+3. Wait for the pull request's own job: `sitework job`. It waits until the
+   job has ended, also when GitHub has not listed the job yet, and its JSON
+   names the run of each check.
 
 A check that fails some of the time is a fault. Fix it when it is one of the
 agents' tests. When it is one of the owner's tests, and it failed in the pull
 request's job on a page or a part the change does not touch, run the job
-again once: `gh run rerun <run> --failed`. When it then passes, go on, and
-write the test, the run, and what it printed into the run's file of faults,
-which the look back files for the owner. Stop for the owner when it fails a
-second time, or when the test is one the change added.
+again once: `gh run rerun <run> --failed`, and then `sitework job` again.
+When it then passes, go on, and write the test, the run, and what it
+printed into the run's file of faults, which the look back files for the
+owner. Stop for the owner when it fails a second time, or when the test is
+one the change added.
 
 ## Review
 
@@ -218,7 +240,9 @@ passed.
 2. Start one fresh agent. Give it [its brief](reviewer.md), the issue's
    number, the base and the head commit, the three files, and the check's
    last lines. Give it none of your own reasoning.
-3. It posts its review on the issue. On `Verdict: pass`, go on to Ship.
+3. It posts its review on the issue. When it added a test, it waited for
+   the pull request's job on that commit before it wrote its verdict. On
+   `Verdict: pass`, go on to Ship.
 4. On `Verdict: changes needed`, mend what blocks. A finding that a check
    could have found becomes a test in the same pull request. Run the check
    again, push, and ask the same reviewer to read the changes since.
@@ -248,7 +272,10 @@ when every one holds.
 2. On exit 0, write the "Shipped" note: the pull request, the merge's
    commit, the address of the pull request's run, which keeps a picture of
    each page the change altered as its `pictures` artifact, the eval's
-   numbers, and the tokens of each stage so far. Then
+   numbers, and the tokens of each stage so far. Under a heading of its
+   own, "Guarded lines left out of date", it lists each line of a guarded
+   file that the feature made untrue, by its path and what it now says
+   wrongly: a feature cannot mend one, and the look back files them. Then
    `sitework close <issue> --file <file>`, which posts it, closes the issue,
    removes the feature's branch on GitHub and in the checkout, and tells
    the owner.

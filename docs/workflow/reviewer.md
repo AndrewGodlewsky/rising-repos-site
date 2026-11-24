@@ -15,9 +15,18 @@ none.
 
 ## Read
 
+Everything you read is read again by each message after it, so read what
+you need and no more. Read round the lines a search finds, and not the whole
+of a long file: the stylesheet, the script, STANDARDS.md, and the owner's
+tests are each long. A command says what it takes and what it prints with
+`--help`, so nothing in `sitework/` needs opening to learn it.
+
 - The change: `git diff <base>...<head>`.
 - In [STANDARDS.md](../../STANDARDS.md), each standard that says the reviewer
-  holds it. Those are what you judge by.
+  holds it and that the change touches. Those are what you judge by. Most
+  standards name the reviewer, so find the ones this change touches by
+  their numbers in the plan, under "Standards", and by a search for the
+  part that changed, and read those.
 - [STYLE.md](../../STYLE.md), when the change alters how a page looks.
 - Standards P1, P2, P5, P21, and P22, when the change touches
   `sitebuild/contract.py` or `sitebuild/templates/page.html`.
@@ -48,9 +57,18 @@ test among the owner's tests, from the plan and the built site.
    only: change, move, and remove nothing that is there, in the tests,
    their helpers, and the made-up boards. That README, under "The rule",
    says what the guard holds you to.
-2. Commit it on the feature's branch, push, and run
-   `uv run --locked python -m sitework check --issue <issue>`.
-3. A feature for which no passing test can be written does not do what the
+2. Run the test you added by its own name, and see it pass. Then commit it
+   on the feature's branch, push, and wait for the pull request's job on
+   your commit, in the foreground:
+   `uv run --locked python -m sitework job`. The job runs every test on
+   that commit in about four minutes, where the check on the machine takes
+   six to thirteen, and `sitework ship` asks the guard, the new tests, and
+   the criteria again before it merges. Write your review while you wait
+   for nothing else.
+3. Write no verdict before the job has ended. A job that failed on your
+   commit is a finding: say which test failed, and whether the change
+   touches what it looks at.
+4. A feature for which no passing test can be written does not do what the
    idea showed. That is a finding, and it blocks.
 
 ## Write the review
