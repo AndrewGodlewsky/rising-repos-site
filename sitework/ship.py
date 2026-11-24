@@ -7,7 +7,8 @@ commit. GitHub holds a merge to nothing of main, so the script reads main once m
 merges nothing when main has moved since the conditions were judged. With `--revert` it merges the pull request
 that reverts the feature, which no reviewer reads, so that a broken page does not stay live while a question
 waits. That pull request has to hold exactly the revert of every merge of the feature that stands on main, which
-is two merges when a mend of the feature was merged as well, and nothing else.
+is two merges when a mend of the feature was merged as well, and nothing else. Once it has merged, its branch is
+deleted on GitHub and in this repository, since nothing else removes that branch.
 """
 
 import argparse
@@ -187,6 +188,26 @@ def passes(name: str, *arguments: str) -> tuple[bool, str]:
     return True, f"`{name}` passes"
 
 
+def delete_branch(branch: str) -> list[str]:
+    """Delete the branch of a revert that has merged, on GitHub and in this repository, and give a line to print
+    for each of the two that still has it.
+
+    The owner asked on 24 November 2026 that a finished run leave no branch lying about, and nothing else removes
+    this one: `close` deletes a feature's branch, and it is not run for a feature that was put back. A feature's
+    own branch is not deleted here, because a mend is made on it.
+
+    The merge is made by the time this runs, and it is not undone for a branch. So a branch that is already gone
+    is no error, and a delete that is refused is a line to print and no failure. The branch in this repository
+    goes as `issue.delete_local` has it, which also leaves one that holds a commit main does not."""
+    on_github = None
+    try:
+        if shell.git("ls-remote", "origin", f"refs/heads/{branch}"):
+            shell.git("push", "origin", "--delete", branch)
+    except shell.Failed as error:
+        on_github = f"The branch {branch} is left on GitHub, since git did not delete it: {issue.one_line(error)}"
+    return [left for left in (on_github, issue.delete_local(branch)) if left]
+
+
 def ship(number: int, reverting: bool) -> int:
     opened = issue.pulls("open")
     ours = issue.revert(opened, number) if reverting else issue.feature(opened, number)
@@ -240,6 +261,10 @@ def ship(number: int, reverting: bool) -> int:
     shell.gh(
         "pr", "merge", pull, "--merge", "--match-head-commit", head, "--subject", subject, "--body", f"Refs #{number}"
     )
+    if reverting:
+        # The branch goes before the merge commit is read, so that the commit stays the last line printed.
+        for left in delete_branch(ours[0]["headRefName"]):
+            print(left)
     # GitHub has merged by now, so a merge commit it has not named yet is no failure: `confirm` reads it again.
     merge = shell.gh_json("pr", "view", pull, "--json", "mergeCommit")["mergeCommit"]
     print(merge["oid"] if merge else "It is merged, and GitHub has not named the merge commit yet.")
@@ -253,7 +278,9 @@ def main(command: str, arguments: list[str]) -> int:
         "and 1 when a condition fails, having merged nothing.",
     )
     parser.add_argument("issue", type=int, help="the issue's number")
-    parser.add_argument("--revert", action="store_true", help="merge the pull request that reverts the feature")
+    parser.add_argument(
+        "--revert", action="store_true", help="merge the pull request that reverts the feature, and delete its branch"
+    )
     options = parser.parse_args(arguments)
     try:
         return ship(options.issue, options.revert)
