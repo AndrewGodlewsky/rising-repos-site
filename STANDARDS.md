@@ -247,14 +247,16 @@ again, which is a change to the look (B5).
 Held by the reviewer. A check could hold this.
 
 **P11. Nothing on a page moves after it is first drawn.** The script is in
-the `<head>`, a control that needs it is in place from the first frame, the
-fallback face is matched to the type's measures, and a notice that appears
-pushes down nothing already painted.
+the `<head>`, a control that needs it is in place from the first frame, no
+text is drawn until its face is in, the fallback face is matched to the
+type's measures, and a notice that appears pushes down nothing already
+painted.
 
 Held by
 `tests/test_old_board.py::WithoutScripts::test_the_script_is_in_the_head_and_the_notice_before_everything_it_could_move`,
 `tests/test_old_board.py::TheNotice::test_the_notice_is_filled_the_moment_the_parser_reaches_it_when_the_script_runs_before_it`,
 `tests/test_old_board.py::TheTheme::test_a_kept_choice_is_set_on_the_root_before_the_page_is_parsed_and_nothing_else_is`,
+`tests/test_build.py::TheType::test_no_text_is_drawn_in_the_fallback_face_and_then_moved_when_its_own_face_is_in`,
 the site eval's limit on `cumulative_layout_shift`, on the live root, and the
 reviewer, for the fallback face and for anything a change adds that arrives
 late.

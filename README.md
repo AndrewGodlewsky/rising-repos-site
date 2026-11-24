@@ -134,9 +134,9 @@ What every page holds to, each checked by a test in `tests/`:
   bytes, 74,788 gzipped, for the longest history in `site-data/`, 20 August
   2026, which a reader's first opening of a row fetches. The notes on the stylesheet and the
   scripts are Jinja comments, which no page carries: as CSS and JS comments
-  they took 9,531 bytes of a board's page. Two fixes of 23 November 2026 have
-  since added 25 bytes to every page, and 2 more to a board with rows, so
-  the example's root is now 95,685 bytes.
+  they took 9,531 bytes of a board's page. Three fixes of 23 November 2026
+  have since added 29 bytes to every page, and 2 more to a board with rows,
+  so the example's root is now 95,689 bytes.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -199,10 +199,21 @@ SIL Open Font License 1.1, cut to the characters the site's own text uses and
 renamed, as the licence asks of a modified version. `sitebuild/fonts/subset.py`
 makes them from the files in `sitebuild/fonts/source/`, and How it works names
 them under "The type" and links to the licence. Text an owner wrote, in any
-script, falls back to the reader's own faces. Until a face is in, the text is
-set in "Rising Sans fallback": Arial, Liberation Sans, or Arimo, with its size
-and line metrics matched to Rising Sans, so that nothing moves when the face
-arrives.
+script, falls back to the reader's own faces. A face inside the page is ready
+a few milliseconds after the page is first drawn, and holds its text back
+until then (`font-display: block`), so that no word is drawn in one face and
+moved by the next. The room the text takes meanwhile, and a letter the faces
+lack, are set in "Rising Sans fallback": Arial, Liberation Sans, or Arimo,
+with its size and line metrics matched to Rising Sans. The match is close and
+not exact: a name near the end of its line can take one line there and two
+in its own face. On the board of 23 November 2026 one did, on a phone's first
+screen, while the faces were still drawn in the fallback first, and the site
+eval measured a layout shift of 0.033 against its limit of 0.010. With the
+text held back the same board measures 0.0003 in Chrome on this machine. What
+is left is the rows' own boxes: when the name that re-wraps is a board's
+first, the rows under it still move by a line as the text appears, which
+measured 0.011. Having the faces ready before the first layout would end
+that too.
 
 | Role | Family | Where |
 | --- | --- | --- |

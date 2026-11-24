@@ -549,13 +549,25 @@ class TheType(BuildTest):
                 (style,) = page.all("style")
                 faces = re.findall(
                     r'@font-face \{ font-family: "([^"]+)"; src: url\(data:font/woff2;base64,[A-Za-z0-9+/=]+\) '
-                    r'format\("woff2"\); font-weight: (\d+); font-display: swap; \}',
+                    r'format\("woff2"\); font-weight: (\d+); font-display: block; \}',
                     style.text(),
                 )
                 self.assertEqual(faces, self.FACES)
                 self.assertEqual(page.directives()["font-src"], ["data:"])
         published = [path.name for path in self.out.rglob("*") if path.suffix in (".woff2", ".woff", ".ttf", ".otf")]
         self.assertEqual(published, [])
+
+    def test_no_text_is_drawn_in_the_fallback_face_and_then_moved_when_its_own_face_is_in(self):
+        """A face inside the page is ready a few milliseconds after the page is first drawn. Drawn in the fallback
+        until then, a name that fits one line there and takes two in its own face moved every row under it: on the
+        board of 23 November 2026 the site eval measured a layout shift of 0.033 on a phone, against a limit of
+        0.010. So each face holds its text back until it is in, and the fallback draws only what the faces lack.
+        The eval's limit on the live root is what measures the shift itself (STANDARDS.md, P11)."""
+        (style,) = self.build_pages()[BOARD].all("style")
+        displays = re.findall(
+            r'@font-face \{ font-family: "Rising (?:Sans|Mono)";[^}]*font-display: (\w+);', style.text()
+        )
+        self.assertEqual(displays, ["block"] * 4)
 
     def test_the_text_takes_rising_sans_and_every_figure_rising_mono_with_figures_of_one_width(self):
         (style,) = self.build_pages()[BOARD].all("style")

@@ -885,13 +885,18 @@ FACES = [
 def font_faces() -> Markup:
     """The four faces' @font-face rules, each file inside the page as a data: URI, so a page is one request
     and no font file is fetched or published. The files are sitebuild/fonts/subset.py's, cut to the site's own
-    characters."""
+    characters.
+
+    A face inside the page is still ready a few milliseconds after the page is first drawn. Each face holds its
+    text back until then, with `font-display: block`, and is not drawn in the fallback first. Drawn there and
+    then again in its own face, a name near the end of its line took another number of lines, and every row under
+    it moved."""
     rules = []
     for family, weight, name in FACES:
         data = base64.b64encode((FONTS / f"{name}.woff2").read_bytes()).decode("ascii")
         rules.append(
             f'@font-face {{ font-family: "{family}"; src: url(data:font/woff2;base64,{data}) format("woff2"); '
-            f"font-weight: {weight}; font-display: swap; }}"
+            f"font-weight: {weight}; font-display: block; }}"
         )
     return Markup("\n".join(rules))
 
