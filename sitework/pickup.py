@@ -258,15 +258,18 @@ def plan_verdict(body: str) -> str | None:
     return next((line for line in after if line), None)
 
 
-def claim(taken: Taken, branch: str) -> None:
-    """Claim the issue: it carries `in-progress`, it no longer waits on data, and a `picked up` comment names its
-    branch."""
+def claim(taken: Taken, branch: str, owner: str) -> None:
+    """Claim the issue: it carries `in-progress`, it is assigned to the owner, it no longer waits on data, and a
+    `picked up` comment names its branch.
+
+    The issues assigned to the owner are then the ones a run is at work on, which is how the owner sees at a
+    glance what is being worked on. A stop takes the issue off that list again (`issue.stop`), and a close
+    leaves the closed issue with the owner's name on it. An issue that is assigned already stays so."""
     number = taken.issue["number"]
     labels = [] if rules.IN_PROGRESS in issue.labels(taken.issue) else ["--add-label", rules.IN_PROGRESS]
     if taken.take_up == "data arrived":
         labels += ["--remove-label", rules.BLOCKED_ON_DATA]
-    if labels:
-        shell.gh("issue", "edit", str(number), *labels)
+    shell.gh("issue", "edit", str(number), *labels, "--add-assignee", owner)
     issue.post(number, "picked up", f"Branch: {branch}\nTaken up: {taken.take_up}. {taken.why}")
     # The run is written down by the checkout it works in, so that a later look finds it for as long as its agent
     # is at work there, whatever branch the checkout is on by then.
@@ -311,7 +314,7 @@ def pickup(claiming: bool) -> tuple[int, dict]:
         "facts": facts(taken, pulls),
     }
     if claiming:
-        claim(taken, answer["branch"])
+        claim(taken, answer["branch"], owner)
     return 0, answer
 
 
