@@ -64,8 +64,9 @@ Five things hold for every stage:
   `sitework <command> --help`, so nothing in `sitework/` needs opening to
   learn it.
 - A script of your own that opens a built page imports from the checkout:
-  `chrome`, `served`, and `published` in `sitework/layout.py` serve a built
-  site and open it in the machine's Chrome. Run it from the top of the
+  in `sitework/layout.py`, `served` serves a built site, `chrome` opens the
+  machine's Chrome, and `published` gives the time to set a page's clock
+  to, so that a board is not hidden for its age. Run it from the top of the
   checkout, with the checkout on Python's path:
   `PYTHONPATH=. uv run --locked python <file>`. Keep the file outside the
   repository's folder.
