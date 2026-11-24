@@ -44,6 +44,10 @@
 <span class="axis x" aria-hidden="true">Baseline, stars a day</span>
 <span class="readout" id="readout" aria-hidden="true" hidden></span>
 </div>
+{# The field that finds a repository by its name, shown only where the page's script runs to answer it (#29). It is
+   under the chart, so that a phone's keyboard leaves the chart in sight. It says how many names hold what is typed
+   when more than one does, and when none does. #}
+<div class="find js-only"><label for="find">Find a repository</label><span id="found" aria-live="polite"></span><input type="search" id="find" autocomplete="off" spellcheck="false"></div>
 {% if chart.floor %}
 <p class="caption small">The {{ chart.floor }} on the left edge had a baseline under 1 star a day, which the ranking counts as 1.</p>
 {% endif %}

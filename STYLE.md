@@ -42,7 +42,7 @@ a page that already does the nearest job, and build from it.
 | A box that holds a chart or a row's detail | The card that holds Baseline's chart, or an opened row | `.card`, `.op` |
 | A choice among a few | The filter's buttons, each with `aria-pressed` | `.segments button` |
 | A choice among many | The filter's list of languages | `.toolbar select` |
-| Words the reader types | The filter's search | `.toolbar input[type="search"]` |
+| Words the reader types | The filter's search, and the field that finds a repository on Baseline's chart | `input[type="search"]` |
 | A figure | Rising Mono with figures of one width | `.num` |
 | A table of figures | Baseline's table | `.numbers` |
 | A table of figures with more columns than a phone has room for | An opened row's table of the boards it was on: below 768 px each of its rows is stacked, and each figure is under its column's heading | `.more-days` |

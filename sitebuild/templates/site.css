@@ -107,7 +107,7 @@ ol, ul { padding: 0; list-style: none; }
    to the muted text, so a reader who comes back each day sees which ones they have already opened. #}
 a { color: inherit; text-decoration: underline 1px var(--line-strong); text-underline-offset: 0.25em; transition: color 150ms var(--ease), text-decoration-color 150ms var(--ease); }
 a:hover { color: var(--accent); text-decoration-color: currentColor; }
-a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible, .plot svg:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
 {# The site's bar: the mark and the name, three quiet links, and the theme switch #}
 .site { border-bottom: 1px solid var(--line); }
@@ -187,8 +187,10 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 .plot .dot { stroke: var(--dot); stroke-width: 7; stroke-linecap: round; vector-effect: non-scaling-stroke; transition: opacity 160ms var(--ease), stroke 160ms var(--ease); }
 .plot .dot.lead { stroke: var(--accent); stroke-width: 10; }
 .plot .dot.here { stroke: var(--text); stroke-width: 12; }
-.plot .readout { position: absolute; z-index: 1; transform: translate(12px, -50%); padding: 4px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); color: var(--text); font: 400 12px/1.4 var(--mono); white-space: pre; pointer-events: none; }
-.plot .readout.flip { transform: translate(calc(-100% - 12px), -50%); }
+.plot .readout { position: absolute; z-index: 1; width: max-content; max-width: 240px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); color: var(--text); font: 400 12px/1.4 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; pointer-events: none; }
+.plot.chosen .rk { visibility: hidden; }
+{# A tap focuses the chart too, and draws no ring: the ring is the keyboard's. #}
+.plot svg:focus:not(:focus-visible) { outline: none; }
 .plot .tick, .plot .rk, .plot .glabel, .plot .axis { position: absolute; color: var(--text-3); font: 400 11px/1 var(--mono); white-space: nowrap; pointer-events: none; }
 .plot .tick.y { left: -8px; transform: translate(-100%, -50%); }
 .plot .tick.x { top: calc(100% + 8px); transform: translateX(-50%); }
@@ -198,6 +200,10 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 .plot .glabel.own { color: var(--text-2); }
 .plot .rk { transform: translate(10px, -50%); text-shadow: 0 0 2px var(--surface), 0 0 4px var(--surface), 0 0 6px var(--surface); color: var(--accent); font-weight: 500; font-size: 12px; }
 
+{# The field that finds a repository on the chart (#29): its label, with how many names match at the line's end,
+   above a box that takes the board's search box's look. #}
+.find { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; max-width: 400px; margin: 8px 0 12px; color: var(--text-2); font-size: 13px; }
+.find input { flex: 1 1 100%; }
 .card .caption.small { margin-top: 0; color: var(--text-3); font-size: 13px; }
 
 {# The board: a toolbar of filters, then the ranked list #}
@@ -214,10 +220,11 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 .segments .num { margin-left: 4px; color: var(--text-3); font-size: 12px; }
 .segments button[aria-pressed="true"] .num { color: inherit; }
 .toolbar select { padding-right: 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); height: 38px; }
-.toolbar input[type="search"] { order: -1; flex: 1 1 100%; height: 38px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); font: 400 14px/1 var(--sans); transition: border-color 150ms var(--ease); }
-.toolbar input[type="search"]::placeholder { color: var(--text-3); opacity: 1; }
-.toolbar input[type="search"]:hover { border-color: var(--line-strong); }
-.toolbar input[type="search"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.toolbar input[type="search"] { order: -1; flex: 1 1 100%; }
+input[type="search"] { height: 38px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); font: 400 14px/1 var(--sans); transition: border-color 150ms var(--ease); }
+input[type="search"]::placeholder { color: var(--text-3); opacity: 1; }
+input[type="search"]:hover { border-color: var(--line-strong); }
+input[type="search"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .filtered-none { padding: 24px 0; color: var(--text-2); border-top: 1px solid var(--line); }
 
 {# The ranked list. A table, whose parts name their roles, because a phone stacks each row's cells. A closed row is

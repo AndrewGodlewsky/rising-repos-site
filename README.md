@@ -139,9 +139,11 @@ What every page holds to, each checked by a test in `tests/`:
   Stacking an opened row's board days on a phone (#27) added 264 to every
   page, in the stylesheet, and 306 more to a board with rows, in the script.
   Latest in a phone's day bar (#28) added 358 to every page, in the
-  stylesheet, and 54 more to an earlier board's page, in its link. So the
-  example's root is now 96,617 bytes, and the page of the 316 made-up rows
-  480,914.
+  stylesheet, and 54 more to an earlier board's page, in its link. Choosing
+  a dot of Baseline's chart by a tap, a key, or its name (#29) added 279 to
+  every page, in the stylesheet, and 2,574 more to Baseline, in its script and
+  its field. So the example's root is now 96,896 bytes, its Baseline 82,159,
+  and the page of the 316 made-up rows 481,193.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -161,7 +163,8 @@ What every page holds to, each checked by a test in `tests/`:
   so a size measured on Windows reads about 2% low. With an opened row's
   board days stacked on a phone (#27) it came to 141,793 on Windows on
   2026-11-24, 183 more than without them, and with Latest in a phone's day
-  bar (#28) to 141,841, 48 more. The type takes about
+  bar (#28) to 141,841, 48 more, and with the choosing of a dot of Baseline's
+  chart (#29) to 141,927, 86 more. The type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries
   105 characters of description in random letters, which pack worse than a
@@ -467,8 +470,21 @@ placed by its baseline, the stars a day it gained over the twelve days before,
 across, against its recent pace, up, both on log scales, with the diagonals of
 its own pace, dashed, and of 3×, 10×, 100×, and 1,000×. The top ten are in the
 accent, and the first five are labelled with their ranks. With the script,
-the dot nearest the pointer names its repository, its rank, and its growth in
-a readout, and a click on it goes to its line in the table. Under the chart,
+the dot nearest a mouse's pointer names its repository, its rank, its
+baseline, its recent pace, and its growth in a readout, each copied from its
+line in the table, and a click on it goes to that line. A tap, the keyboard,
+or the field under the chart, "Find a repository", chooses a dot (#29): the
+dot is marked and the readout names it until another is chosen, or a tap away
+from every dot, or Escape, dismisses it. A finger fires no hover, so on a
+touch screen a second tap on the chosen dot goes to its line. The chart takes
+the keyboard's focus, which chooses the first rank; the arrows step through
+the ranks, Home and End go to the first and the last, and Enter goes to the
+line. The field chooses the first by rank whose name holds what is typed,
+Enter the next, and it says how many hold it, or that none does. While a dot
+is chosen the ranks' marks are not drawn, since the first ranks' crowd one
+another, and only the readout names a dot. The readout sits beside its dot,
+on the side where it fits, or over or under it where it fits on neither, as
+on a phone, and wraps a long name, so that it stays in the card. Under the chart,
 the table gives every repository in words, so the chart holds nothing a
 screen reader cannot reach. `pace_chart` in `sitebuild/__init__.py` places the
 dots from the file's own numbers: the usual pace is the divisor the file
