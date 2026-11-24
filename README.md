@@ -138,8 +138,10 @@ What every page holds to, each checked by a test in `tests/`:
   have since added 29 bytes to every page, and 2 more to a board with rows.
   Stacking an opened row's board days on a phone (#27) added 264 to every
   page, in the stylesheet, and 306 more to a board with rows, in the script.
-  So the example's root is now 96,259 bytes, and the page of the 316 made-up
-  rows 480,556.
+  Latest in a phone's day bar (#28) added 358 to every page, in the
+  stylesheet, and 54 more to an earlier board's page, in its link. So the
+  example's root is now 96,617 bytes, and the page of the 316 made-up rows
+  480,914.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -158,7 +160,8 @@ What every page holds to, each checked by a test in `tests/`:
   Python uses, and 141,600 with the zlib-ng that Python 3.14 uses on Windows,
   so a size measured on Windows reads about 2% low. With an opened row's
   board days stacked on a phone (#27) it came to 141,793 on Windows on
-  2026-11-24, 183 more than without them. The type takes about
+  2026-11-24, 183 more than without them, and with Latest in a phone's day
+  bar (#28) to 141,841, 48 more. The type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries
   105 characters of description in random letters, which pack worse than a
@@ -274,13 +277,18 @@ line of their own under the name. Baseline's name is `BASELINE_NAME` in
 **The day bar.** Under the site's bar, a bar that stays at the top of the
 screen while the page scrolls: the board day before, with an arrow before it;
 the board's date, which is the page's `<h1>`; and the board day after, with an
-arrow after it. An earlier board's bar also leads to the newest, from 768 px
-up. Where there is no board day before, it says "First board". Each date is
-short, "8 Nov", and a screen reader hears "The board before" or "The board
-after" first, and "The daily board for" before the date. History's,
-Baseline's, and How it works' bars lead back to the newest board instead. The
-bar is 52 px tall, and 64 px from 768 px up, and `scroll-padding-top` clears
-it, and the column headings under it on a desktop.
+arrow after it. An earlier board's bar also leads to the newest, at its right
+end: "Latest: 23 Nov »" from 768 px up, and "Latest »" on a phone, where a
+bar 390 px wide has no room for the date beside two dates of two figures, and
+the date is kept for a screen reader (#28). Below 390 px the bar's parts take
+4 px at each side and sit 2 px apart, and below 360 px, where that is still
+not room enough, Latest is not drawn, and the note above the rows leads to the
+newest board instead. Where there is no board day before, it says "First
+board". Each date is short, "8 Nov", and a screen reader hears "The board
+before" or "The board after" first, and "The daily board for" before the
+date. History's, Baseline's, and How it works' bars lead back to the newest
+board instead. The bar is 52 px tall, and 64 px from 768 px up, and
+`scroll-padding-top` clears it, and the column headings under it on a desktop.
 
 **The notes above the rows.** What changes how a board reads is said in the
 open, above its rows: an earlier board, a provisional ranking, a star band

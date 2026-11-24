@@ -140,7 +140,18 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 .strip .here { color: var(--text); font-weight: 500; }
 .strip h1.here { margin: 0 4px; padding: 0 4px; font-size: 20px; line-height: 32px; letter-spacing: -0.01em; white-space: nowrap; }
 .strip .end { color: var(--text-3); }
-.strip .latest { display: none !important; }
+.strip .latest { margin-left: auto; }
+{# On a phone Latest is "Latest »", and its date is kept for a screen reader: a bar 390 px wide has no room for it
+   beside two dates of two figures. Below 390 px the bar's parts sit closer, and below 360 px, where that is not
+   room enough, Latest is not drawn, and the note above the rows leads to the newest board instead (#28). #}
+.strip .latest .when { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 389.98px) {
+  .strip .wrap { gap: 2px; }
+  .strip .wrap > a, .strip .wrap > span { padding: 0 4px; }
+}
+@media (max-width: 359.98px) {
+  .strip .wrap > .latest { display: none; }
+}
 
 {# A page's title block #}
 .head { padding: 32px 0 24px; }
@@ -482,7 +493,7 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
   td.rk.podium { justify-self: end; }
   td.wy summary { left: 20px; top: 42px; }
   td.language, td.st { margin-top: 0; padding-top: 2px; font-size: 14px; }
-  .strip .latest { display: inline-block !important; margin-left: auto; }
+  .strip .latest .when { position: static; width: auto; height: auto; overflow: visible; clip-path: none; }
   td.st::after { content: none; }
   .nm { font-size: 17px; }
   .cal a, .cal .gap { min-height: 76px; padding: 8px; }

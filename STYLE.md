@@ -127,7 +127,8 @@ that file's docstring says how.
 ### Widths
 
 The stylesheet is written for a phone first, and widens at 768 px and at
-1,100 px.
+1,100 px. The day bar alone also narrows: below 390 px its parts sit closer,
+and below 360 px it leaves out Latest, for which there is then no room (#28).
 
 ### Movement
 

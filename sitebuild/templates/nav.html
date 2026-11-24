@@ -1,6 +1,7 @@
 {# The links between board days, which the strip under the band and a board's foot both hold: the board day before,
-   the board day the page shows, and the board day after. The list of every board day, History, is in the site's
-   bar on every page. #}
+   the board day the page shows, and the board day after, and on an earlier board's bar the way to the newest, Latest.
+   Latest's date is a part of its own, which a phone keeps for a screen reader alone (#28). The list of every board
+   day, History, is in the site's bar on every page. #}
 {% macro board_days(board, before, after, newest=None, heading=False) %}
 {% if before %}
 <a class="before" rel="prev" href="{{ before.board_day|day_address }}"><span class="sr">The board before, </span><span aria-hidden="true">‹ </span><time datetime="{{ before.board_day }}">{{ before.board_day|short_date }}</time></a>
@@ -16,6 +17,6 @@
 <a class="after" rel="next" href="{{ after.board_day|day_address }}"><span class="sr">The board after, </span><time datetime="{{ after.board_day }}">{{ after.board_day|short_date }}</time><span aria-hidden="true"> ›</span></a>
 {% endif %}
 {% if newest and after %}
-<a class="latest" href="/"><span class="sr">The newest board, </span><span aria-hidden="true">Latest: </span><time datetime="{{ newest.board_day }}">{{ newest.board_day|short_date }}</time><span aria-hidden="true"> »</span></a>
+<a class="latest" href="/"><span class="sr">The newest board, </span><span aria-hidden="true">Latest</span><span class="when"><span aria-hidden="true">: </span><time datetime="{{ newest.board_day }}">{{ newest.board_day|short_date }}</time></span><span aria-hidden="true"> »</span></a>
 {% endif %}
 {% endmacro %}
