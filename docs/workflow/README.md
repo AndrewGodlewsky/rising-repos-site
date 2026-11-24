@@ -353,6 +353,10 @@ assigned issues, and tells the owner. Then go on to the look
 back, and end the run there. A stopped issue holds nothing up: the next run
 takes the next issue.
 
+A stop and a close tell the owner on Discord. When that notice cannot be
+sent, the script adds a line to the comment it posted, so that the issue
+itself says nobody was told. It is no failure of the run.
+
 The owner answers with a comment on the issue and removes `needs-owner`. The
 next run reads the answer and carries on from the stage that stopped.
 

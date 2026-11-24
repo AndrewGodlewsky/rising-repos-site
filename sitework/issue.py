@@ -33,6 +33,12 @@ BOARD = "site-data/boards/days/{day}/daily.json"
 """The daily schema, the list of board days, and a board day's file. `sitebuild.contract` reads the same three
 from a folder. Here they are read as main holds them on origin, which the checkout this runs in may be behind."""
 
+POSTED = re.compile(r"#issuecomment-(\d+)\s*$")
+"""How the address of a comment ends, which `gh issue comment` prints: with the comment's number."""
+
+NOT_TOLD = "The owner was not told of this on Discord ({why}), so this comment is the only notice of it."
+"""The last line a stop's or a "Shipped" comment gains when the notice could not be sent."""
+
 BEFORE_THE_WORDS = re.compile(r"(?:[\W_]+|\d+[.)])*")
 """What Markdown can put before the first word of a line: the marks of a heading, a quotation, a list, emphasis,
 or code, a numbered list's number, and the spaces among them."""
@@ -207,12 +213,29 @@ def standing_among(every: list[dict], number: int) -> list[dict]:
     return sorted(stands, key=lambda pull: pull["mergedAt"], reverse=True)
 
 
-def tell(issue: dict, what: str) -> None:
+def tell(issue: dict, what: str, posted: str) -> None:
     """Tell the owner on Discord what became of the issue. A message that cannot be sent is a warning, and fails
-    nothing: what was done on the issue is done, and the issue itself says it."""
+    nothing: what was done on the issue is done, and the issue itself says it.
+
+    The issue then says as well that nobody was told. Three runs in a row ended with the notice not sent, for
+    want of a credential store, and nothing on GitHub said so: the comment is written before the notice is
+    tried (#53). So the comment that `posted` names, which is what `post` said of it, gains a last line. A
+    script reads a comment by its first line and by the lines that begin with a name, and this line is neither.
+    When GitHub refuses the edit, that is a warning too."""
     said = notify.send(f"{rules.FIRST_LINE}#{issue['number']} {what}. {issue['title']}\n{issue['url']}")
-    if said != "sent":
-        print(f"warning: the owner was not told on Discord ({said})")
+    if said == "sent":
+        return
+    print(f"warning: the owner was not told on Discord ({said})")
+    found = POSTED.search(posted)
+    if not found:
+        return
+    path = f"{REPOSITORY}/issues/comments/{found[1]}"
+    try:
+        line = NOT_TOLD.format(why=said.removeprefix("not sent: "))
+        body = f"{shell.gh_json('api', path)['body'].rstrip()}\n\n{line}\n"
+        shell.gh("api", "--method", "PATCH", path, "--input", "-", stdin=json.dumps({"body": body}))
+    except shell.Failed as error:
+        print(f"warning: the comment does not say that the owner was not told: {one_line(error)}")
 
 
 def one_line(error: shell.Failed) -> str:
@@ -302,9 +325,10 @@ def stop(options: argparse.Namespace, text: str) -> int:
         set_aside(number, rules.BLOCKED_ON_DATA)
         return 0
     issue = read(options.issue)
-    print(post(options.issue, "stopped", f"Stage: {options.stage}\n\n{text}"))
+    posted = post(options.issue, "stopped", f"Stage: {options.stage}\n\n{text}")
+    print(posted)
     set_aside(number, rules.NEEDS_OWNER)
-    tell(issue, f"stopped at {options.stage} and waits for your answer")
+    tell(issue, f"stopped at {options.stage} and waits for your answer", posted)
     return 0
 
 
@@ -332,7 +356,8 @@ def close(options: argparse.Namespace, text: str) -> int:
         return 1
     pull = stands[0]
     issue = read(options.issue)
-    print(post(options.issue, "shipped", text))
+    posted = post(options.issue, "shipped", text)
+    print(posted)
     shell.gh("issue", "close", number)
     shell.gh("issue", "edit", number, "--remove-label", rules.IN_PROGRESS)
     if shell.git("ls-remote", "origin", f"refs/heads/{pull['headRefName']}"):
@@ -340,7 +365,7 @@ def close(options: argparse.Namespace, text: str) -> int:
     left = delete_local(pull["headRefName"])
     if left:
         print(left)
-    tell(issue, "shipped")
+    tell(issue, "shipped", posted)
     return 0
 
 
