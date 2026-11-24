@@ -237,7 +237,7 @@ def ship(number: int, reverting: bool) -> int:
             return
         yield guarded(base, head, allowed(said))
         yield checkout(head)
-        yield passes("new-tests", "--base", base, "--head", head)
+        yield passes("new-tests", "--base", base, "--head", head, "--issue", str(number))
         yield passes("criteria", "--issue", str(number))
 
     every = True

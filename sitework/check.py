@@ -66,9 +66,10 @@ def steps(
         ("white space", ["git", "diff", "--check", "origin/main...HEAD"]),
         ("the guarded paths", [*python, "sitework", "guard", *(["--allow", *allowed] if allowed else [])]),
     ]
-    proofs = [("the new tests", [*python, "sitework", "new-tests"])]
+    of_issue = [] if number is None else ["--issue", str(number)]
+    proofs = [("the new tests", [*python, "sitework", "new-tests", *of_issue])]
     if number is not None:
-        proofs.append(("the criteria", [*python, "sitework", "criteria", "--issue", str(number)]))
+        proofs.append(("the criteria", [*python, "sitework", "criteria", *of_issue]))
     return [*code, *change, *tests, *proofs]
 
 

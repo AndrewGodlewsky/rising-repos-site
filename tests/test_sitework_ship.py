@@ -596,7 +596,7 @@ class NewTestsAndCriteria(ShipTest):
 
     def test_new_tests_are_asked_about_the_change_from_the_merge_base_to_the_head_and_criteria_about_the_issue(self):
         self.run_command("27")
-        self.assertEqual(self.shell.first(NEW_TESTS), f"{NEW_TESTS} --base {MAIN} --head {HEAD}")
+        self.assertEqual(self.shell.first(NEW_TESTS), f"{NEW_TESTS} --base {MAIN} --head {HEAD} --issue 27")
         self.assertEqual(self.shell.first(CRITERIA), f"{CRITERIA} --issue 27")
 
 
