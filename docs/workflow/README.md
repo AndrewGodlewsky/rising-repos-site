@@ -167,6 +167,8 @@ What only the owner can answer, and what the agent would choose.
 - **Test first.** For each criterion, write its test among the agents' tests
   in `tests/`, see it fail, and then write the code. Write, change, and
   remove the agents' tests as the feature needs. Every one still has to pass.
+  AGENTS.md, under "A new test earns its place", says what a test has to
+  show before it is added.
 - **Leave the owner's tests as they are.** They are in `owner_tests/`. One
   that fails means the change broke something a reader would notice: mend
   the code, never the test.

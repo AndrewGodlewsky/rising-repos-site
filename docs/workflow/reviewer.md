@@ -32,6 +32,11 @@ none.
 - Anything in the change that the plan does not account for.
 - A test on the list that was changed or removed so that the change passes,
   and not because what the page does has changed.
+- A new test that has not earned its place: one that still passes with the
+  condition it is named for taken away, or that fails only when a test the
+  file already had fails too. AGENTS.md, under "A new test earns its
+  place", is the rule. Take the condition away yourself for the test of
+  the feature's first criterion.
 
 ## The owner's test for something new
 
