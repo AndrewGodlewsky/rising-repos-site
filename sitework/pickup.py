@@ -20,17 +20,13 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import NamedTuple
 
-from sitework import confirm, issue, notify, rules, shell
+from sitework import confirm, issue, rules, shell
 
 NOTHING, UNHEALTHY = 3, 4
 """The exit codes when there is nothing to do, and when the site is not healthy."""
 
 WORKFLOWS = {rules.IN_PROGRESS, rules.NEEDS_OWNER, rules.BLOCKED_ON_DATA}
 """The labels the workflow sets. An idea that carries one is not new."""
-
-TOLD = "sitework-told"
-"""The file under git's common directory that holds the run the owner was last told of. There it is in no commit,
-and every worktree of the repository shares it."""
 
 SLUG_WORDS = 5
 
@@ -72,24 +68,17 @@ def healthy() -> None:
     if deploy["status"] != "completed":
         raise End(NOTHING, f"The deploy of {deploy['headSha'][:7]} to main has not finished: {deploy['url']}")
     if deploy["conclusion"] != "success":
-        raise unhealthy(deploy, f"The newest deploy to main ended in {deploy['conclusion']}: {deploy['url']}")
+        raise unhealthy(f"The newest deploy to main ended in {deploy['conclusion']}: {deploy['url']}")
     measured = confirm.eval_after(deploy)
     if measured is None or measured["status"] != "completed":
         raise End(NOTHING, f"The site eval that follows the deploy of {deploy['headSha'][:7]} has not finished.")
     if measured["conclusion"] != "success":
-        raise unhealthy(
-            measured, f"The site eval after the newest deploy ended in {measured['conclusion']}: {measured['url']}"
-        )
+        raise unhealthy(f"The site eval after the newest deploy ended in {measured['conclusion']}: {measured['url']}")
 
 
-def unhealthy(run: dict, why: str) -> End:
-    """Tell the owner of a run that failed, once for that run and not again at every run, and give the end of
-    this run. A message that could not be sent is not remembered, so the next run sends it."""
-    told = common(TOLD)
-    this = str(run["databaseId"])
-    if not (told.is_file() and told.read_text(encoding="utf-8").strip() == this):
-        if notify.send(f"{rules.FIRST_LINE}nothing new starts, because the site is not healthy. {why}") == "sent":
-            told.write_text(this + "\n", encoding="utf-8")
+def unhealthy(why: str) -> End:
+    """The end of a run that starts nothing because the site is not healthy. What is printed says why, and
+    nothing is sent to the owner: the notice on Discord was dropped on 24 November 2026 (#53)."""
     return End(UNHEALTHY, why)
 
 

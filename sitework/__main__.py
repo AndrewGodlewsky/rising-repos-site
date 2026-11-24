@@ -26,7 +26,6 @@ COMMANDS = {
     "stage": ("sitework.digest", "Mark in the run's record that a stage begins"),
     "digest": ("sitework.digest", "Make a one-page digest of a run from its record"),
     "feedback": ("sitework.feedback", "File what a run taught as issues, or add to one that is already open"),
-    "notify": ("sitework.notify", "Send the owner one message on Discord"),
 }
 """Each command, the module that holds it, and what it does. A module's `main` takes the command's name and the
 arguments after it, and gives the exit code."""
