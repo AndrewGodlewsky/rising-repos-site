@@ -752,7 +752,9 @@ python -m http.server 8000 --bind 127.0.0.1 --directory dist  # then open http:/
 
 `deploy.yml`'s build job runs the check command too, with `--suite`, which
 leaves out the steps that need a branch's history ("The feature workflow"
-says what each step is). The owner's tests need Chrome on the machine, and
+says what each step is) and runs every test. Without `--suite`, a change
+that touches no guarded path is not run against the tests of the workflow's
+own scripts and of the stale check, since it cannot alter what they find. The owner's tests need Chrome on the machine, and
 download no browser. So do the agents' tests of an opened row,
 `tests/test_opened_row.py`, since where a part sits on a screen is something
 only a browser can say (#27). The agents' tests build

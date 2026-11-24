@@ -6,31 +6,58 @@ and the guard lets through what the owner allowed for that issue, as it does whe
 The pull request's job and main's build job run it with `--suite`: a checkout there holds no history to read a
 change from, and a push to main is not a feature.
 
+A change that touches no guarded path is not run against the tests of what is guarded (`rules.OWN_TESTS`): it
+cannot alter what they find, and they are a third of the time the agents' tests take. `--suite` runs every
+test, and so does a change the owner let touch a guarded path.
+
 A step that passes says so in one line. A step that fails shows what it printed.
 """
 
 import argparse
+import fnmatch
 import sys
 import time
 
-from sitework import issue, newtests, shell, ship
+from sitework import issue, newtests, rules, shell, ship
+
+NAMED = "import sys, unittest; sys.path.insert(0, 'tests'); unittest.main(module=None)"
+"""Runs the files of tests named after it as `unittest discover -s tests` runs them: each found in `tests` and
+taken under its own name. Discovery can take a file in and cannot leave one out, so when some are left out the
+rest are named."""
 
 
-def steps(number: int | None, suite: bool, allowed: list[str]) -> list[tuple[str, list[str]]]:
+def the_rest() -> list[str]:
+    """The files of the agents' tests but for those of what no feature changes, each as unittest names it. They
+    are the files that discovery finds, less the ones a pattern of `rules.OWN_TESTS` names."""
+    return sorted(
+        path.stem
+        for path in (shell.ROOT / "tests").glob("test*.py")
+        if not any(fnmatch.fnmatch(f"tests/{path.name}", pattern) for pattern in rules.OWN_TESTS)
+    )
+
+
+def steps(
+    number: int | None, suite: bool, allowed: list[str], rest: list[str] | None = None
+) -> list[tuple[str, list[str]]]:
     """Each step's name and its command, in the order they run. The lint reads the code in a moment, the steps
     that read the change need only git, and the tests take minutes, so a fault is met by the cheapest step that
     can find it. A step of Python runs under the Python that runs this, which is the one `uv run` chose.
 
     `number` is the feature's issue, when one was given, and `allowed` the patterns of the guarded paths its owner
     let the change touch. The guard lets those through here as it does when the ship script runs it, so that a
-    change the owner allowed can pass on the machine."""
+    change the owner allowed can pass on the machine.
+
+    `rest` is the files of the agents' tests to run when those of what no feature changes are left out, and
+    None when every test runs."""
     python = [sys.executable, "-m"]
     code = [
         ("the lint", [*python, "ruff", "check", "."]),
         ("the format", [*python, "ruff", "format", "--check", "."]),
     ]
+    every = ("the agents' tests", [*python, "unittest", "discover", "-s", "tests"])
+    fewer = ("the agents' tests, but for the workflow's own", [sys.executable, "-c", NAMED, *(rest or [])])
     tests = [
-        ("the agents' tests", [*python, "unittest", "discover", "-s", "tests"]),
+        every if rest is None else fewer,
         ("the owner's tests", [*python, "unittest", "discover", "-s", "owner_tests", "-t", "."]),
     ]
     if suite:
@@ -67,7 +94,10 @@ def main(command: str, arguments: list[str]) -> int:
     options = parser.parse_args(arguments)
     # The owner's comments are read once, before the first step, and only when there is an issue to read.
     allowed = [] if options.issue is None else ship.allowed(issue.comments(options.issue, issue.owner()))
-    for name, step in steps(options.issue, options.suite, allowed):
+    # With nothing allowed, the guard's step, which comes before the tests, fails a change that touches a guarded
+    # path. So the tests are reached only by a change that cannot alter the ones that are left out.
+    rest = None if options.suite or allowed else the_rest()
+    for name, step in steps(options.issue, options.suite, allowed, rest):
         print(f"{name}: started", flush=True)
         began = time.monotonic()
         try:

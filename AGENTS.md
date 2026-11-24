@@ -80,6 +80,10 @@ The build job runs `python -m sitework check --suite`: the lint, the format,
 and both kinds of tests. So the check command is what a PR has to pass. Run
 it before each commit.
 
+Without `--suite`, a change that touches no guarded path is not run against
+the tests of the workflow's own scripts and of the stale check: no such
+change can alter what they find. The build job runs every test.
+
 ## The two kinds of tests
 
 - **The agents' tests**, in `tests/`, hold a page's exact markup and how each
@@ -90,6 +94,28 @@ it before each commit.
   [owner_tests/README.md](owner_tests/README.md) lists them. A change may add
   to that folder and changes nothing that is there. One that fails means a reader
   lost something: mend the code, never the test.
+
+## A new test earns its place
+
+A test is kept for the fault it catches. Before you add one to the agents'
+tests, show three things (#48, #51):
+
+- **It names the behaviour.** Its name is the sentence of the issue or the
+  plan that it holds, and the value it expects comes from that sentence,
+  never from a run of the new code.
+- **It can fail.** Take away the one condition it is about, see it fail for
+  that reason, and put the condition back. Take the condition away, and do
+  not only turn it round: most tests notice a condition that was turned
+  round, and only the test that holds a refusal notices one that is gone.
+  `sitework new-tests` asks a different question, whether the test fails on
+  the commit before, and stays.
+- **No test already there fails with it.** While the condition is away, run
+  the tests the file had. If one of them fails too, the fault is held
+  already: add nothing, or give that test the name that says so.
+
+No number is set on the tests. A test that restates the code, by expecting
+whatever the code gave or by checking that a call was made as it is
+written, catches nothing and is not added.
 
 ## Before you start a branch
 

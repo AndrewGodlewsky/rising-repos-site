@@ -82,6 +82,17 @@ A `ruff.toml` or a `.ruff.toml` holds the lint's and the format's settings in pl
 folder that holds some, and git takes a folder's `.gitattributes` for what is under it, so those two are guarded
 in every folder and not at the top alone."""
 
+OWN_TESTS = ("tests/test_sitework_*.py", "tests/test_stale_check.py")
+"""The tests of what no feature changes: the workflow's own scripts, and the stale check. Each of these files
+is guarded, and so is what it tests, so `sitework check` leaves them out for a change that touches no guarded
+path. On 24 November 2026 that was 527 of the 838 agents' tests, and a third of the time they took. They are run
+wherever every test is: by a pull request's job, on main, and for a change the owner let touch a guarded path.
+`sitework ship` merges nothing whose job did not pass, which also holds the little of them a feature can
+reach: the README that one of them reads, and the helpers that some of them import.
+
+The eval's own tests are not among them, though the eval is guarded. They build real pages and measure
+them, so a feature can make one fail, and it is better told so on the machine."""
+
 POLICY_IN = "sitebuild/templates/**"
 """Where the policy that lets a page's script run is written: a `<meta>` of a template. That element's text is
 guarded, and the rest of a template is not, since a feature may change a page's markup."""
