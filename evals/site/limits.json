@@ -9,8 +9,8 @@
       "reason": "Every run scored 100. The score comes from checks that give the same answer for the same page on every run, so a lower score means a check now fails on the page, and the margin is none."
     },
     "largest_contentful_paint": {
-      "limit": 2.0,
-      "reason": "The four evals' medians were 1.33 to 1.45 seconds, and single runs reached 1.59. The limit is the highest median with two fifths more, to a tenth of a second: room for that spread and for a board larger than any yet, which brings more bytes over the slow connection. It is under Google's good threshold of 2.5 seconds."
+      "limit": 2.5,
+      "reason": "Before AndrewGodlewsky/RisingRepos#199 the four evals' medians were 1.33 to 1.45 seconds, and the limit was 2.0. Since then each page holds the site's type, and the root's first paint on a slow phone comes later: the three evals of 22 November 2026 had medians of 2.05, 2.05, and 2.11 seconds, on boards of 264 and 252 rows, and single runs reached 2.20. The owner accepted the later paint and a higher limit (AndrewGodlewsky/RisingRepos#199, carried out as AndrewGodlewsky/RisingRepos#210). The limit is Google's good threshold of 2.5 seconds, and is set at that line and not past it: the earlier method, the highest median with two fifths more, gives 3.0. It leaves 0.39 seconds over the highest median for runner noise and for a larger board, which brings more bytes over the slow connection. A lighter first paint, such as less of the type in the first bytes, could win the time back, and the limit would then come down."
     },
     "cumulative_layout_shift": {
       "limit": 0.01,
@@ -35,8 +35,8 @@
       "reason": "Every run scored 100. The score comes from checks that give the same answer for the same page on every run, so a lower score means a check now fails on the page, and the margin is none."
     },
     "largest_contentful_paint": {
-      "limit": 0.6,
-      "reason": "The four evals' medians were 0.42 to 0.43 seconds, and single runs reached 0.55. The limit is the highest median with two fifths more, to a tenth of a second, as on the phone. It is well under Google's good threshold of 2.5 seconds."
+      "limit": 0.9,
+      "reason": "Before AndrewGodlewsky/RisingRepos#199 the four evals' medians were 0.42 to 0.43 seconds, and the limit was 0.6. Since then each page holds the site's type, and the four evals of 22 and 23 November 2026 had medians of 0.58, 0.59, 0.60, and 0.62 seconds, with single runs reaching 0.66: the paint sat at the old limit, and one eval failed on it by two hundredths of a second with nothing changed in the page. The owner raised the limit on 23 November 2026. It is the highest of those medians with two fifths more, to a tenth of a second, which is how the old limit was set. It is well under Google's good threshold of 2.5 seconds."
     },
     "cumulative_layout_shift": {
       "limit": 0.01,

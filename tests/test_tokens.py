@@ -25,7 +25,9 @@ def token_shaped_files(root: Path) -> list[str]:
         command = ["git", "grep", where, "--files-with-matches", "-z", "--extended-regexp", "-e", TOKEN_SHAPE]
         result = subprocess.run(command, cwd=root, capture_output=True, timeout=60)
         if result.returncode not in (0, 1):  # 1 means that nothing matched
-            raise RuntimeError(f"`git grep {where}` exited {result.returncode}: {result.stderr.decode(errors='replace')}")
+            raise RuntimeError(
+                f"`git grep {where}` exited {result.returncode}: {result.stderr.decode(errors='replace')}"
+            )
         found.update(name for name in result.stdout.decode("utf-8", errors="replace").split("\0") if name)
     return sorted(found)
 

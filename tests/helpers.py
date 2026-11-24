@@ -17,9 +17,9 @@ from sitebuild import environment
 
 ROOT = Path(__file__).resolve().parent.parent
 EXAMPLE = ROOT / "tests" / "fixtures" / "contract-example"
-"""The data contract's example and schemas, laid out as site-data/ is. Every test but one builds from this copy,
-so that the day's data does not change what they check. The one that builds from site-data/ shows that the build
-reads it when no folder is given."""
+"""The data contract's example and schemas, laid out as site-data/ is. A test of one case builds from this copy,
+so that the day's data does not change what it checks. Two build from site-data/: the one that shows that the build
+reads it when no folder is given, and tests/test_published_boards.py, whose checks any row passes whatever its data."""
 
 WORKFLOWS = ROOT / ".github" / "workflows"
 FULL_SHA = re.compile(r"^[\w.-]+/[\w.-]+@[0-9a-f]{40}$")
@@ -135,7 +135,7 @@ class BuildTest(unittest.TestCase):
     def build_data(self, *options: str) -> subprocess.CompletedProcess:
         return build(self.out, "--data", str(self.data), *options)
 
-    def build_pages(self, *options: str) -> dict[str, "Page"]:
+    def build_pages(self, *options: str) -> dict[str, Page]:
         """Build from the copy, expect success, and read every page the build wrote, by its path in the site."""
         result = self.build_data(*options)
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -156,13 +156,38 @@ class BuildTest(unittest.TestCase):
 
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 BLOCK = {
-    "address", "article", "aside", "blockquote", "br", "dd", "div", "dl", "dt", "footer", "h1", "h2", "h3",
-    "h4", "header", "hr", "li", "main", "nav", "ol", "p", "section", "table", "td", "th", "tr", "ul",
+    "address",
+    "article",
+    "aside",
+    "blockquote",
+    "br",
+    "dd",
+    "div",
+    "dl",
+    "dt",
+    "footer",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "header",
+    "hr",
+    "li",
+    "main",
+    "nav",
+    "ol",
+    "p",
+    "section",
+    "table",
+    "td",
+    "th",
+    "tr",
+    "ul",
 }
 
 
 class Element:
-    def __init__(self, tag: str, attrs: dict[str, str | None], parent: "Element | None"):
+    def __init__(self, tag: str, attrs: dict[str, str | None], parent: Element | None):
         self.tag, self.attrs, self.parent = tag, attrs, parent
         self.children: list[Element | str] = []
 
@@ -173,7 +198,7 @@ class Element:
             if isinstance(child, Element):
                 yield from child.elements()
 
-    def all(self, tag: str | None = None) -> list["Element"]:
+    def all(self, tag: str | None = None) -> list[Element]:
         """Every element inside this one, or every one with the tag `tag`, in document order."""
         return [element for element in self.elements() if element is not self and tag in (None, element.tag)]
 

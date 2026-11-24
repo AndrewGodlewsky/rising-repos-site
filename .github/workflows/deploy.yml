@@ -1,7 +1,8 @@
 name: Build and deploy
 
 # Every pull request and every push to main builds the pages. A push to main
-# also uploads them to Cloudflare Pages.
+# also uploads them to Cloudflare Pages. The one push that does neither is one
+# that changes nothing but the feature workflow's notes.
 #
 # The two jobs are kept apart on purpose. The daily data push can change any
 # file in this repository except a workflow, so nothing it can change may run
@@ -18,6 +19,14 @@ name: Build and deploy
 on:
   push:
     branches: [main]
+    # GitHub starts no run for a push when every path it changes matches a
+    # pattern here. The notes of the feature workflow's runs make no page, so
+    # a push of them alone builds and uploads nothing. The one folder is
+    # named, and nothing else, so that no file a page is made from is left out
+    # by mistake. sitework/notes.py is the only thing that pushes there, and
+    # it waits for the run of the newest commit that does change a page,
+    # because a run uploads only while its commit is the head of main.
+    paths-ignore: ["docs/workflow-notes/**"]
   pull_request:
 
 permissions: {}
@@ -54,8 +63,11 @@ jobs:
       - name: Install the locked dependencies
         run: uv sync --locked
 
-      - name: Run the tests
-        run: uv run --locked python -m unittest discover -s tests
+      - name: Run the checks
+        # The lint, the format, the agents' tests, and the owner's tests. The
+        # owner's tests drive the Chrome that the runner's image holds, so no
+        # browser is downloaded.
+        run: uv run --locked python -m sitework check --suite
 
       - name: Build the pages
         # Pages for any upload other than production ask search engines not
@@ -73,6 +85,28 @@ jobs:
           path: dist
           if-no-files-found: error
           retention-days: 7
+
+      - name: Take the pictures
+        # For the owner, who gets them when a feature ships: each kind of page
+        # the pull request altered, at a phone's width and at a desktop's. No
+        # check reads them. The checkout holds the pull request's commit alone,
+        # so the commit it is compared with is fetched first. The repository is
+        # public, so git reads it without a credential.
+        if: github.event_name == 'pull_request'
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git fetch --no-tags --depth=1 origin "$BASE"
+          uv run --locked python -m sitework pictures --base "$BASE" --out pictures
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: github.event_name == 'pull_request'
+        with:
+          name: pictures
+          path: pictures
+          # A pull request that alters no page has no picture to keep.
+          if-no-files-found: ignore
+          retention-days: 30
 
   deploy:
     needs: build

@@ -10,8 +10,25 @@ import unittest
 
 from helpers import BuildTest, read_json
 
-from sitebuild import (BOARD, HISTORY_WINDOW, MINUS, History, board_day_page, day_name, drawing_words, figure,
-                       gain_class, growth, history_file, month_words, per_day, rounded, short_date, times, why)
+from sitebuild import (
+    BOARD,
+    HISTORY_WINDOW,
+    MINUS,
+    History,
+    board_day_page,
+    day_name,
+    drawing_words,
+    figure,
+    gain_class,
+    growth,
+    history_file,
+    month_words,
+    per_day,
+    rounded,
+    short_date,
+    times,
+    why,
+)
 
 NEWEST, OLDER = "2026-11-09", "2026-11-08"
 
@@ -52,13 +69,27 @@ class TheHistoryFile(Boards):
         firsts = [told(entry)["First on a board"] for entry in history["rows"]]
         self.assertEqual(firsts, ["This board", "8 Nov 2026", "8 Nov 2026", "This board", "This board"])
         spoon_knife = history["rows"][1]
-        self.assertEqual(spoon_knife["on"], [[0, 1, "13,250", "+320", "", "26\N{MULTIPLICATION SIGN}"],
-                                             [1, 2, "13,250", "+320", "", "26\N{MULTIPLICATION SIGN}"]])
+        self.assertEqual(
+            spoon_knife["on"],
+            [
+                [0, 1, "13,250", "+320", "", "26\N{MULTIPLICATION SIGN}"],
+                [1, 2, "13,250", "+320", "", "26\N{MULTIPLICATION SIGN}"],
+            ],
+        )
         for row, entry in zip(rows, history["rows"], strict=True):
             with self.subTest(row["full_name"]):
                 pace = row["recent_stars"] / row["recent_days"]
-                self.assertEqual(entry["on"][-1], [1, row["rank"], f"{row['stars']:,}", per_day(row),
-                                                   gain_class(pace).strip(), growth(row)["multiple"] or "\N{EM DASH}"])
+                self.assertEqual(
+                    entry["on"][-1],
+                    [
+                        1,
+                        row["rank"],
+                        f"{row['stars']:,}",
+                        per_day(row),
+                        gain_class(pace).strip(),
+                        growth(row)["multiple"] or "\N{EM DASH}",
+                    ],
+                )
                 self.assertNotIn("Listed before as", told(entry))
 
     def test_each_row_gives_its_facts_its_sum_and_the_words_and_numbers_of_its_drawings_from_the_file(self):
@@ -67,20 +98,37 @@ class TheHistoryFile(Boards):
         the recent stars, and the recent days."""
         self.build_pages()
         rows, entries = self.newest_rows(), self.history()["rows"]
-        self.assertEqual(entries[0]["facts"], [
-            ["Multiple", "None: baseline under 1 a day"], ["Gained in 7 days", "+97"], ["Gained in 30 days", "Not known"],
-            ["Language", "TypeScript"], ["Licence", "MIT"], ["Star band", "200\N{EN DASH}1k"], ["Created", "18 Oct 2026"],
-            ["Last pushed", "9 Nov 2026"], ["First on a board", "This board"], ["On the last 2 boards", "1 of 2"],
-            ["Best rank in them", "1"],
-        ])
-        self.assertEqual(entries[0]["said"], [
-            "+96 above its own trend", "At its own pace: +0.5", "Usual pace, 0.25 a day",
-            "Over the 12 days before, its usual pace was 0.25 stars a day. Over the last 2 days it gained 96, where its "
-            "own pace would have given 0.5: 96 above its own trend.",
-        ])
+        self.assertEqual(
+            entries[0]["facts"],
+            [
+                ["Multiple", "None: baseline under 1 a day"],
+                ["Gained in 7 days", "+97"],
+                ["Gained in 30 days", "Not known"],
+                ["Language", "TypeScript"],
+                ["Licence", "MIT"],
+                ["Star band", "200\N{EN DASH}1k"],
+                ["Created", "18 Oct 2026"],
+                ["Last pushed", "9 Nov 2026"],
+                ["First on a board", "This board"],
+                ["On the last 2 boards", "1 of 2"],
+                ["Best rank in them", "1"],
+            ],
+        )
+        self.assertEqual(
+            entries[0]["said"],
+            [
+                "+96 above its own trend",
+                "At its own pace: +0.5",
+                "Usual pace, 0.25 a day",
+                "Over the 12 days before, its usual pace was 0.25 stars a day. Over the last 2 days it gained 96, "
+                "where its own pace would have given 0.5: 96 above its own trend.",
+            ],
+        )
         for row, entry in zip(rows, entries, strict=True):
             with self.subTest(row["full_name"]):
-                self.assertEqual(entry["pace"], [float(rounded(row["baseline"], 2)), row["recent_stars"], row["recent_days"]])
+                self.assertEqual(
+                    entry["pace"], [float(rounded(row["baseline"], 2)), row["recent_stars"], row["recent_days"]]
+                )
                 self.assertEqual(entry["sum"], why(row)["detail"])
                 self.assertEqual(entry["stars"], row["star_history"])
                 self.assertEqual(len(entry["stars"]), 31)
@@ -88,7 +136,9 @@ class TheHistoryFile(Boards):
                 self.assertEqual(told(entry)["Licence"], row["license"] or "None given")
                 self.assertIn(f"Usual pace, {figure(row['baseline'], 2)} a day", entry["said"])
         # A day left out, or a falling pace, is not above its own trend: it gives what it gained instead.
-        self.assertEqual([entry["said"][0].endswith("above its own trend") for entry in entries], [True, True, False, False, True])
+        self.assertEqual(
+            [entry["said"][0].endswith("above its own trend") for entry in entries], [True, True, False, False, True]
+        )
 
     def test_the_rows_own_pace_cell_and_its_opened_table_write_its_paces_alike(self):
         """The closed row's own-pace cell, which a screen reader reads, gives the usual pace as the drawing does and the
@@ -97,10 +147,12 @@ class TheHistoryFile(Boards):
         page = self.build_pages()[BOARD]
         cells = [[cell for cell in row.all("td") if "pc" in cell.classes()][0].text() for row in page.rows()]
         entries = self.history()["rows"]
-        self.assertEqual(cells, [f"Usual {figure(row['baseline'], 2)} a day, then {per_day(row).lstrip('+')} a day"
-                                 for row in rows])
-        self.assertEqual([entry["said"][2] for entry in entries],
-                         [f"Usual pace, {figure(row['baseline'], 2)} a day" for row in rows])
+        self.assertEqual(
+            cells, [f"Usual {figure(row['baseline'], 2)} a day, then {per_day(row).lstrip('+')} a day" for row in rows]
+        )
+        self.assertEqual(
+            [entry["said"][2] for entry in entries], [f"Usual pace, {figure(row['baseline'], 2)} a day" for row in rows]
+        )
         self.assertEqual([entry["on"][-1][3] for entry in entries], [per_day(row) for row in rows])
 
     def test_a_falling_pace_is_written_with_the_true_minus_and_its_own_pace_takes_no_plus(self):
@@ -118,10 +170,14 @@ class TheHistoryFile(Boards):
     def test_a_row_gives_the_words_of_its_line_of_stars_over_a_month_and_none_without_two_counts(self):
         counts = [None] * 10 + [380, 381] + [None] + list(range(382, 400))
         self.assertEqual(len(counts), 31)
-        self.assertEqual(month_words(counts, NEWEST), [
-            "20 Oct: 380", "9 Nov: 399",
-            "From 380 stars on 20 Oct 2026 to 399 on 9 Nov 2026, with 11 days uncounted.",
-        ])
+        self.assertEqual(
+            month_words(counts, NEWEST),
+            [
+                "20 Oct: 380",
+                "9 Nov: 399",
+                "From 380 stars on 20 Oct 2026 to 399 on 9 Nov 2026, with 11 days uncounted.",
+            ],
+        )
         self.assertEqual(month_words([None] * 30 + [5], NEWEST), None)
         self.assertEqual(month_words(list(range(31)), NEWEST)[2], "From 0 stars on 10 Oct 2026 to 30 on 9 Nov 2026.")
 
@@ -139,9 +195,12 @@ class TheHistoryFile(Boards):
         (AndrewGodlewsky/RisingRepos#199). Of the 125 renames across site-data/'s boards on 21 November 2026, 67 came
         back more than 29 boards after the name before."""
         boards = [
-            {"board_day": f"2026-{10 + (40 - number) // 31:02d}-{(40 - number) % 31 + 1:02d}",
-             "rows": [{"rank": 1, "github_id": 7, "full_name": "o/new" if number < 5 else "o/old", "stars": 500}]
-             if number in (0, 1, 38) else []}
+            {
+                "board_day": f"2026-{10 + (40 - number) // 31:02d}-{(40 - number) % 31 + 1:02d}",
+                "rows": [{"rank": 1, "github_id": 7, "full_name": "o/new" if number < 5 else "o/old", "stars": 500}]
+                if number in (0, 1, 38)
+                else [],
+            }
             for number in range(40)
         ]
         history = History(boards)
@@ -157,8 +216,12 @@ class TheHistoryFile(Boards):
         """So the chart leaves a gap, never a zero. A listing without a score gives a dash for what that board did
         not give, in the second ink."""
         boards = [
-            {"board_day": f"2026-{10 + (40 - number) // 31:02d}-{(40 - number) % 31 + 1:02d}",
-             "rows": [{"rank": 1, "github_id": 7, "full_name": "o/r", "stars": 500 + number}] if number % 2 == 0 else []}
+            {
+                "board_day": f"2026-{10 + (40 - number) // 31:02d}-{(40 - number) % 31 + 1:02d}",
+                "rows": [{"rank": 1, "github_id": 7, "full_name": "o/r", "stars": 500 + number}]
+                if number % 2 == 0
+                else [],
+            }
             for number in range(40)
         ]
         file = history_file(boards, History(boards), 0)
@@ -168,7 +231,9 @@ class TheHistoryFile(Boards):
         (entry,) = file["rows"]
         self.assertEqual([on[0] for on in entry["on"]], list(range(1, 30, 2)))
         self.assertEqual(entry["on"][-1], [29, 1, "500", "\N{EM DASH}", "nil", "\N{EM DASH}"])
-        self.assertEqual(told(entry)["First on a board"], day_name(boards[38]["board_day"]))  # by its id, before the window
+        self.assertEqual(
+            told(entry)["First on a board"], day_name(boards[38]["board_day"])
+        )  # by its id, before the window
         self.assertEqual(told(entry)["On the last 30 boards"], "15 of 30")
         self.assertNotIn("sum", entry)
 
@@ -187,9 +252,9 @@ class New(Boards):
         (means,) = [p for p in page.all("p") if p.attrs.get("id") == "new-means"]
         self.assertEqual(
             means.text(),
-            "3 new. New means under a name on none of the boards before this one, back to the first on 8 November 2026. "
-            "A repository renamed or moved since counts as new, and its opened row still lists the boards it was on "
-            "before.",
+            "3 new. New means under a name on none of the boards before this one, back to the first on 8 November "
+            "2026. A repository renamed or moved since counts as new, and its opened row still lists the boards it "
+            "was on before.",
         )
 
     def test_new_goes_by_name_so_a_renamed_repository_is_new_and_a_name_seen_in_another_case_is_not(self):
@@ -220,7 +285,9 @@ class New(Boards):
                 pages = self.build_pages()
                 page = pages[BOARD]
                 self.assertEqual(self.new_marks(page), [])
-                self.assertEqual([button for button in page.all("button") if button.attrs.get("data-kind") == "new"], [])
+                self.assertEqual(
+                    [button for button in page.all("button") if button.attrs.get("data-kind") == "new"], []
+                )
                 (means,) = [p for p in page.all("p") if p.attrs.get("id") == "new-means"]
                 self.assertTrue(means.text().startswith("What is new on this board cannot be told"), means.text())
                 self.out.rename(self.out.with_name(f"dist-{case}"))

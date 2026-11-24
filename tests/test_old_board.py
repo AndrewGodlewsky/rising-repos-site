@@ -18,7 +18,7 @@ import re
 import shutil
 import subprocess
 import unittest
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from helpers import ROOT, BuildTest, Page, read_json, shipped
 
@@ -30,7 +30,7 @@ RUNNER = ROOT / "tests" / "run_page_script.js"
 NEWEST, OLDER = "2026-11-09", "2026-11-08"
 """The example's two board days, newest first."""
 
-PUBLISHED = datetime(2026, 11, 10, 0, 41, 7, tzinfo=timezone.utc)
+PUBLISHED = datetime(2026, 11, 10, 0, 41, 7, tzinfo=UTC)
 """When the example's newest board was published: the moment every page's script measures from."""
 
 CARRIERS = (BOARD, board_day_page(NEWEST), board_day_page(OLDER), DAYS, BASELINE)
@@ -83,7 +83,9 @@ script (data-js), reads the theme kept in this browser and the browser's own col
 (data-theme), and waits for the page to be parsed to wire its switch, as a board's filters and the Baseline page's
 readout wait too. Nothing else runs before the page is parsed."""
 
-POLICY = "default-src 'none'; style-src 'unsafe-inline'; font-src data:; img-src data:; base-uri 'none'; form-action 'none'"
+POLICY = (
+    "default-src 'none'; style-src 'unsafe-inline'; font-src data:; img-src data:; base-uri 'none'; form-action 'none'"
+)
 """Each page's Content-Security-Policy but for the directive that lets its one script run, and, on a board with rows,
 the one that lets it fetch the board day's history from the site's own address: no request but the page, and its
 type inside it as data: addresses."""
@@ -125,7 +127,9 @@ def run(page: Page, *moments: datetime, **browser) -> list[dict]:
     return run_with(page, [(moment, None) for moment in moments], **browser)
 
 
-def run_with(page: Page, cases: list[tuple[datetime, dict | None]], names=(NOTICE, TITLE, TEXT), **browser) -> list[dict]:
+def run_with(
+    page: Page, cases: list[tuple[datetime, dict | None]], names=(NOTICE, TITLE, TEXT), **browser
+) -> list[dict]:
     """Run the page's script under Node once for each case: the clock's moment, and attributes that replace the
     notice's, as a page that held others would have them, or None to keep the page's own."""
     if NODE is None:
@@ -163,6 +167,31 @@ def withheld(age: str) -> dict:
         TEXT: "It is the board for 9 November 2026. When a week passes with no new board, the site stops showing its "
         "boards, so that an old ranking is not taken for a current one.",
     }
+
+
+def assert_one_script_of_the_sites_own_parts(test: unittest.TestCase, page: Page, parts: tuple[str, ...]) -> None:
+    """The page carries one script, written in it, whose text is `parts`, each a part of the site's own script as the
+    build writes it, in that order, and nothing more. `ThePolicy` holds this of the example's pages, and
+    tests/test_published_boards.py of every page built from site-data/, as it holds the two checks below."""
+    test.assertEqual(len(page.all("script")), 1)
+    test.assertEqual(page.one("script").attrs, {})  # inline, so it requests nothing
+    expected = "".join(shipped(part) for part in parts)
+    test.assertEqual(script_of(page), expected)
+
+
+def assert_script_allowed(test: unittest.TestCase, page: Page) -> None:
+    """The policy's `script-src` names one source: the SHA-256 of the exact text of the page's one script."""
+    digest = base64.b64encode(hashlib.sha256(script_of(page).encode("utf-8")).digest()).decode("ascii")
+    test.assertEqual(page.directives()["script-src"], [f"'sha256-{digest}'"])
+
+
+def assert_policy_is_otherwise_as_it_was(test: unittest.TestCase, page: Page, *, fetches: bool) -> None:
+    """The page's policy is `POLICY` but for the directive that lets its script run and, only where `fetches` says
+    the page may fetch from the site's own address, the one that lets it."""
+    policy = page.policy()
+    test.assertEqual(" connect-src 'self';" in policy, fetches)
+    test.assertEqual(re.sub(r" (script|connect)-src [^;]*;", "", policy), POLICY)
+    test.assertTrue(policy.startswith("default-src 'none'; script-src 'sha256-"), policy)
 
 
 class TheNotice(BuildTest):
@@ -222,7 +251,7 @@ class TheNotice(BuildTest):
         for path in CARRIERS:
             page = self.pages[path]
             outcomes = run(page, *(PUBLISHED + age for age in cases))
-            for outcome, words in zip(outcomes, cases.values()):
+            for outcome, words in zip(outcomes, cases.values(), strict=True):
                 with self.subTest(path, age=words):
                     self.assertNotice(outcome, stale(words), hides_boards=False)
 
@@ -231,7 +260,7 @@ class TheNotice(BuildTest):
         for path in CARRIERS:
             page = self.pages[path]
             outcomes = run(page, *(PUBLISHED + age for age in cases))
-            for outcome, words in zip(outcomes, cases.values()):
+            for outcome, words in zip(outcomes, cases.values(), strict=True):
                 with self.subTest(path, age=words):
                     self.assertNotice(outcome, withheld(words), hides_boards=True)
 
@@ -306,7 +335,9 @@ class TheNotice(BuildTest):
         for path in CARRIERS:
             with self.subTest(path):
                 text = script_of(self.pages[path])
-                self.assertNotRegex(text, r"innerHTML|outerHTML|insertAdjacentHTML|document\.write|cookie|sessionStorage|eval\(")
+                self.assertNotRegex(
+                    text, r"innerHTML|outerHTML|insertAdjacentHTML|document\.write|cookie|sessionStorage|eval\("
+                )
                 # It keeps one thing, the reader's theme: every call to localStorage names that key and no other.
                 self.assertEqual(re.findall(r"localStorage\.\w+\(\s*([^,)]*)", text), ['"theme"'] * 3)
 
@@ -354,7 +385,9 @@ class TheTheme(BuildTest):
                 pressed = self.opened(BOARD, dark=dark, ready=True, clicks=["theme"])
                 self.assertEqual(pressed["stored"], "light" if dark else "dark")
                 self.assertEqual(pressed["root"]["data-theme"], "light" if dark else "dark")
-                self.assertEqual(pressed["elements"]["theme"]["attributes"]["aria-pressed"], "false" if dark else "true")
+                self.assertEqual(
+                    pressed["elements"]["theme"]["attributes"]["aria-pressed"], "false" if dark else "true"
+                )
 
     def test_a_press_back_to_the_browsers_own_setting_clears_the_kept_choice(self):
         for dark in (False, True):
@@ -382,36 +415,23 @@ class ThePolicy(BuildTest):
         super().setUp()
         self.pages = self.build_pages()
 
-    def assertScriptAllowed(self, page: Page):
-        """The policy's `script-src` names one source: the SHA-256 of the exact text of the page's one script."""
-        digest = base64.b64encode(hashlib.sha256(script_of(page).encode("utf-8")).digest()).decode("ascii")
-        self.assertEqual(page.directives()["script-src"], [f"'sha256-{digest}'"])
-
     def test_each_page_carries_one_script_the_sites_own_parts_that_it_uses_and_no_other(self):
         """AndrewGodlewsky/RisingRepos#199 made the theme, the notice, and a board's filters one script a page, each
         page carrying only the parts it uses, in the order site.js includes them."""
         self.assertEqual(set(PARTS), set(self.pages))
         for path, parts in PARTS.items():
             with self.subTest(path):
-                page = self.pages[path]
-                self.assertEqual(len(page.all("script")), 1)
-                self.assertEqual(page.one("script").attrs, {})  # inline, so it requests nothing
-                expected = "".join(shipped(part) for part in parts)
-                self.assertEqual(script_of(page), expected)
+                assert_one_script_of_the_sites_own_parts(self, self.pages[path], parts)
 
     def test_the_policy_lets_the_script_run_by_the_hash_of_its_exact_text(self):
         for path, page in self.pages.items():
             with self.subTest(path):
-                self.assertScriptAllowed(page)
+                assert_script_allowed(self, page)
 
     def test_the_policy_is_otherwise_as_it_was_and_only_a_board_with_rows_may_fetch_from_its_own_address(self):
         for path, page in self.pages.items():
             with self.subTest(path):
-                policy = page.policy()
-                fetches = "filters.js" in PARTS[path]
-                self.assertEqual(" connect-src 'self';" in policy, fetches)
-                self.assertEqual(re.sub(r" (script|connect)-src [^;]*;", "", policy), POLICY)
-                self.assertTrue(policy.startswith("default-src 'none'; script-src 'sha256-"), policy)
+                assert_policy_is_otherwise_as_it_was(self, page, fetches="filters.js" in PARTS[path])
 
     def test_the_not_found_page_and_how_it_works_carry_the_theme_alone_and_no_notice(self):
         """The notice hides what an old board's page holds, and neither page holds a board."""
@@ -431,7 +451,7 @@ class ThePolicy(BuildTest):
         self.assertNotEqual(script_of(changed), script_of(page))
         self.assertEqual(changed.policy(), page.policy())
         with self.assertRaises(AssertionError):
-            self.assertScriptAllowed(changed)
+            assert_script_allowed(self, changed)
 
 
 class WithoutScripts(BuildTest):
@@ -454,7 +474,9 @@ class WithoutScripts(BuildTest):
         page = self.pages[DAYS]
         days = [entry["board_day"] for entry in read_json(self.index)["board_days"]]
         self.assertEqual(
-            sorted(link.attrs["href"] for link in page.one("main").all("a") if link.attrs["href"].startswith("/days/2")),
+            sorted(
+                link.attrs["href"] for link in page.one("main").all("a") if link.attrs["href"].startswith("/days/2")
+            ),
             sorted(f"/days/{day}/" for day in days),
         )
         self.assertNoNotice(page)
@@ -481,8 +503,10 @@ class WithoutScripts(BuildTest):
                 # The list's days, a board's rows, the Baseline page's chart, or, for the example's earlier board,
                 # which has none, its message.
                 held = (
-                    [link for link in main.all("a") if link.attrs["href"].startswith("/days/2")] if path == DAYS
-                    else page.all("figure") if path == BASELINE
+                    [link for link in main.all("a") if link.attrs["href"].startswith("/days/2")]
+                    if path == DAYS
+                    else page.all("figure")
+                    if path == BASELINE
                     else page.rows() or [element for element in main.all("div") if "message" in element.classes()]
                 )
                 self.assertTrue(held)
@@ -503,8 +527,10 @@ class WithoutScripts(BuildTest):
                 order = page.all()
                 notice, site = by_id(page, NOTICE), page.one("header")
                 self.assertEqual(site.classes(), ["site"])
-                after_site = order[order.index(site) + len(site.all()) + 1:]  # what follows the bar and all it holds
-                self.assertIs([element for element in after_site if element.tag in ("p", "nav", "main", "h1")][0], notice)
+                after_site = order[order.index(site) + len(site.all()) + 1 :]  # what follows the bar and all it holds
+                self.assertIs(
+                    [element for element in after_site if element.tag in ("p", "nav", "main", "h1")][0], notice
+                )
                 (strip,) = [nav for nav in page.all("nav") if "strip" in nav.classes()]
                 for later in (page.one("h1"), strip, page.one("main")):
                     self.assertLess(order.index(notice), order.index(later))

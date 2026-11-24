@@ -11,8 +11,15 @@ dependencies = [
 ]
 
 [dependency-groups]
-# The tests read the workflows, which are YAML.
-dev = ["pyyaml>=6.0.3"]
+dev = [
+    # Drives the owner's tests through the Chrome the machine already has, so
+    # no browser is downloaded.
+    "playwright>=1.64.1",
+    # The tests read the workflows, which are YAML.
+    "pyyaml>=6.0.3",
+    # The lint and the format. One version, because another formats differently.
+    "ruff==0.17.3",
+]
 
 [tool.uv]
 # The generator is run from the checkout and is not installed as a package.
@@ -21,3 +28,14 @@ package = false
 # 14 days old when it is checked. Move it forward on purpose, then check the new
 # lock file before installing from it (README.md says how).
 exclude-newer = "2026-10-29T00:00:00Z"
+
+[tool.ruff]
+# The line length and the rule families are RisingRepos's, so that the two
+# repositories read alike.
+line-length = 120
+
+[tool.ruff.lint]
+# B and F find faults. E, I, UP, and W keep the code uniform. No family that
+# sets a ceiling on a function's or a file's size is on: how code is shaped is
+# guided, and not ruled.
+select = ["B", "E", "F", "I", "UP", "W"]

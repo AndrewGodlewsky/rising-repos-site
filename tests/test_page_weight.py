@@ -87,6 +87,32 @@ def page_weight(out: Path, path: str, page: Page) -> int:
     )
 
 
+def assert_no_script_but_the_sites_own(test: unittest.TestCase, page: Page) -> None:
+    """The page carries at most one script, written in it, and nothing else that runs one: no handler in an attribute
+    and no javascript: address. Its policy forbids every script but that one, which it names by its hash. `PageWeight`
+    holds this of the example's pages, and tests/test_published_boards.py of every page built from site-data/."""
+    test.assertLessEqual(len(page.all("script")), 1)
+    test.assertEqual([script.attrs for script in page.all("script")], [{}] * len(page.all("script")))
+    attributes = [(name, value or "") for element in page.all() for name, value in element.attrs.items()]
+    test.assertEqual([name for name, _ in attributes if name.startswith("on")], [])
+    test.assertEqual([value for _, value in attributes if value.strip().lower().startswith("javascript:")], [])
+    test.assertTrue(page.policy().startswith("default-src 'none';"), page.policy())
+    if page.all("script"):
+        (source,) = page.directives()["script-src"]  # one source: the script's hash
+        test.assertRegex(source, r"^'sha256-[A-Za-z0-9+/]{43}='$")
+    else:
+        test.assertNotIn("script-src", page.directives())
+
+
+def assert_no_notes_on_the_stylesheet_or_the_script(test: unittest.TestCase, page: Page) -> None:
+    """The page's stylesheet and its script carry no comment. `PageWeight` holds this of the example's pages, and
+    tests/test_published_boards.py of every page built from site-data/."""
+    (style,) = page.all("style")
+    test.assertNotIn("/*", "".join(style.children))
+    for script in page.all("script"):
+        test.assertNotRegex("".join(script.children), r"(?m)^\s*//|\s//\s")  # a note on its own line or after code
+
+
 LONGEST_NUMBERS = {
     "baseline": -3.4166666666666665,
     "divided_by": 1.0,
@@ -213,27 +239,14 @@ class PageWeight(BuildTest):
         tests/test_old_board.py checks the hash, and which parts of it each page carries."""
         for path, page in self.build_pages().items():
             with self.subTest(path):
-                self.assertLessEqual(len(page.all("script")), 1)
-                self.assertEqual([script.attrs for script in page.all("script")], [{}] * len(page.all("script")))
-                attributes = [(name, value or "") for element in page.all() for name, value in element.attrs.items()]
-                self.assertEqual([name for name, _ in attributes if name.startswith("on")], [])
-                self.assertEqual([value for _, value in attributes if value.strip().lower().startswith("javascript:")], [])
-                self.assertTrue(page.policy().startswith("default-src 'none';"), page.policy())
-                if page.all("script"):
-                    (source,) = page.directives()["script-src"]  # one source: the script's hash
-                    self.assertRegex(source, r"^'sha256-[A-Za-z0-9+/]{43}='$")
-                else:
-                    self.assertNotIn("script-src", page.directives())
+                assert_no_script_but_the_sites_own(self, page)
 
     def test_no_page_carries_the_notes_on_its_stylesheet_or_its_script(self):
         """They are Jinja comments, which the build leaves out (AndrewGodlewsky/RisingRepos#199): as CSS and JS
         comments they took 9,531 bytes of a board's page, and 4,044 of the long board's root gzipped below."""
         for path, page in self.build_pages().items():
             with self.subTest(path):
-                (style,) = page.all("style")
-                self.assertNotIn("/*", "".join(style.children))
-                for script in page.all("script"):
-                    self.assertNotRegex("".join(script.children), r"(?m)^\s*//|\s//\s")  # a note on its own line or after code
+                assert_no_notes_on_the_stylesheet_or_the_script(self, page)
                 self.assertNotIn("{#", page.html)
 
     def test_no_page_requests_anything_from_another_site(self):
@@ -260,7 +273,9 @@ class PageWeight(BuildTest):
         """AndrewGodlewsky/RisingRepos#122 and #199. gzip at level 6 packs it a little less tightly than the server
         does. The budget is above the eval's own limit, which a root of the real board meets."""
         limits = read_json(EVAL_LIMITS)
-        self.assertGreaterEqual(WIRE_BUDGET, max(limits[profile]["transfer_size"]["limit"] for profile in ("phone", "desktop")))
+        self.assertGreaterEqual(
+            WIRE_BUDGET, max(limits[profile]["transfer_size"]["limit"] for profile in ("phone", "desktop"))
+        )
         board = read_json(self.board_file())
         self.write_board({**board, "rows": typical_rows(WIRE_ROWS)})
         pages = self.build_pages()
@@ -281,7 +296,12 @@ class TheChecks(unittest.TestCase):
         )
         self.assertEqual(
             [address for address in requests(page) if not on_this_site(address)],
-            ["https://fonts.example", "https://fonts.example/a.woff2", "https://cdn.example/x.css", "https://img.example/a.png"],
+            [
+                "https://fonts.example",
+                "https://fonts.example/a.woff2",
+                "https://cdn.example/x.css",
+                "https://img.example/a.png",
+            ],
         )
 
     def test_the_size_counts_each_file_on_this_site_that_a_page_loads(self):

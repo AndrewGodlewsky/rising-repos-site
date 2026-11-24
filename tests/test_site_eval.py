@@ -23,8 +23,9 @@ from datetime import UTC, datetime
 from pathlib import Path
 from unittest import mock
 
-from evals.site import measure
 from helpers import EXAMPLE, ROOT, build, read_json
+
+from evals.site import measure
 from sitebuild import BOARD, contract
 
 FAKE = ROOT / "tests" / "fake_lighthouse.py"
@@ -171,7 +172,7 @@ class EvalTest(unittest.TestCase):
             return []
         return [json.loads(line) for line in self.calls.read_text(encoding="utf-8").splitlines()]
 
-    def evaluate(self, **options) -> "measure.Outcome":
+    def evaluate(self, **options) -> measure.Outcome:
         settings = {
             "lighthouse": [sys.executable, str(FAKE)],
             "out": self.folder / "out",
@@ -184,7 +185,7 @@ class EvalTest(unittest.TestCase):
         }
         return measure.evaluate(**{**settings, **options})
 
-    def row(self, outcome: "measure.Outcome", name: str, profile: str = "phone") -> str:
+    def row(self, outcome: measure.Outcome, name: str, profile: str = "phone") -> str:
         """The summary's table row for the measure called `name` on `profile`, for the first page."""
         heading = f"### `/` on {'a phone' if profile == 'phone' else 'a desktop'}"
         section = outcome.summary.split(heading, 1)[1].split("###", 1)[0]
@@ -366,7 +367,7 @@ class TheRequestsCounted(EvalTest):
         self.assertNotIn("Not counted", outcome.summary)
         return outcome.results["pages"]["/"]["phone"]["requests"]["median"]
 
-    def section(self, outcome: "measure.Outcome", profile: str) -> str:
+    def section(self, outcome: measure.Outcome, profile: str) -> str:
         heading = f"### `/` on {'a phone' if profile == 'phone' else 'a desktop'}"
         return outcome.summary.split(heading, 1)[1].split("###", 1)[0]
 
@@ -585,7 +586,7 @@ class TheRequestsCounted(EvalTest):
 
 
 class AMeasurementThatCouldNotBeMade(EvalTest):
-    def assertCouldNotMeasure(self, outcome: "measure.Outcome", reason: str, profile: str = "Phone"):
+    def assertCouldNotMeasure(self, outcome: measure.Outcome, reason: str, profile: str = "Phone"):
         self.assertFalse(outcome.passed)
         self.assertIn(f"{profile}, `/`: could not be measured: {reason}", outcome.problems)
         heading = f"### `/` on {'a phone' if profile == 'Phone' else 'a desktop'}"

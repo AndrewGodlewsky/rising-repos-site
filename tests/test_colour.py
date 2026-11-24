@@ -69,14 +69,18 @@ def rgb(colour: str) -> tuple[tuple[float, float, float], float]:
 def painted(top: str, under: str) -> str:
     """The colour the browser paints for `top` over the opaque colour `under`."""
     (channels, alpha), (base, _) = rgb(top), rgb(under)
-    return "#" + "".join(f"{round(alpha * one + (1 - alpha) * two):02x}" for one, two in zip(channels, base))
+    return "#" + "".join(
+        f"{round(alpha * one + (1 - alpha) * two):02x}" for one, two in zip(channels, base, strict=True)
+    )
 
 
 def luminance(colour: str) -> float:
     """WCAG 2's relative luminance of an opaque colour."""
     channels, alpha = rgb(colour)
     assert alpha == 1.0, colour
-    red, green, blue = [c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4 for c in (v / 255 for v in channels)]
+    red, green, blue = [
+        c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4 for c in (v / 255 for v in channels)
+    ]
     return 0.2126 * red + 0.7152 * green + 0.0722 * blue
 
 
@@ -102,7 +106,11 @@ class TheColours(BuildTest):
         light = dict(TOKEN.findall(style.split("@media (prefers-color-scheme: dark)")[0]))
         by_setting = re.search(r':root:not\(\[data-theme="light"\]\) \{([^}]*)\}', style).group(1)
         by_choice = re.search(r':root\[data-theme="dark"\] \{([^}]*)\}', style).group(1)
-        return {"light": light, "dark": {**light, **dict(TOKEN.findall(by_setting))}, "chosen dark": {**light, **dict(TOKEN.findall(by_choice))}}
+        return {
+            "light": light,
+            "dark": {**light, **dict(TOKEN.findall(by_setting))},
+            "chosen dark": {**light, **dict(TOKEN.findall(by_choice))},
+        }
 
     def colour(self, tokens: dict[str, str], name: str) -> str:
         """A background as the browser paints it: a token, a tint over another background, or a hovered row."""
@@ -162,7 +170,10 @@ class TheColours(BuildTest):
         (AndrewGodlewsky/RisingRepos#199). A neutral is warm or cool by a few points, so a colour counts as a hue once
         its channels lie more than 24 apart."""
         greens = {"--accent", "--accent-soft", "--gain-soft", "--shade-3", "--shade-4"}
-        faint = {"--shade-1", "--shade-2"}  # the ramp's two lightest steps, each a faint green or a neutral by this test
+        faint = {
+            "--shade-1",
+            "--shade-2",
+        }  # the ramp's two lightest steps, each a faint green or a neutral by this test
         ambers = {"--new", "--new-soft"}
         reds = {"--loss"}
         for path, style in self.styles.items():

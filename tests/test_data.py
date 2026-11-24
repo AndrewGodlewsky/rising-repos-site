@@ -35,7 +35,13 @@ REDESIGN_FIELDS = ("star_bands",)
 """The field of a board day that AndrewGodlewsky/RisingRepos#196 added for the redesign (#192 there)."""
 
 REDESIGN_ROW_FIELDS = (
-    "star_history", "gained_1_day", "gained_7_days", "gained_30_days", "license", "created_at", "pushed_at",
+    "star_history",
+    "gained_1_day",
+    "gained_7_days",
+    "gained_30_days",
+    "license",
+    "created_at",
+    "pushed_at",
 )
 """The fields of a row that AndrewGodlewsky/RisingRepos#193, #194, #195, and #197 added for the redesign."""
 
@@ -115,7 +121,9 @@ class TheDataFiles(BuildTest):
         self.assertNotIn("star_history", self.board_file().read_text(encoding="utf-8"))
         without = {path: page.html for path, page in self.build_pages().items()}
         self.assertEqual(set(without), set(with_them))
-        self.assertEqual({path for path in without if without[path] != with_them[path]}, {BOARD, "days/2026-11-09/index.html"})
+        self.assertEqual(
+            {path for path in without if without[path] != with_them[path]}, {BOARD, "days/2026-11-09/index.html"}
+        )
         unread = ("stars", "month")
         untold = {"Gained in 7 days", "Gained in 30 days", "Licence", "Star band", "Created", "Last pushed"}
 
@@ -123,7 +131,10 @@ class TheDataFiles(BuildTest):
             kept = {key: value for key, value in entry.items() if key not in unread}
             return {**kept, "facts": [fact for fact in entry["facts"] if fact[0] not in untold]}
 
-        self.assertEqual(read_json(history), {**history_with_them, "rows": [without_them(entry) for entry in history_with_them["rows"]]})
+        self.assertEqual(
+            read_json(history),
+            {**history_with_them, "rows": [without_them(entry) for entry in history_with_them["rows"]]},
+        )
         self.assertTrue(all("stars" in entry for entry in history_with_them["rows"]))
         self.assertEqual({fact[0] for entry in history_with_them["rows"] for fact in entry["facts"]} & untold, untold)
 
@@ -146,7 +157,9 @@ class TheDataFiles(BuildTest):
 
     def test_an_index_that_lists_a_day_that_is_not_a_date_fails_the_build(self):
         index = read_json(self.index)
-        write_json(self.index, {**index, "board_days": [*index["board_days"], {"board_day": "2026-02-30", "row_count": 0}]})
+        write_json(
+            self.index, {**index, "board_days": [*index["board_days"], {"board_day": "2026-02-30", "row_count": 0}]}
+        )
         self.assertBuildFails(str(self.index), "'2026-02-30', which is not a date")
 
     def test_an_index_whose_row_count_differs_from_its_board_days_file_fails_the_build_and_names_both(self):
@@ -154,7 +167,10 @@ class TheDataFiles(BuildTest):
         index = read_json(self.index)
         for day, wrong, held in (("2026-11-08", 3, 0), ("2026-11-09", 4, 5)):
             with self.subTest(day):
-                entries = [{**entry, "row_count": wrong} if entry["board_day"] == day else entry for entry in index["board_days"]]
+                entries = [
+                    {**entry, "row_count": wrong} if entry["board_day"] == day else entry
+                    for entry in index["board_days"]
+                ]
                 write_json(self.index, {**index, "board_days": entries})
                 stderr = self.assertBuildFails(str(self.index), day)
                 self.assertIn(f"gives {day} {wrong} rows, and its file holds {held}", stderr)
@@ -168,7 +184,9 @@ class TheDataFiles(BuildTest):
         entry["required"].remove("row_count")
         write_json(self.index_schema, schema)
         index = read_json(self.index)
-        write_json(self.index, {**index, "board_days": [{"board_day": entry["board_day"]} for entry in index["board_days"]]})
+        write_json(
+            self.index, {**index, "board_days": [{"board_day": entry["board_day"]} for entry in index["board_days"]]}
+        )
         self.assertBuildFails(str(self.index), "lists 2026-11-09 without its row_count")
 
     def test_the_example_index_gives_each_board_day_the_rows_its_file_holds_and_builds(self):

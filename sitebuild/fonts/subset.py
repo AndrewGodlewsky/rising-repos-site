@@ -61,8 +61,10 @@ KEPT = {0, 5, 13, 14}
 DESCRIPTION = 10
 LICENCE = 13
 # Record 13 as IBM writes it in its own release files (github.com/IBM/plex), restored where the sources lacked it.
-LICENCE_TEXT = ("This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available "
-                "with a FAQ at: http://scripts.sil.org/OFL")
+LICENCE_TEXT = (
+    "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available "
+    "with a FAQ at: http://scripts.sil.org/OFL"
+)
 OLD = ("Plex", "IBM")
 
 
@@ -79,8 +81,12 @@ def rename(font: TTFont, old: str, new: str) -> None:
     """Give the font the family `new` in place of `old`, as the module's docstring says."""
     table = font["name"]
     # Kept besides: the records from 256 on, which STAT names its axes and values by ("Weight", "Regular", ...).
-    table.names = [record for record in table.names if record.nameID in RENAMED | KEPT or
-                   (record.nameID >= 256 and not any(word in record.toUnicode() for word in OLD))]
+    table.names = [
+        record
+        for record in table.names
+        if record.nameID in RENAMED | KEPT
+        or (record.nameID >= 256 and not any(word in record.toUnicode() for word in OLD))
+    ]
     if not table.getName(LICENCE, 3, 1, 0x409):  # the Fontsource cuts dropped it: IBM's own words, from its files
         table.setName(LICENCE_TEXT, LICENCE, 3, 1, 0x409)
     postscript = new.replace(" ", "")
@@ -93,9 +99,14 @@ def rename(font: TTFont, old: str, new: str) -> None:
             text = f"{version:.3f};RisingRepos;{table.getDebugName(6).replace(old.replace(' ', ''), postscript)}"
         record.string = text
     font["OS/2"].achVendID = "NONE"  # IBM's registered vendor code ("IBM "): the modified font is not IBM's
-    table.setName(f"A modified version of {old} by IBM Corp., under the SIL Open Font License 1.1: cut to the "
-                  f"characters of risingrepos.com, unhinted, and renamed, as the licence asks of a modified version.",
-                  DESCRIPTION, 3, 1, 0x409)
+    table.setName(
+        f"A modified version of {old} by IBM Corp., under the SIL Open Font License 1.1: cut to the "
+        f"characters of risingrepos.com, unhinted, and renamed, as the licence asks of a modified version.",
+        DESCRIPTION,
+        3,
+        1,
+        0x409,
+    )
     for record in table.names:
         if record.nameID in RENAMED and any(word in record.toUnicode() for word in OLD):
             raise SystemExit(f"name record {record.nameID} still says {record.toUnicode()!r}")
@@ -148,4 +159,7 @@ if __name__ == "__main__":
     if sys.argv[1:2] == ["--rename-sources"]:  # python sitebuild/fonts/subset.py --rename-sources <folder as they came>
         rename_sources(Path(sys.argv[2]), HERE / "source")
     else:  # optional: another source folder and output folder, for comparing builds
-        main(Path(sys.argv[1]) if len(sys.argv) > 1 else HERE / "source", Path(sys.argv[2]) if len(sys.argv) > 2 else HERE)
+        main(
+            Path(sys.argv[1]) if len(sys.argv) > 1 else HERE / "source",
+            Path(sys.argv[2]) if len(sys.argv) > 2 else HERE,
+        )
