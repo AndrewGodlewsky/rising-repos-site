@@ -170,6 +170,17 @@ the build command and what it writes, and not through the browser.
 Sentence 33 has no test here. The site eval is that test: it measures the
 live site after each deploy, and `evals/site/` holds it and its limits.
 
+### An opened row, on a phone (`test_an_opened_row_on_a_phone.py`)
+
+34. On a phone, each board an opened row was on gives every figure under its
+    heading, and none is cut.
+    `test_on_a_phone_each_board_an_opened_row_was_on_gives_every_figure_under_its_heading_and_none_is_cut`
+
+Sentence 34 came with #27, and reads a live site as it reads the made-up one.
+A change adds lines to this file and takes none away, so the counts under
+"How to run them" are as they were: with sentence 34 a run has 33 tests, and
+24 of them read a live site.
+
 ## How to run them
 
 From the repository, with the pinned dependencies in place (`uv sync

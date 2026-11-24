@@ -166,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (text !== undefined) element.textContent = text;
     return element;
   }
+  function role(element, name) { element.setAttribute("role", name); return element; }
   var SVG = "http://www.w3.org/2000/svg";
   {# A figure of the opened row, named by its caption through aria-labelledby, so that its name does not rest on a
      browser taking it from the figcaption. #}
@@ -321,24 +322,30 @@ document.addEventListener("DOMContentLoaded", function () {
     run.appendChild(axis);
     opened.appendChild(run);
 
-    var list = make("table", "more-days");
+    {# The boards it was on, newest first. On a phone the stylesheet stacks each board day, and draws over each
+       figure its column's heading, which its cell carries in data-h (#27). So the table and each of its parts names
+       its role, as the board's own do: some browsers stop telling assistive technology that a table whose display
+       changes is a table. #}
+    var list = role(make("table", "more-days"), "table");
     list.appendChild(make("caption", "part-title", "The boards it was on"));
-    var head = list.createTHead().insertRow();
-    ["Board day", "Rank", "Total stars", "Stars a day", "Multiple"].forEach(function (name) {
-      var th = make("th", "", name); th.scope = "col"; head.appendChild(th);
+    var names = ["Board day", "Rank", "Total stars", "Stars a day", "Multiple"];
+    var head = role(role(list.createTHead(), "rowgroup").insertRow(), "row");
+    names.forEach(function (name) {
+      var th = role(make("th", "", name), "columnheader"); th.scope = "col"; head.appendChild(th);
     });
-    var rowsBody = list.createTBody();
+    var rowsBody = role(list.createTBody(), "rowgroup");
     on.slice().reverse().forEach(function (e) {
-      var tr = rowsBody.insertRow();
-      var th = make("th"); th.scope = "row";
+      var tr = role(rowsBody.insertRow(), "row");
+      var th = role(make("th"), "rowheader"); th.scope = "row";
       var link = make("a", "", dates[e[0]][1]);
       link.href = "/days/" + days[e[0]] + "/";
       th.appendChild(link);
       tr.appendChild(th);
-      tr.appendChild(make("td", "num", String(e[1])));
-      tr.appendChild(make("td", "num", e[2]));
-      tr.appendChild(make("td", "num gain " + e[4], e[3]));
-      tr.appendChild(make("td", "num", e[5]));
+      var figures = [make("td", "num", String(e[1])), make("td", "num", e[2]), make("td", "num gain " + e[4], e[3]), make("td", "num", e[5])];
+      figures.forEach(function (td, at) {
+        td.setAttribute("data-h", names[at + 1]);
+        tr.appendChild(role(td, "cell"));
+      });
     });
     var wrap = make("div", "more-days-wrap");
     wrap.appendChild(list);
