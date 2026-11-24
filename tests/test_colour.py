@@ -143,8 +143,8 @@ class TheColours(BuildTest):
                         self.assertGreaterEqual(contrast(tokens[line], tokens[background]), 3.0)
             with self.subTest(path, ring=True):
                 self.assertIn(
-                    "a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible "
-                    "{ outline: 2px solid var(--accent);",
+                    "a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible, "
+                    ".plot svg:focus-visible { outline: 2px solid var(--accent);",
                     style,
                 )
                 self.assertRegex(style, r'input\[type="search"\]:focus-visible \{ outline: 2px solid var\(--accent\);')

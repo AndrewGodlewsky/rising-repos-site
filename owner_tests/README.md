@@ -190,6 +190,19 @@ A change adds lines to this file and takes none away, so the counts under
 Sentence 35 came with #28, and reads a live site as it reads the made-up one.
 With it a run has 34 tests, and 25 of them read a live site.
 
+### Choosing a dot of Baseline's chart (`test_choosing_a_dot_of_baseline.py`)
+
+36. On a phone, a tap on a dot of Baseline's chart names its repository, with
+    its rank and figures as the table gives them, until a tap away from every
+    dot.
+    `test_on_a_phone_a_tap_on_a_dot_of_baselines_chart_names_its_repository_as_the_table_does_until_a_tap_away`
+37. Typing part of a repository's name in Baseline's "Find a repository"
+    names the first by rank whose name holds it, and says so when none does.
+    `test_typing_part_of_a_repositorys_name_in_baselines_find_field_names_the_first_by_rank_that_holds_it`
+
+Sentences 36 and 37 came with #29, and read a live site as they read the
+made-up one. With them a run has 36 tests, and 27 of them read a live site.
+
 ## How to run them
 
 From the repository, with the pinned dependencies in place (`uv sync
