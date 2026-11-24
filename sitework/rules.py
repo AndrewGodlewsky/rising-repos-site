@@ -10,6 +10,13 @@ BLOCKED_ON_DATA = "blocked-on-data"
 """The labels. The idea agent sets the first and the owner's approval the second. The workflow sets and clears the
 other three, and never applies `approved`."""
 
+FEEDBACK = "workflow feedback"
+"""The label of an issue that holds what a run taught: how the run could have cost less, or what went wrong in
+the workflow itself. `sitework feedback` files such an issue and puts this label on it. It is a label of its own,
+and not one of the five above, so that the owner and the agent that mends the workflow can list what the runs
+taught apart from the ideas for the site. `pickup` takes up only an issue that carries both `site-idea` and
+`approved`, and a feedback issue is given neither, so it is never picked up as a feature."""
+
 STAGES = ("shape", "build", "check", "review", "ship", "confirm", "mend")
 """The stages of a run that an issue can stop at, in the order a run meets them (docs/workflow-plan.md, section
 14). `stop` takes one of them, and the digest tells a run's stages apart by them. A run meets `mend` only when
@@ -30,9 +37,6 @@ OWNERS_TESTS = "owner_tests/"
 """The owner's tests. A change may add to them, which is how the reviewer adds a test for something new, and may
 change nothing that is there. `sitework.guard` holds a file of Python there by what it means, since a line that is
 added can switch a test off, and any other file by its lines."""
-
-NOTES = "docs/workflow-notes/"
-"""The look back's notes. A push to main that changes nothing else deploys nothing."""
 
 ALLOWED = "Allowed:"
 """A line of the owner's own comment on an issue that begins with this word names the guarded paths the owner
@@ -58,7 +62,6 @@ GUARDED = {
     "the type": ("sitebuild/fonts/**",),
     "the data RisingRepos publishes": ("site-data/**",),
     "the standards and the decision records": ("STANDARDS.md", "docs/adr/**"),
-    "the look back's notes": (NOTES + "**",),
     "the workflow's own scripts and documents": (
         "sitework/**",
         "docs/workflow/**",

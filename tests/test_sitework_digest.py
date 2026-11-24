@@ -24,15 +24,34 @@ CHECKOUT = "C:\\made-up\\checkout"
 SUITE = "uv run --locked python -m unittest discover -s tests"
 
 
-def said(message: str, *blocks: dict, at: str = "2026-11-02T10:00:00.000Z", tokens=(1, 2, 3, 4)) -> dict:
-    """A line of a record: part of the agent's message `message`, with the message's count of tokens."""
+MODEL, EFFORT = "invented-model-5", "high"
+"""The model and the effort a made-up message ran at, unless its test gives others."""
+SMALL = "invented-small-4"
+"""A second model, for a record that ran at more than one."""
+
+
+def said(
+    message: str,
+    *blocks: dict,
+    at: str = "2026-11-02T10:00:00.000Z",
+    tokens=(1, 2, 3, 4),
+    model: str | None = MODEL,
+    effort: str | None = EFFORT,
+) -> dict:
+    """A line of a record: part of the agent's message `message`, with the message's count of tokens, the model
+    that wrote it, and the effort it ran at. With None for either of the last two, the line does not name it."""
     kinds = ("input_tokens", "output_tokens", "cache_creation_input_tokens", "cache_read_input_tokens")
-    return {
+    line = {
         "type": "assistant",
         "timestamp": at,
         "cwd": CHECKOUT,
         "message": {"id": message, "content": list(blocks), "usage": dict(zip(kinds, tokens, strict=True))},
     }
+    if model is not None:
+        line["message"]["model"] = model
+    if effort is not None:
+        line["effort"] = effort
+    return line
 
 
 def call(call_id: str, tool: str, **given) -> dict:
@@ -211,6 +230,93 @@ class TheTokens(RecordTest):
         text = digest.digest([first, reviewer, helper])
         rows = {row[0]: row[-1] for row in self.rows(text, "Tokens by stage")}
         self.assertEqual(rows, {"build": "10", "review": "3", "agent-helper": "4", "Total": "17"})
+
+
+class TheModels(RecordTest):
+    """Which model and which effort each agent of a run ran at, so that the look back can say where a cheaper
+    model or a lower effort would have done."""
+
+    HEADING = "Model and effort"
+
+    def test_the_session_has_a_row_with_its_model_its_effort_and_how_many_messages_ran_at_them(self):
+        text = self.digest(said("a"), said("b"), stage("build"))
+        self.assertEqual(self.rows(text, self.HEADING), [["the session", MODEL, EFFORT, "3"]])
+
+    def test_each_fresh_agent_has_a_row_of_its_own_under_the_name_of_its_file(self):
+        first = self.record("first", said("a", effort="xhigh"))
+        reviewer = self.record("agent-reviewer", said("r1", model=SMALL, effort="low"), said("r2"))
+        helper = self.record("agent-helper", said("h", model=SMALL, effort="low"))
+        self.assertEqual(
+            self.rows(digest.digest([first, reviewer, helper]), self.HEADING),
+            [
+                ["the session", MODEL, "xhigh", "1"],
+                ["agent-reviewer", SMALL, "low", "1"],
+                ["agent-reviewer", MODEL, EFFORT, "1"],
+                ["agent-helper", SMALL, "low", "1"],
+            ],
+        )
+
+    def test_a_record_that_changed_model_or_effort_part_way_has_a_row_for_each_pair(self):
+        # The rows are in the order the record met the pairs, and a pair it came back to has one row.
+        text = self.digest(
+            said("a", effort="xhigh"),
+            said("b", effort="xhigh"),
+            said("c", model=SMALL, effort="xhigh"),
+            said("d", effort="medium"),
+            said("e", effort="xhigh"),
+        )
+        self.assertEqual(
+            self.rows(text, self.HEADING),
+            [
+                ["the session", MODEL, "xhigh", "3"],
+                ["the session", SMALL, "xhigh", "1"],
+                ["the session", MODEL, "medium", "1"],
+            ],
+        )
+
+    def test_a_message_the_record_holds_as_several_lines_is_counted_once_at_its_pair(self):
+        text = self.digest(
+            said("a", {"type": "thinking"}),
+            said("a", {"type": "text"}),
+            said("a", call("1", "Read", file_path="x")),
+            said("b"),
+        )
+        self.assertEqual(self.rows(text, self.HEADING), [["the session", MODEL, EFFORT, "2"]])
+        self.assertIn("Made from 1 record: 2 messages", text)
+
+    def test_a_line_that_names_no_model_or_no_effort_is_counted_under_a_word_that_says_so(self):
+        text = self.digest(said("a", model=None), said("b", effort=None), said("c", model=None, effort=None))
+        self.assertEqual(
+            self.rows(text, self.HEADING),
+            [
+                ["the session", "unnamed", EFFORT, "1"],
+                ["the session", MODEL, "unnamed", "1"],
+                ["the session", "unnamed", "unnamed", "1"],
+            ],
+        )
+
+    def test_a_value_that_is_no_plain_name_is_not_written_and_is_counted_as_unnamed(self):
+        # Claude Code writes the first of these for a message of its own, which no model wrote, and an issue
+        # would show it as nothing at all. The second could be a path, and the third is no text.
+        text = self.digest(
+            said("a", model="<synthetic>", effort=None),
+            said("b", model="D:\\somebody\\private\\model", effort="high | a cell of its own |"),
+            said("c", model=[MODEL], effort=3),
+        )
+        self.assertEqual(self.rows(text, self.HEADING), [["the session", "unnamed", "unnamed", "3"]])
+        for private in ("synthetic", "somebody", "a cell of its own"):
+            self.assertNotIn(private, text)
+
+    def test_the_names_a_model_is_given_by_each_place_that_serves_one_are_written(self):
+        names = ["claude-fable-5-2", "us.invented.model-5-v1:0", "invented-model-5@20261102"]
+        lines = [said(str(number), model=name) for number, name in enumerate(names)]
+        self.assertEqual([row[1] for row in self.rows(self.digest(*lines), self.HEADING)], names)
+
+    def test_the_section_comes_after_the_fresh_agents_and_a_run_with_no_message_says_so(self):
+        text = self.digest(said("a"))
+        self.assertLess(text.index("\n## Fresh agents\n"), text.index(f"\n## {self.HEADING}\n"))
+        self.assertLess(text.index(f"\n## {self.HEADING}\n"), text.index("\n## Tools\n"))
+        self.assertEqual(self.section(self.digest(), self.HEADING), "The records hold no message.")
 
 
 class TheCalls(RecordTest):
@@ -489,12 +595,6 @@ class TheFigures(RecordTest):
             stage("look back", tokens=(0, 0, 0, 10000)),
         )
         self.assertEqual(self.figures(text)[2], "| - | 110 | 1,000 | 10,000 | 61,110 | no | - |")
-
-    def test_the_heading_row_is_the_one_the_notes_add_a_row_under(self):
-        self.assertEqual(
-            digest.FIGURES_HEADING,
-            "| Issue | Shape and build | Review | Look back | Every stage | Stopped | Hours from approval to close |",
-        )
 
     def test_a_run_that_stopped_says_so_in_its_row(self):
         text = self.digest(said("a", shell_call("1", "uv run python -m sitework stop 7 --stage build --file n.md")))

@@ -76,23 +76,12 @@ def say(progress: str) -> None:
     print(progress, file=sys.stderr, flush=True)
 
 
-def deploy_commit(head: str) -> str:
-    """The newest commit that a run of "Build and deploy" was made for, at `head` or beneath it on main: the
-    newest one that changes more than the notes. The deploy workflow starts no run for a push of the notes alone,
-    so the head of main can be a commit that no run will ever be made for. `--first-parent` keeps to the commits
-    main itself was pushed to: a merge's run is the merge's own, and not its branch's. `notes` asks here as
-    well, for the deploy its own push waits for, so that the two scripts never follow different commits."""
-    return shell.git(
-        "log", "--first-parent", "-1", "--format=%H", head, "--", ".", f":(exclude){rules.NOTES.rstrip('/')}"
-    )
-
-
 def deployed(merge: str) -> tuple[dict, dict | None]:
     """Wait for the deploy that uploads the merge, and give its result with its run. When the merge's own run left
-    the upload to a newer push, the run that uploads the merge is the one for the newest commit on main that a
-    run was made for, which holds the merge because main is never rewritten. That commit is not always the head
-    of main: a push of the notes alone moves the head and starts no run, and a wait for its run would never
-    end."""
+    the upload to a newer push, the run that uploads the merge is the one for the newer head of main, which
+    holds the merge because main is never rewritten. Every push to main starts a run, so the head always has one
+    to wait for. The head is asked of GitHub itself, because the checkout's own `origin/main` is as old as its
+    last fetch: a head read from it could be the merge, and the deploy would then be said not to have uploaded."""
     commit = merge
     for _ in range(LOOKS):
         run = deploy_run(commit)
@@ -106,12 +95,11 @@ def deployed(merge: str) -> tuple[dict, dict | None]:
         if uploaded(run):
             say(f"The deploy of {commit[:7]} uploaded its pages: {run['url']}")
             return report, run
-        shell.git("fetch", "--quiet", "origin", "main")
-        newest = deploy_commit("origin/main")
-        if newest == commit:
+        head = shell.git("ls-remote", "origin", "refs/heads/main").split("\t")[0]
+        if head == commit:
             return report | {"result": "not uploaded"}, run
-        say(f"The deploy of {commit[:7]} left its upload to a newer push, so the run for {newest[:7]} is followed.")
-        commit = newest
+        say(f"The deploy of {commit[:7]} left its upload to a newer push, so the run for {head[:7]} is followed.")
+        commit = head
     return {"run": None, "commit": commit, "result": "not finished"}, None
 
 

@@ -20,14 +20,17 @@ from sitework import confirm, shell
 MERGE = "a" * 40
 NEWER = "b" * 40
 NEWEST = "d" * 40
-NOTES = "9" * 40
 REVERT = "e" * 40
 DEPLOYS = "gh run list --workflow Build and deploy --branch main --event push"
 EVALS = "gh run list --workflow Site eval --event workflow_run"
 OWNERS_TESTS = f"{sys.executable} -m unittest discover -s owner_tests -t ."
-FETCH = "git fetch --quiet origin main"
-DEPLOYING = "git log --first-parent -1 --format=%H origin/main -- . :(exclude)docs/workflow-notes"
-"""The line that asks git for the newest commit on main that changes more than the notes."""
+HEAD = "git ls-remote origin refs/heads/main"
+"""The line that asks GitHub itself for the head of main, which the checkout's own `origin/main` may be behind."""
+
+
+def head(commit: str) -> str:
+    """The head of main, as `git ls-remote` gives it."""
+    return f"{commit}\trefs/heads/main"
 
 
 class InTurn:
@@ -202,8 +205,7 @@ class Confirm(ConfirmTest):
 
     def test_when_the_upload_was_left_to_a_newer_push_the_run_for_that_push_is_followed(self):
         self.answers["gh run view 500"] = jobs("skipped")
-        self.answers[FETCH] = ""
-        self.answers[DEPLOYING] = NEWER
+        self.answers[HEAD] = head(NEWER)
         self.answers[f"{DEPLOYS} --commit {NEWER}"] = InTurn([run(510, NEWER, "")], [run(510, NEWER, done="12:05:00")])
         self.answers["gh run view 510"] = jobs("success")
         self.answers[f"{EVALS} --commit {NEWER}"] = [run(610, NEWER, made="12:05:02", done="12:07:30")]
@@ -213,39 +215,36 @@ class Confirm(ConfirmTest):
         self.assertEqual(report["deploy"], {"run": 510, "commit": NEWER, "result": "success"})
         self.assertEqual(report["eval"], {"run": 610, "result": "success"})
 
-    def test_when_the_head_of_main_is_a_commit_of_the_notes_the_newest_commit_that_changes_more_is_followed(self):
-        # The head of main is asked of nothing, so a commit of the notes there, which has no run, is never the
-        # one followed. The two answers for it are what a script that followed the head would be given.
+    def test_the_newer_push_that_is_followed_is_the_head_of_main_as_github_has_it(self):
+        # Every push to main starts a run, so the head always has one to follow. The checkout's own copy of
+        # main is as old as its last fetch, and is asked nothing: a head read from it could be the merge itself,
+        # and the deploy would then be said not to have uploaded.
         self.answers["gh run view 500"] = jobs("skipped")
-        self.answers["git ls-remote origin refs/heads/main"] = f"{NOTES}\trefs/heads/main"
-        self.answers[f"{DEPLOYS} --commit {NOTES}"] = []
-        self.answers[FETCH] = ""
-        self.answers[DEPLOYING] = NEWER
+        self.answers[HEAD] = head(NEWER)
         self.answers[f"{DEPLOYS} --commit {NEWER}"] = [run(510, NEWER, done="12:05:00")]
         self.answers["gh run view 510"] = jobs("success")
         self.answers[f"{EVALS} --commit {NEWER}"] = [run(610, NEWER, made="12:05:02", done="12:07:30")]
         code, report, _ = self.run_command("27")
         self.assertEqual(code, 0)
-        self.assertEqual(report["deploy"], {"run": 510, "commit": NEWER, "result": "success"})
-        self.assertEqual(self.slept, [])
-        self.assertEqual([line for line in self.shell.ran if line.startswith("git")], [FETCH, DEPLOYING])
+        self.assertEqual(report["deploy"]["commit"], NEWER)
+        self.assertEqual([line for line in self.shell.ran if line.startswith("git")], [HEAD])
 
-    def test_a_run_that_left_its_upload_to_a_push_of_the_notes_alone_fails_the_deploy_and_waits_for_no_run(self):
-        # A script that followed the head of main would wait 20 minutes here, for a run that is never made.
+    def test_a_newer_push_that_left_its_upload_to_one_newer_still_is_followed_in_its_turn(self):
         self.answers["gh run view 500"] = jobs("skipped")
-        self.answers["git ls-remote origin refs/heads/main"] = f"{NOTES}\trefs/heads/main"
-        self.answers[f"{DEPLOYS} --commit {NOTES}"] = []
-        self.answers[FETCH] = ""
-        self.answers[DEPLOYING] = MERGE
+        self.answers[HEAD] = InTurn(head(NEWER), head(NEWEST))
+        self.answers[f"{DEPLOYS} --commit {NEWER}"] = [run(510, NEWER, done="12:05:00")]
+        self.answers["gh run view 510"] = jobs("skipped")
+        self.answers[f"{DEPLOYS} --commit {NEWEST}"] = [run(511, NEWEST, done="12:08:00")]
+        self.answers["gh run view 511"] = jobs("success")
+        self.answers[f"{EVALS} --commit {NEWEST}"] = [run(611, NEWEST, made="12:08:02", done="12:10:30")]
         code, report, _ = self.run_command("27")
-        self.assertEqual(code, 1)
-        self.assertEqual(report["deploy"], {"run": 500, "commit": MERGE, "result": "not uploaded"})
-        self.assertEqual(self.slept, [])
+        self.assertEqual(code, 0)
+        self.assertEqual(report["deploy"], {"run": 511, "commit": NEWEST, "result": "success"})
+        self.assertEqual(report["eval"], {"run": 611, "result": "success"})
 
     def test_a_run_for_the_newest_push_whose_upload_did_not_run_fails_the_deploy(self):
         self.answers["gh run view 500"] = jobs(None)
-        self.answers[FETCH] = ""
-        self.answers[DEPLOYING] = MERGE
+        self.answers[HEAD] = head(MERGE)
         code, report, _ = self.run_command("27")
         self.assertEqual(code, 1)
         self.assertEqual(report["deploy"], {"run": 500, "commit": MERGE, "result": "not uploaded"})

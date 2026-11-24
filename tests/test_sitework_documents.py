@@ -37,16 +37,17 @@ class TheDocuments(unittest.TestCase):
             with self.subTest(command=command):
                 self.assertIn(command, named)
         # A run takes no pictures: the pull request's job does, and keeps them.
-        for command in ("altered-tests", "layout-report", "digest", "notes", "guard"):
+        for command in ("altered-tests", "layout-report", "digest", "feedback", "guard"):
             with self.subTest(command=command):
                 self.assertIn(command, named)
 
     def test_the_labels_a_run_is_told_of_are_the_ones_the_scripts_set(self):
         text = (WORKFLOW / "README.md").read_text(encoding="utf-8")
         table = text[text.index("## The labels") :]
-        in_table = set(re.findall(r"^\| `([a-z-]+)` \|", table, flags=re.MULTILINE))
+        in_table = set(re.findall(r"^\| `([a-z -]+)` \|", table, flags=re.MULTILINE))
         self.assertEqual(
-            in_table, {rules.IDEA, rules.APPROVED, rules.IN_PROGRESS, rules.NEEDS_OWNER, rules.BLOCKED_ON_DATA}
+            in_table,
+            {rules.IDEA, rules.APPROVED, rules.IN_PROGRESS, rules.NEEDS_OWNER, rules.BLOCKED_ON_DATA, rules.FEEDBACK},
         )
 
     def test_the_review_s_form_has_the_two_lines_the_ship_script_reads(self):

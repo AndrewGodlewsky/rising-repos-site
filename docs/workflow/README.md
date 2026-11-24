@@ -24,8 +24,7 @@ step here leaves a choice open.
    | 3 | Nothing to do | End the run, and post nothing |
    | 4 | The site is not healthy. The script has told the owner | End the run |
 
-3. Read [the lessons](../workflow-notes/LESSONS.md).
-4. Work on the branch the script named, in a worktree of its own. For a new
+3. Work on the branch the script named, in a worktree of its own. For a new
    idea, make it from the newest `main`, and push it at once, so that the
    claim is on GitHub as a branch too:
    `git switch -c <branch> origin/main`, then
@@ -38,7 +37,7 @@ As each stage begins, run `sitework stage <name>`, with the stage's name in
 lower case: `shape`, `build`, `check`, `review`, `ship`, `confirm`, `mend`, or
 `look back`. The digest tells the stages apart by it.
 
-Two things hold for every stage:
+Three things hold for every stage:
 
 - Write a file that a command is given, such as the plan or a stop's words,
   outside the repository's folder. `sitework ship` merges only from a
@@ -47,6 +46,10 @@ Two things hold for every stage:
 - `sitework check` takes about six minutes, and `sitework confirm` about seven,
   or longer when a run on GitHub is slow. Give each the time it needs: a
   command that was cut short has not failed.
+- Keep one file, outside the repository's folder, of each fault of the
+  workflow's own that the run meets: a command that failed or misled, an
+  instruction that was wrong or missing, a check that held back right
+  work. Write a line as it happens. The look back files them.
 
 ## What the run trusts
 
@@ -291,17 +294,21 @@ since the fault may be its own.
 
 ## Look back
 
-Nothing waits on it. A run that stopped gets one too.
+Nothing waits on it. A run that stopped gets one too. What a run taught
+about the workflow itself is filed as issues here, labelled
+`workflow feedback`, which the owner and another agent work through.
+Nothing of it is written into the repository.
 
 1. `sitework digest --issue <issue> --this-run` makes the run's digest from
    the record of this run and of each fresh agent it started. Save what it
    prints to a file.
-2. Start one fresh agent. Give it [its brief](look-back.md), the digest, the
-   plan, the review, and the "Shipped" note or the stop's comment.
-3. `sitework notes <issue> --digest <file> --notes <file>` pushes the notes
-   to `main`, in a commit that holds nothing else and deploys nothing. It
-   waits for the deploy beneath it to end, and pushes only when that
-   deploy succeeded.
+2. Start one fresh agent. Give it [its brief](look-back.md), the issue's
+   number, the digest, the plan, the review, the "Shipped" note or the
+   stop's comment, and the file of the workflow's own faults that the run
+   kept.
+3. It files the issues with `sitework feedback`, and names them when it is
+   done: one for each fault or saving, and one for the run, which holds
+   the digest. The run changes nothing they say.
 
 ## Stopping for the owner
 
@@ -338,8 +345,7 @@ a branch cannot loosen it.
   limits.
 - The policy that lets a page's script run, the type, the standards, and the
   decision records.
-- The workflow's own scripts, documents, and notes, and the tests that hold
-  them.
+- The workflow's own scripts and documents, and the tests that hold them.
 - The settings of the lint and the format, how git reads a file, and any
   new file or folder at the top of the repository, since every check is run
   from there.
@@ -365,3 +371,4 @@ merge.
 | `in-progress` | A run holds it | `sitework pickup --claim` | `sitework close`, or a stop |
 | `needs-owner` | A question is waiting | `sitework stop` | The owner, by answering and removing it |
 | `blocked-on-data` | Waiting on a RisingRepos issue | `sitework stop --data` | A run that finds the field has arrived |
+| `workflow feedback` | One thing a run taught about the workflow itself. It is no idea, and no run takes it up | The look back, with `sitework feedback` | The owner, by closing the issue |
