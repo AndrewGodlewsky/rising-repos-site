@@ -47,7 +47,7 @@ Three things hold for every stage:
   outside the repository's folder. `sitework ship` merges only from a
   checkout that holds nothing uncommitted, so that what it judged is what
   it merges.
-- `sitework check` takes about six minutes, and `sitework confirm` about seven,
+- `sitework check` takes up to six minutes, and `sitework confirm` about seven,
   or longer when a run on GitHub is slow. Give each the time it needs: a
   command that was cut short has not failed.
 - Keep one file, outside the repository's folder, of each fault of the
@@ -190,6 +190,10 @@ stops at the first that fails: the lint, the format, white space, the
 guarded paths, the agents' tests, the owner's tests, that each new test
 fails on the commit before, and that each criterion has a proof that
 passes. It reads the change from what is committed, so commit first.
+
+It leaves out the tests of the workflow's own scripts and of the stale
+check, which a feature cannot change, unless the owner let the change touch
+a guarded path. The pull request's job runs every test.
 
 1. Run it until it passes. Mend the code, and never the check.
 2. Push the branch, and open the pull request against `main`, with

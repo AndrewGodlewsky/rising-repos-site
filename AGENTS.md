@@ -80,6 +80,10 @@ The build job runs `python -m sitework check --suite`: the lint, the format,
 and both kinds of tests. So the check command is what a PR has to pass. Run
 it before each commit.
 
+Without `--suite`, a change that touches no guarded path is not run against
+the tests of the workflow's own scripts and of the stale check: no such
+change can alter what they find. The build job runs every test.
+
 ## The two kinds of tests
 
 - **The agents' tests**, in `tests/`, hold a page's exact markup and how each

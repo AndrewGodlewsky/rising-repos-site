@@ -4,14 +4,17 @@ No test here runs a check. A stand-in takes the place of `sitework.shell.run`, n
 run, and fails the ones a test names, so that the owner's tests and the rest of the suite are only ever named.
 """
 
+import fnmatch
 import io
+import subprocess
 import sys
 import unittest
 from unittest import mock
 
+from helpers import ROOT
 from test_sitework_guard import said
 
-from sitework import check, issue, shell
+from sitework import check, issue, rules, shell
 
 PYTHON = (sys.executable, "-m")
 LINT = (*PYTHON, "ruff", "check", ".")
@@ -19,6 +22,7 @@ FORMAT = (*PYTHON, "ruff", "format", "--check", ".")
 WHITE_SPACE = ("git", "diff", "--check", "origin/main...HEAD")
 GUARD = (*PYTHON, "sitework", "guard")
 AGENTS = (*PYTHON, "unittest", "discover", "-s", "tests")
+THE_REST = ("the agents' tests, each file named",)  # stands for that command below, whichever files it names
 OWNERS = (*PYTHON, "unittest", "discover", "-s", "owner_tests", "-t", ".")
 NEW = (*PYTHON, "sitework", "new-tests")
 CRITERIA = (*PYTHON, "sitework", "criteria", "--issue", "12")
@@ -42,16 +46,46 @@ class TheCheck(unittest.TestCase):
     def check(self, *arguments: str) -> tuple[int, list[str]]:
         return said(check.main, "check", *arguments)
 
+    def steps_run(self) -> list[tuple[str, ...]]:
+        """What was run, with the command that names the files of the agents' tests as `THE_REST`."""
+        named = (sys.executable, "-c", check.NAMED)
+        return [THE_REST if command[:3] == named else command for command in self.ran]
+
     def test_it_runs_every_check_of_a_change_the_cheapest_first(self):
         code, _ = self.check()
-        self.assertEqual((code, self.ran), (0, [LINT, FORMAT, WHITE_SPACE, GUARD, AGENTS, OWNERS, NEW]))
+        self.assertEqual((code, self.steps_run()), (0, [LINT, FORMAT, WHITE_SPACE, GUARD, THE_REST, OWNERS, NEW]))
 
     def test_the_criteria_are_checked_last_and_only_when_an_issue_is_given(self):
         code, _ = self.check("--issue", "12")
-        self.assertEqual((code, self.ran), (0, [LINT, FORMAT, WHITE_SPACE, GUARD, AGENTS, OWNERS, NEW, CRITERIA]))
+        self.assertEqual(
+            (code, self.steps_run()), (0, [LINT, FORMAT, WHITE_SPACE, GUARD, THE_REST, OWNERS, NEW, CRITERIA])
+        )
+
+    def test_a_change_that_touches_no_guarded_path_is_not_run_against_the_tests_of_what_is_guarded(self):
+        # A feature cannot change the workflow's scripts or the stale check, so their tests can tell it nothing,
+        # and they were a third of the time the agents' tests took. The eval's tests build real pages: they stay.
+        self.check("--issue", "12")
+        (named,) = [command for command in self.ran if command[:3] == (sys.executable, "-c", check.NAMED)]
+        files = set(named[3:])
+        every = {path.stem for path in (ROOT / "tests").glob("test*.py")}
+        left_out = {"test_stale_check"} | {name for name in every if name.startswith("test_sitework_")}
+        self.assertEqual(files, every - left_out)
+        self.assertLessEqual({"test_build", "test_site_eval", "test_workflow", "test_page_weight"}, files)
+        self.assertNotIn(AGENTS, self.ran)
+
+    def test_every_file_of_tests_that_is_left_out_is_one_no_feature_may_change(self):
+        # A file a feature may change has to run for that feature. Each pattern that leaves files out is a
+        # guarded one, so the guard's step has already failed a change that touched such a file.
+        guarded = [pattern for patterns in rules.GUARDED.values() for pattern in patterns]
+        for path in (ROOT / "tests").glob("test*.py"):
+            name = f"tests/{path.name}"
+            if any(fnmatch.fnmatch(name, pattern) for pattern in rules.OWN_TESTS):
+                with self.subTest(file=name):
+                    self.assertTrue(any(fnmatch.fnmatch(name, pattern) for pattern in guarded))
 
     def test_with_an_issue_the_guard_lets_through_what_the_owner_allowed_for_it(self):
         # Without this a change the owner allowed could never pass on the machine, though the ship script lets it by.
+        # Such a change may alter what the workflow's own tests find, so it is run against every test.
         self.said = [
             {"body": "Go on.\n\nAllowed: pyproject.toml, uv.lock"},
             {"body": "Site workflow: picked up"},
@@ -84,7 +118,7 @@ class TheCheck(unittest.TestCase):
     def test_it_stops_at_the_first_step_that_fails_and_shows_what_that_step_printed(self):
         self.failing = {GUARD: "uv.lock: a dependency\nAGENTS.md: the workflow's own scripts and documents"}
         code, lines = self.check()
-        self.assertEqual((code, self.ran), (1, [LINT, FORMAT, WHITE_SPACE, GUARD]))
+        self.assertEqual((code, self.steps_run()), (1, [LINT, FORMAT, WHITE_SPACE, GUARD]))
         self.assertEqual(lines[-2:], ["uv.lock: a dependency", "AGENTS.md: the workflow's own scripts and documents"])
 
     def test_it_prints_a_line_as_each_step_starts_and_one_as_it_ends_with_how_long_it_took(self):
@@ -119,7 +153,7 @@ class TheCheck(unittest.TestCase):
                 "the format",
                 "white space",
                 "the guarded paths",
-                "the agents' tests",
+                "the agents' tests, but for the workflow's own",
                 "the owner's tests",
                 "the new tests",
                 "the criteria",
@@ -151,6 +185,16 @@ class AStepOfPython(unittest.TestCase):
         with mock.patch.object(check, "steps", return_value=[("a step", [sys.executable, "-c", program])]):
             code, lines = said(check.main, "check")
         self.assertEqual((code, lines[-1]), (1, "a row reads 1 → 2 ·"))
+
+    def test_files_of_tests_that_are_named_run_as_discovery_runs_them(self):
+        # Each is found in `tests` and taken under its own name, beside the helpers the tests import. A file
+        # that is not there fails the step, as a file discovery could not import does.
+        named = [sys.executable, "-c", check.NAMED]
+        ran = subprocess.run([*named, "test_runbook"], cwd=ROOT, capture_output=True, text=True)
+        self.assertEqual((ran.returncode, ran.stderr.strip().splitlines()[-1]), (0, "OK"))
+        self.assertRegex(ran.stderr, r"Ran [1-9]\d* tests? in")
+        missing = subprocess.run([*named, "test_no_such_file"], cwd=ROOT, capture_output=True, text=True)
+        self.assertEqual(missing.returncode, 1)
 
 
 if __name__ == "__main__":
