@@ -755,7 +755,9 @@ no browser.
 
 You need [uv](https://docs.astral.sh/uv/), and [Node](https://nodejs.org/)
 on the `PATH` for the tests of the page's script. They install nothing for it,
-and fail without it. `deploy.yml`'s build job uses the Node that GitHub's
+and fail without it. The agents' tests that open a page, as
+`tests/test_opened_row.py` does, need Google Chrome on the machine as the
+owner's tests do. `deploy.yml`'s build job uses the Node that GitHub's
 runner image already has.
 
 ```sh

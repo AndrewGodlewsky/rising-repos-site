@@ -69,7 +69,7 @@ of it.
 ```sh
 uv sync --locked                                      # the pinned dependencies, into .venv
 uv run --locked python -m sitework check              # every check a change has to pass, the cheapest first
-uv run --locked python -m unittest discover -s tests  # the agents' tests alone. They need Node on the PATH
+uv run --locked python -m unittest discover -s tests  # the agents' tests alone. They need Node on the PATH, and Chrome
 uv run --locked python -m unittest discover -s owner_tests -t .  # the owner's tests alone, in the machine's Chrome
 uv run --locked ruff format .                         # lay the Python out as the format check asks
 uv run --locked python -m sitebuild dist              # the pages; it refuses a dist/ that already holds files
