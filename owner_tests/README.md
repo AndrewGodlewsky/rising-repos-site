@@ -181,6 +181,15 @@ A change adds lines to this file and takes none away, so the counts under
 "How to run them" are as they were: with sentence 34 a run has 33 tests, and
 24 of them read a live site.
 
+### The way to the newest board, on a phone (`test_the_way_to_the_newest_on_a_phone.py`)
+
+35. On a phone, an earlier board's day bar leads to the newest board, with
+    scripts on or off.
+    `test_on_a_phone_an_earlier_boards_day_bar_leads_to_the_newest_board_with_scripts_on_or_off`
+
+Sentence 35 came with #28, and reads a live site as it reads the made-up one.
+With it a run has 34 tests, and 25 of them read a live site.
+
 ## How to run them
 
 From the repository, with the pinned dependencies in place (`uv sync
