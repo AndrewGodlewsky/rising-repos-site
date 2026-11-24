@@ -123,6 +123,8 @@ class Run:
     records: int = 0
     tokens: dict[str, list[int]] = field(default_factory=dict)
     """Each stage's tokens in the four kinds, in the order the run first met the stages."""
+    said: dict[str, int] = field(default_factory=dict)
+    """How many messages each stage took."""
     messages: int = 0
     calls: list[Call] = field(default_factory=list)
     roots: list[str] = field(default_factory=list)
@@ -273,6 +275,7 @@ def read_run(records: list[Path]) -> Run:
     for stage, tokens, number, model, effort in counted.values():
         total = run.tokens.setdefault(stage, [0, 0, 0, 0])
         run.tokens[stage] = [had + more for had, more in zip(total, tokens, strict=True)]
+        run.said[stage] = run.said.get(stage, 0) + 1
         used[number] += sum(tokens)
         pairs[number, model, effort] += 1
     run.agents = [(record.stem, began[number], used[number]) for number, record in enumerate(records) if number]
@@ -398,6 +401,13 @@ def table(heading: list[str], rows: list[list[str]], numbers_from: int = 1) -> l
     return ["| " + " | ".join(row) + " |" for row in (heading, rule, *rows)]
 
 
+def read_by(counts: list[int]) -> int:
+    """The tokens a stage's messages read between them: every kind but the output, in the order of KINDS.
+    Each message reads the whole context again, so this over the count of messages is the size of the
+    context, which the look back on #27 had to take from the records (#56)."""
+    return counts[0] + counts[2] + counts[3]
+
+
 def render(run: Run, issue: int | None = None, hours: float | None = None) -> str:
     """The digest of a run, as Markdown."""
     tokens = {stage: [*kinds, sum(kinds)] for stage, kinds in run.tokens.items()}
@@ -424,6 +434,22 @@ def render(run: Run, issue: int | None = None, hours: float | None = None) -> st
             ["Stage", "Input", "Output", "Cache written", "Cache read", "All"],
             [[stage, *(f"{count:,}" for count in counts)] for stage, counts in [*tokens.items(), ("Total", total)]],
         ),
+        "",
+        "## Messages by stage",
+        "",
+        *table(
+            ["Stage", "Messages", "Read by each"],
+            [
+                [stage, f"{said:,}", f"{read // said if said else 0:,}"]
+                for stage, said, read in [
+                    *((stage, run.said.get(stage, 0), read_by(counts)) for stage, counts in run.tokens.items()),
+                    ("Total", run.messages, read_by(total)),
+                ]
+            ],
+        ),
+        "",
+        "Read by each is the context a message of the stage read, on average: its input and what it wrote "
+        "to the cache and read from it. A stage costs about its messages times that.",
         "",
         "## Fresh agents",
         "",

@@ -170,6 +170,19 @@ class TheTokens(RecordTest):
             ],
         )
 
+    def test_each_stage_gives_its_count_of_messages_and_the_context_each_of_them_read(self):
+        # A stage costs its messages times its context, and the look back on #27 took both from the records (#56).
+        text = self.digest(
+            said("a", tokens=(1, 2, 3, 4)),
+            stage("shape", tokens=(10, 20, 30, 40)),
+            said("b", tokens=(100, 200, 300, 400)),
+            stage("build", tokens=(1000, 2000, 3000, 4000)),
+        )
+        self.assertEqual(
+            self.rows(text, "Messages by stage"),
+            [["pick up", "1", "8"], ["shape", "2", "440"], ["build", "1", "8,000"], ["Total", "4", "2,222"]],
+        )
+
     def test_a_message_the_record_holds_as_several_lines_is_counted_once(self):
         text = self.digest(
             said("a", {"type": "thinking"}, tokens=(5, 5, 5, 5)),
