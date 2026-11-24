@@ -44,9 +44,9 @@ Two things hold for every stage:
   outside the repository's folder. `sitework ship` merges only from a
   checkout that holds nothing uncommitted, so that what it judged is what
   it merges.
-- `sitework check` takes about six minutes, and `sitework confirm` up to a
-  quarter of an hour. Give each the time it needs: a command that was cut
-  short has not failed.
+- `sitework check` takes about six minutes, and `sitework confirm` about ten,
+  or longer when a run on GitHub is slow. Give each the time it needs: a
+  command that was cut short has not failed.
 
 ## What the run trusts
 
