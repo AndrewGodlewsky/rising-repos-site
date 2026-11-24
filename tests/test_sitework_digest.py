@@ -170,6 +170,19 @@ class TheTokens(RecordTest):
             ],
         )
 
+    def test_each_stage_gives_its_count_of_messages_and_the_context_each_of_them_read(self):
+        # A stage costs its messages times its context, and the look back on #27 took both from the records (#56).
+        text = self.digest(
+            said("a", tokens=(1, 2, 3, 4)),
+            stage("shape", tokens=(10, 20, 30, 40)),
+            said("b", tokens=(100, 200, 300, 400)),
+            stage("build", tokens=(1000, 2000, 3000, 4000)),
+        )
+        self.assertEqual(
+            self.rows(text, "Messages by stage"),
+            [["pick up", "1", "8"], ["shape", "2", "440"], ["build", "1", "8,000"], ["Total", "4", "2,222"]],
+        )
+
     def test_a_message_the_record_holds_as_several_lines_is_counted_once(self):
         text = self.digest(
             said("a", {"type": "thinking"}, tokens=(5, 5, 5, 5)),
@@ -478,6 +491,23 @@ class TheChecks(RecordTest):
             [["check", "0m 03s", "failed at the lint"], ["check", "3m 25s", "failed at the agents' tests"]],
         )
         self.assertNotIn("page.py", text)
+
+    def test_a_check_that_was_piped_and_so_exited_0_failed_when_it_printed_the_step_it_stopped_at(self):
+        # On #29 two failed checks ended in `| tail`, and the digest gave both as passed (#56).
+        check = "uv run --locked python -m sitework check --issue 29 2>&1 | tail -30"
+        tests = "the lint: passed in 0.4 s\nthe agents' tests: failed after 251.6 s\nFAIL: test_the_lines"
+        text = self.digest(
+            stage("build"),
+            said("a", shell_call("1", check), at="2026-11-02T10:00:00.000Z"),
+            result("1", at="2026-11-02T10:04:12.000Z", printed=tests),
+            said("b", shell_call("2", check)),
+            result("2", printed="the lint: passed in 0.4 s"),
+        )
+        self.assertEqual(
+            self.section(text, "Checks that failed"),
+            "- `sitework check`, in build: failed at the agents' tests, and passed on try 2.",
+        )
+        self.assertEqual(self.rows(text, "The whole suite")[0], ["build", "4m 12s", "failed at the agents' tests"])
 
     def test_a_step_is_read_only_from_what_the_check_itself_printed(self):
         printed = "a line of the test: failed after 3 s"

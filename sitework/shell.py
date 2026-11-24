@@ -32,10 +32,12 @@ def run(
     check: bool = True,
     stdin: str | Path | None = None,
     env: dict[str, str] | None = None,
+    both: bool = False,
 ) -> str:
     """Run `command` in `cwd`, which is the repository when none is given, and give what it printed, without the
     white space at its ends. A command that fails raises `Failed`, unless `check` is false. `env` adds to the
-    environment the command gets.
+    environment the command gets. With `both`, what it wrote to its error stream follows what it printed: the
+    tests' runner writes its count of tests there.
 
     What a command prints is read as UTF-8, which is what git and gh write. A Python that is piped writes the
     machine's own encoding on Windows unless it is told otherwise, so each command is told, and a byte that is
@@ -61,7 +63,7 @@ def run(
         raise Failed(
             f"{' '.join(command)}: exit {done.returncode}\n{done.stdout}{done.stderr}".strip(), done.returncode
         )
-    return done.stdout.strip()
+    return (done.stdout + done.stderr if both else done.stdout).strip()
 
 
 def git(*arguments: str, cwd: Path | None = None, check: bool = True) -> str:

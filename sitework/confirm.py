@@ -9,13 +9,20 @@ was. When the mend fails too, or cannot be made, the agent puts the site back wi
 owner anything. The revert's merge is a deploy as well, so `--revert` reads the same three for it: the feature's
 own deploy and eval say nothing of whether the site was put back.
 
+The "Shipped" note gives the eval's numbers beside their limits, so what is printed holds them, and how many
+of the owner's tests ran on the live site: a run that had only "success" to go on found, downloaded, and read
+them in five further messages (#63).
+
 Progress goes to the error stream, so that what is printed is the one JSON object.
 """
 
 import argparse
 import json
+import re
 import sys
+import tempfile
 import time
+from pathlib import Path
 
 from sitework import issue, rules, shell
 
@@ -31,6 +38,14 @@ UNMEASURED = ("cancelled", "skipped")
 """How a run of the eval ends when it did not measure the site. The eval's workflow cancels a running eval when
 the eval of the next deploy starts, and skips its one job after a deploy that failed. Neither says anything
 against the pages."""
+
+MEASURED = ("success", "failure")
+"""How a run of the eval ends when it may have written its numbers. One that failed did so on a number outside its
+limit, or before it measured any, and only the first of those leaves numbers to read."""
+ARTIFACT, RESULTS, LIMITS = "site-eval", "results.json", "evals/site/limits.json"
+"""The artifact the eval's workflow uploads, the file in it that holds each median, and the file of the limits."""
+RAN = re.compile(r"^Ran (\d+) tests? in ", re.MULTILINE)
+"""The line in which the tests' runner says how many tests it ran."""
 
 WAIT = 20
 LOOKS = 60
@@ -103,8 +118,15 @@ def deployed(merge: str) -> tuple[dict, dict | None]:
     return {"run": None, "commit": commit, "result": "not finished"}, None
 
 
+def ran(printed: str) -> dict:
+    """How many tests the runner says it ran, as the one entry `tests`, and nothing when it did not say."""
+    counts = RAN.findall(printed)
+    return {"tests": int(counts[-1])} if counts else {}
+
+
 def live() -> dict:
-    """Run the owner's tests against the live site, until they pass or the tries run out."""
+    """Run the owner's tests against the live site, until they pass or the tries run out. The result holds how
+    many tests the last try ran, when the runner said."""
     # The live address has one owner, the eval, where RUNBOOK.md's table and tests/test_runbook.py hold it. It is
     # imported here and not above because the eval's module brings the generator with it, which `pickup` has no
     # use for when it reads the runs through this module.
@@ -114,19 +136,28 @@ def live() -> dict:
     for tries in range(1, LIVE_TRIES + 1):
         try:
             # The address goes to this one command, so that nothing run later reads the live site by mistake.
-            shell.run(
-                sys.executable, "-m", "unittest", "discover", "-s", folder, "-t", ".", env={"SITE": DEPLOYED_SITE}
+            printed = shell.run(
+                sys.executable,
+                "-m",
+                "unittest",
+                "discover",
+                "-s",
+                folder,
+                "-t",
+                ".",
+                env={"SITE": DEPLOYED_SITE},
+                both=True,
             )
         except shell.Failed as error:
             failure = error
         else:
             say(f"The owner's tests pass on {DEPLOYED_SITE}.")
-            return {"result": "passed", "tries": tries}
+            return {"result": "passed", "tries": tries} | ran(printed)
         if tries < LIVE_TRIES:
             say(f"The owner's tests do not pass on {DEPLOYED_SITE} yet. Try {tries} of {LIVE_TRIES}.")
             sleep(LIVE_WAIT)
     say(f"The owner's tests fail on {DEPLOYED_SITE}:\n{failure}")
-    return {"result": "failed", "tries": LIVE_TRIES}
+    return {"result": "failed", "tries": LIVE_TRIES} | ran(str(failure))
 
 
 def measured(deploy: dict) -> dict:
@@ -155,6 +186,40 @@ def measured(deploy: dict) -> dict:
         say(f"The site eval that follows the deploy of {deploy['headSha'][:7]} has not finished.")
         sleep(WAIT)
     return {"run": run["databaseId"] if run else None, "result": "not finished"}
+
+
+def numbers(run: int) -> dict:
+    """Each median an eval's run measured beside its limit, by page, profile, and measure, as the one entry
+    `numbers`. Nothing when they could not be read, which is said in the progress and fails no confirm: the
+    eval's own result is what a feature is held to, and the numbers are for the "Shipped" note.
+
+    The medians are in the results the run uploaded. The limits are read from GitHub at the commit the run
+    measured, since the eval judged by that commit's limits and the checkout may be on another."""
+    try:
+        with tempfile.TemporaryDirectory() as folder:
+            shell.gh("run", "download", str(run), "--name", ARTIFACT, "--dir", folder)
+            results = json.loads((Path(folder) / RESULTS).read_text(encoding="utf-8"))
+        limits = shell.gh_json(
+            "api",
+            "-H",
+            "Accept: application/vnd.github.raw",
+            f"repos/{{owner}}/{{repo}}/contents/{LIMITS}?ref={results['commit']}",
+        )
+        return {
+            "numbers": {
+                page: {
+                    profile: {
+                        measure: {"median": found["median"], "limit": limits[profile][measure]["limit"]}
+                        for measure, found in measures.items()
+                    }
+                    for profile, measures in profiles.items()
+                }
+                for page, profiles in results["pages"].items()
+            }
+        }
+    except (shell.Failed, OSError, ValueError, LookupError, TypeError, AttributeError) as error:
+        say(f"The numbers of the site eval's run {run} could not be read: {str(error).splitlines()[0]}")
+        return {}
 
 
 def confirm(number: int, reverting: bool = False) -> int:
@@ -188,6 +253,8 @@ def confirm(number: int, reverting: bool = False) -> int:
     if deploy["result"] == "success":
         report["live"] = live()
         report["eval"] = measured(run)
+        if report["eval"]["result"] in MEASURED:
+            report["eval"] |= numbers(report["eval"]["run"])
     wanted = {"deploy": "success", "live": "passed", "eval": "success"}
     report["failed"] = [step for step, result in wanted.items() if report[step]["result"] != result]
     print(json.dumps(report, indent=2))

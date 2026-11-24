@@ -13,7 +13,8 @@ workflow. You change no file of the repository.
 The issue's number, the run's digest, the plan, the review, the "Shipped"
 note or the stop's comment, and the run's own list of the faults it met in
 the workflow. The digest was made by a script from the run's record: the
-tokens of each stage, the model and the effort each agent ran at, each tool
+tokens of each stage, how many messages each stage took and the context each
+of them read, the model and the effort each agent ran at, each tool
 and how often it was called, the files read most often, how many times the
 whole suite ran, each check that failed, and each stop.
 

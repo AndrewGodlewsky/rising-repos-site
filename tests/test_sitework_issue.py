@@ -32,6 +32,12 @@ DELETE = f"git branch -D {BRANCH}"
 whether origin/main holds its every commit, and that delete it here."""
 
 
+POSTED = "gh api repos/{owner}/{repo}/issues/comments/7099"
+"""The reading of the comment a stop or a close has just posted, which is asked only when the owner could not be
+told. The same path with `--method PATCH` edits it."""
+EDIT = f"gh api --method PATCH {POSTED[len('gh api ') :]} --input -"
+
+
 class Shell:
     """Stands in for `sitework.shell.run`. A command is answered by the answer whose words it begins with, the
     longest of them when several do, and a command with no answer fails the test. An answer that is not text is
@@ -115,6 +121,8 @@ class IssueTest(unittest.TestCase):
             },
             "gh api repos/{owner}/{repo}/issues/27/comments": [],
             "gh issue comment 27": f"{ADDRESS}#issuecomment-7099",
+            POSTED: said("Site workflow: stopped\n\nStage: ship\n\nWhat the comment says.\n", number=99),
+            EDIT: "",
             "gh issue edit 27": ADDRESS,
             "gh issue close 27": "",
             "gh pr list": [pull(40, BRANCH)],
@@ -221,6 +229,22 @@ class Stop(IssueTest):
             "gh issue edit 27 --remove-label in-progress --add-label needs-owner --remove-assignee the-owner",
             self.shell.ran,
         )
+
+    def test_a_stop_whose_message_cannot_be_sent_says_on_the_issue_that_the_owner_was_not_told(self):
+        self.sent = "not sent: no credential store"
+        self.run_command("stop", "27", "--stage", "ship")
+        self.assertEqual(
+            json.loads(self.shell.stdin[EDIT])["body"],
+            "Site workflow: stopped\n\nStage: ship\n\nWhat the comment says.\n\nThe owner was not told of this on "
+            "Discord (no credential store), so this comment is the only notice of it.\n",
+        )
+
+    def test_a_stop_whose_comment_github_will_not_edit_warns_and_still_exits_0(self):
+        self.sent = "not sent: no credential store"
+        self.answers[EDIT] = shell.Failed("gh api: HTTP 502")
+        code, printed = self.run_command("stop", "27", "--stage", "ship")
+        self.assertEqual(code, 0)
+        self.assertIn("the comment does not say that the owner was not told: gh api: HTTP 502", printed)
 
     def test_a_stop_for_data_names_the_risingrepos_issue_and_the_field_and_swaps_in_progress_for_blocked_on_data(self):
         code, _ = self.run_command("stop", "27", "--data", "215", "--field", "homepage")
@@ -330,6 +354,16 @@ class Close(IssueTest):
         code, printed = self.run_command("close", "27")
         self.assertEqual(code, 0)
         self.assertIn("warning", printed)
+
+    def test_a_close_whose_message_cannot_be_sent_says_in_the_shipped_note_that_the_owner_was_not_told(self):
+        self.sent = "not sent: no credential store"
+        self.answers[POSTED] = said("Site workflow: shipped\n\nWhat the comment says.\n", number=99)
+        self.run_command("close", "27")
+        self.assertEqual(
+            json.loads(self.shell.stdin[EDIT])["body"],
+            "Site workflow: shipped\n\nWhat the comment says.\n\nThe owner was not told of this on Discord (no "
+            "credential store), so this comment is the only notice of it.\n",
+        )
 
     def test_a_close_refuses_an_issue_whose_pull_request_has_not_merged_and_changes_nothing(self):
         self.answers["gh pr list --state merged"] = [pull(38, "agent/2-other")]

@@ -787,6 +787,18 @@ class AfterADeploy(EvalTest):
         self.assertFalse(outcome.passed)
         self.assertEqual(outcome.problems, ["The head of main could not be read, so nothing was measured"])
 
+    def test_the_head_of_main_is_asked_for_again_when_one_asking_gets_no_answer(self):
+        # On 24 November 2026 one asking got no answer, and the eval ended as a failure that measured nothing (#68).
+        answers, paused = iter(["", COMMIT]), []
+        self.assertEqual(measure.head_of_main(ask=lambda: next(answers), pause=paused.append), COMMIT)
+        self.assertEqual(paused, [10])
+
+    def test_a_head_of_main_that_three_askings_cannot_read_could_not_be_measured(self):
+        asked, paused = [], []
+        with self.assertRaisesRegex(measure.CouldNotMeasure, "the head of main could not be read"):
+            measure.head_of_main(ask=lambda: asked.append(1) or "", pause=paused.append)
+        self.assertEqual((len(asked), paused), (3, [10, 10]))
+
     def test_a_head_of_main_that_cannot_be_read_after_the_measurement_fails_the_eval(self):
         heads = iter([COMMIT, measure.CouldNotMeasure("the head of main could not be read")])
 

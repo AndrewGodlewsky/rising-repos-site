@@ -195,14 +195,15 @@ What the script writes of its own is fixed captions and headings, a count of
 what it lists, the age of the newest board, and how many rows a filter shows.
 It writes with `textContent`, into elements of a fixed set of tags, and never
 through `innerHTML`, `outerHTML`, `insertAdjacentHTML`, `document.write`, or
-`eval`. No test runs the filter, an opened row, or the readout of Baseline's
-chart.
+`eval`. The tests that run an opened row and the readout of Baseline's chart,
+and the owner's tests that run the filter, hold where those parts put what
+they write. None of them holds that the script wrote it as text.
 
 Held by
 `tests/test_old_board.py::TheNotice::test_the_script_reads_only_what_it_needs_and_writes_only_the_notices_text_and_the_roots_attributes`,
 `tests/test_owner_text.py::TheHistoryFile::test_the_history_file_holds_owner_text_as_strings_and_the_script_writes_text_alone`,
-and the reviewer, for the parts no test runs, for a figure the script would
-word, and for the set of tags. A check could hold this.
+and the reviewer, for the parts no test holds to this, for a figure the script
+would word, and for the set of tags. A check could hold this.
 
 **P7. Every text colour meets 4.5:1 against each background it is set on, in
 both themes.** A line or a ring that carries meaning meets 3:1. A new text

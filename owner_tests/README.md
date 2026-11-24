@@ -45,7 +45,8 @@ and not for its lines.
   the owner, who allows it on the issue.
 
 In a file that is not Python, as this one is not, a change may add lines and
-may take none away.
+may take none away. So this file gives no count of the tests: a file that is
+only added to cannot keep one true (#54). A run's last lines say how many ran.
 
 No rule of this kind is whole: a statement that is allowed can still run
 code when its file is read. So the reviewer reads what a change added here,
@@ -177,9 +178,6 @@ live site after each deploy, and `evals/site/` holds it and its limits.
     `test_on_a_phone_each_board_an_opened_row_was_on_gives_every_figure_under_its_heading_and_none_is_cut`
 
 Sentence 34 came with #27, and reads a live site as it reads the made-up one.
-A change adds lines to this file and takes none away, so the counts under
-"How to run them" are as they were: with sentence 34 a run has 33 tests, and
-24 of them read a live site.
 
 ### The way to the newest board, on a phone (`test_the_way_to_the_newest_on_a_phone.py`)
 
@@ -188,7 +186,6 @@ A change adds lines to this file and takes none away, so the counts under
     `test_on_a_phone_an_earlier_boards_day_bar_leads_to_the_newest_board_with_scripts_on_or_off`
 
 Sentence 35 came with #28, and reads a live site as it reads the made-up one.
-With it a run has 34 tests, and 25 of them read a live site.
 
 ### Choosing a dot of Baseline's chart (`test_choosing_a_dot_of_baseline.py`)
 
@@ -201,7 +198,7 @@ With it a run has 34 tests, and 25 of them read a live site.
     `test_typing_part_of_a_repositorys_name_in_baselines_find_field_names_the_first_by_rank_that_holds_it`
 
 Sentences 36 and 37 came with #29, and read a live site as they read the
-made-up one. With them a run has 36 tests, and 27 of them read a live site.
+made-up one.
 
 ## How to run them
 
@@ -213,8 +210,8 @@ uv run --locked python -m unittest discover -s owner_tests -t .
 ```
 
 The run builds one site from the made-up boards, into a temporary folder,
-serves it from 127.0.0.1 on a free port, and opens one browser for all 32
-tests. It takes about 40 seconds.
+serves it from 127.0.0.1 on a free port, and opens one browser for every
+test. It takes about 40 seconds.
 
 One file, or one test, runs by its name:
 
@@ -241,7 +238,7 @@ Remove-Item Env:SITE
 ```
 
 The loader leaves out the nine scenarios marked *made-up boards* above, and
-the run's first line says how many it left out and how many run. The other 23
+the run's first line says how many it left out and how many run. The others
 name no repository and no board day: each takes the first row, or a language
 the filter offers, so it reads whatever board the site shows that day. Every
 one of them only reads. A scenario that the day's board gives nothing to start

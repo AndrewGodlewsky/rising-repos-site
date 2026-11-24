@@ -60,6 +60,11 @@ SERVED_PAUSE = 15
 """After a deploy, how many times the eval reads each page, SERVED_PAUSE seconds apart, before it gives up
 waiting for the site to state the deployed commit's newest board day."""
 
+HEAD_TRIES = 3
+HEAD_PAUSE = 10
+"""How many times the eval asks GitHub for the head of main, HEAD_PAUSE seconds apart, before it says that the
+head could not be read."""
+
 PROFILES = {"phone": (), "desktop": ("--preset=desktop",)}
 """Lighthouse's own two profiles. With no preset it emulates a mid-range phone on a slow 4G connection, and
 `--preset=desktop` a desktop on a wired one. Both simulate the slow CPU and connection from one fast load,
@@ -560,9 +565,9 @@ def _opening(pages: list[tuple[str, str]], commit: str, address: str, results: d
     return f"{what} {tools} Each number is the median of {RUNS} runs. {against}"
 
 
-def head_of_main() -> str:
-    """The commit at the head of this repository's main, read from GitHub. The repository is public, so git
-    reads it without a credential."""
+def _asked_of_github() -> str:
+    """What one asking of GitHub gives as the head of this repository's main, or nothing when it got no answer.
+    The repository is public, so git reads it without a credential."""
     repository = f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}"
     try:
         done = subprocess.run(
@@ -572,11 +577,25 @@ def head_of_main() -> str:
             timeout=60,
         )
     except OSError, subprocess.TimeoutExpired:
-        done = None
-    head = done.stdout.split()[0] if done and done.returncode == 0 and done.stdout.split() else ""
-    if not COMMIT.fullmatch(head):
-        raise CouldNotMeasure("the head of main could not be read")
-    return head
+        return ""
+    return done.stdout.split()[0] if done.returncode == 0 and done.stdout.split() else ""
+
+
+def head_of_main(ask: Callable[[], str] = _asked_of_github, pause: Callable[[float], None] = time.sleep) -> str:
+    """The commit at the head of this repository's main, read from GitHub.
+
+    One asking that gets no answer is a moment's fault of the runner, and not a main that cannot be read. On 24
+    November 2026 an eval ended as a failure 19 seconds after it began, having measured nothing, because its one
+    asking got no answer, and the same eval passed when it was run again with nothing changed. Until then the
+    site read as not healthy, and no run of the feature workflow could start (#68). So GitHub is asked up to
+    HEAD_TRIES times, HEAD_PAUSE seconds apart."""
+    for tried in range(HEAD_TRIES):
+        if tried:
+            pause(HEAD_PAUSE)
+        head = ask()
+        if COMMIT.fullmatch(head):
+            return head
+    raise CouldNotMeasure("the head of main could not be read")
 
 
 def read_page(address: str) -> str:
