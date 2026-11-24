@@ -237,7 +237,8 @@ when every one holds.
    each page the change altered as its `pictures` artifact, the eval's
    numbers, and the tokens of each stage so far. Then
    `sitework close <issue> --file <file>`, which posts it, closes the issue,
-   removes the branch, and tells the owner.
+   removes the feature's branch on GitHub and in the checkout, and tells
+   the owner.
 3. When the live site or the eval fails because of the change, mend it
    (below). The owner is not asked first.
 4. A result that measured nothing is no failure of the change, and calls
@@ -284,8 +285,9 @@ live while it is mended.
    `sitework confirm <issue> --revert`, which follows the revert's own
    deploy. The revert's pull request has to hold the revert and nothing
    else: when `main` moves before it merges, merge `origin/main` into its
-   branch and add nothing. Then stop for the owner, with `--stage mend`,
-   and say what was seen.
+   branch and add nothing. `ship` removes that branch, on GitHub and in the
+   checkout, once the pull request has merged. Then stop for the owner,
+   with `--stage mend`, and say what was seen.
 
 A run that takes the issue up again reads the `facts` that
 `sitework pickup` printed. `standing` is how many of the feature's merges

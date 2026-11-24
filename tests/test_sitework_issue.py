@@ -23,6 +23,13 @@ DAYS = ("2026-11-21", "2026-11-22")
 SCHEMA = "git show origin/main:site-data/contract/daily.schema.json"
 INDEX = "git show origin/main:site-data/boards/index.json"
 BOARD = "git show origin/main:site-data/boards/days/%s/daily.json"
+BRANCH = "agent/27-stop-clipping"
+ON_GITHUB = f"git ls-remote origin refs/heads/{BRANCH}"
+LOCAL = f"git branch --list {BRANCH}"
+HELD = f"git merge-base --is-ancestor {BRANCH} origin/main"
+DELETE = f"git branch -D {BRANCH}"
+"""The feature's branch, and the commands that ask whether GitHub has it, whether this repository has it, and
+whether origin/main holds its every commit, and that delete it here."""
 
 
 class Shell:
@@ -57,6 +64,9 @@ class Shell:
             "git ls-remote",
             "git fetch",
             "git show",
+            "git branch --list",
+            "git branch --show-current",
+            "git merge-base",
         )
         return [line for line in self.ran if not line.startswith(reads)]
 
@@ -89,7 +99,8 @@ def pull(number: int, branch: str, state: str = "MERGED", fork: bool = False, se
 class IssueTest(unittest.TestCase):
     """A test with the stand-in in place, issue #27 to work on, a file of text to post, and the data on main: a
     daily schema whose rows have a description, a language, and topics, and two board days. Every row holds a
-    description, the newer board day's rows hold a language too, and no row holds topics."""
+    description, the newer board day's rows hold a language too, and no row holds topics. The feature's pull
+    request has merged, and its branch is gone from GitHub and from this repository."""
 
     def setUp(self):
         self.answers = {
@@ -106,8 +117,9 @@ class IssueTest(unittest.TestCase):
             "gh issue comment 27": f"{ADDRESS}#issuecomment-7099",
             "gh issue edit 27": ADDRESS,
             "gh issue close 27": "",
-            "gh pr list": [pull(40, "agent/27-stop-clipping")],
-            "git ls-remote origin refs/heads/agent/27-stop-clipping": "",
+            "gh pr list": [pull(40, BRANCH)],
+            ON_GITHUB: "",
+            LOCAL: "",
             "git fetch origin main": "",
             SCHEMA: {"properties": {"rows": {"items": {"properties": {name: {} for name in ROW}}}}},
             INDEX: {"schema_version": 1, "board_days": [{"board_day": day, "row_count": 1} for day in DAYS]},
@@ -366,6 +378,111 @@ class Close(IssueTest):
         code, printed = self.run_command("close", "27")
         self.assertEqual(code, 1)
         self.assertIn("HTTP 403", printed)
+
+
+class TheLocalBranch(IssueTest):
+    """A finished run leaves no branch behind, so `close` deletes the feature's branch in this repository as well
+    as on GitHub, and throws no work away to do it. Here the repository has the branch, origin/main holds its
+    every commit, and the checkout is on main, unless a test says otherwise."""
+
+    def setUp(self):
+        super().setUp()
+        self.answers[LOCAL] = BRANCH
+        self.answers[HELD] = ""
+        self.answers["git branch --show-current"] = "main"
+        self.answers["git switch --detach"] = ""
+        self.answers[DELETE] = f"Deleted branch {BRANCH} (was 0000028)."
+
+    def git(self) -> list[str]:
+        """The git commands that were run, in the order they ran."""
+        return [line for line in self.shell.ran if line.startswith("git")]
+
+    def assertLeft(self, printed: str, *parts: str) -> None:
+        """Expect exactly one printed line to name the branch, with each of `parts` in it, and the owner to be
+        told that the feature shipped all the same."""
+        (line,) = [line for line in printed.splitlines() if BRANCH in line]
+        for part in parts:
+            self.assertIn(part, line)
+        (message,) = self.told
+        self.assertIn("shipped", message)
+
+    def test_a_close_deletes_the_branch_on_github_and_then_locally_once_origin_main_holds_its_every_commit(self):
+        self.answers[ON_GITHUB] = f"{40:040x}\trefs/heads/{BRANCH}"
+        self.answers["git push origin --delete"] = ""
+        code, printed = self.run_command("close", "27")
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(
+            self.git(),
+            [
+                ON_GITHUB,
+                f"git push origin --delete {BRANCH}",
+                LOCAL,
+                "git fetch origin main",
+                HELD,
+                "git branch --show-current",
+                DELETE,
+            ],
+        )
+        self.assertNotIn(BRANCH, printed)
+
+    def test_main_is_fetched_from_origin_before_it_is_asked_whether_it_holds_the_local_branch(self):
+        self.run_command("close", "27")
+        self.assertLess(self.shell.ran.index("git fetch origin main"), self.shell.ran.index(HELD))
+
+    def test_a_local_branch_that_holds_a_commit_main_does_not_is_left_and_says_so(self):
+        self.answers[HELD] = shell.Failed(f"{HELD}: exit 1")
+        code, printed = self.run_command("close", "27")
+        self.assertEqual(code, 0, printed)
+        self.assertLeft(printed, "is left", "a commit that main does not", "not thrown away")
+        self.assertNotIn(DELETE, self.shell.ran)
+
+    def test_a_checkout_that_is_on_the_branch_leaves_it_with_switch_detach_before_the_branch_is_deleted(self):
+        self.answers["git branch --show-current"] = BRANCH
+        code, printed = self.run_command("close", "27")
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(self.git()[-3:], ["git branch --show-current", "git switch --detach", DELETE])
+
+    def test_a_checkout_on_a_branch_whose_work_main_does_not_hold_stays_on_that_branch(self):
+        self.answers["git branch --show-current"] = BRANCH
+        self.answers[HELD] = shell.Failed(f"{HELD}: exit 1")
+        code, printed = self.run_command("close", "27")
+        self.assertEqual(code, 0, printed)
+        self.assertLeft(printed, "is left")
+        self.assertNotIn("git switch --detach", self.shell.ran)
+        self.assertNotIn(DELETE, self.shell.ran)
+
+    def test_a_local_branch_that_is_not_there_is_nothing_to_delete_and_is_no_error(self):
+        self.answers[LOCAL] = ""
+        code, printed = self.run_command("close", "27")
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(self.git(), [ON_GITHUB, LOCAL])
+        self.assertNotIn(BRANCH, printed)
+
+    def test_a_local_delete_that_git_refuses_is_one_printed_line_and_no_failure(self):
+        refusal = f"error: cannot delete branch '{BRANCH}' used by worktree at '/another/checkout'"
+        self.answers[DELETE] = shell.Failed(f"{DELETE}: exit 1\n{refusal}")
+        code, printed = self.run_command("close", "27")
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(self.git()[-1], DELETE)
+        self.assertLeft(printed, "is left", refusal)
+        self.assertIn("gh issue close 27", self.shell.ran)
+
+    def test_a_main_that_cannot_be_fetched_leaves_the_local_branch_with_one_printed_line_and_no_failure(self):
+        refusal = "fatal: unable to access 'https://github.com/the-owner/the-site/'"
+        self.answers["git fetch origin main"] = shell.Failed(f"git fetch origin main: exit 128\n{refusal}", 128)
+        code, printed = self.run_command("close", "27")
+        self.assertEqual(code, 0, printed)
+        self.assertLeft(printed, "is left", refusal)
+        self.assertEqual(self.git()[-1], "git fetch origin main")
+
+    def test_a_local_branch_git_cannot_hold_against_main_is_left_with_what_git_said_and_no_failure(self):
+        refusal = "fatal: Not a valid object name origin/main"
+        self.answers[HELD] = shell.Failed(f"{HELD}: exit 128\n{refusal}", 128)
+        code, printed = self.run_command("close", "27")
+        self.assertEqual(code, 0, printed)
+        self.assertLeft(printed, "is left", refusal)
+        self.assertNotIn("a commit that main does not", printed)
+        self.assertEqual(self.git()[-1], HELD)
 
 
 class Reading(IssueTest):

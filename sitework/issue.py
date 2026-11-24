@@ -1,6 +1,6 @@
 """`comment`, `stop`, and `close`: the workflow's comments and labels on an issue. Also the reading of an issue,
-its comments, and its pull requests that the other scripts share, and of the data on main that an issue can wait
-for.
+its comments, and its pull requests that the other scripts share, of the data on main that an issue can wait
+for, and the deleting of a finished branch in this repository, which `ship` shares.
 
 Agents act under the owner's account, so who wrote a comment does not tell the owner's words from an agent's
 (docs/workflow-plan.md, D10). Each comment the workflow writes begins with a fixed first line
@@ -215,6 +215,58 @@ def tell(issue: dict, what: str) -> None:
         print(f"warning: the owner was not told on Discord ({said})")
 
 
+def one_line(error: shell.Failed) -> str:
+    """The command that failed and what it printed, as one line."""
+    return " ".join(str(error).split())
+
+
+def main_holds(branch: str) -> bool:
+    """Whether main holds every commit of this local branch. Main is fetched first, so that the answer is of
+    GitHub's main and not of what this machine last saw. Git answers by how it exits, with 0 for yes and 1 for
+    no. Any other exit is a command that failed, and it is raised as one, so that it is never read as a no."""
+    shell.git("fetch", "origin", "main")
+    try:
+        shell.git("merge-base", "--is-ancestor", branch, "origin/main")
+    except shell.Failed as error:
+        if error.code != 1:
+            raise
+        return False
+    return True
+
+
+def delete_local(branch: str) -> str | None:
+    """Delete the branch in this repository once main holds its work, and give the one line to print when the
+    branch is left instead. A local branch that is not there is nothing to delete, and nothing is said of it.
+
+    The owner asked on 24 November 2026 that a finished run leave no branch lying about, on GitHub or here.
+    `close` asks this for a feature's branch, and `ship --revert` for the branch of a revert that has merged.
+
+    The branch is deleted only when main holds its every commit. One that holds a commit main does not has work
+    that reached no pull request, and a script does not throw work away. `git branch -d` would not ask that: it
+    holds a branch against the branch it follows, or against what the checkout is on when it follows none, and
+    neither is main as GitHub has it. So main is asked here, and the delete is then forced.
+
+    Git refuses to delete the branch a checkout is on, so a checkout on this one leaves it first with
+    `git switch --detach`, which stays at the same commit and keeps every file as it is.
+
+    No failure leaves here. The issue is closed or the merge is made by the time a branch is removed, and
+    neither is undone for a branch. So a step that git refuses, as it refuses to delete a branch that another
+    worktree is on, is a line to print as well."""
+    left = f"The local branch {branch} is left"
+    try:
+        if not shell.git("branch", "--list", branch):
+            return None
+        if not main_holds(branch):
+            work = "work that reached no pull request is not thrown away by a script"
+            return f"{left}: it holds a commit that main does not, and {work}."
+        if shell.git("branch", "--show-current") == branch:
+            shell.git("switch", "--detach")
+        shell.git("branch", "-D", branch)
+    except shell.Failed as error:
+        return f"{left}, since git refused a step of deleting it: {one_line(error)}"
+    return None
+
+
 def comment(options: argparse.Namespace, text: str) -> int:
     print(post(options.issue, options.kind, text))
     return 0
@@ -248,11 +300,16 @@ def stop(options: argparse.Namespace, text: str) -> int:
 
 
 def close(options: argparse.Namespace, text: str) -> int:
-    """Post what shipped, close the issue, and remove its branch (docs/workflow-plan.md, section 10).
+    """Post what shipped, close the issue, and remove its branch, on GitHub and in this repository
+    (docs/workflow-plan.md, section 10).
 
     A feature has shipped only while a merge of it stands on main. One whose every merge was reverted is not on
     the site, and its issue waits for the owner, so nothing is posted and nothing is closed for it. The merged
-    pull requests are asked for a second time only to say which of the two a refusal is."""
+    pull requests are asked for a second time only to say which of the two a refusal is.
+
+    The local branch goes after the one on GitHub, and only as `delete_local` allows. A local branch that is left
+    is one printed line and still a close that exits 0: a run that read it as a failure would run the command
+    again, and post the note a second time."""
     number = str(options.issue)
     stands = standing(options.issue)
     if not stands:
@@ -271,6 +328,9 @@ def close(options: argparse.Namespace, text: str) -> int:
     shell.gh("issue", "edit", number, "--remove-label", rules.IN_PROGRESS)
     if shell.git("ls-remote", "origin", f"refs/heads/{pull['headRefName']}"):
         shell.git("push", "origin", "--delete", pull["headRefName"])
+    left = delete_local(pull["headRefName"])
+    if left:
+        print(left)
     tell(issue, "shipped")
     return 0
 
@@ -279,7 +339,7 @@ def main(command: str, arguments: list[str]) -> int:
     what = {
         "comment": "Post one of the workflow's comments on an issue. A plan that is already there is edited in place.",
         "stop": "Stop an issue for the owner, or with --data for a field it waits on.",
-        "close": "Post what shipped, close the issue, and remove its branch from origin.",
+        "close": "Post what shipped, close the issue, and remove its branch from origin and from this repository.",
     }
     parser = argparse.ArgumentParser(prog=f"python -m sitework {command}", description=what[command])
     parser.add_argument("issue", type=int, help="the issue's number")

@@ -43,6 +43,14 @@ HOW = ["--full-index", "--binary"]
 DIFF = b"diff --git a/x b/x\n+%b\n"
 """What stands in for the diff that ends at a commit."""
 MERGE = f"gh pr merge 40 --merge --match-head-commit {HEAD} --subject Merge #27: {TITLE} --body Refs #27"
+ITS_BRANCH = "agent/27-revert"
+ON_GITHUB = f"git ls-remote origin refs/heads/{ITS_BRANCH}"
+OFF_GITHUB = f"git push origin --delete {ITS_BRANCH}"
+LOCAL = f"git branch --list {ITS_BRANCH}"
+HELD = f"git merge-base --is-ancestor {ITS_BRANCH} origin/main"
+DELETE = f"git branch -D {ITS_BRANCH}"
+"""The branch a revert is made on, and the commands that ask whether GitHub has it, delete it there, ask whether
+this repository has it and whether origin/main holds its every commit, and delete it here."""
 
 
 class Shell:
@@ -239,6 +247,12 @@ class TheMerge(ShipTest):
         code, printed = self.run_command("27")
         self.assertEqual(code, 0)
         self.assertIn("merged", printed.splitlines()[-1])
+
+    def test_without_revert_the_features_branch_is_left_for_close_since_a_mend_is_made_on_it(self):
+        code, printed = self.run_command("27")
+        self.assertEqual(code, 0, printed)
+        ran = self.shell.ran
+        self.assertEqual(ran[ran.index(MERGE) + 1 :], ["gh pr view 40 --json mergeCommit"])
 
 
 class ThePullRequest(ShipTest):
@@ -586,15 +600,14 @@ class NewTestsAndCriteria(ShipTest):
         self.assertEqual(self.shell.first(CRITERIA), f"{CRITERIA} --issue 27")
 
 
-class TheRevert(ShipTest):
-    """No reviewer reads a revert, so the lane merges one thing alone: the pull request that holds exactly what
-    reverting each merge of the feature that stands gives on the head of main. Here git is a stand-in, one merge
-    of the feature stands, and the pull request's tree is the tree of that revert, unless a test says
-    otherwise."""
+class ARevert(ShipTest):
+    """A test that starts from a revert that meets every condition. Git is a stand-in, one merge of the feature
+    stands, the pull request's tree is the tree of that merge's revert, and the revert's branch is already gone
+    from GitHub and from this repository, unless a test says otherwise."""
 
     def setUp(self):
         super().setUp()
-        self.answers["gh pr list --state open"] = [pull(40, "agent/27-revert"), pull(39, "agent/27-again")]
+        self.answers["gh pr list --state open"] = [pull(40, ITS_BRANCH), pull(39, "agent/27-again")]
         self.answers["gh pr list --state merged"] = [merged(38, "agent/27-stop-clipping", FEATURE)]
         self.answers[COMMENTS] = []
         self.answers["git worktree add --detach"] = ""
@@ -602,6 +615,13 @@ class TheRevert(ShipTest):
         self.answers["git write-tree"] = TREE
         self.answers[f"git rev-parse {HEAD}^{{tree}}"] = TREE
         self.answers["git worktree remove --force"] = ""
+        self.answers[ON_GITHUB] = ""
+        self.answers[LOCAL] = ""
+
+
+class TheRevert(ARevert):
+    """No reviewer reads a revert, so the lane merges one thing alone: the pull request that holds exactly what
+    reverting each merge of the feature that stands gives on the head of main."""
 
     def test_with_revert_the_pull_request_on_the_revert_branch_is_merged_and_named_as_a_revert(self):
         code, printed = self.run_command("27", "--revert")
@@ -692,6 +712,104 @@ class TheRevert(ShipTest):
         code, printed = self.run_command("27", "--revert")
         self.assertEqual(code, 0, printed)
         self.assertEqual(self.shell.count(COMMENTS), 0)
+
+
+class TheRevertsBranch(ARevert):
+    """A finished run leaves no branch behind, and nothing else removes the branch a revert was made on, since
+    `close` is not run for a feature that was put back. So `ship --revert` deletes it once its pull request has
+    merged, on GitHub and in this repository, and fails for neither, because the merge is made by then. Here both
+    have the branch, origin/main holds its every commit once the merge is made, and the checkout is on the
+    feature's branch, unless a test says otherwise."""
+
+    def setUp(self):
+        super().setUp()
+        self.answers[ON_GITHUB] = f"{HEAD}\trefs/heads/{ITS_BRANCH}"
+        self.answers[OFF_GITHUB] = ""
+        self.answers[LOCAL] = ITS_BRANCH
+        self.answers[HELD] = ""
+        self.answers["git branch --show-current"] = "agent/27-stop-clipping"
+        self.answers["git switch --detach"] = ""
+        self.answers[DELETE] = f"Deleted branch {ITS_BRANCH} (was {HEAD[:7]})."
+
+    def after_the_merge(self) -> list[str]:
+        """The git commands that were run after the pull request was merged, in the order they ran."""
+        ran = self.shell.ran
+        return [line for line in ran[ran.index(self.shell.first("gh pr merge")) + 1 :] if line.startswith("git")]
+
+    def asked_of_the_branch(self) -> int:
+        """How many commands asked about the revert's branch or changed it, on GitHub or here."""
+        return sum(self.shell.count(start) for start in (ON_GITHUB, OFF_GITHUB, LOCAL, HELD, DELETE, "git switch"))
+
+    def assertMergedAndLeft(self, *parts: str) -> None:
+        """Run `ship --revert`, and expect it to exit 0 with the merge made, exactly one printed line that names
+        the branch, with each of `parts` in it, and the merge commit as the last line all the same."""
+        code, printed = self.run_command("27", "--revert")
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(self.shell.count("gh pr merge"), 1)
+        (line,) = [line for line in printed.splitlines() if ITS_BRANCH in line]
+        for part in parts:
+            self.assertIn(part, line)
+        self.assertEqual(printed.splitlines()[-1], MERGED)
+
+    def test_once_the_revert_has_merged_its_branch_is_deleted_on_github_and_then_in_this_repository(self):
+        code, printed = self.run_command("27", "--revert")
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(
+            self.after_the_merge(),
+            [ON_GITHUB, OFF_GITHUB, LOCAL, "git fetch origin main", HELD, "git branch --show-current", DELETE],
+        )
+        self.assertNotIn(ITS_BRANCH, printed)
+        self.assertEqual(printed.splitlines()[-1], MERGED)
+
+    def test_a_reverts_branch_that_is_already_gone_from_github_and_from_here_is_no_error(self):
+        self.answers[ON_GITHUB] = ""
+        self.answers[LOCAL] = ""
+        code, printed = self.run_command("27", "--revert")
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(self.after_the_merge(), [ON_GITHUB, LOCAL])
+        self.assertNotIn(ITS_BRANCH, printed)
+
+    def test_a_delete_that_github_refuses_is_one_printed_line_and_no_failure_and_the_local_branch_still_goes(self):
+        refusal = f"! [remote rejected] {ITS_BRANCH} (protected branch hook declined)"
+        self.answers[OFF_GITHUB] = shell.Failed(f"{OFF_GITHUB}: exit 1\n{refusal}")
+        self.assertMergedAndLeft("is left on GitHub", refusal)
+        self.assertEqual(self.after_the_merge()[-1], DELETE)
+
+    def test_a_github_that_cannot_be_asked_for_the_branch_is_one_printed_line_and_no_failure(self):
+        refusal = "fatal: unable to access 'https://github.com/the-owner/the-site/'"
+        self.answers[ON_GITHUB] = shell.Failed(f"{ON_GITHUB}: exit 128\n{refusal}", 128)
+        self.assertMergedAndLeft("is left on GitHub", refusal)
+        self.assertEqual(self.shell.count(OFF_GITHUB), 0)
+
+    def test_a_local_delete_that_git_refuses_is_one_printed_line_and_no_failure(self):
+        refusal = f"error: cannot delete branch '{ITS_BRANCH}' used by worktree at '/another/checkout'"
+        self.answers[DELETE] = shell.Failed(f"{DELETE}: exit 1\n{refusal}")
+        self.assertMergedAndLeft("The local branch", "is left", refusal)
+        self.assertEqual(self.shell.count(OFF_GITHUB), 1)
+
+    def test_a_local_reverts_branch_that_holds_a_commit_main_does_not_is_left_and_says_so(self):
+        self.answers[HELD] = shell.Failed(f"{HELD}: exit 1")
+        self.assertMergedAndLeft("The local branch", "is left", "a commit that main does not")
+        self.assertEqual(self.shell.count(DELETE) + self.shell.count("git switch"), 0)
+
+    def test_a_checkout_that_is_on_the_reverts_branch_leaves_it_before_the_branch_is_deleted(self):
+        self.answers["git branch --show-current"] = ITS_BRANCH
+        code, printed = self.run_command("27", "--revert")
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(self.after_the_merge()[-3:], ["git branch --show-current", "git switch --detach", DELETE])
+
+    def test_a_revert_whose_condition_fails_keeps_its_branch(self):
+        self.answers["gh pr view 40 --json headRefOid,statusCheckRollup"]["statusCheckRollup"] = [
+            check("build", "FAILURE")
+        ]
+        self.assertNotMerged("27", "--revert", fails="build (failure)")
+        self.assertEqual(self.asked_of_the_branch(), 0)
+
+    def test_a_revert_whose_merge_github_refuses_keeps_its_branch(self):
+        self.answers["gh pr merge 40"] = shell.Failed("gh pr merge 40: exit 1\nhead branch was modified")
+        code, printed = self.run_command("27", "--revert")
+        self.assertEqual(code, 1, printed)
+        self.assertEqual(self.asked_of_the_branch(), 0)
 
 
 class TheRevertOfAMerge(ARepository):
