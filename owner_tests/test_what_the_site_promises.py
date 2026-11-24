@@ -70,12 +70,18 @@ class WhatTheSitePromises(Scenario):
     def refusals(self, page: Page) -> list[str]:
         """A list that fills with what the browser refuses `page` under the page's own policy, on this page and each
         it goes on to: the kind of thing refused, and where it was from. The browser tells a page of each refusal,
-        and a listener put into the page ahead of its own script passes that on."""
+        and a listener put into the page ahead of its own script passes that on.
+
+        What is passed on reaches the list a moment after the browser refused, and by then the reader may be on
+        the next page. So each page keeps its own refusals too, as `refusedHere`, for a test that has to say
+        which page a refusal was of."""
         refused: list[str] = []
         page.expose_function("toldOfARefusal", lambda kind, source: refused.append(f"{kind}: {source}"))
         page.add_init_script(
-            "document.addEventListener('securitypolicyviolation',"
-            " refusal => toldOfARefusal(refusal.effectiveDirective, refusal.blockedURI))"
+            "window.refusedHere = [];"
+            "document.addEventListener('securitypolicyviolation', refusal => {"
+            " refusedHere.push(refusal.effectiveDirective + ': ' + refusal.blockedURI);"
+            " toldOfARefusal(refusal.effectiveDirective, refusal.blockedURI); })"
         )
         return refused
 
@@ -122,13 +128,18 @@ class WhatTheSitePromises(Scenario):
         page.on(
             "response", lambda answer: fetched.append(answer.url) if answer.request.resource_type == "script" else None
         )
-        refused = self.refusals(page)
+        self.refusals(page)
         for place in self.each_kind_of_page(page):
             with self.subTest(place):
-                del refused[:]
                 page.goto(place)
                 held = page.locator("script").count()
-                self.assertEqual(held - sum(refusal.startswith("script-src-elem") for refusal in refused), 1)
+                # The page's own count of what it was refused. The list `refusals` gives is filled a moment
+                # late: the refusal of the second script put into the page before reached it once after
+                # this page was open, and was counted against this one (the job of #77, 24 November 2026).
+                refused = page.evaluate(
+                    "() => refusedHere.filter(refusal => refusal.startsWith('script-src-elem')).length"
+                )
+                self.assertEqual(held - refused, 1)
                 expect(page.get_by_role("button", name="Dark theme")).to_be_visible()
                 title = page.title()
                 try:
