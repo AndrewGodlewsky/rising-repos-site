@@ -253,11 +253,14 @@ def read_run(records: list[Path]) -> Run:
                 for block in line["message"]["content"]:
                     call = calls.get(block.get("tool_use_id")) if block.get("type") == "tool_result" else None
                     if call:
-                        call.failed = bool(block.get("is_error"))
                         call.ended = when(line["timestamp"])
                         call.background = kept.get("backgroundTaskId", "") if isinstance(kept, dict) else ""
                         stopped = STEP.search(printed(block)) if SUITE[1] in check_names(call.command) else None
                         call.step = stopped[1] if stopped else ""
+                        # A command that ends in a pipe exits as the pipe's last command does. A check
+                        # run as `... sitework check | tail -30` exits 0 when it failed, so a check that
+                        # printed the step it stopped at failed, whatever its call exited with (#56).
+                        call.failed = bool(block.get("is_error")) or bool(stopped)
             elif kind == "queue-operation" and line.get("operation") == "enqueue":
                 notice = line.get("content") if isinstance(line.get("content"), str) else ""
                 named, status = ENDED.search(notice), STATUS.search(notice)

@@ -479,6 +479,23 @@ class TheChecks(RecordTest):
         )
         self.assertNotIn("page.py", text)
 
+    def test_a_check_that_was_piped_and_so_exited_0_failed_when_it_printed_the_step_it_stopped_at(self):
+        # On #29 two failed checks ended in `| tail`, and the digest gave both as passed (#56).
+        check = "uv run --locked python -m sitework check --issue 29 2>&1 | tail -30"
+        tests = "the lint: passed in 0.4 s\nthe agents' tests: failed after 251.6 s\nFAIL: test_the_lines"
+        text = self.digest(
+            stage("build"),
+            said("a", shell_call("1", check), at="2026-11-02T10:00:00.000Z"),
+            result("1", at="2026-11-02T10:04:12.000Z", printed=tests),
+            said("b", shell_call("2", check)),
+            result("2", printed="the lint: passed in 0.4 s"),
+        )
+        self.assertEqual(
+            self.section(text, "Checks that failed"),
+            "- `sitework check`, in build: failed at the agents' tests, and passed on try 2.",
+        )
+        self.assertEqual(self.rows(text, "The whole suite")[0], ["build", "4m 12s", "failed at the agents' tests"])
+
     def test_a_step_is_read_only_from_what_the_check_itself_printed(self):
         printed = "a line of the test: failed after 3 s"
         text = self.digest(
