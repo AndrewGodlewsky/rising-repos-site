@@ -242,7 +242,9 @@ when every one holds.
 
 1. `sitework confirm <issue>` waits for the deploy, runs the owner's tests
    against the live site, and reads the site eval that followed. It prints
-   one JSON object, which names each run it read.
+   one JSON object, which names each run it read, and holds how many of the
+   owner's tests ran and each of the eval's medians beside its limit. The
+   "Shipped" note's numbers are those: look nothing up again.
 2. On exit 0, write the "Shipped" note: the pull request, the merge's
    commit, the address of the pull request's run, which keeps a picture of
    each page the change altered as its `pictures` artifact, the eval's

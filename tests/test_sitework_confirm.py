@@ -12,6 +12,7 @@ import json
 import os
 import sys
 import unittest
+from pathlib import Path
 from unittest import mock
 
 from evals.site.measure import DEPLOYED_SITE
@@ -24,6 +25,8 @@ REVERT = "e" * 40
 DEPLOYS = "gh run list --workflow Build and deploy --branch main --event push"
 EVALS = "gh run list --workflow Site eval --event workflow_run"
 OWNERS_TESTS = f"{sys.executable} -m unittest discover -s owner_tests -t ."
+DOWNLOAD = "gh run download"
+LIMITS = "gh api -H Accept: application/vnd.github.raw repos/{owner}/{repo}/contents/evals/site/limits.json"
 HEAD = "git ls-remote origin refs/heads/main"
 """The line that asks GitHub itself for the head of main, which the checkout's own `origin/main` may be behind."""
 
@@ -46,14 +49,15 @@ class InTurn:
 class Shell:
     """Stands in for `sitework.shell.run`. A command is answered by the answer whose words it begins with, the
     longest of them when several do, and a command with no answer fails the test. An answer that is not text is
-    given as the JSON `gh` would print, and one that is an error is raised."""
+    given as the JSON `gh` would print, and one that is an error is raised. An answer that can be called is
+    called with the command, for a command that writes a file, and what it gives is the answer."""
 
     def __init__(self, answers: dict):
         self.answers = answers
         self.ran = []
         self.env = {}
 
-    def __call__(self, *command, cwd=None, check=True, stdin=None, env=None):
+    def __call__(self, *command, cwd=None, check=True, stdin=None, env=None, both=False):
         line = " ".join(command)
         self.ran.append(line)
         self.env[line] = env
@@ -63,6 +67,8 @@ class Shell:
         answer = self.answers[max(starts, key=len)]
         if isinstance(answer, InTurn):
             answer = answer.next()
+        if callable(answer):
+            answer = answer(command)
         if isinstance(answer, Exception):
             raise answer
         return answer if isinstance(answer, str) else json.dumps(answer)
@@ -97,6 +103,18 @@ def pull(number: int, branch: str, merge: str, merged: str) -> dict:
     }
 
 
+def uploads(results: dict):
+    """An answer to `gh run download` that writes `results` as the eval's results.json into the folder the
+    command names, as the download of the eval's artifact does."""
+
+    def download(command: tuple[str, ...]) -> str:
+        folder = Path(command[command.index("--dir") + 1])
+        (folder / "results.json").write_text(json.dumps(results), encoding="utf-8")
+        return ""
+
+    return download
+
+
 def jobs(upload: str | None) -> dict:
     """A deploy run's jobs, as `gh run view` gives them. With no `upload`, the deploy job ran no step."""
     steps = [
@@ -114,7 +132,8 @@ def jobs(upload: str | None) -> dict:
 
 class ConfirmTest(unittest.TestCase):
     """A test with the stand-in in place, and issue #27 merged, uploaded, and measured, so that each test changes
-    the one answer it is about."""
+    the one answer it is about. The eval's run kept no artifact, so its numbers are read by the tests that give
+    one."""
 
     def setUp(self):
         self.answers = {
@@ -123,6 +142,7 @@ class ConfirmTest(unittest.TestCase):
             "gh run view 500": jobs("success"),
             f"{EVALS} --commit {MERGE}": [run(600, made="12:02:03", done="12:04:30")],
             OWNERS_TESTS: "",
+            DOWNLOAD: shell.Failed("no artifact found"),
         }
         self.shell = Shell(self.answers)
         self.enterContext(mock.patch.object(shell, "run", self.shell))
@@ -276,6 +296,37 @@ class Confirm(ConfirmTest):
         self.assertEqual(report["live"], {"result": "failed", "tries": 11})
         self.assertEqual(report["failed"], ["live"])
         self.assertIn("FAIL: test_the_table_wraps", printed)
+
+    def test_how_many_of_the_owners_tests_ran_on_the_live_site_is_printed(self):
+        self.answers[OWNERS_TESTS] = "\n".join(["....", "-" * 70, "Ran 37 tests in 31.512s", "", "OK"])
+        _, report, _ = self.run_command("27")
+        self.assertEqual(report["live"], {"result": "passed", "tries": 1, "tests": 37})
+
+    def test_the_evals_medians_are_printed_beside_their_limits_as_the_commit_it_measured_has_them(self):
+        measured = {"performance": {"median": 97, "runs": [96, 97, 97, 97, 98]}}
+        slower = {"performance": {"median": 100, "runs": [100] * 5}}
+        self.answers[DOWNLOAD] = uploads({"commit": NEWER, "pages": {"/": {"phone": measured, "desktop": slower}}})
+        self.answers[LIMITS] = {
+            "phone": {"performance": {"limit": 90, "reason": "The owner lowered it."}},
+            "desktop": {"performance": {"limit": 95, "reason": "Every run scored 100."}},
+        }
+        code, report, _ = self.run_command("27")
+        self.assertEqual(code, 0)
+        self.assertEqual(
+            report["eval"],
+            {
+                "run": 600,
+                "result": "success",
+                "numbers": {
+                    "/": {
+                        "phone": {"performance": {"median": 97, "limit": 90}},
+                        "desktop": {"performance": {"median": 100, "limit": 95}},
+                    }
+                },
+            },
+        )
+        self.assertEqual(self.shell.count(f"{DOWNLOAD} 600 --name site-eval --dir "), 1)
+        self.assertEqual(self.shell.count(f"{LIMITS}?ref={NEWER}"), 1)
 
     def test_an_eval_that_failed_exits_1_and_is_named_as_what_failed(self):
         self.answers[f"{EVALS} --commit {MERGE}"] = [run(600, conclusion="failure", made="12:02:03", done="12:04:30")]
