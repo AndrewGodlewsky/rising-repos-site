@@ -34,6 +34,14 @@ and every worktree of the repository shares it."""
 
 SLUG_WORDS = 5
 
+FEATURES = "refs/heads/" + rules.BRANCH.partition("{")[0]
+"""How git names every feature's branch begins, the branch that reverts one among them."""
+
+RUNS = "sitework-runs"
+"""The file under git's common directory that holds the checkout of each run that claimed an issue and may still be
+at work, a line to a checkout. A run is known by where it works, and not by the branch that checkout is on, since
+a run may leave its feature's branch once its issue is closed and still be looking back over itself."""
+
 Comments = Callable[[int], list[dict]]
 """Gives the comments the owner's account wrote on an issue. A run reads an issue's comments once, however many
 of its steps ask for them."""
@@ -77,7 +85,7 @@ def healthy() -> None:
 def unhealthy(run: dict, why: str) -> End:
     """Tell the owner of a run that failed, once for that run and not again at every run, and give the end of
     this run. A message that could not be sent is not remembered, so the next run sends it."""
-    told = Path(shell.git("rev-parse", "--path-format=absolute", "--git-common-dir")) / TOLD
+    told = common(TOLD)
     this = str(run["databaseId"])
     if not (told.is_file() and told.read_text(encoding="utf-8").strip() == this):
         if notify.send(f"{rules.FIRST_LINE}nothing new starts, because the site is not healthy. {why}") == "sent":
@@ -85,28 +93,46 @@ def unhealthy(run: dict, why: str) -> End:
     return End(UNHEALTHY, why)
 
 
-def agent_at_work(number: int) -> bool:
-    """Whether an agent is at work in the worktree whose branch is the issue's. Git says which worktree holds the
-    branch, and Orca which agents are open in it. An agent that has finished its turn is `done` there. The agent
-    that runs this command is left out, since it is the one asking."""
-    start = "refs/heads/" + issue.branch_start(number)
-    held, path = set(), ""
+def common(name: str) -> Path:
+    """A file under git's common directory, which is in no commit and which every worktree of the repository
+    shares."""
+    return Path(shell.git("rev-parse", "--path-format=absolute", "--git-common-dir")) / name
+
+
+def at_work() -> list[str]:
+    """Each run that an agent is still at work on, by the name of its checkout's folder. A run's checkout is one
+    that claimed an issue, which `claim` wrote down, or one that is on a feature's branch. Orca says which agents
+    are open in each. An agent that has finished its turn is `done` there. The agent that runs this command is
+    left out, since it is the one asking.
+
+    The labels alone do not say this. A run takes `in-progress` off its issue when it closes it, and then looks
+    back over itself for some minutes more. Asked of the labels in those minutes, a check of the schedule would
+    start the next issue beside a run that has not ended.
+
+    A checkout that was written down and holds no agent at work is forgotten here, so that the file names only
+    the runs that may still be going. The agent that asks counts for that, though it holds nothing up: a run
+    that asked again would otherwise take its own checkout out of the file while it was still at work."""
+    held, path = {}, ""
     for line in shell.git("worktree", "list", "--porcelain").splitlines():
         name, _, rest = line.partition(" ")
         if name == "worktree":
             path = rest
-        elif name == "branch" and rest.startswith(start):
-            held.add(same(path))
+        elif name == "branch" and rest.startswith(FEATURES):
+            held[same(path)] = f"{Path(path).name}, on {rest.removeprefix('refs/heads/')}"
+    runs = common(RUNS)
+    written = runs.read_text(encoding="utf-8").splitlines() if runs.is_file() else []
+    for checkout in written:
+        held.setdefault(same(checkout), Path(checkout).name)
     if not held:
-        return False
+        return []
     listed = json.loads(shell.run("orca", "worktree", "ps", "--json", "--limit", "1000"))["result"]["worktrees"]
     asking = os.environ.get("ORCA_AGENT_SESSION_ID")
-    return any(
-        agent["state"] != "done" and agent["orcaSessionId"] != asking
-        for worktree in listed
-        if same(worktree["path"]) in held
-        for agent in worktree["agents"]
-    )
+    open_in = {same(worktree["path"]): [a for a in worktree["agents"] if a["state"] != "done"] for worktree in listed}
+    busy = {checkout for checkout, agents in open_in.items() if any(a["orcaSessionId"] != asking for a in agents)}
+    going = [checkout for checkout in written if open_in.get(same(checkout))]
+    if going != written:
+        runs.write_text("".join(f"{checkout}\n" for checkout in going), encoding="utf-8")
+    return sorted(name for checkout, name in held.items() if checkout in busy)
 
 
 def same(path: str) -> str:
@@ -115,12 +141,9 @@ def same(path: str) -> str:
 
 
 def in_flight(opened: list[dict], comments: Comments) -> Taken | None:
-    """The issue that carries `in-progress`, when its agent is gone. The run ends when its agent is at work,
-    because features go one at a time."""
+    """The issue that carries `in-progress`, which a run began and did not end. No agent is at work on it, or
+    `pickup` would have ended before it asked, so the run that asks takes it up again."""
     held = sorted((one for one in opened if rules.IN_PROGRESS in issue.labels(one)), key=lambda one: one["number"])
-    for one in held:
-        if agent_at_work(one["number"]):
-            raise End(NOTHING, f"#{one['number']} is in progress, and an agent is at work on its branch.")
     if not held:
         return None
     said = comments(held[0]["number"])
@@ -245,6 +268,12 @@ def claim(taken: Taken, branch: str) -> None:
     if labels:
         shell.gh("issue", "edit", str(number), *labels)
     issue.post(number, "picked up", f"Branch: {branch}\nTaken up: {taken.take_up}. {taken.why}")
+    # The run is written down by the checkout it works in, so that a later look finds it for as long as its agent
+    # is at work there, whatever branch the checkout is on by then.
+    runs = common(RUNS)
+    written = runs.read_text(encoding="utf-8").splitlines() if runs.is_file() else []
+    if not any(same(checkout) == same(str(shell.ROOT)) for checkout in written):
+        runs.write_text("".join(f"{checkout}\n" for checkout in [*written, str(shell.ROOT)]), encoding="utf-8")
 
 
 def pickup(claiming: bool) -> tuple[int, dict]:
@@ -253,8 +282,14 @@ def pickup(claiming: bool) -> tuple[int, dict]:
     Whether the site is healthy is asked before anything new is started, and before an issue in flight that
     is not yet on the site is carried on. A feature that is live is taken up again whatever the site's health:
     the fault may be its own, and the run that mends it or puts the site back is this one. Asked first of all,
-    a feature that broke the site eval and lost its run would have kept every later run from starting."""
+    a feature that broke the site eval and lost its run would have kept every later run from starting.
+
+    Before any of that, nothing starts while a run is still at work: features go one at a time, and the next
+    waits until the one before has wholly ended, its look back with it."""
     try:
+        busy = at_work()
+        if busy:
+            raise End(NOTHING, f"A run is still at work in {'; '.join(busy)}. Nothing starts until it has ended.")
         owner = issue.owner()
         opened = shell.gh_json(
             "issue", "list", "--state", "open", "--limit", "1000", "--json", "number,title,labels,author"

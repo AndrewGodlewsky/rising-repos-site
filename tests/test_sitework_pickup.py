@@ -257,6 +257,99 @@ class IsTheSiteHealthy(PickupTest):
         self.assertEqual(kept.read_text(encoding="utf-8").strip(), "61")
 
 
+class IsARunStillAtWork(PickupTest):
+    """A run takes `in-progress` off its issue when it closes it, and then looks back over itself for some minutes
+    more. A check of the schedule that fell in those minutes would start the next issue beside it. So what is
+    asked is whether an agent is at work on any feature's branch, whatever the labels say. Here a worktree is
+    still on the branch of #26, which is closed and is none of the open ideas."""
+
+    def setUp(self):
+        super().setUp()
+        self.answers["git worktree list --porcelain"] = "\n".join(
+            [worktree("/work/site", "main"), worktree("/work/Earlier-Run", "agent/26-an-earlier-idea")]
+        )
+
+    def test_a_run_whose_issue_is_closed_and_whose_agent_is_still_at_work_ends_the_run_with_3(self):
+        self.answers["orca worktree ps --json"] = orca("/work/Earlier-Run", "done", "working")
+        code, printed = self.run_command("--claim")
+        self.assertEqual((code, list(printed)), (3, ["why"]))
+        self.assertIn("agent/26-an-earlier-idea", printed["why"])
+        self.assertEqual(self.shell.changes(), [])
+
+    def test_nothing_is_asked_of_github_while_a_run_is_at_work(self):
+        self.answers["orca worktree ps --json"] = orca("/work/Earlier-Run", "working")
+        self.run_command()
+        self.assertEqual([line for line in self.shell.ran if line.startswith("gh ")], [])
+
+    def test_a_run_whose_agent_has_ended_holds_nothing_up(self):
+        self.answers["orca worktree ps --json"] = orca("/work/Earlier-Run", "done")
+        code, printed = self.run_command()
+        self.assertEqual((code, printed["issue"], printed["take_up"]), (0, 27, "new"))
+
+    def test_an_agent_at_work_on_a_branch_that_is_no_features_holds_nothing_up(self):
+        self.answers["orca worktree ps --json"] = orca("/work/site", "working")
+        code, printed = self.run_command()
+        self.assertEqual((code, printed["issue"]), (0, 27))
+
+    def test_the_agent_that_asks_is_not_a_run_at_work(self):
+        self.answers["orca worktree ps --json"] = orca("/work/Earlier-Run", "working", session="this-one")
+        os.environ["ORCA_AGENT_SESSION_ID"] = "this-one"
+        code, printed = self.run_command()
+        self.assertEqual((code, printed["issue"]), (0, 27))
+
+    def test_a_run_that_left_its_features_branch_is_still_at_work_while_its_agent_is(self):
+        # Which branch a run's worktree is on is the run's own doing, and it may leave the feature's branch once
+        # its issue is closed. The checkout it claimed from is written down, so it is found whatever it is on.
+        self.answers["git worktree list --porcelain"] = "\n".join(
+            [worktree("/work/site", "main"), worktree("/work/Claimed-Run", "the-owner/a-workspace")]
+        )
+        (self.common / pickup.RUNS).write_text("/work/Claimed-Run\n", encoding="utf-8")
+        self.answers["orca worktree ps --json"] = orca("/work/Claimed-Run", "working")
+        code, printed = self.run_command("--claim")
+        self.assertEqual((code, list(printed)), (3, ["why"]))
+        self.assertIn("Claimed-Run", printed["why"])
+        self.assertEqual(self.shell.changes(), [])
+
+    def test_a_recorded_run_whose_agent_has_ended_holds_nothing_up_and_is_forgotten(self):
+        self.answers["git worktree list --porcelain"] = worktree("/work/site", "main")
+        (self.common / pickup.RUNS).write_text("/work/Claimed-Run\n", encoding="utf-8")
+        self.answers["orca worktree ps --json"] = orca("/work/Claimed-Run", "done")
+        code, printed = self.run_command()
+        self.assertEqual((code, printed["issue"]), (0, 27))
+        self.assertEqual((self.common / pickup.RUNS).read_text(encoding="utf-8"), "")
+
+    def test_the_run_that_asks_is_not_forgotten_while_it_is_at_work(self):
+        # The agent that asks holds nothing up, since it is the one asking. Its checkout stays written down
+        # all the same, or the next check of the schedule would no longer find the run.
+        self.answers["git worktree list --porcelain"] = worktree("/work/site", "main")
+        (self.common / pickup.RUNS).write_text("/work/Claimed-Run\n", encoding="utf-8")
+        self.answers["orca worktree ps --json"] = orca("/work/Claimed-Run", "working", session="this-one")
+        os.environ["ORCA_AGENT_SESSION_ID"] = "this-one"
+        code, printed = self.run_command()
+        self.assertEqual((code, printed["issue"]), (0, 27))
+        self.assertEqual((self.common / pickup.RUNS).read_text(encoding="utf-8"), "/work/Claimed-Run\n")
+
+    def test_claiming_writes_down_the_checkout_the_run_works_in_and_writes_it_once(self):
+        self.answers["git worktree list --porcelain"] = worktree("/work/site", "main")
+        for _ in range(2):
+            code, _ = self.run_command("--claim")
+            self.assertEqual(code, 0)
+            self.answers["orca worktree ps --json"] = orca(str(shell.ROOT), "done")
+        written = (self.common / pickup.RUNS).read_text(encoding="utf-8").splitlines()
+        self.assertEqual(written, [str(shell.ROOT)])
+
+    def test_without_claim_no_checkout_is_written_down(self):
+        self.answers["git worktree list --porcelain"] = worktree("/work/site", "main")
+        self.run_command()
+        self.assertFalse((self.common / pickup.RUNS).exists())
+
+    def test_orca_is_not_asked_when_no_worktree_is_on_a_features_branch(self):
+        self.answers["git worktree list --porcelain"] = worktree("/work/site", "main")
+        code, _ = self.run_command()
+        self.assertEqual(code, 0)
+        self.assertEqual([line for line in self.shell.ran if line.startswith("orca ")], [])
+
+
 class IsSomethingInFlight(PickupTest):
     def setUp(self):
         super().setUp()
@@ -271,7 +364,7 @@ class IsSomethingInFlight(PickupTest):
         code, printed = self.run_command("--claim")
         self.assertEqual(code, 3)
         self.assertEqual(list(printed), ["why"])
-        self.assertIn("#28", printed["why"])
+        self.assertIn("agent/28-latest-jump", printed["why"])
         self.assertEqual(self.shell.changes(), [])
 
     def test_an_issue_in_progress_whose_agent_has_finished_is_taken_up_again(self):

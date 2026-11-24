@@ -7,6 +7,10 @@ change, and one looks back over the run. A script decides whatever a script
 can, and each is run as `uv run --locked python -m sitework <command>`,
 written below as `sitework <command>`.
 
+A run works one issue. It ends when that issue is closed or stopped and its
+look back is done, and a schedule starts the next issue, with a fresh agent,
+once no run is at work.
+
 [The plan](../workflow-plan.md) says why each part is so. Read it only when a
 step here leaves a choice open.
 
@@ -141,12 +145,12 @@ What only the owner can answer, and what the agent would choose.
   issue in RisingRepos that says what the page needs to show, which field
   would carry it, and which issue here waits on it. Then
   `sitework stop <issue> --data <its number> --field <the field> --file <file>`,
-  and take the next issue. Give the exact key the data will gain. The
+  and go on to the look back. Give the exact key the data will gain. The
   script refuses a name the daily schema and the newest board already
   hold, since the next run would take the issue up again at once.
 - **Needs the owner**, when any of these is so. Then
-  `sitework stop <issue> --stage shape --file <file>`, and take the next
-  issue.
+  `sitework stop <issue> --stage shape --file <file>`, and go on to the look
+  back.
   - The idea is already true, or no longer applies.
   - It cannot meet a standard, or it goes against a decision record.
   - It needs something the idea does not show.
@@ -329,8 +333,9 @@ To stop: push the work, so that nothing is lost. Write one file that says
 the stage, what was seen, what was tried, the question for the owner, and
 what the run would choose. Then
 `sitework stop <issue> --stage <stage> --file <file>`, which posts it, swaps
-`in-progress` for `needs-owner`, and tells the owner. Take the next issue: a
-stopped issue holds nothing up.
+`in-progress` for `needs-owner`, and tells the owner. Then go on to the look
+back, and end the run there. A stopped issue holds nothing up: the next run
+takes the next issue.
 
 The owner answers with a comment on the issue and removes `needs-owner`. The
 next run reads the answer and carries on from the stage that stopped.
