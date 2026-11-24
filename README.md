@@ -135,8 +135,11 @@ What every page holds to, each checked by a test in `tests/`:
   2026, which a reader's first opening of a row fetches. The notes on the stylesheet and the
   scripts are Jinja comments, which no page carries: as CSS and JS comments
   they took 9,531 bytes of a board's page. Three fixes of 23 November 2026
-  have since added 29 bytes to every page, and 2 more to a board with rows,
-  so the example's root is now 95,689 bytes.
+  have since added 29 bytes to every page, and 2 more to a board with rows.
+  Stacking an opened row's board days on a phone (#27) added 264 to every
+  page, in the stylesheet, and 306 more to a board with rows, in the script.
+  So the example's root is now 96,259 bytes, and the page of the 316 made-up
+  rows 480,556.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -153,7 +156,9 @@ What every page holds to, each checked by a test in `tests/`:
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199).
   On 2026-11-22 it came to 144,789 bytes with zlib 1.3.1, which the workflow's
   Python uses, and 141,600 with the zlib-ng that Python 3.14 uses on Windows,
-  so a size measured on Windows reads about 2% low. The type takes about
+  so a size measured on Windows reads about 2% low. With an opened row's
+  board days stacked on a phone (#27) it came to 141,793 on Windows on
+  2026-11-24, 183 more than without them. The type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries
   105 characters of description in random letters, which pack worse than a
@@ -402,6 +407,19 @@ screen reader. The build words every figure and word of it in `history.json`,
 as it words the row's line, so the two never disagree, and the script places
 them and writes no figure of its own. A fact the file does not give is left
 out, never guessed.
+
+The table of the boards it was on has five columns: the board day, and its
+rank, total stars, stars a day, and multiple there. On a phone they do not
+fit an opened row's box, where they were cut at the edge of the part that
+holds them, with the last out of sight (#27). So below 768 px each board day
+is stacked: its date, and under it its four figures, each under its column's
+heading, at 12 px in `--text-3`, as a fact's name is. The script gives each
+figure's cell its column's heading in `data-h`, and the stylesheet draws it
+from there. A figure that does not fit the line goes on to the next, whole,
+so nothing is cut on a narrower screen either. The row of headings is cut to
+a pixel there, as the board's own is, so a screen reader still has it, and
+the table and each of its parts names its role, as the board's do. From
+768 px up it is a table under its headings.
 
 **About this board, and the foot.** Under the rows, About this board gives the
 board's plain facts in `--text-2`, each a line: its count of repositories and
@@ -705,8 +723,9 @@ A pull request builds and does not deploy.
 
 **The checks.** `python -m sitework check --suite` runs the lint, the format,
 the agents' tests, and the owner's tests, the cheapest first, and stops at the
-first that fails. The owner's tests drive the Chrome that the runner's image
-already holds, so the job downloads no browser.
+first that fails. The owner's tests, and the agents' tests of an opened row,
+drive the Chrome that the runner's image already holds, so the job downloads
+no browser.
 
 **A push of the notes.** The feature workflow keeps the notes of its runs in
 `docs/workflow-notes/`, and `deploy.yml` leaves that folder out with
@@ -736,7 +755,9 @@ python -m http.server 8000 --bind 127.0.0.1 --directory dist  # then open http:/
 `deploy.yml`'s build job runs the check command too, with `--suite`, which
 leaves out the steps that need a branch's history ("The feature workflow"
 says what each step is). The owner's tests need Chrome on the machine, and
-download no browser. The agents' tests build
+download no browser. So do the agents' tests of an opened row,
+`tests/test_opened_row.py`, since where a part sits on a screen is something
+only a browser can say (#27). The agents' tests build
 from `tests/fixtures/`, but for the tests that build from `site-data/`
 (see "The data"), write only to temporary folders, and reach no other machine:
 the stale check's tests talk only to servers of their own on 127.0.0.1 (see

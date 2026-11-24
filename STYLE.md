@@ -45,6 +45,7 @@ a page that already does the nearest job, and build from it.
 | Words the reader types | The filter's search | `.toolbar input[type="search"]` |
 | A figure | Rising Mono with figures of one width | `.num` |
 | A table of figures | Baseline's table | `.numbers` |
+| A table of figures with more columns than a phone has room for | An opened row's table of the boards it was on: below 768 px each of its rows is stacked, and each figure is under its column's heading | `.more-days` |
 | A quiet aside | A note under a chart or a table | `.note` |
 | Words for a screen reader alone | | `.sr` |
 | Anything that works only with the page's script | Hidden until the script has marked the root element | `.js-only` |

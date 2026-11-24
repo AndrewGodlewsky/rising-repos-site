@@ -284,7 +284,6 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
 .rs .ln { color: var(--text); font-size: 15px; font-weight: 500; }
 .rs .su { margin-top: 4px; color: var(--text-2); }
 .part-title { display: block; margin-bottom: 10px; color: var(--text); font-size: 13px; font-weight: 500; text-align: left; }
-caption.part-title { display: table-caption; caption-side: top; }
 .fa { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; margin: 0; align-content: start; }
 .fa dt { color: var(--text-3); font-size: 12px; }
 .fa dd { margin: 0; color: var(--text); font-size: 14px; overflow-wrap: anywhere; }
@@ -317,17 +316,21 @@ caption.part-title { display: table-caption; caption-side: top; }
 .run-days a.on.top:hover { color: var(--on-accent); }
 .run-axis { display: flex; justify-content: space-between; margin-top: 6px; color: var(--text-3); font: 400 11px/1 var(--mono); }
 
-{# The boards it was on, as a table. #}
+{# The boards it was on. Its five columns do not fit an opened row's box on a phone, where they were cut at the edge
+   of the part that holds them, with the last out of sight (#27). So on a phone each board day is stacked: its date,
+   and under it its four figures, each under its column's heading, which the script copies into the cell's data-h.
+   The board's own rules reach this table inside a row. On a phone they cut its row of headings to a pixel, as they
+   do the board's, so a screen reader still has it, and they give each board day the rule over it and the room round
+   it. From 768 px up, the rules there put it back to an ordinary table under its headings. #}
 .more-days-wrap { overflow-x: auto; }
-.more-days { border-collapse: collapse; font-size: 13px; }
-{# The board's table rules reach this table inside a row too: put it back to an ordinary table. #}
-.chart .more-days thead { position: static; display: table-header-group; width: auto; height: auto; overflow: visible; clip-path: none; white-space: nowrap; background: none; border: 0; }
-.chart .more-days tr, .chart .more-days thead tr, .chart .more-days tbody tr { display: table-row; padding: 0; border: 0; background: none; box-shadow: none; cursor: auto; }
-.chart .more-days th, .chart .more-days td { display: table-cell; padding: 6px 16px 6px 0; font-size: 13px; }
-.more-days th, .more-days td { padding: 6px 16px 6px 0; border-top: 1px solid var(--line); text-align: left; font-weight: 400; white-space: nowrap; }
-.more-days thead th { border-top: 0; color: var(--text-3); }
-.more-days tbody th { color: var(--text); }
+.more-days { display: block; border-collapse: collapse; font-size: 13px; }
+.more-days tbody { display: block; }
+.chart .more-days thead tr, .chart .more-days tbody tr { background: none; box-shadow: none; cursor: auto; }
+.chart .more-days tbody tr { display: flex; flex-wrap: wrap; gap: 2px 16px; }
+.more-days th, .more-days td { white-space: nowrap; }
+.more-days tbody th { flex: 1 1 100%; color: var(--text); }
 .more-days td { color: var(--text-2); font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.more-days td::before { content: attr(data-h); display: block; color: var(--text-3); font: 400 12px/1.5 var(--sans); }
 .more-days td.gain { color: var(--accent); }
 
 .message { max-width: 640px; padding: 32px 0; border-top: 1px solid var(--line); }
@@ -433,6 +436,14 @@ caption.part-title { display: table-caption; caption-side: top; }
   .op.m { grid-template-areas: "reason facts" "drawing facts" "month facts" "run run" "days days"; grid-template-rows: auto auto 1fr; }
   .op .month-line { grid-area: month; }
   .op .more-days-wrap { grid-area: days; }
+  .more-days { display: table; }
+  .more-days caption { display: table-caption; }
+  .more-days tbody { display: table-row-group; }
+  .chart .more-days thead { position: static; display: table-header-group; background: none; border: 0; }
+  .chart .more-days thead tr, .chart .more-days tbody tr { display: table-row; padding: 0; border: 0; }
+  .chart .more-days th, .chart .more-days td { display: table-cell; padding: 6px 16px 6px 0; border-top: 1px solid var(--line); }
+  .chart .more-days thead th { border-top: 0; color: var(--text-3); }
+  .more-days td::before { content: none; }
   .drawing-plot { height: 180px; }
   .run-days { grid-template-columns: repeat(30, minmax(0, 1fr)); }
   .chart thead {
