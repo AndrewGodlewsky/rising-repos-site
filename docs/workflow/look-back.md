@@ -28,6 +28,11 @@ only where the digest points at waste, and read only that part.
   A check that held back right work, or let wrong work by. A line of a
   guarded file that the feature left out of date. Each is a fault of the
   workflow, and not of the feature.
+- **What the review left standing.** Each finding of a review that passed
+  which a check could have found: the "Shipped" note lists them under
+  "Findings left standing", and the review has them when the run stopped.
+  File each as an issue of its own, with its file, its line, and the test
+  that would catch it.
 - **What was used that was not needed.** Reading that a search would have
   spared, work done twice, messages that only waited.
 - **What would have cost less.** A better order of work, a script in place of
