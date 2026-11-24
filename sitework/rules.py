@@ -10,9 +10,12 @@ BLOCKED_ON_DATA = "blocked-on-data"
 """The labels. The idea agent sets the first and the owner's approval the second. The workflow sets and clears the
 other three, and never applies `approved`."""
 
-STAGES = ("shape", "build", "check", "review", "ship", "confirm")
+STAGES = ("shape", "build", "check", "review", "ship", "confirm", "mend")
 """The stages of a run that an issue can stop at, in the order a run meets them (docs/workflow-plan.md, section
-14). `stop` takes one of them, and the digest tells a run's stages apart by them."""
+14). `stop` takes one of them, and the digest tells a run's stages apart by them. A run meets `mend` only when
+`confirm` failed because of the change, since the fault is mended once before the site is put back. It is a stage
+of its own so that an issue whose mend failed stops at `mend`, and so that the digest shows what a mend cost
+apart from what the feature cost."""
 
 FIRST_LINE = "Site workflow: "
 KINDS = ("picked up", "plan", "review", "stopped", "waiting on data", "shipped", "reverted")

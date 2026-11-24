@@ -357,6 +357,17 @@ class Confirm(ConfirmTest):
                 self.assertEqual(report["eval"], {"run": 600, "result": ended})
         self.assertEqual([line for line in self.shell.ran if line.startswith(f"{DEPLOYS} --limit")], [])
 
+    def test_after_a_mend_the_mends_merge_is_the_one_followed_since_it_is_the_features_newest(self):
+        self.answers["gh pr list --state merged"] += [pull(42, "agent/27-stop-clipping", NEWER, "12:20:00")]
+        self.answers[f"{DEPLOYS} --commit {NEWER}"] = [run(510, NEWER, made="12:20:02", done="12:22:00")]
+        self.answers["gh run view 510"] = jobs("success")
+        self.answers[f"{EVALS} --commit {NEWER}"] = [run(610, NEWER, made="12:22:03", done="12:24:30")]
+        code, report, _ = self.run_command("27")
+        self.assertEqual(code, 0)
+        self.assertEqual(report["merge"], NEWER)
+        self.assertEqual(report["deploy"], {"run": 510, "commit": NEWER, "result": "success"})
+        self.assertEqual(report["eval"], {"run": 610, "result": "success"})
+
     def test_an_issue_with_no_merged_pull_request_exits_1_and_waits_for_nothing(self):
         self.answers["gh pr list --state merged"] = []
         code, report, printed = self.run_command("27")
@@ -408,6 +419,22 @@ class ConfirmARevert(ConfirmTest):
         code, report, _ = self.run_command("27")
         self.assertEqual(code, 1)
         self.assertEqual((report["merge"], report["eval"]), (MERGE, {"run": 600, "result": "failure"}))
+
+    def test_with_revert_a_feature_and_its_mend_that_one_revert_undid_are_followed_by_that_reverts_deploy(self):
+        self.answers["gh pr list --state merged"] += [pull(42, "agent/27-stop-clipping", NEWER, "12:20:00")]
+        code, report, _ = self.run_command("27", "--revert")
+        self.assertEqual(code, 0)
+        self.assertEqual(report["merge"], REVERT)
+
+    def test_with_revert_a_revert_that_merged_before_the_features_newest_merge_is_not_followed(self):
+        # The feature was landed again after its revert. That revert's deploy passed, and says nothing of whether
+        # the site was put back from the merge that is on main now.
+        self.answers["gh pr list --state merged"] += [pull(42, "agent/27-stop-clipping", NEWER, "12:45:00")]
+        code, report, printed = self.run_command("27", "--revert")
+        self.assertEqual(code, 1)
+        self.assertIsNone(report)
+        self.assertIn("#27's newest merge has no merged pull request that reverts it", printed)
+        self.assertEqual(self.shell.count("gh run"), 0)
 
     def test_with_revert_and_no_merged_revert_it_says_so_and_exits_1(self):
         self.answers["gh pr list --state merged"] = [pull(40, "agent/27-stop-clipping", MERGE, "11:59:58")]

@@ -110,6 +110,11 @@ def pull(number: int, branch: str, state: str = "OPEN", fork: bool = False) -> d
     }
 
 
+def merged(number: int, branch: str, at: str) -> dict:
+    """A pull request that merged at `at`, a time of day, for a test that turns on which of two merged later."""
+    return {**pull(number, branch, "MERGED"), "mergedAt": f"2026-11-22T{at}Z"}
+
+
 def worktree(path: str, branch: str) -> str:
     """One worktree, as `git worktree list --porcelain` prints it."""
     return f"worktree {path}\nHEAD {HEAD}\nbranch refs/heads/{branch}\n"
@@ -274,6 +279,34 @@ class IsSomethingInFlight(PickupTest):
         code, printed = self.run_command()
         self.assertEqual(code, 0)
         self.assertEqual((printed["issue"], printed["take_up"]), (28, "resume"))
+
+    def test_a_feature_that_is_live_is_taken_up_again_though_the_site_is_not_healthy(self):
+        # The fault may be the feature's own, and the run that would mend it or put the site back is this one.
+        self.answers["orca worktree ps --json"] = orca("/work/Site-Feature", "done")
+        self.answers[EVALS] = [run(61, conclusion="failure", made="23:32:26", done="23:34:58")]
+        self.answers["gh pr list"] = [pull(41, "agent/28-latest-jump", "MERGED")]
+        code, printed = self.run_command()
+        self.assertEqual((code, printed["issue"], printed["take_up"]), (0, 28, "resume"))
+        self.assertEqual(self.told, [])
+
+    def test_an_issue_in_progress_that_is_not_live_waits_while_the_site_is_not_healthy(self):
+        self.answers["orca worktree ps --json"] = orca("/work/Site-Feature", "done")
+        self.answers[EVALS] = [run(61, conclusion="failure", made="23:32:26", done="23:34:58")]
+        for pulls in ([], [pull(41, "agent/28-latest-jump")]):
+            with self.subTest(pulls=len(pulls)):
+                self.answers["gh pr list"] = pulls
+                code, printed = self.run_command()
+                self.assertEqual((code, list(printed)), (4, ["why"]))
+
+    def test_a_feature_whose_merges_were_reverted_is_not_live_and_waits_while_the_site_is_not_healthy(self):
+        self.answers["orca worktree ps --json"] = orca("/work/Site-Feature", "done")
+        self.answers[EVALS] = [run(61, conclusion="failure", made="23:32:26", done="23:34:58")]
+        self.answers["gh pr list"] = [
+            merged(41, "agent/28-latest-jump", "20:00:00"),
+            merged(42, "agent/28-revert", "21:00:00"),
+        ]
+        code, _ = self.run_command()
+        self.assertEqual(code, 4)
 
     def test_an_issue_in_progress_with_no_worktree_on_its_branch_is_taken_up_again(self):
         self.answers["git worktree list --porcelain"] = worktree("/work/site", "main")
@@ -555,6 +588,8 @@ class WhatItPrints(PickupTest):
                 "pull_request": None,
                 "review": None,
                 "merged": False,
+                "standing": 0,
+                "reverted": False,
             },
         )
 
@@ -578,8 +613,35 @@ class WhatItPrints(PickupTest):
                 "pull_request": {"number": 41, "state": "MERGED"},
                 "review": {"verdict": "pass", "commit": "2" * 40},
                 "merged": True,
+                "standing": 1,
+                "reverted": False,
             },
         )
+
+    def test_the_facts_tell_a_feature_from_a_feature_with_its_mend_and_from_one_that_was_reverted(self):
+        # A run that takes an issue up again reads these to know whether a mend was tried, and whether the site
+        # was put back, which the newest pull request alone does not say.
+        self.only(29)
+        self.label(29, "site-idea", "approved", "in-progress")
+        self.answers[COMMENTS % 29] = [said("Site workflow: picked up\n\nBranch: agent/29-baseline-chart")]
+        feature, mend = (
+            merged(41, "agent/29-baseline-chart", "20:00:00"),
+            merged(43, "agent/29-baseline-chart", "21:00:00"),
+        )
+        cases = {
+            "the mend's pull request is open": ([feature, pull(43, "agent/29-baseline-chart")], (False, 1, False)),
+            "the mend merged": ([feature, mend], (True, 2, False)),
+            "both were reverted": ([feature, mend, merged(44, "agent/29-revert", "22:00:00")], (True, 0, True)),
+            "landed again after a revert": (
+                [feature, merged(42, "agent/29-revert", "20:30:00"), mend],
+                (True, 1, False),
+            ),
+        }
+        for case, (pulls, expected) in cases.items():
+            with self.subTest(case):
+                self.answers["gh pr list"] = pulls
+                facts = self.run_command()[1]["facts"]
+                self.assertEqual((facts["merged"], facts["standing"], facts["reverted"]), expected)
 
 
 class Claim(PickupTest):

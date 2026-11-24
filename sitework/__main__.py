@@ -21,7 +21,7 @@ COMMANDS = {
     "pictures": ("sitework.layout", "Take a picture of each page a change altered, for the owner"),
     "ship": ("sitework.ship", "Merge a pull request once every condition of the merge holds"),
     "confirm": ("sitework.confirm", "See that a merged feature is live, works, and left the site within its limits"),
-    "revert": ("sitework.revert", "Put the site back by reverting a feature's merge"),
+    "revert": ("sitework.revert", "Put the site back by reverting every merge of a feature that stands"),
     "stage": ("sitework.digest", "Mark in the run's record that a stage begins"),
     "digest": ("sitework.digest", "Make a one-page digest of a run from its record"),
     "notes": ("sitework.notes", "Push a run's notes to main, in a commit that holds nothing else"),

@@ -72,8 +72,9 @@ def said(body: str, by: str = OWNER, number: int = 1) -> dict:
     }
 
 
-def pull(number: int, branch: str, state: str = "MERGED", fork: bool = False) -> dict:
-    """A pull request, as `gh pr list` gives one."""
+def pull(number: int, branch: str, state: str = "MERGED", fork: bool = False, second: int | None = None) -> dict:
+    """A pull request, as `gh pr list` gives one. One that merged did so in the second of its own number, so that
+    a higher number merged later, unless `second` gives another."""
     return {
         "number": number,
         "state": state,
@@ -81,7 +82,7 @@ def pull(number: int, branch: str, state: str = "MERGED", fork: bool = False) ->
         "headRefOid": f"{number:040x}",
         "isCrossRepository": fork,
         "mergeCommit": {"oid": f"{number + 1000:040x}"} if state == "MERGED" else None,
-        "mergedAt": f"2026-11-22T12:00:{number:02}Z" if state == "MERGED" else None,
+        "mergedAt": f"2026-11-22T12:00:{number if second is None else second:02}Z" if state == "MERGED" else None,
     }
 
 
@@ -258,6 +259,17 @@ class Stop(IssueTest):
         self.assertEqual(code, 2)
         self.assertEqual(self.shell.ran, [])
 
+    def test_an_issue_whose_mend_failed_is_stopped_at_the_stage_named_mend(self):
+        code, _ = self.run_command("stop", "27", "--stage", "mend")
+        self.assertEqual(code, 0)
+        self.assertEqual(
+            self.shell.stdin["gh issue comment 27 --body-file -"],
+            "Site workflow: stopped\n\nStage: mend\n\nWhat the comment says.\n",
+        )
+        self.assertIn("gh issue edit 27 --remove-label in-progress --add-label needs-owner", self.shell.ran)
+        (message,) = self.told
+        self.assertIn("stopped at mend", message)
+
     def test_a_stage_the_workflow_does_not_have_is_refused(self):
         code, _ = self.run_command("stop", "27", "--stage", "lunch")
         self.assertEqual(code, 2)
@@ -304,6 +316,50 @@ class Close(IssueTest):
         self.assertIn("#27", printed)
         self.assertEqual(self.shell.changes(), [])
         self.assertEqual(self.told, [])
+
+    def test_a_close_refuses_a_feature_whose_every_merge_was_reverted_and_changes_nothing(self):
+        self.answers["gh pr list --state merged"] = [
+            pull(40, "agent/27-stop-clipping"),
+            pull(42, "agent/27-stop-clipping"),
+            pull(43, "agent/27-revert"),
+        ]
+        code, printed = self.run_command("close", "27")
+        self.assertEqual(code, 1)
+        for part in ("#27", "reverted", "nothing was changed"):
+            self.assertIn(part, printed)
+        self.assertEqual(self.shell.changes(), [])
+        self.assertEqual(self.told, [])
+
+    def test_a_close_of_a_feature_that_was_reverted_and_then_landed_again_goes_ahead(self):
+        self.answers["gh pr list --state merged"] = [
+            pull(40, "agent/27-stop-clipping"),
+            pull(41, "agent/27-revert"),
+            pull(43, "agent/27-stop-clipping-again"),
+        ]
+        self.answers["git ls-remote origin refs/heads/agent/27-stop-clipping-again"] = (
+            f"{43:040x}\trefs/heads/agent/27-stop-clipping-again"
+        )
+        self.answers["git push origin --delete"] = ""
+        code, _ = self.run_command("close", "27")
+        self.assertEqual(code, 0)
+        self.assertEqual(
+            self.shell.changes(),
+            [
+                "gh issue comment 27 --body-file -",
+                "gh issue close 27",
+                "gh issue edit 27 --remove-label in-progress",
+                "git push origin --delete agent/27-stop-clipping-again",
+            ],
+        )
+
+    def test_a_close_after_a_mend_goes_ahead_since_both_merges_stand(self):
+        self.answers["gh pr list --state merged"] = [
+            pull(40, "agent/27-stop-clipping"),
+            pull(42, "agent/27-stop-clipping"),
+        ]
+        code, _ = self.run_command("close", "27")
+        self.assertEqual(code, 0)
+        self.assertIn("gh issue close 27", self.shell.ran)
 
     def test_a_command_that_github_refuses_exits_1_with_what_it_printed(self):
         self.answers["gh issue close 27"] = shell.Failed("gh issue close 27: exit 1\nHTTP 403")
@@ -408,6 +464,58 @@ class Reading(IssueTest):
     def test_an_issue_whose_feature_merged_and_was_not_reverted_has_no_merged_revert(self):
         self.answers["gh pr list --state merged"] = [pull(40, "agent/27-stop-clipping"), pull(45, "agent/28-revert")]
         self.assertIsNone(issue.reverted(27))
+
+    def test_every_merge_of_a_feature_stands_while_no_revert_of_it_has_merged_the_newest_first(self):
+        self.answers["gh pr list --state merged"] = [
+            pull(40, "agent/27-stop-clipping"),
+            pull(42, "agent/27-stop-clipping"),
+            pull(45, "agent/28-latest-jump"),
+        ]
+        self.assertEqual([found["number"] for found in issue.standing(27)], [42, 40])
+
+    def test_a_merge_that_a_merged_revert_already_undid_does_not_stand(self):
+        self.answers["gh pr list --state merged"] = [
+            pull(40, "agent/27-stop-clipping"),
+            pull(41, "agent/27-revert"),
+            pull(43, "agent/27-stop-clipping"),
+            pull(44, "agent/27-stop-clipping"),
+        ]
+        self.assertEqual([found["number"] for found in issue.standing(27)], [44, 43])
+
+    def test_no_merge_stands_once_a_revert_has_merged_after_the_newest_of_them(self):
+        self.answers["gh pr list --state merged"] = [
+            pull(40, "agent/27-stop-clipping"),
+            pull(42, "agent/27-stop-clipping"),
+            pull(43, "agent/27-revert"),
+        ]
+        self.assertEqual(issue.standing(27), [])
+
+    def test_a_merge_stands_by_when_it_merged_and_not_by_its_number(self):
+        self.answers["gh pr list --state merged"] = [
+            pull(40, "agent/27-stop-clipping", second=50),
+            pull(41, "agent/27-revert", second=45),
+            pull(43, "agent/27-stop-clipping", second=44),
+            pull(44, "agent/27-stop-clipping", second=55),
+        ]
+        self.assertEqual([found["number"] for found in issue.standing(27)], [44, 40])
+
+    def test_a_revert_of_another_issue_or_from_a_fork_undoes_no_merge_of_this_one(self):
+        self.answers["gh pr list --state merged"] = [
+            pull(40, "agent/27-stop-clipping"),
+            pull(45, "agent/28-revert"),
+            pull(46, "agent/27-revert", fork=True),
+        ]
+        self.assertEqual([found["number"] for found in issue.standing(27)], [40])
+
+    def test_an_issue_with_no_merged_pull_request_has_no_merge_that_stands(self):
+        self.answers["gh pr list --state merged"] = [pull(41, "agent/27-revert"), pull(45, "agent/28-latest-jump")]
+        self.assertEqual(issue.standing(27), [])
+
+    def test_the_merges_that_stand_are_read_from_one_asking_for_the_merged_pull_requests(self):
+        self.answers["gh pr list --state merged"] = [pull(40, "agent/27-stop-clipping"), pull(41, "agent/27-revert")]
+        issue.standing(27)
+        (asked,) = self.shell.ran
+        self.assertTrue(asked.startswith("gh pr list --state merged "), asked)
 
     def test_only_a_pull_request_into_main_is_asked_for(self):
         issue.pulls("open")

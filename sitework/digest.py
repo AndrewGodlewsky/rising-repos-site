@@ -45,7 +45,8 @@ FIGURES_HEADING = (
 )
 FIGURES_RULE = "| --- | ---: | ---: | ---: | ---: | --- | ---: |"
 """The heading of a feature's figures and the two rows above its own. They never change, so that `notes` can add
-the row beneath them to a table that holds a row for every feature."""
+the row beneath them to a table that holds a row for every feature. So a mend has no column of its own here: its
+tokens are in `Every stage`, and the table of tokens by stage is where they are told apart."""
 
 SUITE = ("unittest discover -s tests", "sitework check")
 """The two checks that run the whole suite, as `check_names` names them. A run of `unittest discover -s tests`

@@ -6,7 +6,8 @@ merges exactly the commit it judged: GitHub refuses the merge when the pull requ
 commit. GitHub holds a merge to nothing of main, so the script reads main once more just before it merges, and
 merges nothing when main has moved since the conditions were judged. With `--revert` it merges the pull request
 that reverts the feature, which no reviewer reads, so that a broken page does not stay live while a question
-waits. That pull request has to hold exactly the revert of the feature's merge, and nothing else.
+waits. That pull request has to hold exactly the revert of every merge of the feature that stands on main, which
+is two merges when a mend of the feature was merged as well, and nothing else.
 """
 
 import argparse
@@ -129,25 +130,32 @@ def guarded(base: str, head: str, patterns: list[str]) -> tuple[bool, str]:
 
 
 def reverts(number: int, main: str, head: str) -> tuple[bool, str]:
-    """The pull request holds exactly what reverting the feature's merge on the head of main gives, and nothing
-    else. No reviewer reads a revert, so without this the lane would merge whatever was pushed to the branch a
-    revert is expected on.
+    """The pull request holds exactly what reverting every merge of the feature that stands gives on the head of
+    main, and nothing else. No reviewer reads a revert, so without this the lane would merge whatever was pushed
+    to the branch a revert is expected on.
 
-    This stands where `guard` does for a feature, and `guard` is not run on a revert. The merge that is undone
-    passed `guard`, so undoing exactly that merge takes nothing from what judges a feature. And `guard` would
+    A feature whose mend failed has two merges that stand, its own and the mend's, and the site is put back only
+    when both are undone: a pull request that reverts the mend alone leaves the broken feature live, and does not
+    hold. A merge that an earlier revert undid does not stand, so a feature that was landed a second time is not
+    held to undoing its first merge again. Git reverts the merges in the order they are given, and they are given
+    newest first, because a later merge was made on top of an earlier one.
+
+    This stands where `guard` does for a feature, and `guard` is not run on a revert. Each merge that is undone
+    passed `guard`, so undoing exactly those merges takes nothing from what judges a feature. And `guard` would
     refuse the revert of a feature whose reviewer added one of the owner's tests, since the revert takes those
     lines out again, and the broken page would stay live for it.
 
     The revert is made in a worktree of its own and is never committed: the tree git would commit is all that
     the pull request's tree is held against."""
-    pull = issue.merged(number)
-    if pull is None:
-        return False, f"#{number} has no pull request that merged, so there is nothing for {head[:7]} to revert"
-    merge = pull["mergeCommit"]["oid"]
-    revert = f"the revert of #{number}'s merge, {merge[:7]}, on the head of main, {main[:7]}"
+    merges = [pull["mergeCommit"]["oid"] for pull in issue.standing(number)]
+    if not merges:
+        none = f"#{number} has no merged pull request that a revert has not undone"
+        return False, f"{none}, so there is nothing for {head[:7]} to revert"
+    named = f"{'merge' if len(merges) == 1 else 'merges'}, {' and '.join(merge[:7] for merge in merges)}"
+    revert = f"the revert of #{number}'s {named}, on the head of main, {main[:7]}"
     with shell.worktree(main) as tree:
         try:
-            shell.git("revert", "-m", "1", "--no-commit", merge, cwd=tree)
+            shell.git("revert", "-m", "1", "--no-commit", *merges, cwd=tree)
         except shell.Failed as error:
             return False, f"{revert}, cannot be made, so there is nothing to hold {head[:7]} against:\n{error}"
         reverted = shell.git("write-tree", cwd=tree)

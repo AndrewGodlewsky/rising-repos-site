@@ -3,10 +3,11 @@ the two workflows' runs, which `pickup` shares to judge whether the site is heal
 
 Every merge is a deploy (docs/adr/0006), so a merge is not the end of a feature: its pages have to be uploaded,
 the owner's tests have to pass on the live site, and the site eval that follows the deploy has to pass
-(docs/workflow-plan.md, section 10). This script reads each of the three and judges none of them. When one fails,
-the agent puts the site back with `revert` before it asks the owner anything. The revert's merge is a deploy as
-well, so `--revert` reads the same three for it: the feature's own deploy and eval say nothing of whether the
-site was put back.
+(docs/workflow-plan.md, section 10). This script reads each of the three and judges none of them. When one fails
+because of the change, the agent mends the fault once, and the mend's merge is followed here as the feature's
+was. When the mend fails too, or cannot be made, the agent puts the site back with `revert` before it asks the
+owner anything. The revert's merge is a deploy as well, so `--revert` reads the same three for it: the feature's
+own deploy and eval say nothing of whether the site was put back.
 
 Progress goes to the error stream, so that what is printed is the one JSON object.
 """
@@ -172,7 +173,16 @@ def confirm(number: int, reverting: bool = False) -> int:
     """Follow the merge of the feature's pull request, or with `reverting` the merge of the pull request that
     reverts it, through the three steps. `issue.merged` never gives a revert, so without the choice a second
     `confirm` would follow the feature's merge again: a revert whose own deploy failed would read as confirmed,
-    and one that mended the site would read as failed."""
+    and one that mended the site would read as failed.
+
+    Without `reverting` the merge that is followed is the feature's newest, which after a mend is the mend's.
+    With it, the revert has to be of what stands. A feature can be reverted and landed again, so its newest
+    merged revert may be older than its newest merge, and that revert's deploy says nothing of whether the site
+    was put back from the merge that is on main now. So the newest merged revert is followed only when no merge
+    of the feature stands after it."""
+    if reverting and issue.standing(number):
+        print(f"#{number}'s newest merge has no merged pull request that reverts it, so there is nothing to confirm.")
+        return 1
     pull = issue.reverted(number) if reverting else issue.merged(number)
     if pull is None:
         what = "merged pull request that reverts it" if reverting else "pull request that merged"

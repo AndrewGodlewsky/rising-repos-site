@@ -182,6 +182,31 @@ def reverted(number: int) -> dict | None:
     return max(found, key=lambda pull: pull["mergedAt"]) if found else None
 
 
+def standing(number: int) -> list[dict]:
+    """The feature's merged pull requests that no merged revert has undone, newest first: those that merged after
+    the newest merged pull request that reverts the feature, or every one of them when no revert has merged.
+
+    A feature can have more than one merge on main. A fault seen on the live site is mended once before the site
+    is put back, and the mend is a second pull request of the same issue, so a mend that failed too leaves two
+    merges to undo. A feature that was reverted can also be landed again later, and the merge its revert undid is
+    not undone a second time. `ship --revert` merges a revert only when it holds the revert of every merge that
+    stood, so a merged revert left none of the merges before it standing.
+
+    The merged pull requests are asked for once, so that the feature's merges and its reverts are read from one
+    answer."""
+    return standing_among(pulls("merged"), number)
+
+
+def standing_among(every: list[dict], number: int) -> list[dict]:
+    """What `standing` gives, read from pull requests that are already in hand, of any state. `pickup` has
+    every pull request before it asks, and asks GitHub no second time. GitHub writes each moment as UTC in one
+    form, so they compare as text."""
+    merged = [pull for pull in every if pull["state"] == "MERGED"]
+    undone = max((pull["mergedAt"] for pull in revert(merged, number)), default="")
+    stands = [pull for pull in feature(merged, number) if pull["mergedAt"] > undone]
+    return sorted(stands, key=lambda pull: pull["mergedAt"], reverse=True)
+
+
 def tell(issue: dict, what: str) -> None:
     """Tell the owner on Discord what became of the issue. A message that cannot be sent is a warning, and fails
     nothing: what was done on the issue is done, and the issue itself says it."""
@@ -223,12 +248,23 @@ def stop(options: argparse.Namespace, text: str) -> int:
 
 
 def close(options: argparse.Namespace, text: str) -> int:
-    """Post what shipped, close the issue, and remove its branch (docs/workflow-plan.md, section 10)."""
+    """Post what shipped, close the issue, and remove its branch (docs/workflow-plan.md, section 10).
+
+    A feature has shipped only while a merge of it stands on main. One whose every merge was reverted is not on
+    the site, and its issue waits for the owner, so nothing is posted and nothing is closed for it. The merged
+    pull requests are asked for a second time only to say which of the two a refusal is."""
     number = str(options.issue)
-    pull = merged(options.issue)
-    if pull is None:
-        print(f"#{number} has no pull request that merged, so nothing shipped and nothing was changed.")
+    stands = standing(options.issue)
+    if not stands:
+        if merged(options.issue) is None:
+            print(f"#{number} has no pull request that merged, so nothing shipped and nothing was changed.")
+        else:
+            print(
+                f"Every merge of #{number} was reverted, so none of it is on the site: nothing shipped and nothing "
+                "was changed."
+            )
         return 1
+    pull = stands[0]
     issue = read(options.issue)
     print(post(options.issue, "shipped", text))
     shell.gh("issue", "close", number)

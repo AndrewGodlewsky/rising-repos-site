@@ -124,6 +124,14 @@ class TheStage(unittest.TestCase):
         self.assertEqual(exit_.exception.code, 2)
         self.assertIn("biuld", refused.getvalue())
 
+    def test_a_mend_is_a_stage_a_run_can_mark(self):
+        self.assertEqual(self.run_stage("mend"), (0, "stage: mend\n"))
+
+    def test_the_refusal_of_a_name_lists_the_mend_among_the_stages_after_confirm_and_before_the_look_back(self):
+        with contextlib.redirect_stderr(io.StringIO()) as refused, self.assertRaises(SystemExit):
+            self.run_stage("biuld")
+        self.assertIn("ship, confirm, mend, look back", refused.getvalue())
+
 
 class TheTokens(RecordTest):
     def test_what_comes_before_the_first_stage_is_the_pick_up_and_each_stage_runs_to_the_next(self):
@@ -162,6 +170,39 @@ class TheTokens(RecordTest):
         text = self.digest(stage("build", "a"), stage("check", "b"), stage("build", "c"), said("d"))
         self.assertEqual([row[0] for row in self.rows(text, "Tokens by stage")], ["build", "check", "Total"])
         self.assertEqual(self.rows(text, "Tokens by stage")[0][-1], "30")
+
+    def test_what_follows_the_mark_of_a_mend_is_counted_under_mend_and_not_under_the_stage_before_it(self):
+        text = self.digest(
+            stage("confirm", tokens=(1, 0, 0, 0)),
+            said("a", tokens=(10, 0, 0, 0)),
+            stage("mend", tokens=(0, 100, 0, 0)),
+            said("b", tokens=(0, 1000, 0, 0)),
+            stage("look back", tokens=(0, 0, 0, 10000)),
+        )
+        self.assertEqual(
+            self.rows(text, "Tokens by stage"),
+            [
+                ["confirm", "11", "0", "0", "0", "11"],
+                ["mend", "0", "1,100", "0", "0", "1,100"],
+                ["look back", "0", "0", "0", "10,000", "10,000"],
+                ["Total", "11", "1,100", "0", "10,000", "11,111"],
+            ],
+        )
+
+    def test_a_fresh_agent_started_in_a_mend_is_counted_under_mend(self):
+        first = self.record(
+            "first",
+            stage("review", tokens=(1, 0, 0, 0)),
+            stage("mend", tokens=(10, 0, 0, 0)),
+            said("b", call("start-1", "Agent", prompt="Review the mend."), tokens=(100, 0, 0, 0)),
+        )
+        reviewer = self.record("agent-reviewer", said("r", tokens=(1000, 0, 0, 0)))
+        about = {"agentType": "general-purpose", "toolUseId": "start-1"}
+        reviewer.with_suffix(".meta.json").write_text(json.dumps(about), encoding="utf-8")
+        text = digest.digest([first, reviewer])
+        rows = {row[0]: row[-1] for row in self.rows(text, "Tokens by stage")}
+        self.assertEqual(rows, {"review": "1", "mend": "1,110", "Total": "1,111"})
+        self.assertEqual(self.rows(text, "Fresh agents"), [["agent-reviewer", "mend", "1,000"]])
 
     def test_a_later_record_is_named_by_its_file_unless_it_holds_a_stage_call(self):
         first = self.record("first", stage("build"))
@@ -410,6 +451,13 @@ class TheStops(RecordTest):
             ["- in review, at 2026-11-02 12:30 UTC, for the owner.", "- in build, at 2026-11-03 08:05 UTC, for data."],
         )
 
+    def test_a_stop_after_the_mark_of_a_mend_is_listed_as_a_stop_in_mend(self):
+        stop = "uv run --locked python -m sitework stop 7 --stage mend --file note.md"
+        text = self.digest(
+            stage("confirm"), stage("mend"), said("a", shell_call("1", stop), at="2026-11-02T12:30:00.000Z")
+        )
+        self.assertEqual(self.section(text, "Stops"), "- in mend, at 2026-11-02 12:30 UTC, for the owner.")
+
     def test_a_run_that_did_not_stop_says_so(self):
         self.assertEqual(self.section(self.digest(said("a")), "Stops"), "None.")
 
@@ -431,6 +479,16 @@ class TheFigures(RecordTest):
             self.figures(text),
             [digest.FIGURES_HEADING, digest.FIGURES_RULE, "| - | 110 | 1,000 | 10,000 | 11,111 | no | - |"],
         )
+
+    def test_a_mends_tokens_are_in_every_stage_and_in_no_other_figure_of_the_row(self):
+        text = self.digest(
+            stage("shape", tokens=(10, 0, 0, 0)),
+            stage("build", tokens=(0, 100, 0, 0)),
+            stage("review", tokens=(0, 0, 1000, 0)),
+            stage("mend", tokens=(0, 50000, 0, 0)),
+            stage("look back", tokens=(0, 0, 0, 10000)),
+        )
+        self.assertEqual(self.figures(text)[2], "| - | 110 | 1,000 | 10,000 | 61,110 | no | - |")
 
     def test_the_heading_row_is_the_one_the_notes_add_a_row_under(self):
         self.assertEqual(

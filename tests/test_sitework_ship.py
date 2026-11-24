@@ -27,10 +27,11 @@ REVIEWED = "b" * 40
 MAIN = "c" * 40
 MERGED = "e" * 40
 FEATURE = "d" * 40
+MEND = "6" * 40
 TREE = "7" * 40
 REVERT = f"git revert -m 1 --no-commit {FEATURE}"
-"""The commit that merged the feature, the tree that reverting it on the head of main gives, and the command
-that reverts it without committing."""
+"""The commit that merged the feature, the commit that merged its mend in a test that has one, the tree that
+reverting the feature's merge on the head of main gives, and the command that reverts it without committing."""
 TITLE = "Stop clipping the table on phones"
 COMMENTS = "gh api repos/{owner}/{repo}/issues/27/comments"
 GUARD = f"{sys.executable} -m sitework guard"
@@ -118,13 +119,13 @@ def pull(number: int, branch: str, fork: bool = False) -> dict:
     }
 
 
-def merged(number: int, branch: str, merge: str) -> dict:
-    """A pull request that merged, as `gh pr list` gives one."""
+def merged(number: int, branch: str, merge: str, at: str = "19:00:00") -> dict:
+    """A pull request that merged at this time of the day, as `gh pr list` gives one."""
     return {
         **pull(number, branch),
         "state": "MERGED",
         "mergeCommit": {"oid": merge},
-        "mergedAt": "2026-11-22T19:00:00Z",
+        "mergedAt": f"2026-11-22T{at}Z",
     }
 
 
@@ -587,8 +588,9 @@ class NewTestsAndCriteria(ShipTest):
 
 class TheRevert(ShipTest):
     """No reviewer reads a revert, so the lane merges one thing alone: the pull request that holds exactly what
-    reverting the feature's merge on the head of main gives. Here git is a stand-in, and the pull request's tree
-    is the tree of that revert unless a test says otherwise."""
+    reverting each merge of the feature that stands gives on the head of main. Here git is a stand-in, one merge
+    of the feature stands, and the pull request's tree is the tree of that revert, unless a test says
+    otherwise."""
 
     def setUp(self):
         super().setUp()
@@ -636,8 +638,28 @@ class TheRevert(ShipTest):
 
     def test_with_revert_an_issue_with_no_merged_pull_request_merges_nothing(self):
         self.answers["gh pr list --state merged"] = [merged(271, "agent/270-another", FEATURE)]
-        self.assertNotMerged("27", "--revert", fails="#27 has no pull request that merged")
+        self.assertNotMerged("27", "--revert", fails="#27 has no merged pull request that a revert has not undone")
         self.assertEqual(self.shell.count("git worktree") + self.shell.count("git revert"), 0)
+
+    def test_with_revert_a_feature_whose_every_merge_was_already_reverted_merges_nothing(self):
+        self.answers["gh pr list --state merged"] = [
+            merged(36, "agent/27-stop-clipping", FEATURE, at="19:00:00"),
+            merged(37, "agent/27-revert", "5" * 40, at="19:30:00"),
+        ]
+        self.assertNotMerged("27", "--revert", fails="#27 has no merged pull request that a revert has not undone")
+        self.assertEqual(self.shell.count("git worktree") + self.shell.count("git revert"), 0)
+
+    def test_with_revert_a_feature_and_its_mend_are_reverted_in_one_command_the_newest_first(self):
+        self.answers["gh pr list --state merged"] = [
+            merged(36, "agent/27-stop-clipping", FEATURE, at="19:00:00"),
+            merged(38, "agent/27-stop-clipping", MEND, at="19:30:00"),
+        ]
+        self.answers["git revert -m 1 --no-commit"] = ""
+        code, printed = self.run_command("27", "--revert")
+        self.assertEqual(code, 0, printed)
+        reverted = [line for line in self.shell.ran if line.startswith("git revert")]
+        self.assertEqual(reverted, [f"git revert -m 1 --no-commit {MEND} {FEATURE}"])
+        self.assertIn(f"the revert of #27's merges, {MEND[:7]} and {FEATURE[:7]}, on the head of main", printed)
 
     def test_with_revert_a_merge_that_does_not_revert_on_the_head_of_main_merges_nothing_and_git_says_why(self):
         self.answers[REVERT] = shell.Failed(f"{REVERT}: exit 1\nCONFLICT (content): Merge conflict in page.css")
@@ -674,7 +696,9 @@ class TheRevert(ShipTest):
 
 class TheRevertOfAMerge(ARepository):
     """What the lane holds a pull request against, made by git itself: a feature that changed a page and whose
-    reviewer added to the owner's tests is merged into main, and a board day is published on top of it."""
+    reviewer added to the owner's tests is merged into main, and a board day is published on top of it. The
+    merged pull requests are a stand-in that names the real merges, so that which of them stand is worked out as
+    it is for a real issue, and `landed` holds them."""
 
     def setUp(self):
         super().setUp()
@@ -686,16 +710,68 @@ class TheRevertOfAMerge(ARepository):
         shell.git("merge", "--quiet", "--no-ff", "--no-edit", feature)
         self.merge = shell.git("rev-parse", "HEAD")
         self.main = self.main_is(self.commit(self.merge, "board.txt", b"a board\nanother board day\n"))
-        self.enterContext(mock.patch.object(issue, "merged", return_value={"mergeCommit": {"oid": self.merge}}))
+        self.landed = [merged(40, "agent/27-scroll-the-table", self.merge, at="19:00:00")]
+        self.enterContext(mock.patch.object(issue, "pulls", lambda state="all": list(self.landed)))
 
-    def revert(self, on: str) -> str:
-        """The commit `sitework revert` makes: the feature's merge, reverted on top of this commit."""
-        shell.git("checkout", "--quiet", "--detach", on)
-        shell.git("revert", "-m", "1", "--no-edit", self.merge)
+    def merged_into(self, main: str, head: str) -> str:
+        """The commit that merges `head` into `main`, as GitHub merges a pull request here: one merge commit
+        whose first parent is main."""
+        shell.git("checkout", "--quiet", "--detach", main)
+        shell.git("merge", "--quiet", "--no-ff", "--no-edit", head)
         return shell.git("rev-parse", "HEAD")
+
+    def revert(self, on: str, *merges: str) -> str:
+        """The commit `sitework revert` makes: each of these merges reverted on top of this commit, in this
+        order, or the feature's one merge when none is given."""
+        shell.git("checkout", "--quiet", "--detach", on)
+        for merge in merges or (self.merge,):
+            shell.git("revert", "-m", "1", "--no-edit", merge)
+        return shell.git("rev-parse", "HEAD")
+
+    def mended(self) -> str:
+        """Land a mend of the feature, and give its merge: a second pull request of the same issue, from the
+        feature's branch brought up to main, which changes the line the feature wrote. Main is then that merge."""
+        fix = self.commit(self.main, "page.css", b"table { overflow: scroll }\n")
+        mend = self.merged_into(self.main, fix)
+        self.landed.append(merged(42, "agent/27-scroll-the-table", mend, at="20:00:00"))
+        self.main = self.main_is(mend)
+        return mend
 
     def checkouts(self) -> int:
         return shell.git("worktree", "list", "--porcelain").count("worktree ")
+
+    def test_with_a_feature_and_its_mend_both_standing_a_revert_of_both_holds(self):
+        mend = self.mended()
+        head = self.revert(self.main, mend, self.merge)
+        self.assertEqual(shell.git("ls-tree", "--name-only", head, "page.css"), "")
+        holds, what = ship.reverts(27, self.main, head)
+        self.assertTrue(holds, what)
+        self.assertEqual(self.checkouts(), 1)
+
+    def test_with_a_feature_and_its_mend_both_standing_a_revert_of_the_mend_alone_does_not_hold(self):
+        mend = self.mended()
+        head = self.revert(self.main, mend)
+        self.assertEqual(shell.git("show", f"{head}:page.css"), "table { overflow: auto }")
+        holds, what = ship.reverts(27, self.main, head)
+        self.assertFalse(holds, what)
+        self.assertIn("holds something other than the revert", what)
+
+    def test_a_merge_that_an_earlier_revert_undid_is_not_reverted_again_when_the_feature_landed_a_second_time(self):
+        # The first merge was reverted, and the revert merged. Another change has since brought the rule that
+        # the first merge had brought, so reverting that merge a second time would take the rule out again.
+        undone = self.merged_into(self.main, self.revert(self.main))
+        self.landed.append(merged(41, "agent/27-revert", undone, at="20:00:00"))
+        self.main = self.main_is(self.commit(undone, "page.css", b"table { overflow: auto }\n"))
+        second = self.merged_into(self.main, self.commit(self.main, "detail.css", b"td { white-space: normal }\n"))
+        self.landed.append(merged(43, "agent/27-scroll-the-table", second, at="21:00:00"))
+        self.main = self.main_is(second)
+        head = self.revert(self.main, second)
+        holds, what = ship.reverts(27, self.main, head)
+        self.assertTrue(holds, what)
+        both = self.revert(self.main, second, self.merge)
+        self.assertEqual(shell.git("ls-tree", "--name-only", both, "page.css"), "")
+        holds, what = ship.reverts(27, self.main, both)
+        self.assertFalse(holds, what)
 
     def test_the_revert_of_the_merge_holds_though_it_takes_from_the_owners_tests_the_lines_the_feature_added(self):
         head = self.revert(self.main)

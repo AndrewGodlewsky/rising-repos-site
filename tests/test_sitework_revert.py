@@ -1,5 +1,5 @@
-"""`revert` puts the site back: it reverts a feature's merge on a branch made from main, in a worktree of its
-own, and opens the pull request that `ship --revert` then merges.
+"""`revert` puts the site back: it reverts each merge of a feature that stands, on a branch made from main, in a
+worktree of its own, and opens the pull request that `ship --revert` then merges.
 
 No test reaches GitHub, pushes, or makes a worktree. `sitework.shell.run` is replaced by a stand-in that answers
 each command from what the test gives it, in the shapes `gh` and `git` answer in, and keeps each command it was
@@ -16,6 +16,8 @@ from unittest import mock
 from sitework import revert, shell
 
 MERGE = "e" * 40
+MEND = "f" * 40
+"""The commit that merged the feature, and the commit that merged its mend, for a test that has one."""
 TITLE = "Stop clipping the table on phones"
 CREATE = f"gh pr create --base main --head agent/27-revert --title Revert #27: {TITLE} --body Refs #27"
 
@@ -122,15 +124,63 @@ class Revert(unittest.TestCase):
         self.assertNotIn(shell.ROOT, [tree, *tree.parents])
         self.assertFalse(tree.parent.exists(), "the temporary folder was left behind")
 
-    def test_the_merge_that_is_reverted_is_the_features_newest(self):
-        newer = "f" * 40
+    def test_a_feature_and_its_mend_are_both_reverted_the_newest_first_on_the_one_branch_of_the_one_pull_request(self):
+        self.answers["gh pr list --state merged"] = [
+            pull(40, "agent/27-stop-clipping", MERGE, "2026-11-22T12:00:00Z"),
+            pull(42, "agent/27-stop-clipping", MEND, "2026-11-22T13:00:00Z"),
+        ]
+        code, printed = self.run_command("27")
+        self.assertEqual((code, printed), (0, "45\n"))
+        tree = self.worktree()
+        self.assertEqual(
+            self.shell.ran[2:],
+            [
+                "git fetch origin",
+                f"git worktree add --no-track -B agent/27-revert {tree} origin/main",
+                f"git revert -m 1 --no-edit {MEND}",
+                f"git revert -m 1 --no-edit {MERGE}",
+                "git push origin agent/27-revert",
+                f"git worktree remove --force {tree}",
+                CREATE,
+            ],
+        )
+        self.assertEqual({self.shell.cwd[line] for line in self.shell.ran if line.startswith("git revert")}, {tree})
+
+    def test_a_merge_that_a_revert_already_undid_is_not_reverted_again(self):
         self.answers["gh pr list --state merged"] = [
             pull(40, "agent/27-stop-clipping", MERGE, "2026-11-22T12:00:00Z"),
             pull(41, "agent/27-revert", "1" * 40, "2026-11-22T13:00:00Z"),
-            pull(43, "agent/27-stop-clipping-again", newer, "2026-11-22T14:00:00Z"),
+            pull(43, "agent/27-stop-clipping", MEND, "2026-11-22T14:00:00Z"),
         ]
         self.run_command("27")
-        self.assertEqual(self.shell.count(f"git revert -m 1 --no-edit {newer}"), 1)
+        self.assertEqual(
+            [line for line in self.shell.ran if line.startswith("git revert")], [f"git revert -m 1 --no-edit {MEND}"]
+        )
+
+    def test_a_feature_whose_every_merge_was_reverted_exits_1_says_so_and_pushes_nothing(self):
+        self.answers["gh pr list --state merged"] = [
+            pull(40, "agent/27-stop-clipping", MERGE, "2026-11-22T12:00:00Z"),
+            pull(42, "agent/27-stop-clipping", MEND, "2026-11-22T13:00:00Z"),
+            pull(43, "agent/27-revert", "1" * 40, "2026-11-22T14:00:00Z"),
+        ]
+        code, printed = self.run_command("27")
+        self.assertEqual(code, 1)
+        for part in ("#27", "nothing to revert"):
+            self.assertIn(part, printed)
+        self.assertEqual(self.shell.count("git") + self.shell.count("gh pr create"), 0)
+
+    def test_a_mend_that_does_not_revert_exits_1_before_the_feature_is_reverted_and_pushes_nothing(self):
+        self.answers[f"git revert -m 1 --no-edit {MEND}"] = shell.Failed("git revert: exit 1\nCONFLICT (content)")
+        self.answers["gh pr list --state merged"] = [
+            pull(40, "agent/27-stop-clipping", MERGE, "2026-11-22T12:00:00Z"),
+            pull(42, "agent/27-stop-clipping", MEND, "2026-11-22T13:00:00Z"),
+        ]
+        code, printed = self.run_command("27")
+        self.assertEqual(code, 1)
+        self.assertIn("CONFLICT", printed)
+        self.assertEqual(self.shell.count(f"git revert -m 1 --no-edit {MERGE}"), 0)
+        self.assertEqual(self.shell.count("git worktree remove --force"), 1)
+        self.assertEqual(self.shell.count("git push") + self.shell.count("gh pr create"), 0)
 
     def test_a_revert_that_does_not_apply_exits_1_removes_the_worktree_and_opens_nothing(self):
         self.answers["git revert"] = shell.Failed("git revert: exit 1\nCONFLICT (content): Merge conflict in site.css")

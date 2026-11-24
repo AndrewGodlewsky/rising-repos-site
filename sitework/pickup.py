@@ -204,11 +204,17 @@ def branch(taken: Taken) -> str:
 
 
 def facts(taken: Taken, pulls: list[dict]) -> dict:
-    """What the issue, its comments, and its pull request show of how far the feature came, for the agent to
-    find the stage to carry on from."""
+    """What the issue, its comments, and its pull requests show of how far the feature came, for the agent to
+    find the stage to carry on from.
+
+    The newest pull request alone does not say whether a mend was tried, or whether the site was put back.
+    `standing` is how many of the feature's merges are on main with no revert after them: one is the feature,
+    and two the feature and its mend, so that a run taken up again never mends a second time. `reverted` is
+    whether the feature was merged and nothing of it stands, which is a site that was put back."""
     plans, reviews = issue.of_kind(taken.said, "plan"), issue.of_kind(taken.said, "review")
     ours = issue.feature(pulls, taken.issue["number"])
     newest = ours[-1] if ours else None
+    standing = issue.standing_among(pulls, taken.issue["number"])
     return {
         "labels": issue.labels(taken.issue),
         "plan": {"exists": bool(plans), "verdict": plan_verdict(plans[-1]["body"]) if plans else None},
@@ -217,6 +223,8 @@ def facts(taken: Taken, pulls: list[dict]) -> dict:
         if reviews
         else None,
         "merged": bool(newest and newest["state"] == "MERGED"),
+        "standing": len(standing),
+        "reverted": not standing and any(pull["state"] == "MERGED" for pull in ours),
     }
 
 
@@ -240,16 +248,23 @@ def claim(taken: Taken, branch: str) -> None:
 
 
 def pickup(claiming: bool) -> tuple[int, dict]:
-    """The exit code, and the JSON object to print."""
+    """The exit code, and the JSON object to print.
+
+    Whether the site is healthy is asked before anything new is started, and before an issue in flight that
+    is not yet on the site is carried on. A feature that is live is taken up again whatever the site's health:
+    the fault may be its own, and the run that mends it or puts the site back is this one. Asked first of all,
+    a feature that broke the site eval and lost its run would have kept every later run from starting."""
     try:
-        healthy()
         owner = issue.owner()
         opened = shell.gh_json(
             "issue", "list", "--state", "open", "--limit", "1000", "--json", "number,title,labels,author"
         )
         pulls = issue.pulls()
         comments = functools.cache(lambda number: issue.comments(number, owner))
-        taken = in_flight(opened, comments) or answered(opened, comments) or new_idea(opened, owner, comments, pulls)
+        taken = in_flight(opened, comments)
+        if not (taken and issue.standing_among(pulls, taken.issue["number"])):
+            healthy()
+            taken = taken or answered(opened, comments) or new_idea(opened, owner, comments, pulls)
     except End as end:
         return end.code, {"why": str(end)}
     answer = {
