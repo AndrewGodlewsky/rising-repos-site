@@ -1126,9 +1126,9 @@ desktop one, as the median of the eval's runs. Each number has a limit in
 
 | Number | Phone | Desktop |
 | --- | --- | --- |
-| Performance score | 95 or more | 95 or more |
+| Performance score | 90 or more | 95 or more |
 | Accessibility score | 100 | 100 |
-| Largest Contentful Paint | 2.5 seconds or less | 0.6 seconds or less |
+| Largest Contentful Paint | 2.5 seconds or less | 0.9 seconds or less |
 | Cumulative layout shift | 0.01 or less | 0.01 or less |
 | Bytes transferred | 100,000 or fewer | 100,000 or fewer |
 | Requests | 1 | 1 |
@@ -1142,6 +1142,13 @@ README.md gives the last measurements: 476,623 bytes on 21 November 2026, and
 The phone's limit for Largest Contentful Paint was 2.0 seconds until step 1
 of section 13 raised it. The desktop's was 0.6 seconds until the owner raised
 it to 0.9 on 23 November 2026 (section 10).
+
+The phone's performance score was held to 95 until the owner lowered that to
+90 on 24 November 2026. Since the redesign the page scores 97 at its best,
+and a busy runner measured 93 and 91 on pages that scored 96 or 97 minutes
+before or after. The second of those failed the eval that followed a merge
+of a document alone, and with it the check of the site's health that a run
+starts from.
 
 **2. Did the feature break anything? (new)**
 

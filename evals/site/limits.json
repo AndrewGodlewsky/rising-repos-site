@@ -1,8 +1,8 @@
 {
   "phone": {
     "performance": {
-      "limit": 95,
-      "reason": "Four evals of the first page on 2026-11-12 had medians of 99 to 100. Single runs fell as low as 79, each the first run of its eval while the runner was still busy, and the median set each aside. 95 leaves room for that noise and for larger boards, and is above the starting target of 90."
+      "limit": 90,
+      "reason": "Before AndrewGodlewsky/RisingRepos#199 four evals of the first page had medians of 99 to 100, and the limit was 95. Since then each page holds the site's type, and the first paint on a slow phone comes later, which the owner accepted (AndrewGodlewsky/RisingRepos#199, carried out as AndrewGodlewsky/RisingRepos#210). The score fell with it: the six evals that followed a deploy from 22 to 24 November 2026 had medians of 96 and 97 when the runner was not busy, and the page scores 97 at its best. That left one or two points of room where there had been four or five, and a busy runner took more than that: on 24 November two evals measured 93 and 91 on pages that scored 96 or 97 minutes before or after. The owner lowered the limit to 90 on 24 November 2026. It is the starting target this limit was first set above, and where Lighthouse draws the line for a good score. A lighter first paint would win the room back, and the limit would then go up again."
     },
     "accessibility": {
       "limit": 100,
