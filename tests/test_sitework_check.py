@@ -26,6 +26,9 @@ THE_REST = ("the agents' tests, each file named",)  # stands for that command be
 OWNERS = (*PYTHON, "unittest", "discover", "-s", "owner_tests", "-t", ".")
 NEW = (*PYTHON, "sitework", "new-tests")
 CRITERIA = (*PYTHON, "sitework", "criteria", "--issue", "12")
+NEW_OF_ISSUE = (*NEW, "--issue", "12")
+"""The new tests as they are asked for a feature: with its issue, whose plan says which of them hold what stays
+the same."""
 
 
 class TheCheck(unittest.TestCase):
@@ -58,7 +61,7 @@ class TheCheck(unittest.TestCase):
     def test_the_criteria_are_checked_last_and_only_when_an_issue_is_given(self):
         code, _ = self.check("--issue", "12")
         self.assertEqual(
-            (code, self.steps_run()), (0, [LINT, FORMAT, WHITE_SPACE, GUARD, THE_REST, OWNERS, NEW, CRITERIA])
+            (code, self.steps_run()), (0, [LINT, FORMAT, WHITE_SPACE, GUARD, THE_REST, OWNERS, NEW_OF_ISSUE, CRITERIA])
         )
 
     def test_a_change_that_touches_no_guarded_path_is_not_run_against_the_tests_of_what_is_guarded(self):
@@ -93,7 +96,9 @@ class TheCheck(unittest.TestCase):
         ]
         code, _ = self.check("--issue", "12")
         allowing = (*GUARD, "--allow", "pyproject.toml", "uv.lock", "docs/adr/*")
-        self.assertEqual((code, self.ran), (0, [LINT, FORMAT, WHITE_SPACE, allowing, AGENTS, OWNERS, NEW, CRITERIA]))
+        self.assertEqual(
+            (code, self.ran), (0, [LINT, FORMAT, WHITE_SPACE, allowing, AGENTS, OWNERS, NEW_OF_ISSUE, CRITERIA])
+        )
         self.assertEqual(self.comments.mock_calls, [mock.call(12, "the-owner")])
 
     def test_without_an_issue_no_comment_is_read_and_the_guard_allows_nothing(self):

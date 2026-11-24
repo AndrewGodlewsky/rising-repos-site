@@ -5,6 +5,9 @@ section "How each is proven" is a table with a row for each criterion: the crite
 proof is one test or more, each named in backticks as `tests/test_x.py::Class::test_name`, or the words
 "looked at:" and what will be looked at, for what no test can show. A criterion with no test that ran and passed
 is what this command catches (docs/workflow-plan.md, section 6).
+
+A row that begins "stays the same:" is the proof of a criterion that keeps something as it was. Its tests are
+judged here as any others are. `new-tests` reads the mark, and lets such a test pass on the commit before (#52).
 """
 
 import argparse
@@ -29,6 +32,17 @@ TEST = re.compile(rf"`((?:{altered.TESTS}|{rules.OWNERS_TESTS})[^`\s:]+\.py::\w+
 
 LOOKED_AT = re.compile(r"looked at:\s*(\S.*)", re.IGNORECASE)
 """The proof of what no test can show, which has to say what will be looked at. A row may begin with a capital."""
+
+
+STAYS = re.compile(r"stays the same:", re.IGNORECASE)
+"""How the proof begins of a criterion that keeps something as it was."""
+
+
+def kept_the_same(plan: str) -> set[str]:
+    """Each test the plan names in a row that begins "stays the same:". Such a test holds what the change must
+    leave as it was, so it passes on the commit before, where every other new test has to fail."""
+    rows = [row for line in section(plan, PROOFS) if (row := ROW.match(line.strip()))]
+    return {test for row in rows if STAYS.match(row[2].strip()) for test in TEST.findall(row[2])}
 
 
 def plan_of(number: int) -> str | None:

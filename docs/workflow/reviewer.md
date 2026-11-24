@@ -47,6 +47,11 @@ tests are each long. A command says what it takes and what it prints with
   place", is the rule. Take the condition away yourself for the test of
   the feature's first criterion.
 
+- A test the plan marks `stays the same:` that holds nothing. Such a test
+  passes on the commit before, so no check has seen it fail. For each one,
+  take away the lines of the change that keep the thing as it was, and see
+  the test fail. One that still passes is a finding, and it blocks.
+
 ## The owner's test for something new
 
 When the feature adds something a reader can do, write the sentence and its

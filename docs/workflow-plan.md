@@ -182,8 +182,9 @@ when they are used.
 - **Go.** Build starts. The owner is not asked again: the idea was approved,
   and the plan is on the issue for anyone to read.
 - **Needs data.** Section 12.
-- **Needs the owner.** The issue gets `needs-owner`, the owner is told on
-  Discord, and the agent takes the next issue. The plan says what is asked,
+- **Needs the owner.** The issue gets `needs-owner`, and the agent takes the
+  next issue. Until 24 November 2026 the owner was told on Discord as well
+  (#53). The plan says what is asked,
   and what the agent would choose.
 
 **What makes it "needs the owner"**
@@ -544,7 +545,8 @@ words alone.
 4. **Close.** Post "Shipped" on the issue: the pull request, the merge's
    commit, the pictures, the eval's numbers, and the figures of the four evals for this feature
    (section 17). Close the issue,
-   delete the branch and the worktree, and tell the owner on Discord.
+   delete the branch and the worktree. Until 24 November 2026 the owner was
+   told on Discord as well (#53).
 5. **Look back.** Section 18. Nothing waits on it.
 
 **When one of these fails because of the change,** the run mends it. The
@@ -821,8 +823,8 @@ it, and a stop is never a matter of course.
 1. The work is pushed, so nothing is lost.
 2. One comment on the issue says the stage, what was seen, what was tried,
    the question for the owner, and what the agent would choose.
-3. The issue swaps `in-progress` for `needs-owner`, and the owner is told on
-   Discord.
+3. The issue swaps `in-progress` for `needs-owner`. The owner is sent
+   nothing more: the notice on Discord was dropped on 24 November 2026 (#53).
 4. The agent takes the next eligible issue. A stopped issue holds nothing up.
 
 **How it starts again.** The owner answers on the issue and removes

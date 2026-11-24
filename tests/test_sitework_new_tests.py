@@ -6,7 +6,9 @@ and the owner's tests as modules of theirs.
 """
 
 import sys
+import tempfile
 import unittest
+from pathlib import Path
 from unittest import mock
 
 from test_sitework_guard import RepositoryTest, said
@@ -52,6 +54,21 @@ DOUBLES_NOUGHT = "\n    def test_it_doubles_nought(self):\n        self.assertEq
 """A test that the code passed before the change."""
 
 
+PLAN = """\
+## Criteria
+1. Given a number, when it is tripled, then it is three times as large.
+2. Given nought, when it is doubled, then it is nought, as it was.
+
+## How each is proven
+| # | Proof |
+| --- | --- |
+| 1 | {first}`tests/test_sums.py::Doubling::test_it_triples` |
+| 2 | {second}`tests/test_sums.py::Doubling::test_it_doubles_nought` |
+"""
+"""A plan whose second criterion keeps something as it was. A test names the mark its row begins with."""
+MARK = "stays the same: "
+
+
 class TheNewTests(RepositoryTest):
     def setUp(self):
         super().setUp()
@@ -66,6 +83,40 @@ class TheNewTests(RepositoryTest):
     def checkouts(self) -> int:
         """How many checkouts the repository has: its own folder, and each worktree made from it."""
         return shell.git("worktree", "list", "--porcelain").count("worktree ")
+
+    def with_plan(self, first: str = "", second: str = "") -> tuple[int, list[str]]:
+        """Run the command on a change that adds a test of something new and a test the code passed before, with
+        a plan in which each test's row begins with the mark it is given."""
+        self.commit({"product.py": PRODUCT + TRIPLE, SUMS: TESTS + TRIPLES + DOUBLES_NOUGHT})
+        plan = Path(self.enterContext(tempfile.TemporaryDirectory())) / "plan.md"
+        plan.write_text(PLAN.format(first=first, second=second), encoding="utf-8")
+        return self.new_tests("--plan", str(plan))
+
+    def test_a_test_the_plan_marks_as_holding_what_stays_the_same_may_pass_on_the_code_before(self):
+        # On #27 the criterion that the table is as it was from 768 px up could be given no test (#52).
+        self.assertEqual(
+            self.with_plan(second=MARK),
+            (
+                0,
+                [
+                    f"fails before: {SUMS}::Doubling::test_it_triples",
+                    f"passes before, as the plan says of what stays the same: {SUMS}::Doubling::test_it_doubles_nought",
+                ],
+            ),
+        )
+
+    def test_a_test_the_plan_names_without_the_mark_is_still_held_to_failing_on_the_code_before(self):
+        code, lines = self.with_plan()
+        self.assertEqual(code, 1)
+        self.assertIn(f"passes before, so it proves nothing: {SUMS}::Doubling::test_it_doubles_nought", lines)
+
+    def test_a_test_the_plan_marks_that_fails_on_the_code_before_does_not_hold_what_stayed_the_same(self):
+        code, lines = self.with_plan(first=MARK, second=MARK)
+        self.assertEqual(code, 1)
+        self.assertIn(
+            f"fails before, though the plan says it holds what stays the same: {SUMS}::Doubling::test_it_triples",
+            lines,
+        )
 
     def test_a_change_that_adds_no_test_says_so_and_passes(self):
         self.commit({"product.py": PRODUCT + TRIPLE, SUMS: TESTS.replace("VALUE), 4", "VALUE), 4.0")})

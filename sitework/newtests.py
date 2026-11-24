@@ -3,6 +3,14 @@
 A test that passes with the feature and without it proves nothing (docs/workflow-plan.md, section 6, and D18
 there, and standard C18). So each test the change adds, among the agents' tests and the owner's, is run on the
 code as it was where the change began, and has to fail or error there.
+
+One kind of test cannot fail there: the test of a criterion that keeps something as it was, such as "from 768
+pixels up the table is as it was". On #27 no such test could be added, the criterion was measured by hand three
+times, and nothing holds it since. On #28 and #29 it was folded into a test of something new to get past this
+check (#52). So a plan marks such a criterion's proof with "stays the same:", and a test it names there has to
+pass on the commit before. The mark cuts both ways, so that it says something exact: a test that is marked and
+fails before is not a test of what stayed the same. Whether a marked test holds anything is the reviewer's to
+show, by taking away the lines of the change that keep the thing as it was.
 """
 
 import argparse
@@ -78,6 +86,18 @@ def before(base: str, head: str, files: dict[str, str]) -> Iterator[Path]:
         yield checkout
 
 
+def kept_the_same(options: argparse.Namespace) -> set[str]:
+    """The tests the feature's plan marks as holding what stays the same, or none when no plan was given or the
+    issue has none. `criteria` reads a plan, and reads this module, so it is brought in here and not above."""
+    from sitework import criteria
+
+    if options.plan:
+        plan = options.plan.read_text(encoding="utf-8")
+    else:
+        plan = criteria.plan_of(options.issue) if options.issue is not None else None
+    return criteria.kept_the_same(plan) if plan else set()
+
+
 def main(command: str, arguments: list[str]) -> int:
     parser = argparse.ArgumentParser(
         prog=f"python -m sitework {command}",
@@ -85,7 +105,16 @@ def main(command: str, arguments: list[str]) -> int:
         "when the change adds none, and 1 when one passes there.",
     )
     guard.add_change(parser)
+    plan = parser.add_mutually_exclusive_group()
+    plan.add_argument(
+        "--issue",
+        metavar="N",
+        type=int,
+        help='the feature\'s issue: a test its plan names in a row that begins "stays the same:" has to pass before',
+    )
+    plan.add_argument("--plan", metavar="FILE", type=Path, help="a file that holds the plan, in the place of --issue")
     options = parser.parse_args(arguments)
+    kept = kept_the_same(options)
     base = guard.base_of(options)
     head = shell.git("rev-parse", "--verify", f"{options.head}^{{commit}}")
     files = guard.changed(base, head, altered.TESTS, rules.OWNERS_TESTS)
@@ -96,7 +125,13 @@ def main(command: str, arguments: list[str]) -> int:
     proved_nothing = False
     with before(base, head, files) as checkout:
         for test in new:
-            if passes(test, checkout):
+            passed = passes(test, checkout)
+            if test in kept and passed:
+                print(f"passes before, as the plan says of what stays the same: {test}")
+            elif test in kept:
+                proved_nothing = True
+                print(f"fails before, though the plan says it holds what stays the same: {test}")
+            elif passed:
                 proved_nothing = True
                 print(f"passes before, so it proves nothing: {test}")
             else:

@@ -14,7 +14,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-from sitework import issue, notify, shell
+from sitework import issue, shell
 
 OWNER = "the-owner"
 ADDRESS = "https://github.com/the-owner/the-site/issues/27"
@@ -30,12 +30,6 @@ HELD = f"git merge-base --is-ancestor {BRANCH} origin/main"
 DELETE = f"git branch -D {BRANCH}"
 """The feature's branch, and the commands that ask whether GitHub has it, whether this repository has it, and
 whether origin/main holds its every commit, and that delete it here."""
-
-
-POSTED = "gh api repos/{owner}/{repo}/issues/comments/7099"
-"""The reading of the comment a stop or a close has just posted, which is asked only when the owner could not be
-told. The same path with `--method PATCH` edits it."""
-EDIT = f"gh api --method PATCH {POSTED[len('gh api ') :]} --input -"
 
 
 class Shell:
@@ -121,8 +115,6 @@ class IssueTest(unittest.TestCase):
             },
             "gh api repos/{owner}/{repo}/issues/27/comments": [],
             "gh issue comment 27": f"{ADDRESS}#issuecomment-7099",
-            POSTED: said("Site workflow: stopped\n\nStage: ship\n\nWhat the comment says.\n", number=99),
-            EDIT: "",
             "gh issue edit 27": ADDRESS,
             "gh issue close 27": "",
             "gh pr list": [pull(40, BRANCH)],
@@ -136,15 +128,8 @@ class IssueTest(unittest.TestCase):
         }
         self.shell = Shell(self.answers)
         self.enterContext(mock.patch.object(shell, "run", self.shell))
-        self.told = []
-        self.sent = "sent"
-        self.enterContext(mock.patch.object(notify, "send", self.tell))
         self.file = Path(self.enterContext(tempfile.TemporaryDirectory())) / "text.md"
         self.file.write_text("What the comment says.\n", encoding="utf-8")
-
-    def tell(self, message: str) -> str:
-        self.told.append(message)
-        return self.sent
 
     def run_command(self, command: str, *arguments: str) -> tuple[int, str]:
         """Run one of the three commands with the file of text, and give its exit code and what it printed."""
@@ -200,7 +185,7 @@ class Comment(IssueTest):
 
 
 class Stop(IssueTest):
-    def test_a_stop_posts_the_stopped_comment_swaps_in_progress_for_needs_owner_unassigns_and_tells_the_owner(self):
+    def test_a_stop_posts_the_stopped_comment_swaps_in_progress_for_needs_owner_and_unassigns(self):
         # A stopped issue is no longer one a run is at work on, so it leaves the owner's list of assigned issues.
         code, _ = self.run_command("stop", "27", "--stage", "check")
         self.assertEqual(code, 0)
@@ -215,36 +200,6 @@ class Stop(IssueTest):
             self.shell.stdin["gh issue comment 27 --body-file -"],
             "Site workflow: stopped\n\nStage: check\n\nWhat the comment says.\n",
         )
-        (message,) = self.told
-        for part in ("#27", "check", "Stop clipping the table on phones", ADDRESS):
-            self.assertIn(part, message)
-
-    def test_a_stop_whose_message_cannot_be_sent_warns_and_still_exits_0(self):
-        self.sent = "not sent: no credential store"
-        code, printed = self.run_command("stop", "27", "--stage", "ship")
-        self.assertEqual(code, 0)
-        self.assertIn("warning", printed)
-        self.assertIn("not sent: no credential store", printed)
-        self.assertIn(
-            "gh issue edit 27 --remove-label in-progress --add-label needs-owner --remove-assignee the-owner",
-            self.shell.ran,
-        )
-
-    def test_a_stop_whose_message_cannot_be_sent_says_on_the_issue_that_the_owner_was_not_told(self):
-        self.sent = "not sent: no credential store"
-        self.run_command("stop", "27", "--stage", "ship")
-        self.assertEqual(
-            json.loads(self.shell.stdin[EDIT])["body"],
-            "Site workflow: stopped\n\nStage: ship\n\nWhat the comment says.\n\nThe owner was not told of this on "
-            "Discord (no credential store), so this comment is the only notice of it.\n",
-        )
-
-    def test_a_stop_whose_comment_github_will_not_edit_warns_and_still_exits_0(self):
-        self.sent = "not sent: no credential store"
-        self.answers[EDIT] = shell.Failed("gh api: HTTP 502")
-        code, printed = self.run_command("stop", "27", "--stage", "ship")
-        self.assertEqual(code, 0)
-        self.assertIn("the comment does not say that the owner was not told: gh api: HTTP 502", printed)
 
     def test_a_stop_for_data_names_the_risingrepos_issue_and_the_field_and_swaps_in_progress_for_blocked_on_data(self):
         code, _ = self.run_command("stop", "27", "--data", "215", "--field", "homepage")
@@ -262,17 +217,12 @@ class Stop(IssueTest):
         self.assertIn("Field: homepage", body.splitlines())
         self.assertIn("What the comment says.", body)
 
-    def test_a_stop_for_data_sends_the_owner_no_message(self):
-        self.run_command("stop", "27", "--data", "215", "--field", "homepage")
-        self.assertEqual(self.told, [])
-
     def test_a_stop_for_data_whose_field_is_already_in_the_schema_and_the_newest_board_is_refused(self):
         for field in ("description", "language"):
             with self.subTest(field=field):
                 code, printed = self.run_command("stop", "27", "--data", "215", "--field", field)
                 self.assertEqual(code, 1)
                 self.assertEqual(self.shell.changes(), [])
-                self.assertEqual(self.told, [])
                 for part in (f"`{field}`", "already", "more exact"):
                     self.assertIn(part, printed)
 
@@ -313,8 +263,6 @@ class Stop(IssueTest):
             "gh issue edit 27 --remove-label in-progress --add-label needs-owner --remove-assignee the-owner",
             self.shell.ran,
         )
-        (message,) = self.told
-        self.assertIn("stopped at mend", message)
 
     def test_a_stage_the_workflow_does_not_have_is_refused(self):
         code, _ = self.run_command("stop", "27", "--stage", "lunch")
@@ -323,7 +271,7 @@ class Stop(IssueTest):
 
 
 class Close(IssueTest):
-    def test_a_close_posts_shipped_closes_the_issue_removes_in_progress_and_tells_the_owner(self):
+    def test_a_close_posts_shipped_closes_the_issue_and_removes_in_progress(self):
         code, _ = self.run_command("close", "27")
         self.assertEqual(code, 0)
         self.assertEqual(
@@ -333,9 +281,6 @@ class Close(IssueTest):
         self.assertEqual(
             self.shell.stdin["gh issue comment 27 --body-file -"], "Site workflow: shipped\n\nWhat the comment says.\n"
         )
-        (message,) = self.told
-        for part in ("#27", "shipped", "Stop clipping the table on phones", ADDRESS):
-            self.assertIn(part, message)
 
     def test_a_close_deletes_the_features_branch_when_origin_still_has_it(self):
         self.answers["git ls-remote origin refs/heads/agent/27-stop-clipping"] = (
@@ -349,29 +294,12 @@ class Close(IssueTest):
         self.run_command("close", "27")
         self.assertEqual([line for line in self.shell.ran if line.startswith("git push")], [])
 
-    def test_a_close_whose_message_cannot_be_sent_warns_and_still_exits_0(self):
-        self.sent = "not sent: URLError"
-        code, printed = self.run_command("close", "27")
-        self.assertEqual(code, 0)
-        self.assertIn("warning", printed)
-
-    def test_a_close_whose_message_cannot_be_sent_says_in_the_shipped_note_that_the_owner_was_not_told(self):
-        self.sent = "not sent: no credential store"
-        self.answers[POSTED] = said("Site workflow: shipped\n\nWhat the comment says.\n", number=99)
-        self.run_command("close", "27")
-        self.assertEqual(
-            json.loads(self.shell.stdin[EDIT])["body"],
-            "Site workflow: shipped\n\nWhat the comment says.\n\nThe owner was not told of this on Discord (no "
-            "credential store), so this comment is the only notice of it.\n",
-        )
-
     def test_a_close_refuses_an_issue_whose_pull_request_has_not_merged_and_changes_nothing(self):
         self.answers["gh pr list --state merged"] = [pull(38, "agent/2-other")]
         code, printed = self.run_command("close", "27")
         self.assertEqual(code, 1)
         self.assertIn("#27", printed)
         self.assertEqual(self.shell.changes(), [])
-        self.assertEqual(self.told, [])
 
     def test_a_close_refuses_a_feature_whose_every_merge_was_reverted_and_changes_nothing(self):
         self.answers["gh pr list --state merged"] = [
@@ -384,7 +312,6 @@ class Close(IssueTest):
         for part in ("#27", "reverted", "nothing was changed"):
             self.assertIn(part, printed)
         self.assertEqual(self.shell.changes(), [])
-        self.assertEqual(self.told, [])
 
     def test_a_close_of_a_feature_that_was_reverted_and_then_landed_again_goes_ahead(self):
         self.answers["gh pr list --state merged"] = [
@@ -442,13 +369,10 @@ class TheLocalBranch(IssueTest):
         return [line for line in self.shell.ran if line.startswith("git")]
 
     def assertLeft(self, printed: str, *parts: str) -> None:
-        """Expect exactly one printed line to name the branch, with each of `parts` in it, and the owner to be
-        told that the feature shipped all the same."""
+        """Expect exactly one printed line to name the branch, with each of `parts` in it."""
         (line,) = [line for line in printed.splitlines() if BRANCH in line]
         for part in parts:
             self.assertIn(part, line)
-        (message,) = self.told
-        self.assertIn("shipped", message)
 
     def test_a_close_deletes_the_branch_on_github_and_then_locally_once_origin_main_holds_its_every_commit(self):
         self.answers[ON_GITHUB] = f"{40:040x}\trefs/heads/{BRANCH}"

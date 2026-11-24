@@ -16,7 +16,7 @@ import re
 import sys
 from pathlib import Path
 
-from sitework import notify, rules, shell
+from sitework import rules, shell
 
 REPOSITORY = "repos/{owner}/{repo}"
 """This repository in a path of GitHub's API. `gh api` fills in the two names itself."""
@@ -32,12 +32,6 @@ INDEX = "site-data/boards/index.json"
 BOARD = "site-data/boards/days/{day}/daily.json"
 """The daily schema, the list of board days, and a board day's file. `sitebuild.contract` reads the same three
 from a folder. Here they are read as main holds them on origin, which the checkout this runs in may be behind."""
-
-POSTED = re.compile(r"#issuecomment-(\d+)\s*$")
-"""How the address of a comment ends, which `gh issue comment` prints: with the comment's number."""
-
-NOT_TOLD = "The owner was not told of this on Discord ({why}), so this comment is the only notice of it."
-"""The last line a stop's or a "Shipped" comment gains when the notice could not be sent."""
 
 BEFORE_THE_WORDS = re.compile(r"(?:[\W_]+|\d+[.)])*")
 """What Markdown can put before the first word of a line: the marks of a heading, a quotation, a list, emphasis,
@@ -213,31 +207,6 @@ def standing_among(every: list[dict], number: int) -> list[dict]:
     return sorted(stands, key=lambda pull: pull["mergedAt"], reverse=True)
 
 
-def tell(issue: dict, what: str, posted: str) -> None:
-    """Tell the owner on Discord what became of the issue. A message that cannot be sent is a warning, and fails
-    nothing: what was done on the issue is done, and the issue itself says it.
-
-    The issue then says as well that nobody was told. Three runs in a row ended with the notice not sent, for
-    want of a credential store, and nothing on GitHub said so: the comment is written before the notice is
-    tried (#53). So the comment that `posted` names, which is what `post` said of it, gains a last line. A
-    script reads a comment by its first line and by the lines that begin with a name, and this line is neither.
-    When GitHub refuses the edit, that is a warning too."""
-    said = notify.send(f"{rules.FIRST_LINE}#{issue['number']} {what}. {issue['title']}\n{issue['url']}")
-    if said == "sent":
-        return
-    print(f"warning: the owner was not told on Discord ({said})")
-    found = POSTED.search(posted)
-    if not found:
-        return
-    path = f"{REPOSITORY}/issues/comments/{found[1]}"
-    try:
-        line = NOT_TOLD.format(why=said.removeprefix("not sent: "))
-        body = f"{shell.gh_json('api', path)['body'].rstrip()}\n\n{line}\n"
-        shell.gh("api", "--method", "PATCH", path, "--input", "-", stdin=json.dumps({"body": body}))
-    except shell.Failed as error:
-        print(f"warning: the comment does not say that the owner was not told: {one_line(error)}")
-
-
 def one_line(error: shell.Failed) -> str:
     """The command that failed and what it printed, as one line."""
     return " ".join(str(error).split())
@@ -307,6 +276,10 @@ def set_aside(number: str, label: str) -> None:
 def stop(options: argparse.Namespace, text: str) -> int:
     """Stop the issue for the owner, or for data it waits on (docs/workflow-plan.md, sections 12 and 14).
 
+    Nothing is sent to the owner. The comment and the label are the notice: on 24 November 2026 the owner dropped
+    the message on Discord that a stop and a close used to send, which three runs in a row had not been able to
+    send (#53).
+
     An issue that waits on data is taken up again when its field has arrived, and a field has arrived when its
     name is a key anywhere in the daily schema and the newest board day's file. A name that is there already,
     as `description` is, would have arrived before the issue ever waited: every run would take the issue up, find
@@ -324,11 +297,8 @@ def stop(options: argparse.Namespace, text: str) -> int:
         print(post(options.issue, "waiting on data", waiting))
         set_aside(number, rules.BLOCKED_ON_DATA)
         return 0
-    issue = read(options.issue)
-    posted = post(options.issue, "stopped", f"Stage: {options.stage}\n\n{text}")
-    print(posted)
+    print(post(options.issue, "stopped", f"Stage: {options.stage}\n\n{text}"))
     set_aside(number, rules.NEEDS_OWNER)
-    tell(issue, f"stopped at {options.stage} and waits for your answer", posted)
     return 0
 
 
@@ -355,9 +325,7 @@ def close(options: argparse.Namespace, text: str) -> int:
             )
         return 1
     pull = stands[0]
-    issue = read(options.issue)
-    posted = post(options.issue, "shipped", text)
-    print(posted)
+    print(post(options.issue, "shipped", text))
     shell.gh("issue", "close", number)
     shell.gh("issue", "edit", number, "--remove-label", rules.IN_PROGRESS)
     if shell.git("ls-remote", "origin", f"refs/heads/{pull['headRefName']}"):
@@ -365,7 +333,6 @@ def close(options: argparse.Namespace, text: str) -> int:
     left = delete_local(pull["headRefName"])
     if left:
         print(left)
-    tell(issue, "shipped", posted)
     return 0
 
 

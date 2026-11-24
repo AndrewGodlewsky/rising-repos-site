@@ -2,8 +2,9 @@
 
 How an approved idea goes from its issue here to a feature live on
 risingrepos.com, with nobody driving each step. One agent runs a feature from
-Pick up to Confirm. It starts two fresh agents on the way: one reviews the
-change, and one looks back over the run. A script decides whatever a script
+Pick up to Confirm. It starts three fresh agents on the way: one shapes the
+idea into a plan, one reviews the change, and one looks back over the run. A
+script decides whatever a script
 can, and each is run as `uv run --locked python -m sitework <command>`,
 written below as `sitework <command>`.
 
@@ -26,7 +27,7 @@ step here leaves a choice open.
    | --- | --- | --- |
    | 0 | An issue, and how to take it up | Carry on below |
    | 3 | Nothing to do | End the run, and post nothing |
-   | 4 | The site is not healthy. The script has told the owner | End the run |
+   | 4 | The site is not healthy. What it printed says why | End the run |
 
 3. Work on the branch the script named, in a worktree of its own. For a new
    idea, make it from the newest `main`, and push it at once, so that the
@@ -92,8 +93,22 @@ other people wrote.
 ## Shape
 
 Find out whether the idea is true, whether it fits, and what done means,
-before any code. Shape writes no product code: what it builds to reproduce a
-problem or to measure a size is thrown away.
+before any code. One fresh agent does it, and hands back the plan and
+nothing else. What Shape reads to weigh an idea was read again by every
+later message of the first three runs, a fifth to a half of each (#57).
+
+Start one fresh agent. Give it the issue's number, the folder of the
+checkout, and this document, of which it follows "What the run trusts", the
+five things that hold for every stage, and this section. It works through
+the steps below and posts the plan. It hands back three things and no more:
+the verdict, the address of the plan's comment, and the file of the
+workflow's faults it met. For a verdict that is not Go it hands back a file
+of the stop's words as well. Then read the plan from its comment, and carry
+out the verdict yourself, so that one agent holds where the issue stands.
+
+Shape writes no product code: what it builds to reproduce a problem or to
+measure a size is thrown away, and Build writes the change from the plan
+(#58).
 
 1. Read the sections of README.md that AGENTS.md names for this kind of
    change.
@@ -128,6 +143,7 @@ One or two sentences.
 | --- | --- |
 | 1 | `tests/test_x.py::Class::test_the_sentence_it_proves` |
 | 2 | looked at: what will be looked at, and where |
+| 3 | stays the same: `tests/test_x.py::Class::test_what_is_as_it_was` |
 
 ## Standards
 The standards the change touches, by number, and any it cannot meet.
@@ -140,6 +156,11 @@ What changes, and which section of README.md or of the design note.
 
 ## Data
 The fields it reads, and whether each is in the data contract.
+
+## For Build
+What Build needs and Shape would otherwise only remember: the lines of each
+file the change touches, how the problem was reproduced, and what was
+measured and how.
 
 ## Out of scope
 What the idea touches that this change leaves alone.
@@ -155,6 +176,11 @@ What only the owner can answer, and what the agent would choose.
 - The approval covers what the idea shows, and no more.
 - A criterion can be sharpened, split, and added to. It is never dropped or
   weakened.
+- A criterion that keeps something as it was has a test like any other, and
+  its row of the table begins `stays the same:`. Such a test passes on the
+  commit before, where every other new test has to fail, and
+  `sitework new-tests` holds it to that. Give it a test of its own, and do
+  not fold it into the test of something new (#52).
 - The run never applies `approved` and never files an idea. What is worth
   doing but lies outside the idea goes under Out of scope.
 
@@ -243,7 +269,9 @@ passed.
    last lines. Give it none of your own reasoning.
 3. It posts its review on the issue. When it added a test, it waited for
    the pull request's job on that commit before it wrote its verdict. On
-   `Verdict: pass`, go on to Ship.
+   `Verdict: pass`, go on to Ship. A finding that does not block stands,
+   and the run ships with it. Each one that a check could have found goes
+   into the "Shipped" note, and the look back files it (#55).
 4. On `Verdict: changes needed`, mend what blocks. A finding that a check
    could have found becomes a test in the same pull request. Run the check
    again, push, and ask the same reviewer to read the changes since.
@@ -273,13 +301,15 @@ when every one holds.
 2. On exit 0, write the "Shipped" note: the pull request, the merge's
    commit, the address of the pull request's run, which keeps a picture of
    each page the change altered as its `pictures` artifact, the eval's
-   numbers, and the tokens of each stage so far. Under a heading of its
-   own, "Guarded lines left out of date", it lists each line of a guarded
-   file that the feature made untrue, by its path and what it now says
-   wrongly: a feature cannot mend one, and the look back files them. Then
+   numbers, and the tokens of each stage so far. It has two headings of
+   its own, each with a list or the word None. "Guarded lines left out of
+   date" lists each line of a guarded file that the feature made untrue,
+   by its path and what it now says wrongly: a feature cannot mend one.
+   "Findings left standing" lists each finding of the review that did not
+   block and that a check could have found, with its file, its line, and
+   the test that would catch it. The look back files both. Then
    `sitework close <issue> --file <file>`, which posts it, closes the issue,
-   removes the feature's branch on GitHub and in the checkout, and tells
-   the owner.
+   and removes the feature's branch on GitHub and in the checkout.
 3. When the live site or the eval fails because of the change, mend it
    (below). The owner is not asked first.
 4. A result that measured nothing is no failure of the change, and calls
@@ -351,8 +381,8 @@ Nothing of it is written into the repository.
    prints to a file.
 2. Start one fresh agent. Give it [its brief](look-back.md), the issue's
    number, the digest, the plan, the review, the "Shipped" note or the
-   stop's comment, and the file of the workflow's own faults that the run
-   kept.
+   stop's comment, and the two files of the workflow's own faults: the one
+   the run kept, and the one its Shape agent kept.
 3. It files the issues with `sitework feedback`, and names them when it is
    done: one for each fault or saving, and one for the run, which holds
    the digest. The run changes nothing they say.
@@ -376,14 +406,13 @@ To stop: push the work, so that nothing is lost. Write one file that says
 the stage, what was seen, what was tried, the question for the owner, and
 what the run would choose. Then
 `sitework stop <issue> --stage <stage> --file <file>`, which posts it, swaps
-`in-progress` for `needs-owner`, takes the issue off the owner's list of
-assigned issues, and tells the owner. Then go on to the look
-back, and end the run there. A stopped issue holds nothing up: the next run
-takes the next issue.
+`in-progress` for `needs-owner`, and takes the issue off the owner's list of
+assigned issues. Then go on to the look back, and end the run there. A
+stopped issue holds nothing up: the next run takes the next issue.
 
-A stop and a close tell the owner on Discord. When that notice cannot be
-sent, the script adds a line to the comment it posted, so that the issue
-itself says nobody was told. It is no failure of the run.
+A stop and a close send the owner no message (#53). The issue's own comment
+and label are the notice, so the stop's file says in its first lines what is
+asked of the owner.
 
 The owner answers with a comment on the issue and removes `needs-owner`. The
 next run reads the answer and carries on from the stage that stopped.

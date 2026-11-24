@@ -1,9 +1,9 @@
 """`pickup` chooses the issue a run works on, in the order docs/workflow-plan.md, section 3, gives, and changes
 nothing on GitHub unless it is asked to claim.
 
-No test reaches GitHub, Orca, or Discord. `sitework.shell.run` is replaced by a stand-in that answers each
+No test reaches GitHub or Orca. `sitework.shell.run` is replaced by a stand-in that answers each
 command from what the test gives it, in the shapes `gh`, `git`, and `orca` answer in, and keeps each command it
-was given. The function that tells the owner is replaced too. Each test starts from a healthy site and the four
+was given. Each test starts from a healthy site and the four
 ideas the owner approved, #27 first, and changes the one thing it is about.
 """
 
@@ -16,7 +16,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-from sitework import issue, notify, pickup, shell
+from sitework import issue, pickup, shell
 
 OWNER = "the-owner"
 HEAD = "d" * 40
@@ -156,15 +156,8 @@ class PickupTest(unittest.TestCase):
             ]
         self.shell = Shell(self.answers)
         self.enterContext(mock.patch.object(shell, "run", self.shell))
-        self.told = []
-        self.sent = "sent"
-        self.enterContext(mock.patch.object(notify, "send", self.tell))
         self.enterContext(mock.patch.dict(os.environ))
         os.environ.pop("ORCA_AGENT_SESSION_ID", None)
-
-    def tell(self, message: str) -> str:
-        self.told.append(message)
-        return self.sent
 
     def run_command(self, *arguments: str) -> tuple[int, dict]:
         """Run `pickup`, and give its exit code and the JSON object it printed."""
@@ -184,39 +177,35 @@ class PickupTest(unittest.TestCase):
 
 
 class IsTheSiteHealthy(PickupTest):
-    def test_a_newest_deploy_that_is_still_running_ends_the_run_with_3_and_tells_nobody(self):
+    def test_a_newest_deploy_that_is_still_running_ends_the_run_with_3(self):
         self.answers[DEPLOYS] = [run(139, conclusion="")]
         code, printed = self.run_command()
         self.assertEqual(code, 3)
         self.assertEqual(list(printed), ["why"])
         self.assertIn("not finished", printed["why"])
-        self.assertEqual(self.told, [])
 
     def test_the_newest_deploy_is_looked_for_among_the_pushes_to_main(self):
         self.run_command()
         (asked,) = [line for line in self.shell.ran if line.startswith(DEPLOYS)]
         self.assertIn("--branch main --event push --limit 1", asked)
 
-    def test_a_newest_deploy_that_failed_exits_4_and_the_owner_is_told(self):
+    def test_a_newest_deploy_that_failed_exits_4_and_says_which_run(self):
         self.answers[DEPLOYS] = [run(139, conclusion="failure")]
         code, printed = self.run_command()
         self.assertEqual(code, 4)
         self.assertEqual(list(printed), ["why"])
-        (message,) = self.told
-        self.assertIn("actions/runs/139", message)
+        self.assertIn("actions/runs/139", printed["why"])
 
     def test_an_eval_that_has_not_followed_the_newest_deploy_yet_ends_the_run_with_3(self):
         self.answers[EVALS] = [run(60, conclusion="failure", made="20:32:09", done="20:34:49")]
         code, printed = self.run_command()
         self.assertEqual(code, 3)
-        self.assertEqual(self.told, [])
 
-    def test_an_eval_that_is_still_running_ends_the_run_with_3_and_tells_nobody(self):
+    def test_an_eval_that_is_still_running_ends_the_run_with_3(self):
         self.answers[EVALS] = [run(61, conclusion="", made="23:32:26", done="23:32:26")]
         code, printed = self.run_command()
         self.assertEqual(code, 3)
         self.assertEqual(list(printed), ["why"])
-        self.assertEqual(self.told, [])
 
     def test_a_failed_eval_exits_4_and_nothing_is_picked_up(self):
         self.answers[EVALS] = [run(61, conclusion="failure", made="23:32:26", done="23:34:58")]
@@ -225,36 +214,6 @@ class IsTheSiteHealthy(PickupTest):
         self.assertEqual(list(printed), ["why"])
         self.assertIn("actions/runs/61", printed["why"])
         self.assertEqual(self.shell.changes(), [])
-
-    def test_the_owner_is_told_once_for_a_run_that_failed_and_not_again_at_every_run(self):
-        self.answers[EVALS] = [run(61, conclusion="failure", made="23:32:26", done="23:34:58")]
-        for _ in range(3):
-            self.assertEqual(self.run_command()[0], 4)
-        self.assertEqual(len(self.told), 1)
-        self.assertIn("actions/runs/61", self.told[0])
-
-    def test_the_owner_is_told_again_when_another_run_fails(self):
-        self.answers[EVALS] = [run(61, conclusion="failure", made="23:32:26", done="23:34:58")]
-        self.run_command()
-        self.answers[EVALS] = [run(62, conclusion="failure", made="23:32:26", done="23:34:58")]
-        self.run_command()
-        self.assertEqual(len(self.told), 2)
-        self.assertIn("actions/runs/62", self.told[1])
-
-    def test_a_message_that_could_not_be_sent_is_sent_at_the_next_run(self):
-        self.answers[EVALS] = [run(61, conclusion="failure", made="23:32:26", done="23:34:58")]
-        self.sent = "not sent: no credential store"
-        self.run_command()
-        self.sent = "sent"
-        self.run_command()
-        self.run_command()
-        self.assertEqual(len(self.told), 2)
-
-    def test_which_run_was_told_is_kept_under_gits_common_directory_and_nowhere_in_the_tree(self):
-        self.answers[EVALS] = [run(61, conclusion="failure", made="23:32:26", done="23:34:58")]
-        self.run_command()
-        (kept,) = list(self.common.iterdir())
-        self.assertEqual(kept.read_text(encoding="utf-8").strip(), "61")
 
 
 class IsARunStillAtWork(PickupTest):
@@ -380,7 +339,6 @@ class IsSomethingInFlight(PickupTest):
         self.answers["gh pr list"] = [pull(41, "agent/28-latest-jump", "MERGED")]
         code, printed = self.run_command()
         self.assertEqual((code, printed["issue"], printed["take_up"]), (0, 28, "resume"))
-        self.assertEqual(self.told, [])
 
     def test_an_issue_in_progress_that_is_not_live_waits_while_the_site_is_not_healthy(self):
         self.answers["orca worktree ps --json"] = orca("/work/Site-Feature", "done")
