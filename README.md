@@ -804,6 +804,7 @@ what was read and not tried.
 | Review | One fresh agent | A verdict of pass on the checked commit |
 | Ship | A script | Every condition of the merge holds |
 | Confirm | A script and the agent | The feature works on the live site, and the site eval is within its limits |
+| Mend | The agent, only after a Confirm that failed | One fix, checked, reviewed, and shipped as the feature was. When it fails too, the site is put back and the owner is asked |
 | Look back | A script and one fresh agent | Nothing waits on it |
 
 **The scripts.** `sitework/` holds them, one module to a command or two, and

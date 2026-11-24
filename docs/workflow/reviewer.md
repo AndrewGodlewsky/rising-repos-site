@@ -75,3 +75,13 @@ When asked to read the changes since your review, read only
 lines. See that each fix does what your finding asked, and that a test added
 with a fix fails with the fix taken out. Post a second review in the same
 form.
+
+## A mend
+
+When asked to read a mend, the feature is live and something in it failed
+there. You were handed what `sitework confirm` printed, the mend's base and
+head, and the check's last lines. Read only the mend:
+`git diff <base>...<head>`. See that the fix answers what failed, that it
+stays inside the plan, and that a test added with it fails with the fix
+taken out. Post a review in the same form, with the mend's head as its
+commit.

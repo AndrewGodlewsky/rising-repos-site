@@ -283,6 +283,11 @@ The one command that runs everything a change has to pass: the lint, the
 format, the guarded paths, and both kinds of tests.
 _Avoid_: CI, pipeline
 
+**Mend**:
+The one try a run makes at putting right a feature that failed on the live
+site: a second pull request of the same idea, with the fix.
+_Avoid_: hotfix, patch
+
 **Guarded path**:
 A file that judges a feature, and that a feature therefore leaves alone: a
 workflow, a limit, the standards, the owner's tests, the feature workflow's

@@ -33,7 +33,7 @@ step here leaves a choice open.
    below whose work is not there.
 
 As each stage begins, run `sitework stage <name>`, with the stage's name in
-lower case: `shape`, `build`, `check`, `review`, `ship`, `confirm`, or
+lower case: `shape`, `build`, `check`, `review`, `ship`, `confirm`, `mend`, or
 `look back`. The digest tells the stages apart by it.
 
 ## What the run trusts
@@ -219,17 +219,57 @@ when every one holds.
    numbers, and the tokens of each stage so far. Then
    `sitework close <issue> --file <file>`, which posts it, closes the issue,
    removes the branch, and tells the owner.
-3. When the live site or the eval fails because of the change, put the site
-   back first: `sitework revert <issue>`, wait for that pull request's job,
-   `sitework ship <issue> --revert`, and then
-   `sitework confirm <issue> --revert`, which follows the revert's own
-   deploy. Then stop for the owner, and say what was seen. The revert's
-   pull request has to hold the revert and nothing else: when `main` moves
-   before it merges, merge `origin/main` into its branch and add nothing.
+3. When the live site or the eval fails because of the change, mend it
+   (below). The owner is not asked first.
 4. A result that measured nothing is no failure of the change, and calls
-   for no revert: a deploy that is `not uploaded` or `not finished`, or an
+   for no mend: a deploy that is `not uploaded` or `not finished`, or an
    eval that ended `cancelled` or `skipped`. Run the command again. When
    it still does not settle, stop for the owner.
+
+## Mend
+
+Only after a Confirm that failed because of the change. The feature is live
+with a fault in it, and one mend is tried. It has fewer steps than the
+feature had: the plan stands, and nothing is shaped again. The fault stays
+live while it is mended.
+
+1. `sitework stage mend`. Find the fault from what `confirm` printed: the
+   owner's test that failed on the live site, or the eval's number that is
+   over its limit, which `gh run view <the eval's run> --log` gives.
+2. When a reader cannot read the board at all, because the root does not
+   load or shows no row of a board that has rows, put the site back at
+   once (step 7).
+3. On the feature's own branch, with `origin/main` merged into it, write a
+   test that fails for the fault, where a test can show it, and then the
+   fix. Stay in the plan.
+4. `sitework check --issue <issue>`, push, and open a second pull request
+   from that branch, named for what was wrong, with `Refs #<issue>`. Wait
+   for its job.
+5. Ask the reviewer that read the feature, or a fresh one when that one is
+   gone, to read the mend alone ([its brief](reviewer.md), under "A mend").
+   The ship script wants a review that names the mend's own commit.
+6. `sitework ship <issue>`, and then `sitework confirm <issue>`, which
+   follows the mend's deploy. On exit 0 go on as Confirm's step 2 has it,
+   and say in the "Shipped" note what was mended.
+7. Put the site back when the mend did not put the fault right: its own
+   Confirm failed, the cause cannot be found, or the fix would leave the
+   plan. `sitework revert <issue>` reverts every merge of the feature that
+   stands, the mend's with it. Wait for that pull request's job, then
+   `sitework ship <issue> --revert`, and
+   `sitework confirm <issue> --revert`, which follows the revert's own
+   deploy. The revert's pull request has to hold the revert and nothing
+   else: when `main` moves before it merges, merge `origin/main` into its
+   branch and add nothing. Then stop for the owner, with `--stage mend`,
+   and say what was seen.
+
+A run that takes the issue up again reads the `facts` that
+`sitework pickup` printed. `standing` is how many of the feature's merges
+are on `main` with no revert after them: one is the feature, and two the
+feature and its mend. With two the mend is in, and what is left is step 6's
+Confirm, or step 7 when that fails. A second mend is never tried. With
+`reverted` true the site was put back, and what is left is to stop for the
+owner. A feature that is live is taken up again whatever the site's health,
+since the fault may be its own.
 
 ## Look back
 
@@ -256,7 +296,8 @@ The run goes on by itself until one of these is true. Nothing else stops it.
 | Check | The only way past a failing check is to loosen it. Two different attempts at a failing check have not passed it |
 | Review | The verdict is still `changes needed` after the one second look |
 | Ship | A condition of the merge does not hold, and the run cannot make it hold inside the plan |
-| Confirm | The live site or the eval failed because of the change. The merge is reverted first |
+| Confirm | A result that measured nothing does not settle |
+| Mend | The one mend did not put the fault right, or a reader cannot read the board. The site is put back first |
 | Any | A security control refused an action. Look for no way round it |
 
 To stop: push the work, so that nothing is lost. Write one file that says

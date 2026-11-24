@@ -544,11 +544,30 @@ owner read for.
    delete the branch and the worktree, and tell the owner on Discord.
 5. **Look back.** Section 18. Nothing waits on it.
 
-**When one of these fails because of the change,** the site is put back
-first and the owner is asked second. The agent opens a pull request that
-reverts its own merge, which the check must pass and no reviewer reads, and
-the ship script merges it. Then it stops (section 14), and says what it saw.
-A broken page does not stay live while a question waits (D5).
+**When one of these fails because of the change,** the run mends it. The
+owner decided this on 23 November 2026: a feature may deploy and be found
+wanting a few minutes later, and the run then tries to put it right by
+itself, in fewer steps than the feature had. A mend is a second pull request
+of the same issue. The plan stands and nothing is shaped again, the check
+runs, the reviewer reads the mend alone, and the ship script merges it on
+the conditions it holds a feature to. The fault stays live meanwhile.
+
+When the mend fails on the live site too, or its cause cannot be found, the
+site is put back: the agent opens a pull request that reverts every merge
+of the feature, which the check must pass and no reviewer reads, and the
+ship script merges it. Then the run stops (section 14), and says what it
+saw. Until that day this section had the site put back first and the owner
+asked second (D5).
+
+A run can end in the middle of this. So the script that picks an issue up
+says how many of the feature's merges stand on `main` and whether it was
+reverted, and takes a feature that is live up again whatever the site's
+health, though section 3 has the health asked first of all: the fault may be
+the feature's own, and no other run would mend it.
+
+Two parts of this are an agent's reading, and not the owner's words: that
+one mend is tried and no more, and that a board no reader can read is put
+back at once, with no mend tried while it is down.
 
 **What has to be true first.** The site eval has to pass, or it cannot tell a
 feature that slowed the page from one that did not. After the redesign it
@@ -560,9 +579,17 @@ accepted a higher limit (RisingRepos#210), and step 1 of section 13 set it to
 The third of those evals failed on the desktop too, at 0.62 s against 0.60 s.
 The first measured exactly 0.60 s, and the board had fewer rows on the third
 than on the first, 252 against 264, so the figure did not rise with the
-board: it sits at its limit, and the runner's noise carries it over. Whether
-that limit moves is the owner's to decide, and until it does the eval can
-fail on it.
+board: it sits at its limit, and the runner's noise carries it over. The
+owner raised that limit to 0.9 s on 23 November 2026: the highest median
+since the redesign with two fifths more, which is how the old limit was set.
+
+The eval that followed the board of 23 November 2026 failed on a third
+number, the phone's Cumulative Layout Shift, at 0.033 against 0.010. The
+page drew its text in the fallback face and drew it again in its own a few
+milliseconds later, and that board's fifth name took one line in the first
+and two in the second. No limit was moved for it. The faces now hold their
+text back until they are in, and the same board measures 0.0003
+(README.md, "The design note", under "Type", which says what is left).
 
 ## 11. The standards and the rest of the context (new)
 
@@ -711,7 +738,8 @@ The owner agreed the order of the checks and the evals in it on 22 November
 **Before the first feature**
 
 1. **The eval is made green.** The phone's limit is raised to 2.5 s, as
-   accepted. The desktop's sits at its limit, and waits for the owner
+   accepted, and the desktop's to 0.9 s, as the owner decided on 23 November
+   2026. The layout shift that the board of that day showed is mended
    (section 10).
 2. **The context and the check command.** `STANDARDS.md`, the first decision
    records, `GLOSSARY.md`, the test that holds them to the files, and
@@ -782,7 +810,7 @@ it, and a stop is never a matter of course.
 | Check | A check fails and the only way past it is to loosen the check. Two different attempts at a failing check have not passed it |
 | Review | The verdict is still "changes needed" after the one recheck |
 | Ship | A condition of the merge does not hold and the agent cannot make it hold inside the plan |
-| Confirm | The live check or the eval failed because of the change. The merge is reverted first |
+| Mend | The one mend of a feature that failed on the live site did not put it right, or a reader cannot read the board. The site is put back first |
 | Any | A security control refused an action. The agent does not look for a way round it |
 
 **What a stop does**
@@ -821,8 +849,7 @@ stays the owner's to change:
 
 - D4: the pull request's job keeps the pictures, and the "Shipped" note
   links them.
-- D5: a change that breaks the live site is reverted first, and the owner is
-  asked second.
+- D5: answered since, on 23 November 2026 (below).
 - D7: RisingRepos's agents change nothing here but `site-data/`. That part
   is decided in RisingRepos, and nothing here enforces it.
 - D10: the owner answers a stop with a comment on the issue and removes
@@ -852,10 +879,12 @@ stays the owner's to change:
   note. Still proposed: sent to Discord, and kept as the pull request job's
   artifact, with a link on the issue. Whether an agent can place a picture
   inside an issue's comment was not checked.
-- **D5. Reverting without being asked** when the live check or the eval fails
-  (section 10). The plan has the agent revert first and ask second, which is a
-  reading of D1 and not something the owner said. The alternative is to leave
-  the change live and wait.
+- **D5. Settled on 23 November 2026: a feature that fails on the live site is
+  mended first.** The owner is content for a feature to deploy and be
+  verified a few minutes later, and for the run to try to put a fault right
+  by itself, in fewer steps (section 10). The site is put back only when the
+  one mend fails, or when no reader can read the board. The plan had the
+  agent revert first and ask second.
 - **D6. Settled on 23 November 2026: no cap on what a run or a review may
   cost.** The owner wants the workflow made cheaper by going over each run,
   and not by a limit: the "Shipped" note gives the tokens of each stage, and
@@ -1108,8 +1137,8 @@ README.md gives the last measurements: 476,623 bytes on 21 November 2026, and
 144,789 on 22 November.
 
 The phone's limit for Largest Contentful Paint was 2.0 seconds until step 1
-of section 13 raised it. The desktop's paint sits at its limit, and can still
-fail the eval (section 10).
+of section 13 raised it. The desktop's was 0.6 seconds until the owner raised
+it to 0.9 on 23 November 2026 (section 10).
 
 **2. Did the feature break anything? (new)**
 
