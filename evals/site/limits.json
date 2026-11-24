@@ -35,8 +35,8 @@
       "reason": "Every run scored 100. The score comes from checks that give the same answer for the same page on every run, so a lower score means a check now fails on the page, and the margin is none."
     },
     "largest_contentful_paint": {
-      "limit": 0.6,
-      "reason": "The four evals' medians were 0.42 to 0.43 seconds, and single runs reached 0.55. The limit is the highest median with two fifths more, to a tenth of a second, as on the phone. It is well under Google's good threshold of 2.5 seconds."
+      "limit": 0.9,
+      "reason": "Before AndrewGodlewsky/RisingRepos#199 the four evals' medians were 0.42 to 0.43 seconds, and the limit was 0.6. Since then each page holds the site's type, and the four evals of 22 and 23 November 2026 had medians of 0.58, 0.59, 0.60, and 0.62 seconds, with single runs reaching 0.66: the paint sat at the old limit, and one eval failed on it by two hundredths of a second with nothing changed in the page. The owner raised the limit on 23 November 2026. It is the highest of those medians with two fifths more, to a tenth of a second, which is how the old limit was set. It is well under Google's good threshold of 2.5 seconds."
     },
     "cumulative_layout_shift": {
       "limit": 0.01,
