@@ -152,6 +152,14 @@ def day_bar(page: Page) -> Locator:
     return page.get_by_role("navigation", name="Board days", exact=True)
 
 
+def in_the_bar(page: Page) -> str:
+    """The address in the reader's bar, asked of the page itself. A filter writes the reader's choice into the
+    address and loads no page, and the browser tells a test of such a change a moment after it is made, so the
+    address a test already holds for the page can still be the one from before. On GitHub's runner it was, for a
+    search."""
+    return page.evaluate("() => location.href")
+
+
 def address_of(link: Locator) -> str:
     """Where a link leads, in full."""
     return urljoin(link.page.url, link.get_attribute("href"))

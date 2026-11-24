@@ -13,6 +13,7 @@ from owner_tests.scenario import (
     column,
     facts,
     heading,
+    in_the_bar,
     names,
     new_names,
     number,
@@ -201,11 +202,11 @@ class TheFilterAndAnOpenedRow(Scenario):
         page = self.board_page()
         if new_button(page).count():
             new_button(page).click()
-            filtered["the new rows"] = (page.url, names(page))
+            filtered["the new rows"] = (in_the_bar(page), names(page))
         page = self.board_page()
         for words in band_buttons(page):
             page.get_by_role("group", name="Star band").get_by_role("button", name=words, exact=True).click()
-            filtered["a star band"] = (page.url, names(page))
+            filtered["a star band"] = (in_the_bar(page), names(page))
             if names(page):
                 break
         page = self.board_page()
@@ -217,10 +218,10 @@ class TheFilterAndAnOpenedRow(Scenario):
         if left:
             languages.select_option(label=max(left, key=left.get))
             page.get_by_role("combobox", name="Order").select_option(label="Most stars first")
-            filtered["a language and an order"] = (page.url, names(page))
+            filtered["a language and an order"] = (in_the_bar(page), names(page))
         page = self.board_page()
         page.get_by_role("searchbox").fill(a_word_of(names(page)[-1].partition("/")[2]))
-        filtered["a search"] = (page.url, names(page))
+        filtered["a search"] = (in_the_bar(page), names(page))
         filtered = {what: shown for what, shown in filtered.items() if shown[1]}
         self.given(filtered, "the newest board offers nothing to filter by")
         for what, (address, shown) in filtered.items():
