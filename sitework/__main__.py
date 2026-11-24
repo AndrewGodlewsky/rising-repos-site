@@ -24,7 +24,7 @@ COMMANDS = {
     "revert": ("sitework.revert", "Put the site back by reverting every merge of a feature that stands"),
     "stage": ("sitework.digest", "Mark in the run's record that a stage begins"),
     "digest": ("sitework.digest", "Make a one-page digest of a run from its record"),
-    "notes": ("sitework.notes", "Push a run's notes to main, in a commit that holds nothing else"),
+    "feedback": ("sitework.feedback", "File what a run taught as issues, or add to one that is already open"),
     "notify": ("sitework.notify", "Send the owner one message on Discord"),
 }
 """Each command, the module that holds it, and what it does. A module's `main` takes the command's name and the

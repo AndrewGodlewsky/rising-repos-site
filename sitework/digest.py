@@ -2,17 +2,18 @@
 
 Reading a whole run costs about what the run cost, so no agent reads one. An agent's record of its run holds every
 call it made and the tokens of every message, so this reads the record of each agent that took part and writes
-about a page: where the tokens went, which tools and files were used most, how long the whole suite took, which
-checks failed, and where the run stopped. The look back reads that page, and opens a record itself only where the
-page points at waste (docs/workflow-plan.md, section 18).
+about a page: where the tokens went, which model and which effort each agent ran at, which tools and files were
+used most, how long the whole suite took, which checks failed, and where the run stopped. The look back reads that
+page, and opens a record itself only where the page points at waste (docs/workflow-plan.md, section 18).
 
 A run finds its own records with `--this-run`, so that no agent has to know where they are kept: the session's
 record, and beside it the record of each fresh agent the session started.
 
-The digest is pushed with the run's notes, which are public. So it names a file by its path in the repository,
-counts a file outside it without naming it, and takes nothing else from a record but the names of its tools, of
-the tests a check chose, of the step the check stopped at, and of a fresh agent's own file: no command, no word
-of an agent's, and no folder of the machine the run was made on.
+The digest goes into the issue that `sitework feedback` files for the run, which is public. So it names a file by
+its path in the repository, counts a file outside it without naming it, and takes nothing else from a record but
+the names of its tools, of its models and their efforts, of the tests a check chose, of the step the check stopped
+at, and of a fresh agent's own file: no command, no word of an agent's, no folder of the machine the run was made
+on, and no name of the session.
 """
 
 import argparse
@@ -39,14 +40,24 @@ PICK_UP = "pick up"
 KINDS = ("input_tokens", "output_tokens", "cache_creation_input_tokens", "cache_read_input_tokens")
 """The four kinds of token a message is charged for, as the record names them."""
 
-FIGURES = "## Figures"
 FIGURES_HEADING = (
     "| Issue | Shape and build | Review | Look back | Every stage | Stopped | Hours from approval to close |"
 )
 FIGURES_RULE = "| --- | ---: | ---: | ---: | ---: | --- | ---: |"
-"""The heading of a feature's figures and the two rows above its own. They never change, so that `notes` can add
-the row beneath them to a table that holds a row for every feature. So a mend has no column of its own here: its
-tokens are in `Every stage`, and the table of tokens by stage is where they are told apart."""
+"""The two rows above a feature's own in the table of its figures. They are written out, and not made by `table`,
+because a column of words, `Stopped`, stands among the columns of numbers. A mend has no column of its own here:
+its tokens are in `Every stage`, and the table of tokens by stage is where they are told apart."""
+
+SESSION_RECORD = "the session"
+"""What the digest calls the first record, of the agent that ran the feature. A fresh agent's record is called by
+its file's name, but the session's file is named for the session, and the digest is public."""
+NAME = re.compile(r"[\w.:@-]+")
+"""The name of a model or of an effort as the digest writes one: letters, digits, and the few marks that the
+places which serve a model put in its name. Claude Code writes `<synthetic>` as the model of a message of its own,
+which no model wrote, and an issue would show that as nothing at all. A value with a `/` or a `\\` could be a
+path, and one with a `|` would make a cell of its own in the table."""
+UNNAMED = "unnamed"
+"""What a message is counted under when its line names no model, or no effort, that can be written."""
 
 SUITE = ("unittest discover -s tests", "sitework check")
 """The two checks that run the whole suite, as `check_names` names them. A run of `unittest discover -s tests`
@@ -119,6 +130,10 @@ class Run:
     times: list[datetime] = field(default_factory=list)
     agents: list[tuple[str, str, int]] = field(default_factory=list)
     """Each fresh agent: its record's name, the stage it began in, and its tokens of every kind together."""
+    ran_at: list[tuple[str, str, str, int]] = field(default_factory=list)
+    """Each pair of a model and an effort that a record's messages ran at: what the digest calls the record, the
+    model, the effort, and how many messages. A record that changed either part way has a pair for each, in the
+    order it met them."""
 
 
 class NoRecord(Exception):
@@ -132,6 +147,12 @@ def when(text: str) -> datetime:
 
 def plain(path: str) -> str:
     return path.replace("\\", "/").rstrip("/")
+
+
+def name_of(value) -> str:
+    """What a record gives as a model or as an effort, when it is a name the digest can write, and `UNNAMED` when
+    it is not one or is not there."""
+    return value if isinstance(value, str) and NAME.fullmatch(value) else UNNAMED
 
 
 def tool_calls(line: dict) -> list[dict]:
@@ -201,7 +222,7 @@ def read_run(records: list[Path]) -> Run:
     belongs to the stage the agent was started in, so that the reviewer's tokens are the review's, or, when
     nothing says which call started it, to a stage named by its file."""
     run = Run(records=len(records), roots=[plain(str(shell.ROOT))])
-    counted: dict[str, tuple[str, list[int], int]] = {}
+    counted: dict[str, tuple[str, list[int], int, str, str]] = {}
     calls: dict[str, Call] = {}
     began = {}
     for number, record in enumerate(records):
@@ -222,9 +243,11 @@ def read_run(records: list[Path]) -> Run:
                     calls[block["id"]] = Call(stage, block["name"], block.get("input", {}), at)
                 # One message is written as several lines, each with the whole message's tokens, so it is
                 # counted once, and in the stage its last line was in: the line with a stage call may not be
-                # its first.
+                # its first. Each of its lines names the model that wrote it and the effort it ran at.
                 message = line["message"]
-                counted[message["id"]] = (stage, [message["usage"].get(kind_, 0) for kind_ in KINDS], number)
+                tokens = [message["usage"].get(kind_, 0) for kind_ in KINDS]
+                model, effort = name_of(message.get("model")), name_of(line.get("effort"))
+                counted[message["id"]] = (stage, tokens, number, model, effort)
             elif kind == "user" and isinstance(line["message"].get("content"), list):
                 kept = line.get("toolUseResult")
                 for block in line["message"]["content"]:
@@ -243,11 +266,19 @@ def read_run(records: list[Path]) -> Run:
                         call.background, call.ended = "", when(line["timestamp"])
                         call.failed = status[1] != "completed"
     used = Counter()
-    for stage, tokens, number in counted.values():
+    pairs = Counter()
+    for stage, tokens, number, model, effort in counted.values():
         total = run.tokens.setdefault(stage, [0, 0, 0, 0])
         run.tokens[stage] = [had + more for had, more in zip(total, tokens, strict=True)]
         used[number] += sum(tokens)
+        pairs[number, model, effort] += 1
     run.agents = [(record.stem, began[number], used[number]) for number, record in enumerate(records) if number]
+    # The pairs are in the order the messages were first met. The sort puts them in the order of the records and
+    # moves nothing within a record, so that a record's pairs stay in the order it met them.
+    run.ran_at = [
+        (records[number].stem if number else SESSION_RECORD, model, effort, messages)
+        for (number, model, effort), messages in sorted(pairs.items(), key=lambda pair: pair[0][0])
+    ]
     run.messages = len(counted)
     run.calls = list(calls.values())
     return run
@@ -399,6 +430,18 @@ def render(run: Run, issue: int | None = None, hours: float | None = None) -> st
             else ["None was started."]
         ),
         "",
+        "## Model and effort",
+        "",
+        *(
+            table(
+                ["Record", "Model", "Effort", "Messages"],
+                [[record, model, effort, f"{messages:,}"] for record, model, effort, messages in run.ran_at],
+                numbers_from=3,
+            )
+            if run.ran_at
+            else ["The records hold no message."]
+        ),
+        "",
         "## Tools",
         "",
         ", ".join(f"{tool} {count:,}" for tool, count in tools) + "." if tools else "None was called.",
@@ -433,7 +476,7 @@ def render(run: Run, issue: int | None = None, hours: float | None = None) -> st
         "yes" if stops else "no",
         "-" if hours is None else f"{hours:.1f}",
     ]
-    lines += ["", FIGURES, "", FIGURES_HEADING, FIGURES_RULE, "| " + " | ".join(figures) + " |", ""]
+    lines += ["", "## Figures", "", FIGURES_HEADING, FIGURES_RULE, "| " + " | ".join(figures) + " |", ""]
     lines += ["A figure in tokens is the sum of the four kinds. Every stage includes the pick up."]
     return "\n".join(lines)
 

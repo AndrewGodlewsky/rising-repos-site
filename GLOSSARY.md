@@ -301,8 +301,15 @@ _Avoid_: block, failure, escalation
 
 **Look back**:
 The last stage of a run: a script digests the run's record, and a fresh
-agent notes how the run could have cost less or done better.
+agent files what went wrong in the workflow and how the run could have cost
+less.
 _Avoid_: retrospective, post-mortem
+
+**Workflow feedback**:
+An issue here, labelled `workflow feedback`, that holds one thing a run
+taught about the feature workflow itself: a fault it had, or a way it could
+cost less. It is never built as an idea is.
+_Avoid_: lesson, retro item
 
 ### People
 

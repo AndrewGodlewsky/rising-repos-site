@@ -690,7 +690,7 @@ job that holds the Cloudflare credential.
 
 | Job | Runs on | What it does | What it can reach |
 | --- | --- | --- | --- |
-| `build` | Every pull request, and every push to `main` but one that changes only `docs/workflow-notes/` | Checks out the repository, installs what `uv.lock` pins, runs the checks (`python -m sitework check --suite`), builds the pages into `dist`, and uploads them as the artifact `site`. On a pull request it also keeps a picture of each kind of page the pull request altered, as the artifact `pictures` | Read access to the repository. No secret |
+| `build` | Every pull request, and every push to `main` | Checks out the repository, installs what `uv.lock` pins, runs the checks (`python -m sitework check --suite`), builds the pages into `dist`, and uploads them as the artifact `site`. On a pull request it also keeps a picture of each kind of page the pull request altered, as the artifact `pictures` | Read access to the repository. No secret |
 | `deploy` | A push to `main`, once `build` has passed | Downloads the artifact, refuses it if it holds a `_worker.js`, leaves the upload to a newer push if `main` has moved on, and uploads it with wrangler | The `deploy` environment's `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, which GitHub gives only to `main`. It never checks out the repository, so it runs nothing from its files |
 
 The deploy job runs wrangler with
@@ -726,16 +726,6 @@ the agents' tests, and the owner's tests, the cheapest first, and stops at the
 first that fails. The owner's tests, and the agents' tests of an opened row,
 drive the Chrome that the runner's image already holds, so the job downloads
 no browser.
-
-**A push of the notes.** The feature workflow keeps the notes of its runs in
-`docs/workflow-notes/`, and `deploy.yml` leaves that folder out with
-`paths-ignore`: GitHub starts no run for a push when every path it changes
-matches. Their pages would be the ones already live. Because a run uploads
-only while its commit is the head of `main`, notes pushed on top of a commit
-whose run has not finished would leave that commit's pages unuploaded. So
-`sitework/notes.py`, the one thing that pushes there, waits for the run of the
-newest commit that changes a page, and refuses a commit that touches any
-other path.
 
 ## Building locally
 
@@ -858,9 +848,13 @@ with a line on that issue.
 **What a run leaves behind.** The plan, the review, and what shipped are
 comments on the idea's issue, each beginning `Site workflow:`. A run acts
 under the owner's account, so that first line is what tells a run's words
-from the owner's own. The notes of each run are in `docs/workflow-notes/`:
-a digest a script makes from the run's record, and a few lines from a fresh
-agent on how the run could have cost less.
+from the owner's own. What a run taught about the workflow itself is filed
+as issues here, labelled `workflow feedback`, and nothing of it is written
+into the repository. One issue is the run's, with a digest a script makes
+from the run's record: the tokens of each stage, and the model and the
+effort each agent ran at. Each fault the workflow had, and each way the run
+could have cost less, has an issue of its own, so that it can be mended and
+closed by itself. The owner and another agent work through them.
 
 **Starting a run.** A person starts each run for now: a new Orca workspace
 on this repository, and one line to its agent, "Follow
@@ -922,7 +916,6 @@ GLOSSARY.md         the words this repository uses, for the domain and for the p
 STYLE.md            the style guide: what a new part of a page reaches for. A guide, and not a rule
 docs/adr/           the decisions about the site that are hard to undo, each with its reasons
 docs/workflow/      what a run of the feature workflow follows, and the briefs of its two fresh agents
-docs/workflow-notes/  the notes of each run, and the lessons a run reads at its start. A push of them deploys nothing
 docs/workflow-plan.md  why the feature workflow is as it is, and what is still open
 docs/research/      what was read for the plan, with the source of each claim
 RUNBOOK.md          going live, and going back

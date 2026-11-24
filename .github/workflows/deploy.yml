@@ -1,8 +1,7 @@
 name: Build and deploy
 
 # Every pull request and every push to main builds the pages. A push to main
-# also uploads them to Cloudflare Pages. The one push that does neither is one
-# that changes nothing but the feature workflow's notes.
+# also uploads them to Cloudflare Pages.
 #
 # The two jobs are kept apart on purpose. The daily data push can change any
 # file in this repository except a workflow, so nothing it can change may run
@@ -19,14 +18,6 @@ name: Build and deploy
 on:
   push:
     branches: [main]
-    # GitHub starts no run for a push when every path it changes matches a
-    # pattern here. The notes of the feature workflow's runs make no page, so
-    # a push of them alone builds and uploads nothing. The one folder is
-    # named, and nothing else, so that no file a page is made from is left out
-    # by mistake. sitework/notes.py is the only thing that pushes there, and
-    # it waits for the run of the newest commit that does change a page,
-    # because a run uploads only while its commit is the head of main.
-    paths-ignore: ["docs/workflow-notes/**"]
   pull_request:
 
 permissions: {}

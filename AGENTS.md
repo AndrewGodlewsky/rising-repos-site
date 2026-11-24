@@ -11,8 +11,7 @@ are changing.
 
 - A push to `main` is a production deploy. The build job checks and builds the
   pages, and the deploy job uploads them to risingrepos.com
-  (`.github/workflows/deploy.yml`). The one push that deploys nothing is one
-  that changes only `docs/workflow-notes/`, which starts no run.
+  (`.github/workflows/deploy.yml`).
 - A push to any other branch runs no workflow. A pull request runs the checks
   and the build, keeps a picture of each kind of page it altered, and deploys
   nothing. One that changes the site eval also runs the eval, against the live

@@ -10,8 +10,6 @@ import unittest
 import yaml
 from helpers import FULL_SHA, SECRET, load_workflow, step_named, step_using
 
-from sitework import rules
-
 
 def actions(job: dict) -> set[str]:
     return {step["uses"].split("@")[0] for step in job["steps"] if "uses" in step}
@@ -106,9 +104,10 @@ class TheWorkflow(unittest.TestCase):
         self.assertEqual(self.deploy["if"], "github.event_name == 'push' && github.ref == 'refs/heads/main'")
         self.assertNotIn("if", self.build)
 
-    def test_a_push_that_changes_only_the_workflows_notes_starts_no_run_and_nothing_else_is_left_out(self):
-        self.assertEqual(self.workflow["on"]["push"]["paths-ignore"], [rules.NOTES + "**"])
-        self.assertEqual(set(self.workflow["on"]["push"]), {"branches", "paths-ignore"})
+    def test_every_push_to_main_starts_a_run_whatever_it_changes(self):
+        # A run uploads only while its commit is the head of main. A push that started no run would move the head
+        # and leave the run beneath it with nothing to upload, so no path is left out of what starts one.
+        self.assertEqual(self.workflow["on"]["push"], {"branches": ["main"]})
         self.assertIsNone(self.workflow["on"]["pull_request"])
 
     def test_uploads_go_to_the_production_branch_since_go_live(self):

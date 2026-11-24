@@ -15,7 +15,7 @@ from pathlib import Path
 
 from helpers import ROOT
 
-from sitework import guard, shell
+from sitework import guard, rules, shell
 
 GUARDED = {
     ".github/workflows/deploy.yml": "a workflow",
@@ -43,7 +43,6 @@ GUARDED = {
     "site-data/boards/index.json": "the data RisingRepos publishes",
     "STANDARDS.md": "the standards and the decision records",
     "docs/adr/0003-the-pages-are-static.md": "the standards and the decision records",
-    "docs/workflow-notes/2026-11-23.md": "the look back's notes",
     "sitework/ship.py": "the workflow's own scripts and documents",
     "docs/workflow/README.md": "the workflow's own scripts and documents",
     "docs/workflow-plan.md": "the workflow's own scripts and documents",
@@ -64,10 +63,12 @@ FREE = [
     "tests/helpers.py",
     "tests/fixtures/contract-example/boards/index.json",
     "docs/research/a-note.md",
+    "docs/workflow-notes/runs/27.md",
     "docs/pyproject.toml",
     "sitebuild/AGENTS.md",
 ]
-"""What a feature is made of, and two files that share only a name with a guarded one."""
+"""What a feature is made of, a file where the look back's notes were kept until what a run taught became an
+issue, and two files that share only a name with a guarded one."""
 
 TEMPLATE = "sitebuild/templates/page.html"
 PAGE = """\
@@ -278,6 +279,10 @@ class TheGuard(RepositoryTest):
     def test_every_guarded_path_is_named_with_why_it_is_guarded(self):
         self.commit(dict.fromkeys(GUARDED, "after\n"))
         self.assertEqual(self.guard(), (1, [f"{path}: {why}" for path, why in sorted(GUARDED.items())]))
+
+    def test_the_guarded_paths_here_are_guarded_for_every_reason_the_rules_give_and_for_no_other(self):
+        # So a reason that is added to the rules gets a path here, and one that is taken out leaves none behind.
+        self.assertEqual(set(GUARDED.values()), set(rules.GUARDED))
 
     def test_a_guarded_path_that_a_change_adds_or_removes_is_named(self):
         # The second of these is new at the top of the repository too, and is named for the settings it holds.

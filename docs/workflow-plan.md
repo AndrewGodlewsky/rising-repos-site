@@ -1209,6 +1209,21 @@ is not counted here: it watches the data's freshness daily, and exists.
 
 ## 18. The look back (new)
 
+**Changed on 24 November 2026, after the first run.** The owner had what a
+run taught filed as issues here, labelled `workflow feedback`, and nothing
+of it written into the repository: the owner reads those issues, and works
+through them with another agent. One run may file several, one for each
+fault the workflow had and each way the run could have cost less, and one
+for the run itself, which holds the digest. The owner also asked that the
+look back say where a cheaper model or a lower effort would have done,
+without lowering the quality of the pull request, so the digest now gives
+the model and the effort each agent ran at. The notes of the first run,
+which were pushed to `docs/workflow-notes/` as this section had it, were
+filed as issues #52 to #65 and the folder was removed, with the one line of
+`deploy.yml` that kept a push of it from deploying. What follows is the
+section as it was planned, and [the brief](workflow/look-back.md) is what
+is done now.
+
 The owner asked for this on 23 November 2026: when a feature is done, an
 agent looks over the whole run and writes down how it could have gone better.
 It is how the workflow gets cheaper, since no cap is set on what a run may
