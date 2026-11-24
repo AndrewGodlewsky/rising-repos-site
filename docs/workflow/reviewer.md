@@ -57,14 +57,14 @@ test among the owner's tests, from the plan and the built site.
    only: change, move, and remove nothing that is there, in the tests,
    their helpers, and the made-up boards. That README, under "The rule",
    says what the guard holds you to.
-2. Run the test you added by its own name, and see it pass. Then commit it
-   on the feature's branch, push, and wait for the pull request's job on
-   your commit, in the foreground:
-   `uv run --locked python -m sitework job`. The job runs every test on
-   that commit in about four minutes, where the check on the machine takes
-   six to thirteen, and `sitework ship` asks the guard, the new tests, and
-   the criteria again before it merges. Write your review while you wait
-   for nothing else.
+2. Run the test you added by its own name, and see it pass. Commit it on
+   the feature's branch, and run `uv run --locked python -m sitework guard`,
+   which takes a moment and names anything you changed that the rule does
+   not allow. Then push, and wait for the pull request's job on your
+   commit, in the foreground: `uv run --locked python -m sitework job`. The
+   job runs every test on that commit in about four minutes, where the
+   check on the machine takes six to thirteen, and `sitework ship` asks the
+   guard, the new tests, and the criteria again before it merges.
 3. Write no verdict before the job has ended. A job that failed on your
    commit is a finding: say which test failed, and whether the change
    touches what it looks at.
