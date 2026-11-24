@@ -521,13 +521,16 @@ now differ from this section and the next in these ways:
 - After a revert, Confirm follows the revert's own deploy. An eval that was
   cancelled measured nothing, and is no failure of the change.
 
-Three things it found are left as they are. A run acts with the owner's own
-access to GitHub, so the scripts hold an agent that follows them, and
-nothing here holds one that does not: a rule on GitHub's side for `main`
-would. An eval that `main` moved past ends as a pass without measuring, and
-Confirm cannot tell that from a pass. And a statement the owner's tests may
-gain can still run code when its file is read, which the reviewer and the
-owner read for.
+Some of its findings were narrowed and not closed, and four things are left
+as they are. A run acts with the owner's own access to GitHub, so the
+scripts hold an agent that follows them, and nothing here holds one that
+does not: a rule on GitHub's side for `main` would. An eval that `main`
+moved past ends as a pass without measuring, and Confirm cannot tell that
+from a pass. A statement the owner's tests may gain can still run code when
+its file is read, which the reviewer and the owner read for. And nothing
+ties a criterion's proof to the change: a plan can name a test that `main`
+already had, and it is the reviewer who reads for a criterion met in its
+words alone.
 
 ## 10. Confirm
 
