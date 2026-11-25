@@ -53,6 +53,23 @@ LINES = """group => {
 """The band buttons that are drawn, by the line each lies on, from the top: each one's words, its width, and the
 width its label asks for, which is its words' width and its padding."""
 
+GROUP = """group => {
+  const box = group.getBoundingClientRect();
+  const style = getComputedStyle(group);
+  const shown = [...group.querySelectorAll('button')].filter(button => button.checkVisibility());
+  const sides = ['paddingLeft', 'paddingRight', 'borderLeftWidth', 'borderRightWidth'];
+  const kinds = document.getElementById('kinds').getBoundingClientRect();
+  return {
+    width: box.width,
+    contents: shown.at(-1).getBoundingClientRect().right - shown[0].getBoundingClientRect().left
+      + sides.reduce((sum, side) => sum + parseFloat(style[side]), 0),
+    middle: (box.top + box.bottom) / 2,
+    kinds: (kinds.top + kinds.bottom) / 2,
+  };
+}"""
+"""The band group's width, the width its buttons on one line ask for, which is from the first's left side to the
+last's right side and the group's padding and border, and the height of its middle and of All and New's."""
+
 
 class TheBandsOnAPhone(BuildTest):
     def holding(self, *held: int) -> None:
@@ -75,13 +92,19 @@ class TheBandsOnAPhone(BuildTest):
 
     def lines(self, browser, site: str, width: int) -> list:
         """The band buttons of the root by line, on a screen `width` pixels wide, once its type is in."""
+        return self.seen(browser, site, width)[0]
+
+    def seen(self, browser, site: str, width: int) -> tuple[list, dict]:
+        """The band buttons of the root by line, and its band group, on a screen `width` pixels wide, once its type
+        is in."""
         page = browser.new_page(viewport={"width": width, "height": 800})
         page.clock.set_fixed_time(published(self.out))
         page.goto(f"{site}/{BOARD.removesuffix('index.html')}", wait_until="load")
         page.evaluate("document.fonts.ready.then(() => true)")
-        lines = page.get_by_role("group", name="Star band", exact=True).evaluate(LINES)
+        group = page.get_by_role("group", name="Star band", exact=True)
+        seen = group.evaluate(LINES), group.evaluate(GROUP)
         page.close()
-        return lines
+        return seen
 
     def test_on_a_phone_six_band_buttons_lie_in_two_lines_of_three_of_one_width(self):
         self.holding()
@@ -113,6 +136,8 @@ class TheBandsOnAPhone(BuildTest):
                             self.assertGreaterEqual(min(len(line) for line in lines), 2, lines)
 
     def test_from_768_px_the_band_buttons_lie_on_one_line_each_as_wide_as_its_label(self):
+        """As they do today: and so the group is only as wide as its buttons, and lies beside All and New, on their
+        line, and not stretched across the toolbar on a line of its own."""
         for held in ((), (1,), (1, 4), (1, 4, 3), (1, 4, 3, 2)):
             with self.subTest(held=held):
                 self.setUp()
@@ -121,10 +146,12 @@ class TheBandsOnAPhone(BuildTest):
                 with served(self.out) as site, chrome() as browser:
                     for width in DESKTOPS:
                         with self.subTest(width=width):
-                            lines = self.lines(browser, site, width)
+                            lines, group = self.seen(browser, site, width)
                             self.assertEqual(len(lines), 1, lines)
                             for button in lines[0]:
                                 self.assertAlmostEqual(button["width"], button["label"], delta=1, msg=button)
+                            self.assertAlmostEqual(group["width"], group["contents"], delta=1, msg=group)
+                            self.assertAlmostEqual(group["middle"], group["kinds"], delta=1, msg=group)
 
 
 if __name__ == "__main__":
