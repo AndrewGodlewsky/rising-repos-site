@@ -221,6 +221,16 @@ Sentence 35 came with #28, and reads a live site as it reads the made-up one.
 Sentences 36 and 37 came with #29, and read a live site as they read the
 made-up one.
 
+### A history that cannot be had (`test_a_history_that_cannot_be_had.py`)
+
+38. An opened row whose history cannot be had still shows its reason, and
+    says the rest could not be loaded.
+    `test_an_opened_row_whose_history_cannot_be_had_still_shows_its_reason_and_says_the_rest_could_not_be_loaded`
+
+Sentence 38 came with #42. It keeps the history from the reader's own browser,
+so it reads a live site as it reads the made-up one, and asks nothing of the
+site but what a reader with a fault on the way would ask.
+
 ## How to run them
 
 From the repository, with the pinned dependencies in place (`uv sync
