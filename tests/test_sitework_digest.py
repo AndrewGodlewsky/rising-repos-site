@@ -183,6 +183,37 @@ class TheTokens(RecordTest):
             [["pick up", "1", "8"], ["shape", "2", "440"], ["build", "1", "8,000"], ["Total", "4", "2,222"]],
         )
 
+    def test_the_largest_results_are_listed_by_stage_and_tool_with_a_file_named_for_the_read_tool_alone(self):
+        # 112 of the 131 calls of the run on #28 were the shell's, and the table of files showed one read (#56).
+        (self.root / "STANDARDS.md").write_text("a standard\n", encoding="utf-8")
+        text = self.digest(
+            stage("review"),
+            said("a", shell_call("1", "sed -n 1,320p STANDARDS.md")),
+            result("1", printed="s" * 18066),
+            said("b", call("2", "Read", file_path=f"{CHECKOUT}/STANDARDS.md")),
+            result("2", printed="r" * 900),
+            said("c", call("3", "Write", file_path=f"{CHECKOUT}/STANDARDS.md")),
+            result("3", printed="w" * 500),
+        )
+        self.assertEqual(
+            self.rows(text, "The largest results"),
+            [
+                ["review", "Bash", "18,066", "-"],
+                ["review", "Read", "900", "`STANDARDS.md`"],
+                ["review", "Write", "500", "-"],
+            ],
+        )
+        self.assertNotIn("sed -n", text)
+
+    def test_the_run_itself_is_timed_from_its_first_message_to_its_last_apart_from_the_wait_to_begin(self):
+        # #27 read as 37.3 hours from approval to close, and the run took 1 hour 12 minutes (#56).
+        text = self.digest(
+            said("a", at="2026-11-24T05:06:00.000Z"),
+            stage("shape", at="2026-11-24T05:30:00.000Z"),
+            said("b", at="2026-11-24T06:18:00.000Z"),
+        )
+        self.assertIn("The run itself took 1h 12m, from the first message of its records to the last.", text)
+
     def test_a_message_the_record_holds_as_several_lines_is_counted_once(self):
         text = self.digest(
             said("a", {"type": "thinking"}, tokens=(5, 5, 5, 5)),
