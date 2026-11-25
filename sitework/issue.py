@@ -89,6 +89,17 @@ def named_with(said: list[dict]) -> list[int]:
     return [int(found) for found in re.findall(r"#(\d+)", named or "")]
 
 
+def lead_of(comment: dict | None) -> str | None:
+    """The lead a comment of the workflow's names, as `#89`, or None. The scripts write `Lead: #89` as the line
+    right after the first, on the comments that tie an idea to a group, and only that line counts: the rest of a
+    comment is an agent's own words, and a line of them that began `Lead:` must not make a lead look like
+    another's partner, which no run would take up again."""
+    lines = comment["body"].strip().splitlines() if comment else []
+    line = lines[2].strip() if len(lines) > 2 else ""
+    start = f"{rules.LEAD}: "
+    return line[len(start) :].strip() if line.startswith(start) else None
+
+
 def partners(lead: int, comments: Callable[[int], list[dict]]) -> list[int]:
     """The ideas in the lead's group now: each that the lead's sort named, whose own newest comment of the
     workflow's is `joined`, or `stopped` with its lead, and names this lead. One sent back, stopped alone, or
@@ -97,11 +108,7 @@ def partners(lead: int, comments: Callable[[int], list[dict]]) -> list[int]:
     found = []
     for number in named_with(comments(lead)):
         last = newest(comments(number))
-        if (
-            last
-            and rules.kind_of(last["body"]) in ("joined", "stopped")
-            and value(last["body"], rules.LEAD) == f"#{lead}"
-        ):
+        if last and rules.kind_of(last["body"]) in ("joined", "stopped") and lead_of(last) == f"#{lead}":
             found.append(number)
     return found
 
@@ -346,8 +353,21 @@ def stop(options: argparse.Namespace, text: str) -> int:
     An issue that waits on data is taken up again when its field has arrived, and a field has arrived when its
     name is a key anywhere in the daily schema and the newest board day's file. A name that is there already,
     as `description` is, would have arrived before the issue ever waited: every run would take the issue up, find
-    nothing new, and stop it again. So such a name is refused here, before anything on GitHub changes."""
+    nothing new, and stop it again. So such a name is refused here, before anything on GitHub changes.
+
+    A partner is stopped alone only at Shape, before any code is written (25 November 2026). After Shape its code
+    is on its lead's branch, so stopped alone it would ship with the lead, stay open, and be worked again when it
+    was answered. It is sent back with `release` instead, which takes its part out of the branch as well."""
     number = str(options.issue)
+    if options.stage not in (None, "shape"):
+        last = newest(comments(options.issue, owner()))
+        if lead_of(last) and rules.kind_of(last["body"]) == "joined":
+            print(
+                f"#{number} is a partner of {lead_of(last)}, and its code is on that branch by now, so it is not "
+                f"stopped alone. Send it back with `sitework release {number}` and take its part out of the branch. "
+                "Nothing was changed."
+            )
+            return 1
     if options.data is not None:
         if arrived(options.field):
             print(
@@ -387,14 +407,18 @@ def stop_group(lead: int, stage: str | None) -> None:
 def send_back(number: int, lead: int, text: str) -> list[str]:
     """Send a partner back from its lead's group to wait for a run of its own, and give the lines to print: a
     `released` comment that names the lead, and the issue no longer in progress, no longer the owner's, and back
-    in the backlog, so that GitHub shows it under Open with its grade."""
+    in the backlog, so that GitHub shows it under Open with its grade.
+
+    The labels change before the comment is posted. Were the comment first and the labels refused, the partner
+    would be left in progress with a newest comment that says it left the group, which no run takes up and which
+    a second `release` would refuse. This way a refusal leaves it in the group, and the command can be run again."""
     marks = labels(read(number))
     removed = [
         part for mark in (rules.IN_PROGRESS, rules.NEEDS_OWNER) if mark in marks for part in ("--remove-label", mark)
     ]
-    done = [post(number, "released", f"{rules.LEAD}: #{lead}\n\n{text}")]
     shell.gh("issue", "edit", str(number), *removed, "--remove-assignee", owner())
-    return done + [line for line in [set_status(number, rules.BACKLOG)] if line]
+    done = [line for line in [set_status(number, rules.BACKLOG)] if line]
+    return [post(number, "released", f"{rules.LEAD}: #{lead}\n\n{text}"), *done]
 
 
 def close(options: argparse.Namespace, text: str) -> int:
@@ -411,8 +435,9 @@ def close(options: argparse.Namespace, text: str) -> int:
 
     A lead's partners are closed before the lead, each with a `shipped` comment that names the lead and the merge
     (25 November 2026). A close cut short among them leaves the lead open and in progress, so the next run takes
-    it up and closes again, and a partner already shipped has left the group and is not posted on twice. A partner
-    given to `close` is refused: it ships with its lead."""
+    it up and closes again. A partner whose note was posted is not posted on twice, and one that is still open
+    after it, since GitHub refused the close, is closed now. A partner given to `close` is refused: it ships with
+    its lead."""
     number = str(options.issue)
     said_on = {}
 
@@ -421,8 +446,7 @@ def close(options: argparse.Namespace, text: str) -> int:
             said_on[issue] = comments(issue, owner())
         return said_on[issue]
 
-    last = newest(said(options.issue))
-    lead = value(last["body"], rules.LEAD) if last else None
+    lead = lead_of(newest(said(options.issue)))
     if lead:
         print(f"#{number} ships with its lead, {lead}, and is closed with it: close {lead}. Nothing was changed.")
         return 1
@@ -438,12 +462,19 @@ def close(options: argparse.Namespace, text: str) -> int:
         return 1
     pull = stands[0]
     merge = (pull.get("mergeCommit") or {}).get("oid", "")
-    for partner in partners(options.issue, said):
-        shipped = (
-            f"{rules.LEAD}: #{number}\n\nShipped with #{number} in pull request #{pull['number']}, merged as "
-            f"{merge[:7]}. The note on #{number} says what changed."
-        )
-        print(post(partner, "shipped", shipped))
+    for partner in named_with(said(options.issue)):
+        last = newest(said(partner))
+        if lead_of(last) != f"#{number}":
+            continue
+        kind = rules.kind_of(last["body"])
+        if kind in ("joined", "stopped"):
+            shipped = (
+                f"{rules.LEAD}: #{number}\n\nShipped with #{number} in pull request #{pull['number']}, merged as "
+                f"{merge[:7]}. The note on #{number} says what changed."
+            )
+            print(post(partner, "shipped", shipped))
+        elif kind != "shipped" or read(partner)["state"] != "OPEN":
+            continue
         shell.gh("issue", "close", str(partner))
         shell.gh("issue", "edit", str(partner), "--remove-label", rules.IN_PROGRESS)
     print(post(options.issue, "shipped", text))

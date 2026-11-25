@@ -29,26 +29,35 @@ class Refused(Exception):
 
 def sort(lead: int, partners: list[int], text: str) -> list[str]:
     """Record the lead's partners, or that it has none, and claim each partner as `pickup` claims the lead. Every
-    condition is asked before anything on GitHub changes, so a refusal leaves the issues as they were."""
+    condition is asked before anything on GitHub changes, so a refusal leaves the issues as they were.
+
+    A sort that GitHub cut short after the sort was posted is finished by running it again with the same
+    partners: it claims those it had not, and posts nothing twice. Refused, it would leave an idea named in the
+    group and never claimed, whose change would ship with the lead while it waited to be worked again."""
     owner = issue.owner()
     opened = pickup.open_issues()
     comments = functools.cache(lambda number: issue.comments(number, owner))
     led = next((one for one in opened if one["number"] == lead), None)
     if not led or rules.IN_PROGRESS not in issue.labels(led):
         raise Refused(f"#{lead} is not an issue a run has claimed, so it has no group to sort.")
-    if issue.of_kind(comments(lead), "sorted"):
-        raise Refused(f"#{lead} is sorted already. Its group is read from the sort it has.")
+    sorted_already = bool(issue.of_kind(comments(lead), "sorted"))
+    if sorted_already and issue.named_with(comments(lead)) != partners:
+        raise Refused(
+            f"#{lead} is sorted already, with other partners. Run it again only with the same ones, to finish it."
+        )
     if lead in partners or len(set(partners)) != len(partners):
         raise Refused("A partner is named twice, or is the lead itself.")
     if len(partners) > MOST - 1:
         raise Refused(f"A group holds at most {MOST} ideas, its lead among them.")
+    joined = set(issue.partners(lead, comments)) if sorted_already else set()
+    claiming = [number for number in partners if number not in joined]
     waits = {number for _, number, _, _ in pickup.ideas_waiting(opened, owner, comments, issue.pulls())}
-    others = [f"#{number}" for number in partners if number not in waits]
+    others = [f"#{number}" for number in claiming if number not in waits]
     if others:
         raise Refused(f"{', '.join(others)} is not an approved idea that waits for a run, so it cannot join #{lead}.")
     named = ", ".join(f"#{number}" for number in partners) or "none"
-    done = [issue.post(lead, "sorted", f"{rules.WITH}: {named}\n\n{text}")]
-    for number in partners:
+    done = [] if sorted_already else [issue.post(lead, "sorted", f"{rules.WITH}: {named}\n\n{text}")]
+    for number in claiming:
         shell.gh("issue", "edit", str(number), "--add-label", rules.IN_PROGRESS, "--add-assignee", owner)
         done += [line for line in [issue.set_status(number, rules.WORKING)] if line]
         joined = f"{rules.LEAD}: #{lead}\n\nIt is worked in #{lead}'s run, on its branch and in its pull request."
@@ -63,7 +72,7 @@ def release(number: int, text: str) -> list[str]:
     "Build")."""
     owner = issue.owner()
     last = issue.newest(issue.comments(number, owner))
-    lead = issue.value(last["body"], rules.LEAD) if last else None
+    lead = issue.lead_of(last)
     if not lead or rules.kind_of(last["body"]) not in ("joined", "stopped"):
         raise Refused(f"#{number} is in no group, so there is nothing to send it back from.")
     return issue.send_back(number, int(lead.lstrip("#")), text)

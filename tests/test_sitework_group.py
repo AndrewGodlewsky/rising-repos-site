@@ -150,11 +150,28 @@ class Sort(GroupTest):
                 self.assertEqual(code, 1)
                 self.assertEqual(self.shell.changes(), [])
 
-    def test_sort_refuses_a_lead_that_is_sorted_already(self):
+    def test_sort_refuses_a_lead_sorted_already_with_other_partners(self):
         self.answers[COMMENTS % 89] = [said("Site workflow: sorted\n\nWith: none")]
         code, _ = self.run_command("sort", "89", "--with", "90")
         self.assertEqual(code, 1)
         self.assertEqual(self.shell.changes(), [])
+
+    def test_sort_run_again_with_the_same_partners_claims_those_it_had_not_and_posts_no_second_sort(self):
+        # GitHub refused a claim after the sort was posted. Refused when run again, the sort would leave #91 named
+        # in the group and never claimed, and its change would ship with #89 while it waited to be worked again.
+        self.answers[COMMENTS % 89] = [said("Site workflow: sorted\n\nWith: #90, #91")]
+        self.answers[COMMENTS % 90] = [said("Site workflow: joined\n\nLead: #89")]
+        self.answers["gh issue list"][1] = idea(90, "site-idea", "approved", "in-progress")
+        code, _ = self.run_command("sort", "89", "--with", "90", "91")
+        self.assertEqual(code, 0)
+        self.assertEqual(
+            self.shell.changes(),
+            [
+                "gh issue edit 91 --add-label in-progress --add-assignee the-owner",
+                STATUS % (91, "In progress"),
+                "gh issue comment 91 --body-file -",
+            ],
+        )
 
     def test_sort_refuses_a_lead_no_run_has_claimed(self):
         self.answers["gh issue list"][0] = idea(89)
@@ -169,15 +186,17 @@ class Release(GroupTest):
         self.answers[COMMENTS % 90] = [said("Site workflow: joined\n\nLead: #89")]
         self.answers["gh issue view 90"] = {**idea(90, "site-idea", "approved", "in-progress"), "state": "OPEN"}
 
-    def test_release_sends_a_partner_back_to_the_queue_unassigned_and_in_backlog(self):
+    def test_release_sends_a_partner_back_unassigned_and_in_backlog_before_it_says_so(self):
+        # The labels change first: a `released` comment posted before a label change GitHub refused would leave
+        # the partner in progress with no run to find it, and a second release would refuse it.
         code, _ = self.run_command("release", "90")
         self.assertEqual(code, 0)
         self.assertEqual(
             self.shell.changes(),
             [
-                "gh issue comment 90 --body-file -",
                 "gh issue edit 90 --remove-label in-progress --remove-assignee the-owner",
                 STATUS % (90, "Backlog"),
+                "gh issue comment 90 --body-file -",
             ],
         )
         self.assertTrue(self.body(90).startswith("Site workflow: released\n\nLead: #89\n"), self.body(90))

@@ -704,11 +704,12 @@ class TheCommand(RecordTest):
         self.assertEqual(printed, digest.digest([first, second]) + "\n")
 
     @staticmethod
-    def github(sorted_on_7: str = "") -> mock.Mock:
-        """Stands in for `shell.run` as GitHub answers: #7's timeline, the owner, and #7's comments, which hold a
-        sort when `sorted_on_7` gives its `With:` line."""
+    def github(sorted_on_7: str = "", on_8: str = "shipped") -> mock.Mock:
+        """Stands in for `shell.run` as GitHub answers: #7's timeline, the owner, #7's comments, which hold a sort
+        when `sorted_on_7` gives its `With:` line, and #8's, whose newest is of the kind `on_8`, with #7 as lead."""
         timeline = "labeled\tapproved\t2026-11-01T09:00:00Z\nclosed\t\t2026-11-01T10:00:00Z"
-        comments = [{"user": {"login": "the-owner"}, "body": f"Site workflow: sorted\n\nWith: {sorted_on_7}"}]
+        sort = [{"user": {"login": "the-owner"}, "body": f"Site workflow: sorted\n\nWith: {sorted_on_7}"}]
+        partner = [{"user": {"login": "the-owner"}, "body": f"Site workflow: {on_8}\n\nLead: #7\n\nWhy."}]
 
         def answer(*command, **_):
             line = " ".join(command)
@@ -716,7 +717,9 @@ class TheCommand(RecordTest):
                 return timeline
             if line.startswith("gh repo view"):
                 return json.dumps({"owner": {"login": "the-owner"}})
-            return json.dumps(comments if sorted_on_7 else [])
+            if "issues/8/" in line:
+                return json.dumps(partner)
+            return json.dumps(sort if sorted_on_7 else [])
 
         return mock.Mock(side_effect=answer)
 
@@ -734,6 +737,15 @@ class TheCommand(RecordTest):
             code, printed, _ = self.run_digest(str(first), "--issue", "7")
         self.assertEqual(code, 0)
         self.assertIn("| #7, #8 | 0 | 0 | 0 | 10 | no | 1.0 |", printed)
+        self.assertTrue(printed.startswith("# Digest of the run on #7, #8\n"), printed[:60])
+
+    def test_an_idea_sent_back_from_the_group_is_not_counted_among_those_the_run_worked(self):
+        # The tokens each idea cost are what the owner judges the groups by, so an idea the run did not carry
+        # through is not counted.
+        first = self.record("first", said("a"))
+        with mock.patch.object(shell, "run", self.github("#8", on_8="released")):
+            _, printed, _ = self.run_digest(str(first), "--issue", "7")
+        self.assertIn("| #7 | 0 | 0 | 0 | 10 | no | 1.0 |", printed)
 
     def test_when_github_does_not_answer_it_prints_the_digest_without_the_hours_and_exits_1(self):
         first = self.record("first", said("a"))

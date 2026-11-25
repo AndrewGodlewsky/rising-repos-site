@@ -28,7 +28,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from sitework import rules, shell
-from sitework.issue import REPOSITORY, comments, named_with, owner
+from sitework.issue import REPOSITORY, comments, lead_of, named_with, newest, owner
 
 STAGES = ("sort", *rules.STAGES, "look back")
 """The stages a run marks, in the order it meets them: the sort, which grades the ideas that wait and chooses
@@ -456,8 +456,9 @@ def render(run: Run, issue: int | None = None, hours: float | None = None, group
 
     span = f", from {min(run.times):%Y-%m-%d %H:%M} to {max(run.times):%Y-%m-%d %H:%M} UTC" if run.times else ""
     records = "1 record" if run.records == 1 else f"{run.records} records"
+    named = ", ".join(f"#{one}" for one in ([issue, *group] if issue else []))
     lines = [
-        f"# Digest of the run on #{issue}" if issue else "# Digest of a run",
+        f"# Digest of the run on {named}" if issue else "# Digest of a run",
         "",
         f"Made from {records}: {run.messages:,} messages and {len(run.calls):,} tool calls{span}.",
         "",
@@ -560,6 +561,20 @@ def render(run: Run, issue: int | None = None, hours: float | None = None, group
     return "\n".join(lines)
 
 
+def worked_with(lead: int) -> list[int]:
+    """The ideas the lead's run carried with it to the end: each its sort named whose newest comment of the
+    workflow's still names this lead, and says it joined, stopped with the lead, or shipped with it. One sent
+    back, or stopped alone at Shape, was not carried through, and counting it would make each idea look cheaper
+    than it was, which is the figure the owner judges the groups by (25 November 2026)."""
+    asker = owner()
+    found = []
+    for number in named_with(comments(lead, asker)):
+        last = newest(comments(number, asker))
+        if lead_of(last) == f"#{lead}" and rules.kind_of(last["body"]) in ("joined", "stopped", "shipped"):
+            found.append(number)
+    return found
+
+
 def digest(records: list[Path], issue: int | None = None) -> str:
     """The digest of the run these records hold. With an issue, it asks GitHub for the hours the idea took."""
     return render(read_run(records), issue, hours_to_close(issue) if issue else None)
@@ -622,8 +637,7 @@ def main(command: str, arguments: list[str]) -> int:
     if options.issue:
         try:
             hours = hours_to_close(options.issue)
-            # The ideas the sort named, whether or not they are partners still: by the look back each has shipped.
-            group = named_with(comments(options.issue, owner()))
+            group = worked_with(options.issue)
         except shell.Failed as error:
             unanswered = error
     if isinstance(sys.stdout, io.TextIOWrapper):

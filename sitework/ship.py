@@ -17,7 +17,7 @@ import re
 import sys
 import tarfile
 import tempfile
-from collections.abc import Iterator
+from collections.abc import Callable, Iterator
 from pathlib import Path
 
 from sitework import issue, rules, shell
@@ -108,6 +108,14 @@ def allowed(said: list[dict]) -> list[str]:
     named = [line[len(rules.ALLOWED) :].split(",") for line in lines if line.startswith(rules.ALLOWED)]
     patterns = [pattern.strip() for found in named for pattern in found]
     return [pattern for pattern in patterns if pattern and not pattern.startswith("-")]
+
+
+def allowed_for(number: int, comments: Callable[[int], list[dict]]) -> list[str]:
+    """The patterns the owner allowed for the change of this issue's run: on the lead and on each partner, whose
+    work is in the same change (25 November 2026). `check` asks it on the machine, and the merge asks it, so that
+    the two never differ on what the guard lets through."""
+    group = issue.partners(number, comments)
+    return allowed([*comments(number), *(comment for partner in group for comment in comments(partner))])
 
 
 def guarded(base: str, head: str, patterns: list[str]) -> tuple[bool, str]:
@@ -246,7 +254,7 @@ def ship(number: int, reverting: bool) -> int:
             holds, what = approved(issue.read(partner))
             back = f": send it back with `sitework release {partner}` and take its part out of the branch"
             yield holds, what if holds else what + back
-        yield guarded(base, head, allowed([*said, *(comment for partner in group for comment in comments(partner))]))
+        yield guarded(base, head, allowed_for(number, comments))
         yield checkout(head)
         yield passes("new-tests", "--base", base, "--head", head, "--issue", str(number))
         yield passes("criteria", "--issue", str(number))

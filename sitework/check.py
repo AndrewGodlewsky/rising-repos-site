@@ -15,6 +15,7 @@ A step that passes says so in one line. A step that fails shows what it printed.
 
 import argparse
 import fnmatch
+import functools
 import sys
 import time
 
@@ -93,8 +94,12 @@ def main(command: str, arguments: list[str]) -> int:
         help="run the lint, the format, and the two sets of tests alone, which is every step that needs no history",
     )
     options = parser.parse_args(arguments)
-    # The owner's comments are read once, before the first step, and only when there is an issue to read.
-    allowed = [] if options.issue is None else ship.allowed(issue.comments(options.issue, issue.owner()))
+    # The owner's comments are read once, before the first step, and only when there is an issue to read. They are
+    # read on the lead and on each partner of its group, as the merge reads them (25 November 2026).
+    allowed = []
+    if options.issue is not None:
+        owner = issue.owner()
+        allowed = ship.allowed_for(options.issue, functools.cache(lambda number: issue.comments(number, owner)))
     # With nothing allowed, the guard's step, which comes before the tests, fails a change that touches a guarded
     # path. So the tests are reached only by a change that cannot alter the ones that are left out.
     rest = None if options.suite or allowed else the_rest()

@@ -466,6 +466,14 @@ class HasAStoppedIssueBeenAnswered(PickupTest):
         code, printed = self.run_command()
         self.assertEqual((code, printed["issue"], printed["take_up"]), (0, 28, "new"))
 
+    def test_a_stop_whose_own_words_hold_a_line_that_begins_lead_is_still_answered(self):
+        # Only the line the scripts write right after the first names a lead. The stop's text is the agent's, and a
+        # lead mistaken for a partner would never be taken up again.
+        stop = said("Site workflow: stopped\n\nStage: shape\n\nLead: #12 asked the same, and was closed.", number=3)
+        self.answers[COMMENTS % 29] = [*self.STOPPED[:2], stop]
+        code, printed = self.run_command()
+        self.assertEqual((code, printed["issue"], printed["take_up"]), (0, 29, "answered"))
+
     def test_a_grade_after_the_stop_does_not_hide_the_answer(self):
         self.answers[COMMENTS % 29] = [*self.STOPPED, said("Site workflow: graded\n\nComplexity: Low", number=5)]
         code, printed = self.run_command()

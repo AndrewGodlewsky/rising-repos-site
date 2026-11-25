@@ -164,8 +164,7 @@ def follows_a_lead(said: list[dict]) -> bool:
     """Whether the issue is another's partner: its newest comment of the workflow's, past any grade, names a lead.
     A partner's work is on its lead's branch, and it goes on, stops, and ships with its lead, so it is never taken
     up as a run of its own (25 November 2026)."""
-    last = issue.newest(said)
-    return bool(last and issue.value(last["body"], rules.LEAD))
+    return bool(issue.lead_of(issue.newest(said)))
 
 
 def in_flight(opened: list[dict], comments: Comments) -> Taken | None:

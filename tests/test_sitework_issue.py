@@ -332,7 +332,11 @@ class AGroup(IssueTest):
         super().setUp()
         self.answers[COMMENTS % 27] = [said("Site workflow: sorted\n\nWith: #28")]
         self.answers[COMMENTS % 28] = [said(self.PARTNER)]
-        self.answers["gh issue view 28"] = {"labels": [{"name": "site-idea"}, {"name": "in-progress"}], "number": 28}
+        self.answers["gh issue view 28"] = {
+            "labels": [{"name": "site-idea"}, {"name": "in-progress"}],
+            "number": 28,
+            "state": "OPEN",
+        }
         for command in ("comment", "edit", "close"):
             self.answers[f"gh issue {command} 28"] = ""
         self.answers["gh api --method PATCH repos/{owner}/{repo}/issues/28 -f status="] = {"number": 28}
@@ -360,9 +364,9 @@ class AGroup(IssueTest):
         self.assertEqual(
             self.partner_changes(),
             [
-                "gh issue comment 28 --body-file -",
                 "gh issue edit 28 --remove-label in-progress --remove-assignee the-owner",
                 STATUS % 28,
+                "gh issue comment 28 --body-file -",
             ],
         )
         body = self.shell.stdin["gh issue comment 28 --body-file -"]
@@ -408,8 +412,25 @@ class AGroup(IssueTest):
             said(self.PARTNER, number=1),
             said("Site workflow: shipped\n\nLead: #27\n\nShipped with #27.", number=2),
         ]
+        self.answers["gh issue view 28"]["state"] = "CLOSED"
         self.run_command("close", "27")
         self.assertEqual(self.partner_changes(), [])
+
+    def test_a_close_run_again_closes_a_partner_whose_shipped_note_was_posted_and_that_is_still_open(self):
+        # GitHub refused the close after the note, so the partner would stay in progress with no run to find it.
+        self.answers[COMMENTS % 28] = [
+            said(self.PARTNER, number=1),
+            said("Site workflow: shipped\n\nLead: #27\n\nShipped with #27.", number=2),
+        ]
+        self.run_command("close", "27")
+        self.assertEqual(self.partner_changes(), ["gh issue close 28", "gh issue edit 28 --remove-label in-progress"])
+
+    def test_a_stop_of_a_partner_after_shape_is_refused_and_says_to_send_it_back(self):
+        # Its code is on the lead's branch by then, so stopped alone it would ship with the lead and be worked again.
+        code, printed = self.run_command("stop", "28", "--stage", "build")
+        self.assertEqual(code, 1)
+        self.assertEqual(self.shell.changes(), [])
+        self.assertIn("sitework release 28", printed)
 
 
 class Status(IssueTest):
