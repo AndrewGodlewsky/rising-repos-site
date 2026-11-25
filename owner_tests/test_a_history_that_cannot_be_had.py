@@ -1,4 +1,4 @@
-"""A history that cannot be had. Sentence 38 of the owner's tests."""
+"""A history that cannot be had. Sentence 39 of the owner's tests."""
 
 import unittest
 
@@ -16,7 +16,7 @@ class AHistoryThatCannotBeHad(Scenario):
     def test_an_opened_row_whose_history_cannot_be_had_still_shows_its_reason_and_says_the_rest_could_not_be_loaded(
         self,
     ):
-        """Sentence 38. The board day's history is kept from the reader's browser, as a fault on the way to the site
+        """Sentence 39. The board day's history is kept from the reader's browser, as a fault on the way to the site
         would keep it. The first row still opens, on the reason it is on the board, and says that the rest could not
         be loaded. It shows no table of the boards it was on, since those come with the history."""
         page = self.reader()

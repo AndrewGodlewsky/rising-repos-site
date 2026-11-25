@@ -281,6 +281,18 @@ class EveryPublishedBoard(unittest.TestCase):
                     [(GITHUB + row["full_name"], row["full_name"]) for row in rows],
                 )
 
+    def test_each_rows_link_opens_github_in_a_new_tab_and_is_titled_opens_on_github(self):
+        """So that a reader who follows a row's name leaves the board where it was (#30)."""
+        for path, board in self.with_rows():
+            with self.subTest(path):
+                for row in self.rows(path, board):
+                    (link,) = [element for element in row.line.all("a") if element.attrs["href"].startswith(GITHUB)]
+                    self.assertEqual(
+                        (link.attrs.get("target"), link.attrs.get("title")),
+                        ("_blank", "Opens on GitHub"),
+                        row.filed["full_name"],
+                    )
+
     def test_the_root_shows_the_newest_board_as_that_board_days_own_page_does(self):
         own = self.pages[board_day_page(self.boards[0]["board_day"])]
         self.assertEqual(self.pages[BOARD].one("main").text(), own.one("main").text())

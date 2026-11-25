@@ -96,7 +96,11 @@ What every page holds to, each checked by a test in `tests/`:
   (`textContent`), into elements of a fixed set of tags. None of them is made
   a link. A row's name links to `https://github.com/<full_name>`, and the data
   contract lets `full_name` hold only letters, digits, `-`, `_`, `.`, and one
-  `/`.
+  `/`. The link opens GitHub in a new tab, titled "Opens on GitHub", so that a
+  reader who follows it leaves the board where it was (#30). It carries no
+  `rel`: a tab that `target="_blank"` opens has no `window.opener` in the
+  browsers the site is made for, and the attribute's bytes on every row did not
+  fit the size limit.
 - **One script, the site's own.** Every page carries one script,
   `sitebuild/templates/site.js`, written in the page, made of the parts it
   uses: the theme, on every page; the notice of an old board, on every board
@@ -143,7 +147,10 @@ What every page holds to, each checked by a test in `tests/`:
   a dot of Baseline's chart by a tap, a key, or its name (#29) added 279 to
   every page, in the stylesheet, and 2,574 more to Baseline, in its script and
   its field. So the example's root is now 96,896 bytes, its Baseline 82,159,
-  and the page of the 316 made-up rows 481,193.
+  and the page of the 316 made-up rows 481,193. The mark that a row's name
+  leaves the site (#30) added 125 bytes to every page, in the stylesheet, and
+  38 to each row, in its link's new tab and title: the example's root is now
+  97,211 bytes, and the page of the 316 made-up rows 493,326.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -164,7 +171,8 @@ What every page holds to, each checked by a test in `tests/`:
   board days stacked on a phone (#27) it came to 141,793 on Windows on
   2026-11-24, 183 more than without them, and with Latest in a phone's day
   bar (#28) to 141,841, 48 more, and with the choosing of a dot of Baseline's
-  chart (#29) to 141,927, 86 more. The type takes about
+  chart (#29) to 141,927, 86 more, and with the mark that a row's name leaves
+  the site (#30) to 142,441, 514 more. The type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries
   105 characters of description in random letters, which pack worse than a
@@ -503,7 +511,14 @@ text. Under "The type", it names the fonts and links to their licence.
 
 **Links and focus.** A link in running text is underlined in a quiet line,
 which takes the accent under the pointer. A repository's link underlines only
-the name. A browser lets a visited link change only its colours, so the
+the name, and is followed by a mark that it leaves the site for GitHub, in a
+new tab (#30): the type's upwards arrow, turned to point up and right, since
+the type holds no arrow that points that way. The stylesheet draws it after
+the link's text, in the link's colour, with empty text for a screen reader, so
+it dims with a visited name and the name a reader, the search, and a screen
+reader read is the name alone. A part that is turned is laid out as a box of
+its own, and a line may break before one, so where a name ends at the edge of
+its column on a phone the mark begins the next line. A browser lets a visited link change only its colours, so the
 visited state is a change of colour. To see it in an automated browser, whose
 fresh contexts record no visits, force the state on a link with the DevTools
 protocol's `CSS.forcePseudoState` and `visited`. Every control, link, and
@@ -581,7 +596,8 @@ root.
   repository gained and the board's top, amber for what is new, the red for a
   loss, the neutrals for the rest. A new text colour comes with a background
   that gives it 4.5:1, in both themes, and a line in `tests/test_colour.py`.
-- An underline means a link, and a visited repository dims.
+- An underline means a link, and a visited repository dims. A link that
+  leaves the site carries the turned arrow after it.
 - Tabular figures for any number in a column.
 - A drawing comes with its figures in words, for a screen reader.
 - A page that reads at a phone's width (390 px) and a desktop's (1440 px), in

@@ -2,7 +2,7 @@
 
 An opened row's sum, its facts, and the boards it was on come from one file, the board day's `history.json`, which
 the page asks for when the first row is opened. The owner's sentence 17 holds an opened row once the history has
-arrived, and sentence 38 what a reader sees when it cannot be had. These hold the two things a reader does not
+arrived, and sentence 39 what a reader sees when it cannot be had. These hold the two things a reader does not
 see: that two rows opened while the file is on its way ask for it once, and that a file which could not be had is
 asked for again.
 

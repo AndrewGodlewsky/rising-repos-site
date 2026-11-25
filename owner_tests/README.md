@@ -221,13 +221,26 @@ Sentence 35 came with #28, and reads a live site as it reads the made-up one.
 Sentences 36 and 37 came with #29, and read a live site as they read the
 made-up one.
 
+### A row's name on GitHub (`test_a_rows_name_on_github.py`)
+
+38. A row's name opens its repository on GitHub in a new tab, and the board
+    stays in its own, with scripts on or off.
+    `test_a_rows_name_opens_its_repository_on_github_in_a_new_tab_and_the_board_stays_with_scripts_on_or_off`
+
+    It does not claim anything of the mark drawn after the name, which the
+    agents' tests hold, or of Baseline's table, whose names still open GitHub
+    in the same tab. GitHub answers with a stand-in, so the test asks nothing
+    of it.
+
+Sentence 38 came with #30, and reads a live site as it reads the made-up one.
+
 ### A history that cannot be had (`test_a_history_that_cannot_be_had.py`)
 
-38. An opened row whose history cannot be had still shows its reason, and
+39. An opened row whose history cannot be had still shows its reason, and
     says the rest could not be loaded.
     `test_an_opened_row_whose_history_cannot_be_had_still_shows_its_reason_and_says_the_rest_could_not_be_loaded`
 
-Sentence 38 came with #42. It keeps the history from the reader's own browser,
+Sentence 39 came with #42. It keeps the history from the reader's own browser,
 so it reads a live site as it reads the made-up one, and asks nothing of the
 site but what a reader with a fault on the way would ask.
 
