@@ -63,6 +63,20 @@ class Chosen:
     """The base has no such page."""
     others: int
     """How many other pages of the kind differ too."""
+    own: int = 0
+    """How many of the kind's pages that differ do so in their own markup, when not all of them do."""
+
+
+SHARED = re.compile(
+    r"<style\b.*?</style>|<script\b.*?</script>|<meta\b[^>]*http-equiv[^>]*>", re.DOTALL | re.IGNORECASE
+)
+"""What every page of the site holds alike: its styles, its script, and the policy that names the script's hash. A
+change to the stylesheet alters these in every page, whatever else it alters."""
+
+
+def own_markup(page: Path) -> str:
+    """A page without what every page holds alike."""
+    return SHARED.sub("", page.read_text(encoding="utf-8", errors="replace"))
 
 
 def kind_of(path: str) -> str:
@@ -82,14 +96,33 @@ def pages(site: Path) -> list[str]:
 
 def choose(base: Path, head: Path) -> list[Chosen]:
     """One page of each kind the change altered, from the two built sites. Of a kind's pages it takes the last
-    by name, which for board days is the newest."""
+    by name, which for board days is the newest, among those the change altered in their own markup.
+
+    Every page holds the stylesheet, so a change to it alters the bytes of every page. On #28 the change put a
+    link into the day bar of each earlier board, and the newest board's bar holds no such link: the report took
+    the newest board day, said its outline was the same, and showed nothing of what the change made, and three
+    agents wrote scripts of their own to see it (#73). So a page that differs only in what every page holds
+    alike stands for its kind only when no page of the kind differs in more."""
     differing: dict[str, list[tuple[str, bool]]] = {}
     for page in pages(head):
         new = not (base / page).is_file()
         if new or (base / page).read_bytes() != (head / page).read_bytes():
             differing.setdefault(kind_of(page), []).append((page, new))
     order = [*ORDER, *sorted(kind for kind in differing if kind not in ORDER)]
-    return [Chosen(kind, *differing[kind][-1], others=len(differing[kind]) - 1) for kind in order if kind in differing]
+    chosen = []
+    for kind in order:
+        found = differing.get(kind)
+        if not found:
+            continue
+        # One page of a kind is the one to take, so the pages are read again only where there is a choice.
+        own = [
+            (page, new)
+            for page, new in (found if len(found) > 1 else [])
+            if new or own_markup(base / page) != own_markup(head / page)
+        ]
+        some = 0 < len(own) < len(found)
+        chosen.append(Chosen(kind, *(own if some else found)[-1], others=len(found) - 1, own=len(own) if some else 0))
+    return chosen
 
 
 def gone(base: Path, head: Path) -> list[str]:
@@ -387,6 +420,12 @@ def report(base: Path, head: Path, base_stylesheet: str, head_stylesheet: str) -
             lines += [
                 ("New: the base has no such page." if page.new else "It differs from the base's.")
                 + (f" {others} too." if page.others else "")
+                + (
+                    f" This is the last by name of the {page.own} that differ in their own markup: the rest differ "
+                    "only in the styles and the script that every page holds."
+                    if page.own
+                    else ""
+                )
             ]
             for width in SCREENS:
                 before = None if page.new else look(browser, old + address(page.path), width, clock)
