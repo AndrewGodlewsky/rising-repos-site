@@ -2,15 +2,18 @@
 
 How an approved idea goes from its issue here to a feature live on
 risingrepos.com, with nobody driving each step. One agent runs a feature from
-Pick up to Confirm. It starts three fresh agents on the way: one shapes the
-idea into a plan, one reviews the change, and one looks back over the run. A
-script decides whatever a script
-can, and each is run as `uv run --locked python -m sitework <command>`,
-written below as `sitework <command>`.
+Pick up to Confirm. It starts four fresh agents on the way: one grades the
+ideas that wait and chooses which go with this one, one shapes the ideas into
+a plan, one reviews the change, and one looks back over the run. A script
+decides whatever a script can, and each is run as
+`uv run --locked python -m sitework <command>`, written below as
+`sitework <command>`.
 
-A run works one issue. It ends when that issue is closed or stopped and its
-look back is done, and a schedule starts the next issue, with a fresh agent,
-once no run is at work.
+A run works one idea, the lead, or a small group of ideas that change the
+same part of the site, which the lead's run works together (25 November
+2026). It ends when the lead is closed or stopped and its look back is done,
+and a schedule starts the next issue, with a fresh agent, once no run is at
+work.
 
 [The plan](../workflow-plan.md) says why each part is so. Read it only when a
 step here leaves a choice open.
@@ -53,8 +56,8 @@ step here leaves a choice open.
    does not throw away (#96).
 
 As each stage begins, run `sitework stage <name>`, with the stage's name in
-lower case: `shape`, `build`, `check`, `review`, `ship`, `confirm`, `mend`, or
-`look back`. The digest tells the stages apart by it.
+lower case: `sort`, `shape`, `build`, `check`, `review`, `ship`, `confirm`,
+`mend`, or `look back`. The digest tells the stages apart by it.
 
 Five things hold for every stage:
 
@@ -111,6 +114,35 @@ and with `--json comments` for its comments, of which only the owner's own
 count, as above. `gh issue view <issue> --comments` prints the comments and
 leaves out the body (#100).
 
+## Sort
+
+The owner asked on 25 November 2026 that each idea be graded, and that ideas
+which change the same part of the site be worked in one run, so that what a
+run does to the code it changes is done once for them and not once each. The
+idea `pickup` claimed is the lead, and an idea worked with it is a partner.
+The lead's branch, plan, pull request, and review are the group's, and every
+command after this stage is given the lead's number.
+
+Sort only a new idea, one `pickup` printed with `take_up` as `new`. An issue
+taken up again keeps the group it had, which its `facts` name as `partners`.
+
+1. `sitework stage sort`.
+2. Start one fresh agent, with the Agent tool's `model` set to `sonnet`. Give
+   it [its brief](sort.md), the lead's number, the folder of the checkout,
+   and this document's "What the run trusts". It lists the ideas with
+   `sitework queue`, grades each that has no grade with
+   `sitework comment <n> graded`, and records the lead's partners, or that
+   it has none, with `sitework sort`, which also claims each partner. It
+   hands back the address of the lead's `sorted` comment and the file of the
+   workflow's faults it met. The sort is on the cheaper model for the reason
+   the look back is (#64): what it writes reaches no page, and Shape weighs
+   the group again before any code.
+3. Read the `With:` line of the lead's `sorted` comment. Every stage after
+   this one works each idea it names with the lead.
+
+A partner carries `in-progress`, is assigned to the owner, and is In
+progress on GitHub, as the lead is. A group is at most three ideas.
+
 ## Shape
 
 Find out whether the idea is true, whether it fits, and what done means,
@@ -130,6 +162,20 @@ out the verdict yourself, so that one agent holds where the issue stands.
 Shape writes no product code: what it builds to reproduce a problem or to
 measure a size is thrown away, and Build writes the change from the plan
 (#58).
+
+**A group.** Give the Shape agent the partners' numbers with the lead's. It
+shapes every idea of the group in one plan, posted on the lead. "What changes
+for a reader" has a line for each idea, and the criteria are numbered across
+the group, each beginning with its idea: `1. (#89) Given ...`. Shape is
+where the group can be split, before any code is written:
+
+- A partner that does not fit the group after all is sent back to wait for
+  a run of its own: `sitework release <n> --file <file>`, with why. That is
+  no stop, and the rest go on.
+- A partner whose own verdict is Needs data or Needs the owner is stopped
+  alone, with `sitework stop <n>` as below, and leaves the group.
+- When the lead's verdict is not Go, `sitework stop` on the lead sends each
+  partner back to wait by itself, since no code holds them to the lead yet.
 
 1. Read the sections of README.md that AGENTS.md names for this kind of
    change.
@@ -250,11 +296,21 @@ What only the owner can answer, and what the agent would choose.
 - **The docs in the same change**: what README.md says about the part that
   changed, the design note when the look changes, and STYLE.md when the
   change adds a value or a kind of part the guide does not have.
-- **Commits** as AGENTS.md has them, with `Refs #<issue>`. Read each before
-  it is pushed.
+- **Commits** as AGENTS.md has them, with `Refs #<issue>` for every idea of
+  the group. Read each before it is pushed.
 - **Stay in the plan.** A change of scope edits the plan's comment first, and
   says what changed. One that meets a reason under "Needs the owner" stops
   there.
+- **A partner that holds the group up.** Before Ship, send back a partner
+  that alone keeps the group from going on: a criterion of its own cannot be
+  met as the plan has it, a check fails only for its part, twice, it lost
+  `approved` or was closed, or the owner's answer to a stop says to go on
+  without it. Edit the plan first, taking out its line and its criteria,
+  take its code and its tests out of the branch, run
+  `sitework release <n> --file <file>`, run the check again, and ask the
+  reviewer to read the plan as it now is. The idea waits again, whole, for a
+  run of its own, so none of its criteria is dropped. That is no stop. After
+  the merge, no partner leaves.
 
 Build is done when `sitework check --issue <issue>` passes on the machine.
 
@@ -272,7 +328,8 @@ a guarded path. The pull request's job runs every test.
 
 1. Run it until it passes. Mend the code, and never the check.
 2. Push the branch, and open the pull request against `main`, with
-   `Refs #<issue>` and a link to the plan's comment in its body.
+   `Refs #<issue>` for every idea of the group and a link to the plan's
+   comment in its body.
 3. Wait for the pull request's own job: `sitework job`. It waits until the
    job has ended, also when GitHub has not listed the job yet, and its JSON
    names the run of each check.
@@ -315,6 +372,8 @@ when every one holds.
 - When a condition fails that the run can make hold inside the plan, such as
   a branch that is behind `main`, make it hold and run the command again.
 - When it says `main` moved while it judged, run it again.
+- When it says a partner is closed or no longer carries `approved`, send it
+  back as Build says, and run it again.
 - When it says the plan was edited after the newest review, the review
   passed another plan. Ask the same reviewer to read the plan as it now is,
   and to post its review again.
@@ -338,7 +397,8 @@ when every one holds.
    block and that a check could have found, with its file, its line, and
    the test that would catch it. The look back files both. Then
    `sitework close <issue> --file <file>`, which posts it, closes the issue,
-   and removes the feature's branch on GitHub and in the checkout.
+   and removes the feature's branch on GitHub and in the checkout. It closes
+   each partner first, with a note that names the lead and the merge.
 3. When the live site or the eval fails because of the change, mend it
    (below). The owner is not asked first.
 4. A result that measured nothing is no failure of the change, and calls
@@ -426,7 +486,7 @@ The run goes on by itself until one of these is true. Nothing else stops it.
 
 | Stage | A reason to stop |
 | --- | --- |
-| Shape | A reason under "Needs the owner" |
+| Shape | A reason under "Needs the owner". A partner that does not fit is sent back, which is no stop |
 | Build | A criterion cannot be met as the plan has it. The work has to leave the plan in a way Shape would have stopped for |
 | Check | The only way past a failing check is to loosen it. Two different attempts at a failing check have not passed it. One of the owner's tests that the change does not touch failed in the pull request's job a second time |
 | Review | The verdict is still `changes needed` after the one second look |
@@ -439,9 +499,15 @@ To stop: push the work, so that nothing is lost. Write one file that says
 the stage, what was seen, what was tried, the question for the owner, and
 what the run would choose. Then
 `sitework stop <issue> --stage <stage> --file <file>`, which posts it, swaps
-`in-progress` for `needs-owner`, and takes the issue off the owner's list of
-assigned issues. Then go on to the look back, and end the run there. A
-stopped issue holds nothing up: the next run takes the next issue.
+`in-progress` for `needs-owner`, takes the issue off the owner's list of
+assigned issues, and sets it back to Backlog. Then go on to the look back,
+and end the run there. A stopped issue holds nothing up: the next run takes
+the next issue.
+
+A stop of the lead stops each partner with it, with a comment that says the
+question is on the lead: the owner answers there, and the run that takes the
+lead up again takes the partners back. A stop at Shape, or for data, sends
+each partner back to wait instead, since no code holds it to the lead yet.
 
 A stop and a close send the owner no message (#53). The issue's own comment
 and label are the notice, so the stop's file says in its first lines what is
@@ -483,17 +549,34 @@ merge.
 | --- | --- | --- | --- |
 | `site-idea` | Proposed by the daily site review | The idea agent | Nobody |
 | `approved` | The owner approved the idea | The owner | The owner, to withdraw it |
-| `in-progress` | A run holds it | `sitework pickup --claim` | `sitework close`, or a stop |
+| `in-progress` | A run holds it | `sitework pickup --claim`, or `sitework sort` for a partner | `sitework close`, a stop, or `sitework release` |
 | `needs-owner` | A question is waiting | `sitework stop` | The owner, by answering and removing it |
 | `blocked-on-data` | Waiting on a RisingRepos issue | `sitework stop --data` | A run that finds the field has arrived |
 | `workflow feedback` | One thing a run taught about the workflow itself. It is no idea, and no run takes it up | The look back, with `sitework feedback` | The owner, by closing the issue |
 
+**What GitHub shows.** GitHub gives each issue a status, which decides the
+tab it shows under, and the owner reads what a run is at work on from the
+Active tab (25 November 2026). The scripts set two statuses:
+
+| Status | Tab | Set by |
+| --- | --- | --- |
+| `In progress` | Active | `sitework pickup --claim`, and `sitework sort` for each partner |
+| `Backlog` | Open | `sitework stop`, and `sitework release` |
+
+Assigning an issue moves it from Backlog to Todo by itself, and taking the
+owner off it moves nothing back, so the scripts set the status themselves.
+GitHub sets Done when an issue is closed. A status GitHub refuses is told,
+and fails nothing: the statuses are a preview of GitHub's.
+
 **Where an issue stands.** The scripts keep three things true, so that the
 owner sees it on GitHub without asking:
 
-- **Being worked on**: open, labelled `in-progress`, and assigned to the
-  owner. `sitework pickup --claim` does both, so the issues assigned to the
-  owner are the ones a run is at work on.
+- **Being worked on**: open, labelled `in-progress`, assigned to the owner,
+  and In progress. `sitework pickup --claim` does all three for the lead, and
+  `sitework sort` for each partner, so the issues under Active are the ones a
+  run is at work on.
 - **Waiting**: open, with `needs-owner` or `blocked-on-data` in the place of
-  `in-progress`, and assigned to nobody. `sitework stop` does that.
+  `in-progress`, assigned to nobody, and in the backlog. `sitework stop` does
+  that. An idea sent back from a group waits as a new idea does, with its
+  grade.
 - **Done**: closed, by `sitework close`, with the owner's name left on it.
