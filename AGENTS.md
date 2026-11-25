@@ -72,6 +72,9 @@ uv run --locked python -m sitework check              # every check a change has
 uv run --locked python -m unittest discover -s tests  # the agents' tests alone. They need Node on the PATH, and Chrome
 uv run --locked python -m unittest discover -s owner_tests -t .  # the owner's tests alone, in the machine's Chrome
 uv run --locked ruff format .                         # lay the Python out as the format check asks
+uv run --locked coverage run -m unittest discover -s tests  # the agents' tests, noting each line and branch they ran
+uv run --locked coverage combine                      # gather what each Python a test started noted
+uv run --locked coverage report                       # which lines and branches of sitebuild/ and sitework/ no test ran
 uv run --locked python -m sitebuild dist              # the pages; it refuses a dist/ that already holds files
 python -m http.server 8000 --bind 127.0.0.1 --directory dist  # then open http://127.0.0.1:8000/
 ```
@@ -79,6 +82,10 @@ python -m http.server 8000 --bind 127.0.0.1 --directory dist  # then open http:/
 The build job runs `python -m sitework check --suite`: the lint, the format,
 and both kinds of tests. So the check command is what a PR has to pass. Run
 it before each commit.
+
+The coverage report is there to be read, and nothing requires a share of
+it: no check, no job, and no pull request is held to a number (#49). A line
+that no test ran is worth a look. A line that ran was not thereby checked.
 
 Without `--suite`, a change that touches no guarded path is not run against
 the tests of the workflow's own scripts and of the stale check: no such
