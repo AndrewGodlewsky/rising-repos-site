@@ -98,7 +98,7 @@ sentence of a note, and everything else is 400.
 | 36 px | A page's title, 56 px from 768 px up |
 
 The site's own words keep to the characters the two faces hold, which
-`CHARACTERS` in `sitebuild/fonts/subset.py` names. A new symbol in a heading
+`CHARACTERS` in `sitebuild/fonts/characters.py` names. A new symbol in a heading
 or a label is drawn in the fallback face until the faces are cut again, and
 that file's docstring says how.
 
