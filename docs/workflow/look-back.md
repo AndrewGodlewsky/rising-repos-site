@@ -14,9 +14,10 @@ The issue's number, the run's digest, the plan, the review, the "Shipped"
 note or the stop's comment, and the run's own list of the faults it met in
 the workflow. The digest was made by a script from the run's record: the
 tokens of each stage, how many messages each stage took and the context each
-of them read, the model and the effort each agent ran at, each tool
-and how often it was called, the files read most often, how many times the
-whole suite ran, each check that failed, and each stop.
+of them read, the model and the effort each agent ran at, the largest
+results by their size, each tool and how often it was called, the files read
+most often, how many times the whole suite ran, each check that failed, each
+stop, and how long the run itself took.
 
 Reading a whole run costs about what the run cost. Open the record itself
 only where the digest points at waste, and read only that part.
@@ -67,6 +68,8 @@ as `uv run --locked python -m sitework feedback ...`.
    `feedback file --run <issue> --title "The run on #<issue>" --file <file> --digest <the digest>`.
    Its words are a few lines: how the run ended, what it cost, and the
    number of each issue you filed or added to. The digest follows them.
+   The command closes this issue once it is filed: it is the run's record,
+   and holds nothing to mend.
 
 ## What an issue is
 

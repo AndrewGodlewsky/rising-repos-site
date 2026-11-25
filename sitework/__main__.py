@@ -19,6 +19,7 @@ COMMANDS = {
     "altered-tests": ("sitework.altered", "List the existing tests a change altered or removed"),
     "layout-report": ("sitework.layout", "Describe in words how the pages a change altered are laid out"),
     "pictures": ("sitework.layout", "Take a picture of each page a change altered, for the owner"),
+    "weigh": ("sitework.weigh", "Say what a change adds to the pages, in bytes, before it and after it"),
     "job": ("sitework.job", "Wait for a pull request's own job, and say how it ended"),
     "ship": ("sitework.ship", "Merge a pull request once every condition of the merge holds"),
     "confirm": ("sitework.confirm", "See that a merged feature is live, works, and left the site within its limits"),

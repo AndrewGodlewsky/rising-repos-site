@@ -110,6 +110,8 @@ class Call:
     says only that it started, so its end is the notice that names it."""
     step: str = ""
     """The step a failed run of `sitework check` stopped at, when the record holds what the run printed."""
+    size: int = 0
+    """How many characters the call's result held, which every message after it read again."""
 
     @property
     def command(self) -> str:
@@ -256,6 +258,7 @@ def read_run(records: list[Path]) -> Run:
                     call = calls.get(block.get("tool_use_id")) if block.get("type") == "tool_result" else None
                     if call:
                         call.ended = when(line["timestamp"])
+                        call.size = len(printed(block))
                         call.background = kept.get("backgroundTaskId", "") if isinstance(kept, dict) else ""
                         stopped = STEP.search(printed(block)) if SUITE[1] in check_names(call.command) else None
                         call.step = stopped[1] if stopped else ""
@@ -408,6 +411,33 @@ def read_by(counts: list[int]) -> int:
     return counts[0] + counts[2] + counts[3]
 
 
+LARGEST = 8
+"""How many of a run's largest results the digest lists."""
+
+
+def largest(run: Run) -> list[list[str]]:
+    """The run's largest results, as rows of a table: the stage, the tool, how many characters the result held,
+    and for a reading of a file of the repository, the file.
+
+    The table of files counts the Read tool alone, and the agents read far more through the shell: 112 of the 131
+    calls of the run on #28 were the shell's (#56). What a command read cannot be told from its words without
+    writing those words here, and the digest is public. The size of what came back can, and it is the size that
+    costs: every message after a result reads it again."""
+    rows = []
+    for call in sorted(run.calls, key=lambda call: call.size, reverse=True)[:LARGEST]:
+        if not call.size:
+            break
+        file = in_repository(call.given.get("file_path") or "", run.roots) if call.tool == "Read" else None
+        rows.append([call.stage, call.tool, f"{call.size:,}", f"`{file}`" if file else "-"])
+    return rows
+
+
+def lasted(run: Run) -> str:
+    """How long the run took, from the first message of its records to the last, as `1h 12m`."""
+    minutes = round((max(run.times) - min(run.times)).total_seconds() / 60)
+    return f"{minutes // 60}h {minutes % 60:02}m"
+
+
 def render(run: Run, issue: int | None = None, hours: float | None = None) -> str:
     """The digest of a run, as Markdown."""
     tokens = {stage: [*kinds, sum(kinds)] for stage, kinds in run.tokens.items()}
@@ -481,6 +511,17 @@ def render(run: Run, issue: int | None = None, hours: float | None = None) -> st
         "",
         f"{reads.count(None):,} reads were of files outside the repository, which are not named.",
         "",
+        "## The largest results",
+        "",
+        *(
+            table(["Stage", "Tool", "Characters", "File"], largest(run), numbers_from=2)
+            if largest(run)
+            else ["The records hold no result."]
+        ),
+        "",
+        "Each is what one call gave back, which every message after it read again. A file is named for the Read "
+        "tool alone.",
+        "",
         "## The whole suite",
         "",
     ]
@@ -507,6 +548,9 @@ def render(run: Run, issue: int | None = None, hours: float | None = None) -> st
     ]
     lines += ["", "## Figures", "", FIGURES_HEADING, FIGURES_RULE, "| " + " | ".join(figures) + " |", ""]
     lines += ["A figure in tokens is the sum of the four kinds. Every stage includes the pick up."]
+    if run.times:
+        # The hours from approval to close hold the wait for a run to begin, which was 36 of #27's 37.3 (#56).
+        lines += ["", f"The run itself took {lasted(run)}, from the first message of its records to the last."]
     return "\n".join(lines)
 
 
