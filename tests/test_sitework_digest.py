@@ -146,6 +146,10 @@ class TheStage(unittest.TestCase):
     def test_a_mend_is_a_stage_a_run_can_mark(self):
         self.assertEqual(self.run_stage("mend"), (0, "stage: mend\n"))
 
+    def test_sort_is_a_stage_a_run_can_mark(self):
+        # The sort grades the ideas that wait and chooses the lead's partners, after the pick up (25 November 2026).
+        self.assertEqual(self.run_stage("sort"), (0, "stage: sort\n"))
+
     def test_the_refusal_of_a_name_lists_the_mend_among_the_stages_after_confirm_and_before_the_look_back(self):
         with contextlib.redirect_stderr(io.StringIO()) as refused, self.assertRaises(SystemExit):
             self.run_stage("biuld")
@@ -677,6 +681,13 @@ class TheFigures(RecordTest):
         self.assertEqual(asked.call_args.args[:2], ("gh", "api"))
         self.assertIn("issues/7/timeline", " ".join(asked.call_args.args))
 
+    def test_the_figures_name_every_idea_of_the_group_and_the_tokens_each(self):
+        # The owner grouped ideas to spend fewer tokens on each, so the digest says what each cost (25 November 2026).
+        run = digest.read_run([self.record("first", said("a", tokens=(1, 1, 1, 1)))])
+        text = digest.render(run, 89, None, group=[90])
+        self.assertEqual(self.figures(text)[2], "| #89, #90 | 0 | 0 | 0 | 4 | no | - |")
+        self.assertIn("The run worked 2 ideas: about 2 tokens each.", text)
+
     def test_an_issue_that_is_still_open_has_no_hours(self):
         with mock.patch.object(shell, "run", return_value="labeled\tapproved\t2026-11-01T09:00:00Z"):
             text = self.digest(said("a"), issue=7)
@@ -692,14 +703,37 @@ class TheCommand(RecordTest):
         self.assertTrue(printed.startswith("# Digest of a run\n"))
         self.assertEqual(printed, digest.digest([first, second]) + "\n")
 
+    @staticmethod
+    def github(sorted_on_7: str = "") -> mock.Mock:
+        """Stands in for `shell.run` as GitHub answers: #7's timeline, the owner, and #7's comments, which hold a
+        sort when `sorted_on_7` gives its `With:` line."""
+        timeline = "labeled\tapproved\t2026-11-01T09:00:00Z\nclosed\t\t2026-11-01T10:00:00Z"
+        comments = [{"user": {"login": "the-owner"}, "body": f"Site workflow: sorted\n\nWith: {sorted_on_7}"}]
+
+        def answer(*command, **_):
+            line = " ".join(command)
+            if "timeline" in line:
+                return timeline
+            if line.startswith("gh repo view"):
+                return json.dumps({"owner": {"login": "the-owner"}})
+            return json.dumps(comments if sorted_on_7 else [])
+
+        return mock.Mock(side_effect=answer)
+
     def test_with_an_issue_it_names_the_issue_and_asks_github_for_its_hours(self):
         first = self.record("first", said("a"))
-        timeline = "labeled\tapproved\t2026-11-01T09:00:00Z\nclosed\t\t2026-11-01T10:00:00Z"
-        with mock.patch.object(shell, "run", return_value=timeline):
+        with mock.patch.object(shell, "run", self.github()):
             code, printed, _ = self.run_digest(str(first), "--issue", "7")
         self.assertEqual(code, 0)
         self.assertTrue(printed.startswith("# Digest of the run on #7\n"))
         self.assertIn("| #7 | 0 | 0 | 0 | 10 | no | 1.0 |", printed)
+
+    def test_with_an_issue_it_names_every_idea_its_sort_named(self):
+        first = self.record("first", said("a"))
+        with mock.patch.object(shell, "run", self.github("#8")):
+            code, printed, _ = self.run_digest(str(first), "--issue", "7")
+        self.assertEqual(code, 0)
+        self.assertIn("| #7, #8 | 0 | 0 | 0 | 10 | no | 1.0 |", printed)
 
     def test_when_github_does_not_answer_it_prints_the_digest_without_the_hours_and_exits_1(self):
         first = self.record("first", said("a"))
