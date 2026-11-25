@@ -29,6 +29,16 @@ step here leaves a choice open.
    | 3 | Nothing to do | End the run, and post nothing |
    | 4 | The site is not healthy. What it printed says why | End the run |
 
+   A schedule starts a run, in a terminal, with nobody there. Its own check
+   is `sitework pickup --start`, which starts an agent when it exits 0 and
+   writes that start down. So whatever the agent's tool asks when it starts
+   has to be settled on the machine beforehand: a question at start-up is
+   never answered, and the run never begins. `--claim` clears what was
+   written. A start that is not claimed in 30 minutes is taken for stuck,
+   and one more is made. When that one claims nothing either, the check
+   exits 5 and starts nothing more, until a run claims or the owner clears
+   it with `sitework pickup --forget-starts`.
+
 3. Work on the branch the script named, in a worktree of its own. For a new
    idea, make it from the newest `main`, and push it at once, so that the
    claim is on GitHub as a branch too:
@@ -118,7 +128,11 @@ measure a size is thrown away, and Build writes the change from the plan
 4. Hold the idea against each standard it touches in
    [STANDARDS.md](../../STANDARDS.md), and against each record in
    [docs/adr/](../adr/README.md).
-5. Measure what the change would add to a page, against the room left.
+5. Measure what the change would add to a page, against the room left:
+   `sitework weigh` builds the site before the change and after it, and
+   prints the heaviest page of each kind and the root gzipped. Build and
+   the reviewer measure with the same command, so that the plan's figures
+   and the pull request's are the same figures.
 6. Check that every figure it would show is in the data the site receives.
 7. Write the plan in the form below, and post it:
    `sitework comment <issue> plan --file <file>`. The same command edits the
@@ -385,7 +399,8 @@ Nothing of it is written into the repository.
    the run kept, and the one its Shape agent kept.
 3. It files the issues with `sitework feedback`, and names them when it is
    done: one for each fault or saving, and one for the run, which holds
-   the digest. The run changes nothing they say.
+   the digest and is closed as soon as it is filed, since it has nothing
+   to mend. The run changes nothing they say.
 
 ## Stopping for the owner
 

@@ -166,7 +166,8 @@ work reaches `main` through a pull request.
   500,000 bytes and the root of a 713-row board to 150,000 gzipped, and both
   are within about 4% of their limits. README.md, "The pages", under "Its
   size" and "The root on the wire", gives the last measurements. Markup added
-  to a board's row is multiplied by every row, so measure before and after. A
+  to a board's row is multiplied by every row, so measure before and after:
+  `python -m sitework weigh` prints both. A
   gzipped size measured on Windows reads about 2% lower than the workflow's.
 - **The page requests nothing.** Its styles, its one script, its icon, and its
   type are inside it, and its Content-Security-Policy allows that script by
