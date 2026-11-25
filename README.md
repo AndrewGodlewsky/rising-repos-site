@@ -150,7 +150,10 @@ What every page holds to, each checked by a test in `tests/`:
   and the page of the 316 made-up rows 481,193. The mark that a row's name
   leaves the site (#30) added 125 bytes to every page, in the stylesheet, and
   38 to each row, in its link's new tab and title: the example's root is now
-  97,211 bytes, and the page of the 316 made-up rows 493,326.
+  97,211 bytes, and the page of the 316 made-up rows 493,326. The star
+  bands as a grid on a phone (#32) added 324 bytes to every page, in the
+  stylesheet: the heaviest board day of `site-data/`, 12 August 2026, came
+  to 496,414 bytes on 25 November 2026, 3,586 under the limit.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -172,7 +175,8 @@ What every page holds to, each checked by a test in `tests/`:
   2026-11-24, 183 more than without them, and with Latest in a phone's day
   bar (#28) to 141,841, 48 more, and with the choosing of a dot of Baseline's
   chart (#29) to 141,927, 86 more, and with the mark that a row's name leaves
-  the site (#30) to 142,441, 514 more. The type takes about
+  the site (#30) to 142,441, 514 more, and with the star bands as a grid on
+  a phone (#32) to 142,508 on 2026-11-25, 67 more. The type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries
   105 characters of description in random letters, which pack worse than a
@@ -346,7 +350,12 @@ order (by rank, most stars gained, most often on the last 14 boards, fewest
 stars first, most stars first); and a search of the names and the
 descriptions. A band the board holds back has no row, so its button is
 hidden. A file from before `star_bands` gives no bands, and its board no band
-filter: the contract has the site keep no limits of its own. The filter says
+filter: the contract has the site keep no limits of its own. On a phone the
+band buttons are a grid as wide as the toolbar, under All and New: three
+columns, so that six buttons lie in two lines of three of one width, or two
+when two or four bands are held back, so that no button lies alone on a line,
+as "30k+" did (#32). From 768 px up they are one row, each as wide as its
+label. The filter says
 how many rows it shows, to a screen reader, and when none match, says so. Its
 state is in the address (`?show=new&band=1k-3k&lang=Rust&sort=gained&q=…`),
 so a filtered board can be linked to. The controls are marked `js-only`, which

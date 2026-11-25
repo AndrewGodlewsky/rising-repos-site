@@ -135,6 +135,8 @@ that file's docstring says how.
 The stylesheet is written for a phone first, and widens at 768 px and at
 1,100 px. The day bar alone also narrows: below 390 px its parts sit closer,
 and below 360 px it leaves out Latest, for which there is then no room (#28).
+Below 768 px the filter's star bands are a grid of two or three columns, as
+wide as the toolbar, so that no button is left alone on a line (#32).
 
 ### Movement
 
