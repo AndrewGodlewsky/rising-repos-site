@@ -12,6 +12,7 @@ deleted on GitHub and in this repository, since nothing else removes that branch
 """
 
 import argparse
+import functools
 import re
 import sys
 import tarfile
@@ -222,8 +223,12 @@ def ship(number: int, reverting: bool) -> int:
     main = shell.git("rev-parse", "origin/main")
     base = shell.git("merge-base", "origin/main", head)
     the_issue = issue.read(number)
-    # A revert turns on no comment: it needs no review, and nothing the owner allowed is asked about.
-    said = [] if reverting else issue.comments(number, issue.owner())
+    # A revert turns on no comment: it needs no review, and nothing the owner allowed is asked about. It undoes the
+    # lead's merges, which hold its partners' work, so it asks nothing of the partners either.
+    owner = None if reverting else issue.owner()
+    comments = functools.cache(lambda one: issue.comments(one, owner))
+    said = [] if reverting else comments(number)
+    group = [] if reverting else issue.partners(number, comments)
 
     def conditions() -> Iterator[tuple[bool, str]]:
         yield checks(read["statusCheckRollup"], head)
@@ -235,7 +240,13 @@ def ship(number: int, reverting: bool) -> int:
         if reverting:
             yield reverts(number, main, head)
             return
-        yield guarded(base, head, allowed(said))
+        # A partner's work is in this pull request, so the merge holds each partner to what holds the lead
+        # (25 November 2026). One the owner closed or withdrew is sent back, and its part taken out, before a merge.
+        for partner in group:
+            holds, what = approved(issue.read(partner))
+            back = f": send it back with `sitework release {partner}` and take its part out of the branch"
+            yield holds, what if holds else what + back
+        yield guarded(base, head, allowed([*said, *(comment for partner in group for comment in comments(partner))]))
         yield checkout(head)
         yield passes("new-tests", "--base", base, "--head", head, "--issue", str(number))
         yield passes("criteria", "--issue", str(number))
