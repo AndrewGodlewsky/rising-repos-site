@@ -92,6 +92,7 @@ class FeedbackTest(unittest.TestCase):
         self.answers = {
             LIST: [{"number": 44, "title": "The plan is read more than once"}],
             CREATE: FILED,
+            "gh issue close 52": "",
             VIEW: issue(44, LABEL),
             COMMENT: ADDED,
         }
@@ -212,6 +213,11 @@ class TheFiling(FeedbackTest):
     def test_with_a_digest_the_body_holds_it_as_it_was_printed_between_the_words_and_the_last_line(self):
         self.file_it("--digest", str(self.digest))
         self.assertEqual(self.shell.read(CREATE), f"{WORDS}\n\n{DIGEST}\n\nFrom the run on #27.\n")
+
+    def test_the_issue_that_holds_a_runs_digest_is_closed_once_it_is_filed_since_it_has_nothing_to_mend(self):
+        code, printed, _ = self.file_it("--digest", str(self.digest))
+        self.assertEqual((code, printed), (0, FILED + "\n"))
+        self.assertEqual(self.shell.changes()[-1], "gh issue close 52")
 
     def test_a_finding_and_a_digest_that_a_shell_on_windows_wrote_are_filed_as_their_words(self):
         self.file.write_bytes(codecs.BOM_UTF16_LE + (WORDS + "\n").replace("\n", "\r\n").encode("utf-16-le"))

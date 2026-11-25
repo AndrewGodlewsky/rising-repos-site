@@ -6,6 +6,11 @@ mend one and close it by itself. A run files one issue for the run as a whole, w
 each fault or saving that can be mended alone. A finding that an open issue already holds is added to that issue
 as a comment, so that a fault seen in three runs is one issue and not three.
 
+The issue for the run as a whole is a record: it holds the digest, and nothing to mend. So it is closed as soon
+as it is filed, and the open issues that carry the label are the ones with something to do. The owner chose that on
+25 November 2026, when three of the fifteen open issues were records of runs. A closed issue keeps its digest and
+can be searched and linked as an open one can.
+
 An issue is filed with the label `sitework.rules.FEEDBACK` and with no other. `pickup` takes up only an issue that
 carries both `site-idea` and `approved`, so none of these is ever built as a feature.
 
@@ -76,7 +81,11 @@ def file(options: argparse.Namespace) -> int:
         parts.append(read_text(options.digest).strip())
     body = "\n\n".join([*parts, FROM.format(run=options.run)]) + "\n"
     labelled = ("--title", options.title, "--label", rules.FEEDBACK)
-    print(shell.gh("issue", "create", *labelled, "--body-file", "-", stdin=body))
+    address = shell.gh("issue", "create", *labelled, "--body-file", "-", stdin=body)
+    print(address)
+    if options.digest:
+        # The issue that holds a digest is the run's record, and is closed once it is filed.
+        shell.gh("issue", "close", address.rstrip("/").rpartition("/")[2])
     return 0
 
 
@@ -127,7 +136,10 @@ def main(command: str, arguments: list[str]) -> int:
     filing.add_argument("--title", type=one_line, required=True, metavar="T", help="the new issue's title, one line")
     filing.add_argument("--file", type=Path, required=True, metavar="F", help="the file that holds the issue's words")
     filing.add_argument(
-        "--digest", type=Path, metavar="D", help="what `sitework digest` printed, for the issue of the run as a whole"
+        "--digest",
+        type=Path,
+        metavar="D",
+        help="what `sitework digest` printed, for the issue of the run as a whole, which is closed once it is filed",
     )
     adding = forms.add_parser(
         "add",
