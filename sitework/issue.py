@@ -14,6 +14,7 @@ import argparse
 import json
 import re
 import sys
+from collections.abc import Callable
 from pathlib import Path
 
 from sitework import rules, shell
@@ -61,6 +62,48 @@ def comments(number: int, owner: str) -> list[dict]:
 def of_kind(comments: list[dict], kind: str) -> list[dict]:
     """The workflow's comments of one kind among the owner's account's, oldest first."""
     return [comment for comment in comments if rules.kind_of(comment["body"]) == kind]
+
+
+def newest(said: list[dict]) -> dict | None:
+    """The newest of the workflow's comments among the owner's account's, past any grade. Each run grades the
+    ideas that wait, and a grade is no work begun on an idea (25 November 2026), so how far an issue came is read
+    from the workflow's other comments."""
+    done = [comment for comment in said if rules.kind_of(comment["body"]) not in (None, rules.GRADED)]
+    return done[-1] if done else None
+
+
+def grade(said: list[dict]) -> dict | None:
+    """The idea's newest grade, by the lines of it a script reads: its complexity, its effort, the part of the
+    site a reader sees it in, and the code it touches. None when it has no grade."""
+    graded = of_kind(said, rules.GRADED)
+    if not graded:
+        return None
+    return {name.lower(): value(graded[-1]["body"], name) for name in ("Complexity", "Effort", "Area", "Code")}
+
+
+def named_with(said: list[dict]) -> list[int]:
+    """The ideas the newest `sorted` comment names on its `With:` line, which a run's sort wrote on the idea the
+    run claimed. None of them for `With: none`, or when no sort has been written."""
+    sorts = of_kind(said, "sorted")
+    named = value(sorts[-1]["body"], rules.WITH) if sorts else None
+    return [int(found) for found in re.findall(r"#(\d+)", named or "")]
+
+
+def partners(lead: int, comments: Callable[[int], list[dict]]) -> list[int]:
+    """The ideas in the lead's group now: each that the lead's sort named, whose own newest comment of the
+    workflow's is `joined`, or `stopped` with its lead, and names this lead. One sent back, stopped alone, or
+    shipped has left. `comments` gives the comments the owner's account wrote on an issue, so a stranger's
+    `sorted` comment names no partner, as a stranger's comment counts for nothing anywhere here."""
+    found = []
+    for number in named_with(comments(lead)):
+        last = newest(comments(number))
+        if (
+            last
+            and rules.kind_of(last["body"]) in ("joined", "stopped")
+            and value(last["body"], rules.LEAD) == f"#{lead}"
+        ):
+            found.append(number)
+    return found
 
 
 def says_it_is_the_workflows(body: str) -> bool:

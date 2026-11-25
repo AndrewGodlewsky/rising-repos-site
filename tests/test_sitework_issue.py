@@ -291,6 +291,33 @@ class Stop(IssueTest):
         self.assertEqual(self.shell.ran, [])
 
 
+class Partners(IssueTest):
+    """A group is read from its lead's newest `sorted` comment, and an idea stays in it while its own newest
+    comment of the workflow's, past any grade, is `joined` or `stopped` with the lead's `Lead:` line (25 November
+    2026). Only what the owner's account wrote counts, as everywhere here."""
+
+    def comments_on(self, number: int, *comments: dict) -> None:
+        self.answers[f"gh api repos/{{owner}}/{{repo}}/issues/{number}/comments"] = list(comments)
+
+    def partners(self) -> list[int]:
+        return issue.partners(89, lambda number: issue.comments(number, OWNER))
+
+    def test_a_partner_is_one_the_leads_sorted_comment_names_and_that_joined_it(self):
+        self.comments_on(89, said("Site workflow: sorted\n\nWith: #90, #91\n\nBoth change the row's gain."))
+        self.comments_on(90, said("Site workflow: joined\n\nLead: #89"))
+        self.comments_on(91, said("Site workflow: joined\n\nLead: #77"))
+        self.assertEqual(self.partners(), [90])
+
+    def test_a_partner_that_was_released_is_no_longer_one(self):
+        self.comments_on(89, said("Site workflow: sorted\n\nWith: #90"))
+        self.comments_on(
+            90,
+            said("Site workflow: joined\n\nLead: #89", number=1),
+            said("Site workflow: released\n\nLead: #89\n\nIt fits a run of its own.", number=2),
+        )
+        self.assertEqual(self.partners(), [])
+
+
 class Status(IssueTest):
     """GitHub's status of an issue decides the tab it shows under: Backlog under Open, and In progress under
     Active. Taking the owner off an issue does not move it back from Active, so a stop sets the status itself.

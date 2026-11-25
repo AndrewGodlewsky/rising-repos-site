@@ -572,6 +572,26 @@ class TheNextNewIdea(PickupTest):
         _, printed = self.run_command()
         self.assertEqual((printed["issue"], printed["take_up"]), (27, "new"))
 
+    def test_an_idea_whose_only_comment_of_the_workflows_is_a_grade_is_still_new(self):
+        # Each run grades the ideas that wait, and a grade is no work begun on one (25 November 2026).
+        self.answers[COMMENTS % 27] = [said("Site workflow: graded\n\nComplexity: Low\nEffort: Low")]
+        _, printed = self.run_command()
+        self.assertEqual((printed["issue"], printed["take_up"]), (27, "new"))
+
+    def test_an_idea_sent_back_from_a_group_is_new_again(self):
+        self.answers[COMMENTS % 27] = [
+            said("Site workflow: joined\n\nLead: #26", number=1),
+            said("Site workflow: released\n\nLead: #26\n\nIt changes another part of the page.", number=2),
+        ]
+        _, printed = self.run_command()
+        self.assertEqual((printed["issue"], printed["take_up"]), (27, "new"))
+
+    def test_an_idea_that_joined_a_group_is_not_new(self):
+        # Its work is on its lead's branch. Taken as new, it would be worked a second time on a branch of its own.
+        self.answers[COMMENTS % 27] = [said("Site workflow: joined\n\nLead: #26")]
+        _, printed = self.run_command()
+        self.assertEqual(printed["issue"], 28)
+
     def test_an_idea_that_has_a_branch_on_origin_is_not_new(self):
         self.answers["git ls-remote --heads origin agent/*"] = f"{HEAD}\trefs/heads/agent/27-stop-clipping"
         _, printed = self.run_command()
@@ -611,6 +631,43 @@ class TheNextNewIdea(PickupTest):
         code, printed = self.run_command("--claim")
         self.assertEqual(code, 3)
         self.assertEqual(list(printed), ["why"])
+        self.assertEqual(self.shell.changes(), [])
+
+
+class Queue(PickupTest):
+    """`queue` lists the ideas a run could take as new, with their grades, for the sort's agent to grade those
+    that have none and to choose the lead's partners from (25 November 2026)."""
+
+    GRADE = (
+        "Site workflow: graded\n\nComplexity: Medium\nEffort: Low\nArea: the date bar\nCode: filters.js jump()\n\nWhy."
+    )
+
+    def run_queue(self, *arguments: str) -> tuple[int, dict]:
+        printed = io.StringIO()
+        with contextlib.redirect_stdout(printed):
+            code = pickup.main("queue", list(arguments))
+        return code, json.loads(printed.getvalue())
+
+    def test_the_queue_lists_the_waiting_ideas_oldest_approval_first_with_their_grades(self):
+        self.answers[COMMENTS % 28] = [said(self.GRADE)]
+        code, printed = self.run_queue()
+        self.assertEqual(code, 0)
+        self.assertEqual([one["number"] for one in printed["waiting"]], [27, 28, 29, 30])
+        self.assertEqual(
+            printed["waiting"][1]["grade"],
+            {"complexity": "Medium", "effort": "Low", "area": "the date bar", "code": "filters.js jump()"},
+        )
+        self.assertIsNone(printed["waiting"][0]["grade"])
+        self.assertIsNone(printed["lead"])
+
+    def test_the_queue_gives_the_lead_apart_from_the_ideas_that_wait(self):
+        self.label(27, "site-idea", "approved", "in-progress")
+        _, printed = self.run_queue("--lead", "27")
+        self.assertEqual(printed["lead"]["number"], 27)
+        self.assertEqual([one["number"] for one in printed["waiting"]], [28, 29, 30])
+
+    def test_the_queue_changes_nothing_on_github(self):
+        self.run_queue("--lead", "27")
         self.assertEqual(self.shell.changes(), [])
 
 

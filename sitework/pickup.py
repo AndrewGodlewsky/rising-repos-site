@@ -192,9 +192,20 @@ def answered(opened: list[dict], comments: Comments) -> Taken | None:
     return None
 
 
-def new_idea(opened: list[dict], owner: str, comments: Comments, pulls: list[dict]) -> Taken:
-    """The approved idea that was approved earliest, of those nothing has been done on. The owner's account wrote
-    it and put both labels on it, which keeps a stranger's issue out."""
+def waiting(said: list[dict]) -> bool:
+    """Whether nothing a run did to the idea stands: it has no comment of the workflow's but a grade, or the
+    newest is the one that sent it back from a group to wait for a run of its own (25 November 2026)."""
+    last = issue.newest(said)
+    return last is None or rules.kind_of(last["body"]) == "released"
+
+
+def ideas_waiting(
+    opened: list[dict], owner: str, comments: Comments, pulls: list[dict]
+) -> list[tuple[str, int, dict, list[dict]]]:
+    """The approved ideas nothing has been done on, each as when it was approved, its number, the issue, and the
+    comments the owner's account wrote on it, the one approved earliest first. The owner's account wrote each and
+    put both labels on it, which keeps a stranger's issue out. `pickup` takes the first, and `queue` lists them all
+    for the sort, so that the two never differ on which ideas wait."""
     branches = [
         line.split("refs/heads/")[1] for line in shell.git("ls-remote", "--heads", "origin", "agent/*").splitlines()
     ]
@@ -212,12 +223,41 @@ def new_idea(opened: list[dict], owner: str, comments: Comments, pulls: list[dic
             continue
         said = comments(number)
         when = approved(number, owner)
-        if when and not any(rules.kind_of(comment["body"]) for comment in said):
+        if when and waiting(said):
             ideas.append((when, number, one, said))
+    return sorted(ideas, key=lambda found: found[:2])
+
+
+def new_idea(opened: list[dict], owner: str, comments: Comments, pulls: list[dict]) -> Taken:
+    """The approved idea that was approved earliest, of those nothing has been done on."""
+    ideas = ideas_waiting(opened, owner, comments, pulls)
     if not ideas:
         raise End(NOTHING, "No issue is ready to be worked on.")
-    when, _, one, said = min(ideas, key=lambda found: found[:2])
+    when, _, one, said = ideas[0]
     return Taken(one, "new", f"It is the approved idea that was approved earliest, at {when}.", said)
+
+
+def open_issues() -> list[dict]:
+    """Every open issue, with what the choice of one reads of it."""
+    return shell.gh_json("issue", "list", "--state", "open", "--limit", "1000", "--json", "number,title,labels,author")
+
+
+def queue(lead: int | None) -> dict:
+    """The lead, when one is given and is open, and the ideas that wait, each with its grade, for the sort's agent
+    to grade those that have none and to choose the lead's partners from. It changes nothing on GitHub."""
+    owner = issue.owner()
+    opened = open_issues()
+    comments = functools.cache(lambda number: issue.comments(number, owner))
+
+    def entry(number: int, title: str, when: str | None) -> dict:
+        return {"number": number, "title": title, "approved": when, "grade": issue.grade(comments(number))}
+
+    ideas = ideas_waiting(opened, owner, comments, issue.pulls())
+    led = next((one for one in opened if one["number"] == lead), None)
+    return {
+        "lead": entry(lead, led["title"], approved(lead, owner)) if led else None,
+        "waiting": [entry(number, one["title"], when) for when, number, one, _ in ideas],
+    }
 
 
 def approved(number: int, owner: str) -> str | None:
@@ -314,9 +354,7 @@ def pickup(claiming: bool) -> tuple[int, dict]:
         if busy:
             raise End(NOTHING, f"A run is still at work in {'; '.join(busy)}. Nothing starts until it has ended.")
         owner = issue.owner()
-        opened = shell.gh_json(
-            "issue", "list", "--state", "open", "--limit", "1000", "--json", "number,title,labels,author"
-        )
+        opened = open_issues()
         pulls = issue.pulls()
         comments = functools.cache(lambda number: issue.comments(number, owner))
         taken = in_flight(opened, comments)
@@ -339,6 +377,8 @@ def pickup(claiming: bool) -> tuple[int, dict]:
 
 
 def main(command: str, arguments: list[str]) -> int:
+    if command == "queue":
+        return main_queue(command, arguments)
     parser = argparse.ArgumentParser(
         prog=f"python -m sitework {command}",
         description="Choose the issue this run works on. Exit 0 with an issue to work on, 3 with nothing to do, and 4 "
@@ -353,3 +393,20 @@ def main(command: str, arguments: list[str]) -> int:
         return 1
     print(json.dumps(answer, indent=2))
     return code
+
+
+def main_queue(command: str, arguments: list[str]) -> int:
+    parser = argparse.ArgumentParser(
+        prog=f"python -m sitework {command}",
+        description="List the approved ideas that wait for a run, the one approved earliest first, each with its "
+        "grade or null, as JSON. It changes nothing on GitHub.",
+    )
+    parser.add_argument("--lead", type=int, metavar="N", help="the idea this run claimed, given apart with its grade")
+    options = parser.parse_args(arguments)
+    try:
+        listed = queue(options.lead)
+    except shell.Failed as error:
+        print(error, file=sys.stderr)
+        return 1
+    print(json.dumps(listed, indent=2))
+    return 0
