@@ -54,6 +54,19 @@ class TheChoice(FolderTest):
         head = {f"days/{day}/index.html": "old" if day == "2026-10-31" else "new" for day in days}
         self.assertEqual(self.chosen(base, head), [("A board day", "days/2026-11-03/index.html", 2, False)])
 
+    def test_a_page_the_change_altered_in_its_own_markup_stands_for_its_kind_before_one_only_restyled(self):
+        # On #28 the newest board day differed only in the stylesheet every page holds, and it was the page taken (#73).
+        days = ("2026-11-21", "2026-11-22", "2026-11-23")
+        base = {f"days/{day}/index.html": "<style>a{}</style><nav>Earlier</nav>" for day in days}
+        head = {
+            f"days/{day}/index.html": "<style>a{color:red}</style><nav>Earlier"
+            + ("" if day == days[-1] else " <a>Latest</a>")
+            + "</nav>"
+            for day in days
+        }
+        (taken,) = layout.choose(*self.sites(base, head))
+        self.assertEqual((taken.path, taken.others, taken.own), ("days/2026-11-22/index.html", 2, 2))
+
     def test_each_kind_of_page_is_told_by_its_address_and_they_come_in_the_order_a_reader_meets_them(self):
         in_order = [
             ("The root", "index.html"),
