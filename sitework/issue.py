@@ -359,10 +359,42 @@ def stop(options: argparse.Namespace, text: str) -> int:
         waiting = f"Waiting on RisingRepos#{options.data}.\nField: {options.field}\n\n{text}"
         print(post(options.issue, "waiting on data", waiting))
         set_aside(number, rules.BLOCKED_ON_DATA)
+        stop_group(options.issue, None)
         return 0
     print(post(options.issue, "stopped", f"Stage: {options.stage}\n\n{text}"))
     set_aside(number, rules.NEEDS_OWNER)
+    stop_group(options.issue, options.stage)
     return 0
+
+
+def stop_group(lead: int, stage: str | None) -> None:
+    """What a stop of the lead does to its partners (25 November 2026). A stop at Shape, or for data, which only
+    Shape finds wanting, comes before any code is written, so each partner is sent back to wait for a run of its
+    own. A stop at a later stage stops the group: each partner waits for the owner's answer on the lead, and the
+    run that takes the lead up again takes the partner back with it. A partner given to `stop` has no partners,
+    and is stopped alone, which takes it out of its group."""
+    for partner in partners(lead, lambda number: comments(number, owner())):
+        if stage in (None, "shape"):
+            why = f"#{lead} stopped before any code was written, so this idea waits for a run of its own."
+            for line in send_back(partner, lead, why):
+                print(line)
+            continue
+        stopped = f"{rules.LEAD}: #{lead}\nStage: {stage}\n\nThe question is on #{lead}, and this idea goes on with it."
+        print(post(partner, "stopped", stopped))
+        set_aside(str(partner), rules.NEEDS_OWNER)
+
+
+def send_back(number: int, lead: int, text: str) -> list[str]:
+    """Send a partner back from its lead's group to wait for a run of its own, and give the lines to print: a
+    `released` comment that names the lead, and the issue no longer in progress, no longer the owner's, and back
+    in the backlog, so that GitHub shows it under Open with its grade."""
+    marks = labels(read(number))
+    removed = [
+        part for mark in (rules.IN_PROGRESS, rules.NEEDS_OWNER) if mark in marks for part in ("--remove-label", mark)
+    ]
+    done = [post(number, "released", f"{rules.LEAD}: #{lead}\n\n{text}")]
+    shell.gh("issue", "edit", str(number), *removed, "--remove-assignee", owner())
+    return done + [line for line in [set_status(number, rules.BACKLOG)] if line]
 
 
 def close(options: argparse.Namespace, text: str) -> int:
@@ -375,8 +407,25 @@ def close(options: argparse.Namespace, text: str) -> int:
 
     The local branch goes after the one on GitHub, and only as `delete_local` allows. A local branch that is left
     is one printed line and still a close that exits 0: a run that read it as a failure would run the command
-    again, and post the note a second time."""
+    again, and post the note a second time.
+
+    A lead's partners are closed before the lead, each with a `shipped` comment that names the lead and the merge
+    (25 November 2026). A close cut short among them leaves the lead open and in progress, so the next run takes
+    it up and closes again, and a partner already shipped has left the group and is not posted on twice. A partner
+    given to `close` is refused: it ships with its lead."""
     number = str(options.issue)
+    said_on = {}
+
+    def said(issue: int) -> list[dict]:
+        if issue not in said_on:
+            said_on[issue] = comments(issue, owner())
+        return said_on[issue]
+
+    last = newest(said(options.issue))
+    lead = value(last["body"], rules.LEAD) if last else None
+    if lead:
+        print(f"#{number} ships with its lead, {lead}, and is closed with it: close {lead}. Nothing was changed.")
+        return 1
     stands = standing(options.issue)
     if not stands:
         if merged(options.issue) is None:
@@ -388,6 +437,15 @@ def close(options: argparse.Namespace, text: str) -> int:
             )
         return 1
     pull = stands[0]
+    merge = (pull.get("mergeCommit") or {}).get("oid", "")
+    for partner in partners(options.issue, said):
+        shipped = (
+            f"{rules.LEAD}: #{number}\n\nShipped with #{number} in pull request #{pull['number']}, merged as "
+            f"{merge[:7]}. The note on #{number} says what changed."
+        )
+        print(post(partner, "shipped", shipped))
+        shell.gh("issue", "close", str(partner))
+        shell.gh("issue", "edit", str(partner), "--remove-label", rules.IN_PROGRESS)
     print(post(options.issue, "shipped", text))
     shell.gh("issue", "close", number)
     shell.gh("issue", "edit", number, "--remove-label", rules.IN_PROGRESS)

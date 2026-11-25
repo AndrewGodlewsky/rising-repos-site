@@ -66,14 +66,7 @@ def release(number: int, text: str) -> list[str]:
     lead = issue.value(last["body"], rules.LEAD) if last else None
     if not lead or rules.kind_of(last["body"]) not in ("joined", "stopped"):
         raise Refused(f"#{number} is in no group, so there is nothing to send it back from.")
-    marks = issue.labels(issue.read(number))
-    removed = [
-        part for label in (rules.IN_PROGRESS, rules.NEEDS_OWNER) if label in marks for part in ("--remove-label", label)
-    ]
-    done = [issue.post(number, "released", f"{rules.LEAD}: {lead}\n\n{text}")]
-    shell.gh("issue", "edit", str(number), *removed, "--remove-assignee", owner)
-    done += [line for line in [issue.set_status(number, rules.BACKLOG)] if line]
-    return done
+    return issue.send_back(number, int(lead.lstrip("#")), text)
 
 
 def main(command: str, arguments: list[str]) -> int:

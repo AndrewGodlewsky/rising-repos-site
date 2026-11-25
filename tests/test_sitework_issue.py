@@ -32,6 +32,8 @@ DELETE = f"git branch -D {BRANCH}"
 whether origin/main holds its every commit, and that delete it here."""
 BACKLOG = "gh api --method PATCH repos/{owner}/{repo}/issues/27 -f status=Backlog"
 """The command that sets #27's status to Backlog, which GitHub shows under Open."""
+STATUS = "gh api --method PATCH repos/{owner}/{repo}/issues/%d -f status=Backlog"
+COMMENTS = "gh api repos/{owner}/{repo}/issues/%d/comments"
 
 
 class Shell:
@@ -317,6 +319,97 @@ class Partners(IssueTest):
             said("Site workflow: released\n\nLead: #89\n\nIt fits a run of its own.", number=2),
         )
         self.assertEqual(self.partners(), [])
+
+
+class AGroup(IssueTest):
+    """#28 joined #27's group. A stop of the lead stops the group, or at Shape, where no code is written yet,
+    sends the partner back to wait for a run of its own. A close of the lead closes the partner first, so that a
+    close cut short leaves the lead in progress for the next run to finish (25 November 2026)."""
+
+    PARTNER = "Site workflow: joined\n\nLead: #27"
+
+    def setUp(self):
+        super().setUp()
+        self.answers[COMMENTS % 27] = [said("Site workflow: sorted\n\nWith: #28")]
+        self.answers[COMMENTS % 28] = [said(self.PARTNER)]
+        self.answers["gh issue view 28"] = {"labels": [{"name": "site-idea"}, {"name": "in-progress"}], "number": 28}
+        for command in ("comment", "edit", "close"):
+            self.answers[f"gh issue {command} 28"] = ""
+        self.answers["gh api --method PATCH repos/{owner}/{repo}/issues/28 -f status="] = {"number": 28}
+
+    def partner_changes(self) -> list[str]:
+        return [line for line in self.shell.changes() if " 28" in line or "/28 " in line]
+
+    def test_a_stop_of_the_lead_stops_each_partner_with_it_and_names_the_lead(self):
+        code, _ = self.run_command("stop", "27", "--stage", "check")
+        self.assertEqual(code, 0)
+        self.assertEqual(
+            self.partner_changes(),
+            [
+                "gh issue comment 28 --body-file -",
+                "gh issue edit 28 --remove-label in-progress --add-label needs-owner --remove-assignee the-owner",
+                STATUS % 28,
+            ],
+        )
+        body = self.shell.stdin["gh issue comment 28 --body-file -"]
+        self.assertTrue(body.startswith("Site workflow: stopped\n\nLead: #27\nStage: check\n"), body)
+
+    def test_a_stop_of_the_lead_at_shape_sends_each_partner_back_to_wait(self):
+        # At Shape no code is written, so the partner need not wait for the lead's answer.
+        self.run_command("stop", "27", "--stage", "shape")
+        self.assertEqual(
+            self.partner_changes(),
+            [
+                "gh issue comment 28 --body-file -",
+                "gh issue edit 28 --remove-label in-progress --remove-assignee the-owner",
+                STATUS % 28,
+            ],
+        )
+        body = self.shell.stdin["gh issue comment 28 --body-file -"]
+        self.assertTrue(body.startswith("Site workflow: released\n\nLead: #27\n"), body)
+
+    def test_a_stop_of_the_lead_for_data_sends_each_partner_back_to_wait(self):
+        # Only Shape finds the data wanting, so this too comes before any code is written.
+        self.run_command("stop", "27", "--data", "215", "--field", "topics")
+        body = self.shell.stdin["gh issue comment 28 --body-file -"]
+        self.assertTrue(body.startswith("Site workflow: released\n\nLead: #27\n"), body)
+
+    def test_a_stop_of_a_partner_stops_it_alone_and_it_leaves_the_group(self):
+        code, _ = self.run_command("stop", "28", "--stage", "shape")
+        self.assertEqual(code, 0)
+        self.assertEqual([line for line in self.shell.changes() if " 27" in line or "/27 " in line], [])
+        body = self.shell.stdin["gh issue comment 28 --body-file -"]
+        self.assertNotIn("Lead:", body)
+
+    def test_a_close_of_the_lead_closes_each_partner_first_with_a_shipped_comment_that_names_the_lead(self):
+        code, _ = self.run_command("close", "27")
+        self.assertEqual(code, 0)
+        self.assertEqual(
+            self.shell.changes()[:4],
+            [
+                "gh issue comment 28 --body-file -",
+                "gh issue close 28",
+                "gh issue edit 28 --remove-label in-progress",
+                "gh issue comment 27 --body-file -",
+            ],
+        )
+        body = self.shell.stdin["gh issue comment 28 --body-file -"]
+        self.assertTrue(body.startswith("Site workflow: shipped\n\nLead: #27\n"), body)
+        self.assertIn("#40", body)
+
+    def test_a_close_given_a_partner_is_refused_and_names_the_lead(self):
+        code, printed = self.run_command("close", "28")
+        self.assertEqual(code, 1)
+        self.assertEqual(self.shell.changes(), [])
+        self.assertIn("#27", printed)
+
+    def test_a_close_that_stopped_after_its_partners_finishes_without_posting_twice(self):
+        self.answers[COMMENTS % 28] = [
+            said(self.PARTNER, number=1),
+            said("Site workflow: shipped\n\nLead: #27\n\nShipped with #27.", number=2),
+        ]
+        self.run_command("close", "27")
+        self.assertEqual(self.partner_changes(), [])
 
 
 class Status(IssueTest):
