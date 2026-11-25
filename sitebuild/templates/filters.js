@@ -85,7 +85,23 @@ document.addEventListener("DOMContentLoaded", function () {
     {# Said to a screen reader only: the buttons carry the counts on the screen. #}
     shown.textContent = (count === rows.length ? "All " + count + " shown" : count + " of " + rows.length + " shown") +
       (sort.value !== "rank" ? ", " + sort.options[sort.selectedIndex].text.toLowerCase().replace(/ first$/, "") + " first; each keeps its rank" : "");
-    if (none) none.hidden = count > 0;
+    if (none) {
+      none.hidden = count > 0;
+      if (!count) none.firstElementChild.textContent = nothing(words.length);
+    }
+  }
+  {# The line that says nothing matches names each part of the view that is chosen, by the words its control shows: New,
+     a band's label, a language (#33). A search is named "the search" and not by its words, which come from the address
+     and so are not written into the page (P22): they stay in view in the search field. #}
+  function nothing(searched) {
+    var chosen = [];
+    if (kind) chosen.push("New");
+    if (band !== "") chosen.push(bandButtonsByNumber[band].textContent + " stars");
+    if (language.value) chosen.push(language.value);
+    var last = chosen.pop();
+    var listed = chosen.length ? chosen.join(", ") + (chosen.length > 1 ? "," : "") + " and " + last : last;
+    return "No repository on this board matches " + (searched ? "the search" + (last ? " among " + listed : "") :
+      "the filter" + (chosen.length ? "s" : "") + ": " + listed) + ".";
   }
   function press(buttons, name, value) {
     buttons.forEach(function (button) { button.setAttribute("aria-pressed", button.getAttribute(name) === value ? "true" : "false"); });
@@ -135,6 +151,17 @@ document.addEventListener("DOMContentLoaded", function () {
   language.addEventListener("change", function () { apply(); write(true); });
   sort.addEventListener("change", function () { apply(); write(true); });
   window.addEventListener("popstate", function () { read(); apply(); });
+  {# Clear search and filters: the whole board again, in the order chosen, as a new entry that Back leaves. The
+     button hides with its line, so the keyboard goes to the All button, the first of the filter's controls, rather
+     than to the search, which would open a phone's keyboard (#33). #}
+  if (none) none.lastElementChild.addEventListener("click", function () {
+    kind = band = language.value = q.value = "";
+    press(kindButtons, "data-kind", kind);
+    press(bandButtons, "data-band", band);
+    apply();
+    write(true);
+    kindButtons[0].focus();
+  });
 
   {# An opened row's history, from the board day's history.json, fetched once on first opening. #}
   var history = null;

@@ -153,7 +153,12 @@ What every page holds to, each checked by a test in `tests/`:
   97,211 bytes, and the page of the 316 made-up rows 493,326. The star
   bands as a grid on a phone (#32) added 324 bytes to every page, in the
   stylesheet: the heaviest board day of `site-data/`, 12 August 2026, came
-  to 496,414 bytes on 25 November 2026, 3,586 under the limit.
+  to 496,414 bytes on 25 November 2026, 3,586 under the limit. The line that
+  names what matches nothing, and its button that clears the view (#33),
+  added 227 bytes to every page, in the stylesheet, and 980 more to a board
+  with rows, in its script and its markup: the page of the 316 made-up rows
+  is now 494,857 bytes, and the heaviest board day 497,621, 2,379 under the
+  limit.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -176,7 +181,9 @@ What every page holds to, each checked by a test in `tests/`:
   bar (#28) to 141,841, 48 more, and with the choosing of a dot of Baseline's
   chart (#29) to 141,927, 86 more, and with the mark that a row's name leaves
   the site (#30) to 142,441, 514 more, and with the star bands as a grid on
-  a phone (#32) to 142,508 on 2026-11-25, 67 more. The type takes about
+  a phone (#32) to 142,508 on 2026-11-25, 67 more, and with the line and
+  the button for a view that matches nothing (#33) to 142,806, 298 more. The
+  type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries
   105 characters of description in random letters, which pack worse than a
@@ -356,7 +363,15 @@ columns, so that six buttons lie in two lines of three of one width, or two
 when two or four bands are held back, so that no button lies alone on a line,
 as "30k+" did (#32). From 768 px up they are one row, each as wide as its
 label. The filter says
-how many rows it shows, to a screen reader, and when none match, says so. Its
+how many rows it shows, to a screen reader. When none match, a line names what
+is chosen ("No repository on this board matches the search among New, 1k–3k
+stars, and Rust.", or "the filters:" when nothing is searched), and under it one
+button, "Clear search and filters", shows the whole board again in the order
+chosen, as a new entry in the history, so that Back returns the view that
+matched nothing (#33). A search is named "the search", and not by its words:
+they come from the address, which only chooses among what the page holds, and
+they stay in view in the search field. The keyboard then goes to All, since the
+button hides with its line. Its
 state is in the address (`?show=new&band=1k-3k&lang=Rust&sort=gained&q=…`),
 so a filtered board can be linked to. The controls are marked `js-only`, which
 the stylesheet shows only once the script has marked the root element, in the

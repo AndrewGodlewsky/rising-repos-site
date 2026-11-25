@@ -41,6 +41,7 @@ a page that already does the nearest job, and build from it.
 | Something said about a whole board | A note above the rows: words on the raised surface, a rule in the ink at its left, its first sentence at 500 | `.notes` |
 | A box that holds a chart or a row's detail | The card that holds Baseline's chart, or an opened row | `.card`, `.op` |
 | A choice among a few | The filter's buttons, each with `aria-pressed` | `.segments button` |
+| One action, such as undoing a view | The button under the line that says no row matches: the filter's size, with an edge | `.filtered-none button` |
 | A choice among many | The filter's list of languages | `.toolbar select` |
 | Words the reader types | The filter's search, and the field that finds a repository on Baseline's chart | `input[type="search"]` |
 | A figure | Rising Mono with figures of one width | `.num` |

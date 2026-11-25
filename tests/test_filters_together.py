@@ -36,6 +36,7 @@ FACTS = """() => ({
   })),
   bands: [...document.querySelectorAll("#bands button[data-below]")].map((button) => ({
     word: button.getAttribute("data-word"),
+    label: button.textContent.trim(),
     below: button.getAttribute("data-below") ? Number(button.getAttribute("data-below")) : null,
     held: button.hidden,
   })),
@@ -57,6 +58,33 @@ MOVE = """(search) => {
   dispatchEvent(new PopStateEvent("popstate"));
 }"""
 """Change the address in place and tell the page it moved, as Back and Forward do."""
+
+SAID = """() => {
+  const none = document.getElementById("none-shown");
+  return {
+    said: !none.hidden,
+    line: (none.querySelector("p") || none).textContent.trim(),
+    controls: [...none.querySelectorAll("a, button, input, select, textarea, [tabindex]")]
+      .map((control) => [control.tagName.toLowerCase(), control.textContent.trim()]),
+  };
+}"""
+"""Whether the line that says nothing matches is shown, its words, and each control it offers, by its tag and its
+name."""
+
+CONTROLS = """() => ({
+  kinds: [...document.querySelectorAll("#kinds button")].map((button) => button.getAttribute("aria-pressed")),
+  bands: [...document.querySelectorAll("#bands button")].map((button) => button.getAttribute("aria-pressed")),
+  language: document.getElementById("language").value,
+  sort: document.getElementById("sort").value,
+  q: document.getElementById("q").value,
+})"""
+"""Where each control of the filter stands: which buttons are pressed, the language, the order, and the search."""
+
+ON_ALL = """() => document.activeElement === document.querySelector('#kinds button[data-kind=""]')"""
+"""Whether the keyboard is on the All button."""
+
+NOTHING = "No repository on this board matches"
+CLEAR = "Clear search and filters"
 
 
 class TheFiltersTogether(BuildTest):
@@ -137,6 +165,105 @@ class TheFiltersTogether(BuildTest):
                 self.assertEqual(seen["said"], not seen["shown"])
                 said.add(seen["said"])
         self.assertEqual(said, {True, False})
+
+    def said(self, show: str = "", band: str = "", lang: str = "", q: str = "", **_) -> str:
+        """The line a view that matches nothing is to show, by #33's plan: each part of the view that is chosen,
+        named by what its control shows, and a value the board does not hold named nowhere."""
+        chosen = ["New"] if show == "new" else []
+        labels = {one["word"]: one["label"] for one in self.facts["bands"] if not one["held"]}
+        if band in labels:
+            chosen.append(f"{labels[band]} stars")
+        chosen += [one for one in self.facts["languages"] if one.lower() == lang.lower()]
+        listed = {1: "{}", 2: "{} and {}", 3: "{}, {}, and {}"}.get(len(chosen), "").format(*chosen)
+        if q.split():
+            return f"{NOTHING} the search among {listed}." if chosen else f"{NOTHING} the search."
+        return f"{NOTHING} the {'filter' if len(chosen) == 1 else 'filters'}: {listed}."
+
+    def empty_views(self):
+        """Each view of `values` that leaves no row shown."""
+        values = self.values()
+        for chosen in itertools.product(*values.values()):
+            view = {name: value for name, value in zip(values, chosen, strict=True) if value}
+            if not any(self.lets_by(row, **view) for row in self.facts["rows"]):
+                yield view
+
+    def clear(self):
+        """Press "Clear search and filters", failing at once where the line offers no such button."""
+        button = self.page.locator("#none-shown").get_by_role("button", name=CLEAR)
+        self.assertEqual(button.count(), 1, "the line offers no button to clear the view")
+        button.click()
+
+    def test_the_line_that_says_nothing_matches_names_each_part_of_the_view_that_is_chosen_and_no_other(self):
+        forms = set()
+        for view in self.empty_views():
+            with self.subTest(**view):
+                self.view(**view)
+                said = self.page.evaluate(SAID)
+                self.assertEqual(said["line"], self.said(**view))
+                forms.add(said["line"].removeprefix(NOTHING).split()[1])
+        # Each form of the line is met: a search alone, a search among filters, and one filter or more alone.
+        self.assertEqual(forms, {"search.", "search", "filter:", "filters:"})
+
+    def test_the_line_that_says_nothing_matches_offers_one_control_clear_search_and_filters(self):
+        for view in ({"q": "no-such-word"}, {"show": "new", "lang": "Rust", "q": "octocat"}):
+            with self.subTest(**view):
+                self.view(**view)
+                said = self.page.evaluate(SAID)
+                self.assertTrue(said["said"])
+                self.assertEqual(said["controls"], [["button", CLEAR]])
+                self.assertEqual(self.page.locator("#none-shown").get_by_role("button", name=CLEAR).count(), 1)
+
+    def test_clear_search_and_filters_shows_every_row_and_sets_each_control_back_whatever_was_chosen(self):
+        everything = [row["rank"] for row in self.facts["rows"]]
+        self.view()
+        unchosen = self.page.evaluate(CONTROLS)
+        tried = 0
+        for view in self.empty_views():
+            with self.subTest(**view):
+                self.view(**view)
+                self.clear()
+                self.assertEqual(self.page.evaluate(SEEN)["shown"], everything)
+                self.assertEqual(self.page.evaluate(CONTROLS), unchosen)
+                self.assertFalse(self.page.evaluate(SAID)["said"])
+                tried += 1
+        self.assertGreater(tried, 50)
+
+    def test_clear_search_and_filters_keeps_the_order_the_reader_chose(self):
+        ordered = [row["rank"] for row in sorted(self.facts["rows"], key=lambda row: -row["stars"])]
+        self.view(sort="large", show="new", q="no-such-word")
+        self.clear()
+        self.assertEqual(self.page.evaluate(CONTROLS)["sort"], "large")
+        self.assertEqual(self.page.evaluate(SEEN)["shown"], ordered)
+
+    def test_clear_search_and_filters_leaves_only_the_order_in_the_address_as_a_new_entry(self):
+        band = next(one["word"] for one in self.facts["bands"] if not one["held"])
+        for view, left in (
+            ({"show": "new", "band": band, "lang": "Rust", "sort": "large", "q": "no-such-word"}, "?sort=large"),
+            ({"band": band, "q": "no-such-word"}, ""),
+        ):
+            with self.subTest(**view):
+                self.view(**view)
+                entries = self.page.evaluate("history.length")
+                self.clear()
+                self.assertEqual(self.page.evaluate(SEEN)["search"], left)
+                self.assertEqual(self.page.evaluate("history.length"), entries + 1)
+
+    def test_back_after_clear_search_and_filters_returns_the_view_that_matched_nothing(self):
+        band = next(one["word"] for one in self.facts["bands"] if not one["held"])
+        self.view(show="new", band=band, lang="Rust", sort="small", q="no-such-word")
+        before = [self.page.evaluate(SEEN), self.page.evaluate(CONTROLS), self.page.evaluate(SAID)]
+        self.assertTrue(before[2]["said"])
+        self.clear()
+        self.page.evaluate("history.back()")
+        self.page.wait_for_function("(search) => location.search === search", arg=before[0]["search"])
+        self.assertEqual([self.page.evaluate(SEEN), self.page.evaluate(CONTROLS), self.page.evaluate(SAID)], before)
+
+    def test_after_clear_search_and_filters_the_keyboard_is_on_the_all_button(self):
+        self.view(lang="Rust", q="no-such-word")
+        self.page.locator("#none-shown").get_by_role("button", name=CLEAR).focus()
+        self.page.keyboard.press("Enter")
+        self.assertFalse(self.page.evaluate(SAID)["said"])
+        self.assertTrue(self.page.evaluate(ON_ALL))
 
     def test_an_order_moves_the_rows_and_changes_no_rank_and_rows_that_tie_keep_their_rank_order(self):
         rows = self.facts["rows"]
