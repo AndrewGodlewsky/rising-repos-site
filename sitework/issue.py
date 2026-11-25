@@ -264,13 +264,33 @@ def comment(options: argparse.Namespace, text: str) -> int:
     return 0
 
 
+def set_status(number: int | str, name: str) -> str | None:
+    """Set the issue's status, which decides the tab GitHub shows it under, and give the one line to print when
+    GitHub refused. None when it was set.
+
+    The owner reads what a run is at work on from GitHub's Active tab, which shows the statuses Todo, In
+    progress, and In review (25 November 2026). Assigning an issue moves it from Backlog to Todo by itself, and
+    taking the owner off it moves nothing back, so the scripts set the status they mean. The statuses are a
+    preview of GitHub's, and a status is a thing to see and no condition of anything, so a refusal is told and
+    no command fails for it."""
+    try:
+        shell.gh("api", "--method", "PATCH", f"{REPOSITORY}/issues/{number}", "-f", f"status={name}")
+    except shell.Failed as error:
+        return f"#{number} was not set to {name}, since GitHub refused it: {one_line(error)}"
+    return None
+
+
 def set_aside(number: str, label: str) -> None:
-    """Mark an issue that a run has stopped work on: `label` in the place of `in-progress`, and the issue off
-    the list of those assigned to the owner, which holds what a run is at work on (`pickup.claim` puts an issue
-    on it). The label says what the issue waits for."""
+    """Mark an issue that a run has stopped work on: `label` in the place of `in-progress`, the issue off the
+    list of those assigned to the owner, which holds what a run is at work on (`pickup.claim` puts an issue on
+    it), and the issue back in the backlog, so that GitHub shows it under Open and not under Active. The label
+    says what the issue waits for."""
     shell.gh(
         "issue", "edit", number, "--remove-label", rules.IN_PROGRESS, "--add-label", label, "--remove-assignee", owner()
     )
+    refused = set_status(number, rules.BACKLOG)
+    if refused:
+        print(refused)
 
 
 def stop(options: argparse.Namespace, text: str) -> int:
@@ -347,7 +367,7 @@ def main(command: str, arguments: list[str]) -> int:
     parser = argparse.ArgumentParser(prog=f"python -m sitework {command}", description=what[command])
     parser.add_argument("issue", type=int, help="the issue's number")
     if command == "comment":
-        parser.add_argument("kind", choices=rules.KINDS, help="which of the workflow's comments this is")
+        parser.add_argument("kind", choices=rules.COMMENTED, help="which of the workflow's comments this is")
     if command == "stop":
         why = parser.add_mutually_exclusive_group(required=True)
         why.add_argument("--stage", type=str.lower, choices=rules.STAGES, help="the stage that stops for the owner")

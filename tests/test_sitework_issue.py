@@ -30,6 +30,8 @@ HELD = f"git merge-base --is-ancestor {BRANCH} origin/main"
 DELETE = f"git branch -D {BRANCH}"
 """The feature's branch, and the commands that ask whether GitHub has it, whether this repository has it, and
 whether origin/main holds its every commit, and that delete it here."""
+BACKLOG = "gh api --method PATCH repos/{owner}/{repo}/issues/27 -f status=Backlog"
+"""The command that sets #27's status to Backlog, which GitHub shows under Open."""
 
 
 class Shell:
@@ -117,6 +119,7 @@ class IssueTest(unittest.TestCase):
             "gh issue comment 27": f"{ADDRESS}#issuecomment-7099",
             "gh issue edit 27": ADDRESS,
             "gh issue close 27": "",
+            "gh api --method PATCH repos/{owner}/{repo}/issues/27 -f status=": {"number": 27},
             "gh pr list": [pull(40, BRANCH)],
             ON_GITHUB: "",
             LOCAL: "",
@@ -183,6 +186,22 @@ class Comment(IssueTest):
         self.assertEqual(code, 2)
         self.assertEqual(self.shell.ran, [])
 
+    def test_a_grade_is_posted_as_the_workflows_comment_of_kind_graded(self):
+        code, _ = self.run_command("comment", "27", "graded")
+        self.assertEqual(code, 0)
+        self.assertEqual(
+            self.shell.stdin["gh issue comment 27 --body-file -"], "Site workflow: graded\n\nWhat the comment says.\n"
+        )
+
+    def test_a_sorted_joined_or_released_comment_cannot_be_posted_by_hand(self):
+        # Each of these goes with a change of labels that only `sort` and `release` make, so a comment of one
+        # posted alone would say an idea is in a group, or out of one, when its labels say otherwise.
+        for kind in ("sorted", "joined", "released"):
+            with self.subTest(kind=kind):
+                code, _ = self.run_command("comment", "27", kind)
+                self.assertEqual(code, 2)
+                self.assertEqual(self.shell.ran, [])
+
 
 class Stop(IssueTest):
     def test_a_stop_posts_the_stopped_comment_swaps_in_progress_for_needs_owner_and_unassigns(self):
@@ -194,6 +213,7 @@ class Stop(IssueTest):
             [
                 "gh issue comment 27 --body-file -",
                 "gh issue edit 27 --remove-label in-progress --add-label needs-owner --remove-assignee the-owner",
+                BACKLOG,
             ],
         )
         self.assertEqual(
@@ -209,6 +229,7 @@ class Stop(IssueTest):
             [
                 "gh issue comment 27 --body-file -",
                 "gh issue edit 27 --remove-label in-progress --add-label blocked-on-data --remove-assignee the-owner",
+                BACKLOG,
             ],
         )
         body = self.shell.stdin["gh issue comment 27 --body-file -"]
@@ -268,6 +289,27 @@ class Stop(IssueTest):
         code, _ = self.run_command("stop", "27", "--stage", "lunch")
         self.assertEqual(code, 2)
         self.assertEqual(self.shell.ran, [])
+
+
+class Status(IssueTest):
+    """GitHub's status of an issue decides the tab it shows under: Backlog under Open, and In progress under
+    Active. Taking the owner off an issue does not move it back from Active, so a stop sets the status itself.
+    The statuses are a preview of GitHub's, so one GitHub refuses is told and fails nothing (25 November 2026)."""
+
+    def test_a_stop_sets_the_issue_back_to_backlog_so_it_leaves_the_active_tab(self):
+        self.run_command("stop", "27", "--stage", "build")
+        self.assertIn(BACKLOG, self.shell.changes())
+
+    def test_a_status_github_refuses_is_one_printed_line_and_the_stop_still_exits_0(self):
+        self.answers[BACKLOG] = shell.Failed("gh api: exit 1\nHTTP 422: statuses are not available")
+        code, printed = self.run_command("stop", "27", "--stage", "build")
+        self.assertEqual(code, 0)
+        self.assertIn(
+            "gh issue edit 27 --remove-label in-progress --add-label needs-owner --remove-assignee the-owner",
+            self.shell.ran,
+        )
+        self.assertIn("#27", printed)
+        self.assertIn("Backlog", printed)
 
 
 class Close(IssueTest):
