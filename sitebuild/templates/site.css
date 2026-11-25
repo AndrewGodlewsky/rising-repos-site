@@ -219,6 +219,12 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 .segments button:active { transform: scale(0.97); }
 .segments .num { margin-left: 4px; color: var(--text-3); font-size: 12px; }
 .segments button[aria-pressed="true"] .num { color: inherit; }
+{# On a phone the band buttons wrapped as words do, and the last fell alone onto a line of its own (#32). So the group
+   is a grid as wide as the toolbar: three columns, which lay six buttons in two lines of three of one width, or two
+   when two or four of the five bands are held back, and so hidden, which leaves an even count. From 768 px up it is
+   one row again. #}
+#bands { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); flex: 1 1 100%; }
+#bands:has(> [hidden] ~ [hidden]):not(:has(> [hidden] ~ [hidden] ~ [hidden])), #bands:has(> [hidden] ~ [hidden] ~ [hidden] ~ [hidden]) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .toolbar select { padding-right: 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); height: 38px; }
 .toolbar input[type="search"] { order: -1; flex: 1 1 100%; }
 input[type="search"] { height: 38px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); font: 400 14px/1 var(--sans); transition: border-color 150ms var(--ease); }
@@ -442,6 +448,7 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
   .numbers th, .numbers td { padding-right: 12px; }
   .numbers .n { padding-right: 0; padding-left: 12px; }
   .toolbar input[type="search"] { order: 0; flex: 1 1 160px; max-width: 280px; margin-left: auto; }
+  #bands { display: flex; flex: initial; }
   .strip h1.here { font-size: 28px; line-height: 40px; letter-spacing: -0.02em; }
   .strip .wrap { gap: 8px; }
   .site .wrap { flex-wrap: nowrap; height: 56px; padding-top: 0; padding-bottom: 0; }
