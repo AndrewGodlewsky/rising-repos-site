@@ -3,3 +3,8 @@
 dist/
 .venv/
 __pycache__/
+# What coverage.py notes of a run of the tests, and what Hypothesis would keep
+# between runs were it let to.
+.coverage
+.coverage.*
+.hypothesis/
