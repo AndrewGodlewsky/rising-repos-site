@@ -19,6 +19,10 @@ dev = [
     "pyyaml>=6.0.3",
     # The lint and the format. One version, because another formats differently.
     "ruff==0.17.3",
+    # Makes up the numbers that the tests of the site's wording are run on.
+    "hypothesis>=6.170.13",
+    # Notes each line and branch the agents' tests ran. Nothing requires a share.
+    "coverage>=7.17.0",
 ]
 
 [tool.uv]
@@ -28,6 +32,23 @@ package = false
 # 14 days old when it is checked. Move it forward on purpose, then check the new
 # lock file before installing from it (README.md says how).
 exclude-newer = "2026-10-29T00:00:00Z"
+
+[tool.coverage.run]
+# Which lines and which sides of each branch the agents' tests ran, of the
+# generator and of the workflow's scripts and of nothing else: the tests
+# themselves, .venv, and dist/ are not measured. The tests build the pages by
+# starting the generator as a command, so each Python a test starts is
+# followed into as well, and writes its own file of what it ran:
+# `coverage combine` gathers them before a report.
+branch = true
+source = ["sitebuild", "sitework"]
+patch = ["subprocess"]
+
+[tool.coverage.report]
+# The report names the lines and branches no test ran. No share is required
+# here or anywhere: a line that ran is not a line that was checked, and a
+# test written to raise a number is the kind AGENTS.md refuses (#49).
+show_missing = true
 
 [tool.ruff]
 # The line length and the rule families are RisingRepos's, so that the two
