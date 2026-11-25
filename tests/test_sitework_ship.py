@@ -500,6 +500,36 @@ class MainAndTheIssue(ShipTest):
         self.assertNotMerged(fails="no longer carries approved")
 
 
+class AGroup(ShipTest):
+    """#28 joined #27's group, so its work is in #27's pull request, and the merge holds it to what holds #27: it
+    is open, and the owner has not withdrawn its approval. A partner that fails is sent back, and its part taken
+    out of the branch, before the merge (25 November 2026)."""
+
+    def setUp(self):
+        super().setUp()
+        self.answers[COMMENTS] = [said("Site workflow: sorted\n\nWith: #28", number=1), review("pass", HEAD, number=2)]
+        self.answers["gh api repos/{owner}/{repo}/issues/28/comments"] = [said("Site workflow: joined\n\nLead: #27")]
+        self.answers["gh issue view 28"] = {
+            **self.answers["gh issue view 27"],
+            "number": 28,
+            "url": "https://github.com/the-owner/the-site/issues/28",
+        }
+
+    def test_a_partner_that_lost_approved_fails_the_merge_and_says_to_send_it_back(self):
+        self.answers["gh issue view 28"]["labels"] = [{"name": "site-idea"}, {"name": "in-progress"}]
+        printed = self.assertNotMerged(fails="#28 no longer carries approved")
+        self.assertIn("sitework release 28", printed)
+
+    def test_a_partner_that_was_closed_fails_the_merge(self):
+        self.answers["gh issue view 28"]["state"] = "CLOSED"
+        self.assertNotMerged(fails="#28 is closed")
+
+    def test_an_allowed_line_on_a_partner_lets_the_group_touch_that_path(self):
+        self.answers["gh api repos/{owner}/{repo}/issues/28/comments"].append(said("Allowed: pyproject.toml", number=2))
+        self.run_command("27")
+        self.assertTrue(self.shell.first(GUARD).endswith(" --allow pyproject.toml"), self.shell.first(GUARD))
+
+
 class TheGuard(ShipTest):
     def test_guard_reads_the_change_from_mains_copy_of_the_scripts_in_a_temporary_folder(self):
         self.run_command("27")

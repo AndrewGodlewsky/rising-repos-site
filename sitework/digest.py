@@ -28,11 +28,12 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from sitework import rules, shell
-from sitework.issue import REPOSITORY
+from sitework.issue import REPOSITORY, comments, lead_of, named_with, newest, owner
 
-STAGES = (*rules.STAGES, "look back")
-"""The stages a run marks, in the order it meets them: each one an issue can stop at, and the look back, which
-comes after the last of them."""
+STAGES = ("sort", *rules.STAGES, "look back")
+"""The stages a run marks, in the order it meets them: the sort, which grades the ideas that wait and chooses
+the lead's partners (25 November 2026), each stage an issue can stop at, and the look back, which comes after
+the last of them."""
 
 PICK_UP = "pick up"
 """What the first record holds before its first stage: the choice of the issue, and the claim on it."""
@@ -438,8 +439,10 @@ def lasted(run: Run) -> str:
     return f"{minutes // 60}h {minutes % 60:02}m"
 
 
-def render(run: Run, issue: int | None = None, hours: float | None = None) -> str:
-    """The digest of a run, as Markdown."""
+def render(run: Run, issue: int | None = None, hours: float | None = None, group: list[int] = ()) -> str:
+    """The digest of a run, as Markdown. `group` is the lead's partners, which the run worked with it: the
+    figures name them, and say what each idea cost, since the owner had ideas worked together to spend fewer
+    tokens on each (25 November 2026)."""
     tokens = {stage: [*kinds, sum(kinds)] for stage, kinds in run.tokens.items()}
     total = [sum(column) for column in zip(*tokens.values(), strict=True)] if tokens else [0] * 5
     stops = [call for call in run.calls if STOP.search(call.command)]
@@ -453,8 +456,9 @@ def render(run: Run, issue: int | None = None, hours: float | None = None) -> st
 
     span = f", from {min(run.times):%Y-%m-%d %H:%M} to {max(run.times):%Y-%m-%d %H:%M} UTC" if run.times else ""
     records = "1 record" if run.records == 1 else f"{run.records} records"
+    named = ", ".join(f"#{one}" for one in ([issue, *group] if issue else []))
     lines = [
-        f"# Digest of the run on #{issue}" if issue else "# Digest of a run",
+        f"# Digest of the run on {named}" if issue else "# Digest of a run",
         "",
         f"Made from {records}: {run.messages:,} messages and {len(run.calls):,} tool calls{span}.",
         "",
@@ -537,8 +541,9 @@ def render(run: Run, issue: int | None = None, hours: float | None = None) -> st
         waits_for = "data" if "--data" in STOP.search(call.command)[1].split() else "the owner"
         lines += [f"- in {call.stage}, at {call.at:%Y-%m-%d %H:%M} UTC, for {waits_for}."]
     lines += [] if stops else ["None."]
+    ideas = [issue, *group] if issue else []
     figures = [
-        f"#{issue}" if issue else "-",
+        ", ".join(f"#{one}" for one in ideas) or "-",
         all_of("shape", "build"),
         all_of("review"),
         all_of("look back"),
@@ -548,10 +553,26 @@ def render(run: Run, issue: int | None = None, hours: float | None = None) -> st
     ]
     lines += ["", "## Figures", "", FIGURES_HEADING, FIGURES_RULE, "| " + " | ".join(figures) + " |", ""]
     lines += ["A figure in tokens is the sum of the four kinds. Every stage includes the pick up."]
+    if len(ideas) > 1:
+        lines += ["", f"The run worked {len(ideas)} ideas: about {total[-1] // len(ideas):,} tokens each."]
     if run.times:
         # The hours from approval to close hold the wait for a run to begin, which was 36 of #27's 37.3 (#56).
         lines += ["", f"The run itself took {lasted(run)}, from the first message of its records to the last."]
     return "\n".join(lines)
+
+
+def worked_with(lead: int) -> list[int]:
+    """The ideas the lead's run carried with it to the end: each its sort named whose newest comment of the
+    workflow's still names this lead, and says it joined, stopped with the lead, or shipped with it. One sent
+    back, or stopped alone at Shape, was not carried through, and counting it would make each idea look cheaper
+    than it was, which is the figure the owner judges the groups by (25 November 2026)."""
+    asker = owner()
+    found = []
+    for number in named_with(comments(lead, asker)):
+        last = newest(comments(number, asker))
+        if lead_of(last) == f"#{lead}" and rules.kind_of(last["body"]) in ("joined", "stopped", "shipped"):
+            found.append(number)
+    return found
 
 
 def digest(records: list[Path], issue: int | None = None) -> str:
@@ -612,15 +633,16 @@ def main(command: str, arguments: list[str]) -> int:
     except (OSError, json.JSONDecodeError) as error:
         print(f"digest: a record could not be read: {error}", file=sys.stderr)
         return 1
-    hours, unanswered = None, None
+    hours, group, unanswered = None, [], None
     if options.issue:
         try:
             hours = hours_to_close(options.issue)
+            group = worked_with(options.issue)
         except shell.Failed as error:
             unanswered = error
     if isinstance(sys.stdout, io.TextIOWrapper):
         sys.stdout.reconfigure(encoding="utf-8")  # a file's name may hold a letter the console's encoding lacks
-    print(render(run, options.issue, hours))
+    print(render(run, options.issue, hours, group))
     if unanswered:
         print(
             f"digest: GitHub did not give the issue's timeline, so the hours are left out.\n{unanswered}",

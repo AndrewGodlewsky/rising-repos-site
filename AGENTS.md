@@ -32,7 +32,9 @@ This repository runs its own feature work, and its own issues are the tracker.
   goes from its issue to the live site, stage by stage, with nobody driving
   each step. Follow it for any issue that carries both labels.
 - A feature is delivered on a branch named `agent/<issue>-<slug>`, through a
-  PR. Its commits and its PR cite the issue here: `Refs #<n>`.
+  PR. Its commits and its PR cite the issue here: `Refs #<n>`. Ideas worked
+  together are delivered on the branch of the one the run took up, the lead,
+  and their commits and PR cite each of them.
 - A feature leaves alone what judges it: a workflow, a dependency, a limit,
   the standards, the owner's tests, and the feature workflow's own scripts and
   documents. That document lists them under "The guarded paths". A change to

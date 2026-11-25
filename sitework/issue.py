@@ -14,6 +14,7 @@ import argparse
 import json
 import re
 import sys
+from collections.abc import Callable
 from pathlib import Path
 
 from sitework import rules, shell
@@ -61,6 +62,55 @@ def comments(number: int, owner: str) -> list[dict]:
 def of_kind(comments: list[dict], kind: str) -> list[dict]:
     """The workflow's comments of one kind among the owner's account's, oldest first."""
     return [comment for comment in comments if rules.kind_of(comment["body"]) == kind]
+
+
+def newest(said: list[dict]) -> dict | None:
+    """The newest of the workflow's comments among the owner's account's, past any grade. Each run grades the
+    ideas that wait, and a grade is no work begun on an idea (25 November 2026), so how far an issue came is read
+    from the workflow's other comments."""
+    done = [comment for comment in said if rules.kind_of(comment["body"]) not in (None, rules.GRADED)]
+    return done[-1] if done else None
+
+
+def grade(said: list[dict]) -> dict | None:
+    """The idea's newest grade, by the lines of it a script reads: its complexity, its effort, the part of the
+    site a reader sees it in, and the code it touches. None when it has no grade."""
+    graded = of_kind(said, rules.GRADED)
+    if not graded:
+        return None
+    return {name.lower(): value(graded[-1]["body"], name) for name in ("Complexity", "Effort", "Area", "Code")}
+
+
+def named_with(said: list[dict]) -> list[int]:
+    """The ideas the newest `sorted` comment names on its `With:` line, which a run's sort wrote on the idea the
+    run claimed. None of them for `With: none`, or when no sort has been written."""
+    sorts = of_kind(said, "sorted")
+    named = value(sorts[-1]["body"], rules.WITH) if sorts else None
+    return [int(found) for found in re.findall(r"#(\d+)", named or "")]
+
+
+def lead_of(comment: dict | None) -> str | None:
+    """The lead a comment of the workflow's names, as `#89`, or None. The scripts write `Lead: #89` as the line
+    right after the first, on the comments that tie an idea to a group, and only that line counts: the rest of a
+    comment is an agent's own words, and a line of them that began `Lead:` must not make a lead look like
+    another's partner, which no run would take up again."""
+    lines = comment["body"].strip().splitlines() if comment else []
+    line = lines[2].strip() if len(lines) > 2 else ""
+    start = f"{rules.LEAD}: "
+    return line[len(start) :].strip() if line.startswith(start) else None
+
+
+def partners(lead: int, comments: Callable[[int], list[dict]]) -> list[int]:
+    """The ideas in the lead's group now: each that the lead's sort named, whose own newest comment of the
+    workflow's is `joined`, or `stopped` with its lead, and names this lead. One sent back, stopped alone, or
+    shipped has left. `comments` gives the comments the owner's account wrote on an issue, so a stranger's
+    `sorted` comment names no partner, as a stranger's comment counts for nothing anywhere here."""
+    found = []
+    for number in named_with(comments(lead)):
+        last = newest(comments(number))
+        if last and rules.kind_of(last["body"]) in ("joined", "stopped") and lead_of(last) == f"#{lead}":
+            found.append(number)
+    return found
 
 
 def says_it_is_the_workflows(body: str) -> bool:
@@ -264,13 +314,33 @@ def comment(options: argparse.Namespace, text: str) -> int:
     return 0
 
 
+def set_status(number: int | str, name: str) -> str | None:
+    """Set the issue's status, which decides the tab GitHub shows it under, and give the one line to print when
+    GitHub refused. None when it was set.
+
+    The owner reads what a run is at work on from GitHub's Active tab, which shows the statuses Todo, In
+    progress, and In review (25 November 2026). Assigning an issue moves it from Backlog to Todo by itself, and
+    taking the owner off it moves nothing back, so the scripts set the status they mean. The statuses are a
+    preview of GitHub's, and a status is a thing to see and no condition of anything, so a refusal is told and
+    no command fails for it."""
+    try:
+        shell.gh("api", "--method", "PATCH", f"{REPOSITORY}/issues/{number}", "-f", f"status={name}")
+    except shell.Failed as error:
+        return f"#{number} was not set to {name}, since GitHub refused it: {one_line(error)}"
+    return None
+
+
 def set_aside(number: str, label: str) -> None:
-    """Mark an issue that a run has stopped work on: `label` in the place of `in-progress`, and the issue off
-    the list of those assigned to the owner, which holds what a run is at work on (`pickup.claim` puts an issue
-    on it). The label says what the issue waits for."""
+    """Mark an issue that a run has stopped work on: `label` in the place of `in-progress`, the issue off the
+    list of those assigned to the owner, which holds what a run is at work on (`pickup.claim` puts an issue on
+    it), and the issue back in the backlog, so that GitHub shows it under Open and not under Active. The label
+    says what the issue waits for."""
     shell.gh(
         "issue", "edit", number, "--remove-label", rules.IN_PROGRESS, "--add-label", label, "--remove-assignee", owner()
     )
+    refused = set_status(number, rules.BACKLOG)
+    if refused:
+        print(refused)
 
 
 def stop(options: argparse.Namespace, text: str) -> int:
@@ -283,8 +353,21 @@ def stop(options: argparse.Namespace, text: str) -> int:
     An issue that waits on data is taken up again when its field has arrived, and a field has arrived when its
     name is a key anywhere in the daily schema and the newest board day's file. A name that is there already,
     as `description` is, would have arrived before the issue ever waited: every run would take the issue up, find
-    nothing new, and stop it again. So such a name is refused here, before anything on GitHub changes."""
+    nothing new, and stop it again. So such a name is refused here, before anything on GitHub changes.
+
+    A partner is stopped alone only at Shape, before any code is written (25 November 2026). After Shape its code
+    is on its lead's branch, so stopped alone it would ship with the lead, stay open, and be worked again when it
+    was answered. It is sent back with `release` instead, which takes its part out of the branch as well."""
     number = str(options.issue)
+    if options.stage not in (None, "shape"):
+        last = newest(comments(options.issue, owner()))
+        if lead_of(last) and rules.kind_of(last["body"]) == "joined":
+            print(
+                f"#{number} is a partner of {lead_of(last)}, and its code is on that branch by now, so it is not "
+                f"stopped alone. Send it back with `sitework release {number}` and take its part out of the branch. "
+                "Nothing was changed."
+            )
+            return 1
     if options.data is not None:
         if arrived(options.field):
             print(
@@ -296,10 +379,46 @@ def stop(options: argparse.Namespace, text: str) -> int:
         waiting = f"Waiting on RisingRepos#{options.data}.\nField: {options.field}\n\n{text}"
         print(post(options.issue, "waiting on data", waiting))
         set_aside(number, rules.BLOCKED_ON_DATA)
+        stop_group(options.issue, None)
         return 0
     print(post(options.issue, "stopped", f"Stage: {options.stage}\n\n{text}"))
     set_aside(number, rules.NEEDS_OWNER)
+    stop_group(options.issue, options.stage)
     return 0
+
+
+def stop_group(lead: int, stage: str | None) -> None:
+    """What a stop of the lead does to its partners (25 November 2026). A stop at Shape, or for data, which only
+    Shape finds wanting, comes before any code is written, so each partner is sent back to wait for a run of its
+    own. A stop at a later stage stops the group: each partner waits for the owner's answer on the lead, and the
+    run that takes the lead up again takes the partner back with it. A partner given to `stop` has no partners,
+    and is stopped alone, which takes it out of its group."""
+    for partner in partners(lead, lambda number: comments(number, owner())):
+        if stage in (None, "shape"):
+            why = f"#{lead} stopped before any code was written, so this idea waits for a run of its own."
+            for line in send_back(partner, lead, why):
+                print(line)
+            continue
+        stopped = f"{rules.LEAD}: #{lead}\nStage: {stage}\n\nThe question is on #{lead}, and this idea goes on with it."
+        print(post(partner, "stopped", stopped))
+        set_aside(str(partner), rules.NEEDS_OWNER)
+
+
+def send_back(number: int, lead: int, text: str) -> list[str]:
+    """Send a partner back from its lead's group to wait for a run of its own, and give the lines to print: a
+    `released` comment that names the lead, and the issue no longer in progress, no longer the owner's, and back
+    in the backlog, so that GitHub shows it under Open with its grade.
+
+    The labels change before the comment is posted. Were the comment first and the labels refused, the partner
+    would be left in progress with a newest comment that says it left the group, which no run takes up and which
+    a second `release` would refuse. This way a refusal leaves it in the group, and the command can be run again."""
+    marks = labels(read(number))
+    removed = [
+        part for mark in (rules.IN_PROGRESS, rules.NEEDS_OWNER) if mark in marks for part in ("--remove-label", mark)
+    ]
+    shell.gh("issue", "edit", str(number), *removed, "--remove-assignee", owner())
+    done = [line for line in [set_status(number, rules.BACKLOG)] if line]
+    return [post(number, "released", f"{rules.LEAD}: #{lead}\n\n{text}"), *done]
 
 
 def close(options: argparse.Namespace, text: str) -> int:
@@ -312,8 +431,25 @@ def close(options: argparse.Namespace, text: str) -> int:
 
     The local branch goes after the one on GitHub, and only as `delete_local` allows. A local branch that is left
     is one printed line and still a close that exits 0: a run that read it as a failure would run the command
-    again, and post the note a second time."""
+    again, and post the note a second time.
+
+    A lead's partners are closed before the lead, each with a `shipped` comment that names the lead and the merge
+    (25 November 2026). A close cut short among them leaves the lead open and in progress, so the next run takes
+    it up and closes again. A partner whose note was posted is not posted on twice, and one that is still open
+    after it, since GitHub refused the close, is closed now. A partner given to `close` is refused: it ships with
+    its lead."""
     number = str(options.issue)
+    said_on = {}
+
+    def said(issue: int) -> list[dict]:
+        if issue not in said_on:
+            said_on[issue] = comments(issue, owner())
+        return said_on[issue]
+
+    lead = lead_of(newest(said(options.issue)))
+    if lead:
+        print(f"#{number} ships with its lead, {lead}, and is closed with it: close {lead}. Nothing was changed.")
+        return 1
     stands = standing(options.issue)
     if not stands:
         if merged(options.issue) is None:
@@ -325,6 +461,22 @@ def close(options: argparse.Namespace, text: str) -> int:
             )
         return 1
     pull = stands[0]
+    merge = (pull.get("mergeCommit") or {}).get("oid", "")
+    for partner in named_with(said(options.issue)):
+        last = newest(said(partner))
+        if lead_of(last) != f"#{number}":
+            continue
+        kind = rules.kind_of(last["body"])
+        if kind in ("joined", "stopped"):
+            shipped = (
+                f"{rules.LEAD}: #{number}\n\nShipped with #{number} in pull request #{pull['number']}, merged as "
+                f"{merge[:7]}. The note on #{number} says what changed."
+            )
+            print(post(partner, "shipped", shipped))
+        elif kind != "shipped" or read(partner)["state"] != "OPEN":
+            continue
+        shell.gh("issue", "close", str(partner))
+        shell.gh("issue", "edit", str(partner), "--remove-label", rules.IN_PROGRESS)
     print(post(options.issue, "shipped", text))
     shell.gh("issue", "close", number)
     shell.gh("issue", "edit", number, "--remove-label", rules.IN_PROGRESS)
@@ -347,7 +499,7 @@ def main(command: str, arguments: list[str]) -> int:
     parser = argparse.ArgumentParser(prog=f"python -m sitework {command}", description=what[command])
     parser.add_argument("issue", type=int, help="the issue's number")
     if command == "comment":
-        parser.add_argument("kind", choices=rules.KINDS, help="which of the workflow's comments this is")
+        parser.add_argument("kind", choices=rules.COMMENTED, help="which of the workflow's comments this is")
     if command == "stop":
         why = parser.add_mutually_exclusive_group(required=True)
         why.add_argument("--stage", type=str.lower, choices=rules.STAGES, help="the stage that stops for the owner")

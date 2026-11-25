@@ -60,6 +60,27 @@ class TheDocuments(unittest.TestCase):
         self.assertLess(form.index("\n## Criteria\n"), form.index("\n## How each is proven\n"))
         self.assertIn("| # | Proof |", form)
 
+    def test_the_document_a_run_follows_names_the_sorts_commands(self):
+        # The sort grades the ideas that wait and records the lead's group, and Shape or a later stage sends a
+        # partner back (25 November 2026).
+        named = set(NAMED.findall((WORKFLOW / "README.md").read_text(encoding="utf-8")))
+        for command in ("queue", "sort", "release"):
+            with self.subTest(command=command):
+                self.assertIn(command, named)
+
+    def test_the_sorts_brief_has_the_lines_the_scripts_read(self):
+        brief = (WORKFLOW / "sort.md").read_text(encoding="utf-8")
+        for line in ("Complexity: ", "Effort: ", "Area: ", "Code: "):
+            with self.subTest(line=line):
+                self.assertRegex(brief, rf"(?m)^{line}")
+
+    def test_the_statuses_a_run_is_told_of_are_the_ones_the_scripts_set(self):
+        text = (WORKFLOW / "README.md").read_text(encoding="utf-8")
+        labels = text[text.index("## The labels") :]
+        for status in (rules.BACKLOG, rules.WORKING):
+            with self.subTest(status=status):
+                self.assertIn(f"`{status}`", labels)
+
     def test_a_run_is_told_the_first_line_that_marks_its_own_comments(self):
         self.assertIn(f"`{rules.FIRST_LINE.strip()}`", (WORKFLOW / "README.md").read_text(encoding="utf-8"))
 

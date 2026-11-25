@@ -30,6 +30,10 @@ HELD = f"git merge-base --is-ancestor {BRANCH} origin/main"
 DELETE = f"git branch -D {BRANCH}"
 """The feature's branch, and the commands that ask whether GitHub has it, whether this repository has it, and
 whether origin/main holds its every commit, and that delete it here."""
+BACKLOG = "gh api --method PATCH repos/{owner}/{repo}/issues/27 -f status=Backlog"
+"""The command that sets #27's status to Backlog, which GitHub shows under Open."""
+STATUS = "gh api --method PATCH repos/{owner}/{repo}/issues/%d -f status=Backlog"
+COMMENTS = "gh api repos/{owner}/{repo}/issues/%d/comments"
 
 
 class Shell:
@@ -117,6 +121,7 @@ class IssueTest(unittest.TestCase):
             "gh issue comment 27": f"{ADDRESS}#issuecomment-7099",
             "gh issue edit 27": ADDRESS,
             "gh issue close 27": "",
+            "gh api --method PATCH repos/{owner}/{repo}/issues/27 -f status=": {"number": 27},
             "gh pr list": [pull(40, BRANCH)],
             ON_GITHUB: "",
             LOCAL: "",
@@ -183,10 +188,27 @@ class Comment(IssueTest):
         self.assertEqual(code, 2)
         self.assertEqual(self.shell.ran, [])
 
+    def test_a_grade_is_posted_as_the_workflows_comment_of_kind_graded(self):
+        code, _ = self.run_command("comment", "27", "graded")
+        self.assertEqual(code, 0)
+        self.assertEqual(
+            self.shell.stdin["gh issue comment 27 --body-file -"], "Site workflow: graded\n\nWhat the comment says.\n"
+        )
+
+    def test_a_sorted_joined_or_released_comment_cannot_be_posted_by_hand(self):
+        # Each of these goes with a change of labels that only `sort` and `release` make, so a comment of one
+        # posted alone would say an idea is in a group, or out of one, when its labels say otherwise.
+        for kind in ("sorted", "joined", "released"):
+            with self.subTest(kind=kind):
+                code, _ = self.run_command("comment", "27", kind)
+                self.assertEqual(code, 2)
+                self.assertEqual(self.shell.ran, [])
+
 
 class Stop(IssueTest):
-    def test_a_stop_posts_the_stopped_comment_swaps_in_progress_for_needs_owner_and_unassigns(self):
-        # A stopped issue is no longer one a run is at work on, so it leaves the owner's list of assigned issues.
+    def test_a_stop_posts_stopped_swaps_in_progress_for_needs_owner_unassigns_and_sets_backlog(self):
+        # A stopped issue is no longer one a run is at work on, so it leaves the owner's list of assigned issues,
+        # and goes back to Backlog, which GitHub shows under Open and not under Active.
         code, _ = self.run_command("stop", "27", "--stage", "check")
         self.assertEqual(code, 0)
         self.assertEqual(
@@ -194,6 +216,7 @@ class Stop(IssueTest):
             [
                 "gh issue comment 27 --body-file -",
                 "gh issue edit 27 --remove-label in-progress --add-label needs-owner --remove-assignee the-owner",
+                BACKLOG,
             ],
         )
         self.assertEqual(
@@ -209,6 +232,7 @@ class Stop(IssueTest):
             [
                 "gh issue comment 27 --body-file -",
                 "gh issue edit 27 --remove-label in-progress --add-label blocked-on-data --remove-assignee the-owner",
+                BACKLOG,
             ],
         )
         body = self.shell.stdin["gh issue comment 27 --body-file -"]
@@ -268,6 +292,162 @@ class Stop(IssueTest):
         code, _ = self.run_command("stop", "27", "--stage", "lunch")
         self.assertEqual(code, 2)
         self.assertEqual(self.shell.ran, [])
+
+
+class Partners(IssueTest):
+    """A group is read from its lead's newest `sorted` comment, and an idea stays in it while its own newest
+    comment of the workflow's, past any grade, is `joined` or `stopped` with the lead's `Lead:` line (25 November
+    2026). Only what the owner's account wrote counts, as everywhere here."""
+
+    def comments_on(self, number: int, *comments: dict) -> None:
+        self.answers[f"gh api repos/{{owner}}/{{repo}}/issues/{number}/comments"] = list(comments)
+
+    def partners(self) -> list[int]:
+        return issue.partners(89, lambda number: issue.comments(number, OWNER))
+
+    def test_a_partner_is_one_the_leads_sorted_comment_names_and_that_joined_it(self):
+        self.comments_on(89, said("Site workflow: sorted\n\nWith: #90, #91\n\nBoth change the row's gain."))
+        self.comments_on(90, said("Site workflow: joined\n\nLead: #89"))
+        self.comments_on(91, said("Site workflow: joined\n\nLead: #77"))
+        self.assertEqual(self.partners(), [90])
+
+    def test_a_partner_that_was_released_is_no_longer_one(self):
+        self.comments_on(89, said("Site workflow: sorted\n\nWith: #90"))
+        self.comments_on(
+            90,
+            said("Site workflow: joined\n\nLead: #89", number=1),
+            said("Site workflow: released\n\nLead: #89\n\nIt fits a run of its own.", number=2),
+        )
+        self.assertEqual(self.partners(), [])
+
+
+class AGroup(IssueTest):
+    """#28 joined #27's group. A stop of the lead stops the group, or at Shape, where no code is written yet,
+    sends the partner back to wait for a run of its own. A close of the lead closes the partner first, so that a
+    close cut short leaves the lead in progress for the next run to finish (25 November 2026)."""
+
+    PARTNER = "Site workflow: joined\n\nLead: #27"
+
+    def setUp(self):
+        super().setUp()
+        self.answers[COMMENTS % 27] = [said("Site workflow: sorted\n\nWith: #28")]
+        self.answers[COMMENTS % 28] = [said(self.PARTNER)]
+        self.answers["gh issue view 28"] = {
+            "labels": [{"name": "site-idea"}, {"name": "in-progress"}],
+            "number": 28,
+            "state": "OPEN",
+        }
+        for command in ("comment", "edit", "close"):
+            self.answers[f"gh issue {command} 28"] = ""
+        self.answers["gh api --method PATCH repos/{owner}/{repo}/issues/28 -f status="] = {"number": 28}
+
+    def partner_changes(self) -> list[str]:
+        return [line for line in self.shell.changes() if " 28" in line or "/28 " in line]
+
+    def test_a_stop_of_the_lead_stops_each_partner_with_it_and_names_the_lead(self):
+        code, _ = self.run_command("stop", "27", "--stage", "check")
+        self.assertEqual(code, 0)
+        self.assertEqual(
+            self.partner_changes(),
+            [
+                "gh issue comment 28 --body-file -",
+                "gh issue edit 28 --remove-label in-progress --add-label needs-owner --remove-assignee the-owner",
+                STATUS % 28,
+            ],
+        )
+        body = self.shell.stdin["gh issue comment 28 --body-file -"]
+        self.assertTrue(body.startswith("Site workflow: stopped\n\nLead: #27\nStage: check\n"), body)
+
+    def test_a_stop_of_the_lead_at_shape_sends_each_partner_back_to_wait(self):
+        # At Shape no code is written, so the partner need not wait for the lead's answer.
+        self.run_command("stop", "27", "--stage", "shape")
+        self.assertEqual(
+            self.partner_changes(),
+            [
+                "gh issue edit 28 --remove-label in-progress --remove-assignee the-owner",
+                STATUS % 28,
+                "gh issue comment 28 --body-file -",
+            ],
+        )
+        body = self.shell.stdin["gh issue comment 28 --body-file -"]
+        self.assertTrue(body.startswith("Site workflow: released\n\nLead: #27\n"), body)
+
+    def test_a_stop_of_the_lead_for_data_sends_each_partner_back_to_wait(self):
+        # Only Shape finds the data wanting, so this too comes before any code is written.
+        self.run_command("stop", "27", "--data", "215", "--field", "topics")
+        body = self.shell.stdin["gh issue comment 28 --body-file -"]
+        self.assertTrue(body.startswith("Site workflow: released\n\nLead: #27\n"), body)
+
+    def test_a_stop_of_a_partner_stops_it_alone_and_it_leaves_the_group(self):
+        code, _ = self.run_command("stop", "28", "--stage", "shape")
+        self.assertEqual(code, 0)
+        self.assertEqual([line for line in self.shell.changes() if " 27" in line or "/27 " in line], [])
+        body = self.shell.stdin["gh issue comment 28 --body-file -"]
+        self.assertNotIn("Lead:", body)
+
+    def test_a_close_of_the_lead_closes_each_partner_first_with_a_shipped_comment_that_names_the_lead(self):
+        code, _ = self.run_command("close", "27")
+        self.assertEqual(code, 0)
+        self.assertEqual(
+            self.shell.changes()[:4],
+            [
+                "gh issue comment 28 --body-file -",
+                "gh issue close 28",
+                "gh issue edit 28 --remove-label in-progress",
+                "gh issue comment 27 --body-file -",
+            ],
+        )
+        body = self.shell.stdin["gh issue comment 28 --body-file -"]
+        self.assertTrue(body.startswith("Site workflow: shipped\n\nLead: #27\n"), body)
+        self.assertIn("#40", body)
+
+    def test_a_close_given_a_partner_is_refused_and_names_the_lead(self):
+        code, printed = self.run_command("close", "28")
+        self.assertEqual(code, 1)
+        self.assertEqual(self.shell.changes(), [])
+        self.assertIn("#27", printed)
+
+    def test_a_close_that_stopped_after_its_partners_finishes_without_posting_twice(self):
+        self.answers[COMMENTS % 28] = [
+            said(self.PARTNER, number=1),
+            said("Site workflow: shipped\n\nLead: #27\n\nShipped with #27.", number=2),
+        ]
+        self.answers["gh issue view 28"]["state"] = "CLOSED"
+        self.run_command("close", "27")
+        self.assertEqual(self.partner_changes(), [])
+
+    def test_a_close_run_again_closes_a_partner_whose_shipped_note_was_posted_and_that_is_still_open(self):
+        # GitHub refused the close after the note, so the partner would stay in progress with no run to find it.
+        self.answers[COMMENTS % 28] = [
+            said(self.PARTNER, number=1),
+            said("Site workflow: shipped\n\nLead: #27\n\nShipped with #27.", number=2),
+        ]
+        self.run_command("close", "27")
+        self.assertEqual(self.partner_changes(), ["gh issue close 28", "gh issue edit 28 --remove-label in-progress"])
+
+    def test_a_stop_of_a_partner_after_shape_is_refused_and_says_to_send_it_back(self):
+        # Its code is on the lead's branch by then, so stopped alone it would ship with the lead and be worked again.
+        code, printed = self.run_command("stop", "28", "--stage", "build")
+        self.assertEqual(code, 1)
+        self.assertEqual(self.shell.changes(), [])
+        self.assertIn("sitework release 28", printed)
+
+
+class Status(IssueTest):
+    """GitHub's status of an issue decides the tab it shows under: Backlog under Open, and In progress under
+    Active. Taking the owner off an issue does not move it back from Active, so a stop sets the status itself.
+    The statuses are a preview of GitHub's, so one GitHub refuses is told and fails nothing (25 November 2026)."""
+
+    def test_a_status_github_refuses_is_one_printed_line_and_the_stop_still_exits_0(self):
+        self.answers[BACKLOG] = shell.Failed("gh api: exit 1\nHTTP 422: statuses are not available")
+        code, printed = self.run_command("stop", "27", "--stage", "build")
+        self.assertEqual(code, 0)
+        self.assertIn(
+            "gh issue edit 27 --remove-label in-progress --add-label needs-owner --remove-assignee the-owner",
+            self.shell.ran,
+        )
+        self.assertIn("#27", printed)
+        self.assertIn("Backlog", printed)
 
 
 class Close(IssueTest):

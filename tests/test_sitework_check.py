@@ -101,6 +101,17 @@ class TheCheck(unittest.TestCase):
         )
         self.assertEqual(self.comments.mock_calls, [mock.call(12, "the-owner")])
 
+    def test_with_an_issue_the_guard_lets_through_what_the_owner_allowed_on_a_partner_of_its_group(self):
+        # The ship script reads what the owner allowed on each idea of the group (25 November 2026). A check that
+        # read the lead's alone would fail on the machine a change the merge would let by, and stop the run.
+        on = {
+            12: [{"body": "Site workflow: sorted\n\nWith: #13"}],
+            13: [{"body": "Site workflow: joined\n\nLead: #12"}, {"body": "Allowed: uv.lock"}],
+        }
+        self.comments.side_effect = lambda number, owner: on[number]
+        self.check("--issue", "12")
+        self.assertIn((*GUARD, "--allow", "uv.lock"), self.ran)
+
     def test_without_an_issue_no_comment_is_read_and_the_guard_allows_nothing(self):
         self.said = [{"body": "Allowed: uv.lock"}]
         for arguments in ([], ["--suite"]):

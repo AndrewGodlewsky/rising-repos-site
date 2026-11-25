@@ -25,10 +25,43 @@ of its own so that an issue whose mend failed stops at `mend`, and so that the d
 apart from what the feature cost."""
 
 FIRST_LINE = "Site workflow: "
-KINDS = ("picked up", "plan", "review", "stopped", "waiting on data", "shipped", "reverted")
+KINDS = (
+    "picked up",
+    "plan",
+    "review",
+    "stopped",
+    "waiting on data",
+    "shipped",
+    "reverted",
+    "graded",
+    "sorted",
+    "joined",
+    "released",
+)
 """Every comment the workflow writes begins with `Site workflow: ` and one of these. Agents act under the owner's
 account, so the author of a comment does not tell the owner's words from an agent's: a comment by that account
-without this first line is the owner's own."""
+without this first line is the owner's own.
+
+The last four came on 25 November 2026, when the owner asked that each idea be graded and that ideas which change
+the same part of the site be worked in one run. `graded` gives an idea's complexity and effort and why. `sorted`
+names, on the idea a run claimed, the ideas that go with it, `joined` marks each of those, and `released` marks
+one sent back to wait for a run of its own."""
+
+GRADED = "graded"
+"""The kind of the comment that grades an idea. A grade is no work begun on the idea, so a script that asks how
+far an issue came reads past it."""
+
+COMMENTED = tuple(kind for kind in KINDS if kind not in ("sorted", "joined", "released"))
+"""The kinds `sitework comment` posts. The other three go with a change of labels, which `sort` and `release`
+make with them, so that a comment never says an idea is in a group when its labels say otherwise."""
+
+LEAD, WITH = "Lead", "With"
+"""The names of the lines that tie a group together: `With: #90, #91` on the idea a run claimed, or `With: none`,
+and `Lead: #89` on each idea that joined it, was sent back from it, or was stopped with it."""
+
+BACKLOG, WORKING = "Backlog", "In progress"
+"""The statuses the scripts set on an issue, by the names GitHub gives them. GitHub shows an issue in progress
+under its Active tab and one in the backlog under Open (25 November 2026)."""
 
 BRANCH = "agent/{issue}-{slug}"
 """A feature's branch, made from origin/main."""

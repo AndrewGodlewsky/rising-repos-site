@@ -1296,3 +1296,66 @@ reads at its start is a short list of the lessons that have held, which is
 rewritten and never only added to, so that it stays short.
 
 **What it costs** is in the digest of the next run, like any stage's.
+
+## 19. Ideas graded, and worked together (new)
+
+The owner directed this on 25 November 2026, after four runs.
+
+**Why.** A run spends its tokens rereading its own conversation: about 97% of
+the run on #30's 19.6 million were read from the cache (#105). Each run
+starts a fresh agent, which learns the part of the code it changes: Shape
+reads it and reproduces the problem, Build reads it again, the check takes
+six to thirteen minutes, the review reads it a third time, and the deploy,
+the live check, and the look back each come once. Two ideas that change the
+same part of the site, worked one after the other, pay all of that twice.
+Worked in one run, they pay it once. Ideas that touch different parts gain
+nothing, and still go one at a time.
+
+The owner asked as well that every idea carry a grade, its complexity and
+its effort with the reasons, as a comment on its issue, and that the issues
+a run works on show under GitHub's Active tab while it works on them.
+
+**What was chosen.** A stage, the sort, after the pick up and before Shape,
+run by a fresh agent on the cheaper model, as the look back is (#64). It
+grades every idea that waits and has no grade, and names the ideas, if any,
+that go with the one the run claimed, the lead. Two other ways were weighed.
+Shape could have done it, with no new agent, but Shape is already the
+costliest stage, and the ideas not taken would have had no grade. A second
+automation could have graded each idea when it was approved, and `pickup`
+could have grouped them by the files their grades named, with no judgement.
+But that is a second schedule outside the repository to keep, and nearly
+every idea names `site.css`, so a script would group too much or need rules
+that are judgement in all but name.
+
+**How a group is held.** `pickup` stays a script that reads labels, dates,
+and comments, since the schedule runs it every half hour and it must start no
+agent when there is nothing to do. The lead's branch, plan, pull request, and
+review are the group's, and every script after the sort is given the lead's
+number. A `sorted` comment on the lead names its partners, and a `joined`
+comment on each partner names the lead, so that the scripts read the group
+from the issues and keep no record of their own. A grade is no work begun, so
+an idea with a grade still waits. Only the idea approved earliest leads, so
+the owner's order holds.
+
+**The rules of a group.** Its ideas show in the same part of the same page,
+and share a figure, a control, or code, and not only a file. They have the
+same complexity, and none is graded High, since a safe idea held back behind a
+risky one would cost more than the group saves. A group is at most three
+ideas, one pull request a reviewer can read in one sitting.
+
+**When a partner is a problem.** Shape can send a partner back to the queue,
+whole, before any code. After Shape, the run sends back a partner that alone
+holds the group up, by editing the plan, taking its part out of the branch,
+and having the review read the plan again, as a change of scope is handled
+already. The owner wants no stop the run can avoid, so this is no stop. A stop
+at a later stage stops the whole group, and the owner answers on the lead.
+
+**What GitHub shows.** Assigning an issue moves it from Backlog to Todo by
+itself, and taking the owner off moves nothing back, so `pickup` sets a
+claimed issue In progress, and a stop sets it back to Backlog. The statuses
+were a preview of GitHub's when this was built, so a status GitHub refuses
+fails nothing.
+
+**What it costs** is in the digest, which names every idea of a group and
+says what each cost, so that the saving can be read against the runs on #28
+to #30.

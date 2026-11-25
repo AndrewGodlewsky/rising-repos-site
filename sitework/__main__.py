@@ -9,6 +9,9 @@ import sys
 
 COMMANDS = {
     "pickup": ("sitework.pickup", "Choose the issue this run works on, and claim it"),
+    "queue": ("sitework.pickup", "List the approved ideas that wait for a run, with their grades"),
+    "sort": ("sitework.group", "Record which ideas go with the idea a run claimed, and claim them"),
+    "release": ("sitework.group", "Send a partner back from its group to wait for a run of its own"),
     "comment": ("sitework.issue", "Post one of the workflow's comments on an issue, or edit the one that is there"),
     "stop": ("sitework.issue", "Stop an issue for the owner, or for data it waits on"),
     "close": ("sitework.issue", "Post what shipped, close the issue, and remove its branch"),
