@@ -204,8 +204,9 @@ class Comment(IssueTest):
 
 
 class Stop(IssueTest):
-    def test_a_stop_posts_the_stopped_comment_swaps_in_progress_for_needs_owner_and_unassigns(self):
-        # A stopped issue is no longer one a run is at work on, so it leaves the owner's list of assigned issues.
+    def test_a_stop_posts_stopped_swaps_in_progress_for_needs_owner_unassigns_and_sets_backlog(self):
+        # A stopped issue is no longer one a run is at work on, so it leaves the owner's list of assigned issues,
+        # and goes back to Backlog, which GitHub shows under Open and not under Active.
         code, _ = self.run_command("stop", "27", "--stage", "check")
         self.assertEqual(code, 0)
         self.assertEqual(
@@ -322,10 +323,6 @@ class Status(IssueTest):
     """GitHub's status of an issue decides the tab it shows under: Backlog under Open, and In progress under
     Active. Taking the owner off an issue does not move it back from Active, so a stop sets the status itself.
     The statuses are a preview of GitHub's, so one GitHub refuses is told and fails nothing (25 November 2026)."""
-
-    def test_a_stop_sets_the_issue_back_to_backlog_so_it_leaves_the_active_tab(self):
-        self.run_command("stop", "27", "--stage", "build")
-        self.assertIn(BACKLOG, self.shell.changes())
 
     def test_a_status_github_refuses_is_one_printed_line_and_the_stop_still_exits_0(self):
         self.answers[BACKLOG] = shell.Failed("gh api: exit 1\nHTTP 422: statuses are not available")

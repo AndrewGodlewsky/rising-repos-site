@@ -160,10 +160,26 @@ def same(path: str) -> str:
     return os.path.normcase(os.path.normpath(path))
 
 
+def follows_a_lead(said: list[dict]) -> bool:
+    """Whether the issue is another's partner: its newest comment of the workflow's, past any grade, names a lead.
+    A partner's work is on its lead's branch, and it goes on, stops, and ships with its lead, so it is never taken
+    up as a run of its own (25 November 2026)."""
+    last = issue.newest(said)
+    return bool(last and issue.value(last["body"], rules.LEAD))
+
+
 def in_flight(opened: list[dict], comments: Comments) -> Taken | None:
     """The issue that carries `in-progress`, which a run began and did not end. No agent is at work on it, or
-    `pickup` would have ended before it asked, so the run that asks takes it up again."""
-    held = sorted((one for one in opened if rules.IN_PROGRESS in issue.labels(one)), key=lambda one: one["number"])
+    `pickup` would have ended before it asked, so the run that asks takes it up again. A partner in progress is
+    its lead's, and the run takes up the lead."""
+    held = sorted(
+        (
+            one
+            for one in opened
+            if rules.IN_PROGRESS in issue.labels(one) and not follows_a_lead(comments(one["number"]))
+        ),
+        key=lambda one: one["number"],
+    )
     if not held:
         return None
     said = comments(held[0]["number"])
@@ -172,12 +188,15 @@ def in_flight(opened: list[dict], comments: Comments) -> Taken | None:
 
 def answered(opened: list[dict], comments: Comments) -> Taken | None:
     """An approved issue that stopped and can go on: the owner removed `needs-owner` from it, or the field it
-    waited for has arrived (docs/workflow-plan.md, sections 12 and 14)."""
+    waited for has arrived (docs/workflow-plan.md, sections 12 and 14). A partner stopped with its lead is
+    answered on the lead, and goes on with it."""
     for one in sorted(opened, key=lambda one: one["number"]):
         marks = issue.labels(one)
         if rules.APPROVED not in marks:
             continue
         said = comments(one["number"])
+        if follows_a_lead(said):
+            continue
         if rules.BLOCKED_ON_DATA in marks:
             waits = issue.of_kind(said, "waiting on data")
             field = issue.value(waits[-1]["body"], "Field") if waits else None
@@ -186,8 +205,8 @@ def answered(opened: list[dict], comments: Comments) -> Taken | None:
                     one, "data arrived", f"The field {field} is in the daily schema and the newest board.", said
                 )
         elif rules.NEEDS_OWNER not in marks:
-            kinds = [kind for kind in (rules.kind_of(comment["body"]) for comment in said) if kind]
-            if kinds and kinds[-1] == "stopped":
+            last = issue.newest(said)
+            if last and rules.kind_of(last["body"]) == "stopped":
                 return Taken(one, "answered", "It was stopped for the owner, who has removed needs-owner.", said)
     return None
 
@@ -286,14 +305,15 @@ def branch(taken: Taken) -> str:
     return named or rules.BRANCH.format(issue=taken.issue["number"], slug=slug)
 
 
-def facts(taken: Taken, pulls: list[dict]) -> dict:
+def facts(taken: Taken, pulls: list[dict], comments: Comments) -> dict:
     """What the issue, its comments, and its pull requests show of how far the feature came, for the agent to
     find the stage to carry on from.
 
     The newest pull request alone does not say whether a mend was tried, or whether the site was put back.
     `standing` is how many of the feature's merges are on main with no revert after them: one is the feature,
     and two the feature and its mend, so that a run taken up again never mends a second time. `reverted` is
-    whether the feature was merged and nothing of it stands, which is a site that was put back."""
+    whether the feature was merged and nothing of it stands, which is a site that was put back. `partners` are
+    the ideas in the issue's group now, which go on with it (25 November 2026)."""
     plans, reviews = issue.of_kind(taken.said, "plan"), issue.of_kind(taken.said, "review")
     ours = issue.feature(pulls, taken.issue["number"])
     newest = ours[-1] if ours else None
@@ -308,6 +328,7 @@ def facts(taken: Taken, pulls: list[dict]) -> dict:
         "merged": bool(newest and newest["state"] == "MERGED"),
         "standing": len(standing),
         "reverted": not standing and any(pull["state"] == "MERGED" for pull in ours),
+        "partners": issue.partners(taken.issue["number"], comments),
     }
 
 
@@ -318,25 +339,46 @@ def plan_verdict(body: str) -> str | None:
     return next((line for line in after if line), None)
 
 
-def claim(taken: Taken, branch: str, owner: str) -> None:
+def claim(taken: Taken, branch: str, owner: str, comments: Comments) -> None:
     """Claim the issue: it carries `in-progress`, it is assigned to the owner, it no longer waits on data, and a
     `picked up` comment names its branch.
 
     The issues assigned to the owner are then the ones a run is at work on, which is how the owner sees at a
     glance what is being worked on. A stop takes the issue off that list again (`issue.stop`), and a close
-    leaves the closed issue with the owner's name on it. An issue that is assigned already stays so."""
+    leaves the closed issue with the owner's name on it. An issue that is assigned already stays so.
+
+    The issue is set to In progress after the owner is assigned, since assigning moves an issue from Backlog to
+    Todo by itself, and GitHub shows either under its Active tab (25 November 2026). A status GitHub refuses is
+    told on standard error, since standard output holds the JSON the run reads.
+
+    A lead taken up again takes back each partner that was stopped with it: the owner answered on the lead, and
+    the partner's work is on the lead's branch."""
     number = taken.issue["number"]
     labels = [] if rules.IN_PROGRESS in issue.labels(taken.issue) else ["--add-label", rules.IN_PROGRESS]
     if taken.take_up == "data arrived":
         labels += ["--remove-label", rules.BLOCKED_ON_DATA]
     shell.gh("issue", "edit", str(number), *labels, "--add-assignee", owner)
+    told(issue.set_status(number, rules.WORKING))
     issue.post(number, "picked up", f"Branch: {branch}\nTaken up: {taken.take_up}. {taken.why}")
+    for partner in issue.partners(number, comments):
+        if rules.kind_of(issue.newest(comments(partner))["body"]) != "stopped":
+            continue
+        edit = ["--remove-label", rules.NEEDS_OWNER, "--add-label", rules.IN_PROGRESS, "--add-assignee", owner]
+        shell.gh("issue", "edit", str(partner), *edit)
+        told(issue.set_status(partner, rules.WORKING))
+        issue.post(partner, "joined", f"{rules.LEAD}: #{number}\n\nIt goes on with #{number}, whose stop was answered.")
     # The run is written down by the checkout it works in, so that a later look finds it for as long as its agent
     # is at work there, whatever branch the checkout is on by then.
     runs = common(RUNS)
     written = runs.read_text(encoding="utf-8").splitlines() if runs.is_file() else []
     if not any(same(checkout) == same(str(shell.ROOT)) for checkout in written):
         runs.write_text("".join(f"{checkout}\n" for checkout in [*written, str(shell.ROOT)]), encoding="utf-8")
+
+
+def told(refused: str | None) -> None:
+    """Say on standard error what GitHub refused, if anything."""
+    if refused:
+        print(refused, file=sys.stderr)
 
 
 def pickup(claiming: bool) -> tuple[int, dict]:
@@ -369,10 +411,10 @@ def pickup(claiming: bool) -> tuple[int, dict]:
         "branch": branch(taken),
         "take_up": taken.take_up,
         "why": taken.why,
-        "facts": facts(taken, pulls),
+        "facts": facts(taken, pulls, comments),
     }
     if claiming:
-        claim(taken, answer["branch"], owner)
+        claim(taken, answer["branch"], owner, comments)
     return 0, answer
 
 

@@ -27,6 +27,7 @@ TIMELINE = "gh api repos/{owner}/{repo}/issues/%d/timeline"
 SCHEMA = "git show origin/main:site-data/contract/daily.schema.json"
 INDEX = "git show origin/main:site-data/boards/index.json"
 BOARD = "git show origin/main:site-data/boards/days/%s/daily.json"
+STATUS = "gh api --method PATCH repos/{owner}/{repo}/issues/%d -f status=%s"
 
 
 class Shell:
@@ -147,6 +148,7 @@ class PickupTest(unittest.TestCase):
             "gh issue edit": "",
             "gh issue comment": "https://github.com/the-owner/the-site/issues/27#issuecomment-7099",
             "git fetch origin main": "",
+            "gh api --method PATCH": {"number": 0},
         }
         for number in (27, 28, 29, 30):
             self.answers[COMMENTS % number] = []
@@ -396,8 +398,22 @@ class IsSomethingInFlight(PickupTest):
         self.answers["orca worktree ps --json"] = orca("/work/Site-Feature", "done")
         self.run_command("--claim")
         self.assertEqual(
-            self.shell.changes(), ["gh issue edit 28 --add-assignee the-owner", "gh issue comment 28 --body-file -"]
+            self.shell.changes(),
+            [
+                "gh issue edit 28 --add-assignee the-owner",
+                STATUS % (28, "In progress"),
+                "gh issue comment 28 --body-file -",
+            ],
         )
+
+    def test_a_partner_in_progress_is_never_taken_up_as_a_run_of_its_own(self):
+        # #27 joined #28's group, so both are in progress, and the partner has the lower number. Taken up alone, it
+        # would be worked a second time, apart from the branch that holds its work.
+        self.label(27, "site-idea", "approved", "in-progress")
+        self.answers[COMMENTS % 27] = [said("Site workflow: joined\n\nLead: #28")]
+        self.answers["orca worktree ps --json"] = orca("/work/Site-Feature", "done")
+        code, printed = self.run_command()
+        self.assertEqual((code, printed["issue"], printed["take_up"]), (0, 28, "resume"))
 
 
 class HasAStoppedIssueBeenAnswered(PickupTest):
@@ -440,6 +456,42 @@ class HasAStoppedIssueBeenAnswered(PickupTest):
         self.answers[COMMENTS % 29] = [*self.STOPPED, said("Site workflow: picked up\n\nBranch: x", number=5)]
         code, printed = self.run_command()
         self.assertEqual((code, printed["issue"], printed["take_up"]), (0, 27, "new"))
+
+    def test_a_partner_stopped_with_its_lead_is_not_answered_on_its_own(self):
+        # The owner answers on the lead, and the partner goes on with it.
+        self.answers[COMMENTS % 27] = [
+            said("Site workflow: joined\n\nLead: #29", number=1),
+            said("Site workflow: stopped\n\nLead: #29\nStage: check\n\nThe question is on #29.", number=2),
+        ]
+        code, printed = self.run_command()
+        self.assertEqual((code, printed["issue"], printed["take_up"]), (0, 28, "new"))
+
+    def test_a_grade_after_the_stop_does_not_hide_the_answer(self):
+        self.answers[COMMENTS % 29] = [*self.STOPPED, said("Site workflow: graded\n\nComplexity: Low", number=5)]
+        code, printed = self.run_command()
+        self.assertEqual((code, printed["issue"], printed["take_up"]), (0, 29, "answered"))
+
+    def test_taking_an_answered_lead_up_takes_back_the_partners_stopped_with_it(self):
+        # The sort comes after the pick up and before the plan.
+        sort = said("Site workflow: sorted\n\nWith: #30", number=5)
+        self.answers[COMMENTS % 29] = [self.STOPPED[0], sort, *self.STOPPED[1:]]
+        self.answers[COMMENTS % 30] = [
+            said("Site workflow: joined\n\nLead: #29", number=1),
+            said("Site workflow: stopped\n\nLead: #29\nStage: shape\n\nThe question is on #29.", number=2),
+        ]
+        self.label(30, "site-idea", "approved", "needs-owner")
+        code, printed = self.run_command("--claim")
+        self.assertEqual((code, printed["issue"]), (0, 29))
+        self.assertEqual(
+            self.shell.changes()[-3:],
+            [
+                "gh issue edit 30 --remove-label needs-owner --add-label in-progress --add-assignee the-owner",
+                STATUS % (30, "In progress"),
+                "gh issue comment 30 --body-file -",
+            ],
+        )
+        joined = self.shell.stdin["gh issue comment 30 --body-file -"]
+        self.assertTrue(joined.startswith("Site workflow: joined\n\nLead: #29"), joined)
 
     def test_a_stopped_comment_that_a_stranger_wrote_stops_nothing(self):
         self.only(29)
@@ -500,6 +552,7 @@ class HasAStoppedIssueBeenAnswered(PickupTest):
             self.shell.changes(),
             [
                 "gh issue edit 30 --add-label in-progress --remove-label blocked-on-data --add-assignee the-owner",
+                STATUS % (30, "In progress"),
                 "gh issue comment 30 --body-file -",
             ],
         )
@@ -712,8 +765,20 @@ class WhatItPrints(PickupTest):
                 "merged": False,
                 "standing": 0,
                 "reverted": False,
+                "partners": [],
             },
         )
+
+    def test_the_facts_name_the_partners_of_the_group(self):
+        self.label(28, "site-idea", "approved", "in-progress")
+        self.label(27, "site-idea", "approved", "in-progress")
+        self.answers[COMMENTS % 28] = [
+            said("Site workflow: picked up\n\nBranch: agent/28-latest-jump", number=1),
+            said("Site workflow: sorted\n\nWith: #27", number=2),
+        ]
+        self.answers[COMMENTS % 27] = [said("Site workflow: joined\n\nLead: #28")]
+        _, printed = self.run_command()
+        self.assertEqual((printed["issue"], printed["facts"]["partners"]), (28, [27]))
 
     def test_the_facts_of_an_issue_taken_up_again_show_how_far_it_came(self):
         self.only(29)
@@ -737,6 +802,7 @@ class WhatItPrints(PickupTest):
                 "merged": True,
                 "standing": 1,
                 "reverted": False,
+                "partners": [],
             },
         )
 
@@ -772,17 +838,32 @@ class Claim(PickupTest):
         self.assertEqual(code, 0)
         self.assertEqual(self.shell.changes(), [])
 
-    def test_claim_adds_in_progress_assigns_the_issue_to_the_owner_and_posts_picked_up_with_the_branchs_name(self):
-        # The owner's list of assigned issues is how the owner sees what a run is at work on.
+    def test_claim_adds_in_progress_assigns_the_owner_sets_in_progress_and_posts_picked_up_with_the_branch(self):
+        # The owner's list of assigned issues, and GitHub's Active tab, are how the owner sees what a run is at
+        # work on. Assigning moves an issue from Backlog to Todo by itself, so the status is set after the owner.
         code, printed = self.run_command("--claim")
         self.assertEqual(code, 0)
         self.assertEqual(
             self.shell.changes(),
-            ["gh issue edit 27 --add-label in-progress --add-assignee the-owner", "gh issue comment 27 --body-file -"],
+            [
+                "gh issue edit 27 --add-label in-progress --add-assignee the-owner",
+                STATUS % (27, "In progress"),
+                "gh issue comment 27 --body-file -",
+            ],
         )
         body = self.shell.stdin["gh issue comment 27 --body-file -"]
         self.assertTrue(body.startswith("Site workflow: picked up\n\n"), body)
         self.assertIn(f"Branch: {printed['branch']}", body.splitlines())
+
+    def test_a_status_github_refuses_leaves_the_json_whole_and_the_claim_made(self):
+        self.answers[STATUS % (27, "In progress")] = shell.Failed("gh api: exit 1\nHTTP 422: no statuses here")
+        printed, errors = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(printed), contextlib.redirect_stderr(errors):
+            code = pickup.main("pickup", ["--claim"])
+        self.assertEqual(code, 0)
+        self.assertEqual(json.loads(printed.getvalue())["issue"], 27)
+        self.assertIn("In progress", errors.getvalue())
+        self.assertIn("gh issue comment 27 --body-file -", self.shell.ran)
 
     def test_a_command_that_github_refuses_exits_1_and_prints_no_issue(self):
         self.answers["gh issue list"] = shell.Failed("gh issue list: exit 1\nHTTP 401")
