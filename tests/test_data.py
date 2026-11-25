@@ -227,6 +227,19 @@ class TheSchemas(BuildTest):
                     self.assertBuildFails(str(schema), repr(ref), "A schema may refer only within itself")
                     schema.write_bytes(original)
 
+    def test_a_ref_that_sits_in_a_list_of_a_schema_is_refused_as_one_anywhere_else_is(self):
+        # A schema holds lists, as `anyOf` and `required` are, and a reference in one is a reference all the same.
+        # With the list never looked into, no test failed (#47's report, `sitebuild/contract.py:124`).
+        ref = "https://example.invalid/row.schema.json"
+        for schema in (self.daily_schema, self.index_schema):
+            with self.subTest(schema=schema.name):
+                original = schema.read_bytes()
+                value = read_json(schema)
+                value["definitions"] = {"elsewhere": {"anyOf": [{"type": "string"}, {"$ref": ref}]}}
+                write_json(schema, value)
+                self.assertBuildFails(str(schema), repr(ref), "A schema may refer only within itself")
+                schema.write_bytes(original)
+
     def test_a_schema_never_makes_the_build_fetch_a_reference(self):
         # Every $ref starts with '#', but the $id's fragment keeps the schema itself out of fastjsonschema's store
         # of known documents, so it resolves the reference as a remote document: with urllib, unless the build
