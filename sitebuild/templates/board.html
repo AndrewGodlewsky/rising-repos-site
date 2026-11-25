@@ -109,7 +109,7 @@
 {% set mark = history.marks[loop.index0] %}
 <tr role="row" data-o="{{ mark.on }}"{% if explained and row.language %} data-l="{{ row.language }}"{% endif %}>
 <td class="rk{% if loop.index <= 3 %} podium{% endif %}{% if loop.index <= top %} lead{% endif %}" role="cell">{{ row.rank }}</td>
-<th scope="row" class="re" role="rowheader"><a href="https://github.com/{{ row.full_name }}"><span class="ow">{{ owner }}/</span><span class="nm">{{ name }}</span></a>{% if mark.status == "new" %} <b class="new">New</b>{% endif %}</th>
+<th scope="row" class="re" role="rowheader"><a href="https://github.com/{{ row.full_name }}" target="_blank" title="Opens on GitHub"><span class="ow">{{ owner }}/</span><span class="nm">{{ name }}</span></a>{% if mark.status == "new" %} <b class="new">New</b>{% endif %}</th>
 {% if row.description %}
 <td class="de" role="cell" dir="auto">{{ row.description }}</td>
 {% else %}

@@ -256,6 +256,11 @@ th.re { grid-area: repository; min-width: 0; overflow-wrap: anywhere; line-heigh
 .nm { font-size: 16px; font-weight: 500; text-decoration: underline 1px var(--line-strong); text-underline-offset: 0.25em; transition: text-decoration-color 150ms var(--ease); }
 .re a:hover .nm { text-decoration-color: currentColor; }
 .re a:visited, .re a:visited .ow { color: var(--text-3); }
+{# The mark that the name leaves the site, in a new tab (#30): the type's upwards arrow, turned to point up and right,
+   since the type holds no arrow that points that way. It takes the link's colour, so it dims with a visited name. The
+   empty text after the slash keeps a screen reader from reading "upwards arrow" into the name; the first declaration
+   is for a browser that does not know that form. #}
+.re a::after { content: "\2191"; content: "\2191" / ""; display: inline-block; margin-left: 4px; transform: rotate(45deg); }
 .re .new { margin-left: 8px; padding: 1px 6px; border-radius: 6px; background: var(--new-soft); color: var(--new); font: 500 12px/1.4 var(--sans); white-space: nowrap; vertical-align: 1px; }
 {# The description on one line, and whole once the row is open. #}
 td.de { grid-area: description; min-width: 0; max-width: 720px; margin-top: 2px; overflow: hidden; color: var(--text-2); font-size: 14px; line-height: 1.5; text-overflow: ellipsis; white-space: nowrap; }

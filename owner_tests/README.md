@@ -221,6 +221,19 @@ Sentence 35 came with #28, and reads a live site as it reads the made-up one.
 Sentences 36 and 37 came with #29, and read a live site as they read the
 made-up one.
 
+### A row's name on GitHub (`test_a_rows_name_on_github.py`)
+
+38. A row's name opens its repository on GitHub in a new tab, and the board
+    stays in its own, with scripts on or off.
+    `test_a_rows_name_opens_its_repository_on_github_in_a_new_tab_and_the_board_stays_with_scripts_on_or_off`
+
+    It does not claim anything of the mark drawn after the name, which the
+    agents' tests hold, or of Baseline's table, whose names still open GitHub
+    in the same tab. GitHub answers with a stand-in, so the test asks nothing
+    of it.
+
+Sentence 38 came with #30, and reads a live site as it reads the made-up one.
+
 ## How to run them
 
 From the repository, with the pinned dependencies in place (`uv sync
