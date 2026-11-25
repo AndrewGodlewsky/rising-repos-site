@@ -25,7 +25,7 @@ import io
 import sys
 from pathlib import Path
 
-from sitework import issue, rules, shell
+from sitework import issue, pickup, rules, shell
 
 FROM = "From the run on #{run}."
 """The last line of a filed issue's body. It names the feature's issue that the run worked on, so that GitHub
@@ -84,8 +84,10 @@ def file(options: argparse.Namespace) -> int:
     address = shell.gh("issue", "create", *labelled, "--body-file", "-", stdin=body)
     print(address)
     if options.digest:
-        # The issue that holds a digest is the run's record, and is closed once it is filed.
+        # The issue that holds a digest is the run's record, and is closed once it is filed. Filing it is the
+        # last thing a run does, so the run has ended, and the next check of the schedule may start another (#95).
         shell.gh("issue", "close", address.rstrip("/").rpartition("/")[2])
+        pickup.ended()
     return 0
 
 

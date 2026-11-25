@@ -2,8 +2,9 @@
 
 Each page holds these files inside its stylesheet as data: URIs (sitebuild/__init__.py, `font_faces`), so they are
 cut to what the site writes: printable ASCII, the no-break space, and the site's own other characters, CHARACTERS
-below, with kerning and the standard ligatures kept and the hinting dropped. A letter outside them, such as an
-accented letter in owner-written text, is drawn in the fallback face that site.css matches to their metrics.
+in characters.py beside this file, with kerning and the standard ligatures kept and the hinting dropped. A letter
+outside them, such as an accented letter in owner-written text, is drawn in the fallback face that site.css matches
+to their metrics.
 
 The licence. The source files are IBM Plex Sans and IBM Plex Mono, Copyright 2017 IBM Corp. with Reserved
 Font Name "Plex", under the SIL Open Font License 1.1 (sitebuild/static/fonts/OFL.txt, published with the site). A
@@ -38,9 +39,9 @@ from fontTools import subset
 from fontTools.ttLib import TTFont
 
 HERE = Path(__file__).resolve().parent
-# Beyond ASCII: no-break space, middle dot, », ×, ÷, en dash, em dash, ellipsis, ‹, ›, the up arrow, and the minus
-# sign, which a loss is written with, as wide as the plus and the figures.
-CHARACTERS = "U+0020-007E,U+00A0,U+00B7,U+00BB,U+00D7,U+00F7,U+2013,U+2014,U+2026,U+2039,U+203A,U+2191,U+2212"
+# The script is run by its path, so the folder it is in is on Python's path, and the list beside it is found there.
+from characters import CHARACTERS  # noqa: E402
+
 # What each file is made from, in source/, and the family it is renamed to.
 FILES = {
     "rising-sans-400": ("rising-sans-latin-400.woff2", "IBM Plex Sans", "Rising Sans"),

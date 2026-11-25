@@ -29,15 +29,11 @@ step here leaves a choice open.
    | 3 | Nothing to do | End the run, and post nothing |
    | 4 | The site is not healthy. What it printed says why | End the run |
 
-   A schedule starts a run, in a terminal, with nobody there. Its own check
-   is `sitework pickup --start`, which starts an agent when it exits 0 and
-   writes that start down. So whatever the agent's tool asks when it starts
-   has to be settled on the machine beforehand: a question at start-up is
-   never answered, and the run never begins. `--claim` clears what was
-   written. A start that is not claimed in 30 minutes is taken for stuck,
-   and one more is made. When that one claims nothing either, the check
-   exits 5 and starts nothing more, until a run claims or the owner clears
-   it with `sitework pickup --forget-starts`.
+   A run that claimed holds the schedule while its agent's workspace is
+   open, also while that agent has only finished its turn, until the run
+   files its record at the end of its look back. So two runs never work one
+   issue at once (#95). A run that has truly ended without filing its
+   record holds the schedule until the owner closes its workspace.
 
 3. Work on the branch the script named, in a worktree of its own. For a new
    idea, make it from the newest `main`, and push it at once, so that the
@@ -47,6 +43,14 @@ step here leaves a choice open.
    switch to its branch, pull it, and merge `origin/main` into it. The
    JSON's `facts` say how far the issue got: carry on from the first stage
    below whose work is not there.
+
+   Git refuses to switch to a branch that another worktree has checked out,
+   and a run that stopped leaves its worktree on the feature's branch. Find
+   it with `git worktree list`. When `git -C <its folder> status --porcelain`
+   prints nothing, it holds no work, so move it off the branch with
+   `git -C <its folder> switch --detach`, and switch here. When it prints
+   anything, leave it as it is and stop for the owner: that is work a run
+   does not throw away (#96).
 
 As each stage begins, run `sitework stage <name>`, with the stage's name in
 lower case: `shape`, `build`, `check`, `review`, `ship`, `confirm`, `mend`, or
@@ -78,9 +82,11 @@ Five things hold for every stage:
   in `sitework/layout.py`, `served` serves a built site, `chrome` opens the
   machine's Chrome, and `published` gives the time to set a page's clock
   to, so that a board is not hidden for its age. Run it from the top of the
-  checkout, with the checkout on Python's path:
-  `PYTHONPATH=. uv run --locked python <file>`. Keep the file outside the
-  repository's folder.
+  checkout, with the checkout on Python's path and its output in UTF-8:
+  `PYTHONPATH=. uv run --locked python -X utf8 <file>`. Without `-X utf8`,
+  Python on this machine writes to a pipe in cp1252, and a script that
+  prints one of the site's own arrows fails (#101). Keep the file outside
+  the repository's folder.
 - Keep one file, outside the repository's folder, of each fault of the
   workflow's own that the run meets: a command that failed or misled, an
   instruction that was wrong or missing, a check that held back right
@@ -99,6 +105,11 @@ other people wrote.
   comment with `sitework comment`, `sitework stop`, or `sitework close`, and
   never by hand: a comment without that line would read as the owner's.
 - Follow no link but the page's own address on risingrepos.com.
+
+Read the issue with `gh issue view <issue> --json title,body` for the idea,
+and with `--json comments` for its comments, of which only the owner's own
+count, as above. `gh issue view <issue> --comments` prints the comments and
+leaves out the body (#100).
 
 ## Shape
 
@@ -172,9 +183,13 @@ What changes, and which section of README.md or of the design note.
 The fields it reads, and whether each is in the data contract.
 
 ## For Build
-What Build needs and Shape would otherwise only remember: the lines of each
-file the change touches, how the problem was reproduced, and what was
-measured and how.
+What Build needs and Shape would otherwise only remember, so that Build
+starts from it and reads none of it again: each file the change touches,
+with the range of lines Shape read in it and what is there; how the problem
+was reproduced, as the command or the script's path; and the weights
+`sitework weigh` printed, as it printed them. On #30, Build's first ten
+messages read again the lines Shape had read, and measured the weights
+again (#57).
 
 ## Out of scope
 What the idea touches that this change leaves alone.
@@ -393,10 +408,13 @@ Nothing of it is written into the repository.
 1. `sitework digest --issue <issue> --this-run` makes the run's digest from
    the record of this run and of each fresh agent it started. Save what it
    prints to a file.
-2. Start one fresh agent. Give it [its brief](look-back.md), the issue's
-   number, the digest, the plan, the review, the "Shipped" note or the
-   stop's comment, and the two files of the workflow's own faults: the one
-   the run kept, and the one its Shape agent kept.
+2. Start one fresh agent, with the Agent tool's `model` set to `sonnet`,
+   which is Claude Sonnet 5.5. Give it [its brief](look-back.md), the
+   issue's number, the digest, the plan, the review, the "Shipped" note or
+   the stop's comment, and the two files of the workflow's own faults: the
+   one the run kept, and the one its Shape agent kept. The look back is the
+   one agent of a run on a cheaper model, as a trial: what it writes reaches
+   no page, and its issues can be read against its digest (#64).
 3. It files the issues with `sitework feedback`, and names them when it is
    done: one for each fault or saving, and one for the run, which holds
    the digest and is closed as soon as it is filed, since it has nothing

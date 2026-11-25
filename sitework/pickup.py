@@ -8,14 +8,6 @@ to work on, 3 when there is nothing to do, and 4 when the site is not healthy.
 Without `--claim` it changes nothing on GitHub. An Orca automation runs it that way before each scheduled run, and
 starts an agent only when it exits 0, so a run with nothing to do starts no agent. The agent then runs it with
 `--claim`.
-
-The automation runs it with `--start`, which says that an exit of 0 starts a run. A run that is started and
-never begins claims nothing, and is no checkout on a feature's branch, so nothing above would see it: on 24
-November 2026 an agent's tool stopped at a question of its own at start-up, and the check half an hour later
-would have started a second agent beside it, and so on through the day (#69). So a start is written down when
-it is made, and a claim clears it. A start that is not claimed within CLAIM_WITHIN is taken for stuck, and one
-more is allowed. When that one is not claimed either, the check exits 5 and starts nothing more, until a run
-claims or `--forget-starts` clears what was written.
 """
 
 import argparse
@@ -25,31 +17,13 @@ import os
 import re
 import sys
 from collections.abc import Callable
-from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import NamedTuple
 
 from sitework import confirm, issue, rules, shell
 
-NOTHING, UNHEALTHY, STUCK = 3, 4, 5
-"""The exit codes when there is nothing to do, when the site is not healthy, and when the runs that were started
-claimed nothing."""
-
-STARTS = "sitework-starts"
-"""The file under git's common directory that holds when each run was started that has not claimed yet, a line to
-a start. It is in no commit, and every worktree of the repository shares it."""
-CLAIM_WITHIN = timedelta(minutes=30)
-"""How long a run that was started has to claim its issue before it is taken for stuck. The runs so far claimed
-within a minute or two of their start."""
-STARTS_ALLOWED = 2
-"""How many starts may go unclaimed before the check starts nothing more: the first, and one more try."""
-WRITTEN = "%Y-%m-%d %H:%M UTC"
-
-
-def now() -> datetime:
-    """The time. A test replaces this, so that no test waits."""
-    return datetime.now(UTC)
-
+NOTHING, UNHEALTHY = 3, 4
+"""The exit codes when there is nothing to do, and when the site is not healthy."""
 
 WORKFLOWS = {rules.IN_PROGRESS, rules.NEEDS_OWNER, rules.BLOCKED_ON_DATA}
 """The labels the workflow sets. An idea that carries one is not new."""
@@ -60,9 +34,10 @@ FEATURES = "refs/heads/" + rules.BRANCH.partition("{")[0]
 """How git names every feature's branch begins, the branch that reverts one among them."""
 
 RUNS = "sitework-runs"
-"""The file under git's common directory that holds the checkout of each run that claimed an issue and may still be
-at work, a line to a checkout. A run is known by where it works, and not by the branch that checkout is on, since
-a run may leave its feature's branch once its issue is closed and still be looking back over itself."""
+"""The file under git's common directory that holds the checkout of each run that claimed an issue and has not
+ended, a line to a checkout. A run is known by where it works, and not by the branch that checkout is on, since
+a run may leave its feature's branch once its issue is closed and still be looking back over itself. A run ends
+when it files its record, the issue that holds its digest (`ended`), or when its workspace holds no agent."""
 
 Comments = Callable[[int], list[dict]]
 """Gives the comments the owner's account wrote on an issue. A run reads an issue's comments once, however many
@@ -102,45 +77,6 @@ def healthy() -> None:
         raise unhealthy(f"The site eval after the newest deploy ended in {measured['conclusion']}: {measured['url']}")
 
 
-def starts() -> list[datetime]:
-    """When each run was started that has not claimed yet, oldest first."""
-    written = common(STARTS)
-    return (
-        [datetime.fromisoformat(line) for line in written.read_text(encoding="utf-8").split()]
-        if written.is_file()
-        else []
-    )
-
-
-def waiting_for_a_claim() -> None:
-    """End the check when a run that was started may still be about to claim, or when the starts that are
-    allowed have all gone unclaimed. It passes when nothing was started, and when one start is stuck and one
-    more may be tried."""
-    made = starts()
-    if not made:
-        return
-    newest = made[-1]
-    if now() - newest < CLAIM_WITHIN:
-        raise End(
-            NOTHING,
-            f"A run was started at {newest:{WRITTEN}} and has not claimed an issue yet. Nothing more starts until "
-            f"it claims, or until {newest + CLAIM_WITHIN:{WRITTEN}}.",
-        )
-    if len(made) >= STARTS_ALLOWED:
-        times = " and at ".join(f"{start:{WRITTEN}}" for start in made)
-        raise End(
-            STUCK,
-            f"{len(made)} runs were started, at {times}, and none of them claimed an issue. Nothing more starts. "
-            "Look at what the agent's tool asks when it starts on this machine, close the workspaces those starts "
-            "left, and then clear this with `python -m sitework pickup --forget-starts`.",
-        )
-
-
-def forget_starts() -> None:
-    """Forget every start that was written down: a run has claimed, or the owner cleared them."""
-    common(STARTS).unlink(missing_ok=True)
-
-
 def unhealthy(why: str) -> End:
     """The end of a run that starts nothing because the site is not healthy. What is printed says why, and
     nothing is sent to the owner: the notice on Discord was dropped on 24 November 2026 (#53)."""
@@ -159,13 +95,23 @@ def at_work() -> list[str]:
     are open in each. An agent that has finished its turn is `done` there. The agent that runs this command is
     left out, since it is the one asking.
 
+    A run that claimed is at work while its workspace holds an agent, whether that agent is working or has only
+    finished its turn, until the run files its record. On 25 November 2026 the run on #30 had a command stopped
+    by its harness, asked the owner what to do, and finished its turn to wait for the answer. Its agent was `done`,
+    so the next check of the schedule took #30 up again, and two runs worked it at once (#95). An agent that is
+    only waiting is still the run's. Closing its workspace is how the owner lets the next run go.
+
+    A checkout that was not written down, one that is only on a feature's branch, is at work while its agent is
+    working, as before: no run claimed from it, so no record of its will end it.
+
     The labels alone do not say this. A run takes `in-progress` off its issue when it closes it, and then looks
     back over itself for some minutes more. Asked of the labels in those minutes, a check of the schedule would
     start the next issue beside a run that has not ended.
 
-    A checkout that was written down and holds no agent at work is forgotten here, so that the file names only
-    the runs that may still be going. The agent that asks counts for that, though it holds nothing up: a run
-    that asked again would otherwise take its own checkout out of the file while it was still at work."""
+    A checkout that was written down and whose workspace holds no agent at all is forgotten here, so that the
+    file names only the runs that may still be going. The agent that asks counts for that, though it holds
+    nothing up: a run that asked again would otherwise take its own checkout out of the file while it was at
+    work."""
     held, path = {}, ""
     for line in shell.git("worktree", "list", "--porcelain").splitlines():
         name, _, rest = line.partition(" ")
@@ -181,12 +127,32 @@ def at_work() -> list[str]:
         return []
     listed = json.loads(shell.run("orca", "worktree", "ps", "--json", "--limit", "1000"))["result"]["worktrees"]
     asking = os.environ.get("ORCA_AGENT_SESSION_ID")
-    open_in = {same(worktree["path"]): [a for a in worktree["agents"] if a["state"] != "done"] for worktree in listed}
-    busy = {checkout for checkout, agents in open_in.items() if any(a["orcaSessionId"] != asking for a in agents)}
-    going = [checkout for checkout in written if open_in.get(same(checkout))]
+    agents_in = {same(worktree["path"]): worktree["agents"] for worktree in listed}
+    claimed = {same(checkout) for checkout in written}
+
+    def holds(checkout: str) -> bool:
+        """Whether an agent other than the one asking holds the checkout: any agent, for a run that claimed, and
+        one that is working, for a checkout that is only on a feature's branch."""
+        return any(
+            agent["orcaSessionId"] != asking and (checkout in claimed or agent["state"] != "done")
+            for agent in agents_in.get(checkout, [])
+        )
+
+    busy = {checkout for checkout in held if holds(checkout)}
+    going = [checkout for checkout in written if agents_in.get(same(checkout))]
     if going != written:
         runs.write_text("".join(f"{checkout}\n" for checkout in going), encoding="utf-8")
     return sorted(name for checkout, name in held.items() if checkout in busy)
+
+
+def ended() -> None:
+    """Forget the run of this checkout: it has filed its record, which is the last thing a run does, so the next
+    check of the schedule may start the next run while its agent's workspace is still open."""
+    runs = common(RUNS)
+    written = runs.read_text(encoding="utf-8").splitlines() if runs.is_file() else []
+    going = [checkout for checkout in written if same(checkout) != same(str(shell.ROOT))]
+    if going != written:
+        runs.write_text("".join(f"{checkout}\n" for checkout in going), encoding="utf-8")
 
 
 def same(path: str) -> str:
@@ -333,7 +299,7 @@ def claim(taken: Taken, branch: str, owner: str) -> None:
         runs.write_text("".join(f"{checkout}\n" for checkout in [*written, str(shell.ROOT)]), encoding="utf-8")
 
 
-def pickup(claiming: bool, starting: bool = False) -> tuple[int, dict]:
+def pickup(claiming: bool) -> tuple[int, dict]:
     """The exit code, and the JSON object to print.
 
     Whether the site is healthy is asked before anything new is started, and before an issue in flight that
@@ -347,8 +313,6 @@ def pickup(claiming: bool, starting: bool = False) -> tuple[int, dict]:
         busy = at_work()
         if busy:
             raise End(NOTHING, f"A run is still at work in {'; '.join(busy)}. Nothing starts until it has ended.")
-        if starting:
-            waiting_for_a_claim()
         owner = issue.owner()
         opened = shell.gh_json(
             "issue", "list", "--state", "open", "--limit", "1000", "--json", "number,title,labels,author"
@@ -371,38 +335,19 @@ def pickup(claiming: bool, starting: bool = False) -> tuple[int, dict]:
     }
     if claiming:
         claim(taken, answer["branch"], owner)
-        forget_starts()
-    elif starting:
-        # Written last, once the answer is to start: a check that ends with nothing to do starts no run.
-        written = common(STARTS)
-        written.write_text("".join(f"{start.isoformat()}\n" for start in [*starts(), now()]), encoding="utf-8")
     return 0, answer
 
 
 def main(command: str, arguments: list[str]) -> int:
     parser = argparse.ArgumentParser(
         prog=f"python -m sitework {command}",
-        description="Choose the issue this run works on. Exit 0 with an issue to work on, 3 with nothing to do, 4 "
-        "when the site is not healthy, and 5 when the runs that were started claimed nothing.",
+        description="Choose the issue this run works on. Exit 0 with an issue to work on, 3 with nothing to do, and 4 "
+        "when the site is not healthy.",
     )
-    which = parser.add_mutually_exclusive_group()
-    which.add_argument("--claim", action="store_true", help="claim the issue: add in-progress and post picked up")
-    which.add_argument(
-        "--start",
-        action="store_true",
-        help="the schedule's check: an exit of 0 starts a run, so write the start down, and start nothing while "
-        "one that was written down has not claimed",
-    )
-    which.add_argument(
-        "--forget-starts", action="store_true", help="forget each start that was written down and never claimed"
-    )
+    parser.add_argument("--claim", action="store_true", help="claim the issue: add in-progress and post picked up")
     options = parser.parse_args(arguments)
     try:
-        if options.forget_starts:
-            forget_starts()
-            print(json.dumps({"why": "Every start that was written down is forgotten."}, indent=2))
-            return 0
-        code, answer = pickup(options.claim, options.start)
+        code, answer = pickup(options.claim)
     except shell.Failed as error:
         print(error, file=sys.stderr)
         return 1

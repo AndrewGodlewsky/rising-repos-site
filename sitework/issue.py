@@ -338,7 +338,9 @@ def close(options: argparse.Namespace, text: str) -> int:
 
 def main(command: str, arguments: list[str]) -> int:
     what = {
-        "comment": "Post one of the workflow's comments on an issue. A plan that is already there is edited in place.",
+        "comment": "Post one of the workflow's comments on an issue. The command writes the comment's first line, "
+        "`Site workflow: <kind>`, itself, so the file holds only what follows it. A plan that is already there is "
+        "edited in place.",
         "stop": "Stop an issue for the owner, or with --data for a field it waits on.",
         "close": "Post what shipped, close the issue, and remove its branch from origin and from this repository.",
     }

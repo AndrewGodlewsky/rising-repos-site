@@ -13,7 +13,6 @@ import json
 import os
 import tempfile
 import unittest
-from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from unittest import mock
 
@@ -177,64 +176,6 @@ class PickupTest(unittest.TestCase):
         one["labels"] = [{"id": "LA_", "name": name, "description": "", "color": "0e8a16"} for name in labels]
 
 
-class AStartThatNeverClaims(PickupTest):
-    """The schedule's check, `--start`, at a time the test sets. Each test begins with nothing written down."""
-
-    def setUp(self):
-        super().setUp()
-        self.time = datetime(2026, 11, 24, 14, 0, tzinfo=UTC)
-        self.enterContext(mock.patch.object(pickup, "now", lambda: self.time))
-
-    def later(self, minutes: int) -> None:
-        self.time += timedelta(minutes=minutes)
-
-    def test_a_run_that_was_started_and_has_not_claimed_holds_the_next_check_back_for_30_minutes(self):
-        # On 24 November 2026 a started agent never began, and the next check would have started another (#69).
-        self.assertEqual(self.run_command("--start")[0], 0)
-        self.later(29)
-        code, printed = self.run_command("--start")
-        self.assertEqual(code, 3)
-        self.assertIn("was started at 2026-11-24 14:00 UTC and has not claimed", printed["why"])
-
-    def test_a_start_not_claimed_in_30_minutes_is_taken_for_stuck_and_one_more_start_is_allowed(self):
-        self.run_command("--start")
-        self.later(30)
-        code, printed = self.run_command("--start")
-        self.assertEqual((code, printed["issue"]), (0, 27))
-
-    def test_two_starts_that_claimed_nothing_end_the_check_with_5_and_say_when_each_was_made(self):
-        self.run_command("--start")
-        self.later(30)
-        self.run_command("--start")
-        self.later(30)
-        code, printed = self.run_command("--start")
-        self.assertEqual(code, 5)
-        self.assertIn("at 2026-11-24 14:00 UTC and at 2026-11-24 14:30 UTC", printed["why"])
-        self.later(600)
-        self.assertEqual(self.run_command("--start")[0], 5)
-
-    def test_a_claim_clears_what_was_started(self):
-        self.run_command("--start")
-        self.assertEqual(len(pickup.starts()), 1)
-        self.later(1)
-        self.assertEqual(self.run_command("--claim")[0], 0)
-        self.assertEqual(pickup.starts(), [])
-
-    def test_a_check_that_starts_no_run_writes_no_start_down(self):
-        # A look without `--start`, as a person or an agent makes one, and a check that found nothing to do.
-        self.assertEqual(self.run_command()[0], 0)
-        self.only()
-        self.assertEqual(self.run_command("--start")[0], 3)
-        self.assertEqual(pickup.starts(), [])
-
-    def test_forgetting_the_starts_lets_the_schedule_start_a_run_again(self):
-        for _ in range(3):
-            self.run_command("--start")
-            self.later(30)
-        self.assertEqual(self.run_command("--forget-starts")[0], 0)
-        self.assertEqual(self.run_command("--start")[0], 0)
-
-
 class IsTheSiteHealthy(PickupTest):
     def test_a_newest_deploy_that_is_still_running_ends_the_run_with_3(self):
         self.answers[DEPLOYS] = [run(139, conclusion="")]
@@ -328,10 +269,20 @@ class IsARunStillAtWork(PickupTest):
         self.assertIn("Claimed-Run", printed["why"])
         self.assertEqual(self.shell.changes(), [])
 
-    def test_a_recorded_run_whose_agent_has_ended_holds_nothing_up_and_is_forgotten(self):
+    def test_a_run_that_claimed_and_whose_agent_finished_its_turn_to_wait_is_still_at_work(self):
+        # On #30 a run's agent finished its turn to wait for the owner, and the next check took #30 up again (#95).
         self.answers["git worktree list --porcelain"] = worktree("/work/site", "main")
         (self.common / pickup.RUNS).write_text("/work/Claimed-Run\n", encoding="utf-8")
         self.answers["orca worktree ps --json"] = orca("/work/Claimed-Run", "done")
+        code, printed = self.run_command("--claim")
+        self.assertEqual((code, list(printed)), (3, ["why"]))
+        self.assertIn("Claimed-Run", printed["why"])
+        self.assertEqual((self.common / pickup.RUNS).read_text(encoding="utf-8"), "/work/Claimed-Run\n")
+
+    def test_a_run_whose_workspace_holds_no_agent_holds_nothing_up_and_is_forgotten(self):
+        self.answers["git worktree list --porcelain"] = worktree("/work/site", "main")
+        (self.common / pickup.RUNS).write_text("/work/Claimed-Run\n", encoding="utf-8")
+        self.answers["orca worktree ps --json"] = orca("/work/Claimed-Run")
         code, printed = self.run_command()
         self.assertEqual((code, printed["issue"]), (0, 27))
         self.assertEqual((self.common / pickup.RUNS).read_text(encoding="utf-8"), "")
@@ -349,6 +300,8 @@ class IsARunStillAtWork(PickupTest):
 
     def test_claiming_writes_down_the_checkout_the_run_works_in_and_writes_it_once(self):
         self.answers["git worktree list --porcelain"] = worktree("/work/site", "main")
+        # The run claims again from its own checkout, where it is the agent that asks.
+        os.environ["ORCA_AGENT_SESSION_ID"] = "session-1"
         for _ in range(2):
             code, _ = self.run_command("--claim")
             self.assertEqual(code, 0)

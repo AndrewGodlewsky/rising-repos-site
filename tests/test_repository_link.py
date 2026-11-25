@@ -14,15 +14,13 @@ fail without it. They build from the tests' own copy of the data contract's exam
 machine alone, and answer every request to GitHub with a stand-in, so that nothing leaves the machine.
 """
 
-import ast
 import contextlib
 import unittest
-from pathlib import Path
 
 from helpers import BuildTest, read_json
 
-import sitebuild
 from sitebuild import BOARD
+from sitebuild.fonts.characters import CHARACTERS
 from sitework.layout import chrome, published, served
 
 PHONE, DESKTOP = 390, 1440
@@ -53,16 +51,10 @@ the link and of the name inside it, and the link's text as a reader sees it."""
 
 
 def held() -> set[int]:
-    """Each character the site's type holds, from the list `sitebuild/fonts/subset.py` cuts the faces to. The list is
-    read from the script's text, since the script needs fontTools, which the build and the tests do not."""
-    script = ast.parse((Path(sitebuild.__file__).parent / "fonts" / "subset.py").read_text(encoding="utf-8"))
-    (characters,) = [
-        node.value.value
-        for node in script.body
-        if isinstance(node, ast.Assign) and [target.id for target in node.targets] == ["CHARACTERS"]
-    ]
+    """Each character the site's type holds, from the list `sitebuild/fonts/subset.py` cuts the faces to, which is
+    kept in a file of its own so that a test can import it (#102)."""
     points = set()
-    for part in characters.split(","):
+    for part in CHARACTERS.split(","):
         first, _, last = part.removeprefix("U+").partition("-")
         points.update(range(int(first, 16), int(last or first, 16) + 1))
     return points

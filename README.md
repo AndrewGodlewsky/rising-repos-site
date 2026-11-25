@@ -518,8 +518,9 @@ the link's text, in the link's colour, with empty text for a screen reader, so
 it dims with a visited name and the name a reader, the search, and a screen
 reader read is the name alone. A part that is turned is laid out as a box of
 its own, and a line may break before one, so where a name ends at the edge of
-its column on a phone the mark begins the next line. A browser lets a visited link change only its colours, so the
-visited state is a change of colour. To see it in an automated browser, whose
+its column on a phone the mark begins the next line. A browser lets a
+visited link change only its colours, so the visited state is a change of
+colour. To see it in an automated browser, whose
 fresh contexts record no visits, force the state on a link with the DevTools
 protocol's `CSS.forcePseudoState` and `visited`. Every control, link, and
 `<summary>` shows a 2 px ring in the accent when the keyboard reaches it.
@@ -596,8 +597,9 @@ root.
   repository gained and the board's top, amber for what is new, the red for a
   loss, the neutrals for the rest. A new text colour comes with a background
   that gives it 4.5:1, in both themes, and a line in `tests/test_colour.py`.
-- An underline means a link, and a visited repository dims. A link that
-  leaves the site carries the turned arrow after it.
+- An underline means a link, and a visited repository dims. A repository's
+  name on a board, which leaves the site, carries the turned arrow after it.
+  Baseline's table links each name to GitHub without it, in the same tab.
 - Tabular figures for any number in a column.
 - A drawing comes with its figures in words, for a screen reader.
 - A page that reads at a phone's width (390 px) and a desktop's (1440 px), in
