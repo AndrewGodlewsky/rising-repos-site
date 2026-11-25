@@ -43,7 +43,9 @@ step here leaves a choice open.
    claim is on GitHub as a branch too:
    `git switch -c <branch> origin/main`, then
    `git push --set-upstream origin <branch>`. For an issue taken up again,
-   switch to its branch, pull it, and merge `origin/main` into it. The
+   switch to its branch, pull it, and merge `origin/main` into it. An idea
+   that was a partner and was stopped alone at Shape has no branch of its own
+   yet: make one as for a new idea. The
    JSON's `facts` say how far the issue got: carry on from the first stage
    below whose work is not there.
 
@@ -125,6 +127,9 @@ command after this stage is given the lead's number.
 
 Sort only a new idea, one `pickup` printed with `take_up` as `new`. An issue
 taken up again keeps the group it had, which its `facts` name as `partners`.
+One taken up again with no `sorted` comment had its sort cut short: sort it
+now, before the stage its `facts` point to. When `sitework sort` fails
+partway, run it again with the same partners: it claims those it had not.
 
 1. `sitework stage sort`.
 2. Start one fresh agent, with the Agent tool's `model` set to `sonnet`. Give
@@ -164,18 +169,25 @@ measure a size is thrown away, and Build writes the change from the plan
 (#58).
 
 **A group.** Give the Shape agent the partners' numbers with the lead's. It
-shapes every idea of the group in one plan, posted on the lead. "What changes
-for a reader" has a line for each idea, and the criteria are numbered across
-the group, each beginning with its idea: `1. (#89) Given ...`. Shape is
-where the group can be split, before any code is written:
+weighs each idea of the group by the steps below, and shapes those that go
+on in one plan, posted on the lead. "What changes for a reader" has a line
+for each idea, and the criteria are numbered across the group, each
+beginning with its idea: `1. (#89) Given ...`. The plan's one Verdict is the
+lead's, and so the group's. Shape is where the group can be split, before any
+code is written. For each partner that does not go on, the Shape agent hands
+back, beside its three things, the partner's number, what becomes of it, and
+a file of why, and you carry each out, as you carry out the lead's verdict:
 
 - A partner that does not fit the group after all is sent back to wait for
-  a run of its own: `sitework release <n> --file <file>`, with why. That is
-  no stop, and the rest go on.
+  a run of its own: `sitework release <n> --file <file>`. That is no stop,
+  and the rest go on.
 - A partner whose own verdict is Needs data or Needs the owner is stopped
   alone, with `sitework stop <n>` as below, and leaves the group.
 - When the lead's verdict is not Go, `sitework stop` on the lead sends each
   partner back to wait by itself, since no code holds them to the lead yet.
+
+A partner that leaves the group at Shape has no line and no criterion in the
+plan. It is named under "Out of scope", with what became of it.
 
 1. Read the sections of README.md that AGENTS.md names for this kind of
    change.
@@ -487,8 +499,8 @@ The run goes on by itself until one of these is true. Nothing else stops it.
 | Stage | A reason to stop |
 | --- | --- |
 | Shape | A reason under "Needs the owner". A partner that does not fit is sent back, which is no stop |
-| Build | A criterion cannot be met as the plan has it. The work has to leave the plan in a way Shape would have stopped for |
-| Check | The only way past a failing check is to loosen it. Two different attempts at a failing check have not passed it. One of the owner's tests that the change does not touch failed in the pull request's job a second time |
+| Build | A criterion cannot be met as the plan has it. The work has to leave the plan in a way Shape would have stopped for. A partner's own criterion is no stop: the partner is sent back, as Build says |
+| Check | The only way past a failing check is to loosen it. Two different attempts at a failing check have not passed it. One of the owner's tests that the change does not touch failed in the pull request's job a second time. A check that fails only for a partner's part is no stop: the partner is sent back |
 | Review | The verdict is still `changes needed` after the one second look |
 | Ship | A condition of the merge does not hold, and the run cannot make it hold inside the plan |
 | Confirm | A result that measured nothing does not settle. The live site or the eval failed twice on something the change did not cause |
