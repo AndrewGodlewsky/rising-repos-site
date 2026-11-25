@@ -108,9 +108,20 @@ it, and is left out of a run against a live site.
     `test_a_search_shows_only_the_rows_whose_name_or_description_holds_it_and_says_so_when_none_does`
 16. A filtered board's address, opened again, shows the same rows.
     `test_a_filtered_boards_address_opened_again_shows_the_same_rows`
+
+    It does not claim that two or more filters chosen together give the
+    same rows again, or anything of a board on which no row matches. Each of
+    its four addresses holds one filter, or a language with an order. #41 is
+    to test the filters together, and #33 is the idea for a board that
+    matches nothing.
 17. An opened row shows its sum, its facts, and the boards it was on, once the
     history arrives.
     `test_an_opened_row_shows_its_sum_its_facts_and_the_boards_it_was_on_once_the_history_arrives`
+
+    It does not claim anything of a history that arrives late or not at
+    all, where the row says "The rest of this row could not be loaded.", or
+    that the history is asked for once however many rows are opened. #42 is
+    to test those.
 
 ### The other pages (`test_the_other_pages.py`)
 
@@ -118,6 +129,11 @@ it, and is left out of a run against a live site.
     `test_baseline_draws_and_lists_every_repository_of_the_newest_board`
 19. Moving over Baseline's chart names the nearest repository.
     `test_moving_over_baselines_chart_names_the_nearest_repository`
+
+    It does not claim a tap on a phone or finding a repository by its name,
+    which sentences 36 and 37 hold since #29, or that the chart's labels do
+    not print over each other, which is the idea #34. It moves a mouse's
+    pointer over the chart on a desktop.
 20. How it works names the formula that ranked the newest board.
     `test_how_it_works_names_the_formula_that_ranked_the_newest_board`
 
@@ -131,6 +147,11 @@ it, and is left out of a run against a live site.
 23. On a phone, nothing reaches past the edge of the screen, with a row
     opened.
     `test_on_a_phone_nothing_reaches_past_the_edge_of_the_screen_with_a_row_opened`
+
+    It does not claim anything of Baseline's page, or of how the star-band
+    filter wraps on a phone. It opens the first row of the newest board on a
+    screen 390 pixels wide, and holds that nothing is past either edge. #32
+    is the idea for the filter's wrap, and #34 for Baseline's labels.
 24. The keyboard reaches every control, and each shows its ring.
     `test_the_keyboard_reaches_every_control_and_each_shows_its_ring`
 25. Every text colour meets 4.5:1 against what it is set on, in both themes.
