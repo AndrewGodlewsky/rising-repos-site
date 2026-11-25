@@ -67,10 +67,12 @@ gives each token's job and its contrast.
   surface; `--line` and `--line-strong` for a rule or an edge.
 - A link keeps the colour of the text round it, so that a colour always means
   one of the things above.
-- A link that leaves the site carries a mark after its text: the type's
-  upwards arrow, turned 45 degrees to point up and right, in the link's own
-  colour, drawn by the stylesheet with empty text for a screen reader, so that
-  it is no part of the link's name. A repository's name on a board has it.
+- A repository's name on a board, which leaves the site for GitHub, carries
+  a mark after its text: the type's upwards arrow, turned 45 degrees to point
+  up and right, in the link's own colour, drawn by the stylesheet with empty
+  text for a screen reader, so that it is no part of the link's name. It is
+  the site's one link that does so: Baseline's table links each name to
+  GitHub without it, in the same tab (#104).
 - Whatever a colour says is said in words or in a sign as well: a loss has
   its minus, and New is a word.
 
