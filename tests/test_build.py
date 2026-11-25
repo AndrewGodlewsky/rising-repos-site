@@ -1056,6 +1056,19 @@ class TheBands(BuildTest):
         self.assertIn("hidden", group.attrs)
 
 
+class TheGuides(BuildTest):
+    def test_the_guide_at_a_repositorys_own_pace_is_called_own_pace_and_each_other_by_its_multiple(self):
+        # The chart's dashed line is where a repository gains at its own pace, and the others are 3 times that and
+        # more. With the two names changed about, no test failed (#47's report, `sitebuild/__init__.py:725`).
+        labels = [span for span in self.build_pages()[BASELINE].all("span") if "glabel" in span.classes()]
+        own = [label.text() for label in labels if "own" in label.classes()]
+        others = [label.text() for label in labels if "own" not in label.classes()]
+        self.assertEqual(own, ["own pace"])
+        self.assertTrue(others)
+        for name in others:
+            self.assertRegex(name, r"^[\d,]+\N{MULTIPLICATION SIGN}$")
+
+
 class TheBaseline(BuildTest):
     """The Baseline page: each repository on the newest board, placed by its baseline against its recent pace, with
     a table that gives every one in words (AndrewGodlewsky/RisingRepos#199)."""
