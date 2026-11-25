@@ -59,7 +59,7 @@ class Shell:
 
     def changes(self) -> list[str]:
         """The commands that were run and change something: every one but a reading."""
-        return [line for line in self.ran if not line.startswith((LIST, "gh issue view"))]
+        return [line for line in self.ran if not line.startswith((LIST, "gh issue view", "git rev-parse"))]
 
     def given(self, start: str, option: str) -> list[str]:
         """Each value the one command that begins with `start` was given for `option`."""
@@ -99,6 +99,7 @@ class FeedbackTest(unittest.TestCase):
         self.shell = Shell(self.answers)
         self.enterContext(mock.patch.object(shell, "run", self.shell))
         self.folder = Path(self.enterContext(tempfile.TemporaryDirectory()))
+        self.answers["git rev-parse --path-format=absolute --git-common-dir"] = str(self.folder)
         self.file = self.folder / "finding.md"
         self.file.write_text(WORDS + "\n", encoding="utf-8")
         self.digest = self.folder / "digest.md"
@@ -218,6 +219,15 @@ class TheFiling(FeedbackTest):
         code, printed, _ = self.file_it("--digest", str(self.digest))
         self.assertEqual((code, printed), (0, FILED + "\n"))
         self.assertEqual(self.shell.changes()[-1], "gh issue close 52")
+
+    def test_filing_a_runs_record_ends_the_run_of_this_checkout_and_no_other(self):
+        # A run's record is the last thing it files, so the next check of the schedule may start another (#95).
+        runs = self.folder / "sitework-runs"
+        runs.write_text(f"{shell.ROOT}\n/work/Another-Run\n", encoding="utf-8")
+        self.file_it()
+        self.assertEqual(runs.read_text(encoding="utf-8"), f"{shell.ROOT}\n/work/Another-Run\n")
+        self.file_it("--digest", str(self.digest))
+        self.assertEqual(runs.read_text(encoding="utf-8"), "/work/Another-Run\n")
 
     def test_a_finding_and_a_digest_that_a_shell_on_windows_wrote_are_filed_as_their_words(self):
         self.file.write_bytes(codecs.BOM_UTF16_LE + (WORDS + "\n").replace("\n", "\r\n").encode("utf-16-le"))

@@ -34,9 +34,10 @@ FEATURES = "refs/heads/" + rules.BRANCH.partition("{")[0]
 """How git names every feature's branch begins, the branch that reverts one among them."""
 
 RUNS = "sitework-runs"
-"""The file under git's common directory that holds the checkout of each run that claimed an issue and may still be
-at work, a line to a checkout. A run is known by where it works, and not by the branch that checkout is on, since
-a run may leave its feature's branch once its issue is closed and still be looking back over itself."""
+"""The file under git's common directory that holds the checkout of each run that claimed an issue and has not
+ended, a line to a checkout. A run is known by where it works, and not by the branch that checkout is on, since
+a run may leave its feature's branch once its issue is closed and still be looking back over itself. A run ends
+when it files its record, the issue that holds its digest (`ended`), or when its workspace holds no agent."""
 
 Comments = Callable[[int], list[dict]]
 """Gives the comments the owner's account wrote on an issue. A run reads an issue's comments once, however many
@@ -94,13 +95,23 @@ def at_work() -> list[str]:
     are open in each. An agent that has finished its turn is `done` there. The agent that runs this command is
     left out, since it is the one asking.
 
+    A run that claimed is at work while its workspace holds an agent, whether that agent is working or has only
+    finished its turn, until the run files its record. On 25 November 2026 the run on #30 had a command stopped
+    by its harness, asked the owner what to do, and finished its turn to wait for the answer. Its agent was `done`,
+    so the next check of the schedule took #30 up again, and two runs worked it at once (#95). An agent that is
+    only waiting is still the run's. Closing its workspace is how the owner lets the next run go.
+
+    A checkout that was not written down, one that is only on a feature's branch, is at work while its agent is
+    working, as before: no run claimed from it, so no record of its will end it.
+
     The labels alone do not say this. A run takes `in-progress` off its issue when it closes it, and then looks
     back over itself for some minutes more. Asked of the labels in those minutes, a check of the schedule would
     start the next issue beside a run that has not ended.
 
-    A checkout that was written down and holds no agent at work is forgotten here, so that the file names only
-    the runs that may still be going. The agent that asks counts for that, though it holds nothing up: a run
-    that asked again would otherwise take its own checkout out of the file while it was still at work."""
+    A checkout that was written down and whose workspace holds no agent at all is forgotten here, so that the
+    file names only the runs that may still be going. The agent that asks counts for that, though it holds
+    nothing up: a run that asked again would otherwise take its own checkout out of the file while it was at
+    work."""
     held, path = {}, ""
     for line in shell.git("worktree", "list", "--porcelain").splitlines():
         name, _, rest = line.partition(" ")
@@ -116,12 +127,32 @@ def at_work() -> list[str]:
         return []
     listed = json.loads(shell.run("orca", "worktree", "ps", "--json", "--limit", "1000"))["result"]["worktrees"]
     asking = os.environ.get("ORCA_AGENT_SESSION_ID")
-    open_in = {same(worktree["path"]): [a for a in worktree["agents"] if a["state"] != "done"] for worktree in listed}
-    busy = {checkout for checkout, agents in open_in.items() if any(a["orcaSessionId"] != asking for a in agents)}
-    going = [checkout for checkout in written if open_in.get(same(checkout))]
+    agents_in = {same(worktree["path"]): worktree["agents"] for worktree in listed}
+    claimed = {same(checkout) for checkout in written}
+
+    def holds(checkout: str) -> bool:
+        """Whether an agent other than the one asking holds the checkout: any agent, for a run that claimed, and
+        one that is working, for a checkout that is only on a feature's branch."""
+        return any(
+            agent["orcaSessionId"] != asking and (checkout in claimed or agent["state"] != "done")
+            for agent in agents_in.get(checkout, [])
+        )
+
+    busy = {checkout for checkout in held if holds(checkout)}
+    going = [checkout for checkout in written if agents_in.get(same(checkout))]
     if going != written:
         runs.write_text("".join(f"{checkout}\n" for checkout in going), encoding="utf-8")
     return sorted(name for checkout, name in held.items() if checkout in busy)
+
+
+def ended() -> None:
+    """Forget the run of this checkout: it has filed its record, which is the last thing a run does, so the next
+    check of the schedule may start the next run while its agent's workspace is still open."""
+    runs = common(RUNS)
+    written = runs.read_text(encoding="utf-8").splitlines() if runs.is_file() else []
+    going = [checkout for checkout in written if same(checkout) != same(str(shell.ROOT))]
+    if going != written:
+        runs.write_text("".join(f"{checkout}\n" for checkout in going), encoding="utf-8")
 
 
 def same(path: str) -> str:

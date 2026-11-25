@@ -269,10 +269,20 @@ class IsARunStillAtWork(PickupTest):
         self.assertIn("Claimed-Run", printed["why"])
         self.assertEqual(self.shell.changes(), [])
 
-    def test_a_recorded_run_whose_agent_has_ended_holds_nothing_up_and_is_forgotten(self):
+    def test_a_run_that_claimed_and_whose_agent_finished_its_turn_to_wait_is_still_at_work(self):
+        # On #30 a run's agent finished its turn to wait for the owner, and the next check took #30 up again (#95).
         self.answers["git worktree list --porcelain"] = worktree("/work/site", "main")
         (self.common / pickup.RUNS).write_text("/work/Claimed-Run\n", encoding="utf-8")
         self.answers["orca worktree ps --json"] = orca("/work/Claimed-Run", "done")
+        code, printed = self.run_command("--claim")
+        self.assertEqual((code, list(printed)), (3, ["why"]))
+        self.assertIn("Claimed-Run", printed["why"])
+        self.assertEqual((self.common / pickup.RUNS).read_text(encoding="utf-8"), "/work/Claimed-Run\n")
+
+    def test_a_run_whose_workspace_holds_no_agent_holds_nothing_up_and_is_forgotten(self):
+        self.answers["git worktree list --porcelain"] = worktree("/work/site", "main")
+        (self.common / pickup.RUNS).write_text("/work/Claimed-Run\n", encoding="utf-8")
+        self.answers["orca worktree ps --json"] = orca("/work/Claimed-Run")
         code, printed = self.run_command()
         self.assertEqual((code, printed["issue"]), (0, 27))
         self.assertEqual((self.common / pickup.RUNS).read_text(encoding="utf-8"), "")
@@ -290,6 +300,8 @@ class IsARunStillAtWork(PickupTest):
 
     def test_claiming_writes_down_the_checkout_the_run_works_in_and_writes_it_once(self):
         self.answers["git worktree list --porcelain"] = worktree("/work/site", "main")
+        # The run claims again from its own checkout, where it is the agent that asks.
+        os.environ["ORCA_AGENT_SESSION_ID"] = "session-1"
         for _ in range(2):
             code, _ = self.run_command("--claim")
             self.assertEqual(code, 0)
