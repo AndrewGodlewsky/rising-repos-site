@@ -347,3 +347,18 @@ holds whatever is behind that command.
   whatever board a live site shows, mark it `@needs_made_up_boards`, and add
   what it needs to `made_up.py` under a new name, as the rule above asks.
 - Against a live site a scenario only reads.
+
+### A link to the site, shared (`test_a_link_to_the_site.py`)
+
+43. A link to any page shows a large card, with the page's title, a
+    description, and an image of a board day that the site serves, 1200 by
+    630 pixels: the root's is the newest board day's, and a board day's is its
+    own.
+    `test_a_link_to_any_page_shows_a_large_card_with_its_title_a_description_and_a_board_days_image`
+
+    It does not claim what Discord or X draw from the card, which the owner
+    looks at, or what the image shows, which the agents' tests hold. It reads
+    the head of each kind of page with scripts off, as a crawler reads it, and
+    asks the site being read for the image's path.
+
+Sentence 43 came with #35, and reads a live site as it reads the made-up one.

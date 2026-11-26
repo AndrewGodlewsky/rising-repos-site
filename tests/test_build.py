@@ -52,6 +52,11 @@ def history_file(day: str) -> str:
     return board_day_page(day).replace("index.html", "history.json")
 
 
+def share_image(day: str) -> str:
+    """The path of a board day's share image, beside its page."""
+    return board_day_page(day).replace("index.html", "share.png")
+
+
 def site_bar(page):
     (header,) = [element for element in page.all("header") if "site" in element.classes()]
     return header
@@ -64,7 +69,8 @@ def colophon(page):
 
 class TheBuild(BuildTest):
     def test_the_build_writes_each_page_that_pages_names_one_for_each_board_day_and_the_history_of_each_with_rows(self):
-        """The older board lists no row, so no opened row of it reads a history, and it has none."""
+        """The older board lists no row, so no opened row of it reads a history, and it has none. Each board day has
+        its share image, the empty one too (#35)."""
         self.build_pages()
         written = sorted(path.relative_to(self.out).as_posix() for path in self.out.rglob("*") if path.is_file())
         self.assertEqual(
@@ -79,6 +85,8 @@ class TheBuild(BuildTest):
                     board_day_page(NEWEST),
                     board_day_page(OLDER),
                     history_file(NEWEST),
+                    share_image(NEWEST),
+                    share_image(OLDER),
                     LICENCE,
                 ]
             ),
