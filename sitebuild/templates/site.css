@@ -329,7 +329,7 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
 .drawing .gained { stroke-width: 2.5; }
 .drawing .ends { fill: none; stroke: var(--accent); stroke-width: 8; stroke-linecap: round; vector-effect: non-scaling-stroke; }
 .drawing .tag { position: absolute; padding: 1px 4px; border-radius: 4px; background: var(--surface); white-space: nowrap; font: 400 12px/1.2 var(--mono); pointer-events: none; }
-.drawing .tag.got { transform: translate(calc(-100% - 10px), -50%); color: var(--accent); font-weight: 500; }
+.drawing .tag.got { transform: translate(-100%, calc(-100% - 6px)); color: var(--accent); font-weight: 500; }
 .drawing .tag.own { transform: translate(calc(-100% - 10px), 4px); color: var(--text-2); }
 .drawing .tag.usual { transform: translateY(calc(-100% - 6px)); color: var(--text-3); }
 .drawing-axis { display: grid; grid-template-columns: 12fr 2fr; color: var(--text-3); font: 400 11px/1 var(--mono); }
