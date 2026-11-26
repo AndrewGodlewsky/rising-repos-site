@@ -92,7 +92,7 @@ sentence of a note, and everything else is 400.
 | --- | --- |
 | 11 px | A chart's ticks and the labels along its edge, in Rising Mono |
 | 12 px | The smallest labels: the count in a filter's button, the New mark, the name of a fact in an opened row |
-| 13 px | The filter's buttons, a table's column headings, a quiet note, the colophon |
+| 13 px | The filter's buttons, a table's column headings, a quiet note, the colophon, the owner over a name in Baseline's table on a phone |
 | 14 px | The second level of text: a description, the links of the two bars, the lines of About this board |
 | 15 px | The body, and a small heading at 500 |
 | 16 px | A repository's name, 17 px from 768 px up, and the text of How it works |
