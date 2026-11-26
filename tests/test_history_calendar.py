@@ -126,6 +126,32 @@ class TheForcedColours(CalendarTest):
                 self.assertNotIn("repeating-linear-gradient", look["board"]["image"])
 
 
+class TheFocus(CalendarTest):
+    """P14: the dashed edge of an empty board was drawn as an outline, which took the place of the focus ring, so a
+    reader who reached an empty board with the keyboard could not see where they were (the review of #91)."""
+
+    def test_an_empty_boards_link_shows_the_same_focus_ring_as_a_boards_when_the_keyboard_reaches_it(self):
+        ring = """(element) => { const style = getComputedStyle(element);
+          return [element.matches(':focus-visible'), style.outlineStyle, style.outlineWidth, style.outlineColor,
+                  style.outlineOffset]; }"""
+        for scheme in ("light", "dark"):
+            with self.subTest(scheme), served(self.out) as site, chrome() as browser:
+                context = browser.new_context(viewport={"width": DESKTOP, "height": 900})
+                page = context.new_page()
+                page.emulate_media(color_scheme=scheme)
+                page.clock.set_fixed_time(published(self.out))
+                page.goto(f"{site}/{DAYS.removesuffix('index.html')}", wait_until="load")
+                board, empty = (page.locator(f'.cal a[href="/days/{day}/"]') for day in (BOARD, EMPTY))
+                board.focus()
+                page.keyboard.press("Tab")  # 7 November has no board, and so no link: Tab goes on to 8 November
+                on_empty = empty.evaluate(ring)
+                page.keyboard.press("Shift+Tab")
+                on_board = board.evaluate(ring)
+                context.close()
+                self.assertEqual(on_empty, on_board)
+                self.assertEqual(on_board[:3], [True, "solid", "2px"])
+
+
 class TheLegend(CalendarTest):
     def test_each_new_swatch_is_drawn_as_the_cell_it_names_in_both_themes_and_in_forced_colours(self):
         looks = [("light", "none"), ("dark", "none"), ("light", "active"), ("dark", "active")]

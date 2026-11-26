@@ -390,7 +390,8 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
 {# The board days, as month calendars: each day a cell shaded on a fixed four-step ramp by its count of
    repositories, with how many were new under it. A board with no repository paints no fill of its own, gives its 0
    in the third ink, and has a dashed edge, so that it is the quietest cell of its month and not the brightest (#91).
-   A day with no board is a hatched cell; the newest is outlined. The legend draws each as its cell. #}
+   A day with no board is a hatched cell; the newest is outlined. The legend draws each as its cell. The dashed edge
+   is an outline, so it gives way to the focus ring, and to the newest board's ring, which always wins (#91). #}
 .ramp-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 20px; color: var(--text-2); font-size: 13px; }
 .ramp-legend .ramp-title { color: var(--text); }
 .ramp-legend span { display: inline-flex; align-items: center; gap: 8px; }
@@ -408,7 +409,7 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
 .cal td { padding: 0; vertical-align: top; }
 .cal a, .cal .gap { display: flex; flex-direction: column; min-height: 56px; padding: 6px; border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line); text-decoration: none; transition: box-shadow 150ms var(--ease); }
 .cal .gap, .ramp-legend i.gap-key { background: transparent; box-shadow: inset 0 0 0 1px var(--line); background-image: repeating-linear-gradient(-45deg, transparent 0 6px, var(--line) 6px 7px); }
-.cal a.shade-0, .ramp-legend i.empty-key { box-shadow: none; outline: 1px dashed var(--line-strong); outline-offset: -1px; }
+.cal a.shade-0:not(:focus-visible, .newest), .ramp-legend i.empty-key { box-shadow: none; outline: 1px dashed var(--line-strong); outline-offset: -1px; }
 .cal a.shade-0 .count { color: var(--text-3); }
 .cal a:hover { box-shadow: inset 0 0 0 1px var(--text); color: var(--text); }
 .cal a.newest { box-shadow: inset 0 0 0 2px var(--accent); }
@@ -542,7 +543,7 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
   .legend i { forced-color-adjust: none; }
   td.pc::before, .days14 i { forced-color-adjust: none; --accent: Highlight; --gain-soft: GrayText; --text-3: CanvasText; --dot: CanvasText; }
   .cal a, .cal .gap, .ramp-legend i.newest-key, .ramp-legend i.gap-key { outline: 1px solid CanvasText; outline-offset: -1px; }
-  .cal a.shade-0, .ramp-legend i.empty-key { outline: 1px dashed GrayText; }
+  .cal a.shade-0:not(:focus-visible, .newest), .ramp-legend i.empty-key { outline: 1px dashed GrayText; }
   .cal .gap, .ramp-legend i.gap-key { forced-color-adjust: none; --line: GrayText; --text: CanvasText; }
   .cal a.newest, .ramp-legend i.newest-key { outline: 2px solid Highlight; outline-offset: -2px; }
   .ramp-legend .ramp-title, .ramp-legend span:has(> i[class^="shade"]) { display: none; }

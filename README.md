@@ -166,8 +166,8 @@ What every page holds to, each checked by a test in `tests/`:
   more to a board with rows, in its script: the heaviest board day is now
   498,317 bytes, 1,683 under the limit. Drawing History's empty boards as
   quiet cells with a dashed edge, and naming them and a day with no board in
-  the legend (#91), added 361 bytes to every page, in the stylesheet, and 3
-  more to History: the heaviest board day is now 498,678 bytes, 1,322 under
+  the legend (#91), added 419 bytes to every page, in the stylesheet, and 3
+  more to History: the heaviest board day is now 498,736 bytes, 1,264 under
   the limit.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
@@ -509,7 +509,8 @@ any width), and a shade on a fixed ramp by that count, the same every month:
 under 200, 200 to 274, 275 to 349, and 350 or more. The newest is outlined in
 the accent and marked `aria-current="date"`. A board day whose board has no
 repository paints no fill of its own, gives its 0 in the third ink, and is
-edged with a dashed line in `--line-strong`, and it says no count of new, since
+edged with a dashed line in `--line-strong`, which gives way to the focus ring
+and to the newest board's ring, and it says no count of new, since
 no repository on it could be new: the card's own colour had made it the
 brightest cell of its month (#91). A day between the first board and the
 newest that has no board is hatched, and a screen reader hears "no board". The
