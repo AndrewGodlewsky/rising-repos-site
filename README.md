@@ -158,7 +158,9 @@ What every page holds to, each checked by a test in `tests/`:
   added 227 bytes to every page, in the stylesheet, and 980 more to a board
   with rows, in its script and its markup: the page of the 316 made-up rows
   is now 494,857 bytes, and the heaviest board day 497,621, 2,379 under the
-  limit.
+  limit. Setting "own pace" beside its line on a phone (#34) added 194 bytes
+  to every page, in the stylesheet, and 16 more to Baseline, in its markup:
+  the heaviest board day is now 497,815 bytes, 2,185 under the limit.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -501,7 +503,13 @@ the newest that has no board is hatched, and a screen reader hears "no board".
 placed by its baseline, the stars a day it gained over the twelve days before,
 across, against its recent pace, up, both on log scales, with the diagonals of
 its own pace, dashed, and of 3×, 10×, 100×, and 1,000×. The top ten are in the
-accent, and the first five are labelled with their ranks. With the script,
+accent, and the first five are labelled with their ranks. Each diagonal is
+labelled where it leaves the plot, except "own pace" on a phone (#34): there
+the dashed line and the 3× line can leave by the same corner, and the two
+labels printed on top of each other, so below 768px "own pace" sits beside
+its line, 60% of the way along it, below and to the right of it, where a row
+is only when its recent pace is under its usual one. The axis's title stands
+4px higher on a phone, clear of the guides' labels on the plot's top edge. With the script,
 the dot nearest a mouse's pointer names its repository, its rank, its
 baseline, its recent pace, and its growth in a readout, each copied from its
 line in the table, and a click on it goes to that line. A tap, the keyboard,

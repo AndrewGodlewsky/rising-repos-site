@@ -254,6 +254,143 @@ class TheFindField(ChartTest):
             self.assertRegex(page.locator(".find").inner_text(), r"(?i)\bnone\b")
 
 
+WORDS = """() => {
+  const plot = document.querySelector('.plot').getBoundingClientRect();
+  const labels = document.querySelectorAll('.plot span.glabel, .plot span.tick, .plot span.axis, .plot span.rk');
+  return [...labels].map(el => {
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    const box = range.getBoundingClientRect();
+    return {text: el.textContent, own: el.classList.contains('own'),
+      x0: box.left - plot.left, x1: box.right - plot.left, y0: box.top - plot.top, y1: box.bottom - plot.top};
+  });
+}"""
+"""Each of the chart's labels by the box of its words, in pixels from the plot's top left corner: the guide labels,
+the ticks, the two axis titles, and the ranks' marks. The box of the words, and not of the element, since a label's
+element is padded."""
+
+PLOT = """() => { const box = document.querySelector('.plot').getBoundingClientRect();
+  return {width: box.width, height: box.height}; }"""
+
+ELEMENTS = """() => {
+  const plot = document.querySelector('.plot').getBoundingClientRect();
+  return [...document.querySelectorAll('.plot span.glabel')].map(el => {
+    const box = el.getBoundingClientRect();
+    return {text: el.textContent, x0: box.left - plot.left, x1: box.right - plot.left, y1: box.bottom - plot.top};
+  });
+}"""
+"""Each guide label's own box, padding and all, in pixels from the plot's top left corner."""
+
+
+class TheGuideLabels(ChartTest):
+    """The guide labels on a phone (#34). Both the dashed line of a board's own pace and the 3× line left the chart
+    at its top right corner, and both labels were set at the line's end, on the plot's top edge, so on a phone
+    "own pace" printed on top of "3×"."""
+
+    def corner_board(self) -> None:
+        """The example board with one row more, at 300 stars a day and a score of 3, which gives the guides of the
+        newest board in `site-data/`: the dashed line leaves the chart at its top right corner, and the 3× line
+        just left of it."""
+        board = read_json(self.board_file())
+        rows = board["rows"]
+        rows.append(
+            {
+                **rows[-1],
+                "rank": len(rows) + 1,
+                "github_id": rows[-1]["github_id"] + 1000,
+                "full_name": "o/corner",
+                "baseline": 300.0,
+                "divided_by": 300.0,
+                "recent_stars": 1800,
+                "recent_days": 2,
+                "score": 3.0,
+            }
+        )
+        self.write_board({**board, "rows": rows})
+
+    def dashed_line(self, page) -> tuple[tuple[float, float], tuple[float, float]]:
+        """The ends of the dashed line of the board's own pace, in pixels from the plot's top left corner."""
+        line = page.locator(".plot line.guide.own")
+        plot = page.evaluate(PLOT)
+        x1, y1, x2, y2 = (float(line.get_attribute(name)) for name in ("x1", "y1", "x2", "y2"))
+        return (
+            (x1 / 100 * plot["width"], y1 / 100 * plot["height"]),
+            (x2 / 100 * plot["width"], y2 / 100 * plot["height"]),
+        )
+
+    def test_on_a_phone_no_two_of_the_charts_labels_overlap_with_the_script_or_without(self):
+        self.corner_board()
+        with self.run_chart() as browser:
+            for width in (360, 375, 390, 412, 430):
+                for scripts in (True, False):
+                    page = self.baseline(browser, width, touch=True, scripts=scripts)
+                    labels = page.evaluate(WORDS)
+                    for i, a in enumerate(labels):
+                        for b in labels[i + 1 :]:
+                            with self.subTest(width=width, scripts=scripts, a=a["text"], b=b["text"]):
+                                apart = (
+                                    a["x1"] <= b["x0"] or b["x1"] <= a["x0"] or a["y1"] <= b["y0"] or b["y1"] <= a["y0"]
+                                )
+                                self.assertTrue(apart, f"{a} overlaps {b}")
+                    page.context.close()
+
+    def test_on_a_phone_own_pace_sits_beside_its_dashed_line_below_and_to_the_right_of_it(self):
+        """Tried on the board whose dashed line leaves by the top right corner, and on the example as it is, whose
+        dashed line leaves by the right edge."""
+        for corner in (True, False):
+            with self.subTest(corner=corner):
+                # A fresh copy of the example, and a fresh folder to build into, for each board.
+                self.setUp()
+                if corner:
+                    self.corner_board()
+                with self.run_chart() as browser:
+                    for width in (360, 390, 430):
+                        for scripts in (True, False):
+                            with self.subTest(corner=corner, width=width, scripts=scripts):
+                                page = self.baseline(browser, width, touch=True, scripts=scripts)
+                                plot = page.evaluate(PLOT)
+                                (ax, ay), (bx, by) = self.dashed_line(page)
+                                own = next(label for label in page.evaluate(WORDS) if label["own"])
+                                page.context.close()
+                                corners = [(x, y) for x in (own["x0"], own["x1"]) for y in (own["y0"], own["y1"])]
+                                # Inside the plot.
+                                self.assertGreaterEqual(own["x0"], 0)
+                                self.assertGreaterEqual(own["y0"], 0)
+                                self.assertLessEqual(own["x1"], plot["width"])
+                                self.assertLessEqual(own["y1"], plot["height"])
+                                # Below and to the right of the line: on a screen, whose y runs down, a point is
+                                # below a line that rises to the right when the cross product of the line's
+                                # direction and the point is positive.
+                                for x, y in corners:
+                                    self.assertGreater((bx - ax) * (y - ay) - (by - ay) * (x - ax), 0, (x, y))
+                                # Within 6 px of it: the corner nearest a line that rises to the right is the top
+                                # left one.
+                                length = math.dist((ax, ay), (bx, by))
+                                gap = ((bx - ax) * (own["y0"] - ay) - (by - ay) * (own["x0"] - ax)) / length
+                                self.assertLessEqual(gap, 6)
+
+    def test_on_a_desktop_each_guide_label_sits_at_the_end_of_its_line_as_before(self):
+        self.corner_board()
+        with self.run_chart() as browser:
+            page = self.baseline(browser, DESKTOP, touch=False)
+            plot = page.evaluate(PLOT)
+            guides = page.locator(".plot line.guide")
+            ends = [
+                tuple(float(guides.nth(i).get_attribute(name)) for name in ("x2", "y2")) for i in range(guides.count())
+            ]
+            labels = page.evaluate(ELEMENTS)
+            self.assertEqual(len(labels), len(ends))
+            self.assertIn("own pace", [label["text"] for label in labels])
+            for label, (x2, y2) in zip(labels, ends, strict=True):
+                with self.subTest(label=label["text"]):
+                    x, y = x2 / 100 * plot["width"], y2 / 100 * plot["height"]
+                    self.assertAlmostEqual(label["y1"], y, delta=0.5)
+                    if x2 > 80:
+                        self.assertAlmostEqual(label["x1"], x, delta=0.5)
+                    else:
+                        self.assertAlmostEqual(label["x0"], x + 4, delta=0.5)
+
+
 class WithoutTheScript(ChartTest):
     def test_with_scripts_off_the_find_field_is_not_shown_and_the_chart_is_as_built(self):
         with self.run_chart() as browser:

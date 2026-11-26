@@ -194,10 +194,12 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 .plot .tick, .plot .rk, .plot .glabel, .plot .axis { position: absolute; color: var(--text-3); font: 400 11px/1 var(--mono); white-space: nowrap; pointer-events: none; }
 .plot .tick.y { left: -8px; transform: translate(-100%, -50%); }
 .plot .tick.x { top: calc(100% + 8px); transform: translateX(-50%); }
-.plot .axis.y { top: -24px; left: -40px; color: var(--text-2); font-family: var(--sans); font-size: 12px; }
+.plot .axis.y { top: -28px; left: -40px; color: var(--text-2); font-family: var(--sans); font-size: 12px; }
 .plot .axis.x { top: calc(100% + 26px); right: 0; color: var(--text-2); font-family: var(--sans); font-size: 12px; }
 .plot .glabel { transform: translate(4px, -100%); padding-bottom: 2px; }
-.plot .glabel.own { color: var(--text-2); }
+{# On a phone "own pace" sits beside its dashed line, below and to the right of it, where no other label is (#34);
+   from 768px it is at the line's end, as every guide's label is. #}
+.plot .glabel.own { left: var(--bx); top: var(--by); transform: translate(6px, 0); color: var(--text-2); }
 .plot .rk { transform: translate(10px, -50%); text-shadow: 0 0 2px var(--surface), 0 0 4px var(--surface), 0 0 6px var(--surface); color: var(--accent); font-weight: 500; font-size: 12px; }
 
 {# The field that finds a repository on the chart (#29): its label, with how many names match at the line's end,
@@ -459,6 +461,8 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
   h1 { font-size: 56px; letter-spacing: -0.03em; }
   .pace { padding: 24px 24px 20px; }
   .plot { height: 320px; margin: 32px 8px 48px 48px; }
+  .plot .axis.y { top: -24px; }
+  .plot .glabel.own { left: var(--x); top: var(--y); transform: var(--t, translate(4px, -100%)); }
   .op { grid-template-columns: minmax(0, 1fr) 280px; grid-template-areas: "reason facts" "drawing facts" "run run" "days days"; column-gap: 32px; row-gap: 24px; max-width: 960px; padding: 20px 24px; }
   .op .rs { grid-area: reason; }
   .op .fa { grid-area: facts; grid-template-columns: 1fr; gap: 12px; padding-left: 24px; border-left: 1px solid var(--line); }

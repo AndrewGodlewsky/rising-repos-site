@@ -39,7 +39,7 @@
 </svg>
 {% for tick in chart.yticks %}<span class="tick y" style="top:{{ tick.at }}%" aria-hidden="true">{{ tick.text }}</span>{% endfor %}
 {% for tick in chart.xticks %}<span class="tick x" style="left:{{ tick.at }}%" aria-hidden="true">{{ tick.text }}</span>{% endfor %}
-{% for guide in chart.guides %}<span class="glabel{% if guide.multiple == 1 %} own{% endif %}" style="left:{{ guide.x2 }}%;top:{{ guide.y2 }}%;{% if guide.x2 > 80 %}transform:translate(-100%,-100%){% endif %}" aria-hidden="true">{{ guide.label }}</span>{% endfor %}
+{% for guide in chart.guides %}{% if guide.multiple == 1 %}<span class="glabel own" style="--bx:{{ guide.bx }}%;--by:{{ guide.by }}%;--x:{{ guide.x2 }}%;--y:{{ guide.y2 }}%{% if guide.x2 > 80 %};--t:translate(-100%,-100%){% endif %}" aria-hidden="true">{{ guide.label }}</span>{% else %}<span class="glabel" style="left:{{ guide.x2 }}%;top:{{ guide.y2 }}%;{% if guide.x2 > 80 %}transform:translate(-100%,-100%){% endif %}" aria-hidden="true">{{ guide.label }}</span>{% endif %}{% endfor %}
 {% for label in chart.labels %}<span class="rk" style="left:{{ label.left }}%;top:{{ label.top }}%" aria-hidden="true">{{ label.text }}</span>{% endfor %}
 <span class="axis x" aria-hidden="true">Baseline, stars a day</span>
 <span class="readout" id="readout" aria-hidden="true" hidden></span>
