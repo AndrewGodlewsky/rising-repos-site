@@ -1334,8 +1334,9 @@ review are the group's, and every script after the sort is given the lead's
 number. A `sorted` comment on the lead names its partners, and a `joined`
 comment on each partner names the lead, so that the scripts read the group
 from the issues and keep no record of their own. A grade is no work begun, so
-an idea with a grade still waits. Only the idea approved earliest leads, so
-the owner's order holds.
+an idea with a grade still waits. As first built, only the idea approved
+earliest led, so the owner's order held; the change below lets a group from
+elsewhere in the queue go first.
 
 **The rules of a group, as first built.** Its ideas showed in the same part
 of the same page, and shared a figure, a control, or code, and not only a

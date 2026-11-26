@@ -131,7 +131,10 @@ record it, which also claims every idea of the group:
 `sort` refuses an idea that does not wait, one named twice, the lead among
 its own partners, a group of more than three or past 13 points of effort,
 an idea with no grade in points, and a lead sorted already with other
-partners, and changes nothing when it refuses. When it fails partway, as
+partners. With `--lead`, it also refuses a lead with no partners, a lead
+that is not the group's idea approved earliest, and a claimed idea that is
+sorted already or has a branch or a pull request, which could not wait
+again. It changes nothing when it refuses. When it fails partway, as
 when GitHub refuses a step, run it again with the same arguments: it does
 what it had not, and posts nothing twice. Its last two lines are the lead,
 `Lead: #<n>`, and the branch the run makes, `Branch: <name>`.

@@ -38,10 +38,12 @@ step here leaves a choice open.
    issue at once (#95). A run that has truly ended without filing its
    record holds the schedule until the owner closes its workspace.
 
-3. For a new idea, sort first (below, "Sort"): the sort may hand the claim to
-   another idea, and the branch is the lead's, which `sitework sort` prints
-   last as `Branch:`. For an issue taken up again, the branch is the one the
-   script named.
+3. For a new idea, and for one taken up again that has no `sorted` comment,
+   sort first (below, "Sort"): the sort may hand the claim to another idea,
+   and the branch is the lead's, which `sitework sort` prints last as
+   `Branch:`. For an issue taken up again that was sorted, the branch is the
+   one the script named. A branch that is not on GitHub yet is made as for a
+   new idea.
 
    Work on that branch, in a worktree of its own. For a new idea, make it
    from the newest `main`, and push it at once, so that the claim is on
