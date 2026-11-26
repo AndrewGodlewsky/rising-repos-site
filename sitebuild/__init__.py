@@ -715,6 +715,11 @@ def pace_chart(rows: list[dict]) -> dict | None:
         start, end = max(x0, y0 - shift), min(x1, y1 - shift)
         if start >= end:
             continue
+        # On a phone, "own pace" is set beside its line, at a point 60% of the way along it, and not at the line's
+        # end: there the 3× line leaves the chart too, and the two labels printed on top of each other (#34). The
+        # area below and to the right of the line is the board's emptiest, since a row is there only when its recent
+        # pace is under its usual one.
+        beside = start + (end - start) * 0.6
         guides.append(
             {
                 "multiple": multiple,
@@ -722,6 +727,8 @@ def pace_chart(rows: list[dict]) -> dict | None:
                 "y1": top(10 ** (start + shift)),
                 "x2": left(10**end),
                 "y2": top(10 ** (end + shift)),
+                "bx": left(10**beside),
+                "by": top(10 ** (beside + shift)),
                 "label": "own pace" if multiple == 1 else f"{multiple:,}×",
             }
         )
