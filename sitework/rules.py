@@ -43,10 +43,10 @@ KINDS = (
 account, so the author of a comment does not tell the owner's words from an agent's: a comment by that account
 without this first line is the owner's own.
 
-The last four came on 25 November 2026, when the owner asked that each idea be graded and that ideas which change
-the same part of the site be worked in one run. `graded` gives an idea's complexity and effort and why. `sorted`
-names, on the idea a run claimed, the ideas that go with it, `joined` marks each of those, and `released` marks
-one sent back to wait for a run of its own."""
+The last five came on 25 November 2026, when the owner asked that each idea be graded and that ideas which change
+the same part of the code be worked in one run. `graded` gives an idea's complexity and effort and why. `sorted`
+names, on the group's lead, the ideas that go with it, `joined` marks each of those, and `released` marks one sent
+back to wait for a run of its own. `note` is a finding of a run's look back, added to an open idea."""
 
 POINTS = (1, 2, 3, 5, 8, 13)
 """The values a grade gives an idea's complexity and its effort: Fibonacci points, as estimates are made in
@@ -68,7 +68,7 @@ with them, so that a comment never says an idea is in a group when its labels sa
 by `feedback add` alone."""
 
 LEAD, WITH = "Lead", "With"
-"""The names of the lines that tie a group together: `With: #90, #91` on the idea a run claimed, or `With: none`,
+"""The names of the lines that tie a group together: `With: #90, #91` on the group's lead, or `With: none`,
 and `Lead: #89` on each idea that joined it, was sent back from it, or was stopped with it."""
 
 BACKLOG, WORKING = "Backlog", "In progress"

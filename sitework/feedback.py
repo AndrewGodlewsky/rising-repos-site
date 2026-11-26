@@ -141,9 +141,10 @@ def main(command: str, arguments: list[str]) -> int:
     forms = parser.add_subparsers(dest="form", required=True, metavar="{list,file,add}")
     forms.add_parser(
         "list",
-        help="print each open issue that carries the label",
+        help="print each open issue that carries the label, then each open approved idea",
         description=f"Print each open issue that carries the label `{rules.FEEDBACK}` as `#<number> <title>`, "
-        "oldest first, so that a finding which is already filed is added to its issue and not filed again.",
+        "oldest first, and then each open approved idea as `#<number> [idea] <title>`, so that a finding close to "
+        "one of them is added to it and not filed again.",
     )
     filing = forms.add_parser(
         "file",
@@ -162,10 +163,11 @@ def main(command: str, arguments: list[str]) -> int:
     )
     adding = forms.add_parser(
         "add",
-        help="add a finding that was seen again to its issue",
-        description="Add a finding that was seen again to the issue it is filed in, as a comment that begins by "
-        f"naming the run, and print the comment's address. An issue that is closed, or that does not carry the "
-        f"label `{rules.FEEDBACK}`, is refused and left as it is.",
+        help="add a finding to an open feedback issue or approved idea it is close to",
+        description="Add a finding to an open issue it is close to, as a comment that names the run, and print the "
+        f"comment's address: to an issue that carries the label `{rules.FEEDBACK}`, or to an approved idea, where "
+        f"the comment is the workflow's `{rules.NOTE}`. An issue that is closed, or that is neither, is refused and "
+        "left as it is.",
     )
     adding.add_argument("issue", type=int, metavar="ISSUE", help="the number of the open issue the finding is in")
     adding.add_argument("--run", type=int, required=True, metavar="N", help="the number of the feature's issue")

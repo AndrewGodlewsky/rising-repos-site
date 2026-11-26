@@ -6,13 +6,15 @@ it changes, and two ideas that change one part did all of that twice. A fresh ag
 (docs/workflow/sort.md). These two commands record what it judged and claim or release the ideas, and judge
 nothing themselves but what a script can: that an idea waits, that a group stays small, and that a partner is one.
 
-The idea `pickup` claimed is the lead. Its branch, plan, pull request, and review are the group's, and every
-script after the sort is given the lead's number. A partner carries a `joined` comment that names its lead, and
-`issue.partners` reads the group from the two.
+The group's idea approved earliest is its lead: the idea `pickup` claimed, or, when the sort chose a group
+elsewhere in the queue, that group's, to which the claim is handed. Its branch, plan, pull request, and review are
+the group's, and every script after the sort is given the lead's number. A partner carries a `joined` comment that
+names its lead, and `issue.partners` reads the group from the two.
 """
 
 import argparse
 import functools
+import re
 import sys
 from pathlib import Path
 
@@ -56,18 +58,32 @@ def sort(claimed: int, partners: list[int], text: str, lead: int | None = None) 
     lead = claimed if lead is None else lead
     handing = lead != claimed
     led = next((one for one in opened if one["number"] == lead), None)
-    picked = issue.of_kind(comments(lead), "picked up")
-    handed = (
-        handing
-        and bool(picked)
-        and str(issue.value(picked[-1]["body"], "Taken up")).startswith(HANDED.format(claimed=claimed))
-    )
+    lead_held = bool(led) and rules.IN_PROGRESS in issue.labels(led)
+    last = issue.newest(comments(lead))
+    # A handover GitHub cut short is known by the lead: in progress, and its newest comment the `picked up` of
+    # this very handover, or none at all when GitHub took the lead's labels and refused the comment.
+    taken_up = str(issue.value(last["body"], "Taken up")) if last and rules.kind_of(last["body"]) == "picked up" else ""
+    handed = handing and lead_held and re.match(rf"{re.escape(HANDED.format(claimed=claimed))}\b", taken_up) is not None
+    half_claimed = handing and lead_held and last is None
     held = next((one for one in opened if one["number"] == claimed), None)
     if not handed and (not held or rules.IN_PROGRESS not in issue.labels(held)):
         raise Refused(f"#{claimed} is not an issue a run has claimed, so it has no group to sort.")
-    waits = {number for _, number, _, _ in pickup.ideas_waiting(opened, owner, comments, issue.pulls())}
-    if handing and not handed and lead not in waits:
+    pulls = issue.pulls()
+    if handing and not handed:
+        if issue.of_kind(comments(claimed), "sorted"):
+            raise Refused(f"#{claimed} is sorted already, and its group goes with it. It cannot be passed over now.")
+        branches = shell.git("ls-remote", "--heads", "origin", "agent/*")
+        if f"refs/heads/{issue.branch_start(claimed)}" in branches or issue.feature(pulls, claimed):
+            raise Refused(f"#{claimed} has a branch or a pull request, so sent back it could never wait again.")
+        if not partners:
+            raise Refused("A group elsewhere in the queue goes first only when it is a group: name its partners.")
+    waits = {number for _, number, _, _ in pickup.ideas_waiting(opened, owner, comments, pulls)}
+    if handing and not handed and not half_claimed and lead not in waits:
         raise Refused(f"#{lead} is not an approved idea that waits for a run, so it cannot lead the group.")
+    if handing and not handed:
+        approved = {number: pickup.approved(number, owner) or "" for number in [lead, *partners]}
+        if any(approved[number] < approved[lead] for number in partners):
+            raise Refused(f"#{lead} is not the idea of the group approved earliest, which leads it.")
     sorted_already = bool(issue.of_kind(comments(lead), "sorted"))
     if sorted_already and issue.named_with(comments(lead)) != partners:
         raise Refused(
@@ -127,7 +143,9 @@ def release(number: int, text: str) -> list[str]:
 
 def main(command: str, arguments: list[str]) -> int:
     what = {
-        "sort": "Record which ideas go with the idea this run claimed, or that none does, and claim each of them.",
+        "sort": "Record the group this run works, the idea it claimed alone or with partners, or with --lead a "
+        "group elsewhere in the queue, to which the claim is handed and the claimed idea sent back to wait. Claim "
+        "every idea of the group, and print its lead and branch last.",
         "release": "Send a partner back from its group to wait for a run of its own.",
     }
     parser = argparse.ArgumentParser(prog=f"python -m sitework {command}", description=what[command])

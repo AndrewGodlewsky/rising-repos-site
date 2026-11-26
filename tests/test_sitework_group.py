@@ -236,10 +236,61 @@ class AGroupElsewhere(GroupTest):
         self.assertEqual(printed.splitlines()[-2:], ["Lead: #90", "Branch: agent/90-idea-90"])
 
     def test_sort_refuses_a_lead_that_does_not_wait(self):
-        self.answers[COMMENTS % 92] = [graded(), said("Site workflow: plan\n\n## Verdict\n\nGo")]
-        code, _ = self.run_command("sort", "89", "--lead", "92")
+        self.answers[COMMENTS % 90] = [graded(), said("Site workflow: plan\n\n## Verdict\n\nGo")]
+        code, _ = self.run_command("sort", "89", "--lead", "90", "--with", "91")
         self.assertEqual(code, 1)
         self.assertEqual(self.shell.changes(), [])
+
+    def test_sort_refuses_to_hand_over_from_an_idea_whose_branch_is_on_github(self):
+        # Sent back with a branch on GitHub, the idea would never wait again: pickup skips an idea that has one.
+        self.answers["git ls-remote --heads origin agent/*"] = f"{'a' * 40}\trefs/heads/agent/89-idea-89"
+        code, _ = self.run_command("sort", "89", "--lead", "90", "--with", "91")
+        self.assertEqual(code, 1)
+        self.assertEqual(self.shell.changes(), [])
+
+    def test_sort_refuses_to_hand_over_from_an_idea_sorted_already(self):
+        # Its partners joined it, and sent back without them they would stay in progress with no run to take them.
+        self.answers[COMMENTS % 89] = [graded(), said("Site workflow: sorted\n\nWith: #92")]
+        code, _ = self.run_command("sort", "89", "--lead", "90", "--with", "91")
+        self.assertEqual(code, 1)
+        self.assertEqual(self.shell.changes(), [])
+
+    def test_sort_refuses_a_handover_to_an_idea_alone(self):
+        # An idea alone elsewhere in the queue saves nothing, and would only go before the idea approved earliest.
+        code, _ = self.run_command("sort", "89", "--lead", "90")
+        self.assertEqual(code, 1)
+        self.assertEqual(self.shell.changes(), [])
+
+    def test_sort_refuses_a_lead_that_is_not_the_groups_idea_approved_earliest(self):
+        code, _ = self.run_command("sort", "89", "--lead", "91", "--with", "90")
+        self.assertEqual(code, 1)
+        self.assertEqual(self.shell.changes(), [])
+
+    def test_a_handover_note_on_a_lead_that_is_not_in_progress_is_no_handover(self):
+        # A stale note of a handover must not let an idea that waits for the owner lead a group.
+        self.answers["gh issue list"][1] = idea(90, "site-idea", "approved", "needs-owner")
+        picked = "Site workflow: picked up\n\nBranch: agent/90-idea-90\nTaken up: handed over from #89."
+        self.answers[COMMENTS % 90] = [graded(), said(picked)]
+        code, _ = self.run_command("sort", "89", "--lead", "90", "--with", "91")
+        self.assertEqual(code, 1)
+        self.assertEqual(self.shell.changes(), [])
+
+    def test_a_handover_note_names_its_claimed_idea_by_its_whole_number(self):
+        # "handed over from #891" is no handover from #89.
+        self.answers["gh issue list"][1] = idea(90, "site-idea", "approved", "in-progress")
+        picked = "Site workflow: picked up\n\nBranch: agent/90-idea-90\nTaken up: handed over from #891."
+        self.answers[COMMENTS % 90] = [graded(), said(picked)]
+        code, _ = self.run_command("sort", "89", "--lead", "90", "--with", "91")
+        self.assertEqual(code, 1)
+        self.assertEqual(self.shell.changes(), [])
+
+    def test_a_handover_cut_inside_the_leads_claim_is_finished_by_running_it_again(self):
+        # GitHub took the lead's labels and refused its `picked up` comment. Run again, the claim is made whole.
+        self.answers["gh issue list"][1] = idea(90, "site-idea", "approved", "in-progress")
+        code, _ = self.run_command("sort", "89", "--lead", "90", "--with", "91")
+        self.assertEqual(code, 0)
+        self.assertIn("gh issue comment 90 --body-file -", self.shell.changes())
+        self.assertIn("gh issue comment 89 --body-file -", self.shell.changes())
 
     def test_a_handover_cut_short_is_finished_by_running_it_again(self):
         # GitHub refused a step after the new lead was claimed. Run again, the sort claims it no second time.

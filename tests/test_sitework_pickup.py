@@ -723,6 +723,8 @@ class Queue(PickupTest):
             printed["waiting"][1]["grade"],
             {"complexity": 5, "effort": 2, "area": "the date bar", "code": "filters.js jump()"},
         )
+        self.assertIsNone(printed["waiting"][0]["grade"])
+        self.assertIsNone(printed["lead"])
 
     def test_a_grade_that_is_not_in_points_counts_as_none_so_the_idea_is_graded_again(self):
         # Grades moved from Low, Medium, and High to Fibonacci points on 25 November 2026. An idea graded the old
@@ -732,8 +734,6 @@ class Queue(PickupTest):
                 self.answers[COMMENTS % 28] = [said(self.GRADE.replace("Complexity: 5", f"Complexity: {given}"))]
                 _, printed = self.run_queue()
                 self.assertIsNone(printed["waiting"][1]["grade"])
-        self.assertIsNone(printed["waiting"][0]["grade"])
-        self.assertIsNone(printed["lead"])
 
     def test_the_queue_gives_the_lead_apart_from_the_ideas_that_wait(self):
         self.label(27, "site-idea", "approved", "in-progress")
