@@ -77,6 +77,12 @@ def said(body: str, number: int = 1) -> dict:
     }
 
 
+def graded(effort: int = 3, complexity: int = 2) -> dict:
+    """An idea's grade in points, posted before anything else on it. The sort holds a group's effort to its cap, so
+    every idea a sort is given has one (25 November 2026)."""
+    return said(f"Site workflow: graded\n\nComplexity: {complexity}\nEffort: {effort}\nArea: a row\nCode: x", number=0)
+
+
 class GroupTest(unittest.TestCase):
     def setUp(self):
         self.answers = {
@@ -89,7 +95,7 @@ class GroupTest(unittest.TestCase):
             "gh api --method PATCH": {"number": 0},
         }
         for number in (89, 90, 91, 92):
-            self.answers[COMMENTS % number] = []
+            self.answers[COMMENTS % number] = [graded()]
             self.answers[TIMELINE % number] = [
                 labelled("site-idea", f"2026-11-25T13:00:{number - 80:02}Z"),
                 labelled("approved", f"2026-11-25T13:01:{number - 80:02}Z"),
@@ -137,7 +143,7 @@ class Sort(GroupTest):
         self.assertTrue(self.body(90).startswith("Site workflow: joined\n\nLead: #89\n"), self.body(90))
 
     def test_sort_refuses_a_number_that_is_not_waiting_and_changes_nothing(self):
-        self.answers[COMMENTS % 91] = [said("Site workflow: plan\n\n## Verdict\n\nGo")]
+        self.answers[COMMENTS % 91] = [graded(), said("Site workflow: plan\n\n## Verdict\n\nGo")]
         code, printed = self.run_command("sort", "89", "--with", "90", "91")
         self.assertEqual(code, 1)
         self.assertEqual(self.shell.changes(), [])
@@ -151,7 +157,7 @@ class Sort(GroupTest):
                 self.assertEqual(self.shell.changes(), [])
 
     def test_sort_refuses_a_lead_sorted_already_with_other_partners(self):
-        self.answers[COMMENTS % 89] = [said("Site workflow: sorted\n\nWith: none")]
+        self.answers[COMMENTS % 89] = [graded(), said("Site workflow: sorted\n\nWith: none")]
         code, _ = self.run_command("sort", "89", "--with", "90")
         self.assertEqual(code, 1)
         self.assertEqual(self.shell.changes(), [])
@@ -159,8 +165,8 @@ class Sort(GroupTest):
     def test_sort_run_again_with_the_same_partners_claims_those_it_had_not_and_posts_no_second_sort(self):
         # GitHub refused a claim after the sort was posted. Refused when run again, the sort would leave #91 named
         # in the group and never claimed, and its change would ship with #89 while it waited to be worked again.
-        self.answers[COMMENTS % 89] = [said("Site workflow: sorted\n\nWith: #90, #91")]
-        self.answers[COMMENTS % 90] = [said("Site workflow: joined\n\nLead: #89")]
+        self.answers[COMMENTS % 89] = [graded(), said("Site workflow: sorted\n\nWith: #90, #91")]
+        self.answers[COMMENTS % 90] = [graded(), said("Site workflow: joined\n\nLead: #89")]
         self.answers["gh issue list"][1] = idea(90, "site-idea", "approved", "in-progress")
         code, _ = self.run_command("sort", "89", "--with", "90", "91")
         self.assertEqual(code, 0)
@@ -173,11 +179,77 @@ class Sort(GroupTest):
             ],
         )
 
+    def test_sort_refuses_a_group_whose_effort_adds_up_past_13(self):
+        # The owner let ideas of different sizes go together, under a cap on their size (25 November 2026).
+        self.answers[COMMENTS % 89] = [graded(effort=8)]
+        self.answers[COMMENTS % 90] = [graded(effort=8)]
+        code, printed = self.run_command("sort", "89", "--with", "90")
+        self.assertEqual(code, 1)
+        self.assertEqual(self.shell.changes(), [])
+        self.assertIn("13", printed)
+
+    def test_sort_refuses_an_idea_with_no_grade_in_points(self):
+        self.answers[COMMENTS % 90] = [said("Site workflow: graded\n\nComplexity: Low\nEffort: Low")]
+        code, printed = self.run_command("sort", "89", "--with", "90")
+        self.assertEqual(code, 1)
+        self.assertEqual(self.shell.changes(), [])
+        self.assertIn("#90", printed)
+
+    def test_sort_prints_the_lead_and_its_branch_last_for_the_run_to_make_its_branch(self):
+        _, printed = self.run_command("sort", "89")
+        self.assertEqual(printed.splitlines()[-2:], ["Lead: #89", "Branch: agent/89-idea-89"])
+
     def test_sort_refuses_a_lead_no_run_has_claimed(self):
         self.answers["gh issue list"][0] = idea(89)
         code, _ = self.run_command("sort", "89")
         self.assertEqual(code, 1)
         self.assertEqual(self.shell.changes(), [])
+
+
+class AGroupElsewhere(GroupTest):
+    """The sort may take a group from anywhere in the queue, led by an idea other than the one pickup claimed, which
+    then waits for the next run (25 November 2026)."""
+
+    def setUp(self):
+        super().setUp()
+        self.answers["gh issue view 89"] = {**idea(89, "site-idea", "approved", "in-progress"), "state": "OPEN"}
+
+    def test_sort_hands_the_claim_to_a_lead_elsewhere_in_the_queue_and_sends_the_claimed_idea_back(self):
+        code, printed = self.run_command("sort", "89", "--lead", "90", "--with", "91")
+        self.assertEqual(code, 0)
+        self.assertEqual(
+            self.shell.changes(),
+            [
+                "gh issue edit 90 --add-label in-progress --add-assignee the-owner",
+                STATUS % (90, "In progress"),
+                "gh issue comment 90 --body-file -",
+                "gh issue comment 90 --body-file -",
+                "gh issue edit 91 --add-label in-progress --add-assignee the-owner",
+                STATUS % (91, "In progress"),
+                "gh issue comment 91 --body-file -",
+                "gh issue edit 89 --remove-label in-progress --remove-assignee the-owner",
+                STATUS % (89, "Backlog"),
+                "gh issue comment 89 --body-file -",
+            ],
+        )
+        self.assertTrue(self.body(89).startswith("Site workflow: released\n\nLead: #90\n"), self.body(89))
+        self.assertEqual(printed.splitlines()[-2:], ["Lead: #90", "Branch: agent/90-idea-90"])
+
+    def test_sort_refuses_a_lead_that_does_not_wait(self):
+        self.answers[COMMENTS % 92] = [graded(), said("Site workflow: plan\n\n## Verdict\n\nGo")]
+        code, _ = self.run_command("sort", "89", "--lead", "92")
+        self.assertEqual(code, 1)
+        self.assertEqual(self.shell.changes(), [])
+
+    def test_a_handover_cut_short_is_finished_by_running_it_again(self):
+        # GitHub refused a step after the new lead was claimed. Run again, the sort claims it no second time.
+        self.answers["gh issue list"][1] = idea(90, "site-idea", "approved", "in-progress")
+        picked = "Site workflow: picked up\n\nBranch: agent/90-idea-90\nTaken up: handed over from #89."
+        self.answers[COMMENTS % 90] = [graded(), said(picked)]
+        code, _ = self.run_command("sort", "89", "--lead", "90", "--with", "91")
+        self.assertEqual(code, 0)
+        self.assertNotIn("gh issue edit 90 --add-label in-progress --add-assignee the-owner", self.shell.changes())
+        self.assertIn("gh issue comment 89 --body-file -", self.shell.changes())
 
 
 class Release(GroupTest):
