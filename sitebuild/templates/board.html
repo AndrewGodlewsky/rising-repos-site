@@ -140,7 +140,8 @@
 {% endfor %}
 </tbody>
 </table>
-<p class="filtered-none" id="none-shown" hidden>No repository on this board matches the search and filters.</p>
+{# When the view leaves no row: the script names what is chosen in the line, and its button clears the view (#33). #}
+<div class="filtered-none" id="none-shown" hidden><p>No repository on this board matches the search and filters.</p><button type="button">Clear search and filters</button></div>
 {% else %}
 {# Why the board lists nothing (`why_none`). The notes above say what each was. #}
 <div class="message">

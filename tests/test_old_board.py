@@ -470,6 +470,23 @@ class WithoutScripts(BuildTest):
                 self.assertIn(f"Published {published.text()}.", page.body_text())
                 self.assertNoNotice(page)
 
+    def test_with_scripts_off_a_boards_page_shows_no_clear_search_and_filters_button(self):
+        """Without the script no view is ever narrowed, so the line that says nothing matches, and the button that
+        clears the view, are hidden in the markup, as every control of the filter is (#33)."""
+
+        def unseen(element) -> bool:
+            while element is not None:
+                if "hidden" in element.attrs or "js-only" in element.classes():
+                    return True
+                element = element.parent
+            return False
+
+        for path in (BOARD, board_day_page(NEWEST), board_day_page(OLDER)):
+            with self.subTest(path):
+                page = self.pages[path]
+                shown = [button.text() for button in page.all("button") if not unseen(button)]
+                self.assertEqual(shown, [])
+
     def test_with_scripts_off_the_list_holds_every_board_day_and_no_notice(self):
         page = self.pages[DAYS]
         days = [entry["board_day"] for entry in read_json(self.index)["board_days"]]

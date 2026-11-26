@@ -244,6 +244,15 @@ Sentence 39 came with #42. It keeps the history from the reader's own browser,
 so it reads a live site as it reads the made-up one, and asks nothing of the
 site but what a reader with a fault on the way would ask.
 
+### A view that matches nothing (`test_a_view_that_matches_nothing.py`)
+
+40. A view that leaves no row says what is chosen, and its button "Clear
+    search and filters" shows every row of the board in the order chosen,
+    until Back returns that view.
+    `test_a_view_that_leaves_no_row_says_what_is_chosen_and_clear_search_and_filters_shows_all_rows_until_back`
+
+Sentence 40 came with #33, and reads a live site as it reads the made-up one.
+
 ## How to run them
 
 From the repository, with the pinned dependencies in place (`uv sync

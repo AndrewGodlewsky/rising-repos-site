@@ -232,7 +232,8 @@ input[type="search"]::placeholder { color: var(--text-3); opacity: 1; }
 input[type="search"]:hover { border-color: var(--line-strong); }
 input[type="search"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .filtered-none { padding: 24px 0; color: var(--text-2); border-top: 1px solid var(--line); }
-
+{# Its one button, which clears the view (#33): the filter's own control, with the edge of a field that can be pressed. #}
+.filtered-none button { margin-top: 12px; height: 32px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); color: var(--text); font: 400 13px/1 var(--sans); cursor: pointer; }
 {# The ranked list. A table, whose parts name their roles, because a phone stacks each row's cells. A closed row is
    two lines and a line of figures on a phone, and two lines on a desktop: its name, and its description cut to one
    line. Its chevron, under the rank, opens it on everything else. #}
