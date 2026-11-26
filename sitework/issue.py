@@ -65,10 +65,10 @@ def of_kind(comments: list[dict], kind: str) -> list[dict]:
 
 
 def newest(said: list[dict]) -> dict | None:
-    """The newest of the workflow's comments among the owner's account's, past any grade. Each run grades the
-    ideas that wait, and a grade is no work begun on an idea (25 November 2026), so how far an issue came is read
-    from the workflow's other comments."""
-    done = [comment for comment in said if rules.kind_of(comment["body"]) not in (None, rules.GRADED)]
+    """The newest of the workflow's comments among the owner's account's, past any grade or note. Each run grades
+    the ideas that wait, and a run's look back may add a note to one (25 November 2026). Neither is work begun on
+    an idea, so how far an issue came is read from the workflow's other comments."""
+    done = [comment for comment in said if rules.kind_of(comment["body"]) not in (None, rules.GRADED, rules.NOTE)]
     return done[-1] if done else None
 
 

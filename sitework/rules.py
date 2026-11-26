@@ -37,6 +37,7 @@ KINDS = (
     "sorted",
     "joined",
     "released",
+    "note",
 )
 """Every comment the workflow writes begins with `Site workflow: ` and one of these. Agents act under the owner's
 account, so the author of a comment does not tell the owner's words from an agent's: a comment by that account
@@ -56,9 +57,15 @@ GRADED = "graded"
 """The kind of the comment that grades an idea. A grade is no work begun on the idea, so a script that asks how
 far an issue came reads past it."""
 
-COMMENTED = tuple(kind for kind in KINDS if kind not in ("sorted", "joined", "released"))
-"""The kinds `sitework comment` posts. The other three go with a change of labels, which `sort` and `release`
-make with them, so that a comment never says an idea is in a group when its labels say otherwise."""
+NOTE = "note"
+"""The kind of the comment a run's look back adds to an open idea, with a finding close to it, in the place of an
+issue of its own (25 November 2026). Like a grade, a note is no work begun on the idea, and a script that asks how
+far an issue came reads past it. It carries the workflow's first line so that no run reads it as the owner's."""
+
+COMMENTED = tuple(kind for kind in KINDS if kind not in ("sorted", "joined", "released", NOTE))
+"""The kinds `sitework comment` posts. Three others go with a change of labels, which `sort` and `release` make
+with them, so that a comment never says an idea is in a group when its labels say otherwise, and a note is added
+by `feedback add` alone."""
 
 LEAD, WITH = "Lead", "With"
 """The names of the lines that tie a group together: `With: #90, #91` on the idea a run claimed, or `With: none`,

@@ -639,6 +639,13 @@ class TheNextNewIdea(PickupTest):
         _, printed = self.run_command()
         self.assertEqual((printed["issue"], printed["take_up"]), (27, "new"))
 
+    def test_an_idea_with_a_runs_note_on_it_is_still_new(self):
+        # A run's look back adds a finding close to an idea to that idea, as a note (25 November 2026). It is what a
+        # run found, and no work begun on the idea.
+        self.answers[COMMENTS % 27] = [said("Site workflow: note\n\nFrom the run on #26.\n\nThe hint names a rule.")]
+        _, printed = self.run_command()
+        self.assertEqual((printed["issue"], printed["take_up"]), (27, "new"))
+
     def test_an_idea_sent_back_from_a_group_is_new_again(self):
         self.answers[COMMENTS % 27] = [
             said("Site workflow: joined\n\nLead: #26", number=1),

@@ -61,14 +61,24 @@ def filed() -> list[dict]:
     return sorted(shell.gh_json("issue", "list", *asked), key=lambda there: there["number"])
 
 
+def ideas() -> list[dict]:
+    """Every open approved idea, oldest first. A finding close to one is added to it as a note, and not filed as an
+    issue of its own, so that the agent that works the idea finds it there (25 November 2026)."""
+    asked = ("--label", rules.IDEA, "--label", rules.APPROVED, "--state", "open", "--limit", "1000")
+    found = shell.gh_json("issue", "list", *asked, "--json", "number,title")
+    return sorted(found, key=lambda there: there["number"])
+
+
 def show(options: argparse.Namespace) -> int:
-    """Print what is already filed, so that the look back adds to an issue and does not file a second one for the
-    same fault."""
+    """Print what is already filed, and then the open approved ideas, so that the look back adds a finding to an
+    issue or an idea it is close to, and files as few issues as it can."""
     found = filed()
     for there in found:
         print(f"#{there['number']} {there['title']}")
     if not found:
         print(f"No open issue carries `{rules.FEEDBACK}`.")
+    for there in ideas():
+        print(f"#{there['number']} [idea] {there['title']}")
     return 0
 
 
@@ -92,20 +102,27 @@ def file(options: argparse.Namespace) -> int:
 
 
 def add(options: argparse.Namespace) -> int:
-    """Add a finding that was seen again to the issue it is filed in, as a comment, and print the comment's
-    address. The issue has to be open and to carry the label. A number is easily a wrong one, and without the
-    check a finding about the workflow would land on a feature's issue, where the next run of that feature would
-    read it as the owner's own words, since agents act under the owner's account."""
+    """Add a finding to an open issue it is close to, as a comment, and print the comment's address: to an issue
+    that carries the label, or to an approved idea, which the owner asked for on 25 November 2026 so that a run
+    files as few issues as it can. On an idea the comment is the workflow's `note`: agents act under the owner's
+    account, and a comment without the workflow's first line would be read by the idea's run as the owner's own
+    words. Any other issue is refused, since a number is easily a wrong one."""
     words = read_text(options.file).strip()
     there = issue.read(options.issue)
+    marks = issue.labels(there)
     if there["state"] != "OPEN":
         why = "is closed"
-    elif rules.FEEDBACK not in issue.labels(there):
-        why = f"does not carry `{rules.FEEDBACK}`"
-    else:
+    elif rules.FEEDBACK in marks:
         body = f"{SEEN_AGAIN.format(run=options.run)}\n\n{words}\n"
         print(shell.gh("issue", "comment", str(options.issue), "--body-file", "-", stdin=body))
         return 0
+    elif {rules.IDEA, rules.APPROVED} <= set(marks):
+        # On an idea, the finding is the workflow's note, so that no run reads it as the owner's own words.
+        body = f"{rules.first_line(rules.NOTE)}\n\n{FROM.format(run=options.run)}\n\n{words}\n"
+        print(shell.gh("issue", "comment", str(options.issue), "--body-file", "-", stdin=body))
+        return 0
+    else:
+        why = f"carries neither `{rules.FEEDBACK}` nor both `{rules.IDEA}` and `{rules.APPROVED}`"
     print(
         f"feedback: #{options.issue} {why}, so nothing was added to it. `feedback list` prints each issue a "
         "finding can be added to, and `feedback file` opens a new one.",
