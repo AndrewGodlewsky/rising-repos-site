@@ -53,6 +53,23 @@ FELL = {
 }
 """A row whose pace fell, so that the dashed line of its own pace ends above every recent count."""
 
+LOSING = {
+    "stars": [None] * 16 + [1300 - 25 * day for day in range(12)] + [1000, 1150, 1290],
+    "pace": [-25, 290, 2],
+    "said": ["+340 above its own trend", "At its own pace: −50", "Usual pace, −25 a day", "It gained 290 in 2 days."],
+}
+"""A row that had been losing stars, so that its earliest count is its highest, and the dashed line of its own pace
+starts at the top of the drawing, where the tag that names its usual pace stands."""
+
+STRAIGHT_LOSING = {
+    "stars": None,
+    "month": None,
+    "pace": [-10, 5, 2],
+    "said": ["+25 above its own trend", "At its own pace: −20", "Usual pace, −10 a day", "It gained 5 in 2 days."],
+}
+"""A row from a file that gives no daily counts, whose usual pace was a loss: the dashed line starts at the top of
+the drawing, far above every point of the line of what it gained."""
+
 SEEN = """(row) => {
   const figure = row.querySelector("figure.drawing");
   const box = (part) => {
@@ -221,7 +238,14 @@ class TheShadedGain(OpenedDrawing):
 
 
 class TheGainsTag(OpenedDrawing):
-    CASES = {"uneven": UNEVEN, "higher before": PEAK, "fell": FELL, "straight": STRAIGHT}
+    CASES = {
+        "uneven": UNEVEN,
+        "higher before": PEAK,
+        "fell": FELL,
+        "losing": LOSING,
+        "straight": STRAIGHT,
+        "straight and losing": STRAIGHT_LOSING,
+    }
 
     def test_the_tag_of_what_it_gained_touches_no_segment_of_the_gained_line_on_a_phone_or_a_desktop(self):
         for name, case in self.CASES.items():

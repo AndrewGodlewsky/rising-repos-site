@@ -162,9 +162,9 @@ What every page holds to, each checked by a test in `tests/`:
   to every page, in the stylesheet, and 16 more to Baseline, in its markup:
   the heaviest board day is now 497,815 bytes, 2,185 under the limit.
   Shading an opened row's gain through its daily counts, and naming it above
-  its line (#89), added 267 bytes to a board with rows, in its script, and
-  none to any other page: the heaviest board day is now 498,082 bytes, 1,918
-  under the limit.
+  its line (#89), added 72 bytes to every page, in the stylesheet, and 430
+  more to a board with rows, in its script: the heaviest board day is now
+  498,317 bytes, 1,683 under the limit.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -451,7 +451,8 @@ on, and its best rank on them); a drawing of its stars day by day over the
 last 14 days against the dashed line of its usual pace, with the part of the
 two recent days above its own trend shaded, the shading's edge through the
 same daily counts as the line (#89), and what it gained named above the
-line's highest point, where the tag covers none of it; its stars over the last 30 days, from `star_history`, with a gap where a day has no count; its
+highest of the line and the dashed line's end, where the tag covers none of
+it, and above the tag of its usual pace where the two would meet; its stars over the last 30 days, from `star_history`, with a gap where a day has no count; its
 last 30 board days, each a link to that board, carrying its rank there; and a
 table of the boards it was on. Each part says what it is in a caption, for a
 screen reader. The build words every figure and word of it in `history.json`,

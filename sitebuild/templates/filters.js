@@ -221,6 +221,9 @@ document.addEventListener("DOMContentLoaded", function () {
      through the very points of the line of what it gained and back along the dashed line, so that the shading and
      the line never part where the recent days were uneven (#89). The tag that names it stands above the highest of
      the line and of the dashed line's end, so that it covers no part of the line nor the tag under the dashed line.
+     Where that is near the height of the dashed line's start, at the top of a row that had been losing stars, the
+     tag of its usual pace stands there too, so the drawing leaves more room at its top and the tag of the gain
+     stands above the other: both are placed as the drawing is made, so nothing moves once it is drawn.
      `pace` is what its lines are drawn from, and `said` its three labels and its sentence for a screen reader; `real`
      is the 15 counts from 14 days before the board day to the board day. #}
   function drawing(pace, said, counts) {
@@ -240,13 +243,16 @@ document.addEventListener("DOMContentLoaded", function () {
       got = start + gained;
       values = [0, start, own, got];
     }
-    var low = Math.min.apply(null, values), high = Math.max.apply(null, values);
-    function y(value) { return high === low ? 50 : 94 - (value - low) / (high - low) * 86; }
+    var low = Math.min.apply(null, values), high = Math.max.apply(null, values), room = 8;
+    function y(value) { return high === low ? 50 : 94 - (value - low) / (high - low) * (94 - room); }
+    var from = real ? start - 12 * baseline : 0;
+    var top = Math.max.apply(null, (real ? real.filter(function (n) { return n !== null; }) : [start, got]).concat([own]));
+    var stacked = Math.abs(y(from) - y(top)) < 12;
+    if (stacked) room = 24;
     function x(day) { return day / 14 * 100; }
     var box = figureOf("drawing", "Its own pace against what it gained");
     var plot = make("div", "drawing-plot");
     var svg = shape("svg", { viewBox: "0 0 100 100", preserveAspectRatio: "none", "aria-hidden": "true" });
-    var from = real ? start - 12 * baseline : 0;
     if (!real) svg.appendChild(shape("path", { "class": "floor", d: "M0 " + y(0) + "H100" }));
     svg.appendChild(shape("path", { "class": "mark-days", d: "M" + x(12) + " 0V100" }));
     var recent = real
@@ -266,8 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
       tag.setAttribute("aria-hidden", "true");
       plot.appendChild(tag);
     }
-    var top = Math.max.apply(null, (real ? real.filter(function (n) { return n !== null; }) : [start, got]).concat([own]));
-    label("tag got", said[0], x(end), y(top));
+    label(stacked ? "tag got over" : "tag got", said[0], x(end), stacked ? Math.min(y(from), y(top)) : y(top));
     label("tag own", said[1], x(end), y(own));
     label("tag usual", said[2], 0, y(from));
     box.appendChild(plot);
