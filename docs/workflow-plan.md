@@ -244,6 +244,17 @@ job runs it, and `main`'s build job runs it again before anything is uploaded.
 Today that job runs the tests, and the upload needs it to pass, so a failure
 on `main` already uploads nothing.
 
+**Changed on 26 November 2026.** A run's check on the machine now runs only
+the tests of the files its change adds or edits, with the lint, the format,
+the guard, the new tests, and the criteria, and leaves every test to the
+pull request's job. On the run on #147 the machine's check took 8.1 minutes
+and the job then ran the same suite in 6.7, and on two runs that night the
+machine's low memory stopped the browser the suite drives. The owner chose
+to run the suite once, on GitHub. A plain `sitework check`, which the owner
+and an agent working with the owner run, still runs every test. The same
+day, a run was told to run a command the harness stopped again itself, and
+not to end its turn to ask, after one sat idle 76 minutes on that question.
+
 The checks are layers, the cheapest first: the lint reads the code in a tenth
 of a second, the agents' tests build pages in about four minutes, and the
 owner's tests use the built site as a reader does. Each catches what the one

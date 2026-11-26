@@ -25,6 +25,8 @@ AGENTS = (*PYTHON, "unittest", "discover", "-s", "tests")
 THE_REST = ("the agents' tests, each file named",)  # stands for that command below, whichever files it names
 OWNERS = (*PYTHON, "unittest", "discover", "-s", "owner_tests", "-t", ".")
 NEW = (*PYTHON, "sitework", "new-tests")
+DIFF = ("git", "diff", "--name-only", "--diff-filter=d", "origin/main...HEAD")
+"""How a feature's check reads which files the change touches, to run their tests alone (26 November 2026)."""
 CRITERIA = (*PYTHON, "sitework", "criteria", "--issue", "12")
 NEW_OF_ISSUE = (*NEW, "--issue", "12")
 """The new tests as they are asked for a feature: with its issue, whose plan says which of them hold what stays
@@ -36,6 +38,7 @@ class TheCheck(unittest.TestCase):
         self.ran: list[tuple[str, ...]] = []
         self.failing: dict[tuple[str, ...], str] = {}  # what each command that is to fail prints
         self.said: list[dict] = []  # the comments of the owner's account on the issue
+        self.touched = ""  # the files the change touches, as git names them
         self.enterContext(mock.patch.object(shell, "run", self.stand_in))
         self.enterContext(mock.patch.object(issue, "owner", return_value="the-owner"))
         self.comments = self.enterContext(mock.patch.object(issue, "comments", side_effect=lambda *asked: self.said))
@@ -44,7 +47,7 @@ class TheCheck(unittest.TestCase):
         self.ran.append(command)
         if command in self.failing:
             raise shell.Failed(self.failing[command])
-        return ""
+        return self.touched if command == DIFF else ""
 
     def check(self, *arguments: str) -> tuple[int, list[str]]:
         return said(check.main, "check", *arguments)
@@ -52,7 +55,7 @@ class TheCheck(unittest.TestCase):
     def steps_run(self) -> list[tuple[str, ...]]:
         """What was run, with the command that names the files of the agents' tests as `THE_REST`."""
         named = (sys.executable, "-c", check.NAMED)
-        return [THE_REST if command[:3] == named else command for command in self.ran]
+        return [THE_REST if command[:3] == named else command for command in self.ran if command != DIFF]
 
     def test_it_runs_every_check_of_a_change_the_cheapest_first(self):
         code, _ = self.check()
@@ -60,14 +63,23 @@ class TheCheck(unittest.TestCase):
 
     def test_the_criteria_are_checked_last_and_only_when_an_issue_is_given(self):
         code, _ = self.check("--issue", "12")
-        self.assertEqual(
-            (code, self.steps_run()), (0, [LINT, FORMAT, WHITE_SPACE, GUARD, THE_REST, OWNERS, NEW_OF_ISSUE, CRITERIA])
-        )
+        self.assertEqual((code, self.steps_run()), (0, [LINT, FORMAT, WHITE_SPACE, GUARD, NEW_OF_ISSUE, CRITERIA]))
+
+    def test_with_an_issue_only_the_test_files_the_change_touches_run_on_the_machine(self):
+        # The owner chose on 26 November 2026 that a feature's check run the tests of the files its change adds or
+        # edits, and leave every test to the pull request's job, which ran the same suite again after it.
+        self.touched = "sitebuild/__init__.py\ntests/test_board.py\nowner_tests/test_a_board.py\n"
+        code, _ = self.check("--issue", "12")
+        self.assertEqual(code, 0)
+        self.assertIn((sys.executable, "-c", check.NAMED, "test_board"), self.ran)
+        self.assertIn((*PYTHON, "unittest", "owner_tests.test_a_board"), self.ran)
+        self.assertNotIn(AGENTS, self.ran)
+        self.assertNotIn(OWNERS, self.ran)
 
     def test_a_change_that_touches_no_guarded_path_is_not_run_against_the_tests_of_what_is_guarded(self):
         # A feature cannot change the workflow's scripts or the stale check, so their tests can tell it nothing,
         # and they were a third of the time the agents' tests took. The eval's tests build real pages: they stay.
-        self.check("--issue", "12")
+        self.check()
         (named,) = [command for command in self.ran if command[:3] == (sys.executable, "-c", check.NAMED)]
         files = set(named[3:])
         every = {path.stem for path in (ROOT / "tests").glob("test*.py")}
@@ -88,7 +100,6 @@ class TheCheck(unittest.TestCase):
 
     def test_with_an_issue_the_guard_lets_through_what_the_owner_allowed_for_it(self):
         # Without this a change the owner allowed could never pass on the machine, though the ship script lets it by.
-        # Such a change may alter what the workflow's own tests find, so it is run against every test.
         self.said = [
             {"body": "Go on.\n\nAllowed: pyproject.toml, uv.lock"},
             {"body": "Site workflow: picked up"},
@@ -96,9 +107,7 @@ class TheCheck(unittest.TestCase):
         ]
         code, _ = self.check("--issue", "12")
         allowing = (*GUARD, "--allow", "pyproject.toml", "uv.lock", "docs/adr/*")
-        self.assertEqual(
-            (code, self.ran), (0, [LINT, FORMAT, WHITE_SPACE, allowing, AGENTS, OWNERS, NEW_OF_ISSUE, CRITERIA])
-        )
+        self.assertEqual((code, self.steps_run()), (0, [LINT, FORMAT, WHITE_SPACE, allowing, NEW_OF_ISSUE, CRITERIA]))
         self.assertEqual(self.comments.mock_calls, [mock.call(12, "the-owner")])
 
     def test_with_an_issue_the_guard_lets_through_what_the_owner_allowed_on_a_partner_of_its_group(self):
@@ -161,6 +170,7 @@ class TheCheck(unittest.TestCase):
         )
 
     def test_every_step_is_named_as_it_starts(self):
+        self.touched = "tests/test_board.py\nowner_tests/test_a_board.py\n"
         _, lines = self.check("--issue", "12")
         self.assertEqual(
             [line.removesuffix(": started") for line in lines[::2]],
@@ -169,8 +179,8 @@ class TheCheck(unittest.TestCase):
                 "the format",
                 "white space",
                 "the guarded paths",
-                "the agents' tests, but for the workflow's own",
-                "the owner's tests",
+                "the agents' tests the change touches",
+                "the owner's tests the change touches",
                 "the new tests",
                 "the criteria",
             ],
