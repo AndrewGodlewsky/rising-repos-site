@@ -32,8 +32,8 @@ only where the digest points at waste, and read only that part.
 - **What the review left standing.** Each finding of a review that passed
   which a check could have found: the "Shipped" note lists them under
   "Findings left standing", and the review has them when the run stopped.
-  File each as an issue of its own, with its file, its line, and the test
-  that would catch it.
+  Give each its file, its line, and the test that would catch it, and file
+  them as "File it" says.
 - **What was used that was not needed.** Reading that a search would have
   spared, work done twice, messages that only waited.
 - **What would have cost less.** A better order of work, a script in place of
@@ -53,18 +53,31 @@ Leave out one you cannot tie to either.
 Write each file outside the repository's folder. Each command below is run
 as `uv run --locked python -m sitework feedback ...`.
 
-1. `feedback list` shows what is already filed and still open.
-2. A finding that is already filed is added to its issue, and not filed a
-   second time: `feedback add <its number> --run <issue> --file <file>`, with
-   this run's figure for it.
-3. A finding that is new gets an issue of its own, so that it can be mended
-   and closed by itself:
+File as few issues as the findings allow, so that an agent that later works
+them works one issue and not many (the owner, 25 November 2026). Four runs on
+that day filed 22 open issues between them, and one of them filed as an issue
+of its own the question its idea, #35, already put to the owner.
+
+1. `feedback list` shows the open feedback issues, and then the open
+   approved ideas, marked `[idea]`. Read it before you file anything.
+2. A finding close to one of them is added to it, and not filed again:
+   `feedback add <its number> --run <issue> --file <file>`, with this run's
+   figure for it. Close means the same part of the workflow, the same
+   script or document, or, for an idea, the same idea or the part of the
+   site it changes. On an idea, `feedback add` posts the finding as the
+   workflow's `note`, which the idea's own run reads as a hint.
+3. Findings of this run that concern the same part of the workflow go into
+   one issue together, each under its own heading, and not one issue each.
+   Only what no open issue holds and no other finding of this run shares a
+   part with is filed alone.
+4. What is left is new, and gets an issue:
    `feedback file --run <issue> --title "<title>" --file <file>`. Its title
-   says the fault or the saving in one plain line. Its body begins with the
-   word Fault or the word Saving, and then says what was seen, with its
+   names the part of the workflow and what is wrong with it, in one plain
+   line. Its body gives each finding under its own heading, beginning with
+   the word Fault or the word Saving, and then says what was seen, with its
    figure, what it cost, and what to change: in the workflow's scripts, in
    its documents, or in how its agents are started.
-4. Last, one issue for the run as a whole:
+5. Last, one issue for the run as a whole:
    `feedback file --run <issue> --title "The run on #<issue>" --file <file> --digest <the digest>`.
    Its words are a few lines: how the run ended, what it cost, and the
    number of each issue you filed or added to. The digest follows them.

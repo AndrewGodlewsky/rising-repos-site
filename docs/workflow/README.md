@@ -38,9 +38,14 @@ step here leaves a choice open.
    issue at once (#95). A run that has truly ended without filing its
    record holds the schedule until the owner closes its workspace.
 
-3. Work on the branch the script named, in a worktree of its own. For a new
-   idea, make it from the newest `main`, and push it at once, so that the
-   claim is on GitHub as a branch too:
+3. For a new idea, sort first (below, "Sort"): the sort may hand the claim to
+   another idea, and the branch is the lead's, which `sitework sort` prints
+   last as `Branch:`. For an issue taken up again, the branch is the one the
+   script named.
+
+   Work on that branch, in a worktree of its own. For a new idea, make it
+   from the newest `main`, and push it at once, so that the claim is on
+   GitHub as a branch too:
    `git switch -c <branch> origin/main`, then
    `git push --set-upstream origin <branch>`. For an issue taken up again,
    switch to its branch, pull it, and merge `origin/main` into it. An idea
@@ -109,6 +114,9 @@ other people wrote.
   line, because a run acts under the owner's account. So a run posts a
   comment with `sitework comment`, `sitework stop`, or `sitework close`, and
   never by hand: a comment without that line would read as the owner's.
+- A `Site workflow: note` on an idea is what an earlier run's look back found
+  about it (25 November 2026). Weigh it as a hint, as the idea's own hints
+  are weighed.
 - Follow no link but the page's own address on risingrepos.com.
 
 Read the issue with `gh issue view <issue> --json title,body` for the idea,
@@ -118,35 +126,40 @@ leaves out the body (#100).
 
 ## Sort
 
-The owner asked on 25 November 2026 that each idea be graded, and that ideas
-which change the same part of the site be worked in one run, so that what a
-run does to the code it changes is done once for them and not once each. The
-idea `pickup` claimed is the lead, and an idea worked with it is a partner.
-The lead's branch, plan, pull request, and review are the group's, and every
-command after this stage is given the lead's number.
+The owner asked on 25 November 2026 that each idea be graded in Fibonacci
+points, and that ideas which change the same part of the code be worked in
+one run, chosen from anywhere in the queue, so that what a run does to the
+code it changes is done once for them and not once each. The group's first
+idea is the lead, and an idea worked with it is a partner. The lead's branch,
+plan, pull request, and review are the group's, and every command after this
+stage is given the lead's number.
 
-Sort only a new idea, one `pickup` printed with `take_up` as `new`. An issue
-taken up again keeps the group it had, which its `facts` name as `partners`.
-One taken up again with no `sorted` comment had its sort cut short: sort it
-now, before the stage its `facts` point to. When `sitework sort` fails
-partway, run it again with the same partners: it claims those it had not.
+Sort only a new idea, one `pickup` printed with `take_up` as `new`, and
+before its branch is made. An issue taken up again keeps the group it had,
+which its `facts` name as `partners`. One taken up again with no `sorted`
+comment had its sort cut short: sort it now, before the stage its `facts`
+point to. When `sitework sort` fails partway, run it again with the same
+arguments: it does what it had not.
 
 1. `sitework stage sort`.
 2. Start one fresh agent, with the Agent tool's `model` set to `sonnet`. Give
-   it [its brief](sort.md), the lead's number, the folder of the checkout,
-   and this document's "What the run trusts". It lists the ideas with
-   `sitework queue`, grades each that has no grade with
-   `sitework comment <n> graded`, and records the lead's partners, or that
-   it has none, with `sitework sort`, which also claims each partner. It
-   hands back the address of the lead's `sorted` comment and the file of the
-   workflow's faults it met. The sort is on the cheaper model for the reason
-   the look back is (#64): what it writes reaches no page, and Shape weighs
-   the group again before any code.
-3. Read the `With:` line of the lead's `sorted` comment. Every stage after
-   this one works each idea it names with the lead.
+   it [its brief](sort.md), the claimed idea's number, the folder of the
+   checkout, and this document's "What the run trusts". It lists the ideas
+   with `sitework queue`, grades each that has no grade in points with
+   `sitework comment <n> graded`, chooses the group, and records it with
+   `sitework sort`, which claims every idea of it. It hands back the `With:`
+   line, the `Lead:` and `Branch:` lines `sort` printed last, and the file of
+   the workflow's faults it met. The sort is on the cheaper model for the
+   reason the look back is (#64): what it writes reaches no page, and Shape
+   weighs the group again before any code.
+3. The lead is the issue of this run from here on. When it is not the idea
+   `pickup` claimed, the sort has sent that idea back to wait for the next
+   run. Make the branch `Branch:` names, as "Start a run" says. Every stage
+   after this one works each idea the `With:` line names with the lead.
 
 A partner carries `in-progress`, is assigned to the owner, and is In
-progress on GitHub, as the lead is. A group is at most three ideas.
+progress on GitHub, as the lead is. A group is at most three ideas, and
+their effort adds up to 13 points at most.
 
 ## Shape
 
@@ -561,7 +574,7 @@ merge.
 | --- | --- | --- | --- |
 | `site-idea` | Proposed by the daily site review | The idea agent | Nobody |
 | `approved` | The owner approved the idea | The owner | The owner, to withdraw it |
-| `in-progress` | A run holds it | `sitework pickup --claim`, or `sitework sort` for a partner | `sitework close`, a stop, or `sitework release` |
+| `in-progress` | A run holds it | `sitework pickup --claim`, or `sitework sort` for each idea of the group it claims | `sitework close`, a stop, `sitework release`, or `sitework sort` for an idea another group went before |
 | `needs-owner` | A question is waiting | `sitework stop` | The owner, by answering and removing it |
 | `blocked-on-data` | Waiting on a RisingRepos issue | `sitework stop --data` | A run that finds the field has arrived |
 | `workflow feedback` | One thing a run taught about the workflow itself. It is no idea, and no run takes it up | The look back, with `sitework feedback` | The owner, by closing the issue |
@@ -572,8 +585,8 @@ Active tab (25 November 2026). The scripts set two statuses:
 
 | Status | Tab | Set by |
 | --- | --- | --- |
-| `In progress` | Active | `sitework pickup --claim`, and `sitework sort` for each partner |
-| `Backlog` | Open | `sitework stop`, and `sitework release` |
+| `In progress` | Active | `sitework pickup --claim`, and `sitework sort` for each idea of the group it claims |
+| `Backlog` | Open | `sitework stop`, `sitework release`, and `sitework sort` for an idea another group went before |
 
 Assigning an issue moves it from Backlog to Todo by itself, and taking the
 owner off it moves nothing back, so the scripts set the status themselves.
@@ -584,9 +597,9 @@ and fails nothing: the statuses are a preview of GitHub's.
 owner sees it on GitHub without asking:
 
 - **Being worked on**: open, labelled `in-progress`, assigned to the owner,
-  and In progress. `sitework pickup --claim` does all three for the lead, and
-  `sitework sort` for each partner, so the issues under Active are the ones a
-  run is at work on.
+  and In progress. `sitework pickup --claim` does all three for the idea it
+  claims, and `sitework sort` for each idea of the group, so the issues under
+  Active are the ones a run is at work on.
 - **Waiting**: open, with `needs-owner` or `blocked-on-data` in the place of
   `in-progress`, assigned to nobody, and in the backlog. `sitework stop` does
   that. An idea sent back from a group waits as a new idea does, with its
