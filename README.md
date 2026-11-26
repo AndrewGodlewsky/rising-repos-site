@@ -168,7 +168,10 @@ What every page holds to, each checked by a test in `tests/`:
   quiet cells with a dashed edge, and naming them and a day with no board in
   the legend (#91), added 419 bytes to every page, in the stylesheet, and 3
   more to History: the heaviest board day is now 498,736 bytes, 1,264 under
-  the limit.
+  the limit. Setting each owner in Baseline's table on a line of its own on a
+  phone (#147) added 190 bytes to every page, in the stylesheet, and 4,277
+  more to Baseline, in its markup, 13 bytes a line: the heaviest board day is
+  now 498,926 bytes, 1,074 under the limit.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -275,7 +278,7 @@ The body is 15 px, the description 14 px, a repository's name 16 px (17 px from
 | `--raised` | `#efeee8` | `#22241f` | A note above the rows, and a control under the pointer |
 | `--text` | `#1b1a16` | `#ecebe5` | The text: 16.10:1 on the page, 15.60:1 in the dark |
 | `--text-2` | `#55524a` | `#b0ada3` | The descriptions, the owner, the bars' links, a gain of 0 or a day with no count where a gain is green: 7.21:1, 8.30:1 |
-| `--text-3` | `#6b675d` | `#939087` | The quietest text: the ranks past the top ten, the headings over the figures, a visited repository: 5.22:1, 5.84:1 |
+| `--text-3` | `#6b675d` | `#939087` | The quietest text: the ranks past the top ten, the headings over the figures, an owner over its name in Baseline's table on a phone, a visited repository: 5.22:1, 5.84:1 |
 | `--accent` | `#12704b` | `#5cc896` | Evergreen: what a repository gained, the top ten ranks, a pressed filter, the focus ring, a link under the pointer: 5.64:1, 9.01:1 |
 | `--on-accent` | `#ffffff` | `#0f1a14` | A top-three rank on the accent: 6.10:1, 8.62:1 |
 | `--new` | `#8a4b08` | `#f0b45e` | Amber: the New mark, the New filter: 6.79:1 on a control, 9.50:1 |
@@ -545,9 +548,16 @@ another, and only the readout names a dot. The readout sits beside its dot,
 on the side where it fits, or over or under it where it fits on neither, as
 on a phone, and wraps a long name, so that it stays in the card. Under the chart,
 the table gives every repository in words, so the chart holds nothing a
-screen reader cannot reach. `pace_chart` in `sitebuild/__init__.py` places the
-dots from the file's own numbers: the usual pace is the divisor the file
-gives, and the recent pace its recent stars over its recent days.
+screen reader cannot reach. Below 768px a name's owner and its slash stand on
+a line of their own in the table, in `--text-3` at 13px, and the name starts
+below, so that a name breaks at its slash and not inside a word (#147): only
+a single word wider than the column is broken to fit. The line break is
+generated content with empty alternative text, so the link and what a screen
+reader hears still read `owner/name` as one run. From 768px the owner is in
+the name's own ink and type again, on the name's line. `pace_chart` in
+`sitebuild/__init__.py` places the dots from the file's own numbers: the
+usual pace is the divisor the file gives, and the recent pace its recent
+stars over its recent days.
 
 **How it works.** The page says in a few plain sentences how the formula that
 `DESCRIBED_FORMULA` in `sitebuild/__init__.py` names ranks a board: the two

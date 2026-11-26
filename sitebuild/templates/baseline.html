@@ -59,7 +59,8 @@
 <tbody>
 {% for row in board.rows %}
 {% set grew = row|growth %}
-<tr id="b-{{ loop.index }}"><td class="num">{{ row.rank }}</td><th scope="row"><a href="https://github.com/{{ row.full_name }}">{{ row.full_name }}</a></th><td class="n num">{{ row.baseline|baseline_figure }}</td><td class="n num">{{ (row.recent_stars / row.recent_days)|baseline_figure }}</td><td class="n num">{{ grew.multiple or "—" }}</td></tr>
+{% set owner, _, name = row.full_name.partition("/") %}
+<tr id="b-{{ loop.index }}"><td class="num">{{ row.rank }}</td><th scope="row"><a href="https://github.com/{{ row.full_name }}"><span>{{ owner }}/</span>{{ name }}</a></th><td class="n num">{{ row.baseline|baseline_figure }}</td><td class="n num">{{ (row.recent_stars / row.recent_days)|baseline_figure }}</td><td class="n num">{{ grew.multiple or "—" }}</td></tr>
 {% endfor %}
 </tbody>
 </table>
