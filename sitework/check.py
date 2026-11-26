@@ -18,6 +18,7 @@ import fnmatch
 import functools
 import sys
 import time
+from pathlib import Path
 
 from sitework import issue, newtests, rules, shell, ship
 
@@ -37,8 +38,27 @@ def the_rest() -> list[str]:
     )
 
 
+DIFF = ("diff", "--name-only", "--diff-filter=d", "origin/main...HEAD")
+"""The files the change adds or edits, as git names them from the top of the checkout. A file the change deleted
+is left out, since it has no tests to run."""
+
+
+def touched_tests(touched: list[str]) -> tuple[list[str], list[str]]:
+    """The files of the agents' tests and of the owner's tests among the files a change touches: the first as
+    unittest names a file in `tests`, the second by its dotted name from the top of the checkout."""
+    agents = sorted(Path(path).stem for path in touched if fnmatch.fnmatch(path, "tests/test*.py"))
+    owners = sorted(
+        f"owner_tests.{Path(path).stem}" for path in touched if fnmatch.fnmatch(path, "owner_tests/test*.py")
+    )
+    return agents, owners
+
+
 def steps(
-    number: int | None, suite: bool, allowed: list[str], rest: list[str] | None = None
+    number: int | None,
+    suite: bool,
+    allowed: list[str],
+    rest: list[str] | None = None,
+    touched: list[str] | None = None,
 ) -> list[tuple[str, list[str]]]:
     """Each step's name and its command, in the order they run. The lint reads the code in a moment, the steps
     that read the change need only git, and the tests take minutes, so a fault is met by the cheapest step that
@@ -49,7 +69,13 @@ def steps(
     change the owner allowed can pass on the machine.
 
     `rest` is the files of the agents' tests to run when those of what no feature changes are left out, and
-    None when every test runs."""
+    None when every test runs.
+
+    `touched` is the files a feature's change adds or edits, given for a feature's check alone. The tests of those
+    files run, and no others: the pull request's job runs every test, and on 25 November 2026 a run's check took
+    eight minutes on the machine to run the suite that the job then ran again in seven. The owner chose on 26
+    November 2026 to run it once, on GitHub, which also spares the machine the browser that its low memory had
+    stopped twice that night."""
     python = [sys.executable, "-m"]
     code = [
         ("the lint", [*python, "ruff", "check", "."]),
@@ -61,6 +87,12 @@ def steps(
         every if rest is None else fewer,
         ("the owner's tests", [*python, "unittest", "discover", "-s", "owner_tests", "-t", "."]),
     ]
+    if touched is not None and not suite:
+        agents, owners = touched_tests(touched)
+        tests = [
+            *([("the agents' tests the change touches", [sys.executable, "-c", NAMED, *agents])] if agents else []),
+            *([("the owner's tests the change touches", [*python, "unittest", *owners])] if owners else []),
+        ]
     if suite:
         return [*code, *tests]
     change = [
@@ -103,7 +135,10 @@ def main(command: str, arguments: list[str]) -> int:
     # With nothing allowed, the guard's step, which comes before the tests, fails a change that touches a guarded
     # path. So the tests are reached only by a change that cannot alter the ones that are left out.
     rest = None if options.suite or allowed else the_rest()
-    for name, step in steps(options.issue, options.suite, allowed, rest):
+    # A feature's check runs the tests of the files its change touches, and leaves every test to the pull
+    # request's job (26 November 2026).
+    touched = shell.git(*DIFF).splitlines() if options.issue is not None and not options.suite else None
+    for name, step in steps(options.issue, options.suite, allowed, rest, touched):
         print(f"{name}: started", flush=True)
         began = time.monotonic()
         try:
