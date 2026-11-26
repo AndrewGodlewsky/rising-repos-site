@@ -1334,14 +1334,40 @@ review are the group's, and every script after the sort is given the lead's
 number. A `sorted` comment on the lead names its partners, and a `joined`
 comment on each partner names the lead, so that the scripts read the group
 from the issues and keep no record of their own. A grade is no work begun, so
-an idea with a grade still waits. Only the idea approved earliest leads, so
-the owner's order holds.
+an idea with a grade still waits. As first built, only the idea approved
+earliest led, so the owner's order held; the change below lets a group from
+elsewhere in the queue go first.
 
-**The rules of a group.** Its ideas show in the same part of the same page,
-and share a figure, a control, or code, and not only a file. They have the
-same complexity, and none is graded High, since a safe idea held back behind a
-risky one would cost more than the group saves. A group is at most three
-ideas, one pull request a reviewer can read in one sitting.
+**The rules of a group, as first built.** Its ideas showed in the same part
+of the same page, and shared a figure, a control, or code, and not only a
+file. They had the same complexity, and none was graded High. A group was at
+most three ideas, around the idea approved earliest.
+
+**As changed the same evening.** The first four runs under those rules each
+went alone. The rule of the same complexity kept #33 from #32, though both
+are the board's filter controls, and the rule against High kept #90 from #89,
+though both are how a row shows its gain. The owner had asked for ideas close
+to each other in the code, so that one agent works in one place, and said so
+again. So:
+
+- A grade gives complexity and effort in Fibonacci points, 1, 2, 3, 5, 8, or
+  13, as estimates are made in software work. Points add up, which Low,
+  Medium, and High do not.
+- Ideas go together when they change the same part of the code, whatever
+  their sizes, and the group is chosen from the whole queue, led by its idea
+  approved earliest. The claimed idea waits for the next run when another
+  group goes first. That costs the owner's order of approval a little, which
+  the owner chose over finding fewer groups.
+- A group is at most three ideas, and their effort adds up to 13 points at
+  most, which `sort` holds to. An idea likely to stop for the owner stays out
+  of a group, since a stop holds up the whole group.
+
+The same evening the owner asked that a run file as few feedback issues as it
+can: four runs had filed 22 open issues between them, one of them the
+question its own idea already asked. The look back now reads the open
+feedback issues and the open approved ideas before it files, adds a finding
+to one it is close to, on an idea as the workflow's `note`, and puts a run's
+related findings into one issue.
 
 **When a partner is a problem.** Shape can send a partner back to the queue,
 whole, before any code. After Shape, the run sends back a partner that alone

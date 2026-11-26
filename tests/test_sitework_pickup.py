@@ -639,6 +639,13 @@ class TheNextNewIdea(PickupTest):
         _, printed = self.run_command()
         self.assertEqual((printed["issue"], printed["take_up"]), (27, "new"))
 
+    def test_an_idea_with_a_runs_note_on_it_is_still_new(self):
+        # A run's look back adds a finding close to an idea to that idea, as a note (25 November 2026). It is what a
+        # run found, and no work begun on the idea.
+        self.answers[COMMENTS % 27] = [said("Site workflow: note\n\nFrom the run on #26.\n\nThe hint names a rule.")]
+        _, printed = self.run_command()
+        self.assertEqual((printed["issue"], printed["take_up"]), (27, "new"))
+
     def test_an_idea_sent_back_from_a_group_is_new_again(self):
         self.answers[COMMENTS % 27] = [
             said("Site workflow: joined\n\nLead: #26", number=1),
@@ -699,9 +706,7 @@ class Queue(PickupTest):
     """`queue` lists the ideas a run could take as new, with their grades, for the sort's agent to grade those
     that have none and to choose the lead's partners from (25 November 2026)."""
 
-    GRADE = (
-        "Site workflow: graded\n\nComplexity: Medium\nEffort: Low\nArea: the date bar\nCode: filters.js jump()\n\nWhy."
-    )
+    GRADE = "Site workflow: graded\n\nComplexity: 5\nEffort: 2\nArea: the date bar\nCode: filters.js jump()\n\nWhy."
 
     def run_queue(self, *arguments: str) -> tuple[int, dict]:
         printed = io.StringIO()
@@ -716,10 +721,19 @@ class Queue(PickupTest):
         self.assertEqual([one["number"] for one in printed["waiting"]], [27, 28, 29, 30])
         self.assertEqual(
             printed["waiting"][1]["grade"],
-            {"complexity": "Medium", "effort": "Low", "area": "the date bar", "code": "filters.js jump()"},
+            {"complexity": 5, "effort": 2, "area": "the date bar", "code": "filters.js jump()"},
         )
         self.assertIsNone(printed["waiting"][0]["grade"])
         self.assertIsNone(printed["lead"])
+
+    def test_a_grade_that_is_not_in_points_counts_as_none_so_the_idea_is_graded_again(self):
+        # Grades moved from Low, Medium, and High to Fibonacci points on 25 November 2026. An idea graded the old
+        # way, or with a number that is no point, has nothing the sort's cap can add up, so it is graded again.
+        for given in ("Medium", "4"):
+            with self.subTest(given=given):
+                self.answers[COMMENTS % 28] = [said(self.GRADE.replace("Complexity: 5", f"Complexity: {given}"))]
+                _, printed = self.run_queue()
+                self.assertIsNone(printed["waiting"][1]["grade"])
 
     def test_the_queue_gives_the_lead_apart_from_the_ideas_that_wait(self):
         self.label(27, "site-idea", "approved", "in-progress")

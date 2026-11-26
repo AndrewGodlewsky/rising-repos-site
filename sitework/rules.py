@@ -37,26 +37,38 @@ KINDS = (
     "sorted",
     "joined",
     "released",
+    "note",
 )
 """Every comment the workflow writes begins with `Site workflow: ` and one of these. Agents act under the owner's
 account, so the author of a comment does not tell the owner's words from an agent's: a comment by that account
 without this first line is the owner's own.
 
-The last four came on 25 November 2026, when the owner asked that each idea be graded and that ideas which change
-the same part of the site be worked in one run. `graded` gives an idea's complexity and effort and why. `sorted`
-names, on the idea a run claimed, the ideas that go with it, `joined` marks each of those, and `released` marks
-one sent back to wait for a run of its own."""
+The last five came on 25 November 2026, when the owner asked that each idea be graded and that ideas which change
+the same part of the code be worked in one run. `graded` gives an idea's complexity and effort and why. `sorted`
+names, on the group's lead, the ideas that go with it, `joined` marks each of those, and `released` marks one sent
+back to wait for a run of its own. `note` is a finding of a run's look back, added to an open idea."""
+
+POINTS = (1, 2, 3, 5, 8, 13)
+"""The values a grade gives an idea's complexity and its effort: Fibonacci points, as estimates are made in
+software work. The owner asked for them on 25 November 2026, in the place of Low, Medium, and High, so that a
+group's size can be added up. An idea of 13 should be split."""
 
 GRADED = "graded"
 """The kind of the comment that grades an idea. A grade is no work begun on the idea, so a script that asks how
 far an issue came reads past it."""
 
-COMMENTED = tuple(kind for kind in KINDS if kind not in ("sorted", "joined", "released"))
-"""The kinds `sitework comment` posts. The other three go with a change of labels, which `sort` and `release`
-make with them, so that a comment never says an idea is in a group when its labels say otherwise."""
+NOTE = "note"
+"""The kind of the comment a run's look back adds to an open idea, with a finding close to it, in the place of an
+issue of its own (25 November 2026). Like a grade, a note is no work begun on the idea, and a script that asks how
+far an issue came reads past it. It carries the workflow's first line so that no run reads it as the owner's."""
+
+COMMENTED = tuple(kind for kind in KINDS if kind not in ("sorted", "joined", "released", NOTE))
+"""The kinds `sitework comment` posts. Three others go with a change of labels, which `sort` and `release` make
+with them, so that a comment never says an idea is in a group when its labels say otherwise, and a note is added
+by `feedback add` alone."""
 
 LEAD, WITH = "Lead", "With"
-"""The names of the lines that tie a group together: `With: #90, #91` on the idea a run claimed, or `With: none`,
+"""The names of the lines that tie a group together: `With: #90, #91` on the group's lead, or `With: none`,
 and `Lead: #89` on each idea that joined it, was sent back from it, or was stopped with it."""
 
 BACKLOG, WORKING = "Backlog", "In progress"

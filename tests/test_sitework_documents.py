@@ -74,6 +74,15 @@ class TheDocuments(unittest.TestCase):
             with self.subTest(line=line):
                 self.assertRegex(brief, rf"(?m)^{line}")
 
+    def test_the_sorts_brief_gives_the_points_the_scripts_read(self):
+        # A grade in any other number counts as none, and the sort refuses a group with such an idea in it, so the
+        # brief that grades holds the same points (25 November 2026). It names how a lead elsewhere is given.
+        brief = (WORKFLOW / "sort.md").read_text(encoding="utf-8")
+        for point in rules.POINTS:
+            with self.subTest(point=point):
+                self.assertRegex(brief, rf"(?m)^- \*\*{point}\.\*\*")
+        self.assertIn("--lead", brief)
+
     def test_the_statuses_a_run_is_told_of_are_the_ones_the_scripts_set(self):
         text = (WORKFLOW / "README.md").read_text(encoding="utf-8")
         labels = text[text.index("## The labels") :]

@@ -61,14 +61,24 @@ def filed() -> list[dict]:
     return sorted(shell.gh_json("issue", "list", *asked), key=lambda there: there["number"])
 
 
+def ideas() -> list[dict]:
+    """Every open approved idea, oldest first. A finding close to one is added to it as a note, and not filed as an
+    issue of its own, so that the agent that works the idea finds it there (25 November 2026)."""
+    asked = ("--label", rules.IDEA, "--label", rules.APPROVED, "--state", "open", "--limit", "1000")
+    found = shell.gh_json("issue", "list", *asked, "--json", "number,title")
+    return sorted(found, key=lambda there: there["number"])
+
+
 def show(options: argparse.Namespace) -> int:
-    """Print what is already filed, so that the look back adds to an issue and does not file a second one for the
-    same fault."""
+    """Print what is already filed, and then the open approved ideas, so that the look back adds a finding to an
+    issue or an idea it is close to, and files as few issues as it can."""
     found = filed()
     for there in found:
         print(f"#{there['number']} {there['title']}")
     if not found:
         print(f"No open issue carries `{rules.FEEDBACK}`.")
+    for there in ideas():
+        print(f"#{there['number']} [idea] {there['title']}")
     return 0
 
 
@@ -92,20 +102,27 @@ def file(options: argparse.Namespace) -> int:
 
 
 def add(options: argparse.Namespace) -> int:
-    """Add a finding that was seen again to the issue it is filed in, as a comment, and print the comment's
-    address. The issue has to be open and to carry the label. A number is easily a wrong one, and without the
-    check a finding about the workflow would land on a feature's issue, where the next run of that feature would
-    read it as the owner's own words, since agents act under the owner's account."""
+    """Add a finding to an open issue it is close to, as a comment, and print the comment's address: to an issue
+    that carries the label, or to an approved idea, which the owner asked for on 25 November 2026 so that a run
+    files as few issues as it can. On an idea the comment is the workflow's `note`: agents act under the owner's
+    account, and a comment without the workflow's first line would be read by the idea's run as the owner's own
+    words. Any other issue is refused, since a number is easily a wrong one."""
     words = read_text(options.file).strip()
     there = issue.read(options.issue)
+    marks = issue.labels(there)
     if there["state"] != "OPEN":
         why = "is closed"
-    elif rules.FEEDBACK not in issue.labels(there):
-        why = f"does not carry `{rules.FEEDBACK}`"
-    else:
+    elif rules.FEEDBACK in marks:
         body = f"{SEEN_AGAIN.format(run=options.run)}\n\n{words}\n"
         print(shell.gh("issue", "comment", str(options.issue), "--body-file", "-", stdin=body))
         return 0
+    elif {rules.IDEA, rules.APPROVED} <= set(marks):
+        # On an idea, the finding is the workflow's note, so that no run reads it as the owner's own words.
+        body = f"{rules.first_line(rules.NOTE)}\n\n{FROM.format(run=options.run)}\n\n{words}\n"
+        print(shell.gh("issue", "comment", str(options.issue), "--body-file", "-", stdin=body))
+        return 0
+    else:
+        why = f"carries neither `{rules.FEEDBACK}` nor both `{rules.IDEA}` and `{rules.APPROVED}`"
     print(
         f"feedback: #{options.issue} {why}, so nothing was added to it. `feedback list` prints each issue a "
         "finding can be added to, and `feedback file` opens a new one.",
@@ -124,9 +141,10 @@ def main(command: str, arguments: list[str]) -> int:
     forms = parser.add_subparsers(dest="form", required=True, metavar="{list,file,add}")
     forms.add_parser(
         "list",
-        help="print each open issue that carries the label",
+        help="print each open issue that carries the label, then each open approved idea",
         description=f"Print each open issue that carries the label `{rules.FEEDBACK}` as `#<number> <title>`, "
-        "oldest first, so that a finding which is already filed is added to its issue and not filed again.",
+        "oldest first, and then each open approved idea as `#<number> [idea] <title>`, so that a finding close to "
+        "one of them is added to it and not filed again.",
     )
     filing = forms.add_parser(
         "file",
@@ -145,10 +163,11 @@ def main(command: str, arguments: list[str]) -> int:
     )
     adding = forms.add_parser(
         "add",
-        help="add a finding that was seen again to its issue",
-        description="Add a finding that was seen again to the issue it is filed in, as a comment that begins by "
-        f"naming the run, and print the comment's address. An issue that is closed, or that does not carry the "
-        f"label `{rules.FEEDBACK}`, is refused and left as it is.",
+        help="add a finding to an open feedback issue or approved idea it is close to",
+        description="Add a finding to an open issue it is close to, as a comment that names the run, and print the "
+        f"comment's address: to an issue that carries the label `{rules.FEEDBACK}`, or to an approved idea, where "
+        f"the comment is the workflow's `{rules.NOTE}`. An issue that is closed, or that is neither, is refused and "
+        "left as it is.",
     )
     adding.add_argument("issue", type=int, metavar="ISSUE", help="the number of the open issue the finding is in")
     adding.add_argument("--run", type=int, required=True, metavar="N", help="the number of the feature's issue")

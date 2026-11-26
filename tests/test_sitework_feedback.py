@@ -27,7 +27,9 @@ ADDED = "https://github.com/the-owner/the-site/issues/44#issuecomment-7099"
 WORDS = "The plan was read nine times — read it once, and keep the lines that matter.\n\nNothing else."
 DIGEST = "# Digest of the run on #27\n\nMade from 1 record.\n\n## Figures\n\n| Issue |\n| --- |\n| #27 |"
 
-LIST = "gh issue list"
+LIST = "gh issue list --label workflow feedback"
+IDEAS = "gh issue list --label site-idea --label approved"
+"""How the open approved ideas are listed, which a finding can be added to as a note."""
 CREATE = "gh issue create"
 VIEW = "gh issue view 44"
 COMMENT = "gh issue comment 44"
@@ -59,7 +61,7 @@ class Shell:
 
     def changes(self) -> list[str]:
         """The commands that were run and change something: every one but a reading."""
-        return [line for line in self.ran if not line.startswith((LIST, "gh issue view", "git rev-parse"))]
+        return [line for line in self.ran if not line.startswith(("gh issue list", "gh issue view", "git rev-parse"))]
 
     def given(self, start: str, option: str) -> list[str]:
         """Each value the one command that begins with `start` was given for `option`."""
@@ -91,6 +93,7 @@ class FeedbackTest(unittest.TestCase):
     def setUp(self):
         self.answers = {
             LIST: [{"number": 44, "title": "The plan is read more than once"}],
+            IDEAS: [],
             CREATE: FILED,
             "gh issue close 52": "",
             VIEW: issue(44, LABEL),
@@ -169,6 +172,15 @@ class TheList(FeedbackTest):
         self.assertEqual(self.shell.given(LIST, "--label"), [LABEL])
         self.assertEqual(self.shell.given(LIST, "--state"), ["open"])
 
+    def test_the_open_approved_ideas_are_listed_after_the_feedback_issues(self):
+        # A finding close to an idea is added to the idea (25 November 2026), so the look back sees the ideas too.
+        self.answers[IDEAS] = [{"number": 35, "title": "Add link-preview tags so shared boards show a card"}]
+        _, printed, _ = self.run_command("list")
+        self.assertEqual(
+            printed.splitlines(),
+            ["#44 The plan is read more than once", "#35 [idea] Add link-preview tags so shared boards show a card"],
+        )
+
     def test_it_asks_for_more_than_the_thirty_issues_github_gives_when_it_is_asked_for_no_number(self):
         self.run_command("list")
         (limit,) = self.shell.given(LIST, "--limit")
@@ -183,8 +195,9 @@ class TheList(FeedbackTest):
         self.assertNotIn("#", printed)
 
     def test_listing_reads_and_changes_nothing(self):
+        # It reads two lists: the feedback issues, and the approved ideas a finding can be added to.
         self.run_command("list")
-        self.assertEqual(len(self.shell.ran), 1)
+        self.assertEqual(len(self.shell.ran), 2)
         self.assertEqual(self.shell.changes(), [])
 
     def test_when_github_does_not_give_the_list_it_exits_1_with_what_github_said(self):
@@ -265,14 +278,24 @@ class TheAdding(FeedbackTest):
         self.assertEqual(self.shell.changes(), [line for line in self.shell.ran if line.startswith(COMMENT)])
         self.assertEqual(len(self.shell.changes()), 1)
 
-    def test_a_finding_is_not_added_to_an_issue_that_does_not_carry_the_label(self):
-        # A wrong number is most often a feature's own issue, which carries these.
-        self.answers[VIEW] = issue(44, "site-idea", "approved", "in-progress")
-        code, printed, complained = self.add_it()
-        self.assertEqual((code, printed), (1, ""))
-        self.assertEqual(self.shell.changes(), [])
-        self.assertIn("#44", complained)
-        self.assertIn(LABEL, complained)
+    def test_a_finding_is_not_added_to_an_issue_that_is_neither_feedback_nor_an_approved_idea(self):
+        for labels in ((), ("site-idea",), ("documentation",)):
+            with self.subTest(labels=labels):
+                self.answers[VIEW] = issue(44, *labels)
+                code, printed, complained = self.add_it()
+                self.assertEqual((code, printed), (1, ""))
+                self.assertEqual(self.shell.changes(), [])
+                self.assertIn("#44", complained)
+                self.assertIn(LABEL, complained)
+
+    def test_a_finding_added_to_an_idea_is_a_workflow_note_so_no_run_reads_it_as_the_owners(self):
+        # The owner asked on 25 November 2026 that a finding close to an open idea be added to it, and not filed
+        # as an issue of its own. Agents act under the owner's account, and a comment without the workflow's first
+        # line is the owner's own words, which a run reads for what the owner allowed and answered.
+        self.answers[VIEW] = issue(44, "site-idea", "approved", "needs-owner")
+        code, _, _ = self.add_it()
+        self.assertEqual(code, 0)
+        self.assertEqual(self.shell.read(COMMENT), f"Site workflow: note\n\nFrom the run on #27.\n\n{WORDS}\n")
 
     def test_a_finding_is_not_added_to_an_issue_that_is_closed(self):
         self.answers[VIEW] = issue(44, LABEL, state="CLOSED")

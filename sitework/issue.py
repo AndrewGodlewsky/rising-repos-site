@@ -65,20 +65,29 @@ def of_kind(comments: list[dict], kind: str) -> list[dict]:
 
 
 def newest(said: list[dict]) -> dict | None:
-    """The newest of the workflow's comments among the owner's account's, past any grade. Each run grades the
-    ideas that wait, and a grade is no work begun on an idea (25 November 2026), so how far an issue came is read
-    from the workflow's other comments."""
-    done = [comment for comment in said if rules.kind_of(comment["body"]) not in (None, rules.GRADED)]
+    """The newest of the workflow's comments among the owner's account's, past any grade or note. Each run grades
+    the ideas that wait, and a run's look back may add a note to one (25 November 2026). Neither is work begun on
+    an idea, so how far an issue came is read from the workflow's other comments."""
+    done = [comment for comment in said if rules.kind_of(comment["body"]) not in (None, rules.GRADED, rules.NOTE)]
     return done[-1] if done else None
 
 
 def grade(said: list[dict]) -> dict | None:
-    """The idea's newest grade, by the lines of it a script reads: its complexity, its effort, the part of the
-    site a reader sees it in, and the code it touches. None when it has no grade."""
+    """The idea's newest grade, by the lines of it a script reads: its complexity and its effort in points, the
+    part of the site a reader sees it in, and the code it touches. None when it has no grade, or when its
+    complexity or its effort is not one of `rules.POINTS`, as a grade from before 25 November 2026 in Low,
+    Medium, and High is not: the sort's cap adds effort up, so such an idea is graded again."""
     graded = of_kind(said, rules.GRADED)
     if not graded:
         return None
-    return {name.lower(): value(graded[-1]["body"], name) for name in ("Complexity", "Effort", "Area", "Code")}
+    body = graded[-1]["body"]
+    points = {name.lower(): value(body, name) for name in ("Complexity", "Effort")}
+    if not all(given and given.isdigit() and int(given) in rules.POINTS for given in points.values()):
+        return None
+    return {
+        **{name: int(given) for name, given in points.items()},
+        **{name.lower(): value(body, name) for name in ("Area", "Code")},
+    }
 
 
 def named_with(said: list[dict]) -> list[int]:
