@@ -74,14 +74,19 @@ Five things hold for every stage:
   outside the repository's folder. `sitework ship` merges only from a
   checkout that holds nothing uncommitted, so that what it judged is what
   it merges.
-- `sitework check` takes six to thirteen minutes on the machine, and
+- `sitework check --issue` takes a few minutes on the machine, and
   `sitework confirm` about seven, or longer when a run on GitHub is slow.
   Neither fits the time a shell gives a command in the foreground, and a
   fresh agent's shell gives less. So start each in the background, with
   what it prints written to a file outside the repository's folder, and
   wait once for it to end. Do not look at the file while it runs: every
-  look is a message that reads the whole context again. A command that was
-  cut short has not failed.
+  look is a message that reads the whole context again.
+- A command that was cut short has not failed: it measured nothing. When
+  the harness stops one, for low memory or for its time limit, wait a
+  minute and run it again yourself. Never end your turn to ask whether to:
+  no one is there to answer, and on 25 and 26 November 2026 a run sat idle
+  for up to 76 minutes on that question. Only when the same command has
+  been stopped three times in a row, stop for the owner (below, "Any").
 - Wait for a pull request's job with `sitework job`, in the foreground. It
   takes about four minutes, and prints how each check ended.
 - Read round the lines a search finds, and not the whole file: the
@@ -345,13 +350,17 @@ Build is done when `sitework check --issue <issue>` passes on the machine.
 
 `sitework check --issue <issue>` runs every check, the cheapest first, and
 stops at the first that fails: the lint, the format, white space, the
-guarded paths, the agents' tests, the owner's tests, that each new test
-fails on the commit before, and that each criterion has a proof that
-passes. It reads the change from what is committed, so commit first.
+guarded paths, the tests of the files the change adds or edits (the agents'
+and the owner's), that each new test fails on the commit before, and that
+each criterion has a proof that passes. It reads the change from what is
+committed, so commit first.
 
-It leaves out the tests of the workflow's own scripts and of the stale
-check, which a feature cannot change, unless the owner let the change touch
-a guarded path. The pull request's job runs every test.
+It runs no other test. The pull request's job runs every test, and the
+owner chose on 26 November 2026 to run the suite once, there, and not on the
+machine first: it had taken eight minutes on the machine and then seven
+again on GitHub, and the browser it drives had twice been stopped for the
+machine's low memory. A test the change did not touch that fails in the
+job is mended as any failing check is.
 
 1. Run it until it passes. Mend the code, and never the check.
 2. Push the branch, and open the pull request against `main`, with
@@ -520,7 +529,7 @@ The run goes on by itself until one of these is true. Nothing else stops it.
 | Ship | A condition of the merge does not hold, and the run cannot make it hold inside the plan |
 | Confirm | A result that measured nothing does not settle. The live site or the eval failed twice on something the change did not cause |
 | Mend | The one mend did not put the fault right, or a reader cannot read the board. The site is put back first |
-| Any | A security control refused an action. Look for no way round it |
+| Any | A security control refused an action. Look for no way round it. The harness stopped the same command three times in a row |
 
 To stop: push the work, so that nothing is lost. Write one file that says
 the stage, what was seen, what was tried, the question for the owner, and
