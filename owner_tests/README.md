@@ -264,6 +264,18 @@ Sentence 40 came with #33, and reads a live site as it reads the made-up one.
 
 Sentence 41 came with #89, and reads a live site as it reads the made-up one.
 
+### An empty board on History (`test_an_empty_board_on_history.py`)
+
+42. History draws a board with no repository unfilled, where a board that
+    lists repositories is shaded, says no count of new for it, and its legend
+    names it and a day with no board.
+    `test_history_draws_a_board_with_no_repository_unfilled_with_no_count_of_new_and_its_legend_names_it`
+
+    It does not claim the dashed edge, the third ink of its 0, or how the
+    cells look in forced colours, which the agents' tests hold.
+
+Sentence 42 came with #91, and reads a live site as it reads the made-up one.
+
 ## How to run them
 
 From the repository, with the pinned dependencies in place (`uv sync
