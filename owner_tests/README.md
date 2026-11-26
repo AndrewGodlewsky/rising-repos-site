@@ -253,6 +253,17 @@ site but what a reader with a fault on the way would ask.
 
 Sentence 40 came with #33, and reads a live site as it reads the made-up one.
 
+### The shaded gain (`test_the_shaded_gain.py`)
+
+41. The shaded gain in an opened row's drawing follows the line of what it
+    gained through each of its recent days.
+    `test_the_shaded_gain_in_an_opened_rows_drawing_follows_the_line_of_what_it_gained_through_each_recent_day`
+
+    It does not claim where the tag that names the gain stands, which the
+    agents' tests hold. It reads the drawings of the board's first five rows.
+
+Sentence 41 came with #89, and reads a live site as it reads the made-up one.
+
 ## How to run them
 
 From the repository, with the pinned dependencies in place (`uv sync
