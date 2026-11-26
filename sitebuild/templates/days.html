@@ -1,7 +1,8 @@
 {% extends "page.html" %}
 {# Every board day as month calendars, newest month first, Monday first: each day a cell that links to its board, with
-   its count of repositories, how many were new, and a shade on a fixed four-step ramp by that count. A day between the
-   first board and the newest without a board is an empty cell; the newest board's cell is outlined. #}
+   its count of repositories, how many were new, and a shade on a fixed four-step ramp by that count. A board with no
+   repository has no shade and a dashed edge, and says no count of new (#91); a day between the first board and the
+   newest without a board is a hatched cell; the newest board's cell is outlined. The legend names all three. #}
 {% block title %}Rising Repos: history, every daily board{% endblock %}
 {% block strip %}
 <nav class="strip" aria-label="Board days">
@@ -23,8 +24,10 @@
 <span><i class="shade-3"></i>{{ ramp[1] }}–{{ ramp[2] - 1 }}</span>
 <span><i class="shade-4"></i>{{ ramp[2] }} or more</span>
 <span><i class="newest-key"></i>the newest board</span>
+<span><i class="empty-key"></i>no repository on the board</span>
+<span><i class="gap-key"></i>no board</span>
 </div>
-<p class="ramp-note"><span class="fresh-note">Under each count, how many of its repositories were new: under a name on none of the boards before it. </span>A blank day had no board.</p>
+<p class="ramp-note fresh-note">Under each count, how many of its repositories were new: under a name on none of the boards before it.</p>
 </div>
 {% endblock %}
 {% block main %}

@@ -842,8 +842,9 @@ class History:
 def calendar(boards: list[dict], history: History) -> list[dict]:
     """The board days as month calendars, newest month first: each month's weeks from Monday, and each day a cell
     holding its board, its count of rows, its shade on the fixed `RAMP` (0 for a board with none), and how many of its
-    rows were new (None when that cannot be told); a cell with no count for a day between the first board and the
-    newest that has none; and None outside them."""
+    rows were new (None when that cannot be told, and for a board with none, which has no row that could be new:
+    #91); a cell with no count for a day between the first board and the newest that has none; and None outside
+    them."""
     by_day = {board["board_day"]: number for number, board in enumerate(boards)}
     months = sorted({board["board_day"][:7] for board in boards}, reverse=True)
     oldest, newest = boards[-1]["board_day"], boards[0]["board_day"]
@@ -865,7 +866,7 @@ def calendar(boards: list[dict], history: History) -> list[dict]:
                         "date": day.day,
                         "count": count,
                         "shade": (1 + sum(count >= step for step in RAMP)) if count else 0,
-                        "new": history.rows(at)["new"],
+                        "new": history.rows(at)["new"] if count else None,
                         "newest": at == 0,
                     }
                 )

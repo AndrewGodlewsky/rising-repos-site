@@ -498,8 +498,9 @@ class EveryPublishedBoard(unittest.TestCase):
     def test_each_board_gives_one_count_of_its_rows_and_one_of_its_new_rows_on_its_page_and_in_the_calendar(self):
         """Its rows: the rows it lists, the count on its All button, the count in About this board, and the count in
         its day of History's calendar. Its new rows: the rows it marks New, the count on its New button, the count at
-        its foot, and the count in the calendar, which gives one exactly where the board's foot does. A board that
-        cannot tell what is new gives no count and marks no row."""
+        its foot, and the count in the calendar, which gives one exactly where the board's foot does, but for a board
+        with no repository, which has none that could be new and says no count in its cell (#91). A board that cannot
+        tell what is new gives no count and marks no row."""
         calendar = {link.attrs["href"]: link for link in self.pages[DAYS].one("main").all("a")}
         for path, board in self.shows.items():
             with self.subTest(path):
@@ -519,7 +520,8 @@ class EveryPublishedBoard(unittest.TestCase):
                 cell = [span.text() for span in day.all("span") if "fresh" in span.classes()]
                 if foot:
                     self.assertEqual(
-                        (foot, cell, button), ([f"{new} new."], [f"{new} new"], [str(new)] if count else [])
+                        (foot, cell, button),
+                        ([f"{new} new."], [f"{new} new"] if count else [], [str(new)] if count else []),
                     )
                 else:
                     self.assertEqual((new, cell, button), (0, [], []))

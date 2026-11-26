@@ -715,6 +715,40 @@ class TheBoardDays(BuildTest):
         }
         self.assertEqual(shades, {0: 0, 1: 1, 199: 1, 200: 2, 274: 2, 275: 3, 349: 3, 350: 4})
 
+    def legend(self, page) -> list[str]:
+        """What History's legend says, part by part, its title first."""
+        (legend,) = [div for div in page.one("main").all("div") if "ramp-legend" in div.classes()]
+        return [span.text() for span in legend.all("span")]
+
+    def test_a_board_with_no_repository_shows_and_says_no_count_of_new(self):
+        """#91: an empty board said "0 new" under its 0 when a board that listed its rows came before it. A board
+        with none has no repository that could be new, so its cell says its 0 and nothing after it, at any width."""
+        rows = [{**row, "rank": rank} for rank, row in enumerate(read_json(self.board_file())["rows"][:3], 1)]
+        older = read_json(self.board_file(OLDER))
+        write_json(self.board_file("2026-11-07"), {**older, "board_day": "2026-11-07", "state": "rows", "rows": rows})
+        index = read_json(self.index)
+        write_json(
+            self.index, {**index, "board_days": [*index["board_days"], {"board_day": "2026-11-07", "row_count": 3}]}
+        )
+        (month,) = self.months(self.build_pages()[DAYS])
+        (empty,) = [cell for _, cell in self.cells(month) if cell.all("time")[0].attrs["datetime"] == OLDER]
+        self.assertEqual(empty.heard(), "Sunday 8 November: 0 repositories")
+        self.assertEqual([span for span in empty.all("span") if "fresh" in span.classes()], [])
+
+    def test_the_legend_names_a_board_with_no_repository_and_a_day_with_no_board(self):
+        """#91: after the four shades and the newest board, the legend names the two cells that have no shade."""
+        legend = self.legend(self.build_pages()[DAYS])
+        self.assertEqual(legend[-2:], ["no repository on the board", "no board"])
+        self.assertEqual(legend[-3], "the newest board")
+
+    def test_the_note_under_the_legend_no_longer_says_a_blank_day_had_no_board(self):
+        """#91: the legend now names a day with no board, so the note says only what the count of new means."""
+        (note,) = [p for p in self.build_pages()[DAYS].one("main").all("p") if "ramp-note" in p.classes()]
+        self.assertEqual(
+            note.text(),
+            "Under each count, how many of its repositories were new: under a name on none of the boards before it.",
+        )
+
     def test_three_board_days_link_each_to_the_ones_beside_it(self):
         write_json(self.board_file("2026-11-07"), {**read_json(self.board_file(OLDER)), "board_day": "2026-11-07"})
         index = read_json(self.index)
