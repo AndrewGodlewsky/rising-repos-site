@@ -47,6 +47,11 @@ the same part of the site be worked in one run. `graded` gives an idea's complex
 names, on the idea a run claimed, the ideas that go with it, `joined` marks each of those, and `released` marks
 one sent back to wait for a run of its own."""
 
+POINTS = (1, 2, 3, 5, 8, 13)
+"""The values a grade gives an idea's complexity and its effort: Fibonacci points, as estimates are made in
+software work. The owner asked for them on 25 November 2026, in the place of Low, Medium, and High, so that a
+group's size can be added up. An idea of 13 should be split."""
+
 GRADED = "graded"
 """The kind of the comment that grades an idea. A grade is no work begun on the idea, so a script that asks how
 far an issue came reads past it."""

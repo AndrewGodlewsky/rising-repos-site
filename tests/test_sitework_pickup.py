@@ -699,9 +699,7 @@ class Queue(PickupTest):
     """`queue` lists the ideas a run could take as new, with their grades, for the sort's agent to grade those
     that have none and to choose the lead's partners from (25 November 2026)."""
 
-    GRADE = (
-        "Site workflow: graded\n\nComplexity: Medium\nEffort: Low\nArea: the date bar\nCode: filters.js jump()\n\nWhy."
-    )
+    GRADE = "Site workflow: graded\n\nComplexity: 5\nEffort: 2\nArea: the date bar\nCode: filters.js jump()\n\nWhy."
 
     def run_queue(self, *arguments: str) -> tuple[int, dict]:
         printed = io.StringIO()
@@ -716,8 +714,17 @@ class Queue(PickupTest):
         self.assertEqual([one["number"] for one in printed["waiting"]], [27, 28, 29, 30])
         self.assertEqual(
             printed["waiting"][1]["grade"],
-            {"complexity": "Medium", "effort": "Low", "area": "the date bar", "code": "filters.js jump()"},
+            {"complexity": 5, "effort": 2, "area": "the date bar", "code": "filters.js jump()"},
         )
+
+    def test_a_grade_that_is_not_in_points_counts_as_none_so_the_idea_is_graded_again(self):
+        # Grades moved from Low, Medium, and High to Fibonacci points on 25 November 2026. An idea graded the old
+        # way, or with a number that is no point, has nothing the sort's cap can add up, so it is graded again.
+        for given in ("Medium", "4"):
+            with self.subTest(given=given):
+                self.answers[COMMENTS % 28] = [said(self.GRADE.replace("Complexity: 5", f"Complexity: {given}"))]
+                _, printed = self.run_queue()
+                self.assertIsNone(printed["waiting"][1]["grade"])
         self.assertIsNone(printed["waiting"][0]["grade"])
         self.assertIsNone(printed["lead"])
 
