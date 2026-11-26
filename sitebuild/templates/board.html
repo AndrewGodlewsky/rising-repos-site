@@ -5,6 +5,7 @@
    board reads, in the open; the filter bar and the ranked list; and at the foot, the board's plain facts and what
    New means. #}
 {% block title %}Rising Repos: the daily board for {{ board.board_day|long_date }}{% endblock %}
+{% block description %}The daily board for {{ board.board_day|long_date }}: GitHub repositories gaining stars faster than their own pace predicts.{% endblock %}
 {% block strip %}
 <nav class="strip" aria-label="Board days">
 <div class="wrap">

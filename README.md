@@ -63,6 +63,7 @@ design note). The build writes these pages, which `PAGES` in
 | `/days/` | History: every board day as month calendars, newest first, each day with its count of repositories |
 | `/days/<board day>/` | Each board day's board, the newest included, so that a board day keeps one address |
 | `/days/<board day>/history.json` | What an opened row of that board shows beyond its line, for each board with rows, fetched on the first opening |
+| `/days/<board day>/share.png` | The board day's share image, 1200 by 630 pixels, which a link's card shows: the board day and the names of its first three rows, or that it lists none |
 | `/baseline/` | Baseline: each repository on the newest board, placed by its baseline against its recent pace, with every one in a table |
 | `/how-it-works/` | How a board is ranked, in a few plain sentences, with the worked example drawn, and what the site is set in |
 | `/static/fonts/OFL.txt` | The fonts' licence and IBM's copyright notice, which the licence asks to travel with them |
@@ -73,7 +74,10 @@ it, and the site's bar on every page links to History, Baseline, and How it
 works. The addresses are the earlier site's, so a link to one of its board
 days still leads to that board day on the live site. Each build writes every
 page again: from the 115 board days in `site-data/` on 21 November 2026, 120
-pages, 111 history files, and the licence, in about 10 seconds.
+pages, 111 history files, and the licence, in about 10 seconds. With a share
+image for each board day (#35), the 119 board days of 26 November 2026 build
+124 pages, 115 history files, and 119 images, of 5,435,912 bytes in all, in
+about 11 seconds.
 
 What every page holds to, each checked by a test in `tests/`:
 
@@ -86,6 +90,28 @@ What every page holds to, each checked by a test in `tests/`:
   also give the newest board's day, written out as the page writes dates, and
   its publish time in the notice's `data-newest-board-day` and
   `data-newest-published-at`, which only the notice's script reads.
+- **How a link to it is shown.** Every page's `<head>` carries the card a
+  link to it shows on Discord and X (#35): `og:title`, the page's title;
+  `og:description`, its description; `og:site_name`, "Rising Repos";
+  `og:image`, a board day's share image, with its width and height; and
+  `twitter:card` as `summary_large_image`. Each kind of page has a
+  description of its own: a board day's names its board day, the root's
+  names the newest, and the not-found page keeps the site's own. Every page
+  but the not-found page, which is served at every address that holds none,
+  names its canonical address in `<link rel="canonical">` and `og:url`. The
+  root's is the newest board day's own page, which shows the same board, so
+  the two are one page to a search engine. A board day's page and the root
+  name that board day's image, and every other page the newest board day's.
+  Each address is whole, on `https://risingrepos.com` (`SITE` in
+  `sitebuild/__init__.py`), since a crawler reads it away from the page; the
+  preview's pages name the live site's too. No browser fetches any of them:
+  a crawler fetches `og:image`, so the policy's `img-src data:` stands, and
+  the size test leaves a canonical link out of what a page fetches. The
+  image is drawn at build time by `sitebuild/share.py`, with Pillow, in the
+  site's own faces, as the design note's "The share image" says. The tags
+  add about 690 bytes to every page. Only those both cards need are there:
+  `og:type`, `og:image:alt`, and the `twitter:` copies of the `og:` tags are
+  left out, for a board day's page has little room.
 - **Owner-written text.** A repository's owner wrote its name, description,
   language, and the licence file GitHub names its licence from. Each is escaped
   where the page shows it: Jinja2's autoescaping is on for every template, and
@@ -171,7 +197,11 @@ What every page holds to, each checked by a test in `tests/`:
   the limit. Setting each owner in Baseline's table on a line of its own on a
   phone (#147) added 190 bytes to every page, in the stylesheet, and 4,277
   more to Baseline, in its markup, 13 bytes a line: the heaviest board day is
-  now 498,926 bytes, 1,074 under the limit.
+  now 498,926 bytes, 1,074 under the limit. The card tags, the canonical
+  address, and each page's own description (#35) added about 690 bytes to
+  every page, in its head, by `sitework weigh` on 26 November 2026: the
+  heaviest board day is now 499,614 bytes, 386 under the limit, and the root
+  gzipped at level 6 is 140 bytes more.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -569,6 +599,26 @@ the dashed line of its own pace marked as "+460 above its own trend". It names
 the formula under its title, and when the newest board was ranked by another,
 it says so first. It carries no notice of an old board, which would hide its
 text. Under "The type", it names the fonts and links to their licence.
+
+**The share image.** Each board day's `share.png`, which a link's card shows
+on Discord and X (#35), is 1200 by 630 pixels, the size both cards draw a
+large image at, on the light theme's page, `--bg`. "Rising Repos" is at its
+top in Rising Sans 500, 40 px, in the accent, and under it "The daily board
+for" the board day, written out, in Rising Sans 400, 52 px, in the ink. Then
+the board's first three rows, each its rank in Rising Mono 500 in the accent
+and its full name in Rising Mono 400 in the ink, at 56 px, one under the
+other. A name too long for the 968 px beside the ranks is wrapped, after a
+`/`, `-`, `_`, or `.` in the second half of its line where there is one, and
+at the last character that fits where there is none, and the names are made
+smaller, 2 px at a time down to 16, until the three fit above the image's
+foot. A board with fewer than three rows shows those it has, and an empty
+board says "No repository is on this board." in the second ink, as its page
+does. The pairs are those of the page: the ink, the second ink, and the
+accent on `--bg`. `sitebuild/share.py` lays the image out as lines of text,
+which the tests read, and draws it from that layout; the drawing is looked
+at. Every face is opened with Pillow's basic layout engine, as its build for
+Windows has no other, so that a name wraps alike on the machine and on the
+build job.
 
 **Links and focus.** A link in running text is underlined in a quiet line,
 which takes the accent under the pointer. A repository's link underlines only

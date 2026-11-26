@@ -15,6 +15,7 @@ from typing import NamedTuple
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 from markupsafe import Markup
 
+from sitebuild import share
 from sitebuild.contract import boards as read_boards
 
 TEMPLATES = Path(__file__).parent / "templates"
@@ -31,6 +32,11 @@ BASELINE = "baseline/index.html"
 BASELINE_NAME = "Baseline"
 """The Baseline page's name, as the site's bar and the page's own strip show it: change it here to rename the page."""
 NOT_FOUND = "404.html"
+SHARE_IMAGE = "share.png"
+"""A board day's share image, written beside its page (sitebuild/share.py)."""
+SITE = "https://risingrepos.com"
+"""The site's own address. A card and a canonical address name a page by its whole address, since what reads them,
+a crawler or a search engine, reads them away from the page (#35). The preview's pages name the live site's too."""
 
 PAGES = {
     BOARD: "latest.html",
@@ -94,6 +100,12 @@ def address(path: str) -> str:
 def day_address(day: str) -> str:
     """The address of a board day's page: '2026-11-09' as '/days/2026-11-09/'."""
     return address(board_day_page(day))
+
+
+def share_lines(board: dict) -> list[share.Line]:
+    """The lines of a board day's share image: its board day in words, and the full names of its first three rows,
+    in the file's order (B1)."""
+    return share.layout(long_date(board["board_day"]), [row["full_name"] for row in board["rows"][:3]])
 
 
 def long_date(day: str) -> str:
@@ -988,19 +1000,38 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     history = History(boards)
     # Each template is told its own name, which page.html reads to decide whether the page carries the notice.
     pages = {
-        written: templates.get_template(PAGES[page]).render(**context, **common, template=PAGES[page])
+        written: templates.get_template(PAGES[page]).render(
+            **context, **common, **_card(written, page, context, boards[0]), template=PAGES[page]
+        )
         for written, page, context in _pages(boards, history)
     }
     for path, page in pages.items():
         (out / path).parent.mkdir(parents=True, exist_ok=True)
         (out / path).write_text(unquoted(page), encoding="utf-8", newline="\n")
     shutil.copytree(STATIC, out / "static")
-    # Each board day's history of its rows, which its expanded rows fetch on first opening.
+    # Each board day's share image, which a link's card shows, and its history of its rows, which its expanded rows
+    # fetch on first opening.
     for number, board in enumerate(boards):
+        page = out / board_day_page(board["board_day"])
+        page.with_name(SHARE_IMAGE).write_bytes(share.draw(share_lines(board)))
         if board["rows"]:
             (out / board_day_page(board["board_day"])).with_name("history.json").write_text(
                 json.dumps(history_file(boards, history, number), separators=(",", ":")), encoding="utf-8"
             )
+
+
+def _card(written: str, page: str, context: dict, newest: dict) -> dict:
+    """What a page's card and canonical address name, by the page's kind, and never by whether it is given a board:
+    Baseline is given the newest. The root's canonical address is the newest board day's own page, which shows the
+    same board, and the page for an address that holds none has no address of its own. A board day's page names its
+    own share image, and every other page the newest board day's."""
+    day = context["board"]["board_day"] if page in (BOARD, BOARD_DAY) else newest["board_day"]
+    own = {BOARD: day_address(day), NOT_FOUND: None}.get(page, address(written))
+    return {
+        "canonical": own and SITE + own,
+        "share_image": SITE + day_address(day) + SHARE_IMAGE,
+        "share_size": (share.WIDTH, share.HEIGHT),
+    }
 
 
 def _pages(boards: list[dict], history: History) -> Iterator[tuple[str, str, dict]]:
