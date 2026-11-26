@@ -164,7 +164,11 @@ What every page holds to, each checked by a test in `tests/`:
   Shading an opened row's gain through its daily counts, and naming it above
   its line (#89), added 72 bytes to every page, in the stylesheet, and 430
   more to a board with rows, in its script: the heaviest board day is now
-  498,317 bytes, 1,683 under the limit.
+  498,317 bytes, 1,683 under the limit. Drawing History's empty boards as
+  quiet cells with a dashed edge, and naming them and a day with no board in
+  the legend (#91), added 419 bytes to every page, in the stylesheet, and 3
+  more to History: the heaviest board day is now 498,736 bytes, 1,264 under
+  the limit.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -503,8 +507,16 @@ cell that links to its board, with its count of repositories, how many of them
 were new (from 768 px up, where the cell has room; a screen reader hears it at
 any width), and a shade on a fixed ramp by that count, the same every month:
 under 200, 200 to 274, 275 to 349, and 350 or more. The newest is outlined in
-the accent and marked `aria-current="date"`. A day between the first board and
-the newest that has no board is hatched, and a screen reader hears "no board".
+the accent and marked `aria-current="date"`. A board day whose board has no
+repository paints no fill of its own, gives its 0 in the third ink, and is
+edged with a dashed line in `--line-strong`, which gives way to the focus ring
+and to the newest board's ring, and it says no count of new, since
+no repository on it could be new: the card's own colour had made it the
+brightest cell of its month (#91). A day between the first board and the
+newest that has no board is hatched, and a screen reader hears "no board". The
+legend draws each of the four shades, the newest board, a board with no
+repository, and a day with no board as its cell, and the note under it, from
+768 px up, says what the count of new means.
 
 **Baseline.** At `/baseline/`, the newest board's chart: each repository a dot,
 placed by its baseline, the stars a day it gained over the twelve days before,
@@ -567,7 +579,11 @@ protocol's `CSS.forcePseudoState` and `visited`. Every control, link, and
 **Forced colours and motion.** In forced colours, the drawings made of
 backgrounds take system colours, Baseline's legend keeps the page's, as its
 chart's dots do, and History's cells, which lose their shades, keep an edge,
-the newest one's in the highlight. With reduced motion, nothing transitions.
+the newest one's in the highlight. There a board with no repository has a
+dashed edge in the system's grey text where a board's is solid, and a day with
+no board keeps its hatch in that grey, so that the three are told apart
+without the shades, and the legend shows the two swatches for them (#91). With
+reduced motion, nothing transitions.
 
 **The notice of an old board.** A page is built only when something is
 pushed here, so when the publishing stops, no build runs to say so, and the

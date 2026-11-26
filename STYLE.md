@@ -125,6 +125,9 @@ that file's docstring says how.
   opened row; and 16 px for the card.
 - A rule or an edge is 1 px in `--line`, and in `--line-strong` where it has
   to be seen.
+- A cell that holds nothing says so by its edge, not by a fill: on History, a
+  board with no repository has a dashed edge in `--line-strong` and no fill,
+  and a day with no board is hatched in `--line` (#91).
 - Depth is a surface and a line. Only the readout over Baseline's chart has a
   shadow.
 - A button, the theme switch, and a link in the day bar are 32 px tall. A
