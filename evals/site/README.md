@@ -96,15 +96,19 @@ job, at a pinned version, in the Chrome that the runner image ships.
 
 ## Requests the page never sent
 
-**What the host adds at risingrepos.com.** Cloudflare serves the live site, and
-puts two scripts at the end of each page it hands to a browser: the module
-script of its Web Analytics, from `static.cloudflareinsights.com`, and an inline
-script for its bot check, which would load more from
-`/cdn-cgi/challenge-platform/`. The built pages hold neither, and every run on
-the preview counted one request, the page. The page's content security policy,
-in its `<meta>` tag, lets only the page's own script run, by its hash. So
-Chrome refuses both: the inline script never runs, and the module script is
-never fetched.
+**What the host added at risingrepos.com.** Cloudflare serves the live site,
+and until 26 November 2026 it put two scripts at the end of each page it handed
+to a browser: the module script of its Web Analytics, from
+`static.cloudflareinsights.com`, and an inline script for its bot check, which
+would load more from `/cdn-cgi/challenge-platform/`. The built pages hold
+neither, and every run on the preview counted one request, the page. The page's
+content security policy, in its `<meta>` tag, lets only the page's own script
+run, by its hash. So Chrome refused both: the inline script never ran, and the
+module script was never fetched. On 26 November 2026 the owner turned both off
+in the zone's settings, and since then the live pages are served exactly as
+built. The owner's test of sentence 26 no longer passes over a refusal on the
+live site, so a script the host puts back fails it (#146). The rule below stays,
+for any request the policy refuses.
 
 **What the first measurement there found.**
 [Run 44019660473](https://github.com/AndrewGodlewsky/rising-repos-site/actions/runs/44019660473),
