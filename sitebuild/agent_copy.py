@@ -224,11 +224,27 @@ def newest_marks(boards: list[dict], history: History) -> list[str]:
 
 SUMMARY = "GitHub repositories gaining stars faster than their own usual pace, ranked on a new board each day."
 
+# The query service, which answers at /api/ on the site's own domain from its own repository
+# (AndrewGodlewsky/rising-repos-api#1), and its two addresses with a worked example of each (#180). The examples are
+# the addresses its launch was checked on, and the words say what it answers as rising-repos-site#173 settled it.
+SEARCH_EXAMPLE = f"{SITE}/api/search?q=pdf"
+REPO_EXAMPLE = f"{SITE}/api/repo/pallets/flask"
+SEARCH_ABOUT = (
+    "at /api/search?q=<words>, every repository that has been on a board whose name or description holds each word,"
+    " case-blind and up to 8 words, newest board day first and then by rank that day; lang=<language> keeps one"
+    " language, and since=<n> the newest n board days; 20 to a page, with page=<n> for another, and format=json for"
+    " the same as JSON"
+)
+REPO_ABOUT = (
+    "at /api/repo/<owner>/<name>, every board day one repository was on, with its rank there, and format=json for the"
+    " same as JSON"
+)
+
 
 def guide(boards: list[dict], history: History) -> dict:
     """What `/llms.txt` and the For agents page both say, given to both templates, so that the two are one text and
     cannot drift (#178): the summary, what the site records and the newest board's day and size, the first board
-    day, the marks of the newest board, and the owner line."""
+    day, the marks of the newest board, the owner line, and the query service's two addresses (#180)."""
     newest = boards[0]
     return {
         "summary": SUMMARY,
@@ -247,6 +263,10 @@ def guide(boards: list[dict], history: History) -> dict:
         "first_day": boards[-1]["board_day"],
         "marks": newest_marks(boards, history),
         "owner_line": OWNER_LINE,
+        "search_example": SEARCH_EXAMPLE,
+        "search_about": SEARCH_ABOUT,
+        "repo_example": REPO_EXAMPLE,
+        "repo_about": REPO_ABOUT,
     }
 
 

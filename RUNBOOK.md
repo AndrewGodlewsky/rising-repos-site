@@ -195,10 +195,11 @@ after this repository's:
 
 ## What the site depends on in Cloudflare
 
-Three settings of the zone are not in this repository's files. The site's
-crawlers (#170) depend on the first two, and the owner's reports from Google
-and Bing on the third (#159). Each is recorded here with where it is set, how
-it is checked, and how it is undone.
+Four settings of the zone are not in this repository's files. The site's
+crawlers (#170) depend on the first two, the owner's reports from Google and
+Bing on the third (#159), and the query service that `/llms.txt` names on the
+fourth (#180). Each is recorded here with where it is set, how it is checked,
+and how it is undone.
 
 ### The `www` redirect
 
@@ -249,6 +250,27 @@ Console, and has no record of its own in the zone.
   it, as it did a few minutes after it was added.
 - **How it is undone:** delete it under DNS, Records, which is only wanted when
   the site leaves Search Console.
+
+### The query service's route
+
+Deployed at 19:43 UTC on 27 November 2026 by the workflow of
+AndrewGodlewsky/rising-repos-api, whose own repository holds the Worker, its
+deploy, and the Cloudflare token that deploy uses. Nothing in this repository
+deploys or changes it.
+
+- **Where:** Workers Routes of the zone, as the route `risingrepos.com/api/*`
+  of the Worker `rising-repos-api`. The site's pages are under no route, so
+  Pages serves them as before.
+- **What it does:** answers `/api/search` and `/api/repo/<owner>/<name>` from
+  the site's own `/repos.tsv`, which it fetches again every ten minutes, and
+  answers any other address under `/api/` with a 404.
+- **How it is checked:** `curl -s "https://risingrepos.com/api/search?q=pdf"`
+  answers 200 with a first line that counts the matches, and
+  `https://risingrepos.com/` still answers 200 with the site's page. Both were
+  seen so a few minutes after the deploy.
+- **How it is undone:** delete the route under Workers Routes, which leaves
+  every address under `/api/` to Pages, which answers it with the site's 404.
+  `/llms.txt` names the service's addresses, so a revert of #180 goes with it.
 
 ## What was built after this runbook was written
 
