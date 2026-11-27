@@ -45,9 +45,13 @@ class TheRegister(BuildTest):
         self.build_pages()
         copy = json.loads((self.out / "latest.json").read_text(encoding="utf-8"))
         fields = set(copy["rows"][0])
-        sections = set(re.findall(r"^## (.+)$", (self.out / "llms.txt").read_text(encoding="utf-8"), re.MULTILINE))
-        # The query service is not live, so its parameters are not in the register yet (#180).
-        known = {"agent copy": fields, "llms.txt": sections, "query service": set()}
+        llms = (self.out / "llms.txt").read_text(encoding="utf-8")
+        sections = set(re.findall(r"^## (.+)$", llms, re.MULTILINE))
+        # The query service answers from its own repository, so its parameters are those /llms.txt documents (#180):
+        # the register can name no parameter that a visiting agent is not told of.
+        search = llms.split("## Search every repository\n", 1)[1].split("\n## ", 1)[0]
+        parameters = set(re.findall(r"\b([a-z]+)=", search))
+        known = {"agent copy": fields, "llms.txt": sections, "query service": parameters}
         for kind, entries in REGISTER.items():
             for name, counterpart in entries.items():
                 found = COUNTERPART.fullmatch(counterpart)
@@ -55,6 +59,14 @@ class TheRegister(BuildTest):
                     with self.subTest(f"{kind} {name}"):
                         for named in found.group(2).split(", "):
                             self.assertIn(named, known[found.group(1)], counterpart)
+
+    def test_the_boards_search_and_language_and_baselines_find_have_their_counterparts_in_the_query_service(self):
+        # #180 moved them there once the service was live: it searches every repository ever on a board.
+        filters = REGISTER["filter"]
+        self.assertEqual(
+            (filters["q"], filters["language"], filters["find"]),
+            ("query service: q", "query service: lang", "query service: q"),
+        )
 
     def test_every_register_entry_names_a_counterpart_or_a_reason(self):
         self.assertEqual(list(REGISTER), ["column", "filter", "page"])

@@ -2,7 +2,8 @@
 {# What /llms.txt says, as a page of the site, so that the link in the bar leads to a page like the others (#178). Every
    word that /llms.txt repeats is given by agent_copy.guide, which renders both, so that the two cannot drift. The
    address of /repos.tsv is text and not a link: a browser downloads a tab-separated file, and the owner's tests follow
-   every link of the site to a page that opens. #}
+   every link of the site to a page that opens. The query service's addresses are text for the same reason: they are
+   answered from another repository, and no page of a build that the owner's tests open holds them (#180). #}
 {% block title %}Rising Repos: for agents{% endblock %}
 {% block description %}The boards as text and JSON, what a row's marks mean, and when a board appears, for a visiting agent.{% endblock %}
 {% block band %}
@@ -32,6 +33,11 @@
 <li>The list of board days: <a href="{{ days_address }}">{{ site }}{{ days_address }}</a></li>
 <li>The list of every repository that has been on a board, one line each: {{ site }}/repos.tsv</li>
 <li>All of this, as one plain text file: <a href="/llms.txt">{{ site }}/llms.txt</a></li>
+</ul>
+<h2>Search every repository</h2>
+<ul>
+<li>A search by words: {{ search_about }}. For example, {{ search_example }}</li>
+<li>One repository's boards: {{ repo_about }}. For example, {{ repo_example }}</li>
 </ul>
 <h2>Reading a row</h2>
 <p>A row of a board is one line with the marks below.</p>
