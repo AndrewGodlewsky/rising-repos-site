@@ -229,6 +229,11 @@ A board's plain facts, under its rows: its count, its publish time, the day's
 update, what New means on it, and the formula that ranked it.
 _Avoid_: footer, metadata
 
+**Agent copy**:
+A board day's board as text and JSON, written for visiting agents beside its
+page.
+_Avoid_: API, feed
+
 **Colophon**:
 The line at the foot of every page that says what the site is, and that it is
 not affiliated with GitHub.
@@ -316,6 +321,11 @@ _Avoid_: lesson, retro item
 **Reader**:
 Someone reading the site.
 _Avoid_: user, customer
+
+**Visiting agent**:
+A program, usually driven by a language model, that reads the site on a
+person's behalf.
+_Avoid_: bot, AI user
 
 **Repository's owner**:
 Whoever controls a repository on a board, and wrote its name, its description,

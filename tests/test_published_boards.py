@@ -226,9 +226,19 @@ class EveryPublishedBoard(unittest.TestCase):
 
     def test_the_build_writes_the_sites_pages_a_page_for_each_board_day_and_the_history_of_each_that_has_rows(self):
         """Each board day has its share image too, an empty one included (#35)."""
-        written = sorted(path.relative_to(self.out).as_posix() for path in self.out.rglob("*") if path.is_file())
+        # A board's text goes in as many parts as its length needs, so its later parts, `board-2.md` on, are left out
+        # here, and tests/test_agent_copy.py holds that each row is in one (#176).
+        written = sorted(
+            path.relative_to(self.out).as_posix()
+            for path in self.out.rglob("*")
+            if path.is_file() and not re.fullmatch(r"board-\d+\.md", path.name)
+        )
         days = [board["board_day"] for board in self.boards]
         expected = [BOARD, DAYS, HOW_IT_WORKS, BASELINE, NOT_FOUND, LICENCE, "sitemap.xml", "robots.txt"]
+        expected += ["latest.md", "latest.json"]
+        expected += [
+            board_day_page(day).replace("index.html", name) for day in days for name in ("board.md", "board.json")
+        ]
         expected += [board_day_page(day) for day in days]
         expected += [board_day_page(day).replace("index.html", "share.png") for day in days]
         expected += [history_file(day) for day in self.histories]

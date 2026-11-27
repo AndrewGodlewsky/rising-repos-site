@@ -68,6 +68,11 @@ design note). The build writes these pages, which `PAGES` in
 | `/how-it-works/` | How a board is ranked, in a few plain sentences, with the worked example drawn, and what the site is set in |
 | `/sitemap.xml` | The sitemap of sitemaps.org's schema 0.9: every page above by its whole address with the closing slash. A board day's entry and the entries of `/`, `/days/`, and `/baseline/` carry a `lastmod`, the time a board day's file was published, the newest's for the three that show the newest board. `/how-it-works/` carries none, since its text changes only with the site (#170) |
 | `/robots.txt` | The site's own, so that Cloudflare Pages does not serve its managed one: every crawler may fetch every page, with the signals `search=yes` and `ai-input=yes`, no word on training, and the sitemap named. A build with `--noindex` writes `Disallow: /` and names no sitemap (#170) |
+| `/days/<board day>/board.md` | The agent copy of that board day's board as text, for visiting agents (#176): a header that says what each mark means and that a repository's name and description are written by its owner, then one line a row, with the page's own figures: its gain or its stars a day, its stars, its pace, whether it is new or how many earlier boards it was on, the first, and its best rank there. The description is quoted, on one line. A board longer than about 35,000 characters goes in parts of at most that, which name the ranks they hold. A board with no row says so |
+| `/days/<board day>/board-2.md` and on | The later parts of a long board's text, each with the same header and the address of the next (#176) |
+| `/days/<board day>/board.json` | The same board as JSON, in the page's figures: its format, its board day, the names of the fields its owners wrote (`full_name`, `description`), and each row (#176) |
+| `/latest.md` | The newest board day's `board.md`, at an address that does not change (#176) |
+| `/latest.json` | The newest board day's `board.json`, at an address that does not change (#176) |
 | `/static/fonts/OFL.txt` | The fonts' licence and IBM's copyright notice, which the licence asks to travel with them |
 | Any other | `404.html`, the page for an address that holds none, which links to `/` and to `/days/` and states no board day |
 
@@ -1059,6 +1064,7 @@ the rule: that is judged when the line is written.
 sitebuild/          the generator: python -m sitebuild <folder> [--noindex] [--data <folder>]
   contract.py       reads the data files and checks each against its schema
   crawl.py          the sitemap and the site's own robots.txt
+  agent_copy.py     each board again as text and JSON for visiting agents
   templates/        Jinja2 templates, the stylesheet, and the parts of the page's one script, with autoescaping on for every one
   fonts/            Rising Sans and Rising Mono, which the build puts inside each page; subset.py cuts them from IBM Plex's files in source/
   static/           files served as they are, under /static/: the fonts' licence

@@ -90,6 +90,12 @@ class TheBuild(BuildTest):
                     LICENCE,
                     "sitemap.xml",
                     "robots.txt",
+                    f"days/{NEWEST}/board.md",
+                    f"days/{NEWEST}/board.json",
+                    f"days/{OLDER}/board.md",
+                    f"days/{OLDER}/board.json",
+                    "latest.md",
+                    "latest.json",
                 ]
             ),
         )

@@ -114,6 +114,22 @@ def long_date(day: str) -> str:
     return f"{value.day} {MONTHS[value.month - 1]} {value.year}"
 
 
+def new_means(since: str) -> str:
+    """What New means on a board, back to the first board day `since`, in the words of the page's About this board and
+    of the agent copy's header, so that the two say it from one place (#176)."""
+    return (
+        f"New means under a name on none of the boards before this one, back to the first on {long_date(since)}. "
+        "A repository renamed or moved since counts as new, and its opened row still lists the boards it was on before."
+    )
+
+
+NEW_UNTOLD = (
+    "What is new on this board cannot be told: the board before it held a star band back or listed no repository, "
+    "so one missing from it may have been kept off."
+)
+"""What About this board says when New cannot be told, which the agent copy's header says too (#176)."""
+
+
 def listed(items: list[str], last: str = "and") -> str:
     """['A'] as 'A', two joined by `last`, as 'A and B', and three as 'A, B, and C'."""
     if len(items) < 3:
@@ -960,9 +976,9 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
 
     With `noindex`, every page asks search engines not to index it.
     """
-    # crawl names the site's addresses from this module, so it is read here and not at the top, where this module
-    # is not yet whole.
-    from sitebuild import crawl
+    # crawl and agent_copy name the site's addresses and figures from this module, so they are read here and not at the
+    # top, where this module is not yet whole.
+    from sitebuild import agent_copy, crawl
 
     if out.exists() and (not out.is_dir() or any(out.iterdir())):
         raise FileExistsError(f"{out} already exists and is not an empty folder. Build into a new one.")
@@ -970,6 +986,7 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     templates = environment()
     templates.filters.update(
         long_date=long_date,
+        new_means=new_means,
         long_dates=long_dates,
         short_date=short_date,
         day_in_month=day_in_month,
@@ -995,6 +1012,7 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         "newest": boards[0],
         "days_address": address(DAYS),
         "how_address": address(HOW_IT_WORKS),
+        "new_untold": NEW_UNTOLD,
         "noindex": noindex,
         "baseline_address": address(BASELINE),
         "baseline_name": BASELINE_NAME,
@@ -1025,6 +1043,9 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     # What a crawler reads: the sitemap, and the site's own robots.txt (#170).
     (out / "sitemap.xml").write_text(crawl.sitemap(boards), encoding="utf-8", newline="\n")
     (out / "robots.txt").write_text(crawl.robots(noindex=noindex), encoding="utf-8", newline="\n")
+    # What a visiting agent reads: each board again, as text and as JSON (#176).
+    for path, text in agent_copy.copies(boards, history).items():
+        (out / path).write_text(text, encoding="utf-8", newline="\n")
 
 
 def _card(written: str, page: str, context: dict, newest: dict) -> dict:
