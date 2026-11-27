@@ -195,8 +195,9 @@ after this repository's:
 
 ## What the site depends on in Cloudflare
 
-Two settings of the zone are not in this repository's files, and the site's
-crawlers (#170) depend on them. Each is recorded here with where it is set, how
+Three settings of the zone are not in this repository's files. The site's
+crawlers (#170) depend on the first two, and the owner's reports from Google
+and Bing on the third (#159). Each is recorded here with where it is set, how
 it is checked, and how it is undone.
 
 ### The `www` redirect
@@ -229,6 +230,25 @@ November 2026.
   `crawlhints_enabled` as `true`
   (`GET /zones/<zone>/flags/products/cache/changes`).
 - **How it is undone:** turn it off in the same place.
+
+### Google's verification record
+
+Added by the owner at 16:03 UTC on 27 November 2026, when they verified the
+site in Google Search Console as a Domain property, which covers `www` and
+every path. Bing Webmaster Tools took the site in by importing it from Search
+Console, and has no record of its own in the zone.
+
+- **Where:** the zone's DNS records, as a TXT record on `risingrepos.com`
+  whose value begins `google-site-verification=`.
+- **Why it stays:** Google keeps a site verified only while the record is
+  there, even after verification has succeeded
+  ([Verify your site ownership](https://support.google.com/webmasters/answer/9008080)).
+  A tidying of the DNS that deletes it takes away the owner's reports on how
+  Google finds and shows the site.
+- **How it is checked:** `nslookup -type=TXT risingrepos.com 1.1.1.1` lists
+  it, as it did a few minutes after it was added.
+- **How it is undone:** delete it under DNS, Records, which is only wanted when
+  the site leaves Search Console.
 
 ## What was built after this runbook was written
 
