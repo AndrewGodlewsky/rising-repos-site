@@ -235,7 +235,7 @@ class EveryPublishedBoard(unittest.TestCase):
         )
         days = [board["board_day"] for board in self.boards]
         expected = [BOARD, DAYS, HOW_IT_WORKS, BASELINE, NOT_FOUND, LICENCE, "sitemap.xml", "robots.txt"]
-        expected += ["latest.md", "latest.json"]
+        expected += ["latest.md", "latest.json", "repos.tsv"]
         expected += [
             board_day_page(day).replace("index.html", name) for day in days for name in ("board.md", "board.json")
         ]

@@ -73,6 +73,7 @@ design note). The build writes these pages, which `PAGES` in
 | `/days/<board day>/board.json` | The same board as JSON, in the page's figures: its format, its board day, the names of the fields its owners wrote (`full_name`, `description`), and each row (#176) |
 | `/latest.md` | The newest board day's `board.md`, at an address that does not change (#176) |
 | `/latest.json` | The newest board day's `board.json`, at an address that does not change (#176) |
+| `/repos.tsv` | The query service's list of every repository that has been on a board, once by its GitHub id, under its newest name (#177). Line 1 is `# rising-repos list, format 1`, line 2 the field names, tab-separated, then a line a repository with its full name, language, stars on the newest board it was on, that board day, its rank that day, its history (every board day it was on with its rank, oldest first, as `2026-11-25:182,2026-11-26:221`), and its description last. A tab or line break inside a field is made a space. The Worker in `rising-repos-api` fetches it, so its format is a contract |
 | `/static/fonts/OFL.txt` | The fonts' licence and IBM's copyright notice, which the licence asks to travel with them |
 | Any other | `404.html`, the page for an address that holds none, which links to `/` and to `/days/` and states no board day |
 

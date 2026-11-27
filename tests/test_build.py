@@ -96,6 +96,7 @@ class TheBuild(BuildTest):
                     f"days/{OLDER}/board.json",
                     "latest.md",
                     "latest.json",
+                    "repos.tsv",
                 ]
             ),
         )

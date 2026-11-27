@@ -976,9 +976,9 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
 
     With `noindex`, every page asks search engines not to index it.
     """
-    # crawl and agent_copy name the site's addresses and figures from this module, so they are read here and not at the
-    # top, where this module is not yet whole.
-    from sitebuild import agent_copy, crawl
+    # crawl and agent_copy name the site's addresses and figures from this module, and repo_list reads agent_copy, so
+    # they are read here and not at the top, where this module is not yet whole.
+    from sitebuild import agent_copy, crawl, repo_list
 
     if out.exists() and (not out.is_dir() or any(out.iterdir())):
         raise FileExistsError(f"{out} already exists and is not an empty folder. Build into a new one.")
@@ -1046,6 +1046,8 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     # What a visiting agent reads: each board again, as text and as JSON (#176).
     for path, text in agent_copy.copies(boards, history).items():
         (out / path).write_text(text, encoding="utf-8", newline="\n")
+    # What the query service reads: every repository that has been on a board, with its history (#177).
+    (out / "repos.tsv").write_text(repo_list.repo_list(boards), encoding="utf-8", newline="\n")
 
 
 def _card(written: str, page: str, context: dict, newest: dict) -> dict:
