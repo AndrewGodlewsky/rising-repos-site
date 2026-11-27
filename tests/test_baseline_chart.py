@@ -17,7 +17,7 @@ import contextlib
 import math
 import unittest
 
-from helpers import BuildTest, read_json
+from helpers import ROOT, BuildTest, read_json
 
 from sitebuild import BASELINE
 from sitework.layout import chrome, published, served
@@ -43,13 +43,15 @@ CELLS = """() => [...document.querySelectorAll('.numbers tbody tr')].map(row => 
 
 
 class ChartTest(BuildTest):
-    def baseline(self, browser, width: int, touch: bool, scripts: bool = True):
+    def baseline(self, browser, width: int, touch: bool, scripts: bool = True, height: int = 900, init: str = ""):
         """Baseline, on a screen `width` pixels wide, with or without a touch screen, once its type is in, and the
-        chart in view."""
+        chart in view. `init` is a script to run in the page before its own."""
         context = browser.new_context(
-            viewport={"width": width, "height": 900}, has_touch=touch, is_mobile=touch, java_script_enabled=scripts
+            viewport={"width": width, "height": height}, has_touch=touch, is_mobile=touch, java_script_enabled=scripts
         )
         page = context.new_page()
+        if init:
+            page.add_init_script(init)
         page.clock.set_fixed_time(published(self.out))
         page.goto(f"{self.site}/{BASELINE.removesuffix('index.html')}", wait_until="load")
         page.evaluate("document.fonts.ready.then(() => true)")
@@ -391,7 +393,269 @@ class TheGuideLabels(ChartTest):
                         self.assertAlmostEqual(label["x0"], x + 4, delta=0.5)
 
 
+NEWEST = ("2026-11-25", "2026-11-26")
+"""The two board days on which a rank's mark covered dots it does not name (#187): on 25 November "2, 4, 5" sat
+beside dot 2 and ran across dots 4 and 5, 40 px to its right, and on 26 November "3, 5" covered dots 8 and 9. Board
+days keep their files, so these stay in `site-data/`."""
+
+SIZES = ((1440, 900, False), (768, 900, False), (390, 844, True), (360, 800, True))
+"""The idea's desktop and phone, with the narrowest desktop layout and the narrowest phone that #34's tests use."""
+
+APART = 12
+"""Dots nearer each other than this, in pixels at the chart's drawn size, share one mark (#187)."""
+
+MARKS = """() => {
+  const plot = document.querySelector('.plot'), at = plot.getBoundingClientRect();
+  const svg = plot.querySelector('svg').getBoundingClientRect();
+  const lead = plot.querySelector('path.dot.lead');
+  const box = el => { const b = el.getBoundingClientRect();
+    return [b.left - at.left, b.top - at.top, b.right - at.left, b.bottom - at.top]; };
+  return {
+    dots: [...lead.getAttribute('d').matchAll(/M([\\d.]+) ([\\d.]+)h0/g)].map(m => ({
+      x: svg.left - at.left + m[1] / 100 * svg.width, y: svg.top - at.top + m[2] / 100 * svg.height})),
+    radius: parseFloat(getComputedStyle(lead).strokeWidth) / 2,
+    marks: [...plot.querySelectorAll('span.rk')].filter(el => el.checkVisibility({visibilityProperty: true}))
+      .map(el => ({text: el.textContent, ranks: el.textContent.split(', ').map(Number), box: box(el)})),
+    others: [...plot.querySelectorAll('span.tick, span.glabel, span.axis')].map(el => ({text: el.textContent,
+      box: box(el)})),
+    card: box(plot.closest('.pace')),
+  };
+}"""
+"""The chart as drawn, in pixels from the plot's top left corner: each top dot's centre, in rank order, and the
+radius it is drawn at; each rank's mark that is drawn, by its words, its ranks, and its box; each other label of the
+chart by its box; and the chart's card."""
+
+FRAMES = """(() => {
+  window.drawn = [];
+  const ids = new Map();
+  let frames = 0;
+  const look = () => {
+    const plot = document.querySelector('.plot');
+    if (plot) {
+      const at = plot.getBoundingClientRect();
+      plot.querySelectorAll('span.rk').forEach(el => {
+        if (!ids.has(el)) ids.set(el, ids.size);
+        if (!el.checkVisibility({visibilityProperty: true})) return;
+        const b = el.getBoundingClientRect();
+        window.drawn.push([ids.get(el), el.textContent, b.left - at.left, b.top - at.top]);
+      });
+    }
+  };
+  const frame = () => {
+    look();
+    if (++frames < 180) requestAnimationFrame(frame);
+    else window.looked = true;
+  };
+  document.addEventListener('DOMContentLoaded', look);
+  requestAnimationFrame(frame);
+})();"""
+"""Each rank's mark as it would be drawn once the page is parsed, before its own script has run, and as it is drawn
+in each of the page's first 180 frames, about three seconds: the mark, its words, and its place, in pixels from the
+plot's top left corner. It counts frames, since the page's clock is held still."""
+
+
+def meet(a: list[float], b: list[float]) -> bool:
+    """Whether two boxes, [left, top, right, bottom], overlap."""
+    return not (a[2] <= b[0] or b[2] <= a[0] or a[3] <= b[1] or b[3] <= a[1])
+
+
+def gap(box: list[float], dot: dict) -> float:
+    """How far a dot's centre is from a box, 0 inside it."""
+    return math.dist((dot["x"], dot["y"]), (min(max(dot["x"], box[0]), box[2]), min(max(dot["y"], box[1]), box[3])))
+
+
+def covered(chart: dict) -> list[str]:
+    """Each top dot a rank's mark covers, taking the dot as the circle it is drawn as."""
+    return [
+        f'"{mark["text"]}" covers dot {rank}'
+        for mark in chart["marks"]
+        for rank, dot in enumerate(chart["dots"], start=1)
+        if gap(mark["box"], dot) < chart["radius"]
+    ]
+
+
+def astray(chart: dict, nearest: bool) -> list[str]:
+    """Each mark that sits beside no dot it names: level with it, within 1 px, and with its nearer side within 12 px
+    of its centre, to its left or its right. With `nearest`, also each mark that a top dot it does not name is
+    nearer than every dot it names."""
+    faults = []
+    for mark in chart["marks"]:
+        box, named = mark["box"], [chart["dots"][rank - 1] for rank in mark["ranks"]]
+        beside = [
+            dot
+            for dot in named
+            if abs((box[1] + box[3]) / 2 - dot["y"]) <= 1
+            and (0 <= box[0] - dot["x"] <= APART or 0 <= dot["x"] - box[2] <= APART)
+        ]
+        if not beside:
+            faults.append(f'"{mark["text"]}" sits beside no dot it names')
+        others = [dot for rank, dot in enumerate(chart["dots"], start=1) if rank not in mark["ranks"]]
+        if nearest and min(gap(box, dot) for dot in others) < min(gap(box, dot) for dot in named):
+            faults.append(f'"{mark["text"]}" is nearer a dot it does not name than one it names')
+    return faults
+
+
+def misnamed(chart: dict) -> list[str]:
+    """Each fault in which ranks the marks name: each of the first five ranks named by exactly one mark, and ranks
+    that share a mark only when each of their dots is less than 12 px from another of them."""
+    ranks = sorted(rank for mark in chart["marks"] for rank in mark["ranks"])
+    faults = [] if ranks == [1, 2, 3, 4, 5] else [f"the marks name the ranks {ranks}"]
+    for mark in chart["marks"]:
+        named = [chart["dots"][rank - 1] for rank in mark["ranks"]]
+        for rank, dot in zip(mark["ranks"], named, strict=True):
+            if len(named) > 1 and not any(0 < math.dist((dot["x"], dot["y"]), (o["x"], o["y"])) < APART for o in named):
+                faults.append(f'"{mark["text"]}": dot {rank} is {APART} px or more from the others it names')
+    return faults
+
+
+def crowded(chart: dict) -> list[str]:
+    """Each mark that meets another mark or another of the chart's labels, or leaves the chart's card."""
+    marks, card = chart["marks"], chart["card"]
+    faults = [
+        f'"{a["text"]}" meets "{b["text"]}"'
+        for i, a in enumerate(marks)
+        for b in marks[i + 1 :] + chart["others"]
+        if meet(a["box"], b["box"])
+    ]
+    return faults + [
+        f'"{mark["text"]}" leaves the card'
+        for mark in marks
+        if not (card[0] <= mark["box"][0] and card[1] <= mark["box"][1])
+        or not (mark["box"][2] <= card[2] and mark["box"][3] <= card[3])
+    ]
+
+
+GUIDE = "the board whose first dot is just left of the 10× label"
+"""A made-up board whose first dot sits on the plot's top edge just left of where the 10× line leaves it, so that a
+mark to the right of that dot would meet the "10×" label."""
+
+
+class TheRanksMarks(ChartTest):
+    """The ranks' marks at the size the chart is drawn (#187). The build groups the first five dots by 6 % of the plot
+    across and up, which on a desktop's 1,030 px chart is 60 px, and sets a group's mark beside its first dot: so the
+    mark ran across the other dots it named. The script now groups them at the drawn size, and sets each mark where
+    it covers no top dot."""
+
+    def charts(self, boards=NEWEST, sizes=SIZES, init: str = ""):
+        """For each board of `boards` as the newest, and each size of `sizes`, where it is tried, its page, and its
+        chart as drawn."""
+        for day in boards:
+            # A fresh copy of the example, and a fresh folder to build into, for each board.
+            self.setUp()
+            rows = (
+                self.guide_rows()
+                if day == GUIDE
+                else read_json(ROOT / "site-data" / "boards" / "days" / day / "daily.json")["rows"]
+            )
+            self.write_board({**read_json(self.board_file()), "rows": rows})
+            with self.run_chart() as browser:
+                for width, height, touch in sizes:
+                    page = self.baseline(browser, width, touch, height=height, init=init)
+                    yield f"{day} at {width}", page, page.evaluate(MARKS)
+                    page.context.close()
+
+    def guide_rows(self) -> list[dict]:
+        """The rows of `GUIDE`. The first gains 1,000 stars a day on a baseline of 95, a score of 10.5: 1,000 is the top
+        of the plot, and the 10× line leaves it at a baseline of 100, about 8 px to the right on a desktop, with its
+        label to the right of that, since a line that leaves left of 80 % of the plot is labelled there. The others
+        score less and keep away from it, and the last, at a baseline of 500, takes the axis to 1,000."""
+        model = read_json(self.board_file())["rows"][1]
+        rows = []
+        for rank, (baseline, stars, days) in enumerate(
+            ((95.0, 2000, 2), (30.0, 600, 2), (10.0, 190, 2), (0.5, 18, 2), (3.0, 51, 2), (500.0, 1200, 2)), start=1
+        ):
+            divided_by = max(baseline, 1.0)
+            rows.append(
+                {
+                    **model,
+                    "rank": rank,
+                    "github_id": model["github_id"] + rank,
+                    "full_name": f"o/guide-{rank}",
+                    "baseline": baseline,
+                    "divided_by": divided_by,
+                    "recent_stars": stars,
+                    "recent_days": days,
+                    "score": stars / days / divided_by,
+                }
+            )
+        return rows
+
+    def test_on_the_25_november_board_on_a_desktop_the_marks_read_1_2_3_and_4_5(self):
+        for _, _, chart in self.charts(boards=NEWEST[:1], sizes=SIZES[:1]):
+            self.assertEqual(sorted(mark["text"] for mark in chart["marks"]), ["1", "2", "3", "4, 5"])
+
+    def test_no_ranks_mark_covers_a_top_ten_dot_at_a_phones_or_a_desktops_width(self):
+        for tried, _, chart in self.charts():
+            with self.subTest(tried):
+                self.assertEqual(len(chart["dots"]), 10)
+                self.assertEqual(covered(chart), [])
+
+    def test_every_mark_sits_beside_a_dot_it_names_and_no_dot_it_does_not_name_is_nearer(self):
+        """The second half is held at the idea's two sizes alone: at 768 px, on 25 November, "3" has no place beside
+        its dot that is clear of every other dot and label and nearer its own than any other."""
+        for tried, _, chart in self.charts():
+            with self.subTest(tried):
+                self.assertEqual(astray(chart, nearest=tried.endswith(("1440", "390"))), [])
+
+    def test_each_of_the_first_five_ranks_is_named_once_and_ranks_share_a_mark_only_when_their_dots_touch(self):
+        for tried, _, chart in self.charts():
+            with self.subTest(tried):
+                self.assertEqual(misnamed(chart), [])
+
+    def test_no_mark_meets_another_mark_or_another_of_the_charts_labels_and_each_stays_in_the_card(self):
+        """Tried on `GUIDE` too, where the place a mark takes first, to the right of its dot, meets the "10×" label."""
+        for tried, _, chart in self.charts(boards=(*NEWEST, GUIDE)):
+            with self.subTest(tried):
+                self.assertGreater(len(chart["marks"]), 0)
+                self.assertEqual(crowded(chart), [])
+
+    def test_no_ranks_mark_is_drawn_in_one_place_and_then_another_as_the_page_loads(self):
+        sizes = (SIZES[0], SIZES[2])
+        for tried, page, _ in self.charts(sizes=sizes, init=FRAMES):
+            with self.subTest(tried):
+                # Waited for from inside the page: the page's policy refuses the eval that `wait_for_function` uses.
+                page.evaluate(
+                    "() => new Promise(done => { const wait = () => window.looked ? done() : "
+                    "requestAnimationFrame(wait); wait(); })"
+                )
+                seen: dict[int, list[tuple[str, float, float]]] = {}
+                for mark, words, x, y in page.evaluate("window.drawn"):
+                    seen.setdefault(mark, []).append((words, x, y))
+                self.assertGreater(len(seen), 0)
+                for drawn in seen.values():
+                    # A layout's fraction of a pixel is no move: a mark set again 0.2 px aside is not seen to move.
+                    first, *_ = drawn
+                    moved = [d for d in drawn if d[0] != first[0] or math.dist(d[1:], first[1:]) > 1]
+                    self.assertEqual(moved, [], f'"{first[0]}" first drawn at {first[1]:.1f}, {first[2]:.1f}')
+
+    def test_when_the_window_narrows_to_a_phones_width_the_marks_are_placed_again_for_it(self):
+        for tried, page, _ in self.charts(sizes=SIZES[:1]):
+            with self.subTest(tried):
+                page.set_viewport_size({"width": 390, "height": 844})
+                page.wait_for_timeout(300)
+                chart = page.evaluate(MARKS)
+                self.assertEqual(covered(chart) + astray(chart, nearest=True) + misnamed(chart) + crowded(chart), [])
+
+
 class WithoutTheScript(ChartTest):
+    def test_with_scripts_off_the_ranks_marks_are_the_builds_each_drawn_at_the_first_dot_it_names(self):
+        """On 25 November the build writes "1, 3" and "2, 4, 5", each set 10 px right of its first dot, its middle
+        level with it."""
+        self.setUp()
+        rows = read_json(ROOT / "site-data" / "boards" / "days" / NEWEST[0] / "daily.json")["rows"]
+        self.write_board({**read_json(self.board_file()), "rows": rows})
+        with self.run_chart() as browser:
+            for width, height, touch in SIZES:
+                with self.subTest(width=width):
+                    page = self.baseline(browser, width, touch, scripts=False, height=height)
+                    chart = page.evaluate(MARKS)
+                    page.context.close()
+                    self.assertEqual([mark["text"] for mark in chart["marks"]], ["1, 3", "2, 4, 5"])
+                    for mark in chart["marks"]:
+                        first = chart["dots"][mark["ranks"][0] - 1]
+                        self.assertAlmostEqual(mark["box"][0], first["x"] + 10, delta=1)
+                        self.assertAlmostEqual((mark["box"][1] + mark["box"][3]) / 2, first["y"], delta=1)
+
     def test_with_scripts_off_the_find_field_is_not_shown_and_the_chart_is_as_built(self):
         with self.run_chart() as browser:
             on = self.baseline(browser, PHONE, touch=False)

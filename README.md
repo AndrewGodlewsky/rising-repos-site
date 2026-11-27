@@ -235,7 +235,11 @@ What every page holds to, each checked by a test in `tests/`:
   "Most often" order (#186) added 819 bytes to a board with rows, in its
   script and its stylesheet, and 266 to every other page, by `sitework weigh`
   on 27 November 2026, and 202 to the root gzipped: the heaviest board day is
-  now 500,734 bytes, 49,266 under the limit. Past about 500 real
+  now 500,734 bytes, 49,266 under the limit. Setting Baseline's rank marks
+  at the size its chart is drawn (#187) added 62 bytes to every page, in the
+  stylesheet, and 3,429 more to Baseline, in its script, by `sitework weigh`
+  on 27 November 2026, and 16 to the root gzipped: the heaviest board day is
+  now 500,796 bytes, 49,204 under the limit. Past about 500 real
   rows, a long board's later rows in a second file is the next step.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
   is where the limits that a longer board meets are weighed.
@@ -605,7 +609,16 @@ repository, and a day with no board as its cell, and the note under it, from
 placed by its baseline, the stars a day it gained over the twelve days before,
 across, against its recent pace, up, both on log scales, with the diagonals of
 its own pace, dashed, and of 3×, 10×, 100×, and 1,000×. The top ten are in the
-accent, and the first five are labelled with their ranks. Each diagonal is
+accent, and the first five are labelled with their ranks. With the script,
+the ranks' marks are set at the size the chart is drawn (#187): ranks whose
+dots are less than 12px apart share one mark, and each mark sits beside a dot
+it names, to its right or else its left, where it covers no top-ten dot, meets
+no other label, stays in the card, and where it can has no other top dot
+nearer than its own. The marks wait, unseen, until they are set, and are set
+again when the window's size changes. Without the script they are where the
+build sets them: dots within 6% of the plot across and up share a mark, beside
+the first of them, which on a desktop's wide chart can run a mark across the
+other dots it names. Each diagonal is
 labelled where it leaves the plot, except "own pace" on a phone (#34): there
 the dashed line and the 3× line can leave by the same corner, and the two
 labels printed on top of each other, so below 768px "own pace" sits beside
