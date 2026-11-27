@@ -461,6 +461,16 @@ class EveryPublishedBoard(unittest.TestCase):
                         faults.append((row.name, rank, stars, row.opened["on"][-1], row.opened["stars"][-1], month))
                 self.assertEqual(faults, [])
 
+    def test_each_boards_table_says_how_many_boards_its_most_often_order_counted(self):
+        """#186: a row's count says "on N of W boards", and W is the table's: `WINDOW`, or, on the site's first board
+        days, every board so far, its own included."""
+        boards = [board["board_day"] for board in self.boards]  # newest first
+        for path, board in self.with_rows():
+            with self.subTest(path):
+                (table,) = [table for table in self.pages[path].all("table") if "chart" in table.classes()]
+                so_far = len(boards) - boards.index(board["board_day"])
+                self.assertEqual(table.attrs.get("data-w"), str(min(WINDOW, so_far)))
+
     def test_each_row_is_counted_on_the_boards_its_opened_row_lists_in_its_facts_and_for_the_most_often_order(self):
         """An opened row's facts count the boards its table lists, and give the best rank among them. The board's
         "Most often" order, in the row's data-o, counts those among the last `WINDOW` board days, worked out apart."""

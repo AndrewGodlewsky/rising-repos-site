@@ -375,3 +375,17 @@ Sentence 43 came with #35, and reads a live site as it reads the made-up one.
     language that the newest board and the one before it both offer.
 
 Sentence 44 came with #148, and reads a live site as it reads the made-up one.
+
+### The count of the "Most often" order (`test_the_count_of_the_most_often_order.py`)
+
+45. With "Most often in 14 boards" chosen, each row says after its name on
+    how many of the boards counted it was, and in every other order no row
+    says so.
+    `test_with_most_often_chosen_each_row_says_on_how_many_of_the_boards_counted_it_was_and_in_no_other_order`
+
+    It does not claim anything of a phone, of the counts' look, of a row a
+    filter shows later, or of a page with scripts off, which the agents'
+    tests hold. It reads each count against the row's own strip of board
+    days, as sentence 14 does.
+
+Sentence 45 came with #186, and reads a live site as it reads the made-up one.

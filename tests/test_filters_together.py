@@ -16,13 +16,14 @@ changed in place and the page is told that it moved, which is what Back and Forw
 
 import itertools
 import unittest
+from datetime import date, timedelta
 from urllib.parse import parse_qsl, urlencode
 
-from helpers import BuildTest, read_json
+from helpers import BuildTest, read_json, write_json
 
 from sitework.layout import chrome, published, served
 
-OLDER = "2026-11-08"
+NEWEST, OLDER = "2026-11-09", "2026-11-08"
 
 FACTS = """() => ({
   rows: [...document.querySelectorAll("table.chart > tbody > tr")].map((row) => ({
@@ -487,6 +488,164 @@ class TheLinksToOtherBoardDays(ABoardAndAnEarlierOne):
         self.assertEqual(page.evaluate(SEEN), first)
         page.go_forward()
         self.assertEqual(page.evaluate(SEEN), second)
+
+
+SAID_BY_ROWS = """() => [...document.querySelectorAll("table.chart > tbody > tr")].filter((row) => !row.hidden)
+  .map((row) => [
+    row.querySelector(".re a").textContent,
+    row.querySelector("th.re").innerText.split(/\\s+/).join(" "),
+  ])"""
+"""For each row shown, in the order shown: its link's text, and its row header's text as a reader sees it."""
+
+INSIDE = """() => ({
+  counts: [...document.querySelectorAll("table.chart > tbody > tr")].map((row) => {
+    const box = row.getBoundingClientRect(), count = row.querySelector(".re .often").getBoundingClientRect();
+    return count.width > 0 && count.left >= box.left && count.right <= box.right && count.top >= box.top &&
+      count.bottom <= box.bottom;
+  }),
+  sideways: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+})"""
+"""Whether each row's count is drawn inside its row, and whether the page scrolls sideways."""
+
+LONG = "antigravity-cn-community/Antigravity-Chinese-Localization"
+
+
+class TheOftenCount(BuildTest):
+    """With "Most often in 14 boards" chosen, each row says the count the order sorts it by, "on 8 of 14 boards",
+    after its name (#186). The board is the example's newest with 13 boards before it, a day apart, so that its order
+    counts 14. Its first row is on none of the earlier boards, and so is new; its second is on the 3 boards before it,
+    its third on the 6, its fourth, given a long name, on the 9, and its fifth on all 13. The earlier boards stand for
+    the site's first 13 board days, whose order counts fewer boards: the board `back` days before the newest counts
+    14 - `back`."""
+
+    ON = [1, 4, 7, 10, 14]
+    """How many of the 14 boards list each row of the newest, in its order."""
+
+    def setUp(self):
+        super().setUp()
+        board = read_json(self.board_file())
+        rows = board["rows"]
+        rows[1] = {**rows[1], "description": "Keeps a team's boards in one place."}
+        rows[3] = {**rows[3], "full_name": LONG}
+        self.write_board(board)
+        older = read_json(self.board_file(OLDER))
+        newest = date.fromisoformat(NEWEST)
+        for back in range(1, 14):
+            day = (newest - timedelta(days=back)).isoformat()
+            listed = [row for i, row in enumerate(rows) if i == 4 or back <= 3 * i]
+            listed = [{**row, "rank": rank} for rank, row in enumerate(listed, 1)]
+            index = read_json(self.index)
+            kept = [entry for entry in index["board_days"] if entry["board_day"] != day]
+            entries = [*kept, {"board_day": day, "row_count": len(listed)}]
+            write_json(self.index, {**index, "board_days": sorted(entries, key=lambda e: e["board_day"], reverse=True)})
+            published_at = f"{(newest - timedelta(days=back - 1)).isoformat()}T00:38:52Z"
+            self.write_board({**older, "board_day": day, "published_at": published_at, "state": "rows", "rows": listed})
+        self.rows = rows
+        self.build_pages()
+        self.site = self.enterContext(served(self.out))
+        self.browser = self.enterContext(chrome())
+
+    def board(self, search: str = "", path: str = "/", width: int = 1440, height: int = 900):
+        page = self.browser.new_page(viewport={"width": width, "height": height})
+        page.clock.set_fixed_time(published(self.out))
+        page.goto(self.site + path + search, wait_until="load")
+        return page
+
+    def plain(self, row: int) -> list[str]:
+        """What the newest board's row `row` shows in any order but "Most often": its link's text, and its header's,
+        which is its name, with New after it on the first row."""
+        name = self.rows[row]["full_name"]
+        return [name, name + (" New" if row == 0 else "")]
+
+    def counted(self, row: int) -> list[str]:
+        """What the newest board's row `row` shows with "Most often in 14 boards" chosen."""
+        name, said = self.plain(row)
+        return [name, f"{said} on {self.ON[row]} of 14 boards"]
+
+    def most_often_first(self) -> list[list[str]]:
+        """Every row of the newest board, most often first, each with its count."""
+        return [self.counted(row) for row in (4, 3, 2, 1, 0)]
+
+    def none_counted(self) -> list[list[str]]:
+        return sorted(self.plain(row) for row in range(5))
+
+    def test_with_most_often_chosen_every_row_shown_says_on_how_many_of_the_last_14_boards_it_was_after_its_name(self):
+        page = self.board()
+        self.assertEqual(page.evaluate(SAID_BY_ROWS), [self.plain(row) for row in range(5)])
+        page.locator("#sort").select_option("often")
+        self.assertEqual(page.evaluate(SAID_BY_ROWS), self.most_often_first())
+
+    def test_a_board_opened_with_the_most_often_order_in_its_address_shows_each_rows_count_at_once(self):
+        page = self.board("?sort=often")
+        self.assertEqual(page.evaluate(SAID_BY_ROWS), self.most_often_first())
+
+    def test_in_every_other_order_no_count_is_shown_and_choosing_most_often_again_shows_them_again(self):
+        page = self.board("?sort=often")
+        for order in ("rank", "gained", "small", "large"):
+            with self.subTest(order=order):
+                page.locator("#sort").select_option(order)
+                self.assertEqual(sorted(page.evaluate(SAID_BY_ROWS)), self.none_counted())
+                page.locator("#sort").select_option("often")
+                self.assertEqual(page.evaluate(SAID_BY_ROWS), self.most_often_first())
+        # Back from the counts to a view in another order, and Forward to them again.
+        page = self.board("?sort=large")
+        page.locator("#sort").select_option("often")
+        page.go_back()
+        self.assertEqual(sorted(page.evaluate(SAID_BY_ROWS)), self.none_counted())
+        page.go_forward()
+        self.assertEqual(page.evaluate(SAID_BY_ROWS), self.most_often_first())
+
+    def test_with_most_often_chosen_a_row_a_filter_or_a_search_shows_later_says_its_count_too(self):
+        language = self.rows[0]["language"]
+        speaks = [row for row in (4, 3, 2, 1, 0) if self.rows[row]["language"] == language]
+        self.assertLess(len(speaks), 5)
+        for opened, shown, widen in [
+            ("?sort=often&show=new", [0], lambda page: page.locator('#kinds button[data-kind=""]').click()),
+            ("?sort=often&q=text-beyond-ascii", [2], lambda page: page.locator("#q").fill("")),
+            (f"?sort=often&lang={language}", speaks, lambda page: page.locator("#language").select_option("")),
+        ]:
+            with self.subTest(opened=opened):
+                page = self.board(opened)
+                self.assertEqual(page.evaluate(SAID_BY_ROWS), [self.counted(row) for row in shown])
+                widen(page)
+                self.assertEqual(page.evaluate(SAID_BY_ROWS), self.most_often_first())
+
+    def test_on_a_board_with_fewer_than_13_boards_before_it_the_count_says_how_many_boards_it_counted(self):
+        newest = date.fromisoformat(NEWEST)
+        for back in (1, 6, 11, 13):
+            day = (newest - timedelta(days=back)).isoformat()
+            boards = 14 - back
+            with self.subTest(day=day):
+                page = self.board("?sort=often", path=f"/days/{day}/")
+                expected = []
+                # A row is on every board from this one back to the first that listed it: the fifth row is on the
+                # first board of all, 13 days before the newest, and the others on the boards 3, 6, or 9 days before.
+                for row in (4, 3, 2, 1):
+                    first = 13 if row == 4 else 3 * row
+                    if back <= first:
+                        name = self.rows[row]["full_name"]
+                        new = " New" if back == first and back < 13 else ""
+                        expected.append([name, f"{name}{new} on {first - back + 1} of {boards} boards"])
+                if boards == 1:
+                    expected = [[name, said.replace(" boards", " board")] for name, said in expected]
+                    self.assertEqual(
+                        expected, [[self.rows[4]["full_name"], f"{self.rows[4]['full_name']} on 1 of 1 board"]]
+                    )
+                self.assertEqual(page.evaluate(SAID_BY_ROWS), expected)
+
+    def test_on_a_phone_each_count_lies_inside_its_row_and_the_page_does_not_scroll_sideways(self):
+        page = self.board("?sort=often", width=390, height=844)
+        self.assertEqual(page.evaluate(INSIDE), {"counts": [True] * 5, "sideways": False})
+
+    def test_with_most_often_chosen_each_link_reads_its_name_alone_and_a_search_for_boards_finds_names_and_descriptions(
+        self,
+    ):
+        page = self.board("?sort=often")
+        self.assertEqual(
+            [name for name, _ in page.evaluate(SAID_BY_ROWS)], [self.rows[row]["full_name"] for row in (4, 3, 2, 1, 0)]
+        )
+        page.locator("#q").fill("boards")
+        self.assertEqual([name for name, _ in page.evaluate(SAID_BY_ROWS)], [self.rows[1]["full_name"]])
 
 
 if __name__ == "__main__":
