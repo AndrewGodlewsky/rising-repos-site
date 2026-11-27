@@ -165,9 +165,10 @@ work reaches `main` through a pull request.
 ## Where a change most often goes wrong
 
 - **A page has little room left.** `tests/test_page_weight.py` holds a page to
-  500,000 bytes and the root of a 713-row board to 150,000 gzipped, and both
-  are within about 4% of their limits. README.md, "The pages", under "Its
-  size" and "The root on the wire", gives the last measurements. Markup added
+  550,000 bytes and the root of a 713-row board to 155,000 gzipped. The owner
+  raised both on 27 November 2026 (#184) to make room for the features then
+  waiting, which use much of it. README.md, "The pages", under "Its size" and
+  "The root on the wire", gives the last measurements. Markup added
   to a board's row is multiplied by every row, so measure before and after:
   `python -m sitework weigh` prints both. A
   gzipped size measured on Windows reads about 2% lower than the workflow's.

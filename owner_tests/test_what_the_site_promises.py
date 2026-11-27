@@ -35,10 +35,10 @@ from owner_tests.scenario import (
     the_day,
 )
 
-PAGE_LIMIT = 500_000
+PAGE_LIMIT = 550_000
 """The most bytes a page may take, with its styles, its script, and its type, which are all inside it."""
 
-WIRE_LIMIT = 150_000
+WIRE_LIMIT = 155_000
 """The most bytes the root of a board of `made_up.LONG_BOARD` rows may take once gzipped, which is how it is sent."""
 
 NOTICE = re.compile(r"The newest board is \d+ (hours|days) old")
@@ -191,13 +191,14 @@ class WhatTheSitePromises(Scenario):
         )
 
     @needs_made_up_boards
-    def test_no_page_is_over_500000_bytes_and_the_root_of_a_long_board_is_under_150000_on_the_wire(self):
+    def test_no_page_is_over_550000_bytes_and_the_root_of_a_long_board_is_under_155000_on_the_wire(self):
         """Sentence 29. A page asks for nothing but itself (sentence 26), so its file's size is its weight. No page
         of the made-up site is over the limit, and none of a site whose board has the most rows the earlier site
         published, 316, each as long as the data contract lets a row be. The root of a board of 713 rows of the usual
         length is under its own limit once gzipped at level 6, which tests/test_page_weight.py records as packing a
-        little less tightly than the site's server does. That board's root is over 500,000 bytes before it is packed:
-        the first limit is held at the 316 rows, and the second at the 713."""
+        little less tightly than the site's server does. That board's root is over 550,000 bytes before it is packed:
+        the first limit is held at the 316 rows, and the second at the 713. The owner raised the two limits from
+        500,000 and 150,000 on 27 November 2026 (#184)."""
         folder = Path(self.enterContext(tempfile.TemporaryDirectory()))
         largest = the_site.built(folder / "largest", made_up.largest_board())
         self.assertEqual((largest / "index.html").read_bytes().count(b"https://github.com/"), made_up.LARGEST_BOARD)

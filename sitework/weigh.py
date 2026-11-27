@@ -1,11 +1,11 @@
 """`weigh`: say what a change adds to the pages, in bytes, before it and after it.
 
 A page has little room left: `tests/test_page_weight.py` holds a page to PAGE_LIMIT bytes and the root of a long
-board to WIRE_BUDGET gzipped, and both are within a few hundredths of their limits. So a feature measures what it
-adds, for its plan's budget and for its pull request. Each stage of the runs on #27, #28, and #29 wrote a script
-of its own for that, and the figures in a plan came from a script nobody else could run again (#80). This is that
-script, once: it builds the site before the change and after it, with the same data, and prints the heaviest
-page of each kind and the root as it travels.
+board to WIRE_BUDGET gzipped, the first within about a tenth of its limit and the second within a few hundredths.
+So a feature measures what it adds, for its plan's budget and for its pull request. Each stage of the runs on #27,
+#28, and #29 wrote a script of its own for that, and the figures in a plan came from a script nobody else could run
+again (#80). This is that script, once: it builds the site before the change and after it, with the same data, and
+prints the heaviest page of each kind and the root as it travels.
 
 It measures the boards the site has. The two limits are held on boards the tests make up, the longest of them
 longer than any published, so this informs and judges nothing: the tests are what a change has to pass.
@@ -19,8 +19,8 @@ from pathlib import Path
 
 from sitework import layout, shell
 
-PAGE_LIMIT = 500_000
-WIRE_BUDGET = 150_000
+PAGE_LIMIT = 550_000
+WIRE_BUDGET = 155_000
 """The two limits of `tests/test_page_weight.py`, which `tests/test_sitework_weigh.py` holds to that file's own:
 the most bytes a page may take, and the most the root of a long board may take gzipped."""
 

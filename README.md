@@ -163,7 +163,7 @@ What every page holds to, each checked by a test in `tests/`:
   browser, the reader's choice of theme, under `theme` in `localStorage`, and
   sends nothing anywhere.
 - **Its size.** A page, with its styles, its script, and its type, stays
-  within **500,000 bytes**. Measured on 2026-11-21, without `--noindex`:
+  within **550,000 bytes**. Measured on 2026-11-21, without `--noindex`:
 
   | Board | A board's page | History | Baseline | How it works | The not-found page |
   | --- | --- | --- | --- | --- | --- |
@@ -228,8 +228,11 @@ What every page holds to, each checked by a test in `tests/`:
   board with rows needs a saving first.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
-  381,378 bytes. Past about 500 real rows, a long board's later rows in a
-  second file is the next step.
+  381,378 bytes, to 500,000. The owner raised it to 550,000 on 27 November 2026
+  (#184), so that the features waiting on it fit: by `sitework weigh` that
+  day, the heaviest board day, 499,915 bytes, has 50,085 left, and the 316
+  made-up rows of the owner's sentence 29 come to 494,213. Past about 500 real
+  rows, a long board's later rows in a second file is the next step.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
   is where the limits that a longer board meets are weighed.
 - **The root on the wire.** The site eval gives the root a budget of 100,000
@@ -237,9 +240,12 @@ What every page holds to, each checked by a test in `tests/`:
   (see `evals/site/limits.json`), and the root of 21 November 2026, 264 rows,
   takes 80,871 bytes gzipped at level 6. A test in
   `tests/test_page_weight.py` fills the newest board with 713 invented rows,
-  gzips the built root at level 6, and checks the result against 150,000
-  bytes, a budget of its own since
-  [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199).
+  gzips the built root at level 6, and checks the result against 155,000
+  bytes. It has been a budget of its own, 150,000, since
+  [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199),
+  and the owner raised it to 155,000 on 27 November 2026 (#184), so that the
+  two-day gain #90 sets under each row fits: with it, the root came to
+  150,368 bytes with zlib 1.3.1, by the measure on #90.
   On 2026-11-22 it came to 144,789 bytes with zlib 1.3.1, which the workflow's
   Python uses, and 141,600 with the zlib-ng that Python 3.14 uses on Windows,
   so a size measured on Windows reads about 2% low. With an opened row's

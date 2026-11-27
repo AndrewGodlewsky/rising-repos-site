@@ -14,14 +14,15 @@ from helpers import ROOT, BuildTest, Page, read_json
 
 from sitebuild import BOARD, board_day_page
 
-SIZE_LIMIT = 500_000
+SIZE_LIMIT = 550_000
 """The most bytes a page may take, uncompressed, with its styles, its script, and its type. Issue #39 in RisingRepos
 set it at 320,000 from the largest page measured, the chart design's page of the largest board below at 263,763 bytes,
 with a fifth more for what later slices add to a row. AndrewGodlewsky/RisingRepos#49 raised it to 410,000 for each
 row's reason. AndrewGodlewsky/RisingRepos#199 raised it to 500,000, as decided there, for the redesign's type
 inside each page, its filter and script, and each row's figures: the largest board below measured 479,955 bytes, and
-the real board of the most rows, 475 on 12 August 2026, 476,623. Past about 500 real rows, a long board's later rows in
-a second file is the next step. README.md gives the measurements."""
+the real board of the most rows, 475 on 12 August 2026, 476,623. The owner raised it to 550,000 on 27 November 2026
+(#184), when that board's page had come to 499,915 bytes, 85 under the limit, so that the features waiting fit. Past
+about 500 real rows, a long board's later rows in a second file is the next step. README.md gives the measurements."""
 
 LARGEST_BOARD = 316
 """The most rows a daily board of the earlier site held (RisingRepos's data contract, under Size)."""
@@ -31,13 +32,15 @@ WIRE_ROWS = 713
 whole snapshot archive (12 August 2026), with half as many again for longer boards to come. The choice is recorded on
 AndrewGodlewsky/RisingRepos#122."""
 
-WIRE_BUDGET = 150_000
+WIRE_BUDGET = 155_000
 """The most bytes the root of a `WIRE_ROWS` board may take gzipped. AndrewGodlewsky/RisingRepos#122 held it to the
 site eval's transfer limit, 100,000. AndrewGodlewsky/RisingRepos#199 gave it its own, 150,000, as decided there: the
 redesign's root of 713 rows measured 144,789 bytes with zlib 1.3.1, which the workflow's Python uses, and the type
-takes about 28,000 of a page's gzipped bytes. The zlib-ng of Python 3.14 on Windows packs it to 141,600, so a size
-measured there reads about 2% low. The eval's limit, in evals/site/limits.json, stays 100,000 for the real root it
-measures: 80,871 bytes with zlib 1.3.1 for the 264 rows of 21 November 2026."""
+takes about 28,000 of a page's gzipped bytes. The owner raised it to 155,000 on 27 November 2026 (#184), so that the
+two-day gain #90 sets under each row fits: with it, this root came to 150,368 with zlib 1.3.1, by the measure on #90.
+The zlib-ng of Python 3.14 on Windows packs the root of 22 November to 141,600, so a size measured there reads about 2%
+low. The eval's limit, in evals/site/limits.json, stays 100,000 for the real root it measures: 80,871 bytes with zlib
+1.3.1 for the 264 rows of 21 November 2026."""
 
 EVAL_LIMITS = ROOT / "evals" / "site" / "limits.json"
 """The site eval's limits, read here rather than copied, so that a change there is a change here."""

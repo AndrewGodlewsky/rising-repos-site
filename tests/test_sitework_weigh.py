@@ -43,14 +43,14 @@ class TheWeights(unittest.TestCase):
         self.assertEqual(
             self.rows(self.report(base, head)),
             [
-                ["The root", "`/`", "100", "100", "the same", "499,900"],
-                ["A board day", "`/days/2026-11-22/`", "300", "340", "+40", "499,660"],
+                ["The root", "`/`", "100", "100", "the same", "549,900"],
+                ["A board day", "`/days/2026-11-22/`", "300", "340", "+40", "549,660"],
             ],
         )
 
     def test_a_page_the_base_does_not_have_is_said_to_be_new(self):
         rows = self.rows(self.report({"index.html": "r"}, {"index.html": "r", "baseline/index.html": "b" * 50}))
-        self.assertEqual(rows[1], ["Baseline", "`/baseline/`", "-", "50", "new", "499,950"])
+        self.assertEqual(rows[1], ["Baseline", "`/baseline/`", "-", "50", "new", "549,950"])
 
     def test_the_root_is_given_gzipped_as_the_size_test_packs_it(self):
         before, after = "<p>row</p>" * 40, "<p>row</p>" * 40 + "<a>Latest</a>"
