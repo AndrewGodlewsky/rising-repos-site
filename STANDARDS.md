@@ -150,17 +150,18 @@ Held by
 for the theme switch, and the reviewer, for the filter's controls, for a new
 control, and for the look with scripts off. A check could hold the controls.
 
-**P4. A page stays within 500,000 bytes, and the root of a 713-row board
-within 150,000 gzipped.** Both have little room left: README.md, "The pages",
-gives the last measurements. Markup added to a board's row is multiplied by
-every row, so it is measured before and after. A gzipped size measured on
-Windows reads about 2% low. No page carries a note written for whoever reads
-the stylesheet or the script, and no file a page ships or fetches carries a
-value that nothing reads. A field a page newly shows goes into the made-up
-rows the size tests measure, at its longest, so that their worst case stays
-the worst. The tests measure the example and made-up rows, and no test
-measures a page built from `site-data/`, whose longest board has more rows
-than the made-up one.
+**P4. A page stays within 550,000 bytes, and the root of a 713-row board
+within 155,000 gzipped.** The owner raised both on 27 November 2026, from
+500,000 and 150,000, to make room for the features then waiting, which use
+much of it (#184): README.md, "The pages", gives the last measurements.
+Markup added to a board's row is multiplied by every row, so it is measured
+before and after. A gzipped size measured on Windows reads about 2% low. No
+page carries a note written for whoever reads the stylesheet or the script,
+and no file a page ships or fetches carries a value that nothing reads. A
+field a page newly shows goes into the made-up rows the size tests measure,
+at its longest, so that their worst case stays the worst. The tests measure
+the example and made-up rows, and no test measures a page built from
+`site-data/`, whose longest board has more rows than the made-up one.
 
 Held by
 `tests/test_page_weight.py::PageWeight::test_each_page_of_the_example_is_within_the_size_limit`,

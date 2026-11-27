@@ -169,9 +169,9 @@ it, and is left out of a run against a live site.
 28. What a repository's owner wrote is shown as text, and is never a link.
     *Made-up boards.*
     `test_what_a_repositorys_owner_wrote_is_shown_as_text_and_is_never_a_link`
-29. No page is over 500,000 bytes, and the root of a long board is under
-    150,000 on the wire. *Made-up boards.*
-    `test_no_page_is_over_500000_bytes_and_the_root_of_a_long_board_is_under_150000_on_the_wire`
+29. No page is over 550,000 bytes, and the root of a long board is under
+    155,000 on the wire. *Made-up boards.*
+    `test_no_page_is_over_550000_bytes_and_the_root_of_a_long_board_is_under_155000_on_the_wire`
 30. A newest board that is 26 hours old says so, and after a week the boards
     are not shown.
     `test_a_newest_board_that_is_26_hours_old_says_so_and_after_a_week_the_boards_are_not_shown`
