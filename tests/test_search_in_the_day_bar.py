@@ -105,16 +105,34 @@ and whether it draws its ring there."""
 class TheSearchInTheDayBar(BuildTest):
     def setUp(self):
         super().setUp()
-        # The example's older board has no row, and so no filter and no search: give it two of the newest's rows.
-        self.rows = read_json(self.board_file())["rows"]
+        # The newest board lists "DIGITAL Command Language", whose name made the language menu wide enough on 26
+        # November 2026 to push the search off the filter's row, so that every test meets the widest menu a board has
+        # shown. The example's older board has no row, and so no filter and no search: give it two of the newest's.
+        newest = read_json(self.board_file())
+        self.rows = [{**newest["rows"][0], "language": "DIGITAL Command Language"}, *newest["rows"][1:]]
+        self.write_board({**newest, "rows": self.rows})
         older = read_json(self.board_file(OLDER))
         self.write_board({**older, "state": "rows", "rows": [self.rows[1], self.rows[3]]})
 
-    def open(self, browser, site: str, path: str = "index.html", width: int = DESKTOP, height: int = 900, days=0):
-        """The page at `path` on a screen `width` by `height` pixels, with the clock `days` after the newest board was
-        published, once its type is in."""
-        page = browser.new_page(viewport={"width": width, "height": height})
-        page.clock.set_fixed_time(datetime.fromisoformat(published(self.out)) + timedelta(days=days))
+    @classmethod
+    def setUpClass(cls):
+        """One build of the example as setUp makes it, served once and opened in one Chrome by every test that leaves
+        it as it is: a build and a browser for each test made the pull request's job longer than the ten minutes it
+        is given (#213). The test that makes boards of its own builds them, and opens them in the same Chrome."""
+        shared = cls()
+        shared.setUp()
+        cls.addClassCleanup(shared.doCleanups)
+        shared.build_pages()
+        cls.built = shared.out
+        cls.site = cls.enterClassContext(served(cls.built))
+        cls.browser = cls.enterClassContext(chrome())
+
+    def open(self, site: str, path: str = "index.html", width: int = DESKTOP, height: int = 900, days=0, built=None):
+        """The page at `path` of the site served at `site`, on a screen `width` by `height` pixels, with the clock
+        `days` after the newest board of the build `built` (the shared one, unless another is given) was published,
+        once its type is in."""
+        page = self.browser.new_page(viewport={"width": width, "height": height})
+        page.clock.set_fixed_time(datetime.fromisoformat(published(built or self.built)) + timedelta(days=days))
         page.goto(f"{site}/{path.removesuffix('index.html')}", wait_until="load")
         page.evaluate("document.fonts.ready.then(() => true)")
         return page
@@ -129,33 +147,28 @@ class TheSearchInTheDayBar(BuildTest):
         ]
 
     def test_from_768_px_up_the_search_box_is_on_the_day_bars_line_at_its_right_hand_end(self):
-        self.build_pages()
-        with served(self.out) as site, chrome() as browser:
-            for path in ("index.html", board_day_page(OLDER)):
-                for width, height in ((DESKTOP, 900), (LAPTOP, 768)):
-                    with self.subTest(path, width=width):
-                        page = self.open(browser, site, path, width, height)
-                        seen = page.evaluate(PARTS)
-                        kinds = [part["kind"] for part in seen["parts"]]
-                        self.assertIn("search", kinds, seen["parts"])
-                        search = seen["parts"][kinds.index("search")]
-                        date = seen["parts"][kinds.index("here")]
-                        self.assertAlmostEqual(search["middle"], date["middle"], delta=1, msg=seen["parts"])
-                        self.assertAlmostEqual(search["right"], seen["right"], delta=1, msg=seen)
-                        self.assertEqual(page.evaluate(DRAWN), 1)
-                        page.close()
+        site = self.site
+        for path in ("index.html", board_day_page(OLDER)):
+            for width, height in ((DESKTOP, 900), (LAPTOP, 768)):
+                with self.subTest(path, width=width):
+                    page = self.open(site, path, width, height)
+                    seen = page.evaluate(PARTS)
+                    kinds = [part["kind"] for part in seen["parts"]]
+                    self.assertIn("search", kinds, seen["parts"])
+                    search = seen["parts"][kinds.index("search")]
+                    date = seen["parts"][kinds.index("here")]
+                    self.assertAlmostEqual(search["middle"], date["middle"], delta=1, msg=seen["parts"])
+                    self.assertAlmostEqual(search["right"], seen["right"], delta=1, msg=seen)
+                    self.assertEqual(page.evaluate(DRAWN), 1)
+                    page.close()
 
     def test_at_1440_px_the_filters_lie_on_one_row_on_a_board_listing_digital_command_language(self):
-        newest = read_json(self.board_file())
-        rows = [{**newest["rows"][0], "language": "DIGITAL Command Language"}, *newest["rows"][1:]]
-        self.write_board({**newest, "rows": rows})
-        self.build_pages()
-        with served(self.out) as site, chrome() as browser:
-            page = self.open(browser, site)
-            self.assertIn("DIGITAL Command Language", page.locator("#language option").all_text_contents())
-            controls = page.evaluate(FILTER)
-            self.assertEqual([control["id"] for control in controls], ["kinds", "bands", "language", "sort"])
-            self.assertEqual(len({round(control["top"]) for control in controls}), 1, controls)
+        page = self.open(self.site)
+        self.assertIn("DIGITAL Command Language", page.locator("#language option").all_text_contents())
+        controls = page.evaluate(FILTER)
+        self.assertEqual([control["id"] for control in controls], ["kinds", "bands", "language", "sort"])
+        self.assertEqual(len({round(control["top"]) for control in controls}), 1, controls)
+        page.close()
 
     def test_on_an_earlier_board_the_search_box_follows_latest_and_overlaps_no_part_of_the_bar(self):
         """The widest bars there are, as `tests/test_day_bar.py` makes them: the first board day's, which says
@@ -170,11 +183,11 @@ class TheSearchInTheDayBar(BuildTest):
         entries = [{"board_day": day, "row_count": len(self.rows)} for day in days]
         write_json(self.index, {**read_json(self.index), "board_days": entries})
         self.build_pages()
-        with served(self.out) as site, chrome() as browser:
+        with served(self.out) as site:
             for day in ("2026-07-29", "2027-05-28"):
                 for width in (TABLET, LAPTOP, DESKTOP):
                     with self.subTest(day, width=width):
-                        page = self.open(browser, site, board_day_page(day), width)
+                        page = self.open(site, board_day_page(day), width, built=self.out)
                         seen = page.evaluate(PARTS)
                         parts = seen["parts"]
                         self.assertEqual(
@@ -194,181 +207,165 @@ class TheSearchInTheDayBar(BuildTest):
     def test_on_a_phone_the_day_bar_holds_the_parts_it_held_and_no_search_box(self):
         """As it was: the board day before and the date on the newest board; on an earlier one, the board day after
         and Latest too, Latest at the bar's right-hand end; every part on one line from the bar's left-hand edge."""
-        self.build_pages()
-        with served(self.out) as site, chrome() as browser:
-            for path, kinds in (
-                ("index.html", ["before", "here"]),
-                (board_day_page(OLDER), ["before", "here", "after", "latest"]),
-            ):
-                for width, height in PHONES:
-                    with self.subTest(path, width=width):
-                        page = self.open(browser, site, path, width, height)
-                        seen = page.evaluate(PARTS)
-                        parts = seen["parts"]
-                        self.assertEqual([part["kind"] for part in parts], kinds)
-                        self.assertAlmostEqual(parts[0]["left"], seen["left"], delta=0.5, msg=parts)
-                        self.assertLessEqual(
-                            max(p["middle"] for p in parts) - min(p["middle"] for p in parts), 1, parts
-                        )
-                        if kinds[-1] == "latest":
-                            self.assertAlmostEqual(parts[-1]["right"], seen["right"], delta=0.5, msg=parts)
-                        page.close()
+        site = self.site
+        for path, kinds in (
+            ("index.html", ["before", "here"]),
+            (board_day_page(OLDER), ["before", "here", "after", "latest"]),
+        ):
+            for width, height in PHONES:
+                with self.subTest(path, width=width):
+                    page = self.open(site, path, width, height)
+                    seen = page.evaluate(PARTS)
+                    parts = seen["parts"]
+                    self.assertEqual([part["kind"] for part in parts], kinds)
+                    self.assertAlmostEqual(parts[0]["left"], seen["left"], delta=0.5, msg=parts)
+                    self.assertLessEqual(max(p["middle"] for p in parts) - min(p["middle"] for p in parts), 1, parts)
+                    if kinds[-1] == "latest":
+                        self.assertAlmostEqual(parts[-1]["right"], seen["right"], delta=0.5, msg=parts)
+                    page.close()
 
     def test_on_a_phone_the_search_box_is_full_width_at_the_top_of_the_filter(self):
-        self.build_pages()
-        with served(self.out) as site, chrome() as browser:
-            for path in ("index.html", board_day_page(OLDER)):
-                for width, height in PHONES:
-                    with self.subTest(path, width=width):
-                        page = self.open(browser, site, path, width, height)
-                        seen = page.evaluate(AT_THE_TOP)
-                        self.assertEqual(seen["shown"], 1, seen)
-                        self.assertTrue(seen["inFilter"], seen)
-                        self.assertAlmostEqual(seen["left"], seen["filterLeft"], delta=0.5, msg=seen)
-                        self.assertAlmostEqual(seen["right"], seen["filterRight"], delta=0.5, msg=seen)
-                        self.assertLessEqual(seen["bottom"], seen["kindsTop"], seen)
-                        page.close()
+        site = self.site
+        for path in ("index.html", board_day_page(OLDER)):
+            for width, height in PHONES:
+                with self.subTest(path, width=width):
+                    page = self.open(site, path, width, height)
+                    seen = page.evaluate(AT_THE_TOP)
+                    self.assertEqual(seen["shown"], 1, seen)
+                    self.assertTrue(seen["inFilter"], seen)
+                    self.assertAlmostEqual(seen["left"], seen["filterLeft"], delta=0.5, msg=seen)
+                    self.assertAlmostEqual(seen["right"], seen["filterRight"], delta=0.5, msg=seen)
+                    self.assertLessEqual(seen["bottom"], seen["kindsTop"], seen)
+                    page.close()
 
     def test_typing_in_the_day_bars_search_box_shows_only_the_rows_that_hold_the_words(self):
         """At 1440 px in the day bar's box, and at 390 px in the filter's, as before."""
-        self.build_pages()
         expected = self.matching("octocat")
         self.assertTrue(0 < len(expected) < len(self.rows), expected)
-        with served(self.out) as site, chrome() as browser:
-            for width, height, where in ((DESKTOP, 900, "search"), (390, 844, "toolbar")):
-                with self.subTest(width=width):
-                    page = self.open(browser, site, width=width, height=height)
-                    scope = page.get_by_role("search") if where == "search" else page.locator(".toolbar")
-                    box = scope.get_by_role("searchbox", name=NAME, exact=True)
-                    self.assertEqual(box.count(), 1)
-                    box.fill("octocat")
-                    self.assertEqual(page.evaluate(SHOWN), expected)
-                    self.assertEqual(
-                        page.locator("#shown").text_content(), f"{len(expected)} of {len(self.rows)} shown"
-                    )
-                    self.assertEqual(parse_qs(urlparse(page.url).query).get("q"), ["octocat"])
-                    page.close()
+        site = self.site
+        for width, height, where in ((DESKTOP, 900, "search"), (390, 844, "toolbar")):
+            with self.subTest(width=width):
+                page = self.open(site, width=width, height=height)
+                scope = page.get_by_role("search") if where == "search" else page.locator(".toolbar")
+                box = scope.get_by_role("searchbox", name=NAME, exact=True)
+                self.assertEqual(box.count(), 1)
+                box.fill("octocat")
+                self.assertEqual(page.evaluate(SHOWN), expected)
+                self.assertEqual(page.locator("#shown").text_content(), f"{len(expected)} of {len(self.rows)} shown")
+                self.assertEqual(parse_qs(urlparse(page.url).query).get("q"), ["octocat"])
+                page.close()
 
     def test_the_words_searched_stay_in_view_and_the_rows_stay_as_the_window_crosses_768_px(self):
-        self.build_pages()
-        with served(self.out) as site, chrome() as browser:
-            page = self.open(browser, site)
-            for word, width, height in (("octocat", 390, 844), ("hello", DESKTOP, 900)):
-                with self.subTest(word):
-                    page.get_by_role("searchbox", name=NAME, exact=True).fill(word)
-                    rows = page.evaluate(SHOWN)
-                    self.assertEqual(rows, self.matching(word))
-                    page.set_viewport_size({"width": width, "height": height})
-                    box = page.get_by_role("searchbox", name=NAME, exact=True)
-                    self.assertEqual(box.count(), 1)
-                    self.assertEqual(box.input_value(), word)
-                    self.assertEqual(page.evaluate(SHOWN), rows)
+        site = self.site
+        page = self.open(site)
+        for word, width, height in (("octocat", 390, 844), ("hello", DESKTOP, 900)):
+            with self.subTest(word):
+                page.get_by_role("searchbox", name=NAME, exact=True).fill(word)
+                rows = page.evaluate(SHOWN)
+                self.assertEqual(rows, self.matching(word))
+                page.set_viewport_size({"width": width, "height": height})
+                box = page.get_by_role("searchbox", name=NAME, exact=True)
+                self.assertEqual(box.count(), 1)
+                self.assertEqual(box.input_value(), word)
+                self.assertEqual(page.evaluate(SHOWN), rows)
 
     def test_on_a_phone_clear_search_and_filters_empties_the_search_box_and_a_step_leaves_it_empty(self):
-        self.build_pages()
-        with served(self.out) as site, chrome() as browser:
-            page = self.open(browser, site, width=390, height=844)
-            box = page.get_by_role("searchbox", name=NAME, exact=True)
-            box.fill("no-such-word")
-            self.assertEqual(page.evaluate(SHOWN), [])
-            page.get_by_role("button", name="Clear search and filters", exact=True).click()
-            self.assertEqual(box.input_value(), "")
-            self.assertEqual(len(page.evaluate(SHOWN)), len(self.rows))
-            page.go_back()
-            self.assertEqual(box.input_value(), "no-such-word")
-            self.assertEqual(page.evaluate(SHOWN), [])
-            bar = page.get_by_role("navigation", name="Board days", exact=True)
-            bar.get_by_role("link", name=re.compile("^The board before, ")).click()
-            page.wait_for_url(re.compile(f"/days/{OLDER}/"))
-            self.assertNotIn("q", parse_qs(urlparse(page.url).query))
-            self.assertEqual(page.get_by_role("searchbox", name=NAME, exact=True).input_value(), "")
+        site = self.site
+        page = self.open(site, width=390, height=844)
+        box = page.get_by_role("searchbox", name=NAME, exact=True)
+        box.fill("no-such-word")
+        self.assertEqual(page.evaluate(SHOWN), [])
+        page.get_by_role("button", name="Clear search and filters", exact=True).click()
+        self.assertEqual(box.input_value(), "")
+        self.assertEqual(len(page.evaluate(SHOWN)), len(self.rows))
+        page.go_back()
+        self.assertEqual(box.input_value(), "no-such-word")
+        self.assertEqual(page.evaluate(SHOWN), [])
+        bar = page.get_by_role("navigation", name="Board days", exact=True)
+        bar.get_by_role("link", name=re.compile("^The board before, ")).click()
+        page.wait_for_url(re.compile(f"/days/{OLDER}/"))
+        self.assertNotIn("q", parse_qs(urlparse(page.url).query))
+        self.assertEqual(page.get_by_role("searchbox", name=NAME, exact=True).input_value(), "")
 
     def test_with_scripts_off_no_search_box_is_shown_at_either_width(self):
-        self.build_pages()
-        with served(self.out) as site, chrome() as browser:
-            for path in ("index.html", board_day_page(OLDER)):
-                for width, height in ((DESKTOP, 900), (390, 844)):
-                    with self.subTest(path, width=width):
-                        context = browser.new_context(
-                            java_script_enabled=False, viewport={"width": width, "height": height}
-                        )
-                        page = context.new_page()
-                        page.goto(f"{site}/{path.removesuffix('index.html')}", wait_until="load")
-                        self.assertEqual(page.evaluate(DRAWN), 0)
-                        self.assertEqual(page.get_by_role("searchbox").count(), 0)
-                        self.assertEqual(page.get_by_role("search").count(), 0)
-                        context.close()
-
-    def test_a_screen_reader_hears_one_search_box_in_a_search_landmark_and_not_among_the_board_days(self):
-        self.build_pages()
-        with served(self.out) as site, chrome() as browser:
+        site = self.site
+        for path in ("index.html", board_day_page(OLDER)):
             for width, height in ((DESKTOP, 900), (390, 844)):
-                with self.subTest(width=width):
-                    page = self.open(browser, site, board_day_page(OLDER), width, height)
-                    self.assertEqual(page.get_by_role("searchbox").count(), 1)
-                    self.assertEqual(page.get_by_role("searchbox", name=NAME, exact=True).count(), 1)
-                    days = page.get_by_role("navigation", name="Board days", exact=True)
-                    self.assertEqual(days.get_by_role("searchbox").count(), 0)
-                    # The board days' links are the ones the bar held: the board after and Latest, here.
-                    self.assertEqual(days.get_by_role("link").count(), 2)
-                    self.assertEqual(days.get_by_role("link", name="The board after, 9 Nov", exact=True).count(), 1)
-                    self.assertEqual(days.get_by_role("link", name="The newest board, 9 Nov", exact=True).count(), 1)
-                    if width == DESKTOP:
-                        landmark = page.get_by_role("search")
-                        self.assertEqual(landmark.count(), 1)
-                        self.assertEqual(landmark.get_by_role("searchbox", name=NAME, exact=True).count(), 1)
-                    page.close()
-
-    def test_the_keyboard_reaches_the_search_box_after_latest_and_before_the_filter_with_its_ring(self):
-        self.build_pages()
-        with served(self.out) as site, chrome() as browser:
-            page = self.open(browser, site, board_day_page(OLDER))
-            stops = []
-            for _ in range(40):
-                page.keyboard.press("Tab")
-                stops.append(page.evaluate(FOCUS))
-                if stops[-1]["at"] == "all":
-                    break
-            path = [stop["at"] for stop in stops]
-            self.assertIn("latest", path)
-            self.assertIn("search", path)
-            self.assertIn("all", path)
-            self.assertLess(path.index("latest"), path.index("search"), path)
-            self.assertLess(path.index("search"), path.index("all"), path)
-            self.assertTrue(stops[path.index("search")]["ring"], stops)
-
-    def test_a_board_seven_days_old_shows_no_search_box_at_either_width(self):
-        self.build_pages()
-        with served(self.out) as site, chrome() as browser:
-            for width, height in ((DESKTOP, 900), (390, 844)):
-                with self.subTest(width=width):
-                    page = self.open(browser, site, width=width, height=height, days=8)
-                    self.assertTrue(page.evaluate("document.documentElement.hasAttribute('data-withheld')"))
+                with self.subTest(path, width=width):
+                    context = self.browser.new_context(
+                        java_script_enabled=False, viewport={"width": width, "height": height}
+                    )
+                    page = context.new_page()
+                    page.goto(f"{site}/{path.removesuffix('index.html')}", wait_until="load")
                     self.assertEqual(page.evaluate(DRAWN), 0)
                     self.assertEqual(page.get_by_role("searchbox").count(), 0)
-                    page.close()
+                    self.assertEqual(page.get_by_role("search").count(), 0)
+                    context.close()
+
+    def test_a_screen_reader_hears_one_search_box_in_a_search_landmark_and_not_among_the_board_days(self):
+        site = self.site
+        for width, height in ((DESKTOP, 900), (390, 844)):
+            with self.subTest(width=width):
+                page = self.open(site, board_day_page(OLDER), width, height)
+                self.assertEqual(page.get_by_role("searchbox").count(), 1)
+                self.assertEqual(page.get_by_role("searchbox", name=NAME, exact=True).count(), 1)
+                days = page.get_by_role("navigation", name="Board days", exact=True)
+                self.assertEqual(days.get_by_role("searchbox").count(), 0)
+                # The board days' links are the ones the bar held: the board after and Latest, here.
+                self.assertEqual(days.get_by_role("link").count(), 2)
+                self.assertEqual(days.get_by_role("link", name="The board after, 9 Nov", exact=True).count(), 1)
+                self.assertEqual(days.get_by_role("link", name="The newest board, 9 Nov", exact=True).count(), 1)
+                if width == DESKTOP:
+                    landmark = page.get_by_role("search")
+                    self.assertEqual(landmark.count(), 1)
+                    self.assertEqual(landmark.get_by_role("searchbox", name=NAME, exact=True).count(), 1)
+                page.close()
+
+    def test_the_keyboard_reaches_the_search_box_after_latest_and_before_the_filter_with_its_ring(self):
+        site = self.site
+        page = self.open(site, board_day_page(OLDER))
+        stops = []
+        for _ in range(40):
+            page.keyboard.press("Tab")
+            stops.append(page.evaluate(FOCUS))
+            if stops[-1]["at"] == "all":
+                break
+        path = [stop["at"] for stop in stops]
+        self.assertIn("latest", path)
+        self.assertIn("search", path)
+        self.assertIn("all", path)
+        self.assertLess(path.index("latest"), path.index("search"), path)
+        self.assertLess(path.index("search"), path.index("all"), path)
+        self.assertTrue(stops[path.index("search")]["ring"], stops)
+
+    def test_a_board_seven_days_old_shows_no_search_box_at_either_width(self):
+        site = self.site
+        for width, height in ((DESKTOP, 900), (390, 844)):
+            with self.subTest(width=width):
+                page = self.open(site, width=width, height=height, days=8)
+                self.assertTrue(page.evaluate("document.documentElement.hasAttribute('data-withheld')"))
+                self.assertEqual(page.evaluate(DRAWN), 0)
+                self.assertEqual(page.get_by_role("searchbox").count(), 0)
+                page.close()
 
     def test_the_day_bars_of_history_baseline_how_it_works_and_for_agents_are_as_they_were(self):
         """As they were: no search box, every part on the bar's one line from its left-hand edge, each 32 px tall,
         with 8 px at each side, and 4 px below 390 px."""
-        self.build_pages()
-        with served(self.out) as site, chrome() as browser:
-            for path in (DAYS, BASELINE, HOW_IT_WORKS, FOR_AGENTS):
-                for width in (DESKTOP, TABLET, 390, 360):
-                    with self.subTest(path, width=width):
-                        page = self.open(browser, site, path, width)
-                        seen = page.evaluate(PARTS)
-                        parts = seen["parts"]
-                        self.assertTrue(parts, seen)
-                        self.assertNotIn("search", [part["kind"] for part in parts])
-                        self.assertAlmostEqual(parts[0]["left"], seen["left"], delta=0.5, msg=parts)
-                        self.assertLessEqual(
-                            max(p["middle"] for p in parts) - min(p["middle"] for p in parts), 1, parts
-                        )
-                        for part in parts:
-                            self.assertAlmostEqual(part["height"], 32, delta=0.5, msg=part)
-                            self.assertEqual(part["padding"], 8 if width >= 390 else 4, part)
-                        page.close()
+        site = self.site
+        for path in (DAYS, BASELINE, HOW_IT_WORKS, FOR_AGENTS):
+            for width in (DESKTOP, TABLET, 390, 360):
+                with self.subTest(path, width=width):
+                    page = self.open(site, path, width)
+                    seen = page.evaluate(PARTS)
+                    parts = seen["parts"]
+                    self.assertTrue(parts, seen)
+                    self.assertNotIn("search", [part["kind"] for part in parts])
+                    self.assertAlmostEqual(parts[0]["left"], seen["left"], delta=0.5, msg=parts)
+                    self.assertLessEqual(max(p["middle"] for p in parts) - min(p["middle"] for p in parts), 1, parts)
+                    for part in parts:
+                        self.assertAlmostEqual(part["height"], 32, delta=0.5, msg=part)
+                        self.assertEqual(part["padding"], 8 if width >= 390 else 4, part)
+                    page.close()
 
 
 if __name__ == "__main__":
