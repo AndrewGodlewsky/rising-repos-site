@@ -46,6 +46,7 @@ from sitebuild import (
     BOARD,
     DATA,
     DAYS,
+    FOR_AGENTS,
     HOW_IT_WORKS,
     MINUS,
     NOT_FOUND,
@@ -213,10 +214,10 @@ class EveryPublishedBoard(unittest.TestCase):
 
     def parts(self, path: str) -> tuple[str, ...]:
         """The parts of the site's script that the page at `path` carries, in the order site.js includes them: the
-        theme on every page; the notice of an old board on every page but the two that hold no board; a board's
+        theme on every page; the notice of an old board on every page but the three that hold no board; a board's
         filters where the board has rows; and the Baseline page's readout where the newest board has rows to place."""
         parts = ["theme.js"]
-        if path not in (NOT_FOUND, HOW_IT_WORKS):
+        if path not in (NOT_FOUND, HOW_IT_WORKS, FOR_AGENTS):
             parts.append("old-board.js")
         if path in self.shows and self.shows[path]["rows"]:
             parts.append("filters.js")
@@ -226,9 +227,19 @@ class EveryPublishedBoard(unittest.TestCase):
 
     def test_the_build_writes_the_sites_pages_a_page_for_each_board_day_and_the_history_of_each_that_has_rows(self):
         """Each board day has its share image too, an empty one included (#35)."""
-        written = sorted(path.relative_to(self.out).as_posix() for path in self.out.rglob("*") if path.is_file())
+        # A board's text goes in as many parts as its length needs, so its later parts, `board-2.md` on, are left out
+        # here, and tests/test_agent_copy.py holds that each row is in one (#176).
+        written = sorted(
+            path.relative_to(self.out).as_posix()
+            for path in self.out.rglob("*")
+            if path.is_file() and not re.fullmatch(r"board-\d+\.md", path.name)
+        )
         days = [board["board_day"] for board in self.boards]
-        expected = [BOARD, DAYS, HOW_IT_WORKS, BASELINE, NOT_FOUND, LICENCE]
+        expected = [BOARD, DAYS, HOW_IT_WORKS, FOR_AGENTS, BASELINE, NOT_FOUND, LICENCE, "sitemap.xml", "robots.txt"]
+        expected += ["latest.md", "latest.json", "repos.tsv", "llms.txt"]
+        expected += [
+            board_day_page(day).replace("index.html", name) for day in days for name in ("board.md", "board.json")
+        ]
         expected += [board_day_page(day) for day in days]
         expected += [board_day_page(day).replace("index.html", "share.png") for day in days]
         expected += [history_file(day) for day in self.histories]

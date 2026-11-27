@@ -229,6 +229,22 @@ A board's plain facts, under its rows: its count, its publish time, the day's
 update, what New means on it, and the formula that ranked it.
 _Avoid_: footer, metadata
 
+**Agent copy**:
+A board day's board as text and JSON, written for visiting agents beside its
+page.
+_Avoid_: API, feed
+
+**Agent route**:
+What a visiting agent can reach instead of a page: each board's agent copy,
+`/llms.txt`, and the query service.
+_Avoid_: API, bot endpoint
+
+**Query service**:
+The program in its own repository that answers a visiting agent's search across
+every repository that has been on a board, from the list the site publishes. It
+is another program at another address, and no page depends on it.
+_Avoid_: API, backend, search engine
+
 **Colophon**:
 The line at the foot of every page that says what the site is, and that it is
 not affiliated with GitHub.
@@ -317,6 +333,11 @@ _Avoid_: lesson, retro item
 Someone reading the site.
 _Avoid_: user, customer
 
+**Visiting agent**:
+A program, usually driven by a language model, that reads the site on a
+person's behalf.
+_Avoid_: bot, AI user
+
 **Repository's owner**:
 Whoever controls a repository on a board, and wrote its name, its description,
 its language, and its licence.
@@ -328,6 +349,11 @@ text, and never made a link.
 _Avoid_: user content, untrusted input
 
 ### Watching the site
+
+**Crawler**:
+A program that fetches the site's pages to build a search index, or to gather
+text that an AI model trains on or answers from.
+_Avoid_: spider, scraper
 
 **Stale check**:
 The check GitHub runs once a day, which reads the root and raises an alarm

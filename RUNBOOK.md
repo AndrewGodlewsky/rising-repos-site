@@ -191,6 +191,43 @@ after this repository's:
 - Its documents that described the preview as the place the rebuilt site is
   shown say that the rebuilt site is live, in the same pull request.
 
+## What the site depends on in Cloudflare
+
+Two settings of the zone are not in this repository's files, and the site's
+crawlers (#170) depend on them. Each is recorded here with where it is set, how
+it is checked, and how it is undone.
+
+### The `www` redirect
+
+Set on 26 November 2026, through Cloudflare's API at the owner's request.
+
+- **Where:** the zone's Redirect Rules (the `http_request_dynamic_redirect`
+  phase), as its one rule, with the ref `www_to_apex`.
+- **When it applies:** `(http.host eq "www.risingrepos.com")`.
+- **What it does:** a 301 to `concat("https://risingrepos.com",
+  http.request.uri.path)`, with the query string kept. The target is built from
+  the path alone, so a query string is not carried twice.
+- **How it is checked:**
+  `curl -sI "https://www.risingrepos.com/days/2026-11-20/?lang=Rust"` answers
+  301 with `location: https://risingrepos.com/days/2026-11-20/?lang=Rust`, and
+  `curl -sI http://www.risingrepos.com/how-it-works/` answers 301 to
+  `https://risingrepos.com/how-it-works/`. Both were seen so after the rule was
+  made, and `https://risingrepos.com/` still answers 200.
+- **How it is undone:** delete the rule `www_to_apex` under Rules, Redirect
+  Rules.
+
+### Crawler Hints
+
+Turned on by the owner in the dashboard, and applied at 00:04 UTC on 27
+November 2026.
+
+- **Where:** Caching, Configuration, Crawler Hints. Cloudflare documents no API
+  setting that turns it on.
+- **How it is checked:** Cloudflare's API reads the zone flag
+  `crawlhints_enabled` as `true`
+  (`GET /zones/<zone>/flags/products/cache/changes`).
+- **How it is undone:** turn it off in the same place.
+
 ## What was built after this runbook was written
 
 When this runbook was first written, on 2026-11-12, four parts of RisingRepos

@@ -174,9 +174,9 @@
 <p class="late">This board was made after its day, from the star counts recorded on {{ board.board_day|long_date }}.</p>
 {% endif %}
 {% if history.new is not none %}
-<p id="new-means"><strong>{{ history.new }} new.</strong> New means under a name on none of the boards before this one, back to the first on {{ history.since|long_date }}. A repository renamed or moved since counts as new, and its opened row still lists the boards it was on before.</p>
+<p id="new-means"><strong>{{ history.new }} new.</strong> {{ history.since|new_means }}</p>
 {% elif board.rows and history.since != board.board_day %}
-<p id="new-means">What is new on this board cannot be told: the board before it held a star band back or listed no repository, so one missing from it may have been kept off.</p>
+<p id="new-means">{{ new_untold }}</p>
 {% endif %}
 {% if "formula_version" in board %}
 <p class="formula">Ranked by formula version {{ board.formula_version }}. <a href="{{ how_address }}">How it ranks</a></p>

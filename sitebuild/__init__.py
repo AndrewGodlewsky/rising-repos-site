@@ -28,6 +28,7 @@ BOARD = "index.html"
 DAYS = "days/index.html"
 BOARD_DAY = "days/{board_day}/index.html"
 HOW_IT_WORKS = "how-it-works/index.html"
+FOR_AGENTS = "for-agents/index.html"
 BASELINE = "baseline/index.html"
 BASELINE_NAME = "Baseline"
 """The Baseline page's name, as the site's bar and the page's own strip show it: change it here to rename the page."""
@@ -43,6 +44,7 @@ PAGES = {
     DAYS: "days.html",
     BOARD_DAY: "board.html",
     HOW_IT_WORKS: "how-it-works.html",
+    FOR_AGENTS: "for-agents.html",
     BASELINE: "baseline.html",
     NOT_FOUND: "not-found.html",
 }
@@ -112,6 +114,22 @@ def long_date(day: str) -> str:
     """'2026-11-09' as '9 November 2026'."""
     value = date.fromisoformat(day)
     return f"{value.day} {MONTHS[value.month - 1]} {value.year}"
+
+
+def new_means(since: str) -> str:
+    """What New means on a board, back to the first board day `since`, in the words of the page's About this board and
+    of the agent copy's header, so that the two say it from one place (#176)."""
+    return (
+        f"New means under a name on none of the boards before this one, back to the first on {long_date(since)}. "
+        "A repository renamed or moved since counts as new, and its opened row still lists the boards it was on before."
+    )
+
+
+NEW_UNTOLD = (
+    "What is new on this board cannot be told: the board before it held a star band back or listed no repository, "
+    "so one missing from it may have been kept off."
+)
+"""What About this board says when New cannot be told, which the agent copy's header says too (#176)."""
 
 
 def listed(items: list[str], last: str = "and") -> str:
@@ -960,12 +978,17 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
 
     With `noindex`, every page asks search engines not to index it.
     """
+    # crawl and agent_copy name the site's addresses and figures from this module, and repo_list reads agent_copy, so
+    # they are read here and not at the top, where this module is not yet whole.
+    from sitebuild import agent_copy, crawl, repo_list
+
     if out.exists() and (not out.is_dir() or any(out.iterdir())):
         raise FileExistsError(f"{out} already exists and is not an empty folder. Build into a new one.")
     boards = read_boards(data)
     templates = environment()
     templates.filters.update(
         long_date=long_date,
+        new_means=new_means,
         long_dates=long_dates,
         short_date=short_date,
         day_in_month=day_in_month,
@@ -991,6 +1014,8 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         "newest": boards[0],
         "days_address": address(DAYS),
         "how_address": address(HOW_IT_WORKS),
+        "agents_address": address(FOR_AGENTS),
+        "new_untold": NEW_UNTOLD,
         "noindex": noindex,
         "baseline_address": address(BASELINE),
         "baseline_name": BASELINE_NAME,
@@ -998,10 +1023,11 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         "font_faces": font_faces(),
     }
     history = History(boards)
+    guide = agent_copy.guide(boards, history)
     # Each template is told its own name, which page.html reads to decide whether the page carries the notice.
     pages = {
         written: templates.get_template(PAGES[page]).render(
-            **context, **common, **_card(written, page, context, boards[0]), template=PAGES[page]
+            **context, **common, **guide, site=SITE, **_card(written, page, context, boards[0]), template=PAGES[page]
         )
         for written, page, context in _pages(boards, history)
     }
@@ -1018,6 +1044,23 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
             (out / board_day_page(board["board_day"])).with_name("history.json").write_text(
                 json.dumps(history_file(boards, history, number), separators=(",", ":")), encoding="utf-8"
             )
+    # What a crawler reads: the sitemap, and the site's own robots.txt (#170).
+    (out / "sitemap.xml").write_text(crawl.sitemap(boards), encoding="utf-8", newline="\n")
+    (out / "robots.txt").write_text(crawl.robots(noindex=noindex), encoding="utf-8", newline="\n")
+    # What a visiting agent reads: each board again, as text and as JSON (#176).
+    for path, text in agent_copy.copies(boards, history).items():
+        (out / path).write_text(text, encoding="utf-8", newline="\n")
+    # What the query service reads: every repository that has been on a board, with its history (#177).
+    (out / "repos.tsv").write_text(repo_list.repo_list(boards), encoding="utf-8", newline="\n")
+    # What a visiting agent finds first, and what tells it the above is there (#178).
+    # The file is plain text, so the templates' escaping, which would turn each apostrophe into an entity, is
+    # not wanted: every value of the guide is the build's own fixed words, and a repository's name is in none of
+    # them. A template may not switch the escaping off (P5), so each value is marked as safe for this one render.
+    plain = {
+        key: [Markup(v) for v in value] if isinstance(value, list) else Markup(value) for key, value in guide.items()
+    }
+    llms = templates.get_template("llms.txt").render(**common, site=SITE, **plain)
+    (out / "llms.txt").write_text(llms, encoding="utf-8", newline="\n")
 
 
 def _card(written: str, page: str, context: dict, newest: dict) -> dict:
@@ -1049,6 +1092,7 @@ def _pages(boards: list[dict], history: History) -> Iterator[tuple[str, str, dic
         },
     )
     yield HOW_IT_WORKS, HOW_IT_WORKS, {"described": DESCRIBED_FORMULA}
+    yield FOR_AGENTS, FOR_AGENTS, {}
     yield BASELINE, BASELINE, {"board": boards[0], "chart": pace_chart(boards[0]["rows"])}
     yield NOT_FOUND, NOT_FOUND, {}
 

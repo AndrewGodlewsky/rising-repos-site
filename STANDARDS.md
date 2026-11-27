@@ -367,6 +367,19 @@ never writes it into the page, and never looks anything up by it unguarded.
 
 Held by the reviewer. A check could hold part of this.
 
+**P23. What a reader sees, a visiting agent can get too.** Every column,
+filter, and page of the site has its counterpart in the agent route, the
+agent copy of each board, `/llms.txt`, and the query service, or a written
+reason that it has none. They are listed in `sitebuild/agent_register.py`. A
+reader who gains a way to see the board that an agent cannot follow has the
+better site, and the agents that visit it would otherwise be the last to
+learn of it (#160, #179).
+
+Held by
+`tests/test_agent_register.py::TheRegister::test_every_column_filter_and_page_the_build_writes_is_in_the_register`
+and
+`tests/test_agent_register.py::TheRegister::test_each_agent_copy_field_the_register_names_is_in_the_agent_copy`.
+
 ## Part 3. How the code and the words are written
 
 **C1. A comment, a docstring, a document, and a commit's body are plain,

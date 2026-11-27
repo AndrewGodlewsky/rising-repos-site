@@ -66,18 +66,34 @@ design note). The build writes these pages, which `PAGES` in
 | `/days/<board day>/share.png` | The board day's share image, 1200 by 630 pixels, which a link's card shows: the board day and the names of its first three rows, or that it lists none |
 | `/baseline/` | Baseline: each repository on the newest board, placed by its baseline against its recent pace, with every one in a table |
 | `/how-it-works/` | How a board is ranked, in a few plain sentences, with the worked example drawn, and what the site is set in |
+| `/sitemap.xml` | The sitemap of sitemaps.org's schema 0.9: every page above by its whole address with the closing slash. A board day's entry and the entries of `/`, `/days/`, and `/baseline/` carry a `lastmod`, the time a board day's file was published, the newest's for the three that show the newest board. `/how-it-works/` carries none, since its text changes only with the site (#170) |
+| `/robots.txt` | The site's own, so that Cloudflare Pages does not serve its managed one: every crawler may fetch every page, with the signals `search=yes` and `ai-input=yes`, no word on training, and the sitemap named. A build with `--noindex` writes `Disallow: /` and names no sitemap (#170) |
+| `/days/<board day>/board.md` | The agent copy of that board day's board as text, for visiting agents (#176): a header that says what each mark means and that a repository's name and description are written by its owner, then one line a row, with the page's own figures: its gain or its stars a day, its stars, its pace, whether it is new or how many earlier boards it was on, the first, and its best rank there. The description is quoted, on one line. A board longer than about 35,000 characters goes in parts of at most that, which name the ranks they hold. A board with no row says so |
+| `/days/<board day>/board-2.md` and on | The later parts of a long board's text, each with the same header and the address of the next (#176) |
+| `/days/<board day>/board.json` | The same board as JSON, in the page's figures: its format, its board day, the names of the fields its owners wrote (`full_name`, `description`), and each row (#176) |
+| `/latest.md` | The newest board day's `board.md`, at an address that does not change (#176) |
+| `/latest.json` | The newest board day's `board.json`, at an address that does not change (#176) |
+| `/repos.tsv` | The query service's list of every repository that has been on a board, once by its GitHub id, under its newest name (#177). Line 1 is `# rising-repos list, format 1`, line 2 the field names, tab-separated, then a line a repository with its full name, language, stars on the newest board it was on, that board day, its rank that day, its history (every board day it was on with its rank, oldest first, as `2026-11-25:182,2026-11-26:221`), and its description last. A tab or line break inside a field is made a space. The Worker in `rising-repos-api` fetches it, so its format is a contract |
+| `/for-agents/` | What `/llms.txt` says, as a page of the site like How it works, so that the bar's "For agents" leads to a page with the card, the one script, and the bar. Both are rendered from `agent_copy.guide`, so that they cannot drift, and the page links to `/llms.txt`, `/latest.md`, `/latest.json`, and `/days/`, and gives `/repos.tsv` as text, since a browser downloads a tab-separated file and the owner's tests follow every link to a page that opens. It carries no `lastmod` in the sitemap (#178) |
+| `/llms.txt` | What the site holds, as plain text, for a visiting agent that looks for the file: a title, a one-line summary, a paragraph on what the site records, and sections of links to the agent copy, the list of board days, and `/repos.tsv`, with the marks and the owner-written line in the words of the agent copy's header (`agent_copy.marks`, `agent_copy.OWNER_LINE`). It describes and gives no order (#158), and names no address of the query service until that is live (#178) |
 | `/static/fonts/OFL.txt` | The fonts' licence and IBM's copyright notice, which the licence asks to travel with them |
 | Any other | `404.html`, the page for an address that holds none, which links to `/` and to `/days/` and states no board day |
 
 Each board's page links to the board day before it and the board day after
-it, and the site's bar on every page links to History, Baseline, and How it
-works. The addresses are the earlier site's, so a link to one of its board
-days still leads to that board day on the live site. Each build writes every
+it, and the site's bar on every page links to History, Baseline, How it works, and
+"For agents", which is `/for-agents/`. The addresses of the pages are the earlier site's, so a link to one of its
+board days still leads to that board day on the live site. The addresses that came with the agent route are not the
+earlier site's: `/llms.txt`, `/sitemap.xml`, `/robots.txt`, `/repos.tsv`, each board's `board.md` and `board.json`, and
+`/for-agents/` are new, so no link made before them leads to one. Each build writes every
 page again: from the 115 board days in `site-data/` on 21 November 2026, 120
 pages, 111 history files, and the licence, in about 10 seconds. With a share
 image for each board day (#35), the 119 board days of 26 November 2026 build
 124 pages, 115 history files, and 119 images, of 5,435,912 bytes in all, in
-about 11 seconds.
+about 11 seconds. With the agent route (#170, #176, #177, #178) the build
+also writes each board day's copy as text, in parts, and as JSON, `latest.md`
+and `latest.json`, `repos.tsv`, `llms.txt`, `sitemap.xml`, `robots.txt`, and the
+page `/for-agents/`: 795 files on 27 November 2026, against Cloudflare Pages'
+limit of 20,000 files a site.
 
 What every page holds to, each checked by a test in `tests/`:
 
@@ -201,7 +217,10 @@ What every page holds to, each checked by a test in `tests/`:
   address, and each page's own description (#35) added about 690 bytes to
   every page, in its head, by `sitework weigh` on 26 November 2026: the
   heaviest board day is now 499,614 bytes, 386 under the limit, and the root
-  gzipped at level 6 is 140 bytes more.
+  gzipped at level 6 is 140 bytes more. The "For agents" link in the site's bar
+  (#178) added 38 bytes to every page, by `sitework weigh` on 26 November 2026,
+  and 13 to the root gzipped: the heaviest board day is now 499,652 bytes, 348
+  under the limit. Its page, `/for-agents/`, is 75,358 bytes.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -335,8 +354,9 @@ Without the script the switch is not shown and the site follows the browser.
 
 **The site's bar.** On every page: the mark and "Rising Repos", which links to
 the newest board; History, Baseline, and How it works, the one the page is
-marked `aria-current`; and the theme switch. On a phone the three links take a
-line of their own under the name. Baseline's name is `BASELINE_NAME` in
+marked `aria-current`; "For agents", the page that says what `/llms.txt` says; and the theme switch.
+On a phone the links take a line of their own under the name. The links are
+12 px apart, so that four of them fit within a 320 px phone (#178). Baseline's name is `BASELINE_NAME` in
 `sitebuild/__init__.py`, so that renaming the page is one change.
 
 **The day bar.** Under the site's bar, a bar that stays at the top of the
@@ -1056,6 +1076,10 @@ the rule: that is judged when the line is written.
 ```text
 sitebuild/          the generator: python -m sitebuild <folder> [--noindex] [--data <folder>]
   contract.py       reads the data files and checks each against its schema
+  crawl.py          the sitemap and the site's own robots.txt
+  agent_copy.py     each board again as text and JSON for visiting agents
+  repo_list.py      repos.tsv, the list of every repository that has been on a board, for the query service
+  agent_register.py what a reader sees, set against what a visiting agent gets instead
   templates/        Jinja2 templates, the stylesheet, and the parts of the page's one script, with autoescaping on for every one
   fonts/            Rising Sans and Rising Mono, which the build puts inside each page; subset.py cuts them from IBM Plex's files in source/
   static/           files served as they are, under /static/: the fonts' licence
