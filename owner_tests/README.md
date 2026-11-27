@@ -362,3 +362,16 @@ holds whatever is behind that command.
     asks the site being read for the image's path.
 
 Sentence 43 came with #35, and reads a live site as it reads the made-up one.
+
+### Stepping a day with a view chosen (`test_stepping_a_day.py`)
+
+44. Stepping to the board day before, the one after, or the newest keeps the
+    language and the order chosen, and not the search.
+    `test_stepping_to_the_board_day_before_after_or_the_newest_keeps_the_language_and_order_and_not_the_search`
+
+    It does not claim anything of New or a star band, or of a value the next
+    board does not hold, which the agents' tests hold, or of the links at the
+    foot of a board or in the earlier board's note. It takes the first
+    language that the newest board and the one before it both offer.
+
+Sentence 44 came with #148, and reads a live site as it reads the made-up one.
