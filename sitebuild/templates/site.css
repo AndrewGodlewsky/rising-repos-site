@@ -189,6 +189,9 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 .plot .dot.here { stroke: var(--text); stroke-width: 12; }
 .plot .readout { position: absolute; z-index: 1; width: max-content; max-width: 240px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); color: var(--text); font: 400 12px/1.4 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; pointer-events: none; }
 .plot.chosen .rk { visibility: hidden; }
+{# Where the script runs, the ranks' marks wait until it has set them at the chart's drawn size, so that none is drawn
+   in one place and then another (#187). Without it they are drawn where the build set them. #}
+:root[data-js] .plot:not(.placed) .rk { visibility: hidden; }
 {# A tap focuses the chart too, and draws no ring: the ring is the keyboard's. #}
 .plot svg:focus:not(:focus-visible) { outline: none; }
 .plot .tick, .plot .rk, .plot .glabel, .plot .axis { position: absolute; color: var(--text-3); font: 400 11px/1 var(--mono); white-space: nowrap; pointer-events: none; }
