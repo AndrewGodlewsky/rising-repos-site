@@ -960,6 +960,10 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
 
     With `noindex`, every page asks search engines not to index it.
     """
+    # crawl names the site's addresses from this module, so it is read here and not at the top, where this module
+    # is not yet whole.
+    from sitebuild import crawl
+
     if out.exists() and (not out.is_dir() or any(out.iterdir())):
         raise FileExistsError(f"{out} already exists and is not an empty folder. Build into a new one.")
     boards = read_boards(data)
@@ -1018,6 +1022,9 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
             (out / board_day_page(board["board_day"])).with_name("history.json").write_text(
                 json.dumps(history_file(boards, history, number), separators=(",", ":")), encoding="utf-8"
             )
+    # What a crawler reads: the sitemap, and the site's own robots.txt (#170).
+    (out / "sitemap.xml").write_text(crawl.sitemap(boards), encoding="utf-8", newline="\n")
+    (out / "robots.txt").write_text(crawl.robots(noindex=noindex), encoding="utf-8", newline="\n")
 
 
 def _card(written: str, page: str, context: dict, newest: dict) -> dict:

@@ -228,7 +228,7 @@ class EveryPublishedBoard(unittest.TestCase):
         """Each board day has its share image too, an empty one included (#35)."""
         written = sorted(path.relative_to(self.out).as_posix() for path in self.out.rglob("*") if path.is_file())
         days = [board["board_day"] for board in self.boards]
-        expected = [BOARD, DAYS, HOW_IT_WORKS, BASELINE, NOT_FOUND, LICENCE]
+        expected = [BOARD, DAYS, HOW_IT_WORKS, BASELINE, NOT_FOUND, LICENCE, "sitemap.xml", "robots.txt"]
         expected += [board_day_page(day) for day in days]
         expected += [board_day_page(day).replace("index.html", "share.png") for day in days]
         expected += [history_file(day) for day in self.histories]

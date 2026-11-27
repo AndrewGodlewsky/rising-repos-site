@@ -88,6 +88,8 @@ class TheBuild(BuildTest):
                     share_image(NEWEST),
                     share_image(OLDER),
                     LICENCE,
+                    "sitemap.xml",
+                    "robots.txt",
                 ]
             ),
         )

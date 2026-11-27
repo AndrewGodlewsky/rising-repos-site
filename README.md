@@ -66,6 +66,8 @@ design note). The build writes these pages, which `PAGES` in
 | `/days/<board day>/share.png` | The board day's share image, 1200 by 630 pixels, which a link's card shows: the board day and the names of its first three rows, or that it lists none |
 | `/baseline/` | Baseline: each repository on the newest board, placed by its baseline against its recent pace, with every one in a table |
 | `/how-it-works/` | How a board is ranked, in a few plain sentences, with the worked example drawn, and what the site is set in |
+| `/sitemap.xml` | The sitemap of sitemaps.org's schema 0.9: every page above by its whole address with the closing slash. A board day's entry and the entries of `/`, `/days/`, and `/baseline/` carry a `lastmod`, the time a board day's file was published, the newest's for the three that show the newest board. `/how-it-works/` carries none, since its text changes only with the site (#170) |
+| `/robots.txt` | The site's own, so that Cloudflare Pages does not serve its managed one: every crawler may fetch every page, with the signals `search=yes` and `ai-input=yes`, no word on training, and the sitemap named. A build with `--noindex` writes `Disallow: /` and names no sitemap (#170) |
 | `/static/fonts/OFL.txt` | The fonts' licence and IBM's copyright notice, which the licence asks to travel with them |
 | Any other | `404.html`, the page for an address that holds none, which links to `/` and to `/days/` and states no board day |
 
@@ -1056,6 +1058,7 @@ the rule: that is judged when the line is written.
 ```text
 sitebuild/          the generator: python -m sitebuild <folder> [--noindex] [--data <folder>]
   contract.py       reads the data files and checks each against its schema
+  crawl.py          the sitemap and the site's own robots.txt
   templates/        Jinja2 templates, the stylesheet, and the parts of the page's one script, with autoescaping on for every one
   fonts/            Rising Sans and Rising Mono, which the build puts inside each page; subset.py cuts them from IBM Plex's files in source/
   static/           files served as they are, under /static/: the fonts' licence

@@ -329,6 +329,11 @@ _Avoid_: user content, untrusted input
 
 ### Watching the site
 
+**Crawler**:
+A program that fetches the site's pages to build a search index, or to gather
+text that an AI model trains on or answers from.
+_Avoid_: spider, scraper
+
 **Stale check**:
 The check GitHub runs once a day, which reads the root and raises an alarm
 when the newest board is old, the page cannot be fetched, or the page states
