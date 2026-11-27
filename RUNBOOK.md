@@ -58,10 +58,12 @@ switch, and what they became after it, is on
 | Always Online | **Unknown.** The switch belongs to the zone `risingrepos.com`, which is out of the read-only token's sight | The API: `GET /zones?name=risingrepos.com` came back with an empty list, 2026-11-12 at 22:22. Only the dashboard shows it, so check 2 before the switch asks for it |
 | The rollback action in the dashboard | **Unknown.** The API answers about deployments, and nothing about the dashboard's menus | Not read: only the dashboard shows it. Check 3 before the switch asks for it |
 
-**A reading of the live page that can be compared.** Cloudflare adds a script to
-each answer, and one line of it is different every time, so two fetches of the
-whole page never have the same hash. Leaving that line out gives a hash that
-holds from one request to the next:
+**A reading of the live page that can be compared.** Until 26 November 2026
+Cloudflare added a script to each answer, and one line of it was different
+every time, so two fetches of the whole page never had the same hash. Leaving
+that line out gave a hash that held from one request to the next. The owner
+turned that script off on 26 November 2026, so the `grep` now leaves nothing
+out, and the command still works as it is (#146):
 
 ```sh
 curl --silent https://risingrepos.com/ | grep --invert-match '__CF$cv$params' | sha256sum

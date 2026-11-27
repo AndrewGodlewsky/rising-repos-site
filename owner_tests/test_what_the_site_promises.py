@@ -41,11 +41,6 @@ PAGE_LIMIT = 500_000
 WIRE_LIMIT = 150_000
 """The most bytes the root of a board of `made_up.LONG_BOARD` rows may take once gzipped, which is how it is sent."""
 
-HOSTS_OWN = re.compile(r"script-src-elem: (?:inline|https://static\.cloudflareinsights\.com(?:/.*)?)")
-"""What the live site's host puts into each page it hands out, as the browser names its refusal of each: an inline
-script, and the script of the host's analytics. No page the build writes holds either, and the page's own policy
-refuses both, so neither runs and nothing is fetched (evals/site/README.md, "Requests the page never sent")."""
-
 NOTICE = re.compile(r"The newest board is \d+ (hours|days) old")
 WITHHELD = re.compile(r"No board is shown")
 """What the notice of an old board says once the newest is 26 hours old, and once it is a week old."""
@@ -89,11 +84,7 @@ class WhatTheSitePromises(Scenario):
         """Sentence 26. A page of each kind is loaded and used: on a board the first row is opened, which fetches
         the board day's history, and on every page the theme is switched and switched back. Every request that
         leaves the browser goes to the site's own address, and the browser refuses the page nothing. A request the
-        browser refused to send is counted among the refusals, and not among the requests.
-
-        A live site's host adds two scripts of its own to each page (`HOSTS_OWN`). The page's policy refusing them
-        is the promise kept, so on a live site a refusal of either is passed over, and any other still fails. On
-        the pages built here, which the host has not touched, nothing at all is refused."""
+        browser refused to send is counted among the refusals, and not among the requests."""
         page = self.reader()
         asked, stopped = [], []
         page.on("request", lambda request: asked.append(request.url))
@@ -113,8 +104,6 @@ class WhatTheSitePromises(Scenario):
             and urlsplit(address).scheme not in ("data", "blob")
             and f"{urlsplit(address).scheme}://{urlsplit(address).netloc}" != self.site.address
         ]
-        if the_site.LIVE:
-            refused = [refusal for refusal in refused if not HOSTS_OWN.fullmatch(refusal)]
         self.assertTrue(asked)
         self.assertEqual(elsewhere, [])
         self.assertEqual(refused, [])
