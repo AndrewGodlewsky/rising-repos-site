@@ -13,6 +13,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   var table = document.querySelector("table.chart");
   var q = document.getElementById("q");
+  {# The day bar's search box, which is drawn from 768 px up in the place of the filter's, which a phone draws. The two
+     hold the same words, so that the box a reader sees is the search at whatever width the window has (#213). #}
+  var bar = document.getElementById("day-q");
+  function say(words) { [q, bar].forEach(function (box) { if (box && box.value !== words) box.value = words; }); }
   var kinds = document.getElementById("kinds");
   var bands = document.getElementById("bands");
   var language = document.getElementById("language");
@@ -150,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
     language.value = "";
     [].forEach.call(language.options, function (option) { if (option.value && option.value.toLowerCase() === wanted) language.value = option.value; });
     sort.value = orders.hasOwnProperty(query.get("sort")) ? query.get("sort") : "rank";
-    q.value = query.get("q") || "";
+    say(query.get("q") || "");
     press(kindButtons, "data-kind", kind);
     press(bandButtons, "data-band", band);
   }
@@ -184,7 +188,9 @@ document.addEventListener("DOMContentLoaded", function () {
   group(kindButtons, "data-kind", function (value) { kind = value; });
   group(bandButtons, "data-band", function (value) { band = value; });
   {# A search starts a new entry in the history, and its typing then refines that entry. #}
-  q.addEventListener("input", function () { var started = !new URLSearchParams(location.search).get("q"); apply(); write(started); });
+  [q, bar].forEach(function (box) {
+    if (box) box.addEventListener("input", function () { say(box.value); var started = !new URLSearchParams(location.search).get("q"); apply(); write(started); });
+  });
   language.addEventListener("change", function () { apply(); write(true); });
   sort.addEventListener("change", function () { apply(); write(true); });
   window.addEventListener("popstate", function () { read(); apply(); });
@@ -192,7 +198,8 @@ document.addEventListener("DOMContentLoaded", function () {
      button hides with its line, so the keyboard goes to the All button, the first of the filter's controls, rather
      than to the search, which would open a phone's keyboard (#33). #}
   if (none) none.lastElementChild.addEventListener("click", function () {
-    kind = band = language.value = q.value = "";
+    kind = band = language.value = "";
+    say("");
     press(kindButtons, "data-kind", kind);
     press(bandButtons, "data-band", band);
     apply();

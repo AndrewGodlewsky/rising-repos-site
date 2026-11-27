@@ -806,8 +806,13 @@ class TheBoardDays(BuildTest):
                 self.assertEqual((link.attrs["href"], link.classes(), link.attrs.get("rel")), ("/", ["newest"], None))
 
     def strip(self, page):
-        (strip,) = [nav for nav in page.all("nav") if "strip" in nav.classes()]
-        return strip
+        """The day bar's board days: the bar itself on a page with no board, and the navigation inside a board's
+        bar, which holds the board's search beside them (#213)."""
+        (bar,) = [element for element in page.all() if "strip" in element.classes()]
+        if bar.tag == "nav":
+            return bar
+        (nav,) = bar.all("nav")
+        return nav
 
     def foot(self, page):
         (footer,) = page.one("main").all("footer")

@@ -43,7 +43,7 @@ a page that already does the nearest job, and build from it.
 | A choice among a few | The filter's buttons, each with `aria-pressed` | `.segments button` |
 | One action, such as undoing a view | The button under the line that says no row matches: the filter's size, with an edge | `.filtered-none button` |
 | A choice among many | The filter's list of languages | `.toolbar select` |
-| Words the reader types | The filter's search, and the field that finds a repository on Baseline's chart | `input[type="search"]` |
+| Words the reader types | The board's search, in the filter on a phone and in the day bar from 768 px up, and the field that finds a repository on Baseline's chart | `input[type="search"]` |
 | A figure | Rising Mono with figures of one width | `.num` |
 | A table of figures | Baseline's table | `.numbers` |
 | A table of figures with more columns than a phone has room for | An opened row's table of the boards it was on: below 768 px each of its rows is stacked, and each figure is under its column's heading | `.more-days` |
@@ -140,7 +140,10 @@ The stylesheet is written for a phone first, and widens at 768 px and at
 1,100 px. The day bar alone also narrows: below 390 px its parts sit closer,
 and below 360 px it leaves out Latest, for which there is then no room (#28).
 Below 768 px the filter's star bands are a grid of two or three columns, as
-wide as the toolbar, so that no button is left alone on a line (#32).
+wide as the toolbar, so that no button is left alone on a line (#32). From
+768 px up the board's search leaves the filter for the day bar, so that on a
+window 1,200 px wide or more the filter keeps one row whatever languages a
+board lists (#213).
 
 ### Movement
 
