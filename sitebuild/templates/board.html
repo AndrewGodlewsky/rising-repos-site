@@ -100,7 +100,7 @@
    assistive technology that a table whose display changes is a table. A file older than the rows' numbers
    (RisingRepos#49) gives no row a reason, and then the board has no column for one. #}
 {% set explained = "score" in board.rows[0] %}
-<table class="chart{% if not explained %} plain{% endif %}" role="table" aria-labelledby="board" data-history="{{ history_address }}">
+<table class="chart{% if not explained %} plain{% endif %}" role="table" aria-labelledby="board" data-history="{{ history_address }}" data-w="{{ history.window }}">
 <thead role="rowgroup">
 <tr role="row"><th scope="col" role="columnheader" class="rk">Rank</th><th scope="col" role="columnheader" class="re">Repository</th><th scope="col" role="columnheader" class="de sr">Description</th>{% if explained %}<th scope="col" role="columnheader" class="wy sr">More: why it is on the board</th>{% endif %}{% if not explained %}<th scope="col" role="columnheader" class="language">Language</th>{% endif %}{% if explained %}{% if gains %}<th scope="col" role="columnheader" class="gr">Stars gained<span class="sub"> on the board day</span></th>{% else %}<th scope="col" role="columnheader" class="gr">Stars a day<span class="sub"> over the last 2 days</span></th>{% endif %}<th scope="col" role="columnheader" class="pc">Against its own pace<span class="sub"> the last 14 days</span></th>{% endif %}<th scope="col" role="columnheader" class="st">Total stars</th></tr>
 </thead>

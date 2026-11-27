@@ -628,6 +628,21 @@ class TheBoardDays(BuildTest):
                 self.assertEqual(len(page.rows()), len(read_json(self.board_file(day))["rows"]))
         self.assertEqual(pages[board_day_page(NEWEST)].one("main").text(), pages[BOARD].one("main").text())
 
+    def test_no_row_of_a_boards_page_as_built_holds_a_count_of_boards(self):
+        """#186: the count the "Most often" order sorts a row by is the script's to show, so the page as built, which
+        a reader with scripts off is shown, has none. A row's header holds its name, and its New mark when it has
+        one."""
+        pages = self.build_pages()
+        for path in (BOARD, board_day_page(NEWEST)):
+            rows = pages[path].rows()
+            self.assertTrue(rows)
+            for row in rows:
+                (head,) = [cell for cell in row.all("th") if "re" in cell.classes()]
+                (link,) = head.all("a")
+                name = link.text()
+                with self.subTest(path, row=name):
+                    self.assertIn(head.text(), [name, name + " New"])
+
     def test_each_board_links_to_the_board_day_before_it_and_after_it_in_the_day_bar_and_the_foot(self):
         """An earlier board's day bar also leads to the newest, at the root."""
         pages = self.build_pages()

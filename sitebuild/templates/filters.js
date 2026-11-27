@@ -7,7 +7,8 @@
    reason, the drawing of its own pace against what it gained, its facts, its last 30 board days, and the boards it
    was on. If the file cannot be had, the row opens on its reason line and says the rest could not be loaded. It
    writes only text, elements, classes, and attributes, stores nothing but the view in the address, and a new order
-   moves rows without renumbering one: each keeps the rank its file gives it.
+   moves rows without renumbering one: each keeps the rank its file gives it. In the "Most often" order each row says
+   after its name the count it is sorted by, from the two numbers the build wrote (#186).
    It waits for the page to be parsed, since it runs from the one script in the head. #}
 document.addEventListener("DOMContentLoaded", function () {
   var table = document.querySelector("table.chart");
@@ -50,6 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   });
   var body = table.tBodies[0];
+  {# How many boards the "Most often" order counted, which the build writes on the table: 14, or fewer on the site's
+     first board days (#186). #}
+  var boardsCounted = Number(table.getAttribute("data-w"));
+  var countsMade = false;
   var kindButtons = [].slice.call(kinds.querySelectorAll("button"));
   var bandButtons = [].slice.call(bands.querySelectorAll("button"));
   var kind = "";
@@ -83,6 +88,20 @@ document.addEventListener("DOMContentLoaded", function () {
     var countNew = document.getElementById("count-new");
     if (countAll) countAll.textContent = all;
     if (countNew) countNew.textContent = fresh;
+    {# In the "Most often" order each row says the count it is sorted by, after its name and its New mark (#186). The
+       counts are made the first time the order is chosen, for every row, so that a row a filter shows later has its
+       own, and the table's class shows them in that order alone. The space keeps the count a word apart. #}
+    var often = sort.value === "often";
+    if (often && !countsMade) {
+      countsMade = true;
+      rows.forEach(function (row) {
+        var head = row.element.querySelector("th.re");
+        head.appendChild(document.createTextNode(" "));
+        head.appendChild(make("span", "often",
+          "on " + row.often + " of " + boardsCounted + (boardsCounted === 1 ? " board" : " boards")));
+      });
+    }
+    table.classList.toggle("by-often", often);
     var order = orders[sort.value] || orders.rank;
     rows.slice().sort(function (a, b) { return order(a, b) || a.index - b.index; })
       .forEach(function (row) { body.appendChild(row.element); });

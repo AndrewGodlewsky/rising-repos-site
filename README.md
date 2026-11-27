@@ -231,7 +231,11 @@ What every page holds to, each checked by a test in `tests/`:
   381,378 bytes, to 500,000. The owner raised it to 550,000 on 27 November 2026
   (#184), so that the features waiting on it fit: by `sitework weigh` that
   day, the heaviest board day, 499,915 bytes, has 50,085 left, and the 316
-  made-up rows of the owner's sentence 29 come to 494,213. Past about 500 real
+  made-up rows of the owner's sentence 29 come to 494,213. The count of the
+  "Most often" order (#186) added 819 bytes to a board with rows, in its
+  script and its stylesheet, and 266 to every other page, by `sitework weigh`
+  on 27 November 2026, and 202 to the root gzipped: the heaviest board day is
+  now 500,734 bytes, 49,266 under the limit. Past about 500 real
   rows, a long board's later rows in a second file is the next step.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
   is where the limits that a longer board meets are weighed.
@@ -255,7 +259,9 @@ What every page holds to, each checked by a test in `tests/`:
   chart (#29) to 141,927, 86 more, and with the mark that a row's name leaves
   the site (#30) to 142,441, 514 more, and with the star bands as a grid on
   a phone (#32) to 142,508 on 2026-11-25, 67 more, and with the line and
-  the button for a view that matches nothing (#33) to 142,806, 298 more. The
+  the button for a view that matches nothing (#33) to 142,806, 298 more. With
+  the count of the "Most often" order (#186) it came to 143,579 on Windows on
+  2026-11-27, 190 more than the same day's 143,389 without it. The
   type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries
@@ -337,7 +343,7 @@ The body is 15 px, the description 14 px, a repository's name 16 px (17 px from
 | `--surface` | `#ffffff` | `#181a17` | A control, a card, an opened row, the notice of an old board |
 | `--raised` | `#efeee8` | `#22241f` | A note above the rows, and a control under the pointer |
 | `--text` | `#1b1a16` | `#ecebe5` | The text: 16.10:1 on the page, 15.60:1 in the dark |
-| `--text-2` | `#55524a` | `#b0ada3` | The descriptions, the owner, the bars' links, a gain of 0 or a day with no count where a gain is green: 7.21:1, 8.30:1 |
+| `--text-2` | `#55524a` | `#b0ada3` | The descriptions, the owner, the bars' links, a gain of 0 or a day with no count where a gain is green, a row's count in the "Most often" order: 7.21:1, 8.30:1 |
 | `--text-3` | `#6b675d` | `#939087` | The quietest text: the ranks past the top ten, the headings over the figures, an owner over its name in Baseline's table on a phone, a visited repository: 5.22:1, 5.84:1 |
 | `--accent` | `#12704b` | `#5cc896` | Evergreen: what a repository gained, the top ten ranks, a pressed filter, the focus ring, a link under the pointer: 5.64:1, 9.01:1 |
 | `--on-accent` | `#ffffff` | `#0f1a14` | A top-three rank on the accent: 6.10:1, 8.62:1 |
@@ -429,7 +435,10 @@ reader of the page rather than of its words. The site decides none of this.
 with its count; the star bands, from the file's `star_bands`; the language; the
 order (by rank, most stars gained, most often on the last 14 boards, fewest
 stars first, most stars first); and a search of the names and the
-descriptions. A band the board holds back has no row, so its button is
+descriptions. In the order by most often, each row says after its name the
+count it is sorted by, "on 8 of 14 boards": the build writes both numbers,
+and the script only places them (#186). A band the board holds back has no
+row, so its button is
 hidden. A file from before `star_bands` gives no bands, and its board no band
 filter: the contract has the site keep no limits of its own. On a phone the
 band buttons are a grid as wide as the toolbar, under All and New: three
@@ -474,7 +483,12 @@ columns, under headings that stay in view under the day bar: the rank, 48 px;
 the name with the description under it; the day's gain, 112 px; its pace,
 120 px; and the total stars, 96 px. The top three ranks are set on the accent,
 the top ten in it, and the rest in `--text-3`. A New repository has an amber
-"New" after its name. The owner and the name are one run of text,
+"New" after its name. With "Most often in 14 boards" chosen, the count that
+order sorts by follows, "on 8 of 14 boards", set as the New mark is but
+neutral: in `--text-2` inside a 1 px `--line-strong` line, with no fill, so
+that it does not read as New's amber. On the site's first 13 board days it says
+how many boards there were, "on 3 of 5 boards". The script makes it, so a page
+with scripts off has none (#186). The owner and the name are one run of text,
 `owner/name`, so that a search of the page finds a row by it. The table, its
 rows, and its cells name their roles (`role="table"`, `row`, `columnheader`,
 `rowheader`, and `cell`), because some browsers stop telling assistive

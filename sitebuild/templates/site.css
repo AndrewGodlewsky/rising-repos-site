@@ -271,6 +271,11 @@ th.re { grid-area: repository; min-width: 0; overflow-wrap: anywhere; line-heigh
    is for a browser that does not know that form. #}
 .re a::after { content: "\2191"; content: "\2191" / ""; display: inline-block; margin-left: 4px; transform: rotate(45deg); }
 .re .new { margin-left: 8px; padding: 1px 6px; border-radius: 6px; background: var(--new-soft); color: var(--new); font: 500 12px/1.4 var(--sans); white-space: nowrap; vertical-align: 1px; }
+{# The count the "Most often" order sorts a row by, "on 8 of 14 boards" (#186): the New mark's size and shape, but
+   neutral, in the second ink inside a quiet line, since amber is New's alone. The script makes it, and the table's
+   class shows it in that order alone. #}
+.re .often { display: none; margin-left: 8px; padding: 0 5px; border: 1px solid var(--line-strong); border-radius: 6px; color: var(--text-2); font: 500 12px/1.4 var(--sans); white-space: nowrap; vertical-align: 1px; }
+.by-often .re .often { display: inline-block; }
 {# The description on one line, and whole once the row is open. #}
 td.de { grid-area: description; min-width: 0; max-width: 720px; margin-top: 2px; overflow: hidden; color: var(--text-2); font-size: 14px; line-height: 1.5; text-overflow: ellipsis; white-space: nowrap; }
 .chart tbody tr:has(details[open]) td.de { overflow: visible; overflow-wrap: anywhere; white-space: normal; }
