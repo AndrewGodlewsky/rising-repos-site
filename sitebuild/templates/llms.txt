@@ -4,17 +4,7 @@
 
 {{ about }}
 
-## Boards as text
-
-- The newest board, as text, in parts that each name the next: {{ site }}/latest.md
-- The newest board, as JSON: {{ site }}/latest.json
-- Any board day's board, as text, with its later parts board-2.md and on: {{ site }}/days/<board day>/board.md
-- Any board day's board, as JSON: {{ site }}/days/<board day>/board.json
-- A board day is written as {{ newest_day }}, and the first board day is {{ first_day }}
-- The list of board days: {{ site }}{{ days_address }}
-- The list of every repository that has been on a board, one line each: {{ site }}/repos.tsv
-
-## Reading a row
+{{ appears }}
 
 A row of a board is one line with the marks below.
 
@@ -22,15 +12,17 @@ A row of a board is one line with the marks below.
 {{ mark }}
 {% endfor %}
 
-## When a board appears
-
-{{ appears }}
-
-## Owner-written text
-
 {{ owner_line }}
+
+## Boards as text
+
+- [The newest board, as text]({{ site }}/latest.md): in parts that each name the next
+- [The newest board, as JSON]({{ site }}/latest.json)
+- [The first board, as text]({{ site }}/days/{{ first_day }}/board.md): any board day's board is at {{ site }}/days/<board day>/board.md, with its later parts board-2.md and on, and as JSON at board.json; the newest board day is {{ newest_day }}
+- [The list of board days]({{ site }}{{ days_address }})
+- [Every repository that has been on a board]({{ site }}/repos.tsv): one line each, with the board days it was on
 
 ## More
 
-- How a board is ranked: {{ site }}{{ how_address }}
-- This text as a page: {{ site }}{{ agents_address }}
+- [How a board is ranked]({{ site }}{{ how_address }})
+- [This text as a page]({{ site }}{{ agents_address }})

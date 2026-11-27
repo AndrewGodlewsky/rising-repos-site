@@ -38,6 +38,7 @@ class TheRepositoryList(BuildTest):
         lines = (self.out / "repos.tsv").read_text(encoding="utf-8").split("\n")
         self.assertEqual(lines[0], f"# rising-repos list, format {LIST_FORMAT}")
         self.assertEqual(lines[0], "# rising-repos list, format 1")
+        self.assertEqual(lines[1], "full_name\tlanguage\tstars\tlast_board_day\tlast_rank\thistory\tdescription")
         self.assertEqual(lines[1], "\t".join(FIELDS))
 
     def test_every_repository_ever_on_a_board_is_listed_once(self):

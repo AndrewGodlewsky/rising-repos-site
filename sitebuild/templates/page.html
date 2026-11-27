@@ -1,7 +1,7 @@
 {# The pages that carry the notice of an old board, named by the template that renders each: every board day's page,
-   the root among them, and the list of board days. The not-found page and the page on how a board is ranked do
-   not: the notice hides what an old board's page holds, and that page holds no board. To keep the notice to the root
-   alone, make this ("latest.html",). A board's page also carries the filter over its list. #}
+   the root among them, and the list of board days. The not-found page, the page on how a board is ranked, and
+   the page for agents do not: the notice hides what an old board's page holds, and those pages hold no board. To
+   keep the notice to the root alone, make this ("latest.html",). A board's page also carries the filter over its list. #}
 {% set notice = template in ("latest.html", "board.html", "days.html", "baseline.html") %}
 {% set filtering = template in ("latest.html", "board.html") %}
 {% set section = "how" if template == "how-it-works.html" else "agents" if template == "for-agents.html" else "days" if template == "days.html" else "baseline" if template == "baseline.html" else "board" %}

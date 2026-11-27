@@ -3,11 +3,10 @@
 A column, a filter, and a page are each built for a reader. A later change that gives readers a new one is reminded, by
 `tests/test_agent_register.py`, to give a visiting agent its counterpart in the agent route, or to write why it has
 none. The route is each board's agent copy (#176), `/llms.txt` (#178), and the query service (#173), which is built in
-its own repository and is not yet live, so its parameters are named here as they were decided.
+its own repository and is not yet live. Until it is, a filter that only the service would answer is given its
+counterpart in the agent copy, and its parameters are kept out of this register: #180 moves them here when the service
+is live.
 """
-
-QUERY_PARAMETERS = ("q", "lang", "since", "page", "format")
-"""The parameters of the query service, as #173 decided them."""
 
 PACE_FIGURES = "agent copy: pace"
 
@@ -33,13 +32,13 @@ REGISTER: dict[str, dict[str, str]] = {
     "filter": {
         "kinds": "agent copy: new",
         "bands": "agent copy: stars",
-        "language": "query service: lang",
+        "language": "agent copy: language",
         "sort": (
             "none: the agent copy lists the rows in rank order with each row's gain, stars, and earlier boards, which"
             " an agent orders by itself"
         ),
-        "q": "query service: q",
-        "find": "query service: q",
+        "q": "agent copy: full_name, description",
+        "find": "agent copy: full_name",
     },
     "page": {
         "index.html": "llms.txt: Boards as text",
@@ -52,5 +51,6 @@ REGISTER: dict[str, dict[str, str]] = {
     },
 }
 """What a reader sees, by its kind, each with its counterpart for an agent: `agent copy: <field>` of a row of a board's
-JSON, `query service: <parameter>`, `llms.txt: <section>`, or `none: <reason>`. A column is named by its heading, a
+JSON, or `agent copy: <field>, <field>` for a control that reads two, `query service: <parameter>` once the service is
+live, `llms.txt: <section>`, or `none: <reason>`. A column is named by its heading, a
 filter by the `id` of its control, and a page by its path in `PAGES`."""

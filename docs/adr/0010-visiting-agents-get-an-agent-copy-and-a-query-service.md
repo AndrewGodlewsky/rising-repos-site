@@ -18,6 +18,12 @@ and #175. #171 chose the layout of the agent copy from three built for the
 purpose, #174 chose the language of the query service, and #175 chose its own
 repository.
 
+**Not yet in force**, for the query service. The agent copy and `/llms.txt` are
+in force. The service is built in its own repository and is not yet live. Until
+it is, the agent copy answers what it can, and `sitebuild/agent_register.py`
+gives each filter that only the service would answer its counterpart in the copy
+(#180 moves them to the service when it is live).
+
 ## Consequences
 
 - Every figure in the agent copy is the page's, worded as the page words it,

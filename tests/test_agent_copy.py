@@ -10,7 +10,7 @@ import unittest
 
 from helpers import BuildTest, read_json, write_json
 
-from sitebuild import History, board_day_page, day_address, long_date, new_means
+from sitebuild import FOR_AGENTS, History, board_day_page, day_address, long_date, new_means
 from sitebuild.agent_copy import LIMIT, Earlier, earlier
 
 NEWEST, OLDER, OLDEST = "2026-11-09", "2026-11-08", "2026-11-07"
@@ -136,6 +136,18 @@ class TheAgentCopy(BuildTest):
         said = {text.split(". ", 1)[0]: self.row_fields(text)[5] for text in self.lines_of()}
         self.assertEqual([said[rank] for rank in "345"], ["new"] * 3)
 
+    def test_a_row_new_by_its_name_that_was_on_earlier_boards_under_another_says_which(self):
+        self.earlier_boards()
+        for day in (OLDER, OLDEST):
+            board = read_json(self.board_file(day))
+            renamed = {**board["rows"][0], "full_name": "rising-repos-example/the-old-name"}
+            self.write_board({**board, "rows": [renamed, *board["rows"][1:]]})
+        self.build_pages()
+        said = {text.split(". ", 1)[0]: self.row_fields(text)[5] for text in self.lines_of()}
+        self.assertEqual(said["1"], "new, earlier 2 boards from 2026-11-07, best #2")
+        self.assertEqual(said["2"], "earlier 1 board from 2026-11-08, best #7")
+        self.assertEqual(said["3"], "new")
+
     def test_a_renamed_repository_keeps_the_boards_it_was_on_by_its_github_id(self):
         def board(day: str, rank: int, name: str) -> dict:
             return {"board_day": day, "rows": [{"github_id": 7, "rank": rank, "full_name": name}]}
@@ -171,9 +183,25 @@ class TheAgentCopy(BuildTest):
         self.build_pages()
         text = self.built(folder(OLDER) + "board.md")
         self.assertIn("Part 1 of 1: this board lists no repository.", text)
-        self.assertIn("0 repositories", text)
+        self.assertIn("No repositories.", text)
         self.assertFalse((self.out / (folder(OLDER) + "board-2.md")).exists())
         self.assertEqual(read_json(self.out / (folder(OLDER) + "board.json"))["rows"], [])
+
+    def test_a_board_with_no_rows_has_no_gain_wording_in_its_copy_or_in_the_guide_to_it(self):
+        board = read_json(self.board_file())
+        self.write_board({**board, "rows": []})
+        pages = self.build_pages()
+        newest = self.built(folder(NEWEST) + "board.md")
+        self.assertIn("No repositories.", newest)
+        self.assertIn("Part 1 of 1: this board lists no repository.", newest)
+        for name, text in (
+            ("the board's copy", newest),
+            ("/llms.txt", self.built("llms.txt")),
+            ("/for-agents/", pages[FOR_AGENTS].one("article").text()),
+        ):
+            with self.subTest(name):
+                self.assertNotIn("gained", text)
+                self.assertNotIn("does not give", text)
 
     def test_a_board_without_the_days_gain_words_its_growth_as_the_page_does(self):
         self.drop_row_fields("gained_1_day", "gained_7_days", "gained_30_days", "star_history")
@@ -205,7 +233,7 @@ class TheAgentCopy(BuildTest):
         copy = read_json(self.out / (folder(NEWEST) + "board.json"))
         self.assertEqual(copy["format"], 1)
         self.assertEqual(copy["board_day"], NEWEST)
-        self.assertEqual(copy["owner_written"], ["full_name", "description"])
+        self.assertEqual(copy["owner_written"], ["full_name", "language", "description"])
         self.assertEqual([row["rank"] for row in copy["rows"]], [1, 2, 3, 4, 5])
         self.assertEqual(copy["rows"][0]["full_name"], "rising-repos-example/markup-in-description")
         self.assertEqual(copy["rows"][3]["language"], None)

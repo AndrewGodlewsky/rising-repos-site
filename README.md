@@ -81,13 +81,19 @@ design note). The build writes these pages, which `PAGES` in
 
 Each board's page links to the board day before it and the board day after
 it, and the site's bar on every page links to History, Baseline, How it works, and
-"For agents", which is `/for-agents/`. The addresses are the earlier site's, so a link to one of its board
-days still leads to that board day on the live site. Each build writes every
+"For agents", which is `/for-agents/`. The addresses of the pages are the earlier site's, so a link to one of its
+board days still leads to that board day on the live site. The addresses that came with the agent route are not the
+earlier site's: `/llms.txt`, `/sitemap.xml`, `/robots.txt`, `/repos.tsv`, each board's `board.md` and `board.json`, and
+`/for-agents/` are new, so no link made before them leads to one. Each build writes every
 page again: from the 115 board days in `site-data/` on 21 November 2026, 120
 pages, 111 history files, and the licence, in about 10 seconds. With a share
 image for each board day (#35), the 119 board days of 26 November 2026 build
 124 pages, 115 history files, and 119 images, of 5,435,912 bytes in all, in
-about 11 seconds.
+about 11 seconds. With the agent route (#170, #176, #177, #178) the build
+also writes each board day's copy as text, in parts, and as JSON, `latest.md`
+and `latest.json`, `repos.tsv`, `llms.txt`, `sitemap.xml`, `robots.txt`, and the
+page `/for-agents/`: 795 files on 27 November 2026, against Cloudflare Pages'
+limit of 20,000 files a site.
 
 What every page holds to, each checked by a test in `tests/`:
 
@@ -213,7 +219,7 @@ What every page holds to, each checked by a test in `tests/`:
   heaviest board day is now 499,614 bytes, 386 under the limit, and the root
   gzipped at level 6 is 140 bytes more. The "For agents" link in the site's bar
   (#178) added 38 bytes to every page, by `sitework weigh` on 26 November 2026,
-  and 16 to the root gzipped: the heaviest board day is now 499,652 bytes, 348
+  and 13 to the root gzipped: the heaviest board day is now 499,652 bytes, 348
   under the limit. Its page, `/for-agents/`, is 75,358 bytes.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
@@ -1072,6 +1078,8 @@ sitebuild/          the generator: python -m sitebuild <folder> [--noindex] [--d
   contract.py       reads the data files and checks each against its schema
   crawl.py          the sitemap and the site's own robots.txt
   agent_copy.py     each board again as text and JSON for visiting agents
+  repo_list.py      repos.tsv, the list of every repository that has been on a board, for the query service
+  agent_register.py what a reader sees, set against what a visiting agent gets instead
   templates/        Jinja2 templates, the stylesheet, and the parts of the page's one script, with autoescaping on for every one
   fonts/            Rising Sans and Rising Mono, which the build puts inside each page; subset.py cuts them from IBM Plex's files in source/
   static/           files served as they are, under /static/: the fonts' licence

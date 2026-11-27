@@ -14,7 +14,7 @@ from sitebuild import FOR_AGENTS, SITE
 from sitebuild.agent_copy import OWNER_LINE
 
 NEWEST, OLDER = "2026-11-09", "2026-11-08"
-ADDRESS = re.compile(r"https://risingrepos\.com/[^\s)>]*")
+ADDRESS = re.compile(r"https://risingrepos\.com/[^\s),>]*")
 
 
 class TheLlmsTxt(BuildTest):
@@ -31,17 +31,21 @@ class TheLlmsTxt(BuildTest):
         )
         self.assertEqual(
             [line for line in lines if line.startswith("## ")],
-            [
-                "## Boards as text",
-                "## Reading a row",
-                "## When a board appears",
-                "## Owner-written text",
-                "## More",
-            ],
+            ["## Boards as text", "## More"],
         )
+
+    def test_llms_txt_holds_prose_only_before_its_first_section_and_only_links_after_it(self):
+        before, after = self.text().split("\n## ", 1)
+        self.assertIn(OWNER_LINE, before)
+        self.assertIn("- rank:", before)
+        for line in after.split("\n"):
+            if line and not line.startswith("## ") and line not in ("Boards as text", "More"):
+                with self.subTest(line):
+                    self.assertRegex(line, r"^- \[[^\]]+\]\(https://risingrepos\.com/[^)\s]*\)(: .+)?$")
 
     def test_every_address_llms_txt_names_is_a_file_the_build_wrote(self):
         named = ADDRESS.findall(self.text().replace("<board day>", NEWEST))
+        self.assertIn(f"{SITE}/days/{OLDER}/board.md", named)
         self.assertIn(f"{SITE}/latest.md", named)
         self.assertIn(f"{SITE}/repos.tsv", named)
         for address in named:
@@ -61,7 +65,18 @@ class TheLlmsTxt(BuildTest):
         self.assertIn(OWNER_LINE, text)
 
     def test_llms_txt_names_the_newest_boards_day_and_size(self):
-        self.assertIn("9 November 2026", self.text())
+        text = self.text()
+        self.assertIn("9 November 2026", text)
+        self.assertIn("which lists 5 repositories", text)
+
+    def test_llms_txt_is_plain_text_with_no_html_entity_in_it(self):
+        text = self.text()
+        self.assertIn("after the day's stars are counted", text)
+        self.assertNotIn("&#", text)
+        self.assertNotIn("&amp;", text)
+
+    def test_the_for_agents_page_shows_an_apostrophe_as_a_reader_expects(self):
+        self.assertIn("after the day's stars are counted", self.build_pages()[FOR_AGENTS].one("article").text())
 
     def test_every_pages_bar_links_for_agents_to_its_page_after_how_it_works(self):
         for path, page in self.build_pages().items():

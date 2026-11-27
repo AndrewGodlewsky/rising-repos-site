@@ -234,6 +234,17 @@ A board day's board as text and JSON, written for visiting agents beside its
 page.
 _Avoid_: API, feed
 
+**Agent route**:
+What a visiting agent can reach instead of a page: each board's agent copy,
+`/llms.txt`, and the query service.
+_Avoid_: API, bot endpoint
+
+**Query service**:
+The program in its own repository that answers a visiting agent's search across
+every repository that has been on a board, from the list the site publishes. It
+is another program at another address, and no page depends on it.
+_Avoid_: API, backend, search engine
+
 **Colophon**:
 The line at the foot of every page that says what the site is, and that it is
 not affiliated with GitHub.

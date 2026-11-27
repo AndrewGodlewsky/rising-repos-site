@@ -11,7 +11,7 @@ import shutil
 from helpers import BuildTest
 
 from sitebuild import PAGES
-from sitebuild.agent_register import QUERY_PARAMETERS, REGISTER
+from sitebuild.agent_register import REGISTER
 
 COUNTERPART = re.compile(r"(agent copy|query service|llms\.txt): (\S.*)|none: (\S.*)")
 
@@ -46,13 +46,15 @@ class TheRegister(BuildTest):
         copy = json.loads((self.out / "latest.json").read_text(encoding="utf-8"))
         fields = set(copy["rows"][0])
         sections = set(re.findall(r"^## (.+)$", (self.out / "llms.txt").read_text(encoding="utf-8"), re.MULTILINE))
-        known = {"agent copy": fields, "llms.txt": sections, "query service": set(QUERY_PARAMETERS)}
+        # The query service is not live, so its parameters are not in the register yet (#180).
+        known = {"agent copy": fields, "llms.txt": sections, "query service": set()}
         for kind, entries in REGISTER.items():
             for name, counterpart in entries.items():
                 found = COUNTERPART.fullmatch(counterpart)
                 if found and found.group(1):
                     with self.subTest(f"{kind} {name}"):
-                        self.assertIn(found.group(2), known[found.group(1)], counterpart)
+                        for named in found.group(2).split(", "):
+                            self.assertIn(named, known[found.group(1)], counterpart)
 
     def test_every_register_entry_names_a_counterpart_or_a_reason(self):
         self.assertEqual(list(REGISTER), ["column", "filter", "page"])

@@ -1054,9 +1054,12 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
     (out / "repos.tsv").write_text(repo_list.repo_list(boards), encoding="utf-8", newline="\n")
     # What a visiting agent finds first, and what tells it the above is there (#178).
     # The file is plain text, so the templates' escaping, which would turn each apostrophe into an entity, is
-    # not wanted: its values are the build's own fixed words, and a repository's name is in none of them.
-    plain = {**guide, "marks": [Markup(mark) for mark in guide["marks"]], "owner_line": Markup(guide["owner_line"])}
-    llms = templates.get_template("llms.txt").render(**common, site=SITE, **{**guide, **plain})
+    # not wanted: every value of the guide is the build's own fixed words, and a repository's name is in none of
+    # them. A template may not switch the escaping off (P5), so each value is marked as safe for this one render.
+    plain = {
+        key: [Markup(v) for v in value] if isinstance(value, list) else Markup(value) for key, value in guide.items()
+    }
+    llms = templates.get_template("llms.txt").render(**common, site=SITE, **plain)
     (out / "llms.txt").write_text(llms, encoding="utf-8", newline="\n")
 
 
