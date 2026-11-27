@@ -116,7 +116,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 .site nav { order: 3; flex: 1 1 100%; }
 .home { display: inline-flex; flex: none; white-space: nowrap; align-items: center; gap: 8px; color: var(--text); font-size: 16px; font-weight: 500; text-decoration: none; }
 .home svg { width: 20px; height: 20px; }
-.site nav { display: flex; gap: 20px; font-size: 14px; white-space: nowrap; }
+.site nav { display: flex; gap: 12px; font-size: 14px; white-space: nowrap; }
 .site nav a { display: inline-block; padding: 6px 0; }
 .site nav a { color: var(--text-2); text-decoration: none; }
 .site nav a:hover, .site nav a[aria-current] { color: var(--text); }

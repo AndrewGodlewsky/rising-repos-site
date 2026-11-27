@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 
 from helpers import BuildTest, read_json
 
-from sitebuild import BASELINE, DAYS, HOW_IT_WORKS, SITE, address, day_address
+from sitebuild import BASELINE, DAYS, FOR_AGENTS, HOW_IT_WORKS, SITE, address, day_address
 
 NEWEST, OLDER = "2026-11-09", "2026-11-08"
 SCHEMA = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
@@ -35,6 +35,7 @@ class TheCrawlerFiles(BuildTest):
                     SITE + address(DAYS),
                     SITE + address(BASELINE),
                     SITE + address(HOW_IT_WORKS),
+                    SITE + address(FOR_AGENTS),
                     SITE + day_address(NEWEST),
                     SITE + day_address(OLDER),
                 ]
@@ -49,7 +50,8 @@ class TheCrawlerFiles(BuildTest):
             self.assertEqual(entries[SITE + day_address(day)], moment)
         for page in ("/", address(DAYS), address(BASELINE)):
             self.assertEqual(entries[SITE + page], published[NEWEST], page)
-        self.assertIsNone(entries[SITE + address(HOW_IT_WORKS)])
+        for page in (HOW_IT_WORKS, FOR_AGENTS):
+            self.assertIsNone(entries[SITE + address(page)], page)
 
     def test_the_robots_txt_allows_every_crawler_states_two_signals_and_names_the_sitemap(self):
         self.build_pages()

@@ -9,7 +9,7 @@ from io import BytesIO
 from helpers import BuildTest, read_json
 from PIL import Image
 
-from sitebuild import BASELINE, BOARD, DAYS, HOW_IT_WORKS, NOT_FOUND, board_day_page, share_lines
+from sitebuild import BASELINE, BOARD, DAYS, FOR_AGENTS, HOW_IT_WORKS, NOT_FOUND, board_day_page, share_lines
 from sitebuild.share import HEIGHT, WIDTH
 
 NEWEST, OLDER = "2026-11-09", "2026-11-08"
@@ -49,7 +49,8 @@ class TheCard(BuildTest):
     def test_every_page_carries_the_card_tags_once_each_and_names_its_image_on_risingrepos_com(self):
         pages = self.build_pages()
         self.assertEqual(
-            set(pages), {BOARD, DAYS, HOW_IT_WORKS, BASELINE, NOT_FOUND, board_day_page(NEWEST), board_day_page(OLDER)}
+            set(pages),
+            {BOARD, DAYS, HOW_IT_WORKS, FOR_AGENTS, BASELINE, NOT_FOUND, board_day_page(NEWEST), board_day_page(OLDER)},
         )
         for path, page in pages.items():
             with self.subTest(path):
@@ -78,6 +79,7 @@ class TheCanonical(BuildTest):
             (DAYS, f"{SITE}/days/"),
             (BASELINE, f"{SITE}/baseline/"),
             (HOW_IT_WORKS, f"{SITE}/how-it-works/"),
+            (FOR_AGENTS, f"{SITE}/for-agents/"),
         ):
             with self.subTest(path):
                 self.assertEqual(canonicals(pages[path]), [own])
@@ -99,6 +101,7 @@ class TheImage(BuildTest):
             (DAYS, newest),
             (BASELINE, newest),
             (HOW_IT_WORKS, newest),
+            (FOR_AGENTS, newest),
             (NOT_FOUND, newest),
         ):
             with self.subTest(path):

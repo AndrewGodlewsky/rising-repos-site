@@ -74,12 +74,14 @@ design note). The build writes these pages, which `PAGES` in
 | `/latest.md` | The newest board day's `board.md`, at an address that does not change (#176) |
 | `/latest.json` | The newest board day's `board.json`, at an address that does not change (#176) |
 | `/repos.tsv` | The query service's list of every repository that has been on a board, once by its GitHub id, under its newest name (#177). Line 1 is `# rising-repos list, format 1`, line 2 the field names, tab-separated, then a line a repository with its full name, language, stars on the newest board it was on, that board day, its rank that day, its history (every board day it was on with its rank, oldest first, as `2026-11-25:182,2026-11-26:221`), and its description last. A tab or line break inside a field is made a space. The Worker in `rising-repos-api` fetches it, so its format is a contract |
+| `/for-agents/` | What `/llms.txt` says, as a page of the site like How it works, so that the bar's "For agents" leads to a page with the card, the one script, and the bar. Both are rendered from `agent_copy.guide`, so that they cannot drift, and the page links to `/llms.txt`, `/latest.md`, `/latest.json`, and `/days/`, and gives `/repos.tsv` as text, since a browser downloads a tab-separated file and the owner's tests follow every link to a page that opens. It carries no `lastmod` in the sitemap (#178) |
+| `/llms.txt` | What the site holds, as plain text, for a visiting agent that looks for the file: a title, a one-line summary, a paragraph on what the site records, and sections of links to the agent copy, the list of board days, and `/repos.tsv`, with the marks and the owner-written line in the words of the agent copy's header (`agent_copy.marks`, `agent_copy.OWNER_LINE`). It describes and gives no order (#158), and names no address of the query service until that is live (#178) |
 | `/static/fonts/OFL.txt` | The fonts' licence and IBM's copyright notice, which the licence asks to travel with them |
 | Any other | `404.html`, the page for an address that holds none, which links to `/` and to `/days/` and states no board day |
 
 Each board's page links to the board day before it and the board day after
-it, and the site's bar on every page links to History, Baseline, and How it
-works. The addresses are the earlier site's, so a link to one of its board
+it, and the site's bar on every page links to History, Baseline, How it works, and
+"For agents", which is `/for-agents/`. The addresses are the earlier site's, so a link to one of its board
 days still leads to that board day on the live site. Each build writes every
 page again: from the 115 board days in `site-data/` on 21 November 2026, 120
 pages, 111 history files, and the licence, in about 10 seconds. With a share
@@ -209,7 +211,10 @@ What every page holds to, each checked by a test in `tests/`:
   address, and each page's own description (#35) added about 690 bytes to
   every page, in its head, by `sitework weigh` on 26 November 2026: the
   heaviest board day is now 499,614 bytes, 386 under the limit, and the root
-  gzipped at level 6 is 140 bytes more.
+  gzipped at level 6 is 140 bytes more. The "For agents" link in the site's bar
+  (#178) added 38 bytes to every page, by `sitework weigh` on 26 November 2026,
+  and 16 to the root gzipped: the heaviest board day is now 499,652 bytes, 348
+  under the limit. Its page, `/for-agents/`, is 75,358 bytes.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -343,8 +348,9 @@ Without the script the switch is not shown and the site follows the browser.
 
 **The site's bar.** On every page: the mark and "Rising Repos", which links to
 the newest board; History, Baseline, and How it works, the one the page is
-marked `aria-current`; and the theme switch. On a phone the three links take a
-line of their own under the name. Baseline's name is `BASELINE_NAME` in
+marked `aria-current`; "For agents", the page that says what `/llms.txt` says; and the theme switch.
+On a phone the links take a line of their own under the name. The links are
+12 px apart, so that four of them fit within a 320 px phone (#178). Baseline's name is `BASELINE_NAME` in
 `sitebuild/__init__.py`, so that renaming the page is one change.
 
 **The day bar.** Under the site's bar, a bar that stays at the top of the

@@ -28,6 +28,7 @@ BOARD = "index.html"
 DAYS = "days/index.html"
 BOARD_DAY = "days/{board_day}/index.html"
 HOW_IT_WORKS = "how-it-works/index.html"
+FOR_AGENTS = "for-agents/index.html"
 BASELINE = "baseline/index.html"
 BASELINE_NAME = "Baseline"
 """The Baseline page's name, as the site's bar and the page's own strip show it: change it here to rename the page."""
@@ -43,6 +44,7 @@ PAGES = {
     DAYS: "days.html",
     BOARD_DAY: "board.html",
     HOW_IT_WORKS: "how-it-works.html",
+    FOR_AGENTS: "for-agents.html",
     BASELINE: "baseline.html",
     NOT_FOUND: "not-found.html",
 }
@@ -1012,6 +1014,7 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         "newest": boards[0],
         "days_address": address(DAYS),
         "how_address": address(HOW_IT_WORKS),
+        "agents_address": address(FOR_AGENTS),
         "new_untold": NEW_UNTOLD,
         "noindex": noindex,
         "baseline_address": address(BASELINE),
@@ -1020,10 +1023,11 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         "font_faces": font_faces(),
     }
     history = History(boards)
+    guide = agent_copy.guide(boards, history)
     # Each template is told its own name, which page.html reads to decide whether the page carries the notice.
     pages = {
         written: templates.get_template(PAGES[page]).render(
-            **context, **common, **_card(written, page, context, boards[0]), template=PAGES[page]
+            **context, **common, **guide, site=SITE, **_card(written, page, context, boards[0]), template=PAGES[page]
         )
         for written, page, context in _pages(boards, history)
     }
@@ -1048,6 +1052,12 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         (out / path).write_text(text, encoding="utf-8", newline="\n")
     # What the query service reads: every repository that has been on a board, with its history (#177).
     (out / "repos.tsv").write_text(repo_list.repo_list(boards), encoding="utf-8", newline="\n")
+    # What a visiting agent finds first, and what tells it the above is there (#178).
+    # The file is plain text, so the templates' escaping, which would turn each apostrophe into an entity, is
+    # not wanted: its values are the build's own fixed words, and a repository's name is in none of them.
+    plain = {**guide, "marks": [Markup(mark) for mark in guide["marks"]], "owner_line": Markup(guide["owner_line"])}
+    llms = templates.get_template("llms.txt").render(**common, site=SITE, **{**guide, **plain})
+    (out / "llms.txt").write_text(llms, encoding="utf-8", newline="\n")
 
 
 def _card(written: str, page: str, context: dict, newest: dict) -> dict:
@@ -1079,6 +1089,7 @@ def _pages(boards: list[dict], history: History) -> Iterator[tuple[str, str, dic
         },
     )
     yield HOW_IT_WORKS, HOW_IT_WORKS, {"described": DESCRIBED_FORMULA}
+    yield FOR_AGENTS, FOR_AGENTS, {}
     yield BASELINE, BASELINE, {"board": boards[0], "chart": pace_chart(boards[0]["rows"])}
     yield NOT_FOUND, NOT_FOUND, {}
 

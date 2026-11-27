@@ -22,7 +22,7 @@ from datetime import UTC, datetime, timedelta
 
 from helpers import ROOT, BuildTest, Page, read_json, shipped
 
-from sitebuild import BASELINE, BOARD, DAYS, HOW_IT_WORKS, NOT_FOUND, board_day_page, long_date
+from sitebuild import BASELINE, BOARD, DAYS, FOR_AGENTS, HOW_IT_WORKS, NOT_FOUND, board_day_page, long_date
 
 NODE = shutil.which("node")
 RUNNER = ROOT / "tests" / "run_page_script.js"
@@ -44,6 +44,7 @@ PARTS = {
     DAYS: ("theme.js", "old-board.js"),
     BASELINE: ("theme.js", "old-board.js", "baseline.js"),
     HOW_IT_WORKS: ("theme.js",),
+    FOR_AGENTS: ("theme.js",),
     NOT_FOUND: ("theme.js",),
 }
 """The parts of each page's one script, in order, as the example builds them: the theme on every page; the notice
@@ -434,8 +435,8 @@ class ThePolicy(BuildTest):
                 assert_policy_is_otherwise_as_it_was(self, page, fetches="filters.js" in PARTS[path])
 
     def test_the_not_found_page_and_how_it_works_carry_the_theme_alone_and_no_notice(self):
-        """The notice hides what an old board's page holds, and neither page holds a board."""
-        for path in (NOT_FOUND, HOW_IT_WORKS):
+        """The notice hides what an old board's page holds, and none of these pages holds a board."""
+        for path in (NOT_FOUND, HOW_IT_WORKS, FOR_AGENTS):
             with self.subTest(path):
                 page = self.pages[path]
                 self.assertEqual(PARTS[path], ("theme.js",))

@@ -46,6 +46,7 @@ from sitebuild import (
     BOARD,
     DATA,
     DAYS,
+    FOR_AGENTS,
     HOW_IT_WORKS,
     MINUS,
     NOT_FOUND,
@@ -213,10 +214,10 @@ class EveryPublishedBoard(unittest.TestCase):
 
     def parts(self, path: str) -> tuple[str, ...]:
         """The parts of the site's script that the page at `path` carries, in the order site.js includes them: the
-        theme on every page; the notice of an old board on every page but the two that hold no board; a board's
+        theme on every page; the notice of an old board on every page but the three that hold no board; a board's
         filters where the board has rows; and the Baseline page's readout where the newest board has rows to place."""
         parts = ["theme.js"]
-        if path not in (NOT_FOUND, HOW_IT_WORKS):
+        if path not in (NOT_FOUND, HOW_IT_WORKS, FOR_AGENTS):
             parts.append("old-board.js")
         if path in self.shows and self.shows[path]["rows"]:
             parts.append("filters.js")
@@ -234,8 +235,8 @@ class EveryPublishedBoard(unittest.TestCase):
             if path.is_file() and not re.fullmatch(r"board-\d+\.md", path.name)
         )
         days = [board["board_day"] for board in self.boards]
-        expected = [BOARD, DAYS, HOW_IT_WORKS, BASELINE, NOT_FOUND, LICENCE, "sitemap.xml", "robots.txt"]
-        expected += ["latest.md", "latest.json", "repos.tsv"]
+        expected = [BOARD, DAYS, HOW_IT_WORKS, FOR_AGENTS, BASELINE, NOT_FOUND, LICENCE, "sitemap.xml", "robots.txt"]
+        expected += ["latest.md", "latest.json", "repos.tsv", "llms.txt"]
         expected += [
             board_day_page(day).replace("index.html", name) for day in days for name in ("board.md", "board.json")
         ]

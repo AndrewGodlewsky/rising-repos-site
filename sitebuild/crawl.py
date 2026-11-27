@@ -2,7 +2,7 @@
 
 from xml.sax.saxutils import escape
 
-from sitebuild import BASELINE, DAYS, HOW_IT_WORKS, SITE, address, day_address
+from sitebuild import BASELINE, DAYS, FOR_AGENTS, HOW_IT_WORKS, SITE, address, day_address
 
 SITEMAP_SCHEMA = "http://www.sitemaps.org/schemas/sitemap/0.9"
 
@@ -18,7 +18,7 @@ def sitemap(boards: list[dict]) -> str:
     """
     newest = boards[0]["published_at"]
     entries = [(address(""), newest), (address(DAYS), newest), (address(BASELINE), newest)]
-    entries.append((address(HOW_IT_WORKS), None))
+    entries += [(address(HOW_IT_WORKS), None), (address(FOR_AGENTS), None)]
     entries += [(day_address(board["board_day"]), board["published_at"]) for board in boards]
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',

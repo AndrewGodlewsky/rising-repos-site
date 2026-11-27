@@ -1,0 +1,36 @@
+# Rising Repos
+
+> {{ summary }}
+
+{{ about }}
+
+## Boards as text
+
+- The newest board, as text, in parts that each name the next: {{ site }}/latest.md
+- The newest board, as JSON: {{ site }}/latest.json
+- Any board day's board, as text, with its later parts board-2.md and on: {{ site }}/days/<board day>/board.md
+- Any board day's board, as JSON: {{ site }}/days/<board day>/board.json
+- A board day is written as {{ newest_day }}, and the first board day is {{ first_day }}
+- The list of board days: {{ site }}{{ days_address }}
+- The list of every repository that has been on a board, one line each: {{ site }}/repos.tsv
+
+## Reading a row
+
+A row of a board is one line with the marks below.
+
+{% for mark in marks %}
+{{ mark }}
+{% endfor %}
+
+## When a board appears
+
+{{ appears }}
+
+## Owner-written text
+
+{{ owner_line }}
+
+## More
+
+- How a board is ranked: {{ site }}{{ how_address }}
+- This text as a page: {{ site }}{{ agents_address }}

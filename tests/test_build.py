@@ -18,6 +18,7 @@ from sitebuild import (
     BOARD,
     BOARD_DAY,
     DAYS,
+    FOR_AGENTS,
     HOW_IT_WORKS,
     NOT_FOUND,
     PAGES,
@@ -80,6 +81,7 @@ class TheBuild(BuildTest):
                     BOARD,
                     DAYS,
                     HOW_IT_WORKS,
+                    FOR_AGENTS,
                     BASELINE,
                     NOT_FOUND,
                     board_day_page(NEWEST),
@@ -97,10 +99,11 @@ class TheBuild(BuildTest):
                     "latest.md",
                     "latest.json",
                     "repos.tsv",
+                    "llms.txt",
                 ]
             ),
         )
-        self.assertEqual(set(PAGES), {BOARD, DAYS, HOW_IT_WORKS, BASELINE, NOT_FOUND, BOARD_DAY})
+        self.assertEqual(set(PAGES), {BOARD, DAYS, HOW_IT_WORKS, FOR_AGENTS, BASELINE, NOT_FOUND, BOARD_DAY})
 
     def test_the_board_shows_the_latest_board_day_which_is_the_first_in_the_index(self):
         page = self.build_pages()[BOARD]
@@ -174,7 +177,7 @@ class TheBuild(BuildTest):
         """RisingRepos#111, and AndrewGodlewsky/RisingRepos#49: the page that says how a board is ranked is the
         site's own, not a README. The list of board days is History, in the bar since
         AndrewGodlewsky/RisingRepos#199, so a board's day bar and foot link only to the days beside it."""
-        current = {DAYS: "/days/", BASELINE: "/baseline/", HOW_IT_WORKS: "/how-it-works/"}
+        current = {DAYS: "/days/", BASELINE: "/baseline/", HOW_IT_WORKS: "/how-it-works/", FOR_AGENTS: "/for-agents/"}
         for path, page in self.build_pages().items():
             with self.subTest(path):
                 bar = site_bar(page)
@@ -185,6 +188,7 @@ class TheBuild(BuildTest):
                         ("/days/", "History"),
                         ("/baseline/", "Baseline"),
                         ("/how-it-works/", "How it works"),
+                        ("/for-agents/", "For agents"),
                     ],
                 )
                 self.assertEqual(
