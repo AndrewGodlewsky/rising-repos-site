@@ -15,6 +15,11 @@ from sitebuild.agent_copy import OWNER_LINE
 
 NEWEST, OLDER = "2026-11-09", "2026-11-08"
 ADDRESS = re.compile(r"https://risingrepos\.com/[^\s),>]*")
+API = "/api/"
+# The worked examples #180 asks for: the two addresses the query service's launch was checked on
+# (AndrewGodlewsky/rising-repos-api#1, Task 7 of its plan).
+SEARCH_EXAMPLE = "https://risingrepos.com/api/search?q=pdf"
+REPO_EXAMPLE = "https://risingrepos.com/api/repo/pallets/flask"
 
 
 class TheLlmsTxt(BuildTest):
@@ -31,7 +36,7 @@ class TheLlmsTxt(BuildTest):
         )
         self.assertEqual(
             [line for line in lines if line.startswith("## ")],
-            ["## Boards as text", "## More"],
+            ["## Boards as text", "## Search every repository", "## More"],
         )
 
     def test_llms_txt_holds_prose_only_before_its_first_section_and_only_links_after_it(self):
@@ -39,12 +44,19 @@ class TheLlmsTxt(BuildTest):
         self.assertIn(OWNER_LINE, before)
         self.assertIn("- rank:", before)
         for line in after.split("\n"):
-            if line and not line.startswith("## ") and line not in ("Boards as text", "More"):
+            if (
+                line
+                and not line.startswith("## ")
+                and line not in ("Boards as text", "Search every repository", "More")
+            ):
                 with self.subTest(line):
                     self.assertRegex(line, r"^- \[[^\]]+\]\(https://risingrepos\.com/[^)\s]*\)(: .+)?$")
 
     def test_every_address_llms_txt_names_is_a_file_the_build_wrote(self):
-        named = ADDRESS.findall(self.text().replace("<board day>", NEWEST))
+        # An address under /api/ is the query service's, which answers from its own repository and is no file here.
+        named = [
+            address for address in ADDRESS.findall(self.text().replace("<board day>", NEWEST)) if API not in address
+        ]
         self.assertIn(f"{SITE}/days/{OLDER}/board.md", named)
         self.assertIn(f"{SITE}/latest.md", named)
         self.assertIn(f"{SITE}/repos.tsv", named)
@@ -53,6 +65,13 @@ class TheLlmsTxt(BuildTest):
             built = self.out / path
             with self.subTest(address):
                 self.assertTrue(built.is_file() or (built / "index.html").is_file(), address)
+
+    def test_llms_txt_names_both_addresses_of_the_query_service_with_a_worked_example_of_each(self):
+        section = self.text().split("## Search every repository\n", 1)[1].split("\n## ", 1)[0]
+        self.assertEqual(ADDRESS.findall(section), [SEARCH_EXAMPLE, REPO_EXAMPLE])
+        self.assertIn("/api/repo/<owner>/<name>", section)
+        self.assertIn("format=json", section)
+        self.assertIn("20 to a page", section)
 
     def test_llms_txt_tells_an_agent_nothing_it_must_do(self):
         self.assertNotRegex(self.text().lower(), r"\bmust\b|\bshould\b|you need to")
@@ -98,6 +117,15 @@ class TheLlmsTxt(BuildTest):
             self.assertIn(wanted, hrefs)
         # A browser downloads a tab-separated file, so its address is given as text and not as a link.
         self.assertIn(f"{SITE}/repos.tsv", page.one("article").text())
+
+    def test_the_for_agents_page_names_the_query_services_addresses_as_text_and_not_as_links(self):
+        # The owner's tests open every link of the site as a page, and the service answers from another repository.
+        article = self.build_pages()[FOR_AGENTS].one("article")
+        hrefs = [link.attrs["href"] for link in article.all("a")]
+        for example in (SEARCH_EXAMPLE, REPO_EXAMPLE):
+            with self.subTest(example):
+                self.assertIn(example, article.text())
+                self.assertFalse([href for href in hrefs if API in href], hrefs)
 
     def test_the_for_agents_page_tells_an_agent_nothing_it_must_do(self):
         text = self.build_pages()[FOR_AGENTS].one("article").text().lower()

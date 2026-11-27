@@ -22,6 +22,11 @@ A row of a board is one line with the marks below.
 - [The list of board days]({{ site }}{{ days_address }})
 - [Every repository that has been on a board]({{ site }}/repos.tsv): one line each, with the board days it was on
 
+## Search every repository
+
+- [A search by words]({{ search_example }}): {{ search_about }}
+- [One repository's boards]({{ repo_example }}): {{ repo_about }}
+
 ## More
 
 - [How a board is ranked]({{ site }}{{ how_address }})

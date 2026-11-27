@@ -195,10 +195,11 @@ after this repository's:
 
 ## What the site depends on in Cloudflare
 
-Three settings of the zone are not in this repository's files. The site's
-crawlers (#170) depend on the first two, and the owner's reports from Google
-and Bing on the third (#159). Each is recorded here with where it is set, how
-it is checked, and how it is undone.
+Five settings of the zone are not in this repository's files. The site's
+crawlers (#170) depend on the first two, the owner's reports from Google and
+Bing on the third (#159), and the query service that `/llms.txt` names on the
+fourth and fifth (#180). Each is recorded here with where it is set, how it is
+checked, and how it is undone.
 
 ### The `www` redirect
 
@@ -249,6 +250,61 @@ Console, and has no record of its own in the zone.
   it, as it did a few minutes after it was added.
 - **How it is undone:** delete it under DNS, Records, which is only wanted when
   the site leaves Search Console.
+
+### The query service's route
+
+Deployed at 19:43 UTC on 27 November 2026 by the workflow of
+AndrewGodlewsky/rising-repos-api, whose own repository holds the Worker, its
+deploy, and the Cloudflare token that deploy uses. Nothing in this repository
+deploys or changes it.
+
+- **Where:** Workers Routes of the zone, as the route `risingrepos.com/api/*`
+  of the Worker `rising-repos-api`. The site's pages are under no route, so
+  Pages serves them as before.
+- **What it does:** answers `/api/search` and `/api/repo/<owner>/<name>` from
+  the site's own `/repos.tsv`, which it fetches again every ten minutes, and
+  answers any other address under `/api/` with a 404.
+- **How it is checked:** `curl -s "https://risingrepos.com/api/search?q=pdf"`
+  answers 200 with a first line that counts the matches, and
+  `https://risingrepos.com/` still answers 200 with the site's page. Both were
+  seen so a few minutes after the deploy.
+- **How it is undone:** delete the route under Workers Routes, which leaves
+  every address under `/api/` to Pages, which answers it with the site's 404.
+  `/llms.txt` names the service's addresses, so a revert of #180 goes with it.
+
+### The query service's rate limit
+
+Made on 27 November 2026, through Cloudflare's API at the owner's request, so
+that one visitor cannot spend the Free plan's 100,000 Worker requests a day,
+or the CPU each request has, on its own (Task 7 of the plan for
+AndrewGodlewsky/rising-repos-api#1).
+
+- **Where:** Security, Security rules, Rate limiting rules (the zone's
+  `http_ratelimit` phase), as its one rule, named "Query service: one
+  visitor's requests to /api/". The Free plan allows one rate limiting rule, so
+  another would need this one changed or a paid plan.
+- **When it applies:** `(starts_with(http.request.uri.path, "/api/"))`. The
+  site's pages are never counted.
+- **What it does:** counts each visitor by IP address, within each of
+  Cloudflare's data centres, and when one sends more than 50 requests in
+  10 seconds, answers its further requests 429 for 10 seconds. Ten seconds is
+  the only period and the only block the Free plan offers.
+- **Why 50:** a visiting agent that reads every page of a search for "pdf"
+  makes 7 requests, and the companies whose agents read for many people fetch
+  from shared addresses, so the number is set well above what one agent
+  needs. Cloudflare counts approximately: of 120 requests sent in 6 seconds
+  from one machine after the rule was made, 111 were answered and 9 were
+  refused with 429.
+- **How it is checked:** under Security, Analytics, Events, filtered to the
+  action Block and the service Rate limiting, the blocked requests are listed.
+  Blocks of real agents there are the sign to raise the number.
+- **How it is changed:** edit the rule under Rate limiting rules, and change
+  "Requests" (50), then Deploy; the period and the block stay at 10 seconds on
+  the Free plan. Through the API, it is the one rule of
+  `GET /zones/<zone>/rulesets/phases/http_ratelimit/entrypoint`, and its
+  `ratelimit.requests_per_period`.
+- **How it is undone:** delete the rule, which leaves `/api/` to Cloudflare's
+  protection against attacks alone, which every plan has.
 
 ## What was built after this runbook was written
 

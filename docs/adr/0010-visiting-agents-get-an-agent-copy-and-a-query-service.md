@@ -18,11 +18,11 @@ and #175. #171 chose the layout of the agent copy from three built for the
 purpose, #174 chose the language of the query service, and #175 chose its own
 repository.
 
-**Not yet in force**, for the query service. The agent copy and `/llms.txt` are
-in force. The service is built in its own repository and is not yet live. Until
-it is, the agent copy answers what it can, and `sitebuild/agent_register.py`
-gives each filter that only the service would answer its counterpart in the copy
-(#180 moves them to the service when it is live).
+**In force** since 27 November 2026. The agent copy and `/llms.txt` came first.
+The query service went live that evening at `/api/` on the site's own domain,
+from its own repository (AndrewGodlewsky/rising-repos-api#1), and #180 named its
+two addresses in `/llms.txt` and moved the board's search, its language menu, and
+Baseline's find to it in `sitebuild/agent_register.py`.
 
 ## Consequences
 
@@ -42,5 +42,6 @@ gives each filter that only the service would answer its counterpart in the copy
 - tests/test_agent_copy.py::TheAgentCopy::test_the_json_holds_every_row_its_format_and_the_names_of_the_owner_written_fields
 - tests/test_agent_copy.py::TheAgentCopy::test_latest_is_the_newest_boards_copy
 - tests/test_published_boards.py::EveryPublishedBoard::test_the_build_writes_the_sites_pages_a_page_for_each_board_day_and_the_history_of_each_that_has_rows
+- tests/test_llms.py::TheLlmsTxt::test_llms_txt_names_both_addresses_of_the_query_service_with_a_worked_example_of_each
 
 No test holds that the query service lives in its own repository.
