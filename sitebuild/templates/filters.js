@@ -63,6 +63,10 @@ document.addEventListener("DOMContentLoaded", function () {
     large: function (a, b) { return b.stars - a.stars; }
   };
 
+  {# The board's links to another board day: the day bar's previous, next, and Latest, the foot's previous and next,
+     and the earlier-board note's link to the newest board. On a board's page only these have rel=prev, rel=next,
+     the class latest, or sit in the note. #}
+  var steps = document.querySelectorAll("[rel=prev],[rel=next],.latest,.earlier a");
   function apply() {
     var words = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
     var count = 0, all = 0, fresh = 0;
@@ -89,6 +93,11 @@ document.addEventListener("DOMContentLoaded", function () {
       none.hidden = count > 0;
       if (!count) none.firstElementChild.textContent = nothing(words.length);
     }
+    {# Each link to another board day carries the filters and the order, so that stepping a day keeps them (#148).
+       apply() runs on load, on each change of the view, and on Back and Forward, so the links follow the view the
+       page settled on. Without the script they stay the plain addresses the build wrote. #}
+    var kept = String(view());
+    steps.forEach(function (a) { a.href = a.pathname + (kept && "?" + kept); });
   }
   {# The line that says nothing matches names each part of the view that is chosen, by the words its control shows: New,
      a band's label, a language (#33). A search is named "the search" and not by its words, which come from the address
@@ -109,7 +118,10 @@ document.addEventListener("DOMContentLoaded", function () {
   {# The view is kept in the address's query, so that it can be shared, bookmarked, and walked with Back and
      Forward: show=new, band=1k-3k, lang=Rust, sort=gained, and q=the search, each left out at its default. The
      server sends the same page whatever the query says, and a value the page does not know is ignored, as is a
-     band the board holds back. #}
+     band the board holds back. The links to other board days carry the view without the search: its words come
+     from the address or the reader's typing, and stay in the search field alone (P22; the owner's answer on #148,
+     26 November 2026). The rest is built from words the build wrote, never from the address, so a value the
+     board does not hold is carried by no link. #}
   function read() {
     var query = new URLSearchParams(location.search);
     kind = query.get("show") === "new" && kindButtons.some(function (b) { return b.getAttribute("data-kind") === "new"; }) ? "new" : "";
@@ -123,12 +135,18 @@ document.addEventListener("DOMContentLoaded", function () {
     press(kindButtons, "data-kind", kind);
     press(bandButtons, "data-band", band);
   }
-  function write(push) {
+  {# The query of the filters and the order, each left out at its default: one function for the address and the
+     links alike, so that they cannot disagree (C17). #}
+  function view() {
     var query = new URLSearchParams();
     if (kind) query.set("show", kind);
     if (band !== "") query.set("band", bandWords[band]);
     if (language.value) query.set("lang", language.value);
     if (sort.value !== "rank") query.set("sort", sort.value);
+    return query;
+  }
+  function write(push) {
+    var query = view();
     if (q.value.trim()) query.set("q", q.value.trim());
     var search = query.toString() ? "?" + query.toString() : "";
     if (search === location.search) return;

@@ -220,7 +220,12 @@ What every page holds to, each checked by a test in `tests/`:
   gzipped at level 6 is 140 bytes more. The "For agents" link in the site's bar
   (#178) added 38 bytes to every page, by `sitework weigh` on 26 November 2026,
   and 13 to the root gzipped: the heaviest board day is now 499,652 bytes, 348
-  under the limit. Its page, `/for-agents/`, is 75,358 bytes.
+  under the limit. Its page, `/for-agents/`, is 75,358 bytes. Keeping the
+  filters and the order in the links to other board days (#148) added 263
+  bytes to a board with rows, in its script, by `sitework weigh` on 27
+  November 2026, and 99 to the root gzipped: the heaviest board day is now
+  499,915 bytes, 85 under the limit, so the next change that adds to every
+  board with rows needs a saving first.
   [AndrewGodlewsky/RisingRepos#199](https://github.com/AndrewGodlewsky/RisingRepos/issues/199)
   raised the limit from 410,000, which the 316 made-up rows had reached at
   381,378 bytes. Past about 500 real rows, a long board's later rows in a
@@ -436,10 +441,15 @@ they come from the address, which only chooses among what the page holds, and
 they stay in view in the search field. The keyboard then goes to All, since the
 button hides with its line. Its
 state is in the address (`?show=new&band=1k-3k&lang=Rust&sort=gained&q=…`),
-so a filtered board can be linked to. The controls are marked `js-only`, which
-the stylesheet shows only once the script has marked the root element, in the
-`<head>`, so they are in place from the first frame and move nothing, and
-without the script the page shows the whole board and no control.
+so a filtered board can be linked to. The board's links to the board day
+before and after, Latest, and the earlier board's note carry the filters and
+the order, so that stepping a day keeps them, and never the search, whose words
+stay in the search field alone: the search box starts empty on the next day
+(#148). A value the board does not hold is carried by none of them, so a
+language follows a reader back only to the first day with no row of it. The
+controls are marked `js-only`, which the stylesheet shows only once the script
+has marked the root element, in the `<head>`, so they are in place from the
+first frame and move nothing, and without the script the page shows the whole board and no control.
 
 **New.** A repository is New when its name, in any case, was on none of the
 boards before this one, back to the first; a renamed or moved repository is

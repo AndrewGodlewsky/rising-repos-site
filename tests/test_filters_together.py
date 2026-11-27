@@ -87,7 +87,9 @@ NOTHING = "No repository on this board matches"
 CLEAR = "Clear search and filters"
 
 
-class TheFiltersTogether(BuildTest):
+class ABoardAndAnEarlierOne(BuildTest):
+    """The example's newest board, open at the root, and an earlier board, OLDER, with two of its rows."""
+
     def setUp(self):
         super().setUp()
         # The example's older board lists two of the newest board's five rows, so the other three are new.
@@ -121,6 +123,8 @@ class TheFiltersTogether(BuildTest):
         """The word of the star band a count falls in: the first band that stops above it."""
         return next(band["word"] for band in self.facts["bands"] if band["below"] is None or stars < band["below"])
 
+
+class TheFiltersTogether(ABoardAndAnEarlierOne):
     def lets_by(self, row: dict, show: str = "", band: str = "", lang: str = "", q: str = "", **_) -> bool:
         """Whether a row shows, by the rule: each filter that names something the board has lets by the rows that
         are that, a value the board does not have is no filter, and every word of the search is in the row's name
@@ -297,6 +301,192 @@ class TheFiltersTogether(BuildTest):
         self.assertEqual(
             chosen["shown"], [row["rank"] for row in self.facts["rows"] if self.lets_by(row, show="new", lang="Rust")]
         )
+
+
+LINKS = """() => [...document.querySelectorAll(
+  "nav.strip a[rel=prev], nav.strip a[rel=next], nav.strip a.latest, p.earlier a, " +
+  "nav.foot-links a[rel=prev], nav.foot-links a[rel=next]"
+)].map((a) => a.getAttribute("href"))"""
+"""Each of a board's links to another board day, as its address is written, in the page's order: the day bar's
+previous, next, and Latest links, the earlier-board note's link to the newest board, and the foot's previous and
+next links. As written, so that a bare "?" on a plain address is told from the address itself."""
+
+CHOSEN = """() => ({
+  show: (document.querySelector('#kinds button[aria-pressed="true"]') || {}).getAttribute?.("data-kind") || "",
+  band: (document.querySelector('#bands button[aria-pressed="true"]') || {}).getAttribute?.("data-word") || "",
+  lang: document.getElementById("language").value,
+  sort: document.getElementById("sort").value,
+  q: document.getElementById("q").value,
+})"""
+"""What each control of the filter shows chosen: the kind and the band pressed, by their words in the address, the
+language, the order, and the search."""
+
+ADDRESS = "() => location.pathname + location.search"
+
+EARLIER = f"/days/{OLDER}/"
+
+
+class TheLinksToOtherBoardDays(ABoardAndAnEarlierOne):
+    """A board's links to the board day before and after it, to the newest, and the earlier-board note's link carry
+    the filters and the order chosen, and never the search, so that stepping a day keeps the view (#148). The owner
+    chose on 26 November 2026 that the search's words stay out of the links, so that P22 holds whole: they come from
+    the address or the reader's typing, and are written nowhere in the page.
+
+    The root has a previous link, in the day bar and at the foot, and the earlier board has a next link in each,
+    Latest, and the note. The root holds back the 1k-3k band, and the earlier board has HTML alone and no New."""
+
+    def plain(self, path: str) -> list[str]:
+        """The links of a board as the build wrote them, read with scripts off."""
+        page = self.browser.new_page(viewport={"width": 1440, "height": 900}, java_script_enabled=False)
+        page.goto(self.site + path, wait_until="load")
+        links = page.evaluate(LINKS)
+        page.close()
+        return links
+
+    def choose(self, page, show: str = "", band: str = "", lang: str = "", sort: str = "") -> None:
+        """Choose a view with the controls, as a reader does."""
+        if show:
+            page.locator(f'#kinds button[data-kind="{show}"]').click()
+        if band:
+            page.locator(f'#bands button[data-word="{band}"]').click()
+        if lang:
+            page.locator("#language").select_option(lang)
+        if sort:
+            page.locator("#sort").select_option(sort)
+
+    def test_each_link_to_another_board_day_carries_the_filters_and_order_chosen_with_the_controls_in_any_combination(
+        self,
+    ):
+        values = {
+            "/": {"show": "new", "band": "3k-10k", "lang": "Rust", "sort": "large"},
+            EARLIER: {"band": "10k-30k", "lang": "HTML", "sort": "small"},
+        }
+        for path, these in values.items():
+            plain = self.plain(path)
+            for size in range(1, len(these) + 1):
+                for names in itertools.combinations(these, size):
+                    chosen = {name: these[name] for name in names}
+                    with self.subTest(path=path, **chosen):
+                        page = self.board(path)
+                        self.choose(page, **chosen)
+                        search = page.evaluate("() => location.search")
+                        self.assertEqual(dict(parse_qsl(search.lstrip("?"))), chosen)
+                        # Exactly the query the address holds, each on its own link's path.
+                        self.assertEqual(page.evaluate(LINKS), [link + search for link in plain])
+                        page.close()
+
+    def test_no_link_to_another_board_day_carries_the_search_alone_or_with_the_filters(self):
+        plain = self.plain("/")
+        page = self.board()
+        page.locator("#q").fill("octocat")
+        self.assertEqual(page.evaluate("() => location.search"), "?q=octocat")
+        self.assertEqual(page.evaluate(LINKS), plain)
+        self.choose(page, lang="Rust", sort="large")
+        self.assertEqual(page.evaluate("() => location.search"), "?lang=Rust&sort=large&q=octocat")
+        self.assertEqual(page.evaluate(LINKS), [link + "?lang=Rust&sort=large" for link in plain])
+        # A search typed after the filters are chosen is left out as well.
+        page = self.board()
+        self.choose(page, show="new")
+        page.locator("#q").fill("octocat")
+        self.assertEqual(page.evaluate("() => location.search"), "?show=new&q=octocat")
+        self.assertEqual(page.evaluate(LINKS), [link + "?show=new" for link in plain])
+
+    def test_a_board_opened_at_an_address_that_holds_a_view_gives_each_link_to_another_board_day_its_filters_and_order(
+        self,
+    ):
+        for path, opened, carried in [
+            ("/", "?show=new&band=3k-10k&lang=Rust&sort=large", "?show=new&band=3k-10k&lang=Rust&sort=large"),
+            # The language is carried as the board writes it, and the search not at all.
+            ("/", "?sort=often&q=octocat&lang=rust", "?lang=Rust&sort=often"),
+            (EARLIER, "?lang=HTML&q=octocat", "?lang=HTML"),
+        ]:
+            with self.subTest(path=path, opened=opened):
+                plain = self.plain(path)
+                page = self.board(path + opened)
+                self.assertEqual(page.evaluate(LINKS), [link + carried for link in plain])
+
+    def test_following_previous_next_or_latest_opens_that_board_with_the_same_filters_and_order_and_an_empty_search(
+        self,
+    ):
+        for start, link, lands in [
+            ("/", "nav.strip a[rel=prev]", EARLIER),
+            ("/", "nav.foot-links a[rel=prev]", EARLIER),
+            (EARLIER, "nav.strip a[rel=next]", "/days/2026-11-09/"),
+            (EARLIER, "nav.foot-links a[rel=next]", "/days/2026-11-09/"),
+            (EARLIER, "nav.strip a.latest", "/"),
+        ]:
+            with self.subTest(start=start, link=link):
+                page = self.board(start + "?band=10k-30k&lang=HTML&sort=small&q=octocat")
+                with page.expect_navigation(wait_until="load"):
+                    page.locator(link).click()
+                self.assertEqual(page.evaluate(ADDRESS), lands + "?band=10k-30k&lang=HTML&sort=small")
+                self.assertEqual(
+                    page.evaluate(CHOSEN), {"show": "", "band": "10k-30k", "lang": "HTML", "sort": "small", "q": ""}
+                )
+                # The rows that are HTML and in the 10k-30k band, fewest stars first.
+                rows = page.evaluate(FACTS)["rows"]
+                fits = [row for row in rows if row["language"] == "HTML" and self.band_of(row["stars"]) == "10k-30k"]
+                shown = page.evaluate(SEEN)["shown"]
+                self.assertEqual(shown, [row["rank"] for row in sorted(fits, key=lambda row: row["stars"])])
+                self.assertLess(len(shown), len(rows))
+
+    def test_with_the_default_view_each_link_to_another_board_day_has_no_query(self):
+        for path in ["/", EARLIER]:
+            with self.subTest(path=path):
+                plain = self.plain(path)
+                self.assertTrue(plain)
+                self.assertFalse([link for link in plain if "?" in link])
+                page = self.board(path)
+                self.assertEqual(page.evaluate(LINKS), plain)
+                # A view chosen, and then cleared with the order left at rank.
+                self.choose(page, lang="HTML")
+                page.locator("#q").fill("no repository is called this")
+                self.assertEqual(page.evaluate(LINKS), [link + "?lang=HTML" for link in plain])
+                page.locator("#none-shown").get_by_role("button", name=CLEAR).click()
+                self.assertEqual(page.evaluate("() => location.search"), "")
+                self.assertEqual(page.evaluate(LINKS), plain)
+
+    def test_a_value_the_board_does_not_hold_is_not_carried_by_its_links(self):
+        for path, opened, carried in [
+            ("/", "?lang=Cobol", ""),
+            ("/", "?band=1k-3k", ""),
+            ("/", "?sort=sideways", ""),
+            ("/", "?band=1k-3k&lang=Cobol&sort=large", "?sort=large"),
+            (EARLIER, "?show=new&lang=Rust", ""),
+            (EARLIER, "?show=new&lang=Rust&band=3k-10k", "?band=3k-10k"),
+        ]:
+            with self.subTest(path=path, opened=opened):
+                plain = self.plain(path)
+                page = self.board(path + opened)
+                self.assertEqual(page.evaluate(LINKS), [link + carried for link in plain])
+
+    def test_back_and_forward_give_the_links_the_view_they_return(self):
+        plain = self.plain("/")
+        page = self.board()
+        self.choose(page, lang="Rust")
+        self.choose(page, sort="large")
+        self.assertEqual(page.evaluate(LINKS), [link + "?lang=Rust&sort=large" for link in plain])
+        page.go_back()
+        self.assertEqual(page.evaluate(LINKS), [link + "?lang=Rust" for link in plain])
+        page.go_forward()
+        self.assertEqual(page.evaluate(LINKS), [link + "?lang=Rust&sort=large" for link in plain])
+
+    def test_back_and_forward_walk_the_views_chosen_one_entry_each(self):
+        page = self.board()
+        everything = page.evaluate(SEEN)
+        self.choose(page, lang="Rust")
+        first = page.evaluate(SEEN)
+        self.choose(page, sort="large")
+        second = page.evaluate(SEEN)
+        self.assertEqual([first["search"], second["search"]], ["?lang=Rust", "?lang=Rust&sort=large"])
+        page.go_back()
+        self.assertEqual(page.evaluate(SEEN), first)
+        page.go_back()
+        self.assertEqual(page.evaluate(SEEN), everything)
+        page.go_forward()
+        self.assertEqual(page.evaluate(SEEN), first)
+        page.go_forward()
+        self.assertEqual(page.evaluate(SEEN), second)
 
 
 if __name__ == "__main__":
