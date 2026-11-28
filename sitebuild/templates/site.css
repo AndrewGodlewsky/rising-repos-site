@@ -134,7 +134,12 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 {# The day bar: the board days on either side, kept in view while the list scrolls #}
 .strip { position: sticky; top: 0; z-index: 3; background: var(--bg); border-bottom: 1px solid var(--line); font-size: 14px; }
 .strip .wrap { display: flex; align-items: center; gap: 4px; height: var(--bar); }
-.strip .wrap > a, .strip .wrap > span { display: inline-block; height: 32px; line-height: 32px; padding: 0 8px; border-radius: 8px; white-space: nowrap; }
+{# A board's bar holds its board days in a navigation of their own, beside the board's search (#213). The navigation
+   lies as the bar does, with the bar's gaps, and the rules for the bar's parts reach them in either. #}
+.strip nav { display: flex; flex: 1; align-items: center; gap: inherit; }
+.strip :is(.wrap, nav) > :is(a, span) { display: inline-block; height: 32px; line-height: 32px; padding: 0 8px; border-radius: 8px; white-space: nowrap; }
+{# The bar's search is drawn from 768 px up alone, and never on a page that shows no board (#213). #}
+.strip [role=search], :root[data-withheld] .strip [role=search] { display: none; }
 .strip a { color: var(--text-2); text-decoration: none; transition: background-color 150ms var(--ease), color 150ms var(--ease); }
 .strip a:hover { background: var(--raised); color: var(--text); }
 .strip .here { color: var(--text); font-weight: 500; }
@@ -147,10 +152,10 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 .strip .latest .when { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @media (max-width: 389.98px) {
   .strip .wrap { gap: 2px; }
-  .strip .wrap > a, .strip .wrap > span { padding: 0 4px; }
+  .strip :is(.wrap, nav) > :is(a, span) { padding: 0 4px; }
 }
 @media (max-width: 359.98px) {
-  .strip .wrap > .latest { display: none; }
+  .strip nav > .latest { display: none; }
 }
 
 {# A page's title block #}
@@ -471,7 +476,11 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
   .wrap { padding: 0 32px; }
   .numbers th, .numbers td { padding-right: 12px; }
   .numbers .n { padding-right: 0; padding-left: 12px; }
-  .toolbar input[type="search"] { order: 0; flex: 1 1 160px; max-width: 280px; margin-left: auto; }
+  {# The search is in the day bar from here up, at the bar's right-hand end, and the filter keeps its row (#213). The
+     filter's label goes with its box, which a screen reader would otherwise hear naming nothing. #}
+  .toolbar [for=q], .toolbar input[type="search"] { display: none; }
+  .strip [role=search] { display: block; flex: 0 1 280px; min-width: 160px; }
+  .strip input { width: 100%; }
   #bands { display: flex; flex: initial; }
   .strip h1.here { font-size: 28px; line-height: 40px; letter-spacing: -0.02em; }
   .strip .wrap { gap: 8px; }

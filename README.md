@@ -239,7 +239,12 @@ What every page holds to, each checked by a test in `tests/`:
   at the size its chart is drawn (#187) added 62 bytes to every page, in the
   stylesheet, and 3,429 more to Baseline, in its script, by `sitework weigh`
   on 27 November 2026, and 16 to the root gzipped: the heaviest board day is
-  now 500,796 bytes, 49,204 under the limit. Past about 500 real
+  now 500,796 bytes, 49,204 under the limit. Moving the board's search into
+  the day bar from 768 px up (#213) added 658 bytes to every board, in its
+  markup, its script, and its stylesheet, and 234 to every other page, in the
+  stylesheet, by `sitework weigh` on 27 November 2026, and 173 to the root
+  gzipped: the heaviest board day is now 501,454 bytes, 48,546 under the
+  limit. Past about 500 real
   rows, a long board's later rows in a second file is the next step.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
   is where the limits that a longer board meets are weighed.
@@ -265,7 +270,9 @@ What every page holds to, each checked by a test in `tests/`:
   a phone (#32) to 142,508 on 2026-11-25, 67 more, and with the line and
   the button for a view that matches nothing (#33) to 142,806, 298 more. With
   the count of the "Most often" order (#186) it came to 143,579 on Windows on
-  2026-11-27, 190 more than the same day's 143,389 without it. The
+  2026-11-27, 190 more than the same day's 143,389 without it. With the
+  search in the day bar (#213) it came to 143,769 on Windows on 2026-11-27,
+  174 more than the same day's 143,595 without it. The
   type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries
@@ -383,8 +390,8 @@ On a phone the links take a line of their own under the name. The links are
 **The day bar.** Under the site's bar, a bar that stays at the top of the
 screen while the page scrolls: the board day before, with an arrow before it;
 the board's date, which is the page's `<h1>`; and the board day after, with an
-arrow after it. An earlier board's bar also leads to the newest, at its right
-end: "Latest: 23 Nov »" from 768 px up, and "Latest »" on a phone, where a
+arrow after it. An earlier board's bar also leads to the newest, at the right
+end of its board days: "Latest: 23 Nov »" from 768 px up, and "Latest »" on a phone, where a
 bar 390 px wide has no room for the date beside two dates of two figures, and
 the date is kept for a screen reader (#28). Below 390 px the bar's parts take
 4 px at each side and sit 2 px apart, and below 360 px, where that is still
@@ -392,9 +399,19 @@ not room enough, Latest is not drawn, and the note above the rows leads to the
 newest board instead. Where there is no board day before, it says "First
 board". Each date is short, "8 Nov", and a screen reader hears "The board
 before" or "The board after" first, and "The daily board for" before the
-date. History's, Baseline's, and How it works' bars lead back to the newest
-board instead. The bar is 52 px tall, and 64 px from 768 px up, and
-`scroll-padding-top` clears it, and the column headings under it on a desktop.
+date. From 768 px up, a board's bar also holds the board's search, at its
+right-hand end, from 280 px wide down to 160 px where the bar has less room,
+so that the search stays in reach all the way down a long board and the filter
+keeps its row to itself: before, a board whose language menu was wide, as one
+that lists "DIGITAL Command Language" is, left the search too little room at
+the end of the filter's row, and it fell alone onto a line of its own (#213).
+The board days are a navigation of their own inside the bar, and the search
+is a search landmark beside it, so that a screen reader does not hear the box
+as one of the board days. A phone's bar has no room beside its dates, so
+below 768 px the search stays in the filter. History's, Baseline's, and How
+it works' bars lead back to the newest board instead. The bar is 52 px tall,
+and 64 px from 768 px up, and `scroll-padding-top` clears it, and the column
+headings under it on a desktop.
 
 **The notes above the rows.** What changes how a board reads is said in the
 open, above its rows: an earlier board, a provisional ranking, a star band
@@ -439,7 +456,11 @@ reader of the page rather than of its words. The site decides none of this.
 with its count; the star bands, from the file's `star_bands`; the language; the
 order (by rank, most stars gained, most often on the last 14 boards, fewest
 stars first, most stars first); and a search of the names and the
-descriptions. In the order by most often, each row says after its name the
+descriptions, which on a phone is the filter's first line, full width, and
+from 768 px up is in the day bar (#213). The page holds a box in each place,
+the stylesheet draws one of them by the width, and the script keeps the two
+holding the same words, so that a window made wider or narrower keeps the
+search in view. In the order by most often, each row says after its name the
 count it is sorted by, "on 8 of 14 boards": the build writes both numbers,
 and the script only places them (#186). A band the board holds back has no
 row, so its button is

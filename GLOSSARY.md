@@ -197,7 +197,8 @@ _Avoid_: header, navbar
 
 **Day bar**:
 The bar under the site's bar that stays in view: the board day before, the
-board's date, and the board day after.
+board's date, and the board day after, and from 768 px up, on a board, the
+board's search (#213).
 _Avoid_: pager, date picker
 
 **Notes above the rows**:

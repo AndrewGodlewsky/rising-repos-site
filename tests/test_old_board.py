@@ -549,7 +549,7 @@ class WithoutScripts(BuildTest):
                 self.assertIs(
                     [element for element in after_site if element.tag in ("p", "nav", "main", "h1")][0], notice
                 )
-                (strip,) = [nav for nav in page.all("nav") if "strip" in nav.classes()]
+                (strip,) = [element for element in page.all() if "strip" in element.classes()]
                 for later in (page.one("h1"), strip, page.one("main")):
                     self.assertLess(order.index(notice), order.index(later))
 

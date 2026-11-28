@@ -7,11 +7,19 @@
 {% block title %}Rising Repos: the daily board for {{ board.board_day|long_date }}{% endblock %}
 {% block description %}The daily board for {{ board.board_day|long_date }}: GitHub repositories gaining stars faster than their own pace predicts.{% endblock %}
 {% block strip %}
-<nav class="strip" aria-label="Board days">
+{# The day bar. From 768 px up it also holds the board's search, at its right-hand end, so that the search stays in
+   reach all the way down the board and the filter keeps its row to itself: a phone's bar has no room beside its
+   dates, and there the filter's own box is drawn. The box is a search of its own, outside the board days'
+   navigation, so that a screen reader does not hear it as one of their links, and the script keeps the two boxes
+   holding the same words (#213). #}
+<div class="strip">
 <div class="wrap">
+<nav aria-label="Board days">
 {{ board_days(board, before, after, newest, heading=True) }}
-</div>
 </nav>
+{% if board.rows %}<div class="js-only" role="search"><label class="sr" for="day-q">Search by name or description</label><input type="search" id="day-q" placeholder="Search" autocomplete="off" spellcheck="false"></div>{% endif %}
+</div>
+</div>
 {% endblock %}
 {% block band %}
 {# The notes that change how the board reads: an earlier board, a provisional ranking, bands held back, and

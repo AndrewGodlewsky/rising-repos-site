@@ -38,6 +38,7 @@ REGISTER: dict[str, dict[str, str]] = {
             " an agent orders by itself"
         ),
         "q": "query service: q",
+        "day-q": "query service: q",
         "find": "query service: q",
     },
     "page": {

@@ -305,7 +305,7 @@ class TheFiltersTogether(ABoardAndAnEarlierOne):
 
 
 LINKS = """() => [...document.querySelectorAll(
-  "nav.strip a[rel=prev], nav.strip a[rel=next], nav.strip a.latest, p.earlier a, " +
+  ".strip a[rel=prev], .strip a[rel=next], .strip a.latest, p.earlier a, " +
   "nav.foot-links a[rel=prev], nav.foot-links a[rel=next]"
 )].map((a) => a.getAttribute("href"))"""
 """Each of a board's links to another board day, as its address is written, in the page's order: the day bar's
@@ -379,7 +379,7 @@ class TheLinksToOtherBoardDays(ABoardAndAnEarlierOne):
     def test_no_link_to_another_board_day_carries_the_search_alone_or_with_the_filters(self):
         plain = self.plain("/")
         page = self.board()
-        page.locator("#q").fill("octocat")
+        page.get_by_role("searchbox").fill("octocat")
         self.assertEqual(page.evaluate("() => location.search"), "?q=octocat")
         self.assertEqual(page.evaluate(LINKS), plain)
         self.choose(page, lang="Rust", sort="large")
@@ -388,7 +388,7 @@ class TheLinksToOtherBoardDays(ABoardAndAnEarlierOne):
         # A search typed after the filters are chosen is left out as well.
         page = self.board()
         self.choose(page, show="new")
-        page.locator("#q").fill("octocat")
+        page.get_by_role("searchbox").fill("octocat")
         self.assertEqual(page.evaluate("() => location.search"), "?show=new&q=octocat")
         self.assertEqual(page.evaluate(LINKS), [link + "?show=new" for link in plain])
 
@@ -410,11 +410,11 @@ class TheLinksToOtherBoardDays(ABoardAndAnEarlierOne):
         self,
     ):
         for start, link, lands in [
-            ("/", "nav.strip a[rel=prev]", EARLIER),
+            ("/", ".strip a[rel=prev]", EARLIER),
             ("/", "nav.foot-links a[rel=prev]", EARLIER),
-            (EARLIER, "nav.strip a[rel=next]", "/days/2026-11-09/"),
+            (EARLIER, ".strip a[rel=next]", "/days/2026-11-09/"),
             (EARLIER, "nav.foot-links a[rel=next]", "/days/2026-11-09/"),
-            (EARLIER, "nav.strip a.latest", "/"),
+            (EARLIER, ".strip a.latest", "/"),
         ]:
             with self.subTest(start=start, link=link):
                 page = self.board(start + "?band=10k-30k&lang=HTML&sort=small&q=octocat")
@@ -441,7 +441,7 @@ class TheLinksToOtherBoardDays(ABoardAndAnEarlierOne):
                 self.assertEqual(page.evaluate(LINKS), plain)
                 # A view chosen, and then cleared with the order left at rank.
                 self.choose(page, lang="HTML")
-                page.locator("#q").fill("no repository is called this")
+                page.get_by_role("searchbox").fill("no repository is called this")
                 self.assertEqual(page.evaluate(LINKS), [link + "?lang=HTML" for link in plain])
                 page.locator("#none-shown").get_by_role("button", name=CLEAR).click()
                 self.assertEqual(page.evaluate("() => location.search"), "")
@@ -601,7 +601,7 @@ class TheOftenCount(BuildTest):
         self.assertLess(len(speaks), 5)
         for opened, shown, widen in [
             ("?sort=often&show=new", [0], lambda page: page.locator('#kinds button[data-kind=""]').click()),
-            ("?sort=often&q=text-beyond-ascii", [2], lambda page: page.locator("#q").fill("")),
+            ("?sort=often&q=text-beyond-ascii", [2], lambda page: page.get_by_role("searchbox").fill("")),
             (f"?sort=often&lang={language}", speaks, lambda page: page.locator("#language").select_option("")),
         ]:
             with self.subTest(opened=opened):
@@ -644,7 +644,7 @@ class TheOftenCount(BuildTest):
         self.assertEqual(
             [name for name, _ in page.evaluate(SAID_BY_ROWS)], [self.rows[row]["full_name"] for row in (4, 3, 2, 1, 0)]
         )
-        page.locator("#q").fill("boards")
+        page.get_by_role("searchbox").fill("boards")
         self.assertEqual([name for name, _ in page.evaluate(SAID_BY_ROWS)], [self.rows[1]["full_name"]])
 
 

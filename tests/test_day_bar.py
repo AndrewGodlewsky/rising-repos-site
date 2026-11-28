@@ -28,9 +28,10 @@ NAME = re.compile(r"^The newest board, ")
 """The start of the name a screen reader hears for Latest, before the newest board's date."""
 
 BAR = """bar => {
-  const wrap = bar.querySelector('.wrap');
+  const wrap = bar.closest('.wrap');
   const box = wrap.getBoundingClientRect();
   const style = getComputedStyle(wrap);
+  const days = bar.getBoundingClientRect();
   const seen = element => {
     // The words of `element` a reader sees: those of a part cut to a pixel, as a screen reader's words are, are not.
     const words = [];
@@ -47,18 +48,20 @@ BAR = """bar => {
   };
   return {
     left: box.left + parseFloat(style.paddingLeft),
-    right: box.right - parseFloat(style.paddingRight),
+    right: Math.min(days.right, box.right - parseFloat(style.paddingRight)),
     sideways: document.documentElement.scrollWidth - window.innerWidth,
-    parts: [...wrap.children].filter(part => part.checkVisibility()).map(part => {
+    parts: [...bar.children].filter(part => part.checkVisibility()).map(part => {
       const edge = part.getBoundingClientRect();
       const middle = (edge.top + edge.bottom) / 2;
       return {kind: part.classList[0], words: seen(part), left: edge.left, right: edge.right, middle};
     }),
   };
 }"""
-"""Where the bar's own room begins and ends, inside its padding; how far the page reaches past the screen's right
-edge; and each part of the bar that is drawn: its kind, the words a reader sees in it, its two sides, and the
-height of its middle, which parts of the bar's one line share."""
+"""Where the board days' own room begins and ends: the bar's room inside its padding, and from 768 px up only as far
+as the navigation that holds them, before the board's search beside it (#213). The navigation stretches to hold its
+links, so the room is measured from the bar, where a part too wide for it shows past its end. Then how far the page
+reaches past the screen's right edge; and each part of the bar that is drawn: its kind, the words a reader sees in
+it, its two sides, and the height of its middle, which parts of the bar's one line share."""
 
 
 class TheWayToTheNewest(BuildTest):
@@ -82,8 +85,8 @@ class TheWayToTheNewest(BuildTest):
                 self.assertLessEqual(part["right"], seen["right"] + 0.5, part)
 
     def assert_latest(self, bar, seen: dict, newest: str, words: str) -> None:
-        """The bar's last part is Latest, which reads `words`, ends at the bar's right end, leads to the root, and
-        is heard as the newest board with its date."""
+        """The bar's last board day is Latest, which reads `words`, ends at the right end of the board days' room,
+        leads to the root, and is heard as the newest board with its date."""
         latest = bar.get_by_role("link", name=NAME)
         self.assertEqual(latest.count(), 1)
         self.assertEqual(latest.get_attribute("href"), "/")
