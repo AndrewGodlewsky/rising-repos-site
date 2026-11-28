@@ -187,26 +187,6 @@ class HowItWorks(BuildTest):
     def page(self):
         return self.build_pages()[HOW_IT_WORKS]
 
-    def test_it_says_in_plain_sentences_how_the_formula_ranks_a_board(self):
-        """The two recent days against the twelve before them, the floor, what a repository needs to be scored, and
-        that every gain counts, with a large, flat project's gain of about 100 stars in a day as the example."""
-        text = self.page().one("main").text()
-        for words in (
-            "the board day and the day before it",
-            "across the twelve days before those two",
-            "A usual pace under 1 star a day counts as 1",
-            "its score is 3 or more",
-            "at least 10 for a repository with fewer than 1,000 stars, 20 for one with fewer than 10,000",
-            "its first count must be fourteen or more days older than the board day",
-            "at least one of the two recent days and seven of the twelve before them must be left",
-            "Nothing is filtered out.",
-            "gains about 100 stars in a day is listed too",
-            "more than 150 stars, and more than 3% of the repository's stars",
-            "this site only rounds them",
-        ):
-            with self.subTest(words):
-                self.assertIn(words, text)
-
     def test_it_names_the_formula_it_describes(self):
         (line,) = [p for p in self.page().one("main").all("p") if "formula" in p.classes()]
         self.assertEqual(line.text(), f"How formula version {DESCRIBED_FORMULA} ranks a board.")
@@ -223,13 +203,14 @@ class HowItWorks(BuildTest):
             f" describe. It describes version {DESCRIBED_FORMULA}.",
         )
 
-    def test_it_leads_back_to_the_boards_and_its_one_script_is_the_theme_alone(self):
-        """The theme switch, in the site's bar, is on every page. The page runs nothing else and fetches nothing."""
+    def test_it_leads_back_to_the_boards_and_its_one_script_is_the_theme_and_the_examples(self):
+        """The theme switch, in the site's bar, is on every page, and the diagram's examples are this page's own
+        (#214). The page runs nothing else and fetches nothing."""
         page = self.page()
         self.assertIn(("/", "The newest board"), page.links())
         self.assertIn(("/days/", "History"), page.links())
         (script,) = page.all("script")
-        self.assertEqual("".join(script.children), shipped("theme.js"))
+        self.assertEqual("".join(script.children), shipped("theme.js") + shipped("how-it-works.js"))
         self.assertNotIn("connect-src", page.directives())
 
 

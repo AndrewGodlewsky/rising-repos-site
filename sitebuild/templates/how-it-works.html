@@ -1,7 +1,12 @@
 {% extends "page.html" %}
-{# How a board is ranked, in a few plain sentences, for the formula `described` names (DESCRIBED_FORMULA). The numbers
-   here are that formula's, which RisingRepos's src/risingrepos/scoring.py holds. When the newest board was ranked by
-   another formula, the page says so first, so that it is never taken for that formula's description. #}
+{# How a board is ranked, as one flow diagram of the checks a repository goes through on a board day, in the order
+   RisingRepos makes them (#214), for the formula `described` names (DESCRIBED_FORMULA). Every check and number in it
+   is that formula's, written here by hand from RisingRepos's src/risingrepos/scoring.py and src/risingrepos/boards.py,
+   since a board day's file brings the ranking and the star bands and none of the formula's rules. So when RisingRepos
+   raises the formula's version, this diagram has to be redrawn from that code, and DESCRIBED_FORMULA raised with it
+   (AGENTS.md, "How it works is written for one formula"). Until then the page says first that it does not describe the
+   newest board's formula, so that it is never taken for that formula's description. The star bands alone come from the
+   newest board's file, as its filter's do, since the site keeps no limits of its own. #}
 {% block title %}Rising Repos: how the boards are ranked{% endblock %}
 {% block description %}How a board is ranked: each repository's stars over its last two days against the pace its own history predicts.{% endblock %}
 {% block band %}
@@ -22,31 +27,141 @@
 </nav>
 {% endblock %}
 {% block main %}
-<article class="prose">
-<p>Once a day, Rising Repos records how many stars each repository it follows has on GitHub. A board day's board lists the repositories whose stars came in faster over the two days up to that day than their own pace before them, the highest score first.</p>
-<h2>Two days against the twelve before</h2>
-<p>A repository's recent pace is the stars it gained over the board day and the day before it, as stars a day. Its usual pace is how many stars a day it took across the twelve days before those two. Its score is the first divided by the second: a repository that gained 520 stars in two days, 260 a day, after gaining 30 a day, scores about 8.7, and its row says it is at 8.7× its usual pace. How far it is above its own trend is what those two days brought beyond its usual pace: here 460 stars.</p>
-<figure class="card example" aria-labelledby="example-title">
-<h2 id="example-title">The worked example, drawn</h2>
-<p class="caption">Twelve days at its usual 30 stars a day, then 520 stars in two days. The part of the two days above the dashed line of its own pace is how far it is above its own trend.</p>
-<div class="days14" role="img" aria-label="Twelve short columns of 30 stars a day, then two tall columns of 260 stars a day, most of each above the dashed line of its usual pace.">
-{% for day in range(12) %}<i style="height:10%"></i>{% endfor %}
-<i class="recent" style="height:86.67%;--over:88.46%"></i><i class="recent" style="height:86.67%;--over:88.46%"></i>
-<span class="own" style="bottom:10%"><span>usual pace, 30 a day</span></span>
-<span class="over" style="top:13.33%">+460 above its own trend · 8.7×</span>
+{# Four made-up repositories, each a button that lights the path it takes: the boxes it passes through, and where it
+   stops. Breaks out, the page's worked example before the diagram, is lit in the markup, so that a reader with scripts
+   off sees it whole, and the four readouts are all here, three hidden, so that the script writes no text (P6). The
+   star band 4,200 stars falls in is the newest board's own. Each example assumes a complete snapshot, which holds
+   nothing, so its band is never held. #}
+{% set breakout = namespace(band=none) %}{% for band in bands if band.below is none or 4200 < band.below %}{% if loop.first %}{% set breakout.band = band.label %}{% endif %}{% endfor %}
+<div class="how">
+<div class="examples">
+<h2 class="examples-title js-only">Follow an example</h2>
+<div class="segments js-only" role="group" aria-label="Examples">
+<button type="button" aria-pressed="true" data-example="breakout" data-path="followed today twoback history losses enough score three above held finish" data-stop="finish">Breaks out</button>
+<button type="button" aria-pressed="false" data-example="steady" data-path="followed today twoback history losses enough score three" data-stop="three">Fast but steady</button>
+<button type="button" aria-pressed="false" data-example="quiet" data-path="followed today twoback history losses enough score three above" data-stop="above">Quiet</button>
+<button type="button" aria-pressed="false" data-example="new" data-path="followed today twoback history" data-stop="history">Too new</button>
 </div>
-<div class="days14-axis" aria-hidden="true"><span>12 days before</span><span>The two recent days</span></div>
-</figure>
-<h2>A floor of 1 star a day</h2>
-<p>A usual pace under 1 star a day counts as 1, so that a quiet repository is not given an endless multiple of almost nothing. Its score is then its recent pace in stars a day. Its row gives no multiple, since its own pace was lower than the one it was divided by, and says that its usual pace was under 1 star a day, or that it had been losing stars.</p>
-<h2>Who makes the board</h2>
-<p>A repository makes the board when its score is 3 or more and it gained enough stars above its own trend over the two days: at least 10 for a repository with fewer than 1,000 stars, 20 for one with fewer than 10,000, and 50 for a larger one. A score has no top, so a row can show 1,000× its usual pace or more. When the board day's own count missed some repositories, the board holds back each star band it missed them in, and says so: no repository of a band held back is listed that day, whatever its score.</p>
-<h2>Before a repository can be scored</h2>
-<p>It needs its star count for the board day and for two days earlier, and its first count must be fourteen or more days older than the board day, for its usual pace to cover all twelve days. If the rule on losses, below, sets some of its days aside, at least one of the two recent days and seven of the twelve before them must be left. A repository missing from either of the two days is not on that day's board, and a board says which days' counts missed some repositories.</p>
-<h2>Every gain counts</h2>
-<p>Nothing is filtered out. Every gain is counted whole, however large and whatever caused it: a large project that has hardly moved for a fortnight and then gains about 100 stars in a day is listed too, because 100 stars is many times the pace it had. Only a loss is set aside. A step from one count to the next that lost more than 150 stars, and more than 3% of the repository's stars, is taken for a fault in the count, and both paces leave its stars and its days out. A row whose recent pace keeps one day for that reason says so.</p>
-<h2>What a row shows</h2>
-<p>Each row gives the stars above its own trend and its multiple of its usual pace, or the stars it gained when those would not be true. Open the line for its score and the sum it came from: its stars over the recent days, divided by the days, divided by its usual pace or by the floor. The numbers come with each board's data, as the ranking worked them out, and this site only rounds them.</p>
+<p class="assume">Each assumes a count every day, no large loss, and a complete snapshot.</p>
+<div aria-live="polite">
+<div class="trace" data-example="breakout">
+<p class="trace-name">Breaks out</p>
+<p class="trace-sum">4,200 stars. It gained 30 a day for 12 days, then 520 in two.</p>
+<dl class="trace-rows">
+<dt>Usual pace</dt><dd>360 ÷ 12 = 30 a day</dd>
+<dt>Recent pace</dt><dd>520 ÷ 2 = 260 a day</dd>
+<dt>Score</dt><dd>260 ÷ 30 = 8.67, 3 or more</dd>
+<dt>Above its own trend</dt><dd>(260 − 30) × 2 = 460, needs 20</dd>
+{% if breakout.band %}<dt>Star band</dt><dd>{{ breakout.band }}, not held</dd>{% endif %}
+</dl>
+<p class="verdict"><span class="outcome made">On the board</span> <span>Ranked among the day's other rising repositories by its score of 8.67.</span></p>
+</div>
+<div class="trace" data-example="steady" hidden>
+<p class="trace-name">Fast but steady</p>
+<p class="trace-sum">52,000 stars. It gained 400 a day for 12 days, then 900 in two.</p>
+<dl class="trace-rows">
+<dt>Usual pace</dt><dd>4,800 ÷ 12 = 400 a day</dd>
+<dt>Recent pace</dt><dd>900 ÷ 2 = 450 a day</dd>
+<dt>Score</dt><dd>450 ÷ 400 = 1.13, under 3</dd>
+</dl>
+<p class="verdict"><span class="outcome">Not rising</span> <span>It gains more stars than almost any repository, but at its usual pace.</span></p>
+</div>
+<div class="trace" data-example="quiet" hidden>
+<p class="trace-name">Quiet</p>
+<p class="trace-sum">640 stars. It gained 3 stars in 12 days, then 8 in two.</p>
+<dl class="trace-rows">
+<dt>Usual pace</dt><dd>3 ÷ 12 = 0.25 a day, so the floor of 1</dd>
+<dt>Recent pace</dt><dd>8 ÷ 2 = 4 a day</dd>
+<dt>Score</dt><dd>4 ÷ 1 = 4.00, 3 or more</dd>
+<dt>Above its own trend</dt><dd>(4 − 0.25) × 2 = 7.5, needs 10</dd>
+</dl>
+<p class="verdict"><span class="outcome">Not rising</span> <span>Four times its pace, but only 7.5 stars above its own trend.</span></p>
+</div>
+<div class="trace" data-example="new" hidden>
+<p class="trace-name">Too new</p>
+<p class="trace-sum">First counted 9 days before the board day. It gained 1,200 stars in the last two.</p>
+<dl class="trace-rows">
+<dt>Counts span</dt><dd>10 days, of the 15 a score needs</dd>
+<dt>Recent gain</dt><dd>1,200 stars, not yet judged</dd>
+</dl>
+<p class="verdict"><span class="outcome">No score yet</span> <span>It can first be scored 5 days later, and rises then only if its stars still outrun its own pace.</span></p>
+</div>
+</div>
+</div>
+<div class="flow">
+<h2 class="sr">The checks, in order</h2>
+<p class="begin lit" data-step="begin">One repository, one board day</p>
+<div class="spine lit" data-to="followed"><h3 class="stage-name">1 · Collecting</h3></div>
+<div class="step check lit pass" data-step="followed">
+<div class="box"><p class="ask">Is it followed?</p><p class="says">Once a day, RisingRepos counts the stars of every repository it has seen at 200 stars or more, the star floor.</p></div>
+<div class="way"><span class="branch"><span class="answer">no</span></span><div class="off"><span class="stops">Stops here</span><p class="off-name">Never counted</p><p class="off-says">With no star counts, it is never judged.</p></div></div>
+</div>
+<div class="spine lit" data-to="today"><span class="answer">yes</span><h3 class="stage-name">2 · Can it be scored?</h3></div>
+<div class="step check lit pass" data-step="today">
+<div class="box"><p class="ask">Was it counted on the board day?</p><p class="says">The board day is the day whose star counts the board ranks.</p></div>
+<div class="way"><span class="branch"><span class="answer">no</span></span><div class="off"><span class="stops">Stops here</span><p class="off-name">No score today</p><p class="off-says">Neither rising nor falling: it is not judged this day.</p></div></div>
+</div>
+<div class="spine lit" data-to="twoback"><span class="answer">yes</span></div>
+<div class="step check lit pass" data-step="twoback">
+<div class="box"><p class="ask">And two days before it?</p><p class="says">The two recent days are measured from that count.</p></div>
+<div class="way"><span class="branch"><span class="answer">no</span></span><div class="off"><span class="stops">Stops here</span><p class="off-name">No score today</p><p class="off-says">If that day's snapshot was partial or missing, the board counts it among the unranked.</p></div></div>
+</div>
+<div class="spine lit" data-to="history"><span class="answer">yes</span></div>
+<div class="step check lit pass" data-step="history">
+<div class="box"><p class="ask">Was it first counted 14 or more days before?</p><p class="says">So that its usual pace covers all twelve days before the recent two: 15 days of counts in all. A day it was missed in between does not reset this.</p></div>
+<div class="way"><span class="branch"><span class="answer">no</span></span><div class="off"><span class="stops">Stops here</span><p class="off-name">Too new: no score yet</p><p class="off-says">It can be scored once its counts span 15 days.</p></div></div>
+</div>
+<div class="spine lit" data-to="losses"><span class="answer">yes</span></div>
+<div class="step work lit pass" data-step="losses">
+<div class="box"><p class="ask">Set large losses aside</p><p class="says">A step from one count to the next that lost more than 150 stars, or 3% of its stars if that is more, is taken as bad data and left out of both paces. A gain of any size always counts.</p></div>
+</div>
+<div class="spine lit" data-to="enough"></div>
+<div class="step check lit pass" data-step="enough">
+<div class="box"><p class="ask">Are enough days left?</p><p class="says">At least 1 of the 2 recent days, and 7 of the 12 before them.</p></div>
+<div class="way"><span class="branch"><span class="answer">no</span></span><div class="off"><span class="stops">Stops here</span><p class="off-name">No score today</p><p class="off-says">Too much of its history was set aside.</p></div></div>
+</div>
+<div class="spine lit" data-to="score"><span class="answer">yes</span><h3 class="stage-name">3 · Is it rising?</h3></div>
+<div class="step work lit pass" data-step="score">
+<div class="box"><p class="ask">Work out its score</p>
+<dl class="sums">
+<dt>recent pace</dt><dd>stars in the 2 recent days ÷ 2</dd>
+<dt>usual pace</dt><dd>stars in the 12 days before ÷ 12</dd>
+<dt>score</dt><dd>recent pace ÷ usual pace, taken as at least 1</dd>
+</dl>
+<p class="says">Each pace divides by the days the rule on losses kept. Taking the usual pace as at least 1 star a day, the floor, keeps a quiet repository from scoring a huge multiple of almost nothing.</p></div>
+</div>
+<div class="spine lit" data-to="three"></div>
+<div class="step check lit pass" data-step="three">
+<div class="box"><p class="ask">Is the score 3 or more?</p><p class="says">Stars coming in at three times its usual pace or faster. Steady growth scores about 1, however fast it is.</p></div>
+<div class="way"><span class="branch"><span class="answer">no</span></span><div class="off"><span class="stops">Stops here</span><p class="off-name">Not rising</p><p class="off-says">It is growing at about its own pace.</p></div></div>
+</div>
+<div class="spine lit" data-to="above"><span class="answer">yes</span></div>
+<div class="step check lit pass" data-step="above">
+<div class="box"><p class="ask">Is it far enough above its own trend?</p><p class="says">How far it is above its own trend is the stars the two recent days brought beyond its usual pace: (recent pace − usual pace) × 2. How far it needs to be depends on its stars on the board day:</p>
+<table class="needs" aria-label="How far above its own trend a repository needs to be, by its stars on the board day">
+<tr><th scope="row">under 1,000 stars</th><td>10</td></tr>
+<tr><th scope="row">1,000 to 9,999</th><td>20</td></tr>
+<tr><th scope="row">10,000 and up</th><td>50</td></tr>
+</table></div>
+<div class="way"><span class="branch"><span class="answer">no</span></span><div class="off"><span class="stops">Stops here</span><p class="off-name">Not rising</p><p class="off-says">A high multiple, but too few stars to count as a rise.</p></div></div>
+</div>
+<div class="spine lit" data-to="held"><span class="answer">yes</span><h3 class="stage-name">4 · The board</h3></div>
+<div class="step check lit pass" data-step="held">
+<div class="box"><p class="ask">Is its star band held today?</p><p class="says">A band is held only when the board day's own snapshot was partial and missed counts in that band. A complete day holds nothing.</p>
+{% if bands %}<ul class="band-list" aria-label="The star bands">{% for band in bands %}<li>{{ band.label }}</li>{% endfor %}</ul>{% endif %}</div>
+<div class="way"><span class="branch"><span class="answer">yes</span></span><div class="off"><span class="stops">Stops here</span><p class="off-name">Left off</p><p class="off-says">The board names the held band, and the rows below close up.</p></div></div>
+</div>
+<div class="spine lit" data-to="finish"><span class="answer">no</span></div>
+<div class="finish lit" data-step="finish"><p class="finish-name">On the board</p><p class="says">Ranked by score, highest first, with ties going by GitHub id. A board has no set length: it lists every repository that rises, and is empty when none does.</p></div>
+<div class="key"><p class="key-title">Key</p><ul>
+<li><i class="k-check" aria-hidden="true"></i>A check</li>
+<li><i class="k-step" aria-hidden="true"></i>A step that works something out</li>
+<li><i class="k-off" aria-hidden="true"></i>Off the board that day</li>
+<li><i class="k-path" aria-hidden="true"></i>The chosen example's path</li>
+</ul></div>
+</div>
+</div>
+<article class="prose">
 {# The licence asks that a modified font keep IBM's notice and licence, and not use the reserved name:
    the site's type is named Rising Sans and Rising Mono, and this says where it comes from, as acknowledgement. #}
 <h2>The type</h2>

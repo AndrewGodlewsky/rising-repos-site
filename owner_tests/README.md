@@ -403,3 +403,18 @@ Sentence 45 came with #186, and reads a live site as it reads the made-up one.
     search box against the board's date, which the day bar holds.
 
 Sentence 46 came with #213, and reads a live site as it reads the made-up one.
+
+### Following an example on How it works (`test_following_an_example.py`)
+
+47. On How it works, choosing an example shows that example's figures alone,
+    and marks the way off the board where it stops, or says it is on the
+    board.
+    `test_on_how_it_works_an_example_shows_its_figures_alone_and_marks_where_it_stops_or_that_it_is_on_the_board`
+
+    It does not claim at which check each example stops, or what its figures
+    are, which the agents' tests hold, or the colour of the path it lights,
+    where its figures sit on a phone, or the page with scripts off, which
+    sentence 21 holds for its buttons. It presses each example the group
+    offers, and reads the figures headed by its name.
+
+Sentence 47 came with #214, and reads a live site as it reads the made-up one.

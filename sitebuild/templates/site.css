@@ -1,7 +1,7 @@
 {# Rising Repos, set like an instrument's daily log: quiet paper and graphite chrome, and a few inks that each mean
    one thing: evergreen for what a repository gained and the board's top, amber
    for what is new, and a deep red for a loss. The dashed line of a repository's own pace is the site's
-   one signature: it is in every row, the opened row's drawing, the Baseline chart, and the worked example. Links stay
+   one signature: it is in every row, the opened row's drawing, and the Baseline chart. Links stay
    in the text's own colour, so that colour always means one of those things. #}
 
 {# The four faces, inside the page: sitebuild/__init__.py's font_faces. Rising Sans and Rising Mono are
@@ -460,15 +460,102 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
 .prose h2 + p, .prose p + p { margin-top: 12px; }
 .prose p { color: var(--text-2); font-size: 16px; line-height: 1.7; }
 .prose > p:first-child { color: var(--text); font-size: 18px; }
-.example { margin: 32px 0 8px; padding: 20px 16px 16px; }
-.days14 { position: relative; display: grid; grid-template-columns: repeat(14, 1fr); align-items: end; gap: 4px; height: 180px; margin: 32px 0 8px; border-bottom: 1px solid var(--line-strong); }
-.days14 i { position: relative; display: block; border-radius: 2px 2px 0 0; background: var(--dot); }
-.days14 i.recent { background: linear-gradient(var(--accent) 0 0) top / 100% var(--over) no-repeat, var(--dot); }
-.days14 .own { position: absolute; left: 0; right: 0; border-top: 1.5px dashed var(--text-3); }
-.days14 .own span, .days14 .over { position: absolute; color: var(--text-2); font: 400 11px/1 var(--mono); white-space: nowrap; }
-.days14 .own span { left: 0; top: -18px; background: var(--surface); padding-right: 4px; }
-.days14 .over { right: 0; transform: translateY(-100%); padding-bottom: 6px; color: var(--accent); font-weight: 500; }
-.days14-axis { display: flex; justify-content: space-between; color: var(--text-3); font: 400 11px/1 var(--mono); }
+{# How it works's flow diagram (#214), which no other page carries, so these rules are in its page alone. One spine runs
+   down the left of a single column of boxes, its centre 31.75 px in from the column's edge, where every mark, arrowhead,
+   and line of it is set. Shape says what a box is: a diamond a check, a square a step that works something out, an oval
+   the start and the end, and a dashed edge a way off the board, which sits under its check, or beside it once the
+   column is 640 px wide. The lines that carry the flow are in the third ink, which meets 3:1 on the page and on a box;
+   the accent marks the end and the path the chosen example takes. The examples' readout sits above the diagram, and
+   beside it from 1,100 px. #}
+{% if template == "how-it-works.html" %}
+.how { display: grid; gap: 32px; padding-bottom: 8px; }
+.examples-title { margin-bottom: 12px; color: var(--text-3); font: 500 12px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.examples .segments button { flex: 1 1 auto; }
+.assume { margin-top: 8px; color: var(--text-3); font-size: 13px; }
+.trace { display: grid; gap: 12px; margin-top: 16px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.trace-name { color: var(--text-3); font: 500 12px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.trace-sum { font-size: 15px; }
+.trace-rows { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 16px; font-size: 13px; }
+.trace-rows dt { color: var(--text-3); }
+.trace-rows dd { min-width: 0; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.verdict { display: grid; gap: 8px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--text-2); font-size: 14px; }
+.outcome { justify-self: start; padding: 2px 10px; border: 1px solid var(--line-strong); border-radius: 6px; color: var(--text); font-size: 13px; font-weight: 500; line-height: 1.6; }
+.outcome.made { border-color: var(--accent); background: var(--accent); color: var(--on-accent); }
+.flow { container-type: inline-size; min-width: 0; }
+.begin { display: inline-block; padding: 6px 16px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--surface); font-size: 14px; font-weight: 500; }
+.spine { position: relative; margin-left: 31px; padding: 8px 0 16px 10px; border-left: 1.5px solid var(--text-3); }
+.spine::after { content: ""; position: absolute; left: -5.75px; bottom: -1px; border-top: 8px solid var(--text-3); border-left: 5px solid transparent; border-right: 5px solid transparent; }
+.answer { color: var(--text-3); font: 500 11px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.stage-name { display: flex; align-items: center; gap: 12px; margin-top: 8px; color: var(--text); font: 500 12px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.stage-name::after { content: ""; flex: 1 1 24px; border-top: 1px solid var(--line); }
+.step { display: grid; grid-template-columns: minmax(0, 1fr); }
+.box { position: relative; min-width: 0; padding: 16px 16px 16px 52px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); }
+.box::before { content: ""; position: absolute; left: 25.25px; top: 21px; width: 11px; height: 11px; border: 1.5px solid var(--text-2); background: var(--surface); transform: rotate(45deg); }
+.work .box::before { border-radius: 2px; transform: none; }
+.ask { font-size: 16px; font-weight: 500; line-height: 1.4; }
+.flow .says { max-width: 62ch; margin-top: 4px; color: var(--text-2); font-size: 14px; }
+.sums { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 12px; margin: 12px 0 4px; padding: 8px 12px; border-radius: 6px; background: var(--raised); font: 400 13px/1.5 var(--mono); }
+.sums dt { color: var(--text-3); }
+.sums dd { min-width: 0; }
+.needs { margin-top: 12px; border-collapse: collapse; font: 400 13px/1.5 var(--mono); font-variant-numeric: tabular-nums; }
+.needs th { padding: 1px 20px 1px 0; color: var(--text-3); font-weight: 400; text-align: left; }
+.needs td { padding: 1px 0; }
+.band-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; padding: 0; list-style: none; }
+.band-list li { padding: 0 8px; border: 1px solid var(--line-strong); border-radius: 4px; color: var(--text-2); font: 400 12px/1.8 var(--mono); font-variant-numeric: tabular-nums; }
+.way { position: relative; display: flex; align-items: center; gap: 12px; margin-left: 52px; padding-top: 12px; }
+.way::before { content: ""; position: absolute; left: -21px; top: 0; bottom: -1px; border-left: 1.5px solid var(--text-3); }
+.branch { position: relative; flex: 0 0 36px; border-top: 1.5px solid var(--text-3); }
+.branch::after { content: ""; position: absolute; right: -1px; top: -5.75px; border-left: 8px solid var(--text-3); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.branch .answer { position: absolute; left: 0; bottom: 8px; }
+.off { flex: 1 1 auto; min-width: 0; padding: 8px 12px 10px; border: 1px dashed var(--line-strong); border-radius: 8px; }
+.off-name { font-size: 14px; font-weight: 500; }
+.off-says { margin-top: 2px; color: var(--text-2); font-size: 13px; }
+.stops { display: none; }
+.finish { position: relative; padding: 16px 24px 16px 52px; border: 1.5px solid var(--accent); border-radius: 28px; background: var(--accent-soft); }
+.finish::before { content: ""; position: absolute; left: 24.25px; top: 22px; width: 12px; height: 12px; border: 6px solid var(--accent); border-radius: 50%; }
+.finish-name { font-size: 18px; font-weight: 500; line-height: 1.4; }
+.key { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; margin-top: 32px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--text-2); font-size: 13px; }
+.key-title { color: var(--text-3); font: 500 11px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.key ul { display: contents; }
+.key li { display: inline-flex; align-items: center; gap: 8px; list-style: none; }
+.key i { flex: none; display: inline-block; }
+.k-check { width: 9px; height: 9px; margin: 0 2px; border: 1.5px solid var(--text-2); transform: rotate(45deg); }
+.k-step { width: 10px; height: 10px; border: 1.5px solid var(--text-2); border-radius: 2px; }
+.k-off { width: 20px; height: 12px; border: 1px dashed var(--line-strong); border-radius: 3px; }
+.k-path { width: 20px; border-top: 1.5px solid var(--accent); }
+.begin.lit { border-color: var(--accent); color: var(--accent); }
+.spine.lit { border-left-color: var(--accent); }
+.spine.lit::after { border-top-color: var(--accent); }
+.spine.lit .answer { color: var(--accent); }
+.step.lit .box { border-color: var(--accent); outline: 1px solid var(--accent); outline-offset: -2px; }
+.step.lit .box::before { border-color: var(--accent); background: var(--accent); }
+.step.pass .way::before { border-left-color: var(--accent); }
+.step.stop .branch { border-top-color: var(--text); }
+.step.stop .branch::after { border-left-color: var(--text); }
+.step.stop .branch .answer { color: var(--text); }
+.step.stop .off { border-style: solid; border-color: var(--text); background: var(--surface); }
+.step.stop .stops { display: block; margin-bottom: 4px; color: var(--text); font: 500 11px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.finish.lit { background: var(--accent); }
+.finish.lit .finish-name, .finish.lit .says { color: var(--on-accent); }
+.finish.lit::before { border-color: var(--on-accent); }
+.box, .off, .spine, .branch, .finish, .begin { transition: border-color 150ms var(--ease), background-color 150ms var(--ease), outline-color 150ms var(--ease); }
+@container (min-width: 640px) {
+  .step { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; }
+  .way { gap: 0; margin-left: 0; padding-top: 0; }
+  .way::before { display: none; }
+  .branch { flex-basis: 64px; margin-right: 12px; }
+  .branch .answer { left: 50%; transform: translateX(-60%); }
+}
+@media (min-width: 1100px) {
+  .how { grid-template-columns: minmax(0, 1fr) 340px; gap: 48px; align-items: start; }
+  .examples { order: 2; position: sticky; top: calc(var(--bar) + 24px); }
+}
+{# Forced colours drop backgrounds, and would turn an arrowhead's clear sides to ink. The arrowheads, the marks, and the
+   key's path keep the page's own drawing, in system colours, as the drawings of the rows do. #}
+@media (forced-colors: active) {
+  .spine::after, .branch::after, .box::before, .finish::before, .k-path { forced-color-adjust: none; --text-3: CanvasText; --text-2: CanvasText; --text: CanvasText; --accent: Highlight; --on-accent: Canvas; --surface: Canvas; }
+}
+{% endif %}
 
 @media (min-width: 768px) {
   :root { --bar: 64px; }
@@ -555,7 +642,6 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
   .cal .count { margin-top: 8px; font-size: 20px; }
   .fresh-note { display: block; }
   .cal .fresh { position: static; width: auto; height: auto; overflow: visible; clip-path: none; color: var(--text); font-size: 12px; line-height: 1.4; }
-  .example { padding: 24px; }
 }
 @media (min-width: 1100px) {
   .months { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px; row-gap: 40px; }
@@ -566,7 +652,7 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
    board keeps its hatch in grey, so that the three are told apart without the shades (#91). #}
 @media (forced-colors: active) {
   .legend i { forced-color-adjust: none; }
-  td.pc::before, .days14 i { forced-color-adjust: none; --accent: Highlight; --gain-soft: GrayText; --text-3: CanvasText; --dot: CanvasText; }
+  td.pc::before { forced-color-adjust: none; --accent: Highlight; --gain-soft: GrayText; --text-3: CanvasText; --dot: CanvasText; }
   .cal a, .cal .gap, .ramp-legend i.newest-key, .ramp-legend i.gap-key { outline: 1px solid CanvasText; outline-offset: -1px; }
   .cal a.shade-0:not(:focus-visible, .newest), .ramp-legend i.empty-key { outline: 1px dashed GrayText; }
   .cal .gap, .ramp-legend i.gap-key { forced-color-adjust: none; --line: GrayText; --text: CanvasText; }
@@ -576,4 +662,3 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
-.prose .card h2 { margin-top: 0; font-size: 15px; }
