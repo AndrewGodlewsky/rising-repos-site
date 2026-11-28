@@ -9,7 +9,7 @@ from io import BytesIO
 from helpers import BuildTest, read_json
 from PIL import Image
 
-from sitebuild import BASELINE, BOARD, DAYS, FOR_AGENTS, HOW_IT_WORKS, NOT_FOUND, board_day_page, share_lines
+from sitebuild import BASELINE, BOARD, DAYS, FOR_AGENTS, HOW_IT_WORKS, NOT_FOUND, SEARCH, board_day_page, share_lines
 from sitebuild.share import HEIGHT, WIDTH
 
 NEWEST, OLDER = "2026-11-09", "2026-11-08"
@@ -50,7 +50,17 @@ class TheCard(BuildTest):
         pages = self.build_pages()
         self.assertEqual(
             set(pages),
-            {BOARD, DAYS, HOW_IT_WORKS, FOR_AGENTS, BASELINE, NOT_FOUND, board_day_page(NEWEST), board_day_page(OLDER)},
+            {
+                BOARD,
+                DAYS,
+                HOW_IT_WORKS,
+                FOR_AGENTS,
+                BASELINE,
+                SEARCH,
+                NOT_FOUND,
+                board_day_page(NEWEST),
+                board_day_page(OLDER),
+            },
         )
         for path, page in pages.items():
             with self.subTest(path):
@@ -78,6 +88,7 @@ class TheCanonical(BuildTest):
             (board_day_page(OLDER), f"{SITE}/days/{OLDER}/"),
             (DAYS, f"{SITE}/days/"),
             (BASELINE, f"{SITE}/baseline/"),
+            (SEARCH, f"{SITE}/search/"),
             (HOW_IT_WORKS, f"{SITE}/how-it-works/"),
             (FOR_AGENTS, f"{SITE}/for-agents/"),
         ):
@@ -100,6 +111,7 @@ class TheImage(BuildTest):
             (board_day_page(OLDER), f"{SITE}/{share_image(OLDER)}"),
             (DAYS, newest),
             (BASELINE, newest),
+            (SEARCH, newest),
             (HOW_IT_WORKS, newest),
             (FOR_AGENTS, newest),
             (NOT_FOUND, newest),

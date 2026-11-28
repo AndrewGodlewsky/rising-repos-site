@@ -234,8 +234,10 @@
       all.href = "/days/";
       before.appendChild(all);
       before.appendChild(document.createTextNode("."));
+      wrap.appendChild(before);
       {# Progressive enhancement via the same-origin query service (/api/repo/, #242): only requested when a reader
-         explicitly asks to expand boards older than the 30-day window. #}
+         explicitly asks to expand boards older than the 30-day window. Kept after the note paragraph so the note text
+         stays whole (#221). #}
       if (/^[A-Za-z0-9._-]+\/[A-Za-z0-9._-]+$/.test(row.name)) {
         var more = make("button", "more-before", "Show all earlier boards");
         more.type = "button";
@@ -275,9 +277,8 @@
               }
             });
         });
-        before.appendChild(more);
+        wrap.appendChild(more);
       }
-      wrap.appendChild(before);
     }
     opened.appendChild(wrap);
   }
