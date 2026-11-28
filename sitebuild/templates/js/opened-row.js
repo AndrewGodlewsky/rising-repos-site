@@ -281,4 +281,3 @@
     if (details) { if (details.open) details.open = false; else open(details); }
   });
   table.classList.add("clickable");
-

@@ -226,4 +226,3 @@
     write(true);
     kindButtons[0].focus();
   });
-
