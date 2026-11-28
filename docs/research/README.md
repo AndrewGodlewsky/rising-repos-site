@@ -24,6 +24,7 @@ are now.
 | [2026-11-26-agent-copy-prototype/](2026-11-26-agent-copy-prototype/prototype_agent_copy.py) | What the agent copy of a board holds, and how it is laid out (#171). A prototype, with no note of its own: #171 holds its answer |
 | [2026-11-27-python-worker-on-free.md](2026-11-27-python-worker-on-free.md) | Whether the query service can run as a Python Worker on the free plan (#172) |
 | [2026-11-27-worker-language-trial.md](2026-11-27-worker-language-trial.md) | Which language the query service is written in (#174) |
+| [2026-11-28-card-view-prototype/](2026-11-28-card-view-prototype/make_card_view_prototype.py) | How a board's rows look and behave as cards: three designs on the board of 27 November 2026, of which the owner chose design A, the grid. A prototype, with screenshots of design A and no note of its own: the card view's issue holds its answer |
 
 The research of 26 and 27 November was done for the map in #151, on a branch
 of its own for each question, and linked from its issue by the commit. Each

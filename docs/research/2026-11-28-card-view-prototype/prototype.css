@@ -1,0 +1,120 @@
+/* PROTOTYPE ONLY: three designs of a card view for a board's rows. Each one lays out the same table rows the page
+   already holds; html[data-proto] names the design and .cards on the table turns the cards on. */
+
+/* ---- What every design's cards share ---- */
+html[data-proto] .chart.cards thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+html[data-proto] .chart.cards { display: block; }
+html[data-proto] .chart.cards tbody { display: grid; }
+html[data-proto] .chart.cards tbody tr { position: relative; column-gap: 0; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); transition: border-color 150ms var(--ease), background-color 400ms var(--ease); }
+html[data-proto] .chart.cards.clickable tbody tr:hover { background: var(--surface); box-shadow: none; border-color: var(--line-strong); }
+html[data-proto] .chart.cards tbody tr:has(details[open]) { background: var(--surface); border-color: var(--accent); }
+html[data-proto] .chart.cards tbody tr.flash { box-shadow: none; }
+html[data-proto] .chart.cards td.rk { text-align: left; }
+html[data-proto] .chart.cards td.gr.g::after { content: " on the day"; color: var(--text-3); font: 400 13px/1.5 var(--sans); }
+html[data-proto] .chart.cards td.gr:not(.g)::after { content: " a day"; color: var(--text-3); font: 400 13px/1.5 var(--sans); }
+html[data-proto] .chart.cards td.st::after { content: " stars"; color: var(--text-3); font-family: var(--sans); }
+html[data-proto] .chart.cards td.de { max-width: none; }
+html[data-proto] .chart.cards tbody tr::after { content: attr(data-l); grid-area: lang; justify-self: end; margin-right: 32px; padding-left: 12px; color: var(--text-3); font-size: 13px; line-height: 1.6; white-space: nowrap; }
+.chart td.proto-rs { display: none; }
+
+/* ---- Design A: Grid. Three or four across; the opened card takes the whole line. ---- */
+html[data-proto="A"] .chart.cards tbody { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+html[data-proto="A"] .chart.cards tbody tr {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto auto 1fr auto auto;
+  grid-template-areas: "rank lang lang" "repository repository repository" "description description description" "growth own stars" "why why why";
+}
+html[data-proto="A"] .chart.cards tbody tr:has(details[open]) { grid-column: 1 / -1; }
+html[data-proto="A"] .chart.cards td.rk { justify-self: start; min-width: 0; padding: 1px 6px 0; border-radius: 6px; background: var(--raised); font-size: 13px; }
+html[data-proto="A"] .chart.cards td.rk::before { content: "#"; }
+html[data-proto="A"] .chart.cards td.rk.podium { background: var(--accent); }
+html[data-proto="A"] .chart.cards th.re { margin-top: 10px; }
+html[data-proto="A"] .chart.cards td.de { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; margin-top: 6px; overflow: hidden; white-space: normal; }
+html[data-proto="A"] .chart.cards tbody tr:has(details[open]) td.de { display: block; -webkit-line-clamp: unset; }
+html[data-proto="A"] .chart.cards td.gr, html[data-proto="A"] .chart.cards td.pc, html[data-proto="A"] .chart.cards td.st { align-self: stretch; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; }
+html[data-proto="A"] .chart.cards td.gr { padding-right: 12px; }
+html[data-proto="A"] .chart.cards td.pc { --w: 64px; --h: 24px; padding-top: 10px; }
+html[data-proto="A"] .chart.cards td.wy summary { left: auto; right: 10px; top: 10px; }
+
+/* ---- Design B: Tiles. Figures first, five or six across; a tile opens its row in the list. ---- */
+html[data-proto="B"] .chart.cards tbody { grid-template-columns: repeat(auto-fill, minmax(196px, 1fr)); gap: 12px; }
+html[data-proto="B"] .chart.cards tbody tr { grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "growth growth" "own own" "rank repository" "stars stars"; column-gap: 8px; padding: 14px; cursor: pointer; }
+html[data-proto="B"] .chart.cards.clickable tbody tr:hover { border-color: var(--accent); }
+html[data-proto="B"] .chart.cards tbody tr:hover::before { content: "Open in the list \2193"; position: absolute; right: 12px; bottom: 12px; color: var(--accent); font-size: 12px; }
+html[data-proto="B"] .chart.cards tbody tr::after { display: none; }
+html[data-proto="B"] .chart.cards td.gr { margin: 0; padding: 0; font-size: 24px; line-height: 1.15; }
+html[data-proto="B"] .chart.cards td.gr::after { display: block; margin-top: 2px; font-size: 12px; }
+html[data-proto="B"] .chart.cards td.pc { --w: 166px; --h: 40px; margin: 10px 0 12px; padding: 0; }
+html[data-proto="B"] .chart.cards td.rk { justify-self: start; align-self: start; padding: 1px 4px 0; font-size: 12px; }
+html[data-proto="B"] .chart.cards td.rk::before { content: "#"; }
+html[data-proto="B"] .chart.cards td.rk.podium { justify-self: start; }
+html[data-proto="B"] .chart.cards .re a { display: block; }
+html[data-proto="B"] .chart.cards .re a::after { content: none; }
+html[data-proto="B"] .chart.cards .ow, html[data-proto="B"] .chart.cards .nm { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+html[data-proto="B"] .chart.cards .ow { font-size: 12px; }
+html[data-proto="B"] .chart.cards .nm { font-size: 15px; }
+html[data-proto="B"] .chart.cards .re .new { position: absolute; top: 14px; right: 14px; margin: 0; }
+html[data-proto="B"] .chart.cards.by-often .re .often { display: block; width: max-content; margin: 4px 0 0; }
+html[data-proto="B"] .chart.cards td.st { margin-top: 8px; padding: 0; font-size: 12px; text-align: left; }
+html[data-proto="B"] .chart.cards td.de, html[data-proto="B"] .chart.cards td.wy { display: none; }
+
+/* ---- Design C: Feature cards. Two across, the whole description and the reason in view; a card opens where it is. ---- */
+html[data-proto="C"] .chart.cards tbody { grid-template-columns: repeat(auto-fill, minmax(min(420px, 100%), 1fr)); gap: 16px; align-items: start; }
+html[data-proto="C"] .chart.cards tbody tr {
+  grid-template-columns: 64px minmax(0, 1fr) auto auto;
+  grid-template-areas: "rank repository repository lang" "rank description description description" "rank reason reason reason" "rank growth own stars" "rank why why why";
+  padding: 18px 18px 16px 16px;
+}
+html[data-proto="C"] .chart.cards td.rk { justify-self: start; padding: 0; background: none; color: var(--text-3); font-size: 28px; line-height: 1.1; letter-spacing: -0.02em; }
+html[data-proto="C"] .chart.cards td.rk.lead { color: var(--accent); }
+html[data-proto="C"] .chart.cards td.rk.podium { padding: 2px 8px; border-radius: 8px; background: var(--accent); color: var(--on-accent); font-size: 24px; }
+html[data-proto="C"] .chart.cards td.de { margin-top: 6px; overflow: visible; white-space: normal; overflow-wrap: anywhere; }
+html[data-proto="C"] .chart.cards td.proto-rs { display: block; grid-area: reason; margin-top: 10px; padding-left: 10px; border-left: 2px solid var(--accent); color: var(--text); font-size: 14px; font-weight: 500; line-height: 1.5; }
+html[data-proto="C"] .chart.cards td.gr, html[data-proto="C"] .chart.cards td.pc, html[data-proto="C"] .chart.cards td.st { align-self: stretch; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; }
+html[data-proto="C"] .chart.cards td.gr { padding-right: 16px; }
+html[data-proto="C"] .chart.cards td.pc { --w: 80px; --h: 28px; padding-top: 10px; padding-right: 16px; }
+html[data-proto="C"] .chart.cards td.wy summary { left: auto; right: 10px; top: 14px; }
+html[data-proto="C"] .chart.cards .op { grid-template-columns: minmax(0, 1fr); grid-template-areas: none; max-width: none; padding: 16px; }
+html[data-proto="C"] .chart.cards .op > * { grid-area: auto; }
+html[data-proto="C"] .chart.cards .op .rs .ln { display: none; }
+html[data-proto="C"] .chart.cards .op .fa { padding: 12px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+
+/* ---- A phone ---- */
+@media (max-width: 767.98px) {
+  html[data-proto="B"] .chart.cards tbody { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  html[data-proto="B"] .chart.cards tbody tr { padding: 12px; }
+  html[data-proto="B"] .chart.cards td.pc { --w: 128px; --h: 32px; }
+  html[data-proto="B"] .chart.cards td.gr { font-size: 20px; }
+  html[data-proto="B"] .chart.cards tbody tr:hover::before { content: none; }
+  html[data-proto="C"] .chart.cards tbody tr { grid-template-columns: 44px minmax(0, 1fr) auto auto; padding: 16px 14px 14px 12px; }
+  html[data-proto="C"] .chart.cards td.rk { font-size: 20px; }
+  html[data-proto="C"] .chart.cards td.gr { padding-right: 10px; white-space: nowrap; }
+  html[data-proto="C"] .chart.cards td.pc { --w: 56px; padding-right: 10px; }
+  html[data-proto="C"] .chart.cards td.rk.podium { font-size: 18px; padding: 2px 6px; }
+}
+
+/* ---- Each design's switch ---- */
+.proto-a { margin-left: auto; }
+.proto-b button { display: flex; align-items: center; justify-content: center; width: 34px; padding: 0; }
+.proto-b svg { width: 16px; height: 16px; }
+.proto-b.in-strip { display: none; }
+.proto-b.in-toolbar { margin-left: auto; }
+@media (min-width: 768px) {
+  .proto-b.in-strip { display: flex; flex: none; }
+  .proto-b.in-toolbar { display: none; }
+}
+.proto-tabs { display: flex; gap: 4px; margin-bottom: 16px; border-bottom: 1px solid var(--line); }
+.proto-tabs button { height: 40px; margin-bottom: -1px; padding: 0 14px; border: 0; border-bottom: 2px solid transparent; background: none; color: var(--text-2); font: 500 15px/1 var(--sans); cursor: pointer; }
+.proto-tabs button:hover { color: var(--text); }
+.proto-tabs button[aria-pressed="true"] { border-bottom-color: var(--accent); color: var(--text); }
+
+/* ---- The prototype's own bar, deliberately not in the site's look ---- */
+body { padding-bottom: 160px; }
+.proto-bar { position: fixed; z-index: 100; left: 50%; bottom: 12px; display: flex; align-items: center; gap: 10px; box-sizing: border-box; width: min(780px, calc(100vw - 16px)); padding: 10px; border-radius: 14px; background: #2a2f9e; color: #fff; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); font: 13px/1.4 system-ui, sans-serif; transform: translateX(-50%); }
+.proto-bar button { flex: none; width: 36px; height: 36px; border: 0; border-radius: 10px; background: rgba(255, 255, 255, 0.16); color: #fff; font: 20px/1 system-ui, sans-serif; cursor: pointer; }
+.proto-bar button:hover { background: rgba(255, 255, 255, 0.3); }
+.proto-bar .proto-mid { flex: 1; min-width: 0; }
+.proto-bar .proto-label { font-weight: 600; }
+.proto-bar .proto-label small { margin-left: 6px; font-weight: 400; opacity: 0.7; }
+.proto-bar .proto-note { font-size: 12px; opacity: 0.92; }
+.proto-bar .proto-state { margin-top: 3px; font: 11px/1.4 ui-monospace, Consolas, monospace; opacity: 0.75; overflow-wrap: anywhere; }
