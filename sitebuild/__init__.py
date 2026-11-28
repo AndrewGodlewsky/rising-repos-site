@@ -55,8 +55,8 @@ PAGES = {
 - `DAYS` lists every board day, newest first.
 - `BOARD_DAY` is written once for each board day in the index, the newest included, so that each board day keeps
   one address however many come after it.
-- `HOW_IT_WORKS` says in a few plain sentences how the boards are ranked, for the formula `DESCRIBED_FORMULA`
-  names, and what the site is set in.
+- `HOW_IT_WORKS` draws how the boards are ranked as one flow diagram of the checks a repository goes through, for
+  the formula `DESCRIBED_FORMULA` names, with the newest board's star bands, and says what the site is set in (#214).
 - `BASELINE` draws each repository on the newest board by its baseline against its recent pace, and lists them.
 - Every page links to the list, to Baseline, and to How it works from the site's bar.
 - Cloudflare Pages answers an address that holds no page with `NOT_FOUND` and the status 404. A site with no
@@ -70,7 +70,10 @@ how-it-works.html, whose text the notice's hiding of an old board would hide.
 DESCRIBED_FORMULA = 2
 """The version of the scoring formula that how-it-works.html describes. Its page says so, and says plainly when the
 newest board was ranked by another, so that a new formula in RisingRepos never leaves the page describing the wrong
-one unnoticed."""
+one unnoticed. That notice is all a new formula sets off: the page's flow diagram is this version's, written by hand
+from RisingRepos's src/risingrepos/scoring.py and src/risingrepos/boards.py, since a board day's file brings none of
+the formula's rules. So when RisingRepos raises the version, the diagram is redrawn from that code and this raised in
+the same change (AGENTS.md, "How it works is written for one formula", #214)."""
 
 MONTHS = (
     "January",
@@ -421,7 +424,7 @@ so that two rows' charts compare. A pace under the bottom, a falling one among t
 
 
 def own_pace(row: dict) -> dict:
-    """A row's own pace against what it gained, small, as the worked example of How it works draws it: across the 14
+    """A row's own pace against what it gained, small, as How it works once drew it (#214): across the 14
     days, the dashed level of its usual pace, its baseline a day, as it would have gone on; over its recent days, the
     last two or the one the loss rule kept, the level of its recent pace; and the part between shaded. Both levels are
     stars a day on one log scale, `PACE_SCALE`, shared by every row, so the gap reads as its multiple and the height as
@@ -1091,7 +1094,7 @@ def _pages(boards: list[dict], history: History) -> Iterator[tuple[str, str, dic
             "ramp": RAMP,
         },
     )
-    yield HOW_IT_WORKS, HOW_IT_WORKS, {"described": DESCRIBED_FORMULA}
+    yield HOW_IT_WORKS, HOW_IT_WORKS, {"described": DESCRIBED_FORMULA, "bands": bands_of(boards[0])}
     yield FOR_AGENTS, FOR_AGENTS, {}
     yield BASELINE, BASELINE, {"board": boards[0], "chart": pace_chart(boards[0]["rows"])}
     yield NOT_FOUND, NOT_FOUND, {}

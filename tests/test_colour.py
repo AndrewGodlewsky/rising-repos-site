@@ -46,9 +46,11 @@ LINES_ON_BACKGROUND = [
     ("--accent", "--bg"),
     ("--accent", "--surface"),
     ("--text-3", "--surface"),
+    ("--text-3", "--bg"),
 ]
 """What carries meaning without being text, each at WCAG's 3:1 for a graphic: the focus ring and what the board gained
-in its drawings, in the accent, and the dashed line of a repository's own pace, in the third ink, on a card."""
+in its drawings, in the accent, and the dashed line of a repository's own pace, in the third ink, on a card; and How it
+works's spine, its arrows, and each branch, which carry the flow's direction, in the third ink on the page (#214)."""
 
 INKS = {f"var({token})" for token in (*TEXT, "--accent", "--new", "--loss", "--on-accent")}
 

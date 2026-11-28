@@ -65,7 +65,7 @@ design note). The build writes these pages, which `PAGES` in
 | `/days/<board day>/history.json` | What an opened row of that board shows beyond its line, for each board with rows, fetched on the first opening |
 | `/days/<board day>/share.png` | The board day's share image, 1200 by 630 pixels, which a link's card shows: the board day and the names of its first three rows, or that it lists none |
 | `/baseline/` | Baseline: each repository on the newest board, placed by its baseline against its recent pace, with every one in a table |
-| `/how-it-works/` | How a board is ranked, in a few plain sentences, with the worked example drawn, and what the site is set in |
+| `/how-it-works/` | How a board is ranked, as one flow diagram of the checks a repository goes through on a board day, with four made-up repositories whose paths a reader can light, and what the site is set in (#214) |
 | `/sitemap.xml` | The sitemap of sitemaps.org's schema 0.9: every page above by its whole address with the closing slash. A board day's entry and the entries of `/`, `/days/`, and `/baseline/` carry a `lastmod`, the time a board day's file was published, the newest's for the three that show the newest board. `/how-it-works/` carries none, since its text changes only with the site (#170) |
 | `/robots.txt` | The site's own, so that Cloudflare Pages does not serve its managed one: every crawler may fetch every page, with the signals `search=yes` and `ai-input=yes`, no word on training, and the sitemap named. A build with `--noindex` writes `Disallow: /` and names no sitemap (#170) |
 | `/days/<board day>/board.md` | The agent copy of that board day's board as text, for visiting agents (#176): a header that says what each mark means and that a repository's name and description are written by its owner, then one line a row, with the page's own figures: its gain or its stars a day, its stars, its pace, whether it is new or how many earlier boards it was on, the first, and its best rank there. The description is quoted, on one line. A board longer than about 35,000 characters goes in parts of at most that, which name the ranks they hold. A board with no row says so |
@@ -173,7 +173,12 @@ What every page holds to, each checked by a test in `tests/`:
 
   The four faces are 34,964 bytes of every page. The script is 1,264 bytes
   where it is the theme alone, 2,948 with the notice of an old board, and
-  18,573 on a board with rows, with its filters and opened rows. A made-up row
+  18,573 on a board with rows, with its filters and opened rows. How it works,
+  with its flow diagram, is 91,798 bytes on `site-data/` of 27 November 2026,
+  13,457 more than its prose and drawing were, and its script, the theme and
+  its examples, is 2,623 bytes. The diagram's rules are in that page alone, so
+  every other page came out 1,114 bytes lighter, as the drawing's rules went
+  (#214). A made-up row
   above is 1,226 bytes of markup, and a row of `typical_rows` in the test
   about 800. What an opened row shows beyond its line is in `history.json`,
   not in the page, every word and figure of it written by the build: 489,926
@@ -310,8 +315,7 @@ chrome is a quiet logbook: warm paper and graphite ink in the light theme,
 graphite paper and light ink in the dark, one evergreen pen, amber kept for
 what is new, and a deep red kept for a loss. The dashed line of a
 repository's own pace is the one recurring mark: in the site's mark, in each
-row's small drawing, in an opened row's drawing, on Baseline, and in How it
-works' worked example.
+row's small drawing, in an opened row's drawing, and on Baseline.
 
 **Type.** Two families, Rising Sans and Rising Mono, at 400 and 500, inside
 each page. They are IBM Plex Sans and IBM Plex Mono, by IBM Corp., under the
@@ -355,8 +359,8 @@ The body is 15 px, the description 14 px, a repository's name 16 px (17 px from
 | `--raised` | `#efeee8` | `#22241f` | A note above the rows, and a control under the pointer |
 | `--text` | `#1b1a16` | `#ecebe5` | The text: 16.10:1 on the page, 15.60:1 in the dark |
 | `--text-2` | `#55524a` | `#b0ada3` | The descriptions, the owner, the bars' links, a gain of 0 or a day with no count where a gain is green, a row's count in the "Most often" order: 7.21:1, 8.30:1 |
-| `--text-3` | `#6b675d` | `#939087` | The quietest text: the ranks past the top ten, the headings over the figures, an owner over its name in Baseline's table on a phone, a visited repository: 5.22:1, 5.84:1 |
-| `--accent` | `#12704b` | `#5cc896` | Evergreen: what a repository gained, the top ten ranks, a pressed filter, the focus ring, a link under the pointer: 5.64:1, 9.01:1 |
+| `--text-3` | `#6b675d` | `#939087` | The quietest text: the ranks past the top ten, the headings over the figures, an owner over its name in Baseline's table on a phone, a visited repository, and the spine, arrows, and branches of How it works' diagram: 5.22:1, 5.84:1 |
+| `--accent` | `#12704b` | `#5cc896` | Evergreen: what a repository gained, the top ten ranks, a pressed filter, the focus ring, a link under the pointer, and on How it works "On the board" and the path a chosen example takes: 5.64:1, 9.01:1 |
 | `--on-accent` | `#ffffff` | `#0f1a14` | A top-three rank on the accent: 6.10:1, 8.62:1 |
 | `--new` | `#8a4b08` | `#f0b45e` | Amber: the New mark, the New filter: 6.79:1 on a control, 9.50:1 |
 | `--loss` | `#a8201a` | `#f07a6e` | Deep red: a loss, and nothing else, written with the true minus, in the growth column and in an opened row's gains over 7 and 30 days and its table of days: 6.73:1, 6.84:1 |
@@ -673,16 +677,32 @@ the name's own ink and type again, on the name's line. `pace_chart` in
 usual pace is the divisor the file gives, and the recent pace its recent
 stars over its recent days.
 
-**How it works.** The page says in a few plain sentences how the formula that
-`DESCRIBED_FORMULA` in `sitebuild/__init__.py` names ranks a board: the two
-recent days against the twelve before them, the floor, who makes the board and
-when a star band is held back from it, what must hold before a repository has
-a score, and that no gain is set aside. Its worked example is drawn: twelve
-days at a usual 30 stars a day, then 520 stars in two days, with the part above
-the dashed line of its own pace marked as "+460 above its own trend". It names
-the formula under its title, and when the newest board was ranked by another,
-it says so first. It carries no notice of an old board, which would hide its
-text. Under "The type", it names the fonts and links to their licence.
+**How it works.** The page draws how a board is ranked as one flow diagram of
+the checks a repository goes through on a board day, in the order RisingRepos
+makes them (#214): a spine down the left, a box for each check and each step,
+and beside each check, or under it on a phone, its way off the board. A box's
+shape says what it is: a diamond for a check, a square for a step that works
+something out, an oval for the start and for "On the board", and a dashed edge
+for a way off, and a key along the diagram's foot says so. Each branch is
+labelled YES or NO in small capitals. The spine, its arrows, and the branches
+are in `--text-3`, and the accent marks "On the board" and the path the chosen
+example takes. Four made-up repositories, Breaks out, Fast but steady, Quiet,
+and Too new, are buttons like the filter's: pressing one lights the boxes it
+passes through, marks where it stops, and shows its figures above the diagram,
+or beside it from 1,100 px. Breaks out, the page's worked example before the
+diagram, is lit in the markup with its figures, so the page is whole with
+scripts off, and the buttons show only with them on. The star bands under "Is
+its star band held today?" are the newest board's own, worded as its filter
+words them. Every other check and number is the formula's that
+`DESCRIBED_FORMULA` in `sitebuild/__init__.py` names, written into
+`how-it-works.html` by hand from RisingRepos's code, since a board day's file
+brings none of the formula's rules. So when RisingRepos raises the formula's
+version, the diagram is redrawn from that code and `DESCRIBED_FORMULA` raised
+in the same change (AGENTS.md, "How it works is written for one formula"). The
+page names the formula under its title, and when the newest board was ranked
+by another, it says so first. It carries no notice of an old board, which
+would hide its text. Under "The type", it names the fonts and links to their
+licence. The diagram's rules are in this page's stylesheet alone.
 
 **The share image.** Each board day's `share.png`, which a link's card shows
 on Discord and X (#35), is 1200 by 630 pixels, the size both cards draw a
@@ -726,8 +746,10 @@ chart's dots do, and History's cells, which lose their shades, keep an edge,
 the newest one's in the highlight. There a board with no repository has a
 dashed edge in the system's grey text where a board's is solid, and a day with
 no board keeps its hatch in that grey, so that the three are told apart
-without the shades, and the legend shows the two swatches for them (#91). With
-reduced motion, nothing transitions.
+without the shades, and the legend shows the two swatches for them (#91). How
+it works' arrowheads, the marks in its boxes, and its key's path keep their
+drawing in system colours, since forced colours would turn an arrowhead's
+clear sides to ink (#214). With reduced motion, nothing transitions.
 
 **The notice of an old board.** A page is built only when something is
 pushed here, so when the publishing stops, no build runs to say so, and the

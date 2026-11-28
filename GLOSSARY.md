@@ -187,7 +187,8 @@ The page that lists every board day, as month calendars.
 _Avoid_: archive, calendar
 
 **How it works**:
-The page that says in plain sentences how a board is ranked.
+The page that shows how a board is ranked, as one flow diagram of the checks
+a repository goes through on a board day.
 _Avoid_: about, FAQ, methodology
 
 **Site's bar**:

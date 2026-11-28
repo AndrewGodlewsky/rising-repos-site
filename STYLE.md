@@ -22,8 +22,8 @@ A reader comes back each day to see what is rising. So a page is quick to
 take in, quiet, and plain about what each thing on it does. The figures are
 what the reader came for, and everything round them is a quiet logbook: paper
 and ink, with colour kept for meaning. The dashed line of a repository's own
-pace is the one mark that recurs, in a row, in an opened row, on Baseline,
-and on How it works.
+pace is the one mark that recurs, in a row, in an opened row, and on
+Baseline.
 
 A new part earns its place the same way. It says what it has to say in words
 and figures first, and takes a colour, a box, or a drawing only where that
@@ -40,6 +40,7 @@ a page that already does the nearest job, and build from it.
 | A heading within a page | 20 px at 500 | `.figures h2`, `.month h2` |
 | Something said about a whole board | A note above the rows: words on the raised surface, a rule in the ink at its left, its first sentence at 500 | `.notes` |
 | A box that holds a chart or a row's detail | The card that holds Baseline's chart, or an opened row | `.card`, `.op` |
+| A flow of steps, each with a way out | How it works' diagram: a spine in the third ink, a diamond for a check, a square for a step, an oval for the start and the end, a dashed edge for a way off, and a key along its foot (#214) | `.flow`, `.spine`, `.step`, `.box`, `.way`, `.off`, `.finish`, `.key` |
 | A choice among a few | The filter's buttons, each with `aria-pressed` | `.segments button` |
 | One action, such as undoing a view | The button under the line that says no row matches: the filter's size, with an edge | `.filtered-none button` |
 | A choice among many | The filter's list of languages | `.toolbar select` |
@@ -90,13 +91,13 @@ sentence of a note, and everything else is 400.
 
 | Size | What takes it |
 | --- | --- |
-| 11 px | A chart's ticks and the labels along its edge, in Rising Mono |
-| 12 px | The smallest labels: the count in a filter's button, the New mark, the name of a fact in an opened row |
+| 11 px | A chart's ticks and the labels along its edge, and the YES and NO on How it works' branches, in Rising Mono |
+| 12 px | The smallest labels: the count in a filter's button, the New mark, the name of a fact in an opened row, a stage of How it works' diagram |
 | 13 px | The filter's buttons, a table's column headings, a quiet note, the colophon, the owner over a name in Baseline's table on a phone |
 | 14 px | The second level of text: a description, the links of the two bars, the lines of About this board |
 | 15 px | The body, and a small heading at 500 |
-| 16 px | A repository's name, 17 px from 768 px up, and the text of How it works |
-| 18 px | A page's opening line |
+| 16 px | A repository's name, 17 px from 768 px up, and a check or a step of How it works' diagram |
+| 18 px | A page's opening line, and "On the board" on How it works |
 | 20 px | A heading within a page, and a board's date in the day bar, 28 px from 768 px up |
 | 36 px | A page's title, 56 px from 768 px up |
 
@@ -113,8 +114,8 @@ that file's docstring says how.
 - A page's content is at most 1,200 px wide, with 16 px at each side, and
   32 px from 768 px up (`.wrap`).
 - Running text keeps a measure: 640 px for an opening line, a notice, or a
-  note; 680 px for How it works; 760 px for the notes above the rows and
-  About this board.
+  note; 680 px for How it works' note on the type, and 62 characters in a box
+  of its diagram; 760 px for the notes above the rows and About this board.
 
 ### Shape
 
@@ -122,7 +123,8 @@ that file's docstring says how.
   run of days; 6 px for a mark, such as New or a top-three rank; 8 px for a
   button or a cell of History; 10 px for a field or a group of buttons; 12 px
   for a box in the flow of a page, such as the notice of an old board or an
-  opened row; and 16 px for the card.
+  opened row; 16 px for the card; and an oval, 28 px, for the end of How it
+  works' diagram, whose start is round.
 - A rule or an edge is 1 px in `--line`, and in `--line-strong` where it has
   to be seen.
 - A cell that holds nothing says so by its edge, not by a fill: on History, a
