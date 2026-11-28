@@ -7,18 +7,20 @@
 //
 // - `dark`: whether the browser's own setting is dark, which window.matchMedia answers (false when not given);
 // - `stored`: the theme kept in this browser's localStorage, or null (null when not given);
+// - `layout`: the board's layout kept in this browser's localStorage, under "layout", or null (null when not given);
+// - `search`: the query of the page's address, as location.search gives it ("" when not given);
 // - `late`: true to have the page's elements parsed after the script has run, as the page's one script, in the
 //   head, meets them. Until then no element is found. Once the script has run, they are found, and each
 //   MutationObserver it made is told, as the parser would tell it;
 // - `ready`: true to fire DOMContentLoaded once the script has run, and `clicks`, a list of ids, to click each of
 //   those elements in turn after it.
 //
-// Each run has a context of its own, which holds stand-ins for the document, window.matchMedia, localStorage, and
-// MutationObserver, and a Date whose clock is the run's, and nothing else: no fetch, no timers, no require. Standard
-// output is JSON: for each run, the elements' attributes and text once the script has run, the root element's
-// attributes, what localStorage holds, the error it threw if it threw one, and every property of the document, of
-// window, of localStorage, or of an element that it read or wrote, in order, so that a test can check it touched
-// nothing else.
+// Each run has a context of its own, which holds stand-ins for the document, window.matchMedia, localStorage, the
+// address (location), and MutationObserver, Node's own URLSearchParams, and a Date whose clock is the run's, and
+// nothing else: no fetch, no timers, no require. Standard output is JSON: for each run, the elements' attributes and
+// text once the script has run, the root element's attributes, what localStorage holds under "theme" and under
+// "layout", the error it threw if it threw one, and every property of the document, of window, of the address, of
+// localStorage, or of an element that it read or wrote, in order, so that a test can check it touched nothing else.
 
 "use strict";
 
@@ -63,7 +65,10 @@ function stand_in(name, attributes, text, operations) {
   return { proxy, state, listeners };
 }
 
-function run(script, { now, elements, root, dark = false, stored = null, late = false, ready = false, clicks = [] }) {
+function run(
+  script,
+  { now, elements, root, dark = false, stored = null, layout = null, search = "", late = false, ready = false, clicks = [] },
+) {
   const operations = [];
   const found = Object.fromEntries(
     Object.entries(elements).map(([id, element]) => [id, stand_in(id, element.attributes, element.text, operations)]),
@@ -114,9 +119,28 @@ function run(script, { now, elements, root, dark = false, stored = null, late = 
           return { matches: query === "(prefers-color-scheme: dark)" && dark, addEventListener() {} };
         };
       },
+      set(_, key) {
+        operations.push(`window.${String(key)}=`);
+        return true;
+      },
     },
   );
-  const storage = { theme: stored };
+  // The page's address, of which the script may read the query. A write to it is how a page leaves for another
+  // address, so each write is recorded and goes nowhere, as each write to the document is (B8, #227).
+  const location = new Proxy(
+    {},
+    {
+      get(_, key) {
+        operations.push(`location.${String(key)}`);
+        return key === "search" ? search : undefined;
+      },
+      set(_, key) {
+        operations.push(`location.${String(key)}=`);
+        return true;
+      },
+    },
+  );
+  const storage = { theme: stored, layout };
   const localStorage = {
     getItem(key) {
       operations.push(`localStorage.getItem(${key})`);
@@ -160,9 +184,14 @@ function run(script, { now, elements, root, dark = false, stored = null, late = 
   }
   let error = null;
   try {
-    vm.runInContext(script, vm.createContext({ document, window, localStorage, MutationObserver, Date: Clock }), {
-      timeout: 1000,
+    const globals = { document, window, localStorage, URLSearchParams, MutationObserver, Date: Clock };
+    // A bare `location = …` leaves for another address too, so the context's own location records a write to it.
+    Object.defineProperty(globals, "location", {
+      get: () => location,
+      set: () => operations.push("location="),
+      enumerable: true,
     });
+    vm.runInContext(script, vm.createContext(globals), { timeout: 1000 });
     if (!parsed) {
       parsed = true;
       for (const observer of observers) if (observer.watching) observer.callback([], observer);
@@ -178,6 +207,7 @@ function run(script, { now, elements, root, dark = false, stored = null, late = 
     elements: Object.fromEntries(Object.entries(found).map(([id, { state }]) => [id, state])),
     root: html.state.attributes,
     stored: storage.theme,
+    kept: storage.layout,
     operations,
     error,
   };

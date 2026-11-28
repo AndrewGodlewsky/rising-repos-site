@@ -99,12 +99,14 @@ GitHub.**
 Held by
 `tests/test_build.py::TheBuild::test_each_page_says_in_its_colophon_that_there_is_a_new_board_each_day`.
 
-**B8. The site keeps nothing about a reader.** The script stores one thing in
-the browser, the reader's choice of theme, and sends nothing anywhere
+**B8. The site keeps nothing about a reader.** The script stores two things
+in the browser, the reader's choice of theme and, on a board, the reader's
+choice of the cards (#227), and sends nothing anywhere
 ([0004](docs/adr/0004-a-page-holds-everything-it-needs.md)).
 
 Held by
-`tests/test_old_board.py::TheNotice::test_the_script_reads_only_what_it_needs_and_writes_only_the_notices_text_and_the_roots_attributes`
+`tests/test_old_board.py::TheNotice::test_the_script_reads_only_what_it_needs_and_writes_only_the_notices_text_and_the_roots_attributes`,
+`tests/test_old_board.py::TheView::test_the_script_keeps_cards_under_a_key_of_its_own_and_nothing_but_that_and_the_theme`,
 and the reviewer.
 
 ## Part 2. What a page promises

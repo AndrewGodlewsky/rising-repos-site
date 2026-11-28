@@ -223,7 +223,8 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 .segments { display: flex; flex-wrap: wrap; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
 .segments button, .toolbar select { height: 32px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; color: var(--text-2); font: 400 13px/1 var(--sans); cursor: pointer; transition: background-color 150ms var(--ease), color 150ms var(--ease), transform 120ms var(--ease); }
 .segments button:hover { color: var(--text); }
-.segments button[aria-pressed="true"] { background: var(--gain-soft); color: var(--accent); font-weight: 500; }
+{# Cards, pressed from the root's mark before the script has pressed it, takes the filter's own pressed look (#227). #}
+.segments button[aria-pressed="true"]{% if filtering and board.rows %}, :root[data-layout=cards] #layout [data-layout=cards]{% endif %} { background: var(--gain-soft); color: var(--accent); font-weight: 500; }
 .segments button[data-kind="new"][aria-pressed="true"] { background: var(--new-soft); color: var(--new); }
 .segments [data-kind="new"] .num, .segments [data-kind="new"][aria-pressed="true"] .num { color: var(--new); }
 .segments button:active { transform: scale(0.97); }
@@ -643,6 +644,47 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
   .fresh-note { display: block; }
   .cal .fresh { position: static; width: auto; height: auto; overflow: visible; clip-path: none; color: var(--text); font-size: 12px; line-height: 1.4; }
 }
+{# The cards (#227): a board's rows as a grid of boxes, beside the list they have always been, as the owner chose from
+   three prototypes (design A). A card is the same row, its cells laid out in other areas, so the cards add nothing to
+   a row's markup, which a long board has no room for. The script marks the root element (data-layout) before the board
+   is parsed, and every rule here is drawn from that mark alone, so the first frame drawn is the cards for a reader who
+   chose them, and with scripts off the board is the list. A card is a box in the flow of the page, as an opened row is:
+   the surface, a 1 px edge in the line, 12 px corners, and 16 px inside. As many lie to a line as fit at 280 px or
+   wider, 16 px apart: three in the site's column, two at a 768 px window, and one on a phone. Its rank is a chip, the
+   top three on the accent as in the list, the rest on the raised surface; its language, from the row's data-l, at the
+   right of that line; its chevron at its top right; then its name, its description cut to three lines, and under a
+   rule its line of figures, which say again in words what the list's headings say. The drawing of its pace takes
+   at most the width its column has (cqi), since a wide gain beside a wide count of stars leaves less than its
+   64 px on a card of 280 px; its scale is up the card, where two rows compare, so a narrower one loses nothing. An opened card takes the whole
+   width of the grid, so what it opens has the room it has in the list, and its edge is in the accent, as its chevron
+   is. These rules are only on a board with rows, which alone carries the switch. #}
+{% if filtering and board.rows %}
+#layout { margin-left: auto; }
+:root[data-layout=cards] #layout [data-layout=""]:not(:hover) { background: transparent; color: var(--text-2); font-weight: 400; }
+:root[data-layout=cards] .chart { display: block; }
+:root[data-layout=cards] .chart thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+:root[data-layout=cards] .chart tbody { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+:root[data-layout=cards] .chart tbody tr { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: auto auto 1fr auto auto; grid-template-areas: "rank language language" "repository repository repository" "description description description" "growth own stars" "why why why"; column-gap: 0; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+:root[data-layout=cards] .chart.plain tbody tr { grid-template-areas: "rank rank rank" "repository repository repository" "description description description" "language language stars"; }
+:root[data-layout=cards] .chart tbody tr::after { content: attr(data-l); grid-area: language; justify-self: end; margin-right: 32px; padding-left: 12px; color: var(--text-3); font-size: 13px; line-height: 1.6; white-space: nowrap; }
+:root[data-layout=cards] .chart.plain tbody tr::after { content: none; }
+:root[data-layout=cards] .chart.clickable tbody tr:hover { background: var(--surface); box-shadow: none; border-color: var(--line-strong); }
+:root[data-layout=cards] .chart tbody tr:has(details[open]) { grid-column: 1 / -1; background: var(--surface); border-color: var(--accent); }
+:root[data-layout=cards] td.rk { justify-self: start; min-width: 0; padding: 1px 6px 0; border-radius: 6px; background: var(--raised); font-size: 13px; text-align: left; }
+:root[data-layout=cards] td.rk::before { content: "#"; content: "#" / ""; }
+:root[data-layout=cards] td.rk.podium { justify-self: start; background: var(--accent); }
+:root[data-layout=cards] th.re { margin-top: 10px; }
+:root[data-layout=cards] td.de { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; align-self: start; max-width: none; margin-top: 6px; overflow-wrap: anywhere; white-space: normal; }
+:root[data-layout=cards] .chart tbody tr:has(details[open]) td.de { display: block; -webkit-line-clamp: none; }
+:root[data-layout=cards] td.gr, :root[data-layout=cards] td.pc, :root[data-layout=cards] td.st { align-self: stretch; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; white-space: nowrap; }
+:root[data-layout=cards] td.gr { padding-right: 12px; }
+:root[data-layout=cards] td.gr::after { content: " a day"; }
+:root[data-layout=cards] td.gr.g::after { content: " on the day"; }
+:root[data-layout=cards] td.pc { --w: min(64px, 100cqi); --h: 24px; padding-top: 10px; container-type: inline-size; }
+:root[data-layout=cards] td.st::after { content: " stars"; color: var(--text-3); font-family: var(--sans); }
+:root[data-layout=cards] td.language { margin-top: 12px; }
+:root[data-layout=cards] td.wy summary { left: auto; right: 10px; top: 10px; }
+{% endif %}
 @media (min-width: 1100px) {
   .months { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px; row-gap: 40px; }
 }

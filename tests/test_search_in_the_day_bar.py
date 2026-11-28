@@ -171,7 +171,8 @@ class TheSearchInTheDayBar(BuildTest):
         page = self.open(self.site)
         self.assertIn("DIGITAL Command Language", page.locator("#language option").all_text_contents())
         controls = page.evaluate(FILTER)
-        self.assertEqual([control["id"] for control in controls], ["kinds", "bands", "language", "sort"])
+        # The switch between the list and the cards ends the filter's row (#227).
+        self.assertEqual([control["id"] for control in controls], ["kinds", "bands", "language", "sort", "layout"])
         self.assertEqual(len({round(control["top"]) for control in controls}), 1, controls)
         page.close()
 

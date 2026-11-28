@@ -27,8 +27,10 @@ Accepted. No single record holds it. Its reasons are written in three places:
 - An image, a web font, an embed, or an analytics script from another address
   cannot be added without reopening this. The host adds an analytics script
   to each live page, and the page's own policy refuses it.
-- The script stores one thing in the browser, the reader's choice of theme,
-  and sends nothing anywhere.
+- The script stores two things in the browser, the reader's choice of theme
+  and, on a board, the reader's choice of the cards, and sends nothing
+  anywhere. It stored the theme alone until the owner allowed the second for
+  the cards (#227).
 
 ## Confirmed by
 

@@ -42,6 +42,8 @@ a page that already does the nearest job, and build from it.
 | A box that holds a chart or a row's detail | The card that holds Baseline's chart, or an opened row | `.card`, `.op` |
 | A flow of steps, each with a way out | How it works' diagram: a spine in the third ink, a diamond for a check, a square for a step, an oval for the start and the end, a dashed edge for a way off, and a key along its foot (#214) | `.flow`, `.spine`, `.step`, `.box`, `.way`, `.off`, `.finish`, `.key` |
 | A choice among a few | The filter's buttons, each with `aria-pressed` | `.segments button` |
+| A choice of how to see the same things | The board's layout, List or Cards: the filter's buttons, at the right-hand end of its row, whose pressed look also follows the root's mark, so that it is right from the first frame (#227) | `#layout` |
+| One of many like things, side by side | A card: a row as a box in a grid, as many to a line as fit at 280 px or wider, 16 px apart, of one height with the others of its line, its figures under a rule at its foot (#227) | `:root[data-layout=cards] .chart tbody tr` |
 | One action, such as undoing a view | The button under the line that says no row matches: the filter's size, with an edge | `.filtered-none button` |
 | A choice among many | The filter's list of languages | `.toolbar select` |
 | Words the reader types | The board's search, in the filter on a phone and in the day bar from 768 px up, and the field that finds a repository on Baseline's chart | `input[type="search"]` |
@@ -122,9 +124,10 @@ that file's docstring says how.
 - Corners: 4 px for the smallest things, such as a cell of an opened row's
   run of days; 6 px for a mark, such as New or a top-three rank; 8 px for a
   button or a cell of History; 10 px for a field or a group of buttons; 12 px
-  for a box in the flow of a page, such as the notice of an old board or an
-  opened row; 16 px for the card; and an oval, 28 px, for the end of How it
-  works' diagram, whose start is round.
+  for a box in the flow of a page, such as the notice of an old board, an
+  opened row, or one of a board's cards; 16 px for the card that holds
+  Baseline's chart; and an oval, 28 px, for the end of How it works' diagram,
+  whose start is round.
 - A rule or an edge is 1 px in `--line`, and in `--line-strong` where it has
   to be seen.
 - A cell that holds nothing says so by its edge, not by a fill: on History, a
@@ -145,7 +148,9 @@ Below 768 px the filter's star bands are a grid of two or three columns, as
 wide as the toolbar, so that no button is left alone on a line (#32). From
 768 px up the board's search leaves the filter for the day bar, so that on a
 window 1,200 px wide or more the filter keeps one row whatever languages a
-board lists (#213).
+board lists (#213). A board's cards lie as many to a line as fit at 280 px or
+wider, 16 px apart: three in the site's column of 1,200 px, two at a 768 px
+window, and one on a phone (#227).
 
 ### Movement
 

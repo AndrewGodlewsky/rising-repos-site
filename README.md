@@ -41,7 +41,9 @@ board, which a reader can set against its stars, and, once the page's script
 has the board day's `history.json`, on its score and the sum behind it, its
 facts, and its last 30 board days (see "A row" and "An opened row" in the
 design note). The site computes no score and no rank: it words and rounds the
-numbers the file gives.
+numbers the file gives. Where the page's script runs, a switch at the end of
+the filter lays the same rows out as cards, a grid of boxes, and keeps that
+choice (see "The cards" in the design note).
 
 Above the rows, a board's page says what changes how it reads: that it is an
 earlier board, that its ranking is provisional while the data file says the
@@ -159,9 +161,10 @@ What every page holds to, each checked by a test in `tests/`:
 - **Nothing from another site.** The page requests nothing from another
   address. Its type is inside it: the four faces are `data:` addresses in its
   stylesheet, so no font file is fetched or published. Its styles, its script,
-  and its icon are in the page too. The script stores one thing in the
+  and its icon are in the page too. The script stores two things in the
   browser, the reader's choice of theme, under `theme` in `localStorage`, and
-  sends nothing anywhere.
+  on a board the reader's choice of the cards, under `layout`, which holds only
+  the word `cards` (#227), and sends nothing anywhere.
 - **Its size.** A page, with its styles, its script, and its type, stays
   within **550,000 bytes**. Measured on 2026-11-21, without `--noindex`:
 
@@ -249,7 +252,11 @@ What every page holds to, each checked by a test in `tests/`:
   markup, its script, and its stylesheet, and 234 to every other page, in the
   stylesheet, by `sitework weigh` on 27 November 2026, and 173 to the root
   gzipped: the heaviest board day is now 501,454 bytes, 48,546 under the
-  limit. Past about 500 real
+  limit. The cards (#227) added 4,493 bytes to a board with rows, in its
+  switch, its script, and its stylesheet, and nothing to any other page, by
+  `sitework weigh` on 28 November 2026, and 761 to the root gzipped: the
+  heaviest board day is now 504,833 bytes, 45,167 under the limit. They add
+  nothing to a row. Past about 500 real
   rows, a long board's later rows in a second file is the next step.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
   is where the limits that a longer board meets are weighed.
@@ -277,7 +284,9 @@ What every page holds to, each checked by a test in `tests/`:
   the count of the "Most often" order (#186) it came to 143,579 on Windows on
   2026-11-27, 190 more than the same day's 143,389 without it. With the
   search in the day bar (#213) it came to 143,769 on Windows on 2026-11-27,
-  174 more than the same day's 143,595 without it. The
+  174 more than the same day's 143,595 without it. With the cards (#227) it
+  came to 144,325 on Windows on 2026-11-28, 750 more than the same day's
+  143,575 without them. The
   type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries
@@ -356,11 +365,11 @@ The body is 15 px, the description 14 px, a repository's name 16 px (17 px from
 | --- | --- | --- | --- |
 | `--bg` | `#f7f6f2` | `#121311` | The page, and the browser's own bar (`theme-color`) |
 | `--surface` | `#ffffff` | `#181a17` | A control, a card, an opened row, the notice of an old board |
-| `--raised` | `#efeee8` | `#22241f` | A note above the rows, and a control under the pointer |
+| `--raised` | `#efeee8` | `#22241f` | A note above the rows, a control under the pointer, and a card's rank but the top three's |
 | `--text` | `#1b1a16` | `#ecebe5` | The text: 16.10:1 on the page, 15.60:1 in the dark |
 | `--text-2` | `#55524a` | `#b0ada3` | The descriptions, the owner, the bars' links, a gain of 0 or a day with no count where a gain is green, a row's count in the "Most often" order: 7.21:1, 8.30:1 |
 | `--text-3` | `#6b675d` | `#939087` | The quietest text: the ranks past the top ten, the headings over the figures, an owner over its name in Baseline's table on a phone, a visited repository, and the spine, arrows, and branches of How it works' diagram: 5.22:1, 5.84:1 |
-| `--accent` | `#12704b` | `#5cc896` | Evergreen: what a repository gained, the top ten ranks, a pressed filter, the focus ring, a link under the pointer, and on How it works "On the board" and the path a chosen example takes: 5.64:1, 9.01:1 |
+| `--accent` | `#12704b` | `#5cc896` | Evergreen: what a repository gained, the top ten ranks, a pressed filter, the focus ring, a link under the pointer, an opened card's edge, and on How it works "On the board" and the path a chosen example takes: 5.64:1, 9.01:1 |
 | `--on-accent` | `#ffffff` | `#0f1a14` | A top-three rank on the accent: 6.10:1, 8.62:1 |
 | `--new` | `#8a4b08` | `#f0b45e` | Amber: the New mark, the New filter: 6.79:1 on a control, 9.50:1 |
 | `--loss` | `#a8201a` | `#f07a6e` | Deep red: a loss, and nothing else, written with the true minus, in the growth column and in an opened row's gains over 7 and 30 days and its table of days: 6.73:1, 6.84:1 |
@@ -485,7 +494,8 @@ they come from the address, which only chooses among what the page holds, and
 they stay in view in the search field. The keyboard then goes to All, since the
 button hides with its line. Its
 state is in the address (`?show=new&band=1k-3k&lang=Rust&sort=gained&q=…`),
-so a filtered board can be linked to. The board's links to the board day
+so a filtered board can be linked to, and so is the board's layout, as
+`view=cards` (see "The cards"). The board's links to the board day
 before and after, Latest, and the earlier board's note carry the filters and
 the order, so that stepping a day keeps them, and never the search, whose words
 stay in the search field alone: the search box starts empty on the next day
@@ -588,6 +598,55 @@ so nothing is cut on a narrower screen either. The row of headings is cut to
 a pixel there, as the board's own is, so a screen reader still has it, and
 the table and each of its parts names its role, as the board's do. From
 768 px up it is a table under its headings.
+
+**The cards.** A switch at the right-hand end of the filter's row, "List" and
+"Cards", the filter's own segmented control in a group named "View", turns a
+board with rows between the list and the cards (#227): the same rows, each
+drawn as a box in a grid. The owner chose this design, design A, from three
+prototypes, kept in `docs/research/2026-11-28-card-view-prototype/` on the
+branch `prototype/card-view`, for two reasons: a grid is easier to look across
+and choose from on a wide screen than a long, dense list, and it is the view
+that readers of other trending sites expect. The list stays the first view,
+and the board with scripts off. As many cards lie to a line as fit at 280 px or
+wider, 16 px apart: three in the site's column of 1,200 px, two at a 768 px
+window, and one on a phone. A card is a box in the flow of the page, as an
+opened row is: `--surface`, a 1 px edge in `--line`, 12 px corners, and 16 px
+inside. It holds its row's own cells, and no other, from top to bottom: the
+rank as a chip that reads "#1", the top three on the accent as in the list,
+the top ten in it, and the rest in the third ink, each but the top three's on
+the raised surface, with the row's language at the right of that line, from
+its `data-l`, and the chevron at the card's top right; the name, with its New
+mark, and in the "Most often" order its count; the description, cut to three
+lines; and under a rule, the day's gain with "on the day" after it, the
+drawing of its pace, and the total stars with "stars" after them, since the
+column headings are kept for a screen reader alone. A board whose file
+predates the rows' numbers has no chevron, gain, or pace, and its card holds
+the rank, the name, the description, the language, and the stars. The cards of
+a line are of one height, so their lines of figures line up. A click on a card,
+or on its chevron, opens it as a row opens, and the opened card takes the whole
+width of the grid, with its edge in the accent, so that what it opens has the
+room it has in the list. The cards before it keep their places, which can leave
+the end of the line above it empty, and those after it follow on below. The
+filters, the order, and the search act on the cards as they do on the list.
+
+The cards add nothing to a row's markup, which a long board has no room for:
+the rows are already grids of named areas, and the stylesheet lays the same
+cells out in other areas, from a mark the script sets on the root element,
+`data-layout="cards"`, and only on a board with rows. A reader who presses
+Cards keeps the choice in the address, as `view=cards`, which the links to
+other board days carry with the filters, and in this browser, under `layout`
+in `localStorage`, so that the board opens in the cards on their next visit. A
+press of List takes it out of both, as a press back to the browser's own theme
+clears the kept theme. An address that asks for the cards wins over what the
+browser kept, since it is a link someone chose to share, and any value but
+`cards` is the list. The script reads both in the `<head>`, before the board is
+parsed, and marks the root, so that the first frame drawn is the cards and never
+the list, and the switch's pressed look follows the same mark. A press replaces
+the address's entry in the history rather than adding one: with a new entry,
+Back to the plain address would read the kept cards again, and seem to do
+nothing. The page's own word for the choice is the board's layout, so that
+"view" in the script still means the filters and the order, and the address
+keeps the owner's word, `view=cards`.
 
 **About this board, and the foot.** Under the rows, About this board gives the
 board's plain facts in `--text-2`, each a line: its count of repositories and

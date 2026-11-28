@@ -418,3 +418,18 @@ Sentence 46 came with #213, and reads a live site as it reads the made-up one.
     offers, and reads the figures headed by its name.
 
 Sentence 47 came with #214, and reads a live site as it reads the made-up one.
+
+### The cards (`test_the_cards.py`)
+
+48. Pressing Cards lays a board's rows out as boxes side by side, the same
+    rows in the same order, and a reader who comes back in the same browser
+    finds the board in cards until they press List.
+    `test_pressing_cards_lays_the_rows_out_side_by_side_and_the_browser_keeps_it_until_list_is_pressed`
+
+    It does not claim how many cards lie to a line at a given width, what a
+    card holds, where the switch stands, the address's `view=cards`, the
+    links to other board days, a frame of the list before the cards, or the
+    board with scripts off, which the agents' tests hold. It reads a desktop
+    1440 pixels wide, and the rows' places on the page.
+
+Sentence 48 came with #227, and reads a live site as it reads the made-up one.
