@@ -831,13 +831,15 @@ class TheRow(BuildTest):
         return [area.split() for area in rule.split('"')[1::2]]
 
     def test_on_a_phone_a_closed_row_is_its_name_its_description_and_a_line_of_figures(self):
-        """The reason, under them, takes no line until the row is opened: its chevron sits under the rank."""
+        """The language sits quietly under the figures (#235), and the reason takes no line until the row is opened:
+        its chevron sits under the rank."""
         self.assertEqual(
             self.areas(self.phone),
             [
                 ["rank", "repository", "repository", "repository"],
                 [".", "description", "description", "description"],
                 [".", "growth", "own", "stars"],
+                [".", "language", "language", "language"],
                 [".", "why", "why", "why"],
             ],
         )
