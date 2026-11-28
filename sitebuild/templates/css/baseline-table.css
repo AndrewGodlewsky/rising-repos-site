@@ -1,0 +1,22 @@
+{# The Baseline page: the chart, and every repository in it as a table #}
+{% if template == "baseline.html" %}
+.figures { margin-top: 40px; }
+.figures h2 { padding-bottom: 12px; font-size: 20px; font-weight: 500; }
+.numbers { width: 100%; border-collapse: collapse; font-size: 14px; }
+.numbers th, .numbers td { padding: 8px 8px 8px 0; border-top: 1px solid var(--line); text-align: left; font-weight: 400; vertical-align: baseline; }
+.numbers thead th { border-top: 0; color: var(--text-3); font-size: 13px; }
+.numbers tbody th { overflow-wrap: anywhere; }
+.numbers tbody th a { text-decoration-color: var(--line-strong); }
+.numbers .num { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--text-2); }
+.numbers .n { text-align: right; padding-right: 0; padding-left: 8px; }
+.numbers tr.flash { background: var(--accent-soft); }
+.figures .note { margin-top: 16px; }
+{# Below 768 px a name's owner and its slash stand on a line of their own, quieter and smaller, and the name starts
+   below, so that a name breaks at its slash and not inside a word, and only a single word wider than the column is
+   broken to fit. The break is generated content with no words of its own, so the link and what a screen reader
+   hears still read owner/name as one run (#147). #}
+@media (max-width: 767.98px) {
+  .numbers tbody th span { color: var(--text-3); font-size: 13px; }
+  .numbers tbody th span::after { content: "\A"; content: "\A" / ""; white-space: pre; }
+}
+{% endif %}

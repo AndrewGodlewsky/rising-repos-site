@@ -647,6 +647,25 @@ class TheOftenCount(BuildTest):
         page.get_by_role("searchbox").fill("boards")
         self.assertEqual([name for name, _ in page.evaluate(SAID_BY_ROWS)], [self.rows[1]["full_name"]])
 
+    def test_typing_in_search_or_toggling_filters_does_not_reappend_rows_until_the_order_changes(self):
+        """#244: searching or toggling filters hides/shows rows in place without re-appending every <tr>."""
+        page = self.board()
+        page.evaluate("""() => {
+            window.__rowMoves = 0;
+            new MutationObserver((records) => { window.__rowMoves += records.length; })
+                .observe(document.querySelector("table.chart > tbody"), { childList: true });
+        }""")
+        page.get_by_role("searchbox").fill("octocat")
+        page.locator('#kinds button[data-kind="new"]').click()
+        page.locator('#kinds button[data-kind=""]').click()
+        page.get_by_role("searchbox").fill("")
+        self.assertEqual(page.evaluate("() => window.__rowMoves"), 0)
+        page.locator("#sort").select_option("large")
+        self.assertGreater(page.evaluate("() => window.__rowMoves"), 0)
+        after_sort = page.evaluate("() => window.__rowMoves")
+        page.get_by_role("searchbox").fill("octocat")
+        self.assertEqual(page.evaluate("() => window.__rowMoves"), after_sort)
+
 
 if __name__ == "__main__":
     unittest.main()

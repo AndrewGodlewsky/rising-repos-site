@@ -1,0 +1,76 @@
+{# Rising Repos, set like an instrument's daily log: quiet paper and graphite chrome, and a few inks that each mean
+   one thing: evergreen for what a repository gained and the board's top, amber
+   for what is new, and a deep red for a loss. The dashed line of a repository's own pace is the site's
+   one signature: it is in every row, the opened row's drawing, and the Baseline chart. Links stay
+   in the text's own colour, so that colour always means one of those things. #}
+
+{# The four faces, inside the page: sitebuild/__init__.py's font_faces. Rising Sans and Rising Mono are
+   modified versions of IBM Plex Sans and IBM Plex Mono, renamed as the SIL Open Font License asks of a modified
+   version (sitebuild/fonts/subset.py). The fallback face is Arial, or Liberation Sans or Arimo, which share
+   its metrics, scaled to Rising Sans: its size adjusted to its widths, and its ascent and descent to its own, so a
+   letter the files lack, such as an accented letter in owner-written text, is drawn at the same size and moves no
+   line. Arial has no 500, so it draws such a letter at 400 in a 500 word. #}
+{{ font_faces }}
+@font-face { font-family: "Rising Sans fallback"; src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo"); size-adjust: 100.92%; ascent-override: 101.57%; descent-override: 27.25%; line-gap-override: 0%; }
+
+:root {
+  color-scheme: light dark;
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --raised: #efeee8;
+  --line: rgba(27, 26, 22, 0.1);
+  --line-strong: rgba(27, 26, 22, 0.22);
+  --text: #1b1a16;
+  --text-2: #55524a;
+  --text-3: #6b675d;
+  --accent: #12704b;
+  --accent-soft: rgba(18, 112, 75, 0.08);
+  --gain-soft: rgba(18, 112, 75, 0.16);
+  --on-accent: #ffffff;
+  --new: #8a4b08;
+  --new-soft: rgba(214, 140, 40, 0.18);
+  --loss: #a8201a;
+  --dot: rgba(27, 26, 22, 0.3);
+  --shade-1: #eef2ee;
+  --shade-2: #d8e8dd;
+  --shade-3: #bddbc8;
+  --shade-4: #9fcbb0;
+  --sans: "Rising Sans", "Rising Sans fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "Rising Mono", ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --bar: 52px; {# the day bar's height: on a board its date is the page's heading #}
+}
+{# Dark: by the browser's setting, unless the reader chose light with the switch; or by the reader's choice.
+   One macro defines both blocks so the two themes cannot drift (#245). #}
+{% macro dark_tokens(indent) -%}
+{{ indent }}color-scheme: dark;
+{{ indent }}--bg: #121311;
+{{ indent }}--surface: #181a17;
+{{ indent }}--raised: #22241f;
+{{ indent }}--line: rgba(236, 235, 229, 0.1);
+{{ indent }}--line-strong: rgba(236, 235, 229, 0.24);
+{{ indent }}--text: #ecebe5;
+{{ indent }}--text-2: #b0ada3;
+{{ indent }}--text-3: #939087;
+{{ indent }}--accent: #5cc896;
+{{ indent }}--accent-soft: rgba(92, 200, 150, 0.08);
+{{ indent }}--gain-soft: rgba(92, 200, 150, 0.2);
+{{ indent }}--on-accent: #0f1a14;
+{{ indent }}--new: #f0b45e;
+{{ indent }}--new-soft: rgba(240, 180, 94, 0.16);
+{{ indent }}--loss: #f07a6e;
+{{ indent }}--dot: rgba(236, 235, 229, 0.32);
+{{ indent }}--shade-1: #1b221d;
+{{ indent }}--shade-2: #1e3326;
+{{ indent }}--shade-3: #22492f;
+{{ indent }}--shade-4: #285e42;
+{%- endmacro %}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+{{ dark_tokens("    ") }}
+  }
+}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] {
+{{ dark_tokens("  ") }}
+}

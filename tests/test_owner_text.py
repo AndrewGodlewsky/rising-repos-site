@@ -130,7 +130,7 @@ class TheHistoryFile(BuildTest):
         licences = [fact[1] for entry in history["rows"] for fact in entry["facts"] if fact[0] == "Licence"]
         self.assertEqual(licences, [row["license"] or "None given" for row in read_json(self.board_file())["rows"]])
         self.assertTrue(all(isinstance(value, str) for value in licences))
-        script = (TEMPLATES / "filters.js").read_text(encoding="utf-8")
+        script = shipped("filters.js")
         self.assertNotRegex(script, r"innerHTML|outerHTML|insertAdjacentHTML|document\.write")
         self.assertIn("element.textContent = text", script)
         # Every element it makes is a fixed tag: no tag name comes from the file.

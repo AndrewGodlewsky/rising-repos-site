@@ -160,7 +160,10 @@ class TheColours(BuildTest):
 
     def test_a_visited_repository_dims_from_the_ink_to_the_third_ink(self):
         """A reader who comes back each day sees which repositories they have already opened."""
-        for path, style in self.styles.items():
+        boards = [path for path in self.styles if path == "index.html" or re.fullmatch(r"days/[^/]+/index\.html", path)]
+        self.assertTrue(boards)
+        for path in boards:
+            style = self.styles[path]
             with self.subTest(path):
                 self.assertIn(".re a:visited, .re a:visited .ow { color: var(--text-3); }", style)
                 for theme, tokens in self.themes(style).items():

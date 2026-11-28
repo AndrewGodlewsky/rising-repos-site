@@ -6,7 +6,6 @@ between the two repositories: a change to a field, its order, or the opening lin
 is changed with it.
 """
 
-# The package reads this module inside `build()`, as it reads `agent_copy`, which it takes `one_line` from.
 from sitebuild.agent_copy import one_line
 
 LIST_FORMAT = 1

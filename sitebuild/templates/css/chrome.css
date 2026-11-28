@@ -1,0 +1,85 @@
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+{# What needs the page's script, shown only where the script has marked the root element, in the head. #}
+:root:not([data-js]) .js-only { display: none !important; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(var(--bar) + 16px); }
+body { margin: 0; background: var(--bg); color: var(--text); font: 400 15px/1.6 var(--sans); }
+p, h1, h2, h3, ol, ul, figure { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+{# Links: a link in running text is underlined, quiet at rest and in the accent on hover. A visited repository dims
+   to the muted text, so a reader who comes back each day sees which ones they have already opened. #}
+a { color: inherit; text-decoration: underline 1px var(--line-strong); text-underline-offset: 0.25em; transition: color 150ms var(--ease), text-decoration-color 150ms var(--ease); }
+a:hover { color: var(--accent); text-decoration-color: currentColor; }
+a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible, .plot svg:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+{# The site's bar: the mark and the name, four quiet links, and the theme switch #}
+.site { border-bottom: 1px solid var(--line); }
+.site .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; padding-top: 10px; padding-bottom: 6px; }
+.site .theme { margin-left: auto; }
+.site nav { order: 3; flex: 1 1 100%; }
+.home { display: inline-flex; flex: none; white-space: nowrap; align-items: center; gap: 8px; color: var(--text); font-size: 16px; font-weight: 500; text-decoration: none; }
+.home svg { width: 20px; height: 20px; }
+.site nav { display: flex; gap: 12px; font-size: 14px; white-space: nowrap; }
+.site nav a { display: inline-block; padding: 6px 0; }
+.site nav a { color: var(--text-2); text-decoration: none; }
+.site nav a:hover, .site nav a[aria-current] { color: var(--text); }
+.theme { display: inline-flex; flex: none; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 0; border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--text-2); cursor: pointer; transition: background-color 150ms var(--ease), color 150ms var(--ease); }
+.theme:hover { background: var(--raised); color: var(--text); }
+.theme svg { width: 16px; height: 16px; }
+.theme:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+{# The notice of an old board: hidden as built; its script fills and shows it once the newest board is 26 hours
+   old. From 7 days the script marks the root element, and what <main> holds is hidden. #}
+{% if notice %}
+.old-board { max-width: 640px; margin-top: 16px; padding: 12px 16px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface); }
+.old-board strong { font-weight: 500; }
+:root[data-withheld] main > * { display: none; }
+{% endif %}
+
+{# The day bar: the board days on either side, kept in view while the list scrolls #}
+.strip { position: sticky; top: 0; z-index: 3; background: var(--bg); border-bottom: 1px solid var(--line); font-size: 14px; }
+.strip .wrap { display: flex; align-items: center; gap: 4px; height: var(--bar); }
+{# A board's bar holds its board days in a navigation of their own, beside the board's search (#213). The navigation
+   lies as the bar does, with the bar's gaps, and the rules for the bar's parts reach them in either. #}
+.strip nav { display: flex; flex: 1; align-items: center; gap: inherit; }
+.strip :is(.wrap, nav) > :is(a, span) { display: inline-block; height: 32px; line-height: 32px; padding: 0 8px; border-radius: 8px; white-space: nowrap; }
+.strip a { color: var(--text-2); text-decoration: none; transition: background-color 150ms var(--ease), color 150ms var(--ease); }
+.strip a:hover { background: var(--raised); color: var(--text); }
+.strip .here { color: var(--text); font-weight: 500; }
+@media (max-width: 389.98px) {
+  .strip .wrap { gap: 2px; }
+  .strip :is(.wrap, nav) > :is(a, span) { padding: 0 4px; }
+}
+{% if filtering %}
+{# The bar's search is drawn from 768 px up alone, and never on a page that shows no board (#213). #}
+.strip [role=search], :root[data-withheld] .strip [role=search] { display: none; }
+.strip h1.here { margin: 0 4px; padding: 0 4px; font-size: 20px; line-height: 32px; letter-spacing: -0.01em; white-space: nowrap; }
+.strip .end { color: var(--text-3); }
+.strip .latest { margin-left: auto; }
+{# On a phone Latest is "Latest »", and its date is kept for a screen reader: a bar 390 px wide has no room for it
+   beside two dates of two figures. Below 390 px the bar's parts sit closer, and below 360 px, where that is not
+   room enough, Latest is not drawn, and the note above the rows leads to the newest board instead (#28). #}
+.strip .latest .when { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 359.98px) {
+  .strip nav > .latest { display: none; }
+}
+{% endif %}
+
+{# A page's title block #}
+.head { padding: 32px 0 24px; }
+.kind { color: var(--text-2); font-size: 14px; }
+h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+.lede { max-width: 640px; margin-top: 12px; color: var(--text-2); font-size: 18px; line-height: 1.5; }
+
+{# Notes that change how the board reads: what it held back, what could not be ranked, a provisional order. Words on
+   a raised surface with a rule in the ink, so they read the same to a screen reader. #}
+{% if filtering or template == "how-it-works.html" %}
+.notes { display: grid; gap: 8px; max-width: 760px; margin-top: 24px; }
+.notes:empty { display: none; }
+.provisional, .held, .unranked, .earlier { padding: 12px 16px; border-left: 2px solid var(--text); border-radius: 0 8px 8px 0; background: var(--raised); color: var(--text-2); }
+.notes strong, .earlier strong { color: var(--text); font-weight: 500; }
+{% endif %}

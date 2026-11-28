@@ -122,6 +122,17 @@ class TheStylesheet(unittest.TestCase):
             ["- colour `#123456`, in `.x`", "- space `99px`, in `.x`"],
         )
 
+    def test_read_stylesheet_reads_partials_under_css_folder(self):
+        with tempfile.TemporaryDirectory() as folder:
+            code = write(
+                Path(folder),
+                {
+                    layout.STYLESHEET: '{% include "css/part.css" %}\n',
+                    "sitebuild/templates/css/part.css": ".x { color: #abcdef; }\n",
+                },
+            )
+            self.assertIn("#abcdef", layout.read_stylesheet(code))
+
     def test_a_new_colour_size_weight_space_and_radius_are_each_listed_with_the_rule_that_uses_them(self):
         added = ".badge { color: #B45309; font-size: 13px; font-weight: 600; margin-left: 10px; border-radius: 3px; }"
         self.assertEqual(

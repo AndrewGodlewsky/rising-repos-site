@@ -34,16 +34,6 @@
 {# What the board left off, and why, from the file (AndrewGodlewsky/RisingRepos#13). The star bands it holds back,
    and the repositories that could not be ranked, left repositories off, so each is a note here. The partial days
    the ranking merely drew on are plain facts, in the board's foot. The site decides none of them. #}
-{% if before_holds %}
-{# A file published before the holds and the days the ranking lacked (`before_holds`) takes the notes it had then.
-   This block goes, with that function, once site-data/ holds no such file. #}
-{% if before_holds.own %}
-<p class="partial recent"><strong>This day's snapshot missed some repositories.</strong> A repository it missed could not be ranked, so it is not on this board.{% if partial.recent %} The recent pace the ranking measures also runs over {{ partial.recent|long_dates }}, whose snapshot{{ "s" if partial.recent|length > 1 else "" }} missed some too.{% endif %}</p>
-{% elif partial and partial.recent %}
-{% set title = "A recent snapshot" if partial.recent|length == 1 else "Recent snapshots" %}
-<p class="partial recent"><strong>{{ title }} missed some repositories.</strong> The ranking's recent pace takes in {{ partial.recent|long_dates }}, and a repository missing then may sit higher or lower here than a full snapshot would put it, or be left out.</p>
-{% endif %}
-{% else %}
 {% if held %}
 {% set one = held.bands|length == 1 %}
 <p class="held"><strong>{{ "One star band is" if one else held.bands|length ~ " star bands are" }} held back.</strong> This day's snapshot missed repositories of {{ held.missed|listed }} stars, so the board leaves out every repository of {{ held.bands|listed("or") }} stars rather than rank {{ "that band from part of its" if one else "those bands from part of their" }} repositories.</p>
@@ -55,7 +45,6 @@
 <p class="unranked"><strong>{{ day.repositories|repositories }} could not be ranked.</strong> The ranking needs each repository's stars on {{ day.day|long_date }}, and that day's snapshot missed {{ "it" if day.repositories == 1 else "them" }}, so {{ "it is" if day.repositories == 1 else "they are" }} not on this board.</p>
 {% endif %}
 {% endfor %}
-{% endif %}
 {% endset %}
 {% if notes|trim %}
 <div class="notes">
@@ -194,13 +183,11 @@
 {% if "formula_version" in board %}
 <p class="formula">Ranked by formula version {{ board.formula_version }}. <a href="{{ how_address }}">How it ranks</a></p>
 {% endif %}
-{% if not before_holds %}
 {% for day in lacked if day.kind == "partial" %}
 <p class="partial">The ranking needs each repository's stars on {{ day.day|long_date }}, whose snapshot missed some repositories, though none it could otherwise have ranked.</p>
 {% endfor %}
 {% if partial and partial.recent %}
 <p class="partial">The ranking's recent pace takes in {{ partial.recent|long_dates }}, whose snapshot{{ "s" if partial.recent|length > 1 else "" }} missed some repositories.</p>
-{% endif %}
 {% endif %}
 {% if partial and partial.earlier %}
 {% set one = partial.earlier == 1 %}

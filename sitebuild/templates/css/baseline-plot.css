@@ -1,0 +1,46 @@
+{# The Baseline page's card, which holds its chart #}
+{% if template == "baseline.html" %}
+.card { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.pace { padding: 20px 16px 16px; }
+.card h2 { font-size: 15px; font-weight: 500; line-height: 1.4; }
+.card .caption { max-width: 560px; margin-top: 4px; color: var(--text-2); font-size: 14px; line-height: 1.5; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 12px; color: var(--text-2); font-size: 13px; }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.legend i { width: 8px; height: 8px; border-radius: 50%; background: var(--dot); }
+.legend i.lead { background: var(--accent); }
+.legend i.own { width: 16px; height: 0; border-radius: 0; border-top: 1.5px dashed var(--text-3); background: none; }
+
+{# The plot. The SVG stretches to the box; its dots are zero-length strokes with round caps and its lines keep their
+   width, so both stay true at any shape. Every label is HTML placed by percentage, at its own size. #}
+.plot { position: relative; height: 260px; margin: 28px 8px 48px 40px; }
+.plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.plot .grid line { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.plot .guide { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.plot .guide.own { stroke: var(--text-3); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.plot .dot { stroke: var(--dot); stroke-width: 7; stroke-linecap: round; vector-effect: non-scaling-stroke; transition: opacity 160ms var(--ease), stroke 160ms var(--ease); }
+.plot .dot.lead { stroke: var(--accent); stroke-width: 10; }
+.plot .dot.here { stroke: var(--text); stroke-width: 12; }
+.plot .readout { position: absolute; z-index: 1; width: max-content; max-width: 240px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); color: var(--text); font: 400 12px/1.4 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; pointer-events: none; }
+.plot.chosen .rk { visibility: hidden; }
+{# Where the script runs, the ranks' marks wait until it has set them at the chart's drawn size, so that none is drawn
+   in one place and then another (#187). Without it they are drawn where the build set them. #}
+:root[data-js] .plot:not(.placed) .rk { visibility: hidden; }
+{# A tap focuses the chart too, and draws no ring: the ring is the keyboard's. #}
+.plot svg:focus:not(:focus-visible) { outline: none; }
+.plot .tick, .plot .rk, .plot .glabel, .plot .axis { position: absolute; color: var(--text-3); font: 400 11px/1 var(--mono); white-space: nowrap; pointer-events: none; }
+.plot .tick.y { left: -8px; transform: translate(-100%, -50%); }
+.plot .tick.x { top: calc(100% + 8px); transform: translateX(-50%); }
+.plot .axis.y { top: -28px; left: -40px; color: var(--text-2); font-family: var(--sans); font-size: 12px; }
+.plot .axis.x { top: calc(100% + 26px); right: 0; color: var(--text-2); font-family: var(--sans); font-size: 12px; }
+.plot .glabel { transform: translate(4px, -100%); padding-bottom: 2px; }
+{# On a phone "own pace" sits beside its dashed line, below and to the right of it, where no other label is (#34);
+   from 768px it is at the line's end, as every guide's label is. #}
+.plot .glabel.own { left: var(--bx); top: var(--by); transform: translate(6px, 0); color: var(--text-2); }
+.plot .rk { transform: translate(10px, -50%); text-shadow: 0 0 2px var(--surface), 0 0 4px var(--surface), 0 0 6px var(--surface); color: var(--accent); font-weight: 500; font-size: 12px; }
+
+{# The field that finds a repository on the chart (#29): its label, with how many names match at the line's end,
+   above a box that takes the board's search box's look. #}
+.find { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; max-width: 400px; margin: 8px 0 12px; color: var(--text-2); font-size: 13px; }
+.find input { flex: 1 1 100%; }
+.card .caption.small { margin-top: 0; color: var(--text-3); font-size: 13px; }
+{% endif %}

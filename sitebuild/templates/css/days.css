@@ -1,0 +1,34 @@
+{# The board days, as month calendars: each day a cell shaded on a fixed four-step ramp by its count of
+   repositories, with how many were new under it. A board with no repository paints no fill of its own, gives its 0
+   in the third ink, and has a dashed edge, so that it is the quietest cell of its month and not the brightest (#91).
+   A day with no board is a hatched cell; the newest is outlined. The legend draws each as its cell. The dashed edge
+   is an outline, so it gives way to the focus ring, and to the newest board's ring, which always wins (#91). #}
+{% if template == "days.html" %}
+.ramp-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 20px; color: var(--text-2); font-size: 13px; }
+.ramp-legend .ramp-title { color: var(--text); }
+.ramp-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.ramp-legend i { width: 14px; height: 14px; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--line); }
+.ramp-legend i.newest-key { box-shadow: inset 0 0 0 2px var(--accent); }
+.ramp-note { max-width: 640px; margin-top: 8px; color: var(--text-3); font-size: 13px; }
+.shade-1 { background: var(--shade-1); }
+.shade-2 { background: var(--shade-2); }
+.shade-3 { background: var(--shade-3); }
+.shade-4 { background: var(--shade-4); }
+.months { display: grid; gap: 40px; margin-top: 8px; }
+.month h2 { padding-bottom: 8px; font-size: 20px; font-weight: 500; }
+.cal { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 4px; margin: 0 -4px; }
+.cal th { padding: 0 0 4px 4px; color: var(--text-3); font-size: 12px; font-weight: 400; text-align: left; }
+.cal td { padding: 0; vertical-align: top; }
+.cal a, .cal .gap { display: flex; flex-direction: column; min-height: 56px; padding: 6px; border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line); text-decoration: none; transition: box-shadow 150ms var(--ease); }
+.cal .gap, .ramp-legend i.gap-key { background: transparent; box-shadow: inset 0 0 0 1px var(--line); background-image: repeating-linear-gradient(-45deg, transparent 0 6px, var(--line) 6px 7px); }
+.cal a.shade-0:not(:focus-visible, .newest), .ramp-legend i.empty-key { box-shadow: none; outline: 1px dashed var(--line-strong); outline-offset: -1px; }
+.cal a.shade-0 .count { color: var(--text-3); }
+.cal a:hover { box-shadow: inset 0 0 0 1px var(--text); color: var(--text); }
+.cal a.newest { box-shadow: inset 0 0 0 2px var(--accent); }
+.cal .date { color: var(--text); font-size: 12px; line-height: 1.3; }
+.cal .count { margin-top: auto; color: var(--text); font: 500 14px/1.2 var(--mono); font-variant-numeric: tabular-nums; }
+{# The new counts, and the note that names them, show where a cell has room for them; a screen reader hears each
+   count in its cell at any width. #}
+.fresh-note { display: none; }
+.cal .fresh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+{% endif %}
