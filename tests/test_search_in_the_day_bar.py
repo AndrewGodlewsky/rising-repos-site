@@ -50,7 +50,7 @@ PARTS = """() => {
       return {
         kind: part.matches('input') ? 'search' : part.classList[0],
         left: edge.left, right: edge.right, middle: (edge.top + edge.bottom) / 2, height: edge.height,
-        padding: parseFloat(look.paddingLeft),
+        padding: parseFloat(look.paddingLeft), gap: getComputedStyle(part.parentElement).columnGap,
       };
     }),
   };
@@ -211,7 +211,9 @@ class TheSearchInTheDayBar(BuildTest):
 
     def test_on_a_phone_the_day_bar_holds_the_parts_it_held_and_no_search_box(self):
         """As it was: the board day before and the date on the newest board; on an earlier one, the board day after
-        and Latest too, Latest at the bar's right-hand end; every part on one line from the bar's left-hand edge."""
+        and Latest too, Latest at the bar's right-hand end; every part on one line from the bar's left-hand edge, 32 px
+        tall, with 8 px at each side of a link (4 px below 390 px) and 4 px at each side of the date, and 4 px
+        between parts (2 px below 390 px)."""
         site = self.site
         for path, kinds in (
             ("index.html", ["before", "here"]),
@@ -227,6 +229,10 @@ class TheSearchInTheDayBar(BuildTest):
                     self.assertLessEqual(max(p["middle"] for p in parts) - min(p["middle"] for p in parts), 1, parts)
                     if kinds[-1] == "latest":
                         self.assertAlmostEqual(parts[-1]["right"], seen["right"], delta=0.5, msg=parts)
+                    for part in parts:
+                        self.assertAlmostEqual(part["height"], 32, delta=0.5, msg=part)
+                        self.assertEqual(part["padding"], 4 if part["kind"] == "here" or width < 390 else 8, part)
+                        self.assertEqual(part["gap"], "4px" if width >= 390 else "2px", part)
                     page.close()
 
     def test_on_a_phone_the_search_box_is_full_width_at_the_top_of_the_filter(self):

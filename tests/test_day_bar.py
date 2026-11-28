@@ -28,7 +28,10 @@ NAME = re.compile(r"^The newest board, ")
 """The start of the name a screen reader hears for Latest, before the newest board's date."""
 
 BAR = """bar => {
-  const box = bar.getBoundingClientRect();
+  const wrap = bar.closest('.wrap');
+  const box = wrap.getBoundingClientRect();
+  const style = getComputedStyle(wrap);
+  const days = bar.getBoundingClientRect();
   const seen = element => {
     // The words of `element` a reader sees: those of a part cut to a pixel, as a screen reader's words are, are not.
     const words = [];
@@ -44,8 +47,8 @@ BAR = """bar => {
     return words.join('').replace(/\\s+/g, ' ').trim();
   };
   return {
-    left: box.left,
-    right: box.right,
+    left: box.left + parseFloat(style.paddingLeft),
+    right: Math.min(days.right, box.right - parseFloat(style.paddingRight)),
     sideways: document.documentElement.scrollWidth - window.innerWidth,
     parts: [...bar.children].filter(part => part.checkVisibility()).map(part => {
       const edge = part.getBoundingClientRect();
@@ -54,10 +57,11 @@ BAR = """bar => {
     }),
   };
 }"""
-"""Where the board days' own room begins and ends: the navigation that holds them, inside the bar's padding, and
-before the board's search, which the bar holds beside them from 768 px up (#213); how far the page reaches past the
-screen's right edge; and each part of the bar that is drawn: its kind, the words a reader sees in it, its two sides,
-and the height of its middle, which parts of the bar's one line share."""
+"""Where the board days' own room begins and ends: the bar's room inside its padding, and from 768 px up only as far
+as the navigation that holds them, before the board's search beside it (#213). The navigation stretches to hold its
+links, so the room is measured from the bar, where a part too wide for it shows past its end. Then how far the page
+reaches past the screen's right edge; and each part of the bar that is drawn: its kind, the words a reader sees in
+it, its two sides, and the height of its middle, which parts of the bar's one line share."""
 
 
 class TheWayToTheNewest(BuildTest):

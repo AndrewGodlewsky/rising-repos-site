@@ -390,8 +390,8 @@ On a phone the links take a line of their own under the name. The links are
 **The day bar.** Under the site's bar, a bar that stays at the top of the
 screen while the page scrolls: the board day before, with an arrow before it;
 the board's date, which is the page's `<h1>`; and the board day after, with an
-arrow after it. An earlier board's bar also leads to the newest, at its right
-end: "Latest: 23 Nov »" from 768 px up, and "Latest »" on a phone, where a
+arrow after it. An earlier board's bar also leads to the newest, at the right
+end of its board days: "Latest: 23 Nov »" from 768 px up, and "Latest »" on a phone, where a
 bar 390 px wide has no room for the date beside two dates of two figures, and
 the date is kept for a screen reader (#28). Below 390 px the bar's parts take
 4 px at each side and sit 2 px apart, and below 360 px, where that is still
