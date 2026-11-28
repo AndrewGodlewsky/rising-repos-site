@@ -260,8 +260,12 @@ What every page holds to, each checked by a test in `tests/`:
   bytes to a board with rows, in its script, and nothing to any other page, by
   `sitework weigh` on 28 November 2026, and 99 to the root gzipped: the
   heaviest board day is now 505,209 bytes, 44,791 under the limit. It adds
-  nothing to a row: its words are in the board day's `history.json`. Past
-  about 500 real
+  nothing to a row: its words are in the board day's `history.json`. Page-scoping
+  the stylesheet to the rules each kind of page uses (#245) cut 8,011 bytes from
+  every board (1,451 gzipped on the root), 21,418 from History, 19,895 from
+  Baseline, 23,202 from How it works, 24,554 from For agents, and 24,679 from
+  the not-found page: the heaviest board day is now 497,198 bytes, 52,802 under
+  the limit. Past about 500 real
   rows, a long board's later rows in a second file is the next step.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
   is where the limits that a longer board meets are weighed.

@@ -40,55 +40,39 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --bar: 52px; {# the day bar's height: on a board its date is the page's heading #}
 }
-{# Dark: by the browser's setting, unless the reader chose light with the switch; or by the reader's choice. #}
+{# Dark: by the browser's setting, unless the reader chose light with the switch; or by the reader's choice.
+   One macro defines both blocks so the two themes cannot drift (#245). #}
+{% macro dark_tokens(indent) -%}
+{{ indent }}color-scheme: dark;
+{{ indent }}--bg: #121311;
+{{ indent }}--surface: #181a17;
+{{ indent }}--raised: #22241f;
+{{ indent }}--line: rgba(236, 235, 229, 0.1);
+{{ indent }}--line-strong: rgba(236, 235, 229, 0.24);
+{{ indent }}--text: #ecebe5;
+{{ indent }}--text-2: #b0ada3;
+{{ indent }}--text-3: #939087;
+{{ indent }}--accent: #5cc896;
+{{ indent }}--accent-soft: rgba(92, 200, 150, 0.08);
+{{ indent }}--gain-soft: rgba(92, 200, 150, 0.2);
+{{ indent }}--on-accent: #0f1a14;
+{{ indent }}--new: #f0b45e;
+{{ indent }}--new-soft: rgba(240, 180, 94, 0.16);
+{{ indent }}--loss: #f07a6e;
+{{ indent }}--dot: rgba(236, 235, 229, 0.32);
+{{ indent }}--shade-1: #1b221d;
+{{ indent }}--shade-2: #1e3326;
+{{ indent }}--shade-3: #22492f;
+{{ indent }}--shade-4: #285e42;
+{%- endmacro %}
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --bg: #121311;
-    --surface: #181a17;
-    --raised: #22241f;
-    --line: rgba(236, 235, 229, 0.1);
-    --line-strong: rgba(236, 235, 229, 0.24);
-    --text: #ecebe5;
-    --text-2: #b0ada3;
-    --text-3: #939087;
-    --accent: #5cc896;
-    --accent-soft: rgba(92, 200, 150, 0.08);
-    --gain-soft: rgba(92, 200, 150, 0.2);
-    --on-accent: #0f1a14;
-    --new: #f0b45e;
-    --new-soft: rgba(240, 180, 94, 0.16);
-    --loss: #f07a6e;
-    --dot: rgba(236, 235, 229, 0.32);
-    --shade-1: #1b221d;
-    --shade-2: #1e3326;
-    --shade-3: #22492f;
-    --shade-4: #285e42;
+{{ dark_tokens("    ") }}
   }
 }
 :root[data-theme="light"] { color-scheme: light; }
 :root[data-theme="dark"] {
-  color-scheme: dark;
-  --bg: #121311;
-  --surface: #181a17;
-  --raised: #22241f;
-  --line: rgba(236, 235, 229, 0.1);
-  --line-strong: rgba(236, 235, 229, 0.24);
-  --text: #ecebe5;
-  --text-2: #b0ada3;
-  --text-3: #939087;
-  --accent: #5cc896;
-  --accent-soft: rgba(92, 200, 150, 0.08);
-  --gain-soft: rgba(92, 200, 150, 0.2);
-  --on-accent: #0f1a14;
-  --new: #f0b45e;
-  --new-soft: rgba(240, 180, 94, 0.16);
-  --loss: #f07a6e;
-  --dot: rgba(236, 235, 229, 0.32);
-  --shade-1: #1b221d;
-  --shade-2: #1e3326;
-  --shade-3: #22492f;
-  --shade-4: #285e42;
+{{ dark_tokens("  ") }}
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -127,9 +111,11 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 
 {# The notice of an old board: hidden as built; its script fills and shows it once the newest board is 26 hours
    old. From 7 days the script marks the root element, and what <main> holds is hidden. #}
+{% if notice %}
 .old-board { max-width: 640px; margin-top: 16px; padding: 12px 16px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface); }
 .old-board strong { font-weight: 500; }
 :root[data-withheld] main > * { display: none; }
+{% endif %}
 
 {# The day bar: the board days on either side, kept in view while the list scrolls #}
 .strip { position: sticky; top: 0; z-index: 3; background: var(--bg); border-bottom: 1px solid var(--line); font-size: 14px; }
@@ -138,11 +124,12 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
    lies as the bar does, with the bar's gaps, and the rules for the bar's parts reach them in either. #}
 .strip nav { display: flex; flex: 1; align-items: center; gap: inherit; }
 .strip :is(.wrap, nav) > :is(a, span) { display: inline-block; height: 32px; line-height: 32px; padding: 0 8px; border-radius: 8px; white-space: nowrap; }
-{# The bar's search is drawn from 768 px up alone, and never on a page that shows no board (#213). #}
-.strip [role=search], :root[data-withheld] .strip [role=search] { display: none; }
 .strip a { color: var(--text-2); text-decoration: none; transition: background-color 150ms var(--ease), color 150ms var(--ease); }
 .strip a:hover { background: var(--raised); color: var(--text); }
 .strip .here { color: var(--text); font-weight: 500; }
+{% if filtering %}
+{# The bar's search is drawn from 768 px up alone, and never on a page that shows no board (#213). #}
+.strip [role=search], :root[data-withheld] .strip [role=search] { display: none; }
 .strip h1.here { margin: 0 4px; padding: 0 4px; font-size: 20px; line-height: 32px; letter-spacing: -0.01em; white-space: nowrap; }
 .strip .end { color: var(--text-3); }
 .strip .latest { margin-left: auto; }
@@ -157,6 +144,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 @media (max-width: 359.98px) {
   .strip nav > .latest { display: none; }
 }
+{% endif %}
 
 {# A page's title block #}
 .head { padding: 32px 0 24px; }
@@ -166,12 +154,15 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 
 {# Notes that change how the board reads: what it held back, what could not be ranked, a provisional order. Words on
    a raised surface with a rule in the ink, so they read the same to a screen reader. #}
+{% if filtering or template == "how-it-works.html" %}
 .notes { display: grid; gap: 8px; max-width: 760px; margin-top: 24px; }
 .notes:empty { display: none; }
 .provisional, .held, .unranked, .earlier { padding: 12px 16px; border-left: 2px solid var(--text); border-radius: 0 8px 8px 0; background: var(--raised); color: var(--text-2); }
 .notes strong, .earlier strong { color: var(--text); font-weight: 500; }
+{% endif %}
 
 {# The Baseline page's card, which holds its chart #}
+{% if template == "baseline.html" %}
 .card { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
 .pace { padding: 20px 16px 16px; }
 .card h2 { font-size: 15px; font-weight: 500; line-height: 1.4; }
@@ -215,13 +206,12 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 .find { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; max-width: 400px; margin: 8px 0 12px; color: var(--text-2); font-size: 13px; }
 .find input { flex: 1 1 100%; }
 .card .caption.small { margin-top: 0; color: var(--text-3); font-size: 13px; }
+{% endif %}
 
-{# The board: a toolbar of filters, then the ranked list #}
-.board { margin-top: 24px; }
-.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding-bottom: 16px; }
-.toolbar h2 { margin-right: auto; font-size: 20px; font-weight: 500; }
+{# Segmented controls, shared by a board's filter bar and How it works's examples. #}
+{% if filtering or template == "how-it-works.html" %}
 .segments { display: flex; flex-wrap: wrap; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
-.segments button, .toolbar select { height: 32px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; color: var(--text-2); font: 400 13px/1 var(--sans); cursor: pointer; transition: background-color 150ms var(--ease), color 150ms var(--ease), transform 120ms var(--ease); }
+.segments button{% if filtering %}, .toolbar select{% endif %} { height: 32px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; color: var(--text-2); font: 400 13px/1 var(--sans); cursor: pointer; transition: background-color 150ms var(--ease), color 150ms var(--ease), transform 120ms var(--ease); }
 .segments button:hover { color: var(--text); }
 {# Cards, pressed from the root's mark before the script has pressed it, takes the filter's own pressed look (#227). #}
 .segments button[aria-pressed="true"]{% if filtering and board.rows %}, :root[data-layout=cards] #layout [data-layout=cards]{% endif %} { background: var(--gain-soft); color: var(--accent); font-weight: 500; }
@@ -230,6 +220,18 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 .segments button:active { transform: scale(0.97); }
 .segments .num { margin-left: 4px; color: var(--text-3); font-size: 12px; }
 .segments button[aria-pressed="true"] .num { color: inherit; }
+{% endif %}
+
+input[type="search"] { height: 38px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); font: 400 14px/1 var(--sans); transition: border-color 150ms var(--ease); }
+input[type="search"]::placeholder { color: var(--text-3); opacity: 1; }
+input[type="search"]:hover { border-color: var(--line-strong); }
+input[type="search"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+{# The board: a toolbar of filters, then the ranked list #}
+{% if filtering %}
+.board { margin-top: 24px; }
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding-bottom: 16px; }
+.toolbar h2 { margin-right: auto; font-size: 20px; font-weight: 500; }
 {# On a phone the band buttons wrapped as words do, and the last fell alone onto a line of its own (#32). So the group
    is a grid as wide as the toolbar: three columns, which lay six buttons in two lines of three of one width, or two
    when two or four of the five bands are held back, and so hidden, which leaves an even count. From 768 px up it is
@@ -238,10 +240,6 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 #bands:has(> [hidden] ~ [hidden]):not(:has(> [hidden] ~ [hidden] ~ [hidden])), #bands:has(> [hidden] ~ [hidden] ~ [hidden] ~ [hidden]) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .toolbar select { padding-right: 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); height: 38px; }
 .toolbar input[type="search"] { order: -1; flex: 1 1 100%; }
-input[type="search"] { height: 38px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); font: 400 14px/1 var(--sans); transition: border-color 150ms var(--ease); }
-input[type="search"]::placeholder { color: var(--text-3); opacity: 1; }
-input[type="search"]:hover { border-color: var(--line-strong); }
-input[type="search"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .filtered-none { padding: 24px 0; color: var(--text-2); border-top: 1px solid var(--line); }
 {# Its one button, which clears the view (#33): the filter's own control, with the edge of a field that can be pressed. #}
 .filtered-none button { margin-top: 12px; height: 32px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); color: var(--text); font: 400 13px/1 var(--sans); cursor: pointer; }
@@ -380,15 +378,18 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
 .more-days td::before { content: attr(data-h); display: block; color: var(--text-3); font: 400 12px/1.5 var(--sans); }
 .more-days td.gain { color: var(--accent); }
 
-.message { max-width: 640px; padding: 32px 0; border-top: 1px solid var(--line); }
-.message-title { font-size: 20px; font-weight: 500; }
-.message p + p { margin-top: 8px; color: var(--text-2); }
-
 {# About this board: the board's plain facts and what New means, in the open at its foot #}
 .about { max-width: 760px; margin-top: 40px; padding: 24px 0; border-top: 1px solid var(--line); }
 .about h2 { font-size: 15px; font-weight: 500; }
 .about .lines p { margin-top: 8px; color: var(--text-2); font-size: 14px; line-height: 1.5; }
 .about .lines strong { color: var(--text); font-weight: 500; }
+{% endif %}
+
+{% if filtering or template in ("baseline.html", "not-found.html") %}
+.message { max-width: 640px; padding: 32px 0; border-top: 1px solid var(--line); }
+.message-title { font-size: 20px; font-weight: 500; }
+.message p + p { margin-top: 8px; color: var(--text-2); }
+{% endif %}
 
 {# A board's foot, and the site's #}
 .foot { margin-top: 0; padding: 24px 0 8px; border-top: 1px solid var(--line); }
@@ -406,6 +407,7 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
    in the third ink, and has a dashed edge, so that it is the quietest cell of its month and not the brightest (#91).
    A day with no board is a hatched cell; the newest is outlined. The legend draws each as its cell. The dashed edge
    is an outline, so it gives way to the focus ring, and to the newest board's ring, which always wins (#91). #}
+{% if template == "days.html" %}
 .ramp-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 20px; color: var(--text-2); font-size: 13px; }
 .ramp-legend .ramp-title { color: var(--text); }
 .ramp-legend span { display: inline-flex; align-items: center; gap: 8px; }
@@ -433,8 +435,10 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
    count in its cell at any width. #}
 .fresh-note { display: none; }
 .cal .fresh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+{% endif %}
 
 {# The Baseline page: the chart, and every repository in it as a table #}
+{% if template == "baseline.html" %}
 .figures { margin-top: 40px; }
 .figures h2 { padding-bottom: 12px; font-size: 20px; font-weight: 500; }
 .numbers { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -454,13 +458,16 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
   .numbers tbody th span { color: var(--text-3); font-size: 13px; }
   .numbers tbody th span::after { content: "\A"; content: "\A" / ""; white-space: pre; }
 }
+{% endif %}
 
-{# How it works #}
+{# How it works and For agents prose #}
+{% if template in ("how-it-works.html", "for-agents.html") %}
 .prose { max-width: 680px; padding-bottom: 16px; }
 .prose h2 { margin-top: 40px; font-size: 20px; font-weight: 500; line-height: 1.3; }
 .prose h2 + p, .prose p + p { margin-top: 12px; }
 .prose p { color: var(--text-2); font-size: 16px; line-height: 1.7; }
 .prose > p:first-child { color: var(--text); font-size: 18px; }
+{% endif %}
 {# How it works's flow diagram (#214), which no other page carries, so these rules are in its page alone. One spine runs
    down the left of a single column of boxes, its centre 31.75 px in from the column's edge, where every mark, arrowhead,
    and line of it is set. Shape says what a box is: a diamond a check, a square a step that works something out, an oval
@@ -562,8 +569,21 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
   :root { --bar: 64px; }
   html { scroll-padding-top: calc(var(--bar) + 56px); }
   .wrap { padding: 0 32px; }
+  .strip .wrap { gap: 8px; }
+  .site .wrap { flex-wrap: nowrap; height: 56px; padding-top: 0; padding-bottom: 0; }
+  .site nav { order: 0; flex: none; margin-left: auto; }
+  .site .theme { order: 1; margin-left: 4px; }
+  .head { padding: 48px 0 32px; }
+  h1 { font-size: 56px; letter-spacing: -0.03em; }
+  {% if template == "baseline.html" %}
   .numbers th, .numbers td { padding-right: 12px; }
   .numbers .n { padding-right: 0; padding-left: 12px; }
+  .pace { padding: 24px 24px 20px; }
+  .plot { height: 320px; margin: 32px 8px 48px 48px; }
+  .plot .axis.y { top: -24px; }
+  .plot .glabel.own { left: var(--x); top: var(--y); transform: var(--t, translate(4px, -100%)); }
+  {% endif %}
+  {% if filtering %}
   {# The search is in the day bar from here up, at the bar's right-hand end, and the filter keeps its row (#213). The
      filter's label goes with its box, which a screen reader would otherwise hear naming nothing. #}
   .toolbar [for=q], .toolbar input[type="search"] { display: none; }
@@ -571,16 +591,6 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
   .strip input { width: 100%; }
   #bands { display: flex; flex: initial; }
   .strip h1.here { font-size: 28px; line-height: 40px; letter-spacing: -0.02em; }
-  .strip .wrap { gap: 8px; }
-  .site .wrap { flex-wrap: nowrap; height: 56px; padding-top: 0; padding-bottom: 0; }
-  .site nav { order: 0; flex: none; margin-left: auto; }
-  .site .theme { order: 1; margin-left: 4px; }
-  .head { padding: 48px 0 32px; }
-  h1 { font-size: 56px; letter-spacing: -0.03em; }
-  .pace { padding: 24px 24px 20px; }
-  .plot { height: 320px; margin: 32px 8px 48px 48px; }
-  .plot .axis.y { top: -24px; }
-  .plot .glabel.own { left: var(--x); top: var(--y); transform: var(--t, translate(4px, -100%)); }
   .op { grid-template-columns: minmax(0, 1fr) 280px; grid-template-areas: "reason facts" "drawing facts" "run run" "days days"; column-gap: 32px; row-gap: 24px; max-width: 960px; padding: 20px 24px; }
   .op .rs { grid-area: reason; }
   .op .fa { grid-area: facts; grid-template-columns: 1fr; gap: 12px; padding-left: 24px; border-left: 1px solid var(--line); }
@@ -638,11 +648,14 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
   .strip .latest .when { position: static; width: auto; height: auto; overflow: visible; clip-path: none; }
   td.st::after { content: none; }
   .nm { font-size: 17px; }
+  {% endif %}
+  {% if template == "days.html" %}
   .cal a, .cal .gap { min-height: 76px; padding: 8px; }
   .cal .date { font-size: 13px; }
   .cal .count { margin-top: 8px; font-size: 20px; }
   .fresh-note { display: block; }
   .cal .fresh { position: static; width: auto; height: auto; overflow: visible; clip-path: none; color: var(--text); font-size: 12px; line-height: 1.4; }
+  {% endif %}
 }
 {# The cards (#227): a board's rows as a grid of boxes, beside the list they have always been, as the owner chose from
    three prototypes (design A). A card is the same row, its cells laid out in other areas, so the cards add nothing to
@@ -685,22 +698,32 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
 :root[data-layout=cards] td.language { margin-top: 12px; }
 :root[data-layout=cards] td.wy summary { left: auto; right: 10px; top: 10px; }
 {% endif %}
+{% if template == "days.html" %}
 @media (min-width: 1100px) {
   .months { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 64px; row-gap: 40px; }
 }
+{% endif %}
 {# Forced colours drop backgrounds and shadows. The drawings made of them take system colours instead; the Baseline
    legend keeps the page's colours, as its chart's dots do; and the cells of History's calendar, which lose their
    shades, keep an edge, the newest one's in the highlight. An empty board's edge is dashed in grey, and a day with no
    board keeps its hatch in grey, so that the three are told apart without the shades (#91). #}
+{% if filtering or template in ("baseline.html", "days.html") %}
 @media (forced-colors: active) {
+  {% if template == "baseline.html" %}
   .legend i { forced-color-adjust: none; }
+  {% endif %}
+  {% if filtering %}
   td.pc::before { forced-color-adjust: none; --accent: Highlight; --gain-soft: GrayText; --text-3: CanvasText; --dot: CanvasText; }
+  {% endif %}
+  {% if template == "days.html" %}
   .cal a, .cal .gap, .ramp-legend i.newest-key, .ramp-legend i.gap-key { outline: 1px solid CanvasText; outline-offset: -1px; }
   .cal a.shade-0:not(:focus-visible, .newest), .ramp-legend i.empty-key { outline: 1px dashed GrayText; }
   .cal .gap, .ramp-legend i.gap-key { forced-color-adjust: none; --line: GrayText; --text: CanvasText; }
   .cal a.newest, .ramp-legend i.newest-key { outline: 2px solid Highlight; outline-offset: -2px; }
   .ramp-legend .ramp-title, .ramp-legend span:has(> i[class^="shade"]) { display: none; }
+  {% endif %}
 }
+{% endif %}
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
