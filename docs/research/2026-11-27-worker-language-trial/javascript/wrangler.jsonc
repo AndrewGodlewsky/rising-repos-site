@@ -1,0 +1,7 @@
+{
+	// PROTOTYPE, throw away: the JavaScript Worker trial for #174. Never deployed.
+	"name": "rr-search-trial-js",
+	"main": "src/index.js",
+	"compatibility_date": "2026-10-30",
+	"rules": [{ "type": "Text", "globs": ["**/*.tsv"], "fallthrough": true }]
+}

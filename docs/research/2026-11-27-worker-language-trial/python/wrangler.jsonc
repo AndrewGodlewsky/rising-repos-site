@@ -1,0 +1,9 @@
+{
+	// PROTOTYPE, throw away: the trial for #174. Never deployed without the owner's word.
+	"name": "rr-search-trial",
+	"main": "src/entry.py",
+	// disable_python_external_sdk: use the runtime's own `workers` module, since pywrangler, which would supply it, fails on Windows.
+	"compatibility_flags": ["python_workers", "disable_python_external_sdk"],
+	// The newest date wrangler 4.155.0's runtime supports.
+	"compatibility_date": "2026-10-30"
+}
