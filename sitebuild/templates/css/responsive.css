@@ -60,6 +60,8 @@
     grid-template-areas: "rank repository growth own stars" ". description growth own stars" ". why why why why";
     column-gap: 16px;
   }
+  .chart tbody tr { grid-template-areas: "rank repository growth own stars" ". description growth own language" ". why why why why"; }
+  .chart tbody tr[data-l]::after { justify-self: end; align-self: start; margin-top: 2px; }
   .chart.plain thead tr, .chart.plain tbody tr { grid-template-areas: "rank repository language language stars" ". description language language stars"; }
   .chart thead th { display: block; padding: 10px 0; color: var(--text-3); font-size: 13px; font-weight: 400; text-align: left; }
   .chart thead .rk { grid-area: rank; }

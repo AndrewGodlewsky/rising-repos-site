@@ -22,6 +22,7 @@ from sitebuild import (
     gain_class,
     growth,
     history_file,
+    licence_label,
     month_words,
     per_day,
     rounded,
@@ -133,7 +134,7 @@ class TheHistoryFile(Boards):
                 self.assertEqual(entry["stars"], row["star_history"])
                 self.assertEqual(len(entry["stars"]), 31)
                 self.assertEqual(told(entry)["Multiple"], growth(row)["multiple"] or "None: " + growth(row)["note"])
-                self.assertEqual(told(entry)["Licence"], row["license"] or "None given")
+                self.assertEqual(told(entry)["Licence"], licence_label(row["license"]))
                 self.assertIn(f"Usual pace, {figure(row['baseline'], 2)} a day", entry["said"])
         # A day left out, or a falling pace, is not above its own trend: it gives what it gained instead.
         self.assertEqual(
@@ -154,6 +155,21 @@ class TheHistoryFile(Boards):
             [entry["said"][2] for entry in entries], [f"Usual pace, {figure(row['baseline'], 2)} a day" for row in rows]
         )
         self.assertEqual([entry["on"][-1][3] for entry in entries], [per_day(row) for row in rows])
+
+    def test_noassertion_licence_is_plain_prose_and_missing_language_uses_sentence_case(self):
+        """#239: NOASSERTION becomes plain prose and missing Language matches sentence-case fallbacks."""
+        rows = self.newest_rows()
+        rows[0] = {**rows[0], "language": None, "license": "NOASSERTION"}
+        rows[1] = {**rows[1], "license": None}
+        rows[2] = {**rows[2], "license": "MIT"}
+        board = read_json(self.board_file())
+        self.write_board({**board, "rows": rows})
+        self.build_pages()
+        entries = self.history()["rows"]
+        self.assertEqual(told(entries[0])["Language"], "Not given")
+        self.assertEqual(told(entries[0])["Licence"], "Other (not identified)")
+        self.assertEqual(told(entries[1])["Licence"], "None given")
+        self.assertEqual(told(entries[2])["Licence"], "MIT")
 
     def test_a_falling_pace_is_written_with_the_true_minus_and_its_own_pace_takes_no_plus(self):
         """AndrewGodlewsky/RisingRepos#199: every figure below 0 takes the true minus."""

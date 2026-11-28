@@ -343,7 +343,21 @@ def own_pace(row: dict) -> dict:
     style = f"--u:{down(baseline)};--r:{down(gained_stars / days)}"
     if days != 2:
         style += f";--e:{(12 + days) / 14:.3f}"
-    return {"style": style, "text": f"Usual {figure(baseline, 2)} a day, then {times(gained_stars / days)} a day"}
+    return {
+        "style": style,
+        "text": f"Usual {figure(baseline, 2)} a day, then {times(gained_stars / days)} a day",
+        "multiple": growth(row)["multiple"] if "score" in row else None,
+    }
+
+
+def licence_label(value: str | None) -> str:
+    """A repository's licence as an opened row's facts show it (#239): GitHub's SPDX id as given, plain prose for
+    GitHub's `NOASSERTION` sentinel (a licence file GitHub could not identify), and 'None given' when absent."""
+    if not value:
+        return "None given"
+    if value == "NOASSERTION":
+        return "Other (not identified)"
+    return value
 
 
 def daily_job(board: dict) -> dict | None:

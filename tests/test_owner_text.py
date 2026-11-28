@@ -8,7 +8,7 @@ import unittest
 
 from helpers import BuildTest, Element, Page, read_json, shipped, write_json
 
-from sitebuild import BASELINE, BOARD, TEMPLATES, board_day_page
+from sitebuild import BASELINE, BOARD, TEMPLATES, board_day_page, licence_label
 
 MARKUP_ROW = "rising-repos-example/markup-in-description"
 SCRIPT_PARTS = ("theme.js", "old-board.js", "filters.js")
@@ -128,7 +128,7 @@ class TheHistoryFile(BuildTest):
         self.build_pages()
         history = read_json(self.out / board_day_page("2026-11-09").replace("index.html", "history.json"))
         licences = [fact[1] for entry in history["rows"] for fact in entry["facts"] if fact[0] == "Licence"]
-        self.assertEqual(licences, [row["license"] or "None given" for row in read_json(self.board_file())["rows"]])
+        self.assertEqual(licences, [licence_label(row["license"]) for row in read_json(self.board_file())["rows"]])
         self.assertTrue(all(isinstance(value, str) for value in licences))
         script = shipped("filters.js")
         self.assertNotRegex(script, r"innerHTML|outerHTML|insertAdjacentHTML|document\.write")
