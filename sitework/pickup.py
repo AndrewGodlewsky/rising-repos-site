@@ -11,12 +11,15 @@ starts an agent only when it exits 0, so a run with nothing to do starts no agen
 """
 
 import argparse
+import contextlib
 import functools
 import json
 import os
 import re
 import sys
-from collections.abc import Callable
+import tempfile
+import time
+from collections.abc import Callable, Iterator
 from pathlib import Path
 from typing import NamedTuple
 
@@ -89,6 +92,53 @@ def common(name: str) -> Path:
     return Path(shell.git("rev-parse", "--path-format=absolute", "--git-common-dir")) / name
 
 
+LOCK_STALE_SECONDS = 300
+LOCK_WAIT_SECONDS = 5
+
+
+@contextlib.contextmanager
+def _runs_lock(runs: Path) -> Iterator[None]:
+    """Serialise read-modify-write access to `.git/sitework-runs` across concurrent processes (#255)."""
+    lock = runs.with_name(runs.name + ".lock")
+    lock.parent.mkdir(parents=True, exist_ok=True)
+    deadline = time.monotonic() + LOCK_WAIT_SECONDS
+    acquired = False
+    while True:
+        try:
+            descriptor = os.open(str(lock), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            os.close(descriptor)
+            acquired = True
+            break
+        except FileExistsError:
+            try:
+                if time.time() - lock.stat().st_mtime > LOCK_STALE_SECONDS:
+                    lock.unlink(missing_ok=True)
+                    continue
+            except OSError:
+                pass
+            if time.monotonic() >= deadline:
+                break
+            time.sleep(0.05)
+    try:
+        yield
+    finally:
+        if acquired:
+            lock.unlink(missing_ok=True)
+
+
+def _write_runs(runs: Path, entries: list[str]) -> None:
+    """Atomically replace `.git/sitework-runs` via a sibling temporary file (#255)."""
+    runs.parent.mkdir(parents=True, exist_ok=True)
+    descriptor, temp = tempfile.mkstemp(prefix=runs.name + ".", dir=str(runs.parent))
+    try:
+        with os.fdopen(descriptor, "w", encoding="utf-8", newline="\n") as handle:
+            handle.write("".join(f"{checkout}\n" for checkout in entries))
+        os.replace(temp, runs)
+    except BaseException:
+        Path(temp).unlink(missing_ok=True)
+        raise
+
+
 def at_work() -> list[str]:
     """Each run that an agent is still at work on, by the name of its checkout's folder. A run's checkout is one
     that claimed an issue, which `claim` wrote down, or one that is on a feature's branch. Orca says which agents
@@ -139,9 +189,13 @@ def at_work() -> list[str]:
         )
 
     busy = {checkout for checkout in held if holds(checkout)}
-    going = [checkout for checkout in written if agents_in.get(same(checkout))]
-    if going != written:
-        runs.write_text("".join(f"{checkout}\n" for checkout in going), encoding="utf-8")
+    stale = {same(checkout) for checkout in written if not agents_in.get(same(checkout))}
+    if stale:
+        with _runs_lock(runs):
+            current = runs.read_text(encoding="utf-8").splitlines() if runs.is_file() else []
+            going = [checkout for checkout in current if same(checkout) not in stale]
+            if going != current:
+                _write_runs(runs, going)
     return sorted(name for checkout, name in held.items() if checkout in busy)
 
 
@@ -149,10 +203,11 @@ def ended() -> None:
     """Forget the run of this checkout: it has filed its record, which is the last thing a run does, so the next
     check of the schedule may start the next run while its agent's workspace is still open."""
     runs = common(RUNS)
-    written = runs.read_text(encoding="utf-8").splitlines() if runs.is_file() else []
-    going = [checkout for checkout in written if same(checkout) != same(str(shell.ROOT))]
-    if going != written:
-        runs.write_text("".join(f"{checkout}\n" for checkout in going), encoding="utf-8")
+    with _runs_lock(runs):
+        written = runs.read_text(encoding="utf-8").splitlines() if runs.is_file() else []
+        going = [checkout for checkout in written if same(checkout) != same(str(shell.ROOT))]
+        if going != written:
+            _write_runs(runs, going)
 
 
 def same(path: str) -> str:
@@ -369,9 +424,10 @@ def claim(taken: Taken, branch: str, owner: str, comments: Comments) -> None:
     # The run is written down by the checkout it works in, so that a later look finds it for as long as its agent
     # is at work there, whatever branch the checkout is on by then.
     runs = common(RUNS)
-    written = runs.read_text(encoding="utf-8").splitlines() if runs.is_file() else []
-    if not any(same(checkout) == same(str(shell.ROOT)) for checkout in written):
-        runs.write_text("".join(f"{checkout}\n" for checkout in [*written, str(shell.ROOT)]), encoding="utf-8")
+    with _runs_lock(runs):
+        written = runs.read_text(encoding="utf-8").splitlines() if runs.is_file() else []
+        if not any(same(checkout) == same(str(shell.ROOT)) for checkout in written):
+            _write_runs(runs, [*written, str(shell.ROOT)])
 
 
 def told(refused: str | None) -> None:

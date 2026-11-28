@@ -74,6 +74,7 @@ class TheChoice(FolderTest):
             ("History", "days/index.html"),
             ("Baseline", "baseline/index.html"),
             ("How it works", "how-it-works/index.html"),
+            ("For agents", "for-agents/index.html"),
             ("The not-found page", "404.html"),
         ]
         chosen = self.chosen({}, {path: "new" for _, path in reversed(in_order)})
@@ -349,7 +350,13 @@ class Stand:
         if command[:2] == ("git", "merge-base"):
             return "b" * 40
         if command[:3] == ("git", "worktree", "add"):
-            write(Path(command[4]), {layout.STYLESHEET: f".at {{ color: #{command[5][:6]}; }}"})
+            write(
+                Path(command[4]),
+                {
+                    layout.STYLESHEET: f".at {{ color: #{command[5][:6]}; }}",
+                    "sitebuild/__main__.py": "--no-share-images",
+                },
+            )
         if command[1:3] == ("-m", "sitebuild"):
             which = "head" if cwd == shell.ROOT else "base"
             if which == self.failing:
@@ -361,7 +368,10 @@ class Stand:
 class TheCommand(FolderTest):
     def setUp(self):
         super().setUp()
-        self.root = write(self.folder / "checkout", {layout.STYLESHEET: ".at { color: #bbbbbb; }"})
+        self.root = write(
+            self.folder / "checkout",
+            {layout.STYLESHEET: ".at { color: #bbbbbb; }", "sitebuild/__main__.py": "--no-share-images"},
+        )
         self.enterContext(mock.patch.object(shell, "ROOT", self.root))
 
     def main(self, stand: Stand, command: str = "layout-report", *arguments: str) -> tuple[int, str, str]:
@@ -388,7 +398,7 @@ class TheCommand(FolderTest):
         self.assertEqual([cwd for _, cwd in builds], [Path(commands[1][4]), self.root])
         for command, _ in builds:
             self.assertEqual(command[0], sys.executable)
-            self.assertEqual(command[4:], ("--data", str(self.root / "site-data")))
+            self.assertEqual(command[4:], ("--data", str(self.root / "site-data"), "--no-share-images"))
         self.assertIn(("git", "worktree", "remove", "--force", commands[1][4]), commands)
 
     def test_a_base_and_a_head_that_are_named_are_each_built_from_a_worktree_of_their_own(self):

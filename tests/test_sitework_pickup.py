@@ -896,6 +896,14 @@ class Claim(PickupTest):
         self.assertEqual(printed.getvalue(), "")
         self.assertIn("HTTP 401", errors.getvalue())
 
+    def test_write_runs_replaces_atomically_and_runs_lock_cleans_up(self):
+        runs = Path(self.enterContext(tempfile.TemporaryDirectory())) / "sitework-runs"
+        with pickup._runs_lock(runs):
+            self.assertTrue(runs.with_name("sitework-runs.lock").is_file())
+            pickup._write_runs(runs, ["/work/one", "/work/two"])
+        self.assertFalse(runs.with_name("sitework-runs.lock").exists())
+        self.assertEqual(runs.read_text(encoding="utf-8").splitlines(), ["/work/one", "/work/two"])
+
 
 if __name__ == "__main__":
     unittest.main()
