@@ -365,12 +365,19 @@ class TheBuild(BuildTest):
     def test_a_board_whose_file_predates_partial_days_builds_and_says_nothing_about_them(self):
         """As site-data/ held its files until RisingRepos#45's closeout published them again: the schema and every
         board day's file without the field. Such a file neither names a partial day nor says there was none. It is
-        older than the holds too (AndrewGodlewsky/RisingRepos#13)."""
+        older than the holds too (AndrewGodlewsky/RisingRepos#13). How it works states the formula's rules, which name
+        a snapshot for every board, whatever its file holds, so its words are held to be the same as with the fields
+        (#214)."""
+        with_them = self.build_pages()[HOW_IT_WORKS].body_text()
+        shutil.rmtree(self.out)
         self.drop_fields("partial_days", *HOLD_FIELDS)
         for path, page in self.build_pages().items():
             with self.subTest(path):
                 self.assertEqual([p for p in page.all("p") if "partial" in p.classes()], [])
-                self.assertNotIn("snapshot", page.body_text())
+                if path == HOW_IT_WORKS:
+                    self.assertEqual(page.body_text(), with_them)
+                else:
+                    self.assertNotIn("snapshot", page.body_text())
 
     def test_a_board_says_when_the_days_update_began_and_how_long_it_took_to_publish_it(self):
         """RisingRepos#51. The example's newest board was published at 00:41:07, and its update began at 00:28:44."""

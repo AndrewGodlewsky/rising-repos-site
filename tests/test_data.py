@@ -111,7 +111,8 @@ class TheDataFiles(BuildTest):
         file written before them still builds. Its board gives the stars a day for the day's gain and offers no band
         filter (tests/test_build.py), its history leaves out the star counts and their line, the gains, the band, and
         the facts of the repository, and every page that reads none of them is the same as one built with them, but for
-        the page that gives the newest board's marks, which say what its file gives (#178)."""
+        the page that gives the newest board's marks, which say what its file gives (#178), and How it works, whose
+        diagram lists the newest board's star bands (#214)."""
         history = self.out / "days" / "2026-11-09" / "history.json"
         with_them = {path: page.html for path, page in self.build_pages().items()}
         history_with_them = read_json(history)
@@ -124,7 +125,7 @@ class TheDataFiles(BuildTest):
         self.assertEqual(set(without), set(with_them))
         self.assertEqual(
             {path for path in without if without[path] != with_them[path]},
-            {BOARD, "days/2026-11-09/index.html", "for-agents/index.html"},
+            {BOARD, "days/2026-11-09/index.html", "for-agents/index.html", "how-it-works/index.html"},
         )
         unread = ("stars", "month")
         untold = {"Gained in 7 days", "Gained in 30 days", "Licence", "Star band", "Created", "Last pushed"}

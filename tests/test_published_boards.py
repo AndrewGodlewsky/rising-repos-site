@@ -215,7 +215,8 @@ class EveryPublishedBoard(unittest.TestCase):
     def parts(self, path: str) -> tuple[str, ...]:
         """The parts of the site's script that the page at `path` carries, in the order site.js includes them: the
         theme on every page; the notice of an old board on every page but the three that hold no board; a board's
-        filters where the board has rows; and the Baseline page's readout where the newest board has rows to place."""
+        filters where the board has rows; the Baseline page's readout where the newest board has rows to place; and How
+        it works's examples (#214)."""
         parts = ["theme.js"]
         if path not in (NOT_FOUND, HOW_IT_WORKS, FOR_AGENTS):
             parts.append("old-board.js")
@@ -223,6 +224,8 @@ class EveryPublishedBoard(unittest.TestCase):
             parts.append("filters.js")
         if path == BASELINE and self.boards[0]["rows"]:
             parts.append("baseline.js")
+        if path == HOW_IT_WORKS:
+            parts.append("how-it-works.js")
         return tuple(parts)
 
     def test_the_build_writes_the_sites_pages_a_page_for_each_board_day_and_the_history_of_each_that_has_rows(self):
