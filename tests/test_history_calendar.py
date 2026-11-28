@@ -206,7 +206,8 @@ class TheHeldMarkerAndYearJump(BuildTest):
         days_page = pages[DAYS]
         held_links = [a for a in days_page.all("a") if "held" in a.classes()]
         self.assertEqual([a.attrs["href"] for a in held_links], [f"/days/{EMPTY}/", "/days/2026-11-09/"])
-        self.assertIn("some star bands held back", held_links[0].text())
+        self.assertEqual(held_links[0].attrs.get("aria-describedby"), "held-legend")
+        self.assertEqual(held_links[0].attrs.get("title"), "Some star bands held back")
         years_nav = [nav for nav in days_page.all("nav") if "years" in nav.classes()]
         self.assertEqual(len(years_nav), 1)
         self.assertEqual(

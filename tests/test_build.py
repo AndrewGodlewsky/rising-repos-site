@@ -679,7 +679,7 @@ class TheBoardDays(BuildTest):
             ],
             [
                 (6, f"/days/{OLDER}/", OLDER, "Sunday 8 November: 0 repositories"),
-                (0, f"/days/{NEWEST}/", NEWEST, "Monday 9 November: 5 repositories, some star bands held back"),
+                (0, f"/days/{NEWEST}/", NEWEST, "Monday 9 November: 5 repositories"),
             ],
         )
         (newest,) = [link for link in month.all("a") if link.attrs.get("aria-current") == "date"]
@@ -702,7 +702,7 @@ class TheBoardDays(BuildTest):
         self.assertEqual(
             [cell.heard() for _, cell in self.cells(november)],
             [f"{date(2026, 11, day):%A} {day} November: no board" for day in range(1, 8)]
-            + ["Sunday 8 November: 0 repositories", "Monday 9 November: 3 repositories, some star bands held back"],
+            + ["Sunday 8 November: 0 repositories", "Monday 9 November: 3 repositories"],
         )
         self.assertEqual([cell.heard() for _, cell in self.cells(october)], ["Saturday 31 October: 0 repositories"])
 
