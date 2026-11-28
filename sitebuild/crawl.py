@@ -2,7 +2,7 @@
 
 from xml.sax.saxutils import escape
 
-from sitebuild import BASELINE, DAYS, FOR_AGENTS, HOW_IT_WORKS, SITE, address, day_address
+from sitebuild.paths import BASELINE, DAYS, FOR_AGENTS, HOW_IT_WORKS, SITE, address, day_address
 
 SITEMAP_SCHEMA = "http://www.sitemaps.org/schemas/sitemap/0.9"
 

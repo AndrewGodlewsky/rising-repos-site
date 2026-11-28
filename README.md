@@ -904,17 +904,22 @@ root.
   both themes, with five rows, with hundreds, and with none, and that is whole
   with scripts off.
 
-The look is in `sitebuild/templates/site.css`, which
-`sitebuild/templates/page.html` includes in every page. `page.html` also holds
-the `<head>` with the page's one script, `site.js`, the site's bar, the
-notice of an old board's place, which `old-board.html` holds, the place of the
-page's own bar, and the colophon. `board.html`, `days.html`, `baseline.html`,
-`how-it-works.html`, and `not-found.html` fill the rest. `latest.html` is
+The look is in `sitebuild/templates/site.css` (assembled from focused partials
+under `sitebuild/templates/css/`), which `sitebuild/templates/page.html`
+includes in every page. `page.html` also holds the `<head>` with the page's one
+script, `site.js`, the site's bar, the notice of an old board's place, which
+`old-board.html` holds, the place of the page's own bar, and the colophon.
+`board.html`, `days.html`, `baseline.html`, `how-it-works.html`,
+`for-agents.html`, and `not-found.html` fill the rest. `latest.html` is
 `board.html` with the data contract's two tags in its `<head>`, for the root,
 and `nav.html` holds the links between board days that the day bar and a
 board's foot share. The script's parts are `theme.js`, `old-board.js`,
-`filters.js`, and `baseline.js`. `PAGES` in `sitebuild/__init__.py` lists each
-page the build writes, with its template.
+`filters.js` (assembled from `sitebuild/templates/js/`), `baseline.js`, and
+`how-it-works.js`. The Python generator is split across `sitebuild/paths.py`,
+`sitebuild/formatting.py`, `sitebuild/history.py`, and `sitebuild/charts.py`,
+all re-exported from `sitebuild/__init__.py` (#252). `PAGES` in
+`sitebuild/paths.py` (re-exported in `sitebuild/__init__.py`) lists each page
+the build writes, with its template.
 
 ## The data
 

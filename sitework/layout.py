@@ -463,6 +463,15 @@ def take_pictures(head: Path, chosen: list[Chosen], out: Path) -> list[Path]:
     return written
 
 
+def read_stylesheet(code: Path) -> str:
+    """The stylesheet text of `code`: `site.css` together with any partials under `sitebuild/templates/css/` (#252)."""
+    main_css = (code / STYLESHEET).read_text(encoding="utf-8")
+    partials = code / Path(STYLESHEET).parent / "css"
+    if not partials.is_dir():
+        return main_css
+    return "\n".join([main_css, *(path.read_text(encoding="utf-8") for path in sorted(partials.glob("*.css")))])
+
+
 def build(which: str, commit: str | None, out: Path) -> str:
     """Build the pages of `commit` into `out`, from a temporary worktree of it, or of this checkout as it stands
     when no commit is named. Either way the data is this checkout's, so that two builds differ only by their
@@ -485,7 +494,7 @@ def build(which: str, commit: str | None, out: Path) -> str:
             )
         except shell.Failed as error:
             raise shell.Failed(f"the build of the {which} failed.\n{error}") from error
-        return (code / STYLESHEET).read_text(encoding="utf-8")
+        return read_stylesheet(code)
 
 
 def main(command: str, arguments: list[str]) -> int:

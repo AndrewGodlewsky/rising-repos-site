@@ -11,7 +11,7 @@ import shutil
 import unittest
 from datetime import date
 
-from helpers import BuildTest, build, read_json, write_json
+from helpers import BuildTest, build, read_json, shipped, write_json
 
 from sitebuild import (
     BASELINE,
@@ -934,7 +934,7 @@ class TheGrowthColumn(BuildTest):
             [entry["on"][-1][3:5] for entry in history["rows"]],
             [[per_day(row), gain_class(row["recent_stars"]).strip()] for row in rows],
         )
-        script = (TEMPLATES / "filters.js").read_text(encoding="utf-8")
+        script = shipped("filters.js")
         self.assertIn('make("dd", fact[2], fact[1])', script)
         self.assertIn('make("td", "num gain " + e[4], e[3])', script)
         self.assertIn('parseFloat(grew.textContent.replace(/[+,]/g, "").replace("\N{MINUS SIGN}", "-"))', script)
@@ -1076,7 +1076,7 @@ class TheBands(BuildTest):
                 ("30k+", "", "30k-plus"),
             ],
         )
-        self.assertIn('return b.getAttribute("data-word");', (TEMPLATES / "filters.js").read_text(encoding="utf-8"))
+        self.assertIn('return b.getAttribute("data-word");', shipped("filters.js"))
 
     def test_bands_the_file_changes_are_the_bands_the_board_offers(self):
         board = read_json(self.board_file())
@@ -1154,9 +1154,9 @@ class TheTemplates(unittest.TestCase):
     """Jinja2 escapes a value only while autoescape is on (ADR 0010 in RisingRepos)."""
 
     def test_no_template_turns_escaping_off_or_marks_a_value_as_safe(self):
-        for template in sorted(TEMPLATES.iterdir()):
+        for template in sorted(TEMPLATES.rglob("*")):
             if template.is_file():
-                with self.subTest(template.name):
+                with self.subTest(template.relative_to(TEMPLATES).as_posix()):
                     text = template.read_text(encoding="utf-8")
                     self.assertIsNone(re.search(r"autoescape\s+[Ff]alse|\|\s*safe\b", text))
 

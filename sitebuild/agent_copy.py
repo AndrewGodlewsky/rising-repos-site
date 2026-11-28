@@ -11,23 +11,9 @@ import json
 import re
 from typing import NamedTuple
 
-# The figures, the dates, and the addresses are the page's, so they are read from the package, which reads this module
-# inside `build()` and not at its top, where it is not yet whole, as it reads `crawl`.
-from sitebuild import (
-    HOW_IT_WORKS,
-    NEW_UNTOLD,
-    SITE,
-    History,
-    address,
-    board_day_page,
-    day_address,
-    gained,
-    long_date,
-    new_means,
-    own_pace,
-    per_day,
-    repositories,
-)
+from sitebuild.formatting import NEW_UNTOLD, gained, long_date, new_means, own_pace, per_day, repositories
+from sitebuild.history import History
+from sitebuild.paths import HOW_IT_WORKS, SITE, address, board_day_page, day_address
 
 AGENT_FORMAT = 1
 """The version of the agent copy's layout, which each part and the JSON state. It rises when a line changes what it

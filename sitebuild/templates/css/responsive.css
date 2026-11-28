@@ -1,0 +1,92 @@
+@media (min-width: 768px) {
+  :root { --bar: 64px; }
+  html { scroll-padding-top: calc(var(--bar) + 56px); }
+  .wrap { padding: 0 32px; }
+  .strip .wrap { gap: 8px; }
+  .site .wrap { flex-wrap: nowrap; height: 56px; padding-top: 0; padding-bottom: 0; }
+  .site nav { order: 0; flex: none; margin-left: auto; }
+  .site .theme { order: 1; margin-left: 4px; }
+  .head { padding: 48px 0 32px; }
+  h1 { font-size: 56px; letter-spacing: -0.03em; }
+  {% if template == "baseline.html" %}
+  .numbers th, .numbers td { padding-right: 12px; }
+  .numbers .n { padding-right: 0; padding-left: 12px; }
+  .pace { padding: 24px 24px 20px; }
+  .plot { height: 320px; margin: 32px 8px 48px 48px; }
+  .plot .axis.y { top: -24px; }
+  .plot .glabel.own { left: var(--x); top: var(--y); transform: var(--t, translate(4px, -100%)); }
+  {% endif %}
+  {% if filtering %}
+  {# The search is in the day bar from here up, at the bar's right-hand end, and the filter keeps its row (#213). The
+     filter's label goes with its box, which a screen reader would otherwise hear naming nothing. #}
+  .toolbar [for=q], .toolbar input[type="search"] { display: none; }
+  .strip [role=search] { display: block; flex: 0 1 280px; min-width: 160px; }
+  .strip input { width: 100%; }
+  #bands { display: flex; flex: initial; }
+  .strip h1.here { font-size: 28px; line-height: 40px; letter-spacing: -0.02em; }
+  .op { grid-template-columns: minmax(0, 1fr) 280px; grid-template-areas: "reason facts" "drawing facts" "run run" "days days"; column-gap: 32px; row-gap: 24px; max-width: 960px; padding: 20px 24px; }
+  .op .rs { grid-area: reason; }
+  .op .fa { grid-area: facts; grid-template-columns: 1fr; gap: 12px; padding-left: 24px; border-left: 1px solid var(--line); }
+  .op .drawing { grid-area: drawing; }
+  .op .run { grid-area: run; }
+  .op.m { grid-template-areas: "reason facts" "drawing facts" "month facts" "run run" "days days"; grid-template-rows: auto auto 1fr; }
+  .op .month-line { grid-area: month; }
+  .op .more-days-wrap { grid-area: days; }
+  .more-days { display: table; }
+  .more-days caption { display: table-caption; }
+  .more-days tbody { display: table-row-group; }
+  .chart .more-days thead { position: static; display: table-header-group; background: none; border: 0; }
+  .chart .more-days thead tr, .chart .more-days tbody tr { display: table-row; padding: 0; border: 0; }
+  .chart .more-days th, .chart .more-days td { display: table-cell; padding: 6px 16px 6px 0; border-top: 1px solid var(--line); }
+  .chart .more-days thead th { border-top: 0; color: var(--text-3); }
+  .more-days td::before { content: none; }
+  .drawing-plot { height: 180px; }
+  .run-days { grid-template-columns: repeat(30, minmax(0, 1fr)); }
+  .chart thead {
+    position: sticky;
+    top: var(--bar);
+    z-index: 2;
+    display: block;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .chart thead tr { display: grid; }
+  .chart thead tr, .chart tbody tr {
+    grid-template-columns: 48px minmax(0, 1fr) 112px 120px 96px;
+    grid-template-areas: "rank repository growth own stars" ". description growth own stars" ". why why why why";
+    column-gap: 16px;
+  }
+  .chart.plain thead tr, .chart.plain tbody tr { grid-template-areas: "rank repository language language stars" ". description language language stars"; }
+  .chart thead th { display: block; padding: 10px 0; color: var(--text-3); font-size: 13px; font-weight: 400; text-align: left; }
+  .chart thead .rk { grid-area: rank; }
+  .chart thead .re { grid-area: repository; }
+  .chart thead .language { grid-area: language; }
+  .chart thead .pc { grid-area: own; }
+  .chart thead .gr { grid-area: growth; }
+  td.gr { margin-top: 0; padding-top: 1px; align-self: start; font-size: 15px; }
+  td.gr::after, td.gr.g::after { content: none; }
+  td.pc { align-self: start; margin-top: 0; padding-top: 4px; }
+  td.pc { --w: 96px; --h: 32px; }
+  .chart thead .st { grid-area: stars; text-align: right; }
+  .chart tbody tr { padding: 12px 0; transition: background-color 400ms var(--ease), box-shadow 400ms var(--ease); }
+  .chart tbody tr:first-child { border-top: 0; }
+  td.rk { font-size: 15px; text-align: right; }
+  td.rk.podium { justify-self: end; }
+  td.wy summary { left: 20px; top: 42px; }
+  td.language, td.st { margin-top: 0; padding-top: 2px; font-size: 14px; }
+  .strip .latest .when { position: static; width: auto; height: auto; overflow: visible; clip-path: none; }
+  td.st::after { content: none; }
+  .nm { font-size: 17px; }
+  {% endif %}
+  {% if template == "days.html" %}
+  .cal a, .cal .gap { min-height: 76px; padding: 8px; }
+  .cal .date { font-size: 13px; }
+  .cal .count { margin-top: 8px; font-size: 20px; }
+  .fresh-note { display: block; }
+  .cal .fresh { position: static; width: auto; height: auto; overflow: visible; clip-path: none; color: var(--text); font-size: 12px; line-height: 1.4; }
+  {% endif %}
+}
