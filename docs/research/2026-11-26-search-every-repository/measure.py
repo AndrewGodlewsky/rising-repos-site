@@ -97,9 +97,7 @@ splits = {
     "recency (days since last on a board)": defaultdict(list),
     "star band (stars on last board day)": defaultdict(list),
 }
-labels = [
-    f"{b['least_stars']}-{b['most_stars']}" if b["most_stars"] else f"{b['least_stars']}+" for b in latest_bands
-]
+labels = [f"{b['least_stars']}-{b['most_stars']}" if b["most_stars"] else f"{b['least_stars']}+" for b in latest_bands]
 lang_counts = defaultdict(int)
 for r in rows:
     lang_counts[r["language"] or "(none)"] += 1
@@ -150,7 +148,10 @@ report["pdf"] = {
     "hit_lines_parse_bytes": size([line(r) for r in hits_parse])[0],
     "by_language_of_hits": dict(
         sorted(
-            ((k, sum(1 for r in hits if (r["language"] or "(none)") == k)) for k in {r["language"] or "(none)" for r in hits}),
+            (
+                (k, sum(1 for r in hits if (r["language"] or "(none)") == k))
+                for k in {r["language"] or "(none)" for r in hits}
+            ),
             key=lambda kv: -kv[1],
         )[:8]
     ),
@@ -172,7 +173,8 @@ if os.path.exists(db_path):
     os.remove(db_path)
 con = sqlite3.connect(db_path)
 con.execute(
-    "create virtual table repo using fts5(full_name, description, language unindexed, stars unindexed, last_day unindexed, tokenize='unicode61')"
+    "create virtual table repo using fts5(full_name, description, language unindexed, stars unindexed, "
+    "last_day unindexed, tokenize='unicode61')"
 )
 con.executemany(
     "insert into repo values (?,?,?,?,?)",
@@ -183,7 +185,10 @@ con.execute("insert into repo(repo) values('optimize')")
 con.commit()
 con.execute("vacuum")
 con.close()
-report["sqlite"] = {"fts5_db_bytes": os.path.getsize(db_path), "fts5_db_gzip_bytes": len(gzip.compress(open(db_path, "rb").read(), 6))}
+report["sqlite"] = {
+    "fts5_db_bytes": os.path.getsize(db_path),
+    "fts5_db_gzip_bytes": len(gzip.compress(open(db_path, "rb").read(), 6)),
+}
 con = sqlite3.connect(db_path)
 
 
@@ -207,8 +212,10 @@ report["sqlite"]["timings"] = {}
 report["sqlite"]["rows_matched"] = {}
 for name, q in queries.items():
     sql = "select full_name, language, stars, last_day, description from repo where repo match ? order by rank limit 20"
-    report["sqlite"]["timings"][name] = timeit(lambda: con.execute(sql, (q,)).fetchall())
-    report["sqlite"]["rows_matched"][name] = con.execute("select count(*) from repo where repo match ?", (q,)).fetchone()[0]
+    report["sqlite"]["timings"][name] = timeit(lambda sql=sql, q=q: con.execute(sql, (q,)).fetchall())
+    report["sqlite"]["rows_matched"][name] = con.execute(
+        "select count(*) from repo where repo match ?", (q,)
+    ).fetchone()[0]
 report["sqlite"]["timings"]["first call, cold connection (single run)"] = None
 con.close()
 s = time.perf_counter()

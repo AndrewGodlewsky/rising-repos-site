@@ -20,7 +20,9 @@ def main(days_dir, board_day, repository):
 
     # 2. Rising repositories that work with PDF files, by name or description.
     answers["pdf"] = [
-        (row["rank"], row["full_name"]) for row in rows if re.search("pdf", row["full_name"] + " " + (row.get("description") or ""), re.I)
+        (row["rank"], row["full_name"])
+        for row in rows
+        if re.search("pdf", row["full_name"] + " " + (row.get("description") or ""), re.I)
     ]
 
     # 3. What New means is the page's own sentence, which the build writes; it is checked against the live page.

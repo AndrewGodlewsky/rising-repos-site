@@ -16,7 +16,9 @@ import urllib.request
 
 SITE = "https://risingrepos.com"
 LIMITS = {"webfetch": 100_000, "web_fetch_subagent": 48_000}
-BLOCK = re.compile(r"</?(p|div|li|tr|h[1-6]|section|header|footer|main|nav|table|tbody|thead|details|summary|dt|dd|br)\b[^>]*>", re.I)
+BLOCK = re.compile(
+    r"</?(p|div|li|tr|h[1-6]|section|header|footer|main|nav|table|tbody|thead|details|summary|dt|dd|br)\b[^>]*>", re.I
+)
 
 
 def fetch(path):
@@ -63,16 +65,29 @@ def main(out):
     root = fetch("/")
     text = as_text(root)
     rows = rows_of(root)
-    report = {"board": re.search(r"<title>([^<]*)", root).group(1), "page_bytes": len(root.encode()), "text_characters": len(text), "rows": len(rows)}
+    report = {
+        "board": re.search(r"<title>([^<]*)", root).group(1),
+        "page_bytes": len(root.encode()),
+        "text_characters": len(text),
+        "rows": len(rows),
+    }
 
     for name, limit in LIMITS.items():
         window = text[:limit]
         seen = [row for row in rows if in_window(row, window)]
-        report[name] = {"limit": limit, "rows_in_window": len(seen), "rows_cut_off": len(rows) - len(seen), "last_rank_in_window": max((row["rank"] or 0 for row in seen), default=0)}
+        report[name] = {
+            "limit": limit,
+            "rows_in_window": len(seen),
+            "rows_cut_off": len(rows) - len(seen),
+            "last_rank_in_window": max((row["rank"] or 0 for row in seen), default=0),
+        }
 
     # A rising repository in one language: is a row's language anywhere in the text an agent reads?
     shown = sum(1 for row in rows if row["language"] and row["language"] in row["text"])
-    report["language_shown_in_row_text"] = {"rows_with_a_language": sum(1 for row in rows if row["language"]), "rows_whose_text_names_it": shown}
+    report["language_shown_in_row_text"] = {
+        "rows_with_a_language": sum(1 for row in rows if row["language"]),
+        "rows_whose_text_names_it": shown,
+    }
 
     # A rising repository that does something: the rows whose name or description mention PDF.
     pdf = [row for row in rows if re.search("pdf", row["text"], re.I)]
