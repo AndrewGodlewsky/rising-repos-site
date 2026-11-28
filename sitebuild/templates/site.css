@@ -223,7 +223,8 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
 .segments { display: flex; flex-wrap: wrap; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
 .segments button, .toolbar select { height: 32px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; color: var(--text-2); font: 400 13px/1 var(--sans); cursor: pointer; transition: background-color 150ms var(--ease), color 150ms var(--ease), transform 120ms var(--ease); }
 .segments button:hover { color: var(--text); }
-.segments button[aria-pressed="true"] { background: var(--gain-soft); color: var(--accent); font-weight: 500; }
+{# Cards, pressed from the root's mark before the script has pressed it, takes the filter's own pressed look (#227). #}
+.segments button[aria-pressed="true"]{% if filtering and board.rows %}, :root[data-layout=cards] #layout [data-layout=cards]{% endif %} { background: var(--gain-soft); color: var(--accent); font-weight: 500; }
 .segments button[data-kind="new"][aria-pressed="true"] { background: var(--new-soft); color: var(--new); }
 .segments [data-kind="new"] .num, .segments [data-kind="new"][aria-pressed="true"] .num { color: var(--new); }
 .segments button:active { transform: scale(0.97); }
@@ -659,8 +660,7 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
    is. These rules are only on a board with rows, which alone carries the switch. #}
 {% if filtering and board.rows %}
 #layout { margin-left: auto; }
-:root[data-layout=cards] #layout [data-layout=""] { background: transparent; color: var(--text-2); font-weight: 400; }
-:root[data-layout=cards] #layout [data-layout=cards] { background: var(--gain-soft); color: var(--accent); font-weight: 500; }
+:root[data-layout=cards] #layout [data-layout=""]:not(:hover) { background: transparent; color: var(--text-2); font-weight: 400; }
 :root[data-layout=cards] .chart { display: block; }
 :root[data-layout=cards] .chart thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 :root[data-layout=cards] .chart tbody { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
@@ -670,20 +670,19 @@ td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg
 :root[data-layout=cards] .chart.plain tbody tr::after { content: none; }
 :root[data-layout=cards] .chart.clickable tbody tr:hover { background: var(--surface); box-shadow: none; border-color: var(--line-strong); }
 :root[data-layout=cards] .chart tbody tr:has(details[open]) { grid-column: 1 / -1; background: var(--surface); border-color: var(--accent); }
-:root[data-layout=cards] .chart tbody tr.flash { box-shadow: none; }
 :root[data-layout=cards] td.rk { justify-self: start; min-width: 0; padding: 1px 6px 0; border-radius: 6px; background: var(--raised); font-size: 13px; text-align: left; }
 :root[data-layout=cards] td.rk::before { content: "#"; content: "#" / ""; }
 :root[data-layout=cards] td.rk.podium { justify-self: start; background: var(--accent); }
 :root[data-layout=cards] th.re { margin-top: 10px; }
 :root[data-layout=cards] td.de { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; align-self: start; max-width: none; margin-top: 6px; overflow-wrap: anywhere; white-space: normal; }
 :root[data-layout=cards] .chart tbody tr:has(details[open]) td.de { display: block; -webkit-line-clamp: none; }
-:root[data-layout=cards] td.gr, :root[data-layout=cards] td.pc, :root[data-layout=cards] td.st { align-self: stretch; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; white-space: nowrap; }
+:root[data-layout=cards] td.gr, :root[data-layout=cards] td.pc, :root[data-layout=cards] td.st { align-self: stretch; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; white-space: nowrap; }
 :root[data-layout=cards] td.gr { padding-right: 12px; }
 :root[data-layout=cards] td.gr::after { content: " a day"; }
 :root[data-layout=cards] td.gr.g::after { content: " on the day"; }
 :root[data-layout=cards] td.pc { --w: min(64px, 100cqi); --h: 24px; padding-top: 10px; container-type: inline-size; }
 :root[data-layout=cards] td.st::after { content: " stars"; color: var(--text-3); font-family: var(--sans); }
-:root[data-layout=cards] td.language { margin-top: 14px; }
+:root[data-layout=cards] td.language { margin-top: 12px; }
 :root[data-layout=cards] td.wy summary { left: auto; right: 10px; top: 10px; }
 {% endif %}
 @media (min-width: 1100px) {

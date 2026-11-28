@@ -16,6 +16,7 @@ page hides its board. What the script does before the page is parsed, and what i
 
 import unittest
 from datetime import datetime, timedelta
+from itertools import pairwise
 from urllib.parse import parse_qs, urlparse
 
 from helpers import BuildTest, read_json, write_json
@@ -197,13 +198,17 @@ class TheSwitch(CardTest):
 
 class TheList(CardTest):
     def assertTheList(self, seen: dict, headings: bool):
-        """Every row is laid out as the list lays it out: one to a line, as wide as the table."""
+        """Every row is laid out as the list lays it out: one to a line, as wide as the table, and each row meeting
+        the one before it. On a phone the cards are one to a line and as wide as the table too, so it is the 16 px
+        between two cards that tells them from the list there (#227)."""
         self.assertTrue(seen["rows"])
         tops = [row["top"] for row in seen["rows"]]
         self.assertEqual(tops, sorted(tops))
         self.assertEqual(len({round(top) for top in tops}), len(tops), "one row to a line")
         for row in seen["rows"]:
             self.assertAlmostEqual(row["width"], seen["tableWidth"], delta=1, msg=row["name"])
+        for before, row in pairwise(seen["rows"]):
+            self.assertAlmostEqual(row["top"], before["bottom"], delta=1, msg=row["name"])
         self.assertEqual(seen["headings"], headings)
 
     def test_on_a_first_visit_every_row_is_laid_out_as_the_list_was(self):

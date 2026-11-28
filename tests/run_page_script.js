@@ -119,15 +119,24 @@ function run(
           return { matches: query === "(prefers-color-scheme: dark)" && dark, addEventListener() {} };
         };
       },
+      set(_, key) {
+        operations.push(`window.${String(key)}=`);
+        return true;
+      },
     },
   );
-  // The page's address, of which the script may read the query.
+  // The page's address, of which the script may read the query. A write to it is how a page leaves for another
+  // address, so each write is recorded and goes nowhere, as each write to the document is (B8, #227).
   const location = new Proxy(
     {},
     {
       get(_, key) {
         operations.push(`location.${String(key)}`);
         return key === "search" ? search : undefined;
+      },
+      set(_, key) {
+        operations.push(`location.${String(key)}=`);
+        return true;
       },
     },
   );
@@ -175,11 +184,14 @@ function run(
   }
   let error = null;
   try {
-    vm.runInContext(
-      script,
-      vm.createContext({ document, window, localStorage, location, URLSearchParams, MutationObserver, Date: Clock }),
-      { timeout: 1000 },
-    );
+    const globals = { document, window, localStorage, URLSearchParams, MutationObserver, Date: Clock };
+    // A bare `location = …` leaves for another address too, so the context's own location records a write to it.
+    Object.defineProperty(globals, "location", {
+      get: () => location,
+      set: () => operations.push("location="),
+      enumerable: true,
+    });
+    vm.runInContext(script, vm.createContext(globals), { timeout: 1000 });
     if (!parsed) {
       parsed = true;
       for (const observer of observers) if (observer.watching) observer.callback([], observer);

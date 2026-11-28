@@ -252,10 +252,10 @@ What every page holds to, each checked by a test in `tests/`:
   markup, its script, and its stylesheet, and 234 to every other page, in the
   stylesheet, by `sitework weigh` on 27 November 2026, and 173 to the root
   gzipped: the heaviest board day is now 501,454 bytes, 48,546 under the
-  limit. The cards (#227) added 4,623 bytes to a board with rows, in its
+  limit. The cards (#227) added 4,493 bytes to a board with rows, in its
   switch, its script, and its stylesheet, and nothing to any other page, by
-  `sitework weigh` on 28 November 2026, and 770 to the root gzipped: the
-  heaviest board day is now 504,963 bytes, 45,037 under the limit. They add
+  `sitework weigh` on 28 November 2026, and 761 to the root gzipped: the
+  heaviest board day is now 504,833 bytes, 45,167 under the limit. They add
   nothing to a row. Past about 500 real
   rows, a long board's later rows in a second file is the next step.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
@@ -285,7 +285,7 @@ What every page holds to, each checked by a test in `tests/`:
   2026-11-27, 190 more than the same day's 143,389 without it. With the
   search in the day bar (#213) it came to 143,769 on Windows on 2026-11-27,
   174 more than the same day's 143,595 without it. With the cards (#227) it
-  came to 144,330 on Windows on 2026-11-28, 755 more than the same day's
+  came to 144,325 on Windows on 2026-11-28, 750 more than the same day's
   143,575 without them. The
   type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
