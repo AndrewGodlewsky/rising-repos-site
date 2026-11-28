@@ -377,12 +377,14 @@ def _pages(boards: list[dict], history: History) -> Iterator[tuple[str, str, dic
     yield BOARD, BOARD, _beside(boards, 0, history)
     for number, board in enumerate(boards):
         yield board_day_page(board["board_day"]), BOARD_DAY, _beside(boards, number, history)
+    cal = calendar(boards, history)
     yield (
         DAYS,
         DAYS,
         {
             "boards": boards,
-            "calendar": calendar(boards, history),
+            "calendar": cal,
+            "years": sorted({month["month"][:4] for month in cal}, reverse=True),
             "ramp": RAMP,
         },
     )

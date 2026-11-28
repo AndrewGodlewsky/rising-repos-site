@@ -166,5 +166,78 @@ class TheLegend(CalendarTest):
                     self.assertFalse(any(key["shown"] for key in look["shadeKeys"]))
 
 
+class TheHeldMarkerAndYearJump(BuildTest):
+    """#241: History marks held boards with a corner dot, screen-reader note, and legend swatch, and shows a
+    year-jump navigation when the archive spans more than one calendar year."""
+
+    def test_a_held_board_shows_its_marker_and_multi_year_history_shows_year_jump_links(self):
+        newest = read_json(self.board_file())
+        older = read_json(self.board_file(EMPTY))
+        rows = [{**row, "rank": rank} for rank, row in enumerate(newest["rows"][:2], 1)]
+        # Make 2026-11-08 a held board and add a 2025-12-31 board so History spans two years.
+        write_json(
+            self.board_file(EMPTY),
+            {
+                **older,
+                "state": "held",
+                "holds": newest["holds"],
+                "missed_stars": newest["missed_stars"],
+                "rows": rows,
+            },
+        )
+        prior_year = "2025-12-31"
+        write_json(
+            self.board_file(prior_year),
+            {**older, "board_day": prior_year, "published_at": "2026-01-01T00:00:00Z", "state": "rows", "rows": rows},
+        )
+        index = read_json(self.index)
+        write_json(
+            self.index,
+            {
+                **index,
+                "board_days": [
+                    index["board_days"][0],
+                    {"board_day": EMPTY, "row_count": len(rows)},
+                    {"board_day": prior_year, "row_count": len(rows)},
+                ],
+            },
+        )
+        pages = self.build_pages()
+        days_page = pages[DAYS]
+        held_links = [a for a in days_page.all("a") if "held" in a.classes()]
+        self.assertEqual([a.attrs["href"] for a in held_links], [f"/days/{EMPTY}/", "/days/2026-11-09/"])
+        self.assertEqual(held_links[0].attrs.get("aria-describedby"), "held-legend")
+        self.assertEqual(held_links[0].attrs.get("title"), "Some star bands held back")
+        years_nav = [nav for nav in days_page.all("nav") if "years" in nav.classes()]
+        self.assertEqual(len(years_nav), 1)
+        self.assertEqual(
+            [(a.attrs["href"], a.text()) for a in years_nav[0].all("a")],
+            [("#year-2026", "2026"), ("#year-2025", "2025")],
+        )
+        section_ids = {section.attrs["id"] for section in days_page.all("section") if "id" in section.attrs}
+        self.assertTrue({"year-2026", "year-2025"} <= section_ids)
+
+        with served(self.out) as site, chrome() as browser:
+            page = browser.new_page(viewport={"width": DESKTOP, "height": 900})
+            page.clock.set_fixed_time(published(self.out))
+            page.goto(f"{site}/{DAYS.removesuffix('index.html')}", wait_until="load")
+            dot = page.evaluate(
+                """(day) => {
+                  const a = document.querySelector(`.cal a[href="/days/${day}/"]`);
+                  const after = getComputedStyle(a, '::after');
+                  const key = getComputedStyle(document.querySelector('.ramp-legend i.held-key'), '::after');
+                  return {
+                    aBg: after.backgroundColor, aWidth: after.width,
+                    keyBg: key.backgroundColor, keyWidth: key.width,
+                  };
+                }""",
+                EMPTY,
+            )
+            self.assertEqual(dot["aWidth"], "6px")
+            self.assertEqual(dot["keyWidth"], "6px")
+            self.assertEqual(dot["aBg"], dot["keyBg"])
+            page.close()
+
+
 if __name__ == "__main__":
     unittest.main()

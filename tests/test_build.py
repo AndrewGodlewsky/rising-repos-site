@@ -746,10 +746,11 @@ class TheBoardDays(BuildTest):
         self.assertEqual([span for span in empty.all("span") if "fresh" in span.classes()], [])
 
     def test_the_legend_names_a_board_with_no_repository_and_a_day_with_no_board(self):
-        """#91: after the four shades and the newest board, the legend names the two cells that have no shade."""
+        """#91, #241: after the four shades, the newest board, and a held board, the legend names the two cells that
+        have no shade."""
         legend = self.legend(self.build_pages()[DAYS])
         self.assertEqual(legend[-2:], ["no repository on the board", "no board"])
-        self.assertEqual(legend[-3], "the newest board")
+        self.assertEqual(legend[-4:-2], ["the newest board", "some star bands held back"])
 
     def test_the_note_under_the_legend_no_longer_says_a_blank_day_had_no_board(self):
         """#91: the legend now names a day with no board, so the note says only what the count of new means."""

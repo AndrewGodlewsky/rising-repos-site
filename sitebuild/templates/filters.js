@@ -4,4 +4,5 @@ document.addEventListener("DOMContentLoaded", function () {
 {% include "js/opened-row.js" %}
   read();
   apply();
+  openFromQuery(true);
 });
