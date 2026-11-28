@@ -240,10 +240,10 @@ What every page holds to, each checked by a test in `tests/`:
   stylesheet, and 3,429 more to Baseline, in its script, by `sitework weigh`
   on 27 November 2026, and 16 to the root gzipped: the heaviest board day is
   now 500,796 bytes, 49,204 under the limit. Moving the board's search into
-  the day bar from 768 px up (#213) added 640 bytes to every board, in its
-  markup, its script, and its stylesheet, and 216 to every other page, in the
-  stylesheet, by `sitework weigh` on 27 November 2026, and 152 to the root
-  gzipped: the heaviest board day is now 501,436 bytes, 48,564 under the
+  the day bar from 768 px up (#213) added 658 bytes to every board, in its
+  markup, its script, and its stylesheet, and 234 to every other page, in the
+  stylesheet, by `sitework weigh` on 27 November 2026, and 173 to the root
+  gzipped: the heaviest board day is now 501,454 bytes, 48,546 under the
   limit. Past about 500 real
   rows, a long board's later rows in a second file is the next step.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
@@ -271,8 +271,8 @@ What every page holds to, each checked by a test in `tests/`:
   the button for a view that matches nothing (#33) to 142,806, 298 more. With
   the count of the "Most often" order (#186) it came to 143,579 on Windows on
   2026-11-27, 190 more than the same day's 143,389 without it. With the
-  search in the day bar (#213) it came to 143,754 on Windows on 2026-11-27,
-  159 more than the same day's 143,595 without it. The
+  search in the day bar (#213) it came to 143,769 on Windows on 2026-11-27,
+  174 more than the same day's 143,595 without it. The
   type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries

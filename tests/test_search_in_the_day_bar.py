@@ -88,6 +88,11 @@ SHOWN = """() => [...document.querySelectorAll('table.chart tbody tr')]
 DRAWN = "() => [...document.querySelectorAll('input[type=search]')].filter(box => box.checkVisibility()).length"
 """How many search boxes the page draws."""
 
+LABELS = f"""() => [...document.querySelectorAll('label')]
+  .filter(label => label.textContent.trim() === '{NAME}' && label.checkVisibility()).length"""
+"""How many labels that name the search the page renders, drawn or kept for a screen reader alone: a label whose box
+is not drawn would still be heard, naming nothing."""
+
 FOCUS = """() => {
   const focused = document.activeElement;
   if (!focused) return {at: ''};
@@ -309,6 +314,7 @@ class TheSearchInTheDayBar(BuildTest):
                 page = self.open(site, board_day_page(OLDER), width, height)
                 self.assertEqual(page.get_by_role("searchbox").count(), 1)
                 self.assertEqual(page.get_by_role("searchbox", name=NAME, exact=True).count(), 1)
+                self.assertEqual(page.evaluate(LABELS), 1, "the search's name is heard once, beside its box")
                 days = page.get_by_role("navigation", name="Board days", exact=True)
                 self.assertEqual(days.get_by_role("searchbox").count(), 0)
                 # The board days' links are the ones the bar held: the board after and Latest, here.
