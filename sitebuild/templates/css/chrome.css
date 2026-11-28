@@ -50,6 +50,10 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 .strip a { color: var(--text-2); text-decoration: none; transition: background-color 150ms var(--ease), color 150ms var(--ease); }
 .strip a:hover { background: var(--raised); color: var(--text); }
 .strip .here { color: var(--text); font-weight: 500; }
+@media (max-width: 389.98px) {
+  .strip .wrap { gap: 2px; }
+  .strip :is(.wrap, nav) > :is(a, span) { padding: 0 4px; }
+}
 {% if filtering %}
 {# The bar's search is drawn from 768 px up alone, and never on a page that shows no board (#213). #}
 .strip [role=search], :root[data-withheld] .strip [role=search] { display: none; }
@@ -60,10 +64,6 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
    beside two dates of two figures. Below 390 px the bar's parts sit closer, and below 360 px, where that is not
    room enough, Latest is not drawn, and the note above the rows leads to the newest board instead (#28). #}
 .strip .latest .when { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-@media (max-width: 389.98px) {
-  .strip .wrap { gap: 2px; }
-  .strip :is(.wrap, nav) > :is(a, span) { padding: 0 4px; }
-}
 @media (max-width: 359.98px) {
   .strip nav > .latest { display: none; }
 }
