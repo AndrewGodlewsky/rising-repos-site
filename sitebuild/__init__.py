@@ -542,6 +542,19 @@ def month_words(counts: list[int | None], day: str) -> list[str] | None:
     ]
 
 
+def before_words(older: list[tuple[str, int]], start: str, best: int) -> str:
+    """The line under an opened row's table of the boards it was on, for a repository that was also on `older`, the
+    boards before the window's first board day `start`, newest first, as `History.listed_before` gives them: how many,
+    the first, worded as the row's "First on a board" fact words it, and `best`, its best rank on any board up to the
+    one shown (#221)."""
+    first = day_name(older[-1][0])
+    if len(older) == 1:
+        said = f"And 1 board before {short_date(start)}, on {first}."
+    else:
+        said = f"And {len(older)} boards before {short_date(start)}, the first on {first}."
+    return f"{said} Its best rank on any board: {best}."
+
+
 def history_file(boards: list[dict], history: History, number: int) -> dict:
     """What a board's opened rows show beyond their line, as the file `days/<board day>/history.json`, which the
     board's script fetches from the site's own address when a reader first opens a row. Every word and figure the row
@@ -555,9 +568,11 @@ def history_file(boards: list[dict], history: History, number: int) -> dict:
     its multiple], each figure as the board writes it and '—' where that board gave none. A day it was off the board has
     no entry, so the strip leaves it quiet, never a zero. Each row gives its `facts`, as `facts` words them, and a row
     with a score gives `sum`, the sum behind its reason, and `pace` and `said`, the numbers and the words of its
-    drawing, from `drawing_words`. From a file that carries them (RisingRepos#193 to #197), `stars` is its star count
-    on each of the 31 days to the board day, oldest first, null where there is none, and `month` the words of its line,
-    from `month_words`."""
+    drawing, from `drawing_words`. A row whose repository was on a board older than the first of `days` gives
+    `before`, the line under its table that says how many, the first, and its best rank on any board, from
+    `before_words`, since the table lists those board days alone (#221). From a file that carries them (RisingRepos#193
+    to #197), `stars` is its star count on each of the 31 days to the board day, oldest first, null where there is
+    none, and `month` the words of its line, from `month_words`."""
     span = list(range(min(len(boards), number + HISTORY_WINDOW) - 1, number - 1, -1))  # oldest first
     days = [boards[at]["board_day"] for at in span]
     by_id = [history.by_id[at] for at in span]
@@ -585,6 +600,10 @@ def history_file(boards: list[dict], history: History, number: int) -> dict:
                 on.append([place, seen["rank"], f"{seen['stars']:,}", "—", "nil", "—"])
         first = boards[history.first[row["github_id"]]]["board_day"]
         entry = {"on": on, "facts": facts(row, on, days, first, history.was(number, row), about, bands)}
+        older = history.listed_before(span[0], row["github_id"])
+        if older:
+            best = min([rank for _, rank in older] + [seen[1] for seen in on])
+            entry["before"] = before_words(older, days[0], best)
         if "score" in row:
             entry["sum"] = why(row)["detail"]
             entry["pace"], entry["said"] = drawing_words(row)
@@ -822,6 +841,16 @@ class History:
         github_id, name = row["github_id"], row["full_name"]
         earlier = (listed[github_id]["full_name"] for listed in self.by_id[number + 1 :] if github_id in listed)
         return next((was for was in earlier if was != name), None)
+
+    def listed_before(self, number: int, github_id: int) -> list[tuple[str, int]]:
+        """Each board older than the one at `number` that listed the repository `github_id`, newest first, as its
+        board day and the rank it gave: what the agent copy's earlier boards and an opened row's line of the boards
+        before its table are both counted from (#221)."""
+        return [
+            (self.boards[at]["board_day"], self.by_id[at][github_id]["rank"])
+            for at in range(number + 1, len(self.boards))
+            if github_id in self.by_id[at]
+        ]
 
     def known(self, number: int) -> bool:
         """Whether what is new on the board at `number` can be told: there is a board before it, and it is

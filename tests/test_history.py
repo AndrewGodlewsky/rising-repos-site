@@ -237,6 +237,63 @@ class TheHistoryFile(Boards):
         self.assertEqual(told(entry)["On the last 30 boards"], "15 of 30")
         self.assertNotIn("sum", entry)
 
+    def test_a_row_on_boards_before_the_window_says_how_many_the_first_and_its_best_rank_on_any_board(self):
+        """#221: the table lists the last 30 board days alone, so a row on boards older than those says how many,
+        the first that listed it, and its best rank on any board up to this one. The board at 1 is the one shown: the
+        newer board at 0 gave it a better rank than any, which this board cannot have known, and the board at 30 is
+        the window's first, so it is in the table and not in the line."""
+        ranks = {0: 1, 1: 5, 3: 3, 30: 9, 31: 8, 35: 4, 38: 6}
+        boards = [
+            {
+                "board_day": f"2026-{10 + (40 - number) // 31:02d}-{(40 - number) % 31 + 1:02d}",
+                "rows": [{"rank": ranks[number], "github_id": 7, "full_name": "o/r", "stars": 500}]
+                if number in ranks
+                else [],
+            }
+            for number in range(40)
+        ]
+        (entry,) = history_file(boards, History(boards), 1)["rows"]
+        self.assertEqual(
+            entry["before"], "And 3 boards before 11 Oct, the first on 3 Oct 2026. Its best rank on any board: 3."
+        )
+
+    def test_a_row_on_one_board_before_the_window_says_so_in_the_singular(self):
+        """#221: one board before the window is "1 board", with no "the first", since there is no other."""
+        ranks = {0: 2, 33: 7}
+        boards = [
+            {
+                "board_day": f"2026-{10 + (40 - number) // 31:02d}-{(40 - number) % 31 + 1:02d}",
+                "rows": [{"rank": ranks[number], "github_id": 7, "full_name": "o/r", "stars": 500}]
+                if number in ranks
+                else [],
+            }
+            for number in range(40)
+        ]
+        (entry,) = history_file(boards, History(boards), 0)["rows"]
+        self.assertEqual(entry["before"], "And 1 board before 12 Oct, on 8 Oct 2026. Its best rank on any board: 2.")
+
+    def test_a_row_on_no_board_before_the_window_gives_no_line(self):
+        """#221: a row whose boards are all in the window, the window's first among them, gives nothing for the line,
+        and so does every row of a board with fewer than 29 boards before it, whose window holds every board."""
+        boards = [
+            {
+                "board_day": f"2026-{10 + (40 - number) // 31:02d}-{(40 - number) % 31 + 1:02d}",
+                "rows": [{"rank": 1, "github_id": 7, "full_name": "o/r", "stars": 500}] if number in (0, 29) else [],
+            }
+            for number in range(40)
+        ]
+        (entry,) = history_file(boards, History(boards), 0)["rows"]
+        self.assertNotIn("before", entry)
+        few = [
+            {
+                "board_day": f"2026-10-{30 - number:02d}",
+                "rows": [{"rank": 1, "github_id": 7, "full_name": "o/r", "stars": 1}],
+            }
+            for number in range(20)
+        ]
+        (entry,) = history_file(few, History(few), 0)["rows"]
+        self.assertNotIn("before", entry)
+
 
 class New(Boards):
     def test_a_repository_whose_name_was_on_no_earlier_board_is_new_and_the_board_counts_them(self):

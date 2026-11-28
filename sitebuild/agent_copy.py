@@ -60,11 +60,7 @@ class Earlier(NamedTuple):
 def earlier(history: History, number: int, row: dict) -> Earlier | None:
     """What every board older than the one at `number` says of `row`, by its GitHub id, which a rename or a move keeps
     (boards are newest first). None when it was on none of them."""
-    found = [
-        (history.boards[at]["board_day"], listed[row["github_id"]]["rank"])
-        for at, listed in enumerate(history.by_id)
-        if at > number and row["github_id"] in listed
-    ]
+    found = history.listed_before(number, row["github_id"])
     if not found:
         return None
     return Earlier(len(found), found[-1][0], min(rank for _, rank in found))
