@@ -77,10 +77,27 @@ class TheWorkflow(unittest.TestCase):
     def test_the_deploy_job_uploads_only_static_files(self):
         steps = [step.get("name") for step in self.deploy["steps"]]
         check = step_named(self.deploy, "Refuse code that would run on Cloudflare")["run"]
-        self.assertIn("site/_worker.js", check)
+        for forbidden in ("site/_worker.js", "site/_redirects", "site/_routes.json", "site/_headers", "site/functions"):
+            self.assertIn(forbidden, check)
+        self.assertIn("find site -type l", check)
+        self.assertIn("! -name '*.html'", check)
         self.assertLess(
             steps.index("Refuse code that would run on Cloudflare"), steps.index("Upload to Cloudflare Pages")
         )
+
+    def test_the_deploy_job_writes_security_headers_itself_after_checking_the_artifact(self):
+        steps = [step.get("name") for step in self.deploy["steps"]]
+        headers = step_named(self.deploy, "Write security headers")["run"]
+        for line in (
+            "Content-Security-Policy: frame-ancestors 'none'",
+            "X-Frame-Options: DENY",
+            "X-Content-Type-Options: nosniff",
+            "Referrer-Policy: no-referrer",
+            "Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()",
+        ):
+            self.assertIn(line, headers)
+        self.assertLess(steps.index("Refuse code that would run on Cloudflare"), steps.index("Write security headers"))
+        self.assertLess(steps.index("Write security headers"), steps.index("Upload to Cloudflare Pages"))
 
     def test_the_cloudflare_credential_comes_from_the_deploy_environment_and_only_the_deploy_job_has_it(self):
         self.assertEqual(self.deploy["environment"], "deploy")

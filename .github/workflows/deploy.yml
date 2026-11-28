@@ -125,14 +125,42 @@ jobs:
           path: site
 
       - name: Refuse code that would run on Cloudflare
-        # A _worker.js in the upload would run on Cloudflare's servers for
-        # every request. The build job's code can be changed by a data push,
-        # so only static files are uploaded.
+        # Only static files are uploaded: the build job's code can be changed by
+        # a data push, so refuse Cloudflare control files, Pages Functions,
+        # symlinks, and any file outside the static allowlist (#248).
         run: |
-          if [ -e site/_worker.js ]; then
-            echo "::error::The build made a _worker.js. Only static files are uploaded."
+          for forbidden in site/_worker.js site/_redirects site/_routes.json site/_headers site/functions; do
+            if [ -e "$forbidden" ] || [ -L "$forbidden" ]; then
+              echo "::error::The build made $forbidden. Only static files are uploaded."
+              exit 1
+            fi
+          done
+          if [ -n "$(find site -type l -print -quit)" ]; then
+            echo "::error::The build made a symlink. Only static files are uploaded."
             exit 1
           fi
+          unexpected=$(find site -type f \
+            ! -name '*.html' ! -name '*.json' ! -name '*.md' ! -name '*.tsv' \
+            ! -name '*.txt' ! -name '*.xml' ! -name '*.png' -print -quit)
+          if [ -n "$unexpected" ]; then
+            echo "::error::The build made an unexpected file: $unexpected. Only static files are uploaded."
+            exit 1
+          fi
+
+      - name: Write security headers
+        # Written by the deploy job itself (never taken from the build artifact)
+        # so that a data push cannot weaken them (C7, #247). Browsers intersect
+        # HTTP-header CSP with each page's <meta> script-hash CSP, adding
+        # frame-ancestors protection that <meta> tags cannot enforce.
+        run: |
+          cat <<'EOF' > site/_headers
+          /*
+            Content-Security-Policy: frame-ancestors 'none'
+            X-Frame-Options: DENY
+            X-Content-Type-Options: nosniff
+            Referrer-Policy: no-referrer
+            Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+          EOF
 
       - name: Upload only the newest push
         # Pushes close together build at once, and their builds can finish in
