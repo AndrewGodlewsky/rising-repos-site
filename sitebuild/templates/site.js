@@ -15,3 +15,6 @@
 {% if template == "how-it-works.html" %}
 {% include "how-it-works.js" %}
 {% endif %}
+{% if template == "search.html" %}
+{% include "search.js" %}
+{% endif %}

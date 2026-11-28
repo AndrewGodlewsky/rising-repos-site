@@ -50,6 +50,7 @@ from sitebuild import (
     HOW_IT_WORKS,
     MINUS,
     NOT_FOUND,
+    SEARCH,
     WINDOW,
     address,
     board_day_page,
@@ -220,7 +221,7 @@ class EveryPublishedBoard(unittest.TestCase):
         filters where the board has rows; the Baseline page's readout where the newest board has rows to place; and How
         it works's examples (#214)."""
         parts = ["theme.js"]
-        if path not in (NOT_FOUND, HOW_IT_WORKS, FOR_AGENTS):
+        if path not in (NOT_FOUND, HOW_IT_WORKS, FOR_AGENTS, SEARCH):
             parts.append("old-board.js")
         if path in self.shows and self.shows[path]["rows"]:
             parts.append("filters.js")
@@ -228,6 +229,8 @@ class EveryPublishedBoard(unittest.TestCase):
             parts.append("baseline.js")
         if path == HOW_IT_WORKS:
             parts.append("how-it-works.js")
+        if path == SEARCH:
+            parts.append("search.js")
         return tuple(parts)
 
     def test_the_build_writes_the_sites_pages_a_page_for_each_board_day_and_the_history_of_each_that_has_rows(self):
@@ -240,7 +243,19 @@ class EveryPublishedBoard(unittest.TestCase):
             if path.is_file() and not re.fullmatch(r"board-\d+\.md", path.name)
         )
         days = [board["board_day"] for board in self.boards]
-        expected = [BOARD, DAYS, HOW_IT_WORKS, FOR_AGENTS, BASELINE, NOT_FOUND, LICENCE, "sitemap.xml", "robots.txt"]
+        expected = [
+            BOARD,
+            DAYS,
+            HOW_IT_WORKS,
+            FOR_AGENTS,
+            BASELINE,
+            SEARCH,
+            NOT_FOUND,
+            LICENCE,
+            "sitemap.xml",
+            "robots.txt",
+            "feed.xml",
+        ]
         expected += ["latest.md", "latest.json", "repos.tsv", "llms.txt"]
         expected += [
             board_day_page(day).replace("index.html", name) for day in days for name in ("board.md", "board.json")
@@ -275,7 +290,8 @@ class EveryPublishedBoard(unittest.TestCase):
         for path, page in self.pages.items():
             with self.subTest(path):
                 assert_script_allowed(self, page)
-                assert_policy_is_otherwise_as_it_was(self, page, fetches="filters.js" in self.parts(path))
+                parts = self.parts(path)
+                assert_policy_is_otherwise_as_it_was(self, page, fetches="filters.js" in parts or "search.js" in parts)
 
     def test_every_link_within_the_site_leads_to_a_file_the_build_wrote_or_to_a_place_on_its_own_page(self):
         """So does the address a board's table gives its script for the history that an opened row fetches."""

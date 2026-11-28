@@ -52,17 +52,19 @@ CSS_ADDRESS = re.compile(r"""url\(\s*(['"]?)(.*?)\1\s*\)|@import\s+(['"])(.*?)\3
 
 
 def requests(page: Page) -> list[str]:
-    """Every address the page makes the browser fetch: everything but the links a reader follows, and a canonical
-    link, which names the page's own address for a search engine and which no browser fetches (#35)."""
+    """Every address the page makes the browser fetch: everything but the links a reader follows, and canonical or
+    alternate links (such as the Atom feed link, #243), which name related addresses for crawlers and feed readers
+    and which no browser fetches (#35)."""
     found = []
     for element in page.all():
-        canonical = "canonical" in (element.attrs.get("rel") or "").lower().split()
+        rels = set((element.attrs.get("rel") or "").lower().split())
+        non_fetching = bool(rels & {"canonical", "alternate"})
         for name, value in element.attrs.items():
             if value is None:
                 continue
             if name in ("srcset", "imagesrcset"):
                 found += [candidate.split()[0] for candidate in value.split(",") if candidate.strip()]
-            elif name in LOADS or (element.tag == "link" and name == "href" and not canonical):
+            elif name in LOADS or (element.tag == "link" and name == "href" and not non_fetching):
                 found.append(value)
             elif name == "style":
                 found += css_addresses(value)

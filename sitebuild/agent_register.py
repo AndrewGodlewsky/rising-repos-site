@@ -40,6 +40,9 @@ REGISTER: dict[str, dict[str, str]] = {
         "q": "query service: q",
         "day-q": "query service: q",
         "find": "query service: q",
+        "archive-q": "query service: q",
+        "archive-lang": "query service: lang",
+        "archive-since": "query service: since",
         "layout": (
             "none: the cards lay out the same rows, in the same order, that the agent copy lists, so a layout is"
             " the reader's alone"
@@ -49,6 +52,7 @@ REGISTER: dict[str, dict[str, str]] = {
         "index.html": "llms.txt: Boards as text",
         "days/index.html": "llms.txt: Boards as text",
         "days/{board_day}/index.html": "llms.txt: Boards as text",
+        "search/index.html": "llms.txt: Search every repository",
         "how-it-works/index.html": "llms.txt: More",
         "for-agents/index.html": "llms.txt: More",
         "baseline/index.html": "none: its figures are the pace that each row of the agent copy gives",

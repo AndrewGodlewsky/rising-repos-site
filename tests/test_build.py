@@ -22,6 +22,7 @@ from sitebuild import (
     HOW_IT_WORKS,
     NOT_FOUND,
     PAGES,
+    SEARCH,
     STATIC,
     TEMPLATES,
     History,
@@ -83,6 +84,7 @@ class TheBuild(BuildTest):
                     HOW_IT_WORKS,
                     FOR_AGENTS,
                     BASELINE,
+                    SEARCH,
                     NOT_FOUND,
                     board_day_page(NEWEST),
                     board_day_page(OLDER),
@@ -92,6 +94,7 @@ class TheBuild(BuildTest):
                     LICENCE,
                     "sitemap.xml",
                     "robots.txt",
+                    "feed.xml",
                     f"days/{NEWEST}/board.md",
                     f"days/{NEWEST}/board.json",
                     f"days/{OLDER}/board.md",
@@ -103,7 +106,7 @@ class TheBuild(BuildTest):
                 ]
             ),
         )
-        self.assertEqual(set(PAGES), {BOARD, DAYS, HOW_IT_WORKS, FOR_AGENTS, BASELINE, NOT_FOUND, BOARD_DAY})
+        self.assertEqual(set(PAGES), {BOARD, DAYS, HOW_IT_WORKS, FOR_AGENTS, BASELINE, SEARCH, NOT_FOUND, BOARD_DAY})
 
     def test_the_board_shows_the_latest_board_day_which_is_the_first_in_the_index(self):
         page = self.build_pages()[BOARD]
@@ -177,7 +180,13 @@ class TheBuild(BuildTest):
         """RisingRepos#111, and AndrewGodlewsky/RisingRepos#49: the page that says how a board is ranked is the
         site's own, not a README. The list of board days is History, in the bar since
         AndrewGodlewsky/RisingRepos#199, so a board's day bar and foot link only to the days beside it."""
-        current = {DAYS: "/days/", BASELINE: "/baseline/", HOW_IT_WORKS: "/how-it-works/", FOR_AGENTS: "/for-agents/"}
+        current = {
+            DAYS: "/days/",
+            BASELINE: "/baseline/",
+            SEARCH: "/search/",
+            HOW_IT_WORKS: "/how-it-works/",
+            FOR_AGENTS: "/for-agents/",
+        }
         for path, page in self.build_pages().items():
             with self.subTest(path):
                 bar = site_bar(page)
@@ -187,6 +196,7 @@ class TheBuild(BuildTest):
                         ("/", "Rising Repos"),
                         ("/days/", "History"),
                         ("/baseline/", "Baseline"),
+                        ("/search/", "Search"),
                         ("/how-it-works/", "How it works"),
                         ("/for-agents/", "For agents"),
                     ],

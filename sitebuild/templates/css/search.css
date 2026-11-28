@@ -1,0 +1,22 @@
+{# Archive search page (/search/, #242): scoped exclusively to search.html so board pages carry zero extra bytes. #}
+{% if template == "search.html" %}
+.search-form { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 8px; }
+.search-words { flex: 1 1 260px; }
+.search-words input { width: 100%; }
+.search-go { height: 38px; padding: 0 16px; border: 1px solid var(--accent); border-radius: 10px; background: var(--accent); color: var(--on-accent); font: 500 14px/1 var(--sans); cursor: pointer; }
+.search-go:hover { opacity: 0.92; }
+.search-status { margin-top: 16px; color: var(--text-2); font-size: 14px; }
+.search-results { display: grid; gap: 12px; margin-top: 16px; }
+.search-item { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.search-item-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+.search-name { color: var(--text); font-size: 16px; font-weight: 500; text-decoration: none; overflow-wrap: anywhere; }
+.search-name:hover { color: var(--accent); text-decoration: underline 1px currentColor; }
+.search-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; color: var(--text-3); font-size: 13px; }
+.search-desc { margin-top: 6px; color: var(--text-2); font-size: 14px; overflow-wrap: anywhere; }
+.search-desc.none { color: var(--text-3); }
+.search-pager { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+.search-page { height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font: 500 13px/1 var(--sans); cursor: pointer; }
+.search-page:hover:not(:disabled) { border-color: var(--line-strong); background: var(--raised); }
+.search-page:disabled { color: var(--text-3); cursor: default; }
+.search-page-info { color: var(--text-2); font-size: 13px; }
+{% endif %}

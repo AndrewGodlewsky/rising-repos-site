@@ -136,7 +136,24 @@ class TheHistoryFile(BuildTest):
         # Every element it makes is a fixed tag: no tag name comes from the file.
         self.assertEqual(
             sorted(set(re.findall(r'make\("([a-z0-9]+)"', script))),
-            ["a", "caption", "dd", "div", "dl", "dt", "figcaption", "figure", "p", "span", "table", "td", "th"],
+            [
+                "a",
+                "button",
+                "caption",
+                "dd",
+                "div",
+                "dl",
+                "dt",
+                "figcaption",
+                "figure",
+                "li",
+                "p",
+                "span",
+                "table",
+                "td",
+                "th",
+                "ul",
+            ],
         )
 
     def test_no_script_template_uses_an_unsafe_dom_sink_or_eval(self):

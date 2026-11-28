@@ -1,0 +1,62 @@
+{% extends "page.html" %}
+{# Archive search across every repository ever on a board, powered progressively by the same-origin /api/search
+   service on explicit user interaction (#242). Zero /api/ requests are sent on initial load without a query, and with
+   scripts off the page explains what is available and points to History and For agents. #}
+{% block title %}Rising Repos: search every repository{% endblock %}
+{% block description %}Search every GitHub repository that has appeared on a Rising Repos daily board, by name, description, language, or recent board days.{% endblock %}
+{% block strip %}
+<nav class="strip" aria-label="Board days">
+<div class="wrap">
+<a class="newest" href="/"><span aria-hidden="true">‹&nbsp;</span>The newest board<span class="sr">, for {{ newest.board_day|long_date }}</span></a>
+<span class="here">Search</span>
+</div>
+</nav>
+{% endblock %}
+{% block band %}
+<div class="head">
+<p class="kind">Every board day</p>
+<h1 id="search">Search the archive</h1>
+<p class="lede">Find any repository that has been on a daily board, by name, description, language, or recent board days.</p>
+</div>
+{% endblock %}
+{% block main %}
+<noscript>
+<div class="message">
+<p class="message-title">Archive search needs scripts turned on.</p>
+<p>Every board day is listed in <a href="{{ days_address }}">History</a>, and the full archive is described on <a href="{{ agents_address }}">For agents</a>.</p>
+</div>
+</noscript>
+<form class="search-form js-only" id="archive-search" role="search">
+<div class="search-field search-words">
+<label class="sr" for="archive-q">Search by name or description</label>
+<input type="search" id="archive-q" placeholder="Words in name or description" autocomplete="off" spellcheck="false">
+</div>
+<div class="search-field">
+<label class="sr" for="archive-lang">Language</label>
+<select id="archive-lang">
+<option value="">All languages</option>
+{% for language in languages %}<option>{{ language }}</option>{% endfor %}
+</select>
+</div>
+<div class="search-field">
+<label class="sr" for="archive-since">Board window</label>
+<select id="archive-since">
+<option value="">Any board day</option>
+<option value="7">Last 7 board days</option>
+<option value="30">Last 30 board days</option>
+<option value="90">Last 90 board days</option>
+</select>
+</div>
+<button type="submit" class="search-go">Search</button>
+</form>
+<p class="search-status js-only" id="archive-status" aria-live="polite">Enter words or choose a language, then press Search.</p>
+<ol class="search-results js-only" id="archive-results"></ol>
+<nav class="search-pager js-only" id="archive-pager" aria-label="Search result pages" hidden></nav>
+<footer class="foot" style="margin-top:40px">
+<nav class="foot-links" aria-label="At the foot">
+<a href="/">The newest board</a>
+<a href="{{ days_address }}">History</a>
+<a class="top" href="#top">Back to the top<span aria-hidden="true"> ↑</span></a>
+</nav>
+</footer>
+{% endblock %}

@@ -174,10 +174,10 @@ Since go-live the eval measures risingrepos.com against those same limits, and
 [RisingRepos#58](https://github.com/AndrewGodlewsky/RisingRepos/issues/58)
 records its first run there, which failed on its count of requests, as
 [Requests the page never sent](#requests-the-page-never-sent) explains.
-`accepted.json` still holds that measurement of the preview. Only its `base`
-moved to the live address, together with `DEPLOYED_SITE`, which a test keeps it
-equal to. [RisingRepos#113](https://github.com/AndrewGodlewsky/RisingRepos/issues/113)
-replaces its numbers from a run on the live site.
+`accepted.json` was refreshed on 28 November 2026 (#246) from post-redesign live
+[run 46179953367](https://github.com/AndrewGodlewsky/rising-repos-site/actions/runs/46179953367)
+(commit `aa2d34de400a3e57d4551eef9af2edc0f4f468a3`) on `https://risingrepos.com`,
+replacing the pre-redesign preview measurement from 2026-11-12.
 
 ## Reading a run
 

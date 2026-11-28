@@ -4,7 +4,7 @@
    keep the notice to the root alone, make this ("latest.html",). A board's page also carries the filter over its list. #}
 {% set notice = template in ("latest.html", "board.html", "days.html", "baseline.html") %}
 {% set filtering = template in ("latest.html", "board.html") %}
-{% set section = "how" if template == "how-it-works.html" else "agents" if template == "for-agents.html" else "days" if template == "days.html" else "baseline" if template == "baseline.html" else "board" %}
+{% set section = "how" if template == "how-it-works.html" else "agents" if template == "for-agents.html" else "days" if template == "days.html" else "baseline" if template == "baseline.html" else "search" if template == "search.html" else "board" %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,10 +14,10 @@
 <meta name="robots" content="noindex">
 {% endif %}
 {# The page loads nothing but itself, with its type inside it as data: addresses. The scripts it may run are named by
-   the hash of their text: the page's one script, site.js. A board with rows may also fetch its board day's
-   history.json from the site's own address, when a reader first opens a row. #}
+   the hash of their text: the page's one script, site.js. A board with rows and the archive search page may also
+   fetch from the site's own address on reader interaction (history.json and /api/, #242). #}
 {% set script %}{% include "site.js" %}{% endset %}
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src '{{ script|script_hash }}';{% if filtering and board.rows %} connect-src 'self';{% endif %} style-src 'unsafe-inline'; font-src data:; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src '{{ script|script_hash }}';{% if (filtering and board.rows) or template == 'search.html' %} connect-src 'self';{% endif %} style-src 'unsafe-inline'; font-src data:; img-src data:; base-uri 'none'; form-action 'none'">
 <title>{% block title %}{% endblock %}</title>
 {# Each kind of page describes itself; the page for an address that holds none keeps the site's own description. #}
 <meta name="description" content="{% block description %}GitHub repositories gaining stars faster than their own pace predicts, on a new board each day.{% endblock %}">
@@ -29,6 +29,7 @@
 <link rel="canonical" href="{{ canonical }}">
 <meta property="og:url" content="{{ canonical }}">
 {% endif %}
+<link rel="alternate" type="application/atom+xml" title="Rising Repos" href="/feed.xml">
 <meta property="og:title" content="{{ self.title() }}">
 <meta property="og:description" content="{{ self.description() }}">
 <meta property="og:site_name" content="Rising Repos">
@@ -54,6 +55,7 @@
 <nav aria-label="Site">
 <a href="{{ days_address }}"{% if section == "days" %} aria-current="page"{% endif %}>History</a>
 <a href="{{ baseline_address }}"{% if section == "baseline" %} aria-current="page"{% endif %}>{{ baseline_name }}</a>
+<a href="{{ search_address }}"{% if section == "search" %} aria-current="page"{% endif %}>Search</a>
 <a class="how" href="{{ how_address }}"{% if section == "how" %} aria-current="page"{% endif %}>How it works</a>
 <a href="{{ agents_address }}"{% if section == "agents" %} aria-current="page"{% endif %}>For agents</a>
 </nav>

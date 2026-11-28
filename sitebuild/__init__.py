@@ -89,6 +89,7 @@ from sitebuild.paths import (
     HOW_IT_WORKS,
     NOT_FOUND,
     PAGES,
+    SEARCH,
     SHARE_IMAGE,
     SITE,
     STATIC,
@@ -300,6 +301,7 @@ def build(out: Path, *, data: Path = DATA, noindex: bool, share_images: bool = T
     common = {
         "newest": boards[0],
         "days_address": address(DAYS),
+        "search_address": address(SEARCH),
         "how_address": address(HOW_IT_WORKS),
         "agents_address": address(FOR_AGENTS),
         "new_untold": NEW_UNTOLD,
@@ -339,9 +341,10 @@ def build(out: Path, *, data: Path = DATA, noindex: bool, share_images: bool = T
             (out / board_day_page(board["board_day"])).with_name("history.json").write_text(
                 json.dumps(history_file(boards, history, number), separators=(",", ":")), encoding="utf-8"
             )
-    # What a crawler reads: the sitemap, and the site's own robots.txt (#170).
+    # What crawlers and feed readers read: the sitemap, robots.txt (#170), and the Atom feed (#243).
     (out / "sitemap.xml").write_text(crawl.sitemap(boards), encoding="utf-8", newline="\n")
     (out / "robots.txt").write_text(crawl.robots(noindex=noindex), encoding="utf-8", newline="\n")
+    (out / "feed.xml").write_text(crawl.atom_feed(boards), encoding="utf-8", newline="\n")
     # What a visiting agent reads: each board again, as text and as JSON (#176).
     for path, text in agent_copy.copies(boards, history).items():
         (out / path).write_text(text, encoding="utf-8", newline="\n")
@@ -391,6 +394,16 @@ def _pages(boards: list[dict], history: History) -> Iterator[tuple[str, str, dic
     yield HOW_IT_WORKS, HOW_IT_WORKS, {"described": DESCRIBED_FORMULA, "bands": bands_of(boards[0])}
     yield FOR_AGENTS, FOR_AGENTS, {}
     yield BASELINE, BASELINE, {"board": boards[0], "chart": pace_chart(boards[0]["rows"])}
+    yield (
+        SEARCH,
+        SEARCH,
+        {
+            "languages": sorted(
+                {row["language"] for board in boards for row in board["rows"] if row.get("language")},
+                key=str.casefold,
+            ),
+        },
+    )
     yield NOT_FOUND, NOT_FOUND, {}
 
 
