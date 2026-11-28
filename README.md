@@ -1188,7 +1188,7 @@ STYLE.md            the style guide: what a new part of a page reaches for. A gu
 docs/adr/           the decisions about the site that are hard to undo, each with its reasons
 docs/workflow/      what a run of the feature workflow follows, and the briefs of its two fresh agents
 docs/workflow-plan.md  why the feature workflow is as it is, and what is still open
-docs/research/      what was read for the plan, with the source of each claim
+docs/research/      what was read or tried before a change, with the source of each claim, and the code a trial ran. Nothing builds or runs it
 RUNBOOK.md          going live, and going back
 GOING-PRIVATE.md    what making this repository private would take, and where it would break. Not done
 pyproject.toml      the dependencies, and the date uv resolves them as of
