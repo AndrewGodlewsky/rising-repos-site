@@ -98,6 +98,11 @@
 <option value="small">Fewest stars first</option>
 <option value="large">Most stars first</option>
 </select>
+{# The board's layout (#227): the list, as the board has always been, or the cards, the same rows as boxes in a grid.
+   It is the filter's own segmented control, at the right-hand end of its row, and like every filter it shows only
+   where the script runs, which alone lays out the cards. Its pressed look also follows the root's mark, which the
+   script sets before the board is parsed, so that it is right from the first frame. #}
+<div class="segments js-only" id="layout" role="group" aria-label="View"><button type="button" data-layout="" aria-pressed="true">List</button><button type="button" data-layout="cards" aria-pressed="false">Cards</button></div>
 <label class="sr" for="q">Search by name or description</label>
 <input class="js-only" type="search" id="q" placeholder="Search" autocomplete="off" spellcheck="false">
 <p class="sr" id="shown" aria-live="polite"></p>

@@ -42,7 +42,7 @@ _Avoid_: outdated, expired
 
 **Row**:
 One repository's line on a board.
-_Avoid_: entry, item, card
+_Avoid_: entry, item, card (a row as the cards draw it, which is still a row)
 
 **Rank**:
 A row's place on its board, counted from 1 at the top. The data file gives
@@ -211,6 +211,21 @@ _Avoid_: banner, alert, warning
 The controls over the rows, which show only once the script runs: All or New,
 the star bands, the language, the order, and a search.
 _Avoid_: toolbar, facets
+
+**Layout**:
+How a board lays out its rows: the list, one row to a line under the column
+headings, which is the first view and the board with scripts off, or the
+cards. A reader chooses it with the switch at the end of the filter's row,
+"List" and "Cards", and the choice of the cards is kept in the address, as
+`view=cards`, and in this browser (#227).
+_Avoid_: view (the filters and the order chosen, which the address also
+holds), mode, display
+
+**Cards**:
+The layout that draws each row of a board as a box in a grid, as many to a
+line as fit. A card is a row: its rank, its figures, and what it opens are
+the row's own.
+_Avoid_: tiles, grid view, gallery
 
 **Opened row**:
 A row opened on what lies behind its line: first its reason, and with the

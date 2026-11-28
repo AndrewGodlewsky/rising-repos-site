@@ -84,6 +84,14 @@ script (data-js), reads the theme kept in this browser and the browser's own col
 (data-theme), and waits for the page to be parsed to wire its switch, as a board's filters and the Baseline page's
 readout wait too. Nothing else runs before the page is parsed."""
 
+LAYOUT_TOUCHES = {
+    "location.search",
+    "localStorage.getItem(layout)",
+    "root.setAttribute(data-layout)",
+}
+"""What a board with rows also touches while the page loads (#227): it reads the address's query and the layout kept
+in this browser, and marks the root element for the cards when either asks for them, before the board is parsed."""
+
 POLICY = (
     "default-src 'none'; style-src 'unsafe-inline'; font-src data:; img-src data:; base-uri 'none'; form-action 'none'"
 )
@@ -207,11 +215,11 @@ class TheNotice(BuildTest):
             self.assertIsNone(outcome["error"])
             self.assertEqual(outcome["elements"], stand_ins(page))
             self.assertEqual(outcome["root"], loaded(page))
-            self.assertLessEqual(set(outcome["operations"]), TOUCHES | THEME_TOUCHES)
+            self.assertLessEqual(set(outcome["operations"]), TOUCHES | THEME_TOUCHES | LAYOUT_TOUCHES)
 
     def assertNotice(self, outcome: dict, words: dict, *, hides_boards: bool):
         self.assertIsNone(outcome["error"])
-        self.assertLessEqual(set(outcome["operations"]), TOUCHES | THEME_TOUCHES)
+        self.assertLessEqual(set(outcome["operations"]), TOUCHES | THEME_TOUCHES | LAYOUT_TOUCHES)
         elements = outcome["elements"]
         self.assertNotIn("hidden", elements[NOTICE]["attributes"])
         self.assertEqual({name: elements[name]["text"] for name in (TITLE, TEXT)}, words)
@@ -298,7 +306,7 @@ class TheNotice(BuildTest):
                     self.assertEqual(outcome["elements"][NOTICE]["attributes"], attributes)
                     self.assertEqual([outcome["elements"][part]["text"] for part in (TITLE, TEXT)], ["", ""])
                     self.assertEqual(outcome["root"], loaded(page))
-                    self.assertLessEqual(set(outcome["operations"]), TOUCHES | THEME_TOUCHES)
+                    self.assertLessEqual(set(outcome["operations"]), TOUCHES | THEME_TOUCHES | LAYOUT_TOUCHES)
 
     def test_the_notice_is_filled_the_moment_the_parser_reaches_it_when_the_script_runs_before_it(self):
         """The script runs in the head, before the notice is parsed. It watches the document, and fills and shows the
@@ -322,16 +330,21 @@ class TheNotice(BuildTest):
 
     def test_the_script_reads_only_what_it_needs_and_writes_only_the_notices_text_and_the_roots_attributes(self):
         """It inserts no value an owner wrote, makes no request as the page loads, and keeps nothing but the reader's
-        theme: the context it runs in has no way to make a request, and a script that reached for one would throw."""
+        theme and, on a board with rows, the board's layout (#227): the context it runs in has no way to make a
+        request, and a script that reached for one would throw."""
         page = self.pages[BOARD]
         outcomes = run(page, PUBLISHED, PUBLISHED + 30 * HOUR, PUBLISHED + 10 * DAY)
         for outcome in outcomes:
             self.assertIsNone(outcome["error"])
-            self.assertLessEqual(set(outcome["operations"]), TOUCHES | THEME_TOUCHES)
+            self.assertLessEqual(set(outcome["operations"]), TOUCHES | THEME_TOUCHES | LAYOUT_TOUCHES)
         self.assertEqual(
             sorted(set(outcomes[-1]["operations"])),
-            sorted(TOUCHES | THEME_TOUCHES - {"root.setAttribute(data-theme)"}),
-            "a run from 7 days should touch each thing the script may touch as the page loads, with no theme kept",
+            sorted(
+                (TOUCHES | THEME_TOUCHES | LAYOUT_TOUCHES)
+                - {"root.setAttribute(data-theme)", "root.setAttribute(data-layout)"}
+            ),
+            "a run from 7 days should touch each thing the script may touch as the page loads, with no theme or"
+            " layout kept",
         )
         for path in CARRIERS:
             with self.subTest(path):
@@ -339,8 +352,11 @@ class TheNotice(BuildTest):
                 self.assertNotRegex(
                     text, r"innerHTML|outerHTML|insertAdjacentHTML|document\.write|cookie|sessionStorage|eval\("
                 )
-                # It keeps one thing, the reader's theme: every call to localStorage names that key and no other.
-                self.assertEqual(re.findall(r"localStorage\.\w+\(\s*([^,)]*)", text), ['"theme"'] * 3)
+                # It keeps the reader's theme, and on a board with rows the board's layout: every call to
+                # localStorage names one of those keys and no other.
+                keys = re.findall(r"localStorage\.\w+\(\s*([^,)]*)", text)
+                self.assertEqual(keys.count('"theme"'), 3)
+                self.assertLessEqual(set(keys) - {'"theme"'}, {'"layout"'} if "filters.js" in PARTS[path] else set())
 
     def test_the_one_request_a_board_may_make_is_its_own_board_days_history_from_the_sites_own_address(self):
         """A reader who opens a row fetches that board day's history.json, once. The policy lets the page fetch only
@@ -553,6 +569,62 @@ class WithoutScripts(BuildTest):
                 (strip,) = [element for element in page.all() if "strip" in element.classes()]
                 for later in (page.one("h1"), strip, page.one("main")):
                     self.assertLess(order.index(notice), order.index(later))
+
+
+class TheView(BuildTest):
+    """A board's layout, the list or the cards (#227). The list is the board as it was. A reader who presses Cards
+    keeps that choice in the address, as `view=cards`, and in this browser, under "layout", and the script marks the
+    root element for the cards before the board is parsed, so that the first frame drawn is the cards and never the
+    list. Only `cards` is read as the cards: any other value, in the address or kept, is the list."""
+
+    def setUp(self):
+        super().setUp()
+        self.page = self.build_pages()[BOARD]
+
+    def laid(self, search: str = "", kept: str | None = None) -> dict:
+        """What the root's script did on the board, run before the page is parsed, with `search` as the address's
+        query and `kept` as the layout this browser keeps."""
+        (outcome,) = run(self.page, PUBLISHED, search=search, layout=kept, late=True)
+        self.assertIsNone(outcome["error"])
+        return outcome
+
+    def test_cards_kept_or_in_the_address_are_set_on_the_root_before_the_board_is_parsed(self):
+        for search, kept in (("", "cards"), ("?view=cards", None), ("?show=new&view=cards&sort=gained", None)):
+            with self.subTest(search=search, kept=kept):
+                self.assertEqual(self.laid(search, kept)["root"].get("data-layout"), "cards")
+
+    def test_view_cards_in_the_address_wins_and_any_other_value_in_the_address_or_the_browser_gives_the_list(self):
+        cases = (
+            ("?view=cards", "list", "cards"),
+            ("?view=cards", "", "cards"),
+            ("?view=cards", "Cards", "cards"),
+            ("?view=list", None, None),
+            ("?view=Cards", None, None),
+            ("?view=", None, None),
+            ("?view=cards%20", None, None),
+            ("", "list", None),
+            ("", "Cards", None),
+            ("", "", None),
+            ("", None, None),
+        )
+        for search, kept, layout in cases:
+            with self.subTest(search=search, kept=kept):
+                self.assertEqual(self.laid(search, kept)["root"].get("data-layout"), layout)
+
+    def test_the_script_keeps_cards_under_a_key_of_its_own_and_nothing_but_that_and_the_theme(self):
+        text = script_of(self.page)
+        calls = re.findall(r"localStorage\.(\w+)\(\s*([^,)]*)", text)
+        self.assertEqual({key for _, key in calls}, {'"theme"', '"layout"'})
+        layout = sorted({method for method, key in calls if key == '"layout"'})
+        self.assertEqual(layout, ["getItem", "removeItem", "setItem"])
+        # The one word it keeps under "layout" is the cards': the list is kept as nothing.
+        self.assertEqual(re.findall(r'localStorage\.setItem\(\s*"layout",\s*([^)]*)\)', text), ['"cards"'])
+        for search, kept in (("", None), ("", "cards"), ("?view=cards", None)):
+            with self.subTest(search=search, kept=kept):
+                outcome = self.laid(search, kept)
+                touched = {op for op in outcome["operations"] if op.startswith("localStorage.")}
+                self.assertLessEqual(touched, {"localStorage.getItem(theme)", "localStorage.getItem(layout)"})
+                self.assertEqual(outcome["kept"], kept, "loading the page should keep nothing new")
 
 
 if __name__ == "__main__":

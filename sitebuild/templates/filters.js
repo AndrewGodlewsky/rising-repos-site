@@ -6,10 +6,23 @@
    only when the file is in, so its detail arrives in one step and nothing under it moves twice: the sum behind its
    reason, the drawing of its own pace against what it gained, its facts, its last 30 board days, and the boards it
    was on. If the file cannot be had, the row opens on its reason line and says the rest could not be loaded. It
-   writes only text, elements, classes, and attributes, stores nothing but the view in the address, and a new order
-   moves rows without renumbering one: each keeps the rank its file gives it. In the "Most often" order each row says
-   after its name the count it is sorted by, from the two numbers the build wrote (#186).
-   It waits for the page to be parsed, since it runs from the one script in the head. #}
+   writes only text, elements, classes, and attributes, keeps the view in the address and the board's layout in this
+   browser too, and a new order moves rows without renumbering one: each keeps the rank its file gives it. In the "Most
+   often" order each row says after its name the count it is sorted by, from the two numbers the build wrote (#186).
+   It waits for the page to be parsed, since it runs from the one script in the head, but for the board's layout. #}
+{# The board's layout: the list, as the board has always been and the first view, or the cards, the same rows as boxes
+   in a grid (#227). A reader who presses Cards keeps that choice in the address, as view=cards, which the links to
+   other board days carry, and in this browser, under "layout", as the theme is kept, so that the board opens in the
+   cards on their next visit. The address that asks for the cards wins, since it is a link someone chose to share.
+   Only the word "cards" is read as the cards, and any other value is the list (P22). The root is marked here, before
+   the board is parsed, so that the first frame drawn is the cards and never the list, and the stylesheet draws the
+   cards from that mark alone, so that with scripts off the board is the list. A page loads, and Back and Forward
+   come to a page, by the same reading, so this one function is shared by the mark below and the filters. #}
+function laidAsCards() {
+  if (new URLSearchParams(location.search).get("view") === "cards") return true;
+  try { return localStorage.getItem("layout") === "cards"; } catch (error) { return false; }
+}
+if (laidAsCards()) document.documentElement.setAttribute("data-layout", "cards");
 document.addEventListener("DOMContentLoaded", function () {
   var table = document.querySelector("table.chart");
   var q = document.getElementById("q");
@@ -23,6 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var sort = document.getElementById("sort");
   var shown = document.getElementById("shown");
   var none = document.getElementById("none-shown");
+  var root = document.documentElement;
+  var layoutButtons = [].slice.call(document.querySelectorAll("#layout button"));
   if (!table || !q || !kinds || !bands || !language || !sort || !shown) return;
   {# The star bands, from their buttons: where each stops (data-below, none for the top band), and its word in the
      address (data-word, "30k-plus"), which the build makes from the band's limits. #}
@@ -138,6 +153,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function press(buttons, name, value) {
     buttons.forEach(function (button) { button.setAttribute("aria-pressed", button.getAttribute(name) === value ? "true" : "false"); });
   }
+  {# Lay the board out as the cards or as the list: the root's mark, which the stylesheet draws from, and the switch's
+     pressed button. #}
+  function lay(cards) {
+    if (cards) root.setAttribute("data-layout", "cards"); else root.removeAttribute("data-layout");
+    press(layoutButtons, "data-layout", cards ? "cards" : "");
+  }
   {# The view is kept in the address's query, so that it can be shared, bookmarked, and walked with Back and
      Forward: show=new, band=1k-3k, lang=Rust, sort=gained, and q=the search, each left out at its default. The
      server sends the same page whatever the query says, and a value the page does not know is ignored, as is a
@@ -157,6 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
     say(query.get("q") || "");
     press(kindButtons, "data-kind", kind);
     press(bandButtons, "data-band", band);
+    lay(laidAsCards());
   }
   {# The query of the filters and the order, each left out at its default: one function for the address and the
      links alike, so that they cannot disagree (C17). #}
@@ -166,6 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (band !== "") query.set("band", bandWords[band]);
     if (language.value) query.set("lang", language.value);
     if (sort.value !== "rank") query.set("sort", sort.value);
+    if (root.getAttribute("data-layout") === "cards") query.set("view", "cards");
     return query;
   }
   function write(push) {
@@ -192,6 +215,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (box) box.addEventListener("input", function () { say(box.value); var started = !new URLSearchParams(location.search).get("q"); apply(); write(started); });
   });
   language.addEventListener("change", function () { apply(); write(true); });
+  {# A press of the switch keeps the choice in this browser, or clears it for the list, as a press back to the
+     browser's own theme does, so that a browser keeps nothing for a reader on the first view. It replaces the address's
+     entry in the history and adds none: with a new entry, Back to the plain address would read the kept cards again,
+     and seem to do nothing. #}
+  layoutButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      var cards = button.getAttribute("data-layout") === "cards";
+      try { if (cards) localStorage.setItem("layout", "cards"); else localStorage.removeItem("layout"); } catch (error) {}
+      lay(cards);
+      apply();
+      write(false);
+    });
+  });
   sort.addEventListener("change", function () { apply(); write(true); });
   window.addEventListener("popstate", function () { read(); apply(); });
   {# Clear search and filters: the whole board again, in the order chosen, as a new entry that Back leaves. The

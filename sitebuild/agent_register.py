@@ -40,6 +40,10 @@ REGISTER: dict[str, dict[str, str]] = {
         "q": "query service: q",
         "day-q": "query service: q",
         "find": "query service: q",
+        "layout": (
+            "none: the cards lay out the same rows, in the same order, that the agent copy lists, so a layout is"
+            " the reader's alone"
+        ),
     },
     "page": {
         "index.html": "llms.txt: Boards as text",
