@@ -389,3 +389,17 @@ Sentence 44 came with #148, and reads a live site as it reads the made-up one.
     days, as sentence 14 does.
 
 Sentence 45 came with #186, and reads a live site as it reads the made-up one.
+
+### The search down a board, on a desktop (`test_the_search_down_a_board.py`)
+
+46. On a desktop, the search stays in view in the day bar all the way down a
+    board, and a word typed into it at the board's foot shows only the rows
+    whose name or description holds it.
+    `test_on_a_desktop_the_search_stays_in_view_in_the_day_bar_down_a_board_and_finds_rows_from_its_foot`
+
+    It does not claim anything of a phone, where the search stays at the top
+    of the filter, or that the filter keeps one row, which the agents' tests
+    hold. It scrolls the newest board's last row into view, and reads the
+    search box against the board's date, which the day bar holds.
+
+Sentence 46 came with #213, and reads a live site as it reads the made-up one.
