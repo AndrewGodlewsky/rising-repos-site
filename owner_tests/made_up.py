@@ -6,8 +6,9 @@ hold some of these and not others, and change every day, so this module writes a
 the data contract says, with the schemas the repository ships beside its own data. Nothing here is copied from a
 real board: each owner's name starts with "made-up-", and each number is worked out below.
 
-Three sets of boards come from here. `boards` is the site the browser is driven through. `largest_board` and
-`long_board` are each one board day alone, for the two sizes the site promises.
+Four sets of boards come from here. `boards` is the site the browser is driven through. `largest_board` and
+`long_board` are each one board day alone, for the two sizes the site promises. `older_boards` is a site of 34 board
+days, more than an opened row's table covers, for sentence 49.
 """
 
 import json
@@ -394,3 +395,15 @@ def write(folder: Path, listed: list[dict]) -> None:
     write_json(folder / "boards" / "index.json", {"schema_version": 1, "board_days": index})
     for board in listed:
         write_json(board_file(folder, board["board_day"]), board)
+
+
+OLDER_THAN_THE_TABLE = {0: "harbour kiln", 31: "harbour", 33: "harbour"}
+"""The rows of `older_boards`, by how many days before the newest each board is: the newest lists two repositories,
+and only the first of them was on boards older than the 30 an opened row's table covers."""
+
+
+def older_boards() -> list[dict]:
+    """Thirty-four board days, one a day and newest first, for sentence 49 (#221). An opened row's table covers the
+    newest 30 of them. The newest lists harbour and kiln, and harbour alone was on two boards older than those, so
+    one opened row says how many and the other says nothing of them. The boards between list nobody."""
+    return [_board(days_before, OLDER_THAN_THE_TABLE.get(days_before, "")) for days_before in range(34)]

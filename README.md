@@ -256,7 +256,12 @@ What every page holds to, each checked by a test in `tests/`:
   switch, its script, and its stylesheet, and nothing to any other page, by
   `sitework weigh` on 28 November 2026, and 761 to the root gzipped: the
   heaviest board day is now 504,833 bytes, 45,167 under the limit. They add
-  nothing to a row. Past about 500 real
+  nothing to a row. The line of an opened row's older boards (#221) added 376
+  bytes to a board with rows, in its script, and nothing to any other page, by
+  `sitework weigh` on 28 November 2026, and 99 to the root gzipped: the
+  heaviest board day is now 505,209 bytes, 44,791 under the limit. It adds
+  nothing to a row: its words are in the board day's `history.json`. Past
+  about 500 real
   rows, a long board's later rows in a second file is the next step.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
   is where the limits that a longer board meets are weighed.
@@ -286,7 +291,8 @@ What every page holds to, each checked by a test in `tests/`:
   search in the day bar (#213) it came to 143,769 on Windows on 2026-11-27,
   174 more than the same day's 143,595 without it. With the cards (#227) it
   came to 144,325 on Windows on 2026-11-28, 750 more than the same day's
-  143,575 without them. The
+  143,575 without them. With the line of an opened row's older boards (#221)
+  it came to 144,417 on Windows on 2026-11-28, 92 more. The
   type takes about
   28,000 of those bytes. Before the notes on the stylesheet and the scripts
   became Jinja comments the root came to 149,615. Each invented row carries
@@ -580,10 +586,18 @@ same daily counts as the line (#89), and what it gained named above the
 highest of the line and the dashed line's end, where the tag covers none of
 it, and above the tag of its usual pace where the two would meet; its stars over the last 30 days, from `star_history`, with a gap where a day has no count; its
 last 30 board days, each a link to that board, carrying its rank there; and a
-table of the boards it was on. Each part says what it is in a caption, for a
-screen reader. The build words every figure and word of it in `history.json`,
-as it words the row's line, so the two never disagree, and the script places
-them and writes no figure of its own. A fact the file does not give is left
+table of the boards it was on among those, which its caption says: "The
+boards it was on, of the last 30", or fewer on the site's first board days.
+A repository that was also on boards older than those gets one line under the
+table, which says how many, the first that listed it, and its best rank on any
+board up to this one, and that every board day is in History, with a link to
+it (#221): "And 14 boards before 28 Oct, the first on 7 Aug 2026. Its best
+rank on any board: 1. Every board day is in History." They are counted by the
+repository's GitHub id from the same walk of the older boards as the agent
+copy's earlier boards, so the two agree. Each part says what it is in a
+caption, for a screen reader. The build words every figure and word of it in
+`history.json`, as it words the row's line, so the two never disagree, and the
+script places them and writes no figure of its own. A fact the file does not give is left
 out, never guessed.
 
 The table of the boards it was on has five columns: the board day, and its

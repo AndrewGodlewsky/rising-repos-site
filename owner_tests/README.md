@@ -433,3 +433,21 @@ Sentence 47 came with #214, and reads a live site as it reads the made-up one.
     1440 pixels wide, and the rows' places on the page.
 
 Sentence 48 came with #227, and reads a live site as it reads the made-up one.
+
+### The boards before an opened row's table (`test_the_boards_before_an_opened_rows_table.py`)
+
+49. An opened row's table of the boards it was on says it covers the last 30,
+    and a repository that was on boards older than those says under it how
+    many there were and the first of them, and leads to History.
+    *Made-up boards.*
+    `test_an_opened_row_on_boards_older_than_its_table_says_how_many_and_leads_to_history`
+
+    It does not claim its best rank on any board, the wording for a single
+    older board, or the line's place on a phone, which the agents' tests
+    hold. The made-up site's nine board days all fit in the table, so it
+    builds a site of its own from 34 made-up board days, `older_boards` in
+    `made_up.py`, and opens both rows of its newest board.
+
+Sentence 49 came with #221. It needs a board with more than 30 boards before
+it, which the made-up boards of sentence 1 do not give, and so it is left out
+of a run against a live site.

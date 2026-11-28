@@ -446,7 +446,7 @@ document.addEventListener("DOMContentLoaded", function () {
        its role, as the board's own do: some browsers stop telling assistive technology that a table whose display
        changes is a table. #}
     var list = role(make("table", "more-days"), "table");
-    list.appendChild(make("caption", "part-title", "The boards it was on"));
+    list.appendChild(make("caption", "part-title", "The boards it was on, of the last " + days.length));
     var names = ["Board day", "Rank", "Total stars", "Stars a day", "Multiple"];
     var head = role(role(list.createTHead(), "rowgroup").insertRow(), "row");
     names.forEach(function (name) {
@@ -468,6 +468,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     var wrap = make("div", "more-days-wrap");
     wrap.appendChild(list);
+    {# A repository also on boards older than those: how many, the first, and its best rank on any board, as the file
+       words them, and where every board day is (#221). The part it is in scrolls sideways, and so cuts what falls
+       outside it: the room under it keeps its link's focus ring whole, and is set here so that only a board with
+       rows carries it. #}
+    if (entry.before) {
+      var before = make("p", "drawing-note", entry.before + " Every board day is in ");
+      before.style.paddingBottom = "4px";
+      var all = make("a", "", "History");
+      all.href = "/days/";
+      before.appendChild(all);
+      before.appendChild(document.createTextNode("."));
+      wrap.appendChild(before);
+    }
     opened.appendChild(wrap);
   }
   {# A row opens once its detail is drawn, or once the file has failed, never before: the browser's own opening is

@@ -12,6 +12,7 @@ machine alone, and set the browser's clock to the newest board's publish time, s
 behind the notice of an old one.
 """
 
+import json
 import unittest
 
 from helpers import BuildTest, read_json
@@ -77,6 +78,36 @@ ROLES = """(row) => {
   };
 }"""
 """Run on a board's row once it is opened: the role each part of its table names, as its own attribute."""
+
+
+BEFORE = "And 14 boards before 28 Oct, the first on 7 Aug 2026. Its best rank on any board: 1."
+"""The line of boards older than the window that #9 openJiuwen-ai/jiuwenswarm gives on the 26 Nov 2026 board (#221)."""
+
+RING = 4
+"""How far out from a focused link its ring reaches: an outline 2 px wide, drawn 2 px from it (site.css)."""
+
+LINE = """(row) => {
+  const opened = row.querySelector(".op");
+  const table = opened.querySelector("table");
+  const part = [...opened.children].find((child) => child.contains(table));
+  const line = [...opened.querySelectorAll("p")].find((p) => p.textContent.includes("Every board day is in"));
+  const edges = (thing) => {
+    const box = thing.getBoundingClientRect();
+    return { left: box.left, right: box.right, top: box.top, bottom: box.bottom };
+  };
+  return {
+    box: edges(opened),
+    part: edges(part),
+    table: edges(table),
+    line: edges(line),
+    link: edges(line.querySelector("a")),
+    cut: part.scrollHeight > part.clientHeight || part.scrollWidth > part.clientWidth,
+    wider: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+  };
+}"""
+"""Run on a board's row once it is opened: where its box, the part of it that holds the table, the table, the line
+of earlier boards, and the line's link are, whether that part cuts what it holds, and whether the page is wider than
+the screen."""
 
 
 class TheBoardsItWasOn(BuildTest):
@@ -171,6 +202,66 @@ class TheBoardsItWasOn(BuildTest):
                     self.assertEqual(table.get_by_role("columnheader").all_text_contents(), HEADINGS)
                     self.assertEqual(table.get_by_role("rowheader").get_by_role("link").all_text_contents(), dates)
                     self.assertEqual(table.get_by_role("cell").count(), 8)
+
+    def with_earlier_boards(self) -> None:
+        """Build the example with every row on both its boards, and give the newest board's first row, in its
+        history, the line of boards older than its window that a board with more than 30 boards before it gives. The
+        example holds two boards, so the line is written into the file, as the build words it, for the script to
+        place."""
+        self.earlier()
+        history = self.history()
+        history["rows"][0]["before"] = BEFORE
+        path = self.out / board_day_page(NEWEST).replace("index.html", "history.json")
+        path.write_text(json.dumps(history), encoding="utf-8")
+
+    def test_the_table_of_the_boards_it_was_on_is_named_with_the_number_of_board_days_it_covers(self):
+        """#221: the table covers only the board days the strip above it does, and its name says how many. The
+        example's newest board has one board before it, so the window is its two board days."""
+        self.earlier()
+        self.history()
+        with served(self.out) as site, chrome() as browser:
+            row = self.opened(browser, site, DESKTOP)
+            self.assertEqual(row.locator(".op table caption").text_content(), "The boards it was on, of the last 2")
+
+    def test_a_row_on_boards_before_the_window_shows_the_line_under_its_table_with_a_link_to_history(self):
+        """#221: the line the file gives, and then "Every board day is in History.", where History links to the
+        page the site's bar calls History. A row whose file gives no line shows none."""
+        self.with_earlier_boards()
+        with served(self.out) as site, chrome() as browser:
+            row = self.opened(browser, site, DESKTOP)
+            line = row.locator(".op p", has_text="Every board day is in")
+            self.assertEqual(line.count(), 1)
+            self.assertEqual(line.text_content(), BEFORE + " Every board day is in History.")
+            link = line.get_by_role("link")
+            self.assertEqual((link.text_content(), link.get_attribute("href")), ("History", "/days/"))
+            table, said = row.locator(".op table").bounding_box(), line.bounding_box()
+            self.assertGreaterEqual(said["y"], table["y"] + table["height"] - 0.5)
+            page = row.page
+            second = page.locator("table.chart > tbody > tr").nth(1)
+            second.locator("summary").first.click()
+            second.locator(".op table").wait_for()
+            self.assertEqual(second.locator(".op p", has_text="Every board day is in").count(), 0)
+
+    def test_on_a_phone_the_line_of_earlier_boards_is_whole_and_the_page_does_not_scroll_sideways(self):
+        """#221: on a phone the line is whole inside the opened row's box, and nothing of it pushes the page wider
+        than the screen. From 768 px up it sits under the table, inside the table's part of the opened row."""
+        self.with_earlier_boards()
+        with served(self.out) as site, chrome() as browser:
+            for width in (PHONE, DESKTOP):
+                with self.subTest(width=width):
+                    seen = self.opened(browser, site, width).evaluate(LINE)
+                    self.assertFalse(seen["wider"], "the page scrolls sideways")
+                    self.assertGreaterEqual(seen["line"]["left"], seen["box"]["left"] - 0.5)
+                    self.assertLessEqual(seen["line"]["right"], seen["box"]["right"] + 0.5)
+                    self.assertLessEqual(seen["line"]["bottom"], seen["box"]["bottom"] + 0.5)
+                    self.assertGreaterEqual(seen["line"]["top"], seen["table"]["bottom"] - 0.5)
+                    self.assertGreaterEqual(seen["line"]["left"], seen["part"]["left"] - 0.5)
+                    self.assertLessEqual(seen["line"]["right"], seen["part"]["right"] + 0.5)
+                    self.assertFalse(seen["cut"], "the part that holds the line cuts it")
+                    # The part scrolls sideways, so it cuts what falls outside it: the ring that a focused link draws
+                    # 2 px out from it, 2 px wide, falls inside.
+                    self.assertLessEqual(seen["link"]["bottom"] + RING, seen["part"]["bottom"] + 0.5)
+                    self.assertGreaterEqual(seen["link"]["left"] - RING, seen["part"]["left"] - 0.5)
 
 
 if __name__ == "__main__":

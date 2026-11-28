@@ -54,8 +54,10 @@ from sitebuild import (
     address,
     board_day_page,
     day_address,
+    day_name,
     repositories,
 )
+from sitebuild.agent_copy import BOARD_JSON
 from sitebuild.contract import boards as published_boards
 
 FIGURE = r"(?:0|[1-9][0-9]{0,2}(?:,[0-9]{3})*)(?:\.[0-9]*[1-9])?"
@@ -495,6 +497,39 @@ class EveryPublishedBoard(unittest.TestCase):
                     )
                     if said != counted:
                         faults.append((row.name, said, counted))
+                self.assertEqual(faults, [])
+
+    def test_each_opened_rows_line_of_earlier_boards_counts_with_its_table_the_earlier_boards_its_agent_copy_gives(
+        self,
+    ):
+        """#221: a row has the line exactly when it was on a board older than the boards its table covers. Its count,
+        added to the boards its table lists other than this one, is the agent copy's count of earlier boards, its
+        first board day is the agent copy's first, and its best rank the better of the agent copy's best and the
+        row's rank on this board. The agent copy is read as the build wrote it, beside the board day's page."""
+        for board in self.boards:
+            if not board["rows"]:
+                continue
+            day = board["board_day"]
+            with self.subTest(history_file(day)):
+                history = self.histories[day]
+                copy = read_json(self.out / board_day_page(day).replace("index.html", BOARD_JSON))["rows"]
+                faults = []
+                for row, entry, agent in zip(board["rows"], history["rows"], copy, strict=True):
+                    found = agent["earlier"]
+                    older = found and found["boards"] - (len(entry["on"]) - 1)
+                    if not older:
+                        expected = None
+                    elif older == 1:
+                        expected = f"And 1 board before {history['dates'][0][0]}, on {day_name(found['first'])}."
+                    else:
+                        expected = (
+                            f"And {older} boards before {history['dates'][0][0]}, the first on "
+                            f"{day_name(found['first'])}."
+                        )
+                    if expected:
+                        expected += f" Its best rank on any board: {min(found['best'], row['rank'])}."
+                    if entry.get("before") != expected:
+                        faults.append((row["full_name"], entry.get("before"), expected))
                 self.assertEqual(faults, [])
 
     def test_a_board_that_an_opened_row_lists_is_written_there_as_that_boards_own_history_writes_it(self):
