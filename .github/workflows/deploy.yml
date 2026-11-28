@@ -35,7 +35,11 @@ env:
 jobs:
   build:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    # The checks took 7 to 9 minutes on their own on 27 November 2026, and
+    # that night two pull requests' builds that ran beside another job passed
+    # the 10 minutes this was then, and were cancelled. 20 leaves room for a
+    # slow runner and for the tests each feature adds. The owner raised it.
+    timeout-minutes: 20
     permissions:
       contents: read
     env:
