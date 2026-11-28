@@ -24,9 +24,14 @@ def main() -> int:
         default=DATA,
         help="the folder of data files, laid out as the data contract says (default: this repository's site-data)",
     )
+    parser.add_argument(
+        "--no-share-images",
+        action="store_true",
+        help="leave out each board day's share.png, for checks that weigh or read the HTML pages alone (#253)",
+    )
     options = parser.parse_args()
     try:
-        build(options.out, data=options.data, noindex=options.noindex)
+        build(options.out, data=options.data, noindex=options.noindex, share_images=not options.no_share_images)
     except (FileExistsError, DataError) as error:
         print(f"sitebuild: {error}", file=sys.stderr)
         return 1

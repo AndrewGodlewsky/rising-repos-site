@@ -13,6 +13,7 @@ from pathlib import Path
 
 import yaml
 
+from sitebuild import build as run_build
 from sitebuild import environment
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -136,9 +137,22 @@ class BuildTest(unittest.TestCase):
         return build(self.out, "--data", str(self.data), *options)
 
     def build_pages(self, *options: str) -> dict[str, Page]:
-        """Build from the copy, expect success, and read every page the build wrote, by its path in the site."""
-        result = self.build_data(*options)
-        self.assertEqual(result.returncode, 0, result.stderr)
+        """Build from the copy, expect success, and read every page the build wrote, by its path in the site.
+
+        Runs `sitebuild.build` in-process for standard build options so the test suite avoids spawning hundreds of
+        Python subprocesses (#253); `build()`, `build_data()`, and `assertBuildFails()` still exercise the CLI
+        subprocess directly.
+        """
+        if set(options) <= {"--noindex", "--no-share-images"}:
+            run_build(
+                self.out,
+                data=self.data,
+                noindex="--noindex" in options,
+                share_images="--no-share-images" not in options,
+            )
+        else:
+            result = self.build_data(*options)
+            self.assertEqual(result.returncode, 0, result.stderr)
         return {
             path.relative_to(self.out).as_posix(): Page(path.read_text(encoding="utf-8"))
             for path in sorted(self.out.rglob("*.html"))

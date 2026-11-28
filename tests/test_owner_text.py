@@ -139,6 +139,18 @@ class TheHistoryFile(BuildTest):
             ["a", "caption", "dd", "div", "dl", "dt", "figcaption", "figure", "p", "span", "table", "td", "th"],
         )
 
+    def test_no_script_template_uses_an_unsafe_dom_sink_or_eval(self):
+        """STANDARDS.md P6 (#251): every script part writes text through textContent and never through HTML sinks
+        or eval."""
+        unsafe = re.compile(r"\b(?:innerHTML|outerHTML|insertAdjacentHTML|document\.write|eval)\b")
+        jinja_comment = re.compile(r"\{#.*?#\}", re.DOTALL)
+        scripts = sorted(TEMPLATES.rglob("*.js"))
+        self.assertTrue(scripts)
+        for path in scripts:
+            with self.subTest(path.relative_to(TEMPLATES).as_posix()):
+                body = jinja_comment.sub("", path.read_text(encoding="utf-8"))
+                self.assertIsNone(unsafe.search(body))
+
 
 class HostileText(BuildTest):
     """Each text of `HOSTILE`, on a made-up board that has one row for each: the row holds the text as its

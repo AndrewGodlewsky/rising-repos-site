@@ -7,8 +7,10 @@ import math
 import re
 import shutil
 from collections.abc import Iterator
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta
 from decimal import ROUND_HALF_UP, Decimal
+from functools import cache
 from pathlib import Path
 from typing import NamedTuple
 
@@ -952,6 +954,7 @@ FACES = [
 ]
 
 
+@cache
 def font_faces() -> Markup:
     """The four faces' @font-face rules, each file inside the page as a data: URI, so a page is one request
     and no font file is fetched or published. The files are sitebuild/fonts/subset.py's, cut to the site's own
@@ -1004,19 +1007,10 @@ def environment() -> Environment:
     )
 
 
-def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
-    """Check the data files in `data`, then write the site's pages into `out`, a folder that does not exist yet
-    or is empty. Nothing is written when a file fails its check.
-
-    With `noindex`, every page asks search engines not to index it.
-    """
-    # crawl and agent_copy name the site's addresses and figures from this module, and repo_list reads agent_copy, so
-    # they are read here and not at the top, where this module is not yet whole.
-    from sitebuild import agent_copy, crawl, repo_list
-
-    if out.exists() and (not out.is_dir() or any(out.iterdir())):
-        raise FileExistsError(f"{out} already exists and is not an empty folder. Build into a new one.")
-    boards = read_boards(data)
+@cache
+def _render_environment() -> Environment:
+    """The configured Jinja2 environment, cached across builds in the same process so repeated builds in the test
+    suite do not recompile every template (#253)."""
     templates = environment()
     templates.filters.update(
         long_date=long_date,
@@ -1042,6 +1036,24 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         baseline_figure=lambda value: figure(value, 2),
         script_hash=lambda text: script_hash(str(text)),
     )
+    return templates
+
+
+def build(out: Path, *, data: Path = DATA, noindex: bool, share_images: bool = True) -> None:
+    """Check the data files in `data`, then write the site's pages into `out`, a folder that does not exist yet
+    or is empty. Nothing is written when a file fails its check.
+
+    With `noindex`, every page asks search engines not to index it. With `share_images` false, each board day's
+    `share.png` is skipped, which lets tools that read only the HTML pages run faster (#253).
+    """
+    # crawl and agent_copy name the site's addresses and figures from this module, and repo_list reads agent_copy, so
+    # they are read here and not at the top, where this module is not yet whole.
+    from sitebuild import agent_copy, crawl, repo_list
+
+    if out.exists() and (not out.is_dir() or any(out.iterdir())):
+        raise FileExistsError(f"{out} already exists and is not an empty folder. Build into a new one.")
+    boards = read_boards(data)
+    templates = _render_environment()
     common = {
         "newest": boards[0],
         "days_address": address(DAYS),
@@ -1068,10 +1080,18 @@ def build(out: Path, *, data: Path = DATA, noindex: bool) -> None:
         (out / path).write_text(unquoted(page), encoding="utf-8", newline="\n")
     shutil.copytree(STATIC, out / "static")
     # Each board day's share image, which a link's card shows, and its history of its rows, which its expanded rows
-    # fetch on first opening.
+    # fetch on first opening. Share images are drawn in parallel because Pillow releases the GIL while encoding PNGs
+    # (#253); layouts are computed upfront so the cached FreeType font objects stay on the main thread.
+    if share_images:
+        planned = [(out / board_day_page(board["board_day"]), share.render(share_lines(board))) for board in boards]
+
+        def write_share(item: tuple[Path, object]) -> None:
+            page, image = item
+            page.with_name(SHARE_IMAGE).write_bytes(share.encode(image))
+
+        with ThreadPoolExecutor() as pool:
+            list(pool.map(write_share, planned))
     for number, board in enumerate(boards):
-        page = out / board_day_page(board["board_day"])
-        page.with_name(SHARE_IMAGE).write_bytes(share.draw(share_lines(board)))
         if board["rows"]:
             (out / board_day_page(board["board_day"])).with_name("history.json").write_text(
                 json.dumps(history_file(boards, history, number), separators=(",", ":")), encoding="utf-8"
