@@ -280,4 +280,35 @@
     var details = tr && tr.querySelector("td.wy details");
     if (details) { if (details.open) details.open = false; else open(details); }
   });
+  {# Keep ?open= synced with whichever visible row is open via replaceState, using only the built row's own name
+     so no untrusted query string is ever written back (P22, #238). #}
+  body.addEventListener("toggle", function (event) {
+    var details = event.target;
+    if (!details || details.tagName !== "DETAILS") return;
+    var row = rows.filter(function (r) { return r.element.contains(details); })[0];
+    if (!row) return;
+    if (details.open) {
+      openedName = row.name;
+      write(false);
+    } else if (openedName === row.name) {
+      var other = rows.filter(function (r) {
+        var d = !r.element.hidden && r.element.querySelector("td.wy details");
+        return d && d.open;
+      });
+      openedName = other.length ? other[other.length - 1].name : "";
+      write(false);
+    }
+  }, true);
+  {# Deep-link to a specific row via ?open=<owner>/<name>: match only against existing visible rows and silently
+     ignore any unknown or hidden value (P22, #238). #}
+  function openFromQuery(scroll) {
+    var wanted = (new URLSearchParams(location.search).get("open") || "").trim().toLowerCase();
+    if (!wanted) return;
+    var match = rows.filter(function (r) { return r.name.toLowerCase() === wanted; })[0];
+    if (!match || match.element.hidden) return;
+    var details = match.element.querySelector("td.wy details");
+    if (!details) return;
+    open(details);
+    if (scroll) match.element.scrollIntoView({ block: "center" });
+  }
   table.classList.add("clickable");

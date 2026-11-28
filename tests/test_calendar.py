@@ -58,6 +58,17 @@ class TheCalendar(unittest.TestCase):
         self.assertEqual([cells[day]["count"] for day in (10, 20)], [1, 1])
         self.assertEqual({cells[day]["count"] for day in range(11, 20)}, {None})
 
+    def test_a_held_board_is_marked_held_in_the_calendar_and_a_normal_board_is_not(self):
+        """#241: History marks board days whose state is 'held' so readers can spot partial boards at a glance."""
+        held_boards = [
+            {"board_day": "2026-11-11", "state": "rows", "rows": [{"github_id": 1, "full_name": "octo/cat"}]},
+            {"board_day": "2026-11-10", "state": "held", "rows": [{"github_id": 1, "full_name": "octo/cat"}]},
+        ]
+        weeks = calendar(held_boards, History(held_boards))[0]["weeks"]
+        cells = {cell["day"]: cell for week in weeks for cell in week if cell}
+        self.assertTrue(cells["2026-11-10"]["held"])
+        self.assertFalse(cells["2026-11-11"]["held"])
+
 
 if __name__ == "__main__":
     unittest.main()

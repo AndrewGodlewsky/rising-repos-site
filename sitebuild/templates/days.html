@@ -25,22 +25,29 @@
 <span><i class="shade-3"></i>{{ ramp[1] }}–{{ ramp[2] - 1 }}</span>
 <span><i class="shade-4"></i>{{ ramp[2] }} or more</span>
 <span><i class="newest-key"></i>the newest board</span>
+<span><i class="held-key"></i>some star bands held back</span>
 <span><i class="empty-key"></i>no repository on the board</span>
 <span><i class="gap-key"></i>no board</span>
 </div>
 <p class="ramp-note fresh-note">Under each count, how many of its repositories were new: under a name on none of the boards before it.</p>
+{% if years|length > 1 %}
+<nav class="years" aria-label="Years">
+<span>Jump to year</span>
+{% for year in years %}<a href="#year-{{ year }}">{{ year }}</a>{% endfor %}
+</nav>
+{% endif %}
 </div>
 {% endblock %}
 {% block main %}
 <div class="months">
 {% for month in calendar %}
-<section class="month" aria-labelledby="month-{{ month.month }}">
+<section class="month"{% if loop.first or month.month[:4] != calendar[loop.index0 - 1].month[:4] %} id="year-{{ month.month[:4] }}"{% endif %} aria-labelledby="month-{{ month.month }}">
 <h2 id="month-{{ month.month }}">{{ month.month|month_name }}</h2>
 <table class="cal" role="presentation">
 <thead aria-hidden="true"><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead>
 <tbody>
 {% for week in month.weeks %}
-<tr>{% for cell in week %}{% if cell is none %}<td></td>{% elif cell.count is none %}<td><span class="gap"><span class="date" aria-hidden="true">{{ cell.date }}</span><span class="sr">{{ cell.day|day_in_month }}: no board</span></span></td>{% else %}<td><a class="shade-{{ cell.shade }}{% if cell.newest %} newest{% endif %}" href="{{ cell.day|day_address }}"{% if cell.newest %} aria-current="date"{% endif %}><span class="date" aria-hidden="true">{{ cell.date }}</span><span class="sr"><time datetime="{{ cell.day }}">{{ cell.day|day_in_month }}</time>: </span><span class="count">{{ cell.count|thousands }}<span class="sr"> {{ "repository" if cell.count == 1 else "repositories" }}</span></span>{% if cell.new is not none %}<span class="fresh">{{ cell.new }} new</span>{% endif %}</a></td>{% endif %}{% endfor %}</tr>
+<tr>{% for cell in week %}{% if cell is none %}<td></td>{% elif cell.count is none %}<td><span class="gap"><span class="date" aria-hidden="true">{{ cell.date }}</span><span class="sr">{{ cell.day|day_in_month }}: no board</span></span></td>{% else %}<td><a class="shade-{{ cell.shade }}{% if cell.newest %} newest{% endif %}{% if cell.held %} held{% endif %}" href="{{ cell.day|day_address }}"{% if cell.newest %} aria-current="date"{% endif %}><span class="date" aria-hidden="true">{{ cell.date }}</span><span class="sr"><time datetime="{{ cell.day }}">{{ cell.day|day_in_month }}</time>: </span><span class="count">{{ cell.count|thousands }}<span class="sr"> {{ "repository" if cell.count == 1 else "repositories" }}</span></span>{% if cell.new is not none %}<span class="fresh">{{ cell.new }} new</span>{% endif %}{% if cell.held %}<span class="sr">, some star bands held back</span>{% endif %}</a></td>{% endif %}{% endfor %}</tr>
 {% endfor %}
 </tbody>
 </table>

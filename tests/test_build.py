@@ -679,7 +679,7 @@ class TheBoardDays(BuildTest):
             ],
             [
                 (6, f"/days/{OLDER}/", OLDER, "Sunday 8 November: 0 repositories"),
-                (0, f"/days/{NEWEST}/", NEWEST, "Monday 9 November: 5 repositories"),
+                (0, f"/days/{NEWEST}/", NEWEST, "Monday 9 November: 5 repositories, some star bands held back"),
             ],
         )
         (newest,) = [link for link in month.all("a") if link.attrs.get("aria-current") == "date"]
@@ -702,7 +702,7 @@ class TheBoardDays(BuildTest):
         self.assertEqual(
             [cell.heard() for _, cell in self.cells(november)],
             [f"{date(2026, 11, day):%A} {day} November: no board" for day in range(1, 8)]
-            + ["Sunday 8 November: 0 repositories", "Monday 9 November: 3 repositories"],
+            + ["Sunday 8 November: 0 repositories", "Monday 9 November: 3 repositories, some star bands held back"],
         )
         self.assertEqual([cell.heard() for _, cell in self.cells(october)], ["Saturday 31 October: 0 repositories"])
 
@@ -746,10 +746,11 @@ class TheBoardDays(BuildTest):
         self.assertEqual([span for span in empty.all("span") if "fresh" in span.classes()], [])
 
     def test_the_legend_names_a_board_with_no_repository_and_a_day_with_no_board(self):
-        """#91: after the four shades and the newest board, the legend names the two cells that have no shade."""
+        """#91, #241: after the four shades, the newest board, and a held board, the legend names the two cells that
+        have no shade."""
         legend = self.legend(self.build_pages()[DAYS])
         self.assertEqual(legend[-2:], ["no repository on the board", "no board"])
-        self.assertEqual(legend[-3], "the newest board")
+        self.assertEqual(legend[-4:-2], ["the newest board", "some star bands held back"])
 
     def test_the_note_under_the_legend_no_longer_says_a_blank_day_had_no_board(self):
         """#91: the legend now names a day with no board, so the note says only what the count of new means."""

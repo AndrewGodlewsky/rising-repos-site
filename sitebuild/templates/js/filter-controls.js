@@ -32,12 +32,14 @@
     var description = row.querySelector(".de");
     {# The search reads the name, which is the link's text, and the description. The cell's own text would bring
        the New mark with it, and a search for "new" would then show every new row. #}
+    var name = row.querySelector(".re a").textContent.trim();
     return {
       element: row,
       index: i,
+      name: name,
       band: String(bandOf(stars)),
       language: written,
-      text: (row.querySelector(".re a").textContent + " " +
+      text: (name + " " +
         (description.classList.contains("none") ? "" : description.textContent)).toLowerCase(),
       stars: stars,
       daily: isNaN(parsed) ? -Infinity : parsed,
@@ -54,6 +56,8 @@
   var bandButtons = [].slice.call(bands.querySelectorAll("button"));
   var kind = "";
   var band = "";
+  {# The name of the currently opened row, from the built row's own link text, kept in ?open= for sharing (#238). #}
+  var openedName = "";
   {# The order the table's rows currently sit in, starting in rank order as built (#244). #}
   var currentOrder = "rank";
   {# Each order; ties keep rank order. #}
@@ -180,6 +184,7 @@
   function write(push) {
     var query = view();
     if (q.value.trim()) query.set("q", q.value.trim());
+    if (openedName) query.set("open", openedName);
     var search = query.toString() ? "?" + query.toString() : "";
     if (search === location.search) return;
     window.history[push ? "pushState" : "replaceState"](null, "", location.pathname + search + location.hash);
@@ -215,7 +220,39 @@
     });
   });
   sort.addEventListener("change", function () { apply(); write(true); });
-  window.addEventListener("popstate", function () { read(); apply(); });
+  window.addEventListener("popstate", function () { read(); apply(); openFromQuery(false); });
+  {# Keyboard shortcuts for the board (#240): / focuses the visible search box, Escape clears or leaves it,
+     and [ / ] step to the board day before or after. Ignored while typing in a control or with a modifier held. #}
+  document.addEventListener("keydown", function (event) {
+    if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) return;
+    var active = document.activeElement;
+    if (event.key === "Escape" && (active === q || active === bar)) {
+      if (active.value) {
+        event.preventDefault();
+        say("");
+        apply();
+        write(true);
+      } else {
+        active.blur();
+      }
+      return;
+    }
+    if (active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA" || active.tagName === "SELECT" || active.isContentEditable)) return;
+    if (event.key === "/") {
+      var box = bar && bar.getClientRects().length ? bar : q;
+      if (box && box.getClientRects().length) {
+        event.preventDefault();
+        box.focus();
+        box.select();
+      }
+    } else if (event.key === "[" || event.key === "]") {
+      var link = document.querySelector(event.key === "[" ? '.strip a[rel="prev"]' : '.strip a[rel="next"]');
+      if (link) {
+        event.preventDefault();
+        location.href = link.href;
+      }
+    }
+  });
   {# Clear search and filters: the whole board again, in the order chosen, as a new entry that Back leaves. The
      button hides with its line, so the keyboard goes to the All button, the first of the filter's controls, rather
      than to the search, which would open a phone's keyboard (#33). #}

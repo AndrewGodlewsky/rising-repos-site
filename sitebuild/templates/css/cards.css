@@ -58,10 +58,11 @@
   td.pc::before { forced-color-adjust: none; --accent: Highlight; --gain-soft: GrayText; --text-3: CanvasText; --dot: CanvasText; }
   {% endif %}
   {% if template == "days.html" %}
-  .cal a, .cal .gap, .ramp-legend i.newest-key, .ramp-legend i.gap-key { outline: 1px solid CanvasText; outline-offset: -1px; }
+  .cal a, .cal .gap, .ramp-legend i.newest-key, .ramp-legend i.held-key, .ramp-legend i.gap-key { outline: 1px solid CanvasText; outline-offset: -1px; }
   .cal a.shade-0:not(:focus-visible, .newest), .ramp-legend i.empty-key { outline: 1px dashed GrayText; }
   .cal .gap, .ramp-legend i.gap-key { forced-color-adjust: none; --line: GrayText; --text: CanvasText; }
   .cal a.newest, .ramp-legend i.newest-key { outline: 2px solid Highlight; outline-offset: -2px; }
+  .cal a.held::after, .ramp-legend i.held-key::after { forced-color-adjust: none; background: CanvasText; }
   .ramp-legend .ramp-title, .ramp-legend span:has(> i[class^="shade"]) { display: none; }
   {% endif %}
 }

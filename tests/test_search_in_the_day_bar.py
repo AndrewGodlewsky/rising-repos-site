@@ -380,6 +380,38 @@ class TheSearchInTheDayBar(BuildTest):
                         self.assertEqual(part["padding"], 8 if width >= 390 else 4, part)
                     page.close()
 
+    def test_keyboard_shortcuts_focus_and_clear_search_and_step_between_board_days(self):
+        """#240: / focuses the visible search box at either width, Escape clears then blurs it, [ and ] step to
+        previous/next board days, and typing inside an input or select does not trigger navigation."""
+        for width, height, expected_id in ((DESKTOP, 900, "day-q"), (390, 844, "q")):
+            with self.subTest(width=width):
+                page = self.open(self.site, width=width, height=height)
+                page.keyboard.press("/")
+                self.assertEqual(page.evaluate("document.activeElement && document.activeElement.id"), expected_id)
+                page.keyboard.type("octocat")
+                self.assertEqual(page.evaluate(SHOWN), self.matching("octocat"))
+                # Typing [ inside the search box stays text and does not navigate away.
+                page.keyboard.type("[")
+                self.assertIn("index.html", page.url + "index.html")
+                self.assertNotIn(f"/days/{OLDER}/", page.url)
+                # First Escape clears the search; second Escape leaves the search box.
+                page.keyboard.press("Escape")
+                self.assertEqual(page.locator(f"#{expected_id}").input_value(), "")
+                self.assertEqual(len(page.evaluate(SHOWN)), len(self.rows))
+                page.keyboard.press("Escape")
+                self.assertNotEqual(page.evaluate("document.activeElement && document.activeElement.id"), expected_id)
+                page.close()
+
+        # Outside form controls, [ steps to the board before and ] steps to the board after.
+        page = self.open(self.site)
+        with page.expect_navigation(wait_until="load"):
+            page.keyboard.press("[")
+        self.assertIn(f"/days/{OLDER}/", page.url)
+        with page.expect_navigation(wait_until="load"):
+            page.keyboard.press("]")
+        self.assertIn(f"/days/{NEWEST}/", page.url)
+        page.close()
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -303,6 +303,43 @@ class TheFiltersTogether(ABoardAndAnEarlierOne):
             chosen["shown"], [row["rank"] for row in self.facts["rows"] if self.lets_by(row, show="new", lang="Rust")]
         )
 
+    def test_open_in_the_address_opens_the_matching_visible_row_and_clicking_a_row_syncs_open(self):
+        """#238: ?open=<owner>/<name> matches case-insensitively against built visible rows, ignores unknown or
+        filtered-out values (P22), and never leaks into links to other board days."""
+        target = read_json(self.board_file())["rows"][1]["full_name"]
+        page = self.board(f"?open={target.upper()}")
+        row = page.locator("table.chart > tbody > tr").nth(1)
+        row.locator("td.wy details[data-drawn]").wait_for()
+        self.assertTrue(row.locator("td.wy details").evaluate("d => d.open"))
+        # Step links never carry ?open=.
+        self.assertFalse(any("open=" in href for href in page.evaluate(LINKS)))
+        page.close()
+
+        # Unknown / hostile ?open= opens nothing and writes nothing into the page (P22).
+        unknown = self.board("?open=nobody/missing%3Cscript%3E")
+        self.assertEqual(unknown.locator("td.wy details[open]").count(), 0)
+        self.assertNotIn("nobody/missing", unknown.locator("body").inner_text())
+        unknown.close()
+
+        # A row hidden by an active filter is not opened by ?open=.
+        hidden = self.board(f"?lang=Rust&open={target}")
+        self.assertEqual(hidden.locator("td.wy details[open]").count(), 0)
+        hidden.close()
+
+        # Opening and closing a row syncs ?open= in the address via replaceState without adding history entries.
+        interactive = self.board()
+        entries = interactive.evaluate("history.length")
+        first = interactive.locator("table.chart > tbody > tr").first
+        first_name = read_json(self.board_file())["rows"][0]["full_name"]
+        first.locator("td.wy summary").click()
+        first.locator("td.wy details[data-drawn]").wait_for()
+        self.assertEqual(dict(parse_qsl(interactive.evaluate("location.search").lstrip("?"))), {"open": first_name})
+        self.assertEqual(interactive.evaluate("history.length"), entries)
+        first.locator("td.wy summary").click()
+        interactive.wait_for_function("() => location.search === ''")
+        self.assertEqual(interactive.evaluate("location.search"), "")
+        interactive.close()
+
 
 LINKS = """() => [...document.querySelectorAll(
   ".strip a[rel=prev], .strip a[rel=next], .strip a.latest, p.earlier a, " +

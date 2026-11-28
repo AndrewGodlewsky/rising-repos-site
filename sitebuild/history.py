@@ -355,6 +355,7 @@ def calendar(boards: list[dict], history: History) -> list[dict]:
                         "shade": (1 + sum(count >= step for step in RAMP)) if count else 0,
                         "new": history.rows(at)["new"] if count else None,
                         "newest": at == 0,
+                        "held": boards[at].get("state") == "held",
                     }
                 )
             elif oldest <= iso <= newest:
