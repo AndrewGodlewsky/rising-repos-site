@@ -234,6 +234,49 @@
       all.href = "/days/";
       before.appendChild(all);
       before.appendChild(document.createTextNode("."));
+      {# Progressive enhancement via the same-origin query service (/api/repo/, #242): only requested when a reader
+         explicitly asks to expand boards older than the 30-day window. #}
+      if (/^[A-Za-z0-9._-]+\/[A-Za-z0-9._-]+$/.test(row.name)) {
+        var more = make("button", "more-before", "Show all earlier boards");
+        more.type = "button";
+        more.addEventListener("click", function () {
+          more.disabled = true;
+          more.textContent = "Loading earlier boards\u2026";
+          fetch("/api/repo/" + row.name + "?format=json", { credentials: "same-origin" })
+            .then(function (response) {
+              if (!response.ok) throw new Error(response.status);
+              return response.json();
+            })
+            .then(function (payload) {
+              var repo = payload && payload.repository;
+              var items = (repo && Array.isArray(repo.history) ? repo.history : []).filter(function (h) {
+                return h && typeof h.board_day === "string" && /^\d{4}-\d{2}-\d{2}$/.test(h.board_day) && h.board_day < days[0];
+              }).sort(function (a, b) { return a.board_day < b.board_day ? 1 : -1; });
+              var prevErr = wrap.querySelector(".more-before-err");
+              if (prevErr) wrap.removeChild(prevErr);
+              if (items.length) {
+                var ul = make("ul", "earlier-list");
+                items.forEach(function (h) {
+                  var li = make("li");
+                  var link = make("a", "", h.board_day);
+                  link.href = "/days/" + h.board_day + "/";
+                  li.appendChild(link);
+                  li.appendChild(document.createTextNode(" (#" + String(h.rank) + ")"));
+                  ul.appendChild(li);
+                });
+                wrap.appendChild(ul);
+              }
+              if (more.parentNode) more.parentNode.removeChild(more);
+            }, function () {
+              more.disabled = false;
+              more.textContent = "Try loading earlier boards again";
+              if (!wrap.querySelector(".more-before-err")) {
+                wrap.appendChild(make("p", "drawing-note more-before-err", "Earlier boards could not be loaded right now."));
+              }
+            });
+        });
+        before.appendChild(more);
+      }
       wrap.appendChild(before);
     }
     opened.appendChild(wrap);

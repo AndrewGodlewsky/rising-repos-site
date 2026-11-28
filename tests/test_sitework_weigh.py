@@ -64,6 +64,17 @@ class TheWeights(unittest.TestCase):
             (weigh.PAGE_LIMIT, weigh.WIRE_BUDGET), (test_page_weight.SIZE_LIMIT, test_page_weight.WIRE_BUDGET)
         )
 
+    def test_the_report_counts_built_files_against_the_deployment_cap_and_total_bytes(self):
+        """#246: weigh reports total built file count against Cloudflare Pages's 20,000-file cap and total bytes."""
+        base = {"index.html": "a" * 100, "sitemap.xml": "b" * 50}
+        head = {"index.html": "a" * 120, "sitemap.xml": "b" * 50, "feed.xml": "c" * 80}
+        report = self.report(base, head)
+        self.assertIn(
+            f"Built files: 2 before, 3 after (+1; {weigh.FILE_LIMIT - 3:,} below the {weigh.FILE_LIMIT:,}-file "
+            "deployment cap); total size 250 bytes (+100).",
+            report,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

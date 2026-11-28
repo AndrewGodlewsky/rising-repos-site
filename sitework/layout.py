@@ -27,7 +27,7 @@ import threading
 from dataclasses import dataclass
 from pathlib import Path
 
-from sitebuild import BASELINE, BOARD, BOARD_DAY, DAYS, FOR_AGENTS, HOW_IT_WORKS, NOT_FOUND
+from sitebuild import BASELINE, BOARD, BOARD_DAY, DAYS, FOR_AGENTS, HOW_IT_WORKS, NOT_FOUND, SEARCH
 from sitework import shell
 
 STYLESHEET = "sitebuild/templates/site.css"
@@ -39,13 +39,14 @@ KINDS = {
     BOARD: "The root",
     DAYS: "History",
     BASELINE: "Baseline",
+    SEARCH: "Search",
     HOW_IT_WORKS: "How it works",
     FOR_AGENTS: "For agents",
     NOT_FOUND: "The not-found page",
 }
 BOARD_DAYS = "A board day"
 BOARD_DAY_PAGE = re.compile(re.escape(BOARD_DAY).replace(re.escape("{board_day}"), "[^/]+"))
-ORDER = ["The root", BOARD_DAYS, "History", "Baseline", "How it works", "For agents", "The not-found page"]
+ORDER = ["The root", BOARD_DAYS, "History", "Baseline", "Search", "How it works", "For agents", "The not-found page"]
 """The kinds of page the site has, in the order a reader comes to them."""
 
 NO_PAGE = "No page differs between the base and the head."

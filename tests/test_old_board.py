@@ -22,7 +22,7 @@ from datetime import UTC, datetime, timedelta
 
 from helpers import ROOT, BuildTest, Page, read_json, shipped
 
-from sitebuild import BASELINE, BOARD, DAYS, FOR_AGENTS, HOW_IT_WORKS, NOT_FOUND, board_day_page, long_date
+from sitebuild import BASELINE, BOARD, DAYS, FOR_AGENTS, HOW_IT_WORKS, NOT_FOUND, SEARCH, board_day_page, long_date
 
 NODE = shutil.which("node")
 RUNNER = ROOT / "tests" / "run_page_script.js"
@@ -45,6 +45,7 @@ PARTS = {
     BASELINE: ("theme.js", "old-board.js", "baseline.js"),
     HOW_IT_WORKS: ("theme.js", "how-it-works.js"),
     FOR_AGENTS: ("theme.js",),
+    SEARCH: ("theme.js", "search.js"),
     NOT_FOUND: ("theme.js",),
 }
 """The parts of each page's one script, in order, as the example builds them: the theme on every page; the notice
@@ -359,15 +360,22 @@ class TheNotice(BuildTest):
                 self.assertLessEqual(set(keys) - {'"theme"'}, {'"layout"'} if "filters.js" in PARTS[path] else set())
 
     def test_the_one_request_a_board_may_make_is_its_own_board_days_history_from_the_sites_own_address(self):
-        """A reader who opens a row fetches that board day's history.json, once. The policy lets the page fetch only
-        from its own address (connect-src 'self'), and only a board with rows may."""
+        """A reader who opens a row fetches that board day's history.json, once, and may explicitly expand earlier
+        boards from the same-origin /api/repo/ endpoint (#242, amended ADR 0010). The policy lets only boards with rows
+        and the archive search page fetch from the site's own address (connect-src 'self')."""
         page = self.pages[BOARD]
-        self.assertEqual(re.findall(r"\bfetch\(([^,]*),", script_of(page)), ['table.getAttribute("data-history")'])
+        self.assertEqual(
+            re.findall(r"\bfetch\(([^,]*),", script_of(page)),
+            ['table.getAttribute("data-history")', '"/api/repo/" + row.name + "?format=json"'],
+        )
         (table,) = page.all("table")
         self.assertEqual(table.attrs["data-history"], f"/days/{NEWEST}/history.json")
         for path, page in self.pages.items():
             with self.subTest(path):
-                self.assertEqual("fetch(" in script_of(page), "filters.js" in PARTS[path])
+                self.assertEqual(
+                    "fetch(" in script_of(page),
+                    "filters.js" in PARTS[path] or "search.js" in PARTS[path],
+                )
 
 
 class TheTheme(BuildTest):
@@ -448,12 +456,15 @@ class ThePolicy(BuildTest):
     def test_the_policy_is_otherwise_as_it_was_and_only_a_board_with_rows_may_fetch_from_its_own_address(self):
         for path, page in self.pages.items():
             with self.subTest(path):
-                assert_policy_is_otherwise_as_it_was(self, page, fetches="filters.js" in PARTS[path])
+                assert_policy_is_otherwise_as_it_was(
+                    self, page, fetches="filters.js" in PARTS[path] or "search.js" in PARTS[path]
+                )
 
     def test_the_not_found_page_and_how_it_works_carry_no_notice(self):
         """The notice hides what an old board's page holds, and none of these pages holds a board. How it works carries
-        its examples besides the theme (#214), and the other two the theme alone."""
-        for path in (NOT_FOUND, HOW_IT_WORKS, FOR_AGENTS):
+        its examples besides the theme (#214), Search carries its search client (#242), and the other two the theme
+        alone."""
+        for path in (NOT_FOUND, HOW_IT_WORKS, FOR_AGENTS, SEARCH):
             with self.subTest(path):
                 page = self.pages[path]
                 self.assertEqual(PARTS[path][0], "theme.js")

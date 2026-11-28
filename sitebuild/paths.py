@@ -14,6 +14,7 @@ BOARD_DAY = "days/{board_day}/index.html"
 HOW_IT_WORKS = "how-it-works/index.html"
 FOR_AGENTS = "for-agents/index.html"
 BASELINE = "baseline/index.html"
+SEARCH = "search/index.html"
 BASELINE_NAME = "Baseline"
 """The Baseline page's name, as the site's bar and the page's own strip show it: change it here to rename the page."""
 NOT_FOUND = "404.html"
@@ -30,6 +31,7 @@ PAGES = {
     HOW_IT_WORKS: "how-it-works.html",
     FOR_AGENTS: "for-agents.html",
     BASELINE: "baseline.html",
+    SEARCH: "search.html",
     NOT_FOUND: "not-found.html",
 }
 """Each page the build writes, by its path in the site, and the template in templates/ that renders it.

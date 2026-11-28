@@ -24,9 +24,18 @@ WIRE_BUDGET = 155_000
 """The two limits of `tests/test_page_weight.py`, which `tests/test_sitework_weigh.py` holds to that file's own:
 the most bytes a page may take, and the most the root of a long board may take gzipped."""
 
+FILE_LIMIT = 20_000
+"""Cloudflare Pages's file count cap for a single deployment, tracked here as the archive grows (#246)."""
+
 ROOT_PAGE = "index.html"
 GZIP_LEVEL = 6
 """The level the size test packs the root at. A server packs a little tighter."""
+
+
+def inventory(site: Path) -> tuple[int, int]:
+    """The total count of files in a built site and their combined size in bytes (#246)."""
+    files = [path for path in site.rglob("*") if path.is_file()]
+    return len(files), sum(path.stat().st_size for path in files)
 
 
 def heaviest(site: Path) -> dict[str, tuple[str, int]]:
@@ -79,6 +88,14 @@ def report(base: Path, head: Path) -> str:
             "",
             f"The root gzipped at level {GZIP_LEVEL}: {before} before, {now:,} after ({change(was, now)}).",
         ]
+    base_files, base_bytes = inventory(base)
+    head_files, head_bytes = inventory(head)
+    lines += [
+        "",
+        f"Built files: {base_files:,} before, {head_files:,} after ({change(base_files, head_files)}; "
+        f"{FILE_LIMIT - head_files:,} below the {FILE_LIMIT:,}-file deployment cap); "
+        f"total size {head_bytes:,} bytes ({change(base_bytes, head_bytes)}).",
+    ]
     lines += [
         "",
         f"A page may take {PAGE_LIMIT:,} bytes, and the root of a 713-row board {WIRE_BUDGET:,} gzipped. "

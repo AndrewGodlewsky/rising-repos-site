@@ -73,6 +73,7 @@ class TheChoice(FolderTest):
             ("A board day", "days/2026-11-03/index.html"),
             ("History", "days/index.html"),
             ("Baseline", "baseline/index.html"),
+            ("Search", "search/index.html"),
             ("How it works", "how-it-works/index.html"),
             ("For agents", "for-agents/index.html"),
             ("The not-found page", "404.html"),
