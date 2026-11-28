@@ -91,6 +91,9 @@ STATUS = re.compile(r"<status>([^<]+)</status>")
 CONFIG, SESSION = "CLAUDE_CONFIG_DIR", "CLAUDE_CODE_SESSION_ID"
 """The two variables Claude Code gives a session: the folder it keeps its records in, and the session's name."""
 
+RECORDS_ENV = "SITEWORK_RECORDS"
+"""Optional os.pathsep-separated list of transcript paths, letting non-Claude harnesses use `--this-run` (#255)."""
+
 TIMELINE = '.[] | select(.event == "labeled" or .event == "closed") | [.event, .label.name // "", .created_at] | @tsv'
 """What is kept of an issue's timeline: each label put on it and each close, as a line of three fields."""
 
@@ -197,10 +200,17 @@ def started(record: Path) -> str:
 
 def this_run() -> list[Path]:
     """The records of the run this is called from: its session's, and then the record of each fresh agent the
-    session started, oldest first, so that an agent is read after the one that started it. Claude Code gives a
-    session the folder it keeps its records in and the session's own name, and keeps the session's record in one
-    folder under `projects`. That folder's name is Claude Code's to choose, so it is found by the record it
-    holds, and is never worked out from the folder the agent works in."""
+    session started, oldest first, so that an agent is read after the one that started it.
+
+    When `SITEWORK_RECORDS` is set, those paths are used directly so harnesses other than Claude Code can run
+    `--this-run` (#255). Otherwise Claude Code's `CLAUDE_CONFIG_DIR` and `CLAUDE_CODE_SESSION_ID` are read: that
+    folder's name under `projects` is Claude Code's to choose, so it is found by the record it holds, and is never
+    worked out from the folder the agent works in."""
+    if explicit := os.environ.get(RECORDS_ENV):
+        found = [Path(part) for part in explicit.split(os.pathsep) if part.strip()]
+        if not found or not all(path.is_file() for path in found):
+            raise NoRecord(f"{RECORDS_ENV} names a record that does not exist")
+        return found
     unset = [name for name in (CONFIG, SESSION) if not os.environ.get(name)]
     if unset:
         raise NoRecord(f"{' and '.join(unset)} {'is' if len(unset) == 1 else 'are'} not set, so this run has no record")

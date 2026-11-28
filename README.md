@@ -1027,7 +1027,7 @@ job that holds the Cloudflare credential.
 | Job | Runs on | What it does | What it can reach |
 | --- | --- | --- | --- |
 | `build` | Every pull request, and every push to `main` | Checks out the repository, installs what `uv.lock` pins, runs the checks (`python -m sitework check --suite`), builds the pages into `dist`, and uploads them as the artifact `site`. On a pull request it also keeps a picture of each kind of page the pull request altered, as the artifact `pictures` | Read access to the repository. No secret |
-| `deploy` | A push to `main`, once `build` has passed | Downloads the artifact, refuses it if it holds a `_worker.js`, leaves the upload to a newer push if `main` has moved on, and uploads it with wrangler | The `deploy` environment's `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, which GitHub gives only to `main`. It never checks out the repository, so it runs nothing from its files |
+| `deploy` | A push to `main`, once `build` has passed | Downloads the artifact, refuses Cloudflare control files (`_worker.js`, `_redirects`, `_routes.json`, `_headers`, `functions`), symlinks, and unexpected file types (#248), writes the site's HTTP security headers (`_headers`) itself (#247), leaves the upload to a newer push if `main` has moved on, and uploads with wrangler | The `deploy` environment's `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, which GitHub gives only to `main`. It never checks out the repository, so it runs nothing from its files |
 
 The deploy job runs wrangler with
 `npm exec --ignore-scripts --before=<date> --package=wrangler@<version>`. The

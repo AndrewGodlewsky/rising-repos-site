@@ -621,6 +621,40 @@ class TheType(BuildTest):
         self.assertIn("renamed", line.text())
         self.assertEqual([link.attrs["href"] for link in line.all("a")], ["/static/fonts/OFL.txt"])
 
+    def test_the_sites_own_text_keeps_to_the_characters_its_type_holds(self):
+        """STANDARDS.md P10 (#251): every character in the site's own visible copy is in CHARACTERS, so no word of
+        the site's chrome falls back to another face."""
+        from sitebuild.fonts.characters import CHARACTERS
+
+        allowed = {"\n", "\r", "\t"}
+        for part in CHARACTERS.split(","):
+            span = part.removeprefix("U+")
+            start, _, end = span.partition("-")
+            for code in range(int(start, 16), int(end or start, 16) + 1):
+                allowed.add(chr(code))
+        board = read_json(self.board_file())
+        rows = [
+            {
+                **row,
+                "full_name": f"example/repo-{row['rank']}",
+                "description": f"Plain ASCII description {row['rank']}.",
+                "language": "Python",
+                "license": "MIT",
+            }
+            for row in board["rows"]
+        ]
+        self.write_board({**board, "rows": rows})
+        for path, page in self.build_pages().items():
+            with self.subTest(path):
+                outside = sorted({ch for ch in page.body_text() if ch not in allowed})
+                self.assertEqual([f"U+{ord(ch):04X} ({ch})" for ch in outside], [])
+
+    def test_no_share_images_skips_pngs_and_still_writes_every_page(self):
+        """#253: internal tools that weigh or inspect HTML pages can skip drawing share.png files."""
+        pages = self.build_pages("--no-share-images")
+        self.assertIn(BOARD, pages)
+        self.assertEqual(list(self.out.rglob("share.png")), [])
+
 
 class TheBoardDays(BuildTest):
     """RisingRepos#43: each board day has its own page, the pages link to the board days beside them, and one page,

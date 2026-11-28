@@ -161,19 +161,18 @@ before and after. A gzipped size measured on Windows reads about 2% low. No
 page carries a note written for whoever reads the stylesheet or the script,
 and no file a page ships or fetches carries a value that nothing reads. A
 field a page newly shows goes into the made-up rows the size tests measure,
-at its longest, so that their worst case stays the worst. The tests measure
-the example and made-up rows, and no test measures a page built from
-`site-data/`, whose longest board has more rows than the made-up one.
+at its longest, so that their worst case stays the worst. Every page built from
+`site-data/` is also held to the 550,000-byte limit (#251).
 
 Held by
 `tests/test_page_weight.py::PageWeight::test_each_page_of_the_example_is_within_the_size_limit`,
 `tests/test_page_weight.py::PageWeight::test_each_page_of_the_largest_board_published_is_within_the_size_limit`,
 `tests/test_page_weight.py::PageWeight::test_a_long_boards_root_stays_within_its_transfer_budget_once_gzipped`,
 `tests/test_page_weight.py::PageWeight::test_no_page_carries_the_notes_on_its_stylesheet_or_its_script`,
+`tests/test_published_boards.py::EveryPublishedBoard::test_no_page_is_over_the_size_limit`,
 the site eval's limit on `transfer_size`, on the live root, and the reviewer,
-for the pages of the published boards, for the measuring before and after,
-for a value that nothing reads, and for the made-up rows. A check could hold
-the first two.
+for the measuring before and after, for a value that nothing reads, and for the
+made-up rows.
 
 **P5. Owner-written text is shown as text.** It is escaped wherever a page
 shows it, no template marks a value as safe, and the script writes what it
@@ -205,8 +204,8 @@ they write. None of them holds that the script wrote it as text.
 Held by
 `tests/test_old_board.py::TheNotice::test_the_script_reads_only_what_it_needs_and_writes_only_the_notices_text_and_the_roots_attributes`,
 `tests/test_owner_text.py::TheHistoryFile::test_the_history_file_holds_owner_text_as_strings_and_the_script_writes_text_alone`,
-and the reviewer, for the parts no test holds to this, for a figure the script
-would word, and for the set of tags. A check could hold this.
+`tests/test_owner_text.py::TheHistoryFile::test_no_script_template_uses_an_unsafe_dom_sink_or_eval`,
+and the reviewer, for a figure the script would word and for the set of tags.
 
 **P7. Every text colour meets 4.5:1 against each background it is set on, in
 both themes.** A line or a ring that carries meaning meets 3:1. A new text
@@ -244,11 +243,12 @@ for a board's three columns of figures,
 and the reviewer, for a column or a family that a change adds.
 
 **P10. The site's own text keeps to the characters its type holds.**
-`CHARACTERS` in `sitebuild/fonts/subset.py` names them. A character outside
+`CHARACTERS` in `sitebuild/fonts/characters.py` names them. A character outside
 them is drawn in the fallback face, and adding one means cutting the faces
 again, which is a change to the look (B5).
 
-Held by the reviewer. A check could hold this.
+Held by
+`tests/test_build.py::TheType::test_the_sites_own_text_keeps_to_the_characters_its_type_holds`.
 
 **P11. Nothing on a page moves after it is first drawn.** The script is in
 the `<head>`, a control that needs it is in place from the first frame, no
@@ -412,7 +412,10 @@ own words what was decided there. It quotes neither the issue nor the owner,
 and holds no path on anyone's machine and no personal e-mail address
 ([0007](docs/adr/0007-the-repository-is-public-and-holds-nothing-private.md)).
 
-Held by the reviewer. A check could hold the path and the address.
+Held by
+`tests/test_tokens.py::TheRepository::test_no_file_git_would_commit_holds_a_local_home_path_or_personal_email`,
+for local home-directory paths and personal e-mail addresses (#251), and the
+reviewer, for anything private in a commit, issue, pull request, or comment.
 
 **C6. A credential's value is in no file, commit, issue, comment, log, or
 command's arguments.** Only its name is. A value that reached any of those is
@@ -421,7 +424,8 @@ credential and where, without repeating it.
 
 Held by
 `tests/test_tokens.py::TheRepository::test_no_file_git_would_commit_holds_a_string_shaped_like_a_credential`,
-for a GitHub token and a Discord webhook address in a file git would commit,
+for GitHub tokens, Discord webhooks, PEM private keys, AWS keys, Slack tokens
+and webhooks, and AI provider key prefixes in a file git would commit (#250),
 and the reviewer, for any other credential and any other place.
 
 **C7. The job that holds a credential runs nothing from this repository's

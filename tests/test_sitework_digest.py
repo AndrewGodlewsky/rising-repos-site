@@ -885,6 +885,15 @@ class ThisRun(RecordTest):
         self.assertIn("CLAUDE_CODE_SESSION_ID", complained)
         self.assertNotIn(self.config.name, complained)
 
+    def test_sitework_records_env_lets_other_harnesses_supply_transcripts_for_this_run(self):
+        first = self.record("main", stage("build"))
+        second = self.record("helper", said("h"))
+        with mock.patch.dict(os.environ, {digest.RECORDS_ENV: os.pathsep.join([str(first), str(second)])}):
+            self.assertEqual(digest.this_run(), [first, second])
+        with mock.patch.dict(os.environ, {digest.RECORDS_ENV: str(self.folder / "missing.jsonl")}):
+            with self.assertRaises(digest.NoRecord):
+                digest.this_run()
+
 
 if __name__ == "__main__":
     unittest.main()

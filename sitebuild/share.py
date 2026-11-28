@@ -111,12 +111,22 @@ def wrapped(name: str, face: ImageFont.FreeTypeFont, room: int) -> list[str]:
     return [*lines, rest]
 
 
-def draw(lines: list[Line]) -> bytes:
-    """The image, as the bytes of a PNG."""
+def render(lines: list[Line]) -> Image.Image:
+    """The image, drawn into memory on the calling thread so cached FreeType faces are not shared across threads."""
     image = Image.new("RGB", (WIDTH, HEIGHT), BACKGROUND)
     pen = ImageDraw.Draw(image)
     for line in lines:
         pen.text((line.x, line.y), line.text, font=font(line.face, line.size), fill=line.fill, anchor="la")
+    return image
+
+
+def encode(image: Image.Image) -> bytes:
+    """Encode a rendered image as optimised PNG bytes. Safe to call in parallel on independent images (#253)."""
     written = BytesIO()
     image.save(written, "PNG", optimize=True)
     return written.getvalue()
+
+
+def draw(lines: list[Line]) -> bytes:
+    """The image, as the bytes of a PNG."""
+    return encode(render(lines))

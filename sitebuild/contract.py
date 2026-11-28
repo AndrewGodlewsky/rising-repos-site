@@ -7,6 +7,7 @@ schema that is shipped with it, in site-data/contract/, before anything is built
 import json
 from collections.abc import Callable, Iterator
 from datetime import date, datetime
+from functools import lru_cache
 from pathlib import Path
 from typing import NoReturn
 
@@ -95,6 +96,12 @@ def _read(path: Path, validate: Callable[[object], object]) -> dict:
     return value
 
 
+@lru_cache(maxsize=16)
+def _compile_schema(raw: str) -> Callable[[object], object]:
+    """Compile a validated schema's JSON text once per distinct schema text (#253)."""
+    return fastjsonschema.compile(json.loads(raw), handlers=_NO_REMOTE_DOCUMENTS)
+
+
 def _validator(path: Path) -> Callable[[object], object]:
     """Compile the schema at `path`, which may refer only within itself.
 
@@ -103,12 +110,16 @@ def _validator(path: Path) -> Callable[[object], object]:
     the compiler is given a handler for every kind of address that refuses to fetch it: a reference that
     starts with '#' still resolves to a remote document under some `$id`s.
     """
-    schema = _load(path)
+    try:
+        raw = path.read_text(encoding="utf-8")
+        schema = json.loads(raw)
+    except (OSError, ValueError) as error:
+        raise DataError(f"{path} cannot be read as JSON: {error}") from error
     outside = [ref for ref in _refs(schema) if not (isinstance(ref, str) and ref.startswith("#"))]
     if outside:
         raise DataError(f"{path} refers to {outside[0]!r}, outside itself. A schema may refer only within itself")
     try:
-        return fastjsonschema.compile(schema, handlers=_NO_REMOTE_DOCUMENTS)
+        return _compile_schema(raw)
     except fastjsonschema.JsonSchemaDefinitionException as error:
         raise DataError(f"{path} is not a schema the build can use: {error}") from error
 

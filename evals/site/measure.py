@@ -25,6 +25,7 @@ import json
 import os
 import re
 import shlex
+import ssl
 import statistics
 import subprocess
 import sys
@@ -598,10 +599,23 @@ def head_of_main(ask: Callable[[], str] = _asked_of_github, pause: Callable[[flo
     raise CouldNotMeasure("the head of main could not be read")
 
 
+# Every request goes out over HTTPS only, through no proxy, matching stale-check.yml (#249). A redirect to another
+# scheme fails, and no local file is opened.
+OPENER = urllib.request.OpenerDirector()
+for _handler in (
+    urllib.request.HTTPSHandler(context=ssl.create_default_context()),
+    urllib.request.HTTPRedirectHandler(),
+    urllib.request.HTTPDefaultErrorHandler(),
+    urllib.request.HTTPErrorProcessor(),
+    urllib.request.UnknownHandler(),
+):
+    OPENER.add_handler(_handler)
+
+
 def read_page(address: str) -> str:
-    """The page at `address`, as the site serves it."""
+    """The page at `address`, as the site serves it, over HTTPS only and through no proxy (#249)."""
     request = urllib.request.Request(address, headers={"User-Agent": "rising-repos-site site eval"})
-    with urllib.request.urlopen(request, timeout=30) as response:
+    with OPENER.open(request, timeout=30) as response:
         return response.read(10_000_000).decode("utf-8", errors="replace")
 
 

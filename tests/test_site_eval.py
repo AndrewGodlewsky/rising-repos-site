@@ -882,6 +882,19 @@ class TheCommand(EvalTest):
         )
         self.assertEqual(self.lighthouse_calls(), [])
 
+    def test_read_page_uses_an_https_only_no_proxy_opener_and_refuses_other_schemes(self):
+        import urllib.error
+        import urllib.request
+
+        types = {type(handler) for handler in measure.OPENER.handlers}
+        self.assertIn(urllib.request.HTTPSHandler, types)
+        self.assertNotIn(urllib.request.HTTPHandler, types)
+        self.assertNotIn(urllib.request.ProxyHandler, types)
+        self.assertNotIn(urllib.request.FileHandler, types)
+        for bad in ("http://127.0.0.1/", "file:///etc/passwd"):
+            with self.subTest(bad), self.assertRaises(urllib.error.URLError):
+                measure.read_page(bad)
+
 
 class TheEvalFolder(unittest.TestCase):
     """evals/site/ holds the limits, each with its reason, and the accepted numbers with the run that measured

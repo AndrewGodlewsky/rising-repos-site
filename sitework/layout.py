@@ -27,7 +27,7 @@ import threading
 from dataclasses import dataclass
 from pathlib import Path
 
-from sitebuild import BASELINE, BOARD, BOARD_DAY, DAYS, HOW_IT_WORKS, NOT_FOUND
+from sitebuild import BASELINE, BOARD, BOARD_DAY, DAYS, FOR_AGENTS, HOW_IT_WORKS, NOT_FOUND
 from sitework import shell
 
 STYLESHEET = "sitebuild/templates/site.css"
@@ -40,11 +40,12 @@ KINDS = {
     DAYS: "History",
     BASELINE: "Baseline",
     HOW_IT_WORKS: "How it works",
+    FOR_AGENTS: "For agents",
     NOT_FOUND: "The not-found page",
 }
 BOARD_DAYS = "A board day"
 BOARD_DAY_PAGE = re.compile(re.escape(BOARD_DAY).replace(re.escape("{board_day}"), "[^/]+"))
-ORDER = ["The root", BOARD_DAYS, "History", "Baseline", "How it works", "The not-found page"]
+ORDER = ["The root", BOARD_DAYS, "History", "Baseline", "How it works", "For agents", "The not-found page"]
 """The kinds of page the site has, in the order a reader comes to them."""
 
 NO_PAGE = "No page differs between the base and the head."
@@ -467,8 +468,21 @@ def build(which: str, commit: str | None, out: Path) -> str:
     when no commit is named. Either way the data is this checkout's, so that two builds differ only by their
     code. It gives the stylesheet the pages were built with."""
     with shell.worktree(commit) if commit else contextlib.nullcontext(shell.ROOT) as code:
+        cli = code / "sitebuild" / "__main__.py"
+        options = (
+            ["--no-share-images"] if cli.is_file() and "--no-share-images" in cli.read_text(encoding="utf-8") else []
+        )
         try:
-            shell.run(sys.executable, "-m", "sitebuild", str(out), "--data", str(shell.ROOT / "site-data"), cwd=code)
+            shell.run(
+                sys.executable,
+                "-m",
+                "sitebuild",
+                str(out),
+                "--data",
+                str(shell.ROOT / "site-data"),
+                *options,
+                cwd=code,
+            )
         except shell.Failed as error:
             raise shell.Failed(f"the build of the {which} failed.\n{error}") from error
         return (code / STYLESHEET).read_text(encoding="utf-8")
