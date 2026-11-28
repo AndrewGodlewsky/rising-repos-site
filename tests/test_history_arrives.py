@@ -45,9 +45,22 @@ class TheHistoryIsAskedFor(BuildTest):
             page.wait_for_timeout(300)
             self.assertEqual(len(held), 1)
             self.assertEqual(page.locator(DRAWN).count(), 0)
+            # #237: while history.json is in flight, opened details carry aria-busy="true" and a visible busy cursor.
+            busy = first.evaluate(
+                """(row) => {
+                  const details = row.querySelector('td.wy details');
+                  const summary = details.querySelector('summary');
+                  return {
+                    ariaBusy: details.getAttribute('aria-busy'),
+                    cursor: getComputedStyle(summary).cursor,
+                  };
+                }"""
+            )
+            self.assertEqual(busy, {"ariaBusy": "true", "cursor": "progress"})
             held[0].continue_()
             first.locator(DRAWN).wait_for()
             second.locator(DRAWN).wait_for()
+            self.assertIsNone(first.locator("td.wy details").get_attribute("aria-busy"))
             self.assertEqual(len(held), 1)
 
     def test_a_history_that_could_not_be_had_is_asked_for_again_and_the_row_then_shows_it_and_no_fault(self):

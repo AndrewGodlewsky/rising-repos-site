@@ -22,8 +22,10 @@
   var rows = [].slice.call(table.querySelectorAll("tbody tr")).map(function (row, i) {
     var stars = Number(row.querySelector(".st").textContent.replace(/\D/g, ""));
     {# Its gain, read back from its growth cell for the "Most stars gained" order: a loss is written with the true
-       minus, which parseFloat does not read, so it becomes the hyphen first, and the dash of no count reads as 0. #}
+       minus, which parseFloat does not read, so it becomes the hyphen first, and the dash of no count reads as
+       -Infinity so unknown gains sort last, even after losses (#239). #}
     var grew = row.querySelector("td.gr");
+    var parsed = grew ? parseFloat(grew.textContent.replace(/[+,]/g, "").replace("−", "-")) : NaN;
     {# The language: in the row's data-l, or in its own cell on a board whose file predates the rows' numbers. #}
     var cell = row.querySelector("td.language");
     var written = row.getAttribute("data-l") || (cell ? cell.textContent : "");
@@ -38,7 +40,7 @@
       text: (row.querySelector(".re a").textContent + " " +
         (description.classList.contains("none") ? "" : description.textContent)).toLowerCase(),
       stars: stars,
-      daily: grew ? parseFloat(grew.textContent.replace(/[+,]/g, "").replace("−", "-")) || 0 : 0,
+      daily: isNaN(parsed) ? -Infinity : parsed,
       often: Number(row.getAttribute("data-o")) || 0,
       fresh: !!row.querySelector(".re .new")
     };

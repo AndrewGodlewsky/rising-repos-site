@@ -134,7 +134,7 @@
 </details></td>
 {% if gains %}<td class="gr g{{ row|gained_class }}" role="cell">{{ row|gained }}</td>{% else %}<td class="gr{{ row|per_day_class }}" role="cell">{{ row|per_day }}</td>{% endif %}
 {% set pace = row|own_pace %}
-<td class="pc" role="cell" style="{{ pace.style }}"><span class="sr">{{ pace.text }}</span></td>
+<td class="pc" role="cell" style="{{ pace.style }}"{% if pace.multiple %} data-m="{{ pace.multiple }}"{% endif %}><span class="sr">{{ pace.text }}</span></td>
 {% else %}
 <td class="language" role="cell">{{ row.language or "" }}</td>
 {% endif %}

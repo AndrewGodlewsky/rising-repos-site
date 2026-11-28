@@ -7,6 +7,7 @@ from sitebuild.formatting import (
     day_name,
     figure,
     growth,
+    licence_label,
     per_day,
     per_day_class,
     rounded,
@@ -193,9 +194,9 @@ def facts(
             gain = row.get(name)
             said = [f"Gained in {count} days", "Not known" if gain is None else signed(figure(gain, 0))]
             told.append([*said, "loss"] if gain is not None and gain < 0 else said)
-    told.append(["Language", row.get("language") or "not given"])
+    told.append(["Language", row.get("language") or "Not given"])
     if about:
-        told.append(["Licence", row.get("license") or "None given"])
+        told.append(["Licence", licence_label(row.get("license"))])
     if bands:
         told.append(["Star band", band_name(bands, row["stars"])])
     for name, term in (("created_at", "Created"), ("pushed_at", "Last pushed")):

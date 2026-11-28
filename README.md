@@ -265,7 +265,11 @@ What every page holds to, each checked by a test in `tests/`:
   every board (1,451 gzipped on the root), 21,418 from History, 19,895 from
   Baseline, 23,202 from How it works, 24,554 from For agents, and 24,679 from
   the not-found page: the heaviest board day is now 497,198 bytes, 52,802 under
-  the limit. Past about 500 real
+  the limit. Showing each row's language in list view, clamping long language
+  names in cards (#235), surfacing the score multiple on closed pace cells
+  (#236), and adding a visible loading state while `history.json` is in flight
+  (#237) added 6,019 bytes to the heaviest board day (now 503,462 bytes, 46,538
+  under the limit) and 859 to the root gzipped (now 87,834). Past about 500 real
   rows, a long board's later rows in a second file is the next step.
   [RisingRepos#64](https://github.com/AndrewGodlewsky/RisingRepos/issues/64)
   is where the limits that a longer board meets are weighed.

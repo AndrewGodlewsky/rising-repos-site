@@ -666,6 +666,30 @@ class TheOftenCount(BuildTest):
         page.get_by_role("searchbox").fill("octocat")
         self.assertEqual(page.evaluate("() => window.__rowMoves"), after_sort)
 
+    def test_unknown_day_gains_sort_last_in_most_stars_gained_even_after_losses(self):
+        """#239: a row whose board day gain is '–' (unknown) sorts after negative losses, not as 0."""
+        board = read_json(self.board_file())
+        edited = [
+            {**board["rows"][0], "gained_1_day": None},
+            {**board["rows"][1], "gained_1_day": -5},
+            {**board["rows"][2], "gained_1_day": 0},
+            {**board["rows"][3], "gained_1_day": 42},
+            {**board["rows"][4], "gained_1_day": -20},
+        ]
+        self.write_board({**board, "rows": edited})
+        self.out = self.out.with_name("dist-unknown-gain")
+        self.build_pages()
+        with served(self.out) as site:
+            page = self.browser.new_page(viewport={"width": 1440, "height": 900})
+            page.clock.set_fixed_time(published(self.out))
+            page.goto(f"{site}/?sort=gained", wait_until="load")
+            shown = page.evaluate(
+                "() => [...document.querySelectorAll('table.chart > tbody > tr')]"
+                ".map(r => r.querySelector('td.gr').textContent.trim())"
+            )
+            page.close()
+            self.assertEqual(shown, ["+42", "0", "\N{MINUS SIGN}5", "\N{MINUS SIGN}20", "\N{EN DASH}"])
+
 
 if __name__ == "__main__":
     unittest.main()

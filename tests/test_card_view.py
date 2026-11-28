@@ -484,6 +484,44 @@ class TheChoice(CardTest):
         last.close()
         context.close()
 
+    def test_list_view_shows_language_from_data_l_and_cards_view_clamps_long_language_names(self):
+        """#235: List view displays row language via data-l and Cards view clamps long language names cleanly."""
+        for width, height in ((DESKTOP, 900), PHONES[1]):
+            with self.subTest(view="list", width=width):
+                page = self.open(width=width, height=height)
+                seen = page.evaluate(
+                    """() => {
+                      const row = document.querySelector('table.chart > tbody > tr[data-l]');
+                      const after = getComputedStyle(row, '::after');
+                      return {
+                        sideways: document.documentElement.scrollWidth - window.innerWidth,
+                        content: after.content,
+                        overflow: after.overflow,
+                        ellipsis: after.textOverflow,
+                      };
+                    }"""
+                )
+                self.assertLessEqual(seen["sideways"], 0)
+                self.assertNotIn(seen["content"], ("none", "normal"))
+                self.assertEqual((seen["overflow"], seen["ellipsis"]), ("hidden", "ellipsis"))
+                page.close()
+        with self.subTest(view="cards", width=PHONES[1][0]):
+            page = self.as_cards(self.open(width=PHONES[1][0], height=PHONES[1][1]))
+            seen = page.evaluate(
+                """() => {
+                  const row = document.querySelector('table.chart > tbody > tr[data-l]');
+                  const after = getComputedStyle(row, '::after');
+                  return {
+                    sideways: document.documentElement.scrollWidth - window.innerWidth,
+                    overflow: after.overflow,
+                    ellipsis: after.textOverflow,
+                  };
+                }"""
+            )
+            self.assertLessEqual(seen["sideways"], 0)
+            self.assertEqual((seen["overflow"], seen["ellipsis"]), ("hidden", "ellipsis"))
+            page.close()
+
 
 if __name__ == "__main__":
     unittest.main()

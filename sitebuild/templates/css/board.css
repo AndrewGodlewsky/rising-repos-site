@@ -42,12 +42,14 @@ input[type="search"]:focus-visible { outline: 2px solid var(--accent); outline-o
   position: relative;
   display: grid;
   grid-template-columns: 40px minmax(0, 1fr) 64px auto;
-  grid-template-areas: "rank repository repository repository" ". description description description" ". growth own stars" ". why why why";
+  grid-template-areas: "rank repository repository repository" ". description description description" ". growth own stars" ". language language language" ". why why why";
   column-gap: 8px;
   padding: 10px 0;
   border-top: 1px solid var(--line);
 }
+.chart tbody tr[data-l]::after { content: attr(data-l); grid-area: language; margin-top: 2px; min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-3); font-size: 12px; line-height: 1.4; }
 .chart.plain tbody tr { grid-template-areas: "rank repository repository repository" ". description description description" ". language language stars"; }
+.chart.plain tbody tr::after { content: none; }
 .chart.clickable tbody tr { cursor: pointer; }
 .chart.clickable tbody tr:hover { background: var(--accent-soft); box-shadow: -16px 0 0 var(--accent-soft), 16px 0 0 var(--accent-soft); }
 .chart tbody tr:has(details[open]) { cursor: auto; background: none; box-shadow: none; }
@@ -98,6 +100,8 @@ td.pc::before {
     linear-gradient(var(--gain-soft), var(--gain-soft)) calc(var(--w) * 6 / 7) calc(var(--r) * var(--h)) / calc((var(--e, 1) - 6 / 7) * var(--w)) calc((var(--u) - var(--r)) * var(--h)) no-repeat,
     repeating-linear-gradient(90deg, var(--text-3) 0 3px, transparent 3px 5px) 0 calc(var(--u) * var(--h)) / var(--w) 1px no-repeat;
 }
+{# The score multiple on a closed row (#236), omitted when the baseline fell under the floor. #}
+td.pc[data-m]::after { content: attr(data-m); display: block; margin-top: 2px; color: var(--text-2); font: 500 12px/1.2 var(--mono); font-variant-numeric: tabular-nums; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .drawing svg { display: block; overflow: visible; }
 .drawing .above { fill: var(--gain-soft); stroke: none; }
 .drawing .own { fill: none; stroke: var(--text-3); stroke-width: 1.25; stroke-dasharray: 3 2; vector-effect: non-scaling-stroke; }
@@ -114,6 +118,10 @@ td.wy summary::before { content: ""; width: 7px; height: 7px; margin-top: -3px; 
 td.wy summary:hover, .chart.clickable tbody tr:hover td.wy summary { background: var(--raised); color: var(--text); }
 td.wy details[open] summary { color: var(--accent); }
 td.wy details[open] summary::before { margin-top: 3px; transform: rotate(-135deg); }
+{# Visible busy state while history.json is in flight (#237); animation stops under prefers-reduced-motion. #}
+@keyframes rr-wait { 50% { opacity: 0.35; } }
+td.wy details[aria-busy="true"] summary { background: var(--accent-soft); color: var(--accent); cursor: progress; }
+td.wy details[aria-busy="true"] summary::before { animation: rr-wait 700ms ease-in-out infinite; }
 .op { display: grid; gap: 20px; margin: 12px 0 8px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); cursor: auto; }
 .rs .ln { color: var(--text); font-size: 15px; font-weight: 500; }
 .rs .su { margin-top: 4px; color: var(--text-2); }

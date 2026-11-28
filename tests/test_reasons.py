@@ -12,7 +12,7 @@ import unittest
 
 from helpers import BuildTest, read_json, shipped, write_json
 
-from sitebuild import BOARD, DESCRIBED_FORMULA, HOW_IT_WORKS, board_day_page, figure, times
+from sitebuild import BOARD, DESCRIBED_FORMULA, HOW_IT_WORKS, board_day_page, figure, growth, times
 
 NUMBERS = ("baseline", "divided_by", "excess", "recent_days", "recent_stars", "days_left_out", "score")
 """The fields a row's reason is read from, as the data contract names them."""
@@ -94,6 +94,18 @@ class TheReason(BuildTest):
 
     def test_each_board_days_page_gives_the_same_reasons_as_the_root(self):
         self.assertEqual(self.shown(board_day_page("2026-11-09")), EXAMPLE_REASONS)
+
+    def test_closed_rows_carry_the_score_multiple_on_the_pace_cell_when_baseline_meets_the_floor(self):
+        """#236: closed scored rows carry data-m matching growth(row)['multiple'], omitting it below the floor."""
+        rows = self.newest()["rows"]
+        page = self.build_pages()[BOARD]
+        actual = [
+            [cell for cell in row.all("td") if "pc" in cell.classes()][0].attrs.get("data-m") for row in page.rows()
+        ]
+        expected = [growth(row)["multiple"] for row in rows]
+        self.assertEqual(actual, expected)
+        self.assertIn(None, expected)
+        self.assertTrue(any(value and value.endswith("\N{MULTIPLICATION SIGN}") for value in expected))
 
     def test_the_line_opens_without_a_script_and_from_the_keyboard(self):
         """A <details> opens on its <summary>, a control a browser gives a keyboard and assistive technology itself,
