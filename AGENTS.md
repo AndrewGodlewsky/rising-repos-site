@@ -187,6 +187,18 @@ work reaches `main` through a pull request.
 - **A page is whole with scripts off.** The script adds the filters, the sort,
   the search, and an opened row's detail to a board that already lists every
   row. Check a change to a board with scripts off as well as on.
+- **How it works is written for one formula.** Every check and number on it
+  belongs to the formula version that `DESCRIBED_FORMULA` in
+  `sitebuild/__init__.py` names, and is written into
+  `sitebuild/templates/how-it-works.html` by hand: a board day's data brings
+  the ranking and the star bands, and none of the formula's rules. When
+  RisingRepos raises the version, the page says first that it does not
+  describe the version that ranked the newest board, and nothing else
+  happens: no check fails and the build goes on. So whoever meets that
+  notice, or hears of a new formula, raises the change. It redraws the page
+  from the score's rules in RisingRepos: `src/risingrepos/scoring.py`, and
+  the holds and the order in RisingRepos: `src/risingrepos/boards.py`, and
+  raises `DESCRIBED_FORMULA` in the same change (#214).
 
 ## How this repository is written
 
