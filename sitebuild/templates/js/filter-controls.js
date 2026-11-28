@@ -52,6 +52,8 @@
   var bandButtons = [].slice.call(bands.querySelectorAll("button"));
   var kind = "";
   var band = "";
+  {# The order the table's rows currently sit in, starting in rank order as built (#244). #}
+  var currentOrder = "rank";
   {# Each order; ties keep rank order. #}
   var orders = {
     rank: function () { return 0; },
@@ -95,9 +97,17 @@
       });
     }
     table.classList.toggle("by-often", often);
-    var order = orders[sort.value] || orders.rank;
-    rows.slice().sort(function (a, b) { return order(a, b) || a.index - b.index; })
-      .forEach(function (row) { body.appendChild(row.element); });
+    {# Only re-sort and re-attach rows when the order actually changes, so typing in the search box or toggling
+       filters does not detach and re-insert every row in the table body (#244). #}
+    var wanted = orders.hasOwnProperty(sort.value) ? sort.value : "rank";
+    if (wanted !== currentOrder) {
+      currentOrder = wanted;
+      var order = orders[wanted];
+      var fragment = document.createDocumentFragment();
+      rows.slice().sort(function (a, b) { return order(a, b) || a.index - b.index; })
+        .forEach(function (row) { fragment.appendChild(row.element); });
+      body.appendChild(fragment);
+    }
     {# Said to a screen reader only: the buttons carry the counts on the screen. #}
     shown.textContent = (count === rows.length ? "All " + count + " shown" : count + " of " + rows.length + " shown") +
       (sort.value !== "rank" ? ", " + sort.options[sort.selectedIndex].text.toLowerCase().replace(/ first$/, "") + " first; each keeps its rank" : "");
