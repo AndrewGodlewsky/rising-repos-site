@@ -213,21 +213,6 @@ def partial_days(board: dict) -> dict | None:
     }
 
 
-def before_holds(board: dict) -> dict | None:
-    """What the page of a file published before the data contract had a board's `state`, `holds`, `missed_stars`, and
-    `unranked` (AndrewGodlewsky/RisingRepos#13) needs to word its recent partial days as it did before them: `own`,
-    whether the board day was itself partial. Such a file does not say what a recent day did, so its page says what
-    the day may have done.
-
-    None for a file that has those fields, which come together: its page takes the notes of `holds` and `lacked_days`
-    instead. Each board day is published again with them, and this and its one block in board.html can go once no
-    file in site-data/ lacks them.
-    """
-    if "state" in board:
-        return None
-    return {"own": any(day["snapshot_day"] == board["board_day"] for day in board.get("partial_days", []))}
-
-
 def lacked_days(board: dict) -> list[dict]:
     """Each day the board's ranking needed and lacked, as its file names it (`unranked`,
     AndrewGodlewsky/RisingRepos#13), with its `kind`, told once here for the notes in the band and for the message
@@ -1151,9 +1136,8 @@ def _pages(boards: list[dict], history: History) -> Iterator[tuple[str, str, dic
 
 def _beside(boards: list[dict], number: int, history: History) -> dict:
     """What a board's page is given: the board, what it says about the bands it holds back, the days its ranking
-    lacked, why it lists no row when it lists none, its partial days, which notes a file older than the holds takes,
-    and the day's update, whether it was made after its day, and the board days before it and after it, when there
-    are."""
+    lacked, why it lists no row when it lists none, its partial days, the day's update, whether it was made after its
+    day, and the board days before it and after it, when there are."""
     board = boards[number]
     lacked = lacked_days(board)
     bands = bands_of(board)
@@ -1163,7 +1147,6 @@ def _beside(boards: list[dict], number: int, history: History) -> dict:
         "lacked": lacked,
         "why_none": why_none(board, lacked),
         "partial": partial_days(board),
-        "before_holds": before_holds(board),
         "job": daily_job(board),
         "late": made_late(board),
         "before": boards[number + 1] if number + 1 < len(boards) else None,

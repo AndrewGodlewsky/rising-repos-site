@@ -266,48 +266,6 @@ class TheBuild(BuildTest):
         and a plain fact at its foot otherwise. Each is a <p class="partial">."""
         return [element for element in page.one("main").all("p") if "partial" in element.classes()]
 
-    def test_a_board_whose_file_predates_holds_sets_a_recent_partial_day_apart_as_one_that_may_have_moved_a_row(self):
-        """RisingRepos#45, for a file older than AndrewGodlewsky/RisingRepos#13's fields, which says nothing of what a
-        recent partial day did: such a board read 7 November for a recent pace and 27 October further back."""
-        self.drop_fields(*HOLD_FIELDS)
-        board = read_json(self.board_file())
-        days = [{"snapshot_day": "2026-11-07", "recent": True}, {"snapshot_day": "2026-10-27", "recent": False}]
-        write_json(self.board_file(), {**board, "partial_days": days})
-        page = self.build_pages()[BOARD]
-        recent, earlier = self.partial_notes(page)
-        self.assertEqual(self.notes(page, "partial"), [recent])
-        self.assertEqual(recent.classes(), ["partial", "recent"])
-        self.assertEqual(
-            recent.text(),
-            "A recent snapshot missed some repositories. The ranking's recent pace takes in 7 November 2026, and a "
-            "repository missing then may sit higher or lower here than a full snapshot would put it, or be left out.",
-        )
-        self.assertEqual(
-            [strong.text() for strong in recent.all("strong")], ["A recent snapshot missed some repositories."]
-        )
-        self.assertEqual(self.facts(page, "partial"), [earlier])
-        self.assertEqual(earlier.classes(), ["partial"])
-        self.assertEqual(
-            earlier.text(),
-            "The ranking draws on 1 earlier day whose snapshot missed some repositories, on 27 October 2026.",
-        )
-        self.assertEqual(earlier.all("strong"), [])
-
-    def test_two_recent_partial_days_are_named_in_one_note(self):
-        self.drop_fields(*HOLD_FIELDS)
-        board = read_json(self.board_file())
-        days = [{"snapshot_day": "2026-11-08", "recent": True}, {"snapshot_day": "2026-11-07", "recent": True}]
-        write_json(self.board_file(), {**board, "partial_days": days})
-        (note,) = self.partial_notes(self.build_pages()[BOARD])
-        self.assertEqual(note.classes(), ["partial", "recent"])
-        self.assertTrue(
-            note.text().startswith(
-                "Recent snapshots missed some repositories. The ranking's recent pace takes in 8 November 2026 and "
-                "7 November 2026, and"
-            ),
-            note.text(),
-        )
-
     def test_a_board_whose_ranking_read_partial_days_only_further_back_gives_their_count_and_span_in_a_plain_line(self):
         """AndrewGodlewsky/RisingRepos#13: a single day and several dozen are worded alike, as a board of
         early August 2026 reads 64, rather than a list of every date."""
@@ -329,31 +287,6 @@ class TheBuild(BuildTest):
                 self.assertEqual(note.classes(), ["partial"])
                 self.assertEqual(note.all("strong"), [])
                 self.assertEqual(note.text(), f"The ranking draws on {said}.")
-
-    def test_a_board_day_whose_own_snapshot_is_partial_says_that_a_repository_it_missed_is_not_on_the_board(self):
-        """As 2026-07-31's board was before AndrewGodlewsky/RisingRepos#13: its own snapshot partial, no row on it,
-        and a file that says nothing of holds. A file that does is in tests/test_held.py."""
-        self.drop_fields(*HOLD_FIELDS)
-        board = read_json(self.board_file(OLDER))
-        for days, after in (
-            ([{"snapshot_day": OLDER, "recent": True}], ""),
-            (
-                [{"snapshot_day": OLDER, "recent": True}, {"snapshot_day": "2026-11-07", "recent": True}],
-                " The recent pace the ranking measures also runs over 7 November 2026, whose snapshot missed some too.",
-            ),
-        ):
-            with self.subTest(len(days)):
-                write_json(self.board_file(OLDER), {**board, "partial_days": days})
-                shutil.rmtree(self.out, ignore_errors=True)
-                page = self.build_pages()[board_day_page(OLDER)]
-                (note,) = self.notes(page, "partial")
-                self.assertEqual(note.classes(), ["partial", "recent"])
-                self.assertEqual(
-                    note.text(),
-                    "This day's snapshot missed some repositories. A repository it missed could not be ranked, so it "
-                    "is not on this board." + after,
-                )
-                self.assertIn("No repository made the board on this day.", page.body_text())
 
     def test_a_board_whose_ranking_read_no_partial_day_has_no_note_on_them(self):
         """The example's older board lists none."""

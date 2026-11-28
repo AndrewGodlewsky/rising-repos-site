@@ -168,7 +168,7 @@ h1 { margin-top: 4px; font-size: 36px; font-weight: 500; line-height: 1.1; lette
    a raised surface with a rule in the ink, so they read the same to a screen reader. #}
 .notes { display: grid; gap: 8px; max-width: 760px; margin-top: 24px; }
 .notes:empty { display: none; }
-.provisional, .held, .unranked, .partial.recent, .earlier { padding: 12px 16px; border-left: 2px solid var(--text); border-radius: 0 8px 8px 0; background: var(--raised); color: var(--text-2); }
+.provisional, .held, .unranked, .earlier { padding: 12px 16px; border-left: 2px solid var(--text); border-radius: 0 8px 8px 0; background: var(--raised); color: var(--text-2); }
 .notes strong, .earlier strong { color: var(--text); font-weight: 500; }
 
 {# The Baseline page's card, which holds its chart #}
